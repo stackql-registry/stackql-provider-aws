@@ -620,6 +620,42 @@ function appendMappingsCsv(csvPath, newRows) {
 }
 
 /**
+ * Forced required-param promotions (provider-dev/config/param_promotions.json):
+ * conscious, reviewable `required: true` overrides keyed by
+ * `<filename>::<OperationName>` (the GET_/POST_ operationId prefix is
+ * ignored so one entry covers both query/ec2 twins). Exists for durable
+ * co-location merges where two listings would otherwise share an empty
+ * required-param signature and the dedupe pass would demote one to EXEC:
+ * instance_types carries DescribeInstanceTypes [] and
+ * DescribeInstanceTypeOfferings [] - requiring LocationType on the
+ * offerings op makes the signatures diverge so both stay selectable.
+ * Must run BEFORE demoteNocaseCollisions so the NOCASE demotion pass and
+ * both build-time guards see the promoted view (a promotion that
+ * case-collides with a response column is demoted straight back - the
+ * existing safety net applies).
+ */
+function applyParamPromotions(spec, fileName, paramPromotions) {
+  const applied = [];
+  if (!paramPromotions || !paramPromotions.size) return applied;
+  for (const pathItem of Object.values(spec.paths || {})) {
+    if (!pathItem || typeof pathItem !== 'object') continue;
+    for (const [httpMethod, op] of Object.entries(pathItem)) {
+      if (!HTTP_METHODS.has(httpMethod) || !op || typeof op !== 'object') continue;
+      const baseOpId = (op.operationId || '').replace(/^(GET|POST|PUT|PATCH|DELETE|HEAD)_/, '');
+      const names = paramPromotions.get(`${fileName}::${baseOpId}`);
+      if (!names) continue;
+      for (const p of op.parameters || []) {
+        if (p && typeof p === 'object' && names.includes(p.name) && !p.required) {
+          p.required = true;
+          applied.push({ operationId: op.operationId, param: p.name });
+        }
+      }
+    }
+  }
+  return applied;
+}
+
+/**
  * Build x-stackQL-resources for a single service spec, in place.
  * `fileName` + `mappings` implement the durable-mappings contract: an op
  * whose `filename::operationId` key exists in the CSV takes its
@@ -628,7 +664,7 @@ function appendMappingsCsv(csvPath, newRows) {
  * reported back via csvRows for appending.
  * Returns the mutated spec.
  */
-function rewriteService(spec, serviceAlias, fileName, mappings) {
+function rewriteService(spec, serviceAlias, fileName, mappings, paramPromotions) {
   const stackqlResources = {};
   const protocol = (spec.info && spec.info['x-protocol']) || '';
   const jsonVersion = (spec.info && spec.info['x-jsonVersion']) || '1.0';
@@ -636,6 +672,8 @@ function rewriteService(spec, serviceAlias, fileName, mappings) {
   // op - first wins). Also track pin-vs-derived divergences for the log.
   const rowsByKey = new Map();
   const pinDivergences = [];
+
+  const forcedPromotions = applyParamPromotions(spec, fileName, paramPromotions);
 
   // Must run before the candidates walk so required-param signatures,
   // sqlVerbs ordering and the dedupe pass all see the demoted view.
@@ -1136,6 +1174,7 @@ function rewriteService(spec, serviceAlias, fileName, mappings) {
     spec,
     demotions,
     promotions,
+    forcedPromotions,
     zeroColumnDemotions,
     prunedEmpty,
     nocaseCols,
@@ -1262,13 +1301,23 @@ if (mappings.size) {
   console.log(`No mappings CSV at ${mappingsCsvPath} - bootstrapping from derived mappings`);
 }
 
+// Forced required-param promotions (see applyParamPromotions). Lives next
+// to the mappings CSV by the same conscious-edit convention.
+const paramPromotionsPath = path.join(path.dirname(mappingsCsvPath), 'param_promotions.json');
+const paramPromotions = fs.existsSync(paramPromotionsPath)
+  ? new Map(Object.entries(JSON.parse(fs.readFileSync(paramPromotionsPath, 'utf8'))))
+  : new Map();
+if (paramPromotions.size) {
+  console.log(`Loaded ${paramPromotions.size} forced param promotions from ${paramPromotionsPath}`);
+}
+
 const providerServices = {};
 const skippedServices = [];
 const allNewRows = [];
 const allPinDivergences = [];
 // Per-run record of every promotion/demotion, written next to the CSV -
 // drives CSV verb reconciliation after intentional remapping passes.
-const buildReport = { promotions: [], demotions: [], zeroColumnDemotions: [] };
+const buildReport = { promotions: [], forcedPromotions: [], demotions: [], zeroColumnDemotions: [] };
 // Regression-guard counters (compared against the committed benchmarks).
 const stats = {
   services: 0,
@@ -1292,11 +1341,12 @@ for (const file of sourceFiles) {
   const title = (spec.info && spec.info.title) || alias;
   const description = (spec.info && spec.info.description) || `${alias} API`;
 
-  const { demotions, promotions, zeroColumnDemotions, prunedEmpty, nocaseCols, csvNewRows, pinDivergences } =
-    rewriteService(spec, alias, file, mappings);
+  const { demotions, promotions, forcedPromotions, zeroColumnDemotions, prunedEmpty, nocaseCols, csvNewRows, pinDivergences } =
+    rewriteService(spec, alias, file, mappings, paramPromotions);
   allNewRows.push(...csvNewRows);
   allPinDivergences.push(...pinDivergences);
   for (const p of promotions) buildReport.promotions.push({ service: alias, file, ...p });
+  for (const p of forcedPromotions) buildReport.forcedPromotions.push({ service: alias, file, ...p });
   for (const d of demotions) buildReport.demotions.push({ service: alias, file, ...d });
   for (const z of zeroColumnDemotions) buildReport.zeroColumnDemotions.push({ service: alias, file, ...z });
 
@@ -1351,6 +1401,7 @@ for (const file of sourceFiles) {
   dumpYaml(outPath, spec);
 
   const notes = [];
+  if (forcedPromotions.length) notes.push(`${forcedPromotions.length} params force-required (config)`);
   if (promotions.length) notes.push(`${promotions.length} identifier params promoted`);
   if (demotions.length) notes.push(`${demotions.length} demoted to EXEC`);
   if (zeroColumnDemotions.length) {

@@ -21221,7 +21221,7 @@ paths:
             $ref: "#/components/schemas/Boolean"
         - name: LocationType
           in: query
-          required: false
+          required: true
           description: The location type. availability-zone - The Availability Zone. When you specify a location filter, it must be an Availability Zone for the current Region. availability-zone-id - The AZ ID. When you specify a location filter, it must be an AZ ID for the current Region. outpost - The Outpost ARN. When you specify a location filter, it must be an Outpost ARN for the current Region. region - The current Region. If you specify a location filter, it must match the current Region.
           schema:
             $ref: "#/components/schemas/LocationType"
@@ -104327,10 +104327,10 @@ components:
         insert: []
         update: []
         delete: []
-    instance_type_offerings:
-      id: aws.ec2.instance_type_offerings
-      name: instance_type_offerings
-      title: instance_type_offerings
+    instance_types:
+      id: aws.ec2.instance_types
+      name: instance_types
+      title: instance_types
       methods:
         describe_instance_type_offerings:
           operation:
@@ -104351,17 +104351,6 @@ components:
               algorithm: AWSCanonical
             requestTranslate:
               algorithm: get_query_to_post_form_utf_8
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/instance_type_offerings/methods/describe_instance_type_offerings"
-        insert: []
-        update: []
-        delete: []
-    instance_types:
-      id: aws.ec2.instance_types
-      name: instance_types
-      title: instance_types
-      methods:
         describe_instance_types:
           operation:
             $ref: "#/paths/~1?Action=DescribeInstanceTypes&Version=2016-11-15/get"
@@ -104381,8 +104370,29 @@ components:
               algorithm: AWSCanonical
             requestTranslate:
               algorithm: get_query_to_post_form_utf_8
+        get_instance_types_from_instance_requirements:
+          operation:
+            $ref: "#/paths/~1?Action=GetInstanceTypesFromInstanceRequirements&Version=2016-11-15/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/GetInstanceTypesFromInstanceRequirementsOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
       sqlVerbs:
         select:
+          - $ref: "#/components/x-stackQL-resources/instance_types/methods/get_instance_types_from_instance_requirements"
+          - $ref: "#/components/x-stackQL-resources/instance_types/methods/describe_instance_type_offerings"
           - $ref: "#/components/x-stackQL-resources/instance_types/methods/describe_instance_types"
         insert: []
         update: []
@@ -106820,36 +106830,6 @@ components:
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/instance_tpm_ek_pubs/methods/get_instance_tpm_ek_pub"
-        insert: []
-        update: []
-        delete: []
-    instance_types_from_instance_requirements:
-      id: aws.ec2.instance_types_from_instance_requirements
-      name: instance_types_from_instance_requirements
-      title: instance_types_from_instance_requirements
-      methods:
-        get_instance_types_from_instance_requirements:
-          operation:
-            $ref: "#/paths/~1?Action=GetInstanceTypesFromInstanceRequirements&Version=2016-11-15/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/GetInstanceTypesFromInstanceRequirementsOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-          config:
-            queryParamTranspose:
-              algorithm: AWSCanonical
-            requestTranslate:
-              algorithm: get_query_to_post_form_utf_8
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/instance_types_from_instance_requirements/methods/get_instance_types_from_instance_requirements"
         insert: []
         update: []
         delete: []

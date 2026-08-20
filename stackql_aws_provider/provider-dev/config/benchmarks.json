@@ -1,8 +1,8 @@
 {
   "services": 414,
-  "resources": 5988,
+  "resources": 5986,
   "methods": 17451,
-  "selectableResources": 5788,
+  "selectableResources": 5786,
   "nonSelectableResources": 200,
   "nonSelectableRatioPct": 3.34,
   "ratioTolerancePct": 0.5,

@@ -209,6 +209,14 @@
       "anchor": "list_databases"
     }
   ],
+  "forcedPromotions": [
+    {
+      "service": "ec2",
+      "file": "ec2.yaml",
+      "operationId": "GET_DescribeInstanceTypeOfferings",
+      "param": "LocationType"
+    }
+  ],
   "demotions": [],
   "zeroColumnDemotions": []
 }
