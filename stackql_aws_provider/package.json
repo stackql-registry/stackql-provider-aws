@@ -13,7 +13,7 @@
     "test-meta-routes": "node ./bin/test-meta-routes.cjs"
   },
   "dependencies": {
-    "@stackql/pgwire-lite": "^1.0.1",
+    "@stackql/pgwire-lite": "^1.0.2",
     "@stackql/provider-utils": "^0.7.7",
     "yaml": "^2.5.0"
   },
