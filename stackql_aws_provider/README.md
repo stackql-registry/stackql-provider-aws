@@ -231,6 +231,15 @@ yarn build           # prebuild runs snake-case-docs + scrub-docs automatically
 yarn serve
 ```
 
+Every doc page carries a "Last updated on ..." stamp (matching the main
+stackql.io site). The flip lives in `website/docusaurus.config.js` AFTER
+`createConfig` (`config.presets[0][1].docs.showLastUpdateTime = true`) -
+it cannot live in `.shared-config`, which is wiped and re-cloned by the
+`vendor-config` prebuild hook. Dates are git-derived per file: a page
+stamps with the commit that last changed its content, so regens that
+leave a page byte-identical keep its earlier date. Commit the regenerated
+docs BEFORE building, or uncommitted pages fall back to the build time.
+
 ### Deploying
 
 The site is hosted on Netlify but is NOT built there: bundling 6,400+
