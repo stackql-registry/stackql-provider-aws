@@ -66,6 +66,11 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the recommendation.</td>
 </tr>
 <tr>
+    <td><CopyableCode code="kms_key_arn" /></td>
+    <td><code>string</code></td>
+    <td>The ARN of the KMS key used to encrypt recommendation data. (pattern: &lt;code&gt;arn:aws(|-cn|-us-gov):kms:&#91;a-zA-Z0-9-&#93;*:&#91;0-9&#93;&#123;12&#125;:key/&#91;a-zA-Z0-9-&#93;&#123;36&#125;&lt;/code&gt;)</td>
+</tr>
+<tr>
     <td><CopyableCode code="recommendation_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the recommendation. (pattern: &lt;code&gt;arn:aws&#91;a-zA-Z-&#93;*:bedrock-agentcore:&#91;a-z0-9-&#93;+:&#91;0-9&#93;&#123;12&#125;:recommendation/&#91;0-9a-zA-Z_-&#93;&#123;1,48&#125;-&#91;0-9A-Z&#93;&#123;10&#125;&lt;/code&gt;)</td>
@@ -142,7 +147,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
-    <td>The current status of the recommendation. (PENDING, IN_PROGRESS, COMPLETED, FAILED, DELETING)</td>
+    <td>The lifecycle status of a recommendation. (PENDING, IN_PROGRESS, COMPLETED, FAILED, DELETING)</td>
 </tr>
 <tr>
     <td><CopyableCode code="type_" /></td>
@@ -257,6 +262,7 @@ SELECT
 name,
 created_at,
 description,
+kms_key_arn,
 recommendation_arn,
 recommendation_config,
 recommendation_id,

@@ -277,6 +277,10 @@ EnabledAnalysisTypes,
 TransitGatewayId,
 AvailabilityZoneMappings,
 AvailabilityZoneChangeProtection,
+NatGatewayMappings,
+ProxySettings,
+NoSourcePreservation,
+VpcEndpoint,
 region
 )
 SELECT 
@@ -294,6 +298,10 @@ SELECT
 '{{ TransitGatewayId }}',
 '{{ AvailabilityZoneMappings }}',
 {{ AvailabilityZoneChangeProtection }},
+'{{ NatGatewayMappings }}',
+'{{ ProxySettings }}',
+{{ NoSourcePreservation }},
+'{{ VpcEndpoint }}',
 '{{ region }}'
 RETURNING
 firewall,
@@ -373,6 +381,30 @@ firewall_status
       value: {{ AvailabilityZoneChangeProtection }}
       description: |
         Optional. A setting indicating whether the firewall is protected against changes to its Availability Zone configuration. When set to TRUE, you cannot add or remove Availability Zones without first disabling this protection using UpdateAvailabilityZoneChangeProtection. Default value: FALSE
+    - name: NatGatewayMappings
+      description: |
+        The NAT gateways that the firewall uses to proxy traffic when NoSourcePreservation is TRUE. Network Firewall attaches the firewall to each NAT gateway that you specify, so that egress traffic is proxied through the NAT gateway.
+      value:
+        - NatGatewayId: "{{ NatGatewayId }}"
+    - name: ProxySettings
+      description: |
+        The listener configuration for a proxy mode firewall, used when NoSourcePreservation is TRUE. This specifies the ports and protocols on which the firewall's proxy listens for traffic.
+      value:
+        ListenerProperties:
+          - Port: {{ Port }}
+            Type: "{{ Type }}"
+    - name: NoSourcePreservation
+      value: {{ NoSourcePreservation }}
+      description: |
+        Optional. Indicates whether the firewall operates in proxy mode, in which the source IP address of the traffic is not preserved. When set to TRUE, the firewall proxies traffic through a NAT gateway and the traffic reaching the destination uses the NAT gateway's IP address as the source. When you set this to TRUE, you must specify NatGatewayMappings and VpcEndpoint instead of a top-level VpcId and SubnetMappings. You can't change this setting after you create the firewall. Default value: FALSE
+    - name: VpcEndpoint
+      description: |
+        The VPC and subnets for the firewall endpoint, used when NoSourcePreservation is TRUE. Network Firewall creates the firewall endpoint in the subnets that you specify here. For proxy mode firewalls, provide the firewall's VPC and endpoint subnets through this parameter instead of the top-level VpcId and SubnetMappings.
+      value:
+        VpcId: "{{ VpcId }}"
+        SubnetMappings:
+          - SubnetId: "{{ SubnetId }}"
+            IPAddressType: "{{ IPAddressType }}"
 `}</CodeBlock>
 
 </TabItem>

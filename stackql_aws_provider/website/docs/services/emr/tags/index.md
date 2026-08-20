@@ -105,7 +105,8 @@ Adds tags to an Amazon EMR resource, such as a cluster or an Amazon EMR Studio. 
 UPDATE aws.emr.tags
 SET 
 ResourceId = '{{ ResourceId }}',
-Tags = '{{ Tags }}'
+Tags = '{{ Tags }}',
+ClusterId = '{{ ClusterId }}'
 WHERE 
 region = '{{ region }}' --required
 AND ResourceId = '{{ ResourceId }}' --required
@@ -120,7 +121,8 @@ Removes tags from an Amazon EMR resource, such as a cluster or Amazon EMR Studio
 UPDATE aws.emr.tags
 SET 
 ResourceId = '{{ ResourceId }}',
-TagKeys = '{{ TagKeys }}'
+TagKeys = '{{ TagKeys }}',
+ClusterId = '{{ ClusterId }}'
 WHERE 
 region = '{{ region }}' --required
 AND ResourceId = '{{ ResourceId }}' --required

@@ -77,7 +77,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="quick_connect_type" /></td>
     <td><code>string</code></td>
-    <td>The type of quick connect. In the Amazon Connect admin website, when you create a quick connect, you are prompted to assign one of the following types: Agent (USER), External (PHONE_NUMBER), or Queue (QUEUE). (USER, QUEUE, PHONE_NUMBER, FLOW)</td>
+    <td>The type of quick connect. In the Connect Customer admin website, when you create a quick connect, you are prompted to assign one of the following types: Agent (USER), External (PHONE_NUMBER), or Queue (QUEUE). (USER, QUEUE, PHONE_NUMBER, FLOW)</td>
 </tr>
 </tbody>
 </table>
@@ -139,7 +139,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-instance_id">
     <td><CopyableCode code="instance_id" /></td>
     <td><code>string</code></td>
-    <td>The identifier of the Amazon Connect instance. You can find the instance ID in the Amazon Resource Name (ARN) of the instance.</td>
+    <td>The identifier of the Connect Customer instance. You can find the instance ID in the Amazon Resource Name (ARN) of the instance.</td>
 </tr>
 <tr id="parameter-queue_id">
     <td><CopyableCode code="queue_id" /></td>

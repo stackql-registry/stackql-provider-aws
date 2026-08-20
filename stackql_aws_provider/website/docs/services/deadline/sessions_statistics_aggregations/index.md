@@ -107,7 +107,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="usage_type" /></td>
     <td><code>string</code></td>
-    <td>The type of usage for the statistics. (COMPUTE, LICENSE)</td>
+    <td>The type of usage for the statistics. (COMPUTE, LICENSE, PERSISTENT_VOLUME)</td>
 </tr>
 <tr>
     <td><CopyableCode code="user_id" /></td>

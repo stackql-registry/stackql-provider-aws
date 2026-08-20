@@ -53,12 +53,12 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
-    <td>The ID of the feed being queried. (pattern: &lt;code&gt;&#91;a-z0-9&#93;&#123;19&#125;&lt;/code&gt;)</td>
+    <td>The ID of the feed. (pattern: &lt;code&gt;&#91;a-z0-9&#93;&#123;19&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
-    <td>The name of the feed being queried. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(&#91;a-zA-Z0-9-_&#93;&#123;0,126&#125;&#91;a-zA-Z0-9&#93;)?&lt;/code&gt;)</td>
+    <td>The name of the feed. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(&#91;a-zA-Z0-9-_&#93;&#123;0,126&#125;&#91;a-zA-Z0-9&#93;)?&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="arn" /></td>
@@ -68,27 +68,27 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="association" /></td>
     <td><code>object</code></td>
-    <td>Information about the resource, if any, associated with the feed being queried.</td>
+    <td>Information about the resource that is associated with the feed. It's possible that there is no associated resource. This is not an error.</td>
 </tr>
 <tr>
     <td><CopyableCode code="data_endpoints" /></td>
     <td><code>array</code></td>
-    <td>The dataEndpoints of the feed being queried.</td>
+    <td>The dataEndpoints of the feed.</td>
 </tr>
 <tr>
     <td><CopyableCode code="outputs" /></td>
     <td><code>array</code></td>
-    <td>An array of the outputs in the feed being queried.</td>
+    <td>An array of the outputs in the feed.</td>
 </tr>
 <tr>
     <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
-    <td>The status of the feed being queried. (CREATING, AVAILABLE, ACTIVE, UPDATING, DELETING, DELETED, ARCHIVED)</td>
+    <td>The status of the feed. (CREATING, AVAILABLE, ACTIVE, UPDATING, DELETING, DELETED, ARCHIVED)</td>
 </tr>
 <tr>
     <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
-    <td>A list of the tags, if any, for the feed being queried.</td>
+    <td>A list of the tags, if any, for the feed.</td>
 </tr>
 </tbody>
 </table>
@@ -168,35 +168,35 @@ The following methods are available for this resource:
     <td><CopyableCode code="insert" /></td>
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-name"><code>name</code></a>, <a href="#parameter-outputs"><code>outputs</code></a></td>
     <td></td>
-    <td>Creates a feed. The feed is the target for live streams being sent by the calling application. An example of a calling application is AWS Elemental MediaLive. After you create the feed, you can associate a resource with the feed.</td>
+    <td>Creates a feed. The feed is the target for the live media stream that is being sent by the calling application. An example of a calling application is AWS Elemental MediaLive. The key contents of the feed is an array of outputs. Each output represents an Elemental Inference feature. After you create the feed, you must associate a resource with the feed. At that point, you will have a useable feed: resource - feed - output or outputs.</td>
 </tr>
 <tr>
     <td><a href="#associate_feed"><CopyableCode code="associate_feed" /></a></td>
     <td><CopyableCode code="update" /></td>
     <td><a href="#parameter-id"><code>id</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-associatedResourceName"><code>associatedResourceName</code></a>, <a href="#parameter-outputs"><code>outputs</code></a></td>
     <td></td>
-    <td>Associates a resource with the feed. The resource provides the input that Elemental Inference needs needs in order to perform an Elemental Inference feature, such as cropping video. You always provide the resource by associating it with a feed. You can associate only one resource with each feed.</td>
+    <td>Associates a resource with the feed. The resource provides the input that Elemental Inference needs in order to perform an Elemental Inference feature, such as cropping video. You always provide the resource by associating it with a feed. You can associate only one resource with each feed. With an association, a specific source media is claiming ownership of the feed. AssociateFeed is a PATCH operation, which means that you can include only parameters that you want to change. Parameters that you don't include will not be affected by the operation. Specifically: You can add more outputs to the existing outputs. New outputs will be appended. You can't modify an existing output (for example to change its name). Instead, use UpdateFeed. You can't delete an existing output. Instead, use UpdateFeed. Also note that you can't change the feed name with AssociateFeed. Instead, use UpdateFeed.</td>
 </tr>
 <tr>
     <td><a href="#update_feed"><CopyableCode code="update_feed" /></a></td>
     <td><CopyableCode code="update" /></td>
     <td><a href="#parameter-id"><code>id</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-name"><code>name</code></a>, <a href="#parameter-outputs"><code>outputs</code></a></td>
     <td></td>
-    <td>Updates the name and/or outputs in a feed.</td>
+    <td>Updates the name and/or outputs in a feed. UpdateFeed is a PUT operation, which means that the payload that you specify completely overwrites the existing payload. This means that if you want to touch the array of outputs, you must pass in the full new list. So you must omit outputs you want to delete, and include outputs you want to add or modify. If you want to patch the array of outputs to make selective additions, use AssociateFeed.</td>
 </tr>
 <tr>
     <td><a href="#disassociate_feed"><CopyableCode code="disassociate_feed" /></a></td>
     <td><CopyableCode code="update" /></td>
     <td><a href="#parameter-id"><code>id</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-associatedResourceName"><code>associatedResourceName</code></a></td>
     <td></td>
-    <td>Releases the resource (for example, an MediaLive channel) that is associated with this feed. The outputs in the feed become disabled.</td>
+    <td>Releases the resource (the source media) that is associated with this feed. The outputs in the feed become DISABLED.</td>
 </tr>
 <tr>
     <td><a href="#delete_feed"><CopyableCode code="delete_feed" /></a></td>
     <td><CopyableCode code="delete" /></td>
     <td><a href="#parameter-id"><code>id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>Deletes the specified feed. The feed can be deleted at any time.</td>
+    <td>Deletes the specified feed. You can delete the feed at any time. Elemental Inference doesn't block you from deleting a feed when the calling application is calling PutMedia or GetMetadata on that feed, although both these calls will start to fail. For more information about managing inactive feeds, see the Elemental Inference User Guide.</td>
 </tr>
 </tbody>
 </table>
@@ -232,7 +232,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-nextToken">
     <td><CopyableCode code="nextToken" /></td>
     <td><code>string</code></td>
-    <td>The token that identifies the batch of results that you want to see. For example, you submit a ListBridges request with MaxResults set at 5. The service returns the first batch of results (up to 5) and a NextToken value. To see the next batch of results, you can submit the ListBridges request a second time and specify the NextToken value.</td>
+    <td>The token that identifies the batch of results that you want to see. For example, you submit a ListFeeds request with MaxResults set at 5. The service returns the first batch of results (up to 5) and a NextToken value. To see the next batch of results, you can submit the ListFeeds request a second time and specify the NextToken value.</td>
 </tr>
 </tbody>
 </table>
@@ -298,17 +298,19 @@ AND nextToken = '{{ nextToken }}'
 >
 <TabItem value="create_feed">
 
-Creates a feed. The feed is the target for live streams being sent by the calling application. An example of a calling application is AWS Elemental MediaLive. After you create the feed, you can associate a resource with the feed.
+Creates a feed. The feed is the target for the live media stream that is being sent by the calling application. An example of a calling application is AWS Elemental MediaLive. The key contents of the feed is an array of outputs. Each output represents an Elemental Inference feature. After you create the feed, you must associate a resource with the feed. At that point, you will have a useable feed: resource - feed - output or outputs.
 
 ```sql
 INSERT INTO aws.elementalinference.feeds (
 name,
+accessRoleArn,
 outputs,
 tags,
 region
 )
 SELECT 
 '{{ name }}' /* required */,
+'{{ accessRoleArn }}',
 '{{ outputs }}' /* required */,
 '{{ tags }}',
 '{{ region }}'
@@ -334,13 +336,27 @@ tags
       description: Required parameter for the feeds resource.
     - name: name
       value: "{{ name }}"
+    - name: accessRoleArn
+      value: "{{ accessRoleArn }}"
     - name: outputs
       value:
         - name: "{{ name }}"
           outputConfig:
-            cropping: "{{ cropping }}"
+            cropping:
+              templateGroups:
+                - name: "{{ name }}"
+                  templateUris: "{{ templateUris }}"
             clipping:
               callbackMetadata: "{{ callbackMetadata }}"
+              dataSourceConfiguration:
+                fixtureId: "{{ fixtureId }}"
+            subtitling:
+              language: "{{ language }}"
+              aspectRatio:
+                width: {{ width }}
+                height: {{ height }}
+              dictionary: "{{ dictionary }}"
+              profanityFilter: "{{ profanityFilter }}"
           status: "{{ status }}"
           description: "{{ description }}"
     - name: tags
@@ -363,7 +379,7 @@ tags
 >
 <TabItem value="associate_feed">
 
-Associates a resource with the feed. The resource provides the input that Elemental Inference needs needs in order to perform an Elemental Inference feature, such as cropping video. You always provide the resource by associating it with a feed. You can associate only one resource with each feed.
+Associates a resource with the feed. The resource provides the input that Elemental Inference needs in order to perform an Elemental Inference feature, such as cropping video. You always provide the resource by associating it with a feed. You can associate only one resource with each feed. With an association, a specific source media is claiming ownership of the feed. AssociateFeed is a PATCH operation, which means that you can include only parameters that you want to change. Parameters that you don't include will not be affected by the operation. Specifically: You can add more outputs to the existing outputs. New outputs will be appended. You can't modify an existing output (for example to change its name). Instead, use UpdateFeed. You can't delete an existing output. Instead, use UpdateFeed. Also note that you can't change the feed name with AssociateFeed. Instead, use UpdateFeed.
 
 ```sql
 UPDATE aws.elementalinference.feeds
@@ -383,12 +399,13 @@ arn;
 </TabItem>
 <TabItem value="update_feed">
 
-Updates the name and/or outputs in a feed.
+Updates the name and/or outputs in a feed. UpdateFeed is a PUT operation, which means that the payload that you specify completely overwrites the existing payload. This means that if you want to touch the array of outputs, you must pass in the full new list. So you must omit outputs you want to delete, and include outputs you want to add or modify. If you want to patch the array of outputs to make selective additions, use AssociateFeed.
 
 ```sql
 UPDATE aws.elementalinference.feeds
 SET 
 name = '{{ name }}',
+accessRoleArn = '{{ accessRoleArn }}',
 outputs = '{{ outputs }}'
 WHERE 
 id = '{{ id }}' --required
@@ -408,7 +425,7 @@ tags;
 </TabItem>
 <TabItem value="disassociate_feed">
 
-Releases the resource (for example, an MediaLive channel) that is associated with this feed. The outputs in the feed become disabled.
+Releases the resource (the source media) that is associated with this feed. The outputs in the feed become DISABLED.
 
 ```sql
 UPDATE aws.elementalinference.feeds
@@ -437,7 +454,7 @@ arn;
 >
 <TabItem value="delete_feed">
 
-Deletes the specified feed. The feed can be deleted at any time.
+Deletes the specified feed. You can delete the feed at any time. Elemental Inference doesn't block you from deleting a feed when the calling application is calling PutMedia or GetMetadata on that feed, although both these calls will start to fail. For more information about managing inactive feeds, see the Elemental Inference User Guide.
 
 ```sql
 DELETE FROM aws.elementalinference.feeds

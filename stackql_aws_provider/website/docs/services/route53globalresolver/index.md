@@ -18,7 +18,7 @@ route53globalresolver service documentation.
 
 :::info[Service Summary]
 
-total resources: __11__  
+total resources: __12__  
 
 :::
 
@@ -37,6 +37,7 @@ total resources: __11__
 <a href="/services/route53globalresolver/hosted_zone_associations/">hosted_zone_associations</a><br />
 <a href="/services/route53globalresolver/hosted_zones/">hosted_zones</a><br />
 <a href="/services/route53globalresolver/managed_firewall_domain_lists/">managed_firewall_domain_lists</a><br />
+<a href="/services/route53globalresolver/shared_dns_views/">shared_dns_views</a><br />
 <a href="/services/route53globalresolver/tags/">tags</a>
 </div>
 </div>

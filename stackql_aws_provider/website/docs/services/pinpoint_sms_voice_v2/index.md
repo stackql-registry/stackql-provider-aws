@@ -18,7 +18,7 @@ pinpoint_sms_voice_v2 service documentation.
 
 :::info[Service Summary]
 
-total resources: __35__  
+total resources: __36__  
 
 :::
 
@@ -47,6 +47,7 @@ total resources: __35__
 <div class="providerDocColumn">
 <a href="/services/pinpoint_sms_voice_v2/rcs_agent_country_launch_status/">rcs_agent_country_launch_status</a><br />
 <a href="/services/pinpoint_sms_voice_v2/rcs_agents/">rcs_agents</a><br />
+<a href="/services/pinpoint_sms_voice_v2/rcs_message_spend_limit_overrides/">rcs_message_spend_limit_overrides</a><br />
 <a href="/services/pinpoint_sms_voice_v2/registration_associations/">registration_associations</a><br />
 <a href="/services/pinpoint_sms_voice_v2/registration_attachments/">registration_attachments</a><br />
 <a href="/services/pinpoint_sms_voice_v2/registration_field_definitions/">registration_field_definitions</a><br />

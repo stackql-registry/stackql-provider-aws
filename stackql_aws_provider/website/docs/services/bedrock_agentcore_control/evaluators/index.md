@@ -63,7 +63,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="evaluator_arn" /></td>
     <td><code>string</code></td>
-    <td>The Amazon Resource Name (ARN) of the evaluator. (pattern: &lt;code&gt;arn:aws:bedrock-agentcore:&#91;a-z0-9-&#93;+:&#91;0-9&#93;&#123;12&#125;:evaluator\/&#91;a-zA-Z&#93;&#91;a-zA-Z0-9-_&#93;&#123;0,99&#125;-&#91;a-zA-Z0-9&#93;&#123;10&#125;$|^arn:aws:bedrock-agentcore:::evaluator/Builtin.&#91;a-zA-Z0-9_-&#93;+&lt;/code&gt;)</td>
+    <td>The Amazon Resource Name (ARN) of the evaluator. (pattern: &lt;code&gt;arn:aws&#91;a-zA-Z-&#93;*:bedrock-agentcore:&#91;a-z0-9-&#93;+:&#91;0-9&#93;&#123;12&#125;:evaluator\/&#91;a-zA-Z&#93;&#91;a-zA-Z0-9-_&#93;&#123;0,99&#125;-&#91;a-zA-Z0-9&#93;&#123;10&#125;$|^arn:aws&#91;a-zA-Z-&#93;*:bedrock-agentcore:::evaluator/(Builtin|ThirdParty)\.&#91;a-zA-Z0-9._-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="evaluator_config" /></td>
@@ -73,12 +73,17 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="evaluator_id" /></td>
     <td><code>string</code></td>
-    <td>The unique identifier of the evaluator. (pattern: &lt;code&gt;(Builtin.&#91;a-zA-Z0-9_-&#93;+|&#91;a-zA-Z&#93;&#91;a-zA-Z0-9-_&#93;&#123;0,99&#125;-&#91;a-zA-Z0-9&#93;&#123;10&#125;)&lt;/code&gt;)</td>
+    <td>The unique identifier of the evaluator. (pattern: &lt;code&gt;(Builtin\.&#91;a-zA-Z0-9._-&#93;+|ThirdParty\.&#91;a-zA-Z0-9_-&#93;+\.&#91;a-zA-Z0-9_-&#93;+|&#91;a-zA-Z&#93;&#91;a-zA-Z0-9-_&#93;&#123;0,99&#125;-&#91;a-zA-Z0-9&#93;&#123;10&#125;)&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="evaluator_name" /></td>
     <td><code>string</code></td>
-    <td>The name of the evaluator. (pattern: &lt;code&gt;(Builtin.&#91;a-zA-Z0-9_-&#93;+|&#91;a-zA-Z&#93;&#91;a-zA-Z0-9_&#93;&#123;0,47&#125;)&lt;/code&gt;)</td>
+    <td>The name of the evaluator. (pattern: &lt;code&gt;(Builtin\.&#91;a-zA-Z0-9._-&#93;+|ThirdParty\.&#91;a-zA-Z0-9_-&#93;+\.&#91;a-zA-Z0-9_-&#93;+|&#91;a-zA-Z&#93;&#91;a-zA-Z0-9_&#93;&#123;0,47&#125;)&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="evaluator_type" /></td>
+    <td><code>string</code></td>
+    <td>The kind of evaluator resource. Valid values: Builtin – An Amazon Web Services-managed global evaluator. ThirdParty – An Amazon Web Services-managed global evaluator from a third-party provider. Custom – A customer-created evaluator. CustomCode – A customer-created code-based evaluator. CustomDerived – A customer-created evaluator derived from an existing base evaluator. (Builtin, ThirdParty, Custom, CustomCode, CustomDerived)</td>
 </tr>
 <tr>
     <td><CopyableCode code="kms_key_arn" /></td>
@@ -94,6 +99,11 @@ The following fields are returned by `SELECT` queries:
     <td><CopyableCode code="locked_for_modification" /></td>
     <td><code>boolean</code></td>
     <td>Whether the evaluator is locked for modification due to being referenced by active online evaluation configurations.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="provider" /></td>
+    <td><code>string</code></td>
+    <td>The source of the evaluator's logic: Amazon Web Services, a third-party library, or you. (AWS, DeepEval, AutoEval, Custom)</td>
 </tr>
 <tr>
     <td><CopyableCode code="status" /></td>
@@ -132,22 +142,22 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="evaluator_arn" /></td>
     <td><code>string</code></td>
-    <td>The Amazon Resource Name (ARN) of the evaluator. (pattern: &lt;code&gt;arn:aws:bedrock-agentcore:&#91;a-z0-9-&#93;+:&#91;0-9&#93;&#123;12&#125;:evaluator\/&#91;a-zA-Z&#93;&#91;a-zA-Z0-9-_&#93;&#123;0,99&#125;-&#91;a-zA-Z0-9&#93;&#123;10&#125;$|^arn:aws:bedrock-agentcore:::evaluator/Builtin.&#91;a-zA-Z0-9_-&#93;+&lt;/code&gt;)</td>
+    <td>The Amazon Resource Name (ARN) of the evaluator. (pattern: &lt;code&gt;arn:aws&#91;a-zA-Z-&#93;*:bedrock-agentcore:&#91;a-z0-9-&#93;+:&#91;0-9&#93;&#123;12&#125;:evaluator\/&#91;a-zA-Z&#93;&#91;a-zA-Z0-9-_&#93;&#123;0,99&#125;-&#91;a-zA-Z0-9&#93;&#123;10&#125;$|^arn:aws&#91;a-zA-Z-&#93;*:bedrock-agentcore:::evaluator/(Builtin|ThirdParty)\.&#91;a-zA-Z0-9._-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="evaluator_id" /></td>
     <td><code>string</code></td>
-    <td>The unique identifier of the evaluator. (pattern: &lt;code&gt;(Builtin.&#91;a-zA-Z0-9_-&#93;+|&#91;a-zA-Z&#93;&#91;a-zA-Z0-9-_&#93;&#123;0,99&#125;-&#91;a-zA-Z0-9&#93;&#123;10&#125;)&lt;/code&gt;)</td>
+    <td>The unique identifier of the evaluator. (pattern: &lt;code&gt;(Builtin\.&#91;a-zA-Z0-9._-&#93;+|ThirdParty\.&#91;a-zA-Z0-9_-&#93;+\.&#91;a-zA-Z0-9_-&#93;+|&#91;a-zA-Z&#93;&#91;a-zA-Z0-9-_&#93;&#123;0,99&#125;-&#91;a-zA-Z0-9&#93;&#123;10&#125;)&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="evaluator_name" /></td>
     <td><code>string</code></td>
-    <td>The name of the evaluator. (pattern: &lt;code&gt;(Builtin.&#91;a-zA-Z0-9_-&#93;+|&#91;a-zA-Z&#93;&#91;a-zA-Z0-9_&#93;&#123;0,47&#125;)&lt;/code&gt;)</td>
+    <td>The name of the evaluator. (pattern: &lt;code&gt;(Builtin\.&#91;a-zA-Z0-9._-&#93;+|ThirdParty\.&#91;a-zA-Z0-9_-&#93;+\.&#91;a-zA-Z0-9_-&#93;+|&#91;a-zA-Z&#93;&#91;a-zA-Z0-9_&#93;&#123;0,47&#125;)&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="evaluator_type" /></td>
     <td><code>string</code></td>
-    <td>The type of evaluator, indicating whether it is a built-in evaluator provided by the service or a custom evaluator created by the user. (Builtin, Custom, CustomCode)</td>
+    <td>The type of evaluator, indicating whether it is a built-in evaluator provided by the service or a custom evaluator created by the user. (Builtin, ThirdParty, Custom, CustomCode, CustomDerived)</td>
 </tr>
 <tr>
     <td><CopyableCode code="kms_key_arn" /></td>
@@ -163,6 +173,11 @@ The following fields are returned by `SELECT` queries:
     <td><CopyableCode code="locked_for_modification" /></td>
     <td><code>boolean</code></td>
     <td>Whether the evaluator is locked for modification due to being referenced by active online evaluation configurations.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="provider" /></td>
+    <td><code>string</code></td>
+    <td>The source of the evaluator's logic: Amazon Web Services, a third-party library, or you. (AWS, DeepEval, AutoEval, Custom)</td>
 </tr>
 <tr>
     <td><CopyableCode code="status" /></td>
@@ -294,9 +309,11 @@ evaluator_arn,
 evaluator_config,
 evaluator_id,
 evaluator_name,
+evaluator_type,
 kms_key_arn,
 level,
 locked_for_modification,
+provider,
 status,
 updated_at
 FROM aws.bedrock_agentcore_control.evaluators
@@ -321,6 +338,7 @@ evaluator_type,
 kms_key_arn,
 level,
 locked_for_modification,
+provider,
 status,
 updated_at
 FROM aws.bedrock_agentcore_control.evaluators
@@ -411,10 +429,35 @@ status
                 topP: {{ topP }}
                 stopSequences: "{{ stopSequences }}"
               additionalModelRequestFields: "{{ additionalModelRequestFields }}"
+            responsesEvaluatorModelConfig:
+              modelId: "{{ modelId }}"
+              maxOutputTokens: {{ maxOutputTokens }}
+              temperature: {{ temperature }}
+              topP: {{ topP }}
+              reasoning:
+                effort: "{{ effort }}"
         codeBased:
           lambdaConfig:
             lambdaArn: "{{ lambdaArn }}"
             lambdaTimeoutInSeconds: {{ lambdaTimeoutInSeconds }}
+        derived:
+          baseEvaluatorId: "{{ baseEvaluatorId }}"
+          modelConfig:
+            bedrockEvaluatorModelConfig:
+              modelId: "{{ modelId }}"
+              inferenceConfig:
+                maxTokens: {{ maxTokens }}
+                temperature: {{ temperature }}
+                topP: {{ topP }}
+                stopSequences: "{{ stopSequences }}"
+              additionalModelRequestFields: "{{ additionalModelRequestFields }}"
+            responsesEvaluatorModelConfig:
+              modelId: "{{ modelId }}"
+              maxOutputTokens: {{ maxOutputTokens }}
+              temperature: {{ temperature }}
+              topP: {{ topP }}
+              reasoning:
+                effort: "{{ effort }}"
     - name: level
       value: "{{ level }}"
       valid_values: ['TOOL_CALL', 'TRACE', 'SESSION']

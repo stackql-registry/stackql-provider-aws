@@ -138,11 +138,25 @@ The following methods are available for this resource:
     <td>Creates a new direct-query data source to the specified domain. For more information, see Creating Amazon OpenSearch Service data source integrations with Amazon S3.</td>
 </tr>
 <tr>
+    <td><a href="#attach_data_source"><CopyableCode code="attach_data_source" /></a></td>
+    <td><CopyableCode code="update" /></td>
+    <td><a href="#parameter-id"><code>id</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-dataSourceArn"><code>dataSourceArn</code></a></td>
+    <td></td>
+    <td>Attaches a data source to an OpenSearch application. The data source can be an Amazon OpenSearch Service domain or an Amazon OpenSearch Serverless collection. If both the application and data source are in the ACTIVE state, the attachment completes immediately and returns a status of ATTACHED. If either resource is not yet active, the operation stores the request and returns a status of PENDING. A background process then completes the attachment when both resources become active. Pending attachments that are not completed within 24 hours are marked as FAILED. This operation is idempotent. If a data source is already attached or pending for the same application, the existing attachment is returned.</td>
+</tr>
+<tr>
     <td><a href="#delete_data_source"><CopyableCode code="delete_data_source" /></a></td>
     <td><CopyableCode code="delete" /></td>
     <td><a href="#parameter-domain_name"><code>domain_name</code></a>, <a href="#parameter-data_source_name"><code>data_source_name</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td></td>
     <td>Deletes a direct-query data source. For more information, see Deleting an Amazon OpenSearch Service data source with Amazon S3.</td>
+</tr>
+<tr>
+    <td><a href="#detach_data_source"><CopyableCode code="detach_data_source" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-id"><code>id</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-dataSourceArn"><code>dataSourceArn</code></a></td>
+    <td></td>
+    <td>Removes a data source from an OpenSearch application. The application must be in the ACTIVE state. This operation removes the data source saved object from the application and deletes the attachment record. Throws a ConflictException if the specified data source has a PENDING attachment, and a ResourceNotFoundException if the data source is not currently attached to the application.</td>
 </tr>
 </tbody>
 </table>
@@ -169,6 +183,11 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     <td><CopyableCode code="domain_name" /></td>
     <td><code>string</code></td>
     <td>The name of the domain.</td>
+</tr>
+<tr id="parameter-id">
+    <td><CopyableCode code="id" /></td>
+    <td><code>string</code></td>
+    <td>The unique identifier or name of the OpenSearch application to detach the data source from.</td>
 </tr>
 <tr id="parameter-region">
     <td><CopyableCode code="region" /></td>
@@ -226,7 +245,8 @@ AND region = '{{ region }}' -- required
     defaultValue="update_data_source"
     values={[
         { label: 'update_data_source', value: 'update_data_source' },
-        { label: 'add_data_source', value: 'add_data_source' }
+        { label: 'add_data_source', value: 'add_data_source' },
+        { label: 'attach_data_source', value: 'attach_data_source' }
     ]}
 >
 <TabItem value="update_data_source">
@@ -266,6 +286,29 @@ RETURNING
 message;
 ```
 </TabItem>
+<TabItem value="attach_data_source">
+
+Attaches a data source to an OpenSearch application. The data source can be an Amazon OpenSearch Service domain or an Amazon OpenSearch Serverless collection. If both the application and data source are in the ACTIVE state, the attachment completes immediately and returns a status of ATTACHED. If either resource is not yet active, the operation stores the request and returns a status of PENDING. A background process then completes the attachment when both resources become active. Pending attachments that are not completed within 24 hours are marked as FAILED. This operation is idempotent. If a data source is already attached or pending for the same application, the existing attachment is returned.
+
+```sql
+UPDATE aws.opensearch.data_sources
+SET 
+dataSourceArn = '{{ dataSourceArn }}',
+workspaceId = '{{ workspaceId }}',
+workspaceConfiguration = '{{ workspaceConfiguration }}',
+clientToken = '{{ clientToken }}'
+WHERE 
+id = '{{ id }}' --required
+AND region = '{{ region }}' --required
+AND dataSourceArn = '{{ dataSourceArn }}' --required
+RETURNING
+id,
+arn,
+attachment_id,
+data_source_arn,
+status;
+```
+</TabItem>
 </Tabs>
 
 
@@ -286,6 +329,32 @@ DELETE FROM aws.opensearch.data_sources
 WHERE domain_name = '{{ domain_name }}' --required
 AND data_source_name = '{{ data_source_name }}' --required
 AND region = '{{ region }}' --required
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="detach_data_source"
+    values={[
+        { label: 'detach_data_source', value: 'detach_data_source' }
+    ]}
+>
+<TabItem value="detach_data_source">
+
+Removes a data source from an OpenSearch application. The application must be in the ACTIVE state. This operation removes the data source saved object from the application and deletes the attachment record. Throws a ConflictException if the specified data source has a PENDING attachment, and a ResourceNotFoundException if the data source is not currently attached to the application.
+
+```sql
+EXEC aws.opensearch.data_sources.detach_data_source 
+@id='{{ id }}' --required, 
+@region='{{ region }}' --required 
+@@json=
+'{
+"dataSourceArn": "{{ dataSourceArn }}"
+}'
 ;
 ```
 </TabItem>

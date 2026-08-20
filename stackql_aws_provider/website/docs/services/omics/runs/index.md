@@ -106,6 +106,11 @@ The following fields are returned by `SELECT` queries:
     <td>The run's digest.</td>
 </tr>
 <tr>
+    <td><CopyableCode code="engine_settings" /></td>
+    <td><code>object</code></td>
+    <td>The engine-specific settings for the workflow run.</td>
+</tr>
+<tr>
     <td><CopyableCode code="engine_version" /></td>
     <td><code>string</code></td>
     <td>The actual Nextflow engine version that Amazon Web Services HealthOmics used for the run. The other workflow definition languages don't provide a value for this field. (pattern: &lt;code&gt;&#91;0-9&#93;&#123;2&#125;.&#91;0-9&#93;&#123;2&#125;.&#91;0-9&#93;&lt;/code&gt;)</td>
@@ -174,6 +179,11 @@ The following fields are returned by `SELECT` queries:
     <td><CopyableCode code="run_output_uri" /></td>
     <td><code>string</code></td>
     <td>The destination for workflow outputs. (pattern: &lt;code&gt;&#91;\p&#123;L&#125;||\p&#123;M&#125;||\p&#123;Z&#125;||\p&#123;S&#125;||\p&#123;N&#125;||\p&#123;P&#125;&#93;+&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="scratch_storage_mode" /></td>
+    <td><code>string</code></td>
+    <td>Optional configuration for enabling scratch ephemeral storage mounted at /tmp. If absent, this will default to SHARED. This configuration is applicable only for CPU tasks. For tasks using GPUs, scratch storage is always LOCAL. (LOCAL, SHARED)</td>
 </tr>
 <tr>
     <td><CopyableCode code="start_time" /></td>
@@ -325,6 +335,11 @@ The following fields are returned by `SELECT` queries:
     <td>The run's workflow ID. (pattern: &lt;code&gt;&#91;0-9&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
+    <td><CopyableCode code="workflow_name" /></td>
+    <td><code>string</code></td>
+    <td>The name of the workflow. (pattern: &lt;code&gt;&#91;\p&#123;L&#125;||\p&#123;M&#125;||\p&#123;Z&#125;||\p&#123;S&#125;||\p&#123;N&#125;||\p&#123;P&#125;&#93;+&lt;/code&gt;)</td>
+</tr>
+<tr>
     <td><CopyableCode code="workflow_version_name" /></td>
     <td><code>string</code></td>
     <td>The name of the workflow version. (pattern: &lt;code&gt;&#91;A-Za-z0-9&#93;&#91;A-Za-z0-9\-\._&#93;*&lt;/code&gt;)</td>
@@ -474,6 +489,7 @@ configuration,
 creation_time,
 definition,
 digest,
+engine_settings,
 engine_version,
 failure_reason,
 log_level,
@@ -488,6 +504,7 @@ role_arn,
 run_group_id,
 run_id,
 run_output_uri,
+scratch_storage_mode,
 start_time,
 started_by,
 status,
@@ -528,6 +545,7 @@ stop_time,
 storage_capacity,
 storage_type,
 workflow_id,
+workflow_name,
 workflow_version_name
 FROM aws.omics.runs
 WHERE region = '{{ region }}' -- required

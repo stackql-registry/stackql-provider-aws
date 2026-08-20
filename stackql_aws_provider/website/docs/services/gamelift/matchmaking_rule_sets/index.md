@@ -57,7 +57,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="rule_set_arn" /></td>
     <td><code>string</code></td>
-    <td>The Amazon Resource Name (ARN) that is assigned to a Amazon GameLift Servers matchmaking rule set resource and uniquely identifies it. ARNs are unique across all Regions. Format is arn:aws:gamelift:<code>&lt;region&gt;</code>::matchmakingruleset/&lt;ruleset name&gt;. In a GameLift rule set ARN, the resource ID matches the RuleSetName value. (pattern: &lt;code&gt;^arn:.*:matchmakingruleset\/&#91;a-zA-Z0-9-\.&#93;*&lt;/code&gt;)</td>
+    <td>The Amazon Resource Name (ARN) that is assigned to a Amazon GameLift Servers matchmaking rule set resource and uniquely identifies it. ARNs are unique across all Regions. Format is arn:aws:gamelift:<code>&lt;region&gt;</code>::matchmakingruleset/&lt;ruleset name&gt;. In a GameLift rule set ARN, the resource ID matches the RuleSetName value. (pattern: &lt;code&gt;^arn:.*:matchmakingruleset\/&#91;a-zA-Z0-9-\.&#93;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="rule_set_body" /></td>
@@ -67,7 +67,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="rule_set_name" /></td>
     <td><code>string</code></td>
-    <td>A unique identifier for the matchmaking rule set (pattern: &lt;code&gt;&#91;a-zA-Z0-9-\.&#93;*&lt;/code&gt;)</td>
+    <td>A unique identifier for the matchmaking rule set (pattern: &lt;code&gt;^&#91;a-zA-Z0-9-\.&#93;*$&lt;/code&gt;)</td>
 </tr>
 </tbody>
 </table>

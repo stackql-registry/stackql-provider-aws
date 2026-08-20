@@ -81,6 +81,11 @@ The following fields are returned by `SELECT` queries:
     <td>The list of browser extensions that are configured in the browser session.</td>
 </tr>
 <tr>
+    <td><CopyableCode code="filesystem_configurations" /></td>
+    <td><code>array</code></td>
+    <td>The file system configurations for the browser session. Each entry describes an access point and its mount path.</td>
+</tr>
+<tr>
     <td><CopyableCode code="last_updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the browser session was last updated.</td>
@@ -238,6 +243,7 @@ certificates,
 created_at,
 enterprise_policies,
 extensions,
+filesystem_configurations,
 last_updated_at,
 profile_configuration,
 proxy_configuration,

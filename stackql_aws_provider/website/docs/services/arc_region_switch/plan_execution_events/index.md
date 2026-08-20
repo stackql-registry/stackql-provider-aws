@@ -67,7 +67,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="execution_block_type" /></td>
     <td><code>string</code></td>
-    <td>The execution block type for an execution event. (CustomActionLambda, ManualApproval, AuroraGlobalDatabase, EC2AutoScaling, ARCRoutingControl, ARCRegionSwitchPlan, Parallel, ECSServiceScaling, EKSResourceScaling, Route53HealthCheck, DocumentDb, RdsPromoteReadReplica, RdsCreateCrossRegionReplica, LambdaEventSourceMapping)</td>
+    <td>The execution block type for an execution event. (CustomActionLambda, ManualApproval, AuroraGlobalDatabase, EC2AutoScaling, ARCRoutingControl, ARCRegionSwitchPlan, Parallel, ECSServiceScaling, EKSResourceScaling, Route53HealthCheck, DocumentDb, RdsPromoteReadReplica, RdsCreateCrossRegionReplica, LambdaEventSourceMapping, AuroraServerlessScaling, AuroraProvisionedScaling, NeptuneGlobalDatabase)</td>
 </tr>
 <tr>
     <td><CopyableCode code="previous_event_id" /></td>

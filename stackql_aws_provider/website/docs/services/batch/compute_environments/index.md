@@ -80,6 +80,11 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the underlying Amazon ECS cluster that the compute environment uses.</td>
 </tr>
 <tr>
+    <td><CopyableCode code="ecs_settings" /></td>
+    <td><code>object</code></td>
+    <td>The Amazon ECS settings for a compute environment, including the CloudWatch Container Insights mode. Use this structure with CreateComputeEnvironment and UpdateComputeEnvironment.</td>
+</tr>
+<tr>
     <td><CopyableCode code="eks_configuration" /></td>
     <td><code>object</code></td>
     <td>Configuration for the Amazon EKS cluster that supports the Batch compute environment. The cluster must exist before the compute environment can be created.</td>
@@ -221,6 +226,7 @@ compute_resources,
 container_orchestration_type,
 context,
 ecs_cluster_arn,
+ecs_settings,
 eks_configuration,
 service_role,
 state,
@@ -263,6 +269,7 @@ serviceRole,
 tags,
 eksConfiguration,
 context,
+ecsSettings,
 region
 )
 SELECT 
@@ -275,6 +282,7 @@ SELECT
 '{{ tags }}',
 '{{ eksConfiguration }}',
 '{{ context }}',
+'{{ ecsSettings }}',
 '{{ region }}'
 RETURNING
 compute_environment_arn,
@@ -352,6 +360,11 @@ compute_environment_name
         kubernetesNamespace: "{{ kubernetesNamespace }}"
     - name: context
       value: "{{ context }}"
+    - name: ecsSettings
+      description: |
+        The Amazon ECS settings for a compute environment, including the CloudWatch Container Insights mode. Use this structure with CreateComputeEnvironment and UpdateComputeEnvironment.
+      value:
+        containerInsights: "{{ containerInsights }}"
 `}</CodeBlock>
 
 </TabItem>
@@ -379,7 +392,8 @@ unmanagedvCpus = {{ unmanagedvCpus }},
 computeResources = '{{ computeResources }}',
 serviceRole = '{{ serviceRole }}',
 updatePolicy = '{{ updatePolicy }}',
-context = '{{ context }}'
+context = '{{ context }}',
+ecsSettings = '{{ ecsSettings }}'
 WHERE 
 region = '{{ region }}' --required
 AND computeEnvironment = '{{ computeEnvironment }}' --required

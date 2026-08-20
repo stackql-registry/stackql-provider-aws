@@ -73,7 +73,12 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="engagement_title" /></td>
     <td><code>string</code></td>
-    <td>The title of the engagement invitation, summarizing the purpose or objectives of the opportunity shared by AWS. (pattern: &lt;code&gt;(?s).&#123;1,40&#125;&lt;/code&gt;)</td>
+    <td>The title of the engagement invitation, summarizing the purpose or objectives of the opportunity shared by AWS. (pattern: &lt;code&gt;(?s).&#123;0,40&#125;&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="enrichment_context" /></td>
+    <td><code>object</code></td>
+    <td>The enrichment data for the engagement associated with this invitation. You can view propensity scores, program eligibility, and lead readiness assessments before taking action on the invitation.</td>
 </tr>
 <tr>
     <td><CopyableCode code="existing_members" /></td>
@@ -167,7 +172,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="engagement_title" /></td>
     <td><code>string</code></td>
-    <td>Provides a short title or description of the Engagement Invitation. This title helps partners quickly identify and differentiate between multiple engagement opportunities. (pattern: &lt;code&gt;(?s).&#123;1,40&#125;&lt;/code&gt;)</td>
+    <td>Provides a short title or description of the Engagement Invitation. This title helps partners quickly identify and differentiate between multiple engagement opportunities. (pattern: &lt;code&gt;(?s).&#123;0,40&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="expiration_date" /></td>
@@ -299,6 +304,7 @@ catalog,
 engagement_description,
 engagement_id,
 engagement_title,
+enrichment_context,
 existing_members,
 expiration_date,
 id,

@@ -18,7 +18,7 @@ securityagent service documentation.
 
 :::info[Service Summary]
 
-total resources: __19__  
+total resources: __26__  
 
 :::
 
@@ -34,17 +34,24 @@ total resources: __19__
 <a href="/services/securityagent/code_review_jobs_for_code_reviews/">code_review_jobs_for_code_reviews</a><br />
 <a href="/services/securityagent/code_reviews/">code_reviews</a><br />
 <a href="/services/securityagent/discovered_endpoints/">discovered_endpoints</a><br />
-<a href="/services/securityagent/findings/">findings</a>
-</div>
-<div class="providerDocColumn">
+<a href="/services/securityagent/findings/">findings</a><br />
 <a href="/services/securityagent/integrated_resources/">integrated_resources</a><br />
 <a href="/services/securityagent/integrations/">integrations</a><br />
-<a href="/services/securityagent/memberships/">memberships</a><br />
+<a href="/services/securityagent/memberships/">memberships</a>
+</div>
+<div class="providerDocColumn">
 <a href="/services/securityagent/pentest_job_tasks/">pentest_job_tasks</a><br />
 <a href="/services/securityagent/pentest_jobs/">pentest_jobs</a><br />
 <a href="/services/securityagent/pentest_jobs_for_pentests/">pentest_jobs_for_pentests</a><br />
 <a href="/services/securityagent/pentests/">pentests</a><br />
+<a href="/services/securityagent/private_connections/">private_connections</a><br />
+<a href="/services/securityagent/security_requirement_packs/">security_requirement_packs</a><br />
+<a href="/services/securityagent/security_requirements/">security_requirements</a><br />
 <a href="/services/securityagent/tags/">tags</a><br />
-<a href="/services/securityagent/target_domains/">target_domains</a>
+<a href="/services/securityagent/target_domains/">target_domains</a><br />
+<a href="/services/securityagent/threat_model_job_tasks/">threat_model_job_tasks</a><br />
+<a href="/services/securityagent/threat_model_jobs/">threat_model_jobs</a><br />
+<a href="/services/securityagent/threat_models/">threat_models</a><br />
+<a href="/services/securityagent/threats/">threats</a>
 </div>
 </div>

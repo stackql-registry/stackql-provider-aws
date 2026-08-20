@@ -91,6 +91,16 @@ The following fields are returned by `SELECT` queries:
     <td>The configuration settings for a router input.</td>
 </tr>
 <tr>
+    <td><CopyableCode code="content_quality_analysis_configuration" /></td>
+    <td><code>object</code></td>
+    <td>The content quality analysis configuration for the router input.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="content_quality_analysis_type" /></td>
+    <td><code>string</code></td>
+    <td>The type of content quality analysis applied to the router input. (CONTENT_LEVEL)</td>
+</tr>
+<tr>
     <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the router input was created.</td>
@@ -428,6 +438,8 @@ SELECT
 arn,
 availability_zone,
 configuration,
+content_quality_analysis_configuration,
+content_quality_analysis_type,
 created_at,
 id,
 input_type,
@@ -513,6 +525,7 @@ TransitEncryption,
 MaintenanceConfiguration,
 Tags,
 ClientToken,
+ContentQualityAnalysisConfiguration,
 region
 )
 SELECT 
@@ -527,6 +540,7 @@ SELECT
 '{{ MaintenanceConfiguration }}',
 '{{ Tags }}',
 '{{ ClientToken }}',
+'{{ ContentQualityAnalysisConfiguration }}',
 '{{ region }}'
 RETURNING
 router_input
@@ -657,6 +671,20 @@ router_input
       value: "{{ Tags }}"
     - name: ClientToken
       value: "{{ ClientToken }}"
+    - name: ContentQualityAnalysisConfiguration
+      description: |
+        The content quality analysis configuration for the router input. The content quality analysis feature only monitors the first video stream and the first audio stream it encounters within the router input source.
+      value:
+        ContentLevel:
+          BlackFrames:
+            State: "{{ State }}"
+            ThresholdSeconds: {{ ThresholdSeconds }}
+          FrozenFrames:
+            State: "{{ State }}"
+            ThresholdSeconds: {{ ThresholdSeconds }}
+          SilentAudio:
+            State: "{{ State }}"
+            ThresholdSeconds: {{ ThresholdSeconds }}
 `}</CodeBlock>
 
 </TabItem>
@@ -684,7 +712,8 @@ MaximumBitrate = {{ MaximumBitrate }},
 RoutingScope = '{{ RoutingScope }}',
 Tier = '{{ Tier }}',
 TransitEncryption = '{{ TransitEncryption }}',
-MaintenanceConfiguration = '{{ MaintenanceConfiguration }}'
+MaintenanceConfiguration = '{{ MaintenanceConfiguration }}',
+ContentQualityAnalysisConfiguration = '{{ ContentQualityAnalysisConfiguration }}'
 WHERE 
 arn = '{{ arn }}' --required
 AND region = '{{ region }}' --required

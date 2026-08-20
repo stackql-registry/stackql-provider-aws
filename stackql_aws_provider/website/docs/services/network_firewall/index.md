@@ -18,7 +18,7 @@ network_firewall service documentation.
 
 :::info[Service Summary]
 
-total resources: __24__  
+total resources: __25__  
 
 :::
 
@@ -29,6 +29,7 @@ total resources: __24__
 <a href="/services/network_firewall/analysis_reports/">analysis_reports</a><br />
 <a href="/services/network_firewall/availability_zone_change_protections/">availability_zone_change_protections</a><br />
 <a href="/services/network_firewall/availability_zones/">availability_zones</a><br />
+<a href="/services/network_firewall/container_associations/">container_associations</a><br />
 <a href="/services/network_firewall/firewall_metadatas/">firewall_metadatas</a><br />
 <a href="/services/network_firewall/firewall_policies/">firewall_policies</a><br />
 <a href="/services/network_firewall/firewalls/">firewalls</a><br />

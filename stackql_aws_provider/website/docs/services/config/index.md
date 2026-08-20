@@ -18,7 +18,7 @@ config service documentation.
 
 :::info[Service Summary]
 
-total resources: __51__  
+total resources: __52__  
 
 :::
 
@@ -54,6 +54,7 @@ total resources: __51__
 </div>
 <div class="providerDocColumn">
 <a href="/services/config/conformance_packs/">conformance_packs</a><br />
+<a href="/services/config/connectors/">connectors</a><br />
 <a href="/services/config/custom_rule_policies/">custom_rule_policies</a><br />
 <a href="/services/config/delivery_channel_status/">delivery_channel_status</a><br />
 <a href="/services/config/delivery_channels/">delivery_channels</a><br />

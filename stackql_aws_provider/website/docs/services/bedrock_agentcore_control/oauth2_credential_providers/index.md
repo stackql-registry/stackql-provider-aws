@@ -63,7 +63,17 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="client_secret_arn" /></td>
     <td><code>object</code></td>
-    <td>Contains information about a secret in AWS Secrets Manager.</td>
+    <td>Contains information about a secret in Amazon Web Services Secrets Manager.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="client_secret_json_key" /></td>
+    <td><code>string</code></td>
+    <td>The JSON key used to extract the client secret value from the Amazon Web Services Secrets Manager secret.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="client_secret_source" /></td>
+    <td><code>string</code></td>
+    <td>The source type of the client secret. Either MANAGED if the secret is managed by the service, or EXTERNAL if managed by the user in Amazon Web Services Secrets Manager. (MANAGED, EXTERNAL)</td>
 </tr>
 <tr>
     <td><CopyableCode code="created_time" /></td>
@@ -236,6 +246,8 @@ SELECT
 name,
 callback_url,
 client_secret_arn,
+client_secret_json_key,
+client_secret_source,
 created_time,
 credential_provider_arn,
 credential_provider_vendor,
@@ -298,6 +310,8 @@ RETURNING
 name,
 callback_url,
 client_secret_arn,
+client_secret_json_key,
+client_secret_source,
 credential_provider_arn,
 oauth_2_provider_config_output,
 status
@@ -334,6 +348,24 @@ status
                 - "{{ tokenEndpointAuthMethods }}"
           clientId: "{{ clientId }}"
           clientSecret: "{{ clientSecret }}"
+          clientSecretConfig:
+            secretId: "{{ secretId }}"
+            jsonKey: "{{ jsonKey }}"
+          clientSecretSource: "{{ clientSecretSource }}"
+          onBehalfOfTokenExchangeConfig:
+            grantType: "{{ grantType }}"
+            tokenExchangeGrantTypeConfig:
+              actorTokenContent: "{{ actorTokenContent }}"
+              actorTokenScopes:
+                - "{{ actorTokenScopes }}"
+          clientAuthenticationMethod: "{{ clientAuthenticationMethod }}"
+          privateKeyJwtConfig:
+            privateKeySource:
+              kmsKeySource:
+                kmsKeyArn: "{{ kmsKeyArn }}"
+            signingAlgorithm: "{{ signingAlgorithm }}"
+            additionalHeaderClaims: "{{ additionalHeaderClaims }}"
+            additionalPayloadClaims: "{{ additionalPayloadClaims }}"
           privateEndpoint:
             selfManagedLatticeResource:
               resourceConfigurationIdentifier: "{{ resourceConfigurationIdentifier }}"
@@ -358,38 +390,63 @@ status
                   securityGroupIds: "{{ securityGroupIds }}"
                   tags: "{{ tags }}"
                   routingDomain: "{{ routingDomain }}"
-          onBehalfOfTokenExchangeConfig:
-            grantType: "{{ grantType }}"
-            tokenExchangeGrantTypeConfig:
-              actorTokenContent: "{{ actorTokenContent }}"
-              actorTokenScopes:
-                - "{{ actorTokenScopes }}"
-          clientAuthenticationMethod: "{{ clientAuthenticationMethod }}"
         googleOauth2ProviderConfig:
           clientId: "{{ clientId }}"
           clientSecret: "{{ clientSecret }}"
+          clientSecretConfig:
+            secretId: "{{ secretId }}"
+            jsonKey: "{{ jsonKey }}"
+          clientSecretSource: "{{ clientSecretSource }}"
         githubOauth2ProviderConfig:
           clientId: "{{ clientId }}"
           clientSecret: "{{ clientSecret }}"
+          clientSecretConfig:
+            secretId: "{{ secretId }}"
+            jsonKey: "{{ jsonKey }}"
+          clientSecretSource: "{{ clientSecretSource }}"
         slackOauth2ProviderConfig:
           clientId: "{{ clientId }}"
           clientSecret: "{{ clientSecret }}"
+          clientSecretConfig:
+            secretId: "{{ secretId }}"
+            jsonKey: "{{ jsonKey }}"
+          clientSecretSource: "{{ clientSecretSource }}"
         salesforceOauth2ProviderConfig:
           clientId: "{{ clientId }}"
           clientSecret: "{{ clientSecret }}"
+          clientSecretConfig:
+            secretId: "{{ secretId }}"
+            jsonKey: "{{ jsonKey }}"
+          clientSecretSource: "{{ clientSecretSource }}"
         microsoftOauth2ProviderConfig:
           clientId: "{{ clientId }}"
           clientSecret: "{{ clientSecret }}"
+          clientSecretConfig:
+            secretId: "{{ secretId }}"
+            jsonKey: "{{ jsonKey }}"
+          clientSecretSource: "{{ clientSecretSource }}"
           tenantId: "{{ tenantId }}"
         atlassianOauth2ProviderConfig:
           clientId: "{{ clientId }}"
           clientSecret: "{{ clientSecret }}"
+          clientSecretConfig:
+            secretId: "{{ secretId }}"
+            jsonKey: "{{ jsonKey }}"
+          clientSecretSource: "{{ clientSecretSource }}"
         linkedinOauth2ProviderConfig:
           clientId: "{{ clientId }}"
           clientSecret: "{{ clientSecret }}"
+          clientSecretConfig:
+            secretId: "{{ secretId }}"
+            jsonKey: "{{ jsonKey }}"
+          clientSecretSource: "{{ clientSecretSource }}"
         includedOauth2ProviderConfig:
           clientId: "{{ clientId }}"
           clientSecret: "{{ clientSecret }}"
+          clientSecretConfig:
+            secretId: "{{ secretId }}"
+            jsonKey: "{{ jsonKey }}"
+          clientSecretSource: "{{ clientSecretSource }}"
           issuer: "{{ issuer }}"
           authorizationEndpoint: "{{ authorizationEndpoint }}"
           tokenEndpoint: "{{ tokenEndpoint }}"
@@ -428,6 +485,8 @@ RETURNING
 name,
 callback_url,
 client_secret_arn,
+client_secret_json_key,
+client_secret_source,
 created_time,
 credential_provider_arn,
 credential_provider_vendor,

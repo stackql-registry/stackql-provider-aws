@@ -18,7 +18,7 @@ redshift_data service documentation.
 
 :::info[Service Summary]
 
-total resources: __6__  
+total resources: __7__  
 
 :::
 
@@ -27,6 +27,7 @@ total resources: __6__
 <div class="providerDocColumn">
 <a href="/services/redshift_data/databases/">databases</a><br />
 <a href="/services/redshift_data/schemas/">schemas</a><br />
+<a href="/services/redshift_data/sessions/">sessions</a><br />
 <a href="/services/redshift_data/statement_result_v2s/">statement_result_v2s</a>
 </div>
 <div class="providerDocColumn">

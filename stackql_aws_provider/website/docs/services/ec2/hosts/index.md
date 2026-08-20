@@ -90,6 +90,11 @@ The following fields are returned by `SELECT` queries:
     <td>Unique, case-sensitive identifier that you provide to ensure the idempotency of the request. For more information, see Ensuring Idempotency.</td>
 </tr>
 <tr>
+    <td><CopyableCode code="cpu_options" /></td>
+    <td><code>string</code></td>
+    <td>The CPU options for the Dedicated Host, including AMD Secure Encrypted Virtualization-Secure Nested Paging (AMD SEV-SNP) settings.</td>
+</tr>
+<tr>
     <td><CopyableCode code="host_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Dedicated Host.</td>
@@ -187,7 +192,7 @@ The following methods are available for this resource:
     <td><a href="#allocate_hosts"><CopyableCode code="allocate_hosts" /></a></td>
     <td><CopyableCode code="update" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
-    <td><a href="#parameter-InstanceFamily"><code>InstanceFamily</code></a>, <a href="#parameter-TagSpecification"><code>TagSpecification</code></a>, <a href="#parameter-HostRecovery"><code>HostRecovery</code></a>, <a href="#parameter-OutpostArn"><code>OutpostArn</code></a>, <a href="#parameter-HostMaintenance"><code>HostMaintenance</code></a>, <a href="#parameter-AssetId"><code>AssetId</code></a>, <a href="#parameter-AvailabilityZoneId"><code>AvailabilityZoneId</code></a>, <a href="#parameter-AutoPlacement"><code>AutoPlacement</code></a>, <a href="#parameter-ClientToken"><code>ClientToken</code></a>, <a href="#parameter-InstanceType"><code>InstanceType</code></a>, <a href="#parameter-Quantity"><code>Quantity</code></a>, <a href="#parameter-AvailabilityZone"><code>AvailabilityZone</code></a></td>
+    <td><a href="#parameter-InstanceFamily"><code>InstanceFamily</code></a>, <a href="#parameter-TagSpecification"><code>TagSpecification</code></a>, <a href="#parameter-HostRecovery"><code>HostRecovery</code></a>, <a href="#parameter-OutpostArn"><code>OutpostArn</code></a>, <a href="#parameter-HostMaintenance"><code>HostMaintenance</code></a>, <a href="#parameter-AssetId"><code>AssetId</code></a>, <a href="#parameter-AvailabilityZoneId"><code>AvailabilityZoneId</code></a>, <a href="#parameter-CpuOptions"><code>CpuOptions</code></a>, <a href="#parameter-AutoPlacement"><code>AutoPlacement</code></a>, <a href="#parameter-ClientToken"><code>ClientToken</code></a>, <a href="#parameter-InstanceType"><code>InstanceType</code></a>, <a href="#parameter-Quantity"><code>Quantity</code></a>, <a href="#parameter-AvailabilityZone"><code>AvailabilityZone</code></a></td>
     <td>Allocates a Dedicated Host to your account. At a minimum, specify the supported instance type or instance family, the Availability Zone in which to allocate the host, and the number of hosts to allocate.</td>
 </tr>
 <tr>
@@ -247,6 +252,11 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     <td><CopyableCode code="ClientToken" /></td>
     <td><code>string</code></td>
     <td>Unique, case-sensitive identifier that you provide to ensure the idempotency of the request. For more information, see Ensuring Idempotency.</td>
+</tr>
+<tr id="parameter-CpuOptions">
+    <td><CopyableCode code="CpuOptions" /></td>
+    <td><code>object</code></td>
+    <td>The CPU configuration options to apply to the Dedicated Host.</td>
 </tr>
 <tr id="parameter-Filter">
     <td><CopyableCode code="Filter" /></td>
@@ -328,6 +338,7 @@ availability_zone,
 availability_zone_id,
 available_capacity,
 client_token,
+cpu_options,
 host_id,
 host_maintenance,
 host_properties,
@@ -399,6 +410,7 @@ AND OutpostArn = '{{ OutpostArn}}'
 AND HostMaintenance = '{{ HostMaintenance}}'
 AND AssetId = '{{ AssetId}}'
 AND AvailabilityZoneId = '{{ AvailabilityZoneId}}'
+AND CpuOptions = '{{ CpuOptions}}'
 AND AutoPlacement = '{{ AutoPlacement}}'
 AND ClientToken = '{{ ClientToken}}'
 AND InstanceType = '{{ InstanceType}}'

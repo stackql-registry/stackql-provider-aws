@@ -75,6 +75,11 @@ The following fields are returned by `SELECT` queries:
     <td>The status of the State Manager association applied to the managed node.</td>
 </tr>
 <tr>
+    <td><CopyableCode code="availability_zone" /></td>
+    <td><code>string</code></td>
+    <td>The Availability Zone where the managed node is located.</td>
+</tr>
+<tr>
     <td><CopyableCode code="computer_name" /></td>
     <td><code>string</code></td>
     <td>The fully qualified host name of the managed node.</td>
@@ -175,9 +180,14 @@ The following fields are returned by `SELECT` queries:
     <td>The ID of the source resource. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9:_-&#93;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
+    <td><CopyableCode code="source_location" /></td>
+    <td><code>string</code></td>
+    <td>The location of the source resource in the third-party cloud environment. (pattern: &lt;code&gt;^.&#123;1,128&#125;$&lt;/code&gt;)</td>
+</tr>
+<tr>
     <td><CopyableCode code="source_type" /></td>
     <td><code>string</code></td>
-    <td>The type of the source resource. (AWS::EC2::Instance, AWS::IoT::Thing, AWS::SSM::ManagedInstance)</td>
+    <td>The type of the source resource. Valid values: AWS::EC2::Instance | AWS::SSM::ManagedInstance | AWS::IoT::Thing | Microsoft.Compute/virtualMachines. (AWS::EC2::Instance, AWS::IoT::Thing, AWS::SSM::ManagedInstance, Microsoft.Compute/virtualMachines)</td>
 </tr>
 </tbody>
 </table>
@@ -249,6 +259,7 @@ agent_version,
 architecture,
 association_overview,
 association_status,
+availability_zone,
 computer_name,
 ip_address,
 iam_role,
@@ -269,6 +280,7 @@ platform_version,
 registration_date,
 resource_type,
 source_id,
+source_location,
 source_type
 FROM aws.ssm.instance_properties
 WHERE region = '{{ region }}' -- required

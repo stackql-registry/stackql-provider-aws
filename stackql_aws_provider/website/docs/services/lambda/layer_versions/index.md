@@ -68,7 +68,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="created_date" /></td>
     <td><code>string</code></td>
-    <td>The date that the layer version was created, in ISO-8601 format (YYYY-MM-DDThh:mm:ss.sTZD).</td>
+    <td>The date that the layer version was created, in ISO-8601 format (YYYY-MM-DDThh:mm:ss.sTZD). (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="description" /></td>
@@ -78,17 +78,17 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="layer_arn" /></td>
     <td><code>string</code></td>
-    <td>The ARN of the layer. (pattern: &lt;code&gt;arn:&#91;a-zA-Z0-9-&#93;+:lambda:&#91;a-zA-Z0-9-&#93;+:\d&#123;12&#125;:layer:&#91;a-zA-Z0-9-_&#93;+&lt;/code&gt;)</td>
+    <td>The ARN of the layer. (pattern: &lt;code&gt;arn:(aws&#91;a-zA-Z-&#93;*)?:lambda:(eusc-)?&#91;a-z&#93;&#123;2&#125;((-gov)|(-iso(&#91;a-z&#93;?)))?-&#91;a-z&#93;+-\d&#123;1&#125;:\d&#123;12&#125;:layer:&#91;a-zA-Z0-9-_&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="layer_version_arn" /></td>
     <td><code>string</code></td>
-    <td>The ARN of the layer version. (pattern: &lt;code&gt;arn:&#91;a-zA-Z0-9-&#93;+:lambda:&#91;a-zA-Z0-9-&#93;+:\d&#123;12&#125;:layer:&#91;a-zA-Z0-9-_&#93;+:&#91;0-9&#93;+&lt;/code&gt;)</td>
+    <td>The ARN of the layer version. (pattern: &lt;code&gt;((arn:(aws&#91;a-zA-Z-&#93;*)?:lambda:(eusc-)?&#91;a-z&#93;&#123;2&#125;((-gov)|(-iso(&#91;a-z&#93;?)))?-&#91;a-z&#93;+-\d&#123;1&#125;:\d&#123;12&#125;:layer:&#91;a-zA-Z0-9-_&#93;+:&#91;0-9&#93;+)|(arn:&#91;a-zA-Z0-9-&#93;+:lambda:::awslayer:&#91;a-zA-Z0-9-_&#93;+))&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="license_info" /></td>
     <td><code>string</code></td>
-    <td>The layer's software license.</td>
+    <td>The layer's software license. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="version" /></td>
@@ -122,7 +122,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="created_date" /></td>
     <td><code>string</code></td>
-    <td>The date that the version was created, in ISO 8601 format. For example, 2018-11-27T15:10:45.123+0000.</td>
+    <td>The date that the version was created, in ISO 8601 format. For example, 2018-11-27T15:10:45.123+0000. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="description" /></td>
@@ -132,12 +132,12 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="layer_version_arn" /></td>
     <td><code>string</code></td>
-    <td>The ARN of the layer version. (pattern: &lt;code&gt;arn:&#91;a-zA-Z0-9-&#93;+:lambda:&#91;a-zA-Z0-9-&#93;+:\d&#123;12&#125;:layer:&#91;a-zA-Z0-9-_&#93;+:&#91;0-9&#93;+&lt;/code&gt;)</td>
+    <td>The ARN of the layer version. (pattern: &lt;code&gt;((arn:(aws&#91;a-zA-Z-&#93;*)?:lambda:(eusc-)?&#91;a-z&#93;&#123;2&#125;((-gov)|(-iso(&#91;a-z&#93;?)))?-&#91;a-z&#93;+-\d&#123;1&#125;:\d&#123;12&#125;:layer:&#91;a-zA-Z0-9-_&#93;+:&#91;0-9&#93;+)|(arn:&#91;a-zA-Z0-9-&#93;+:lambda:::awslayer:&#91;a-zA-Z0-9-_&#93;+))&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="license_info" /></td>
     <td><code>string</code></td>
-    <td>The layer's open-source license.</td>
+    <td>The layer's open-source license. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="version" /></td>
@@ -175,7 +175,7 @@ The following methods are available for this resource:
     <td><a href="#list_layer_versions"><CopyableCode code="list_layer_versions" /></a></td>
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-layer_name"><code>layer_name</code></a>, <a href="#parameter-region"><code>region</code></a></td>
-    <td><a href="#parameter-CompatibleRuntime"><code>CompatibleRuntime</code></a>, <a href="#parameter-Marker"><code>Marker</code></a>, <a href="#parameter-MaxItems"><code>MaxItems</code></a>, <a href="#parameter-CompatibleArchitecture"><code>CompatibleArchitecture</code></a></td>
+    <td><a href="#parameter-CompatibleArchitecture"><code>CompatibleArchitecture</code></a>, <a href="#parameter-CompatibleRuntime"><code>CompatibleRuntime</code></a>, <a href="#parameter-Marker"><code>Marker</code></a>, <a href="#parameter-MaxItems"><code>MaxItems</code></a></td>
     <td>Lists the versions of an Lambda layer. Versions that have been deleted aren't listed. Specify a runtime identifier to list only versions that indicate that they're compatible with that runtime. Specify a compatible architecture to include only layer versions that are compatible with that architecture.</td>
 </tr>
 <tr>
@@ -310,10 +310,10 @@ version
 FROM aws.lambda.layer_versions
 WHERE layer_name = '{{ layer_name }}' -- required
 AND region = '{{ region }}' -- required
+AND CompatibleArchitecture = '{{ CompatibleArchitecture }}'
 AND CompatibleRuntime = '{{ CompatibleRuntime }}'
 AND Marker = '{{ Marker }}'
 AND MaxItems = '{{ MaxItems }}'
-AND CompatibleArchitecture = '{{ CompatibleArchitecture }}'
 ;
 ```
 </TabItem>

@@ -18,13 +18,14 @@ marketplace_catalog service documentation.
 
 :::info[Service Summary]
 
-total resources: __4__  
+total resources: __5__  
 
 :::
 
 ## Resources
 <div class="row">
 <div class="providerDocColumn">
+<a href="/services/marketplace_catalog/assessments/">assessments</a><br />
 <a href="/services/marketplace_catalog/change_sets/">change_sets</a><br />
 <a href="/services/marketplace_catalog/entities/">entities</a>
 </div>

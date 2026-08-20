@@ -66,6 +66,11 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the ID mapping table. (pattern: &lt;code&gt;arn:aws:cleanrooms:&#91;\w&#93;&#123;2&#125;-&#91;\w&#93;&#123;4,9&#125;-&#91;\d&#93;:&#91;\d&#93;&#123;12&#125;:membership/&#91;\d\w-&#93;+/idmappingtable/&#91;\d\w-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
+    <td><CopyableCode code="child_resources" /></td>
+    <td><code>array</code></td>
+    <td>The child resources that depend on this ID mapping table.</td>
+</tr>
+<tr>
     <td><CopyableCode code="collaboration_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the collaboration that contains this ID mapping table. (pattern: &lt;code&gt;arn:aws:&#91;\w&#93;+:&#91;\w&#93;&#123;2&#125;-&#91;\w&#93;&#123;4,9&#125;-&#91;\d&#93;:&#91;\d&#93;&#123;12&#125;:collaboration/&#91;\d\w-&#93;+&lt;/code&gt;)</td>
@@ -308,6 +313,7 @@ SELECT
 id,
 name,
 arn,
+child_resources,
 collaboration_arn,
 collaboration_id,
 create_time,

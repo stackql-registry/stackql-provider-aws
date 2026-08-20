@@ -53,12 +53,12 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="attributes" /></td>
     <td><code>object</code></td>
-    <td>An optional value that can contain additional information about the reasons that the address was added to the suppression list for your account.</td>
+    <td>An optional value that can contain additional information about the reasons that the address was added to the suppression list for your account or for a specific tenant.</td>
 </tr>
 <tr>
     <td><CopyableCode code="email_address" /></td>
     <td><code>string</code></td>
-    <td>The email address that is on the suppression list for your account.</td>
+    <td>The email address that is on the suppression list for your account or for a specific tenant.</td>
 </tr>
 <tr>
     <td><CopyableCode code="last_update_time" /></td>
@@ -68,7 +68,12 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="reason" /></td>
     <td><code>string</code></td>
-    <td>The reason that the address was added to the suppression list for your account. The value can be one of the following: COMPLAINT – Amazon SES added an email address to the suppression list for your account because a message sent to that address results in a complaint. BOUNCE – Amazon SES added an email address to the suppression list for your account because a message sent to that address results in a hard bounce. (BOUNCE, COMPLAINT)</td>
+    <td>The reason that the address was added to the suppression list for your account or for a specific tenant. The value can be one of the following: COMPLAINT – Amazon SES added an email address to the suppression list for your account or for a specific tenant because a message sent to that address results in a complaint. BOUNCE – Amazon SES added an email address to the suppression list for your account or for a specific tenant because a message sent to that address results in a hard bounce. (BOUNCE, COMPLAINT)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="tenant_name" /></td>
+    <td><code>string</code></td>
+    <td>The name of a tenant. The name can contain up to 64 alphanumeric characters, including letters, numbers, hyphens (-) and underscores (_) only.</td>
 </tr>
 </tbody>
 </table>
@@ -87,7 +92,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
-    <td>A token that indicates that there are additional email addresses on the suppression list for your account. To view additional suppressed addresses, issue another request to ListSuppressedDestinations, and pass this token in the NextToken parameter.</td>
+    <td>A token that indicates that there are additional email addresses on the suppression list for your account or for the specified tenant. To view additional suppressed addresses, issue another request to ListSuppressedDestinations, and pass this token in the NextToken parameter.</td>
 </tr>
 <tr>
     <td><CopyableCode code="suppressed_destination_summaries" /></td>
@@ -118,29 +123,29 @@ The following methods are available for this resource:
     <td><a href="#get_suppressed_destination"><CopyableCode code="get_suppressed_destination" /></a></td>
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-email_address"><code>email_address</code></a>, <a href="#parameter-region"><code>region</code></a></td>
-    <td></td>
-    <td>Retrieves information about a specific email address that's on the suppression list for your account.</td>
+    <td><a href="#parameter-TenantName"><code>TenantName</code></a></td>
+    <td>Retrieves information about a specific email address that's on the suppression list for your account or for a specific tenant. To target a tenant's suppression list, specify the TenantName parameter. If you omit TenantName, the operation targets the account-level suppression list.</td>
 </tr>
 <tr>
     <td><a href="#list_suppressed_destinations"><CopyableCode code="list_suppressed_destinations" /></a></td>
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
-    <td><a href="#parameter-Reason"><code>Reason</code></a>, <a href="#parameter-StartDate"><code>StartDate</code></a>, <a href="#parameter-EndDate"><code>EndDate</code></a>, <a href="#parameter-NextToken"><code>NextToken</code></a>, <a href="#parameter-PageSize"><code>PageSize</code></a></td>
-    <td>Retrieves a list of email addresses that are on the suppression list for your account.</td>
+    <td><a href="#parameter-TenantName"><code>TenantName</code></a>, <a href="#parameter-Reason"><code>Reason</code></a>, <a href="#parameter-StartDate"><code>StartDate</code></a>, <a href="#parameter-EndDate"><code>EndDate</code></a>, <a href="#parameter-NextToken"><code>NextToken</code></a>, <a href="#parameter-PageSize"><code>PageSize</code></a></td>
+    <td>Retrieves a list of email addresses that are on the suppression list for your account or for a specific tenant. To target a tenant's suppression list, specify the TenantName parameter. If you omit TenantName, the operation targets the account-level suppression list.</td>
 </tr>
 <tr>
     <td><a href="#put_suppressed_destination"><CopyableCode code="put_suppressed_destination" /></a></td>
     <td><CopyableCode code="replace" /></td>
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-EmailAddress"><code>EmailAddress</code></a>, <a href="#parameter-Reason"><code>Reason</code></a></td>
     <td></td>
-    <td>Adds an email address to the suppression list for your account.</td>
+    <td>Adds an email address to the suppression list for your account or for a specific tenant. To target a tenant's suppression list, specify the TenantName parameter. If you omit TenantName, the address is added to the account-level suppression list.</td>
 </tr>
 <tr>
     <td><a href="#delete_suppressed_destination"><CopyableCode code="delete_suppressed_destination" /></a></td>
     <td><CopyableCode code="delete" /></td>
     <td><a href="#parameter-email_address"><code>email_address</code></a>, <a href="#parameter-region"><code>region</code></a></td>
-    <td></td>
-    <td>Removes an email address from the suppression list for your account.</td>
+    <td><a href="#parameter-TenantName"><code>TenantName</code></a></td>
+    <td>Removes an email address from the suppression list for your account or for a specific tenant. To target a tenant's suppression list, specify the TenantName parameter. If you omit TenantName, the address is removed from the account-level suppression list.</td>
 </tr>
 </tbody>
 </table>
@@ -161,7 +166,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-email_address">
     <td><CopyableCode code="email_address" /></td>
     <td><code>string</code></td>
-    <td>The suppressed email destination to remove from the account suppression list.</td>
+    <td>The suppressed email destination to remove from the suppression list for your account or for the specified tenant.</td>
 </tr>
 <tr id="parameter-region">
     <td><CopyableCode code="region" /></td>
@@ -186,12 +191,17 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-Reason">
     <td><CopyableCode code="Reason" /></td>
     <td><code>array</code></td>
-    <td>The factors that caused the email address to be added to .</td>
+    <td>The factors that caused the email address to be added to the suppression list for your account or for a specific tenant.</td>
 </tr>
 <tr id="parameter-StartDate">
     <td><CopyableCode code="StartDate" /></td>
     <td><code>string (date-time)</code></td>
     <td>Used to filter the list of suppressed email destinations so that it only includes addresses that were added to the list after a specific date.</td>
+</tr>
+<tr id="parameter-TenantName">
+    <td><CopyableCode code="TenantName" /></td>
+    <td><code>string</code></td>
+    <td>The name of the tenant whose suppression list you want to remove the address from. If you omit this parameter, the address is removed from the account-level suppression list.</td>
 </tr>
 </tbody>
 </table>
@@ -207,23 +217,25 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 >
 <TabItem value="get_suppressed_destination">
 
-Retrieves information about a specific email address that's on the suppression list for your account.
+Retrieves information about a specific email address that's on the suppression list for your account or for a specific tenant. To target a tenant's suppression list, specify the TenantName parameter. If you omit TenantName, the operation targets the account-level suppression list.
 
 ```sql
 SELECT
 attributes,
 email_address,
 last_update_time,
-reason
+reason,
+tenant_name
 FROM aws.sesv2.suppressed_destinations
 WHERE email_address = '{{ email_address }}' -- required
 AND region = '{{ region }}' -- required
+AND TenantName = '{{ TenantName }}'
 ;
 ```
 </TabItem>
 <TabItem value="list_suppressed_destinations">
 
-Retrieves a list of email addresses that are on the suppression list for your account.
+Retrieves a list of email addresses that are on the suppression list for your account or for a specific tenant. To target a tenant's suppression list, specify the TenantName parameter. If you omit TenantName, the operation targets the account-level suppression list.
 
 ```sql
 SELECT
@@ -231,6 +243,7 @@ next_token,
 suppressed_destination_summaries
 FROM aws.sesv2.suppressed_destinations
 WHERE region = '{{ region }}' -- required
+AND TenantName = '{{ TenantName }}'
 AND Reason = '{{ Reason }}'
 AND StartDate = '{{ StartDate }}'
 AND EndDate = '{{ EndDate }}'
@@ -252,13 +265,14 @@ AND PageSize = '{{ PageSize }}'
 >
 <TabItem value="put_suppressed_destination">
 
-Adds an email address to the suppression list for your account.
+Adds an email address to the suppression list for your account or for a specific tenant. To target a tenant's suppression list, specify the TenantName parameter. If you omit TenantName, the address is added to the account-level suppression list.
 
 ```sql
 REPLACE aws.sesv2.suppressed_destinations
 SET 
 EmailAddress = '{{ EmailAddress }}',
-Reason = '{{ Reason }}'
+Reason = '{{ Reason }}',
+TenantName = '{{ TenantName }}'
 WHERE 
 region = '{{ region }}' --required
 AND EmailAddress = '{{ EmailAddress }}' --required
@@ -278,12 +292,13 @@ AND Reason = '{{ Reason }}' --required;
 >
 <TabItem value="delete_suppressed_destination">
 
-Removes an email address from the suppression list for your account.
+Removes an email address from the suppression list for your account or for a specific tenant. To target a tenant's suppression list, specify the TenantName parameter. If you omit TenantName, the address is removed from the account-level suppression list.
 
 ```sql
 DELETE FROM aws.sesv2.suppressed_destinations
 WHERE email_address = '{{ email_address }}' --required
 AND region = '{{ region }}' --required
+AND TenantName = '{{ TenantName }}'
 ;
 ```
 </TabItem>

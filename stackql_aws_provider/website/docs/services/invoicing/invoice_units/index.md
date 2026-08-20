@@ -282,6 +282,7 @@ Description,
 TaxInheritanceDisabled,
 Rule,
 ResourceTags,
+ClientToken,
 region
 )
 SELECT 
@@ -291,6 +292,7 @@ SELECT
 {{ TaxInheritanceDisabled }},
 '{{ Rule }}',
 '{{ ResourceTags }}',
+'{{ ClientToken }}',
 '{{ region }}'
 RETURNING
 invoice_unit_arn
@@ -335,6 +337,10 @@ invoice_unit_arn
       value:
         - Key: "{{ Key }}"
           Value: "{{ Value }}"
+    - name: ClientToken
+      value: "{{ ClientToken }}"
+      description: |
+        A unique, case-sensitive identifier that you provide to ensure idempotency of the request.
 `}</CodeBlock>
 
 </TabItem>
@@ -359,7 +365,8 @@ SET
 InvoiceUnitArn = '{{ InvoiceUnitArn }}',
 Description = '{{ Description }}',
 TaxInheritanceDisabled = {{ TaxInheritanceDisabled }},
-Rule = '{{ Rule }}'
+Rule = '{{ Rule }}',
+ClientToken = '{{ ClientToken }}'
 WHERE 
 region = '{{ region }}' --required
 AND InvoiceUnitArn = '{{ InvoiceUnitArn }}' --required

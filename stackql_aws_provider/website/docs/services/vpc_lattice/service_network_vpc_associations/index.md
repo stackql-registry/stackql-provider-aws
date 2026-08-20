@@ -243,7 +243,7 @@ The following methods are available for this resource:
 <tr>
     <td><a href="#update_service_network_vpc_association"><CopyableCode code="update_service_network_vpc_association" /></a></td>
     <td><CopyableCode code="update" /></td>
-    <td><a href="#parameter-service_network_vpc_association_identifier"><code>service_network_vpc_association_identifier</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-securityGroupIds"><code>securityGroupIds</code></a></td>
+    <td><a href="#parameter-service_network_vpc_association_identifier"><code>service_network_vpc_association_identifier</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td></td>
     <td>Updates the service network and VPC association. If you add a security group to the service network and VPC association, the association must continue to have at least one security group. You can add or edit security groups at any time. However, to remove all security groups, you must first delete the association and then recreate it without security groups.</td>
 </tr>
@@ -462,15 +462,18 @@ Updates the service network and VPC association. If you add a security group to 
 ```sql
 UPDATE aws.vpc_lattice.service_network_vpc_associations
 SET 
-securityGroupIds = '{{ securityGroupIds }}'
+securityGroupIds = '{{ securityGroupIds }}',
+privateDnsEnabled = {{ privateDnsEnabled }},
+dnsOptions = '{{ dnsOptions }}'
 WHERE 
 service_network_vpc_association_identifier = '{{ service_network_vpc_association_identifier }}' --required
 AND region = '{{ region }}' --required
-AND securityGroupIds = '{{ securityGroupIds }}' --required
 RETURNING
 id,
 arn,
 created_by,
+dns_options,
+private_dns_enabled,
 security_group_ids,
 status;
 ```

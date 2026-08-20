@@ -18,7 +18,7 @@ cognito_idp service documentation.
 
 :::info[Service Summary]
 
-total resources: __28__  
+total resources: __30__  
 
 :::
 
@@ -33,6 +33,7 @@ total resources: __28__
 <a href="/services/cognito_idp/log_delivery_configurations/">log_delivery_configurations</a><br />
 <a href="/services/cognito_idp/managed_login_branding_by_clients/">managed_login_branding_by_clients</a><br />
 <a href="/services/cognito_idp/managed_login_brandings/">managed_login_brandings</a><br />
+<a href="/services/cognito_idp/provisioned_limits/">provisioned_limits</a><br />
 <a href="/services/cognito_idp/resource_servers/">resource_servers</a><br />
 <a href="/services/cognito_idp/risk_configurations/">risk_configurations</a><br />
 <a href="/services/cognito_idp/signing_certificates/">signing_certificates</a><br />
@@ -51,6 +52,7 @@ total resources: __28__
 <a href="/services/cognito_idp/user_pool_clients/">user_pool_clients</a><br />
 <a href="/services/cognito_idp/user_pool_domains/">user_pool_domains</a><br />
 <a href="/services/cognito_idp/user_pool_mfa_configs/">user_pool_mfa_configs</a><br />
+<a href="/services/cognito_idp/user_pool_replicas/">user_pool_replicas</a><br />
 <a href="/services/cognito_idp/user_pools/">user_pools</a><br />
 <a href="/services/cognito_idp/users/">users</a><br />
 <a href="/services/cognito_idp/users_in_groups/">users_in_groups</a><br />

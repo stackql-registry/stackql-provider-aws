@@ -36,7 +36,8 @@ The following fields are returned by `SELECT` queries:
     defaultValue="get_record"
     values={[
         { label: 'get_record', value: 'get_record' },
-        { label: 'batch_get_record', value: 'batch_get_record' }
+        { label: 'batch_get_record', value: 'batch_get_record' },
+        { label: 'list_records', value: 'list_records' }
     ]}
 >
 <TabItem value="get_record">
@@ -92,6 +93,25 @@ The following fields are returned by `SELECT` queries:
 </tbody>
 </table>
 </TabItem>
+<TabItem value="list_records">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="record_identifier" /></td>
+    <td><code>string</code></td>
+    <td>A list of record identifier values for the records stored in the OnlineStore.</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
 </Tabs>
 
 ## Methods
@@ -122,6 +142,13 @@ The following methods are available for this resource:
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td></td>
     <td>Retrieves a batch of Records from a FeatureGroup.</td>
+</tr>
+<tr>
+    <td><a href="#list_records"><CopyableCode code="list_records" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-feature_group_name"><code>feature_group_name</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Lists the RecordIdentifier values of all records stored in a FeatureGroup's OnlineStore. This enables you to discover which records exist without retrieving the full record data.</td>
 </tr>
 <tr>
     <td><a href="#put_record"><CopyableCode code="put_record" /></a></td>
@@ -202,7 +229,8 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     defaultValue="get_record"
     values={[
         { label: 'get_record', value: 'get_record' },
-        { label: 'batch_get_record', value: 'batch_get_record' }
+        { label: 'batch_get_record', value: 'batch_get_record' },
+        { label: 'list_records', value: 'list_records' }
     ]}
 >
 <TabItem value="get_record">
@@ -233,6 +261,19 @@ records,
 unprocessed_identifiers
 FROM aws.sagemaker_featurestore_runtime.records
 WHERE region = '{{ region }}' -- required
+;
+```
+</TabItem>
+<TabItem value="list_records">
+
+Lists the RecordIdentifier values of all records stored in a FeatureGroup's OnlineStore. This enables you to discover which records exist without retrieving the full record data.
+
+```sql
+SELECT
+record_identifier
+FROM aws.sagemaker_featurestore_runtime.records
+WHERE feature_group_name = '{{ feature_group_name }}' -- required
+AND region = '{{ region }}' -- required
 ;
 ```
 </TabItem>

@@ -71,6 +71,11 @@ The following fields are returned by `SELECT` queries:
     <td>The name or Amazon Resource Name (ARN) of the AI workload configuration used for this recommendation job. (pattern: &lt;code&gt;(arn:aws&#91;a-z\-&#93;*:sagemaker:&#91;a-z0-9\-&#93;*:&#91;0-9&#93;&#123;12&#125;:&#91;a-z\-&#93;*/)?(&#91;a-zA-Z0-9&#93;(&#91;a-zA-Z0-9\-&#93;)&#123;0,62&#125;)(?&lt;!-)&lt;/code&gt;)</td>
 </tr>
 <tr>
+    <td><CopyableCode code="adapter_source" /></td>
+    <td><code>object</code></td>
+    <td>The LoRA adapter source that you specified when you created the recommendation job. This field is absent when you created the job without LoRA adapters.</td>
+</tr>
+<tr>
     <td><CopyableCode code="compute_spec" /></td>
     <td><code>object</code></td>
     <td>The compute resource specification for the recommendation job.</td>
@@ -272,6 +277,7 @@ ai_recommendation_job_arn,
 ai_recommendation_job_name,
 ai_recommendation_job_status,
 ai_workload_config_identifier,
+adapter_source,
 compute_spec,
 creation_time,
 end_time,
@@ -333,6 +339,7 @@ RoleArn,
 InferenceSpecification,
 OptimizeModel,
 ComputeSpec,
+AdapterSource,
 Tags,
 region
 )
@@ -346,6 +353,7 @@ SELECT
 '{{ InferenceSpecification }}',
 {{ OptimizeModel }},
 '{{ ComputeSpec }}',
+'{{ AdapterSource }}',
 '{{ Tags }}',
 '{{ region }}'
 RETURNING
@@ -377,6 +385,10 @@ ai_recommendation_job_arn
       value:
         S3OutputLocation: "{{ S3OutputLocation }}"
         ModelPackageGroupIdentifier: "{{ ModelPackageGroupIdentifier }}"
+        MlflowConfig:
+          MlflowResourceArn: "{{ MlflowResourceArn }}"
+          MlflowExperimentName: "{{ MlflowExperimentName }}"
+          MlflowRunName: "{{ MlflowRunName }}"
     - name: AIWorkloadConfigIdentifier
       value: "{{ AIWorkloadConfigIdentifier }}"
       description: |
@@ -410,6 +422,16 @@ ai_recommendation_job_arn
           CapacityReservationPreference: "{{ CapacityReservationPreference }}"
           MlReservationArns:
             - "{{ MlReservationArns }}"
+    - name: AdapterSource
+      description: |
+        The LoRA adapter source for the recommendation job. Specify either a list of model package ARNs or Amazon S3 URIs for your LoRA adapters. When this parameter is absent, the recommendation job runs without LoRA adapter support.
+      value:
+        ModelPackageArns:
+          - AdapterId: "{{ AdapterId }}"
+            ModelPackageArn: "{{ ModelPackageArn }}"
+        S3Uris:
+          - AdapterId: "{{ AdapterId }}"
+            S3Uri: "{{ S3Uri }}"
     - name: Tags
       description: |
         The metadata that you apply to Amazon Web Services resources to help you categorize and organize them.

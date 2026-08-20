@@ -131,7 +131,7 @@ The following methods are available for this resource:
     <td><CopyableCode code="insert" /></td>
     <td><a href="#parameter-instance_id"><code>instance_id</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-Name"><code>Name</code></a>, <a href="#parameter-State"><code>State</code></a></td>
     <td></td>
-    <td>Creates an agent status for the specified Amazon Connect instance.</td>
+    <td>Creates an agent status for the specified Connect Customer instance.</td>
 </tr>
 <tr>
     <td><a href="#update_agent_status"><CopyableCode code="update_agent_status" /></a></td>
@@ -164,7 +164,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-instance_id">
     <td><CopyableCode code="instance_id" /></td>
     <td><code>string</code></td>
-    <td>The identifier of the Amazon Connect instance. You can find the instance ID in the Amazon Resource Name (ARN) of the instance.</td>
+    <td>The identifier of the Connect Customer instance. You can find the instance ID in the Amazon Resource Name (ARN) of the instance.</td>
 </tr>
 <tr id="parameter-region">
     <td><CopyableCode code="region" /></td>
@@ -219,7 +219,7 @@ AND region = '{{ region }}' -- required
 >
 <TabItem value="create_agent_status">
 
-Creates an agent status for the specified Amazon Connect instance.
+Creates an agent status for the specified Connect Customer instance.
 
 ```sql
 INSERT INTO aws.connect.agent_status (

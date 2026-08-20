@@ -53,7 +53,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="bundle_arn" /></td>
     <td><code>string</code></td>
-    <td>The Amazon Resource Name (ARN) of the configuration bundle. (pattern: &lt;code&gt;arn:aws:bedrock-agentcore:&#91;a-z0-9-&#93;+:&#91;0-9&#93;&#123;12&#125;:configuration-bundle/&#91;a-zA-Z&#93;&#91;a-zA-Z0-9-_&#93;&#123;0,99&#125;-&#91;a-zA-Z0-9&#93;&#123;10&#125;&lt;/code&gt;)</td>
+    <td>The Amazon Resource Name (ARN) of the configuration bundle. (pattern: &lt;code&gt;arn:aws&#91;a-zA-Z-&#93;*:bedrock-agentcore:&#91;a-z0-9-&#93;+:&#91;0-9&#93;&#123;12&#125;:configuration-bundle/&#91;a-zA-Z&#93;&#91;a-zA-Z0-9-_&#93;&#123;0,99&#125;-&#91;a-zA-Z0-9&#93;&#123;10&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="bundle_id" /></td>
@@ -79,6 +79,11 @@ The following fields are returned by `SELECT` queries:
     <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the configuration bundle. (pattern: &lt;code&gt;.+&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="kms_key_arn" /></td>
+    <td><code>string</code></td>
+    <td>KMS key ARN used to encrypt component configurations, if CMK was provided. (pattern: &lt;code&gt;arn:aws(|-cn|-us-gov):kms:&#91;a-zA-Z0-9-&#93;*:&#91;0-9&#93;&#123;12&#125;:key/&#91;a-zA-Z0-9-&#93;&#123;36&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="lineage_metadata" /></td>
@@ -112,7 +117,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="bundle_arn" /></td>
     <td><code>string</code></td>
-    <td>The Amazon Resource Name (ARN) of the configuration bundle. (pattern: &lt;code&gt;arn:aws:bedrock-agentcore:&#91;a-z0-9-&#93;+:&#91;0-9&#93;&#123;12&#125;:configuration-bundle/&#91;a-zA-Z&#93;&#91;a-zA-Z0-9-_&#93;&#123;0,99&#125;-&#91;a-zA-Z0-9&#93;&#123;10&#125;&lt;/code&gt;)</td>
+    <td>The Amazon Resource Name (ARN) of the configuration bundle. (pattern: &lt;code&gt;arn:aws&#91;a-zA-Z-&#93;*:bedrock-agentcore:&#91;a-z0-9-&#93;+:&#91;0-9&#93;&#123;12&#125;:configuration-bundle/&#91;a-zA-Z&#93;&#91;a-zA-Z0-9-_&#93;&#123;0,99&#125;-&#91;a-zA-Z0-9&#93;&#123;10&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="bundle_id" /></td>
@@ -233,6 +238,7 @@ bundle_name,
 components,
 created_at,
 description,
+kms_key_arn,
 lineage_metadata,
 version_created_at,
 version_id

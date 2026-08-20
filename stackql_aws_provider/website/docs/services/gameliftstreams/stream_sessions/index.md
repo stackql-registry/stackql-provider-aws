@@ -86,6 +86,11 @@ The following fields are returned by `SELECT` queries:
     <td>A human-readable label for the stream session. You can update this value at any time. (pattern: &lt;code&gt;&#91;a-zA-Z0-9-_.!+@/&#93;&#91;a-zA-Z0-9-_.!+@/ &#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
+    <td><CopyableCode code="display_configuration" /></td>
+    <td><code>object</code></td>
+    <td>The virtual monitor settings for a stream session, including the resolution. If not specified, the stream session uses the default resolution of 1920 × 1080.</td>
+</tr>
+<tr>
     <td><CopyableCode code="export_files_metadata" /></td>
     <td><code>object</code></td>
     <td>Provides details about the stream session's exported files.</td>
@@ -116,6 +121,11 @@ The following fields are returned by `SELECT` queries:
     <td>The data transfer protocol in use with the stream session. (WebRTC)</td>
 </tr>
 <tr>
+    <td><CopyableCode code="role_arn" /></td>
+    <td><code>string</code></td>
+    <td>The ARN of the AWS Identity and Access Management (IAM) role that Amazon GameLift Streams assumes on behalf of your application during the stream session. (pattern: &lt;code&gt;arn:aws&#91;a-zA-Z-&#93;*:iam::\d&#123;12&#125;:role/.+&lt;/code&gt;)</td>
+</tr>
+<tr>
     <td><CopyableCode code="session_length_seconds" /></td>
     <td><code>integer</code></td>
     <td>The maximum duration of a session. Amazon GameLift Streams will automatically terminate a session after this amount of time has elapsed, regardless of any existing client connections.</td>
@@ -138,7 +148,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="status_reason" /></td>
     <td><code>string</code></td>
-    <td>A short description of the reason the stream session is in ERROR status or TERMINATED status. ERROR status reasons: applicationLogS3DestinationError: Could not write the application log to the Amazon S3 bucket that is configured for the streaming application. Make sure the bucket still exists. internalError: An internal service error occurred. Start a new stream session to continue streaming. invalidSignalRequest: The WebRTC signal request that was sent is not valid. When starting or reconnecting to a stream session, use generateSignalRequest in the Amazon GameLift Streams Web SDK to generate a new signal request. placementTimeout: Amazon GameLift Streams could not find available stream capacity to start a stream session. Increase the stream capacity in the stream group or wait until capacity becomes available. TERMINATED status reasons: apiTerminated: The stream session was terminated by an API call to TerminateStreamSession. applicationExit: The streaming application exited or crashed. The stream session was terminated because the application is no longer running. connectionTimeout: The stream session was terminated because the client failed to connect within the connection timeout period specified by ConnectionTimeoutSeconds. maxSessionLengthTimeout: The stream session was terminated because it exceeded the maximum session length timeout period specified by SessionLengthSeconds. reconnectionTimeout: The stream session was terminated because the client failed to reconnect within the reconnection timeout period specified by ConnectionTimeoutSeconds after losing connection. (internalError, invalidSignalRequest, placementTimeout, applicationLogS3DestinationError, applicationExit, connectionTimeout, reconnectionTimeout, maxSessionLengthTimeout, idleTimeout, apiTerminated)</td>
+    <td>A short description of the reason the stream session is in ERROR status or TERMINATED status. ERROR status reasons: applicationLogS3DestinationError: Could not write the application log to the Amazon S3 bucket that is configured for the streaming application. Make sure the bucket still exists. internalError: An internal service error occurred. Start a new stream session to continue streaming. invalidSignalRequest: The WebRTC signal request that was sent is not valid. When starting or reconnecting to a stream session, use generateSignalRequest in the Amazon GameLift Streams Web SDK to generate a new signal request. placementTimeout: Amazon GameLift Streams could not find available stream capacity to start a stream session. Increase the stream capacity in the stream group or wait until capacity becomes available. TERMINATED status reasons: apiTerminated: The stream session was terminated by an API call to TerminateStreamSession. applicationExit: The streaming application exited or crashed. The stream session was terminated because the application is no longer running. connectionTimeout: The stream session was terminated because the client failed to connect within the connection timeout period specified by ConnectionTimeoutSeconds. maxSessionLengthTimeout: The stream session was terminated because it exceeded the maximum session length timeout period specified by SessionLengthSeconds. reconnectionTimeout: The stream session was terminated because the client failed to reconnect within the reconnection timeout period specified by ConnectionTimeoutSeconds after losing connection. (internalError, invalidSignalRequest, placementTimeout, applicationLogS3DestinationError, assumeRoleFailed, applicationExit, connectionTimeout, reconnectionTimeout, maxSessionLengthTimeout, idleTimeout, apiTerminated)</td>
 </tr>
 <tr>
     <td><CopyableCode code="stream_group_id" /></td>
@@ -205,6 +215,11 @@ The following fields are returned by `SELECT` queries:
     <td>The data transfer protocol in use with the stream session. (WebRTC)</td>
 </tr>
 <tr>
+    <td><CopyableCode code="role_arn" /></td>
+    <td><code>string</code></td>
+    <td>The ARN of the AWS Identity and Access Management (IAM) role that Amazon GameLift Streams assumes on behalf of your application during the stream session. (pattern: &lt;code&gt;arn:aws&#91;a-zA-Z-&#93;*:iam::\d&#123;12&#125;:role/.+&lt;/code&gt;)</td>
+</tr>
+<tr>
     <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The current status of the stream session resource. ACTIVATING: The stream session is starting and preparing to stream. ACTIVE: The stream session is ready and waiting for a client connection. A client has ConnectionTimeoutSeconds (specified in StartStreamSession) from when the session reaches ACTIVE state to establish a connection. If no client connects within this timeframe, the session automatically terminates. CONNECTED: The stream session has a connected client. A session will automatically terminate if there is no user input for 60 minutes, or if the maximum length of a session specified by SessionLengthSeconds in StartStreamSession is exceeded. ERROR: The stream session failed to activate. See StatusReason (returned by GetStreamSession and StartStreamSession) for more information. PENDING_CLIENT_RECONNECTION: A client has recently disconnected and the stream session is waiting for the client to reconnect. A client has ConnectionTimeoutSeconds (specified in StartStreamSession) from when the session reaches PENDING_CLIENT_RECONNECTION state to re-establish a connection. If no client connects within this timeframe, the session automatically terminates. RECONNECTING: A client has initiated a reconnect to a session that was in PENDING_CLIENT_RECONNECTION state. TERMINATING: The stream session is ending. TERMINATED: The stream session has ended. (ACTIVATING, ACTIVE, CONNECTED, PENDING_CLIENT_RECONNECTION, RECONNECTING, TERMINATING, TERMINATED, ERROR)</td>
@@ -212,7 +227,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="status_reason" /></td>
     <td><code>string</code></td>
-    <td>A short description of the reason the stream session is in ERROR status or TERMINATED status. ERROR status reasons: applicationLogS3DestinationError: Could not write the application log to the Amazon S3 bucket that is configured for the streaming application. Make sure the bucket still exists. internalError: An internal service error occurred. Start a new stream session to continue streaming. invalidSignalRequest: The WebRTC signal request that was sent is not valid. When starting or reconnecting to a stream session, use generateSignalRequest in the Amazon GameLift Streams Web SDK to generate a new signal request. placementTimeout: Amazon GameLift Streams could not find available stream capacity to start a stream session. Increase the stream capacity in the stream group or wait until capacity becomes available. TERMINATED status reasons: apiTerminated: The stream session was terminated by an API call to TerminateStreamSession. applicationExit: The streaming application exited or crashed. The stream session was terminated because the application is no longer running. connectionTimeout: The stream session was terminated because the client failed to connect within the connection timeout period specified by ConnectionTimeoutSeconds. maxSessionLengthTimeout: The stream session was terminated because it exceeded the maximum session length timeout period specified by SessionLengthSeconds. reconnectionTimeout: The stream session was terminated because the client failed to reconnect within the reconnection timeout period specified by ConnectionTimeoutSeconds after losing connection. (internalError, invalidSignalRequest, placementTimeout, applicationLogS3DestinationError, applicationExit, connectionTimeout, reconnectionTimeout, maxSessionLengthTimeout, idleTimeout, apiTerminated)</td>
+    <td>A short description of the reason the stream session is in ERROR status or TERMINATED status. ERROR status reasons: applicationLogS3DestinationError: Could not write the application log to the Amazon S3 bucket that is configured for the streaming application. Make sure the bucket still exists. internalError: An internal service error occurred. Start a new stream session to continue streaming. invalidSignalRequest: The WebRTC signal request that was sent is not valid. When starting or reconnecting to a stream session, use generateSignalRequest in the Amazon GameLift Streams Web SDK to generate a new signal request. placementTimeout: Amazon GameLift Streams could not find available stream capacity to start a stream session. Increase the stream capacity in the stream group or wait until capacity becomes available. TERMINATED status reasons: apiTerminated: The stream session was terminated by an API call to TerminateStreamSession. applicationExit: The streaming application exited or crashed. The stream session was terminated because the application is no longer running. connectionTimeout: The stream session was terminated because the client failed to connect within the connection timeout period specified by ConnectionTimeoutSeconds. maxSessionLengthTimeout: The stream session was terminated because it exceeded the maximum session length timeout period specified by SessionLengthSeconds. reconnectionTimeout: The stream session was terminated because the client failed to reconnect within the reconnection timeout period specified by ConnectionTimeoutSeconds after losing connection. (internalError, invalidSignalRequest, placementTimeout, applicationLogS3DestinationError, assumeRoleFailed, applicationExit, connectionTimeout, reconnectionTimeout, maxSessionLengthTimeout, idleTimeout, apiTerminated)</td>
 </tr>
 <tr>
     <td><CopyableCode code="user_id" /></td>
@@ -259,6 +274,13 @@ The following methods are available for this resource:
     <td><a href="#parameter-identifier"><code>identifier</code></a>, <a href="#parameter-stream_session_identifier"><code>stream_session_identifier</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-SignalRequest"><code>SignalRequest</code></a></td>
     <td></td>
     <td>Enables clients to reconnect to a stream session while preserving all session state and data in the disconnected session. This reconnection process can be initiated when a stream session is in either PENDING_CLIENT_RECONNECTION or ACTIVE status. The process works as follows: Initial disconnect: When a client disconnects or loses connection, the stream session transitions from CONNECTED to PENDING_CLIENT_RECONNECTION Reconnection time window: Clients have ConnectionTimeoutSeconds (defined in StartStreamSession) to reconnect before session termination Your backend server must call CreateStreamSessionConnection to initiate reconnection Session transitions to RECONNECTING status Reconnection completion: On successful CreateStreamSessionConnection, session status changes to ACTIVE Provide the new connection information to the requesting client Client must establish connection within ConnectionTimeoutSeconds Session terminates automatically if client fails to connect in time For more information about the stream session lifecycle, see Stream sessions in the Amazon GameLift Streams Developer Guide. To begin re-connecting to an existing stream session, specify the stream group ID and stream session ID that you want to reconnect to, and the signal request to use with the stream.</td>
+</tr>
+<tr>
+    <td><a href="#create_stream_session_admin_shell"><CopyableCode code="create_stream_session_admin_shell" /></a></td>
+    <td><CopyableCode code="insert" /></td>
+    <td><a href="#parameter-identifier"><code>identifier</code></a>, <a href="#parameter-stream_session_identifier"><code>stream_session_identifier</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Creates an administrative terminal session with full access to the live runtime environment of the Amazon GameLift Streams stream session. Use the returned credentials (SessionId, StreamUrl and TokenValue) with the Amazon Web Services Systems Manager Session Manager plugin for the CLI to access the terminal session. The stream session must be in one of the following statuses: ACTIVE, CONNECTED, PENDING_CLIENT_RECONNECTION, or RECONNECTING. The StreamUrl is valid for 60 seconds. After it expires, call this operation again to get a new URL. The returned credentials grant full access to the live runtime environment of the Amazon GameLift Streams stream session. The operator who connects to the terminal session has the same level of access that your Amazon GameLift Streams applications have, including potentially user input, screen images, and application data files. Grant permissions to call this operation only to trusted IAM identities that require live runtime environment access.</td>
 </tr>
 <tr>
     <td><a href="#terminate_stream_session"><CopyableCode code="terminate_stream_session" /></a></td>
@@ -350,12 +372,14 @@ arn,
 connection_timeout_seconds,
 created_at,
 description,
+display_configuration,
 export_files_metadata,
 last_updated_at,
 location,
 log_file_location_uri,
 performance_stats_configuration,
 protocol,
+role_arn,
 session_length_seconds,
 signal_request,
 signal_response,
@@ -384,6 +408,7 @@ export_files_metadata,
 last_updated_at,
 location,
 protocol,
+role_arn,
 status,
 status_reason,
 user_id
@@ -406,6 +431,7 @@ AND MaxResults = '{{ MaxResults }}'
     defaultValue="create_stream_session_connection"
     values={[
         { label: 'create_stream_session_connection', value: 'create_stream_session_connection' },
+        { label: 'create_stream_session_admin_shell', value: 'create_stream_session_admin_shell' },
         { label: 'Manifest', value: 'manifest' }
     ]}
 >
@@ -429,6 +455,27 @@ SELECT
 '{{ region }}'
 RETURNING
 signal_response
+;
+```
+</TabItem>
+<TabItem value="create_stream_session_admin_shell">
+
+Creates an administrative terminal session with full access to the live runtime environment of the Amazon GameLift Streams stream session. Use the returned credentials (SessionId, StreamUrl and TokenValue) with the Amazon Web Services Systems Manager Session Manager plugin for the CLI to access the terminal session. The stream session must be in one of the following statuses: ACTIVE, CONNECTED, PENDING_CLIENT_RECONNECTION, or RECONNECTING. The StreamUrl is valid for 60 seconds. After it expires, call this operation again to get a new URL. The returned credentials grant full access to the live runtime environment of the Amazon GameLift Streams stream session. The operator who connects to the terminal session has the same level of access that your Amazon GameLift Streams applications have, including potentially user input, screen images, and application data files. Grant permissions to call this operation only to trusted IAM identities that require live runtime environment access.
+
+```sql
+INSERT INTO aws.gameliftstreams.stream_sessions (
+identifier,
+stream_session_identifier,
+region
+)
+SELECT 
+'{{ identifier }}',
+'{{ stream_session_identifier }}',
+'{{ region }}'
+RETURNING
+session_id,
+stream_url,
+token_value
 ;
 ```
 </TabItem>

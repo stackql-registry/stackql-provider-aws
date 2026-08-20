@@ -88,7 +88,7 @@ The following methods are available for this resource:
     <td><a href="#get_spot_placement_scores"><CopyableCode code="get_spot_placement_scores" /></a></td>
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-TargetCapacity"><code>TargetCapacity</code></a>, <a href="#parameter-region"><code>region</code></a></td>
-    <td><a href="#parameter-InstanceType"><code>InstanceType</code></a>, <a href="#parameter-TargetCapacityUnitType"><code>TargetCapacityUnitType</code></a>, <a href="#parameter-SingleAvailabilityZone"><code>SingleAvailabilityZone</code></a>, <a href="#parameter-RegionName"><code>RegionName</code></a>, <a href="#parameter-InstanceRequirementsWithMetadata"><code>InstanceRequirementsWithMetadata</code></a>, <a href="#parameter-DryRun"><code>DryRun</code></a>, <a href="#parameter-MaxResults"><code>MaxResults</code></a>, <a href="#parameter-NextToken"><code>NextToken</code></a></td>
+    <td><a href="#parameter-InstanceType"><code>InstanceType</code></a>, <a href="#parameter-TargetCapacityUnitType"><code>TargetCapacityUnitType</code></a>, <a href="#parameter-SingleAvailabilityZone"><code>SingleAvailabilityZone</code></a>, <a href="#parameter-RegionName"><code>RegionName</code></a>, <a href="#parameter-InstanceRequirementsWithMetadata"><code>InstanceRequirementsWithMetadata</code></a>, <a href="#parameter-DryRun"><code>DryRun</code></a>, <a href="#parameter-MaxResults"><code>MaxResults</code></a>, <a href="#parameter-NextToken"><code>NextToken</code></a>, <a href="#parameter-IncludeLocalZones"><code>IncludeLocalZones</code></a></td>
     <td>Calculates the Spot placement score for a Region or Availability Zone based on the specified target capacity and compute requirements. You can specify your compute requirements either by using InstanceRequirementsWithMetadata and letting Amazon EC2 choose the optimal instance types to fulfill your Spot request, or you can specify the instance types by using InstanceTypes. For more information, see Spot placement score in the Amazon EC2 User Guide.</td>
 </tr>
 </tbody>
@@ -121,6 +121,11 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     <td><CopyableCode code="DryRun" /></td>
     <td><code>boolean</code></td>
     <td>Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is DryRunOperation. Otherwise, it is UnauthorizedOperation.</td>
+</tr>
+<tr id="parameter-IncludeLocalZones">
+    <td><CopyableCode code="IncludeLocalZones" /></td>
+    <td><code>boolean</code></td>
+    <td>Specify true so that the response returns scores that include Local Zones. Otherwise, the response ignores Local Zones. When you request regional scores, Local Zone capacity counts toward its parent Region.</td>
 </tr>
 <tr id="parameter-InstanceRequirementsWithMetadata">
     <td><CopyableCode code="InstanceRequirementsWithMetadata" /></td>
@@ -188,6 +193,7 @@ AND InstanceRequirementsWithMetadata = '{{ InstanceRequirementsWithMetadata }}'
 AND DryRun = '{{ DryRun }}'
 AND MaxResults = '{{ MaxResults }}'
 AND NextToken = '{{ NextToken }}'
+AND IncludeLocalZones = '{{ IncludeLocalZones }}'
 ;
 ```
 </TabItem>

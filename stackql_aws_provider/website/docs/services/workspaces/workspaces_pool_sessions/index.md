@@ -84,14 +84,14 @@ The following methods are available for this resource:
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>Retrieves a list that describes the streaming sessions for a specified pool.</td>
+    <td>End of support notice: On December 31, 2027, Amazon Web Services will end support for Amazon WorkSpaces Pools. After December 31, 2027, you will no longer be able to access the Amazon WorkSpaces Pools console or Amazon WorkSpaces Pools resources. For more information, see Amazon WorkSpaces Pools end of support. Retrieves a list that describes the streaming sessions for a specified pool.</td>
 </tr>
 <tr>
     <td><a href="#terminate_workspaces_pool_session"><CopyableCode code="terminate_workspaces_pool_session" /></a></td>
     <td><CopyableCode code="delete" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>Terminates the pool session.</td>
+    <td>End of support notice: On December 31, 2027, Amazon Web Services will end support for Amazon WorkSpaces Pools. After December 31, 2027, you will no longer be able to access the Amazon WorkSpaces Pools console or Amazon WorkSpaces Pools resources. For more information, see Amazon WorkSpaces Pools end of support. Terminates the pool session.</td>
 </tr>
 </tbody>
 </table>
@@ -127,7 +127,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 >
 <TabItem value="describe_workspaces_pool_sessions">
 
-Retrieves a list that describes the streaming sessions for a specified pool.
+End of support notice: On December 31, 2027, Amazon Web Services will end support for Amazon WorkSpaces Pools. After December 31, 2027, you will no longer be able to access the Amazon WorkSpaces Pools console or Amazon WorkSpaces Pools resources. For more information, see Amazon WorkSpaces Pools end of support. Retrieves a list that describes the streaming sessions for a specified pool.
 
 ```sql
 SELECT
@@ -151,7 +151,7 @@ WHERE region = '{{ region }}' -- required
 >
 <TabItem value="terminate_workspaces_pool_session">
 
-Terminates the pool session.
+End of support notice: On December 31, 2027, Amazon Web Services will end support for Amazon WorkSpaces Pools. After December 31, 2027, you will no longer be able to access the Amazon WorkSpaces Pools console or Amazon WorkSpaces Pools resources. For more information, see Amazon WorkSpaces Pools end of support. Terminates the pool session.
 
 ```sql
 DELETE FROM aws.workspaces.workspaces_pool_sessions

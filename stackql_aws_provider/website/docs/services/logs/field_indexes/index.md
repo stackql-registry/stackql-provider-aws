@@ -84,7 +84,7 @@ The following methods are available for this resource:
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>Returns a list of custom and default field indexes which are discovered in log data. For more information about field index policies, see PutIndexPolicy.</td>
+    <td>Returns a list of field indexes discovered in log data. By default, the response includes the DEFAULT, CUSTOM, and INACTIVE index categories. To return indexes from other categories, use the indexCategories parameter. For more information about field index policies, see PutIndexPolicy.</td>
 </tr>
 </tbody>
 </table>
@@ -120,7 +120,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 >
 <TabItem value="describe_field_indexes">
 
-Returns a list of custom and default field indexes which are discovered in log data. For more information about field index policies, see PutIndexPolicy.
+Returns a list of field indexes discovered in log data. By default, the response includes the DEFAULT, CUSTOM, and INACTIVE index categories. To return indexes from other categories, use the indexCategories parameter. For more information about field index policies, see PutIndexPolicy.
 
 ```sql
 SELECT

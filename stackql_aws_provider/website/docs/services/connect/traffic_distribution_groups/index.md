@@ -173,14 +173,14 @@ The following methods are available for this resource:
     <td><CopyableCode code="insert" /></td>
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-InstanceId"><code>InstanceId</code></a></td>
     <td></td>
-    <td>Creates a traffic distribution group given an Amazon Connect instance that has been replicated. The SignInConfig distribution is available only on a default TrafficDistributionGroup (see the IsDefault parameter in the TrafficDistributionGroup data type). If you call UpdateTrafficDistribution with a modified SignInConfig and a non-default TrafficDistributionGroup, an InvalidRequestException is returned. For more information about creating traffic distribution groups, see Set up traffic distribution groups in the Amazon Connect Administrator Guide.</td>
+    <td>Creates a traffic distribution group given an Connect Customer instance that has been replicated. The SignInConfig distribution is available only on a default TrafficDistributionGroup (see the IsDefault parameter in the TrafficDistributionGroup data type). If you call UpdateTrafficDistribution with a modified SignInConfig and a non-default TrafficDistributionGroup, an InvalidRequestException is returned. For more information about creating traffic distribution groups, see Set up traffic distribution groups in the Connect Customer Administrator Guide.</td>
 </tr>
 <tr>
     <td><a href="#delete_traffic_distribution_group"><CopyableCode code="delete_traffic_distribution_group" /></a></td>
     <td><CopyableCode code="delete" /></td>
     <td><a href="#parameter-traffic_distribution_group_id"><code>traffic_distribution_group_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>Deletes a traffic distribution group. This API can be called only in the Region where the traffic distribution group is created. For more information about deleting traffic distribution groups, see Delete traffic distribution groups in the Amazon Connect Administrator Guide.</td>
+    <td>Deletes a traffic distribution group. This API can be called only in the Region where the traffic distribution group is created. For more information about deleting traffic distribution groups, see Delete traffic distribution groups in the Connect Customer Administrator Guide.</td>
 </tr>
 </tbody>
 </table>
@@ -211,7 +211,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-instanceId">
     <td><CopyableCode code="instanceId" /></td>
     <td><code>string</code></td>
-    <td>The identifier of the Amazon Connect instance. You can find the instance ID in the Amazon Resource Name (ARN) of the instance.</td>
+    <td>The identifier of the Connect Customer instance. You can find the instance ID in the Amazon Resource Name (ARN) of the instance.</td>
 </tr>
 <tr id="parameter-maxResults">
     <td><CopyableCode code="maxResults" /></td>
@@ -289,7 +289,7 @@ AND instanceId = '{{ instanceId }}'
 >
 <TabItem value="create_traffic_distribution_group">
 
-Creates a traffic distribution group given an Amazon Connect instance that has been replicated. The SignInConfig distribution is available only on a default TrafficDistributionGroup (see the IsDefault parameter in the TrafficDistributionGroup data type). If you call UpdateTrafficDistribution with a modified SignInConfig and a non-default TrafficDistributionGroup, an InvalidRequestException is returned. For more information about creating traffic distribution groups, see Set up traffic distribution groups in the Amazon Connect Administrator Guide.
+Creates a traffic distribution group given an Connect Customer instance that has been replicated. The SignInConfig distribution is available only on a default TrafficDistributionGroup (see the IsDefault parameter in the TrafficDistributionGroup data type). If you call UpdateTrafficDistribution with a modified SignInConfig and a non-default TrafficDistributionGroup, an InvalidRequestException is returned. For more information about creating traffic distribution groups, see Set up traffic distribution groups in the Connect Customer Administrator Guide.
 
 ```sql
 INSERT INTO aws.connect.traffic_distribution_groups (
@@ -347,7 +347,7 @@ id
 >
 <TabItem value="delete_traffic_distribution_group">
 
-Deletes a traffic distribution group. This API can be called only in the Region where the traffic distribution group is created. For more information about deleting traffic distribution groups, see Delete traffic distribution groups in the Amazon Connect Administrator Guide.
+Deletes a traffic distribution group. This API can be called only in the Region where the traffic distribution group is created. For more information about deleting traffic distribution groups, see Delete traffic distribution groups in the Connect Customer Administrator Guide.
 
 ```sql
 DELETE FROM aws.connect.traffic_distribution_groups

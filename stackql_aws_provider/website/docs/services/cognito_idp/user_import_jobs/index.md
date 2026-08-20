@@ -91,6 +91,11 @@ The following fields are returned by `SELECT` queries:
     <td>The friendly name of the user import job. (pattern: &lt;code&gt;&#91;\w\s+=,.@-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
+    <td><CopyableCode code="password_hashing_algorithm" /></td>
+    <td><code>string</code></td>
+    <td>The password hashing algorithm used to generate the hashes in the CSV file for this import job. Valid values: BCRYPT | SCRYPT | ARGON2ID | PBKDF2_SHA256 (BCRYPT, SCRYPT, ARGON2ID, PBKDF2_SHA256)</td>
+</tr>
+<tr>
     <td><CopyableCode code="pre_signed_url" /></td>
     <td><code>string</code></td>
     <td>The pre-signed URL target for uploading the CSV file.</td>
@@ -227,6 +232,7 @@ failed_users,
 imported_users,
 job_id,
 job_name,
+password_hashing_algorithm,
 pre_signed_url,
 skipped_users,
 start_date,
@@ -271,12 +277,14 @@ INSERT INTO aws.cognito_idp.user_import_jobs (
 JobName,
 UserPoolId,
 CloudWatchLogsRoleArn,
+PasswordHashingAlgorithm,
 region
 )
 SELECT 
 '{{ JobName }}' /* required */,
 '{{ UserPoolId }}' /* required */,
 '{{ CloudWatchLogsRoleArn }}' /* required */,
+'{{ PasswordHashingAlgorithm }}',
 '{{ region }}'
 RETURNING
 user_import_job
@@ -303,6 +311,11 @@ user_import_job
       value: "{{ CloudWatchLogsRoleArn }}"
       description: |
         You must specify an IAM role that has permission to log import-job results to Amazon CloudWatch Logs. This parameter is the ARN of that role.
+    - name: PasswordHashingAlgorithm
+      value: "{{ PasswordHashingAlgorithm }}"
+      description: |
+        The password hashing algorithm used to generate the hashes in the CSV file for this import job. Valid values: BCRYPT | SCRYPT | ARGON2ID | PBKDF2_SHA256
+      valid_values: ['BCRYPT', 'SCRYPT', 'ARGON2ID', 'PBKDF2_SHA256']
 `}</CodeBlock>
 
 </TabItem>

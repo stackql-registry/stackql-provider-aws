@@ -254,6 +254,8 @@ assets,
 serviceRole,
 logConfig,
 codeRemediationStrategy,
+validationMode,
+maxTaskHours,
 region
 )
 SELECT 
@@ -263,6 +265,8 @@ SELECT
 '{{ serviceRole }}',
 '{{ logConfig }}',
 '{{ codeRemediationStrategy }}',
+'{{ validationMode }}',
+{{ maxTaskHours }},
 '{{ region }}'
 RETURNING
 agent_space_id,
@@ -271,9 +275,11 @@ code_remediation_strategy,
 code_review_id,
 created_at,
 log_config,
+max_task_hours,
 service_role,
 title_,
-updated_at
+updated_at,
+validation_mode
 ;
 ```
 </TabItem>
@@ -302,14 +308,20 @@ updated_at
               providerType: "{{ providerType }}"
               value: "{{ value }}"
             description: "{{ description }}"
+            enableEmailMfa: {{ enableEmailMfa }}
+            mfaForwardingAddress: "{{ mfaForwardingAddress }}"
         documents:
           - s3Location: "{{ s3Location }}"
             artifactId: "{{ artifactId }}"
+            integratedDocument:
+              integrationId: "{{ integrationId }}"
+              resourceId: "{{ resourceId }}"
         sourceCode:
           - s3Location: "{{ s3Location }}"
         integratedRepositories:
           - integrationId: "{{ integrationId }}"
             providerResourceId: "{{ providerResourceId }}"
+            branch: "{{ branch }}"
     - name: serviceRole
       value: "{{ serviceRole }}"
       description: |
@@ -325,6 +337,13 @@ updated_at
       description: |
         Strategy for automated code remediation.
       valid_values: ['AUTOMATIC', 'DISABLED']
+    - name: validationMode
+      value: "{{ validationMode }}"
+      description: |
+        Mode of validation to perform on findings
+      valid_values: ['DISABLED', 'SIMULATED']
+    - name: maxTaskHours
+      value: {{ maxTaskHours }}
 `}</CodeBlock>
 
 </TabItem>
@@ -352,7 +371,9 @@ title = '{{ title }}',
 assets = '{{ assets }}',
 serviceRole = '{{ serviceRole }}',
 logConfig = '{{ logConfig }}',
-codeRemediationStrategy = '{{ codeRemediationStrategy }}'
+codeRemediationStrategy = '{{ codeRemediationStrategy }}',
+validationMode = '{{ validationMode }}',
+maxTaskHours = {{ maxTaskHours }}
 WHERE 
 region = '{{ region }}' --required
 AND codeReviewId = '{{ codeReviewId }}' --required
@@ -364,9 +385,11 @@ code_remediation_strategy,
 code_review_id,
 created_at,
 log_config,
+max_task_hours,
 service_role,
 title_,
-updated_at;
+updated_at,
+validation_mode;
 ```
 </TabItem>
 </Tabs>
@@ -407,7 +430,8 @@ EXEC aws.securityagent.code_reviews.start_code_review_job
 @@json=
 '{
 "agentSpaceId": "{{ agentSpaceId }}", 
-"codeReviewId": "{{ codeReviewId }}"
+"codeReviewId": "{{ codeReviewId }}", 
+"diffSource": "{{ diffSource }}"
 }'
 ;
 ```

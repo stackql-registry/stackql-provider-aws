@@ -18,7 +18,7 @@ bedrock_agent_runtime service documentation.
 
 :::info[Service Summary]
 
-total resources: __8__  
+total resources: __10__  
 
 :::
 
@@ -26,11 +26,13 @@ total resources: __8__
 <div class="row">
 <div class="providerDocColumn">
 <a href="/services/bedrock_agent_runtime/agent_memories/">agent_memories</a><br />
+<a href="/services/bedrock_agent_runtime/document_contents/">document_contents</a><br />
 <a href="/services/bedrock_agent_runtime/execution_flow_snapshots/">execution_flow_snapshots</a><br />
 <a href="/services/bedrock_agent_runtime/flow_execution_events/">flow_execution_events</a><br />
 <a href="/services/bedrock_agent_runtime/flow_executions/">flow_executions</a>
 </div>
 <div class="providerDocColumn">
+<a href="/services/bedrock_agent_runtime/ingested_document_acls/">ingested_document_acls</a><br />
 <a href="/services/bedrock_agent_runtime/invocation_steps/">invocation_steps</a><br />
 <a href="/services/bedrock_agent_runtime/invocations/">invocations</a><br />
 <a href="/services/bedrock_agent_runtime/sessions/">sessions</a><br />

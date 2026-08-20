@@ -264,7 +264,7 @@ The following methods are available for this resource:
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-instance_id"><code>instance_id</code></a>, <a href="#parameter-view_id"><code>view_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>Retrieves the view for the specified Amazon Connect instance and view identifier. The view identifier can be supplied as a ViewId or ARN. $SAVED needs to be supplied if a view is unpublished. The view identifier can contain an optional qualifier, for example, <code>&lt;view-id&gt;</code>:$SAVED, which is either an actual version number or an Amazon Connect managed qualifier $SAVED | $LATEST. If it is not supplied, then $LATEST is assumed for customer managed views and an error is returned if there is no published content available. Version 1 is assumed for Amazon Web Services managed views.</td>
+    <td>Retrieves the view for the specified Connect Customer instance and view identifier. The view identifier can be supplied as a ViewId or ARN. $SAVED needs to be supplied if a view is unpublished. The view identifier can contain an optional qualifier, for example, <code>&lt;view-id&gt;</code>:$SAVED, which is either an actual version number or an Connect Customer managed qualifier $SAVED | $LATEST. If it is not supplied, then $LATEST is assumed for customer managed views and an error is returned if there is no published content available. Version 1 is assumed for Amazon Web Services managed views.</td>
 </tr>
 <tr>
     <td><a href="#list_views"><CopyableCode code="list_views" /></a></td>
@@ -292,7 +292,7 @@ The following methods are available for this resource:
     <td><CopyableCode code="update" /></td>
     <td><a href="#parameter-instance_id"><code>instance_id</code></a>, <a href="#parameter-view_id"><code>view_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>Updates the view content of the given view identifier in the specified Amazon Connect instance. It performs content validation if Status is set to SAVED and performs full content validation if Status is PUBLISHED. Note that the $SAVED alias' content will always be updated, but the $LATEST alias' content will only be updated if Status is PUBLISHED.</td>
+    <td>Updates the view content of the given view identifier in the specified Connect Customer instance. It performs content validation if Status is set to SAVED and performs full content validation if Status is PUBLISHED. Note that the $SAVED alias' content will always be updated, but the $LATEST alias' content will only be updated if Status is PUBLISHED.</td>
 </tr>
 <tr>
     <td><a href="#delete_view"><CopyableCode code="delete_view" /></a></td>
@@ -327,7 +327,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-instance_id">
     <td><CopyableCode code="instance_id" /></td>
     <td><code>string</code></td>
-    <td>The identifier of the Amazon Connect instance. You can find the instanceId in the ARN of the instance.</td>
+    <td>The identifier of the Connect Customer instance. You can find the instanceId in the ARN of the instance.</td>
 </tr>
 <tr id="parameter-region">
     <td><CopyableCode code="region" /></td>
@@ -369,7 +369,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 >
 <TabItem value="describe_view">
 
-Retrieves the view for the specified Amazon Connect instance and view identifier. The view identifier can be supplied as a ViewId or ARN. $SAVED needs to be supplied if a view is unpublished. The view identifier can contain an optional qualifier, for example, <code>&lt;view-id&gt;</code>:$SAVED, which is either an actual version number or an Amazon Connect managed qualifier $SAVED | $LATEST. If it is not supplied, then $LATEST is assumed for customer managed views and an error is returned if there is no published content available. Version 1 is assumed for Amazon Web Services managed views.
+Retrieves the view for the specified Connect Customer instance and view identifier. The view identifier can be supplied as a ViewId or ARN. $SAVED needs to be supplied if a view is unpublished. The view identifier can contain an optional qualifier, for example, <code>&lt;view-id&gt;</code>:$SAVED, which is either an actual version number or an Connect Customer managed qualifier $SAVED | $LATEST. If it is not supplied, then $LATEST is assumed for customer managed views and an error is returned if there is no published content available. Version 1 is assumed for Amazon Web Services managed views.
 
 ```sql
 SELECT
@@ -524,7 +524,7 @@ view
 >
 <TabItem value="update_view_content">
 
-Updates the view content of the given view identifier in the specified Amazon Connect instance. It performs content validation if Status is set to SAVED and performs full content validation if Status is PUBLISHED. Note that the $SAVED alias' content will always be updated, but the $LATEST alias' content will only be updated if Status is PUBLISHED.
+Updates the view content of the given view identifier in the specified Connect Customer instance. It performs content validation if Status is set to SAVED and performs full content validation if Status is PUBLISHED. Note that the $SAVED alias' content will always be updated, but the $LATEST alias' content will only be updated if Status is PUBLISHED.
 
 ```sql
 UPDATE aws.connect.views

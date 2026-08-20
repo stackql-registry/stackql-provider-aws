@@ -169,7 +169,7 @@ The following methods are available for this resource:
     <td><CopyableCode code="exec" /></td>
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-sourceImage"><code>sourceImage</code></a>, <a href="#parameter-distributionConfigurationArn"><code>distributionConfigurationArn</code></a>, <a href="#parameter-executionRole"><code>executionRole</code></a>, <a href="#parameter-clientToken"><code>clientToken</code></a></td>
     <td></td>
-    <td>DistributeImage distributes existing AMIs to additional regions and accounts without rebuilding the image.</td>
+    <td>Distributes an existing AMI to target Regions and accounts without running the full image build process. This operation only runs the distribution phase on an image that has already been built.</td>
 </tr>
 </tbody>
 </table>
@@ -402,7 +402,7 @@ AND region = '{{ region }}' --required
 >
 <TabItem value="distribute_image">
 
-DistributeImage distributes existing AMIs to additional regions and accounts without rebuilding the image.
+Distributes an existing AMI to target Regions and accounts without running the full image build process. This operation only runs the distribution phase on an image that has already been built.
 
 ```sql
 EXEC aws.imagebuilder.distribution_configurations.distribute_image 

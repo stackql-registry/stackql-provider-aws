@@ -71,14 +71,24 @@ The following fields are returned by `SELECT` queries:
     <td>Identifier of a KMS key. Can be a key ID, key ARN, alias name, or alias ARN.</td>
 </tr>
 <tr>
+    <td><CopyableCode code="private_connection_name" /></td>
+    <td><code>string</code></td>
+    <td>The unique name of a private connection within your account.</td>
+</tr>
+<tr>
     <td><CopyableCode code="provider" /></td>
     <td><code>string</code></td>
-    <td>Third-party provider type. (GITHUB)</td>
+    <td>Third-party provider type. (GITHUB, GITLAB, BITBUCKET, CONFLUENCE)</td>
 </tr>
 <tr>
     <td><CopyableCode code="provider_type" /></td>
     <td><code>string</code></td>
     <td>The type of the integration provider. (SOURCE_CODE, DOCUMENTATION)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="target_url" /></td>
+    <td><code>string</code></td>
+    <td>The HTTPS URL of the customer self-hosted instance, such as a GitHub Enterprise Server or self-managed GitLab instance. This value is absent for SaaS integrations.</td>
 </tr>
 </tbody>
 </table>
@@ -110,14 +120,24 @@ The following fields are returned by `SELECT` queries:
     <td>The unique identifier of the integration.</td>
 </tr>
 <tr>
+    <td><CopyableCode code="private_connection_name" /></td>
+    <td><code>string</code></td>
+    <td>The unique name of a private connection within your account.</td>
+</tr>
+<tr>
     <td><CopyableCode code="provider" /></td>
     <td><code>string</code></td>
-    <td>Third-party provider type. (GITHUB)</td>
+    <td>Third-party provider type. (GITHUB, GITLAB, BITBUCKET, CONFLUENCE)</td>
 </tr>
 <tr>
     <td><CopyableCode code="provider_type" /></td>
     <td><code>string</code></td>
     <td>The type of the integration provider. (SOURCE_CODE, DOCUMENTATION)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="target_url" /></td>
+    <td><code>string</code></td>
+    <td>The HTTPS URL of the customer self-hosted instance, such as a GitHub Enterprise Server or self-managed GitLab instance. This value is absent for SaaS integrations.</td>
 </tr>
 </tbody>
 </table>
@@ -210,8 +230,10 @@ display_name,
 installation_id,
 integration_id,
 kms_key_id,
+private_connection_name,
 provider,
-provider_type
+provider_type,
+target_url
 FROM aws.securityagent.integrations
 WHERE region = '{{ region }}' -- required
 ;
@@ -226,8 +248,10 @@ SELECT
 display_name,
 installation_id,
 integration_id,
+private_connection_name,
 provider,
-provider_type
+provider_type,
+target_url
 FROM aws.securityagent.integrations
 WHERE region = '{{ region }}' -- required
 ;
@@ -256,6 +280,7 @@ input,
 integrationDisplayName,
 kmsKeyId,
 tags,
+privateConnectionName,
 region
 )
 SELECT 
@@ -264,6 +289,7 @@ SELECT
 '{{ integrationDisplayName }}' /* required */,
 '{{ kmsKeyId }}',
 '{{ tags }}',
+'{{ privateConnectionName }}',
 '{{ region }}'
 RETURNING
 integration_id
@@ -282,7 +308,7 @@ integration_id
       value: "{{ provider }}"
       description: |
         Third-party provider type.
-      valid_values: ['GITHUB']
+      valid_values: ['GITHUB', 'GITLAB', 'BITBUCKET', 'CONFLUENCE']
     - name: input
       description: |
         The provider-specific input for creating an integration. This is a union type that contains provider-specific configuration.
@@ -291,6 +317,23 @@ integration_id
           code: "{{ code }}"
           state: "{{ state }}"
           organizationName: "{{ organizationName }}"
+          targetUrl: "{{ targetUrl }}"
+          installationId: "{{ installationId }}"
+        gitlab:
+          accessToken: "{{ accessToken }}"
+          targetUrl: "{{ targetUrl }}"
+          tokenType: "{{ tokenType }}"
+          groupId: "{{ groupId }}"
+        bitbucket:
+          installationId: "{{ installationId }}"
+          workspace: "{{ workspace }}"
+          code: "{{ code }}"
+          state: "{{ state }}"
+        confluence:
+          installationId: "{{ installationId }}"
+          code: "{{ code }}"
+          state: "{{ state }}"
+          siteUrl: "{{ siteUrl }}"
     - name: integrationDisplayName
       value: "{{ integrationDisplayName }}"
     - name: kmsKeyId
@@ -301,6 +344,10 @@ integration_id
       value: "{{ tags }}"
       description: |
         Map of tags for a resource.
+    - name: privateConnectionName
+      value: "{{ privateConnectionName }}"
+      description: |
+        The unique name of a private connection within your account.
 `}</CodeBlock>
 
 </TabItem>

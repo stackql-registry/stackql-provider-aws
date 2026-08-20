@@ -18,7 +18,7 @@ connect service documentation.
 
 :::info[Service Summary]
 
-total resources: __92__  
+total resources: __95__  
 
 :::
 
@@ -60,8 +60,10 @@ total resources: __92__
 <a href="/services/connect/email_address/">email_address</a><br />
 <a href="/services/connect/email_addresses/">email_addresses</a><br />
 <a href="/services/connect/entity_security_profiles/">entity_security_profiles</a><br />
+<a href="/services/connect/evaluation_form_validations/">evaluation_form_validations</a><br />
 <a href="/services/connect/evaluation_form_versions/">evaluation_form_versions</a><br />
 <a href="/services/connect/evaluation_forms/">evaluation_forms</a><br />
+<a href="/services/connect/extraction_definitions/">extraction_definitions</a><br />
 <a href="/services/connect/federation_tokens/">federation_tokens</a><br />
 <a href="/services/connect/flow_associations/">flow_associations</a><br />
 <a href="/services/connect/hours_of_operation_overrides/">hours_of_operation_overrides</a><br />
@@ -76,6 +78,7 @@ total resources: __92__
 <a href="/services/connect/lex_bots/">lex_bots</a><br />
 <a href="/services/connect/metric_data_v2s/">metric_data_v2s</a><br />
 <a href="/services/connect/metric_datas/">metric_datas</a><br />
+<a href="/services/connect/metrics/">metrics</a><br />
 <a href="/services/connect/notifications/">notifications</a><br />
 <a href="/services/connect/phone_numbers/">phone_numbers</a><br />
 <a href="/services/connect/phone_numbers_v2s/">phone_numbers_v2s</a><br />

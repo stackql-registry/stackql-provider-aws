@@ -502,6 +502,7 @@ flow
                 SecretArn: "{{ SecretArn }}"
                 RoleArn: "{{ RoleArn }}"
               Automatic: "{{ Automatic }}"
+          NdiOutputTimecodeSource: "{{ NdiOutputTimecodeSource }}"
     - name: Source
       description: |
         The settings for the source of the flow.
@@ -918,7 +919,8 @@ EXEC aws.mediaconnect.flows.update_flow_output
 "NdiProgramName": "{{ NdiProgramName }}", 
 "NdiSpeedHqQuality": {{ NdiSpeedHqQuality }}, 
 "RouterIntegrationState": "{{ RouterIntegrationState }}", 
-"RouterIntegrationTransitEncryption": "{{ RouterIntegrationTransitEncryption }}"
+"RouterIntegrationTransitEncryption": "{{ RouterIntegrationTransitEncryption }}", 
+"NdiOutputTimecodeSource": "{{ NdiOutputTimecodeSource }}"
 }'
 ;
 ```

@@ -421,6 +421,15 @@ rule_arn
         AwsAccountName:
           - Value: "{{ Value }}"
             Comparison: "{{ Comparison }}"
+        ResourceProvider:
+          - Value: "{{ Value }}"
+            Comparison: "{{ Comparison }}"
+        ResourceOwnerAccountId:
+          - Value: "{{ Value }}"
+            Comparison: "{{ Comparison }}"
+        ResourceOwnerOrgId:
+          - Value: "{{ Value }}"
+            Comparison: "{{ Comparison }}"
     - name: Actions
       value:
         - Type: "{{ Type }}"

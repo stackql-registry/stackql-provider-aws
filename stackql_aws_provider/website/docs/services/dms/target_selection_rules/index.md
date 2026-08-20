@@ -79,7 +79,7 @@ The following methods are available for this resource:
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>Converts source selection rules into their target counterparts for schema conversion operations.</td>
+    <td>Converts source selection rules into their target counterparts for schema conversion operations. Required permissions: dms:GetTargetSelectionRules. For more information, see Actions, resources, and condition keys for Database Migration Service.</td>
 </tr>
 </tbody>
 </table>
@@ -115,7 +115,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 >
 <TabItem value="get_target_selection_rules">
 
-Converts source selection rules into their target counterparts for schema conversion operations.
+Converts source selection rules into their target counterparts for schema conversion operations. Required permissions: dms:GetTargetSelectionRules. For more information, see Actions, resources, and condition keys for Database Migration Service.
 
 ```sql
 SELECT

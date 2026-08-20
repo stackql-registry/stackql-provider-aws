@@ -908,7 +908,7 @@ job
                 DestinationSettings:
                   S3Settings: "{{ S3Settings }}"
                 Encryption:
-                  ClearLead: "{{ ClearLead }}"
+                  ClearLeadSegments: {{ ClearLeadSegments }}
                   ConstantInitializationVector: "{{ ConstantInitializationVector }}"
                   EncryptionMethod: "{{ EncryptionMethod }}"
                   InitializationVectorInManifest: "{{ InitializationVectorInManifest }}"
@@ -924,6 +924,13 @@ job
                   ThumbnailWidth: {{ ThumbnailWidth }}
                   TileHeight: {{ TileHeight }}
                   TileWidth: {{ TileWidth }}
+                ImageBasedTrickPlayVariants:
+                  - IntervalCadence: "{{ IntervalCadence }}"
+                    ThumbnailHeight: {{ ThumbnailHeight }}
+                    ThumbnailInterval: {{ ThumbnailInterval }}
+                    ThumbnailWidth: {{ ThumbnailWidth }}
+                    TileHeight: {{ TileHeight }}
+                    TileWidth: {{ TileWidth }}
                 ManifestCompression: "{{ ManifestCompression }}"
                 ManifestDurationFormat: "{{ ManifestDurationFormat }}"
                 MinBufferTime: {{ MinBufferTime }}
@@ -964,6 +971,13 @@ job
                   ThumbnailWidth: {{ ThumbnailWidth }}
                   TileHeight: {{ TileHeight }}
                   TileWidth: {{ TileWidth }}
+                ImageBasedTrickPlayVariants:
+                  - IntervalCadence: "{{ IntervalCadence }}"
+                    ThumbnailHeight: {{ ThumbnailHeight }}
+                    ThumbnailInterval: {{ ThumbnailInterval }}
+                    ThumbnailWidth: {{ ThumbnailWidth }}
+                    TileHeight: {{ TileHeight }}
+                    TileWidth: {{ TileWidth }}
                 MinBufferTime: {{ MinBufferTime }}
                 MinFinalSegmentLength: {{ MinFinalSegmentLength }}
                 MpdManifestBandwidthType: "{{ MpdManifestBandwidthType }}"
@@ -1015,6 +1029,13 @@ job
                   ThumbnailWidth: {{ ThumbnailWidth }}
                   TileHeight: {{ TileHeight }}
                   TileWidth: {{ TileWidth }}
+                ImageBasedTrickPlayVariants:
+                  - IntervalCadence: "{{ IntervalCadence }}"
+                    ThumbnailHeight: {{ ThumbnailHeight }}
+                    ThumbnailInterval: {{ ThumbnailInterval }}
+                    ThumbnailWidth: {{ ThumbnailWidth }}
+                    TileHeight: {{ TileHeight }}
+                    TileWidth: {{ TileWidth }}
                 ManifestCompression: "{{ ManifestCompression }}"
                 ManifestDurationFormat: "{{ ManifestDurationFormat }}"
                 MinFinalSegmentLength: {{ MinFinalSegmentLength }}

@@ -18,13 +18,14 @@ cleanrooms service documentation.
 
 :::info[Service Summary]
 
-total resources: __24__  
+total resources: __28__  
 
 :::
 
 ## Resources
 <div class="row">
 <div class="providerDocColumn">
+<a href="/services/cleanrooms/analysis_log_exports/">analysis_log_exports</a><br />
 <a href="/services/cleanrooms/analysis_templates/">analysis_templates</a><br />
 <a href="/services/cleanrooms/collaboration_analysis_templates/">collaboration_analysis_templates</a><br />
 <a href="/services/cleanrooms/collaboration_change_requests/">collaboration_change_requests</a><br />
@@ -36,12 +37,15 @@ total resources: __24__
 <a href="/services/cleanrooms/configured_audience_model_associations/">configured_audience_model_associations</a><br />
 <a href="/services/cleanrooms/configured_table_analysis_rules/">configured_table_analysis_rules</a><br />
 <a href="/services/cleanrooms/configured_table_association_analysis_rules/">configured_table_association_analysis_rules</a><br />
-<a href="/services/cleanrooms/configured_table_associations/">configured_table_associations</a>
+<a href="/services/cleanrooms/configured_table_associations/">configured_table_associations</a><br />
+<a href="/services/cleanrooms/configured_tables/">configured_tables</a>
 </div>
 <div class="providerDocColumn">
-<a href="/services/cleanrooms/configured_tables/">configured_tables</a><br />
 <a href="/services/cleanrooms/id_mapping_tables/">id_mapping_tables</a><br />
 <a href="/services/cleanrooms/id_namespace_associations/">id_namespace_associations</a><br />
+<a href="/services/cleanrooms/intermediate_table_analysis_rules/">intermediate_table_analysis_rules</a><br />
+<a href="/services/cleanrooms/intermediate_table_versions/">intermediate_table_versions</a><br />
+<a href="/services/cleanrooms/intermediate_tables/">intermediate_tables</a><br />
 <a href="/services/cleanrooms/members/">members</a><br />
 <a href="/services/cleanrooms/memberships/">memberships</a><br />
 <a href="/services/cleanrooms/privacy_budget_templates/">privacy_budget_templates</a><br />

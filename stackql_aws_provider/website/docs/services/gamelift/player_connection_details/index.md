@@ -52,7 +52,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="game_session_id" /></td>
     <td><code>string</code></td>
-    <td>An identifier for the game session that is unique across all regions for which the player connection details were retrieved. The value is always a full ARN in the following format: arn:aws:gamelift:`&lt;location&gt;`::gamesession/&lt;fleet ID&gt;/&lt;ID string&gt;. (pattern: &lt;code&gt;&#91;a-zA-Z0-9:/-&#93;+&lt;/code&gt;)</td>
+    <td>An identifier for the game session that is unique across all regions for which the player connection details were retrieved. The value is always a full ARN in the following format: For Home Region game session - arn:aws:gamelift:<code>&lt;home_region&gt;</code>::gamesession/&lt;fleet ID&gt;/&lt;ID string&gt;. For Remote Location game session - arn:aws:gamelift:<code>&lt;home_region&gt;</code>::gamesession/&lt;fleet ID&gt;/`&lt;location&gt;`/&lt;ID string&gt;. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9:/-&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="player_connection_details" /></td>

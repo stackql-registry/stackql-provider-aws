@@ -63,7 +63,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="last_modified" /></td>
     <td><code>string</code></td>
-    <td>The date and time that a user last updated the configuration, in ISO 8601 format.</td>
+    <td>The date and time that a user last updated the configuration, in ISO 8601 format. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="requested_provisioned_concurrent_executions" /></td>
@@ -107,12 +107,12 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="function_arn" /></td>
     <td><code>string</code></td>
-    <td>The Amazon Resource Name (ARN) of the alias or version. (pattern: &lt;code&gt;arn:(aws&#91;a-zA-Z-&#93;*)?:lambda:&#91;a-z&#93;&#123;2&#125;((-gov)|(-iso(&#91;a-z&#93;?)))?-&#91;a-z&#93;+-\d&#123;1&#125;:\d&#123;12&#125;:function:&#91;a-zA-Z0-9-_&#93;+(:(\$LATEST|&#91;a-zA-Z0-9-_&#93;+))?&lt;/code&gt;)</td>
+    <td>The Amazon Resource Name (ARN) of the alias or version. (pattern: &lt;code&gt;arn:(aws&#91;a-zA-Z-&#93;*)?:lambda:(eusc-)?&#91;a-z&#93;&#123;2&#125;((-gov)|(-iso(&#91;a-z&#93;?)))?-&#91;a-z&#93;+-\d&#123;1&#125;:\d&#123;12&#125;:function:&#91;a-zA-Z0-9-_&#93;+(:(\$LATEST|&#91;a-zA-Z0-9-_&#93;+))?&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="last_modified" /></td>
     <td><code>string</code></td>
-    <td>The date and time that a user last updated the configuration, in ISO 8601 format.</td>
+    <td>The date and time that a user last updated the configuration, in ISO 8601 format. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="requested_provisioned_concurrent_executions" /></td>

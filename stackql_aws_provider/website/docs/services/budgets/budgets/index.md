@@ -68,7 +68,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="budget_name" /></td>
     <td><code>string</code></td>
-    <td>The name of a budget. The name must be unique within an account. The : and \ characters, and the "/action/" substring, aren't allowed in BudgetName. (pattern: &lt;code&gt;^(?!&#91;^:\\&#93;*/action/|(?i).*&lt;script&gt;.*&lt;/script&gt;.*)&#91;^:\\&#93;+$&lt;/code&gt;)</td>
+    <td>The name of a budget. The name must be unique within an account. The : and \ characters, and the "/action/" substring, aren't allowed in BudgetName. Budget names are validated for content. Names that contain phone numbers, URLs, or email addresses combined with certain terms may be rejected. (pattern: &lt;code&gt;^(?!&#91;^:\\&#93;*/action/|(?i).*&lt;script&gt;.*&lt;/script&gt;.*)&#91;^:\\&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="budget_type" /></td>
@@ -157,7 +157,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="budget_name" /></td>
     <td><code>string</code></td>
-    <td>The name of a budget. The name must be unique within an account. The : and \ characters, and the "/action/" substring, aren't allowed in BudgetName. (pattern: &lt;code&gt;^(?!&#91;^:\\&#93;*/action/|(?i).*&lt;script&gt;.*&lt;/script&gt;.*)&#91;^:\\&#93;+$&lt;/code&gt;)</td>
+    <td>The name of a budget. The name must be unique within an account. The : and \ characters, and the "/action/" substring, aren't allowed in BudgetName. Budget names are validated for content. Names that contain phone numbers, URLs, or email addresses combined with certain terms may be rejected. (pattern: &lt;code&gt;^(?!&#91;^:\\&#93;*/action/|(?i).*&lt;script&gt;.*&lt;/script&gt;.*)&#91;^:\\&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="budget_type" /></td>
@@ -495,7 +495,7 @@ SELECT
     - name: BudgetName
       value: "{{ BudgetName }}"
       description: |
-        A string that represents the budget name. The ":" and "\" characters, and the "/action/" substring, aren't allowed.
+        A string that represents the budget name. The ":" and "\" characters, and the "/action/" substring, aren't allowed. Budget names are validated for content. Names that contain phone numbers, URLs, or email addresses combined with certain terms may be rejected.
     - name: Notification
       description: |
         The notification that you want to create a subscriber for.

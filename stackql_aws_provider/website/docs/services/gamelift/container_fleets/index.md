@@ -78,7 +78,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="fleet_id" /></td>
     <td><code>string</code></td>
-    <td>A unique identifier for the container fleet to retrieve. (pattern: &lt;code&gt;^&#91;a-z&#93;*fleet-&#91;a-zA-Z0-9\-&#93;+&lt;/code&gt;)</td>
+    <td>A unique identifier for the container fleet to retrieve. (pattern: &lt;code&gt;^&#91;a-z&#93;*fleet-&#91;a-zA-Z0-9\-&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="fleet_role_arn" /></td>
@@ -163,7 +163,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
-    <td>The current status of the container fleet. PENDING -- A new container fleet has been requested. CREATING -- A new container fleet resource is being created. CREATED -- A new container fleet resource has been created. No fleet instances have been deployed. ACTIVATING -- New container fleet instances are being deployed. ACTIVE -- The container fleet has been deployed and is ready to host game sessions. UPDATING -- Updates to the container fleet is being updated. A deployment is in progress. (PENDING, CREATING, CREATED, ACTIVATING, ACTIVE, UPDATING, DELETING)</td>
+    <td>The current status of the container fleet. PENDING -- A new container fleet has been requested. CREATING -- A new container fleet resource is being created. CREATED -- A new container fleet resource has been created. No fleet instances have been deployed. ACTIVATING -- New container fleet instances are being deployed. ACTIVE -- The container fleet has been deployed and is ready to host game sessions. UPDATING -- Updates to the container fleet is being updated. A deployment is in progress. EXPIRED -- The container fleet has been expired. The fleet is scaled down to zero instances and cannot host new game sessions. (PENDING, CREATING, CREATED, ACTIVATING, ACTIVE, UPDATING, DELETING, EXPIRED)</td>
 </tr>
 </tbody>
 </table>
@@ -207,7 +207,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="fleet_id" /></td>
     <td><code>string</code></td>
-    <td>A unique identifier for the container fleet to retrieve. (pattern: &lt;code&gt;^&#91;a-z&#93;*fleet-&#91;a-zA-Z0-9\-&#93;+&lt;/code&gt;)</td>
+    <td>A unique identifier for the container fleet to retrieve. (pattern: &lt;code&gt;^&#91;a-z&#93;*fleet-&#91;a-zA-Z0-9\-&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="fleet_role_arn" /></td>
@@ -292,7 +292,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
-    <td>The current status of the container fleet. PENDING -- A new container fleet has been requested. CREATING -- A new container fleet resource is being created. CREATED -- A new container fleet resource has been created. No fleet instances have been deployed. ACTIVATING -- New container fleet instances are being deployed. ACTIVE -- The container fleet has been deployed and is ready to host game sessions. UPDATING -- Updates to the container fleet is being updated. A deployment is in progress. (PENDING, CREATING, CREATED, ACTIVATING, ACTIVE, UPDATING, DELETING)</td>
+    <td>The current status of the container fleet. PENDING -- A new container fleet has been requested. CREATING -- A new container fleet resource is being created. CREATED -- A new container fleet resource has been created. No fleet instances have been deployed. ACTIVATING -- New container fleet instances are being deployed. ACTIVE -- The container fleet has been deployed and is ready to host game sessions. UPDATING -- Updates to the container fleet is being updated. A deployment is in progress. EXPIRED -- The container fleet has been expired. The fleet is scaled down to zero instances and cannot host new game sessions. (PENDING, CREATING, CREATED, ACTIVATING, ACTIVE, UPDATING, DELETING, EXPIRED)</td>
 </tr>
 </tbody>
 </table>
@@ -535,13 +535,13 @@ container_fleet
         The name of a container group definition resource that describes a set of axillary software. A fleet instance has one process for executables in this container group. A per-instance container group is optional. You can update the fleet to add or remove a per-instance container group at any time. You can specify the container group definition's name to use the latest version. Alternatively, provide an ARN value with a specific version number. Create a container group definition by calling https://docs.aws.amazon.com/gamelift/latest/apireference/API_CreateContainerGroupDefinition.html. This operation creates a https://docs.aws.amazon.com/gamelift/latest/apireference/API_ContainerGroupDefinition.html resource.
     - name: InstanceConnectionPortRange
       description: |
-        The set of port numbers to open on each fleet instance. A fleet's connection ports map to container ports that are configured in the fleet's container group definitions. By default, Amazon GameLift Servers calculates an optimal port range based on your fleet configuration. To use the calculated range, don't set this parameter. The values are: Port range: 4192 to a number calculated based on your fleet configuration. Amazon GameLift Servers uses the following formula: 4192 + [# of game server container groups per fleet instance] * [# of container ports in the game server container group definition] + [# of container ports in the game server container group definition] You can also choose to manually set this parameter. When manually setting this parameter, you must use port numbers that match the fleet's inbound permissions port range. If you set values manually, Amazon GameLift Servers no longer calculates a port range for you, even if you later remove the manual settings. The port range must not overlap with the Amazon GameLift Servers reserved port range 4092-4191. This range is reserved for internal Amazon GameLift Servers services.
+        The set of port numbers to open on each fleet instance. A fleet's connection ports map to container ports that are configured in the fleet's container group definitions. By default, Amazon GameLift Servers calculates an optimal port range based on your fleet configuration. To use the calculated range, don't set this parameter. The values are: Port range: 4192 to a number calculated based on your fleet configuration. Amazon GameLift Servers uses the following formula: 4192 + [# of game server container groups per fleet instance] * [# of container ports in the game server container group definition] + [# of container ports in the per instance container group definition] You can also choose to manually set this parameter. When manually setting this parameter, you must use port numbers that match the fleet's inbound permissions port range. If you set values manually, Amazon GameLift Servers no longer calculates a port range for you, even if you later remove the manual settings. The port range must not overlap with the Amazon GameLift Servers reserved port range 4092-4191. This range is reserved for internal Amazon GameLift Servers services.
       value:
         FromPort: {{ FromPort }}
         ToPort: {{ ToPort }}
     - name: InstanceInboundPermissions
       description: |
-        The IP address ranges and port settings that allow inbound traffic to access game server processes and other processes on this fleet. As a best practice, when remotely accessing a fleet instance, we recommend opening ports only when you need them and closing them when you're finished. By default, Amazon GameLift Servers calculates an optimal port range based on your fleet configuration. To use the calculated range, don't set this parameter. The values are: Protocol: UDP Port range: 4192 to a number calculated based on your fleet configuration. Amazon GameLift Servers uses the following formula: 4192 + [# of game server container groups per fleet instance] * [# of container ports in the game server container group definition] + [# of container ports in the game server container group definition] You can also choose to manually set this parameter. When manually setting this parameter, you must use port numbers that match the fleet's connection port range. If you set values manually, Amazon GameLift Servers no longer calculates a port range for you, even if you later remove the manual settings. The port range must not overlap with the Amazon GameLift Servers reserved port range 4092-4191. This range is reserved for internal Amazon GameLift Servers services.
+        The IP address ranges and port settings that allow inbound traffic to access game server processes and other processes on this fleet. As a best practice, when remotely accessing a fleet instance, we recommend opening ports only when you need them and closing them when you're finished. By default, Amazon GameLift Servers calculates an optimal port range based on your fleet configuration. To use the calculated range, don't set this parameter. The values are: Protocol: UDP Port range: 4192 to a number calculated based on your fleet configuration. Amazon GameLift Servers uses the following formula: 4192 + [# of game server container groups per fleet instance] * [# of container ports in the game server container group definition] + [# of container ports in the per instance container group definition] You can also choose to manually set this parameter. When manually setting this parameter, you must use port numbers that match the fleet's connection port range. If you set values manually, Amazon GameLift Servers no longer calculates a port range for you, even if you later remove the manual settings. The port range must not overlap with the Amazon GameLift Servers reserved port range 4092-4191. This range is reserved for internal Amazon GameLift Servers services.
       value:
         - FromPort: {{ FromPort }}
           ToPort: {{ ToPort }}
@@ -554,7 +554,7 @@ container_fleet
     - name: InstanceType
       value: "{{ InstanceType }}"
       description: |
-        The Amazon EC2 instance type to use for all instances in the fleet. For multi-location fleets, the instance type must be available in the home region and all remote locations. Instance type determines the computing resources and processing power that's available to host your game servers. This includes including CPU, memory, storage, and networking capacity. By default, Amazon GameLift Servers selects an instance type that fits the needs of your container groups and is available in all selected fleet locations. You can also choose to manually set this parameter. See Amazon Elastic Compute Cloud Instance Types for detailed descriptions of Amazon EC2 instance types. You can't update this fleet property later.
+        The Amazon EC2 instance type to use for all instances in the fleet. For multi-location fleets, the instance type must be available in the home region and all remote locations. Instance type determines the computing resources and processing power that's available to host your game servers. This includes including CPU, memory, storage, and networking capacity. By default, Amazon GameLift Servers uses the c5.large instance type. If this instance type does not have sufficient resources for your container groups, you can choose a different instance type that better fits your needs. See Amazon Elastic Compute Cloud Instance Types for detailed descriptions of Amazon EC2 instance types. You can't update this fleet property later.
     - name: BillingType
       value: "{{ BillingType }}"
       description: |

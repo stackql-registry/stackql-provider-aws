@@ -185,6 +185,7 @@ standbyReplicas,
 vectorOptions,
 collectionGroupName,
 encryptionConfig,
+deletionProtection,
 clientToken,
 region
 )
@@ -197,6 +198,7 @@ SELECT
 '{{ vectorOptions }}',
 '{{ collectionGroupName }}',
 '{{ encryptionConfig }}',
+'{{ deletionProtection }}',
 '{{ clientToken }}',
 '{{ region }}'
 RETURNING
@@ -251,6 +253,11 @@ create_collection_detail
       value:
         aWSOwnedKey: {{ aWSOwnedKey }}
         kmsKeyArn: "{{ kmsKeyArn }}"
+    - name: deletionProtection
+      value: "{{ deletionProtection }}"
+      description: |
+        Indicates whether to enable deletion protection for the collection. When set to ENABLED, the collection cannot be deleted.
+      valid_values: ['ENABLED', 'DISABLED']
     - name: clientToken
       value: "{{ clientToken }}"
       description: |
@@ -279,6 +286,7 @@ SET
 id = '{{ id }}',
 description = '{{ description }}',
 vectorOptions = '{{ vectorOptions }}',
+deletionProtection = '{{ deletionProtection }}',
 clientToken = '{{ clientToken }}'
 WHERE 
 region = '{{ region }}' --required

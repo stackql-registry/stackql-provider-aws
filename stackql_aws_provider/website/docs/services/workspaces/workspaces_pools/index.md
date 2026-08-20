@@ -84,28 +84,28 @@ The following methods are available for this resource:
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>Describes the specified WorkSpaces Pools.</td>
+    <td>End of support notice: On December 31, 2027, Amazon Web Services will end support for Amazon WorkSpaces Pools. After December 31, 2027, you will no longer be able to access the Amazon WorkSpaces Pools console or Amazon WorkSpaces Pools resources. For more information, see Amazon WorkSpaces Pools end of support. Describes the specified WorkSpaces Pools.</td>
 </tr>
 <tr>
     <td><a href="#create_workspaces_pool"><CopyableCode code="create_workspaces_pool" /></a></td>
     <td><CopyableCode code="insert" /></td>
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-PoolName"><code>PoolName</code></a>, <a href="#parameter-Description"><code>Description</code></a>, <a href="#parameter-BundleId"><code>BundleId</code></a>, <a href="#parameter-DirectoryId"><code>DirectoryId</code></a>, <a href="#parameter-Capacity"><code>Capacity</code></a></td>
     <td></td>
-    <td>Creates a pool of WorkSpaces.</td>
+    <td>End of support notice: On December 31, 2027, Amazon Web Services will end support for Amazon WorkSpaces Pools. After December 31, 2027, you will no longer be able to access the Amazon WorkSpaces Pools console or Amazon WorkSpaces Pools resources. For more information, see Amazon WorkSpaces Pools end of support. Creates a pool of WorkSpaces.</td>
 </tr>
 <tr>
     <td><a href="#update_workspaces_pool"><CopyableCode code="update_workspaces_pool" /></a></td>
     <td><CopyableCode code="update" /></td>
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-PoolId"><code>PoolId</code></a></td>
     <td></td>
-    <td>Updates the specified pool.</td>
+    <td>End of support notice: On December 31, 2027, Amazon Web Services will end support for Amazon WorkSpaces Pools. After December 31, 2027, you will no longer be able to access the Amazon WorkSpaces Pools console or Amazon WorkSpaces Pools resources. For more information, see Amazon WorkSpaces Pools end of support. Updates the specified pool.</td>
 </tr>
 <tr>
     <td><a href="#terminate_workspaces_pool"><CopyableCode code="terminate_workspaces_pool" /></a></td>
     <td><CopyableCode code="delete" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>Terminates the specified pool.</td>
+    <td>End of support notice: On December 31, 2027, Amazon Web Services will end support for Amazon WorkSpaces Pools. After December 31, 2027, you will no longer be able to access the Amazon WorkSpaces Pools console or Amazon WorkSpaces Pools resources. For more information, see Amazon WorkSpaces Pools end of support. Terminates the specified pool.</td>
 </tr>
 </tbody>
 </table>
@@ -141,7 +141,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 >
 <TabItem value="describe_workspaces_pools">
 
-Describes the specified WorkSpaces Pools.
+End of support notice: On December 31, 2027, Amazon Web Services will end support for Amazon WorkSpaces Pools. After December 31, 2027, you will no longer be able to access the Amazon WorkSpaces Pools console or Amazon WorkSpaces Pools resources. For more information, see Amazon WorkSpaces Pools end of support. Describes the specified WorkSpaces Pools.
 
 ```sql
 SELECT
@@ -166,7 +166,7 @@ WHERE region = '{{ region }}' -- required
 >
 <TabItem value="create_workspaces_pool">
 
-Creates a pool of WorkSpaces.
+End of support notice: On December 31, 2027, Amazon Web Services will end support for Amazon WorkSpaces Pools. After December 31, 2027, you will no longer be able to access the Amazon WorkSpaces Pools console or Amazon WorkSpaces Pools resources. For more information, see Amazon WorkSpaces Pools end of support. Creates a pool of WorkSpaces.
 
 ```sql
 INSERT INTO aws.workspaces.workspaces_pools (
@@ -266,7 +266,7 @@ workspaces_pool
 >
 <TabItem value="update_workspaces_pool">
 
-Updates the specified pool.
+End of support notice: On December 31, 2027, Amazon Web Services will end support for Amazon WorkSpaces Pools. After December 31, 2027, you will no longer be able to access the Amazon WorkSpaces Pools console or Amazon WorkSpaces Pools resources. For more information, see Amazon WorkSpaces Pools end of support. Updates the specified pool.
 
 ```sql
 UPDATE aws.workspaces.workspaces_pools
@@ -299,7 +299,7 @@ workspaces_pool;
 >
 <TabItem value="terminate_workspaces_pool">
 
-Terminates the specified pool.
+End of support notice: On December 31, 2027, Amazon Web Services will end support for Amazon WorkSpaces Pools. After December 31, 2027, you will no longer be able to access the Amazon WorkSpaces Pools console or Amazon WorkSpaces Pools resources. For more information, see Amazon WorkSpaces Pools end of support. Terminates the specified pool.
 
 ```sql
 DELETE FROM aws.workspaces.workspaces_pools

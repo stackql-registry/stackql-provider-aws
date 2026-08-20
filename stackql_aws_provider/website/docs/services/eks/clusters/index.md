@@ -126,6 +126,21 @@ The following fields are returned by `SELECT` queries:
     <td>The identity provider information for the cluster.</td>
 </tr>
 <tr>
+    <td><CopyableCode code="kube_api_server_config" /></td>
+    <td><code>object</code></td>
+    <td>The Kubernetes API server configuration for the cluster.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="kube_controller_manager_config" /></td>
+    <td><code>object</code></td>
+    <td>The Kubernetes controller manager configuration for the cluster.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="kube_scheduler_config" /></td>
+    <td><code>object</code></td>
+    <td>The Kubernetes scheduler configuration for the cluster.</td>
+</tr>
+<tr>
     <td><CopyableCode code="kubernetes_network_config" /></td>
     <td><code>object</code></td>
     <td>The Kubernetes network configuration for the cluster.</td>
@@ -352,6 +367,9 @@ encryption_config,
 endpoint,
 health,
 identity,
+kube_api_server_config,
+kube_controller_manager_config,
+kube_scheduler_config,
 kubernetes_network_config,
 logging,
 outpost_config,
@@ -424,6 +442,9 @@ computeConfig,
 storageConfig,
 deletionProtection,
 controlPlaneScalingConfig,
+kubeApiServerConfig,
+kubeSchedulerConfig,
+kubeControllerManagerConfig,
 region
 )
 SELECT 
@@ -446,6 +467,9 @@ SELECT
 '{{ storageConfig }}',
 {{ deletionProtection }},
 '{{ controlPlaneScalingConfig }}',
+'{{ kubeApiServerConfig }}',
+'{{ kubeSchedulerConfig }}',
+'{{ kubeControllerManagerConfig }}',
 '{{ region }}'
 RETURNING
 cluster
@@ -501,6 +525,7 @@ cluster
         endpointPrivateAccess: {{ endpointPrivateAccess }}
         publicAccessCidrs:
           - "{{ publicAccessCidrs }}"
+        controlPlaneEgressMode: "{{ controlPlaneEgressMode }}"
     - name: kubernetesNetworkConfig
       description: |
         The Kubernetes network configuration for the cluster.
@@ -536,6 +561,10 @@ cluster
         controlPlaneInstanceType: "{{ controlPlaneInstanceType }}"
         controlPlanePlacement:
           groupName: "{{ groupName }}"
+          spreadLevel: "{{ spreadLevel }}"
+        etcdInstanceType: "{{ etcdInstanceType }}"
+        etcdPlacement:
+          spreadLevel: "{{ spreadLevel }}"
     - name: accessConfig
       description: |
         The access configuration information for the cluster.
@@ -583,6 +612,30 @@ cluster
         The control plane scaling tier configuration. For more information, see EKS Provisioned Control Plane in the Amazon EKS User Guide.
       value:
         tier: "{{ tier }}"
+    - name: kubeApiServerConfig
+      description: |
+        The configuration for the Kubernetes API server on an Amazon EKS cluster.
+      value:
+        eventTtl: "{{ eventTtl }}"
+        serviceNodePortRange:
+          minPort: {{ minPort }}
+          maxPort: {{ maxPort }}
+    - name: kubeSchedulerConfig
+      description: |
+        The configuration for the Kubernetes scheduler on an Amazon EKS cluster.
+      value:
+        nodeResourcesFit:
+          scoringStrategy:
+            type_: "{{ type_ }}"
+            resources:
+              - name: "{{ name }}"
+                weight: {{ weight }}
+    - name: kubeControllerManagerConfig
+      description: |
+        The configuration for the Kubernetes controller manager on an Amazon EKS cluster.
+      value:
+        horizontalPodAutoscalerControllerConfig:
+          horizontalPodAutoscalerSyncPeriod: "{{ horizontalPodAutoscalerSyncPeriod }}"
     - name: connectorConfig
       description: |
         The configuration sent to a cluster for configuration.
@@ -621,7 +674,10 @@ kubernetesNetworkConfig = '{{ kubernetesNetworkConfig }}',
 storageConfig = '{{ storageConfig }}',
 remoteNetworkConfig = '{{ remoteNetworkConfig }}',
 deletionProtection = {{ deletionProtection }},
-controlPlaneScalingConfig = '{{ controlPlaneScalingConfig }}'
+controlPlaneScalingConfig = '{{ controlPlaneScalingConfig }}',
+kubeApiServerConfig = '{{ kubeApiServerConfig }}',
+kubeSchedulerConfig = '{{ kubeSchedulerConfig }}',
+kubeControllerManagerConfig = '{{ kubeControllerManagerConfig }}'
 WHERE 
 name = '{{ name }}' --required
 AND region = '{{ region }}' --required

@@ -71,6 +71,11 @@ The following fields are returned by `SELECT` queries:
     <td>The error from the protected job.</td>
 </tr>
 <tr>
+    <td><CopyableCode code="job_compute_payer_account_id" /></td>
+    <td><code>string</code></td>
+    <td>The account ID of the member that pays for the job compute costs. (pattern: &lt;code&gt;\d+&lt;/code&gt;)</td>
+</tr>
+<tr>
     <td><CopyableCode code="job_parameters" /></td>
     <td><code>object</code></td>
     <td>The job parameters for the protected job.</td>
@@ -128,6 +133,11 @@ The following fields are returned by `SELECT` queries:
     <td><CopyableCode code="create_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time the protected job was created.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="job_compute_payer_account_id" /></td>
+    <td><code>string</code></td>
+    <td>The account ID of the member that pays for the job compute costs. (pattern: &lt;code&gt;\d+&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="membership_arn" /></td>
@@ -258,6 +268,7 @@ id,
 compute_configuration,
 create_time,
 error,
+job_compute_payer_account_id,
 job_parameters,
 membership_arn,
 membership_id,
@@ -280,6 +291,7 @@ Lists protected jobs, sorted by most recent job.
 SELECT
 id,
 create_time,
+job_compute_payer_account_id,
 membership_arn,
 membership_id,
 receiver_configurations,

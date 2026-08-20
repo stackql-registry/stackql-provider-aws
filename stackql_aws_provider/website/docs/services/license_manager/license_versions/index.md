@@ -168,6 +168,7 @@ ConsumptionConfiguration,
 Status,
 ClientToken,
 SourceVersion,
+ResetUsage,
 region
 )
 SELECT 
@@ -183,6 +184,7 @@ SELECT
 '{{ Status }}',
 '{{ ClientToken }}' /* required */,
 '{{ SourceVersion }}',
+{{ ResetUsage }},
 '{{ region }}'
 RETURNING
 license_arn,
@@ -266,6 +268,10 @@ version
       value: "{{ SourceVersion }}"
       description: |
         Current version of the license.
+    - name: ResetUsage
+      value: {{ ResetUsage }}
+      description: |
+        Specifies whether to reset the license usage for the new license version. If you don't specify a value, the license usage is not reset.
 `}</CodeBlock>
 
 </TabItem>

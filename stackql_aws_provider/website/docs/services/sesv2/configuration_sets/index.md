@@ -78,7 +78,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="suppression_options" /></td>
     <td><code>object</code></td>
-    <td>An object that contains information about the suppression list preferences for your account.</td>
+    <td>An object that contains information about the suppression list preferences for your account or for a specific tenant.</td>
 </tr>
 <tr>
     <td><CopyableCode code="tags" /></td>
@@ -195,7 +195,7 @@ The following methods are available for this resource:
     <td><CopyableCode code="exec" /></td>
     <td><a href="#parameter-configuration_set_name"><code>configuration_set_name</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>Specify the account suppression list preferences for a configuration set.</td>
+    <td>Specify the suppression list preferences for a configuration set. You can also use this operation to specify a SuppressionScope to override the suppression scope of the tenant or account for emails sent using this configuration set.</td>
 </tr>
 <tr>
     <td><a href="#put_configuration_set_tracking_options"><CopyableCode code="put_configuration_set_tracking_options" /></a></td>
@@ -379,10 +379,11 @@ SELECT
           Value: "{{ Value }}"
     - name: SuppressionOptions
       description: |
-        An object that contains information about the suppression list preferences for your account.
+        An object that contains information about the suppression list preferences for your account or for a specific tenant.
       value:
         SuppressedReasons:
           - "{{ SuppressedReasons }}"
+        SuppressionScope: "{{ SuppressionScope }}"
         ValidationOptions:
           ConditionThreshold:
             ConditionThresholdEnabled: "{{ ConditionThresholdEnabled }}"
@@ -515,7 +516,7 @@ EXEC aws.sesv2.configuration_sets.put_configuration_set_sending_options
 </TabItem>
 <TabItem value="put_configuration_set_suppression_options">
 
-Specify the account suppression list preferences for a configuration set.
+Specify the suppression list preferences for a configuration set. You can also use this operation to specify a SuppressionScope to override the suppression scope of the tenant or account for emails sent using this configuration set.
 
 ```sql
 EXEC aws.sesv2.configuration_sets.put_configuration_set_suppression_options 
@@ -523,6 +524,7 @@ EXEC aws.sesv2.configuration_sets.put_configuration_set_suppression_options
 @region='{{ region }}' --required 
 @@json=
 '{
+"SuppressionScope": "{{ SuppressionScope }}", 
 "SuppressedReasons": "{{ SuppressedReasons }}", 
 "ValidationOptions": "{{ ValidationOptions }}"
 }'

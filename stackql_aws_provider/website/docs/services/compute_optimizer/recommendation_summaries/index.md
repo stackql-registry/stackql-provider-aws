@@ -82,7 +82,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="recommendation_resource_type" /></td>
     <td><code>string</code></td>
-    <td>The resource type that the recommendation summary applies to. (Ec2Instance, AutoScalingGroup, EbsVolume, LambdaFunction, EcsService, License, RdsDBInstance, RdsDBInstanceStorage, AuroraDBClusterStorage, NatGateway)</td>
+    <td>The resource type that the recommendation summary applies to. (Ec2Instance, AutoScalingGroup, EbsVolume, LambdaFunction, EcsService, License, RdsDBInstance, RdsDBInstanceStorage, AuroraDBClusterStorage, NatGateway, DynamoDBTable, ElastiCacheCluster, MemoryDBCluster, DocumentDBCluster, WorkSpaces, SageMakerEndpoint)</td>
 </tr>
 <tr>
     <td><CopyableCode code="savings_opportunity" /></td>

@@ -86,7 +86,7 @@ The following methods are available for this resource:
     <td><CopyableCode code="exec" /></td>
     <td><a href="#parameter-project_id"><code>project_id</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-assetIds"><code>assetIds</code></a></td>
     <td></td>
-    <td>Associates a group (batch) of assets with an IoT SiteWise Monitor project.</td>
+    <td>The IoT SiteWise Monitor feature will no longer be open to new customers starting November 7, 2025. If you would like to use the IoT SiteWise Monitor feature, sign up prior to that date. Existing customers can continue to use the service as normal. For more information, see IoT SiteWise Monitor availability change. Associates a group (batch) of assets with an IoT SiteWise Monitor project.</td>
 </tr>
 <tr>
     <td><a href="#batch_disassociate_project_assets"><CopyableCode code="batch_disassociate_project_assets" /></a></td>
@@ -171,7 +171,7 @@ AND maxResults = '{{ maxResults }}'
 >
 <TabItem value="batch_associate_project_assets">
 
-Associates a group (batch) of assets with an IoT SiteWise Monitor project.
+The IoT SiteWise Monitor feature will no longer be open to new customers starting November 7, 2025. If you would like to use the IoT SiteWise Monitor feature, sign up prior to that date. Existing customers can continue to use the service as normal. For more information, see IoT SiteWise Monitor availability change. Associates a group (batch) of assets with an IoT SiteWise Monitor project.
 
 ```sql
 EXEC aws.iotsitewise.project_assets.batch_associate_project_assets 

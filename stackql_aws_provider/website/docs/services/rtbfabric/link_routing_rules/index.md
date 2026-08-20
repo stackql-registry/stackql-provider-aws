@@ -53,7 +53,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="conditions" /></td>
     <td><code>object</code></td>
-    <td>Conditions bag for a routing rule. All non-null fields must match (AND logic). At least one field must be set (enforced by CP).</td>
+    <td>The conditions for a routing rule. All specified fields must match for the rule to apply (AND logic). At least one condition field must be set.</td>
 </tr>
 <tr>
     <td><CopyableCode code="created_at" /></td>
@@ -112,7 +112,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="conditions" /></td>
     <td><code>object</code></td>
-    <td>Conditions bag for a routing rule. All non-null fields must match (AND logic). At least one field must be set (enforced by CP).</td>
+    <td>The conditions for a routing rule. All specified fields must match for the rule to apply (AND logic). At least one condition field must be set.</td>
 </tr>
 <tr>
     <td><CopyableCode code="created_at" /></td>
@@ -359,7 +359,7 @@ status
         WAF-style evaluation priority. Lower number = evaluated first (priority 1 before 10). Gaps are allowed (1, 10, 20 is valid). Must be between 1 and 1000 inclusive. Uniqueness per link among non-deleted rules is enforced at the API layer (HTTP 409 on conflict).
     - name: conditions
       description: |
-        Conditions bag for a routing rule. All non-null fields must match (AND logic). At least one field must be set (enforced by CP).
+        The conditions for a routing rule. All specified fields must match for the rule to apply (AND logic). At least one condition field must be set.
       value:
         hostHeader: "{{ hostHeader }}"
         hostHeaderWildcard: "{{ hostHeaderWildcard }}"

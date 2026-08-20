@@ -88,7 +88,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="einvoice_delivery_preference_status" /></td>
     <td><code>string</code></td>
-    <td>The current status of the e-invoice delivery preference. (PENDING_VERIFICATION, TEST_INITIALIZED, TEST_INITIALIZATION_FAILED, TEST_FAILED, ACTIVE, SUSPENDED)</td>
+    <td>The current status of the e-invoice delivery preference. (PENDING_VERIFICATION, VALIDATED, TEST_INITIALIZED, TEST_INITIALIZATION_FAILED, TEST_FAILED, ACTIVE, SUSPENDED)</td>
 </tr>
 <tr>
     <td><CopyableCode code="einvoice_delivery_preference_status_reason" /></td>
@@ -133,7 +133,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="purchase_order_retrieval_preference_status" /></td>
     <td><code>string</code></td>
-    <td>The current status of the purchase order retrieval preference. (PENDING_VERIFICATION, TEST_INITIALIZED, TEST_INITIALIZATION_FAILED, TEST_FAILED, ACTIVE, SUSPENDED)</td>
+    <td>The current status of the purchase order retrieval preference. (PENDING_VERIFICATION, VALIDATED, TEST_INITIALIZED, TEST_INITIALIZATION_FAILED, TEST_FAILED, ACTIVE, SUSPENDED)</td>
 </tr>
 <tr>
     <td><CopyableCode code="purchase_order_retrieval_preference_status_reason" /></td>
@@ -207,7 +207,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="einvoice_delivery_preference_status" /></td>
     <td><code>string</code></td>
-    <td>The current status of the e-invoice delivery preference in this summary. (PENDING_VERIFICATION, TEST_INITIALIZED, TEST_INITIALIZATION_FAILED, TEST_FAILED, ACTIVE, SUSPENDED)</td>
+    <td>The current status of the e-invoice delivery preference in this summary. (PENDING_VERIFICATION, VALIDATED, TEST_INITIALIZED, TEST_INITIALIZATION_FAILED, TEST_FAILED, ACTIVE, SUSPENDED)</td>
 </tr>
 <tr>
     <td><CopyableCode code="einvoice_delivery_preference_status_reason" /></td>
@@ -237,7 +237,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="purchase_order_retrieval_preference_status" /></td>
     <td><code>string</code></td>
-    <td>The current status of the purchase order retrieval preference in this summary. (PENDING_VERIFICATION, TEST_INITIALIZED, TEST_INITIALIZATION_FAILED, TEST_FAILED, ACTIVE, SUSPENDED)</td>
+    <td>The current status of the purchase order retrieval preference in this summary. (PENDING_VERIFICATION, VALIDATED, TEST_INITIALIZED, TEST_INITIALIZATION_FAILED, TEST_FAILED, ACTIVE, SUSPENDED)</td>
 </tr>
 <tr>
     <td><CopyableCode code="purchase_order_retrieval_preference_status_reason" /></td>
@@ -325,6 +325,20 @@ The following methods are available for this resource:
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td></td>
     <td>This feature API is subject to changing at any time. For more information, see the Amazon Web Services Service Terms (Betas and Previews). Deletes an existing procurement portal preference. This action cannot be undone. Active e-invoice delivery and PO retrieval configurations will be terminated.</td>
+</tr>
+<tr>
+    <td><a href="#send_procurement_portal_validation"><CopyableCode code="send_procurement_portal_validation" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-ProcurementPortalPreferenceArn"><code>ProcurementPortalPreferenceArn</code></a></td>
+    <td></td>
+    <td>This feature API is subject to changing at any time. For more information, see the Amazon Web Services Service Terms (Betas and Previews). Sends a validation request for a procurement portal preference. This operation initiates the validation process by issuing a validation code that confirms ownership and connectivity of the configured procurement portal endpoint. Use VerifyProcurementPortalValidation to submit the received code and complete validation.</td>
+</tr>
+<tr>
+    <td><a href="#verify_procurement_portal_validation"><CopyableCode code="verify_procurement_portal_validation" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-ProcurementPortalPreferenceArn"><code>ProcurementPortalPreferenceArn</code></a>, <a href="#parameter-Code"><code>Code</code></a></td>
+    <td></td>
+    <td>This feature API is subject to changing at any time. For more information, see the Amazon Web Services Service Terms (Betas and Previews). Submits a validation code to complete the validation of a procurement portal preference. Use this operation after calling SendProcurementPortalValidation to confirm ownership and connectivity of the configured procurement portal endpoint.</td>
 </tr>
 </tbody>
 </table>
@@ -598,7 +612,8 @@ ProcurementPortalPreferenceArn = '{{ ProcurementPortalPreferenceArn }}',
 EinvoiceDeliveryPreferenceStatus = '{{ EinvoiceDeliveryPreferenceStatus }}',
 EinvoiceDeliveryPreferenceStatusReason = '{{ EinvoiceDeliveryPreferenceStatusReason }}',
 PurchaseOrderRetrievalPreferenceStatus = '{{ PurchaseOrderRetrievalPreferenceStatus }}',
-PurchaseOrderRetrievalPreferenceStatusReason = '{{ PurchaseOrderRetrievalPreferenceStatusReason }}'
+PurchaseOrderRetrievalPreferenceStatusReason = '{{ PurchaseOrderRetrievalPreferenceStatusReason }}',
+ClientToken = '{{ ClientToken }}'
 WHERE 
 region = '{{ region }}' --required
 AND ProcurementPortalPreferenceArn = '{{ ProcurementPortalPreferenceArn }}' --required
@@ -632,7 +647,8 @@ TestEnvPreference = '{{ TestEnvPreference }}',
 EinvoiceDeliveryEnabled = {{ EinvoiceDeliveryEnabled }},
 EinvoiceDeliveryPreference = '{{ EinvoiceDeliveryPreference }}',
 PurchaseOrderRetrievalEnabled = {{ PurchaseOrderRetrievalEnabled }},
-Contacts = '{{ Contacts }}'
+Contacts = '{{ Contacts }}',
+ClientToken = '{{ ClientToken }}'
 WHERE 
 region = '{{ region }}' --required
 AND ProcurementPortalPreferenceArn = '{{ ProcurementPortalPreferenceArn }}' --required
@@ -661,6 +677,49 @@ This feature API is subject to changing at any time. For more information, see t
 ```sql
 DELETE FROM aws.invoicing.procurement_portal_preferences
 WHERE region = '{{ region }}' --required
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="send_procurement_portal_validation"
+    values={[
+        { label: 'send_procurement_portal_validation', value: 'send_procurement_portal_validation' },
+        { label: 'verify_procurement_portal_validation', value: 'verify_procurement_portal_validation' }
+    ]}
+>
+<TabItem value="send_procurement_portal_validation">
+
+This feature API is subject to changing at any time. For more information, see the Amazon Web Services Service Terms (Betas and Previews). Sends a validation request for a procurement portal preference. This operation initiates the validation process by issuing a validation code that confirms ownership and connectivity of the configured procurement portal endpoint. Use VerifyProcurementPortalValidation to submit the received code and complete validation.
+
+```sql
+EXEC aws.invoicing.procurement_portal_preferences.send_procurement_portal_validation 
+@region='{{ region }}' --required 
+@@json=
+'{
+"ProcurementPortalPreferenceArn": "{{ ProcurementPortalPreferenceArn }}", 
+"ClientToken": "{{ ClientToken }}"
+}'
+;
+```
+</TabItem>
+<TabItem value="verify_procurement_portal_validation">
+
+This feature API is subject to changing at any time. For more information, see the Amazon Web Services Service Terms (Betas and Previews). Submits a validation code to complete the validation of a procurement portal preference. Use this operation after calling SendProcurementPortalValidation to confirm ownership and connectivity of the configured procurement portal endpoint.
+
+```sql
+EXEC aws.invoicing.procurement_portal_preferences.verify_procurement_portal_validation 
+@region='{{ region }}' --required 
+@@json=
+'{
+"ProcurementPortalPreferenceArn": "{{ ProcurementPortalPreferenceArn }}", 
+"Code": "{{ Code }}", 
+"ClientToken": "{{ ClientToken }}"
+}'
 ;
 ```
 </TabItem>

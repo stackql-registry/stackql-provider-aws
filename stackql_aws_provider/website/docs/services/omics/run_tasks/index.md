@@ -130,6 +130,11 @@ The following fields are returned by `SELECT` queries:
     <td><code>string</code></td>
     <td>The task's ID. (pattern: &lt;code&gt;&#91;0-9&#93;+&lt;/code&gt;)</td>
 </tr>
+<tr>
+    <td><CopyableCode code="uuid" /></td>
+    <td><code>string</code></td>
+    <td>The universally unique identifier (UUID) for the workflow task. (pattern: &lt;code&gt;&#91;\p&#123;L&#125;||\p&#123;M&#125;||\p&#123;Z&#125;||\p&#123;S&#125;||\p&#123;N&#125;||\p&#123;P&#125;&#93;+&lt;/code&gt;)</td>
+</tr>
 </tbody>
 </table>
 </TabItem>
@@ -203,6 +208,11 @@ The following fields are returned by `SELECT` queries:
     <td><CopyableCode code="task_id" /></td>
     <td><code>string</code></td>
     <td>The task's ID. (pattern: &lt;code&gt;&#91;0-9&#93;+&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="uuid" /></td>
+    <td><code>string</code></td>
+    <td>The universally unique identifier (UUID) for the workflow task. (pattern: &lt;code&gt;&#91;\p&#123;L&#125;||\p&#123;M&#125;||\p&#123;Z&#125;||\p&#123;S&#125;||\p&#123;N&#125;||\p&#123;P&#125;&#93;+&lt;/code&gt;)</td>
 </tr>
 </tbody>
 </table>
@@ -317,7 +327,8 @@ start_time,
 status,
 status_message,
 stop_time,
-task_id
+task_id,
+uuid
 FROM aws.omics.run_tasks
 WHERE id = '{{ id }}' -- required
 AND task_id = '{{ task_id }}' -- required
@@ -342,7 +353,8 @@ memory,
 start_time,
 status,
 stop_time,
-task_id
+task_id,
+uuid
 FROM aws.omics.run_tasks
 WHERE id = '{{ id }}' -- required
 AND region = '{{ region }}' -- required

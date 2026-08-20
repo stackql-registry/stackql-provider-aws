@@ -78,7 +78,7 @@ The following methods are available for this resource:
     <td><a href="#describe_logging_options"><CopyableCode code="describe_logging_options" /></a></td>
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
-    <td></td>
+    <td><a href="#parameter-workspaceName"><code>workspaceName</code></a></td>
     <td>Retrieves the current IoT SiteWise logging options.</td>
 </tr>
 <tr>
@@ -109,6 +109,11 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     <td><code>string</code></td>
     <td>AWS region (default: us-east-1)</td>
 </tr>
+<tr id="parameter-workspaceName">
+    <td><CopyableCode code="workspaceName" /></td>
+    <td><code>string</code></td>
+    <td>The name of the workspace.</td>
+</tr>
 </tbody>
 </table>
 
@@ -129,6 +134,7 @@ SELECT
 level
 FROM aws.iotsitewise.logging_options
 WHERE region = '{{ region }}' -- required
+AND workspaceName = '{{ workspaceName }}'
 ;
 ```
 </TabItem>
@@ -150,7 +156,8 @@ Sets logging options for IoT SiteWise.
 ```sql
 REPLACE aws.iotsitewise.logging_options
 SET 
-loggingOptions = '{{ loggingOptions }}'
+loggingOptions = '{{ loggingOptions }}',
+workspaceName = '{{ workspaceName }}'
 WHERE 
 region = '{{ region }}' --required
 AND loggingOptions = '{{ loggingOptions }}' --required;

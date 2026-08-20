@@ -67,7 +67,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="data_type" /></td>
     <td><code>string</code></td>
-    <td>The data type of the property. (STRING, INTEGER, DOUBLE, BOOLEAN, STRUCT)</td>
+    <td>The data type of the property. (STRING, INTEGER, DOUBLE, BOOLEAN, STRUCT, VIDEO, ANNOTATION, JSON)</td>
 </tr>
 <tr>
     <td><CopyableCode code="data_type_spec" /></td>

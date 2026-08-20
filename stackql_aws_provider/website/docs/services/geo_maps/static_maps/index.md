@@ -99,7 +99,7 @@ The following methods are available for this resource:
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-height"><code>height</code></a>, <a href="#parameter-file_name"><code>file_name</code></a>, <a href="#parameter-width"><code>width</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td><a href="#parameter-bounding-box"><code>bounding-box</code></a>, <a href="#parameter-bounded-positions"><code>bounded-positions</code></a>, <a href="#parameter-center"><code>center</code></a>, <a href="#parameter-color-scheme"><code>color-scheme</code></a>, <a href="#parameter-compact-overlay"><code>compact-overlay</code></a>, <a href="#parameter-crop-labels"><code>crop-labels</code></a>, <a href="#parameter-geojson-overlay"><code>geojson-overlay</code></a>, <a href="#parameter-key"><code>key</code></a>, <a href="#parameter-label-size"><code>label-size</code></a>, <a href="#parameter-lang"><code>lang</code></a>, <a href="#parameter-padding"><code>padding</code></a>, <a href="#parameter-political-view"><code>political-view</code></a>, <a href="#parameter-pois"><code>pois</code></a>, <a href="#parameter-radius"><code>radius</code></a>, <a href="#parameter-scale-unit"><code>scale-unit</code></a>, <a href="#parameter-style"><code>style</code></a>, <a href="#parameter-zoom"><code>zoom</code></a></td>
-    <td>This operation is not supported in ap-southeast-1 and ap-southeast-5 regions for GrabMaps customers. GetStaticMap provides high-quality static map images with customizable options. You can modify the map's appearance and overlay additional information. It's an ideal solution for applications requiring tailored static map snapshots. For more information, see the following topics in the Amazon Location Service Developer Guide: Static maps Customize static maps Overlay on the static map</td>
+    <td>GetStaticMap provides high-quality static map images with customizable options. You can modify the map's appearance and overlay additional information. It's an ideal solution for applications requiring tailored static map snapshots. Not supported in ap-southeast-1 and ap-southeast-5 regions for GrabMaps customers. For more information, see the following topics in the Amazon Location Service Developer Guide: Static maps Customize static maps Overlay on the static map</td>
 </tr>
 </tbody>
 </table>
@@ -235,7 +235,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 >
 <TabItem value="get_static_map">
 
-This operation is not supported in ap-southeast-1 and ap-southeast-5 regions for GrabMaps customers. GetStaticMap provides high-quality static map images with customizable options. You can modify the map's appearance and overlay additional information. It's an ideal solution for applications requiring tailored static map snapshots. For more information, see the following topics in the Amazon Location Service Developer Guide: Static maps Customize static maps Overlay on the static map
+GetStaticMap provides high-quality static map images with customizable options. You can modify the map's appearance and overlay additional information. It's an ideal solution for applications requiring tailored static map snapshots. Not supported in ap-southeast-1 and ap-southeast-5 regions for GrabMaps customers. For more information, see the following topics in the Amazon Location Service Developer Guide: Static maps Customize static maps Overlay on the static map
 
 ```sql
 SELECT

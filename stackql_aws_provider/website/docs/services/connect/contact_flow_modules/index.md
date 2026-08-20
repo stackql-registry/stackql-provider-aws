@@ -59,7 +59,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="content" /></td>
     <td><code>string</code></td>
-    <td>The JSON string that represents the content of the flow. For an example, see Example flow in Amazon Connect Flow language.</td>
+    <td>The JSON string that represents the content of the flow. For an example, see Example flow in Connect Customer Flow language.</td>
 </tr>
 <tr>
     <td><CopyableCode code="description" /></td>
@@ -172,7 +172,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="content" /></td>
     <td><code>string</code></td>
-    <td>The JSON string that represents the content of the flow. For an example, see Example flow in Amazon Connect Flow language.</td>
+    <td>The JSON string that represents the content of the flow. For an example, see Example flow in Connect Customer Flow language.</td>
 </tr>
 <tr>
     <td><CopyableCode code="description" /></td>
@@ -261,28 +261,28 @@ The following methods are available for this resource:
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-instance_id"><code>instance_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td><a href="#parameter-nextToken"><code>nextToken</code></a>, <a href="#parameter-maxResults"><code>maxResults</code></a>, <a href="#parameter-state"><code>state</code></a></td>
-    <td>Provides information about the flow modules for the specified Amazon Connect instance.</td>
+    <td>Provides information about the flow modules for the specified Connect Customer instance.</td>
 </tr>
 <tr>
     <td><a href="#search_contact_flow_modules"><CopyableCode code="search_contact_flow_modules" /></a></td>
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>Searches the flow modules in an Amazon Connect instance, with optional filtering.</td>
+    <td>Searches the flow modules in an Connect Customer instance, with optional filtering.</td>
 </tr>
 <tr>
     <td><a href="#create_contact_flow_module"><CopyableCode code="create_contact_flow_module" /></a></td>
     <td><CopyableCode code="insert" /></td>
     <td><a href="#parameter-instance_id"><code>instance_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>Creates a flow module for the specified Amazon Connect instance.</td>
+    <td>Creates a flow module for the specified Connect Customer instance.</td>
 </tr>
 <tr>
     <td><a href="#update_contact_flow_module_content"><CopyableCode code="update_contact_flow_module_content" /></a></td>
     <td><CopyableCode code="update" /></td>
     <td><a href="#parameter-instance_id"><code>instance_id</code></a>, <a href="#parameter-contact_flow_module_id"><code>contact_flow_module_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>Updates specified flow module for the specified Amazon Connect instance. Use the $SAVED alias in the request to describe the SAVED content of a Flow. For example, arn:aws:.../contact-flow/&#123;id&#125;:$SAVED. After a flow is published, $SAVED needs to be supplied to view saved content that has not been published.</td>
+    <td>Updates specified flow module for the specified Connect Customer instance. Use the $SAVED alias in the request to describe the SAVED content of a Flow. For example, arn:aws:.../contact-flow/&#123;id&#125;:$SAVED. After a flow is published, $SAVED needs to be supplied to view saved content that has not been published.</td>
 </tr>
 <tr>
     <td><a href="#delete_contact_flow_module"><CopyableCode code="delete_contact_flow_module" /></a></td>
@@ -322,7 +322,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-instance_id">
     <td><CopyableCode code="instance_id" /></td>
     <td><code>string</code></td>
-    <td>The identifier of the Amazon Connect instance. You can find the instance ID in the Amazon Resource Name (ARN) of the instance.</td>
+    <td>The identifier of the Connect Customer instance. You can find the instance ID in the Amazon Resource Name (ARN) of the instance.</td>
 </tr>
 <tr id="parameter-region">
     <td><CopyableCode code="region" /></td>
@@ -385,7 +385,7 @@ AND region = '{{ region }}' -- required
 </TabItem>
 <TabItem value="list_contact_flow_modules">
 
-Provides information about the flow modules for the specified Amazon Connect instance.
+Provides information about the flow modules for the specified Connect Customer instance.
 
 ```sql
 SELECT
@@ -404,7 +404,7 @@ AND state = '{{ state }}'
 </TabItem>
 <TabItem value="search_contact_flow_modules">
 
-Searches the flow modules in an Amazon Connect instance, with optional filtering.
+Searches the flow modules in an Connect Customer instance, with optional filtering.
 
 ```sql
 SELECT
@@ -440,7 +440,7 @@ WHERE region = '{{ region }}' -- required
 >
 <TabItem value="create_contact_flow_module">
 
-Creates a flow module for the specified Amazon Connect instance.
+Creates a flow module for the specified Connect Customer instance.
 
 ```sql
 INSERT INTO aws.connect.contact_flow_modules (
@@ -514,7 +514,7 @@ id
 >
 <TabItem value="update_contact_flow_module_content">
 
-Updates specified flow module for the specified Amazon Connect instance. Use the $SAVED alias in the request to describe the SAVED content of a Flow. For example, arn:aws:.../contact-flow/&#123;id&#125;:$SAVED. After a flow is published, $SAVED needs to be supplied to view saved content that has not been published.
+Updates specified flow module for the specified Connect Customer instance. Use the $SAVED alias in the request to describe the SAVED content of a Flow. For example, arn:aws:.../contact-flow/&#123;id&#125;:$SAVED. After a flow is published, $SAVED needs to be supplied to view saved content that has not been published.
 
 ```sql
 UPDATE aws.connect.contact_flow_modules

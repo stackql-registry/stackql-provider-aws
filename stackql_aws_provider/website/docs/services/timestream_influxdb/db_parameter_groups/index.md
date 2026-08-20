@@ -63,7 +63,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
-    <td>The Amazon Resource Name (ARN) of the DB parameter group. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:timestream\-influxdb:&#91;a-z0-9\-&#93;+:&#91;0-9&#93;&#123;12&#125;:(db\-instance|db\-cluster|db\-parameter\-group)/&#91;a-zA-Z0-9&#93;&#123;3,64&#125;&lt;/code&gt;)</td>
+    <td>The Amazon Resource Name (ARN) of the DB parameter group. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:timestream\-influxdb:&#91;a-z0-9\-&#93;+:&#91;0-9&#93;&#123;12&#125;:(db\-instance|db\-cluster|db\-parameter\-group|db\-backup)/&#91;a-zA-Z0-9&#93;&#123;3,64&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="description" /></td>
@@ -102,7 +102,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
-    <td>The Amazon Resource Name (ARN) of the DB parameter group. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:timestream\-influxdb:&#91;a-z0-9\-&#93;+:&#91;0-9&#93;&#123;12&#125;:(db\-instance|db\-cluster|db\-parameter\-group)/&#91;a-zA-Z0-9&#93;&#123;3,64&#125;&lt;/code&gt;)</td>
+    <td>The Amazon Resource Name (ARN) of the DB parameter group. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:timestream\-influxdb:&#91;a-z0-9\-&#93;+:&#91;0-9&#93;&#123;12&#125;:(db\-instance|db\-cluster|db\-parameter\-group|db\-backup)/&#91;a-zA-Z0-9&#93;&#123;3,64&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="description" /></td>
@@ -392,6 +392,8 @@ parameters
           hardDeleteDefaultDuration:
             durationType: "{{ durationType }}"
             value: {{ value }}
+          pluginRepositoryUrl: "{{ pluginRepositoryUrl }}"
+          pluginRepositorySecretArn: "{{ pluginRepositorySecretArn }}"
         InfluxDBv3Enterprise:
           queryFileLimit: {{ queryFileLimit }}
           queryLogSize: {{ queryLogSize }}
@@ -460,6 +462,8 @@ parameters
           hardDeleteDefaultDuration:
             durationType: "{{ durationType }}"
             value: {{ value }}
+          pluginRepositoryUrl: "{{ pluginRepositoryUrl }}"
+          pluginRepositorySecretArn: "{{ pluginRepositorySecretArn }}"
           ingestQueryInstances: {{ ingestQueryInstances }}
           queryOnlyInstances: {{ queryOnlyInstances }}
           dedicatedCompactor: {{ dedicatedCompactor }}

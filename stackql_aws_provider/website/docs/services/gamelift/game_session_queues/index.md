@@ -52,7 +52,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="custom_event_data" /></td>
     <td><code>string</code></td>
-    <td>Information that is added to all events that are related to this game session queue. (pattern: &lt;code&gt;&#91;\s\S&#93;*&lt;/code&gt;)</td>
+    <td>Information that is added to all events that are related to this game session queue. (pattern: &lt;code&gt;^&#91;\s\S&#93;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="destinations" /></td>
@@ -67,17 +67,17 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="game_session_queue_arn" /></td>
     <td><code>string</code></td>
-    <td>The Amazon Resource Name (ARN) that is assigned to a Amazon GameLift Servers game session queue resource and uniquely identifies it. ARNs are unique across all Regions. Format is arn:aws:gamelift:<code>&lt;region&gt;</code>::gamesessionqueue/&lt;queue name&gt;. In a Amazon GameLift Servers game session queue ARN, the resource ID matches the Name value. (pattern: &lt;code&gt;^arn:.*:gamesessionqueue\/&#91;a-zA-Z0-9-&#93;+&lt;/code&gt;)</td>
+    <td>The Amazon Resource Name (ARN) that is assigned to a Amazon GameLift Servers game session queue resource and uniquely identifies it. ARNs are unique across all Regions. Format is arn:aws:gamelift:<code>&lt;region&gt;</code>::gamesessionqueue/&lt;queue name&gt;. In a Amazon GameLift Servers game session queue ARN, the resource ID matches the Name value. (pattern: &lt;code&gt;^arn:.*:gamesessionqueue\/&#91;a-zA-Z0-9-&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
-    <td>A descriptive label that is associated with game session queue. Queue names must be unique within each Region. (pattern: &lt;code&gt;&#91;a-zA-Z0-9-&#93;+&lt;/code&gt;)</td>
+    <td>A descriptive label that is associated with game session queue. Queue names must be unique within each Region. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9-&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="notification_target" /></td>
     <td><code>string</code></td>
-    <td>An SNS topic ARN that is set up to receive game session placement notifications. See Setting up notifications for game session placement. (pattern: &lt;code&gt;&#91;a-zA-Z0-9:_-&#93;*(\.fifo)?&lt;/code&gt;)</td>
+    <td>An SNS topic ARN that is set up to receive game session placement notifications. See Setting up notifications for game session placement. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9:_-&#93;*(\.fifo)?$&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="player_latency_policies" /></td>

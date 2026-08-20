@@ -18,7 +18,7 @@ iam service documentation.
 
 :::info[Service Summary]
 
-total resources: __53__  
+total resources: __55__  
 
 :::
 
@@ -31,6 +31,7 @@ total resources: __53__
 <a href="/services/iam/account_aliases/">account_aliases</a><br />
 <a href="/services/iam/account_authorization_details/">account_authorization_details</a><br />
 <a href="/services/iam/account_password_policies/">account_password_policies</a><br />
+<a href="/services/iam/account_properties/">account_properties</a><br />
 <a href="/services/iam/account_summaries/">account_summaries</a><br />
 <a href="/services/iam/attached_group_policies/">attached_group_policies</a><br />
 <a href="/services/iam/attached_role_policies/">attached_role_policies</a><br />
@@ -63,6 +64,7 @@ total resources: __53__
 <a href="/services/iam/policy_versions/">policy_versions</a><br />
 <a href="/services/iam/role_policies/">role_policies</a><br />
 <a href="/services/iam/role_tags/">role_tags</a><br />
+<a href="/services/iam/role_template_versions/">role_template_versions</a><br />
 <a href="/services/iam/roles/">roles</a><br />
 <a href="/services/iam/saml_provider_tags/">saml_provider_tags</a><br />
 <a href="/services/iam/saml_providers/">saml_providers</a><br />

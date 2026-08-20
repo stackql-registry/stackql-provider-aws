@@ -370,7 +370,10 @@ UPDATE aws.mgn.source_servers
 SET 
 accountID = '{{ accountID }}',
 sourceServerID = '{{ sourceServerID }}',
-connectorAction = '{{ connectorAction }}'
+connectorAction = '{{ connectorAction }}',
+userProvidedID = '{{ userProvidedID }}',
+fqdnForActionFramework = '{{ fqdnForActionFramework }}',
+platform = '{{ platform }}'
 WHERE 
 region = '{{ region }}' --required
 AND sourceServerID = '{{ sourceServerID }}' --required

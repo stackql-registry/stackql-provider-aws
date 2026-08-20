@@ -73,7 +73,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="memory_id" /></td>
     <td><code>string</code></td>
-    <td>The identifier of the AgentCore Memory resource containing the event. (pattern: &lt;code&gt;&#91;a-zA-Z&#93;&#91;a-zA-Z0-9-_&#93;&#123;0,99&#125;-&#91;a-zA-Z0-9&#93;&#123;10&#125;&lt;/code&gt;)</td>
+    <td>The identifier of the AgentCore Memory resource containing the event. (pattern: &lt;code&gt;(arn:(aws|aws-cn|aws-us-gov):bedrock-agentcore:&#91;a-z0-9-&#93;+:&#91;0-9&#93;&#123;12&#125;:memory/)?&#91;a-zA-Z&#93;&#91;a-zA-Z0-9-_&#93;&#123;0,99&#125;-&#91;a-zA-Z0-9&#93;&#123;10&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="metadata" /></td>
@@ -127,7 +127,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="memory_id" /></td>
     <td><code>string</code></td>
-    <td>The identifier of the AgentCore Memory resource containing the event. (pattern: &lt;code&gt;&#91;a-zA-Z&#93;&#91;a-zA-Z0-9-_&#93;&#123;0,99&#125;-&#91;a-zA-Z0-9&#93;&#123;10&#125;&lt;/code&gt;)</td>
+    <td>The identifier of the AgentCore Memory resource containing the event. (pattern: &lt;code&gt;(arn:(aws|aws-cn|aws-us-gov):bedrock-agentcore:&#91;a-z0-9-&#93;+:&#91;0-9&#93;&#123;12&#125;:memory/)?&#91;a-zA-Z&#93;&#91;a-zA-Z0-9-_&#93;&#123;0,99&#125;-&#91;a-zA-Z0-9&#93;&#123;10&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="metadata" /></td>
@@ -315,6 +315,8 @@ payload,
 branch,
 clientToken,
 metadata,
+extractionMode,
+extractionConfig,
 memory_id,
 region
 )
@@ -326,6 +328,8 @@ SELECT
 '{{ branch }}',
 '{{ clientToken }}',
 '{{ metadata }}',
+'{{ extractionMode }}',
+'{{ extractionConfig }}',
 '{{ memory_id }}',
 '{{ region }}'
 RETURNING
@@ -357,6 +361,8 @@ event
               text: "{{ text }}"
             role: "{{ role }}"
           blob: "{{ blob }}"
+          json:
+            content: "{{ content }}"
     - name: branch
       description: |
         Contains information about a branch in an AgentCore Memory resource. Branches allow for organizing events into different conversation threads or paths.
@@ -367,6 +373,14 @@ event
       value: "{{ clientToken }}"
     - name: metadata
       value: "{{ metadata }}"
+    - name: extractionMode
+      value: "{{ extractionMode }}"
+      valid_values: ['SKIP']
+    - name: extractionConfig
+      description: |
+        The configuration for extraction behavior. Use this structure to specify namespace variable keys and their values for namespace substitution during long-term memory extraction.
+      value:
+        namespaceVariables: "{{ namespaceVariables }}"
 `}</CodeBlock>
 
 </TabItem>

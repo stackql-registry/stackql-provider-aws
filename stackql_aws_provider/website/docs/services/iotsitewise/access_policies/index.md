@@ -168,14 +168,14 @@ The following methods are available for this resource:
     <td><CopyableCode code="insert" /></td>
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-accessPolicyIdentity"><code>accessPolicyIdentity</code></a>, <a href="#parameter-accessPolicyResource"><code>accessPolicyResource</code></a>, <a href="#parameter-accessPolicyPermission"><code>accessPolicyPermission</code></a></td>
     <td></td>
-    <td>Creates an access policy that grants the specified identity (IAM Identity Center user, IAM Identity Center group, or IAM user) access to the specified IoT SiteWise Monitor portal or project resource. Support for access policies that use an SSO Group as the identity is not supported at this time.</td>
+    <td>The IoT SiteWise Monitor feature will no longer be open to new customers starting November 7, 2025. If you would like to use the IoT SiteWise Monitor feature, sign up prior to that date. Existing customers can continue to use the service as normal. For more information, see IoT SiteWise Monitor availability change. Creates an access policy that grants the specified identity (IAM Identity Center user, IAM Identity Center group, or IAM user) access to the specified IoT SiteWise Monitor portal or project resource. Support for access policies that use an SSO Group as the identity is not supported at this time.</td>
 </tr>
 <tr>
     <td><a href="#update_access_policy"><CopyableCode code="update_access_policy" /></a></td>
     <td><CopyableCode code="update" /></td>
     <td><a href="#parameter-access_policy_id"><code>access_policy_id</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-accessPolicyIdentity"><code>accessPolicyIdentity</code></a>, <a href="#parameter-accessPolicyResource"><code>accessPolicyResource</code></a>, <a href="#parameter-accessPolicyPermission"><code>accessPolicyPermission</code></a></td>
     <td></td>
-    <td>Updates an existing access policy that specifies an identity's access to an IoT SiteWise Monitor portal or project resource.</td>
+    <td>The IoT SiteWise Monitor feature will no longer be open to new customers starting November 7, 2025. If you would like to use the IoT SiteWise Monitor feature, sign up prior to that date. Existing customers can continue to use the service as normal. For more information, see IoT SiteWise Monitor availability change. Updates an existing access policy that specifies an identity's access to an IoT SiteWise Monitor portal or project resource.</td>
 </tr>
 <tr>
     <td><a href="#delete_access_policy"><CopyableCode code="delete_access_policy" /></a></td>
@@ -319,7 +319,7 @@ AND maxResults = '{{ maxResults }}'
 >
 <TabItem value="create_access_policy">
 
-Creates an access policy that grants the specified identity (IAM Identity Center user, IAM Identity Center group, or IAM user) access to the specified IoT SiteWise Monitor portal or project resource. Support for access policies that use an SSO Group as the identity is not supported at this time.
+The IoT SiteWise Monitor feature will no longer be open to new customers starting November 7, 2025. If you would like to use the IoT SiteWise Monitor feature, sign up prior to that date. Existing customers can continue to use the service as normal. For more information, see IoT SiteWise Monitor availability change. Creates an access policy that grants the specified identity (IAM Identity Center user, IAM Identity Center group, or IAM user) access to the specified IoT SiteWise Monitor portal or project resource. Support for access policies that use an SSO Group as the identity is not supported at this time.
 
 ```sql
 INSERT INTO aws.iotsitewise.access_policies (
@@ -394,7 +394,7 @@ access_policy_id
 >
 <TabItem value="update_access_policy">
 
-Updates an existing access policy that specifies an identity's access to an IoT SiteWise Monitor portal or project resource.
+The IoT SiteWise Monitor feature will no longer be open to new customers starting November 7, 2025. If you would like to use the IoT SiteWise Monitor feature, sign up prior to that date. Existing customers can continue to use the service as normal. For more information, see IoT SiteWise Monitor availability change. Updates an existing access policy that specifies an identity's access to an IoT SiteWise Monitor portal or project resource.
 
 ```sql
 UPDATE aws.iotsitewise.access_policies

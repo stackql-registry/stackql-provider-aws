@@ -201,6 +201,11 @@ The following fields are returned by `SELECT` queries:
     <td>The IAM role that Amazon EMR assumes in order to access Amazon Web Services resources on your behalf.</td>
 </tr>
 <tr>
+    <td><CopyableCode code="session_enabled" /></td>
+    <td><code>boolean</code></td>
+    <td>Indicates whether Spark Connect sessions are enabled on the cluster.</td>
+</tr>
+<tr>
     <td><CopyableCode code="status" /></td>
     <td><code>object</code></td>
     <td>The current status details about the cluster.</td>
@@ -315,6 +320,13 @@ The following methods are available for this resource:
     <td></td>
     <td>Modifies the number of steps that can be executed concurrently for the cluster specified using ClusterID.</td>
 </tr>
+<tr>
+    <td><a href="#start_session"><CopyableCode code="start_session" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-ClusterId"><code>ClusterId</code></a></td>
+    <td></td>
+    <td>Creates and starts a new Spark Connect session on the specified cluster. The cluster must be in the RUNNING or WAITING state and have sessions enabled. This operation is supported in Amazon EMR Spark 8.0.0 and later.</td>
+</tr>
 </tbody>
 </table>
 
@@ -384,6 +396,7 @@ running_ami_version,
 scale_down_behavior,
 security_configuration,
 service_role,
+session_enabled,
 status,
 step_concurrency_level,
 tags,
@@ -439,6 +452,38 @@ AND ClusterId = '{{ ClusterId }}' --required
 RETURNING
 extended_support,
 step_concurrency_level;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="start_session"
+    values={[
+        { label: 'start_session', value: 'start_session' }
+    ]}
+>
+<TabItem value="start_session">
+
+Creates and starts a new Spark Connect session on the specified cluster. The cluster must be in the RUNNING or WAITING state and have sessions enabled. This operation is supported in Amazon EMR Spark 8.0.0 and later.
+
+```sql
+EXEC aws.emr.clusters.start_session 
+@region='{{ region }}' --required 
+@@json=
+'{
+"Name": "{{ Name }}", 
+"ClusterId": "{{ ClusterId }}", 
+"ExecutionRoleArn": "{{ ExecutionRoleArn }}", 
+"EngineConfigurations": "{{ EngineConfigurations }}", 
+"MonitoringConfiguration": "{{ MonitoringConfiguration }}", 
+"SessionIdleTimeoutInMinutes": {{ SessionIdleTimeoutInMinutes }}, 
+"ClientRequestToken": "{{ ClientRequestToken }}", 
+"Tags": "{{ Tags }}"
+}'
+;
 ```
 </TabItem>
 </Tabs>

@@ -84,7 +84,7 @@ The following methods are available for this resource:
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td><a href="#parameter-X-Amzn-Bedrock-AgentCore-Payments-User-Id"><code>X-Amzn-Bedrock-AgentCore-Payments-User-Id</code></a>, <a href="#parameter-X-Amzn-Bedrock-AgentCore-Payments-Agent-Name"><code>X-Amzn-Bedrock-AgentCore-Payments-Agent-Name</code></a></td>
-    <td>Get the balance of a payment instrument</td>
+    <td>Get the balance of a payment instrument.</td>
 </tr>
 </tbody>
 </table>
@@ -130,7 +130,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 >
 <TabItem value="get_payment_instrument_balance">
 
-Get the balance of a payment instrument
+Get the balance of a payment instrument.
 
 ```sql
 SELECT

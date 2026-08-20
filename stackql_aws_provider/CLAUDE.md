@@ -78,6 +78,8 @@ Stackql plumbs `x-serviceName` into the sigv4 credential scope. Must be:
 
 73 of 424 botocore services have `signingName != endpointPrefix` (bedrock subservices sign as `bedrock`, sagemaker subservices as `sagemaker`, s3control as `s3`, elbv2 as `elasticloadbalancing`, dynamodbstreams as `dynamodb`). The SQL namespace `aws.<svc>.*` is driven by filename + `x-serviceAlias` + `providerServices` key in `provider.yaml` — independent of `x-serviceName`.
 
+**Endpoint templating**: legacy `metadata.globalEndpoint` marks true single-host global services (iam, route53, cloudfront, importexport, savingsplans, sts) — those get the single global URL with a non-substituted `region` server variable (kept for the sigv4 scope). For **s3** the field is only a us-east-1 ALIAS of a fully regional service: honouring it pins every request to `s3.amazonaws.com` while sigv4 signs for the WHERE-clause region, and any non-us-east-1 bucket fails with `AuthorizationHeaderMalformed`. `GLOBAL_ENDPOINT_IS_REGIONAL_ALIAS = {"s3"}` forces the regional template `https://s3.{region}.amazonaws.com` (valid for us-east-1 too).
+
 ### 5. HTTP verb — honour botocore's declaration
 
 Do not auto-promote POST to GET. Emit whatever `service-2.json -> operations[X].http.method` declares.
@@ -144,7 +146,7 @@ Stackql's Go YAML parser is YAML 1.1; it coerces `y/Y/yes/Yes/YES/n/N/no/No/NO/o
 
 ### 13. aws-json — amz-json content key matching `request.mediaType`, body inlined
 
-**Protocol resolution**: stage 1 resolves the effective protocol botocore-style — first match of `['json', 'rest-json', 'rest-xml', 'query', 'ec2']` against `metadata.protocols`, falling back to the legacy `metadata.protocol` field. Newer smithy models declare `protocol: smithy-rpc-v2-cbor` while also listing `json` in `protocols` (9 services: arc_region_switch, cloudwatch, comprehendmedical, compute_optimizer, compute_optimizer_automation, gamelift, interconnect, marketplace_entitlement, snowball); trusting the legacy field routed them through the unknown-protocol fallback with `x-protocol: smithy-rpc-v2-cbor`, which starved stage 2's `request.mediaType`/`request.base` stamps and made required body fields vanish from runtime routing.
+**Protocol resolution**: stage 1 resolves the effective protocol botocore-style — first match of `['json', 'rest-json', 'rest-xml', 'query', 'ec2']` against `metadata.protocols`, falling back to the legacy `metadata.protocol` field. A service whose `protocols` list contains NO marshalable protocol is **skipped entirely** (`build_service_openapi` returns None): any-sdk's marshalBody speaks JSON and XML only, so an emitted spec would ship dead routes and trip `verifyBodyBinding`. First such service: `partnercentral-revenue-measurement` (`protocols: [smithy-rpc-v2-cbor]` only — unlike the 9 dual-protocol cbor services below, which also list `json`). Newer smithy models declare `protocol: smithy-rpc-v2-cbor` while also listing `json` in `protocols` (9 services: arc_region_switch, cloudwatch, comprehendmedical, compute_optimizer, compute_optimizer_automation, gamelift, interconnect, marketplace_entitlement, snowball); trusting the legacy field routed them through the unknown-protocol fallback with `x-protocol: smithy-rpc-v2-cbor`, which starved stage 2's `request.mediaType`/`request.base` stamps and made required body fields vanish from runtime routing.
 
 For aws-json, emit a single `application/x-amz-json-<jsonVersion>` content entry (jsonVersion from botocore metadata, default `1.0`) and stamp the same string as the method's `request.mediaType` in stage 2 (derived from the op's actual content key), plus `request.base: '{}'` (the fallback body sent verbatim when no SQL-supplied body fields exist, merged under supplied fields when they do — aws-json requires a JSON body even for no-input ops). Do NOT use `request.default` for this: it diverts supplied body params in any-sdk's armoury flow. The loader binds the body schema by EXACT content-key match against `request.mediaType`; a mismatch silently drops the schema and required body fields vanish from routing. any-sdk's media fuzzy-matcher maps amz-json variants onto the JSON marshal path. Body schemas inlined in `requestBody` (not `$ref` to a separate named shape) so stackql's required-param scan reaches them.
 
@@ -229,6 +231,44 @@ Stage 1 (`_pagination_breadcrumbs`) reads `paginators-1.json` and stamps `x-stac
 **Gate**: only `rest-json` and `json` protocols. stackql extracts the response token from the response `rawBody`; for XML protocols that IS the schema-driven walker's output, which currently drops sibling scalars (the token) — see any-sdk issue #117 (https://github.com/stackql/any-sdk/issues/117). When that lands, lift the protocol gate and use the output member's XML wire name in the JSONPath.
 
 Verified live: DynamoDB ListTables with `"Limit" = 1` traverses all pages, re-injecting `ExclusiveStartTableName` into each subsequent body with the original params preserved. (Note: `Limit` is a reserved SQL word — quote it.)
+
+### 19. Blob-payload object content — raw body reads/writes (allowlisted)
+
+Ops whose botocore output/input shape declares a blob `payload` member carry the raw object body, not an XML/JSON document. The Display synthesiser has no regime for that (GetObject shipped a self-referential empty envelope and the body was dropped), and `schema_driven_xml` / the XML body marshaller are wrong for a raw body. Allowlisted ops follow the proven cloudflare workers-kv recipe (verified live end to end):
+
+**Read** (`BLOB_PAYLOAD_READS`, stage 1): the 200 response content becomes `application/octet-stream` with schema `{contents: string}` (column inference and the zero-column guard read it); no Display envelope is registered. Stage 2 (`x-stackql-blobPayloadRead` breadcrumb) emits:
+
+```yaml
+response:
+  openAPIDocKey: "200"
+  mediaType: application/octet-stream
+  overrideMediaType: application/json
+  transform:
+    type: golang_template_text_v0.3.0
+    body: '[{"contents": {{ toJson . }}}]'
+  # no objectKey, no schema_override - the transform output IS the row array
+```
+
+`overrideMediaType` + transform routes any-sdk down its raw-body path: the whole body is read verbatim, sidestepping wire Content-Type sniffing (an S3 object's Content-Type is whatever the uploader set).
+
+**Write** (`BLOB_PAYLOAD_WRITES`, stage 1): the requestBody becomes `application/octet-stream` with schema `{contents: string}` (required) — and the property MUST carry **`x-stackQL-stringOnly: true`**: without it, any-sdk's body-param parser (`shims.go parseRequestBodyParam`) JSON-parses string values that happen to be valid JSON into maps, and the template emits a Go map rendering instead of the verbatim text (a tfstate IS valid JSON — this failed live before the flag). Stage 2 (`x-stackql-blobPayloadWrite`) emits:
+
+```yaml
+request:
+  nativeCasing: pascal
+  mediaType: application/octet-stream   # exact content-key match binds the schema; `contents` shows in RequiredParams
+  transform:
+    type: golang_template_json_v0.1.0
+    body: '{{ .contents }}'
+```
+
+any-sdk `marshalBody` (operation_store.go) routes transform-bearing requests through `transformRequestBodyBytes` BEFORE its JSON/XML-only switch — the one shape a non-XML/JSON body can take without core changes. `requestBodyTranslate: naive` stays (unprefixed `contents`). A blob write is create-or-overwrite (S3 PutObject), so stage 2 registers the method under BOTH `sqlVerbs.insert` and `sqlVerbs.replace` (same methods entry, one `$ref` each).
+
+**Text objects only** — binary content is out of scope (bytes survive only as far as UTF-8/JSON string escaping allows); base64 support is deferred. SQL literals follow MySQL escaping (vitess parser): backslashes in the content must be doubled alongside quote-doubling.
+
+Allowlist contains only `s3::GetObject` / `s3::PutObject`. Other blob-payload ops (s3 GetObjectTorrent, glacier GetJobOutput, mediastore GetObject) are follow-up candidates — do not widen the allowlist casually. GetObject response headers (ContentType, ETag, LastModified) as columns: possible follow-up, deliberately not done.
+
+Known gap (out of scope here): rest-xml **structured** request bodies (e.g. CreateBucket's `CreateBucketConfiguration`) fail at the XML marshaller with `xml: start tag with no name` — the inline body schema carries no root `xml.name` for `MarshalXMLUserInput`. The harness creates buckets in us-east-1 (no body) to sidestep it.
 
 ## Things NOT to do
 

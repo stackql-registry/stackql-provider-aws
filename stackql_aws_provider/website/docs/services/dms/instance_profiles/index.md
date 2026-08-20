@@ -84,28 +84,28 @@ The following methods are available for this resource:
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>Returns a paginated list of instance profiles for your account in the current region.</td>
+    <td>Returns a paginated list of instance profiles for your account in the current region. Required permissions: dms:ListInstanceProfiles. For more information, see Actions, resources, and condition keys for Database Migration Service.</td>
 </tr>
 <tr>
     <td><a href="#create_instance_profile"><CopyableCode code="create_instance_profile" /></a></td>
     <td><CopyableCode code="insert" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>Creates the instance profile using the specified parameters.</td>
+    <td>Creates the instance profile using the specified parameters. Required permissions: dms:CreateInstanceProfile. For more information, see Actions, resources, and condition keys for Database Migration Service.</td>
 </tr>
 <tr>
     <td><a href="#modify_instance_profile"><CopyableCode code="modify_instance_profile" /></a></td>
     <td><CopyableCode code="update" /></td>
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-InstanceProfileIdentifier"><code>InstanceProfileIdentifier</code></a></td>
     <td></td>
-    <td>Modifies the specified instance profile using the provided parameters. All migration projects associated with the instance profile must be deleted or modified before you can modify the instance profile.</td>
+    <td>Modifies the specified instance profile using the provided parameters. Required permissions: dms:UpdateInstanceProfile. For more information, see Actions, resources, and condition keys for Database Migration Service. All migration projects associated with the instance profile must be deleted or modified before you can modify the instance profile.</td>
 </tr>
 <tr>
     <td><a href="#delete_instance_profile"><CopyableCode code="delete_instance_profile" /></a></td>
     <td><CopyableCode code="delete" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>Deletes the specified instance profile. All migration projects associated with the instance profile must be deleted or modified before you can delete the instance profile.</td>
+    <td>Deletes the specified instance profile. Required permissions: dms:DeleteInstanceProfile. For more information, see Actions, resources, and condition keys for Database Migration Service. All migration projects associated with the instance profile must be deleted or modified before you can delete the instance profile.</td>
 </tr>
 </tbody>
 </table>
@@ -141,7 +141,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 >
 <TabItem value="describe_instance_profiles">
 
-Returns a paginated list of instance profiles for your account in the current region.
+Returns a paginated list of instance profiles for your account in the current region. Required permissions: dms:ListInstanceProfiles. For more information, see Actions, resources, and condition keys for Database Migration Service.
 
 ```sql
 SELECT
@@ -166,7 +166,7 @@ WHERE region = '{{ region }}' -- required
 >
 <TabItem value="create_instance_profile">
 
-Creates the instance profile using the specified parameters.
+Creates the instance profile using the specified parameters. Required permissions: dms:CreateInstanceProfile. For more information, see Actions, resources, and condition keys for Database Migration Service.
 
 ```sql
 INSERT INTO aws.dms.instance_profiles (
@@ -261,7 +261,7 @@ instance_profile
 >
 <TabItem value="modify_instance_profile">
 
-Modifies the specified instance profile using the provided parameters. All migration projects associated with the instance profile must be deleted or modified before you can modify the instance profile.
+Modifies the specified instance profile using the provided parameters. Required permissions: dms:UpdateInstanceProfile. For more information, see Actions, resources, and condition keys for Database Migration Service. All migration projects associated with the instance profile must be deleted or modified before you can modify the instance profile.
 
 ```sql
 UPDATE aws.dms.instance_profiles
@@ -295,7 +295,7 @@ instance_profile;
 >
 <TabItem value="delete_instance_profile">
 
-Deletes the specified instance profile. All migration projects associated with the instance profile must be deleted or modified before you can delete the instance profile.
+Deletes the specified instance profile. Required permissions: dms:DeleteInstanceProfile. For more information, see Actions, resources, and condition keys for Database Migration Service. All migration projects associated with the instance profile must be deleted or modified before you can delete the instance profile.
 
 ```sql
 DELETE FROM aws.dms.instance_profiles

@@ -51,6 +51,11 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
+    <td><CopyableCode code="analytics_configuration" /></td>
+    <td><code>object</code></td>
+    <td>The analytics configuration for the data store.</td>
+</tr>
+<tr>
     <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time the data store was created.</td>
@@ -58,27 +63,27 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="datastore_arn" /></td>
     <td><code>string</code></td>
-    <td>The Amazon Resource Name (ARN) used in the creation of the data store. (pattern: &lt;code&gt;^arn:aws((-us-gov)|(-iso)|(-iso-b)|(-cn))?:healthlake:&#91;a-zA-Z0-9-&#93;+:&#91;0-9&#93;&#123;12&#125;:datastore/.+?&lt;/code&gt;)</td>
+    <td>The Amazon Resource Name (ARN) used in the creation of the data store. (pattern: &lt;code&gt;arn:aws((-us-gov)|(-iso)|(-iso-b)|(-cn))?:healthlake:&#91;a-zA-Z0-9-&#93;+:&#91;0-9&#93;&#123;12&#125;:datastore/.+?&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="datastore_endpoint" /></td>
     <td><code>string</code></td>
-    <td>The AWS endpoint for the data store. (pattern: &lt;code&gt;&#91;\P&#123;M&#125;\p&#123;M&#125;&#93;&#123;0,10000&#125;&lt;/code&gt;)</td>
+    <td>A general-purpose string value. (pattern: &lt;code&gt;&#91;\P&#123;M&#125;\p&#123;M&#125;&#93;&#123;0,10000&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="datastore_id" /></td>
     <td><code>string</code></td>
-    <td>The data store identifier. (pattern: &lt;code&gt;^(&#91;\p&#123;L&#125;\p&#123;Z&#125;\p&#123;N&#125;_.:/=+\-%@&#93;*)$&lt;/code&gt;)</td>
+    <td>The data store identifier. (pattern: &lt;code&gt;(&#91;\p&#123;L&#125;\p&#123;Z&#125;\p&#123;N&#125;_.:/=+\-%@&#93;*)&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="datastore_name" /></td>
     <td><code>string</code></td>
-    <td>The data store name. (pattern: &lt;code&gt;^(&#91;\p&#123;L&#125;\p&#123;Z&#125;\p&#123;N&#125;_.:/=+\-%@&#93;*)$&lt;/code&gt;)</td>
+    <td>The data store name. (pattern: &lt;code&gt;(&#91;\p&#123;L&#125;\p&#123;Z&#125;\p&#123;N&#125;_.:/=+\-%@&#93;*)&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="datastore_status" /></td>
     <td><code>string</code></td>
-    <td>The data store status. (CREATING, ACTIVE, DELETING, DELETED, CREATE_FAILED)</td>
+    <td>The data store status. (CREATING, ACTIVE, DELETING, DELETED, CREATE_FAILED, UPDATING, UPDATE_FAILED)</td>
 </tr>
 <tr>
     <td><CopyableCode code="datastore_type_version" /></td>
@@ -96,9 +101,19 @@ The following fields are returned by `SELECT` queries:
     <td>The identity provider selected during data store creation.</td>
 </tr>
 <tr>
+    <td><CopyableCode code="nlp_configuration" /></td>
+    <td><code>object</code></td>
+    <td>The natural language processing (NLP) configuration for the data store.</td>
+</tr>
+<tr>
     <td><CopyableCode code="preload_data_config" /></td>
     <td><code>object</code></td>
     <td>The preloaded Synthea data configuration for the data store.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="profile_configuration" /></td>
+    <td><code>object</code></td>
+    <td>The profile configuration for the data store.</td>
 </tr>
 <tr>
     <td><CopyableCode code="sse_configuration" /></td>
@@ -171,6 +186,13 @@ The following methods are available for this resource:
     <td>Create a FHIR-enabled data store.</td>
 </tr>
 <tr>
+    <td><a href="#update_fhir_datastore"><CopyableCode code="update_fhir_datastore" /></a></td>
+    <td><CopyableCode code="update" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-DatastoreId"><code>DatastoreId</code></a></td>
+    <td></td>
+    <td>Update the properties of a FHIR-enabled data store.</td>
+</tr>
+<tr>
     <td><a href="#delete_fhir_datastore"><CopyableCode code="delete_fhir_datastore" /></a></td>
     <td><CopyableCode code="delete" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
@@ -216,6 +238,7 @@ Get properties for a FHIR-enabled data store.
 
 ```sql
 SELECT
+analytics_configuration,
 created_at,
 datastore_arn,
 datastore_endpoint,
@@ -225,7 +248,9 @@ datastore_status,
 datastore_type_version,
 error_cause,
 identity_provider_configuration,
+nlp_configuration,
 preload_data_config,
+profile_configuration,
 sse_configuration
 FROM aws.healthlake.fhir_datastores
 WHERE region = '{{ region }}' -- required
@@ -270,6 +295,9 @@ PreloadDataConfig,
 ClientToken,
 Tags,
 IdentityProviderConfiguration,
+AnalyticsConfiguration,
+NlpConfiguration,
+ProfileConfiguration,
 region
 )
 SELECT 
@@ -280,6 +308,9 @@ SELECT
 '{{ ClientToken }}',
 '{{ Tags }}',
 '{{ IdentityProviderConfiguration }}',
+'{{ AnalyticsConfiguration }}',
+'{{ NlpConfiguration }}',
+'{{ ProfileConfiguration }}',
 '{{ region }}'
 RETURNING
 datastore_arn,
@@ -336,8 +367,55 @@ datastore_status
         FineGrainedAuthorizationEnabled: {{ FineGrainedAuthorizationEnabled }}
         Metadata: "{{ Metadata }}"
         IdpLambdaArn: "{{ IdpLambdaArn }}"
+    - name: AnalyticsConfiguration
+      description: |
+        The analytics configuration for the data store.
+      value:
+        Status: "{{ Status }}"
+    - name: NlpConfiguration
+      description: |
+        The natural language processing (NLP) configuration for the data store.
+      value:
+        Status: "{{ Status }}"
+    - name: ProfileConfiguration
+      description: |
+        The profile configuration for the data store.
+      value:
+        DefaultProfiles:
+          - "{{ DefaultProfiles }}"
 `}</CodeBlock>
 
+</TabItem>
+</Tabs>
+
+
+## `UPDATE` examples
+
+<Tabs
+    defaultValue="update_fhir_datastore"
+    values={[
+        { label: 'update_fhir_datastore', value: 'update_fhir_datastore' }
+    ]}
+>
+<TabItem value="update_fhir_datastore">
+
+Update the properties of a FHIR-enabled data store.
+
+```sql
+UPDATE aws.healthlake.fhir_datastores
+SET 
+DatastoreId = '{{ DatastoreId }}',
+DatastoreName = '{{ DatastoreName }}',
+AnalyticsConfiguration = '{{ AnalyticsConfiguration }}',
+NlpConfiguration = '{{ NlpConfiguration }}',
+ProfileConfiguration = '{{ ProfileConfiguration }}',
+IdentityProviderConfiguration = '{{ IdentityProviderConfiguration }}'
+WHERE 
+region = '{{ region }}' --required
+AND DatastoreId = '{{ DatastoreId }}' --required
+RETURNING
+datastore_properties;
+```
 </TabItem>
 </Tabs>
 

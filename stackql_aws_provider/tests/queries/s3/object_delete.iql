@@ -1,0 +1,6 @@
+-- DeleteObject DELETE (pre-existing surface, must keep working; also
+-- empties the smoke bucket ahead of bucket_delete).
+DELETE FROM aws.s3.objects
+WHERE region = '{{ global_region }}'
+  AND bucket = '{{ bucket_prefix }}-{{ caller_identity.account }}'
+  AND key = 'smoke/terraform.tfstate'

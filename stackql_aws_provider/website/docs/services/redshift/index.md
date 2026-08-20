@@ -18,7 +18,7 @@ redshift service documentation.
 
 :::info[Service Summary]
 
-total resources: __50__  
+total resources: __51__  
 
 :::
 
@@ -49,10 +49,10 @@ total resources: __50__
 <a href="/services/redshift/event_subscriptions/">event_subscriptions</a><br />
 <a href="/services/redshift/events/">events</a><br />
 <a href="/services/redshift/hsm_client_certificates/">hsm_client_certificates</a><br />
-<a href="/services/redshift/hsm_configurations/">hsm_configurations</a>
+<a href="/services/redshift/hsm_configurations/">hsm_configurations</a><br />
+<a href="/services/redshift/identity_center_auth_tokens/">identity_center_auth_tokens</a>
 </div>
 <div class="providerDocColumn">
-<a href="/services/redshift/identity_center_auth_tokens/">identity_center_auth_tokens</a><br />
 <a href="/services/redshift/inbound_integrations/">inbound_integrations</a><br />
 <a href="/services/redshift/integrations/">integrations</a><br />
 <a href="/services/redshift/logging_status/">logging_status</a><br />
@@ -60,6 +60,7 @@ total resources: __50__
 <a href="/services/redshift/node_configuration_options/">node_configuration_options</a><br />
 <a href="/services/redshift/orderable_cluster_options/">orderable_cluster_options</a><br />
 <a href="/services/redshift/partners/">partners</a><br />
+<a href="/services/redshift/qev2_idc_applications/">qev2_idc_applications</a><br />
 <a href="/services/redshift/recommendations/">recommendations</a><br />
 <a href="/services/redshift/redshift_idc_applications/">redshift_idc_applications</a><br />
 <a href="/services/redshift/reserved_node_exchange_configuration_options/">reserved_node_exchange_configuration_options</a><br />

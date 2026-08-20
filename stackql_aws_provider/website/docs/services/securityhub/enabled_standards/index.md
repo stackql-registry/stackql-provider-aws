@@ -50,6 +50,11 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
+    <td><CopyableCode code="provider" /></td>
+    <td><code>string</code></td>
+    <td>The cloud provider whose resources the standard evaluates. For example, AWS or Azure. (AWS, Azure)</td>
+</tr>
+<tr>
     <td><CopyableCode code="standards_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the standard. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
@@ -144,6 +149,7 @@ Returns a list of the standards that are currently enabled.
 
 ```sql
 SELECT
+provider,
 standards_arn,
 standards_controls_updatable,
 standards_input,

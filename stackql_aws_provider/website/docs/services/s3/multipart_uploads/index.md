@@ -181,7 +181,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 </tr>
 <tr id="parameter-Expires">
     <td><CopyableCode code="Expires" /></td>
-    <td><code>string</code></td>
+    <td><code>string (date-time)</code></td>
     <td>The date and time at which the object is no longer cacheable.</td>
 </tr>
 <tr id="parameter-delimiter">

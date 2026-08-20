@@ -243,6 +243,7 @@ enableExecuteCommand,
 serviceConnectConfiguration,
 volumeConfigurations,
 vpcLatticeConfigurations,
+monitoring,
 region
 )
 SELECT 
@@ -272,6 +273,7 @@ SELECT
 '{{ serviceConnectConfiguration }}',
 '{{ volumeConfigurations }}',
 '{{ vpcLatticeConfigurations }}',
+'{{ monitoring }}',
 '{{ region }}'
 RETURNING
 service
@@ -359,6 +361,10 @@ service
         deploymentCircuitBreaker:
           enable: {{ enable }}
           rollback: {{ rollback }}
+          resetOnHealthyTask: {{ resetOnHealthyTask }}
+          thresholdConfiguration:
+            type_: "{{ type_ }}"
+            value: {{ value }}
         maximumPercent: {{ maximumPercent }}
         minimumHealthyPercent: {{ minimumHealthyPercent }}
         alarms:
@@ -369,10 +375,14 @@ service
         strategy: "{{ strategy }}"
         bakeTimeInMinutes: {{ bakeTimeInMinutes }}
         lifecycleHooks:
-          - hookTargetArn: "{{ hookTargetArn }}"
+          - targetType: "{{ targetType }}"
+            hookTargetArn: "{{ hookTargetArn }}"
             roleArn: "{{ roleArn }}"
             lifecycleStages: "{{ lifecycleStages }}"
             hookDetails: "{{ hookDetails }}"
+            timeoutConfiguration:
+              timeoutInMinutes: {{ timeoutInMinutes }}
+              action: "{{ action }}"
         linearConfiguration:
           stepPercent: {{ stepPercent }}
           stepBakeTimeInMinutes: {{ stepBakeTimeInMinutes }}
@@ -489,6 +499,13 @@ service
         - roleArn: "{{ roleArn }}"
           targetGroupArn: "{{ targetGroupArn }}"
           portName: "{{ portName }}"
+    - name: monitoring
+      description: |
+        The optional monitoring configuration for the service, which defines the resolution for the service-level CPUUtilization and MemoryUtilization Amazon CloudWatch metrics. When not specified, Amazon ECS uses the default resolution of 60 seconds.
+      value:
+        metricConfigurations:
+          - metricNames: "{{ metricNames }}"
+            resolutionSeconds: {{ resolutionSeconds }}
 `}</CodeBlock>
 
 </TabItem>
@@ -531,7 +548,8 @@ propagateTags = '{{ propagateTags }}',
 serviceRegistries = '{{ serviceRegistries }}',
 serviceConnectConfiguration = '{{ serviceConnectConfiguration }}',
 volumeConfigurations = '{{ volumeConfigurations }}',
-vpcLatticeConfigurations = '{{ vpcLatticeConfigurations }}'
+vpcLatticeConfigurations = '{{ vpcLatticeConfigurations }}',
+monitoring = '{{ monitoring }}'
 WHERE 
 region = '{{ region }}' --required
 AND service = '{{ service }}' --required

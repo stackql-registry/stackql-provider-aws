@@ -390,6 +390,7 @@ registry_arn
             - "{{ allowedClients }}"
           allowedScopes:
             - "{{ allowedScopes }}"
+          advertisedScopeMapping: "{{ advertisedScopeMapping }}"
           customClaims:
             - inboundTokenClaimName: "{{ inboundTokenClaimName }}"
               inboundTokenClaimValueType: "{{ inboundTokenClaimValueType }}"
@@ -422,6 +423,11 @@ registry_arn
                   securityGroupIds: "{{ securityGroupIds }}"
                   tags: "{{ tags }}"
                   routingDomain: "{{ routingDomain }}"
+          allowedWorkloadConfiguration:
+            hostingEnvironments:
+              - arn: "{{ arn }}"
+            workloadIdentities:
+              - "{{ workloadIdentities }}"
     - name: clientToken
       value: "{{ clientToken }}"
     - name: approvalConfiguration

@@ -53,7 +53,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="checks" /></td>
     <td><code>array</code></td>
-    <td>A check on the environment to identify instance health and VMware VCF licensing issues.</td>
+    <td>A check on the environment to identify connector health.</td>
 </tr>
 <tr>
     <td><CopyableCode code="connectivity_info" /></td>
@@ -143,7 +143,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="vcf_version" /></td>
     <td><code>string</code></td>
-    <td>The VCF version of the environment. (VCF-5.2.1, VCF-5.2.2)</td>
+    <td>The VCF version of the environment. (VCF-5.2.1, VCF-5.2.2, SELF_DEPLOYED)</td>
 </tr>
 <tr>
     <td><CopyableCode code="vpc_id" /></td>
@@ -202,7 +202,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="vcf_version" /></td>
     <td><code>string</code></td>
-    <td>The VCF version of the environment. (VCF-5.2.1, VCF-5.2.2)</td>
+    <td>The VCF version of the environment. (VCF-5.2.1, VCF-5.2.2, SELF_DEPLOYED)</td>
 </tr>
 </tbody>
 </table>
@@ -241,9 +241,9 @@ The following methods are available for this resource:
 <tr>
     <td><a href="#create_environment"><CopyableCode code="create_environment" /></a></td>
     <td><CopyableCode code="insert" /></td>
-    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-vpcId"><code>vpcId</code></a>, <a href="#parameter-serviceAccessSubnetId"><code>serviceAccessSubnetId</code></a>, <a href="#parameter-vcfVersion"><code>vcfVersion</code></a>, <a href="#parameter-termsAccepted"><code>termsAccepted</code></a>, <a href="#parameter-licenseInfo"><code>licenseInfo</code></a>, <a href="#parameter-initialVlans"><code>initialVlans</code></a>, <a href="#parameter-hosts"><code>hosts</code></a>, <a href="#parameter-connectivityInfo"><code>connectivityInfo</code></a>, <a href="#parameter-vcfHostnames"><code>vcfHostnames</code></a>, <a href="#parameter-siteId"><code>siteId</code></a></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-vpcId"><code>vpcId</code></a>, <a href="#parameter-serviceAccessSubnetId"><code>serviceAccessSubnetId</code></a>, <a href="#parameter-vcfVersion"><code>vcfVersion</code></a>, <a href="#parameter-termsAccepted"><code>termsAccepted</code></a>, <a href="#parameter-initialVlans"><code>initialVlans</code></a></td>
     <td></td>
-    <td>Creates an Amazon EVS environment that runs VCF software, such as SDDC Manager, NSX Manager, and vCenter Server. During environment creation, Amazon EVS performs validations on DNS settings, provisions VLAN subnets and hosts, and deploys the supplied version of VCF. It can take several hours to create an environment. After the deployment completes, you can configure VCF in the vSphere user interface according to your needs. When creating a new environment, the default ESX version for the selected VCF version will be used, you cannot choose a specific ESX version in CreateEnvironment action. When a host has been added with a specific ESX version, it can only be upgraded using vCenter Lifecycle Manager. You cannot use the dedicatedHostId and placementGroupId parameters together in the same CreateEnvironment action. This results in a ValidationException response.</td>
+    <td>Creates an Amazon EVS environment that runs VCF software, such as SDDC Manager, NSX Manager, and vCenter Server. When you specify SELF_DEPLOYED for vcfVersion, Amazon EVS provisions only the VLAN subnets; no hosts are added and no VCF installation is performed. After the environment is created, you can add hosts with CreateEnvironmentHost and install VCF yourself. The licenseInfo, hosts, vcfHostnames, siteId, and connectivityInfo parameters are not supported in this mode. When you specify any other VCF version, Amazon EVS installs and configures VCF for you. For more information, see Self-deployed mode in the Amazon EVS User Guide. When Amazon EVS installs VCF, the default ESX version for the selected VCF version will be used. After a host is added with a specific ESX version, it can only be upgraded using vCenter Lifecycle Manager. You cannot use the dedicatedHostId and placementGroupId parameters together in the same CreateEnvironment action. This results in a ValidationException response.</td>
 </tr>
 <tr>
     <td><a href="#create_entitlement"><CopyableCode code="create_entitlement" /></a></td>
@@ -378,7 +378,7 @@ WHERE region = '{{ region }}' -- required
 >
 <TabItem value="create_environment">
 
-Creates an Amazon EVS environment that runs VCF software, such as SDDC Manager, NSX Manager, and vCenter Server. During environment creation, Amazon EVS performs validations on DNS settings, provisions VLAN subnets and hosts, and deploys the supplied version of VCF. It can take several hours to create an environment. After the deployment completes, you can configure VCF in the vSphere user interface according to your needs. When creating a new environment, the default ESX version for the selected VCF version will be used, you cannot choose a specific ESX version in CreateEnvironment action. When a host has been added with a specific ESX version, it can only be upgraded using vCenter Lifecycle Manager. You cannot use the dedicatedHostId and placementGroupId parameters together in the same CreateEnvironment action. This results in a ValidationException response.
+Creates an Amazon EVS environment that runs VCF software, such as SDDC Manager, NSX Manager, and vCenter Server. When you specify SELF_DEPLOYED for vcfVersion, Amazon EVS provisions only the VLAN subnets; no hosts are added and no VCF installation is performed. After the environment is created, you can add hosts with CreateEnvironmentHost and install VCF yourself. The licenseInfo, hosts, vcfHostnames, siteId, and connectivityInfo parameters are not supported in this mode. When you specify any other VCF version, Amazon EVS installs and configures VCF for you. For more information, see Self-deployed mode in the Amazon EVS User Guide. When Amazon EVS installs VCF, the default ESX version for the selected VCF version will be used. After a host is added with a specific ESX version, it can only be upgraded using vCenter Lifecycle Manager. You cannot use the dedicatedHostId and placementGroupId parameters together in the same CreateEnvironment action. This results in a ValidationException response.
 
 ```sql
 INSERT INTO aws.evs.environments (
@@ -391,10 +391,10 @@ vpcId,
 serviceAccessSubnetId,
 vcfVersion,
 termsAccepted,
-licenseInfo,
 initialVlans,
-hosts,
 connectivityInfo,
+licenseInfo,
+hosts,
 vcfHostnames,
 siteId,
 region
@@ -409,12 +409,12 @@ SELECT
 '{{ serviceAccessSubnetId }}' /* required */,
 '{{ vcfVersion }}' /* required */,
 {{ termsAccepted }} /* required */,
-'{{ licenseInfo }}' /* required */,
 '{{ initialVlans }}' /* required */,
-'{{ hosts }}' /* required */,
-'{{ connectivityInfo }}' /* required */,
-'{{ vcfHostnames }}' /* required */,
-'{{ siteId }}' /* required */,
+'{{ connectivityInfo }}',
+'{{ licenseInfo }}',
+'{{ hosts }}',
+'{{ vcfHostnames }}',
+'{{ siteId }}',
 '{{ region }}'
 RETURNING
 environment
@@ -483,22 +483,16 @@ entitlements
     - name: serviceAccessSubnetId
       value: "{{ serviceAccessSubnetId }}"
       description: |
-        The subnet that is used to establish connectivity between the Amazon EVS control plane and VPC. Amazon EVS uses this subnet to validate mandatory DNS records for your VCF appliances and hosts and create the environment.
+        The subnet that is used to establish connectivity between the Amazon EVS control plane and VPC. The Amazon EVS control plane uses this subnet to interface with your environment. This includes validating DNS records and enabling Amazon EVS Connectors.
     - name: vcfVersion
       value: "{{ vcfVersion }}"
       description: |
-        The VCF version to use for the environment.
-      valid_values: ['VCF-5.2.1', 'VCF-5.2.2']
+        The VCF version to use for the environment. SELF_DEPLOYED: You install VCF yourself. The licenseInfo, hosts, vcfHostnames, siteId, and connectivityInfo parameters are not supported. Any other valid value: Amazon EVS installs and configures VCF for you in the version you specify.
+      valid_values: ['VCF-5.2.1', 'VCF-5.2.2', 'SELF_DEPLOYED']
     - name: termsAccepted
       value: {{ termsAccepted }}
       description: |
-        Customer confirmation that the customer has purchased and will continue to maintain the required number of VCF software licenses to cover all physical processor cores in the Amazon EVS environment. Information about your VCF software in Amazon EVS will be shared with Broadcom to verify license compliance. Amazon EVS does not validate license keys. To validate license keys, visit the Broadcom support portal.
-    - name: licenseInfo
-      description: |
-        The license information that Amazon EVS requires to create an environment. Amazon EVS requires two license keys: a VCF solution key and a vSAN license key. The VCF solution key must meet minimum core requirements, and the vSAN license key must meet minimum capacity requirements for your selected instance type. For information about minimum license requirements, see the VCF subscriptions section in the Amazon EVS User Guide. VCF licenses can be used for only one Amazon EVS environment. Amazon EVS does not support reuse of VCF licenses for multiple environments. VCF license information can be retrieved from the Broadcom portal.
-      value:
-        - solutionKey: "{{ solutionKey }}"
-          vsanKey: "{{ vsanKey }}"
+        Confirmation that the customer has purchased and will continue to maintain the required number of VCF software licenses to cover all physical processor cores in the Amazon EVS environment. Information about your VCF software in Amazon EVS will be shared with Broadcom to verify license compliance. Amazon EVS does not validate license keys. To validate license keys, visit the Broadcom support portal.
     - name: initialVlans
       description: |
         The initial VLAN subnets for the Amazon EVS environment. For each Amazon EVS VLAN subnet, you must specify a non-overlapping CIDR block. Amazon EVS VLAN subnets have a minimum CIDR block size of /28 and a maximum size of /24.
@@ -525,24 +519,30 @@ entitlements
           cidr: "{{ cidr }}"
         isHcxPublic: {{ isHcxPublic }}
         hcxNetworkAclId: "{{ hcxNetworkAclId }}"
+    - name: connectivityInfo
+      description: |
+        The connectivity configuration for the environment. Amazon EVS requires that you specify two route server peer IDs. During environment creation, the route server endpoints peer with the NSX edges over the NSX uplink subnet, providing BGP-based dynamic routing for overlay networks. Not supported when vcfVersion is SELF_DEPLOYED.
+      value:
+        privateRouteServerPeerings:
+          - "{{ privateRouteServerPeerings }}"
+    - name: licenseInfo
+      description: |
+        The license information that Amazon EVS requires to create an environment. Amazon EVS requires two license keys: a VCF solution key and a vSAN license key. The VCF solution key must meet minimum core requirements, and the vSAN license key must meet minimum capacity requirements for your selected instance type. For information about minimum license requirements, see the VCF subscriptions section in the Amazon EVS User Guide. VCF licenses can be used for only one Amazon EVS environment. Amazon EVS does not support reuse of VCF licenses for multiple environments. VCF license information can be retrieved from the Broadcom portal. Not supported when vcfVersion is SELF_DEPLOYED.
+      value:
+        - solutionKey: "{{ solutionKey }}"
+          vsanKey: "{{ vsanKey }}"
     - name: hosts
       description: |
-        The ESX hosts to add to the environment. Amazon EVS requires that you provide details for a minimum of 4 hosts during environment creation. For each host, you must provide the desired hostname, EC2 SSH keypair name, and EC2 instance type. Optionally, you can also provide a partition or cluster placement group to use, or use Amazon EC2 Dedicated Hosts.
+        The ESX hosts to add to the environment. For each host, provide the desired hostname, EC2 SSH keypair name, and EC2 instance type. Optionally, provide a partition or cluster placement group, or use Amazon EC2 Dedicated Hosts. Not supported when vcfVersion is SELF_DEPLOYED. In that case, you can add hosts using CreateEnvironmentHost after the environment is created.
       value:
         - hostName: "{{ hostName }}"
           keyName: "{{ keyName }}"
           instanceType: "{{ instanceType }}"
           placementGroupId: "{{ placementGroupId }}"
           dedicatedHostId: "{{ dedicatedHostId }}"
-    - name: connectivityInfo
-      description: |
-        The connectivity configuration for the environment. Amazon EVS requires that you specify two route server peer IDs. During environment creation, the route server endpoints peer with the NSX edges over the NSX uplink subnet, providing BGP-based dynamic routing for overlay networks.
-      value:
-        privateRouteServerPeerings:
-          - "{{ privateRouteServerPeerings }}"
     - name: vcfHostnames
       description: |
-        The DNS hostnames for the virtual machines that host the VCF management appliances. Amazon EVS requires that you provide DNS hostnames for the following appliances: vCenter, NSX Manager, SDDC Manager, and Cloud Builder.
+        The DNS hostnames for the virtual machines that host the VCF management appliances. Provide hostnames for vCenter, NSX Manager, SDDC Manager, and Cloud Builder. Not supported when vcfVersion is SELF_DEPLOYED.
       value:
         vCenter: "{{ vCenter }}"
         nsx: "{{ nsx }}"
@@ -556,7 +556,7 @@ entitlements
     - name: siteId
       value: "{{ siteId }}"
       description: |
-        The Broadcom Site ID that is allocated to you as part of your electronic software delivery. This ID allows customer access to the Broadcom portal, and is provided to you by Broadcom at the close of your software contract or contract renewal. Amazon EVS uses the Broadcom Site ID that you provide to meet Broadcom VCF license usage reporting requirements for Amazon EVS.
+        The Broadcom Site ID that is allocated to you as part of your electronic software delivery. This ID allows customer access to the Broadcom portal, and is provided to you by Broadcom at the close of your software contract or contract renewal. Amazon EVS uses the Broadcom Site ID that you provide to meet Broadcom VCF license usage reporting requirements for Amazon EVS. Not supported when vcfVersion is SELF_DEPLOYED.
     - name: environmentId
       value: "{{ environmentId }}"
       description: |

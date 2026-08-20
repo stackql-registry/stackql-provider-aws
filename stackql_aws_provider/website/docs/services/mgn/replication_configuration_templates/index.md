@@ -120,6 +120,11 @@ The following fields are returned by `SELECT` queries:
     <td>Replication Configuration template Staging Area Tags.</td>
 </tr>
 <tr>
+    <td><CopyableCode code="storage_configuration" /></td>
+    <td><code>object</code></td>
+    <td>Storage configuration for replication.</td>
+</tr>
+<tr>
     <td><CopyableCode code="store_snapshot_on_local_zone" /></td>
     <td><code>boolean</code></td>
     <td>Replication Configuration template store snapshot on local zone.</td>
@@ -239,6 +244,7 @@ replication_server_instance_type,
 replication_servers_security_groups_ids,
 staging_area_subnet_id,
 staging_area_tags,
+storage_configuration,
 store_snapshot_on_local_zone,
 tags,
 use_dedicated_replication_server,
@@ -282,6 +288,7 @@ useFipsEndpoint,
 tags,
 internetProtocol,
 storeSnapshotOnLocalZone,
+storageConfiguration,
 region
 )
 SELECT 
@@ -301,6 +308,7 @@ SELECT
 '{{ tags }}',
 '{{ internetProtocol }}',
 {{ storeSnapshotOnLocalZone }},
+'{{ storageConfiguration }}',
 '{{ region }}'
 RETURNING
 arn,
@@ -317,6 +325,7 @@ replication_server_instance_type,
 replication_servers_security_groups_ids,
 staging_area_subnet_id,
 staging_area_tags,
+storage_configuration,
 store_snapshot_on_local_zone,
 tags,
 use_dedicated_replication_server,
@@ -369,6 +378,14 @@ use_fips_endpoint
       valid_values: ['IPV4', 'IPV6']
     - name: storeSnapshotOnLocalZone
       value: {{ storeSnapshotOnLocalZone }}
+    - name: storageConfiguration
+      description: |
+        Storage configuration for replication.
+      value:
+        storageType: "{{ storageType }}"
+        fsxOntapConfiguration:
+          storageVirtualMachineId: "{{ storageVirtualMachineId }}"
+          credentialsSecretArn: "{{ credentialsSecretArn }}"
 `}</CodeBlock>
 
 </TabItem>
@@ -406,7 +423,8 @@ createPublicIP = {{ createPublicIP }},
 stagingAreaTags = '{{ stagingAreaTags }}',
 useFipsEndpoint = {{ useFipsEndpoint }},
 internetProtocol = '{{ internetProtocol }}',
-storeSnapshotOnLocalZone = {{ storeSnapshotOnLocalZone }}
+storeSnapshotOnLocalZone = {{ storeSnapshotOnLocalZone }},
+storageConfiguration = '{{ storageConfiguration }}'
 WHERE 
 region = '{{ region }}' --required
 AND replicationConfigurationTemplateID = '{{ replicationConfigurationTemplateID }}' --required
@@ -425,6 +443,7 @@ replication_server_instance_type,
 replication_servers_security_groups_ids,
 staging_area_subnet_id,
 staging_area_tags,
+storage_configuration,
 store_snapshot_on_local_zone,
 tags,
 use_dedicated_replication_server,

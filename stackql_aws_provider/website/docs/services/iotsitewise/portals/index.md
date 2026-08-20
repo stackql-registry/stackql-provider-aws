@@ -233,14 +233,14 @@ The following methods are available for this resource:
     <td><CopyableCode code="insert" /></td>
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-portalName"><code>portalName</code></a>, <a href="#parameter-portalContactEmail"><code>portalContactEmail</code></a>, <a href="#parameter-roleArn"><code>roleArn</code></a></td>
     <td></td>
-    <td>Creates a portal, which can contain projects and dashboards. IoT SiteWise Monitor uses IAM Identity Center or IAM to authenticate portal users and manage user permissions. Before you can sign in to a new portal, you must add at least one identity to that portal. For more information, see Adding or removing portal administrators in the IoT SiteWise User Guide.</td>
+    <td>The IoT SiteWise Monitor feature will no longer be open to new customers starting November 7, 2025. If you would like to use the IoT SiteWise Monitor feature, sign up prior to that date. Existing customers can continue to use the service as normal. For more information, see IoT SiteWise Monitor availability change. Creates a portal, which can contain projects and dashboards. IoT SiteWise Monitor uses IAM Identity Center or IAM to authenticate portal users and manage user permissions. Before you can sign in to a new portal, you must add at least one identity to that portal. For more information, see Adding or removing portal administrators in the IoT SiteWise User Guide.</td>
 </tr>
 <tr>
     <td><a href="#update_portal"><CopyableCode code="update_portal" /></a></td>
     <td><CopyableCode code="update" /></td>
     <td><a href="#parameter-portal_id"><code>portal_id</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-portalName"><code>portalName</code></a>, <a href="#parameter-portalContactEmail"><code>portalContactEmail</code></a>, <a href="#parameter-roleArn"><code>roleArn</code></a></td>
     <td></td>
-    <td>Updates an IoT SiteWise Monitor portal.</td>
+    <td>The IoT SiteWise Monitor feature will no longer be open to new customers starting November 7, 2025. If you would like to use the IoT SiteWise Monitor feature, sign up prior to that date. Existing customers can continue to use the service as normal. For more information, see IoT SiteWise Monitor availability change. Updates an IoT SiteWise Monitor portal.</td>
 </tr>
 <tr>
     <td><a href="#delete_portal"><CopyableCode code="delete_portal" /></a></td>
@@ -367,7 +367,7 @@ AND maxResults = '{{ maxResults }}'
 >
 <TabItem value="create_portal">
 
-Creates a portal, which can contain projects and dashboards. IoT SiteWise Monitor uses IAM Identity Center or IAM to authenticate portal users and manage user permissions. Before you can sign in to a new portal, you must add at least one identity to that portal. For more information, see Adding or removing portal administrators in the IoT SiteWise User Guide.
+The IoT SiteWise Monitor feature will no longer be open to new customers starting November 7, 2025. If you would like to use the IoT SiteWise Monitor feature, sign up prior to that date. Existing customers can continue to use the service as normal. For more information, see IoT SiteWise Monitor availability change. Creates a portal, which can contain projects and dashboards. IoT SiteWise Monitor uses IAM Identity Center or IAM to authenticate portal users and manage user permissions. Before you can sign in to a new portal, you must add at least one identity to that portal. For more information, see Adding or removing portal administrators in the IoT SiteWise User Guide.
 
 ```sql
 INSERT INTO aws.iotsitewise.portals (
@@ -466,7 +466,7 @@ sso_application_id
 >
 <TabItem value="update_portal">
 
-Updates an IoT SiteWise Monitor portal.
+The IoT SiteWise Monitor feature will no longer be open to new customers starting November 7, 2025. If you would like to use the IoT SiteWise Monitor feature, sign up prior to that date. Existing customers can continue to use the service as normal. For more information, see IoT SiteWise Monitor availability change. Updates an IoT SiteWise Monitor portal.
 
 ```sql
 UPDATE aws.iotsitewise.portals

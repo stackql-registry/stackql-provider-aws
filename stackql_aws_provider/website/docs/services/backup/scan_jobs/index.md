@@ -71,6 +71,16 @@ The following fields are returned by `SELECT` queries:
     <td>The date and time that a backup index finished creation, in Unix format and Coordinated Universal Time (UTC). The value of CompletionDate is accurate to milliseconds. For example, the value 1516925490.087 represents Friday, January 26, 2018 12:11:30.087 AM.</td>
 </tr>
 <tr>
+    <td><CopyableCode code="continuous_scan_end_time" /></td>
+    <td><code>string (date-time)</code></td>
+    <td>The point in time the scan job scanned up to for a continuous backup.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="continuous_scan_start_time" /></td>
+    <td><code>string (date-time)</code></td>
+    <td>The point in time the scan job started scan from for a continuous backup.</td>
+</tr>
+<tr>
     <td><CopyableCode code="created_by" /></td>
     <td><code>object</code></td>
     <td>Contains identifying information about the creation of a scan job, including the backup plan and rule that initiated the scan.</td>
@@ -183,6 +193,16 @@ The following fields are returned by `SELECT` queries:
     <td><CopyableCode code="completion_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that a scan job is completed, in Unix format and Coordinated Universal Time (UTC). The value of CompletionDate is accurate to milliseconds. For example, the value 1516925490.087 represents Friday, January 26, 2018 12:11:30.087 AM.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="continuous_scan_end_time" /></td>
+    <td><code>string (date-time)</code></td>
+    <td>The point in time the scan job scanned up to for a continuous backup.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="continuous_scan_start_time" /></td>
+    <td><code>string (date-time)</code></td>
+    <td>The point in time the scan job started scan from for a continuous backup.</td>
 </tr>
 <tr>
     <td><CopyableCode code="created_by" /></td>
@@ -406,6 +426,8 @@ account_id,
 backup_vault_arn,
 backup_vault_name,
 completion_date,
+continuous_scan_end_time,
+continuous_scan_start_time,
 created_by,
 creation_date,
 iam_role_arn,
@@ -438,6 +460,8 @@ account_id,
 backup_vault_arn,
 backup_vault_name,
 completion_date,
+continuous_scan_end_time,
+continuous_scan_start_time,
 created_by,
 creation_date,
 iam_role_arn,

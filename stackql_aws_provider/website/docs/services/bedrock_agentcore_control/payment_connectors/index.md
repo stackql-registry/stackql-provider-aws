@@ -56,6 +56,11 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the payment connector. (pattern: &lt;code&gt;&#91;a-zA-Z&#93;&#91;a-zA-Z0-9_&#93;&#123;0,47&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
+    <td><CopyableCode code="authorization_url" /></td>
+    <td><code>string</code></td>
+    <td>The URL that the user must open to complete OAuth consent. This field is only present when the payment connector status is PENDING_AUTHENTICATION. (pattern: &lt;code&gt;https:​//&#91;^\p&#123;C&#125;&#93;*&lt;/code&gt;)</td>
+</tr>
+<tr>
     <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the payment connector was created.</td>
@@ -68,7 +73,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
-    <td>The description of the payment connector. (pattern: &lt;code&gt;&#91;a-zA-Z0-9\s&#93;+&lt;/code&gt;)</td>
+    <td>The description of the payment connector. (pattern: &lt;code&gt;&#91;^\p&#123;C&#125;&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="last_updated_at" /></td>
@@ -78,12 +83,12 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="payment_connector_id" /></td>
     <td><code>string</code></td>
-    <td>The unique identifier of the payment connector. (pattern: &lt;code&gt;(&#91;0-9a-z&#93;&#91;-&#93;?)&#123;1,100&#125;-&#91;0-9a-z&#93;&#123;10&#125;&lt;/code&gt;)</td>
+    <td>The unique identifier of the payment connector. (pattern: &lt;code&gt;(&#91;0-9a-z_&#93;&#91;-&#93;?)&#123;1,100&#125;-&#91;0-9a-z&#93;&#123;10&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
-    <td>The current status of the payment connector. Possible values include CREATING, READY, UPDATING, DELETING, CREATE_FAILED, UPDATE_FAILED, and DELETE_FAILED. (CREATING, UPDATING, DELETING, READY, CREATE_FAILED, UPDATE_FAILED, DELETE_FAILED)</td>
+    <td>The current status of the payment connector. Possible values include CREATING, READY, UPDATING, DELETING, CREATE_FAILED, UPDATE_FAILED, and DELETE_FAILED. (CREATING, UPDATING, DELETING, READY, CREATE_FAILED, UPDATE_FAILED, DELETE_FAILED, AWS_MARKETPLACE_SUBSCRIPTION_REQUIRED, PENDING_AUTHENTICATION, PROVISIONING, AUTHENTICATION_EXPIRED, AUTHENTICATION_FAILED)</td>
 </tr>
 <tr>
     <td><CopyableCode code="type_" /></td>
@@ -117,12 +122,12 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="payment_connector_id" /></td>
     <td><code>string</code></td>
-    <td>The unique identifier of the payment connector. (pattern: &lt;code&gt;(&#91;0-9a-z&#93;&#91;-&#93;?)&#123;1,100&#125;-&#91;0-9a-z&#93;&#123;10&#125;&lt;/code&gt;)</td>
+    <td>The unique identifier of the payment connector. (pattern: &lt;code&gt;(&#91;0-9a-z_&#93;&#91;-&#93;?)&#123;1,100&#125;-&#91;0-9a-z&#93;&#123;10&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
-    <td>The current status of the payment connector. Possible values include CREATING, READY, UPDATING, DELETING, CREATE_FAILED, UPDATE_FAILED, and DELETE_FAILED. (CREATING, UPDATING, DELETING, READY, CREATE_FAILED, UPDATE_FAILED, DELETE_FAILED)</td>
+    <td>The current status of the payment connector. Possible values include CREATING, READY, UPDATING, DELETING, CREATE_FAILED, UPDATE_FAILED, and DELETE_FAILED. (CREATING, UPDATING, DELETING, READY, CREATE_FAILED, UPDATE_FAILED, DELETE_FAILED, AWS_MARKETPLACE_SUBSCRIPTION_REQUIRED, PENDING_AUTHENTICATION, PROVISIONING, AUTHENTICATION_EXPIRED, AUTHENTICATION_FAILED)</td>
 </tr>
 <tr>
     <td><CopyableCode code="type_" /></td>
@@ -249,6 +254,7 @@ Retrieves information about a specific payment connector.
 ```sql
 SELECT
 name,
+authorization_url,
 created_at,
 credential_provider_configurations,
 description,
@@ -304,6 +310,7 @@ name,
 description,
 type,
 credentialProviderConfigurations,
+provisionMode,
 clientToken,
 payment_manager_id,
 region
@@ -313,11 +320,13 @@ SELECT
 '{{ description }}',
 '{{ type }}' /* required */,
 '{{ credentialProviderConfigurations }}' /* required */,
+'{{ provisionMode }}',
 '{{ clientToken }}',
 '{{ payment_manager_id }}',
 '{{ region }}'
 RETURNING
 name,
+authorization_url,
 created_at,
 credential_provider_configurations,
 payment_connector_id,
@@ -351,6 +360,9 @@ type_
             credentialProviderArn: "{{ credentialProviderArn }}"
           stripePrivy:
             credentialProviderArn: "{{ credentialProviderArn }}"
+    - name: provisionMode
+      value: "{{ provisionMode }}"
+      valid_values: ['MANUAL', 'QUICK_CREATE']
     - name: clientToken
       value: "{{ clientToken }}"
 `}</CodeBlock>
@@ -384,6 +396,7 @@ AND payment_connector_id = '{{ payment_connector_id }}' --required
 AND region = '{{ region }}' --required
 RETURNING
 name,
+authorization_url,
 credential_provider_configurations,
 last_updated_at,
 payment_connector_id,

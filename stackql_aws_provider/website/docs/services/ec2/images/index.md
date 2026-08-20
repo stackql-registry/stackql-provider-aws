@@ -125,6 +125,11 @@ The following fields are returned by `SELECT` queries:
     <td>The type of image.</td>
 </tr>
 <tr>
+    <td><CopyableCode code="image_watermarks" /></td>
+    <td><code>string</code></td>
+    <td>The watermarks attached to the AMI.</td>
+</tr>
+<tr>
     <td><CopyableCode code="imds_support" /></td>
     <td><code>string</code></td>
     <td>If v2.0, it indicates that IMDSv2 is specified in the AMI. Instances launched from this AMI will have HttpTokens automatically set to required so that, by default, the instance requires that IMDSv2 is used when requesting instance metadata. In addition, HttpPutResponseHopLimit is set to 2. For more information, see Configure the AMI in the Amazon EC2 User Guide.</td>
@@ -168,6 +173,11 @@ The following fields are returned by `SELECT` queries:
     <td><CopyableCode code="public" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether the image has public launch permissions. The value is true if this image has public launch permissions or false if it has only implicit and explicit launch permissions.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="public_ssm_parameter_name" /></td>
+    <td><code>string</code></td>
+    <td>The name of the public Systems Manager parameter that resolves to this AMI, under the aws/service/ namespace.</td>
 </tr>
 <tr>
     <td><CopyableCode code="ramdisk_id" /></td>
@@ -266,7 +276,7 @@ The following methods are available for this resource:
     <td><CopyableCode code="insert" /></td>
     <td><a href="#parameter-InstanceId"><code>InstanceId</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td><a href="#parameter-TagSpecification"><code>TagSpecification</code></a>, <a href="#parameter-SnapshotLocation"><code>SnapshotLocation</code></a>, <a href="#parameter-DryRun"><code>DryRun</code></a>, <a href="#parameter-Name"><code>Name</code></a>, <a href="#parameter-Description"><code>Description</code></a>, <a href="#parameter-NoReboot"><code>NoReboot</code></a>, <a href="#parameter-BlockDeviceMapping"><code>BlockDeviceMapping</code></a></td>
-    <td>Creates an Amazon EBS-backed AMI from an Amazon EBS-backed instance that is either running or stopped. If you customized your instance with instance store volumes or Amazon EBS volumes in addition to the root device volume, the new AMI contains block device mapping information for those volumes. When you launch an instance from this new AMI, the instance automatically launches with those additional volumes. The location of the source instance determines where you can create the snapshots of the AMI: If the source instance is in a Region, you must create the snapshots in the same Region as the instance. If the source instance is in a Local Zone, you can create the snapshots in the same Local Zone or in its parent Region. For more information, see Create an Amazon EBS-backed AMI in the Amazon Elastic Compute Cloud User Guide.</td>
+    <td>Creates an Amazon EBS-backed AMI from an Amazon EBS-backed instance that is either running or stopped. If you customized your instance with instance store volumes or Amazon EBS volumes in addition to the root device volume, the new AMI contains block device mapping information for those volumes. When you launch an instance from this new AMI, the instance automatically launches with those additional volumes. The location of the source instance determines where you can create the snapshots of the AMI: If the source instance is in a Region, you must create the snapshots in the same Region as the instance. If the source instance is in a Local Zone, you can create the snapshots in the same Local Zone or in its parent Region. If the source instance is on an Outpost that supports local snapshots, you can create the snapshots on the same Outpost or in the parent Region of that Outpost. In this case, you must use the SnapshotLocation parameter to specify where to create the snapshots. For more information, see Create an Amazon EBS-backed AMI in the Amazon Elastic Compute Cloud User Guide.</td>
 </tr>
 <tr>
     <td><a href="#register_image"><CopyableCode code="register_image" /></a></td>
@@ -274,6 +284,20 @@ The following methods are available for this resource:
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td><a href="#parameter-ImageLocation"><code>ImageLocation</code></a>, <a href="#parameter-BillingProduct"><code>BillingProduct</code></a>, <a href="#parameter-BootMode"><code>BootMode</code></a>, <a href="#parameter-TpmSupport"><code>TpmSupport</code></a>, <a href="#parameter-UefiData"><code>UefiData</code></a>, <a href="#parameter-ImdsSupport"><code>ImdsSupport</code></a>, <a href="#parameter-TagSpecification"><code>TagSpecification</code></a>, <a href="#parameter-DryRun"><code>DryRun</code></a>, <a href="#parameter-Name"><code>Name</code></a>, <a href="#parameter-Description"><code>Description</code></a>, <a href="#parameter-Architecture"><code>Architecture</code></a>, <a href="#parameter-KernelId"><code>KernelId</code></a>, <a href="#parameter-RamdiskId"><code>RamdiskId</code></a>, <a href="#parameter-RootDeviceName"><code>RootDeviceName</code></a>, <a href="#parameter-BlockDeviceMapping"><code>BlockDeviceMapping</code></a>, <a href="#parameter-VirtualizationType"><code>VirtualizationType</code></a>, <a href="#parameter-SriovNetSupport"><code>SriovNetSupport</code></a>, <a href="#parameter-EnaSupport"><code>EnaSupport</code></a></td>
     <td>Registers an AMI. When you're creating an instance-store backed AMI, registering the AMI is the final step in the creation process. For more information about creating AMIs, see Create an AMI from a snapshot and Create an instance-store backed AMI in the Amazon EC2 User Guide. If needed, you can deregister an AMI at any time. Any modifications you make to an AMI backed by an instance store volume invalidates its registration. If you make changes to an image, deregister the previous image and register the new image. Register a snapshot of a root device volume You can use RegisterImage to create an Amazon EBS-backed Linux AMI from a snapshot of a root device volume. You specify the snapshot using a block device mapping. You can't set the encryption state of the volume using the block device mapping. If the snapshot is encrypted, or encryption by default is enabled, the root volume of an instance launched from the AMI is encrypted. For more information, see Create an AMI from a snapshot and Use encryption with EBS-backed AMIs in the Amazon EC2 User Guide. Amazon Web Services Marketplace product codes If any snapshots have Amazon Web Services Marketplace product codes, they are copied to the new AMI. In most cases, AMIs for Windows, RedHat, SUSE, and SQL Server require correct licensing information to be present on the AMI. For more information, see Understand AMI billing information in the Amazon EC2 User Guide. When creating an AMI from a snapshot, the RegisterImage operation derives the correct billing information from the snapshot's metadata, but this requires the appropriate metadata to be present. To verify if the correct billing information was applied, check the PlatformDetails field on the new AMI. If the field is empty or doesn't match the expected operating system code (for example, Windows, RedHat, SUSE, or SQL), the AMI creation was unsuccessful, and you should discard the AMI and instead create the AMI from an instance. For more information, see Create an AMI from an instance in the Amazon EC2 User Guide. If you purchase a Reserved Instance to apply to an On-Demand Instance that was launched from an AMI with a billing product code, make sure that the Reserved Instance has the matching billing product code. If you purchase a Reserved Instance without the matching billing product code, the Reserved Instance is not applied to the On-Demand Instance. For information about how to obtain the platform details and billing information of an AMI, see Understand AMI billing information in the Amazon EC2 User Guide.</td>
+</tr>
+<tr>
+    <td><a href="#attach_image_watermark"><CopyableCode code="attach_image_watermark" /></a></td>
+    <td><CopyableCode code="update" /></td>
+    <td><a href="#parameter-ImageId"><code>ImageId</code></a>, <a href="#parameter-WatermarkName"><code>WatermarkName</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td><a href="#parameter-DryRun"><code>DryRun</code></a></td>
+    <td>Attaches a watermark to a non-public AMI. The watermark is a structured identifier that automatically propagates to all derivative images created through CreateImage, and CopyImage. Only the AMI owner can attach watermarks. Watermarks cannot be added to public AMIs.</td>
+</tr>
+<tr>
+    <td><a href="#detach_image_watermark"><CopyableCode code="detach_image_watermark" /></a></td>
+    <td><CopyableCode code="update" /></td>
+    <td><a href="#parameter-ImageId"><code>ImageId</code></a>, <a href="#parameter-WatermarkKey"><code>WatermarkKey</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td><a href="#parameter-DryRun"><code>DryRun</code></a></td>
+    <td>Removes a watermark from the specified AMI. This is an idempotent operation. It succeeds even if the watermark does not exist on the image. Removing a watermark from an image does not affect derivative images that already carry the watermark. Only the AMI owner can detach watermarks.</td>
 </tr>
 <tr>
     <td><a href="#deregister_image"><CopyableCode code="deregister_image" /></a></td>
@@ -400,6 +424,16 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     <td><code>string</code></td>
     <td>The ID of the instance.</td>
 </tr>
+<tr id="parameter-WatermarkKey">
+    <td><CopyableCode code="WatermarkKey" /></td>
+    <td><code>string</code></td>
+    <td>The watermark key to remove, in accountId:watermarkName format (for example, 123456789012:approvedAmi).</td>
+</tr>
+<tr id="parameter-WatermarkName">
+    <td><CopyableCode code="WatermarkName" /></td>
+    <td><code>string</code></td>
+    <td>The name for the watermark. Combined with the caller's account ID to form the WatermarkKey (accountId:watermarkName). Constraints: 3-128 alphanumeric characters, parentheses (()), square brackets (&#91;&#93;), spaces ( ), periods (.), slashes (/), dashes (-), single quotes ('), at-signs (@), or underscores(_)</td>
+</tr>
 <tr id="parameter-region">
     <td><CopyableCode code="region" /></td>
     <td><code>string</code></td>
@@ -453,7 +487,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-Filter">
     <td><CopyableCode code="Filter" /></td>
     <td><code>array</code></td>
-    <td>The filters. architecture - The image architecture (i386 | x86_64 | arm64 | x86_64_mac | arm64_mac). block-device-mapping.delete-on-termination - A Boolean value that indicates whether the Amazon EBS volume is deleted on instance termination. block-device-mapping.device-name - The device name specified in the block device mapping (for example, /dev/sdh or xvdh). block-device-mapping.snapshot-id - The ID of the snapshot used for the Amazon EBS volume. block-device-mapping.volume-size - The volume size of the Amazon EBS volume, in GiB. block-device-mapping.volume-type - The volume type of the Amazon EBS volume (io1 | io2 | gp2 | gp3 | sc1 | st1 | standard). block-device-mapping.encrypted - A Boolean that indicates whether the Amazon EBS volume is encrypted. creation-date - The time when the image was created, in the ISO 8601 format in the UTC time zone (YYYY-MM-DDThh:mm:ss.sssZ), for example, 2021-09-29T11:04:43.305Z. You can use a wildcard (*), for example, 2021-09-29T*, which matches an entire day. description - The description of the image (provided during image creation). ena-support - A Boolean that indicates whether enhanced networking with ENA is enabled. free-tier-eligible - A Boolean that indicates whether this image can be used under the Amazon Web Services Free Tier (true | false). hypervisor - The hypervisor type (ovm | xen). image-allowed - A Boolean that indicates whether the image meets the criteria specified for Allowed AMIs. image-id - The ID of the image. image-type - The image type (machine | kernel | ramdisk). is-public - A Boolean that indicates whether the image is public. kernel-id - The kernel ID. manifest-location - The location of the image manifest. name - The name of the AMI (provided during image creation). owner-alias - The owner alias (amazon | aws-backup-vault | aws-marketplace). The valid aliases are defined in an Amazon-maintained list. This is not the Amazon Web Services account alias that can be set using the IAM console. We recommend that you use the Owner request parameter instead of this filter. owner-id - The Amazon Web Services account ID of the owner. We recommend that you use the Owner request parameter instead of this filter. platform - The platform. The only supported value is windows. product-code - The product code. product-code.type - The type of the product code (marketplace). ramdisk-id - The RAM disk ID. root-device-name - The device name of the root device volume (for example, /dev/sda1). root-device-type - The type of the root device volume (ebs | instance-store). source-image-id - The ID of the source AMI from which the AMI was created. source-image-region - The Region of the source AMI. source-instance-id - The ID of the instance that the AMI was created from if the AMI was created using CreateImage. This filter is applicable only if the AMI was created using CreateImage. state - The state of the image (available | pending | failed). state-reason-code - The reason code for the state change. state-reason-message - The message for the state change. sriov-net-support - A value of simple indicates that enhanced networking with the Intel 82599 VF interface is enabled. tag:<code>&lt;key&gt;</code> - The key/value combination of a tag assigned to the resource. Use the tag key in the filter name and the tag value as the filter value. For example, to find all resources that have a tag with the key Owner and the value TeamA, specify tag:Owner for the filter name and TeamA for the filter value. tag-key - The key of a tag assigned to the resource. Use this filter to find all resources assigned a tag with a specific key, regardless of the tag value. virtualization-type - The virtualization type (paravirtual | hvm).</td>
+    <td>The filters. architecture - The image architecture (i386 | x86_64 | arm64 | x86_64_mac | arm64_mac). block-device-mapping.delete-on-termination - A Boolean value that indicates whether the Amazon EBS volume is deleted on instance termination. block-device-mapping.device-name - The device name specified in the block device mapping (for example, /dev/sdh or xvdh). block-device-mapping.snapshot-id - The ID of the snapshot used for the Amazon EBS volume. block-device-mapping.volume-size - The volume size of the Amazon EBS volume, in GiB. block-device-mapping.volume-type - The volume type of the Amazon EBS volume (io1 | io2 | gp2 | gp3 | sc1 | st1 | standard). block-device-mapping.encrypted - A Boolean that indicates whether the Amazon EBS volume is encrypted. creation-date - The time when the image was created, in the ISO 8601 format in the UTC time zone (YYYY-MM-DDThh:mm:ss.sssZ), for example, 2021-09-29T11:04:43.305Z. You can use a wildcard (*), for example, 2021-09-29T*, which matches an entire day. description - The description of the image (provided during image creation). ena-support - A Boolean that indicates whether enhanced networking with ENA is enabled. free-tier-eligible - A Boolean that indicates whether this image can be used under the Amazon Web Services Free Tier (true | false). hypervisor - The hypervisor type (ovm | xen). image-allowed - A Boolean that indicates whether the image meets the criteria specified for Allowed AMIs. image-id - The ID of the image. image-watermark.source-image-creation-time - The creation date of the source AMI, in the ISO 8601 format in the UTC time zone ( YYYY-MM-DDTHH:MM:SS.ssssss+HH:MM ). You can use a wildcard (*), for example, 2021-09-29T*, which matches an entire day. image-watermark.source-image-id - The ID of the AMI to which the watermark was originally attached. image-watermark.source-image-region - The Region where the watermark was originally attached. image-watermark.watermark-creation-time - The date and time the watermark was attached to the AMI, in the ISO 8601 format in the UTC time zone ( YYYY-MM-DDTHH:MM:SS.ssssss+HH:MM ). You can use a wildcard (*), for example, 2021-09-29T*, which matches an entire day. image-watermark.watermark-key - The watermark identifier, in accountId:watermarkName format (for example, 123456789012:approvedAmi). image-type - The image type (machine | kernel | ramdisk). is-public - A Boolean that indicates whether the image is public. kernel-id - The kernel ID. manifest-location - The location of the image manifest. name - The name of the AMI (provided during image creation). owner-alias - The owner alias (amazon | aws-backup-vault | aws-marketplace). The valid aliases are defined in an Amazon-maintained list. This is not the Amazon Web Services account alias that can be set using the IAM console. We recommend that you use the Owner request parameter instead of this filter. owner-id - The Amazon Web Services account ID of the owner. We recommend that you use the Owner request parameter instead of this filter. platform - The platform. The only supported value is windows. product-code - The product code. product-code.type - The type of the product code (marketplace). public-ssm-parameter-name - The name of a public Systems Manager parameter associated with the AMI. The parameter must be in a trusted Amazon Web Services namespace under aws/service/. Returns all AMIs that have ever been associated with the parameter, including previous versions. ramdisk-id - The RAM disk ID. root-device-name - The device name of the root device volume (for example, /dev/sda1). root-device-type - The type of the root device volume (ebs | instance-store). source-image-id - The ID of the source AMI from which the AMI was created. source-image-region - The Region of the source AMI. source-instance-id - The ID of the instance that the AMI was created from if the AMI was created using CreateImage. This filter is applicable only if the AMI was created using CreateImage. state - The state of the image (available | pending | failed). state-reason-code - The reason code for the state change. state-reason-message - The message for the state change. sriov-net-support - A value of simple indicates that enhanced networking with the Intel 82599 VF interface is enabled. tag:<code>&lt;key&gt;</code> - The key/value combination of a tag assigned to the resource. Use the tag key in the filter name and the tag value as the filter value. For example, to find all resources that have a tag with the key Owner and the value TeamA, specify tag:Owner for the filter name and TeamA for the filter value. tag-key - The key of a tag assigned to the resource. Use this filter to find all resources assigned a tag with a specific key, regardless of the tag value. virtualization-type - The virtualization type (paravirtual | hvm).</td>
 </tr>
 <tr id="parameter-Force">
     <td><CopyableCode code="Force" /></td>
@@ -548,7 +582,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-SnapshotLocation">
     <td><CopyableCode code="SnapshotLocation" /></td>
     <td><code>string</code></td>
-    <td>Only supported for instances in Local Zones. If the source instance is not in a Local Zone, omit this parameter. The Amazon S3 location where the snapshots will be stored. To create local snapshots in the same Local Zone as the source instance, specify local. To create regional snapshots in the parent Region of the Local Zone, specify regional or omit this parameter. Default: regional</td>
+    <td>Only supported for instances in Local Zones and for instances on Outposts that support local snapshots. If the source instance is not in one of these locations, omit this parameter. The Amazon S3 location where the snapshots will be stored. To create local snapshots in the same Local Zone or on the same Outpost as the source instance, specify local. To create regional snapshots in the parent Region of the Local Zone or Outpost, specify regional. If the source instance is in a Local Zone and you omit this parameter, regional snapshots are created in the parent Region of the Local Zone. If the source instance is on an Outpost that supports local snapshots, this parameter is required. If you omit it, the request fails with an InvalidParameterValue error. Default: regional (for instances in Local Zones only)</td>
 </tr>
 <tr id="parameter-SriovNetSupport">
     <td><CopyableCode code="SriovNetSupport" /></td>
@@ -612,6 +646,7 @@ image_id,
 image_location,
 image_owner_alias,
 image_type,
+image_watermarks,
 imds_support,
 kernel_id,
 last_launched_time,
@@ -621,6 +656,7 @@ platform,
 platform_details,
 product_codes,
 public,
+public_ssm_parameter_name,
 ramdisk_id,
 root_device_name,
 root_device_type,
@@ -663,7 +699,7 @@ AND Filter = '{{ Filter }}'
 >
 <TabItem value="create_image">
 
-Creates an Amazon EBS-backed AMI from an Amazon EBS-backed instance that is either running or stopped. If you customized your instance with instance store volumes or Amazon EBS volumes in addition to the root device volume, the new AMI contains block device mapping information for those volumes. When you launch an instance from this new AMI, the instance automatically launches with those additional volumes. The location of the source instance determines where you can create the snapshots of the AMI: If the source instance is in a Region, you must create the snapshots in the same Region as the instance. If the source instance is in a Local Zone, you can create the snapshots in the same Local Zone or in its parent Region. For more information, see Create an Amazon EBS-backed AMI in the Amazon Elastic Compute Cloud User Guide.
+Creates an Amazon EBS-backed AMI from an Amazon EBS-backed instance that is either running or stopped. If you customized your instance with instance store volumes or Amazon EBS volumes in addition to the root device volume, the new AMI contains block device mapping information for those volumes. When you launch an instance from this new AMI, the instance automatically launches with those additional volumes. The location of the source instance determines where you can create the snapshots of the AMI: If the source instance is in a Region, you must create the snapshots in the same Region as the instance. If the source instance is in a Local Zone, you can create the snapshots in the same Local Zone or in its parent Region. If the source instance is on an Outpost that supports local snapshots, you can create the snapshots on the same Outpost or in the parent Region of that Outpost. In this case, you must use the SnapshotLocation parameter to specify where to create the snapshots. For more information, see Create an Amazon EBS-backed AMI in the Amazon Elastic Compute Cloud User Guide.
 
 ```sql
 INSERT INTO aws.ec2.images (
@@ -760,8 +796,8 @@ image_id
       description: The tags to apply to the AMI and snapshots on creation. You can tag the AMI, the snapshots, or both. To tag the AMI, the value for ResourceType must be image. To tag the snapshots that are created of the root volume and of other Amazon EBS volumes that are attached to the instance, the value for ResourceType must be snapshot. The same tag is applied to all of the snapshots that are created. If you specify other values for ResourceType, the request fails. To tag an AMI or snapshot after it has been created, see CreateTags.
     - name: SnapshotLocation
       value: "{{ SnapshotLocation }}"
-      description: Only supported for instances in Local Zones. If the source instance is not in a Local Zone, omit this parameter. The Amazon S3 location where the snapshots will be stored. To create local snapshots in the same Local Zone as the source instance, specify local. To create regional snapshots in the parent Region of the Local Zone, specify regional or omit this parameter. Default: regional
-      description: Only supported for instances in Local Zones. If the source instance is not in a Local Zone, omit this parameter. The Amazon S3 location where the snapshots will be stored. To create local snapshots in the same Local Zone as the source instance, specify local. To create regional snapshots in the parent Region of the Local Zone, specify regional or omit this parameter. Default: regional
+      description: Only supported for instances in Local Zones and for instances on Outposts that support local snapshots. If the source instance is not in one of these locations, omit this parameter. The Amazon S3 location where the snapshots will be stored. To create local snapshots in the same Local Zone or on the same Outpost as the source instance, specify local. To create regional snapshots in the parent Region of the Local Zone or Outpost, specify regional. If the source instance is in a Local Zone and you omit this parameter, regional snapshots are created in the parent Region of the Local Zone. If the source instance is on an Outpost that supports local snapshots, this parameter is required. If you omit it, the request fails with an InvalidParameterValue error. Default: regional (for instances in Local Zones only)
+      description: Only supported for instances in Local Zones and for instances on Outposts that support local snapshots. If the source instance is not in one of these locations, omit this parameter. The Amazon S3 location where the snapshots will be stored. To create local snapshots in the same Local Zone or on the same Outpost as the source instance, specify local. To create regional snapshots in the parent Region of the Local Zone or Outpost, specify regional. If the source instance is in a Local Zone and you omit this parameter, regional snapshots are created in the parent Region of the Local Zone. If the source instance is on an Outpost that supports local snapshots, this parameter is required. If you omit it, the request fails with an InvalidParameterValue error. Default: regional (for instances in Local Zones only)
     - name: DryRun
       value: {{ DryRun }}
       description: Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is DryRunOperation. Otherwise, it is UnauthorizedOperation.
@@ -836,6 +872,52 @@ image_id
       description: Set to true to enable enhanced networking with ENA for the AMI and any instances that you launch from the AMI. This option is supported only for HVM AMIs. Specifying this option with a PV AMI can make instances launched from the AMI unreachable.
 `}</CodeBlock>
 
+</TabItem>
+</Tabs>
+
+
+## `UPDATE` examples
+
+<Tabs
+    defaultValue="attach_image_watermark"
+    values={[
+        { label: 'attach_image_watermark', value: 'attach_image_watermark' },
+        { label: 'detach_image_watermark', value: 'detach_image_watermark' }
+    ]}
+>
+<TabItem value="attach_image_watermark">
+
+Attaches a watermark to a non-public AMI. The watermark is a structured identifier that automatically propagates to all derivative images created through CreateImage, and CopyImage. Only the AMI owner can attach watermarks. Watermarks cannot be added to public AMIs.
+
+```sql
+UPDATE aws.ec2.images
+SET 
+-- No updatable properties
+WHERE 
+ImageId = '{{ ImageId }}' --required
+AND WatermarkName = '{{ WatermarkName }}' --required
+AND region = '{{ region }}' --required
+AND DryRun = {{ DryRun}}
+RETURNING
+watermark_key;
+```
+</TabItem>
+<TabItem value="detach_image_watermark">
+
+Removes a watermark from the specified AMI. This is an idempotent operation. It succeeds even if the watermark does not exist on the image. Removing a watermark from an image does not affect derivative images that already carry the watermark. Only the AMI owner can detach watermarks.
+
+```sql
+UPDATE aws.ec2.images
+SET 
+-- No updatable properties
+WHERE 
+ImageId = '{{ ImageId }}' --required
+AND WatermarkKey = '{{ WatermarkKey }}' --required
+AND region = '{{ region }}' --required
+AND DryRun = {{ DryRun}}
+RETURNING
+return;
+```
 </TabItem>
 </Tabs>
 

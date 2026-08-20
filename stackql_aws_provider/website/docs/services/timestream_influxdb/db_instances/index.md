@@ -68,12 +68,17 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
-    <td>The Amazon Resource Name (ARN) of the DB instance. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:timestream\-influxdb:&#91;a-z0-9\-&#93;+:&#91;0-9&#93;&#123;12&#125;:(db\-instance|db\-cluster|db\-parameter\-group)/&#91;a-zA-Z0-9&#93;&#123;3,64&#125;&lt;/code&gt;)</td>
+    <td>The Amazon Resource Name (ARN) of the DB instance. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:timestream\-influxdb:&#91;a-z0-9\-&#93;+:&#91;0-9&#93;&#123;12&#125;:(db\-instance|db\-cluster|db\-parameter\-group|db\-backup)/&#91;a-zA-Z0-9&#93;&#123;3,64&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="availability_zone" /></td>
     <td><code>string</code></td>
     <td>The Availability Zone in which the DB instance resides.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="db_backup_configurations" /></td>
+    <td><code>array</code></td>
+    <td>The backup configurations for the DB instance.</td>
 </tr>
 <tr>
     <td><CopyableCode code="db_cluster_id" /></td>
@@ -121,6 +126,11 @@ The following fields are returned by `SELECT` queries:
     <td>Specifies the DbInstance's roles in the cluster.</td>
 </tr>
 <tr>
+    <td><CopyableCode code="kms_key_id" /></td>
+    <td><code>string</code></td>
+    <td>The Amazon Web Services KMS key ARN used for encryption of the DB instance. (pattern: &lt;code&gt;&#91;a-zA-Z0-9:/_\-&#93;+&lt;/code&gt;)</td>
+</tr>
+<tr>
     <td><CopyableCode code="last_maintenance_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of the last completed maintenance operation on the DB instance.</td>
@@ -163,7 +173,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
-    <td>The status of the DB instance. (CREATING, AVAILABLE, DELETING, MODIFYING, UPDATING, DELETED, FAILED, UPDATING_DEPLOYMENT_TYPE, UPDATING_INSTANCE_TYPE, MAINTENANCE, REBOOTING, REBOOT_FAILED)</td>
+    <td>The status of the DB instance. (CREATING, AVAILABLE, DELETING, MODIFYING, UPDATING, DELETED, FAILED, UPDATING_DEPLOYMENT_TYPE, UPDATING_INSTANCE_TYPE, MAINTENANCE, REBOOTING, REBOOT_FAILED, RESTORING, RESTORE_FAILED)</td>
 </tr>
 <tr>
     <td><CopyableCode code="vpc_security_group_ids" /></td>
@@ -207,7 +217,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
-    <td>The Amazon Resource Name (ARN) of the DB instance. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:timestream\-influxdb:&#91;a-z0-9\-&#93;+:&#91;0-9&#93;&#123;12&#125;:(db\-instance|db\-cluster|db\-parameter\-group)/&#91;a-zA-Z0-9&#93;&#123;3,64&#125;&lt;/code&gt;)</td>
+    <td>The Amazon Resource Name (ARN) of the DB instance. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:timestream\-influxdb:&#91;a-z0-9\-&#93;+:&#91;0-9&#93;&#123;12&#125;:(db\-instance|db\-cluster|db\-parameter\-group|db\-backup)/&#91;a-zA-Z0-9&#93;&#123;3,64&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="db_instance_type" /></td>
@@ -242,7 +252,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
-    <td>The status of the DB instance. (CREATING, AVAILABLE, DELETING, MODIFYING, UPDATING, DELETED, FAILED, UPDATING_DEPLOYMENT_TYPE, UPDATING_INSTANCE_TYPE, MAINTENANCE, REBOOTING, REBOOT_FAILED)</td>
+    <td>The status of the DB instance. (CREATING, AVAILABLE, DELETING, MODIFYING, UPDATING, DELETED, FAILED, UPDATING_DEPLOYMENT_TYPE, UPDATING_INSTANCE_TYPE, MAINTENANCE, REBOOTING, REBOOT_FAILED, RESTORING, RESTORE_FAILED)</td>
 </tr>
 </tbody>
 </table>
@@ -343,6 +353,7 @@ name,
 allocated_storage,
 arn,
 availability_zone,
+db_backup_configurations,
 db_cluster_id,
 db_instance_type,
 db_parameter_group_identifier,
@@ -352,6 +363,7 @@ endpoint,
 influx_auth_parameters_secret_arn,
 instance_mode,
 instance_modes,
+kms_key_id,
 last_maintenance_time,
 log_delivery_configuration,
 maintenance_schedule,
@@ -426,6 +438,8 @@ maintenanceSchedule,
 tags,
 port,
 networkType,
+dbBackupConfigurations,
+kmsKeyId,
 region
 )
 SELECT 
@@ -447,6 +461,8 @@ SELECT
 '{{ tags }}',
 {{ port }},
 '{{ networkType }}',
+'{{ dbBackupConfigurations }}',
+'{{ kmsKeyId }}',
 '{{ region }}'
 RETURNING
 id,
@@ -454,6 +470,7 @@ name,
 allocated_storage,
 arn,
 availability_zone,
+db_backup_configurations,
 db_cluster_id,
 db_instance_type,
 db_parameter_group_identifier,
@@ -463,6 +480,7 @@ endpoint,
 influx_auth_parameters_secret_arn,
 instance_mode,
 instance_modes,
+kms_key_id,
 last_maintenance_time,
 log_delivery_configuration,
 maintenance_schedule,
@@ -568,6 +586,18 @@ vpc_subnet_ids
       description: |
         Specifies whether the networkType of the Timestream for InfluxDB instance is IPV4, which can communicate over IPv4 protocol only, or DUAL, which can communicate over both IPv4 and IPv6 protocols.
       valid_values: ['IPV4', 'DUAL']
+    - name: dbBackupConfigurations
+      description: |
+        A list of backup configurations to enable automated backups for the DB instance.
+      value:
+        - type_: "{{ type_ }}"
+          retentionDays: {{ retentionDays }}
+          enabled: {{ enabled }}
+          customSchedule: "{{ customSchedule }}"
+    - name: kmsKeyId
+      value: "{{ kmsKeyId }}"
+      description: |
+        The Amazon Web Services KMS key identifier to use for encryption of the DB instance. Can be a key ID, key ARN, alias name, or alias ARN.
 `}</CodeBlock>
 
 </TabItem>
@@ -597,7 +627,8 @@ dbInstanceType = '{{ dbInstanceType }}',
 deploymentType = '{{ deploymentType }}',
 dbStorageType = '{{ dbStorageType }}',
 allocatedStorage = {{ allocatedStorage }},
-maintenanceSchedule = '{{ maintenanceSchedule }}'
+maintenanceSchedule = '{{ maintenanceSchedule }}',
+dbBackupConfigurations = '{{ dbBackupConfigurations }}'
 WHERE 
 region = '{{ region }}' --required
 AND identifier = '{{ identifier }}' --required
@@ -607,6 +638,7 @@ name,
 allocated_storage,
 arn,
 availability_zone,
+db_backup_configurations,
 db_cluster_id,
 db_instance_type,
 db_parameter_group_identifier,
@@ -616,6 +648,7 @@ endpoint,
 influx_auth_parameters_secret_arn,
 instance_mode,
 instance_modes,
+kms_key_id,
 last_maintenance_time,
 log_delivery_configuration,
 maintenance_schedule,

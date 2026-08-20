@@ -139,6 +139,11 @@ The following fields are returned by `SELECT` queries:
     <td><code>string (date-time)</code></td>
     <td>The date and time the finding was last updated, in UTC format.</td>
 </tr>
+<tr>
+    <td><CopyableCode code="validation_status" /></td>
+    <td><code>string</code></td>
+    <td>The simulated validation status of the finding. (CONFIRMED, NOT_REPRODUCED, VALIDATION_FAILED, VALIDATING, NOT_VALIDATED)</td>
+</tr>
 </tbody>
 </table>
 </TabItem>
@@ -244,7 +249,8 @@ pentest_job_id,
 risk_level,
 risk_type,
 status,
-updated_at
+updated_at,
+validation_status
 FROM aws.securityagent.findings
 WHERE region = '{{ region }}' -- required
 ;
@@ -270,8 +276,15 @@ UPDATE aws.securityagent.findings
 SET 
 findingId = '{{ findingId }}',
 agentSpaceId = '{{ agentSpaceId }}',
+name = '{{ name }}',
+description = '{{ description }}',
+riskType = '{{ riskType }}',
 riskLevel = '{{ riskLevel }}',
-status = '{{ status }}'
+riskScore = '{{ riskScore }}',
+attackScript = '{{ attackScript }}',
+reasoning = '{{ reasoning }}',
+status = '{{ status }}',
+customerNote = '{{ customerNote }}'
 WHERE 
 region = '{{ region }}' --required
 AND findingId = '{{ findingId }}' --required

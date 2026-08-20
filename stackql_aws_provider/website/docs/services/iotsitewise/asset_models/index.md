@@ -550,6 +550,7 @@ AND `If-Match` = '{{ If-Match}}'
 AND `If-None-Match` = '{{ If-None-Match}}'
 AND `Match-For-Version-Type` = '{{ Match-For-Version-Type}}'
 RETURNING
+asset_model_id,
 asset_model_status;
 ```
 </TabItem>

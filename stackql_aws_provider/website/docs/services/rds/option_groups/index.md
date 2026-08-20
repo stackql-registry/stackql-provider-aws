@@ -171,7 +171,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-EngineName">
     <td><CopyableCode code="EngineName" /></td>
     <td><code>string</code></td>
-    <td>The name of the engine to associate this option group with. Valid Values: db2-ae db2-se mariadb mysql oracle-ee oracle-ee-cdb oracle-se2 oracle-se2-cdb postgres sqlserver-ee sqlserver-se sqlserver-ex sqlserver-web</td>
+    <td>The name of the engine to associate this option group with. Valid Values: db2-ae db2-ce db2-se mariadb mysql oracle-ee oracle-ee-cdb oracle-se2 oracle-se2-cdb postgres sqlserver-ee sqlserver-se sqlserver-ex sqlserver-web</td>
 </tr>
 <tr id="parameter-MajorEngineVersion">
     <td><CopyableCode code="MajorEngineVersion" /></td>
@@ -201,7 +201,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-EngineName">
     <td><CopyableCode code="EngineName" /></td>
     <td><code>string</code></td>
-    <td>A filter to only include option groups associated with this database engine. Valid Values: db2-ae db2-se mariadb mysql oracle-ee oracle-ee-cdb oracle-se2 oracle-se2-cdb postgres sqlserver-ee sqlserver-se sqlserver-ex sqlserver-web</td>
+    <td>A filter to only include option groups associated with this database engine. Valid Values: db2-ae db2-ce db2-se mariadb mysql oracle-ee oracle-ee-cdb oracle-se2 oracle-se2-cdb postgres sqlserver-ee sqlserver-se sqlserver-ex sqlserver-web</td>
 </tr>
 <tr id="parameter-Filters">
     <td><CopyableCode code="Filters" /></td>

@@ -94,21 +94,21 @@ The following methods are available for this resource:
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-voice_connector_id"><code>voice_connector_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>Retrieves the proxy configuration details for the specified Amazon Chime SDK Voice Connector.</td>
+    <td>Retrieves the proxy configuration details for the specified Amazon Chime SDK Voice Connector. End of support notice: On April 7, 2026, AWS will end support for Amazon Chime SDK proxy sessions.</td>
 </tr>
 <tr>
     <td><a href="#put_voice_connector_proxy"><CopyableCode code="put_voice_connector_proxy" /></a></td>
     <td><CopyableCode code="replace" /></td>
     <td><a href="#parameter-voice_connector_id"><code>voice_connector_id</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-DefaultSessionExpiryMinutes"><code>DefaultSessionExpiryMinutes</code></a>, <a href="#parameter-PhoneNumberPoolCountries"><code>PhoneNumberPoolCountries</code></a></td>
     <td></td>
-    <td>Puts the specified proxy configuration to the specified Amazon Chime SDK Voice Connector.</td>
+    <td>Puts the specified proxy configuration to the specified Amazon Chime SDK Voice Connector. End of support notice: On April 7, 2026, AWS will end support for Amazon Chime SDK proxy sessions.</td>
 </tr>
 <tr>
     <td><a href="#delete_voice_connector_proxy"><CopyableCode code="delete_voice_connector_proxy" /></a></td>
     <td><CopyableCode code="delete" /></td>
     <td><a href="#parameter-voice_connector_id"><code>voice_connector_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>Deletes the proxy configuration from the specified Amazon Chime SDK Voice Connector.</td>
+    <td>Deletes the proxy configuration from the specified Amazon Chime SDK Voice Connector. End of support notice: On April 7, 2026, AWS will end support for Amazon Chime SDK proxy sessions.</td>
 </tr>
 </tbody>
 </table>
@@ -149,7 +149,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 >
 <TabItem value="get_voice_connector_proxy">
 
-Retrieves the proxy configuration details for the specified Amazon Chime SDK Voice Connector.
+Retrieves the proxy configuration details for the specified Amazon Chime SDK Voice Connector. End of support notice: On April 7, 2026, AWS will end support for Amazon Chime SDK proxy sessions.
 
 ```sql
 SELECT
@@ -176,7 +176,7 @@ AND region = '{{ region }}' -- required
 >
 <TabItem value="put_voice_connector_proxy">
 
-Puts the specified proxy configuration to the specified Amazon Chime SDK Voice Connector.
+Puts the specified proxy configuration to the specified Amazon Chime SDK Voice Connector. End of support notice: On April 7, 2026, AWS will end support for Amazon Chime SDK proxy sessions.
 
 ```sql
 REPLACE aws.chime_sdk_voice.voice_connector_proxies
@@ -207,7 +207,7 @@ proxy;
 >
 <TabItem value="delete_voice_connector_proxy">
 
-Deletes the proxy configuration from the specified Amazon Chime SDK Voice Connector.
+Deletes the proxy configuration from the specified Amazon Chime SDK Voice Connector. End of support notice: On April 7, 2026, AWS will end support for Amazon Chime SDK proxy sessions.
 
 ```sql
 DELETE FROM aws.chime_sdk_voice.voice_connector_proxies

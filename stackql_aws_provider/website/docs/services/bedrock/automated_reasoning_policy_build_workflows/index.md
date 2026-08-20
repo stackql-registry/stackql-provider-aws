@@ -58,7 +58,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="build_workflow_type" /></td>
     <td><code>string</code></td>
-    <td>The type of build workflow being executed (e.g., DOCUMENT_INGESTION, POLICY_REPAIR). (INGEST_CONTENT, REFINE_POLICY, IMPORT_POLICY, GENERATE_FIDELITY_REPORT, GENERATE_POLICY_SCENARIOS)</td>
+    <td>The type of build workflow being executed (e.g., DOCUMENT_INGESTION, POLICY_REPAIR). (INGEST_CONTENT, REFINE_POLICY, IMPORT_POLICY, GENERATE_FIDELITY_REPORT, GENERATE_POLICY_SCENARIOS, RESOLVE_POLICY_AMBIGUITIES, ITERATIVELY_REFINE_POLICY)</td>
 </tr>
 <tr>
     <td><CopyableCode code="created_at" /></td>
@@ -117,7 +117,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="build_workflow_type" /></td>
     <td><code>string</code></td>
-    <td>The type of build workflow (e.g., DOCUMENT_INGESTION, POLICY_REPAIR). (INGEST_CONTENT, REFINE_POLICY, IMPORT_POLICY, GENERATE_FIDELITY_REPORT, GENERATE_POLICY_SCENARIOS)</td>
+    <td>The type of build workflow (e.g., DOCUMENT_INGESTION, POLICY_REPAIR). (INGEST_CONTENT, REFINE_POLICY, IMPORT_POLICY, GENERATE_FIDELITY_REPORT, GENERATE_POLICY_SCENARIOS, RESOLVE_POLICY_AMBIGUITIES, ITERATIVELY_REFINE_POLICY)</td>
 </tr>
 <tr>
     <td><CopyableCode code="created_at" /></td>

@@ -81,6 +81,11 @@ The following fields are returned by `SELECT` queries:
     <td>Specifies the Amazon Web Services data sources that have been configured to have IAM roles and permissions created to allow Amazon Managed Grafana to read data from these sources. This list is only used when the workspace was created through the Amazon Web Services console, and the permissionType is SERVICE_MANAGED.</td>
 </tr>
 <tr>
+    <td><CopyableCode code="degraded_workspace_reason" /></td>
+    <td><code>string</code></td>
+    <td>If the workspace is in the DEGRADED status, this field describes the reason the workspace is degraded.</td>
+</tr>
+<tr>
     <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The user-defined description of the workspace.</td>
@@ -168,7 +173,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
-    <td>The current status of the workspace. (ACTIVE, CREATING, DELETING, FAILED, UPDATING, UPGRADING, DELETION_FAILED, CREATION_FAILED, UPDATE_FAILED, UPGRADE_FAILED, LICENSE_REMOVAL_FAILED, VERSION_UPDATING, VERSION_UPDATE_FAILED)</td>
+    <td>The current status of the workspace. (ACTIVE, CREATING, DELETING, FAILED, UPDATING, UPGRADING, DELETION_FAILED, CREATION_FAILED, UPDATE_FAILED, UPGRADE_FAILED, LICENSE_REMOVAL_FAILED, VERSION_UPDATING, VERSION_UPDATE_FAILED, DEGRADED)</td>
 </tr>
 <tr>
     <td><CopyableCode code="tags" /></td>
@@ -257,7 +262,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
-    <td>The current status of the workspace. (ACTIVE, CREATING, DELETING, FAILED, UPDATING, UPGRADING, DELETION_FAILED, CREATION_FAILED, UPDATE_FAILED, UPGRADE_FAILED, LICENSE_REMOVAL_FAILED, VERSION_UPDATING, VERSION_UPDATE_FAILED)</td>
+    <td>The current status of the workspace. (ACTIVE, CREATING, DELETING, FAILED, UPDATING, UPGRADING, DELETION_FAILED, CREATION_FAILED, UPDATE_FAILED, UPGRADE_FAILED, LICENSE_REMOVAL_FAILED, VERSION_UPDATING, VERSION_UPDATE_FAILED, DEGRADED)</td>
 </tr>
 <tr>
     <td><CopyableCode code="tags" /></td>
@@ -422,6 +427,7 @@ account_access_type,
 authentication,
 created,
 data_sources,
+degraded_workspace_reason,
 description,
 endpoint,
 free_trial_consumed,

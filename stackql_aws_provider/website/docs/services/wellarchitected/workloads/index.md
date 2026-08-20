@@ -63,7 +63,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="architectural_design" /></td>
     <td><code>string</code></td>
-    <td>The URL of the architectural design for the workload. (pattern: &lt;code&gt;^(|(https?|ftp):\/\/&#91;^\s/$.?#&#93;.&#91;^\s&#93;*)$&lt;/code&gt;)</td>
+    <td>The URL of the architectural design for the workload. (pattern: &lt;code&gt;(|(https?|ftp):\/\/&#91;^\s/$.?#&#93;.&#91;^\s&#93;*)&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="aws_regions" /></td>
@@ -153,7 +153,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="review_restriction_date" /></td>
     <td><code>string (date-time)</code></td>
-    <td>The date and time recorded.</td>
+    <td>The review restriction date for the workload.</td>
 </tr>
 <tr>
     <td><CopyableCode code="risk_counts" /></td>
@@ -173,7 +173,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
-    <td>The date and time recorded.</td>
+    <td>The date and time when the workload was last updated.</td>
 </tr>
 <tr>
     <td><CopyableCode code="workload_arn" /></td>
@@ -207,7 +207,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
-    <td>The token to use to retrieve the next set of results.</td>
+    <td>The token to use to retrieve the next set of results. (pattern: &lt;code&gt;&#91;A-Za-z0-9+\/=_-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="workload_summaries" /></td>

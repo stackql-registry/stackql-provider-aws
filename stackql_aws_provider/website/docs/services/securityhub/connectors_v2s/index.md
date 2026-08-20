@@ -83,7 +83,7 @@ The following methods are available for this resource:
     <td><a href="#list_connectors_v2"><CopyableCode code="list_connectors_v2" /></a></td>
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
-    <td><a href="#parameter-NextToken"><code>NextToken</code></a>, <a href="#parameter-MaxResults"><code>MaxResults</code></a>, <a href="#parameter-ProviderName"><code>ProviderName</code></a>, <a href="#parameter-ConnectorStatus"><code>ConnectorStatus</code></a></td>
+    <td><a href="#parameter-NextToken"><code>NextToken</code></a>, <a href="#parameter-MaxResults"><code>MaxResults</code></a>, <a href="#parameter-ProviderName"><code>ProviderName</code></a>, <a href="#parameter-ConnectorStatus"><code>ConnectorStatus</code></a>, <a href="#parameter-EnablementStatus"><code>EnablementStatus</code></a></td>
     <td>Grants permission to retrieve a list of connectorsV2 and their metadata for the calling account.</td>
 </tr>
 </tbody>
@@ -111,6 +111,11 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     <td><CopyableCode code="ConnectorStatus" /></td>
     <td><code>string</code></td>
     <td>The status for the connectorV2.</td>
+</tr>
+<tr id="parameter-EnablementStatus">
+    <td><CopyableCode code="EnablementStatus" /></td>
+    <td><code>string</code></td>
+    <td>The enablement status to filter connectors by.</td>
 </tr>
 <tr id="parameter-MaxResults">
     <td><CopyableCode code="MaxResults" /></td>
@@ -152,6 +157,7 @@ AND NextToken = '{{ NextToken }}'
 AND MaxResults = '{{ MaxResults }}'
 AND ProviderName = '{{ ProviderName }}'
 AND ConnectorStatus = '{{ ConnectorStatus }}'
+AND EnablementStatus = '{{ EnablementStatus }}'
 ;
 ```
 </TabItem>

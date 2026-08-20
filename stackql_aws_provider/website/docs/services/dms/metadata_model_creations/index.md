@@ -57,7 +57,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="export_sql_details" /></td>
     <td><code>object</code></td>
-    <td>Provides information about a metadata model assessment exported to SQL.</td>
+    <td>The Amazon S3 location of the ZIP archive that contains the exported data definition language (DDL) scripts. DMS populates this field only for the DescribeMetadataModelExportsAsScript operation.</td>
 </tr>
 <tr>
     <td><CopyableCode code="migration_project_arn" /></td>
@@ -77,7 +77,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
-    <td>The schema conversion action status.</td>
+    <td>The schema conversion operation status. Possible values: RECEIVED – The operation is received but not yet queued for processing. IN_PROGRESS – The operation is queued or actively running. SUCCESS – The operation completed successfully. FAILED – The operation did not complete. CANCELING – The operation is being canceled. The operation might still succeed or fail before cancellation takes effect. CANCELED – The operation was canceled before completion.</td>
 </tr>
 </tbody>
 </table>
@@ -104,7 +104,7 @@ The following methods are available for this resource:
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>Returns a paginated list of metadata model creation requests for a migration project.</td>
+    <td>Returns a paginated list of metadata model creation requests for a migration project, initiated by StartMetadataModelCreation. To cancel a queued or in-progress request, call CancelMetadataModelCreation. Required permissions: dms:DescribeMetadataModelCreations. For more information, see Actions, resources, and condition keys for Database Migration Service.</td>
 </tr>
 </tbody>
 </table>
@@ -140,7 +140,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 >
 <TabItem value="describe_metadata_model_creations">
 
-Returns a paginated list of metadata model creation requests for a migration project.
+Returns a paginated list of metadata model creation requests for a migration project, initiated by StartMetadataModelCreation. To cancel a queued or in-progress request, call CancelMetadataModelCreation. Required permissions: dms:DescribeMetadataModelCreations. For more information, see Actions, resources, and condition keys for Database Migration Service.
 
 ```sql
 SELECT

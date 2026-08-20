@@ -107,12 +107,12 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="evidence_by_type_compliance_check_count" /></td>
     <td><code>integer</code></td>
-    <td>The number of evidence that falls under the compliance check category. This evidence is collected from Config or Security Hub.</td>
+    <td>The number of evidence that falls under the compliance check category. This evidence is collected from Config or Security Hub CSPM.</td>
 </tr>
 <tr>
     <td><CopyableCode code="evidence_by_type_compliance_check_issues_count" /></td>
     <td><code>integer</code></td>
-    <td>The total number of issues that were reported directly from Security Hub, Config, or both.</td>
+    <td>The total number of issues that were reported directly from Security Hub CSPM, Config, or both.</td>
 </tr>
 <tr>
     <td><CopyableCode code="evidence_by_type_configuration_data_count" /></td>

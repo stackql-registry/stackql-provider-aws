@@ -56,6 +56,11 @@ The following fields are returned by `SELECT` queries:
     <td>Specifies the action that is to be applied to the findings that match the filter. (NOOP, ARCHIVE)</td>
 </tr>
 <tr>
+    <td><CopyableCode code="created_at" /></td>
+    <td><code>string (date-time)</code></td>
+    <td>The timestamp when the filter was created. This field is not available for filters that were created before the lifecycle metadata feature was enabled (legacy filters).</td>
+</tr>
+<tr>
     <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the filter.</td>
@@ -79,6 +84,16 @@ The following fields are returned by `SELECT` queries:
     <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>The tags of the filter resource.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="updated_at" /></td>
+    <td><code>string (date-time)</code></td>
+    <td>The timestamp when the filter was last updated. For legacy filters, this field is present only after the filter has been updated at least once since the lifecycle metadata feature was enabled.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="version" /></td>
+    <td><code>integer (int64)</code></td>
+    <td>The version of the filter. Every time the filter is updated, the version increments by 1. This field is not available for legacy filters that were created before the lifecycle metadata feature was enabled.</td>
 </tr>
 </tbody>
 </table>
@@ -214,11 +229,14 @@ Returns the details of the filter specified by the filter name.
 ```sql
 SELECT
 action,
+created_at,
 description,
 finding_criteria,
 name,
 rank,
-tags
+tags,
+updated_at,
+version
 FROM aws.guardduty.filters
 WHERE detector_id = '{{ detector_id }}' -- required
 AND filter_name = '{{ filter_name }}' -- required

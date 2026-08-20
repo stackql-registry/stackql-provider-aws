@@ -75,6 +75,11 @@ The following fields are returned by `SELECT` queries:
     <td>Defines the list of text agreements proposed to the acceptors. An example is the end user license agreement (EULA).</td>
 </tr>
 <tr>
+    <td><CopyableCode code="net_payment_term" /></td>
+    <td><code>object</code></td>
+    <td>Defines the net payment due period for the agreement, specifying when payment is due after an invoice is issued.</td>
+</tr>
+<tr>
     <td><CopyableCode code="payment_schedule_term" /></td>
     <td><code>object</code></td>
     <td>Defines an installment-based pricing model where customers are charged a fixed price on different dates during the agreement validity period. This is used most commonly for flexible payment schedule pricing.</td>
@@ -179,6 +184,7 @@ configurable_upfront_pricing_term,
 fixed_upfront_pricing_term,
 free_trial_pricing_term,
 legal_term,
+net_payment_term,
 payment_schedule_term,
 recurring_payment_term,
 renewal_term,

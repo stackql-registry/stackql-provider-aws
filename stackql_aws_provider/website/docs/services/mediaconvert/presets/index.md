@@ -690,6 +690,7 @@ preset
             TransportStreamId: {{ TransportStreamId }}
             VideoPid: {{ VideoPid }}
           MovSettings:
+            AudioDuration: "{{ AudioDuration }}"
             ClapAtom: "{{ ClapAtom }}"
             CslgAtom: "{{ CslgAtom }}"
             Mpeg2FourCCControl: "{{ Mpeg2FourCCControl }}"
@@ -787,6 +788,7 @@ preset
               DynamicSubGop: "{{ DynamicSubGop }}"
               EndOfStreamMarkers: "{{ EndOfStreamMarkers }}"
               EntropyEncoding: "{{ EntropyEncoding }}"
+              ExplicitWeightedPrediction: "{{ ExplicitWeightedPrediction }}"
               FieldEncoding: "{{ FieldEncoding }}"
               FlickerAdaptiveQuantization: "{{ FlickerAdaptiveQuantization }}"
               FramerateControl: "{{ FramerateControl }}"
@@ -1089,6 +1091,10 @@ preset
               L6Mode: "{{ L6Mode }}"
               Mapping: "{{ Mapping }}"
               Profile: "{{ Profile }}"
+            DurationControl:
+              IntegerDurationMaximumCompressionDenominator: {{ IntegerDurationMaximumCompressionDenominator }}
+              IntegerDurationMaximumCompressionNumerator: {{ IntegerDurationMaximumCompressionNumerator }}
+              IntegerDurationTrimThresholdMilliseconds: {{ IntegerDurationTrimThresholdMilliseconds }}
             Hdr10Plus:
               MasteringMonitorNits: {{ MasteringMonitorNits }}
               TargetMonitorNits: {{ TargetMonitorNits }}

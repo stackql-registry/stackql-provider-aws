@@ -81,6 +81,11 @@ The following fields are returned by `SELECT` queries:
     <td>The identifier of the Amazon Web Services account for which the instance was created. (pattern: &lt;code&gt;\d&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
+    <td><CopyableCode code="permission_sets_enabled" /></td>
+    <td><code>boolean</code></td>
+    <td>Indicates whether permission sets are enabled for this Identity Center instance.</td>
+</tr>
+<tr>
     <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the instance. (CREATE_IN_PROGRESS, CREATE_FAILED, DELETE_IN_PROGRESS, ACTIVE)</td>
@@ -128,6 +133,16 @@ The following fields are returned by `SELECT` queries:
     <td><CopyableCode code="owner_account_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services account ID number of the owner of the Identity Center instance. (pattern: &lt;code&gt;\d&#123;12&#125;&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="primary_region" /></td>
+    <td><code>string</code></td>
+    <td>The primary Region where the IAM Identity Center instance was originally enabled. The primary Region cannot be removed. (pattern: &lt;code&gt;(&#91;a-z&#93;+-)&#123;2,3&#125;\d&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="regions" /></td>
+    <td><code>array</code></td>
+    <td>The list of Regions enabled in the IAM Identity Center instance, including Regions with ACTIVE, ADDING, or REMOVING status.</td>
 </tr>
 <tr>
     <td><CopyableCode code="status" /></td>
@@ -185,7 +200,7 @@ The following methods are available for this resource:
     <td><CopyableCode code="update" /></td>
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-InstanceArn"><code>InstanceArn</code></a></td>
     <td></td>
-    <td>Update the details for the instance of IAM Identity Center that is owned by the Amazon Web Services account.</td>
+    <td>Update the details for the instance of IAM Identity Center that is owned by the Amazon Web Services account. In a single UpdateInstance request, you can perform only one of the following operations: Update the encryption configuration of the instance by specifying EncryptionConfiguration. Enable permission sets for the instance by specifying PermissionSetsEnabled. A request that specifies both EncryptionConfiguration and PermissionSetsEnabled returns a ValidationException. To perform both operations, call UpdateInstance separately for each. The two calls can be made in parallel.</td>
 </tr>
 <tr>
     <td><a href="#delete_instance"><CopyableCode code="delete_instance" /></a></td>
@@ -239,6 +254,7 @@ identity_store_id,
 instance_arn,
 name,
 owner_account_id,
+permission_sets_enabled,
 status,
 status_reason
 FROM aws.sso_admin.instances
@@ -257,6 +273,8 @@ identity_store_id,
 instance_arn,
 name,
 owner_account_id,
+primary_region,
+regions,
 status,
 status_reason
 FROM aws.sso_admin.instances
@@ -335,14 +353,15 @@ instance_arn
 >
 <TabItem value="update_instance">
 
-Update the details for the instance of IAM Identity Center that is owned by the Amazon Web Services account.
+Update the details for the instance of IAM Identity Center that is owned by the Amazon Web Services account. In a single UpdateInstance request, you can perform only one of the following operations: Update the encryption configuration of the instance by specifying EncryptionConfiguration. Enable permission sets for the instance by specifying PermissionSetsEnabled. A request that specifies both EncryptionConfiguration and PermissionSetsEnabled returns a ValidationException. To perform both operations, call UpdateInstance separately for each. The two calls can be made in parallel.
 
 ```sql
 UPDATE aws.sso_admin.instances
 SET 
 Name = '{{ Name }}',
 InstanceArn = '{{ InstanceArn }}',
-EncryptionConfiguration = '{{ EncryptionConfiguration }}'
+EncryptionConfiguration = '{{ EncryptionConfiguration }}',
+PermissionSetsEnabled = {{ PermissionSetsEnabled }}
 WHERE 
 region = '{{ region }}' --required
 AND InstanceArn = '{{ InstanceArn }}' --required;

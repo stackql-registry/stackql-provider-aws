@@ -75,6 +75,11 @@ The following fields are returned by `SELECT` queries:
     <td>The service provider that manages the Placement Group.</td>
 </tr>
 <tr>
+    <td><CopyableCode code="parent_group_id" /></td>
+    <td><code>string</code></td>
+    <td>The ID of the parent placement group.</td>
+</tr>
+<tr>
     <td><CopyableCode code="partition_count" /></td>
     <td><code>integer</code></td>
     <td>The number of partitions. Valid only if strategy is set to partition.</td>
@@ -130,15 +135,15 @@ The following methods are available for this resource:
     <td><a href="#create_placement_group"><CopyableCode code="create_placement_group" /></a></td>
     <td><CopyableCode code="insert" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
-    <td><a href="#parameter-PartitionCount"><code>PartitionCount</code></a>, <a href="#parameter-TagSpecification"><code>TagSpecification</code></a>, <a href="#parameter-SpreadLevel"><code>SpreadLevel</code></a>, <a href="#parameter-LinkedGroupId"><code>LinkedGroupId</code></a>, <a href="#parameter-Operator"><code>Operator</code></a>, <a href="#parameter-DryRun"><code>DryRun</code></a>, <a href="#parameter-GroupName"><code>GroupName</code></a>, <a href="#parameter-Strategy"><code>Strategy</code></a></td>
-    <td>Creates a placement group in which to launch instances. The strategy of the placement group determines how the instances are organized within the group. A cluster placement group is a logical grouping of instances within a single Availability Zone that benefit from low network latency, high network throughput. A spread placement group places instances on distinct hardware. A partition placement group places groups of instances in different partitions, where instances in one partition do not share the same hardware with instances in another partition. For more information, see Placement groups in the Amazon EC2 User Guide.</td>
+    <td><a href="#parameter-PartitionCount"><code>PartitionCount</code></a>, <a href="#parameter-TagSpecification"><code>TagSpecification</code></a>, <a href="#parameter-SpreadLevel"><code>SpreadLevel</code></a>, <a href="#parameter-LinkedGroupId"><code>LinkedGroupId</code></a>, <a href="#parameter-Operator"><code>Operator</code></a>, <a href="#parameter-ParentGroupId"><code>ParentGroupId</code></a>, <a href="#parameter-DryRun"><code>DryRun</code></a>, <a href="#parameter-GroupName"><code>GroupName</code></a>, <a href="#parameter-Strategy"><code>Strategy</code></a></td>
+    <td>Creates a placement group in which to launch instances. The strategy of the placement group determines how the instances are organized within the group. A cluster placement group is a logical grouping of instances within a single Availability Zone that benefit from low network latency, high network throughput. A spread placement group places instances on distinct hardware. A partition placement group places groups of instances in different partitions, where instances in one partition do not share the same hardware with instances in another partition. A precision-time placement group places instances on supported hardware with direct access to high-precision time sources in Amazon Web Services infrastructure. For more information, see Placement groups in the Amazon EC2 User Guide.</td>
 </tr>
 <tr>
     <td><a href="#delete_placement_group"><CopyableCode code="delete_placement_group" /></a></td>
     <td><CopyableCode code="delete" /></td>
     <td><a href="#parameter-GroupName"><code>GroupName</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td><a href="#parameter-DryRun"><code>DryRun</code></a></td>
-    <td>Deletes the specified placement group. You must terminate all instances in the placement group before you can delete the placement group. For more information, see Placement groups in the Amazon EC2 User Guide.</td>
+    <td>Deletes the specified placement group. You must terminate all instances in the placement group before you can delete the placement group. You cannot delete a placement group that is a parent of a cluster placement group. Delete the cluster placement groups first. For more information, see Placement groups in the Amazon EC2 User Guide.</td>
 </tr>
 </tbody>
 </table>
@@ -174,7 +179,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-Filter">
     <td><CopyableCode code="Filter" /></td>
     <td><code>array</code></td>
-    <td>The filters. group-name - The name of the placement group. group-arn - The Amazon Resource Name (ARN) of the placement group. spread-level - The spread level for the placement group (host | rack). state - The state of the placement group (pending | available | deleting | deleted). strategy - The strategy of the placement group (cluster | spread | partition). tag:<code>&lt;key&gt;</code> - The key/value combination of a tag assigned to the resource. Use the tag key in the filter name and the tag value as the filter value. For example, to find all resources that have a tag with the key Owner and the value TeamA, specify tag:Owner for the filter name and TeamA for the filter value. tag-key - The key of a tag assigned to the resource. Use this filter to find all resources that have a tag with a specific key, regardless of the tag value.</td>
+    <td>The filters. group-name - The name of the placement group. group-arn - The Amazon Resource Name (ARN) of the placement group. spread-level - The spread level for the placement group (host | rack). state - The state of the placement group (pending | available | deleting | deleted). strategy - The strategy of the placement group (cluster | spread | partition | precision-time). tag:<code>&lt;key&gt;</code> - The key/value combination of a tag assigned to the resource. Use the tag key in the filter name and the tag value as the filter value. For example, to find all resources that have a tag with the key Owner and the value TeamA, specify tag:Owner for the filter name and TeamA for the filter value. tag-key - The key of a tag assigned to the resource. Use this filter to find all resources that have a tag with a specific key, regardless of the tag value.</td>
 </tr>
 <tr id="parameter-GroupId">
     <td><CopyableCode code="GroupId" /></td>
@@ -195,6 +200,11 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     <td><CopyableCode code="Operator" /></td>
     <td><code>object</code></td>
     <td>Reserved for internal use.</td>
+</tr>
+<tr id="parameter-ParentGroupId">
+    <td><CopyableCode code="ParentGroupId" /></td>
+    <td><code>string</code></td>
+    <td>The ID of a parent placement group. Valid only when Strategy is set to cluster.</td>
 </tr>
 <tr id="parameter-PartitionCount">
     <td><CopyableCode code="PartitionCount" /></td>
@@ -238,6 +248,7 @@ group_id,
 group_name,
 linked_group_id,
 operator,
+parent_group_id,
 partition_count,
 spread_level,
 state,
@@ -266,7 +277,7 @@ AND Filter = '{{ Filter }}'
 >
 <TabItem value="create_placement_group">
 
-Creates a placement group in which to launch instances. The strategy of the placement group determines how the instances are organized within the group. A cluster placement group is a logical grouping of instances within a single Availability Zone that benefit from low network latency, high network throughput. A spread placement group places instances on distinct hardware. A partition placement group places groups of instances in different partitions, where instances in one partition do not share the same hardware with instances in another partition. For more information, see Placement groups in the Amazon EC2 User Guide.
+Creates a placement group in which to launch instances. The strategy of the placement group determines how the instances are organized within the group. A cluster placement group is a logical grouping of instances within a single Availability Zone that benefit from low network latency, high network throughput. A spread placement group places instances on distinct hardware. A partition placement group places groups of instances in different partitions, where instances in one partition do not share the same hardware with instances in another partition. A precision-time placement group places instances on supported hardware with direct access to high-precision time sources in Amazon Web Services infrastructure. For more information, see Placement groups in the Amazon EC2 User Guide.
 
 ```sql
 INSERT INTO aws.ec2.placement_groups (
@@ -276,6 +287,7 @@ TagSpecification,
 SpreadLevel,
 LinkedGroupId,
 Operator,
+ParentGroupId,
 DryRun,
 GroupName,
 Strategy
@@ -287,6 +299,7 @@ SELECT
 '{{ SpreadLevel }}',
 '{{ LinkedGroupId }}',
 '{{ Operator }}',
+'{{ ParentGroupId }}',
 '{{ DryRun }}',
 '{{ GroupName }}',
 '{{ Strategy }}'
@@ -296,6 +309,7 @@ group_id,
 group_name,
 linked_group_id,
 operator,
+parent_group_id,
 partition_count,
 spread_level,
 state,
@@ -332,6 +346,10 @@ tags
       value: "{{ Operator }}"
       description: Reserved for internal use.
       description: Reserved for internal use.
+    - name: ParentGroupId
+      value: "{{ ParentGroupId }}"
+      description: The ID of a parent placement group. Valid only when Strategy is set to cluster.
+      description: The ID of a parent placement group. Valid only when Strategy is set to cluster.
     - name: DryRun
       value: {{ DryRun }}
       description: Checks whether you have the required permissions for the operation, without actually making the request, and provides an error response. If you have the required permissions, the error response is DryRunOperation. Otherwise, it is UnauthorizedOperation.
@@ -360,7 +378,7 @@ tags
 >
 <TabItem value="delete_placement_group">
 
-Deletes the specified placement group. You must terminate all instances in the placement group before you can delete the placement group. For more information, see Placement groups in the Amazon EC2 User Guide.
+Deletes the specified placement group. You must terminate all instances in the placement group before you can delete the placement group. You cannot delete a placement group that is a parent of a cluster placement group. Delete the cluster placement groups first. For more information, see Placement groups in the Amazon EC2 User Guide.
 
 ```sql
 DELETE FROM aws.ec2.placement_groups

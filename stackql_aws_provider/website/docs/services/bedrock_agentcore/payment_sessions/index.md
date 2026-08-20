@@ -53,12 +53,12 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="available_limits" /></td>
     <td><code>object</code></td>
-    <td>The available limits for this session after accounting for processed payments.</td>
+    <td>The current available spending limits.</td>
 </tr>
 <tr>
     <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
-    <td>The timestamp when this payment session was created.</td>
+    <td>The timestamp when the session was created.</td>
 </tr>
 <tr>
     <td><CopyableCode code="expiry_time_in_minutes" /></td>
@@ -68,7 +68,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="limits" /></td>
     <td><code>object</code></td>
-    <td>Session spending limits</td>
+    <td>The spending limits configuration for a payment session.</td>
 </tr>
 <tr>
     <td><CopyableCode code="payment_manager_arn" /></td>
@@ -78,17 +78,17 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="payment_session_id" /></td>
     <td><code>string</code></td>
-    <td>The unique identifier for this payment session. (pattern: &lt;code&gt;payment-session-&#91;0-9a-zA-Z-&#93;&#123;15&#125;&lt;/code&gt;)</td>
+    <td>The unique identifier of the payment session. (pattern: &lt;code&gt;payment-session-&#91;0-9a-zA-Z-&#93;&#123;15&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
-    <td>The timestamp when this payment session was last updated.</td>
+    <td>The timestamp when the session was last updated.</td>
 </tr>
 <tr>
     <td><CopyableCode code="user_id" /></td>
     <td><code>string</code></td>
-    <td>The user ID associated with this payment session.</td>
+    <td>The user ID associated with this session.</td>
 </tr>
 </tbody>
 </table>
@@ -107,7 +107,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
-    <td>The timestamp when this payment session was created.</td>
+    <td>The timestamp when the session was created.</td>
 </tr>
 <tr>
     <td><CopyableCode code="expiry_time_in_minutes" /></td>
@@ -122,17 +122,17 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="payment_session_id" /></td>
     <td><code>string</code></td>
-    <td>The unique identifier for this payment session. (pattern: &lt;code&gt;payment-session-&#91;0-9a-zA-Z-&#93;&#123;15&#125;&lt;/code&gt;)</td>
+    <td>The unique identifier of the payment session. (pattern: &lt;code&gt;payment-session-&#91;0-9a-zA-Z-&#93;&#123;15&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
-    <td>The timestamp when this payment session was last updated.</td>
+    <td>The timestamp when the session was last updated.</td>
 </tr>
 <tr>
     <td><CopyableCode code="user_id" /></td>
     <td><code>string</code></td>
-    <td>The user ID associated with this payment session.</td>
+    <td>The user ID associated with this session.</td>
 </tr>
 </tbody>
 </table>
@@ -159,28 +159,28 @@ The following methods are available for this resource:
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td><a href="#parameter-X-Amzn-Bedrock-AgentCore-Payments-User-Id"><code>X-Amzn-Bedrock-AgentCore-Payments-User-Id</code></a>, <a href="#parameter-X-Amzn-Bedrock-AgentCore-Payments-Agent-Name"><code>X-Amzn-Bedrock-AgentCore-Payments-Agent-Name</code></a></td>
-    <td>Get a payment session</td>
+    <td>Get a payment session.</td>
 </tr>
 <tr>
     <td><a href="#list_payment_sessions"><CopyableCode code="list_payment_sessions" /></a></td>
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td><a href="#parameter-X-Amzn-Bedrock-AgentCore-Payments-User-Id"><code>X-Amzn-Bedrock-AgentCore-Payments-User-Id</code></a>, <a href="#parameter-X-Amzn-Bedrock-AgentCore-Payments-Agent-Name"><code>X-Amzn-Bedrock-AgentCore-Payments-Agent-Name</code></a></td>
-    <td>List payment manager sessions</td>
+    <td>List payment sessions.</td>
 </tr>
 <tr>
     <td><a href="#create_payment_session"><CopyableCode code="create_payment_session" /></a></td>
     <td><CopyableCode code="insert" /></td>
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-paymentManagerArn"><code>paymentManagerArn</code></a>, <a href="#parameter-expiryTimeInMinutes"><code>expiryTimeInMinutes</code></a></td>
     <td><a href="#parameter-X-Amzn-Bedrock-AgentCore-Payments-User-Id"><code>X-Amzn-Bedrock-AgentCore-Payments-User-Id</code></a>, <a href="#parameter-X-Amzn-Bedrock-AgentCore-Payments-Agent-Name"><code>X-Amzn-Bedrock-AgentCore-Payments-Agent-Name</code></a></td>
-    <td>Create a new payment manager session</td>
+    <td>Create a new payment session.</td>
 </tr>
 <tr>
     <td><a href="#delete_payment_session"><CopyableCode code="delete_payment_session" /></a></td>
     <td><CopyableCode code="delete" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td><a href="#parameter-X-Amzn-Bedrock-AgentCore-Payments-User-Id"><code>X-Amzn-Bedrock-AgentCore-Payments-User-Id</code></a></td>
-    <td>Delete a payment manager session Permanently removes a payment session record from the database. This is a hard delete operation that removes the session completely. Deleting a non-existent or already-deleted session returns ResourceNotFoundException (404). Authorization: The caller must own the session (accountId, userId, and paymentManagerId must match). If authorization fails, a 403 Forbidden error is returned. Errors: ResourceNotFoundException: The session does not exist or has already been deleted AccessDeniedException: The caller is not authorized to delete this session ValidationException: Required fields are missing or invalid InternalServerException: An unexpected server error occurred</td>
+    <td>Deletes a payment session. This permanently removes the payment session record.</td>
 </tr>
 </tbody>
 </table>
@@ -227,7 +227,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 >
 <TabItem value="get_payment_session">
 
-Get a payment session
+Get a payment session.
 
 ```sql
 SELECT
@@ -248,7 +248,7 @@ AND `X-Amzn-Bedrock-AgentCore-Payments-Agent-Name` = '{{ X-Amzn-Bedrock-AgentCor
 </TabItem>
 <TabItem value="list_payment_sessions">
 
-List payment manager sessions
+List payment sessions.
 
 ```sql
 SELECT
@@ -279,7 +279,7 @@ AND `X-Amzn-Bedrock-AgentCore-Payments-Agent-Name` = '{{ X-Amzn-Bedrock-AgentCor
 >
 <TabItem value="create_payment_session">
 
-Create a new payment manager session
+Create a new payment session.
 
 ```sql
 INSERT INTO aws.bedrock_agentcore.payment_sessions (
@@ -316,7 +316,7 @@ payment_session
       value: "{{ paymentManagerArn }}"
     - name: limits
       description: |
-        Session spending limits
+        The spending limits configuration for a payment session.
       value:
         maxSpendAmount:
           value: "{{ value }}"
@@ -349,7 +349,7 @@ payment_session
 >
 <TabItem value="delete_payment_session">
 
-Delete a payment manager session Permanently removes a payment session record from the database. This is a hard delete operation that removes the session completely. Deleting a non-existent or already-deleted session returns ResourceNotFoundException (404). Authorization: The caller must own the session (accountId, userId, and paymentManagerId must match). If authorization fails, a 403 Forbidden error is returned. Errors: ResourceNotFoundException: The session does not exist or has already been deleted AccessDeniedException: The caller is not authorized to delete this session ValidationException: Required fields are missing or invalid InternalServerException: An unexpected server error occurred
+Deletes a payment session. This permanently removes the payment session record.
 
 ```sql
 DELETE FROM aws.bedrock_agentcore.payment_sessions

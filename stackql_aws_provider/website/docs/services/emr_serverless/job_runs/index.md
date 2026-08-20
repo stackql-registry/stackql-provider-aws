@@ -121,6 +121,11 @@ The following fields are returned by `SELECT` queries:
     <td>Returns the job run timeout value from the StartJobRun call. If no timeout was specified, then it returns the default timeout of 720 minutes.</td>
 </tr>
 <tr>
+    <td><CopyableCode code="image_configuration" /></td>
+    <td><code>object</code></td>
+    <td>The applied image configuration.</td>
+</tr>
+<tr>
     <td><CopyableCode code="job_driver" /></td>
     <td><code>object</code></td>
     <td>The job driver for the job run.</td>
@@ -189,6 +194,11 @@ The following fields are returned by `SELECT` queries:
     <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the job run was updated.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="worker_type_specifications" /></td>
+    <td><code>object</code></td>
+    <td>The specification applied to each worker type. Includes the JobRun-level ImageConfiguration when the applicationLevelDigestResolution is false for the application.</td>
 </tr>
 </tbody>
 </table>
@@ -416,6 +426,7 @@ ended_at,
 execution_iam_policy,
 execution_role,
 execution_timeout_minutes,
+image_configuration,
 job_driver,
 job_run_id,
 mode,
@@ -429,7 +440,8 @@ state_details,
 tags,
 total_execution_duration_seconds,
 total_resource_utilization,
-updated_at
+updated_at,
+worker_type_specifications
 FROM aws.emr_serverless.job_runs
 WHERE application_id = '{{ application_id }}' -- required
 AND job_run_id = '{{ job_run_id }}' -- required

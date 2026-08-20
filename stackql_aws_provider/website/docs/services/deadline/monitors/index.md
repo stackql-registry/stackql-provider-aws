@@ -78,7 +78,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="identity_center_region" /></td>
     <td><code>string</code></td>
-    <td>The AWS Region where IAM Identity Center is enabled. (pattern: &lt;code&gt;&#91;a-z0-9-&#93;+&lt;/code&gt;)</td>
+    <td>The Region where IAM Identity Center is enabled. (pattern: &lt;code&gt;&#91;a-z0-9-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="monitor_id" /></td>
@@ -152,7 +152,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="identity_center_region" /></td>
     <td><code>string</code></td>
-    <td>The AWS Region where IAM Identity Center is enabled. (pattern: &lt;code&gt;&#91;a-z0-9-&#93;+&lt;/code&gt;)</td>
+    <td>The Region where IAM Identity Center is enabled. (pattern: &lt;code&gt;&#91;a-z0-9-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="monitor_id" /></td>

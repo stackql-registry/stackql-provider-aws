@@ -57,7 +57,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="selection_rules" /></td>
     <td><code>string</code></td>
-    <td>The JSON string representing metadata model location.</td>
+    <td>A JSON string that identifies this metadata model in the metadata tree. For the selection rule format, see Selection rules in DMS Schema Conversion. Usage: You can pass this value as the SelectionRules parameter to any operation that accepts selection rules, such as DescribeMetadataModel, StartMetadataModelConversion, and others.</td>
 </tr>
 </tbody>
 </table>
@@ -84,7 +84,7 @@ The following methods are available for this resource:
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>Gets a list of child metadata models for the specified metadata model in the database hierarchy.</td>
+    <td>Gets a list of child metadata models for the specified metadata model in the database hierarchy. Required permissions: dms:DescribeMetadataModelChildren. For more information, see Actions, resources, and condition keys for Database Migration Service.</td>
 </tr>
 </tbody>
 </table>
@@ -120,7 +120,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 >
 <TabItem value="describe_metadata_model_children">
 
-Gets a list of child metadata models for the specified metadata model in the database hierarchy.
+Gets a list of child metadata models for the specified metadata model in the database hierarchy. Required permissions: dms:DescribeMetadataModelChildren. For more information, see Actions, resources, and condition keys for Database Migration Service.
 
 ```sql
 SELECT

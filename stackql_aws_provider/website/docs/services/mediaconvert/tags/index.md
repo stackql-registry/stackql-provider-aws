@@ -91,14 +91,14 @@ The following methods are available for this resource:
     <td><CopyableCode code="update" /></td>
     <td><a href="#parameter-arn"><code>arn</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>Remove tags from a MediaConvert queue, preset, or job template. For information about tagging, see the User Guide at https:​//docs.aws.amazon.com/mediaconvert/latest/ug/tagging-resources.html</td>
+    <td>Remove tags from a MediaConvert queue, preset, job, or job template. For information about tagging, see the User Guide at https:​//docs.aws.amazon.com/mediaconvert/latest/ug/tagging-mediaconvert-resources.html.</td>
 </tr>
 <tr>
     <td><a href="#tag_resource"><CopyableCode code="tag_resource" /></a></td>
     <td><CopyableCode code="update" /></td>
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-Tags"><code>Tags</code></a></td>
     <td></td>
-    <td>Add tags to a MediaConvert queue, preset, or job template. For information about tagging, see the User Guide at https:​//docs.aws.amazon.com/mediaconvert/latest/ug/tagging-resources.html</td>
+    <td>Add tags to a MediaConvert queue, preset, job, or job template. For information about tagging, see the User Guide at https:​//docs.aws.amazon.com/mediaconvert/latest/ug/tagging-mediaconvert-resources.html.</td>
 </tr>
 </tbody>
 </table>
@@ -165,7 +165,7 @@ AND region = '{{ region }}' -- required
 >
 <TabItem value="untag_resource">
 
-Remove tags from a MediaConvert queue, preset, or job template. For information about tagging, see the User Guide at https://docs.aws.amazon.com/mediaconvert/latest/ug/tagging-resources.html
+Remove tags from a MediaConvert queue, preset, job, or job template. For information about tagging, see the User Guide at https://docs.aws.amazon.com/mediaconvert/latest/ug/tagging-mediaconvert-resources.html.
 
 ```sql
 UPDATE aws.mediaconvert.tags
@@ -178,7 +178,7 @@ AND region = '{{ region }}' --required;
 </TabItem>
 <TabItem value="tag_resource">
 
-Add tags to a MediaConvert queue, preset, or job template. For information about tagging, see the User Guide at https://docs.aws.amazon.com/mediaconvert/latest/ug/tagging-resources.html
+Add tags to a MediaConvert queue, preset, job, or job template. For information about tagging, see the User Guide at https://docs.aws.amazon.com/mediaconvert/latest/ug/tagging-mediaconvert-resources.html.
 
 ```sql
 UPDATE aws.mediaconvert.tags

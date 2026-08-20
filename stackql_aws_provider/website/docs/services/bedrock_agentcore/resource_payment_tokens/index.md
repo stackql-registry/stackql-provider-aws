@@ -52,12 +52,12 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="coinbase_cdp_token_response" /></td>
     <td><code>object</code></td>
-    <td>Coinbase CDP token response</td>
+    <td>The Coinbase CDP token response.</td>
 </tr>
 <tr>
     <td><CopyableCode code="stripe_privy_token_response" /></td>
     <td><code>object</code></td>
-    <td>StripePrivy token response containing appId, basicAuthToken, and optionally authorizationSignature</td>
+    <td>The Stripe Privy token response.</td>
 </tr>
 </tbody>
 </table>

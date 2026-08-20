@@ -442,7 +442,7 @@ The following methods are available for this resource:
     <td><CopyableCode code="exec" /></td>
     <td><a href="#parameter-InstanceId"><code>InstanceId</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td><a href="#parameter-Storage"><code>Storage</code></a>, <a href="#parameter-DryRun"><code>DryRun</code></a></td>
-    <td>Bundles an Amazon instance store-backed Windows instance. During bundling, only the root device volume (C:\) is bundled. Data on other instance store volumes is not preserved. This action is no longer supported. To create an AMI, use CreateImage. For more information, see Create an Amazon EBS-backed AMI in the Amazon EC2 User Guide.</td>
+    <td>Bundles an Amazon instance store-backed Windows instance. During bundling, only the root device volume (C:\) is bundled. Data on other instance store volumes is not preserved. BundleInstance is no longer supported. To create an AMI, use CreateImage instead. For more information about creating an Amazon EBS-backed AMI, see Create an Amazon EBS-backed AMI in the Amazon EC2 User Guide.</td>
 </tr>
 <tr>
     <td><a href="#confirm_product_instance"><CopyableCode code="confirm_product_instance" /></a></td>
@@ -1745,7 +1745,7 @@ AND DryRun = '{{ DryRun }}'
 >
 <TabItem value="bundle_instance">
 
-Bundles an Amazon instance store-backed Windows instance. During bundling, only the root device volume (C:\) is bundled. Data on other instance store volumes is not preserved. This action is no longer supported. To create an AMI, use CreateImage. For more information, see Create an Amazon EBS-backed AMI in the Amazon EC2 User Guide.
+Bundles an Amazon instance store-backed Windows instance. During bundling, only the root device volume (C:\) is bundled. Data on other instance store volumes is not preserved. BundleInstance is no longer supported. To create an AMI, use CreateImage instead. For more information about creating an Amazon EBS-backed AMI, see Create an Amazon EBS-backed AMI in the Amazon EC2 User Guide.
 
 ```sql
 EXEC aws.ec2.instances.bundle_instance 

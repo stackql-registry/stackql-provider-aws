@@ -76,6 +76,11 @@ The following fields are returned by `SELECT` queries:
     <td>The time the stack was deleted.</td>
 </tr>
 <tr>
+    <td><CopyableCode code="deployment_config" /></td>
+    <td><code>string</code></td>
+    <td>The deployment configuration for the stack, including the deployment mode used for stack operations.</td>
+</tr>
+<tr>
     <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>A user-defined description associated with the stack.</td>
@@ -292,7 +297,7 @@ The following methods are available for this resource:
     <td><a href="#create_stack"><CopyableCode code="create_stack" /></a></td>
     <td><CopyableCode code="insert" /></td>
     <td><a href="#parameter-StackName"><code>StackName</code></a>, <a href="#parameter-region"><code>region</code></a></td>
-    <td><a href="#parameter-TemplateBody"><code>TemplateBody</code></a>, <a href="#parameter-TemplateURL"><code>TemplateURL</code></a>, <a href="#parameter-Parameters"><code>Parameters</code></a>, <a href="#parameter-DisableRollback"><code>DisableRollback</code></a>, <a href="#parameter-RollbackConfiguration"><code>RollbackConfiguration</code></a>, <a href="#parameter-TimeoutInMinutes"><code>TimeoutInMinutes</code></a>, <a href="#parameter-NotificationARNs"><code>NotificationARNs</code></a>, <a href="#parameter-Capabilities"><code>Capabilities</code></a>, <a href="#parameter-ResourceTypes"><code>ResourceTypes</code></a>, <a href="#parameter-RoleARN"><code>RoleARN</code></a>, <a href="#parameter-OnFailure"><code>OnFailure</code></a>, <a href="#parameter-StackPolicyBody"><code>StackPolicyBody</code></a>, <a href="#parameter-StackPolicyURL"><code>StackPolicyURL</code></a>, <a href="#parameter-Tags"><code>Tags</code></a>, <a href="#parameter-ClientRequestToken"><code>ClientRequestToken</code></a>, <a href="#parameter-EnableTerminationProtection"><code>EnableTerminationProtection</code></a>, <a href="#parameter-RetainExceptOnCreate"><code>RetainExceptOnCreate</code></a></td>
+    <td><a href="#parameter-TemplateBody"><code>TemplateBody</code></a>, <a href="#parameter-TemplateURL"><code>TemplateURL</code></a>, <a href="#parameter-Parameters"><code>Parameters</code></a>, <a href="#parameter-DisableRollback"><code>DisableRollback</code></a>, <a href="#parameter-RollbackConfiguration"><code>RollbackConfiguration</code></a>, <a href="#parameter-TimeoutInMinutes"><code>TimeoutInMinutes</code></a>, <a href="#parameter-NotificationARNs"><code>NotificationARNs</code></a>, <a href="#parameter-Capabilities"><code>Capabilities</code></a>, <a href="#parameter-ResourceTypes"><code>ResourceTypes</code></a>, <a href="#parameter-RoleARN"><code>RoleARN</code></a>, <a href="#parameter-OnFailure"><code>OnFailure</code></a>, <a href="#parameter-StackPolicyBody"><code>StackPolicyBody</code></a>, <a href="#parameter-StackPolicyURL"><code>StackPolicyURL</code></a>, <a href="#parameter-Tags"><code>Tags</code></a>, <a href="#parameter-ClientRequestToken"><code>ClientRequestToken</code></a>, <a href="#parameter-EnableTerminationProtection"><code>EnableTerminationProtection</code></a>, <a href="#parameter-RetainExceptOnCreate"><code>RetainExceptOnCreate</code></a>, <a href="#parameter-DeploymentConfig"><code>DeploymentConfig</code></a>, <a href="#parameter-DisableValidation"><code>DisableValidation</code></a></td>
     <td>Creates a stack as specified in the template. After the call completes successfully, the stack creation starts. You can check the status of the stack through the DescribeStacks operation. For more information about creating a stack and monitoring stack progress, see Managing Amazon Web Services resources as a single unit with CloudFormation stacks in the CloudFormation User Guide.</td>
 </tr>
 <tr>
@@ -306,14 +311,14 @@ The following methods are available for this resource:
     <td><a href="#update_stack"><CopyableCode code="update_stack" /></a></td>
     <td><CopyableCode code="update" /></td>
     <td><a href="#parameter-StackName"><code>StackName</code></a>, <a href="#parameter-region"><code>region</code></a></td>
-    <td><a href="#parameter-TemplateBody"><code>TemplateBody</code></a>, <a href="#parameter-TemplateURL"><code>TemplateURL</code></a>, <a href="#parameter-UsePreviousTemplate"><code>UsePreviousTemplate</code></a>, <a href="#parameter-StackPolicyDuringUpdateBody"><code>StackPolicyDuringUpdateBody</code></a>, <a href="#parameter-StackPolicyDuringUpdateURL"><code>StackPolicyDuringUpdateURL</code></a>, <a href="#parameter-Parameters"><code>Parameters</code></a>, <a href="#parameter-Capabilities"><code>Capabilities</code></a>, <a href="#parameter-ResourceTypes"><code>ResourceTypes</code></a>, <a href="#parameter-RoleARN"><code>RoleARN</code></a>, <a href="#parameter-RollbackConfiguration"><code>RollbackConfiguration</code></a>, <a href="#parameter-StackPolicyBody"><code>StackPolicyBody</code></a>, <a href="#parameter-StackPolicyURL"><code>StackPolicyURL</code></a>, <a href="#parameter-NotificationARNs"><code>NotificationARNs</code></a>, <a href="#parameter-Tags"><code>Tags</code></a>, <a href="#parameter-DisableRollback"><code>DisableRollback</code></a>, <a href="#parameter-ClientRequestToken"><code>ClientRequestToken</code></a>, <a href="#parameter-RetainExceptOnCreate"><code>RetainExceptOnCreate</code></a></td>
+    <td><a href="#parameter-TemplateBody"><code>TemplateBody</code></a>, <a href="#parameter-TemplateURL"><code>TemplateURL</code></a>, <a href="#parameter-UsePreviousTemplate"><code>UsePreviousTemplate</code></a>, <a href="#parameter-StackPolicyDuringUpdateBody"><code>StackPolicyDuringUpdateBody</code></a>, <a href="#parameter-StackPolicyDuringUpdateURL"><code>StackPolicyDuringUpdateURL</code></a>, <a href="#parameter-Parameters"><code>Parameters</code></a>, <a href="#parameter-Capabilities"><code>Capabilities</code></a>, <a href="#parameter-ResourceTypes"><code>ResourceTypes</code></a>, <a href="#parameter-RoleARN"><code>RoleARN</code></a>, <a href="#parameter-RollbackConfiguration"><code>RollbackConfiguration</code></a>, <a href="#parameter-StackPolicyBody"><code>StackPolicyBody</code></a>, <a href="#parameter-StackPolicyURL"><code>StackPolicyURL</code></a>, <a href="#parameter-NotificationARNs"><code>NotificationARNs</code></a>, <a href="#parameter-Tags"><code>Tags</code></a>, <a href="#parameter-DisableRollback"><code>DisableRollback</code></a>, <a href="#parameter-ClientRequestToken"><code>ClientRequestToken</code></a>, <a href="#parameter-RetainExceptOnCreate"><code>RetainExceptOnCreate</code></a>, <a href="#parameter-DeploymentConfig"><code>DeploymentConfig</code></a>, <a href="#parameter-DisableValidation"><code>DisableValidation</code></a></td>
     <td>Updates a stack as specified in the template. After the call completes successfully, the stack update starts. You can check the status of the stack through the DescribeStacks action. To get a copy of the template for an existing stack, you can use the GetTemplate action. For more information about updating a stack and monitoring the progress of the update, see Managing Amazon Web Services resources as a single unit with CloudFormation stacks in the CloudFormation User Guide.</td>
 </tr>
 <tr>
     <td><a href="#delete_stack"><CopyableCode code="delete_stack" /></a></td>
     <td><CopyableCode code="delete" /></td>
     <td><a href="#parameter-StackName"><code>StackName</code></a>, <a href="#parameter-region"><code>region</code></a></td>
-    <td><a href="#parameter-RetainResources"><code>RetainResources</code></a>, <a href="#parameter-RoleARN"><code>RoleARN</code></a>, <a href="#parameter-ClientRequestToken"><code>ClientRequestToken</code></a>, <a href="#parameter-DeletionMode"><code>DeletionMode</code></a></td>
+    <td><a href="#parameter-RetainResources"><code>RetainResources</code></a>, <a href="#parameter-RoleARN"><code>RoleARN</code></a>, <a href="#parameter-ClientRequestToken"><code>ClientRequestToken</code></a>, <a href="#parameter-DeletionMode"><code>DeletionMode</code></a>, <a href="#parameter-DeploymentConfig"><code>DeploymentConfig</code></a></td>
     <td>Deletes a specified stack. Once the call completes successfully, stack deletion starts. Deleted stacks don't show up in the DescribeStacks operation if the deletion has been completed successfully. For more information about deleting a stack, see Delete a stack from the CloudFormation console in the CloudFormation User Guide.</td>
 </tr>
 <tr>
@@ -355,7 +360,7 @@ The following methods are available for this resource:
     <td><a href="#rollback_stack"><CopyableCode code="rollback_stack" /></a></td>
     <td><CopyableCode code="exec" /></td>
     <td><a href="#parameter-StackName"><code>StackName</code></a>, <a href="#parameter-region"><code>region</code></a></td>
-    <td><a href="#parameter-RoleARN"><code>RoleARN</code></a>, <a href="#parameter-ClientRequestToken"><code>ClientRequestToken</code></a>, <a href="#parameter-RetainExceptOnCreate"><code>RetainExceptOnCreate</code></a></td>
+    <td><a href="#parameter-RoleARN"><code>RoleARN</code></a>, <a href="#parameter-ClientRequestToken"><code>ClientRequestToken</code></a>, <a href="#parameter-RetainExceptOnCreate"><code>RetainExceptOnCreate</code></a>, <a href="#parameter-DeploymentConfig"><code>DeploymentConfig</code></a></td>
     <td>When specifying RollbackStack, you preserve the state of previously provisioned resources when an operation fails. You can check the status of the stack through the DescribeStacks operation. Rolls back the specified stack to the last known stable state from CREATE_FAILED or UPDATE_FAILED stack statuses. This operation will delete a stack if it doesn't contain a last known stable state. A last known stable state includes any status in a *_COMPLETE. This includes the following stack statuses. CREATE_COMPLETE UPDATE_COMPLETE UPDATE_ROLLBACK_COMPLETE IMPORT_COMPLETE IMPORT_ROLLBACK_COMPLETE</td>
 </tr>
 <tr>
@@ -404,7 +409,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-UniqueId">
     <td><CopyableCode code="UniqueId" /></td>
     <td><code>string</code></td>
-    <td>A unique ID of the signal. When you signal Amazon EC2 instances or Amazon EC2 Auto Scaling groups, specify the instance ID that you are signaling as the unique ID. If you send multiple signals to a single resource (such as signaling a wait condition), each signal requires a different unique ID.</td>
+    <td>A unique ID of the signal. When you signal Amazon EC2 instances or Auto Scaling groups, specify the instance ID that you are signaling as the unique ID. If you send multiple signals to a single resource (such as signaling a wait condition), each signal requires a different unique ID.</td>
 </tr>
 <tr id="parameter-region">
     <td><CopyableCode code="region" /></td>
@@ -431,10 +436,20 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     <td><code>string</code></td>
     <td>Specifies the deletion mode for the stack. Possible values are: STANDARD - Use the standard behavior. Specifying this value is the same as not specifying this parameter. FORCE_DELETE_STACK - Delete the stack if it's stuck in a DELETE_FAILED state due to resource deletion failure.</td>
 </tr>
+<tr id="parameter-DeploymentConfig">
+    <td><CopyableCode code="DeploymentConfig" /></td>
+    <td><code>object</code></td>
+    <td>The deployment configuration for this stack operation, including the deployment mode.</td>
+</tr>
 <tr id="parameter-DisableRollback">
     <td><CopyableCode code="DisableRollback" /></td>
     <td><code>boolean</code></td>
     <td>Preserve the state of previously provisioned resources when an operation fails. Default: False</td>
+</tr>
+<tr id="parameter-DisableValidation">
+    <td><CopyableCode code="DisableValidation" /></td>
+    <td><code>boolean</code></td>
+    <td>Set to true to disable pre-deployment validations in changeset or stack operations. Default: false</td>
 </tr>
 <tr id="parameter-EnableTerminationProtection">
     <td><CopyableCode code="EnableTerminationProtection" /></td>
@@ -599,6 +614,7 @@ change_set_id,
 creation_time,
 deletion_mode,
 deletion_time,
+deployment_config,
 description,
 detailed_status,
 disable_rollback,
@@ -688,7 +704,9 @@ StackPolicyURL,
 Tags,
 ClientRequestToken,
 EnableTerminationProtection,
-RetainExceptOnCreate
+RetainExceptOnCreate,
+DeploymentConfig,
+DisableValidation
 )
 SELECT 
 '{{ StackName }}',
@@ -709,7 +727,9 @@ SELECT
 '{{ Tags }}',
 '{{ ClientRequestToken }}',
 '{{ EnableTerminationProtection }}',
-'{{ RetainExceptOnCreate }}'
+'{{ RetainExceptOnCreate }}',
+'{{ DeploymentConfig }}',
+'{{ DisableValidation }}'
 RETURNING
 line_items
 ;
@@ -794,6 +814,14 @@ line_items
       value: {{ RetainExceptOnCreate }}
       description: When set to true, newly created resources are deleted when the operation rolls back. This includes newly created resources marked with a deletion policy of Retain. Default: false
       description: When set to true, newly created resources are deleted when the operation rolls back. This includes newly created resources marked with a deletion policy of Retain. Default: false
+    - name: DeploymentConfig
+      value: "{{ DeploymentConfig }}"
+      description: The deployment configuration for this stack operation, including the deployment mode.
+      description: The deployment configuration for this stack operation, including the deployment mode.
+    - name: DisableValidation
+      value: {{ DisableValidation }}
+      description: Set to true to disable pre-deployment validations in changeset or stack operations. Default: false
+      description: Set to true to disable pre-deployment validations in changeset or stack operations. Default: false
 `}</CodeBlock>
 
 </TabItem>
@@ -853,6 +881,8 @@ AND Tags = '{{ Tags}}'
 AND DisableRollback = {{ DisableRollback}}
 AND ClientRequestToken = '{{ ClientRequestToken}}'
 AND RetainExceptOnCreate = {{ RetainExceptOnCreate}}
+AND DeploymentConfig = '{{ DeploymentConfig}}'
+AND DisableValidation = {{ DisableValidation}}
 RETURNING
 line_items;
 ```
@@ -880,6 +910,7 @@ AND RetainResources = '{{ RetainResources }}'
 AND RoleARN = '{{ RoleARN }}'
 AND ClientRequestToken = '{{ ClientRequestToken }}'
 AND DeletionMode = '{{ DeletionMode }}'
+AND DeploymentConfig = '{{ DeploymentConfig }}'
 ;
 ```
 </TabItem>
@@ -977,7 +1008,8 @@ EXEC aws.cloudformation.stacks.rollback_stack
 @region='{{ region }}' --required, 
 @RoleARN='{{ RoleARN }}', 
 @ClientRequestToken='{{ ClientRequestToken }}', 
-@RetainExceptOnCreate={{ RetainExceptOnCreate }}
+@RetainExceptOnCreate={{ RetainExceptOnCreate }}, 
+@DeploymentConfig='{{ DeploymentConfig }}'
 ;
 ```
 </TabItem>

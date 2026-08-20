@@ -169,6 +169,11 @@ The following fields are returned by `SELECT` queries:
     <td><code>array</code></td>
     <td>Strategies used when step fails, we support Continue and Abort. Abort will fail the automation when the step fails. Continue will ignore the failure of current step and allow automation to run the next step. With conditional branching, we add step:stepName to support the automation to go to another specific step.</td>
 </tr>
+<tr>
+    <td><CopyableCode code="warning_message" /></td>
+    <td><code>string</code></td>
+    <td>A message that describes a non-critical issue that occurred during the step execution. Present only if the step status includes a warning.</td>
+</tr>
 </tbody>
 </table>
 </TabItem>
@@ -257,7 +262,8 @@ target_location,
 targets,
 timeout_seconds,
 triggered_alarms,
-valid_next_steps
+valid_next_steps,
+warning_message
 FROM aws.ssm.automation_step_executions
 WHERE region = '{{ region }}' -- required
 ;

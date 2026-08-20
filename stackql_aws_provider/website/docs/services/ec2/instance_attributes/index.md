@@ -165,7 +165,7 @@ The following methods are available for this resource:
     <td><a href="#modify_instance_attribute"><CopyableCode code="modify_instance_attribute" /></a></td>
     <td><CopyableCode code="update" /></td>
     <td><a href="#parameter-InstanceId"><code>InstanceId</code></a>, <a href="#parameter-region"><code>region</code></a></td>
-    <td><a href="#parameter-SourceDestCheck"><code>SourceDestCheck</code></a>, <a href="#parameter-DisableApiStop"><code>DisableApiStop</code></a>, <a href="#parameter-DryRun"><code>DryRun</code></a>, <a href="#parameter-Attribute"><code>Attribute</code></a>, <a href="#parameter-Value"><code>Value</code></a>, <a href="#parameter-BlockDeviceMapping"><code>BlockDeviceMapping</code></a>, <a href="#parameter-DisableApiTermination"><code>DisableApiTermination</code></a>, <a href="#parameter-InstanceType"><code>InstanceType</code></a>, <a href="#parameter-Kernel"><code>Kernel</code></a>, <a href="#parameter-Ramdisk"><code>Ramdisk</code></a>, <a href="#parameter-UserData"><code>UserData</code></a>, <a href="#parameter-InstanceInitiatedShutdownBehavior"><code>InstanceInitiatedShutdownBehavior</code></a>, <a href="#parameter-GroupId"><code>GroupId</code></a>, <a href="#parameter-EbsOptimized"><code>EbsOptimized</code></a>, <a href="#parameter-SriovNetSupport"><code>SriovNetSupport</code></a>, <a href="#parameter-EnaSupport"><code>EnaSupport</code></a></td>
+    <td><a href="#parameter-SourceDestCheck"><code>SourceDestCheck</code></a>, <a href="#parameter-EnclaveOptions"><code>EnclaveOptions</code></a>, <a href="#parameter-DisableApiStop"><code>DisableApiStop</code></a>, <a href="#parameter-DryRun"><code>DryRun</code></a>, <a href="#parameter-Attribute"><code>Attribute</code></a>, <a href="#parameter-Value"><code>Value</code></a>, <a href="#parameter-BlockDeviceMapping"><code>BlockDeviceMapping</code></a>, <a href="#parameter-DisableApiTermination"><code>DisableApiTermination</code></a>, <a href="#parameter-InstanceType"><code>InstanceType</code></a>, <a href="#parameter-Kernel"><code>Kernel</code></a>, <a href="#parameter-Ramdisk"><code>Ramdisk</code></a>, <a href="#parameter-UserData"><code>UserData</code></a>, <a href="#parameter-InstanceInitiatedShutdownBehavior"><code>InstanceInitiatedShutdownBehavior</code></a>, <a href="#parameter-GroupId"><code>GroupId</code></a>, <a href="#parameter-EbsOptimized"><code>EbsOptimized</code></a>, <a href="#parameter-SriovNetSupport"><code>SriovNetSupport</code></a>, <a href="#parameter-EnaSupport"><code>EnaSupport</code></a></td>
     <td>Modifies the specified attribute of the specified instance. You can specify only one attribute at a time. Note: Using this action to change the security groups associated with an elastic network interface (ENI) attached to an instance can result in an error if the instance has more than one ENI. To change the security groups associated with an ENI attached to an instance that has multiple ENIs, we recommend that you use the ModifyNetworkInterfaceAttribute action. To modify some attributes, the instance must be stopped. For more information, see Modify a stopped instance in the Amazon EC2 User Guide.</td>
 </tr>
 </tbody>
@@ -233,6 +233,11 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     <td><CopyableCode code="EnaSupport" /></td>
     <td><code>object</code></td>
     <td>Set to true to enable enhanced networking with ENA for the instance. This option is supported only for HVM instances. Specifying this option with a PV instance can make it unreachable.</td>
+</tr>
+<tr id="parameter-EnclaveOptions">
+    <td><CopyableCode code="EnclaveOptions" /></td>
+    <td><code>object</code></td>
+    <td>Enables or disables the instance for Amazon Web Services Nitro Enclaves. For more information, see the Amazon Web Services Nitro Enclaves User Guide.</td>
 </tr>
 <tr id="parameter-GroupId">
     <td><CopyableCode code="GroupId" /></td>
@@ -344,6 +349,7 @@ WHERE
 InstanceId = '{{ InstanceId }}' --required
 AND region = '{{ region }}' --required
 AND SourceDestCheck = '{{ SourceDestCheck}}'
+AND EnclaveOptions = '{{ EnclaveOptions}}'
 AND DisableApiStop = '{{ DisableApiStop}}'
 AND DryRun = {{ DryRun}}
 AND Attribute = '{{ Attribute}}'

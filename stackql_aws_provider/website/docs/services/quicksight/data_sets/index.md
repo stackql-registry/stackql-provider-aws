@@ -581,6 +581,10 @@ status
         Configuration for the semantic model that defines how prepared data is structured for analysis and reporting.
       value:
         TableMap: "{{ TableMap }}"
+        SemanticMetadata:
+          - Description:
+              Text: "{{ Text }}"
+            CustomInstructions: "{{ CustomInstructions }}"
 `}</CodeBlock>
 
 </TabItem>

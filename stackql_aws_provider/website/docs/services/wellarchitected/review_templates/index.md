@@ -53,7 +53,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
-    <td>The review template description. (pattern: &lt;code&gt;^&#91;A-Za-z0-9-_.,:/()@!&?#+'’\s&#93;+$&lt;/code&gt;)</td>
+    <td>The review template description. (pattern: &lt;code&gt;&#91;A-Za-z0-9-_.,:/()@!&?#+'’\s&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="lenses" /></td>
@@ -93,7 +93,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="template_name" /></td>
     <td><code>string</code></td>
-    <td>The name of the review template. (pattern: &lt;code&gt;^&#91;A-Za-z0-9-_.,:/()@!&?#+'’\s&#93;+$&lt;/code&gt;)</td>
+    <td>The name of the review template. (pattern: &lt;code&gt;&#91;A-Za-z0-9-_.,:/()@!&?#+'’\s&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="update_status" /></td>
@@ -103,7 +103,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
-    <td>The date and time recorded.</td>
+    <td>The date and time when the review template was last updated.</td>
 </tr>
 </tbody>
 </table>
@@ -122,7 +122,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
-    <td>The token to use to retrieve the next set of results.</td>
+    <td>The token to use to retrieve the next set of results. (pattern: &lt;code&gt;&#91;A-Za-z0-9+\/=_-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="review_templates" /></td>

@@ -80,6 +80,11 @@ The following fields are returned by `SELECT` queries:
     <td>The error message from the cluster if the SQL statement encountered an error while running.</td>
 </tr>
 <tr>
+    <td><CopyableCode code="execution_mode" /></td>
+    <td><code>string</code></td>
+    <td>The execution mode of the batch request. TRANSACTION indicates all SQL statements are run as a single transaction. AUTO_COMMIT indicates each SQL statement is committed individually. (TRANSACTION, AUTO_COMMIT)</td>
+</tr>
+<tr>
     <td><CopyableCode code="has_result_set" /></td>
     <td><code>boolean</code></td>
     <td>A value that indicates whether the statement has a result set. The result set can be empty. The value is true for an empty result set. The value is true if any substatement returns a result set.</td>
@@ -152,7 +157,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="workgroup_name" /></td>
     <td><code>string</code></td>
-    <td>The serverless workgroup name or Amazon Resource Name (ARN). (pattern: &lt;code&gt;.*((^&#91;a-z0-9-&#93;&#123;3,63&#125;$)|^(arn:(aws(-&#91;a-z&#93;+)*):redshift-serverless:&#91;a-z&#93;&#123;2&#125;(-gov|(-iso&#91;a-z&#93;?))?-&#91;a-z&#93;+-\d&#123;1&#125;:\d&#123;12&#125;:workgroup/&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;))&lt;/code&gt;)</td>
+    <td>The serverless workgroup name or Amazon Resource Name (ARN). (pattern: &lt;code&gt;(&#91;a-z0-9-&#93;&#123;3,63&#125;|arn:(aws(-&#91;a-z&#93;+)*):redshift-serverless:(&#91;a-z&#93;&#123;2&#125;(-gov|(-iso&#91;a-z&#93;?))?|eusc-&#91;a-z&#93;+)-&#91;a-z&#93;+-\d&#123;1&#125;:\d&#123;12&#125;:workgroup/&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;)&lt;/code&gt;)</td>
 </tr>
 </tbody>
 </table>
@@ -232,6 +237,7 @@ database,
 db_user,
 duration,
 error,
+execution_mode,
 has_result_set,
 id,
 query_parameters,

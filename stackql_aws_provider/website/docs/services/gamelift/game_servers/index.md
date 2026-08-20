@@ -58,27 +58,27 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="connection_info" /></td>
     <td><code>string</code></td>
-    <td>The port and IP address that must be used to establish a client connection to the game server. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
+    <td>The port and IP address that must be used to establish a client connection to the game server. (pattern: &lt;code&gt;^.*\S.*$&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="game_server_data" /></td>
     <td><code>string</code></td>
-    <td>A set of custom game server properties, formatted as a single string value. This data is passed to a game client or service when it requests information on game servers. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
+    <td>A set of custom game server properties, formatted as a single string value. This data is passed to a game client or service when it requests information on game servers. (pattern: &lt;code&gt;^.*\S.*$&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="game_server_group_arn" /></td>
     <td><code>string</code></td>
-    <td>The ARN identifier for the game server group where the game server is located. (pattern: &lt;code&gt;^arn:.*:gameservergroup\/&#91;a-zA-Z0-9-\.&#93;*&lt;/code&gt;)</td>
+    <td>The ARN identifier for the game server group where the game server is located. (pattern: &lt;code&gt;^arn:.*:gameservergroup\/&#91;a-zA-Z0-9-\.&#93;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="game_server_group_name" /></td>
     <td><code>string</code></td>
-    <td>A unique identifier for the game server group where the game server is running. (pattern: &lt;code&gt;&#91;a-zA-Z0-9-\.&#93;+&lt;/code&gt;)</td>
+    <td>A unique identifier for the game server group where the game server is running. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9-\.&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="game_server_id" /></td>
     <td><code>string</code></td>
-    <td>A custom string that uniquely identifies the game server. Game server IDs are developer-defined and are unique across all game server groups in an Amazon Web Services account. (pattern: &lt;code&gt;&#91;a-zA-Z0-9-\.&#93;+&lt;/code&gt;)</td>
+    <td>A custom string that uniquely identifies the game server. Game server IDs are developer-defined and are unique across all game server groups in an Amazon Web Services account. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9-\.&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="instance_id" /></td>
@@ -127,27 +127,27 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="connection_info" /></td>
     <td><code>string</code></td>
-    <td>The port and IP address that must be used to establish a client connection to the game server. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
+    <td>The port and IP address that must be used to establish a client connection to the game server. (pattern: &lt;code&gt;^.*\S.*$&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="game_server_data" /></td>
     <td><code>string</code></td>
-    <td>A set of custom game server properties, formatted as a single string value. This data is passed to a game client or service when it requests information on game servers. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
+    <td>A set of custom game server properties, formatted as a single string value. This data is passed to a game client or service when it requests information on game servers. (pattern: &lt;code&gt;^.*\S.*$&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="game_server_group_arn" /></td>
     <td><code>string</code></td>
-    <td>The ARN identifier for the game server group where the game server is located. (pattern: &lt;code&gt;^arn:.*:gameservergroup\/&#91;a-zA-Z0-9-\.&#93;*&lt;/code&gt;)</td>
+    <td>The ARN identifier for the game server group where the game server is located. (pattern: &lt;code&gt;^arn:.*:gameservergroup\/&#91;a-zA-Z0-9-\.&#93;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="game_server_group_name" /></td>
     <td><code>string</code></td>
-    <td>A unique identifier for the game server group where the game server is running. (pattern: &lt;code&gt;&#91;a-zA-Z0-9-\.&#93;+&lt;/code&gt;)</td>
+    <td>A unique identifier for the game server group where the game server is running. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9-\.&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="game_server_id" /></td>
     <td><code>string</code></td>
-    <td>A custom string that uniquely identifies the game server. Game server IDs are developer-defined and are unique across all game server groups in an Amazon Web Services account. (pattern: &lt;code&gt;&#91;a-zA-Z0-9-\.&#93;+&lt;/code&gt;)</td>
+    <td>A custom string that uniquely identifies the game server. Game server IDs are developer-defined and are unique across all game server groups in an Amazon Web Services account. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9-\.&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="instance_id" /></td>

@@ -93,7 +93,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="db_node_storage_size_in_gbs" /></td>
     <td><code>integer</code></td>
-    <td>The amount of local node storage, in gigabytes (GBs), that's allocated on the DB node.</td>
+    <td>The amount of local node storage, in gigabytes (GB), that's allocated on the DB node.</td>
 </tr>
 <tr>
     <td><CopyableCode code="db_server_id" /></td>

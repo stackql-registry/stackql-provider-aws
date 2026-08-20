@@ -98,7 +98,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="title" /></td>
     <td><code>string</code></td>
-    <td>The title of the engagement. It provides a brief, descriptive name for the engagement that is meaningful and easily recognizable. (pattern: &lt;code&gt;(?s).&#123;1,40&#125;&lt;/code&gt;)</td>
+    <td>The title of the engagement. It provides a brief, descriptive name for the engagement that is meaningful and easily recognizable. (pattern: &lt;code&gt;(?s).&#123;0,40&#125;&lt;/code&gt;)</td>
 </tr>
 </tbody>
 </table>
@@ -157,7 +157,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="title" /></td>
     <td><code>string</code></td>
-    <td>The title of the Engagement. (pattern: &lt;code&gt;(?s).&#123;1,40&#125;&lt;/code&gt;)</td>
+    <td>The title of the Engagement. (pattern: &lt;code&gt;(?s).&#123;0,40&#125;&lt;/code&gt;)</td>
 </tr>
 </tbody>
 </table>
@@ -408,7 +408,7 @@ modified_at
       value: "{{ Type }}"
       description: |
         Specifies the type of context being created for the engagement. This field determines the structure and content of the context payload. Valid values include CustomerProject for customer project-related contexts. The type field ensures that the context is properly categorized and processed according to its intended purpose.
-      valid_values: ['CustomerProject', 'Lead']
+      valid_values: ['CustomerProject', 'Lead', 'ProspectingResult']
     - name: Payload
       description: |
         Represents the payload of an Engagement context. The structure of this payload varies based on the context type specified in the EngagementContextDetails.
@@ -424,6 +424,8 @@ modified_at
             BusinessProblem: "{{ BusinessProblem }}"
             TargetCompletionDate: "{{ TargetCompletionDate }}"
         Lead:
+          Insights:
+            LeadReadinessScore: "{{ LeadReadinessScore }}"
           QualificationStatus: "{{ QualificationStatus }}"
           Customer:
             Industry: "{{ Industry }}"
@@ -450,6 +452,31 @@ modified_at
                 FirstName: "{{ FirstName }}"
                 LastName: "{{ LastName }}"
                 Phone: "{{ Phone }}"
+        ProspectingResult:
+          Aws:
+            Customer:
+              AccountName: "{{ AccountName }}"
+              Geo: "{{ Geo }}"
+              Region: "{{ Region }}"
+              SubRegion: "{{ SubRegion }}"
+              Country: "{{ Country }}"
+              Industry: "{{ Industry }}"
+              SubIndustry: "{{ SubIndustry }}"
+              Segment: "{{ Segment }}"
+              CompanySize: "{{ CompanySize }}"
+              EligiblePrograms:
+                - "{{ EligiblePrograms }}"
+              PublicProfileSummary: "{{ PublicProfileSummary }}"
+            Insights:
+              MarketplaceEngagementScore: "{{ MarketplaceEngagementScore }}"
+              SolutionScore: "{{ SolutionScore }}"
+              SolutionCategory: "{{ SolutionCategory }}"
+              SolutionSubCategory: "{{ SolutionSubCategory }}"
+            StartTime: "{{ StartTime }}"
+            EndTime: "{{ EndTime }}"
+            TaskId: "{{ TaskId }}"
+            TaskArn: "{{ TaskArn }}"
+            TaskName: "{{ TaskName }}"
     - name: Title
       value: "{{ Title }}"
       description: |
@@ -476,6 +503,8 @@ modified_at
                 BusinessProblem: "{{ BusinessProblem }}"
                 TargetCompletionDate: "{{ TargetCompletionDate }}"
             Lead:
+              Insights:
+                LeadReadinessScore: "{{ LeadReadinessScore }}"
               QualificationStatus: "{{ QualificationStatus }}"
               Customer:
                 Industry: "{{ Industry }}"
@@ -502,6 +531,30 @@ modified_at
                     FirstName: "{{ FirstName }}"
                     LastName: "{{ LastName }}"
                     Phone: "{{ Phone }}"
+            ProspectingResult:
+              Aws:
+                Customer:
+                  AccountName: "{{ AccountName }}"
+                  Geo: "{{ Geo }}"
+                  Region: "{{ Region }}"
+                  SubRegion: "{{ SubRegion }}"
+                  Country: "{{ Country }}"
+                  Industry: "{{ Industry }}"
+                  SubIndustry: "{{ SubIndustry }}"
+                  Segment: "{{ Segment }}"
+                  CompanySize: "{{ CompanySize }}"
+                  EligiblePrograms: "{{ EligiblePrograms }}"
+                  PublicProfileSummary: "{{ PublicProfileSummary }}"
+                Insights:
+                  MarketplaceEngagementScore: "{{ MarketplaceEngagementScore }}"
+                  SolutionScore: "{{ SolutionScore }}"
+                  SolutionCategory: "{{ SolutionCategory }}"
+                  SolutionSubCategory: "{{ SolutionSubCategory }}"
+                StartTime: "{{ StartTime }}"
+                EndTime: "{{ EndTime }}"
+                TaskId: "{{ TaskId }}"
+                TaskArn: "{{ TaskArn }}"
+                TaskName: "{{ TaskName }}"
 `}</CodeBlock>
 
 </TabItem>

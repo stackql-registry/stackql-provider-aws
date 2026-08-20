@@ -82,7 +82,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
-    <td>The current state of the export image task, such as PENDING, RUNNING, COMPLETED, or FAILED. (EXPORTING, COMPLETED, FAILED)</td>
+    <td>The current state of the export image task, such as PENDING, RUNNING, COMPLETED, or FAILED. (EXPORTING, COMPLETED, FAILED, TIMED_OUT)</td>
 </tr>
 <tr>
     <td><CopyableCode code="tag_specifications" /></td>

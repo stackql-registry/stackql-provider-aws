@@ -195,6 +195,11 @@ The following fields are returned by `SELECT` queries:
     <td>Indicates whether newly launched EC2 instances are protected from termination when scaling in for the Auto Scaling group. For more information about preventing instances from terminating on scale in, see Use instance scale-in protection in the Amazon EC2 Auto Scaling User Guide.</td>
 </tr>
 <tr>
+    <td><CopyableCode code="operator" /></td>
+    <td><code>string</code></td>
+    <td>The entity that manages the Auto Scaling group, if applicable. When set, only the designated operator can make changes to the group configuration.</td>
+</tr>
+<tr>
     <td><CopyableCode code="placement_group" /></td>
     <td><code>string</code></td>
     <td>The name of the placement group into which to launch EC2 instances for the Auto Scaling group.</td>
@@ -285,7 +290,7 @@ The following methods are available for this resource:
     <td><a href="#create_auto_scaling_group"><CopyableCode code="create_auto_scaling_group" /></a></td>
     <td><CopyableCode code="insert" /></td>
     <td><a href="#parameter-AutoScalingGroupName"><code>AutoScalingGroupName</code></a>, <a href="#parameter-MinSize"><code>MinSize</code></a>, <a href="#parameter-MaxSize"><code>MaxSize</code></a>, <a href="#parameter-region"><code>region</code></a></td>
-    <td><a href="#parameter-LaunchConfigurationName"><code>LaunchConfigurationName</code></a>, <a href="#parameter-LaunchTemplate"><code>LaunchTemplate</code></a>, <a href="#parameter-MixedInstancesPolicy"><code>MixedInstancesPolicy</code></a>, <a href="#parameter-InstanceId"><code>InstanceId</code></a>, <a href="#parameter-DesiredCapacity"><code>DesiredCapacity</code></a>, <a href="#parameter-DefaultCooldown"><code>DefaultCooldown</code></a>, <a href="#parameter-AvailabilityZones"><code>AvailabilityZones</code></a>, <a href="#parameter-AvailabilityZoneIds"><code>AvailabilityZoneIds</code></a>, <a href="#parameter-LoadBalancerNames"><code>LoadBalancerNames</code></a>, <a href="#parameter-TargetGroupARNs"><code>TargetGroupARNs</code></a>, <a href="#parameter-HealthCheckType"><code>HealthCheckType</code></a>, <a href="#parameter-HealthCheckGracePeriod"><code>HealthCheckGracePeriod</code></a>, <a href="#parameter-PlacementGroup"><code>PlacementGroup</code></a>, <a href="#parameter-VPCZoneIdentifier"><code>VPCZoneIdentifier</code></a>, <a href="#parameter-TerminationPolicies"><code>TerminationPolicies</code></a>, <a href="#parameter-NewInstancesProtectedFromScaleIn"><code>NewInstancesProtectedFromScaleIn</code></a>, <a href="#parameter-CapacityRebalance"><code>CapacityRebalance</code></a>, <a href="#parameter-LifecycleHookSpecificationList"><code>LifecycleHookSpecificationList</code></a>, <a href="#parameter-DeletionProtection"><code>DeletionProtection</code></a>, <a href="#parameter-Tags"><code>Tags</code></a>, <a href="#parameter-ServiceLinkedRoleARN"><code>ServiceLinkedRoleARN</code></a>, <a href="#parameter-MaxInstanceLifetime"><code>MaxInstanceLifetime</code></a>, <a href="#parameter-Context"><code>Context</code></a>, <a href="#parameter-DesiredCapacityType"><code>DesiredCapacityType</code></a>, <a href="#parameter-DefaultInstanceWarmup"><code>DefaultInstanceWarmup</code></a>, <a href="#parameter-TrafficSources"><code>TrafficSources</code></a>, <a href="#parameter-InstanceMaintenancePolicy"><code>InstanceMaintenancePolicy</code></a>, <a href="#parameter-AvailabilityZoneDistribution"><code>AvailabilityZoneDistribution</code></a>, <a href="#parameter-AvailabilityZoneImpairmentPolicy"><code>AvailabilityZoneImpairmentPolicy</code></a>, <a href="#parameter-SkipZonalShiftValidation"><code>SkipZonalShiftValidation</code></a>, <a href="#parameter-CapacityReservationSpecification"><code>CapacityReservationSpecification</code></a>, <a href="#parameter-InstanceLifecyclePolicy"><code>InstanceLifecyclePolicy</code></a></td>
+    <td><a href="#parameter-LaunchConfigurationName"><code>LaunchConfigurationName</code></a>, <a href="#parameter-LaunchTemplate"><code>LaunchTemplate</code></a>, <a href="#parameter-MixedInstancesPolicy"><code>MixedInstancesPolicy</code></a>, <a href="#parameter-InstanceId"><code>InstanceId</code></a>, <a href="#parameter-DesiredCapacity"><code>DesiredCapacity</code></a>, <a href="#parameter-DefaultCooldown"><code>DefaultCooldown</code></a>, <a href="#parameter-AvailabilityZones"><code>AvailabilityZones</code></a>, <a href="#parameter-AvailabilityZoneIds"><code>AvailabilityZoneIds</code></a>, <a href="#parameter-LoadBalancerNames"><code>LoadBalancerNames</code></a>, <a href="#parameter-TargetGroupARNs"><code>TargetGroupARNs</code></a>, <a href="#parameter-HealthCheckType"><code>HealthCheckType</code></a>, <a href="#parameter-HealthCheckGracePeriod"><code>HealthCheckGracePeriod</code></a>, <a href="#parameter-PlacementGroup"><code>PlacementGroup</code></a>, <a href="#parameter-VPCZoneIdentifier"><code>VPCZoneIdentifier</code></a>, <a href="#parameter-TerminationPolicies"><code>TerminationPolicies</code></a>, <a href="#parameter-NewInstancesProtectedFromScaleIn"><code>NewInstancesProtectedFromScaleIn</code></a>, <a href="#parameter-CapacityRebalance"><code>CapacityRebalance</code></a>, <a href="#parameter-LifecycleHookSpecificationList"><code>LifecycleHookSpecificationList</code></a>, <a href="#parameter-DeletionProtection"><code>DeletionProtection</code></a>, <a href="#parameter-Tags"><code>Tags</code></a>, <a href="#parameter-ServiceLinkedRoleARN"><code>ServiceLinkedRoleARN</code></a>, <a href="#parameter-MaxInstanceLifetime"><code>MaxInstanceLifetime</code></a>, <a href="#parameter-Context"><code>Context</code></a>, <a href="#parameter-DesiredCapacityType"><code>DesiredCapacityType</code></a>, <a href="#parameter-DefaultInstanceWarmup"><code>DefaultInstanceWarmup</code></a>, <a href="#parameter-TrafficSources"><code>TrafficSources</code></a>, <a href="#parameter-InstanceMaintenancePolicy"><code>InstanceMaintenancePolicy</code></a>, <a href="#parameter-AvailabilityZoneDistribution"><code>AvailabilityZoneDistribution</code></a>, <a href="#parameter-AvailabilityZoneImpairmentPolicy"><code>AvailabilityZoneImpairmentPolicy</code></a>, <a href="#parameter-SkipZonalShiftValidation"><code>SkipZonalShiftValidation</code></a>, <a href="#parameter-CapacityReservationSpecification"><code>CapacityReservationSpecification</code></a>, <a href="#parameter-InstanceLifecyclePolicy"><code>InstanceLifecyclePolicy</code></a>, <a href="#parameter-Operator"><code>Operator</code></a></td>
     <td>We strongly recommend using a launch template when calling this operation to ensure full functionality for Amazon EC2 Auto Scaling and Amazon EC2. Creates an Auto Scaling group with the specified name and attributes. If you exceed your maximum limit of Auto Scaling groups, the call fails. To query this limit, call the DescribeAccountLimits API. For information about updating this limit, see Quotas for Amazon EC2 Auto Scaling in the Amazon EC2 Auto Scaling User Guide. If you're new to Amazon EC2 Auto Scaling, see the introductory tutorials in Get started with Amazon EC2 Auto Scaling in the Amazon EC2 Auto Scaling User Guide. Every Auto Scaling group has three size properties (DesiredCapacity, MaxSize, and MinSize). Usually, you set these sizes based on a specific number of instances. However, if you configure a mixed instances policy that defines weights for the instance types, you must specify these sizes with the same units that you use for weighting instances.</td>
 </tr>
 <tr>
@@ -324,18 +329,18 @@ The following methods are available for this resource:
     <td>Creates or updates a scheduled scaling action for an Auto Scaling group. For more information, see Scheduled scaling in the Amazon EC2 Auto Scaling User Guide. You can view the scheduled actions for an Auto Scaling group using the DescribeScheduledActions API call. If you are no longer using a scheduled action, you can delete it by calling the DeleteScheduledAction API. If you try to schedule your action in the past, Amazon EC2 Auto Scaling returns an error message.</td>
 </tr>
 <tr>
-    <td><a href="#terminate_instance_in_auto_scaling_group"><CopyableCode code="terminate_instance_in_auto_scaling_group" /></a></td>
-    <td><CopyableCode code="delete" /></td>
-    <td><a href="#parameter-InstanceId"><code>InstanceId</code></a>, <a href="#parameter-ShouldDecrementDesiredCapacity"><code>ShouldDecrementDesiredCapacity</code></a>, <a href="#parameter-region"><code>region</code></a></td>
-    <td></td>
-    <td>Terminates the specified instance and optionally adjusts the desired group size. This operation cannot be called on instances in a warm pool. This call simply makes a termination request. The instance is not terminated immediately. When an instance is terminated, the instance status changes to terminated. You can't connect to or start an instance after you've terminated it. If you do not specify the option to decrement the desired capacity, Amazon EC2 Auto Scaling launches instances to replace the ones that are terminated. By default, Amazon EC2 Auto Scaling balances instances across all Availability Zones. If you decrement the desired capacity, your Auto Scaling group can become unbalanced between Availability Zones. Amazon EC2 Auto Scaling tries to rebalance the group, and rebalancing might terminate instances in other zones. For more information, see Manual scaling in the Amazon EC2 Auto Scaling User Guide.</td>
-</tr>
-<tr>
     <td><a href="#delete_auto_scaling_group"><CopyableCode code="delete_auto_scaling_group" /></a></td>
     <td><CopyableCode code="delete" /></td>
     <td><a href="#parameter-AutoScalingGroupName"><code>AutoScalingGroupName</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td><a href="#parameter-ForceDelete"><code>ForceDelete</code></a></td>
     <td>Deletes the specified Auto Scaling group. If the group has instances or scaling activities in progress, you must specify the option to force the deletion in order for it to succeed. The force delete operation will also terminate the EC2 instances. If the group has a warm pool, the force delete option also deletes the warm pool. To remove instances from the Auto Scaling group before deleting it, call the DetachInstances API with the list of instances and the option to decrement the desired capacity. This ensures that Amazon EC2 Auto Scaling does not launch replacement instances. To terminate all instances before deleting the Auto Scaling group, call the UpdateAutoScalingGroup API and set the minimum size and desired capacity of the Auto Scaling group to zero. If the group has scaling policies, deleting the group deletes the policies, the underlying alarm actions, and any alarm that no longer has an associated action. For more information, see Delete your Auto Scaling infrastructure in the Amazon EC2 Auto Scaling User Guide.</td>
+</tr>
+<tr>
+    <td><a href="#terminate_instance_in_auto_scaling_group"><CopyableCode code="terminate_instance_in_auto_scaling_group" /></a></td>
+    <td><CopyableCode code="delete" /></td>
+    <td><a href="#parameter-ShouldDecrementDesiredCapacity"><code>ShouldDecrementDesiredCapacity</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td><a href="#parameter-InstanceId"><code>InstanceId</code></a>, <a href="#parameter-InstanceIds"><code>InstanceIds</code></a>, <a href="#parameter-AutoScalingGroupName"><code>AutoScalingGroupName</code></a></td>
+    <td>Terminates the specified instance and optionally adjusts the desired group size. This operation cannot be called on instances in a warm pool. This call simply makes a termination request. The instances are not terminated immediately. When an instance is terminated, the instance status changes to terminated. You can't connect to or start an instance after you've terminated it. If you do not specify the option to decrement the desired capacity, Amazon EC2 Auto Scaling launches instances to replace the ones that are terminated. To terminate multiple instances in a single call, use the InstanceIds and AutoScalingGroupName parameters instead of InstanceId. When terminating multiple instances, the response populates Activities instead of Activity. By default, Amazon EC2 Auto Scaling balances instances across all Availability Zones. If you decrement the desired capacity, your Auto Scaling group can become unbalanced between Availability Zones. Amazon EC2 Auto Scaling tries to rebalance the group, and rebalancing might terminate instances in other zones. For more information, see Manual scaling in the Amazon EC2 Auto Scaling User Guide.</td>
 </tr>
 <tr>
     <td><a href="#attach_instances"><CopyableCode code="attach_instances" /></a></td>
@@ -478,11 +483,6 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     <td><code>string</code></td>
     <td>The frequency at which Amazon EC2 Auto Scaling sends aggregated data to CloudWatch. The only valid value is 1Minute.</td>
 </tr>
-<tr id="parameter-InstanceId">
-    <td><CopyableCode code="InstanceId" /></td>
-    <td><code>string</code></td>
-    <td>The ID of the instance.</td>
-</tr>
 <tr id="parameter-InstanceIds">
     <td><CopyableCode code="InstanceIds" /></td>
     <td><code>array</code></td>
@@ -542,6 +542,11 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     <td><CopyableCode code="region" /></td>
     <td><code>string</code></td>
     <td>AWS region (default: us-east-1)</td>
+</tr>
+<tr id="parameter-AutoScalingGroupName">
+    <td><CopyableCode code="AutoScalingGroupName" /></td>
+    <td><code>string</code></td>
+    <td>The name of the Auto Scaling group. Required when using InstanceIds.</td>
 </tr>
 <tr id="parameter-AutoScalingGroupNames">
     <td><CopyableCode code="AutoScalingGroupNames" /></td>
@@ -733,6 +738,11 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     <td><code>string</code></td>
     <td>The token for the next set of items to return. (You received this token from a previous call.)</td>
 </tr>
+<tr id="parameter-Operator">
+    <td><CopyableCode code="Operator" /></td>
+    <td><code>object</code></td>
+    <td>The entity that manages the Auto Scaling group. If you specify this parameter, Amazon EC2 Auto Scaling passes the operator identity to EC2 for instance launches and only allows the designated operator to make changes to the Auto Scaling group. All mutating API calls from non-operator callers are rejected with an AccessDenied exception.</td>
+</tr>
 <tr id="parameter-PlacementGroup">
     <td><CopyableCode code="PlacementGroup" /></td>
     <td><code>string</code></td>
@@ -869,6 +879,7 @@ max_size,
 min_size,
 mixed_instances_policy,
 new_instances_protected_from_scale_in,
+operator,
 placement_group,
 predicted_capacity,
 service_linked_role_arn,
@@ -944,7 +955,8 @@ AvailabilityZoneDistribution,
 AvailabilityZoneImpairmentPolicy,
 SkipZonalShiftValidation,
 CapacityReservationSpecification,
-InstanceLifecyclePolicy
+InstanceLifecyclePolicy,
+Operator
 )
 SELECT 
 '{{ AutoScalingGroupName }}',
@@ -982,7 +994,8 @@ SELECT
 '{{ AvailabilityZoneImpairmentPolicy }}',
 '{{ SkipZonalShiftValidation }}',
 '{{ CapacityReservationSpecification }}',
-'{{ InstanceLifecyclePolicy }}'
+'{{ InstanceLifecyclePolicy }}',
+'{{ Operator }}'
 ;
 ```
 </TabItem>
@@ -1131,6 +1144,10 @@ SELECT
       value: "{{ InstanceLifecyclePolicy }}"
       description: The instance lifecycle policy for the Auto Scaling group. This policy controls instance behavior when an instance transitions through its lifecycle states. Configure retention triggers to specify when instances should move to a Retained state instead of automatic termination. For more information, see Control instance retention with instance lifecycle policies in the Amazon EC2 Auto Scaling User Guide. Instances in a Retained state will continue to incur standard EC2 charges until terminated.
       description: The instance lifecycle policy for the Auto Scaling group. This policy controls instance behavior when an instance transitions through its lifecycle states. Configure retention triggers to specify when instances should move to a Retained state instead of automatic termination. For more information, see Control instance retention with instance lifecycle policies in the Amazon EC2 Auto Scaling User Guide. Instances in a Retained state will continue to incur standard EC2 charges until terminated.
+    - name: Operator
+      value: "{{ Operator }}"
+      description: The entity that manages the Auto Scaling group. If you specify this parameter, Amazon EC2 Auto Scaling passes the operator identity to EC2 for instance launches and only allows the designated operator to make changes to the Auto Scaling group. All mutating API calls from non-operator callers are rejected with an AccessDenied exception.
+      description: The entity that manages the Auto Scaling group. If you specify this parameter, Amazon EC2 Auto Scaling passes the operator identity to EC2 for instance launches and only allows the designated operator to make changes to the Auto Scaling group. All mutating API calls from non-operator callers are rejected with an AccessDenied exception.
 `}</CodeBlock>
 
 </TabItem>
@@ -1275,24 +1292,12 @@ AND TimeZone = '{{ TimeZone}}';
 ## `DELETE` examples
 
 <Tabs
-    defaultValue="terminate_instance_in_auto_scaling_group"
+    defaultValue="delete_auto_scaling_group"
     values={[
-        { label: 'terminate_instance_in_auto_scaling_group', value: 'terminate_instance_in_auto_scaling_group' },
-        { label: 'delete_auto_scaling_group', value: 'delete_auto_scaling_group' }
+        { label: 'delete_auto_scaling_group', value: 'delete_auto_scaling_group' },
+        { label: 'terminate_instance_in_auto_scaling_group', value: 'terminate_instance_in_auto_scaling_group' }
     ]}
 >
-<TabItem value="terminate_instance_in_auto_scaling_group">
-
-Terminates the specified instance and optionally adjusts the desired group size. This operation cannot be called on instances in a warm pool. This call simply makes a termination request. The instance is not terminated immediately. When an instance is terminated, the instance status changes to terminated. You can't connect to or start an instance after you've terminated it. If you do not specify the option to decrement the desired capacity, Amazon EC2 Auto Scaling launches instances to replace the ones that are terminated. By default, Amazon EC2 Auto Scaling balances instances across all Availability Zones. If you decrement the desired capacity, your Auto Scaling group can become unbalanced between Availability Zones. Amazon EC2 Auto Scaling tries to rebalance the group, and rebalancing might terminate instances in other zones. For more information, see Manual scaling in the Amazon EC2 Auto Scaling User Guide.
-
-```sql
-DELETE FROM aws.autoscaling.auto_scaling_groups
-WHERE InstanceId = '{{ InstanceId }}' --required
-AND ShouldDecrementDesiredCapacity = '{{ ShouldDecrementDesiredCapacity }}' --required
-AND region = '{{ region }}' --required
-;
-```
-</TabItem>
 <TabItem value="delete_auto_scaling_group">
 
 Deletes the specified Auto Scaling group. If the group has instances or scaling activities in progress, you must specify the option to force the deletion in order for it to succeed. The force delete operation will also terminate the EC2 instances. If the group has a warm pool, the force delete option also deletes the warm pool. To remove instances from the Auto Scaling group before deleting it, call the DetachInstances API with the list of instances and the option to decrement the desired capacity. This ensures that Amazon EC2 Auto Scaling does not launch replacement instances. To terminate all instances before deleting the Auto Scaling group, call the UpdateAutoScalingGroup API and set the minimum size and desired capacity of the Auto Scaling group to zero. If the group has scaling policies, deleting the group deletes the policies, the underlying alarm actions, and any alarm that no longer has an associated action. For more information, see Delete your Auto Scaling infrastructure in the Amazon EC2 Auto Scaling User Guide.
@@ -1302,6 +1307,20 @@ DELETE FROM aws.autoscaling.auto_scaling_groups
 WHERE AutoScalingGroupName = '{{ AutoScalingGroupName }}' --required
 AND region = '{{ region }}' --required
 AND ForceDelete = '{{ ForceDelete }}'
+;
+```
+</TabItem>
+<TabItem value="terminate_instance_in_auto_scaling_group">
+
+Terminates the specified instance and optionally adjusts the desired group size. This operation cannot be called on instances in a warm pool. This call simply makes a termination request. The instances are not terminated immediately. When an instance is terminated, the instance status changes to terminated. You can't connect to or start an instance after you've terminated it. If you do not specify the option to decrement the desired capacity, Amazon EC2 Auto Scaling launches instances to replace the ones that are terminated. To terminate multiple instances in a single call, use the InstanceIds and AutoScalingGroupName parameters instead of InstanceId. When terminating multiple instances, the response populates Activities instead of Activity. By default, Amazon EC2 Auto Scaling balances instances across all Availability Zones. If you decrement the desired capacity, your Auto Scaling group can become unbalanced between Availability Zones. Amazon EC2 Auto Scaling tries to rebalance the group, and rebalancing might terminate instances in other zones. For more information, see Manual scaling in the Amazon EC2 Auto Scaling User Guide.
+
+```sql
+DELETE FROM aws.autoscaling.auto_scaling_groups
+WHERE ShouldDecrementDesiredCapacity = '{{ ShouldDecrementDesiredCapacity }}' --required
+AND region = '{{ region }}' --required
+AND InstanceId = '{{ InstanceId }}'
+AND InstanceIds = '{{ InstanceIds }}'
+AND AutoScalingGroupName = '{{ AutoScalingGroupName }}'
 ;
 ```
 </TabItem>

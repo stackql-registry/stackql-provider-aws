@@ -147,7 +147,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="source_environment" /></td>
     <td><code>string</code></td>
-    <td>The source environment configuration. (NSX, VSPHERE, FORTIGATE_FIREWALL, PALO_ALTO_FIREWALL, CISCO_ACI, LOGICAL_MODEL, MODELIZE_IT)</td>
+    <td>The source environment configuration. (NSX, VSPHERE, FORTIGATE_FIREWALL, PALO_ALTO_FIREWALL, CISCO_ACI, LOGICAL_MODEL, MODELIZE_IT, AWS_DISCOVERY_COLLECTOR)</td>
 </tr>
 <tr>
     <td><CopyableCode code="tags" /></td>

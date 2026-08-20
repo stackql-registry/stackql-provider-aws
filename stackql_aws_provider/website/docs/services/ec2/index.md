@@ -18,7 +18,7 @@ ec2 service documentation.
 
 :::info[Service Summary]
 
-total resources: __269__  
+total resources: __280__  
 
 :::
 
@@ -26,6 +26,7 @@ total resources: __269__
 <div class="row">
 <div class="providerDocColumn">
 <a href="/services/ec2/account_attributes/">account_attributes</a><br />
+<a href="/services/ec2/account_vpc_encryption_controls/">account_vpc_encryption_controls</a><br />
 <a href="/services/ec2/active_vpn_tunnel_status/">active_vpn_tunnel_status</a><br />
 <a href="/services/ec2/address/">address</a><br />
 <a href="/services/ec2/address_attributes/">address_attributes</a><br />
@@ -34,6 +35,9 @@ total resources: __269__
 <a href="/services/ec2/addresses_attributes/">addresses_attributes</a><br />
 <a href="/services/ec2/aggregate_id_formats/">aggregate_id_formats</a><br />
 <a href="/services/ec2/allowed_images_settings/">allowed_images_settings</a><br />
+<a href="/services/ec2/application_status/">application_status</a><br />
+<a href="/services/ec2/application_status_check_associations/">application_status_check_associations</a><br />
+<a href="/services/ec2/application_status_checks/">application_status_checks</a><br />
 <a href="/services/ec2/associated_enclave_certificate_iam_roles/">associated_enclave_certificate_iam_roles</a><br />
 <a href="/services/ec2/associated_ipv6_pool_cidrs/">associated_ipv6_pool_cidrs</a><br />
 <a href="/services/ec2/availability_zones/">availability_zones</a><br />
@@ -53,6 +57,7 @@ total resources: __269__
 <a href="/services/ec2/capacity_manager_monitored_tag_keys/">capacity_manager_monitored_tag_keys</a><br />
 <a href="/services/ec2/capacity_manager_organizations_access/">capacity_manager_organizations_access</a><br />
 <a href="/services/ec2/capacity_reservation_billing_requests/">capacity_reservation_billing_requests</a><br />
+<a href="/services/ec2/capacity_reservation_cancellation_quotes/">capacity_reservation_cancellation_quotes</a><br />
 <a href="/services/ec2/capacity_reservation_fleets/">capacity_reservation_fleets</a><br />
 <a href="/services/ec2/capacity_reservation_topologies/">capacity_reservation_topologies</a><br />
 <a href="/services/ec2/capacity_reservation_usages/">capacity_reservation_usages</a><br />
@@ -122,9 +127,7 @@ total resources: __269__
 <a href="/services/ec2/instance_status/">instance_status</a><br />
 <a href="/services/ec2/instance_topologies/">instance_topologies</a><br />
 <a href="/services/ec2/instance_tpm_ek_pubs/">instance_tpm_ek_pubs</a><br />
-<a href="/services/ec2/instance_type_offerings/">instance_type_offerings</a><br />
 <a href="/services/ec2/instance_types/">instance_types</a><br />
-<a href="/services/ec2/instance_types_from_instance_requirements/">instance_types_from_instance_requirements</a><br />
 <a href="/services/ec2/instance_uefi_datas/">instance_uefi_datas</a><br />
 <a href="/services/ec2/instances/">instances</a><br />
 <a href="/services/ec2/internet_gateways/">internet_gateways</a><br />
@@ -133,7 +136,11 @@ total resources: __269__
 <a href="/services/ec2/ipam_discovered_accounts/">ipam_discovered_accounts</a><br />
 <a href="/services/ec2/ipam_discovered_public_addresses/">ipam_discovered_public_addresses</a><br />
 <a href="/services/ec2/ipam_discovered_resource_cidrs/">ipam_discovered_resource_cidrs</a><br />
+<a href="/services/ec2/ipam_discovered_routes/">ipam_discovered_routes</a><br />
 <a href="/services/ec2/ipam_external_resource_verification_tokens/">ipam_external_resource_verification_tokens</a><br />
+<a href="/services/ec2/ipam_internet_registry_association_asns/">ipam_internet_registry_association_asns</a><br />
+<a href="/services/ec2/ipam_internet_registry_association_cidrs/">ipam_internet_registry_association_cidrs</a><br />
+<a href="/services/ec2/ipam_internet_registry_associations/">ipam_internet_registry_associations</a><br />
 <a href="/services/ec2/ipam_policies/">ipam_policies</a><br />
 <a href="/services/ec2/ipam_policy_allocation_rules/">ipam_policy_allocation_rules</a><br />
 <a href="/services/ec2/ipam_policy_organization_targets/">ipam_policy_organization_targets</a><br />
@@ -148,20 +155,24 @@ total resources: __269__
 <a href="/services/ec2/ipam_resource_cidrs/">ipam_resource_cidrs</a><br />
 <a href="/services/ec2/ipam_resource_discoveries/">ipam_resource_discoveries</a><br />
 <a href="/services/ec2/ipam_resource_discovery_associations/">ipam_resource_discovery_associations</a><br />
+<a href="/services/ec2/ipam_route_origin_authorizations/">ipam_route_origin_authorizations</a><br />
+<a href="/services/ec2/ipam_route_protection_findings/">ipam_route_protection_findings</a><br />
+<a href="/services/ec2/ipam_routing_policy_registration_deltas/">ipam_routing_policy_registration_deltas</a><br />
+<a href="/services/ec2/ipam_routing_policy_registrations/">ipam_routing_policy_registrations</a><br />
 <a href="/services/ec2/ipam_scopes/">ipam_scopes</a><br />
 <a href="/services/ec2/ipams/">ipams</a><br />
 <a href="/services/ec2/ipv6_pools/">ipv6_pools</a><br />
 <a href="/services/ec2/key_pairs/">key_pairs</a><br />
 <a href="/services/ec2/launch_template_datas/">launch_template_datas</a><br />
-<a href="/services/ec2/launch_template_versions/">launch_template_versions</a><br />
+<a href="/services/ec2/launch_template_versions/">launch_template_versions</a>
+</div>
+<div class="providerDocColumn">
 <a href="/services/ec2/launch_templates/">launch_templates</a><br />
 <a href="/services/ec2/local_gateway_route_table_virtual_interface_group_associations/">local_gateway_route_table_virtual_interface_group_associations</a><br />
 <a href="/services/ec2/local_gateway_route_table_vpc_associations/">local_gateway_route_table_vpc_associations</a><br />
 <a href="/services/ec2/local_gateway_route_tables/">local_gateway_route_tables</a><br />
 <a href="/services/ec2/local_gateway_routes/">local_gateway_routes</a><br />
-<a href="/services/ec2/local_gateway_virtual_interface_groups/">local_gateway_virtual_interface_groups</a>
-</div>
-<div class="providerDocColumn">
+<a href="/services/ec2/local_gateway_virtual_interface_groups/">local_gateway_virtual_interface_groups</a><br />
 <a href="/services/ec2/local_gateway_virtual_interfaces/">local_gateway_virtual_interfaces</a><br />
 <a href="/services/ec2/local_gateways/">local_gateways</a><br />
 <a href="/services/ec2/locked_snapshots/">locked_snapshots</a><br />

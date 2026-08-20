@@ -18,7 +18,7 @@ guardduty service documentation.
 
 :::info[Service Summary]
 
-total resources: __26__  
+total resources: __27__  
 
 :::
 
@@ -32,6 +32,7 @@ total resources: __26__
 <a href="/services/guardduty/filters/">filters</a><br />
 <a href="/services/guardduty/findings/">findings</a><br />
 <a href="/services/guardduty/findings_statistics/">findings_statistics</a><br />
+<a href="/services/guardduty/investigations/">investigations</a><br />
 <a href="/services/guardduty/invitations/">invitations</a><br />
 <a href="/services/guardduty/invitations_counts/">invitations_counts</a><br />
 <a href="/services/guardduty/ip_sets/">ip_sets</a><br />

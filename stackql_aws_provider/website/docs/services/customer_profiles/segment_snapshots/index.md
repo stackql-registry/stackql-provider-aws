@@ -57,7 +57,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="destination_uri" /></td>
     <td><code>string</code></td>
-    <td>The destination to which the segment will be exported. This field must be provided if the request is not submitted from the Amazon Connect Admin Website.</td>
+    <td>The destination to which the segment will be exported. This field must be provided if the request is not submitted from the Connect Customer Admin Website.</td>
 </tr>
 <tr>
     <td><CopyableCode code="encryption_key" /></td>

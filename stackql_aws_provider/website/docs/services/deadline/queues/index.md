@@ -553,7 +553,8 @@ UPDATE aws.deadline.queues
 SET 
 principalType = '{{ principalType }}',
 identityStoreId = '{{ identityStoreId }}',
-membershipLevel = '{{ membershipLevel }}'
+membershipLevel = '{{ membershipLevel }}',
+identityCenterRegion = '{{ identityCenterRegion }}'
 WHERE 
 farm_id = '{{ farm_id }}' --required
 AND queue_id = '{{ queue_id }}' --required

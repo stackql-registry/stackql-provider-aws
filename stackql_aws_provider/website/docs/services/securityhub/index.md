@@ -18,7 +18,7 @@ securityhub service documentation.
 
 :::info[Service Summary]
 
-total resources: __43__  
+total resources: __45__  
 
 :::
 
@@ -35,6 +35,7 @@ total resources: __43__
 <a href="/services/securityhub/configuration_policies/">configuration_policies</a><br />
 <a href="/services/securityhub/configuration_policy_associations/">configuration_policy_associations</a><br />
 <a href="/services/securityhub/connector_v2s/">connector_v2s</a><br />
+<a href="/services/securityhub/connectors/">connectors</a><br />
 <a href="/services/securityhub/connectors_v2s/">connectors_v2s</a><br />
 <a href="/services/securityhub/enabled_products_for_imports/">enabled_products_for_imports</a><br />
 <a href="/services/securityhub/enabled_standards/">enabled_standards</a><br />
@@ -44,11 +45,12 @@ total resources: __43__
 <a href="/services/securityhub/findings/">findings</a><br />
 <a href="/services/securityhub/findings_trends_v2s/">findings_trends_v2s</a><br />
 <a href="/services/securityhub/findings_v2s/">findings_v2s</a><br />
+<a href="/services/securityhub/free_trial_statuses_v2s/">free_trial_statuses_v2s</a><br />
 <a href="/services/securityhub/hubs/">hubs</a><br />
-<a href="/services/securityhub/insight_results/">insight_results</a><br />
-<a href="/services/securityhub/insights/">insights</a>
+<a href="/services/securityhub/insight_results/">insight_results</a>
 </div>
 <div class="providerDocColumn">
+<a href="/services/securityhub/insights/">insights</a><br />
 <a href="/services/securityhub/invitations/">invitations</a><br />
 <a href="/services/securityhub/invitations_counts/">invitations_counts</a><br />
 <a href="/services/securityhub/master_accounts/">master_accounts</a><br />

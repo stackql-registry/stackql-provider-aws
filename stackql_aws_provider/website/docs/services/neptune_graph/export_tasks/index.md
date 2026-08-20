@@ -78,7 +78,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="kms_key_identifier" /></td>
     <td><code>string</code></td>
-    <td>The KMS key identifier of the export task. (pattern: &lt;code&gt;arn:aws(|-cn|-us-gov):kms:&#91;a-zA-Z0-9-&#93;*:&#91;0-9&#93;&#123;12&#125;:key/&#91;a-zA-Z0-9-&#93;&#123;36&#125;&lt;/code&gt;)</td>
+    <td>The KMS key identifier of the export task. (pattern: &lt;code&gt;arn:aws&#91;^:&#93;*:kms:&#91;a-zA-Z0-9-&#93;*:&#91;0-9&#93;&#123;12&#125;:key/&#91;a-zA-Z0-9-&#93;&#123;36&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="parquet_type" /></td>
@@ -137,7 +137,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="kms_key_identifier" /></td>
     <td><code>string</code></td>
-    <td>The KMS key identifier of the export task. (pattern: &lt;code&gt;arn:aws(|-cn|-us-gov):kms:&#91;a-zA-Z0-9-&#93;*:&#91;0-9&#93;&#123;12&#125;:key/&#91;a-zA-Z0-9-&#93;&#123;36&#125;&lt;/code&gt;)</td>
+    <td>The KMS key identifier of the export task. (pattern: &lt;code&gt;arn:aws&#91;^:&#93;*:kms:&#91;a-zA-Z0-9-&#93;*:&#91;0-9&#93;&#123;12&#125;:key/&#91;a-zA-Z0-9-&#93;&#123;36&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="parquet_type" /></td>

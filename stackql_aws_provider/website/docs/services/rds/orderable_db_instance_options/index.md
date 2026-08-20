@@ -305,7 +305,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-Engine">
     <td><CopyableCode code="Engine" /></td>
     <td><code>string</code></td>
-    <td>The name of the database engine to describe DB instance options for. Valid Values: aurora-mysql aurora-postgresql custom-oracle-ee custom-oracle-ee-cdb custom-oracle-se2 custom-oracle-se2-cdb db2-ae db2-se mariadb mysql oracle-ee oracle-ee-cdb oracle-se2 oracle-se2-cdb postgres sqlserver-ee sqlserver-se sqlserver-ex sqlserver-web</td>
+    <td>The name of the database engine to describe DB instance options for. Valid Values: aurora-mysql aurora-postgresql custom-oracle-ee custom-oracle-ee-cdb custom-oracle-se2 custom-oracle-se2-cdb db2-ae db2-ce db2-se mariadb mysql oracle-ee oracle-ee-cdb oracle-se2 oracle-se2-cdb postgres sqlserver-ee sqlserver-se sqlserver-ex sqlserver-web</td>
 </tr>
 <tr id="parameter-EngineVersion">
     <td><CopyableCode code="EngineVersion" /></td>

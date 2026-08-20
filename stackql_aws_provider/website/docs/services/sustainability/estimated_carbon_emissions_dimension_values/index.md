@@ -52,7 +52,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="dimension" /></td>
     <td><code>string</code></td>
-    <td>Specifies the dimensions available for grouping and filtering emissions data. (USAGE_ACCOUNT_ID, REGION, SERVICE)</td>
+    <td>Specifies the dimensions available for grouping and filtering environmental impact data. (USAGE_ACCOUNT_ID, REGION, SERVICE)</td>
 </tr>
 <tr>
     <td><CopyableCode code="value" /></td>

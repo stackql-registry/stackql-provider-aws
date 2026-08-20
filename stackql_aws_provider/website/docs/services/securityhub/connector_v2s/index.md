@@ -70,6 +70,16 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the connectorV2. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
+    <td><CopyableCode code="enablement_status" /></td>
+    <td><code>string</code></td>
+    <td>The enablement status of the connector. (ENABLED, PENDING_ENABLEMENT, FAILED_TO_ENABLE, PENDING_UPDATE, FAILED_TO_UPDATE, PENDING_DELETION, FAILED_TO_DELETE)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="enablement_status_reason" /></td>
+    <td><code>string</code></td>
+    <td>The reason for the current enablement status. Provides additional context when the connector is in a failed state. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
+</tr>
+<tr>
     <td><CopyableCode code="health" /></td>
     <td><code>object</code></td>
     <td>The current health status for connectorV2</td>
@@ -196,6 +206,8 @@ connector_arn,
 connector_id,
 created_at,
 description,
+enablement_status,
+enablement_status_reason,
 health,
 kms_key_arn,
 last_updated_at,
@@ -266,7 +278,8 @@ RETURNING
 auth_url,
 connector_arn,
 connector_id,
-connector_status
+connector_status,
+enablement_status
 ;
 ```
 </TabItem>
@@ -295,6 +308,14 @@ connector_status
         ServiceNow:
           InstanceName: "{{ InstanceName }}"
           SecretArn: "{{ SecretArn }}"
+        Azure:
+          AWSConfigConnectorArn: "{{ AWSConfigConnectorArn }}"
+          ScopeConfiguration:
+            ScopeType: "{{ ScopeType }}"
+            ScopeValues:
+              - "{{ ScopeValues }}"
+          AzureRegions:
+            - "{{ AzureRegions }}"
     - name: KmsKeyArn
       value: "{{ KmsKeyArn }}"
     - name: Tags
@@ -326,7 +347,10 @@ Description = '{{ Description }}',
 Provider = '{{ Provider }}'
 WHERE 
 connector_id = '{{ connector_id }}' --required
-AND region = '{{ region }}' --required;
+AND region = '{{ region }}' --required
+RETURNING
+connector_status,
+enablement_status;
 ```
 </TabItem>
 </Tabs>

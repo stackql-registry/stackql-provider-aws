@@ -66,6 +66,11 @@ The following fields are returned by `SELECT` queries:
     <td>The scope type of the service view, which determines what resources are included.</td>
 </tr>
 <tr>
+    <td><CopyableCode code="service_linked_recorder" /></td>
+    <td><code>object</code></td>
+    <td>Information about the service-linked recorder associated with this service view. When a service view is paired with a service-linked recorder, Resource Explorer uses the recorder's resource type list to filter search results and streaming data.</td>
+</tr>
+<tr>
     <td><CopyableCode code="service_view_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the service view.</td>
@@ -175,6 +180,7 @@ SELECT
 filters,
 included_properties,
 scope_type,
+service_linked_recorder,
 service_view_arn,
 service_view_name,
 streaming_access_for_service

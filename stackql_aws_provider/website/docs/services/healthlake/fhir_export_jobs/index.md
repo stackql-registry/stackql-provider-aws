@@ -58,7 +58,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="datastore_id" /></td>
     <td><code>string</code></td>
-    <td>The data store identifier from which files are being exported. (pattern: &lt;code&gt;^(&#91;\p&#123;L&#125;\p&#123;Z&#125;\p&#123;N&#125;_.:/=+\-%@&#93;*)$&lt;/code&gt;)</td>
+    <td>The data store identifier from which files are being exported. (pattern: &lt;code&gt;(&#91;\p&#123;L&#125;\p&#123;Z&#125;\p&#123;N&#125;_.:/=+\-%@&#93;*)&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="end_time" /></td>
@@ -68,12 +68,12 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="job_id" /></td>
     <td><code>string</code></td>
-    <td>The export job identifier. (pattern: &lt;code&gt;^(&#91;\p&#123;L&#125;\p&#123;Z&#125;\p&#123;N&#125;_.:/=+\-%@&#93;*)$&lt;/code&gt;)</td>
+    <td>The export job identifier. (pattern: &lt;code&gt;(&#91;\p&#123;L&#125;\p&#123;Z&#125;\p&#123;N&#125;_.:/=+\-%@&#93;*)&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="job_name" /></td>
     <td><code>string</code></td>
-    <td>The export job name. (pattern: &lt;code&gt;^(&#91;\p&#123;L&#125;\p&#123;Z&#125;\p&#123;N&#125;_.:/=+\-%@&#93;*)$&lt;/code&gt;)</td>
+    <td>The export job name. (pattern: &lt;code&gt;(&#91;\p&#123;L&#125;\p&#123;Z&#125;\p&#123;N&#125;_.:/=+\-%@&#93;*)&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="job_status" /></td>
@@ -83,7 +83,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="message" /></td>
     <td><code>string</code></td>
-    <td>An explanation of any errors that might have occurred during the export job. (pattern: &lt;code&gt;^(&#91;\p&#123;L&#125;\p&#123;Z&#125;\p&#123;N&#125;_.:/=+\-%@&#93;*)$&lt;/code&gt;)</td>
+    <td>An explanation of any errors that might have occurred during the export job. (pattern: &lt;code&gt;(&#91;\p&#123;L&#125;\p&#123;Z&#125;\p&#123;N&#125;_.:/=+\-%@&#93;*)&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="output_data_config" /></td>

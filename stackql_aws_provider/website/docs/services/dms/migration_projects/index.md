@@ -84,35 +84,35 @@ The following methods are available for this resource:
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>Returns a paginated list of migration projects for your account in the current region.</td>
+    <td>Returns a paginated list of migration projects for your account in the current region. Required permissions: dms:ListMigrationProjects. For more information, see Actions, resources, and condition keys for Database Migration Service.</td>
 </tr>
 <tr>
     <td><a href="#create_migration_project"><CopyableCode code="create_migration_project" /></a></td>
     <td><CopyableCode code="insert" /></td>
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-SourceDataProviderDescriptors"><code>SourceDataProviderDescriptors</code></a>, <a href="#parameter-TargetDataProviderDescriptors"><code>TargetDataProviderDescriptors</code></a>, <a href="#parameter-InstanceProfileIdentifier"><code>InstanceProfileIdentifier</code></a></td>
     <td></td>
-    <td>Creates the migration project using the specified parameters. You can run this action only after you create an instance profile and data providers using CreateInstanceProfile and CreateDataProvider.</td>
+    <td>Creates the migration project using the specified parameters. You can run this action only after you create an instance profile and data providers using CreateInstanceProfile and CreateDataProvider. Required permissions: dms:CreateMigrationProject. For more information, see Actions, resources, and condition keys for Database Migration Service.</td>
 </tr>
 <tr>
     <td><a href="#modify_migration_project"><CopyableCode code="modify_migration_project" /></a></td>
     <td><CopyableCode code="update" /></td>
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-MigrationProjectIdentifier"><code>MigrationProjectIdentifier</code></a></td>
     <td></td>
-    <td>Modifies the specified migration project using the provided parameters. The migration project must be closed before you can modify it.</td>
+    <td>Modifies the specified migration project using the provided parameters. Required permissions: dms:UpdateMigrationProject. For more information, see Actions, resources, and condition keys for Database Migration Service. The migration project must be closed before you can modify it.</td>
 </tr>
 <tr>
     <td><a href="#delete_migration_project"><CopyableCode code="delete_migration_project" /></a></td>
     <td><CopyableCode code="delete" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>Deletes the specified migration project. The migration project must be closed before you can delete it.</td>
+    <td>Deletes the specified migration project. Required permissions: dms:DeleteMigrationProject. For more information, see Actions, resources, and condition keys for Database Migration Service. The migration project must be closed before you can delete it.</td>
 </tr>
 <tr>
     <td><a href="#start_extension_pack_association"><CopyableCode code="start_extension_pack_association" /></a></td>
     <td><CopyableCode code="exec" /></td>
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-MigrationProjectIdentifier"><code>MigrationProjectIdentifier</code></a></td>
     <td></td>
-    <td>Applies the extension pack to your target database. An extension pack is an add-on module that emulates functions present in a source database that are required when converting objects to the target database.</td>
+    <td>Queues the installation of the extension pack on your target database. If other requests created by Start* operations are already in the migration project's queue, the installation begins after they complete. This operation requires a non-virtual target data provider. If the extension pack already exists, the operation reinstalls it. To ensure compatibility, reconvert your database objects if the version has changed since your last conversion. For more information, see Using extension packs in DMS Schema Conversion. To check the status of the request, call DescribeExtensionPackAssociations using the returned RequestIdentifier as a filter. Required permissions: dms:AssociateExtensionPack. For more information, see Actions, resources, and condition keys for Database Migration Service.</td>
 </tr>
 </tbody>
 </table>
@@ -148,7 +148,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 >
 <TabItem value="describe_migration_projects">
 
-Returns a paginated list of migration projects for your account in the current region.
+Returns a paginated list of migration projects for your account in the current region. Required permissions: dms:ListMigrationProjects. For more information, see Actions, resources, and condition keys for Database Migration Service.
 
 ```sql
 SELECT
@@ -173,7 +173,7 @@ WHERE region = '{{ region }}' -- required
 >
 <TabItem value="create_migration_project">
 
-Creates the migration project using the specified parameters. You can run this action only after you create an instance profile and data providers using CreateInstanceProfile and CreateDataProvider.
+Creates the migration project using the specified parameters. You can run this action only after you create an instance profile and data providers using CreateInstanceProfile and CreateDataProvider. Required permissions: dms:CreateMigrationProject. For more information, see Actions, resources, and condition keys for Database Migration Service.
 
 ```sql
 INSERT INTO aws.dms.migration_projects (
@@ -235,7 +235,7 @@ migration_project
     - name: TransformationRules
       value: "{{ TransformationRules }}"
       description: |
-        The settings in JSON format for migration rules. Migration rules make it possible for you to change the object names according to the rules that you specify. For example, you can change an object name to lowercase or uppercase, add or remove a prefix or suffix, or rename objects.
+        A JSON string that specifies the transformation rules for the migration project. Transformation rules let you customize how DMS Schema Conversion converts your source database objects, including renaming, adding prefixes or suffixes, and changing data types. For the transformation rule format and examples, see Transformation rules in DMS Schema Conversion. Homogeneous data migrations do not support transformation rules.
     - name: Description
       value: "{{ Description }}"
       description: |
@@ -269,7 +269,7 @@ migration_project
 >
 <TabItem value="modify_migration_project">
 
-Modifies the specified migration project using the provided parameters. The migration project must be closed before you can modify it.
+Modifies the specified migration project using the provided parameters. Required permissions: dms:UpdateMigrationProject. For more information, see Actions, resources, and condition keys for Database Migration Service. The migration project must be closed before you can modify it.
 
 ```sql
 UPDATE aws.dms.migration_projects
@@ -302,7 +302,7 @@ migration_project;
 >
 <TabItem value="delete_migration_project">
 
-Deletes the specified migration project. The migration project must be closed before you can delete it.
+Deletes the specified migration project. Required permissions: dms:DeleteMigrationProject. For more information, see Actions, resources, and condition keys for Database Migration Service. The migration project must be closed before you can delete it.
 
 ```sql
 DELETE FROM aws.dms.migration_projects
@@ -323,7 +323,7 @@ WHERE region = '{{ region }}' --required
 >
 <TabItem value="start_extension_pack_association">
 
-Applies the extension pack to your target database. An extension pack is an add-on module that emulates functions present in a source database that are required when converting objects to the target database.
+Queues the installation of the extension pack on your target database. If other requests created by Start* operations are already in the migration project's queue, the installation begins after they complete. This operation requires a non-virtual target data provider. If the extension pack already exists, the operation reinstalls it. To ensure compatibility, reconvert your database objects if the version has changed since your last conversion. For more information, see Using extension packs in DMS Schema Conversion. To check the status of the request, call DescribeExtensionPackAssociations using the returned RequestIdentifier as a filter. Required permissions: dms:AssociateExtensionPack. For more information, see Actions, resources, and condition keys for Database Migration Service.
 
 ```sql
 EXEC aws.dms.migration_projects.start_extension_pack_association 

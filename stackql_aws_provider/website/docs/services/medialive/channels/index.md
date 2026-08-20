@@ -604,6 +604,8 @@ channel
               Algorithm: "{{ Algorithm }}"
               AlgorithmControl: "{{ AlgorithmControl }}"
               TargetLkfs: {{ TargetLkfs }}
+              PeakCalculation: "{{ PeakCalculation }}"
+              PeakLimiterThreshold: {{ PeakLimiterThreshold }}
             AudioSelectorName: "{{ AudioSelectorName }}"
             AudioType: "{{ AudioType }}"
             AudioTypeControl: "{{ AudioTypeControl }}"
@@ -615,6 +617,10 @@ channel
                   Csid: "{{ Csid }}"
                 NielsenDistributionType: "{{ NielsenDistributionType }}"
                 NielsenNaesIiNwSettings:
+                  CheckDigitString: "{{ CheckDigitString }}"
+                  Sid: {{ Sid }}
+                  Timezone: "{{ Timezone }}"
+                NielsenNwOnlySettings:
                   CheckDigitString: "{{ CheckDigitString }}"
                   Sid: {{ Sid }}
                   Timezone: "{{ Timezone }}"
@@ -1159,6 +1165,16 @@ channel
             ScalingBehavior: "{{ ScalingBehavior }}"
             Sharpness: {{ Sharpness }}
             Width: {{ Width }}
+            CropRectangle:
+              Height: {{ Height }}
+              Width: {{ Width }}
+              X: {{ X }}
+              Y: {{ Y }}
+            OutputPositionRectangle:
+              Height: {{ Height }}
+              Width: {{ Width }}
+              X: {{ X }}
+              Y: {{ Y }}
         ThumbnailConfiguration:
           State: "{{ State }}"
         ColorCorrectionSettings:
@@ -1198,6 +1214,7 @@ channel
                     LanguageSelectionPolicy: "{{ LanguageSelectionPolicy }}"
                   AudioPidSelection:
                     Pid: {{ Pid }}
+                    Pids: "{{ Pids }}"
                   AudioTrackSelection:
                     Tracks: "{{ Tracks }}"
                     DolbyEDecode: "{{ DolbyEDecode }}"
@@ -1225,6 +1242,9 @@ channel
                   TeletextSourceSettings:
                     OutputRectangle: "{{ OutputRectangle }}"
                     PageNumber: "{{ PageNumber }}"
+                  SmartSubtitleSourceSettings:
+                    CaptionSynchronizationMode: "{{ CaptionSynchronizationMode }}"
+                    InferenceFeedOutput: "{{ InferenceFeedOutput }}"
             DeblockFilter: "{{ DeblockFilter }}"
             DenoiseFilter: "{{ DenoiseFilter }}"
             FilterStrength: {{ FilterStrength }}
@@ -1337,6 +1357,9 @@ channel
         Configures Elemental Inference features in a channel.
       value:
         FeedArn: "{{ FeedArn }}"
+        AudioFeedInputs:
+          - AudioSelectorName: "{{ AudioSelectorName }}"
+            FeedInput: "{{ FeedInput }}"
 `}</CodeBlock>
 
 </TabItem>

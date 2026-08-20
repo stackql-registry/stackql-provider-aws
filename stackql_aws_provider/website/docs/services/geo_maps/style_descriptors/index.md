@@ -93,7 +93,7 @@ The following methods are available for this resource:
     <td><a href="#get_style_descriptor"><CopyableCode code="get_style_descriptor" /></a></td>
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-style"><code>style</code></a>, <a href="#parameter-region"><code>region</code></a></td>
-    <td><a href="#parameter-color-scheme"><code>color-scheme</code></a>, <a href="#parameter-political-view"><code>political-view</code></a>, <a href="#parameter-terrain"><code>terrain</code></a>, <a href="#parameter-contour-density"><code>contour-density</code></a>, <a href="#parameter-traffic"><code>traffic</code></a>, <a href="#parameter-travel-modes"><code>travel-modes</code></a>, <a href="#parameter-buildings"><code>buildings</code></a>, <a href="#parameter-key"><code>key</code></a></td>
+    <td><a href="#parameter-color-scheme"><code>color-scheme</code></a>, <a href="#parameter-political-view"><code>political-view</code></a>, <a href="#parameter-terrain"><code>terrain</code></a>, <a href="#parameter-contour-density"><code>contour-density</code></a>, <a href="#parameter-traffic"><code>traffic</code></a>, <a href="#parameter-travel-modes"><code>travel-modes</code></a>, <a href="#parameter-buildings"><code>buildings</code></a>, <a href="#parameter-poi-density"><code>poi-density</code></a>, <a href="#parameter-poi-categories"><code>poi-categories</code></a>, <a href="#parameter-key"><code>key</code></a></td>
     <td>GetStyleDescriptor returns information about the style. For more information, see Style dynamic maps in the Amazon Location Service Developer Guide.</td>
 </tr>
 </tbody>
@@ -141,6 +141,16 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     <td><CopyableCode code="key" /></td>
     <td><code>string</code></td>
     <td>Optional: The API key to be used for authorization. Either an API key or valid SigV4 signature must be provided when making a request.</td>
+</tr>
+<tr id="parameter-poi-categories">
+    <td><CopyableCode code="poi-categories" /></td>
+    <td><code>array</code></td>
+    <td>Renders only the specified categories of points of interest. When you omit this parameter, the map renders all categories. The following categories are currently supported: FoodAndDrink Entertainment SightsAndMuseums Transportation Accommodations LeisureAndOutdoor Shopping BusinessAndServices FacilitiesAndBuildings Specify each category as a separate poi-categories query parameter. Duplicate values are rejected. This parameter has no effect when poi-density is set to Off, which hides all points of interest regardless of category. This parameter is valid only for the Standard and Hybrid map styles. In ap-southeast-1 and ap-southeast-5 regions for GrabMaps customers, this parameter is valid only for the Standard map style.</td>
+</tr>
+<tr id="parameter-poi-density">
+    <td><CopyableCode code="poi-density" /></td>
+    <td><code>string</code></td>
+    <td>Controls how densely points of interest are rendered on the map. The density value controls the zoom level at which each category of points of interest appears, and how quickly less prominent points of interest are revealed as you zoom in. Denser values display more points of interest at lower zoom levels. Use Off to hide all points of interest. When you omit this parameter, the map renders at Default density. The difference between density values is most noticeable at mid-range zoom levels. At high zoom levels, all density values converge on displaying every available point of interest. This parameter is valid only for the Standard and Hybrid map styles. In ap-southeast-1 and ap-southeast-5 regions for GrabMaps customers, this parameter is valid only for the Standard map style.</td>
 </tr>
 <tr id="parameter-political-view">
     <td><CopyableCode code="political-view" /></td>
@@ -193,6 +203,8 @@ AND `contour-density` = '{{ contour-density }}'
 AND traffic = '{{ traffic }}'
 AND `travel-modes` = '{{ travel-modes }}'
 AND buildings = '{{ buildings }}'
+AND `poi-density` = '{{ poi-density }}'
+AND `poi-categories` = '{{ poi-categories }}'
 AND key = '{{ key }}'
 ;
 ```

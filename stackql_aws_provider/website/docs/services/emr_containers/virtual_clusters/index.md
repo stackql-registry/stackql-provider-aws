@@ -76,9 +76,24 @@ The following fields are returned by `SELECT` queries:
     <td>The date and time when the virtual cluster is created.</td>
 </tr>
 <tr>
+    <td><CopyableCode code="scheduler_configuration" /></td>
+    <td><code>object</code></td>
+    <td>The scheduler configuration for a virtual cluster on Amazon EMR on EKS. It controls how many job runs can run concurrently and how many can wait in the queue. When not set, no concurrency or queue limits are applied.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="scheduler_status" /></td>
+    <td><code>object</code></td>
+    <td>The current in-queue and concurrent job-run counts for the virtual cluster.</td>
+</tr>
+<tr>
     <td><CopyableCode code="security_configuration_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the security configuration. (pattern: &lt;code&gt;&#91;0-9a-z&#93;+&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="session_enabled" /></td>
+    <td><code>boolean</code></td>
+    <td>Specifies whether the virtual cluster has session support enabled.</td>
 </tr>
 <tr>
     <td><CopyableCode code="state" /></td>
@@ -130,9 +145,24 @@ The following fields are returned by `SELECT` queries:
     <td>The date and time when the virtual cluster is created.</td>
 </tr>
 <tr>
+    <td><CopyableCode code="scheduler_configuration" /></td>
+    <td><code>object</code></td>
+    <td>The scheduler configuration for a virtual cluster on Amazon EMR on EKS. It controls how many job runs can run concurrently and how many can wait in the queue. When not set, no concurrency or queue limits are applied.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="scheduler_status" /></td>
+    <td><code>object</code></td>
+    <td>The current in-queue and concurrent job-run counts for the virtual cluster.</td>
+</tr>
+<tr>
     <td><CopyableCode code="security_configuration_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the security configuration. (pattern: &lt;code&gt;&#91;0-9a-z&#93;+&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="session_enabled" /></td>
+    <td><code>boolean</code></td>
+    <td>Specifies whether the virtual cluster has session support enabled.</td>
 </tr>
 <tr>
     <td><CopyableCode code="state" /></td>
@@ -169,28 +199,35 @@ The following methods are available for this resource:
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-virtual_cluster_id"><code>virtual_cluster_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>Displays detailed information about a specified virtual cluster. Virtual cluster is a managed entity on Amazon EMR on EKS. You can create, describe, list and delete virtual clusters. They do not consume any additional resource in your system. A single virtual cluster maps to a single Kubernetes namespace. Given this relationship, you can model virtual clusters the same way you model Kubernetes namespaces to meet your requirements.</td>
+    <td>Displays detailed information about a specified virtual cluster. Virtual cluster is a managed entity on Amazon EMR on EKS. You can create, update, describe, list and delete virtual clusters. They do not consume any additional resource in your system. A single virtual cluster maps to a single Kubernetes namespace. Given this relationship, you can model virtual clusters the same way you model Kubernetes namespaces to meet your requirements.</td>
 </tr>
 <tr>
     <td><a href="#list_virtual_clusters"><CopyableCode code="list_virtual_clusters" /></a></td>
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td><a href="#parameter-containerProviderId"><code>containerProviderId</code></a>, <a href="#parameter-containerProviderType"><code>containerProviderType</code></a>, <a href="#parameter-createdAfter"><code>createdAfter</code></a>, <a href="#parameter-createdBefore"><code>createdBefore</code></a>, <a href="#parameter-states"><code>states</code></a>, <a href="#parameter-maxResults"><code>maxResults</code></a>, <a href="#parameter-nextToken"><code>nextToken</code></a>, <a href="#parameter-eksAccessEntryIntegrated"><code>eksAccessEntryIntegrated</code></a></td>
-    <td>Lists information about the specified virtual cluster. Virtual cluster is a managed entity on Amazon EMR on EKS. You can create, describe, list and delete virtual clusters. They do not consume any additional resource in your system. A single virtual cluster maps to a single Kubernetes namespace. Given this relationship, you can model virtual clusters the same way you model Kubernetes namespaces to meet your requirements.</td>
+    <td>Lists information about the specified virtual cluster. Virtual cluster is a managed entity on Amazon EMR on EKS. You can create, update, describe, list and delete virtual clusters. They do not consume any additional resource in your system. A single virtual cluster maps to a single Kubernetes namespace. Given this relationship, you can model virtual clusters the same way you model Kubernetes namespaces to meet your requirements.</td>
 </tr>
 <tr>
     <td><a href="#create_virtual_cluster"><CopyableCode code="create_virtual_cluster" /></a></td>
     <td><CopyableCode code="insert" /></td>
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-name"><code>name</code></a>, <a href="#parameter-containerProvider"><code>containerProvider</code></a>, <a href="#parameter-clientToken"><code>clientToken</code></a></td>
     <td></td>
-    <td>Creates a virtual cluster. Virtual cluster is a managed entity on Amazon EMR on EKS. You can create, describe, list and delete virtual clusters. They do not consume any additional resource in your system. A single virtual cluster maps to a single Kubernetes namespace. Given this relationship, you can model virtual clusters the same way you model Kubernetes namespaces to meet your requirements.</td>
+    <td>Creates a virtual cluster. Virtual cluster is a managed entity on Amazon EMR on EKS. You can create, update, describe, list and delete virtual clusters. They do not consume any additional resource in your system. A single virtual cluster maps to a single Kubernetes namespace. Given this relationship, you can model virtual clusters the same way you model Kubernetes namespaces to meet your requirements.</td>
+</tr>
+<tr>
+    <td><a href="#update_virtual_cluster"><CopyableCode code="update_virtual_cluster" /></a></td>
+    <td><CopyableCode code="update" /></td>
+    <td><a href="#parameter-virtual_cluster_id"><code>virtual_cluster_id</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-clientToken"><code>clientToken</code></a></td>
+    <td></td>
+    <td>Updates a virtual cluster. Virtual cluster is a managed entity on Amazon EMR on EKS. You can create, update, describe, list and delete virtual clusters. They do not consume any additional resource in your system. A single virtual cluster maps to a single Kubernetes namespace. Given this relationship, you can model virtual clusters the same way you model Kubernetes namespaces to meet your requirements.</td>
 </tr>
 <tr>
     <td><a href="#delete_virtual_cluster"><CopyableCode code="delete_virtual_cluster" /></a></td>
     <td><CopyableCode code="delete" /></td>
     <td><a href="#parameter-virtual_cluster_id"><code>virtual_cluster_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>Deletes a virtual cluster. Virtual cluster is a managed entity on Amazon EMR on EKS. You can create, describe, list and delete virtual clusters. They do not consume any additional resource in your system. A single virtual cluster maps to a single Kubernetes namespace. Given this relationship, you can model virtual clusters the same way you model Kubernetes namespaces to meet your requirements.</td>
+    <td>Deletes a virtual cluster. Virtual cluster is a managed entity on Amazon EMR on EKS. You can create, update, describe, list and delete virtual clusters. They do not consume any additional resource in your system. A single virtual cluster maps to a single Kubernetes namespace. Given this relationship, you can model virtual clusters the same way you model Kubernetes namespaces to meet your requirements.</td>
 </tr>
 <tr>
     <td><a href="#cancel_job_run"><CopyableCode code="cancel_job_run" /></a></td>
@@ -291,7 +328,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 >
 <TabItem value="describe_virtual_cluster">
 
-Displays detailed information about a specified virtual cluster. Virtual cluster is a managed entity on Amazon EMR on EKS. You can create, describe, list and delete virtual clusters. They do not consume any additional resource in your system. A single virtual cluster maps to a single Kubernetes namespace. Given this relationship, you can model virtual clusters the same way you model Kubernetes namespaces to meet your requirements.
+Displays detailed information about a specified virtual cluster. Virtual cluster is a managed entity on Amazon EMR on EKS. You can create, update, describe, list and delete virtual clusters. They do not consume any additional resource in your system. A single virtual cluster maps to a single Kubernetes namespace. Given this relationship, you can model virtual clusters the same way you model Kubernetes namespaces to meet your requirements.
 
 ```sql
 SELECT
@@ -300,7 +337,10 @@ name,
 arn,
 container_provider,
 created_at,
+scheduler_configuration,
+scheduler_status,
 security_configuration_id,
+session_enabled,
 state,
 tags
 FROM aws.emr_containers.virtual_clusters
@@ -311,7 +351,7 @@ AND region = '{{ region }}' -- required
 </TabItem>
 <TabItem value="list_virtual_clusters">
 
-Lists information about the specified virtual cluster. Virtual cluster is a managed entity on Amazon EMR on EKS. You can create, describe, list and delete virtual clusters. They do not consume any additional resource in your system. A single virtual cluster maps to a single Kubernetes namespace. Given this relationship, you can model virtual clusters the same way you model Kubernetes namespaces to meet your requirements.
+Lists information about the specified virtual cluster. Virtual cluster is a managed entity on Amazon EMR on EKS. You can create, update, describe, list and delete virtual clusters. They do not consume any additional resource in your system. A single virtual cluster maps to a single Kubernetes namespace. Given this relationship, you can model virtual clusters the same way you model Kubernetes namespaces to meet your requirements.
 
 ```sql
 SELECT
@@ -320,7 +360,10 @@ name,
 arn,
 container_provider,
 created_at,
+scheduler_configuration,
+scheduler_status,
 security_configuration_id,
+session_enabled,
 state,
 tags
 FROM aws.emr_containers.virtual_clusters
@@ -350,7 +393,7 @@ AND eksAccessEntryIntegrated = '{{ eksAccessEntryIntegrated }}'
 >
 <TabItem value="create_virtual_cluster">
 
-Creates a virtual cluster. Virtual cluster is a managed entity on Amazon EMR on EKS. You can create, describe, list and delete virtual clusters. They do not consume any additional resource in your system. A single virtual cluster maps to a single Kubernetes namespace. Given this relationship, you can model virtual clusters the same way you model Kubernetes namespaces to meet your requirements.
+Creates a virtual cluster. Virtual cluster is a managed entity on Amazon EMR on EKS. You can create, update, describe, list and delete virtual clusters. They do not consume any additional resource in your system. A single virtual cluster maps to a single Kubernetes namespace. Given this relationship, you can model virtual clusters the same way you model Kubernetes namespaces to meet your requirements.
 
 ```sql
 INSERT INTO aws.emr_containers.virtual_clusters (
@@ -359,6 +402,8 @@ containerProvider,
 clientToken,
 tags,
 securityConfigurationId,
+sessionEnabled,
+schedulerConfiguration,
 region
 )
 SELECT 
@@ -367,6 +412,8 @@ SELECT
 '{{ clientToken }}' /* required */,
 '{{ tags }}',
 '{{ securityConfigurationId }}',
+{{ sessionEnabled }},
+'{{ schedulerConfiguration }}',
 '{{ region }}'
 RETURNING
 id,
@@ -401,8 +448,44 @@ arn
       value: "{{ tags }}"
     - name: securityConfigurationId
       value: "{{ securityConfigurationId }}"
+    - name: sessionEnabled
+      value: {{ sessionEnabled }}
+    - name: schedulerConfiguration
+      description: |
+        The scheduler configuration for a virtual cluster on Amazon EMR on EKS. It controls how many job runs can run concurrently and how many can wait in the queue. When not set, no concurrency or queue limits are applied.
+      value:
+        maxInQueueJobRuns: {{ maxInQueueJobRuns }}
+        maxConcurrentJobRuns: {{ maxConcurrentJobRuns }}
 `}</CodeBlock>
 
+</TabItem>
+</Tabs>
+
+
+## `UPDATE` examples
+
+<Tabs
+    defaultValue="update_virtual_cluster"
+    values={[
+        { label: 'update_virtual_cluster', value: 'update_virtual_cluster' }
+    ]}
+>
+<TabItem value="update_virtual_cluster">
+
+Updates a virtual cluster. Virtual cluster is a managed entity on Amazon EMR on EKS. You can create, update, describe, list and delete virtual clusters. They do not consume any additional resource in your system. A single virtual cluster maps to a single Kubernetes namespace. Given this relationship, you can model virtual clusters the same way you model Kubernetes namespaces to meet your requirements.
+
+```sql
+UPDATE aws.emr_containers.virtual_clusters
+SET 
+schedulerConfiguration = '{{ schedulerConfiguration }}',
+clientToken = '{{ clientToken }}'
+WHERE 
+virtual_cluster_id = '{{ virtual_cluster_id }}' --required
+AND region = '{{ region }}' --required
+AND clientToken = '{{ clientToken }}' --required
+RETURNING
+virtual_cluster;
+```
 </TabItem>
 </Tabs>
 
@@ -417,7 +500,7 @@ arn
 >
 <TabItem value="delete_virtual_cluster">
 
-Deletes a virtual cluster. Virtual cluster is a managed entity on Amazon EMR on EKS. You can create, describe, list and delete virtual clusters. They do not consume any additional resource in your system. A single virtual cluster maps to a single Kubernetes namespace. Given this relationship, you can model virtual clusters the same way you model Kubernetes namespaces to meet your requirements.
+Deletes a virtual cluster. Virtual cluster is a managed entity on Amazon EMR on EKS. You can create, update, describe, list and delete virtual clusters. They do not consume any additional resource in your system. A single virtual cluster maps to a single Kubernetes namespace. Given this relationship, you can model virtual clusters the same way you model Kubernetes namespaces to meet your requirements.
 
 ```sql
 DELETE FROM aws.emr_containers.virtual_clusters

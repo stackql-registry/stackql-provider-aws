@@ -182,6 +182,7 @@ standbyReplicas,
 description,
 tags,
 capacityLimits,
+generation,
 clientToken,
 region
 )
@@ -191,6 +192,7 @@ SELECT
 '{{ description }}',
 '{{ tags }}',
 '{{ capacityLimits }}',
+'{{ generation }}',
 '{{ clientToken }}',
 '{{ region }}'
 RETURNING
@@ -233,6 +235,11 @@ create_collection_group_detail
         maxSearchCapacityInOCU: {{ maxSearchCapacityInOCU }}
         minIndexingCapacityInOCU: {{ minIndexingCapacityInOCU }}
         minSearchCapacityInOCU: {{ minSearchCapacityInOCU }}
+    - name: generation
+      value: "{{ generation }}"
+      description: |
+        The generation of Amazon OpenSearch Serverless for the collection group. Valid values are CLASSIC and NEXTGEN.
+      valid_values: ['CLASSIC', 'NEXTGEN']
     - name: clientToken
       value: "{{ clientToken }}"
       description: |

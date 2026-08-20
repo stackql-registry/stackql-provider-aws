@@ -67,7 +67,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="db_engine_media_type" /></td>
     <td><code>string</code></td>
-    <td>A value that indicates the source media provider of the AMI based on the usage operation. Applicable for RDS Custom for SQL Server.</td>
+    <td>The source of the installation media for this engine version. A value of Customer Provided indicates that the engine version was created from customer-supplied installation media using CreateCustomDBEngineVersion. Applicable to RDS Custom for SQL Server and to RDS for SQL Server engine versions (sqlserver-ee and sqlserver-se with the bring-your-own-media license model, and sqlserver-dev-ee).</td>
 </tr>
 <tr>
     <td><CopyableCode code="db_engine_version_arn" /></td>
@@ -87,7 +87,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="database_installation_files" /></td>
     <td><code>string</code></td>
-    <td>The database installation files (ISO and EXE) uploaded to Amazon S3 for your database engine version to import to Amazon RDS. Required for sqlserver-dev-ee.</td>
+    <td>The database installation files (ISO and EXE) that were uploaded to Amazon S3 and used to import the database engine version to Amazon RDS. Returned for RDS for SQL Server engine versions (sqlserver-ee, sqlserver-se, and sqlserver-dev-ee) created from customer-supplied installation media.</td>
 </tr>
 <tr>
     <td><CopyableCode code="database_installation_files_s3_bucket_name" /></td>
@@ -122,7 +122,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="failure_reason" /></td>
     <td><code>string</code></td>
-    <td>The reason that the custom engine version creation for sqlserver-dev-ee failed with an incompatible-installation-media status.</td>
+    <td>The reason that the custom engine version creation failed with an incompatible-installation-media status. Applicable to RDS for SQL Server engine versions (sqlserver-ee, sqlserver-se, and sqlserver-dev-ee).</td>
 </tr>
 <tr>
     <td><CopyableCode code="image" /></td>
@@ -316,7 +316,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-DatabaseInstallationFiles">
     <td><CopyableCode code="DatabaseInstallationFiles" /></td>
     <td><code>array</code></td>
-    <td>The database installation files (ISO and EXE) uploaded to Amazon S3 for your database engine version to import to Amazon RDS.</td>
+    <td>The database installation files (ISO and EXE) uploaded to Amazon S3 for your database engine version to import to Amazon RDS. For RDS for SQL Server Bring Your Own Media (sqlserver-ee, sqlserver-se), provide the SQL Server RTM ISO file once per major version and edition combination. Minor versions reuse the same file.</td>
 </tr>
 <tr id="parameter-DatabaseInstallationFilesS3BucketName">
     <td><CopyableCode code="DatabaseInstallationFilesS3BucketName" /></td>
@@ -341,7 +341,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-Engine">
     <td><CopyableCode code="Engine" /></td>
     <td><code>string</code></td>
-    <td>The database engine. RDS Custom for Oracle supports the following values: custom-oracle-ee custom-oracle-ee-cdb custom-oracle-se2 custom-oracle-se2-cdb RDS Custom for SQL Server supports the following values: custom-sqlserver-ee custom-sqlserver-se ccustom-sqlserver-web custom-sqlserver-dev RDS for SQL Server supports only sqlserver-dev-ee.</td>
+    <td>The database engine. RDS Custom for Oracle supports the following values: custom-oracle-ee custom-oracle-ee-cdb custom-oracle-se2 custom-oracle-se2-cdb RDS Custom for SQL Server supports the following values: custom-sqlserver-ee custom-sqlserver-se custom-sqlserver-web custom-sqlserver-dev RDS for SQL Server supports the following values: sqlserver-ee (Bring Your Own Media) sqlserver-se (Bring Your Own Media) sqlserver-dev-ee</td>
 </tr>
 <tr id="parameter-EngineVersion">
     <td><CopyableCode code="EngineVersion" /></td>
@@ -582,8 +582,8 @@ valid_upgrade_target
       description: Required parameter for the db_engine_versions resource.
     - name: Engine
       value: "{{ Engine }}"
-      description: The database engine. RDS Custom for Oracle supports the following values: custom-oracle-ee custom-oracle-ee-cdb custom-oracle-se2 custom-oracle-se2-cdb RDS Custom for SQL Server supports the following values: custom-sqlserver-ee custom-sqlserver-se ccustom-sqlserver-web custom-sqlserver-dev RDS for SQL Server supports only sqlserver-dev-ee.
-      description: The database engine. RDS Custom for Oracle supports the following values: custom-oracle-ee custom-oracle-ee-cdb custom-oracle-se2 custom-oracle-se2-cdb RDS Custom for SQL Server supports the following values: custom-sqlserver-ee custom-sqlserver-se ccustom-sqlserver-web custom-sqlserver-dev RDS for SQL Server supports only sqlserver-dev-ee.
+      description: The database engine. RDS Custom for Oracle supports the following values: custom-oracle-ee custom-oracle-ee-cdb custom-oracle-se2 custom-oracle-se2-cdb RDS Custom for SQL Server supports the following values: custom-sqlserver-ee custom-sqlserver-se custom-sqlserver-web custom-sqlserver-dev RDS for SQL Server supports the following values: sqlserver-ee (Bring Your Own Media) sqlserver-se (Bring Your Own Media) sqlserver-dev-ee
+      description: The database engine. RDS Custom for Oracle supports the following values: custom-oracle-ee custom-oracle-ee-cdb custom-oracle-se2 custom-oracle-se2-cdb RDS Custom for SQL Server supports the following values: custom-sqlserver-ee custom-sqlserver-se custom-sqlserver-web custom-sqlserver-dev RDS for SQL Server supports the following values: sqlserver-ee (Bring Your Own Media) sqlserver-se (Bring Your Own Media) sqlserver-dev-ee
     - name: DatabaseInstallationFilesS3BucketName
       value: "{{ DatabaseInstallationFilesS3BucketName }}"
       description: The name of an Amazon S3 bucket that contains database installation files for your CEV. For example, a valid bucket name is my-custom-installation-files.
@@ -594,8 +594,8 @@ valid_upgrade_target
       description: The Amazon S3 directory that contains the database installation files for your CEV. For example, a valid bucket name is 123456789012/cev1. If this setting isn't specified, no prefix is assumed.
     - name: DatabaseInstallationFiles
       value: "{{ DatabaseInstallationFiles }}"
-      description: The database installation files (ISO and EXE) uploaded to Amazon S3 for your database engine version to import to Amazon RDS.
-      description: The database installation files (ISO and EXE) uploaded to Amazon S3 for your database engine version to import to Amazon RDS.
+      description: The database installation files (ISO and EXE) uploaded to Amazon S3 for your database engine version to import to Amazon RDS. For RDS for SQL Server Bring Your Own Media (sqlserver-ee, sqlserver-se), provide the SQL Server RTM ISO file once per major version and edition combination. Minor versions reuse the same file.
+      description: The database installation files (ISO and EXE) uploaded to Amazon S3 for your database engine version to import to Amazon RDS. For RDS for SQL Server Bring Your Own Media (sqlserver-ee, sqlserver-se), provide the SQL Server RTM ISO file once per major version and edition combination. Minor versions reuse the same file.
     - name: ImageId
       value: "{{ ImageId }}"
       description: The ID of the Amazon Machine Image (AMI). For RDS Custom for SQL Server, an AMI ID is required to create a CEV. For RDS Custom for Oracle, the default is the most recent AMI available, but you can specify an AMI ID that was used in a different Oracle CEV. Find the AMIs used by your CEVs by calling the DescribeDBEngineVersions operation.

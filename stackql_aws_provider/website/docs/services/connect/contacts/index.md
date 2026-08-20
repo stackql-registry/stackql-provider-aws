@@ -63,7 +63,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="answering_machine_detection_status" /></td>
     <td><code>string</code></td>
-    <td>Indicates how an outbound campaign call is actually disposed if the contact is connected to Amazon Connect. (ANSWERED, UNDETECTED, ERROR, HUMAN_ANSWERED, SIT_TONE_DETECTED, SIT_TONE_BUSY, SIT_TONE_INVALID_NUMBER, FAX_MACHINE_DETECTED, VOICEMAIL_BEEP, VOICEMAIL_NO_BEEP, AMD_UNRESOLVED, AMD_UNANSWERED, AMD_ERROR, AMD_NOT_APPLICABLE)</td>
+    <td>Indicates how an outbound campaign call is actually disposed if the contact is connected to Connect Customer. (ANSWERED, UNDETECTED, ERROR, HUMAN_ANSWERED, SIT_TONE_DETECTED, SIT_TONE_BUSY, SIT_TONE_INVALID_NUMBER, FAX_MACHINE_DETECTED, VOICEMAIL_BEEP, VOICEMAIL_NO_BEEP, AMD_UNRESOLVED, AMD_UNANSWERED, AMD_ERROR, AMD_NOT_APPLICABLE)</td>
 </tr>
 <tr>
     <td><CopyableCode code="arn" /></td>
@@ -93,7 +93,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="connected_to_system_timestamp" /></td>
     <td><code>string (date-time)</code></td>
-    <td>The timestamp when customer endpoint connected to Amazon Connect.</td>
+    <td>The timestamp when customer endpoint connected to Connect Customer.</td>
 </tr>
 <tr>
     <td><CopyableCode code="contact_association_id" /></td>
@@ -123,7 +123,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="customer_id" /></td>
     <td><code>string</code></td>
-    <td>The customer's identification number. For example, the CustomerId may be a customer number from your CRM. You can create a Lambda function to pull the unique customer ID of the caller from your CRM system. If you enable Amazon Connect Voice ID capability, this attribute is populated with the CustomerSpeakerId of the caller.</td>
+    <td>The customer's identification number. For example, the CustomerId may be a customer number from your CRM. You can create a Lambda function to pull the unique customer ID of the caller from your CRM system. If you enable Connect Customer Voice ID capability, this attribute is populated with the CustomerSpeakerId of the caller.</td>
 </tr>
 <tr>
     <td><CopyableCode code="customer_voice_activity" /></td>
@@ -143,7 +143,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="disconnect_reason" /></td>
     <td><code>string</code></td>
-    <td>The disconnect reason for the contact. For a list and description of all the possible disconnect reasons by channel, see DisconnectReason under ContactTraceRecord in the Amazon Connect Administrator Guide.</td>
+    <td>The disconnect reason for the contact. For a list and description of all the possible disconnect reasons by channel, see DisconnectReason under ContactTraceRecord in the Connect Customer Administrator Guide.</td>
 </tr>
 <tr>
     <td><CopyableCode code="disconnect_timestamp" /></td>
@@ -258,7 +258,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="segment_attributes" /></td>
     <td><code>object</code></td>
-    <td>A set of system defined key-value pairs stored on individual contact segments using an attribute map. The attributes are standard Amazon Connect attributes and can be accessed in flows. Attribute keys can include only alphanumeric, -, and _ characters. This field can be used to show channel subtype. For example, connect:Guide or connect:SMS.</td>
+    <td>A set of system defined key-value pairs stored on individual contact segments using an attribute map. The attributes are standard Connect Customer attributes and can be accessed in flows. Attribute keys can include only alphanumeric, -, and _ characters. This field can be used to show channel subtype. For example, connect:Guide or connect:SMS.</td>
 </tr>
 <tr>
     <td><CopyableCode code="system_endpoint" /></td>
@@ -288,7 +288,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="wisdom_info" /></td>
     <td><code>object</code></td>
-    <td>Information about Amazon Connect Wisdom.</td>
+    <td>Information about Connect Customer Wisdom.</td>
 </tr>
 </tbody>
 </table>
@@ -310,6 +310,11 @@ The following fields are returned by `SELECT` queries:
     <td>Information about the agent who accepted the contact.</td>
 </tr>
 <tr>
+    <td><CopyableCode code="ai_agent_info" /></td>
+    <td><code>array</code></td>
+    <td>Information about the AI agents involved in the contact.</td>
+</tr>
+<tr>
     <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the contact.</td>
@@ -322,7 +327,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="disconnect_timestamp" /></td>
     <td><code>string (date-time)</code></td>
-    <td>The timestamp when the customer endpoint disconnected from Amazon Connect.</td>
+    <td>The timestamp when the customer endpoint disconnected from Connect Customer.</td>
 </tr>
 <tr>
     <td><CopyableCode code="global_resiliency_metadata" /></td>
@@ -409,14 +414,14 @@ The following methods are available for this resource:
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-instance_id"><code>instance_id</code></a>, <a href="#parameter-contact_id"><code>contact_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>This API is in preview release for Amazon Connect and is subject to change. Describes the specified contact. Use cases Following are common uses cases for this API: Retrieve contact information such as the caller's phone number and the specific number the caller dialed to integrate into custom monitoring or custom agent experience solutions. Detect when a customer chat session disconnects due to a network issue on the agent's end. Use the DisconnectReason field in the ContactTraceRecord to detect this event and then re-queue the chat for followup. Identify after contact work (ACW) duration and call recordings information when a COMPLETED event is received by using the contact event stream. Important things to know SystemEndpoint is not populated for contacts with initiation method of MONITOR, QUEUE_TRANSFER, or CALLBACK Contact information remains available in Amazon Connect for 24 months from the InitiationTimestamp, and then it is deleted. Only contact information that is available in Amazon Connect is returned by this API. Endpoints: See Amazon Connect endpoints and quotas.</td>
+    <td>This API is in preview release for Connect Customer and is subject to change. Describes the specified contact. Use cases Following are common uses cases for this API: Retrieve contact information such as the caller's phone number and the specific number the caller dialed to integrate into custom monitoring or custom agent experience solutions. Detect when a customer chat session disconnects due to a network issue on the agent's end. Use the DisconnectReason field in the ContactTraceRecord to detect this event and then re-queue the chat for followup. Identify after contact work (ACW) duration and call recordings information when a COMPLETED event is received by using the contact event stream. Important things to know SystemEndpoint is not populated for contacts with initiation method of MONITOR, QUEUE_TRANSFER, or CALLBACK Contact information remains available in Connect Customer for 24 months from the InitiationTimestamp, and then it is deleted. Only contact information that is available in Connect Customer is returned by this API. Endpoints: See Connect Customer endpoints and quotas.</td>
 </tr>
 <tr>
     <td><a href="#search_contacts"><CopyableCode code="search_contacts" /></a></td>
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>Searches contacts in an Amazon Connect instance.</td>
+    <td>Searches contacts in an Connect Customer instance.</td>
 </tr>
 <tr>
     <td><a href="#create_contact"><CopyableCode code="create_contact" /></a></td>
@@ -437,7 +442,7 @@ The following methods are available for this resource:
     <td><CopyableCode code="update" /></td>
     <td><a href="#parameter-instance_id"><code>instance_id</code></a>, <a href="#parameter-contact_id"><code>contact_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>This API is in preview release for Amazon Connect and is subject to change. Adds or updates user-defined contact information associated with the specified contact. At least one field to be updated must be present in the request. You can add or update user-defined contact information for both ongoing and completed contacts.</td>
+    <td>This API is in preview release for Connect Customer and is subject to change. Adds or updates user-defined contact information associated with the specified contact. At least one field to be updated must be present in the request. You can add or update user-defined contact information for both ongoing and completed contacts.</td>
 </tr>
 <tr>
     <td><a href="#update_queue_max_contacts"><CopyableCode code="update_queue_max_contacts" /></a></td>
@@ -447,11 +452,18 @@ The following methods are available for this resource:
     <td>Updates the maximum number of contacts allowed in a queue before it is considered full.</td>
 </tr>
 <tr>
+    <td><a href="#delete_contact_data"><CopyableCode code="delete_contact_data" /></a></td>
+    <td><CopyableCode code="delete" /></td>
+    <td><a href="#parameter-instance_id"><code>instance_id</code></a>, <a href="#parameter-contact_id"><code>contact_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Deletes the specified fields containing personally identifiable information (PII) from a contact in the specified Connect Customer instance. We redact PII (such as customer endpoints, additional email recipients, and the email subject) from the contact and its associated contact trace record (CTR). The contact must be in a terminated state. This deletion is permanent and cannot be undone. Performing this operation permanently deletes the specified PII. There is no retention period; you cannot recover the data after deletion. We remove only the fields that Connect Customer identifies and stores as PII. Any PII that you place in fields outside the scope of this operation remains your responsibility to remove.</td>
+</tr>
+<tr>
     <td><a href="#start_contact_evaluation"><CopyableCode code="start_contact_evaluation" /></a></td>
     <td><CopyableCode code="exec" /></td>
     <td><a href="#parameter-instance_id"><code>instance_id</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-ContactId"><code>ContactId</code></a>, <a href="#parameter-EvaluationFormId"><code>EvaluationFormId</code></a></td>
     <td></td>
-    <td>Starts an empty evaluation in the specified Amazon Connect instance, using the given evaluation form for the particular contact. The evaluation form version used for the contact evaluation corresponds to the currently activated version. If no version is activated for the evaluation form, the contact evaluation cannot be started. Evaluations created through the public API do not contain answer values suggested from automation.</td>
+    <td>Starts an empty evaluation in the specified Connect Customer instance, using the given evaluation form for the particular contact. The evaluation form version used for the contact evaluation corresponds to the currently activated version. If no version is activated for the evaluation form, the contact evaluation cannot be started. Evaluations created through the public API do not contain answer values suggested from automation.</td>
 </tr>
 <tr>
     <td><a href="#resume_contact_recording"><CopyableCode code="resume_contact_recording" /></a></td>
@@ -459,6 +471,13 @@ The following methods are available for this resource:
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-InstanceId"><code>InstanceId</code></a>, <a href="#parameter-ContactId"><code>ContactId</code></a>, <a href="#parameter-InitialContactId"><code>InitialContactId</code></a></td>
     <td></td>
     <td>When a contact is being recorded, and the recording has been suspended using SuspendContactRecording, this API resumes recording whatever recording is selected in the flow configuration: call, screen, or both. If only call recording or only screen recording is enabled, then it would resume. Voice and screen recordings are supported.</td>
+</tr>
+<tr>
+    <td><a href="#start_contact_conversational_analytics_job"><CopyableCode code="start_contact_conversational_analytics_job" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-instance_id"><code>instance_id</code></a>, <a href="#parameter-contact_id"><code>contact_id</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-AnalyticsModes"><code>AnalyticsModes</code></a>, <a href="#parameter-AnalyticsConfiguration"><code>AnalyticsConfiguration</code></a></td>
+    <td></td>
+    <td>Starts a Contact Lens post-call analytics job for the specified contact. This API runs Conversational Analytics post-contact analysis on a voice recording that is already attached to the contact, generating transcription, sentiment analysis, redaction, and summarization results based on the provided configuration. A voice recording must already be attached to the contact before calling this API. Use CreateAttachedFile to attach a recording from an S3 source URI. For example, you can call CreateContact, then CreateAttachedFile, then StartContactConversationalAnalyticsJob to create a contact, attach a recording, and run post-call analytics.</td>
 </tr>
 <tr>
     <td><a href="#start_contact_media_processing"><CopyableCode code="start_contact_media_processing" /></a></td>
@@ -479,7 +498,7 @@ The following methods are available for this resource:
     <td><CopyableCode code="exec" /></td>
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-InstanceId"><code>InstanceId</code></a>, <a href="#parameter-ContactId"><code>ContactId</code></a>, <a href="#parameter-ChatStreamingConfiguration"><code>ChatStreamingConfiguration</code></a>, <a href="#parameter-ClientToken"><code>ClientToken</code></a></td>
     <td></td>
-    <td>Initiates real-time message streaming for a new chat contact. For more information about message streaming, see Enable real-time chat message streaming in the Amazon Connect Administrator Guide. For more information about chat, see the following topics in the Amazon Connect Administrator Guide: Concepts: Web and mobile messaging capabilities in Amazon Connect Amazon Connect Chat security best practices</td>
+    <td>Initiates real-time message streaming for a new chat contact. For more information about message streaming, see Enable real-time chat message streaming in the Connect Customer Administrator Guide. For more information about chat, see the following topics in the Connect Customer Administrator Guide: Concepts: Web and mobile messaging capabilities in Connect Customer Connect Customer Chat security best practices</td>
 </tr>
 <tr>
     <td><a href="#stop_contact_media_processing"><CopyableCode code="stop_contact_media_processing" /></a></td>
@@ -507,7 +526,7 @@ The following methods are available for this resource:
     <td><CopyableCode code="exec" /></td>
     <td><a href="#parameter-instance_id"><code>instance_id</code></a>, <a href="#parameter-evaluation_id"><code>evaluation_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>Submits a contact evaluation in the specified Amazon Connect instance. Answers included in the request are merged with existing answers for the given evaluation. If no answers or notes are passed, the evaluation is submitted with the existing answers and notes. You can delete an answer or note by passing an empty object (&#123;&#125;) to the question identifier. If a contact evaluation is already in submitted state, this operation will trigger a resubmission.</td>
+    <td>Submits a contact evaluation in the specified Connect Customer instance. Answers included in the request are merged with existing answers for the given evaluation. If no answers or notes are passed, the evaluation is submitted with the existing answers and notes. You can delete an answer or note by passing an empty object (&#123;&#125;) to the question identifier. If a contact evaluation is already in submitted state, this operation will trigger a resubmission.</td>
 </tr>
 <tr>
     <td><a href="#update_contact_routing_data"><CopyableCode code="update_contact_routing_data" /></a></td>
@@ -535,7 +554,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-contact_id">
     <td><CopyableCode code="contact_id" /></td>
     <td><code>string</code></td>
-    <td>The identifier of the contact in this instance of Amazon Connect.</td>
+    <td>The identifier of the contact in this instance of Connect Customer.</td>
 </tr>
 <tr id="parameter-evaluation_id">
     <td><CopyableCode code="evaluation_id" /></td>
@@ -545,7 +564,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-instance_id">
     <td><CopyableCode code="instance_id" /></td>
     <td><code>string</code></td>
-    <td>The identifier of the Amazon Connect instance. You can find the instance ID in the Amazon Resource Name (ARN) of the instance.</td>
+    <td>The identifier of the Connect Customer instance. You can find the instance ID in the Amazon Resource Name (ARN) of the instance.</td>
 </tr>
 <tr id="parameter-queue_id">
     <td><CopyableCode code="queue_id" /></td>
@@ -571,7 +590,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 >
 <TabItem value="describe_contact">
 
-This API is in preview release for Amazon Connect and is subject to change. Describes the specified contact. Use cases Following are common uses cases for this API: Retrieve contact information such as the caller's phone number and the specific number the caller dialed to integrate into custom monitoring or custom agent experience solutions. Detect when a customer chat session disconnects due to a network issue on the agent's end. Use the DisconnectReason field in the ContactTraceRecord to detect this event and then re-queue the chat for followup. Identify after contact work (ACW) duration and call recordings information when a COMPLETED event is received by using the contact event stream. Important things to know SystemEndpoint is not populated for contacts with initiation method of MONITOR, QUEUE_TRANSFER, or CALLBACK Contact information remains available in Amazon Connect for 24 months from the InitiationTimestamp, and then it is deleted. Only contact information that is available in Amazon Connect is returned by this API. Endpoints: See Amazon Connect endpoints and quotas.
+This API is in preview release for Connect Customer and is subject to change. Describes the specified contact. Use cases Following are common uses cases for this API: Retrieve contact information such as the caller's phone number and the specific number the caller dialed to integrate into custom monitoring or custom agent experience solutions. Detect when a customer chat session disconnects due to a network issue on the agent's end. Use the DisconnectReason field in the ContactTraceRecord to detect this event and then re-queue the chat for followup. Identify after contact work (ACW) duration and call recordings information when a COMPLETED event is received by using the contact event stream. Important things to know SystemEndpoint is not populated for contacts with initiation method of MONITOR, QUEUE_TRANSFER, or CALLBACK Contact information remains available in Connect Customer for 24 months from the InitiationTimestamp, and then it is deleted. Only contact information that is available in Connect Customer is returned by this API. Endpoints: See Connect Customer endpoints and quotas.
 
 ```sql
 SELECT
@@ -632,11 +651,12 @@ AND region = '{{ region }}' -- required
 </TabItem>
 <TabItem value="search_contacts">
 
-Searches contacts in an Amazon Connect instance.
+Searches contacts in an Connect Customer instance.
 
 ```sql
 SELECT
 agent_info,
+ai_agent_info,
 arn,
 channel,
 disconnect_timestamp,
@@ -790,7 +810,7 @@ AND ScheduledTime = '{{ ScheduledTime }}' --required;
 </TabItem>
 <TabItem value="update_contact">
 
-This API is in preview release for Amazon Connect and is subject to change. Adds or updates user-defined contact information associated with the specified contact. At least one field to be updated must be present in the request. You can add or update user-defined contact information for both ongoing and completed contacts.
+This API is in preview release for Connect Customer and is subject to change. Adds or updates user-defined contact information associated with the specified contact. At least one field to be updated must be present in the request. You can add or update user-defined contact information for both ongoing and completed contacts.
 
 ```sql
 UPDATE aws.connect.contacts
@@ -826,6 +846,29 @@ AND region = '{{ region }}' --required;
 </Tabs>
 
 
+## `DELETE` examples
+
+<Tabs
+    defaultValue="delete_contact_data"
+    values={[
+        { label: 'delete_contact_data', value: 'delete_contact_data' }
+    ]}
+>
+<TabItem value="delete_contact_data">
+
+Deletes the specified fields containing personally identifiable information (PII) from a contact in the specified Connect Customer instance. We redact PII (such as customer endpoints, additional email recipients, and the email subject) from the contact and its associated contact trace record (CTR). The contact must be in a terminated state. This deletion is permanent and cannot be undone. Performing this operation permanently deletes the specified PII. There is no retention period; you cannot recover the data after deletion. We remove only the fields that Connect Customer identifies and stores as PII. Any PII that you place in fields outside the scope of this operation remains your responsibility to remove.
+
+```sql
+DELETE FROM aws.connect.contacts
+WHERE instance_id = '{{ instance_id }}' --required
+AND contact_id = '{{ contact_id }}' --required
+AND region = '{{ region }}' --required
+;
+```
+</TabItem>
+</Tabs>
+
+
 ## Lifecycle Methods
 
 <Tabs
@@ -833,6 +876,7 @@ AND region = '{{ region }}' --required;
     values={[
         { label: 'start_contact_evaluation', value: 'start_contact_evaluation' },
         { label: 'resume_contact_recording', value: 'resume_contact_recording' },
+        { label: 'start_contact_conversational_analytics_job', value: 'start_contact_conversational_analytics_job' },
         { label: 'start_contact_media_processing', value: 'start_contact_media_processing' },
         { label: 'start_contact_recording', value: 'start_contact_recording' },
         { label: 'start_contact_streaming', value: 'start_contact_streaming' },
@@ -845,7 +889,7 @@ AND region = '{{ region }}' --required;
 >
 <TabItem value="start_contact_evaluation">
 
-Starts an empty evaluation in the specified Amazon Connect instance, using the given evaluation form for the particular contact. The evaluation form version used for the contact evaluation corresponds to the currently activated version. If no version is activated for the evaluation form, the contact evaluation cannot be started. Evaluations created through the public API do not contain answer values suggested from automation.
+Starts an empty evaluation in the specified Connect Customer instance, using the given evaluation form for the particular contact. The evaluation form version used for the contact evaluation corresponds to the currently activated version. If no version is activated for the evaluation form, the contact evaluation cannot be started. Evaluations created through the public API do not contain answer values suggested from automation.
 
 ```sql
 EXEC aws.connect.contacts.start_contact_evaluation 
@@ -875,6 +919,24 @@ EXEC aws.connect.contacts.resume_contact_recording
 "ContactId": "{{ ContactId }}", 
 "InitialContactId": "{{ InitialContactId }}", 
 "ContactRecordingType": "{{ ContactRecordingType }}"
+}'
+;
+```
+</TabItem>
+<TabItem value="start_contact_conversational_analytics_job">
+
+Starts a Contact Lens post-call analytics job for the specified contact. This API runs Conversational Analytics post-contact analysis on a voice recording that is already attached to the contact, generating transcription, sentiment analysis, redaction, and summarization results based on the provided configuration. A voice recording must already be attached to the contact before calling this API. Use CreateAttachedFile to attach a recording from an S3 source URI. For example, you can call CreateContact, then CreateAttachedFile, then StartContactConversationalAnalyticsJob to create a contact, attach a recording, and run post-call analytics.
+
+```sql
+EXEC aws.connect.contacts.start_contact_conversational_analytics_job 
+@instance_id='{{ instance_id }}' --required, 
+@contact_id='{{ contact_id }}' --required, 
+@region='{{ region }}' --required 
+@@json=
+'{
+"AnalyticsModes": "{{ AnalyticsModes }}", 
+"AnalyticsConfiguration": "{{ AnalyticsConfiguration }}", 
+"ClientToken": "{{ ClientToken }}"
 }'
 ;
 ```
@@ -915,7 +977,7 @@ EXEC aws.connect.contacts.start_contact_recording
 </TabItem>
 <TabItem value="start_contact_streaming">
 
-Initiates real-time message streaming for a new chat contact. For more information about message streaming, see Enable real-time chat message streaming in the Amazon Connect Administrator Guide. For more information about chat, see the following topics in the Amazon Connect Administrator Guide: Concepts: Web and mobile messaging capabilities in Amazon Connect Amazon Connect Chat security best practices
+Initiates real-time message streaming for a new chat contact. For more information about message streaming, see Enable real-time chat message streaming in the Connect Customer Administrator Guide. For more information about chat, see the following topics in the Connect Customer Administrator Guide: Concepts: Web and mobile messaging capabilities in Connect Customer Connect Customer Chat security best practices
 
 ```sql
 EXEC aws.connect.contacts.start_contact_streaming 
@@ -980,7 +1042,7 @@ EXEC aws.connect.contacts.stop_contact_streaming
 </TabItem>
 <TabItem value="submit_contact_evaluation">
 
-Submits a contact evaluation in the specified Amazon Connect instance. Answers included in the request are merged with existing answers for the given evaluation. If no answers or notes are passed, the evaluation is submitted with the existing answers and notes. You can delete an answer or note by passing an empty object (&#123;&#125;) to the question identifier. If a contact evaluation is already in submitted state, this operation will trigger a resubmission.
+Submits a contact evaluation in the specified Connect Customer instance. Answers included in the request are merged with existing answers for the given evaluation. If no answers or notes are passed, the evaluation is submitted with the existing answers and notes. You can delete an answer or note by passing an empty object (&#123;&#125;) to the question identifier. If a contact evaluation is already in submitted state, this operation will trigger a resubmission.
 
 ```sql
 EXEC aws.connect.contacts.submit_contact_evaluation 

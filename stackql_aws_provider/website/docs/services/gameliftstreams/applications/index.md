@@ -208,7 +208,7 @@ The following methods are available for this resource:
     <td><CopyableCode code="insert" /></td>
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-RuntimeEnvironment"><code>RuntimeEnvironment</code></a>, <a href="#parameter-ExecutablePath"><code>ExecutablePath</code></a>, <a href="#parameter-ApplicationSourceUri"><code>ApplicationSourceUri</code></a></td>
     <td></td>
-    <td>Creates an application resource in Amazon GameLift Streams, which specifies the application content you want to stream, such as a game build or other software, and configures the settings to run it. Before you create an application, upload your application content files to an Amazon Simple Storage Service (Amazon S3) bucket. For more information, see Getting Started in the Amazon GameLift Streams Developer Guide. Make sure that your files in the Amazon S3 bucket are the correct version you want to use. If you change the files at a later time, you will need to create a new Amazon GameLift Streams application. If the request is successful, Amazon GameLift Streams begins to create an application and sets the status to INITIALIZED. When an application reaches READY status, you can use the application to set up stream groups and start streams. To track application status, call GetApplication.</td>
+    <td>Creates an application resource in Amazon GameLift Streams, which specifies the application content you want to stream, such as a game build or other software, and configures the settings to run it. Before you create an application, upload your application content files to an Amazon Simple Storage Service (Amazon S3) bucket. For more information, see Getting Started in the Amazon GameLift Streams Developer Guide. Make sure that your files in the Amazon S3 bucket are the correct version you want to use. If you change the files at a later time, you will need to create a new Amazon GameLift Streams application. Creating an application is the only time Amazon GameLift Streams accesses your Amazon S3 bucket. After the application reaches READY status, you can delete the original files from your Amazon S3 bucket without affecting the application. If the request is successful, Amazon GameLift Streams begins to create an application and sets the status to INITIALIZED. When an application reaches READY status, you can use the application to set up stream groups and start streams. To track application status, call GetApplication.</td>
 </tr>
 <tr>
     <td><a href="#associate_applications"><CopyableCode code="associate_applications" /></a></td>
@@ -353,7 +353,7 @@ AND MaxResults = '{{ MaxResults }}'
 >
 <TabItem value="create_application">
 
-Creates an application resource in Amazon GameLift Streams, which specifies the application content you want to stream, such as a game build or other software, and configures the settings to run it. Before you create an application, upload your application content files to an Amazon Simple Storage Service (Amazon S3) bucket. For more information, see Getting Started in the Amazon GameLift Streams Developer Guide. Make sure that your files in the Amazon S3 bucket are the correct version you want to use. If you change the files at a later time, you will need to create a new Amazon GameLift Streams application. If the request is successful, Amazon GameLift Streams begins to create an application and sets the status to INITIALIZED. When an application reaches READY status, you can use the application to set up stream groups and start streams. To track application status, call GetApplication.
+Creates an application resource in Amazon GameLift Streams, which specifies the application content you want to stream, such as a game build or other software, and configures the settings to run it. Before you create an application, upload your application content files to an Amazon Simple Storage Service (Amazon S3) bucket. For more information, see Getting Started in the Amazon GameLift Streams Developer Guide. Make sure that your files in the Amazon S3 bucket are the correct version you want to use. If you change the files at a later time, you will need to create a new Amazon GameLift Streams application. Creating an application is the only time Amazon GameLift Streams accesses your Amazon S3 bucket. After the application reaches READY status, you can delete the original files from your Amazon S3 bucket without affecting the application. If the request is successful, Amazon GameLift Streams begins to create an application and sets the status to INITIALIZED. When an application reaches READY status, you can use the application to set up stream groups and start streams. To track application status, call GetApplication.
 
 ```sql
 INSERT INTO aws.gameliftstreams.applications (
@@ -556,7 +556,9 @@ EXEC aws.gameliftstreams.applications.start_stream_session
 "SessionLengthSeconds": {{ SessionLengthSeconds }}, 
 "AdditionalLaunchArgs": "{{ AdditionalLaunchArgs }}", 
 "AdditionalEnvironmentVariables": "{{ AdditionalEnvironmentVariables }}", 
-"PerformanceStatsConfiguration": "{{ PerformanceStatsConfiguration }}"
+"PerformanceStatsConfiguration": "{{ PerformanceStatsConfiguration }}", 
+"RoleArn": "{{ RoleArn }}", 
+"DisplayConfiguration": "{{ DisplayConfiguration }}"
 }'
 ;
 ```

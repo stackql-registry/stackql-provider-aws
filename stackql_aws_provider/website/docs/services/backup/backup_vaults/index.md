@@ -202,7 +202,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="number_of_recovery_points" /></td>
     <td><code>integer (int64)</code></td>
-    <td>The number of recovery points that are stored in a backup vault.</td>
+    <td>The number of recovery points that are stored in a backup vault. Recovery point count value displayed in the console can be an approximation.</td>
 </tr>
 <tr>
     <td><CopyableCode code="vault_state" /></td>

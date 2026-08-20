@@ -86,6 +86,13 @@ The following methods are available for this resource:
     <td></td>
     <td>Lists insights for an Amazon OpenSearch Service domain or Amazon Web Services account. Returns a paginated list of insights based on the specified entity, filters, time range, and sort order.</td>
 </tr>
+<tr>
+    <td><a href="#insight_feedback"><CopyableCode code="insight_feedback" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-Entity"><code>Entity</code></a>, <a href="#parameter-InsightId"><code>InsightId</code></a>, <a href="#parameter-Thumbs"><code>Thumbs</code></a></td>
+    <td></td>
+    <td>Submits feedback for an existing insight in an Amazon OpenSearch Service domain. Allows users to provide a thumbs up or thumbs down rating and optional text feedback for a specific insight.</td>
+</tr>
 </tbody>
 </table>
 
@@ -128,6 +135,34 @@ insights,
 next_token
 FROM aws.opensearch.insights
 WHERE region = '{{ region }}' -- required
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="insight_feedback"
+    values={[
+        { label: 'insight_feedback', value: 'insight_feedback' }
+    ]}
+>
+<TabItem value="insight_feedback">
+
+Submits feedback for an existing insight in an Amazon OpenSearch Service domain. Allows users to provide a thumbs up or thumbs down rating and optional text feedback for a specific insight.
+
+```sql
+EXEC aws.opensearch.insights.insight_feedback 
+@region='{{ region }}' --required 
+@@json=
+'{
+"Entity": "{{ Entity }}", 
+"InsightId": "{{ InsightId }}", 
+"Thumbs": "{{ Thumbs }}", 
+"FeedbackText": "{{ FeedbackText }}"
+}'
 ;
 ```
 </TabItem>

@@ -96,6 +96,11 @@ The following fields are returned by `SELECT` queries:
     <td>The timestamp when the router output was created.</td>
 </tr>
 <tr>
+    <td><CopyableCode code="fabric_configuration" /></td>
+    <td><code>object</code></td>
+    <td>The fabric configuration settings for the router output.</td>
+</tr>
+<tr>
     <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the router output.</td>
@@ -441,6 +446,7 @@ arn,
 availability_zone,
 configuration,
 created_at,
+fabric_configuration,
 id,
 ip_address,
 maintenance_configuration,
@@ -523,6 +529,7 @@ RegionName,
 AvailabilityZone,
 MaintenanceConfiguration,
 Tags,
+FabricConfiguration,
 ClientToken,
 region
 )
@@ -536,6 +543,7 @@ SELECT
 '{{ AvailabilityZone }}',
 '{{ MaintenanceConfiguration }}',
 '{{ Tags }}',
+'{{ FabricConfiguration }}',
 '{{ ClientToken }}',
 '{{ region }}'
 RETURNING
@@ -622,6 +630,11 @@ router_output
         Default: "{{ Default }}"
     - name: Tags
       value: "{{ Tags }}"
+    - name: FabricConfiguration
+      description: |
+        The fabric configuration settings for the router output.
+      value:
+        RecoveryLatencyMode: "{{ RecoveryLatencyMode }}"
     - name: ClientToken
       value: "{{ ClientToken }}"
 `}</CodeBlock>
@@ -650,7 +663,8 @@ Configuration = '{{ Configuration }}',
 MaximumBitrate = {{ MaximumBitrate }},
 RoutingScope = '{{ RoutingScope }}',
 Tier = '{{ Tier }}',
-MaintenanceConfiguration = '{{ MaintenanceConfiguration }}'
+MaintenanceConfiguration = '{{ MaintenanceConfiguration }}',
+FabricConfiguration = '{{ FabricConfiguration }}'
 WHERE 
 arn = '{{ arn }}' --required
 AND region = '{{ region }}' --required

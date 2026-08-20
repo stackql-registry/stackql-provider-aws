@@ -52,7 +52,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="configured_user_auth_factors" /></td>
     <td><code>array</code></td>
-    <td>The authentication types that are available to the user with USER_AUTH sign-in, for example &#91;"PASSWORD", "WEB_AUTHN"&#93;.</td>
+    <td>The authentication types that are available to the user with USER_AUTH sign-in, for example &#91;"PASSWORD", "WEB_AUTHN"&#93;. PASSWORD can only be used as a first authentication factor. SOFTWARE_TOKEN can only be used as an MFA factor. EMAIL_OTP, SMS_OTP, and WEB_AUTHN can be used as either a first authentication factor or an MFA factor. WEB_AUTHN is available as an MFA factor only when passkey MFA is enabled at the user pool level.</td>
 </tr>
 <tr>
     <td><CopyableCode code="preferred_mfa_setting" /></td>
@@ -95,6 +95,13 @@ The following methods are available for this resource:
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td></td>
     <td>Lists the authentication options for the currently signed-in user. Returns the following: The user's multi-factor authentication (MFA) preferences. The user's options for choice-based authentication with the USER_AUTH flow. Authorize this action with a signed-in user's access token. It must include the scope aws.cognito.signin.user.admin. Amazon Cognito doesn't evaluate Identity and Access Management (IAM) policies in requests for this API operation. For this operation, you can't use IAM credentials to authorize requests, and you can't grant IAM permissions in policies. For more information about authorization models in Amazon Cognito, see Using the Amazon Cognito user pools API and user pool endpoints.</td>
+</tr>
+<tr>
+    <td><a href="#admin_get_user_auth_factors"><CopyableCode code="admin_get_user_auth_factors" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-UserPoolId"><code>UserPoolId</code></a></td>
+    <td></td>
+    <td>Lists the authentication options for a user in a user pool. Returns the following: The user's multi-factor authentication (MFA) preferences. The user's options for choice-based authentication with the USER_AUTH flow. Amazon Cognito evaluates Identity and Access Management (IAM) policies in requests for this API operation. For this operation, you must use IAM credentials to authorize requests, and you must grant yourself the corresponding IAM permission in a policy. Learn more Signing Amazon Web Services API Requests Using the Amazon Cognito user pools API and user pool endpoints</td>
 </tr>
 </tbody>
 </table>
@@ -140,6 +147,32 @@ user_mfa_setting_list,
 username
 FROM aws.cognito_idp.user_auth_factors
 WHERE region = '{{ region }}' -- required
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="admin_get_user_auth_factors"
+    values={[
+        { label: 'admin_get_user_auth_factors', value: 'admin_get_user_auth_factors' }
+    ]}
+>
+<TabItem value="admin_get_user_auth_factors">
+
+Lists the authentication options for a user in a user pool. Returns the following: The user's multi-factor authentication (MFA) preferences. The user's options for choice-based authentication with the USER_AUTH flow. Amazon Cognito evaluates Identity and Access Management (IAM) policies in requests for this API operation. For this operation, you must use IAM credentials to authorize requests, and you must grant yourself the corresponding IAM permission in a policy. Learn more Signing Amazon Web Services API Requests Using the Amazon Cognito user pools API and user pool endpoints
+
+```sql
+EXEC aws.cognito_idp.user_auth_factors.admin_get_user_auth_factors 
+@region='{{ region }}' --required 
+@@json=
+'{
+"UserPoolId": "{{ UserPoolId }}", 
+"Username": "{{ Username }}"
+}'
 ;
 ```
 </TabItem>

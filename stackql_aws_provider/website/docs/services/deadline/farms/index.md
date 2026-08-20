@@ -53,7 +53,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="cost_scale_factor" /></td>
     <td><code>number (float)</code></td>
-    <td>A multiplier applied to calculated costs. Valid range is 0 to 100. Values less than 1.0 represent discounts, values greater than 1.0 represent markups, and a value of 1.0 represents no adjustment.</td>
+    <td>A multiplier applied to the farm's calculated costs for usage data and budget tracking. A value less than 1 represents a discount, a value greater than 1 represents a premium, and a value of 1 represents no adjustment.</td>
 </tr>
 <tr>
     <td><CopyableCode code="created_at" /></td>
@@ -373,8 +373,6 @@ farm_id
       value: "{{ kmsKeyArn }}"
     - name: costScaleFactor
       value: {{ costScaleFactor }}
-      description: |
-        A multiplier applied to calculated costs. Valid range is 0 to 100. Values less than 1.0 represent discounts, values greater than 1.0 represent markups, and a value of 1.0 represents no adjustment.
     - name: tags
       value: "{{ tags }}"
     - name: X-Amz-Client-Token
@@ -406,7 +404,8 @@ UPDATE aws.deadline.farms
 SET 
 principalType = '{{ principalType }}',
 identityStoreId = '{{ identityStoreId }}',
-membershipLevel = '{{ membershipLevel }}'
+membershipLevel = '{{ membershipLevel }}',
+identityCenterRegion = '{{ identityCenterRegion }}'
 WHERE 
 farm_id = '{{ farm_id }}' --required
 AND principal_id = '{{ principal_id }}' --required

@@ -58,7 +58,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="domain_id" /></td>
     <td><code>string</code></td>
-    <td>Types duplicated from IronmanApiServiceModel for federation. These types are defined in other service directories and are not available via IronmanApiServiceCommonModel. (pattern: &lt;code&gt;d-(-*&#91;a-z0-9&#93;)&#123;1,61&#125;&lt;/code&gt;)</td>
+    <td>The ID of the domain that contains the profile. (pattern: &lt;code&gt;d-(-*&#91;a-z0-9&#93;)&#123;1,61&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="failure_reason" /></td>
@@ -127,7 +127,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="domain_id" /></td>
     <td><code>string</code></td>
-    <td>Types duplicated from IronmanApiServiceModel for federation. These types are defined in other service directories and are not available via IronmanApiServiceCommonModel. (pattern: &lt;code&gt;d-(-*&#91;a-z0-9&#93;)&#123;1,61&#125;&lt;/code&gt;)</td>
+    <td>The domain ID. (pattern: &lt;code&gt;d-(-*&#91;a-z0-9&#93;)&#123;1,61&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="last_modified_time" /></td>
@@ -327,7 +327,7 @@ user_profile_arn
     - name: DomainId
       value: "{{ DomainId }}"
       description: |
-        Types duplicated from IronmanApiServiceModel for federation. These types are defined in other service directories and are not available via IronmanApiServiceCommonModel.
+        The ID of the associated Domain.
     - name: UserProfileName
       value: "{{ UserProfileName }}"
       description: |

@@ -91,6 +91,16 @@ The following fields are returned by `SELECT` queries:
     <td>The payment term. (THREE_YEARS, ONE_YEAR, FIVE_YEARS)</td>
 </tr>
 <tr>
+    <td><CopyableCode code="quote_identifier" /></td>
+    <td><code>string</code></td>
+    <td>The ID of the quote associated with the order. (pattern: &lt;code&gt;^(arn:aws(&#91;a-z-&#93;+)?:outposts:&#91;a-z\d-&#93;+:\d&#123;12&#125;:quote/)?oq-&#91;a-f0-9&#93;&#123;17&#125;$&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="quote_option_identifier" /></td>
+    <td><code>string</code></td>
+    <td>The ID of the quote option associated with the order. (pattern: &lt;code&gt;^oqo-&#91;a-f0-9&#93;&#123;17&#125;$&lt;/code&gt;)</td>
+</tr>
+<tr>
     <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the order. PREPARING - Order is received and being prepared. IN_PROGRESS - Order is either being built or shipped. To get more details, see the line item status. DELIVERED - Order was delivered to the Outpost site. COMPLETED - Order is complete. CANCELLED - Order is cancelled. ERROR - Customer should contact support. The following status are deprecated: RECEIVED, PENDING, PROCESSING, INSTALLING, and FULFILLED. (RECEIVED, PENDING, PROCESSING, INSTALLING, FULFILLED, CANCELLED, PREPARING, IN_PROGRESS, DELIVERED, COMPLETED, ERROR)</td>
@@ -259,6 +269,8 @@ order_type,
 outpost_id,
 payment_option,
 payment_term,
+quote_identifier,
+quote_option_identifier,
 status
 FROM aws.outposts.orders
 WHERE order_id = '{{ order_id }}' -- required
@@ -306,6 +318,8 @@ Creates an order for an Outpost.
 ```sql
 INSERT INTO aws.outposts.orders (
 OutpostIdentifier,
+QuoteIdentifier,
+QuoteOptionIdentifier,
 LineItems,
 PaymentOption,
 PaymentTerm,
@@ -313,6 +327,8 @@ region
 )
 SELECT 
 '{{ OutpostIdentifier }}' /* required */,
+'{{ QuoteIdentifier }}',
+'{{ QuoteOptionIdentifier }}',
 '{{ LineItems }}',
 '{{ PaymentOption }}' /* required */,
 '{{ PaymentTerm }}',
@@ -332,6 +348,10 @@ order
       description: Required parameter for the orders resource.
     - name: OutpostIdentifier
       value: "{{ OutpostIdentifier }}"
+    - name: QuoteIdentifier
+      value: "{{ QuoteIdentifier }}"
+    - name: QuoteOptionIdentifier
+      value: "{{ QuoteOptionIdentifier }}"
     - name: LineItems
       value:
         - CatalogItemId: "{{ CatalogItemId }}"

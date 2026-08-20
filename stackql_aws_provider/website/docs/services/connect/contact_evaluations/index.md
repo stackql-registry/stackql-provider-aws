@@ -204,35 +204,35 @@ The following methods are available for this resource:
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-instance_id"><code>instance_id</code></a>, <a href="#parameter-evaluation_id"><code>evaluation_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>Describes a contact evaluation in the specified Amazon Connect instance.</td>
+    <td>Describes a contact evaluation in the specified Connect Customer instance.</td>
 </tr>
 <tr>
     <td><a href="#list_contact_evaluations"><CopyableCode code="list_contact_evaluations" /></a></td>
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-instance_id"><code>instance_id</code></a>, <a href="#parameter-contactId"><code>contactId</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td><a href="#parameter-nextToken"><code>nextToken</code></a></td>
-    <td>Lists contact evaluations in the specified Amazon Connect instance.</td>
+    <td>Lists contact evaluations in the specified Connect Customer instance.</td>
 </tr>
 <tr>
     <td><a href="#search_contact_evaluations"><CopyableCode code="search_contact_evaluations" /></a></td>
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>Searches contact evaluations in an Amazon Connect instance, with optional filtering. Use cases Following are common uses cases for this API: Find contact evaluations by using specific search criteria. Find contact evaluations that are tagged with a specific set of tags. Important things to know A Search operation, unlike a List operation, takes time to index changes to resource (create, update or delete). If you don't see updated information for recently changed contact evaluations, try calling the API again in a few seconds. Endpoints: See Amazon Connect endpoints and quotas.</td>
+    <td>Searches contact evaluations in an Connect Customer instance, with optional filtering. Use cases Following are common uses cases for this API: Find contact evaluations by using specific search criteria. Find contact evaluations that are tagged with a specific set of tags. Important things to know A Search operation, unlike a List operation, takes time to index changes to resource (create, update or delete). If you don't see updated information for recently changed contact evaluations, try calling the API again in a few seconds. Endpoints: See Connect Customer endpoints and quotas.</td>
 </tr>
 <tr>
     <td><a href="#update_contact_evaluation"><CopyableCode code="update_contact_evaluation" /></a></td>
     <td><CopyableCode code="update" /></td>
     <td><a href="#parameter-instance_id"><code>instance_id</code></a>, <a href="#parameter-evaluation_id"><code>evaluation_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>Updates details about a contact evaluation in the specified Amazon Connect instance. A contact evaluation must be in draft state. Answers included in the request are merged with existing answers for the given evaluation. An answer or note can be deleted by passing an empty object (&#123;&#125;) to the question identifier.</td>
+    <td>Updates details about a contact evaluation in the specified Connect Customer instance. A contact evaluation must be in draft state. Answers included in the request are merged with existing answers for the given evaluation. An answer or note can be deleted by passing an empty object (&#123;&#125;) to the question identifier.</td>
 </tr>
 <tr>
     <td><a href="#delete_contact_evaluation"><CopyableCode code="delete_contact_evaluation" /></a></td>
     <td><CopyableCode code="delete" /></td>
     <td><a href="#parameter-instance_id"><code>instance_id</code></a>, <a href="#parameter-evaluation_id"><code>evaluation_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>Deletes a contact evaluation in the specified Amazon Connect instance.</td>
+    <td>Deletes a contact evaluation in the specified Connect Customer instance.</td>
 </tr>
 </tbody>
 </table>
@@ -253,7 +253,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-contactId">
     <td><CopyableCode code="contactId" /></td>
     <td><code>string</code></td>
-    <td>The identifier of the contact in this instance of Amazon Connect.</td>
+    <td>The identifier of the contact in this instance of Connect Customer.</td>
 </tr>
 <tr id="parameter-evaluation_id">
     <td><CopyableCode code="evaluation_id" /></td>
@@ -263,7 +263,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-instance_id">
     <td><CopyableCode code="instance_id" /></td>
     <td><code>string</code></td>
-    <td>The identifier of the Amazon Connect instance. You can find the instance ID in the Amazon Resource Name (ARN) of the instance.</td>
+    <td>The identifier of the Connect Customer instance. You can find the instance ID in the Amazon Resource Name (ARN) of the instance.</td>
 </tr>
 <tr id="parameter-region">
     <td><CopyableCode code="region" /></td>
@@ -290,7 +290,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 >
 <TabItem value="describe_contact_evaluation">
 
-Describes a contact evaluation in the specified Amazon Connect instance.
+Describes a contact evaluation in the specified Connect Customer instance.
 
 ```sql
 SELECT
@@ -305,7 +305,7 @@ AND region = '{{ region }}' -- required
 </TabItem>
 <TabItem value="list_contact_evaluations">
 
-Lists contact evaluations in the specified Amazon Connect instance.
+Lists contact evaluations in the specified Connect Customer instance.
 
 ```sql
 SELECT
@@ -334,7 +334,7 @@ AND nextToken = '{{ nextToken }}'
 </TabItem>
 <TabItem value="search_contact_evaluations">
 
-Searches contact evaluations in an Amazon Connect instance, with optional filtering. Use cases Following are common uses cases for this API: Find contact evaluations by using specific search criteria. Find contact evaluations that are tagged with a specific set of tags. Important things to know A Search operation, unlike a List operation, takes time to index changes to resource (create, update or delete). If you don't see updated information for recently changed contact evaluations, try calling the API again in a few seconds. Endpoints: See Amazon Connect endpoints and quotas.
+Searches contact evaluations in an Connect Customer instance, with optional filtering. Use cases Following are common uses cases for this API: Find contact evaluations by using specific search criteria. Find contact evaluations that are tagged with a specific set of tags. Important things to know A Search operation, unlike a List operation, takes time to index changes to resource (create, update or delete). If you don't see updated information for recently changed contact evaluations, try calling the API again in a few seconds. Endpoints: See Connect Customer endpoints and quotas.
 
 ```sql
 SELECT
@@ -359,7 +359,7 @@ WHERE region = '{{ region }}' -- required
 >
 <TabItem value="update_contact_evaluation">
 
-Updates details about a contact evaluation in the specified Amazon Connect instance. A contact evaluation must be in draft state. Answers included in the request are merged with existing answers for the given evaluation. An answer or note can be deleted by passing an empty object (&#123;&#125;) to the question identifier.
+Updates details about a contact evaluation in the specified Connect Customer instance. A contact evaluation must be in draft state. Answers included in the request are merged with existing answers for the given evaluation. An answer or note can be deleted by passing an empty object (&#123;&#125;) to the question identifier.
 
 ```sql
 UPDATE aws.connect.contact_evaluations
@@ -389,7 +389,7 @@ evaluation_id;
 >
 <TabItem value="delete_contact_evaluation">
 
-Deletes a contact evaluation in the specified Amazon Connect instance.
+Deletes a contact evaluation in the specified Connect Customer instance.
 
 ```sql
 DELETE FROM aws.connect.contact_evaluations

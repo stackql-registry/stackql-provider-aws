@@ -454,7 +454,8 @@ EXEC aws.devops_agent.agent_spaces.send_message
 "executionId": "{{ executionId }}", 
 "content": "{{ content }}", 
 "context": "{{ context }}", 
-"userId": "{{ userId }}"
+"userId": "{{ userId }}", 
+"assetIds": "{{ assetIds }}"
 }'
 ;
 ```

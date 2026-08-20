@@ -76,9 +76,14 @@ The following fields are returned by `SELECT` queries:
     <td>A description of what the control does.</td>
 </tr>
 <tr>
+    <td><CopyableCode code="governed_providers" /></td>
+    <td><code>array</code></td>
+    <td>A list of providers whose resources are governed by this control. For example, a value of AWS indicates that the control governs Amazon Web Services resources.</td>
+</tr>
+<tr>
     <td><CopyableCode code="governed_resources" /></td>
     <td><code>array</code></td>
-    <td>A list of Amazon Web Services resource types that are governed by this control. This information helps you understand which controls can govern certain types of resources, and conversely, which resources are affected when the control is implemented. The resources are represented as Amazon Web Services CloudFormation resource types. If GovernedResources cannot be represented by available CloudFormation resource types, it’s returned as an empty list.</td>
+    <td>A list of resource types that are governed by this control. This information helps you understand which controls can govern certain types of resources, and conversely, which resources are affected when the control is implemented. For Amazon Web Services controls, the resources are represented as CloudFormation resource types. For non-Amazon Web Services controls, the resources are represented in a provider-specific format. If GovernedResources cannot be represented by available resource types, it’s returned as an empty list.</td>
 </tr>
 <tr>
     <td><CopyableCode code="implementation" /></td>
@@ -89,6 +94,11 @@ The following fields are returned by `SELECT` queries:
     <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The display name of the control.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="parameter_requirement_summary" /></td>
+    <td><code>string</code></td>
+    <td>A summary that indicates whether the control requires parameters, accepts optional parameters, or does not support parameters. Use this field to determine whether you need to supply parameter values when you enable the control. (REQUIRED, OPTIONAL, NONE)</td>
 </tr>
 <tr>
     <td><CopyableCode code="parameters" /></td>
@@ -145,9 +155,14 @@ The following fields are returned by `SELECT` queries:
     <td>A description of the control, as it may appear in the console. Describes the functionality of the control.</td>
 </tr>
 <tr>
+    <td><CopyableCode code="governed_providers" /></td>
+    <td><code>array</code></td>
+    <td>A list of providers whose resources are governed by this control. For example, a value of AWS indicates that the control governs Amazon Web Services resources.</td>
+</tr>
+<tr>
     <td><CopyableCode code="governed_resources" /></td>
     <td><code>array</code></td>
-    <td>A list of Amazon Web Services resource types that are governed by this control. This information helps you understand which controls can govern certain types of resources, and conversely, which resources are affected when the control is implemented. The resources are represented as Amazon Web Services CloudFormation resource types. If GovernedResources cannot be represented by available CloudFormation resource types, it’s returned as an empty list.</td>
+    <td>A list of resource types that are governed by this control. This information helps you understand which controls can govern certain types of resources, and conversely, which resources are affected when the control is implemented. For Amazon Web Services controls, the resources are represented as CloudFormation resource types. For non-Amazon Web Services controls, the resources are represented in a provider-specific format. If GovernedResources cannot be represented by available resource types, it’s returned as an empty list.</td>
 </tr>
 <tr>
     <td><CopyableCode code="implementation" /></td>
@@ -158,6 +173,11 @@ The following fields are returned by `SELECT` queries:
     <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The display name of the control.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="parameter_requirement_summary" /></td>
+    <td><code>string</code></td>
+    <td>A summary that indicates whether the control requires parameters, accepts optional parameters, or does not support parameters. Use this field to determine whether you need to supply parameter values when you enable the control. (REQUIRED, OPTIONAL, NONE)</td>
 </tr>
 <tr>
     <td><CopyableCode code="severity" /></td>
@@ -252,9 +272,11 @@ arn,
 behavior,
 create_time,
 description,
+governed_providers,
 governed_resources,
 implementation,
 name,
+parameter_requirement_summary,
 parameters,
 region_configuration,
 severity
@@ -274,9 +296,11 @@ arn,
 behavior,
 create_time,
 description,
+governed_providers,
 governed_resources,
 implementation,
 name,
+parameter_requirement_summary,
 severity
 FROM aws.controlcatalog.controls
 WHERE region = '{{ region }}' -- required

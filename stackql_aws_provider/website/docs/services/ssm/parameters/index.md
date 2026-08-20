@@ -159,7 +159,7 @@ The following methods are available for this resource:
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>Get information about one or more parameters by specifying multiple parameter names. To get information about a single parameter, you can use the GetParameter operation instead. Parameter names can't contain spaces. The service removes any spaces specified for the beginning or end of a parameter name. If the specified name for a parameter contains spaces between characters, the request fails with a ValidationException error.</td>
+    <td>Get information about one or more parameters by specifying multiple parameter names. To get information about a single parameter, you can use the GetParameter operation instead. Parameter names can't contain spaces. The service removes any spaces specified for the beginning or end of a parameter name. If the specified name for a parameter contains spaces between characters, the request fails with a ValidationException error. Parameter Store throughput defines the number of API transactions per second (TPS) that Systems Manager can process. This applies to GetParameter, GetParameters, and PutParameter API calls for your Amazon Web Services account and Amazon Web Services Region. By default, Parameter Store is configured with a standard throughput quota suitable for low- to moderate-volume workloads. Applications that retrieve configuration data infrequently or operate at smaller scale can use this default setting without additional cost. For higher-volume workloads, you can enable higher throughput. This increases the maximum number of supported transactions per second for your account and Region. Increased throughput supports applications and workloads that need concurrent access to multiple parameters. If you experience ThrottlingException: Rate exceeded errors, enable higher throughput. For more information, see Changing Parameter Store throughput.</td>
 </tr>
 <tr>
     <td><a href="#describe_parameters"><CopyableCode code="describe_parameters" /></a></td>
@@ -173,7 +173,7 @@ The following methods are available for this resource:
     <td><CopyableCode code="replace" /></td>
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-Value"><code>Value</code></a></td>
     <td></td>
-    <td>Create or update a parameter in Parameter Store.</td>
+    <td>Create or update a parameter in Parameter Store. Parameter Store throughput defines the number of API transactions per second (TPS) that Systems Manager can process. This applies to GetParameter, GetParameters, and PutParameter API calls for your Amazon Web Services account and Amazon Web Services Region. By default, Parameter Store is configured with a standard throughput quota suitable for low- to moderate-volume workloads. Applications that retrieve configuration data infrequently or operate at smaller scale can use this default setting without additional cost. For higher-volume workloads, you can enable higher throughput. This increases the maximum number of supported transactions per second for your account and Region. Increased throughput supports applications and workloads that need concurrent access to multiple parameters. If you experience ThrottlingException: Rate exceeded errors, enable higher throughput. For more information, see Changing Parameter Store throughput.</td>
 </tr>
 <tr>
     <td><a href="#delete_parameters"><CopyableCode code="delete_parameters" /></a></td>
@@ -194,7 +194,7 @@ The following methods are available for this resource:
     <td><CopyableCode code="exec" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>Get information about a single parameter by specifying the parameter name. Parameter names can't contain spaces. The service removes any spaces specified for the beginning or end of a parameter name. If the specified name for a parameter contains spaces between characters, the request fails with a ValidationException error. To get information about more than one parameter at a time, use the GetParameters operation.</td>
+    <td>Get information about a single parameter by specifying the parameter name. Parameter names can't contain spaces. The service removes any spaces specified for the beginning or end of a parameter name. If the specified name for a parameter contains spaces between characters, the request fails with a ValidationException error. To get information about more than one parameter at a time, use the GetParameters operation. Parameter Store throughput defines the number of API transactions per second (TPS) that Systems Manager can process. This applies to GetParameter, GetParameters, and PutParameter API calls for your Amazon Web Services account and Amazon Web Services Region. By default, Parameter Store is configured with a standard throughput quota suitable for low- to moderate-volume workloads. Applications that retrieve configuration data infrequently or operate at smaller scale can use this default setting without additional cost. For higher-volume workloads, you can enable higher throughput. This increases the maximum number of supported transactions per second for your account and Region. Increased throughput supports applications and workloads that need concurrent access to multiple parameters. If you experience ThrottlingException: Rate exceeded errors, enable higher throughput. For more information, see Changing Parameter Store throughput.</td>
 </tr>
 </tbody>
 </table>
@@ -231,7 +231,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 >
 <TabItem value="get_parameters">
 
-Get information about one or more parameters by specifying multiple parameter names. To get information about a single parameter, you can use the GetParameter operation instead. Parameter names can't contain spaces. The service removes any spaces specified for the beginning or end of a parameter name. If the specified name for a parameter contains spaces between characters, the request fails with a ValidationException error.
+Get information about one or more parameters by specifying multiple parameter names. To get information about a single parameter, you can use the GetParameter operation instead. Parameter names can't contain spaces. The service removes any spaces specified for the beginning or end of a parameter name. If the specified name for a parameter contains spaces between characters, the request fails with a ValidationException error. Parameter Store throughput defines the number of API transactions per second (TPS) that Systems Manager can process. This applies to GetParameter, GetParameters, and PutParameter API calls for your Amazon Web Services account and Amazon Web Services Region. By default, Parameter Store is configured with a standard throughput quota suitable for low- to moderate-volume workloads. Applications that retrieve configuration data infrequently or operate at smaller scale can use this default setting without additional cost. For higher-volume workloads, you can enable higher throughput. This increases the maximum number of supported transactions per second for your account and Region. Increased throughput supports applications and workloads that need concurrent access to multiple parameters. If you experience ThrottlingException: Rate exceeded errors, enable higher throughput. For more information, see Changing Parameter Store throughput.
 
 ```sql
 SELECT
@@ -278,7 +278,7 @@ WHERE region = '{{ region }}' -- required
 >
 <TabItem value="put_parameter">
 
-Create or update a parameter in Parameter Store.
+Create or update a parameter in Parameter Store. Parameter Store throughput defines the number of API transactions per second (TPS) that Systems Manager can process. This applies to GetParameter, GetParameters, and PutParameter API calls for your Amazon Web Services account and Amazon Web Services Region. By default, Parameter Store is configured with a standard throughput quota suitable for low- to moderate-volume workloads. Applications that retrieve configuration data infrequently or operate at smaller scale can use this default setting without additional cost. For higher-volume workloads, you can enable higher throughput. This increases the maximum number of supported transactions per second for your account and Region. Increased throughput supports applications and workloads that need concurrent access to multiple parameters. If you experience ThrottlingException: Rate exceeded errors, enable higher throughput. For more information, see Changing Parameter Store throughput.
 
 ```sql
 REPLACE aws.ssm.parameters
@@ -347,7 +347,7 @@ WHERE region = '{{ region }}' --required
 >
 <TabItem value="get_parameter">
 
-Get information about a single parameter by specifying the parameter name. Parameter names can't contain spaces. The service removes any spaces specified for the beginning or end of a parameter name. If the specified name for a parameter contains spaces between characters, the request fails with a ValidationException error. To get information about more than one parameter at a time, use the GetParameters operation.
+Get information about a single parameter by specifying the parameter name. Parameter names can't contain spaces. The service removes any spaces specified for the beginning or end of a parameter name. If the specified name for a parameter contains spaces between characters, the request fails with a ValidationException error. To get information about more than one parameter at a time, use the GetParameters operation. Parameter Store throughput defines the number of API transactions per second (TPS) that Systems Manager can process. This applies to GetParameter, GetParameters, and PutParameter API calls for your Amazon Web Services account and Amazon Web Services Region. By default, Parameter Store is configured with a standard throughput quota suitable for low- to moderate-volume workloads. Applications that retrieve configuration data infrequently or operate at smaller scale can use this default setting without additional cost. For higher-volume workloads, you can enable higher throughput. This increases the maximum number of supported transactions per second for your account and Region. Increased throughput supports applications and workloads that need concurrent access to multiple parameters. If you experience ThrottlingException: Rate exceeded errors, enable higher throughput. For more information, see Changing Parameter Store throughput.
 
 ```sql
 EXEC aws.ssm.parameters.get_parameter 

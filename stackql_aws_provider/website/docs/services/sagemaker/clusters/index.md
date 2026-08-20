@@ -111,6 +111,11 @@ The following fields are returned by `SELECT` queries:
     <td>The specialized instance groups for training models like Amazon Nova to be created in the SageMaker HyperPod cluster.</td>
 </tr>
 <tr>
+    <td><CopyableCode code="restricted_instance_groups_config" /></td>
+    <td><code>object</code></td>
+    <td>The configuration for the restricted instance groups (RIG) in the SageMaker HyperPod cluster.</td>
+</tr>
+<tr>
     <td><CopyableCode code="tiered_storage_config" /></td>
     <td><code>object</code></td>
     <td>The current configuration for managed tier checkpointing on the HyperPod cluster. For example, this shows whether the feature is enabled and the percentage of cluster memory allocated for checkpoint storage.</td>
@@ -153,6 +158,11 @@ The following fields are returned by `SELECT` queries:
     <td><CopyableCode code="creation_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time when the SageMaker HyperPod cluster is created.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="image_version_status" /></td>
+    <td><code>string</code></td>
+    <td>The aggregate status of the image version across the cluster's instance groups. (UpToDate, UpdateAvailable, SecurityUpdateRequired, EndOfLife)</td>
 </tr>
 <tr>
     <td><CopyableCode code="training_plan_arns" /></td>
@@ -279,6 +289,7 @@ node_provisioning_mode,
 node_recovery,
 orchestrator,
 restricted_instance_groups,
+restricted_instance_groups_config,
 tiered_storage_config,
 vpc_config
 FROM aws.sagemaker.clusters
@@ -296,6 +307,7 @@ cluster_arn,
 cluster_name,
 cluster_status,
 creation_time,
+image_version_status,
 training_plan_arns
 FROM aws.sagemaker.clusters
 WHERE region = '{{ region }}' -- required
@@ -323,6 +335,7 @@ INSERT INTO aws.sagemaker.clusters (
 ClusterName,
 InstanceGroups,
 RestrictedInstanceGroups,
+RestrictedInstanceGroupsConfig,
 VpcConfig,
 Tags,
 Orchestrator,
@@ -337,6 +350,7 @@ SELECT
 '{{ ClusterName }}' /* required */,
 '{{ InstanceGroups }}',
 '{{ RestrictedInstanceGroups }}',
+'{{ RestrictedInstanceGroupsConfig }}',
 '{{ VpcConfig }}',
 '{{ Tags }}',
 '{{ Orchestrator }}',
@@ -402,6 +416,22 @@ cluster_arn
               AutoRollbackConfiguration:
                 - AlarmName: "{{ AlarmName }}"
           ImageId: "{{ ImageId }}"
+          AutoPatchConfig:
+            PatchingStrategy: "{{ PatchingStrategy }}"
+            PatchSchedule:
+              NextPatchDate: "{{ NextPatchDate }}"
+            DeploymentConfig:
+              RollingUpdatePolicy:
+                MaximumBatchSize:
+                  Type: "{{ Type }}"
+                  Value: {{ Value }}
+                RollbackMaximumBatchSize:
+                  Type: "{{ Type }}"
+                  Value: {{ Value }}
+              WaitIntervalInSeconds: {{ WaitIntervalInSeconds }}
+              AutoRollbackConfiguration:
+                - AlarmName: "{{ AlarmName }}"
+          ImageReleaseVersion: "{{ ImageReleaseVersion }}"
           KubernetesConfig:
             Labels: "{{ Labels }}"
             Taints:
@@ -451,6 +481,15 @@ cluster_arn
             FSxLustreConfig:
               SizeInGiB: {{ SizeInGiB }}
               PerUnitStorageThroughput: {{ PerUnitStorageThroughput }}
+    - name: RestrictedInstanceGroupsConfig
+      description: |
+        The configuration for the restricted instance groups (RIG) in the SageMaker HyperPod cluster.
+      value:
+        SharedEnvironmentConfig:
+          FSxLustreDeletionPolicy: "{{ FSxLustreDeletionPolicy }}"
+          FSxLustreConfig:
+            SizeInGiB: {{ SizeInGiB }}
+            PerUnitStorageThroughput: {{ PerUnitStorageThroughput }}
     - name: VpcConfig
       description: |
         Specifies an Amazon Virtual Private Cloud (VPC) that your SageMaker jobs, hosted models, and compute resources have access to. You can control access to and from your resources by configuring a VPC. For more information, see Give SageMaker Access to Resources in your Amazon VPC.
@@ -523,6 +562,7 @@ SET
 ClusterName = '{{ ClusterName }}',
 InstanceGroups = '{{ InstanceGroups }}',
 RestrictedInstanceGroups = '{{ RestrictedInstanceGroups }}',
+RestrictedInstanceGroupsConfig = '{{ RestrictedInstanceGroupsConfig }}',
 TieredStorageConfig = '{{ TieredStorageConfig }}',
 NodeRecovery = '{{ NodeRecovery }}',
 InstanceGroupsToDelete = '{{ InstanceGroupsToDelete }}',

@@ -71,6 +71,11 @@ The following fields are returned by `SELECT` queries:
     <td>The time at which the code interpreter session was created.</td>
 </tr>
 <tr>
+    <td><CopyableCode code="filesystem_configurations" /></td>
+    <td><code>array</code></td>
+    <td>The file system configurations for the code interpreter session. Each entry describes an access point and its mount path.</td>
+</tr>
+<tr>
     <td><CopyableCode code="session_id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the code interpreter session. (pattern: &lt;code&gt;&#91;0-9a-zA-Z&#93;&#123;1,40&#125;&lt;/code&gt;)</td>
@@ -196,6 +201,7 @@ name,
 certificates,
 code_interpreter_identifier,
 created_at,
+filesystem_configurations,
 session_id,
 session_timeout_seconds,
 status

@@ -728,6 +728,47 @@ def _rest_param(name: str, location: str, mdef: dict, walker: SchemaWalker, requ
     return out
 
 
+# ----- raw blob-payload object content (rule 19) -----
+# Ops whose botocore output (read) / input (write) shape declares a blob
+# `payload` member carry the raw object body, not an XML/JSON document.
+# The display-schema synthesiser has no regime for that (it emits an empty
+# envelope and the body is dropped), and the schema-driven XML transform is
+# wrong for a raw body. Allowlisted ops instead follow the proven
+# cloudflare workers-kv recipe end to end:
+#   read:  response content `application/octet-stream` with a
+#          `{contents: string}` schema; stage 2 emits
+#          `overrideMediaType: application/json` + a golang_template_text
+#          transform that wraps the verbatim body as `[{"contents": ...}]`
+#          (any-sdk's raw-body path sidesteps wire Content-Type sniffing -
+#          an S3 object's Content-Type is whatever the uploader set).
+#   write: requestBody content `application/octet-stream` with a
+#          `{contents: string}` schema (required); stage 2 emits a
+#          golang_template_json request transform (`{{ .contents }}`) that
+#          renders the SQL-supplied `contents` as the raw request body
+#          (any-sdk marshalBody routes transform-bearing requests through
+#          transformRequestBodyBytes before its JSON/XML-only switch).
+# Text objects only - binary content is out of scope (bytes survive only
+# as far as UTF-8/JSON string escaping allows). Gated by an explicit
+# allowlist so a botocore drop can't silently flip other blob-payload ops
+# (s3 GetObjectTorrent, glacier GetJobOutput, mediastore GetObject) onto
+# the new regime; those are follow-up candidates, not defaults.
+BLOB_PAYLOAD_READS = {("s3", "GetObject")}
+BLOB_PAYLOAD_WRITES = {("s3", "PutObject")}
+BLOB_CONTENTS_COLUMN = "contents"
+
+
+def _blob_payload_member(shape: dict, shapes: dict) -> str | None:
+    """Name of the shape's `payload` member when that member is a blob."""
+    payload = shape.get("payload")
+    if not payload:
+        return None
+    mdef = (shape.get("members") or {}).get(payload)
+    if not mdef:
+        return None
+    target = shapes.get(mdef.get("shape") or "") or {}
+    return payload if target.get("type") == "blob" else None
+
+
 def _build_rest_op_block(
     op_name: str,
     op_def: dict,
@@ -735,6 +776,7 @@ def _build_rest_op_block(
     paginator: dict | None,
     api_version: str,
     protocol: str = "rest-json",
+    service_name: str = "",
 ) -> tuple[str, str, dict, list[dict]]:
     """Return (path_template, http_method, operation_block, path_level_params).
 
@@ -834,7 +876,42 @@ def _build_rest_op_block(
     # (any-sdk's schema-driven JSON-map -> XML marshaller keys off the
     # method's `request.mediaType`, which the loader must find as an exact
     # content key to bind the body schema), rest-json bodies stay JSON.
-    if body_members:
+    blob_write_member: str | None = None
+    if (service_name, op_name) in BLOB_PAYLOAD_WRITES and input_ref:
+        blob_write_member = _blob_payload_member(input_shape, walker.shapes)
+    if blob_write_member and blob_write_member in body_members:
+        # Rule 19 write regime: the body IS the raw object content. Surface
+        # it as a single required `contents` string; stage 2 adds the
+        # request transform that renders it verbatim as the request body.
+        op_block["requestBody"] = {
+            "required": True,
+            "content": {
+                "application/octet-stream": {
+                    "schema": {
+                        "type": "object",
+                        "required": [BLOB_CONTENTS_COLUMN],
+                        "properties": {
+                            BLOB_CONTENTS_COLUMN: {
+                                "type": "string",
+                                # Without this, any-sdk's body-param parser
+                                # (shims.go parseRequestBodyParam) JSON-parses
+                                # string values that happen to be valid JSON
+                                # into maps, and the raw-body template would
+                                # emit a Go map rendering instead of the
+                                # verbatim text (a tfstate IS valid JSON).
+                                "x-stackQL-stringOnly": True,
+                                "description": (
+                                    "The raw object content to write. Text objects "
+                                    "only - binary content is not supported and may "
+                                    "be mangled in transit."
+                                ),
+                            }
+                        },
+                    }
+                }
+            },
+        }
+    elif body_members:
         body_props: dict[str, Any] = {}
         for mname, mdef in body_members.items():
             body_props[mname] = walker.ref(mdef["shape"])
@@ -857,8 +934,19 @@ def _build_rest_op_block(
     # 14). Point the path-level response schema at the Display wrapper too
     # (rule 16 column convergence) so column inference converges on a
     # single column set.
+    # Rule 19 read regime: a blob-payload output carries the raw object
+    # body - no Display envelope, no XML walker. The path-level 200 content
+    # is an octet-stream `{contents: string}` schema (column inference and
+    # the zero-column guard read it); stage 2 attaches the raw-body text
+    # transform off the breadcrumb stamped below.
+    blob_read_member: str | None = None
+    if (service_name, op_name) in BLOB_PAYLOAD_READS and output_ref:
+        blob_read_member = _blob_payload_member(
+            walker.shapes[output_ref["shape"]], walker.shapes
+        )
+
     rest_xml_display_list_name: str | None = None
-    if protocol == "rest-xml" and output_ref:
+    if protocol == "rest-xml" and output_ref and not blob_read_member:
         rest_xml_display_list_name = _register_display_schemas(
             walker, op_name, output_ref["shape"], paginator
         )
@@ -877,7 +965,25 @@ def _build_rest_op_block(
             stack_tags.update(explode)
 
     if output_ref:
-        if rest_xml_display_list_name:
+        if blob_read_member:
+            response_block["content"] = {
+                "application/octet-stream": {
+                    "schema": {
+                        "type": "object",
+                        "properties": {
+                            BLOB_CONTENTS_COLUMN: {
+                                "type": "string",
+                                "description": (
+                                    "The raw object content. Text objects only - "
+                                    "binary content is not supported and may be "
+                                    "mangled in transit."
+                                ),
+                            }
+                        },
+                    }
+                }
+            }
+        elif rest_xml_display_list_name:
             response_block["content"] = {
                 "application/json": {
                     "schema": {
@@ -906,6 +1012,14 @@ def _build_rest_op_block(
     if rest_xml_display_list_name:
         stack_tags["x-stackql-responseEnvelope"] = rest_xml_display_list_name
         stack_tags["x-stackql-responseObjectKey"] = "$.line_items"
+    # Rule 19 breadcrumbs: stage 2 keys the raw-body transforms off these
+    # (value = the SQL-surface column/param name for the raw content).
+    if blob_read_member:
+        stack_tags.pop("x-stackql-objectKey", None)
+        stack_tags["x-stackql-blobPayloadRead"] = BLOB_CONTENTS_COLUMN
+    if blob_write_member and "requestBody" in op_block and \
+            "application/octet-stream" in op_block["requestBody"]["content"]:
+        stack_tags["x-stackql-blobPayloadWrite"] = BLOB_CONTENTS_COLUMN
     op_block.update(stack_tags)
     op_block.update(_pagination_breadcrumbs(op_def, paginator, walker.shapes, protocol))
 
@@ -2136,9 +2250,19 @@ def _service_alias(service_name: str) -> str:
     return service_name.replace("-", "_").lower()
 
 
+# Legacy `metadata.globalEndpoint` marks true single-host global services
+# (iam, route53, cloudfront, importexport, savingsplans, sts). For s3 it is
+# only a us-east-1 ALIAS of a fully regional service: honouring it pins
+# every request to the global host while sigv4 signs for the WHERE-clause
+# region, so any bucket outside us-east-1 fails with
+# AuthorizationHeaderMalformed. Such services get the regional template
+# (s3.us-east-1.amazonaws.com is valid, so nothing is lost).
+GLOBAL_ENDPOINT_IS_REGIONAL_ALIAS = {"s3"}
+
+
 def _service_endpoint_template(metadata: dict, service_name: str) -> list[dict]:
     prefix = metadata.get("endpointPrefix") or service_name
-    if metadata.get("globalEndpoint"):
+    if metadata.get("globalEndpoint") and service_name not in GLOBAL_ENDPOINT_IS_REGIONAL_ALIAS:
         # Global services (IAM, STS, ...) only have a single hostname, but
         # stackql still needs a `region` server-variable so the WHERE-clause
         # region survives the request build and is available for sigv4
@@ -2225,7 +2349,8 @@ def build_service_openapi(service_name: str) -> dict | None:
             entry[http_method] = op_block
         elif protocol in {"rest-json", "rest-xml"}:
             request_uri, http_method, op_block, _ = _build_rest_op_block(
-                op_name, op_def, walker, paginator, version, protocol
+                op_name, op_def, walker, paginator, version, protocol,
+                service_name=service_name,
             )
             # rest-* path-collision guard: two operations can share the
             # same `(requestUri, httpMethod)` pair (e.g. S3's ListBuckets

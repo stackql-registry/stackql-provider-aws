@@ -101,6 +101,11 @@ The following fields are returned by `SELECT` queries:
     <td>The phone number's order ID. (pattern: &lt;code&gt;&#91;a-fA-F0-9&#93;&#123;8&#125;(?:-&#91;a-fA-F0-9&#93;&#123;4&#125;)&#123;3&#125;-&#91;a-fA-F0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
+    <td><CopyableCode code="phone_number_arn" /></td>
+    <td><code>string</code></td>
+    <td> (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
+</tr>
+<tr>
     <td><CopyableCode code="phone_number_id" /></td>
     <td><code>string</code></td>
     <td>The phone number's ID. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
@@ -295,6 +300,7 @@ deletion_timestamp,
 e164_phone_number,
 name,
 order_id,
+phone_number_arn,
 phone_number_id,
 product_type,
 status,

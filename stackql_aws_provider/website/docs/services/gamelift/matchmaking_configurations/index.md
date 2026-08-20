@@ -72,7 +72,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="configuration_arn" /></td>
     <td><code>string</code></td>
-    <td>The Amazon Resource Name (ARN) that is assigned to a Amazon GameLift Servers matchmaking configuration resource and uniquely identifies it. ARNs are unique across all Regions. Format is arn:aws:gamelift:<code>&lt;region&gt;</code>::matchmakingconfiguration/&lt;matchmaking configuration name&gt;. In a Amazon GameLift Servers configuration ARN, the resource ID matches the Name value. (pattern: &lt;code&gt;^arn:.*:matchmakingconfiguration\/&#91;a-zA-Z0-9-\.&#93;*&lt;/code&gt;)</td>
+    <td>The Amazon Resource Name (ARN) that is assigned to a Amazon GameLift Servers matchmaking configuration resource and uniquely identifies it. ARNs are unique across all Regions. Format is arn:aws:gamelift:<code>&lt;region&gt;</code>::matchmakingconfiguration/&lt;matchmaking configuration name&gt;. In a Amazon GameLift Servers configuration ARN, the resource ID matches the Name value. (pattern: &lt;code&gt;^arn:.*:matchmakingconfiguration\/&#91;a-zA-Z0-9-\.&#93;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="creation_time" /></td>
@@ -112,12 +112,12 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
-    <td>A unique identifier for the matchmaking configuration. This name is used to identify the configuration associated with a matchmaking request or ticket. (pattern: &lt;code&gt;&#91;a-zA-Z0-9-\.&#93;*&lt;/code&gt;)</td>
+    <td>A unique identifier for the matchmaking configuration. This name is used to identify the configuration associated with a matchmaking request or ticket. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9-\.&#93;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="notification_target" /></td>
     <td><code>string</code></td>
-    <td>An SNS topic ARN that is set up to receive matchmaking notifications. (pattern: &lt;code&gt;&#91;a-zA-Z0-9:_/-&#93;*(.fifo)?&lt;/code&gt;)</td>
+    <td>An SNS topic ARN that is set up to receive matchmaking notifications. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9:_/-&#93;*(\.fifo)?$&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="request_timeout_seconds" /></td>
@@ -127,12 +127,12 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="rule_set_arn" /></td>
     <td><code>string</code></td>
-    <td>The Amazon Resource Name (ARN) associated with the GameLift matchmaking rule set resource that this configuration uses. (pattern: &lt;code&gt;^arn:.*:matchmakingruleset\/&#91;a-zA-Z0-9-\.&#93;*&lt;/code&gt;)</td>
+    <td>The Amazon Resource Name (ARN) associated with the GameLift matchmaking rule set resource that this configuration uses. (pattern: &lt;code&gt;^arn:.*:matchmakingruleset\/&#91;a-zA-Z0-9-\.&#93;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="rule_set_name" /></td>
     <td><code>string</code></td>
-    <td>A unique identifier for the matchmaking rule set to use with this configuration. A matchmaking configuration can only use rule sets that are defined in the same Region. (pattern: &lt;code&gt;&#91;a-zA-Z0-9-\.&#93;*&lt;/code&gt;)</td>
+    <td>A unique identifier for the matchmaking rule set to use with this configuration. A matchmaking configuration can only use rule sets that are defined in the same Region. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9-\.&#93;*$&lt;/code&gt;)</td>
 </tr>
 </tbody>
 </table>

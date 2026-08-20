@@ -182,7 +182,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
-    <td>The current state of the Capacity Reservation. A Capacity Reservation can be in one of the following states: active - The capacity is available for use. expired - The Capacity Reservation expired automatically at the date and time specified in your reservation request. The reserved capacity is no longer available for your use. cancelled - The Capacity Reservation was canceled. The reserved capacity is no longer available for your use. pending - The Capacity Reservation request was successful but the capacity provisioning is still pending. failed - The Capacity Reservation request has failed. A request can fail due to request parameters that are not valid, capacity constraints, or instance limit constraints. You can view a failed request for 60 minutes. scheduled - (Future-dated Capacity Reservations) The future-dated Capacity Reservation request was approved and the Capacity Reservation is scheduled for delivery on the requested start date. payment-pending - (Capacity Blocks) The upfront payment has not been processed yet. payment-failed - (Capacity Blocks) The upfront payment was not processed in the 12-hour time frame. Your Capacity Block was released. assessing - (Future-dated Capacity Reservations) Amazon EC2 is assessing your request for a future-dated Capacity Reservation. delayed - (Future-dated Capacity Reservations) Amazon EC2 encountered a delay in provisioning the requested future-dated Capacity Reservation. Amazon EC2 is unable to deliver the requested capacity by the requested start date and time. unsupported - (Future-dated Capacity Reservations) Amazon EC2 can't support the future-dated Capacity Reservation request due to capacity constraints. You can view unsupported requests for 30 days. The Capacity Reservation will not be delivered.</td>
+    <td>The current state of the Capacity Reservation. A Capacity Reservation can be in one of the following states: active - The capacity is available for use. expired - The Capacity Reservation expired automatically at the date and time specified in your reservation request. The reserved capacity is no longer available for your use. cancelled - The Capacity Reservation was canceled. The reserved capacity is no longer available for your use. pending - The Capacity Reservation request was successful but the capacity provisioning is still pending. failed - The Capacity Reservation request has failed. A request can fail due to request parameters that are not valid, capacity constraints, or instance limit constraints. You can view a failed request for 60 minutes. scheduled - (Future-dated Capacity Reservations) The future-dated Capacity Reservation request was approved and the Capacity Reservation is scheduled for delivery on the requested start date. payment-pending - (Capacity Blocks) The upfront payment has not been processed yet. payment-failed - (Capacity Blocks) The upfront payment was not processed in the 12-hour time frame. Your Capacity Block was released. assessing - (Future-dated Capacity Reservations) Amazon EC2 is assessing your request for a future-dated Capacity Reservation. delayed - (Future-dated Capacity Reservations) Amazon EC2 encountered a delay in provisioning the requested future-dated Capacity Reservation. Amazon EC2 is unable to deliver the requested capacity by the requested start date and time. unsupported - (Future-dated Capacity Reservations) Amazon EC2 can't support the future-dated Capacity Reservation request due to capacity constraints. You can view unsupported requests for 30 days. The Capacity Reservation will not be delivered. cancelling - (Future-dated Capacity Reservations) The Capacity Reservation is being cancelled. Capacity has been released but charges continue for the commitment wind-down period. The reservation transitions to cancelled when the wind-down completes.</td>
 </tr>
 <tr>
     <td><CopyableCode code="tags" /></td>
@@ -284,8 +284,8 @@ The following methods are available for this resource:
     <td><a href="#cancel_capacity_reservation"><CopyableCode code="cancel_capacity_reservation" /></a></td>
     <td><CopyableCode code="exec" /></td>
     <td><a href="#parameter-CapacityReservationId"><code>CapacityReservationId</code></a>, <a href="#parameter-region"><code>region</code></a></td>
-    <td><a href="#parameter-DryRun"><code>DryRun</code></a></td>
-    <td>Cancels the specified Capacity Reservation, releases the reserved capacity, and changes the Capacity Reservation's state to cancelled. You can cancel a Capacity Reservation that is in the following states: assessing active and there is no commitment duration or the commitment duration has elapsed. You can't cancel a future-dated Capacity Reservation during the commitment duration. You can't modify or cancel a Capacity Block. For more information, see Capacity Blocks for ML. If a future-dated Capacity Reservation enters the delayed state, the commitment duration is waived, and you can cancel it as soon as it enters the active state. Instances running in the reserved capacity continue running until you stop them. Stopped instances that target the Capacity Reservation can no longer launch. Modify these instances to either target a different Capacity Reservation, launch On-Demand Instance capacity, or run in any open Capacity Reservation that has matching attributes and sufficient capacity.</td>
+    <td><a href="#parameter-DryRun"><code>DryRun</code></a>, <a href="#parameter-ApplyCancellationCharges"><code>ApplyCancellationCharges</code></a>, <a href="#parameter-QuoteId"><code>QuoteId</code></a></td>
+    <td>Cancels the specified Capacity Reservation, releases the reserved capacity, and changes the Capacity Reservation's state to cancelled. You can cancel a Capacity Reservation that is in the following states: assessing scheduled — requires a cancellation quote. Use CreateCapacityReservationCancellationQuote to generate a quote, then pass the quote ID with ApplyCancellationCharges set to commitment-wind-down. The cancellation charge depends on how close the reservation is to its start date. active and there is no commitment duration or the commitment duration has elapsed. active during the commitment duration — requires a cancellation quote. Use CreateCapacityReservationCancellationQuote to generate a quote, then pass the quote ID with ApplyCancellationCharges set to commitment-wind-down. The Capacity Reservation transitions to cancelling while charges are applied. delayed — the commitment duration is waived, so no cancellation charge applies. You can't modify or cancel a Capacity Block. For more information, see Capacity Blocks for ML. Instances running in the reserved capacity continue running until you stop them. Stopped instances that target the Capacity Reservation can no longer launch. Modify these instances to either target a different Capacity Reservation, launch On-Demand Instance capacity, or run in any open Capacity Reservation that has matching attributes and sufficient capacity.</td>
 </tr>
 <tr>
     <td><a href="#disassociate_capacity_reservation_billing_owner"><CopyableCode code="disassociate_capacity_reservation_billing_owner" /></a></td>
@@ -366,6 +366,11 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     <td><CopyableCode code="AdditionalInfo" /></td>
     <td><code>string</code></td>
     <td>Reserved for future use.</td>
+</tr>
+<tr id="parameter-ApplyCancellationCharges">
+    <td><CopyableCode code="ApplyCancellationCharges" /></td>
+    <td><code>string</code></td>
+    <td>Specifies the cancellation charge type to apply when cancelling a future-dated Capacity Reservation during its commitment duration. Possible values include commitment-wind-down, which continues billing for the remaining commitment duration without delivering capacity.</td>
 </tr>
 <tr id="parameter-AvailabilityZone">
     <td><CopyableCode code="AvailabilityZone" /></td>
@@ -456,6 +461,11 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     <td><CopyableCode code="PlacementGroupArn" /></td>
     <td><code>string</code></td>
     <td>Not supported for future-dated Capacity Reservations. The Amazon Resource Name (ARN) of the cluster placement group in which to create the Capacity Reservation. For more information, see Capacity Reservations for cluster placement groups in the Amazon EC2 User Guide.</td>
+</tr>
+<tr id="parameter-QuoteId">
+    <td><CopyableCode code="QuoteId" /></td>
+    <td><code>string</code></td>
+    <td>The ID of the cancellation quote to use for the cancellation. You can generate a cancellation quote by using the CreateCapacityReservationCancellationQuote action. The cancellation quote must be in an active state.</td>
 </tr>
 <tr id="parameter-StartDate">
     <td><CopyableCode code="StartDate" /></td>
@@ -883,13 +893,15 @@ EXEC aws.ec2.capacity_reservations.accept_capacity_reservation_billing_ownership
 </TabItem>
 <TabItem value="cancel_capacity_reservation">
 
-Cancels the specified Capacity Reservation, releases the reserved capacity, and changes the Capacity Reservation's state to cancelled. You can cancel a Capacity Reservation that is in the following states: assessing active and there is no commitment duration or the commitment duration has elapsed. You can't cancel a future-dated Capacity Reservation during the commitment duration. You can't modify or cancel a Capacity Block. For more information, see Capacity Blocks for ML. If a future-dated Capacity Reservation enters the delayed state, the commitment duration is waived, and you can cancel it as soon as it enters the active state. Instances running in the reserved capacity continue running until you stop them. Stopped instances that target the Capacity Reservation can no longer launch. Modify these instances to either target a different Capacity Reservation, launch On-Demand Instance capacity, or run in any open Capacity Reservation that has matching attributes and sufficient capacity.
+Cancels the specified Capacity Reservation, releases the reserved capacity, and changes the Capacity Reservation's state to cancelled. You can cancel a Capacity Reservation that is in the following states: assessing scheduled — requires a cancellation quote. Use CreateCapacityReservationCancellationQuote to generate a quote, then pass the quote ID with ApplyCancellationCharges set to commitment-wind-down. The cancellation charge depends on how close the reservation is to its start date. active and there is no commitment duration or the commitment duration has elapsed. active during the commitment duration — requires a cancellation quote. Use CreateCapacityReservationCancellationQuote to generate a quote, then pass the quote ID with ApplyCancellationCharges set to commitment-wind-down. The Capacity Reservation transitions to cancelling while charges are applied. delayed — the commitment duration is waived, so no cancellation charge applies. You can't modify or cancel a Capacity Block. For more information, see Capacity Blocks for ML. Instances running in the reserved capacity continue running until you stop them. Stopped instances that target the Capacity Reservation can no longer launch. Modify these instances to either target a different Capacity Reservation, launch On-Demand Instance capacity, or run in any open Capacity Reservation that has matching attributes and sufficient capacity.
 
 ```sql
 EXEC aws.ec2.capacity_reservations.cancel_capacity_reservation 
 @CapacityReservationId='{{ CapacityReservationId }}' --required, 
 @region='{{ region }}' --required, 
-@DryRun={{ DryRun }}
+@DryRun={{ DryRun }}, 
+@ApplyCancellationCharges='{{ ApplyCancellationCharges }}', 
+@QuoteId='{{ QuoteId }}'
 ;
 ```
 </TabItem>

@@ -18,7 +18,7 @@ s3 service documentation.
 
 :::info[Service Summary]
 
-total resources: __41__  
+total resources: __42__  
 
 :::
 
@@ -56,6 +56,7 @@ total resources: __41__
 <a href="/services/s3/directory_buckets/">directory_buckets</a><br />
 <a href="/services/s3/multipart_uploads/">multipart_uploads</a><br />
 <a href="/services/s3/object_acls/">object_acls</a><br />
+<a href="/services/s3/object_annotations/">object_annotations</a><br />
 <a href="/services/s3/object_attributes/">object_attributes</a><br />
 <a href="/services/s3/object_legal_holds/">object_legal_holds</a><br />
 <a href="/services/s3/object_lock_configurations/">object_lock_configurations</a><br />

@@ -18,13 +18,15 @@ glue service documentation.
 
 :::info[Service Summary]
 
-total resources: __69__  
+total resources: __78__  
 
 :::
 
 ## Resources
 <div class="row">
 <div class="providerDocColumn">
+<a href="/services/glue/asset_types/">asset_types</a><br />
+<a href="/services/glue/assets/">assets</a><br />
 <a href="/services/glue/blueprint_runs/">blueprint_runs</a><br />
 <a href="/services/glue/blueprints/">blueprints</a><br />
 <a href="/services/glue/catalog_import_status/">catalog_import_status</a><br />
@@ -40,7 +42,9 @@ total resources: __69__
 <a href="/services/glue/crawlers/">crawlers</a><br />
 <a href="/services/glue/crawls/">crawls</a><br />
 <a href="/services/glue/custom_entity_types/">custom_entity_types</a><br />
+<a href="/services/glue/dashboard_urls/">dashboard_urls</a><br />
 <a href="/services/glue/data_catalog_encryption_settings/">data_catalog_encryption_settings</a><br />
+<a href="/services/glue/data_catalog_export_configurations/">data_catalog_export_configurations</a><br />
 <a href="/services/glue/data_quality_model_results/">data_quality_model_results</a><br />
 <a href="/services/glue/data_quality_models/">data_quality_models</a><br />
 <a href="/services/glue/data_quality_profile_annotations/">data_quality_profile_annotations</a><br />
@@ -55,13 +59,17 @@ total resources: __69__
 <a href="/services/glue/dev_endpoints/">dev_endpoints</a><br />
 <a href="/services/glue/entities/">entities</a><br />
 <a href="/services/glue/entity_records/">entity_records</a><br />
+<a href="/services/glue/form_types/">form_types</a><br />
+<a href="/services/glue/glossaries/">glossaries</a><br />
+<a href="/services/glue/glossary_terms/">glossary_terms</a><br />
 <a href="/services/glue/glue_identity_center_configurations/">glue_identity_center_configurations</a><br />
-<a href="/services/glue/inbound_integrations/">inbound_integrations</a><br />
-<a href="/services/glue/integration_resource_properties/">integration_resource_properties</a><br />
-<a href="/services/glue/integration_table_properties/">integration_table_properties</a><br />
-<a href="/services/glue/integrations/">integrations</a>
+<a href="/services/glue/inbound_integrations/">inbound_integrations</a>
 </div>
 <div class="providerDocColumn">
+<a href="/services/glue/integration_resource_properties/">integration_resource_properties</a><br />
+<a href="/services/glue/integration_table_properties/">integration_table_properties</a><br />
+<a href="/services/glue/integrations/">integrations</a><br />
+<a href="/services/glue/iterable_forms/">iterable_forms</a><br />
 <a href="/services/glue/job_bookmarks/">job_bookmarks</a><br />
 <a href="/services/glue/job_runs/">job_runs</a><br />
 <a href="/services/glue/jobs/">jobs</a><br />
@@ -80,6 +88,7 @@ total resources: __69__
 <a href="/services/glue/schemas/">schemas</a><br />
 <a href="/services/glue/scripts/">scripts</a><br />
 <a href="/services/glue/security_configurations/">security_configurations</a><br />
+<a href="/services/glue/session_endpoints/">session_endpoints</a><br />
 <a href="/services/glue/sessions/">sessions</a><br />
 <a href="/services/glue/statements/">statements</a><br />
 <a href="/services/glue/table_optimizer_runs/">table_optimizer_runs</a><br />

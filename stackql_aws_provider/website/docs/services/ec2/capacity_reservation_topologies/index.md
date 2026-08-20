@@ -140,7 +140,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-CapacityReservationId">
     <td><CopyableCode code="CapacityReservationId" /></td>
     <td><code>array</code></td>
-    <td>The Capacity Reservation IDs. Default: Describes all your Capacity Reservations. Constraints: Maximum 100 explicitly specified Capacity Reservation IDs.</td>
+    <td>The Capacity Reservation IDs. Default: Describes all your Capacity Reservations. Constraints: Maximum 10 explicitly specified Capacity Reservation IDs.</td>
 </tr>
 <tr id="parameter-DryRun">
     <td><CopyableCode code="DryRun" /></td>

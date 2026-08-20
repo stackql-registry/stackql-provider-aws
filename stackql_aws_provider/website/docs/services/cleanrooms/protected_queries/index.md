@@ -86,6 +86,11 @@ The following fields are returned by `SELECT` queries:
     <td>The identifier for the membership. (pattern: &lt;code&gt;&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
+    <td><CopyableCode code="query_compute_payer_account_id" /></td>
+    <td><code>string</code></td>
+    <td>The account ID of the member that pays for the query compute costs. (pattern: &lt;code&gt;\d+&lt;/code&gt;)</td>
+</tr>
+<tr>
     <td><CopyableCode code="result" /></td>
     <td><code>object</code></td>
     <td>The result of the protected query.</td>
@@ -135,6 +140,11 @@ The following fields are returned by `SELECT` queries:
     <td>The time the protected query was created.</td>
 </tr>
 <tr>
+    <td><CopyableCode code="intermediate_table_configuration" /></td>
+    <td><code>object</code></td>
+    <td>The intermediate table configuration, present when the protected query was triggered by a populate operation.</td>
+</tr>
+<tr>
     <td><CopyableCode code="membership_arn" /></td>
     <td><code>string</code></td>
     <td>The unique ARN for the membership that initiated the protected query. (pattern: &lt;code&gt;arn:aws:&#91;\w&#93;+:&#91;\w&#93;&#123;2&#125;-&#91;\w&#93;&#123;4,9&#125;-&#91;\d&#93;:&#91;\d&#93;&#123;12&#125;:membership/&#91;\d\w-&#93;+&lt;/code&gt;)</td>
@@ -143,6 +153,11 @@ The following fields are returned by `SELECT` queries:
     <td><CopyableCode code="membership_id" /></td>
     <td><code>string</code></td>
     <td>The unique ID for the membership that initiated the protected query. (pattern: &lt;code&gt;&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="query_compute_payer_account_id" /></td>
+    <td><code>string</code></td>
+    <td>The account ID of the member that pays for the query compute costs. (pattern: &lt;code&gt;\d+&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="receiver_configurations" /></td>
@@ -266,6 +281,7 @@ differential_privacy,
 error,
 membership_arn,
 membership_id,
+query_compute_payer_account_id,
 result,
 result_configuration,
 sql_parameters,
@@ -286,8 +302,10 @@ Lists protected queries, sorted by the most recent query.
 SELECT
 id,
 create_time,
+intermediate_table_configuration,
 membership_arn,
 membership_id,
+query_compute_payer_account_id,
 receiver_configurations,
 status
 FROM aws.cleanrooms.protected_queries

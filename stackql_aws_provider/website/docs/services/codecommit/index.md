@@ -18,7 +18,7 @@ codecommit service documentation.
 
 :::info[Service Summary]
 
-total resources: __24__  
+total resources: __25__  
 
 :::
 
@@ -27,6 +27,7 @@ total resources: __24__
 <div class="providerDocColumn">
 <a href="/services/codecommit/approval_rule_templates/">approval_rule_templates</a><br />
 <a href="/services/codecommit/associated_approval_rule_templates_for_repositories/">associated_approval_rule_templates_for_repositories</a><br />
+<a href="/services/codecommit/blob_differences/">blob_differences</a><br />
 <a href="/services/codecommit/blobs/">blobs</a><br />
 <a href="/services/codecommit/branches/">branches</a><br />
 <a href="/services/codecommit/comment_reactions/">comment_reactions</a><br />

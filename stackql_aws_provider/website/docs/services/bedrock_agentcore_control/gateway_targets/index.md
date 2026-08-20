@@ -58,7 +58,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="authorization_data" /></td>
     <td><code>object</code></td>
-    <td>OAuth2 authorization data for the gateway target. This data is returned when a target is configured with a credential provider with authorization code grant type and requires user federation.</td>
+    <td>Contains the authorization data that is returned when a gateway target is configured with a credential provider with authorization code grant type and requires user federation.</td>
 </tr>
 <tr>
     <td><CopyableCode code="created_at" /></td>
@@ -150,6 +150,11 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the target. (pattern: &lt;code&gt;(&#91;0-9a-zA-Z&#93;&#91;-&#93;?)&#123;1,100&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
+    <td><CopyableCode code="authorization_data" /></td>
+    <td><code>object</code></td>
+    <td>Contains the authorization data that is returned when a gateway target is configured with a credential provider with authorization code grant type and requires user federation.</td>
+</tr>
+<tr>
     <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the target was created.</td>
@@ -158,6 +163,16 @@ The following fields are returned by `SELECT` queries:
     <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the target.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="last_synchronized_at" /></td>
+    <td><code>string (date-time)</code></td>
+    <td>The timestamp when the target was last synchronized.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="listing_mode" /></td>
+    <td><code>string</code></td>
+    <td>The listing mode for the target. MCP resources for DEFAULT targets are cached at the control plane for faster access. MCP resources for DYNAMIC targets are retrieved dynamically when listing tools. (DEFAULT, DYNAMIC)</td>
 </tr>
 <tr>
     <td><CopyableCode code="resource_priority" /></td>
@@ -173,6 +188,11 @@ The following fields are returned by `SELECT` queries:
     <td><CopyableCode code="target_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the target. (pattern: &lt;code&gt;&#91;0-9a-zA-Z&#93;&#123;10&#125;&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="target_type" /></td>
+    <td><code>string</code></td>
+    <td>The type of the target. (OPEN_API_SCHEMA, SMITHY_MODEL, MCP_SERVER, LAMBDA, API_GATEWAY, CONNECTOR, AGENTCORE_RUNTIME, PASSTHROUGH, PROVIDER, HTTP_CONNECTOR)</td>
 </tr>
 <tr>
     <td><CopyableCode code="updated_at" /></td>
@@ -216,14 +236,14 @@ The following methods are available for this resource:
 <tr>
     <td><a href="#create_gateway_target"><CopyableCode code="create_gateway_target" /></a></td>
     <td><CopyableCode code="insert" /></td>
-    <td><a href="#parameter-gateway_identifier"><code>gateway_identifier</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-name"><code>name</code></a>, <a href="#parameter-targetConfiguration"><code>targetConfiguration</code></a></td>
+    <td><a href="#parameter-gateway_identifier"><code>gateway_identifier</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-targetConfiguration"><code>targetConfiguration</code></a></td>
     <td></td>
     <td>Creates a target for a gateway. A target defines an endpoint that the gateway can connect to.</td>
 </tr>
 <tr>
     <td><a href="#update_gateway_target"><CopyableCode code="update_gateway_target" /></a></td>
     <td><CopyableCode code="update" /></td>
-    <td><a href="#parameter-gateway_identifier"><code>gateway_identifier</code></a>, <a href="#parameter-target_id"><code>target_id</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-name"><code>name</code></a>, <a href="#parameter-targetConfiguration"><code>targetConfiguration</code></a></td>
+    <td><a href="#parameter-gateway_identifier"><code>gateway_identifier</code></a>, <a href="#parameter-target_id"><code>target_id</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-targetConfiguration"><code>targetConfiguration</code></a></td>
     <td></td>
     <td>Updates an existing gateway target. You cannot update a target that is in a pending authorization state (CREATE_PENDING_AUTH, UPDATE_PENDING_AUTH, or SYNCHRONIZE_PENDING_AUTH). Wait for the authorization to complete or fail before updating the target.</td>
 </tr>
@@ -330,11 +350,15 @@ Lists all targets for a specific gateway.
 ```sql
 SELECT
 name,
+authorization_data,
 created_at,
 description,
+last_synchronized_at,
+listing_mode,
 resource_priority,
 status,
 target_id,
+target_type,
 updated_at
 FROM aws.bedrock_agentcore_control.gateway_targets
 WHERE gateway_identifier = '{{ gateway_identifier }}' -- required
@@ -373,7 +397,7 @@ gateway_identifier,
 region
 )
 SELECT 
-'{{ name }}' /* required */,
+'{{ name }}',
 '{{ description }}',
 '{{ clientToken }}',
 '{{ targetConfiguration }}' /* required */,
@@ -476,10 +500,53 @@ updated_at
               toolFilters:
                 - filterPath: "{{ filterPath }}"
                   methods: "{{ methods }}"
+          connector:
+            source:
+              connectorId: "{{ connectorId }}"
+              version: "{{ version }}"
+            enabled:
+              - "{{ enabled }}"
+            configurations:
+              - name: "{{ name }}"
+                description: "{{ description }}"
+                parameterValues: "{{ parameterValues }}"
+                parameterOverrides: "{{ parameterOverrides }}"
         http:
           agentcoreRuntime:
             arn: "{{ arn }}"
             qualifier: "{{ qualifier }}"
+            schema:
+              source:
+                s3: "{{ s3 }}"
+                inlinePayload: "{{ inlinePayload }}"
+          passthrough:
+            endpoint: "{{ endpoint }}"
+            protocolType: "{{ protocolType }}"
+            schema:
+              source:
+                s3: "{{ s3 }}"
+                inlinePayload: "{{ inlinePayload }}"
+            stickinessConfiguration:
+              identifier: "{{ identifier }}"
+              timeout: {{ timeout }}
+          connector:
+            source:
+              connectorId: "{{ connectorId }}"
+            parameters: "{{ parameters }}"
+        inference:
+          connector:
+            source:
+              connectorId: "{{ connectorId }}"
+          provider:
+            endpoint: "{{ endpoint }}"
+            modelMapping:
+              providerPrefix:
+                strip: {{ strip }}
+                separator: "{{ separator }}"
+            operations:
+              - path: "{{ path }}"
+                providerPath: "{{ providerPath }}"
+                models: "{{ models }}"
     - name: credentialProviderConfigurations
       value:
         - credentialProviderType: "{{ credentialProviderType }}"
@@ -555,7 +622,6 @@ WHERE
 gateway_identifier = '{{ gateway_identifier }}' --required
 AND target_id = '{{ target_id }}' --required
 AND region = '{{ region }}' --required
-AND name = '{{ name }}' --required
 AND targetConfiguration = '{{ targetConfiguration }}' --required
 RETURNING
 name,

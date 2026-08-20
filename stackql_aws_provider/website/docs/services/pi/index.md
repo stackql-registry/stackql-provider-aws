@@ -18,7 +18,7 @@ pi service documentation.
 
 :::info[Service Summary]
 
-total resources: __8__  
+total resources: __9__  
 
 :::
 
@@ -28,7 +28,8 @@ total resources: __8__
 <a href="/services/pi/available_resource_dimensions/">available_resource_dimensions</a><br />
 <a href="/services/pi/available_resource_metrics/">available_resource_metrics</a><br />
 <a href="/services/pi/dimension_key_details/">dimension_key_details</a><br />
-<a href="/services/pi/dimension_keys/">dimension_keys</a>
+<a href="/services/pi/dimension_keys/">dimension_keys</a><br />
+<a href="/services/pi/performance_analysis_report_recommendations/">performance_analysis_report_recommendations</a>
 </div>
 <div class="providerDocColumn">
 <a href="/services/pi/performance_analysis_reports/">performance_analysis_reports</a><br />

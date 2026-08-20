@@ -57,7 +57,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="auth_token" /></td>
     <td><code>string</code></td>
-    <td>Authentication token for accessing the session endpoint.</td>
+    <td>The authentication token for connecting to the session endpoint. Call GetSessionEndpoint again to obtain a new token before it expires.</td>
 </tr>
 <tr>
     <td><CopyableCode code="auth_token_expires_at" /></td>

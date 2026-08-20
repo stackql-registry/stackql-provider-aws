@@ -96,6 +96,11 @@ The following fields are returned by `SELECT` queries:
     <td>The number of records in the ML input channel.</td>
 </tr>
 <tr>
+    <td><CopyableCode code="payer_configuration" /></td>
+    <td><code>object</code></td>
+    <td>Specifies which member accounts are responsible for paying for compute and synthetic data generation costs in a Clean Rooms ML collaboration.</td>
+</tr>
+<tr>
     <td><CopyableCode code="privacy_budgets" /></td>
     <td><code>object</code></td>
     <td>Returns the privacy budgets that control access to this Clean Rooms ML input channel. Use these budgets to monitor and limit resource consumption over specified time periods.</td>
@@ -178,6 +183,11 @@ The following fields are returned by `SELECT` queries:
     <td><CopyableCode code="ml_input_channel_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the ML input channel. (pattern: &lt;code&gt;arn:aws&#91;-a-z&#93;*:cleanrooms-ml:&#91;-a-z0-9&#93;+:&#91;0-9&#93;&#123;12&#125;:membership/&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;/ml-input-channel/&#91;-a-zA-Z0-9_/.&#93;+&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="payer_configuration" /></td>
+    <td><code>object</code></td>
+    <td>Specifies which member accounts are responsible for paying for compute and synthetic data generation costs in a Clean Rooms ML collaboration.</td>
 </tr>
 <tr>
     <td><CopyableCode code="status" /></td>
@@ -291,6 +301,7 @@ description,
 membership_identifier,
 ml_input_channel_arn,
 number_of_records,
+payer_configuration,
 privacy_budgets,
 retention_in_days,
 status,
@@ -318,6 +329,7 @@ creator_account_id,
 description,
 membership_identifier,
 ml_input_channel_arn,
+payer_configuration,
 status,
 update_time
 FROM aws.cleanroomsml.collaboration_ml_input_channels

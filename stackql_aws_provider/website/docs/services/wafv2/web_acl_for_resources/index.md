@@ -115,6 +115,11 @@ The following fields are returned by `SELECT` queries:
     <td>Indicates whether this web ACL was created by Firewall Manager and is being managed by Firewall Manager. If true, then only Firewall Manager can delete the web ACL or any Firewall Manager rule groups in the web ACL. See also the properties RetrofittedByFirewallManager, PreProcessFirewallManagerRuleGroups, and PostProcessFirewallManagerRuleGroups.</td>
 </tr>
 <tr>
+    <td><CopyableCode code="monetization_config" /></td>
+    <td><code>object</code></td>
+    <td>The monetization configuration for the web ACL. Required when any rule in the web ACL uses the Monetize action. Specifies the cryptocurrency payment networks and currency mode for AI bot monetization.</td>
+</tr>
+<tr>
     <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the web ACL. You cannot change the name of a web ACL after you create it. (pattern: &lt;code&gt;^&#91;\w\-&#93;+$&lt;/code&gt;)</td>
@@ -232,6 +237,7 @@ description,
 id,
 label_namespace,
 managed_by_firewall_manager,
+monetization_config,
 name,
 on_source_d_do_s_protection_config,
 post_process_firewall_manager_rule_groups,

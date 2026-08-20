@@ -51,6 +51,16 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
+    <td><CopyableCode code="acme_account_id" /></td>
+    <td><code>string</code></td>
+    <td>The ACME account identifier associated with the certificate.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="acme_endpoint_arn" /></td>
+    <td><code>string</code></td>
+    <td>The ARN of the ACME endpoint used to issue the certificate. (pattern: &lt;code&gt;arn:&#91;\w+=/,.@-&#93;+:acm:&#91;\w+=/,.@-&#93;*:&#91;0-9&#93;+:&#91;\w+=,.@-&#93;+(/&#91;\w+=,.@-&#93;+)*&lt;/code&gt;)</td>
+</tr>
+<tr>
     <td><CopyableCode code="certificate_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the certificate. For more information about ARNs, see Amazon Resource Names (ARNs) in the Amazon Web Services General Reference. (pattern: &lt;code&gt;arn:&#91;\w+=/,.@-&#93;+:acm:&#91;\w+=/,.@-&#93;*:&#91;0-9&#93;+:&#91;\w+=,.@-&#93;+(/&#91;\w+=,.@-&#93;+)*&lt;/code&gt;)</td>
@@ -59,6 +69,11 @@ The following fields are returned by `SELECT` queries:
     <td><CopyableCode code="certificate_authority_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the private certificate authority (CA) that issued the certificate. This has the following format: arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-1234-123456789012 (pattern: &lt;code&gt;arn:&#91;\w+=/,.@-&#93;+:acm:&#91;\w+=/,.@-&#93;*:&#91;0-9&#93;+:&#91;\w+=,.@-&#93;+(/&#91;\w+=,.@-&#93;+)*&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="certificate_key_pair_origin" /></td>
+    <td><code>string</code></td>
+    <td>The origin of the certificate's key pair. (AWS_MANAGED, ACME, CUSTOMER_PROVIDED)</td>
 </tr>
 <tr>
     <td><CopyableCode code="created_at" /></td>
@@ -133,7 +148,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="options" /></td>
     <td><code>object</code></td>
-    <td>Value that specifies whether to add the certificate to a transparency log. Certificate transparency makes it possible to detect SSL certificates that have been mistakenly or maliciously issued. A browser might respond to certificate that has not been logged by showing an error message. The logs are cryptographically secure.</td>
+    <td>Contains the certificate options. Certificate transparency logging opt-out is no longer available. All public certificates are recorded in a certificate transparency log.</td>
 </tr>
 <tr>
     <td><CopyableCode code="renewal_eligibility" /></td>
@@ -185,6 +200,11 @@ The following fields are returned by `SELECT` queries:
     <td><code>string</code></td>
     <td>The source of the certificate. For certificates provided by ACM, this value is AMAZON_ISSUED. For certificates that you imported with ImportCertificate, this value is IMPORTED. ACM does not provide managed renewal for imported certificates. For more information about the differences between certificates that you import and those that ACM provides, see Importing Certificates in the Certificate Manager User Guide. (IMPORTED, AMAZON_ISSUED, PRIVATE)</td>
 </tr>
+<tr>
+    <td><CopyableCode code="update_summary" /></td>
+    <td><code>object</code></td>
+    <td>Contains information about the most recent update to the certificate. This field exists only when the certificate type is AMAZON_ISSUED and a certificate update has been requested.</td>
+</tr>
 </tbody>
 </table>
 </TabItem>
@@ -205,6 +225,11 @@ The following fields are returned by `SELECT` queries:
     <td>Amazon Resource Name (ARN) of the certificate. This is of the form: arn:aws:acm:region:123456789012:certificate/12345678-1234-1234-1234-123456789012 For more information about ARNs, see Amazon Resource Names (ARNs). (pattern: &lt;code&gt;arn:&#91;\w+=/,.@-&#93;+:acm:&#91;\w+=/,.@-&#93;*:&#91;0-9&#93;+:&#91;\w+=,.@-&#93;+(/&#91;\w+=,.@-&#93;+)*&lt;/code&gt;)</td>
 </tr>
 <tr>
+    <td><CopyableCode code="certificate_key_pair_origin" /></td>
+    <td><code>string</code></td>
+    <td>The origin of the certificate's key pair. (AWS_MANAGED, ACME, CUSTOMER_PROVIDED)</td>
+</tr>
+<tr>
     <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the certificate was requested.</td>
@@ -222,7 +247,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="exported" /></td>
     <td><code>boolean</code></td>
-    <td>Indicates whether the certificate has been exported. This value exists only when the certificate type is PRIVATE.</td>
+    <td>Indicates whether the certificate has been exported.</td>
 </tr>
 <tr>
     <td><CopyableCode code="extended_key_usages" /></td>
@@ -331,7 +356,7 @@ The following methods are available for this resource:
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>Retrieves a list of certificate ARNs and domain names. You can request that only certificates that match a specific status be listed. You can also filter by specific attributes of the certificate. Default filtering returns only RSA_2048 certificates. For more information, see Filters.</td>
+    <td>Retrieves a list of certificate ARNs and domain names. You can request that only certificates that match a specific status be listed. You can also filter by specific attributes of the certificate. Default filtering returns only RSA_2048 certificates. For more information, see Filters. By default, this action does not return certificates with a CertificateKeyPairOrigin of ACME. To include ACME certificates, specify ACME in the CertificateKeyPairOrigins filter.</td>
 </tr>
 <tr>
     <td><a href="#revoke_certificate"><CopyableCode code="revoke_certificate" /></a></td>
@@ -345,14 +370,14 @@ The following methods are available for this resource:
     <td><CopyableCode code="update" /></td>
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-CertificateArn"><code>CertificateArn</code></a>, <a href="#parameter-Options"><code>Options</code></a></td>
     <td></td>
-    <td>Updates a certificate. You can use this function to specify whether to opt in to or out of recording your certificate in a certificate transparency log and exporting. For more information, see Opting Out of Certificate Transparency Logging and Certificate Manager Exportable Managed Certificates.</td>
+    <td>Updates certificate options. You can use this operation to change the domain validation method or specify whether to export your certificate. For more information, see Migrate from email to DNS validation and Certificate Manager Exportable Managed Certificates.</td>
 </tr>
 <tr>
     <td><a href="#delete_certificate"><CopyableCode code="delete_certificate" /></a></td>
     <td><CopyableCode code="delete" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>Deletes a certificate and its associated private key. If this action succeeds, the certificate is not available for use by Amazon Web Services services integrated with ACM. Deleting a certificate is eventually consistent. The may be a short delay before the certificate no longer appears in the list that can be displayed by calling the ListCertificates action or be retrieved by calling the GetCertificate action. You cannot delete an ACM certificate that is being used by another Amazon Web Services service. To delete a certificate that is in use, you must first remove the certificate association using the console or the CLI for the associated service. Deleting a certificate issued by a private certificate authority (CA) has no effect on the CA. You will continue to be charged for the CA until it is deleted. For more information, see Deleting Your Private CA in the Private Certificate Authority User Guide. Deleting a certificate issued by a private certificate authority (CA) has no effect on the CA. You will continue to be charged for the CA until it is deleted. For more information, see Deleting your private CA in the Amazon Web Services Private Certificate Authority User Guide.</td>
+    <td>Deletes a certificate and its associated private key. If this action succeeds, the certificate is not available for use by Amazon Web Services services integrated with ACM. Deleting a certificate is eventually consistent. The may be a short delay before the certificate no longer appears in the list that can be displayed by calling the ListCertificates action or be retrieved by calling the GetCertificate action. You cannot delete an ACM certificate that is being used by another Amazon Web Services service. To delete a certificate that is in use, you must first remove the certificate association using the console or the CLI for the associated service. Deleting a certificate issued by a private certificate authority (CA) has no effect on the CA. You will continue to be charged for the CA until it is deleted. For more information, see Deleting Your Private CA in the Private Certificate Authority User Guide. You cannot delete a certificate with a CertificateKeyPairOrigin of ACME. ACM automatically deletes these certificates 1 year after they expire. Deleting a certificate issued by a private certificate authority (CA) has no effect on the CA. You will continue to be charged for the CA until it is deleted. For more information, see Deleting your private CA in the Amazon Web Services Private Certificate Authority User Guide.</td>
 </tr>
 <tr>
     <td><a href="#get_certificate"><CopyableCode code="get_certificate" /></a></td>
@@ -414,8 +439,11 @@ Returns detailed metadata about the specified ACM certificate. If you have just 
 
 ```sql
 SELECT
+acme_account_id,
+acme_endpoint_arn,
 certificate_arn,
 certificate_authority_arn,
+certificate_key_pair_origin,
 created_at,
 domain_name,
 domain_validation_options,
@@ -440,7 +468,8 @@ signature_algorithm,
 status,
 subject,
 subject_alternative_names,
-type
+type,
+update_summary
 FROM aws.acm.certificates
 WHERE region = '{{ region }}' -- required
 ;
@@ -448,11 +477,12 @@ WHERE region = '{{ region }}' -- required
 </TabItem>
 <TabItem value="list_certificates">
 
-Retrieves a list of certificate ARNs and domain names. You can request that only certificates that match a specific status be listed. You can also filter by specific attributes of the certificate. Default filtering returns only RSA_2048 certificates. For more information, see Filters.
+Retrieves a list of certificate ARNs and domain names. You can request that only certificates that match a specific status be listed. You can also filter by specific attributes of the certificate. Default filtering returns only RSA_2048 certificates. For more information, see Filters. By default, this action does not return certificates with a CertificateKeyPairOrigin of ACME. To include ACME certificates, specify ACME in the CertificateKeyPairOrigins filter.
 
 ```sql
 SELECT
 certificate_arn,
+certificate_key_pair_origin,
 created_at,
 domain_name,
 export_option,
@@ -508,7 +538,7 @@ certificate_arn;
 </TabItem>
 <TabItem value="update_certificate_options">
 
-Updates a certificate. You can use this function to specify whether to opt in to or out of recording your certificate in a certificate transparency log and exporting. For more information, see Opting Out of Certificate Transparency Logging and Certificate Manager Exportable Managed Certificates.
+Updates certificate options. You can use this operation to change the domain validation method or specify whether to export your certificate. For more information, see Migrate from email to DNS validation and Certificate Manager Exportable Managed Certificates.
 
 ```sql
 UPDATE aws.acm.certificates
@@ -534,7 +564,7 @@ AND Options = '{{ Options }}' --required;
 >
 <TabItem value="delete_certificate">
 
-Deletes a certificate and its associated private key. If this action succeeds, the certificate is not available for use by Amazon Web Services services integrated with ACM. Deleting a certificate is eventually consistent. The may be a short delay before the certificate no longer appears in the list that can be displayed by calling the ListCertificates action or be retrieved by calling the GetCertificate action. You cannot delete an ACM certificate that is being used by another Amazon Web Services service. To delete a certificate that is in use, you must first remove the certificate association using the console or the CLI for the associated service. Deleting a certificate issued by a private certificate authority (CA) has no effect on the CA. You will continue to be charged for the CA until it is deleted. For more information, see Deleting Your Private CA in the Private Certificate Authority User Guide. Deleting a certificate issued by a private certificate authority (CA) has no effect on the CA. You will continue to be charged for the CA until it is deleted. For more information, see Deleting your private CA in the Amazon Web Services Private Certificate Authority User Guide.
+Deletes a certificate and its associated private key. If this action succeeds, the certificate is not available for use by Amazon Web Services services integrated with ACM. Deleting a certificate is eventually consistent. The may be a short delay before the certificate no longer appears in the list that can be displayed by calling the ListCertificates action or be retrieved by calling the GetCertificate action. You cannot delete an ACM certificate that is being used by another Amazon Web Services service. To delete a certificate that is in use, you must first remove the certificate association using the console or the CLI for the associated service. Deleting a certificate issued by a private certificate authority (CA) has no effect on the CA. You will continue to be charged for the CA until it is deleted. For more information, see Deleting Your Private CA in the Private Certificate Authority User Guide. You cannot delete a certificate with a CertificateKeyPairOrigin of ACME. ACM automatically deletes these certificates 1 year after they expire. Deleting a certificate issued by a private certificate authority (CA) has no effect on the CA. You will continue to be charged for the CA until it is deleted. For more information, see Deleting your private CA in the Amazon Web Services Private Certificate Authority User Guide.
 
 ```sql
 DELETE FROM aws.acm.certificates

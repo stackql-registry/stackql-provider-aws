@@ -355,6 +355,10 @@ ai_benchmark_job_arn
         The output configuration for the benchmark job, including the Amazon S3 location where benchmark results are stored.
       value:
         S3OutputLocation: "{{ S3OutputLocation }}"
+        MlflowConfig:
+          MlflowResourceArn: "{{ MlflowResourceArn }}"
+          MlflowExperimentName: "{{ MlflowExperimentName }}"
+          MlflowRunName: "{{ MlflowRunName }}"
     - name: AIWorkloadConfigIdentifier
       value: "{{ AIWorkloadConfigIdentifier }}"
       description: |

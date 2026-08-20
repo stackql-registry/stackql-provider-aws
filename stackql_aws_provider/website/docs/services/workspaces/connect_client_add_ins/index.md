@@ -84,28 +84,28 @@ The following methods are available for this resource:
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>Retrieves a list of Amazon Connect client add-ins that have been created.</td>
+    <td>Retrieves a list of Connect Customer client add-ins that have been created.</td>
 </tr>
 <tr>
     <td><a href="#create_connect_client_add_in"><CopyableCode code="create_connect_client_add_in" /></a></td>
     <td><CopyableCode code="insert" /></td>
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-ResourceId"><code>ResourceId</code></a>, <a href="#parameter-Name"><code>Name</code></a>, <a href="#parameter-URL"><code>URL</code></a></td>
     <td></td>
-    <td>Creates a client-add-in for Amazon Connect within a directory. You can create only one Amazon Connect client add-in within a directory. This client add-in allows WorkSpaces users to seamlessly connect to Amazon Connect.</td>
+    <td>Creates a client-add-in for Connect Customer within a directory. You can create only one Connect Customer client add-in within a directory. This client add-in allows WorkSpaces users to seamlessly connect to Connect Customer.</td>
 </tr>
 <tr>
     <td><a href="#update_connect_client_add_in"><CopyableCode code="update_connect_client_add_in" /></a></td>
     <td><CopyableCode code="update" /></td>
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-AddInId"><code>AddInId</code></a>, <a href="#parameter-ResourceId"><code>ResourceId</code></a></td>
     <td></td>
-    <td>Updates a Amazon Connect client add-in. Use this action to update the name and endpoint URL of a Amazon Connect client add-in.</td>
+    <td>Updates a Connect Customer client add-in. Use this action to update the name and endpoint URL of a Connect Customer client add-in.</td>
 </tr>
 <tr>
     <td><a href="#delete_connect_client_add_in"><CopyableCode code="delete_connect_client_add_in" /></a></td>
     <td><CopyableCode code="delete" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>Deletes a client-add-in for Amazon Connect that is configured within a directory.</td>
+    <td>Deletes a client-add-in for Connect Customer that is configured within a directory.</td>
 </tr>
 </tbody>
 </table>
@@ -141,7 +141,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 >
 <TabItem value="describe_connect_client_add_ins">
 
-Retrieves a list of Amazon Connect client add-ins that have been created.
+Retrieves a list of Connect Customer client add-ins that have been created.
 
 ```sql
 SELECT
@@ -166,7 +166,7 @@ WHERE region = '{{ region }}' -- required
 >
 <TabItem value="create_connect_client_add_in">
 
-Creates a client-add-in for Amazon Connect within a directory. You can create only one Amazon Connect client add-in within a directory. This client add-in allows WorkSpaces users to seamlessly connect to Amazon Connect.
+Creates a client-add-in for Connect Customer within a directory. You can create only one Connect Customer client add-in within a directory. This client add-in allows WorkSpaces users to seamlessly connect to Connect Customer.
 
 ```sql
 INSERT INTO aws.workspaces.connect_client_add_ins (
@@ -204,7 +204,7 @@ add_in_id
     - name: URL
       value: "{{ URL }}"
       description: |
-        The endpoint URL of the Amazon Connect client add-in.
+        The endpoint URL of the Connect Customer client add-in.
 `}</CodeBlock>
 
 </TabItem>
@@ -221,7 +221,7 @@ add_in_id
 >
 <TabItem value="update_connect_client_add_in">
 
-Updates a Amazon Connect client add-in. Use this action to update the name and endpoint URL of a Amazon Connect client add-in.
+Updates a Connect Customer client add-in. Use this action to update the name and endpoint URL of a Connect Customer client add-in.
 
 ```sql
 UPDATE aws.workspaces.connect_client_add_ins
@@ -249,7 +249,7 @@ AND ResourceId = '{{ ResourceId }}' --required;
 >
 <TabItem value="delete_connect_client_add_in">
 
-Deletes a client-add-in for Amazon Connect that is configured within a directory.
+Deletes a client-add-in for Connect Customer that is configured within a directory.
 
 ```sql
 DELETE FROM aws.workspaces.connect_client_add_ins

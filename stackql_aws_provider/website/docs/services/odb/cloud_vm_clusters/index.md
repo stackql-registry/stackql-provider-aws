@@ -213,7 +213,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="scan_dns_name" /></td>
     <td><code>string</code></td>
-    <td>The FQDN of the DNS record for the Single Client Access Name (SCAN) IP addresses that are associated with the VM cluster.</td>
+    <td>The fully qualified domain name (FQDN) of the DNS record for the Single Client Access Name (SCAN) IP addresses that are associated with the VM cluster.</td>
 </tr>
 <tr>
     <td><CopyableCode code="scan_dns_record_id" /></td>
@@ -442,7 +442,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="scan_dns_name" /></td>
     <td><code>string</code></td>
-    <td>The FQDN of the DNS record for the Single Client Access Name (SCAN) IP addresses that are associated with the VM cluster.</td>
+    <td>The fully qualified domain name (FQDN) of the DNS record for the Single Client Access Name (SCAN) IP addresses that are associated with the VM cluster.</td>
 </tr>
 <tr>
     <td><CopyableCode code="scan_dns_record_id" /></td>
@@ -545,21 +545,21 @@ The following methods are available for this resource:
 <tr>
     <td><a href="#reboot_db_node"><CopyableCode code="reboot_db_node" /></a></td>
     <td><CopyableCode code="exec" /></td>
-    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-cloudVmClusterId"><code>cloudVmClusterId</code></a>, <a href="#parameter-dbNodeId"><code>dbNodeId</code></a></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-dbNodeId"><code>dbNodeId</code></a></td>
     <td></td>
     <td>Reboots the specified DB node in a VM cluster.</td>
 </tr>
 <tr>
     <td><a href="#start_db_node"><CopyableCode code="start_db_node" /></a></td>
     <td><CopyableCode code="exec" /></td>
-    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-cloudVmClusterId"><code>cloudVmClusterId</code></a>, <a href="#parameter-dbNodeId"><code>dbNodeId</code></a></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-dbNodeId"><code>dbNodeId</code></a></td>
     <td></td>
     <td>Starts the specified DB node in a VM cluster.</td>
 </tr>
 <tr>
     <td><a href="#stop_db_node"><CopyableCode code="stop_db_node" /></a></td>
     <td><CopyableCode code="exec" /></td>
-    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-cloudVmClusterId"><code>cloudVmClusterId</code></a>, <a href="#parameter-dbNodeId"><code>dbNodeId</code></a></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-dbNodeId"><code>dbNodeId</code></a></td>
     <td></td>
     <td>Stops the specified DB node in a VM cluster.</td>
 </tr>
@@ -831,7 +831,7 @@ status_reason
     - name: dbNodeStorageSizeInGBs
       value: {{ dbNodeStorageSizeInGBs }}
       description: |
-        The amount of local node storage, in gigabytes (GBs), to allocate for the VM cluster.
+        The amount of local node storage, in gigabytes (GB), to allocate for the VM cluster.
     - name: dbServers
       value:
         - "{{ dbServers }}"
@@ -857,7 +857,7 @@ status_reason
     - name: memorySizeInGBs
       value: {{ memorySizeInGBs }}
       description: |
-        The amount of memory, in gigabytes (GBs), to allocate for the VM cluster.
+        The amount of memory, in gigabytes (GB), to allocate for the VM cluster.
     - name: systemVersion
       value: "{{ systemVersion }}"
       description: |
@@ -921,6 +921,7 @@ EXEC aws.odb.cloud_vm_clusters.reboot_db_node
 @@json=
 '{
 "cloudVmClusterId": "{{ cloudVmClusterId }}", 
+"exadbVmClusterId": "{{ exadbVmClusterId }}", 
 "dbNodeId": "{{ dbNodeId }}"
 }'
 ;
@@ -936,6 +937,7 @@ EXEC aws.odb.cloud_vm_clusters.start_db_node
 @@json=
 '{
 "cloudVmClusterId": "{{ cloudVmClusterId }}", 
+"exadbVmClusterId": "{{ exadbVmClusterId }}", 
 "dbNodeId": "{{ dbNodeId }}"
 }'
 ;
@@ -951,6 +953,7 @@ EXEC aws.odb.cloud_vm_clusters.stop_db_node
 @@json=
 '{
 "cloudVmClusterId": "{{ cloudVmClusterId }}", 
+"exadbVmClusterId": "{{ exadbVmClusterId }}", 
 "dbNodeId": "{{ dbNodeId }}"
 }'
 ;

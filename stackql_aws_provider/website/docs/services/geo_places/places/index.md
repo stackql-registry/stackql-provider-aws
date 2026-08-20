@@ -85,6 +85,16 @@ The following fields are returned by `SELECT` queries:
     <td>List of potential contact methods for the result/place. Not available in ap-southeast-1 and ap-southeast-5 regions for GrabMaps customers.</td>
 </tr>
 <tr>
+    <td><CopyableCode code="cross_references" /></td>
+    <td><code>array</code></td>
+    <td>The list of supplier references available for this place. Requires the CrossReferences additional feature to be enabled.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="estimated_point_address" /></td>
+    <td><code>boolean</code></td>
+    <td>If true, indicates that the coordinates of the position and access points of the point address are estimated.</td>
+</tr>
+<tr>
     <td><CopyableCode code="food_types" /></td>
     <td><code>array</code></td>
     <td>List of food types offered by this result. Not available in ap-southeast-1 and ap-southeast-5 regions for GrabMaps customers.</td>
@@ -108,6 +118,11 @@ The following fields are returned by `SELECT` queries:
     <td><CopyableCode code="phonemes" /></td>
     <td><code>object</code></td>
     <td>How the various components of the result's address are pronounced in various languages. Not available in ap-southeast-1 and ap-southeast-5 regions for GrabMaps customers.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="place_attributes" /></td>
+    <td><code>array</code></td>
+    <td>A list of place attributes for the result, such as whether the business offers drive-through service.</td>
 </tr>
 <tr>
     <td><CopyableCode code="place_id" /></td>
@@ -178,7 +193,7 @@ The following methods are available for this resource:
     <td><a href="#get_place"><CopyableCode code="get_place" /></a></td>
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-place_id"><code>place_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
-    <td><a href="#parameter-additional-features"><code>additional-features</code></a>, <a href="#parameter-language"><code>language</code></a>, <a href="#parameter-political-view"><code>political-view</code></a>, <a href="#parameter-intended-use"><code>intended-use</code></a>, <a href="#parameter-key"><code>key</code></a></td>
+    <td><a href="#parameter-additional-features"><code>additional-features</code></a>, <a href="#parameter-language"><code>language</code></a>, <a href="#parameter-political-view"><code>political-view</code></a>, <a href="#parameter-intended-use"><code>intended-use</code></a>, <a href="#parameter-key"><code>key</code></a>, <a href="#parameter-address-names-mode"><code>address-names-mode</code></a></td>
     <td>GetPlace finds a place by its unique ID. A PlaceId is returned by other place operations. For more information, see GetPlace in the Amazon Location Service Developer Guide.</td>
 </tr>
 </tbody>
@@ -211,6 +226,11 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     <td><CopyableCode code="additional-features" /></td>
     <td><code>array</code></td>
     <td>A list of optional additional parameters such as time zone that can be requested for each result. For GrabMaps customers, ap-southeast-1 and ap-southeast-5 regions support only the TimeZone value.</td>
+</tr>
+<tr id="parameter-address-names-mode">
+    <td><CopyableCode code="address-names-mode" /></td>
+    <td><code>string</code></td>
+    <td>Specifies how address names are returned. When set to Administrative, the service returns the official administrative names for address components. Administrative currently applies only to addresses in the United States.</td>
 </tr>
 <tr id="parameter-intended-use">
     <td><CopyableCode code="intended-use" /></td>
@@ -256,11 +276,14 @@ address_number_corrected,
 business_chains,
 categories,
 contacts,
+cross_references,
+estimated_point_address,
 food_types,
 main_address,
 map_view,
 opening_hours,
 phonemes,
+place_attributes,
 place_id,
 place_type,
 political_view,
@@ -278,6 +301,7 @@ AND language = '{{ language }}'
 AND `political-view` = '{{ political-view }}'
 AND `intended-use` = '{{ intended-use }}'
 AND key = '{{ key }}'
+AND `address-names-mode` = '{{ address-names-mode }}'
 ;
 ```
 </TabItem>

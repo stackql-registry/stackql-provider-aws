@@ -18,13 +18,14 @@ bedrock service documentation.
 
 :::info[Service Summary]
 
-total resources: __30__  
+total resources: __31__  
 
 :::
 
 ## Resources
 <div class="row">
 <div class="providerDocColumn">
+<a href="/services/bedrock/account_data_retentions/">account_data_retentions</a><br />
 <a href="/services/bedrock/advanced_prompt_optimization_jobs/">advanced_prompt_optimization_jobs</a><br />
 <a href="/services/bedrock/automated_reasoning_policies/">automated_reasoning_policies</a><br />
 <a href="/services/bedrock/automated_reasoning_policy_annotations/">automated_reasoning_policy_annotations</a><br />

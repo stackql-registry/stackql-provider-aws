@@ -101,6 +101,16 @@ The following fields are returned by `SELECT` queries:
     <td>The unique ID of this canary. (pattern: &lt;code&gt;^&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
+    <td><CopyableCode code="kms_key_arn" /></td>
+    <td><code>string</code></td>
+    <td>The Amazon Resource Name (ARN) of the customer-managed AWS Key Management Service (AWS KMS) key used to encrypt the canary's AWS Lambda function environment variables at rest. If you don't specify a value, the service uses an AWS-managed key. (pattern: &lt;code&gt;arn:(aws&#91;a-zA-Z-&#93;*)?:kms:&#91;a-z&#93;&#123;2,4&#125;(-&#91;a-z&#93;&#123;2,4&#125;)?-&#91;a-z&#93;+-\d&#123;1&#125;:\d&#123;12&#125;:key/&#91;\w\-\/&#93;+&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="multi_location_config" /></td>
+    <td><code>object</code></td>
+    <td>If this canary is part of a multi-location configuration, this structure contains information about the canary's location type, primary location, and replicas.</td>
+</tr>
+<tr>
     <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the canary. (pattern: &lt;code&gt;^&#91;0-9a-z_\-&#93;+$&lt;/code&gt;)</td>
@@ -310,6 +320,8 @@ engine_configs,
 execution_role_arn,
 failure_retention_period_in_days,
 id,
+kms_key_arn,
+multi_location_config,
 name,
 provisioned_resource_cleanup,
 run_config,
@@ -373,8 +385,10 @@ VpcConfig,
 ResourcesToReplicateTags,
 ProvisionedResourceCleanup,
 BrowserConfigs,
+AddReplicaLocations,
 Tags,
 ArtifactConfig,
+KmsKeyArn,
 region
 )
 SELECT 
@@ -391,8 +405,10 @@ SELECT
 '{{ ResourcesToReplicateTags }}',
 '{{ ProvisionedResourceCleanup }}',
 '{{ BrowserConfigs }}',
+'{{ AddReplicaLocations }}',
 '{{ Tags }}',
 '{{ ArtifactConfig }}',
+'{{ KmsKeyArn }}',
 '{{ region }}'
 RETURNING
 canary
@@ -468,6 +484,16 @@ canary
     - name: BrowserConfigs
       value:
         - BrowserType: "{{ BrowserType }}"
+    - name: AddReplicaLocations
+      value:
+        - Location: "{{ Location }}"
+          VpcConfig:
+            SubnetIds:
+              - "{{ SubnetIds }}"
+            SecurityGroupIds:
+              - "{{ SecurityGroupIds }}"
+            Ipv6AllowedForDualStack: {{ Ipv6AllowedForDualStack }}
+          KmsKeyArn: "{{ KmsKeyArn }}"
     - name: Tags
       value: "{{ Tags }}"
     - name: ArtifactConfig
@@ -477,6 +503,8 @@ canary
         S3Encryption:
           EncryptionMode: "{{ EncryptionMode }}"
           KmsKeyArn: "{{ KmsKeyArn }}"
+    - name: KmsKeyArn
+      value: "{{ KmsKeyArn }}"
 `}</CodeBlock>
 
 </TabItem>
@@ -512,7 +540,10 @@ ArtifactConfig = '{{ ArtifactConfig }}',
 ProvisionedResourceCleanup = '{{ ProvisionedResourceCleanup }}',
 DryRunId = '{{ DryRunId }}',
 VisualReferences = '{{ VisualReferences }}',
-BrowserConfigs = '{{ BrowserConfigs }}'
+BrowserConfigs = '{{ BrowserConfigs }}',
+AddReplicaLocations = '{{ AddReplicaLocations }}',
+RemoveReplicaLocations = '{{ RemoveReplicaLocations }}',
+KmsKeyArn = '{{ KmsKeyArn }}'
 WHERE 
 name = '{{ name }}' --required
 AND region = '{{ region }}' --required;

@@ -61,6 +61,11 @@ The following fields are returned by `SELECT` queries:
     <td>The status of sending capability for the tenant. (ENABLED, REINSTATED, DISABLED)</td>
 </tr>
 <tr>
+    <td><CopyableCode code="suppression_attributes" /></td>
+    <td><code>object</code></td>
+    <td>An object that contains the suppression list preferences for a tenant.</td>
+</tr>
+<tr>
     <td><CopyableCode code="tags" /></td>
     <td><code>array</code></td>
     <td>An array of objects that define the tags (keys and values) associated with the tenant.</td>
@@ -139,7 +144,7 @@ The following methods are available for this resource:
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>Get information about a specific tenant, including the tenant's name, ID, ARN, creation timestamp, tags, and sending status.</td>
+    <td>Get information about a specific tenant, including the tenant's name, ID, ARN, creation timestamp, tags, sending status, and suppression attributes.</td>
 </tr>
 <tr>
     <td><a href="#list_tenants"><CopyableCode code="list_tenants" /></a></td>
@@ -153,7 +158,14 @@ The following methods are available for this resource:
     <td><CopyableCode code="insert" /></td>
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-TenantName"><code>TenantName</code></a></td>
     <td></td>
-    <td>Create a tenant. Tenants are logical containers that group related SES resources together. Each tenant can have its own set of resources like email identities, configuration sets, and templates, along with reputation metrics and sending status. This helps isolate and manage email sending for different customers or business units within your Amazon SES API v2 account.</td>
+    <td>Create a tenant. Tenants are logical containers that group related SES resources together. Each tenant can have its own set of resources like email identities, configuration sets, and templates, along with reputation metrics and sending status. This helps isolate and manage email sending for different customers or business units within your Amazon SES API v2 account. You can optionally specify SuppressionAttributes to configure tenant-level suppression at creation time. When tenant-level suppression is enabled, Amazon SES maintains a separate suppression list for the tenant instead of using the account-level suppression list.</td>
+</tr>
+<tr>
+    <td><a href="#put_tenant_suppression_attributes"><CopyableCode code="put_tenant_suppression_attributes" /></a></td>
+    <td><CopyableCode code="replace" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-TenantName"><code>TenantName</code></a></td>
+    <td></td>
+    <td>Configure the suppression list preferences for a tenant. Use this operation to enable or disable tenant-level suppression, or to change the suppressed reasons for a tenant. When you set the suppression scope to TENANT, Amazon SES maintains a separate suppression list for the tenant. When you set the scope to ACCOUNT, the tenant uses the account-level suppression list.</td>
 </tr>
 <tr>
     <td><a href="#delete_tenant"><CopyableCode code="delete_tenant" /></a></td>
@@ -197,12 +209,13 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 >
 <TabItem value="get_tenant">
 
-Get information about a specific tenant, including the tenant's name, ID, ARN, creation timestamp, tags, and sending status.
+Get information about a specific tenant, including the tenant's name, ID, ARN, creation timestamp, tags, sending status, and suppression attributes.
 
 ```sql
 SELECT
 created_timestamp,
 sending_status,
+suppression_attributes,
 tags,
 tenant_arn,
 tenant_id,
@@ -241,21 +254,24 @@ WHERE region = '{{ region }}' -- required
 >
 <TabItem value="create_tenant">
 
-Create a tenant. Tenants are logical containers that group related SES resources together. Each tenant can have its own set of resources like email identities, configuration sets, and templates, along with reputation metrics and sending status. This helps isolate and manage email sending for different customers or business units within your Amazon SES API v2 account.
+Create a tenant. Tenants are logical containers that group related SES resources together. Each tenant can have its own set of resources like email identities, configuration sets, and templates, along with reputation metrics and sending status. This helps isolate and manage email sending for different customers or business units within your Amazon SES API v2 account. You can optionally specify SuppressionAttributes to configure tenant-level suppression at creation time. When tenant-level suppression is enabled, Amazon SES maintains a separate suppression list for the tenant instead of using the account-level suppression list.
 
 ```sql
 INSERT INTO aws.sesv2.tenants (
 TenantName,
 Tags,
+SuppressionAttributes,
 region
 )
 SELECT 
 '{{ TenantName }}' /* required */,
 '{{ Tags }}',
+'{{ SuppressionAttributes }}',
 '{{ region }}'
 RETURNING
 created_timestamp,
 sending_status,
+suppression_attributes,
 tags,
 tenant_arn,
 tenant_id,
@@ -279,8 +295,41 @@ tenant_name
       value:
         - Key: "{{ Key }}"
           Value: "{{ Value }}"
+    - name: SuppressionAttributes
+      description: |
+        An object that contains the suppression list preferences for a tenant.
+      value:
+        SuppressedReasons:
+          - "{{ SuppressedReasons }}"
+        SuppressionScope: "{{ SuppressionScope }}"
 `}</CodeBlock>
 
+</TabItem>
+</Tabs>
+
+
+## `REPLACE` examples
+
+<Tabs
+    defaultValue="put_tenant_suppression_attributes"
+    values={[
+        { label: 'put_tenant_suppression_attributes', value: 'put_tenant_suppression_attributes' }
+    ]}
+>
+<TabItem value="put_tenant_suppression_attributes">
+
+Configure the suppression list preferences for a tenant. Use this operation to enable or disable tenant-level suppression, or to change the suppressed reasons for a tenant. When you set the suppression scope to TENANT, Amazon SES maintains a separate suppression list for the tenant. When you set the scope to ACCOUNT, the tenant uses the account-level suppression list.
+
+```sql
+REPLACE aws.sesv2.tenants
+SET 
+TenantName = '{{ TenantName }}',
+SuppressedReasons = '{{ SuppressedReasons }}',
+SuppressionScope = '{{ SuppressionScope }}'
+WHERE 
+region = '{{ region }}' --required
+AND TenantName = '{{ TenantName }}' --required;
+```
 </TabItem>
 </Tabs>
 

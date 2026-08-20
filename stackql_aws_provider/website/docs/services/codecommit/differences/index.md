@@ -89,7 +89,7 @@ The following methods are available for this resource:
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>Returns information about the differences in a valid commit specifier (such as a branch, tag, HEAD, commit ID, or other fully qualified reference). Results can be limited to a specified path.</td>
+    <td>Returns information about the differences in a valid commit specifier (such as a branch, tag, HEAD, commit ID, or other fully qualified reference). Results can be limited to a specified path. For line-level diff details, pass the beforeBlob.blobId and afterBlob.blobId values from a Difference object to GetBlobDifferences.</td>
 </tr>
 </tbody>
 </table>
@@ -125,7 +125,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 >
 <TabItem value="get_differences">
 
-Returns information about the differences in a valid commit specifier (such as a branch, tag, HEAD, commit ID, or other fully qualified reference). Results can be limited to a specified path.
+Returns information about the differences in a valid commit specifier (such as a branch, tag, HEAD, commit ID, or other fully qualified reference). Results can be limited to a specified path. For line-level diff details, pass the beforeBlob.blobId and afterBlob.blobId values from a Difference object to GetBlobDifferences.
 
 ```sql
 SELECT

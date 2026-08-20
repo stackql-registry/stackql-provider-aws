@@ -1,0 +1,6 @@
+-- Rule 19 blob-payload write: PutObject INSERT with the raw text body
+-- supplied through the `contents` column (request transform renders it
+-- verbatim as the request body). The specimen is a compact fictitious
+-- terraform.tfstate. Text objects only.
+INSERT INTO aws.s3.objects(region, bucket, key, contents)
+SELECT '{{ global_region }}', '{{ bucket_prefix }}-{{ caller_identity.account }}', 'smoke/terraform.tfstate', '{"version": 4, "terraform_version": "1.9.8", "serial": 1, "lineage": "smoke-3f9c1a2b", "outputs": {"probe": {"value": "stackql-objects-smoke-v1", "type": "string"}}, "resources": []}'

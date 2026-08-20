@@ -410,6 +410,8 @@ replicator_state
             SaslScram:
               Mechanism: "{{ Mechanism }}"
               SecretArn: "{{ SecretArn }}"
+            MTLS:
+              SecretArn: "{{ SecretArn }}"
           EncryptionInTransit:
             EncryptionType: "{{ EncryptionType }}"
             RootCaCertificate: "{{ RootCaCertificate }}"

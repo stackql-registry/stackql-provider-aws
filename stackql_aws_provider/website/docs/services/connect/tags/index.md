@@ -79,28 +79,28 @@ The following methods are available for this resource:
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-resource_arn"><code>resource_arn</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>Lists the tags for the specified resource. For sample policies that use tags, see Amazon Connect Identity-Based Policy Examples in the Amazon Connect Administrator Guide.</td>
+    <td>Lists the tags for the specified resource. For sample policies that use tags, see Connect Customer Identity-Based Policy Examples in the Connect Customer Administrator Guide.</td>
 </tr>
 <tr>
     <td><a href="#untag_contact"><CopyableCode code="untag_contact" /></a></td>
     <td><CopyableCode code="update" /></td>
     <td><a href="#parameter-contact_id"><code>contact_id</code></a>, <a href="#parameter-instance_id"><code>instance_id</code></a>, <a href="#parameter-TagKeys"><code>TagKeys</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>Removes the specified tags from the contact resource. For more information about this API is used, see Set up granular billing for a detailed view of your Amazon Connect usage.</td>
+    <td>Removes the specified tags from the contact resource. For more information about this API is used, see Set up granular billing for a detailed view of your Connect Customer usage.</td>
 </tr>
 <tr>
     <td><a href="#tag_resource"><CopyableCode code="tag_resource" /></a></td>
     <td><CopyableCode code="update" /></td>
     <td><a href="#parameter-resource_arn"><code>resource_arn</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-tags"><code>tags</code></a></td>
     <td></td>
-    <td>Adds the specified tags to the specified resource. Some of the supported resource types are agents, routing profiles, queues, quick connects, flows, agent statuses, hours of operation, phone numbers, security profiles, and task templates. For a complete list, see Tagging resources in Amazon Connect. For sample policies that use tags, see Amazon Connect Identity-Based Policy Examples in the Amazon Connect Administrator Guide.</td>
+    <td>Adds the specified tags to the specified resource. Some of the supported resource types are agents, routing profiles, queues, quick connects, flows, agent statuses, hours of operation, phone numbers, security profiles, task templates, and custom metrics. For a complete list, see Tagging resources in Connect Customer. For sample policies that use tags, see Connect Customer Identity-Based Policy Examples in the Connect Customer Administrator Guide.</td>
 </tr>
 <tr>
     <td><a href="#tag_contact"><CopyableCode code="tag_contact" /></a></td>
     <td><CopyableCode code="update" /></td>
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-ContactId"><code>ContactId</code></a>, <a href="#parameter-InstanceId"><code>InstanceId</code></a></td>
     <td></td>
-    <td>Adds the specified tags to the contact resource. For more information about this API is used, see Set up granular billing for a detailed view of your Amazon Connect usage.</td>
+    <td>Adds the specified tags to the contact resource. For more information about this API is used, see Set up granular billing for a detailed view of your Connect Customer usage.</td>
 </tr>
 <tr>
     <td><a href="#untag_resource"><CopyableCode code="untag_resource" /></a></td>
@@ -133,12 +133,12 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-contact_id">
     <td><CopyableCode code="contact_id" /></td>
     <td><code>string</code></td>
-    <td>The identifier of the contact in this instance of Amazon Connect.</td>
+    <td>The identifier of the contact in this instance of Connect Customer.</td>
 </tr>
 <tr id="parameter-instance_id">
     <td><CopyableCode code="instance_id" /></td>
     <td><code>string</code></td>
-    <td>The identifier of the Amazon Connect instance. You can find the instance ID in the Amazon Resource Name (ARN) of the instance.</td>
+    <td>The identifier of the Connect Customer instance. You can find the instance ID in the Amazon Resource Name (ARN) of the instance.</td>
 </tr>
 <tr id="parameter-region">
     <td><CopyableCode code="region" /></td>
@@ -168,7 +168,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 >
 <TabItem value="list_tags_for_resource">
 
-Lists the tags for the specified resource. For sample policies that use tags, see Amazon Connect Identity-Based Policy Examples in the Amazon Connect Administrator Guide.
+Lists the tags for the specified resource. For sample policies that use tags, see Connect Customer Identity-Based Policy Examples in the Connect Customer Administrator Guide.
 
 ```sql
 SELECT
@@ -195,7 +195,7 @@ AND region = '{{ region }}' -- required
 >
 <TabItem value="untag_contact">
 
-Removes the specified tags from the contact resource. For more information about this API is used, see Set up granular billing for a detailed view of your Amazon Connect usage.
+Removes the specified tags from the contact resource. For more information about this API is used, see Set up granular billing for a detailed view of your Connect Customer usage.
 
 ```sql
 UPDATE aws.connect.tags
@@ -210,7 +210,7 @@ AND region = '{{ region }}' --required;
 </TabItem>
 <TabItem value="tag_resource">
 
-Adds the specified tags to the specified resource. Some of the supported resource types are agents, routing profiles, queues, quick connects, flows, agent statuses, hours of operation, phone numbers, security profiles, and task templates. For a complete list, see Tagging resources in Amazon Connect. For sample policies that use tags, see Amazon Connect Identity-Based Policy Examples in the Amazon Connect Administrator Guide.
+Adds the specified tags to the specified resource. Some of the supported resource types are agents, routing profiles, queues, quick connects, flows, agent statuses, hours of operation, phone numbers, security profiles, task templates, and custom metrics. For a complete list, see Tagging resources in Connect Customer. For sample policies that use tags, see Connect Customer Identity-Based Policy Examples in the Connect Customer Administrator Guide.
 
 ```sql
 UPDATE aws.connect.tags
@@ -224,7 +224,7 @@ AND tags = '{{ tags }}' --required;
 </TabItem>
 <TabItem value="tag_contact">
 
-Adds the specified tags to the contact resource. For more information about this API is used, see Set up granular billing for a detailed view of your Amazon Connect usage.
+Adds the specified tags to the contact resource. For more information about this API is used, see Set up granular billing for a detailed view of your Connect Customer usage.
 
 ```sql
 UPDATE aws.connect.tags

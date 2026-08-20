@@ -226,9 +226,9 @@ The following methods are available for this resource:
 <tr>
     <td><a href="#create_custom_model"><CopyableCode code="create_custom_model" /></a></td>
     <td><CopyableCode code="insert" /></td>
-    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-modelName"><code>modelName</code></a>, <a href="#parameter-modelSourceConfig"><code>modelSourceConfig</code></a></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-modelName"><code>modelName</code></a></td>
     <td></td>
-    <td>Creates a new custom model in Amazon Bedrock. After the model is active, you can use it for inference. To use the model for inference, you must purchase Provisioned Throughput for it. You can't use On-demand inference with these custom models. For more information about Provisioned Throughput, see Provisioned Throughput. The model appears in ListCustomModels with a customizationType of imported. To track the status of the new model, you use the GetCustomModel API operation. The model can be in the following states: Creating - Initial state during validation and registration Active - Model is ready for use in inference Failed - Creation process encountered an error Related APIs GetCustomModel ListCustomModels DeleteCustomModel</td>
+    <td>Creates a new custom model in Amazon Bedrock. After the model is active, you can use it for inference. You can provide the model data source in one of the following ways: customModelDataSource — Specify a SageMaker AI model package ARN. Amazon Bedrock resolves the model package to retrieve the model artifacts. This is the preferred method for new SageMaker AI training outputs. modelSourceConfig — Specify an Amazon S3 URI pointing to the Amazon-managed Amazon S3 bucket containing your model artifacts. To use the model for inference, you must purchase Provisioned Throughput for it. You can't use On-demand inference with these custom models. For more information about Provisioned Throughput, see Provisioned Throughput. The model appears in ListCustomModels with a customizationType of imported. To track the status of the new model, you use the GetCustomModel API operation. The model can be in the following states: Creating - Initial state during validation and registration Active - Model is ready for use in inference Failed - Creation process encountered an error Related APIs GetCustomModel ListCustomModels DeleteCustomModel</td>
 </tr>
 <tr>
     <td><a href="#delete_custom_model"><CopyableCode code="delete_custom_model" /></a></td>
@@ -403,12 +403,13 @@ AND modelStatus = '{{ modelStatus }}'
 >
 <TabItem value="create_custom_model">
 
-Creates a new custom model in Amazon Bedrock. After the model is active, you can use it for inference. To use the model for inference, you must purchase Provisioned Throughput for it. You can't use On-demand inference with these custom models. For more information about Provisioned Throughput, see Provisioned Throughput. The model appears in ListCustomModels with a customizationType of imported. To track the status of the new model, you use the GetCustomModel API operation. The model can be in the following states: Creating - Initial state during validation and registration Active - Model is ready for use in inference Failed - Creation process encountered an error Related APIs GetCustomModel ListCustomModels DeleteCustomModel
+Creates a new custom model in Amazon Bedrock. After the model is active, you can use it for inference. You can provide the model data source in one of the following ways: customModelDataSource — Specify a SageMaker AI model package ARN. Amazon Bedrock resolves the model package to retrieve the model artifacts. This is the preferred method for new SageMaker AI training outputs. modelSourceConfig — Specify an Amazon S3 URI pointing to the Amazon-managed Amazon S3 bucket containing your model artifacts. To use the model for inference, you must purchase Provisioned Throughput for it. You can't use On-demand inference with these custom models. For more information about Provisioned Throughput, see Provisioned Throughput. The model appears in ListCustomModels with a customizationType of imported. To track the status of the new model, you use the GetCustomModel API operation. The model can be in the following states: Creating - Initial state during validation and registration Active - Model is ready for use in inference Failed - Creation process encountered an error Related APIs GetCustomModel ListCustomModels DeleteCustomModel
 
 ```sql
 INSERT INTO aws.bedrock.custom_models (
 modelName,
 modelSourceConfig,
+customModelDataSource,
 modelKmsKeyArn,
 roleArn,
 modelTags,
@@ -417,7 +418,8 @@ region
 )
 SELECT 
 '{{ modelName }}' /* required */,
-'{{ modelSourceConfig }}' /* required */,
+'{{ modelSourceConfig }}',
+'{{ customModelDataSource }}',
 '{{ modelKmsKeyArn }}',
 '{{ roleArn }}',
 '{{ modelTags }}',
@@ -444,6 +446,12 @@ model_arn
       value:
         s3DataSource:
           s3Uri: "{{ s3Uri }}"
+    - name: customModelDataSource
+      description: |
+        The data source for a custom model. This is a union type that supports the following member: modelPackageArnDataSource — Specifies a SageMaker AI model package as the data source.
+      value:
+        modelPackageArnDataSource:
+          modelPackageArn: "{{ modelPackageArn }}"
     - name: modelKmsKeyArn
       value: "{{ modelKmsKeyArn }}"
     - name: roleArn

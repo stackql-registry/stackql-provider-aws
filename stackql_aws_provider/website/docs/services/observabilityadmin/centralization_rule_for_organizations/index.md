@@ -94,6 +94,16 @@ The following fields are returned by `SELECT` queries:
     <td><code>string</code></td>
     <td>The name of the organization centralization rule. (pattern: &lt;code&gt;&#91;0-9A-Za-z-_.#/&#93;+&lt;/code&gt;)</td>
 </tr>
+<tr>
+    <td><CopyableCode code="tag_propagation_failure_reason" /></td>
+    <td><code>string</code></td>
+    <td>The reason tag propagation is unhealthy for this rule. Only present when TagPropagationStatus is Unhealthy. (RoleNotAssumable, RoleLacksPermissions)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="tag_propagation_status" /></td>
+    <td><code>string</code></td>
+    <td>The health status of tag propagation for this rule. This status is independent of the overall RuleHealth for log delivery. Returns Healthy when the most recent tag-propagation attempt succeeded, or Unhealthy when the most recent attempt failed. (Healthy, Unhealthy)</td>
+</tr>
 </tbody>
 </table>
 </TabItem>
@@ -188,7 +198,9 @@ failure_reason,
 last_update_time_stamp,
 rule_arn,
 rule_health,
-rule_name
+rule_name,
+tag_propagation_failure_reason,
+tag_propagation_status
 FROM aws.observabilityadmin.centralization_rule_for_organizations
 WHERE region = '{{ region }}' -- required
 ;
@@ -249,6 +261,8 @@ rule_arn
             LogGroupSelectionCriteria: "{{ LogGroupSelectionCriteria }}"
             DataSourceSelectionCriteria: "{{ DataSourceSelectionCriteria }}"
             EncryptedLogGroupStrategy: "{{ EncryptedLogGroupStrategy }}"
+          SourceMetricsConfiguration:
+            MetricsSelectionCriteria: "{{ MetricsSelectionCriteria }}"
         Destination:
           Region: "{{ Region }}"
           Account: "{{ Account }}"
@@ -257,11 +271,18 @@ rule_arn
               EncryptionStrategy: "{{ EncryptionStrategy }}"
               KmsKeyArn: "{{ KmsKeyArn }}"
               EncryptionConflictResolutionStrategy: "{{ EncryptionConflictResolutionStrategy }}"
+              EncryptionScope: "{{ EncryptionScope }}"
             BackupConfiguration:
               Region: "{{ Region }}"
               KmsKeyArn: "{{ KmsKeyArn }}"
             LogGroupNameConfiguration:
               LogGroupNamePattern: "{{ LogGroupNamePattern }}"
+            TagPropagationConfiguration:
+              DestinationRoleArn: "{{ DestinationRoleArn }}"
+              TagConflictResolutionStrategy: "{{ TagConflictResolutionStrategy }}"
+          DestinationMetricsConfiguration:
+            BackupConfiguration:
+              Region: "{{ Region }}"
     - name: Tags
       value: "{{ Tags }}"
 `}</CodeBlock>

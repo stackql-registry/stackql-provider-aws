@@ -82,7 +82,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="scan_result_status" /></td>
     <td><code>string</code></td>
-    <td>The scan result status for the scan jobs included in this summary. Valid values: THREATS_FOUND | NO_THREATS_FOUND. (NO_THREATS_FOUND, THREATS_FOUND)</td>
+    <td>The scan result status for the scan jobs included in this summary. Valid values: THREATS_FOUND | NO_THREATS_FOUND. (NO_THREATS_FOUND, THREATS_FOUND, UNKNOWN)</td>
 </tr>
 <tr>
     <td><CopyableCode code="start_time" /></td>

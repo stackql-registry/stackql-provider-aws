@@ -139,8 +139,8 @@ The following methods are available for this resource:
 <tr>
     <td><a href="#create_capacity_reservation_fleet"><CopyableCode code="create_capacity_reservation_fleet" /></a></td>
     <td><CopyableCode code="insert" /></td>
-    <td><a href="#parameter-InstanceTypeSpecification"><code>InstanceTypeSpecification</code></a>, <a href="#parameter-TotalTargetCapacity"><code>TotalTargetCapacity</code></a>, <a href="#parameter-region"><code>region</code></a></td>
-    <td><a href="#parameter-AllocationStrategy"><code>AllocationStrategy</code></a>, <a href="#parameter-ClientToken"><code>ClientToken</code></a>, <a href="#parameter-Tenancy"><code>Tenancy</code></a>, <a href="#parameter-EndDate"><code>EndDate</code></a>, <a href="#parameter-InstanceMatchCriteria"><code>InstanceMatchCriteria</code></a>, <a href="#parameter-TagSpecification"><code>TagSpecification</code></a>, <a href="#parameter-DryRun"><code>DryRun</code></a></td>
+    <td><a href="#parameter-TotalTargetCapacity"><code>TotalTargetCapacity</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td><a href="#parameter-AllocationStrategy"><code>AllocationStrategy</code></a>, <a href="#parameter-ClientToken"><code>ClientToken</code></a>, <a href="#parameter-InstanceTypeSpecification"><code>InstanceTypeSpecification</code></a>, <a href="#parameter-Tenancy"><code>Tenancy</code></a>, <a href="#parameter-EndDate"><code>EndDate</code></a>, <a href="#parameter-InstanceMatchCriteria"><code>InstanceMatchCriteria</code></a>, <a href="#parameter-TagSpecification"><code>TagSpecification</code></a>, <a href="#parameter-DryRun"><code>DryRun</code></a></td>
     <td>Creates a Capacity Reservation Fleet. For more information, see Create a Capacity Reservation Fleet in the Amazon EC2 User Guide.</td>
 </tr>
 <tr>
@@ -177,11 +177,6 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     <td><CopyableCode code="CapacityReservationFleetId" /></td>
     <td><code>array</code></td>
     <td>The IDs of the Capacity Reservation Fleets to cancel.</td>
-</tr>
-<tr id="parameter-InstanceTypeSpecification">
-    <td><CopyableCode code="InstanceTypeSpecification" /></td>
-    <td><code>array</code></td>
-    <td>Information about the instance types for which to reserve the capacity.</td>
 </tr>
 <tr id="parameter-TotalTargetCapacity">
     <td><CopyableCode code="TotalTargetCapacity" /></td>
@@ -227,6 +222,11 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     <td><CopyableCode code="InstanceMatchCriteria" /></td>
     <td><code>string</code></td>
     <td>Indicates the type of instance launches that the Capacity Reservation Fleet accepts. All Capacity Reservations in the Fleet inherit this instance matching criteria. Currently, Capacity Reservation Fleets support open instance matching criteria only. This means that instances that have matching attributes (instance type, platform, and Availability Zone) run in the Capacity Reservations automatically. Instances do not need to explicitly target a Capacity Reservation Fleet to use its reserved capacity.</td>
+</tr>
+<tr id="parameter-InstanceTypeSpecification">
+    <td><CopyableCode code="InstanceTypeSpecification" /></td>
+    <td><code>array</code></td>
+    <td>Information about the instance types for which to reserve the capacity.</td>
 </tr>
 <tr id="parameter-MaxResults">
     <td><CopyableCode code="MaxResults" /></td>
@@ -315,11 +315,11 @@ Creates a Capacity Reservation Fleet. For more information, see Create a Capacit
 
 ```sql
 INSERT INTO aws.ec2.capacity_reservation_fleets (
-InstanceTypeSpecification,
 TotalTargetCapacity,
 region,
 AllocationStrategy,
 ClientToken,
+InstanceTypeSpecification,
 Tenancy,
 EndDate,
 InstanceMatchCriteria,
@@ -327,11 +327,11 @@ TagSpecification,
 DryRun
 )
 SELECT 
-'{{ InstanceTypeSpecification }}',
 '{{ TotalTargetCapacity }}',
 '{{ region }}',
 '{{ AllocationStrategy }}',
 '{{ ClientToken }}',
+'{{ InstanceTypeSpecification }}',
 '{{ Tenancy }}',
 '{{ EndDate }}',
 '{{ InstanceMatchCriteria }}',
@@ -357,9 +357,6 @@ total_target_capacity
 <CodeBlock language="yaml">{`# Description fields are for documentation purposes
 - name: capacity_reservation_fleets
   props:
-    - name: InstanceTypeSpecification
-      value: "{{ InstanceTypeSpecification }}"
-      description: Required parameter for the capacity_reservation_fleets resource.
     - name: TotalTargetCapacity
       value: {{ TotalTargetCapacity }}
       description: Required parameter for the capacity_reservation_fleets resource.
@@ -374,6 +371,10 @@ total_target_capacity
       value: "{{ ClientToken }}"
       description: Unique, case-sensitive identifier that you provide to ensure the idempotency of the request. For more information, see Ensure Idempotency.
       description: Unique, case-sensitive identifier that you provide to ensure the idempotency of the request. For more information, see Ensure Idempotency.
+    - name: InstanceTypeSpecification
+      value: "{{ InstanceTypeSpecification }}"
+      description: Information about the instance types for which to reserve the capacity.
+      description: Information about the instance types for which to reserve the capacity.
     - name: Tenancy
       value: "{{ Tenancy }}"
       description: Indicates the tenancy of the Capacity Reservation Fleet. All Capacity Reservations in the Fleet inherit this tenancy. The Capacity Reservation Fleet can have one of the following tenancy settings: default - The Capacity Reservation Fleet is created on hardware that is shared with other Amazon Web Services accounts. dedicated - The Capacity Reservations are created on single-tenant hardware that is dedicated to a single Amazon Web Services account.

@@ -146,16 +146,16 @@ The following methods are available for this resource:
 <tr>
     <td><a href="#create_lookup_table"><CopyableCode code="create_lookup_table" /></a></td>
     <td><CopyableCode code="insert" /></td>
-    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-lookupTableName"><code>lookupTableName</code></a>, <a href="#parameter-tableBody"><code>tableBody</code></a></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-lookupTableName"><code>lookupTableName</code></a></td>
     <td></td>
-    <td>Creates a lookup table by uploading CSV data. You can use lookup tables to enrich log data in CloudWatch Logs Insights queries with reference data such as user details, application names, or error descriptions. The table name must be unique within your account and Region. The CSV content must include a header row with column names, use UTF-8 encoding, and not exceed 10 MB.</td>
+    <td>Creates a lookup table by uploading CSV data or from CloudWatch Logs query results. You can use lookup tables to enrich log data in CloudWatch Logs queries with reference data such as user details, application names, or error descriptions. The table name must be unique within your account and Region. You must specify either tableBody or queryId, but not both. If you use tableBody, the CSV content must include a header row with column names, use UTF-8 encoding, and not exceed 10 MB.</td>
 </tr>
 <tr>
     <td><a href="#update_lookup_table"><CopyableCode code="update_lookup_table" /></a></td>
     <td><CopyableCode code="update" /></td>
-    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-lookupTableArn"><code>lookupTableArn</code></a>, <a href="#parameter-tableBody"><code>tableBody</code></a></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-lookupTableArn"><code>lookupTableArn</code></a></td>
     <td></td>
-    <td>Updates an existing lookup table by replacing all of its CSV content. After the update completes, queries that use this table will use the new data. This is a full replacement operation. All existing content is replaced with the new CSV data.</td>
+    <td>Updates an existing lookup table by replacing all of its content with new CSV data or CloudWatch Logs query results. After the update completes, queries that use this table use the new data. This is a full replacement operation. All existing content is replaced. You must specify either tableBody or queryId, but not both.</td>
 </tr>
 <tr>
     <td><a href="#delete_lookup_table"><CopyableCode code="delete_lookup_table" /></a></td>
@@ -242,13 +242,14 @@ WHERE region = '{{ region }}' -- required
 >
 <TabItem value="create_lookup_table">
 
-Creates a lookup table by uploading CSV data. You can use lookup tables to enrich log data in CloudWatch Logs Insights queries with reference data such as user details, application names, or error descriptions. The table name must be unique within your account and Region. The CSV content must include a header row with column names, use UTF-8 encoding, and not exceed 10 MB.
+Creates a lookup table by uploading CSV data or from CloudWatch Logs query results. You can use lookup tables to enrich log data in CloudWatch Logs queries with reference data such as user details, application names, or error descriptions. The table name must be unique within your account and Region. You must specify either tableBody or queryId, but not both. If you use tableBody, the CSV content must include a header row with column names, use UTF-8 encoding, and not exceed 10 MB.
 
 ```sql
 INSERT INTO aws.logs.lookup_tables (
 lookupTableName,
 description,
 tableBody,
+queryId,
 kmsKeyId,
 tags,
 region
@@ -256,7 +257,8 @@ region
 SELECT 
 '{{ lookupTableName }}' /* required */,
 '{{ description }}',
-'{{ tableBody }}' /* required */,
+'{{ tableBody }}',
+'{{ queryId }}',
 '{{ kmsKeyId }}',
 '{{ tags }}',
 '{{ region }}'
@@ -285,7 +287,11 @@ lookup_table_arn
     - name: tableBody
       value: "{{ tableBody }}"
       description: |
-        The CSV content of the lookup table. The first row must be a header row with column names. The content must use UTF-8 encoding and not exceed 10 MB.
+        The CSV content of the lookup table. The first row must be a header row with column names. The content must use UTF-8 encoding and not exceed 10 MB. You must specify either tableBody or queryId, but not both.
+    - name: queryId
+      value: "{{ queryId }}"
+      description: |
+        The ID of a completed or cancelled CloudWatch Logs query whose results populate the lookup table. A cancelled query populates the table with the partial results that were available when the query was stopped. You must specify either tableBody or queryId, but not both.
     - name: kmsKeyId
       value: "{{ kmsKeyId }}"
       description: |
@@ -310,7 +316,7 @@ lookup_table_arn
 >
 <TabItem value="update_lookup_table">
 
-Updates an existing lookup table by replacing all of its CSV content. After the update completes, queries that use this table will use the new data. This is a full replacement operation. All existing content is replaced with the new CSV data.
+Updates an existing lookup table by replacing all of its content with new CSV data or CloudWatch Logs query results. After the update completes, queries that use this table use the new data. This is a full replacement operation. All existing content is replaced. You must specify either tableBody or queryId, but not both.
 
 ```sql
 UPDATE aws.logs.lookup_tables
@@ -318,11 +324,11 @@ SET
 lookupTableArn = '{{ lookupTableArn }}',
 description = '{{ description }}',
 tableBody = '{{ tableBody }}',
+queryId = '{{ queryId }}',
 kmsKeyId = '{{ kmsKeyId }}'
 WHERE 
 region = '{{ region }}' --required
 AND lookupTableArn = '{{ lookupTableArn }}' --required
-AND tableBody = '{{ tableBody }}' --required
 RETURNING
 last_updated_time,
 lookup_table_arn;

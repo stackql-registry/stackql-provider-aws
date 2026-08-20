@@ -53,12 +53,12 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="build_arn" /></td>
     <td><code>string</code></td>
-    <td>The Amazon Resource Name (ARN) that is assigned to a Amazon GameLift Servers build resource and uniquely identifies it. ARNs are unique across all Regions. Format is arn:aws:gamelift:<code>&lt;region&gt;</code>::build/build-a1234567-b8c9-0d1e-2fa3-b45c6d7e8912. In a GameLift build ARN, the resource ID matches the BuildId value. (pattern: &lt;code&gt;^arn:.*:build\/build-\S+&lt;/code&gt;)</td>
+    <td>The Amazon Resource Name (ARN) that is assigned to a Amazon GameLift Servers build resource and uniquely identifies it. ARNs are unique across all Regions. Format is arn:aws:gamelift:<code>&lt;region&gt;</code>::build/build-a1234567-b8c9-0d1e-2fa3-b45c6d7e8912. In a GameLift build ARN, the resource ID matches the BuildId value. (pattern: &lt;code&gt;^arn:.*:build\/build-\S+$&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="build_id" /></td>
     <td><code>string</code></td>
-    <td>A unique identifier for the build. (pattern: &lt;code&gt;^build-\S+&lt;/code&gt;)</td>
+    <td>A unique identifier for the build. (pattern: &lt;code&gt;^build-\S+$&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="creation_time" /></td>
@@ -112,12 +112,12 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="build_arn" /></td>
     <td><code>string</code></td>
-    <td>The Amazon Resource Name (ARN) that is assigned to a Amazon GameLift Servers build resource and uniquely identifies it. ARNs are unique across all Regions. Format is arn:aws:gamelift:<code>&lt;region&gt;</code>::build/build-a1234567-b8c9-0d1e-2fa3-b45c6d7e8912. In a GameLift build ARN, the resource ID matches the BuildId value. (pattern: &lt;code&gt;^arn:.*:build\/build-\S+&lt;/code&gt;)</td>
+    <td>The Amazon Resource Name (ARN) that is assigned to a Amazon GameLift Servers build resource and uniquely identifies it. ARNs are unique across all Regions. Format is arn:aws:gamelift:<code>&lt;region&gt;</code>::build/build-a1234567-b8c9-0d1e-2fa3-b45c6d7e8912. In a GameLift build ARN, the resource ID matches the BuildId value. (pattern: &lt;code&gt;^arn:.*:build\/build-\S+$&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="build_id" /></td>
     <td><code>string</code></td>
-    <td>A unique identifier for the build. (pattern: &lt;code&gt;^build-\S+&lt;/code&gt;)</td>
+    <td>A unique identifier for the build. (pattern: &lt;code&gt;^build-\S+$&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="creation_time" /></td>

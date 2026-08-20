@@ -18,7 +18,7 @@ bedrock_agentcore_control service documentation.
 
 :::info[Service Summary]
 
-total resources: __34__  
+total resources: __42__  
 
 :::
 
@@ -27,23 +27,31 @@ total resources: __34__
 <div class="providerDocColumn">
 <a href="/services/bedrock_agentcore_control/agent_runtime_endpoints/">agent_runtime_endpoints</a><br />
 <a href="/services/bedrock_agentcore_control/agent_runtime_versions/">agent_runtime_versions</a><br />
+<a href="/services/bedrock_agentcore_control/agent_runtime_versions_by_capacity_providers/">agent_runtime_versions_by_capacity_providers</a><br />
 <a href="/services/bedrock_agentcore_control/agent_runtimes/">agent_runtimes</a><br />
 <a href="/services/bedrock_agentcore_control/api_key_credential_providers/">api_key_credential_providers</a><br />
 <a href="/services/bedrock_agentcore_control/browser_profiles/">browser_profiles</a><br />
 <a href="/services/bedrock_agentcore_control/browsers/">browsers</a><br />
+<a href="/services/bedrock_agentcore_control/capacity_providers/">capacity_providers</a><br />
 <a href="/services/bedrock_agentcore_control/code_interpreters/">code_interpreters</a><br />
 <a href="/services/bedrock_agentcore_control/configuration_bundle_versions/">configuration_bundle_versions</a><br />
 <a href="/services/bedrock_agentcore_control/configuration_bundles/">configuration_bundles</a><br />
+<a href="/services/bedrock_agentcore_control/dataset_examples/">dataset_examples</a><br />
+<a href="/services/bedrock_agentcore_control/dataset_versions/">dataset_versions</a><br />
+<a href="/services/bedrock_agentcore_control/datasets/">datasets</a><br />
 <a href="/services/bedrock_agentcore_control/evaluators/">evaluators</a><br />
+<a href="/services/bedrock_agentcore_control/gateway_rate_limits/">gateway_rate_limits</a><br />
 <a href="/services/bedrock_agentcore_control/gateway_rules/">gateway_rules</a><br />
 <a href="/services/bedrock_agentcore_control/gateway_targets/">gateway_targets</a><br />
 <a href="/services/bedrock_agentcore_control/gateways/">gateways</a><br />
 <a href="/services/bedrock_agentcore_control/harness/">harness</a><br />
-<a href="/services/bedrock_agentcore_control/harnesses/">harnesses</a><br />
-<a href="/services/bedrock_agentcore_control/memories/">memories</a><br />
-<a href="/services/bedrock_agentcore_control/oauth2_credential_providers/">oauth2_credential_providers</a>
+<a href="/services/bedrock_agentcore_control/harness_endpoints/">harness_endpoints</a>
 </div>
 <div class="providerDocColumn">
+<a href="/services/bedrock_agentcore_control/harness_versions/">harness_versions</a><br />
+<a href="/services/bedrock_agentcore_control/harnesses/">harnesses</a><br />
+<a href="/services/bedrock_agentcore_control/memories/">memories</a><br />
+<a href="/services/bedrock_agentcore_control/oauth2_credential_providers/">oauth2_credential_providers</a><br />
 <a href="/services/bedrock_agentcore_control/online_evaluation_configs/">online_evaluation_configs</a><br />
 <a href="/services/bedrock_agentcore_control/payment_connectors/">payment_connectors</a><br />
 <a href="/services/bedrock_agentcore_control/payment_credential_providers/">payment_credential_providers</a><br />

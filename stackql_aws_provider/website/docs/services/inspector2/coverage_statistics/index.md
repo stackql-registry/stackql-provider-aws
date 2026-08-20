@@ -57,7 +57,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="group_key" /></td>
     <td><code>string</code></td>
-    <td>The key associated with this group (SCAN_STATUS_CODE, SCAN_STATUS_REASON, ACCOUNT_ID, RESOURCE_TYPE, ECR_REPOSITORY_NAME)</td>
+    <td>The key associated with this group (SCAN_STATUS_CODE, SCAN_STATUS_REASON, ACCOUNT_ID, RESOURCE_TYPE, ECR_REPOSITORY_NAME, PROVIDER, PROVIDER_ACCOUNT_ID, PROVIDER_REGION, PROVIDER_ORG_ID)</td>
 </tr>
 </tbody>
 </table>

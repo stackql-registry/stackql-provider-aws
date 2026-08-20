@@ -60,6 +60,16 @@ The following fields are returned by `SELECT` queries:
     <td>The Kubernetes version for the cluster.</td>
 </tr>
 <tr>
+    <td><CopyableCode code="control_plane_component_config" /></td>
+    <td><code>object</code></td>
+    <td>The default control plane component configuration and constraints for this Kubernetes version.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="control_plane_scaling_tiers" /></td>
+    <td><code>array</code></td>
+    <td>The available provisioned control plane scaling tiers and their capabilities for this Kubernetes version.</td>
+</tr>
+<tr>
     <td><CopyableCode code="default_platform_version" /></td>
     <td><code>string</code></td>
     <td>Default platform version for this Kubernetes version.</td>
@@ -218,6 +228,8 @@ Lists available Kubernetes versions for Amazon EKS clusters.
 SELECT
 cluster_type,
 cluster_version,
+control_plane_component_config,
+control_plane_scaling_tiers,
 default_platform_version,
 default_version,
 end_of_extended_support_date,
@@ -259,7 +271,8 @@ UPDATE aws.eks.cluster_versions
 SET 
 version = '{{ version }}',
 clientRequestToken = '{{ clientRequestToken }}',
-force = {{ force }}
+force = {{ force }},
+rollbackConfig = '{{ rollbackConfig }}'
 WHERE 
 name = '{{ name }}' --required
 AND region = '{{ region }}' --required

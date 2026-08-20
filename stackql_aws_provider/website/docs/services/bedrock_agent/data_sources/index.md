@@ -93,12 +93,12 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="server_side_encryption_configuration" /></td>
     <td><code>object</code></td>
-    <td>Contains the configuration for server-side encryption.</td>
+    <td>Contains the configuration for server-side encryption for your managed knowledge base.</td>
 </tr>
 <tr>
     <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
-    <td>The status of the data source. The following statuses are possible: Available – The data source has been created and is ready for ingestion into the knowledge base. Deleting – The data source is being deleted. (AVAILABLE, DELETING, DELETE_UNSUCCESSFUL)</td>
+    <td>The status of the data source. The following statuses are possible: Available – The data source has been created and is ready for ingestion into the knowledge base. Deleting – The data source is being deleted. (AVAILABLE, DELETING, DELETE_UNSUCCESSFUL, CREATING, UPDATING, FAILED)</td>
 </tr>
 <tr>
     <td><CopyableCode code="updated_at" /></td>
@@ -147,7 +147,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
-    <td>The status of the data source. (AVAILABLE, DELETING, DELETE_UNSUCCESSFUL)</td>
+    <td>The status of the data source. (AVAILABLE, DELETING, DELETE_UNSUCCESSFUL, CREATING, UPDATING, FAILED)</td>
 </tr>
 <tr>
     <td><CopyableCode code="updated_at" /></td>
@@ -360,6 +360,18 @@ data_source
         The connection configuration for the data source.
       value:
         type_: "{{ type_ }}"
+        managedKnowledgeBaseConnectorConfiguration:
+          deletionProtectionConfiguration:
+            deletionProtectionStatus: "{{ deletionProtectionStatus }}"
+            deletionProtectionThreshold: {{ deletionProtectionThreshold }}
+          mediaExtractionConfiguration:
+            imageExtractionConfiguration:
+              imageExtractionStatus: "{{ imageExtractionStatus }}"
+            audioExtractionConfiguration:
+              audioExtractionStatus: "{{ audioExtractionStatus }}"
+            videoExtractionConfiguration:
+              videoExtractionStatus: "{{ videoExtractionStatus }}"
+          connectorParameters: "{{ connectorParameters }}"
         s3Configuration:
           bucketArn: "{{ bucketArn }}"
           inclusionPrefixes:
@@ -421,7 +433,7 @@ data_source
       valid_values: ['RETAIN', 'DELETE']
     - name: serverSideEncryptionConfiguration
       description: |
-        Contains the configuration for server-side encryption.
+        Contains the configuration for server-side encryption for your managed knowledge base.
       value:
         kmsKeyArn: "{{ kmsKeyArn }}"
     - name: vectorIngestionConfiguration

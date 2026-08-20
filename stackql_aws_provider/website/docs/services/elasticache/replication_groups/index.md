@@ -57,7 +57,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="at_rest_encryption_enabled" /></td>
     <td><code>boolean</code></td>
-    <td>A flag that enables encryption at-rest when set to true. You cannot modify the value of AtRestEncryptionEnabled after the cluster is created. To enable encryption at-rest on a cluster you must set AtRestEncryptionEnabled to true when you create a cluster. Required: Only available when creating a replication group in an Amazon VPC using Redis OSS version 3.2.6, 4.x or later. Default: false</td>
+    <td>A flag that enables encryption at-rest on the cluster when set to true. In some cases, encryption at-rest may be enabled even when this value is false. Use StorageEncryptionType to view the effective encryption state of a cluster. You cannot modify the value of AtRestEncryptionEnabled after the cluster is created. Default: true when using Valkey, false when using Redis OSS</td>
 </tr>
 <tr>
     <td><CopyableCode code="auth_token_enabled" /></td>
@@ -108,6 +108,16 @@ The following fields are returned by `SELECT` queries:
     <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The user supplied description of the replication group.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="durability" /></td>
+    <td><code>string</code></td>
+    <td>The durability setting of the replication group. For more information, see Durability.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="effective_durability" /></td>
+    <td><code>string</code></td>
+    <td>The effective durability of the replication group. When Durability is set to default, the service resolves the actual durability based on the engine version, cluster mode, and other parameters. This field reflects the resolved value. For more information, see Configuring Durability.</td>
 </tr>
 <tr>
     <td><CopyableCode code="engine" /></td>
@@ -195,6 +205,11 @@ The following fields are returned by `SELECT` queries:
     <td>The current state of this replication group - creating, available, modifying, deleting, create-failed, snapshotting.</td>
 </tr>
 <tr>
+    <td><CopyableCode code="storage_encryption_type" /></td>
+    <td><code>string</code></td>
+    <td>Indicates the type of encryption for data stored at rest in the replication group. The value is none if at-rest encryption is not enabled, sse-elasticache if an ElastiCache service-managed key is used, or sse-kms if a customer-managed KMS key is used.</td>
+</tr>
+<tr>
     <td><CopyableCode code="transit_encryption_enabled" /></td>
     <td><code>boolean</code></td>
     <td>A flag that enables in-transit encryption when set to true. Required: Only available when creating a replication group in an Amazon VPC using Redis OSS version 3.2.6, 4.x or later. Default: false</td>
@@ -240,7 +255,7 @@ The following methods are available for this resource:
     <td><a href="#create_replication_group"><CopyableCode code="create_replication_group" /></a></td>
     <td><CopyableCode code="insert" /></td>
     <td><a href="#parameter-ReplicationGroupId"><code>ReplicationGroupId</code></a>, <a href="#parameter-ReplicationGroupDescription"><code>ReplicationGroupDescription</code></a>, <a href="#parameter-region"><code>region</code></a></td>
-    <td><a href="#parameter-GlobalReplicationGroupId"><code>GlobalReplicationGroupId</code></a>, <a href="#parameter-PrimaryClusterId"><code>PrimaryClusterId</code></a>, <a href="#parameter-AutomaticFailoverEnabled"><code>AutomaticFailoverEnabled</code></a>, <a href="#parameter-MultiAZEnabled"><code>MultiAZEnabled</code></a>, <a href="#parameter-NumCacheClusters"><code>NumCacheClusters</code></a>, <a href="#parameter-PreferredCacheClusterAZs"><code>PreferredCacheClusterAZs</code></a>, <a href="#parameter-NumNodeGroups"><code>NumNodeGroups</code></a>, <a href="#parameter-ReplicasPerNodeGroup"><code>ReplicasPerNodeGroup</code></a>, <a href="#parameter-NodeGroupConfiguration"><code>NodeGroupConfiguration</code></a>, <a href="#parameter-CacheNodeType"><code>CacheNodeType</code></a>, <a href="#parameter-Engine"><code>Engine</code></a>, <a href="#parameter-EngineVersion"><code>EngineVersion</code></a>, <a href="#parameter-CacheParameterGroupName"><code>CacheParameterGroupName</code></a>, <a href="#parameter-CacheSubnetGroupName"><code>CacheSubnetGroupName</code></a>, <a href="#parameter-CacheSecurityGroupNames"><code>CacheSecurityGroupNames</code></a>, <a href="#parameter-SecurityGroupIds"><code>SecurityGroupIds</code></a>, <a href="#parameter-Tags"><code>Tags</code></a>, <a href="#parameter-SnapshotArns"><code>SnapshotArns</code></a>, <a href="#parameter-SnapshotName"><code>SnapshotName</code></a>, <a href="#parameter-PreferredMaintenanceWindow"><code>PreferredMaintenanceWindow</code></a>, <a href="#parameter-Port"><code>Port</code></a>, <a href="#parameter-NotificationTopicArn"><code>NotificationTopicArn</code></a>, <a href="#parameter-AutoMinorVersionUpgrade"><code>AutoMinorVersionUpgrade</code></a>, <a href="#parameter-SnapshotRetentionLimit"><code>SnapshotRetentionLimit</code></a>, <a href="#parameter-SnapshotWindow"><code>SnapshotWindow</code></a>, <a href="#parameter-AuthToken"><code>AuthToken</code></a>, <a href="#parameter-TransitEncryptionEnabled"><code>TransitEncryptionEnabled</code></a>, <a href="#parameter-AtRestEncryptionEnabled"><code>AtRestEncryptionEnabled</code></a>, <a href="#parameter-KmsKeyId"><code>KmsKeyId</code></a>, <a href="#parameter-UserGroupIds"><code>UserGroupIds</code></a>, <a href="#parameter-LogDeliveryConfigurations"><code>LogDeliveryConfigurations</code></a>, <a href="#parameter-DataTieringEnabled"><code>DataTieringEnabled</code></a>, <a href="#parameter-NetworkType"><code>NetworkType</code></a>, <a href="#parameter-IpDiscovery"><code>IpDiscovery</code></a>, <a href="#parameter-TransitEncryptionMode"><code>TransitEncryptionMode</code></a>, <a href="#parameter-ClusterMode"><code>ClusterMode</code></a>, <a href="#parameter-ServerlessCacheSnapshotName"><code>ServerlessCacheSnapshotName</code></a></td>
+    <td><a href="#parameter-GlobalReplicationGroupId"><code>GlobalReplicationGroupId</code></a>, <a href="#parameter-PrimaryClusterId"><code>PrimaryClusterId</code></a>, <a href="#parameter-AutomaticFailoverEnabled"><code>AutomaticFailoverEnabled</code></a>, <a href="#parameter-MultiAZEnabled"><code>MultiAZEnabled</code></a>, <a href="#parameter-NumCacheClusters"><code>NumCacheClusters</code></a>, <a href="#parameter-PreferredCacheClusterAZs"><code>PreferredCacheClusterAZs</code></a>, <a href="#parameter-NumNodeGroups"><code>NumNodeGroups</code></a>, <a href="#parameter-ReplicasPerNodeGroup"><code>ReplicasPerNodeGroup</code></a>, <a href="#parameter-NodeGroupConfiguration"><code>NodeGroupConfiguration</code></a>, <a href="#parameter-CacheNodeType"><code>CacheNodeType</code></a>, <a href="#parameter-Engine"><code>Engine</code></a>, <a href="#parameter-EngineVersion"><code>EngineVersion</code></a>, <a href="#parameter-CacheParameterGroupName"><code>CacheParameterGroupName</code></a>, <a href="#parameter-CacheSubnetGroupName"><code>CacheSubnetGroupName</code></a>, <a href="#parameter-CacheSecurityGroupNames"><code>CacheSecurityGroupNames</code></a>, <a href="#parameter-SecurityGroupIds"><code>SecurityGroupIds</code></a>, <a href="#parameter-Tags"><code>Tags</code></a>, <a href="#parameter-SnapshotArns"><code>SnapshotArns</code></a>, <a href="#parameter-SnapshotName"><code>SnapshotName</code></a>, <a href="#parameter-PreferredMaintenanceWindow"><code>PreferredMaintenanceWindow</code></a>, <a href="#parameter-Port"><code>Port</code></a>, <a href="#parameter-NotificationTopicArn"><code>NotificationTopicArn</code></a>, <a href="#parameter-AutoMinorVersionUpgrade"><code>AutoMinorVersionUpgrade</code></a>, <a href="#parameter-SnapshotRetentionLimit"><code>SnapshotRetentionLimit</code></a>, <a href="#parameter-SnapshotWindow"><code>SnapshotWindow</code></a>, <a href="#parameter-AuthToken"><code>AuthToken</code></a>, <a href="#parameter-TransitEncryptionEnabled"><code>TransitEncryptionEnabled</code></a>, <a href="#parameter-AtRestEncryptionEnabled"><code>AtRestEncryptionEnabled</code></a>, <a href="#parameter-KmsKeyId"><code>KmsKeyId</code></a>, <a href="#parameter-UserGroupIds"><code>UserGroupIds</code></a>, <a href="#parameter-LogDeliveryConfigurations"><code>LogDeliveryConfigurations</code></a>, <a href="#parameter-DataTieringEnabled"><code>DataTieringEnabled</code></a>, <a href="#parameter-NetworkType"><code>NetworkType</code></a>, <a href="#parameter-IpDiscovery"><code>IpDiscovery</code></a>, <a href="#parameter-TransitEncryptionMode"><code>TransitEncryptionMode</code></a>, <a href="#parameter-ClusterMode"><code>ClusterMode</code></a>, <a href="#parameter-ServerlessCacheSnapshotName"><code>ServerlessCacheSnapshotName</code></a>, <a href="#parameter-Durability"><code>Durability</code></a></td>
     <td>Creates a Valkey or Redis OSS (cluster mode disabled) or a Valkey or Redis OSS (cluster mode enabled) replication group. This API can be used to create a standalone regional replication group or a secondary replication group associated with a Global datastore. A Valkey or Redis OSS (cluster mode disabled) replication group is a collection of nodes, where one of the nodes is a read/write primary and the others are read-only replicas. Writes to the primary are asynchronously propagated to the replicas. A Valkey or Redis OSS cluster-mode enabled cluster is comprised of from 1 to 90 shards (API/CLI: node groups). Each shard has a primary node and up to 5 read-only replica nodes. The configuration can range from 90 shards and 0 replicas to 15 shards and 5 replicas, which is the maximum number or replicas allowed. The node or shard limit can be increased to a maximum of 500 per cluster if the Valkey or Redis OSS engine version is 5.0.6 or higher. For example, you can choose to configure a 500 node cluster that ranges between 83 shards (one primary and 5 replicas per shard) and 500 shards (single primary and no replicas). Make sure there are enough available IP addresses to accommodate the increase. Common pitfalls include the subnets in the subnet group have too small a CIDR range or the subnets are shared and heavily used by other clusters. For more information, see Creating a Subnet Group. For versions below 5.0.6, the limit is 250 per cluster. To request a limit increase, see Amazon Service Limits and choose the limit type Nodes per cluster per instance type. When a Valkey or Redis OSS (cluster mode disabled) replication group has been successfully created, you can add one or more read replicas to it, up to a total of 5 read replicas. If you need to increase or decrease the number of node groups (console: shards), you can use scaling. For more information, see Scaling self-designed clusters in the ElastiCache User Guide. This operation is valid for Valkey and Redis OSS only.</td>
 </tr>
 <tr>
@@ -254,7 +269,7 @@ The following methods are available for this resource:
     <td><a href="#modify_replication_group"><CopyableCode code="modify_replication_group" /></a></td>
     <td><CopyableCode code="update" /></td>
     <td><a href="#parameter-ReplicationGroupId"><code>ReplicationGroupId</code></a>, <a href="#parameter-region"><code>region</code></a></td>
-    <td><a href="#parameter-ReplicationGroupDescription"><code>ReplicationGroupDescription</code></a>, <a href="#parameter-PrimaryClusterId"><code>PrimaryClusterId</code></a>, <a href="#parameter-SnapshottingClusterId"><code>SnapshottingClusterId</code></a>, <a href="#parameter-AutomaticFailoverEnabled"><code>AutomaticFailoverEnabled</code></a>, <a href="#parameter-MultiAZEnabled"><code>MultiAZEnabled</code></a>, <a href="#parameter-NodeGroupId"><code>NodeGroupId</code></a>, <a href="#parameter-CacheSecurityGroupNames"><code>CacheSecurityGroupNames</code></a>, <a href="#parameter-SecurityGroupIds"><code>SecurityGroupIds</code></a>, <a href="#parameter-PreferredMaintenanceWindow"><code>PreferredMaintenanceWindow</code></a>, <a href="#parameter-NotificationTopicArn"><code>NotificationTopicArn</code></a>, <a href="#parameter-CacheParameterGroupName"><code>CacheParameterGroupName</code></a>, <a href="#parameter-NotificationTopicStatus"><code>NotificationTopicStatus</code></a>, <a href="#parameter-ApplyImmediately"><code>ApplyImmediately</code></a>, <a href="#parameter-Engine"><code>Engine</code></a>, <a href="#parameter-EngineVersion"><code>EngineVersion</code></a>, <a href="#parameter-AutoMinorVersionUpgrade"><code>AutoMinorVersionUpgrade</code></a>, <a href="#parameter-SnapshotRetentionLimit"><code>SnapshotRetentionLimit</code></a>, <a href="#parameter-SnapshotWindow"><code>SnapshotWindow</code></a>, <a href="#parameter-CacheNodeType"><code>CacheNodeType</code></a>, <a href="#parameter-AuthToken"><code>AuthToken</code></a>, <a href="#parameter-AuthTokenUpdateStrategy"><code>AuthTokenUpdateStrategy</code></a>, <a href="#parameter-UserGroupIdsToAdd"><code>UserGroupIdsToAdd</code></a>, <a href="#parameter-UserGroupIdsToRemove"><code>UserGroupIdsToRemove</code></a>, <a href="#parameter-RemoveUserGroups"><code>RemoveUserGroups</code></a>, <a href="#parameter-LogDeliveryConfigurations"><code>LogDeliveryConfigurations</code></a>, <a href="#parameter-IpDiscovery"><code>IpDiscovery</code></a>, <a href="#parameter-TransitEncryptionEnabled"><code>TransitEncryptionEnabled</code></a>, <a href="#parameter-TransitEncryptionMode"><code>TransitEncryptionMode</code></a>, <a href="#parameter-ClusterMode"><code>ClusterMode</code></a></td>
+    <td><a href="#parameter-ReplicationGroupDescription"><code>ReplicationGroupDescription</code></a>, <a href="#parameter-PrimaryClusterId"><code>PrimaryClusterId</code></a>, <a href="#parameter-SnapshottingClusterId"><code>SnapshottingClusterId</code></a>, <a href="#parameter-AutomaticFailoverEnabled"><code>AutomaticFailoverEnabled</code></a>, <a href="#parameter-MultiAZEnabled"><code>MultiAZEnabled</code></a>, <a href="#parameter-NodeGroupId"><code>NodeGroupId</code></a>, <a href="#parameter-CacheSecurityGroupNames"><code>CacheSecurityGroupNames</code></a>, <a href="#parameter-SecurityGroupIds"><code>SecurityGroupIds</code></a>, <a href="#parameter-PreferredMaintenanceWindow"><code>PreferredMaintenanceWindow</code></a>, <a href="#parameter-NotificationTopicArn"><code>NotificationTopicArn</code></a>, <a href="#parameter-CacheParameterGroupName"><code>CacheParameterGroupName</code></a>, <a href="#parameter-NotificationTopicStatus"><code>NotificationTopicStatus</code></a>, <a href="#parameter-ApplyImmediately"><code>ApplyImmediately</code></a>, <a href="#parameter-Engine"><code>Engine</code></a>, <a href="#parameter-EngineVersion"><code>EngineVersion</code></a>, <a href="#parameter-AutoMinorVersionUpgrade"><code>AutoMinorVersionUpgrade</code></a>, <a href="#parameter-SnapshotRetentionLimit"><code>SnapshotRetentionLimit</code></a>, <a href="#parameter-SnapshotWindow"><code>SnapshotWindow</code></a>, <a href="#parameter-CacheNodeType"><code>CacheNodeType</code></a>, <a href="#parameter-AuthToken"><code>AuthToken</code></a>, <a href="#parameter-AuthTokenUpdateStrategy"><code>AuthTokenUpdateStrategy</code></a>, <a href="#parameter-UserGroupIdsToAdd"><code>UserGroupIdsToAdd</code></a>, <a href="#parameter-UserGroupIdsToRemove"><code>UserGroupIdsToRemove</code></a>, <a href="#parameter-RemoveUserGroups"><code>RemoveUserGroups</code></a>, <a href="#parameter-LogDeliveryConfigurations"><code>LogDeliveryConfigurations</code></a>, <a href="#parameter-IpDiscovery"><code>IpDiscovery</code></a>, <a href="#parameter-TransitEncryptionEnabled"><code>TransitEncryptionEnabled</code></a>, <a href="#parameter-TransitEncryptionMode"><code>TransitEncryptionMode</code></a>, <a href="#parameter-ClusterMode"><code>ClusterMode</code></a>, <a href="#parameter-Durability"><code>Durability</code></a></td>
     <td>Modifies the settings for a replication group. This is limited to Valkey and Redis OSS 7 and above. Scaling for Valkey or Redis OSS (cluster mode enabled) in the ElastiCache User Guide ModifyReplicationGroupShardConfiguration in the ElastiCache API Reference This operation is valid for Valkey or Redis OSS only.</td>
 </tr>
 <tr>
@@ -365,7 +380,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-AtRestEncryptionEnabled">
     <td><CopyableCode code="AtRestEncryptionEnabled" /></td>
     <td><code>boolean</code></td>
-    <td>A flag that enables encryption at rest when set to true. You cannot modify the value of AtRestEncryptionEnabled after the replication group is created. To enable encryption at rest on a replication group you must set AtRestEncryptionEnabled to true when you create the replication group. Required: Only available when creating a replication group in an Amazon VPC using Valkey 7.2 and later, Redis OSS version 3.2.6, or Redis OSS 4.x and later. Default: true when using Valkey, false when using Redis OSS</td>
+    <td>A flag that enables encryption at-rest on the replication group when set to true. In some cases, encryption at-rest may be enabled even when this value is false. Use StorageEncryptionType to view the effective encryption state of a cluster. You cannot modify the value of AtRestEncryptionEnabled after the replication group is created. Default: true when using Valkey, false when using Redis OSS</td>
 </tr>
 <tr id="parameter-AuthToken">
     <td><CopyableCode code="AuthToken" /></td>
@@ -416,6 +431,11 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     <td><CopyableCode code="DataTieringEnabled" /></td>
     <td><code>boolean</code></td>
     <td>Enables data tiering. Data tiering is only supported for replication groups using the r6gd node type. This parameter must be set to true when using r6gd nodes. For more information, see Data tiering.</td>
+</tr>
+<tr id="parameter-Durability">
+    <td><CopyableCode code="Durability" /></td>
+    <td><code>string</code></td>
+    <td>Specifies the durability setting for the replication group. Use this parameter to change the durability mode of an existing replication group, for example from sync to async or vice versa. For more information, see Durability.</td>
 </tr>
 <tr id="parameter-Engine">
     <td><CopyableCode code="Engine" /></td>
@@ -676,6 +696,8 @@ cluster_mode,
 configuration_endpoint,
 data_tiering,
 description,
+durability,
+effective_durability,
 engine,
 global_replication_group_info,
 ip_discovery,
@@ -693,6 +715,7 @@ snapshot_retention_limit,
 snapshot_window,
 snapshotting_cluster_id,
 status,
+storage_encryption_type,
 transit_encryption_enabled,
 transit_encryption_mode,
 user_group_ids
@@ -761,7 +784,8 @@ NetworkType,
 IpDiscovery,
 TransitEncryptionMode,
 ClusterMode,
-ServerlessCacheSnapshotName
+ServerlessCacheSnapshotName,
+Durability
 )
 SELECT 
 '{{ ReplicationGroupId }}',
@@ -803,7 +827,8 @@ SELECT
 '{{ IpDiscovery }}',
 '{{ TransitEncryptionMode }}',
 '{{ ClusterMode }}',
-'{{ ServerlessCacheSnapshotName }}'
+'{{ ServerlessCacheSnapshotName }}',
+'{{ Durability }}'
 RETURNING
 arn,
 at_rest_encryption_enabled,
@@ -817,6 +842,8 @@ cluster_mode,
 configuration_endpoint,
 data_tiering,
 description,
+durability,
+effective_durability,
 engine,
 global_replication_group_info,
 ip_discovery,
@@ -834,6 +861,7 @@ snapshot_retention_limit,
 snapshot_window,
 snapshotting_cluster_id,
 status,
+storage_encryption_type,
 transit_encryption_enabled,
 transit_encryption_mode,
 user_group_ids
@@ -964,8 +992,8 @@ user_group_ids
       description: A flag that enables in-transit encryption when set to true. This parameter is valid only if the Engine parameter is redis, the EngineVersion parameter is 3.2.6, 4.x or later, and the cluster is being created in an Amazon VPC. If you enable in-transit encryption, you must also specify a value for CacheSubnetGroup. Required: Only available when creating a replication group in an Amazon VPC using Redis OSS version 3.2.6, 4.x or later. Default: false For HIPAA compliance, you must specify TransitEncryptionEnabled as true, an AuthToken, and a CacheSubnetGroup.
     - name: AtRestEncryptionEnabled
       value: {{ AtRestEncryptionEnabled }}
-      description: A flag that enables encryption at rest when set to true. You cannot modify the value of AtRestEncryptionEnabled after the replication group is created. To enable encryption at rest on a replication group you must set AtRestEncryptionEnabled to true when you create the replication group. Required: Only available when creating a replication group in an Amazon VPC using Valkey 7.2 and later, Redis OSS version 3.2.6, or Redis OSS 4.x and later. Default: true when using Valkey, false when using Redis OSS
-      description: A flag that enables encryption at rest when set to true. You cannot modify the value of AtRestEncryptionEnabled after the replication group is created. To enable encryption at rest on a replication group you must set AtRestEncryptionEnabled to true when you create the replication group. Required: Only available when creating a replication group in an Amazon VPC using Valkey 7.2 and later, Redis OSS version 3.2.6, or Redis OSS 4.x and later. Default: true when using Valkey, false when using Redis OSS
+      description: A flag that enables encryption at-rest on the replication group when set to true. In some cases, encryption at-rest may be enabled even when this value is false. Use StorageEncryptionType to view the effective encryption state of a cluster. You cannot modify the value of AtRestEncryptionEnabled after the replication group is created. Default: true when using Valkey, false when using Redis OSS
+      description: A flag that enables encryption at-rest on the replication group when set to true. In some cases, encryption at-rest may be enabled even when this value is false. Use StorageEncryptionType to view the effective encryption state of a cluster. You cannot modify the value of AtRestEncryptionEnabled after the replication group is created. Default: true when using Valkey, false when using Redis OSS
     - name: KmsKeyId
       value: "{{ KmsKeyId }}"
       description: The ID of the KMS key used to encrypt the disk in the cluster.
@@ -1002,6 +1030,10 @@ user_group_ids
       value: "{{ ServerlessCacheSnapshotName }}"
       description: The name of the snapshot used to create a replication group. Available for Valkey, Redis OSS only.
       description: The name of the snapshot used to create a replication group. Available for Valkey, Redis OSS only.
+    - name: Durability
+      value: "{{ Durability }}"
+      description: Specifies the durability setting for the replication group. When set to default, the service determines the effective durability based on the engine version, cluster mode, and other parameters. The resolved setting is reflected in the EffectiveDurability property of the replication group. For more information, see Durability.
+      description: Specifies the durability setting for the replication group. When set to default, the service determines the effective durability based on the engine version, cluster mode, and other parameters. The resolved setting is reflected in the EffectiveDurability property of the replication group. For more information, see Durability.
 `}</CodeBlock>
 
 </TabItem>
@@ -1046,6 +1078,8 @@ cluster_mode,
 configuration_endpoint,
 data_tiering,
 description,
+durability,
+effective_durability,
 engine,
 global_replication_group_info,
 ip_discovery,
@@ -1063,6 +1097,7 @@ snapshot_retention_limit,
 snapshot_window,
 snapshotting_cluster_id,
 status,
+storage_encryption_type,
 transit_encryption_enabled,
 transit_encryption_mode,
 user_group_ids;
@@ -1108,6 +1143,7 @@ AND IpDiscovery = '{{ IpDiscovery}}'
 AND TransitEncryptionEnabled = {{ TransitEncryptionEnabled}}
 AND TransitEncryptionMode = '{{ TransitEncryptionMode}}'
 AND ClusterMode = '{{ ClusterMode}}'
+AND Durability = '{{ Durability}}'
 RETURNING
 arn,
 at_rest_encryption_enabled,
@@ -1121,6 +1157,8 @@ cluster_mode,
 configuration_endpoint,
 data_tiering,
 description,
+durability,
+effective_durability,
 engine,
 global_replication_group_info,
 ip_discovery,
@@ -1138,6 +1176,7 @@ snapshot_retention_limit,
 snapshot_window,
 snapshotting_cluster_id,
 status,
+storage_encryption_type,
 transit_encryption_enabled,
 transit_encryption_mode,
 user_group_ids;

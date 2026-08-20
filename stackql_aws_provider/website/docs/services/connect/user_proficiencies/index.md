@@ -52,12 +52,12 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="attribute_name" /></td>
     <td><code>string</code></td>
-    <td>The name of user's proficiency. You must use name of predefined attribute present in the Amazon Connect instance.</td>
+    <td>The name of user's proficiency. You must use name of predefined attribute present in the Connect Customer instance.</td>
 </tr>
 <tr>
     <td><CopyableCode code="attribute_value" /></td>
     <td><code>string</code></td>
-    <td>The value of user's proficiency. You must use value of predefined attribute present in the Amazon Connect instance.</td>
+    <td>The value of user's proficiency. You must use value of predefined attribute present in the Connect Customer instance.</td>
 </tr>
 <tr>
     <td><CopyableCode code="level" /></td>
@@ -131,7 +131,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-instance_id">
     <td><CopyableCode code="instance_id" /></td>
     <td><code>string</code></td>
-    <td>The identifier of the Amazon Connect instance. You can find the instance ID in the Amazon Resource Name (ARN) of the instance.</td>
+    <td>The identifier of the Connect Customer instance. You can find the instance ID in the Amazon Resource Name (ARN) of the instance.</td>
 </tr>
 <tr id="parameter-region">
     <td><CopyableCode code="region" /></td>

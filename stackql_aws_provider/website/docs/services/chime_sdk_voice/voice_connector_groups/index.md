@@ -51,6 +51,11 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
+    <td><CopyableCode code="call_distribution_type" /></td>
+    <td><code>string</code></td>
+    <td> (PriorityWeightedDistribution, LoadBalancedDistribution)</td>
+</tr>
+<tr>
     <td><CopyableCode code="created_timestamp" /></td>
     <td><code>string (date-time)</code></td>
     <td>The Voice Connector group's creation time stamp, in ISO 8601 format.</td>
@@ -227,6 +232,7 @@ Retrieves details for the specified Amazon Chime SDK Voice Connector group, such
 
 ```sql
 SELECT
+call_distribution_type,
 created_timestamp,
 name,
 updated_timestamp,
@@ -274,11 +280,13 @@ Creates an Amazon Chime SDK Voice Connector group under the administrator's AWS 
 INSERT INTO aws.chime_sdk_voice.voice_connector_groups (
 Name,
 VoiceConnectorItems,
+CallDistributionType,
 region
 )
 SELECT 
 '{{ Name }}' /* required */,
 '{{ VoiceConnectorItems }}',
+'{{ CallDistributionType }}',
 '{{ region }}'
 RETURNING
 voice_connector_group
@@ -299,6 +307,9 @@ voice_connector_group
       value:
         - VoiceConnectorId: "{{ VoiceConnectorId }}"
           Priority: {{ Priority }}
+    - name: CallDistributionType
+      value: "{{ CallDistributionType }}"
+      valid_values: ['PriorityWeightedDistribution', 'LoadBalancedDistribution']
 `}</CodeBlock>
 
 </TabItem>
@@ -322,7 +333,8 @@ Updates the settings for the specified Amazon Chime SDK Voice Connector group.
 UPDATE aws.chime_sdk_voice.voice_connector_groups
 SET 
 Name = '{{ Name }}',
-VoiceConnectorItems = '{{ VoiceConnectorItems }}'
+VoiceConnectorItems = '{{ VoiceConnectorItems }}',
+CallDistributionType = '{{ CallDistributionType }}'
 WHERE 
 voice_connector_group_id = '{{ voice_connector_group_id }}' --required
 AND region = '{{ region }}' --required

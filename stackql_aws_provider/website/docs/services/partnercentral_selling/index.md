@@ -18,7 +18,7 @@ partnercentral_selling service documentation.
 
 :::info[Service Summary]
 
-total resources: __14__  
+total resources: __15__  
 
 :::
 
@@ -31,11 +31,12 @@ total resources: __14__
 <a href="/services/partnercentral_selling/engagement_invitations/">engagement_invitations</a><br />
 <a href="/services/partnercentral_selling/engagement_members/">engagement_members</a><br />
 <a href="/services/partnercentral_selling/engagement_resource_associations/">engagement_resource_associations</a><br />
-<a href="/services/partnercentral_selling/engagements/">engagements</a>
+<a href="/services/partnercentral_selling/engagements/">engagements</a><br />
+<a href="/services/partnercentral_selling/opportunities/">opportunities</a>
 </div>
 <div class="providerDocColumn">
-<a href="/services/partnercentral_selling/opportunities/">opportunities</a><br />
 <a href="/services/partnercentral_selling/opportunity_from_engagement_tasks/">opportunity_from_engagement_tasks</a><br />
+<a href="/services/partnercentral_selling/prospecting_from_engagement_tasks/">prospecting_from_engagement_tasks</a><br />
 <a href="/services/partnercentral_selling/resource_snapshot_jobs/">resource_snapshot_jobs</a><br />
 <a href="/services/partnercentral_selling/resource_snapshots/">resource_snapshots</a><br />
 <a href="/services/partnercentral_selling/selling_system_settings/">selling_system_settings</a><br />

@@ -95,6 +95,11 @@ The following fields are returned by `SELECT` queries:
     <td>The maximum frequency with which Config runs evaluations for a rule. You can specify a value for MaximumExecutionFrequency when: This is for an Config managed rule that is triggered at a periodic frequency. Your custom rule is triggered when Config delivers the configuration snapshot. For more information, see ConfigSnapshotDeliveryProperties. By default, rules with a periodic trigger are evaluated every 24 hours. To change the frequency, specify a valid value for the MaximumExecutionFrequency parameter. (One_Hour, Three_Hours, Six_Hours, Twelve_Hours, TwentyFour_Hours)</td>
 </tr>
 <tr>
+    <td><CopyableCode code="rule_evaluation_visibility" /></td>
+    <td><code>string</code></td>
+    <td>Indicates whether you can get Evaluations for the Config rule. You can get Evaluations for the Amazon Web Services Config rule if this value is EXTERNAL. You cannot get Evaluations for the Amazon Web Services Config rule if this value is INTERNAL. (EXTERNAL, INTERNAL)</td>
+</tr>
+<tr>
     <td><CopyableCode code="scope" /></td>
     <td><code>object</code></td>
     <td>Defines which resources can trigger an evaluation for the rule. The scope can include one or more resource types, a combination of one resource type and one resource ID, or a combination of a tag key and value. Specify a scope to constrain the resources that can trigger an evaluation for the rule. If you do not specify a scope, evaluations are triggered when any resource in the recording group changes.</td>
@@ -220,6 +225,7 @@ description,
 evaluation_modes,
 input_parameters,
 maximum_execution_frequency,
+rule_evaluation_visibility,
 scope,
 source
 FROM aws.config.config_rules

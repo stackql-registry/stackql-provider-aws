@@ -138,7 +138,7 @@ The following methods are available for this resource:
     <td><CopyableCode code="delete" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>Ends a transfer. A transfer is an arrangement between two management accounts where one account designates the other with specified responsibilities for their organization.</td>
+    <td>Ends a transfer. A transfer is an arrangement between two management accounts where one account designates the other with specified responsibilities for their organization. When a transfer ends, Organizations publishes a ResponsibilityTransferTerminated service event to CloudTrail. Each affected account receives this event, including upstream participants such as distributors in a chained transfer. For an example log entry, see Example log entries: TerminateResponsibilityTransfer in the Organizations User Guide.</td>
 </tr>
 </tbody>
 </table>
@@ -234,7 +234,7 @@ responsibility_transfer;
 >
 <TabItem value="terminate_responsibility_transfer">
 
-Ends a transfer. A transfer is an arrangement between two management accounts where one account designates the other with specified responsibilities for their organization.
+Ends a transfer. A transfer is an arrangement between two management accounts where one account designates the other with specified responsibilities for their organization. When a transfer ends, Organizations publishes a ResponsibilityTransferTerminated service event to CloudTrail. Each affected account receives this event, including upstream participants such as distributors in a chained transfer. For an example log entry, see Example log entries: TerminateResponsibilityTransfer in the Organizations User Guide.
 
 ```sql
 DELETE FROM aws.organizations.responsibility_transfers

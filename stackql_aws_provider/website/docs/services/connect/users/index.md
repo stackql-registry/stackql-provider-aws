@@ -84,7 +84,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="identity_info" /></td>
     <td><code>object</code></td>
-    <td>Contains information about the identity of a user. For Amazon Connect instances that are created with the EXISTING_DIRECTORY identity management type, FirstName, LastName, and Email cannot be updated from within Amazon Connect because they are managed by the directory. The FirstName and LastName length constraints below apply only to instances using SAML for identity management. If you are using Amazon Connect for identity management, the length constraints are 1-255 for FirstName, and 1-256 for LastName.</td>
+    <td>Contains information about the identity of a user. For Connect Customer instances that are created with the EXISTING_DIRECTORY identity management type, FirstName, LastName, and Email cannot be updated from within Connect Customer because they are managed by the directory. The FirstName and LastName length constraints below apply only to instances using SAML for identity management. If you are using Connect Customer for identity management, the length constraints are 1-255 for FirstName, and 1-256 for LastName.</td>
 </tr>
 <tr>
     <td><CopyableCode code="last_modified_region" /></td>
@@ -173,7 +173,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="username" /></td>
     <td><code>string</code></td>
-    <td>The Amazon Connect user name of the user account.</td>
+    <td>The Connect Customer user name of the user account.</td>
 </tr>
 </tbody>
 </table>
@@ -289,42 +289,42 @@ The following methods are available for this resource:
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-user_id"><code>user_id</code></a>, <a href="#parameter-instance_id"><code>instance_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>Describes the specified user. You can find the instance ID in the Amazon Connect console (it’s the final part of the ARN). The console does not display the user IDs. Instead, list the users and note the IDs provided in the output.</td>
+    <td>Describes the specified user. You can find the instance ID in the Connect Customer console (it’s the final part of the ARN). The console does not display the user IDs. Instead, list the users and note the IDs provided in the output.</td>
 </tr>
 <tr>
     <td><a href="#list_users"><CopyableCode code="list_users" /></a></td>
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-instance_id"><code>instance_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td><a href="#parameter-nextToken"><code>nextToken</code></a>, <a href="#parameter-maxResults"><code>maxResults</code></a></td>
-    <td>Provides summary information about the users for the specified Amazon Connect instance.</td>
+    <td>Provides summary information about the users for the specified Connect Customer instance.</td>
 </tr>
 <tr>
     <td><a href="#search_users"><CopyableCode code="search_users" /></a></td>
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>Searches users in an Amazon Connect instance, with optional filtering. AfterContactWorkTimeLimit is returned in milliseconds.</td>
+    <td>Searches users in an Connect Customer instance, with optional filtering. AfterContactWorkTimeLimit is returned in milliseconds.</td>
 </tr>
 <tr>
     <td><a href="#create_user"><CopyableCode code="create_user" /></a></td>
     <td><CopyableCode code="insert" /></td>
     <td><a href="#parameter-instance_id"><code>instance_id</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-SecurityProfileIds"><code>SecurityProfileIds</code></a>, <a href="#parameter-RoutingProfileId"><code>RoutingProfileId</code></a></td>
     <td></td>
-    <td>Creates a user account for the specified Amazon Connect instance. Certain UserIdentityInfo parameters are required in some situations. For example, Email, FirstName and LastName are required if you are using Amazon Connect or SAML for identity management. Fields in PhoneConfig cannot be set simultaneously with their corresponding channel-specific configuration parameters. Specifically: PhoneConfig.AutoAccept conflicts with AutoAcceptConfigs PhoneConfig.AfterContactWorkTimeLimit conflicts with AfterContactWorkConfigs PhoneConfig.PhoneType and PhoneConfig.PhoneNumber conflict with PhoneNumberConfigs PhoneConfig.PersistentConnection conflicts with PersistentConnectionConfigs We recommend using channel-specific parameters such as AutoAcceptConfigs, AfterContactWorkConfigs, PhoneNumberConfigs, PersistentConnectionConfigs, and VoiceEnhancementConfigs for per-channel configuration. For information about how to create users using the Amazon Connect admin website, see Add Users in the Amazon Connect Administrator Guide.</td>
+    <td>Creates a user account for the specified Connect Customer instance. Certain UserIdentityInfo parameters are required in some situations. For example, Email, FirstName and LastName are required if you are using Connect Customer or SAML for identity management. Fields in PhoneConfig cannot be set simultaneously with their corresponding channel-specific configuration parameters. Specifically: PhoneConfig.AutoAccept conflicts with AutoAcceptConfigs PhoneConfig.AfterContactWorkTimeLimit conflicts with AfterContactWorkConfigs PhoneConfig.PhoneType and PhoneConfig.PhoneNumber conflict with PhoneNumberConfigs PhoneConfig.PersistentConnection conflicts with PersistentConnectionConfigs We recommend using channel-specific parameters such as AutoAcceptConfigs, AfterContactWorkConfigs, PhoneNumberConfigs, PersistentConnectionConfigs, and VoiceEnhancementConfigs for per-channel configuration. For information about how to create users using the Connect Customer admin website, see Add Users in the Connect Customer Administrator Guide.</td>
 </tr>
 <tr>
     <td><a href="#associate_contact_with_user"><CopyableCode code="associate_contact_with_user" /></a></td>
     <td><CopyableCode code="update" /></td>
     <td><a href="#parameter-instance_id"><code>instance_id</code></a>, <a href="#parameter-contact_id"><code>contact_id</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-UserId"><code>UserId</code></a></td>
     <td></td>
-    <td>Associates a queued contact with an agent. Use cases Following are common uses cases for this API: Programmatically assign queued contacts to available users. Leverage the IAM context key connect:PreferredUserArn to restrict contact association to specific preferred user. Important things to know Use this API with chat, email, and task contacts. It does not support voice contacts. Use it to associate contacts with users regardless of their current state, including custom states. Ensure your application logic accounts for user availability before making associations. It honors the IAM context key connect:PreferredUserArn to prevent unauthorized contact associations. It respects the IAM context key connect:PreferredUserArn to enforce authorization controls and prevent unauthorized contact associations. Verify that your IAM policies are properly configured to support your intended use cases. The service quota Queues per routing profile per instance applies to manually assigned queues, too. For more information about this quota, see Amazon Connect quotas in the Amazon Connect Administrator Guide. Endpoints: See Amazon Connect endpoints and quotas.</td>
+    <td>Associates a queued contact with an agent. Use cases Following are common uses cases for this API: Programmatically assign queued contacts to available users. Leverage the IAM context key connect:PreferredUserArn to restrict contact association to specific preferred user. Important things to know Use this API with chat, email, task, and voice contacts. For voice callbacks, this API does not support customer-first mode. This API can be used to offer a contact to an agent even if the agent is currently at maximum concurrency for the channel. Use it to associate contacts with users regardless of their current state, including custom states. Ensure your application logic accounts for user availability before making associations. It honors the IAM context key connect:PreferredUserArn to prevent unauthorized contact associations. It respects the IAM context key connect:PreferredUserArn to enforce authorization controls and prevent unauthorized contact associations. Verify that your IAM policies are properly configured to support your intended use cases. The service quota Queues per routing profile per instance applies to manually assigned queues, too. For more information about this quota, see Connect Customer quotas in the Connect Customer Administrator Guide. Endpoints: See Connect Customer endpoints and quotas.</td>
 </tr>
 <tr>
     <td><a href="#update_user_identity_info"><CopyableCode code="update_user_identity_info" /></a></td>
     <td><CopyableCode code="update" /></td>
     <td><a href="#parameter-user_id"><code>user_id</code></a>, <a href="#parameter-instance_id"><code>instance_id</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-IdentityInfo"><code>IdentityInfo</code></a></td>
     <td></td>
-    <td>Updates the identity information for the specified user. We strongly recommend limiting who has the ability to invoke UpdateUserIdentityInfo. Someone with that ability can change the login credentials of other users by changing their email address. This poses a security risk to your organization. They can change the email address of a user to the attacker's email address, and then reset the password through email. For more information, see Best Practices for Security Profiles in the Amazon Connect Administrator Guide.</td>
+    <td>Updates the identity information for the specified user. We strongly recommend limiting who has the ability to invoke UpdateUserIdentityInfo. Someone with that ability can change the login credentials of other users by changing their email address. This poses a security risk to your organization. They can change the email address of a user to the attacker's email address, and then reset the password through email. For more information, see Best Practices for Security Profiles in the Connect Customer Administrator Guide.</td>
 </tr>
 <tr>
     <td><a href="#update_user_phone_config"><CopyableCode code="update_user_phone_config" /></a></td>
@@ -345,14 +345,14 @@ The following methods are available for this resource:
     <td><CopyableCode code="replace" /></td>
     <td><a href="#parameter-user_id"><code>user_id</code></a>, <a href="#parameter-instance_id"><code>instance_id</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-AgentStatusId"><code>AgentStatusId</code></a></td>
     <td></td>
-    <td>Changes the current status of a user or agent in Amazon Connect. If the agent is currently handling a contact, this sets the agent's next status. For more information, see Agent status and Set your next status in the Amazon Connect Administrator Guide.</td>
+    <td>Changes the current status of a user or agent in Connect Customer. If the agent is currently handling a contact, this sets the agent's next status. For more information, see Agent status and Set your next status in the Connect Customer Administrator Guide.</td>
 </tr>
 <tr>
     <td><a href="#delete_user"><CopyableCode code="delete_user" /></a></td>
     <td><CopyableCode code="delete" /></td>
     <td><a href="#parameter-instance_id"><code>instance_id</code></a>, <a href="#parameter-user_id"><code>user_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>Deletes a user account from the specified Amazon Connect instance. For information about what happens to a user's data when their account is deleted, see Delete Users from Your Amazon Connect Instance in the Amazon Connect Administrator Guide. After calling DeleteUser, call DeleteQuickConnect to delete any records related to the deleted users. This will help you: Avoid dangling resources that impact your service quotas. Remove deleted users so they don't appear to agents as transfer options. Avoid the disruption of other Amazon Connect processes, such as instance replication and syncing if you're using Amazon Connect Global Resiliency.</td>
+    <td>Deletes a user account from the specified Connect Customer instance. For information about what happens to a user's data when their account is deleted, see Delete Users from Your Connect Customer Instance in the Connect Customer Administrator Guide. After calling DeleteUser, call DeleteQuickConnect to delete any records related to the deleted users. This will help you: Avoid dangling resources that impact your service quotas. Remove deleted users so they don't appear to agents as transfer options. Avoid the disruption of other Connect Customer processes, such as instance replication and syncing if you're using Connect Customer Global Resiliency.</td>
 </tr>
 <tr>
     <td><a href="#update_user_hierarchy"><CopyableCode code="update_user_hierarchy" /></a></td>
@@ -380,12 +380,12 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-contact_id">
     <td><CopyableCode code="contact_id" /></td>
     <td><code>string</code></td>
-    <td>The identifier of the contact in this instance of Amazon Connect.</td>
+    <td>The identifier of the contact in this instance of Connect Customer.</td>
 </tr>
 <tr id="parameter-instance_id">
     <td><CopyableCode code="instance_id" /></td>
     <td><code>string</code></td>
-    <td>The identifier of the Amazon Connect instance. You can find the instance ID in the Amazon Resource Name (ARN) of the instance.</td>
+    <td>The identifier of the Connect Customer instance. You can find the instance ID in the Amazon Resource Name (ARN) of the instance.</td>
 </tr>
 <tr id="parameter-region">
     <td><CopyableCode code="region" /></td>
@@ -422,7 +422,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 >
 <TabItem value="describe_user">
 
-Describes the specified user. You can find the instance ID in the Amazon Connect console (it’s the final part of the ARN). The console does not display the user IDs. Instead, list the users and note the IDs provided in the output.
+Describes the specified user. You can find the instance ID in the Connect Customer console (it’s the final part of the ARN). The console does not display the user IDs. Instead, list the users and note the IDs provided in the output.
 
 ```sql
 SELECT
@@ -452,7 +452,7 @@ AND region = '{{ region }}' -- required
 </TabItem>
 <TabItem value="list_users">
 
-Provides summary information about the users for the specified Amazon Connect instance.
+Provides summary information about the users for the specified Connect Customer instance.
 
 ```sql
 SELECT
@@ -471,7 +471,7 @@ AND maxResults = '{{ maxResults }}'
 </TabItem>
 <TabItem value="search_users">
 
-Searches users in an Amazon Connect instance, with optional filtering. AfterContactWorkTimeLimit is returned in milliseconds.
+Searches users in an Connect Customer instance, with optional filtering. AfterContactWorkTimeLimit is returned in milliseconds.
 
 ```sql
 SELECT
@@ -509,7 +509,7 @@ WHERE region = '{{ region }}' -- required
 >
 <TabItem value="create_user">
 
-Creates a user account for the specified Amazon Connect instance. Certain UserIdentityInfo parameters are required in some situations. For example, Email, FirstName and LastName are required if you are using Amazon Connect or SAML for identity management. Fields in PhoneConfig cannot be set simultaneously with their corresponding channel-specific configuration parameters. Specifically: PhoneConfig.AutoAccept conflicts with AutoAcceptConfigs PhoneConfig.AfterContactWorkTimeLimit conflicts with AfterContactWorkConfigs PhoneConfig.PhoneType and PhoneConfig.PhoneNumber conflict with PhoneNumberConfigs PhoneConfig.PersistentConnection conflicts with PersistentConnectionConfigs We recommend using channel-specific parameters such as AutoAcceptConfigs, AfterContactWorkConfigs, PhoneNumberConfigs, PersistentConnectionConfigs, and VoiceEnhancementConfigs for per-channel configuration. For information about how to create users using the Amazon Connect admin website, see Add Users in the Amazon Connect Administrator Guide.
+Creates a user account for the specified Connect Customer instance. Certain UserIdentityInfo parameters are required in some situations. For example, Email, FirstName and LastName are required if you are using Connect Customer or SAML for identity management. Fields in PhoneConfig cannot be set simultaneously with their corresponding channel-specific configuration parameters. Specifically: PhoneConfig.AutoAccept conflicts with AutoAcceptConfigs PhoneConfig.AfterContactWorkTimeLimit conflicts with AfterContactWorkConfigs PhoneConfig.PhoneType and PhoneConfig.PhoneNumber conflict with PhoneNumberConfigs PhoneConfig.PersistentConnection conflicts with PersistentConnectionConfigs We recommend using channel-specific parameters such as AutoAcceptConfigs, AfterContactWorkConfigs, PhoneNumberConfigs, PersistentConnectionConfigs, and VoiceEnhancementConfigs for per-channel configuration. For information about how to create users using the Connect Customer admin website, see Add Users in the Connect Customer Administrator Guide.
 
 ```sql
 INSERT INTO aws.connect.users (
@@ -570,7 +570,7 @@ user_id
       value: "{{ Password }}"
     - name: IdentityInfo
       description: |
-        Contains information about the identity of a user. For Amazon Connect instances that are created with the EXISTING_DIRECTORY identity management type, FirstName, LastName, and Email cannot be updated from within Amazon Connect because they are managed by the directory. The FirstName and LastName length constraints below apply only to instances using SAML for identity management. If you are using Amazon Connect for identity management, the length constraints are 1-255 for FirstName, and 1-256 for LastName.
+        Contains information about the identity of a user. For Connect Customer instances that are created with the EXISTING_DIRECTORY identity management type, FirstName, LastName, and Email cannot be updated from within Connect Customer because they are managed by the directory. The FirstName and LastName length constraints below apply only to instances using SAML for identity management. If you are using Connect Customer for identity management, the length constraints are 1-255 for FirstName, and 1-256 for LastName.
       value:
         FirstName: "{{ FirstName }}"
         LastName: "{{ LastName }}"
@@ -651,7 +651,7 @@ user_id
 >
 <TabItem value="associate_contact_with_user">
 
-Associates a queued contact with an agent. Use cases Following are common uses cases for this API: Programmatically assign queued contacts to available users. Leverage the IAM context key connect:PreferredUserArn to restrict contact association to specific preferred user. Important things to know Use this API with chat, email, and task contacts. It does not support voice contacts. Use it to associate contacts with users regardless of their current state, including custom states. Ensure your application logic accounts for user availability before making associations. It honors the IAM context key connect:PreferredUserArn to prevent unauthorized contact associations. It respects the IAM context key connect:PreferredUserArn to enforce authorization controls and prevent unauthorized contact associations. Verify that your IAM policies are properly configured to support your intended use cases. The service quota Queues per routing profile per instance applies to manually assigned queues, too. For more information about this quota, see Amazon Connect quotas in the Amazon Connect Administrator Guide. Endpoints: See Amazon Connect endpoints and quotas.
+Associates a queued contact with an agent. Use cases Following are common uses cases for this API: Programmatically assign queued contacts to available users. Leverage the IAM context key connect:PreferredUserArn to restrict contact association to specific preferred user. Important things to know Use this API with chat, email, task, and voice contacts. For voice callbacks, this API does not support customer-first mode. This API can be used to offer a contact to an agent even if the agent is currently at maximum concurrency for the channel. Use it to associate contacts with users regardless of their current state, including custom states. Ensure your application logic accounts for user availability before making associations. It honors the IAM context key connect:PreferredUserArn to prevent unauthorized contact associations. It respects the IAM context key connect:PreferredUserArn to enforce authorization controls and prevent unauthorized contact associations. Verify that your IAM policies are properly configured to support your intended use cases. The service quota Queues per routing profile per instance applies to manually assigned queues, too. For more information about this quota, see Connect Customer quotas in the Connect Customer Administrator Guide. Endpoints: See Connect Customer endpoints and quotas.
 
 ```sql
 UPDATE aws.connect.users
@@ -666,7 +666,7 @@ AND UserId = '{{ UserId }}' --required;
 </TabItem>
 <TabItem value="update_user_identity_info">
 
-Updates the identity information for the specified user. We strongly recommend limiting who has the ability to invoke UpdateUserIdentityInfo. Someone with that ability can change the login credentials of other users by changing their email address. This poses a security risk to your organization. They can change the email address of a user to the attacker's email address, and then reset the password through email. For more information, see Best Practices for Security Profiles in the Amazon Connect Administrator Guide.
+Updates the identity information for the specified user. We strongly recommend limiting who has the ability to invoke UpdateUserIdentityInfo. Someone with that ability can change the login credentials of other users by changing their email address. This poses a security risk to your organization. They can change the email address of a user to the attacker's email address, and then reset the password through email. For more information, see Best Practices for Security Profiles in the Connect Customer Administrator Guide.
 
 ```sql
 UPDATE aws.connect.users
@@ -725,7 +725,7 @@ AND region = '{{ region }}' --required;
 >
 <TabItem value="put_user_status">
 
-Changes the current status of a user or agent in Amazon Connect. If the agent is currently handling a contact, this sets the agent's next status. For more information, see Agent status and Set your next status in the Amazon Connect Administrator Guide.
+Changes the current status of a user or agent in Connect Customer. If the agent is currently handling a contact, this sets the agent's next status. For more information, see Agent status and Set your next status in the Connect Customer Administrator Guide.
 
 ```sql
 REPLACE aws.connect.users
@@ -751,7 +751,7 @@ AND AgentStatusId = '{{ AgentStatusId }}' --required;
 >
 <TabItem value="delete_user">
 
-Deletes a user account from the specified Amazon Connect instance. For information about what happens to a user's data when their account is deleted, see Delete Users from Your Amazon Connect Instance in the Amazon Connect Administrator Guide. After calling DeleteUser, call DeleteQuickConnect to delete any records related to the deleted users. This will help you: Avoid dangling resources that impact your service quotas. Remove deleted users so they don't appear to agents as transfer options. Avoid the disruption of other Amazon Connect processes, such as instance replication and syncing if you're using Amazon Connect Global Resiliency.
+Deletes a user account from the specified Connect Customer instance. For information about what happens to a user's data when their account is deleted, see Delete Users from Your Connect Customer Instance in the Connect Customer Administrator Guide. After calling DeleteUser, call DeleteQuickConnect to delete any records related to the deleted users. This will help you: Avoid dangling resources that impact your service quotas. Remove deleted users so they don't appear to agents as transfer options. Avoid the disruption of other Connect Customer processes, such as instance replication and syncing if you're using Connect Customer Global Resiliency.
 
 ```sql
 DELETE FROM aws.connect.users

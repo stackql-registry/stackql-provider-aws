@@ -89,21 +89,21 @@ The following methods are available for this resource:
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-X-Amz-Bearer"><code>X-Amz-Bearer</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>Provides a pre-signed URL for download of a completed attachment. This is an asynchronous API for use with active contacts. For security recommendations, see Amazon Connect Chat security best practices. The participant role CUSTOM_BOT is not permitted to access attachments customers may upload. An AccessDeniedException can indicate that the participant may be a CUSTOM_BOT, and it doesn't have access to attachments. ConnectionToken is used for invoking this API instead of ParticipantToken. The Amazon Connect Participant Service APIs do not use Signature Version 4 authentication.</td>
+    <td>Provides a pre-signed URL for download of a completed attachment. This is an asynchronous API for use with active contacts. For security recommendations, see Connect Customer Chat security best practices. The participant role CUSTOM_BOT is not permitted to access attachments customers may upload. An AccessDeniedException can indicate that the participant may be a CUSTOM_BOT, and it doesn't have access to attachments. ConnectionToken is used for invoking this API instead of ParticipantToken. The Amazon Connect Participant Service APIs do not use Signature Version 4 authentication.</td>
 </tr>
 <tr>
     <td><a href="#complete_attachment_upload"><CopyableCode code="complete_attachment_upload" /></a></td>
     <td><CopyableCode code="exec" /></td>
     <td><a href="#parameter-X-Amz-Bearer"><code>X-Amz-Bearer</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-AttachmentIds"><code>AttachmentIds</code></a>, <a href="#parameter-ClientToken"><code>ClientToken</code></a></td>
     <td></td>
-    <td>Allows you to confirm that the attachment has been uploaded using the pre-signed URL provided in StartAttachmentUpload API. A conflict exception is thrown when an attachment with that identifier is already being uploaded. For security recommendations, see Amazon Connect Chat security best practices. ConnectionToken is used for invoking this API instead of ParticipantToken. The Amazon Connect Participant Service APIs do not use Signature Version 4 authentication.</td>
+    <td>Allows you to confirm that the attachment has been uploaded using the pre-signed URL provided in StartAttachmentUpload API. A conflict exception is thrown when an attachment with that identifier is already being uploaded. For security recommendations, see Connect Customer Chat security best practices. ConnectionToken is used for invoking this API instead of ParticipantToken. The Amazon Connect Participant Service APIs do not use Signature Version 4 authentication.</td>
 </tr>
 <tr>
     <td><a href="#start_attachment_upload"><CopyableCode code="start_attachment_upload" /></a></td>
     <td><CopyableCode code="exec" /></td>
     <td><a href="#parameter-X-Amz-Bearer"><code>X-Amz-Bearer</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-ContentType"><code>ContentType</code></a>, <a href="#parameter-AttachmentSizeInBytes"><code>AttachmentSizeInBytes</code></a>, <a href="#parameter-AttachmentName"><code>AttachmentName</code></a>, <a href="#parameter-ClientToken"><code>ClientToken</code></a></td>
     <td></td>
-    <td>Provides a pre-signed Amazon S3 URL in response for uploading the file directly to S3. For security recommendations, see Amazon Connect Chat security best practices. ConnectionToken is used for invoking this API instead of ParticipantToken. The Amazon Connect Participant Service APIs do not use Signature Version 4 authentication.</td>
+    <td>Provides a pre-signed Amazon S3 URL in response for uploading the file directly to S3. For security recommendations, see Connect Customer Chat security best practices. ConnectionToken is used for invoking this API instead of ParticipantToken. The Amazon Connect Participant Service APIs do not use Signature Version 4 authentication.</td>
 </tr>
 </tbody>
 </table>
@@ -144,7 +144,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 >
 <TabItem value="get_attachment">
 
-Provides a pre-signed URL for download of a completed attachment. This is an asynchronous API for use with active contacts. For security recommendations, see Amazon Connect Chat security best practices. The participant role CUSTOM_BOT is not permitted to access attachments customers may upload. An AccessDeniedException can indicate that the participant may be a CUSTOM_BOT, and it doesn't have access to attachments. ConnectionToken is used for invoking this API instead of ParticipantToken. The Amazon Connect Participant Service APIs do not use Signature Version 4 authentication.
+Provides a pre-signed URL for download of a completed attachment. This is an asynchronous API for use with active contacts. For security recommendations, see Connect Customer Chat security best practices. The participant role CUSTOM_BOT is not permitted to access attachments customers may upload. An AccessDeniedException can indicate that the participant may be a CUSTOM_BOT, and it doesn't have access to attachments. ConnectionToken is used for invoking this API instead of ParticipantToken. The Amazon Connect Participant Service APIs do not use Signature Version 4 authentication.
 
 ```sql
 SELECT
@@ -171,7 +171,7 @@ AND region = '{{ region }}' -- required
 >
 <TabItem value="complete_attachment_upload">
 
-Allows you to confirm that the attachment has been uploaded using the pre-signed URL provided in StartAttachmentUpload API. A conflict exception is thrown when an attachment with that identifier is already being uploaded. For security recommendations, see Amazon Connect Chat security best practices. ConnectionToken is used for invoking this API instead of ParticipantToken. The Amazon Connect Participant Service APIs do not use Signature Version 4 authentication.
+Allows you to confirm that the attachment has been uploaded using the pre-signed URL provided in StartAttachmentUpload API. A conflict exception is thrown when an attachment with that identifier is already being uploaded. For security recommendations, see Connect Customer Chat security best practices. ConnectionToken is used for invoking this API instead of ParticipantToken. The Amazon Connect Participant Service APIs do not use Signature Version 4 authentication.
 
 ```sql
 EXEC aws.connectparticipant.attachments.complete_attachment_upload 
@@ -187,7 +187,7 @@ EXEC aws.connectparticipant.attachments.complete_attachment_upload
 </TabItem>
 <TabItem value="start_attachment_upload">
 
-Provides a pre-signed Amazon S3 URL in response for uploading the file directly to S3. For security recommendations, see Amazon Connect Chat security best practices. ConnectionToken is used for invoking this API instead of ParticipantToken. The Amazon Connect Participant Service APIs do not use Signature Version 4 authentication.
+Provides a pre-signed Amazon S3 URL in response for uploading the file directly to S3. For security recommendations, see Connect Customer Chat security best practices. ConnectionToken is used for invoking this API instead of ParticipantToken. The Amazon Connect Participant Service APIs do not use Signature Version 4 authentication.
 
 ```sql
 EXEC aws.connectparticipant.attachments.start_attachment_upload 

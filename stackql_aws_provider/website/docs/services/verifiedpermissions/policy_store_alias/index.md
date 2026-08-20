@@ -113,7 +113,7 @@ The following methods are available for this resource:
     <td><CopyableCode code="delete" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>Deletes the specified policy store alias. This operation is idempotent. If you specify a policy store alias that does not exist, the request response will still return a successful HTTP 200 status code. When a policy store alias is deleted, it enters the PendingDeletion state. When a policy store alias is in the PendingDeletion state, new policy store aliases cannot be created with the same name. If the policy store alias is used in an API that has a policyStoreId field, the operation will fail with a ResourceNotFound exception.</td>
+    <td>Deletes the specified policy store alias. This operation is idempotent. If you specify a policy store alias that does not exist, the request response will still return a successful HTTP 200 status code. By default, when a policy store alias is deleted, it enters the PendingDeletion state. When a policy store alias is in the PendingDeletion state, new policy store aliases cannot be created with the same name. If the policy store alias is used in an API that has a policyStoreId field, the operation will fail with a ResourceNotFound exception. To immediately delete a policy store alias and bypass the PendingDeletion state, set the deletionMode parameter to HardDelete. Verified Permissions is eventually consistent. If you hard delete a policy store alias and then immediately recreate it to be associated with a different policy store, requests that reference this alias may continue to be evaluated against the previously associated policy store for a short period of time.</td>
 </tr>
 </tbody>
 </table>
@@ -229,7 +229,7 @@ policy_store_id
 >
 <TabItem value="delete_policy_store_alias">
 
-Deletes the specified policy store alias. This operation is idempotent. If you specify a policy store alias that does not exist, the request response will still return a successful HTTP 200 status code. When a policy store alias is deleted, it enters the PendingDeletion state. When a policy store alias is in the PendingDeletion state, new policy store aliases cannot be created with the same name. If the policy store alias is used in an API that has a policyStoreId field, the operation will fail with a ResourceNotFound exception.
+Deletes the specified policy store alias. This operation is idempotent. If you specify a policy store alias that does not exist, the request response will still return a successful HTTP 200 status code. By default, when a policy store alias is deleted, it enters the PendingDeletion state. When a policy store alias is in the PendingDeletion state, new policy store aliases cannot be created with the same name. If the policy store alias is used in an API that has a policyStoreId field, the operation will fail with a ResourceNotFound exception. To immediately delete a policy store alias and bypass the PendingDeletion state, set the deletionMode parameter to HardDelete. Verified Permissions is eventually consistent. If you hard delete a policy store alias and then immediately recreate it to be associated with a different policy store, requests that reference this alias may continue to be evaluated against the previously associated policy store for a short period of time.
 
 ```sql
 DELETE FROM aws.verifiedpermissions.policy_store_alias

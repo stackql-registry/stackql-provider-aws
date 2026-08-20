@@ -164,7 +164,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-SourceDBParameterGroupIdentifier">
     <td><CopyableCode code="SourceDBParameterGroupIdentifier" /></td>
     <td><code>string</code></td>
-    <td>The identifier or ARN for the source DB parameter group. For information about creating an ARN, see Constructing an Amazon Resource Name (ARN). Constraints: Must specify a valid DB parameter group. Must specify a valid DB parameter group identifier, for example my-db-param-group, or a valid ARN.</td>
+    <td>The identifier or ARN for the source DB parameter group. For information about creating an ARN, see Constructing an Amazon Resource Name (ARN). Constraints: Must specify a valid DB parameter group. Must specify a valid DB parameter group identifier, for example my-db-param-group, or a valid ARN. The source DB parameter group must be in the same Amazon Region as the copy. Neptune does not support cross-Region copying of parameter groups.</td>
 </tr>
 <tr id="parameter-TargetDBParameterGroupDescription">
     <td><CopyableCode code="TargetDBParameterGroupDescription" /></td>

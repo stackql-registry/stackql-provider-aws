@@ -52,7 +52,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="instance_id" /></td>
     <td><code>string</code></td>
-    <td>The identifier of the Amazon Connect instance that phone numbers are claimed to. You can find the instance ID in the Amazon Resource Name (ARN) of the instance.</td>
+    <td>The identifier of the Connect Customer instance that phone numbers are claimed to. You can find the instance ID in the Amazon Resource Name (ARN) of the instance.</td>
 </tr>
 <tr>
     <td><CopyableCode code="phone_number" /></td>
@@ -92,7 +92,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="target_arn" /></td>
     <td><code>string</code></td>
-    <td>The Amazon Resource Name (ARN) for Amazon Connect instances or traffic distribution groups that phone number inbound traffic is routed through.</td>
+    <td>The Amazon Resource Name (ARN) for Connect Customer instances or traffic distribution groups that phone number inbound traffic is routed through.</td>
 </tr>
 </tbody>
 </table>
@@ -119,7 +119,7 @@ The following methods are available for this resource:
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>Lists phone numbers claimed to your Amazon Connect instance or traffic distribution group. If the provided TargetArn is a traffic distribution group, you can call this API in both Amazon Web Services Regions associated with traffic distribution group. For more information about phone numbers, see Set Up Phone Numbers for Your Contact Center in the Amazon Connect Administrator Guide. When given an instance ARN, ListPhoneNumbersV2 returns only the phone numbers claimed to the instance. When given a traffic distribution group ARN ListPhoneNumbersV2 returns only the phone numbers claimed to the traffic distribution group.</td>
+    <td>Lists phone numbers claimed to your Connect Customer instance or traffic distribution group. If the provided TargetArn is a traffic distribution group, you can call this API in both Amazon Web Services Regions associated with traffic distribution group. For more information about phone numbers, see Set Up Phone Numbers for Your Contact Center in the Connect Customer Administrator Guide. When given an instance ARN, ListPhoneNumbersV2 returns only the phone numbers claimed to the instance. When given a traffic distribution group ARN ListPhoneNumbersV2 returns only the phone numbers claimed to the traffic distribution group.</td>
 </tr>
 </tbody>
 </table>
@@ -155,7 +155,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 >
 <TabItem value="list_phone_numbers_v2">
 
-Lists phone numbers claimed to your Amazon Connect instance or traffic distribution group. If the provided TargetArn is a traffic distribution group, you can call this API in both Amazon Web Services Regions associated with traffic distribution group. For more information about phone numbers, see Set Up Phone Numbers for Your Contact Center in the Amazon Connect Administrator Guide. When given an instance ARN, ListPhoneNumbersV2 returns only the phone numbers claimed to the instance. When given a traffic distribution group ARN ListPhoneNumbersV2 returns only the phone numbers claimed to the traffic distribution group.
+Lists phone numbers claimed to your Connect Customer instance or traffic distribution group. If the provided TargetArn is a traffic distribution group, you can call this API in both Amazon Web Services Regions associated with traffic distribution group. For more information about phone numbers, see Set Up Phone Numbers for Your Contact Center in the Connect Customer Administrator Guide. When given an instance ARN, ListPhoneNumbersV2 returns only the phone numbers claimed to the instance. When given a traffic distribution group ARN ListPhoneNumbersV2 returns only the phone numbers claimed to the traffic distribution group.
 
 ```sql
 SELECT

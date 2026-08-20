@@ -103,7 +103,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
-    <td>A description of the collaboration provided by the collaboration owner. (pattern: &lt;code&gt;(?!\s*$)&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDBFF-\uDC00\uDFFF\t\r\n&#93;*&lt;/code&gt;)</td>
+    <td>A description of the collaboration provided by the collaboration owner. (pattern: &lt;code&gt;(?!\s+$)&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDBFF-\uDC00\uDFFF\t\r\n&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="is_metrics_enabled" /></td>
@@ -246,7 +246,7 @@ The following methods are available for this resource:
 <tr>
     <td><a href="#create_collaboration"><CopyableCode code="create_collaboration" /></a></td>
     <td><CopyableCode code="insert" /></td>
-    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-members"><code>members</code></a>, <a href="#parameter-name"><code>name</code></a>, <a href="#parameter-description"><code>description</code></a>, <a href="#parameter-creatorMemberAbilities"><code>creatorMemberAbilities</code></a>, <a href="#parameter-creatorDisplayName"><code>creatorDisplayName</code></a>, <a href="#parameter-queryLogStatus"><code>queryLogStatus</code></a></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-members"><code>members</code></a>, <a href="#parameter-name"><code>name</code></a>, <a href="#parameter-creatorMemberAbilities"><code>creatorMemberAbilities</code></a>, <a href="#parameter-creatorDisplayName"><code>creatorDisplayName</code></a>, <a href="#parameter-queryLogStatus"><code>queryLogStatus</code></a></td>
     <td></td>
     <td>Creates a new collaboration.</td>
 </tr>
@@ -410,7 +410,7 @@ region
 SELECT 
 '{{ members }}' /* required */,
 '{{ name }}' /* required */,
-'{{ description }}' /* required */,
+'{{ description }}',
 '{{ creatorMemberAbilities }}' /* required */,
 '{{ creatorMLMemberAbilities }}',
 '{{ creatorDisplayName }}' /* required */,

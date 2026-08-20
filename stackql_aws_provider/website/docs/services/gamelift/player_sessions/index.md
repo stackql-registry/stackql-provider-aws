@@ -67,17 +67,17 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="fleet_id" /></td>
     <td><code>string</code></td>
-    <td>A unique identifier for the fleet that the player's game session is running on. (pattern: &lt;code&gt;^&#91;a-z&#93;*fleet-&#91;a-zA-Z0-9\-&#93;+&lt;/code&gt;)</td>
+    <td>A unique identifier for the fleet that the player's game session is running on. (pattern: &lt;code&gt;^&#91;a-z&#93;*fleet-&#91;a-zA-Z0-9\-&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="game_session_id" /></td>
     <td><code>string</code></td>
-    <td>An identifier for the game session that is unique across all regions that the player session is connected to. The value is always a full ARN in the following format: arn:aws:gamelift:`&lt;location&gt;`::gamesession/&lt;fleet ID&gt;/&lt;ID string&gt;.</td>
+    <td>An identifier for the game session that is unique across all regions that the player session is connected to. The value is always a full ARN in the following format: For Home Region game session - arn:aws:gamelift:<code>&lt;home_region&gt;</code>::gamesession/&lt;fleet ID&gt;/&lt;ID string&gt;. For Remote Location game session - arn:aws:gamelift:<code>&lt;home_region&gt;</code>::gamesession/&lt;fleet ID&gt;/`&lt;location&gt;`/&lt;ID string&gt;.</td>
 </tr>
 <tr>
     <td><CopyableCode code="ip_address" /></td>
     <td><code>string</code></td>
-    <td>The IP address of the game session. To connect to a Amazon GameLift Servers game server, an app needs both the IP address and port number. (pattern: &lt;code&gt;^&#91;0-9A-Fa-f\:\.&#93;+&lt;/code&gt;)</td>
+    <td>The IP address of the game session. To connect to a Amazon GameLift Servers game server, an app needs both the IP address and port number. (pattern: &lt;code&gt;^&#91;0-9A-Fa-f\:\.&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="player_data" /></td>
@@ -92,7 +92,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="player_session_id" /></td>
     <td><code>string</code></td>
-    <td>A unique identifier for a player session. (pattern: &lt;code&gt;^psess-\S+&lt;/code&gt;)</td>
+    <td>A unique identifier for a player session. (pattern: &lt;code&gt;^psess-\S+$&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="port" /></td>
@@ -271,7 +271,7 @@ player_sessions
     - name: GameSessionId
       value: "{{ GameSessionId }}"
       description: |
-        An identifier for the game session that is unique across all regions to add players to. The value is always a full ARN in the following format: arn:aws:gamelift:\`<location>\`::gamesession/<fleet ID>/<ID string>.
+        An identifier for the game session that is unique across all regions to add players to. The value is always a full ARN in the following format: For Home Region game session - arn:aws:gamelift:\`<home_region>\`::gamesession/<fleet ID>/<ID string>. For Remote Location game session - arn:aws:gamelift:\`<home_region>\`::gamesession/<fleet ID>/\`<location>\`/<ID string>.
     - name: PlayerId
       value: "{{ PlayerId }}"
       description: |

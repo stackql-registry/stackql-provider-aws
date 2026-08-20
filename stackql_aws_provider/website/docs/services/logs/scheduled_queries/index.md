@@ -53,7 +53,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
-    <td>The name of the scheduled query. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9_\-/.#&#93;+$&lt;/code&gt;)</td>
+    <td>The name of the scheduled query.</td>
 </tr>
 <tr>
     <td><CopyableCode code="creation_time" /></td>
@@ -69,6 +69,11 @@ The following fields are returned by `SELECT` queries:
     <td><CopyableCode code="destination_configuration" /></td>
     <td><code>object</code></td>
     <td>Configuration for where query results are delivered.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="end_time_offset" /></td>
+    <td><code>integer (int64)</code></td>
+    <td>The time offset in seconds that defines the end of the lookback period for the query.</td>
 </tr>
 <tr>
     <td><CopyableCode code="execution_role_arn" /></td>
@@ -121,6 +126,11 @@ The following fields are returned by `SELECT` queries:
     <td>The start time for the scheduled query in Unix epoch format.</td>
 </tr>
 <tr>
+    <td><CopyableCode code="schedule_type" /></td>
+    <td><code>string</code></td>
+    <td>The schedule type of the scheduled query. Valid values are CUSTOMER_MANAGED and AWS_MANAGED. (CUSTOMER_MANAGED, AWS_MANAGED)</td>
+</tr>
+<tr>
     <td><CopyableCode code="scheduled_query_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the scheduled query.</td>
@@ -157,7 +167,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
-    <td>The name of the scheduled query. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9_\-/.#&#93;+$&lt;/code&gt;)</td>
+    <td>The name of the scheduled query.</td>
 </tr>
 <tr>
     <td><CopyableCode code="creation_time" /></td>
@@ -188,6 +198,11 @@ The following fields are returned by `SELECT` queries:
     <td><CopyableCode code="schedule_expression" /></td>
     <td><code>string</code></td>
     <td>The cron expression that defines when the scheduled query runs.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="schedule_type" /></td>
+    <td><code>string</code></td>
+    <td>The schedule type of the scheduled query. Valid values are CUSTOMER_MANAGED and AWS_MANAGED. (CUSTOMER_MANAGED, AWS_MANAGED)</td>
 </tr>
 <tr>
     <td><CopyableCode code="scheduled_query_arn" /></td>
@@ -302,6 +317,7 @@ name,
 creation_time,
 description,
 destination_configuration,
+end_time_offset,
 execution_role_arn,
 last_execution_status,
 last_triggered_time,
@@ -312,6 +328,7 @@ query_string,
 schedule_end_time,
 schedule_expression,
 schedule_start_time,
+schedule_type,
 scheduled_query_arn,
 start_time_offset,
 state,
@@ -334,6 +351,7 @@ last_execution_status,
 last_triggered_time,
 last_updated_time,
 schedule_expression,
+schedule_type,
 scheduled_query_arn,
 state,
 timezone
@@ -368,6 +386,7 @@ logGroupIdentifiers,
 scheduleExpression,
 timezone,
 startTimeOffset,
+endTimeOffset,
 destinationConfiguration,
 scheduleStartTime,
 scheduleEndTime,
@@ -385,6 +404,7 @@ SELECT
 '{{ scheduleExpression }}' /* required */,
 '{{ timezone }}',
 {{ startTimeOffset }},
+{{ endTimeOffset }},
 '{{ destinationConfiguration }}',
 {{ scheduleStartTime }},
 {{ scheduleEndTime }},
@@ -409,7 +429,7 @@ state
     - name: name
       value: "{{ name }}"
       description: |
-        The name of the scheduled query. The name must be unique within your account and region. Valid characters are alphanumeric characters, hyphens, underscores, and periods. Length must be between 1 and 255 characters.
+        The name of the scheduled query. The name must be unique within your account and region. Length must be between 1 and 300 characters.
     - name: description
       value: "{{ description }}"
       description: |
@@ -440,15 +460,25 @@ state
       value: {{ startTimeOffset }}
       description: |
         The time offset in seconds that defines the lookback period for the query. This determines how far back in time the query searches from the execution time.
+    - name: endTimeOffset
+      value: {{ endTimeOffset }}
+      description: |
+        The time offset in seconds that defines the end of the lookback period for the query. Together with startTimeOffset, this determines the time window relative to the execution time over which the query runs.
     - name: destinationConfiguration
       description: |
-        Configuration for where to deliver query results. Currently supports Amazon S3 destinations for storing query output.
+        Configuration for where to deliver query results. Supports Amazon S3 destinations for storing query output and lookup table destinations for automatically refreshing lookup tables with query results. You can configure one or both destination types.
       value:
         s3Configuration:
           destinationIdentifier: "{{ destinationIdentifier }}"
           roleArn: "{{ roleArn }}"
           ownerAccountId: "{{ ownerAccountId }}"
           kmsKeyId: "{{ kmsKeyId }}"
+        lookupTableConfiguration:
+          tableName: "{{ tableName }}"
+          roleArn: "{{ roleArn }}"
+          description: "{{ description }}"
+          kmsKeyId: "{{ kmsKeyId }}"
+          tags: "{{ tags }}"
     - name: scheduleStartTime
       value: {{ scheduleStartTime }}
       description: |
@@ -499,6 +529,7 @@ logGroupIdentifiers = '{{ logGroupIdentifiers }}',
 scheduleExpression = '{{ scheduleExpression }}',
 timezone = '{{ timezone }}',
 startTimeOffset = {{ startTimeOffset }},
+endTimeOffset = {{ endTimeOffset }},
 destinationConfiguration = '{{ destinationConfiguration }}',
 scheduleStartTime = {{ scheduleStartTime }},
 scheduleEndTime = {{ scheduleEndTime }},
@@ -516,6 +547,7 @@ name,
 creation_time,
 description,
 destination_configuration,
+end_time_offset,
 execution_role_arn,
 last_execution_status,
 last_triggered_time,
@@ -526,6 +558,7 @@ query_string,
 schedule_end_time,
 schedule_expression,
 schedule_start_time,
+schedule_type,
 scheduled_query_arn,
 start_time_offset,
 state,

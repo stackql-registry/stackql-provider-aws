@@ -123,7 +123,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="model_card" /></td>
     <td><code>object</code></td>
-    <td>The model card associated with the model package. Since ModelPackageModelCard is tied to a model package, it is a specific usage of a model card and its schema is simplified compared to the schema of ModelCard. The ModelPackageModelCard schema does not include model_package_details, and model_overview is composed of the model_creator and model_artifact properties. For more information about the model package model card schema, see Model package model card schema. For more information about the model card associated with the model package, see View the Details of a Model Version.</td>
+    <td>The model card associated with the model package. Since ModelPackageModelCard is tied to a model package, it is a specific usage of a model card and its schema is simplified compared to the schema of ModelCard. The ModelPackageModelCard schema does not include model_package_details, and model_overview is composed of the model_creator and model_artifact properties. For more information about the model package model card schema, see Model package model card schema. For more information about the model card associated with the model package, see View the Details of a Model Version. When you set IncludedData to MetadataOnly in the request, ModelCardStatus is preserved and ModelCardContent is sanitized to include only the following JSON paths, when present in the model card: model_overview.model_id model_overview.model_name intended_uses.risk_rating model_package_details.model_package_group_name model_package_details.model_package_arn Because the ModelPackageModelCard schema does not include model_package_details and limits model_overview to model_creator and model_artifact, the sanitized ModelCardContent for a model package typically contains only intended_uses.risk_rating if it was provided when the model card was created. To retrieve the complete ModelCardContent, set IncludedData to AllData or omit the parameter.</td>
 </tr>
 <tr>
     <td><CopyableCode code="model_life_cycle" /></td>
@@ -299,7 +299,7 @@ The following methods are available for this resource:
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>Returns a description of the specified model package, which is used to create SageMaker models or list them on Amazon Web Services Marketplace. If you provided a KMS Key ID when you created your model package, you will see the KMS Decrypt API call in your CloudTrail logs when you use this API. To create models in SageMaker, buyers can subscribe to model packages listed on Amazon Web Services Marketplace.</td>
+    <td>Returns a description of the specified model package, which is used to create SageMaker models or list them on Amazon Web Services Marketplace. If you provided a KMS Key ID when you created your model package, you will see the KMS Decrypt API call in your CloudTrail logs when you use this API. To call this operation without requiring kms:Decrypt permission on the customer-managed key, set IncludedData to MetadataOnly; the response is returned with the embedded ModelCard.ModelCardContent field sanitized. To create models in SageMaker, buyers can subscribe to model packages listed on Amazon Web Services Marketplace.</td>
 </tr>
 <tr>
     <td><a href="#list_model_packages"><CopyableCode code="list_model_packages" /></a></td>
@@ -364,7 +364,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 >
 <TabItem value="describe_model_package">
 
-Returns a description of the specified model package, which is used to create SageMaker models or list them on Amazon Web Services Marketplace. If you provided a KMS Key ID when you created your model package, you will see the KMS Decrypt API call in your CloudTrail logs when you use this API. To create models in SageMaker, buyers can subscribe to model packages listed on Amazon Web Services Marketplace.
+Returns a description of the specified model package, which is used to create SageMaker models or list them on Amazon Web Services Marketplace. If you provided a KMS Key ID when you created your model package, you will see the KMS Decrypt API call in your CloudTrail logs when you use this API. To call this operation without requiring kms:Decrypt permission on the customer-managed key, set IncludedData to MetadataOnly; the response is returned with the embedded ModelCard.ModelCardContent field sanitized. To create models in SageMaker, buyers can subscribe to model packages listed on Amazon Web Services Marketplace.
 
 ```sql
 SELECT

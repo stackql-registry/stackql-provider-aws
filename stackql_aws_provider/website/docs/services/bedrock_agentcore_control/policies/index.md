@@ -71,6 +71,11 @@ The following fields are returned by `SELECT` queries:
     <td>The human-readable description of the policy's purpose and functionality. This helps administrators understand and manage the policy.</td>
 </tr>
 <tr>
+    <td><CopyableCode code="enforcement_mode" /></td>
+    <td><code>string</code></td>
+    <td>The enforcement mode for a policy. Run this policy in LOG_ONLY mode to collect data on how it affects your application. Once you are satisfied with the data gathered, switch the policy to ACTIVE. (ACTIVE, LOG_ONLY)</td>
+</tr>
+<tr>
     <td><CopyableCode code="policy_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the policy. This globally unique identifier can be used for cross-service references and IAM policy statements. (pattern: &lt;code&gt;arn:aws&#91;-a-z&#93;&#123;0,7&#125;:bedrock-agentcore:&#91;a-z0-9-&#93;&#123;9,15&#125;:&#91;0-9&#93;&#123;12&#125;:policy-engine/&#91;a-zA-Z&#93;&#91;a-zA-Z0-9-_&#93;&#123;0,47&#125;-&#91;a-zA-Z0-9_&#93;&#123;10&#125;/policy/&#91;a-zA-Z&#93;&#91;a-zA-Z0-9-_&#93;&#123;0,47&#125;-&#91;a-zA-Z0-9_&#93;&#123;10&#125;&lt;/code&gt;)</td>
@@ -133,6 +138,11 @@ The following fields are returned by `SELECT` queries:
     <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>A human-readable description of the policy's purpose and functionality. Limited to 4,096 characters, this helps administrators understand and manage the policy.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="enforcement_mode" /></td>
+    <td><code>string</code></td>
+    <td>The enforcement mode for a policy. Run this policy in LOG_ONLY mode to collect data on how it affects your application. Once you are satisfied with the data gathered, switch the policy to ACTIVE. (ACTIVE, LOG_ONLY)</td>
 </tr>
 <tr>
     <td><CopyableCode code="policy_arn" /></td>
@@ -203,14 +213,14 @@ The following methods are available for this resource:
     <td><CopyableCode code="insert" /></td>
     <td><a href="#parameter-policy_engine_id"><code>policy_engine_id</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-name"><code>name</code></a>, <a href="#parameter-definition"><code>definition</code></a></td>
     <td></td>
-    <td>Creates a policy within the AgentCore Policy system. Policies provide real-time, deterministic control over agentic interactions with AgentCore Gateway. Using the Cedar policy language, you can define fine-grained policies that specify which interactions with Gateway tools are permitted based on input parameters and OAuth claims, ensuring agents operate within defined boundaries and business rules. The policy is validated during creation against the Cedar schema generated from the Gateway's tools' input schemas, which defines the available tools, their parameters, and expected data types. This is an asynchronous operation. Use the GetPolicy operation to poll the status field to track completion.</td>
+    <td>Creates a policy within the AgentCore Policy system. Policies provide real-time, deterministic control over agentic interactions with AgentCore Gateway. Using the Cedar policy language, you can define fine-grained policies that specify which interactions with Gateway tools are permitted based on input parameters and OAuth claims, ensuring agents operate within defined boundaries and business rules. The policy is validated during creation against the Cedar schema generated from the Gateway's tools' input schemas, which defines the available tools, their parameters, and expected data types. This is an asynchronous operation. Use the GetPolicy operation to poll the status field to track completion. If the new policy is a temporal policy, creating it invalidates the policy engine's active temporal sessions. For more information about temporal policy sessions, see session-based temporal policies. The policy engine returns an HTTP 409 ConflictException to in-flight sessions. To resume, you must start a new session with a new session ID.</td>
 </tr>
 <tr>
     <td><a href="#update_policy"><CopyableCode code="update_policy" /></a></td>
     <td><CopyableCode code="update" /></td>
     <td><a href="#parameter-policy_engine_id"><code>policy_engine_id</code></a>, <a href="#parameter-policy_id"><code>policy_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>Updates an existing policy within the AgentCore Policy system. This operation allows modification of the policy description and definition while maintaining the policy's identity. The updated policy is validated against the Cedar schema before being applied. This is an asynchronous operation. Use the GetPolicy operation to poll the status field to track completion.</td>
+    <td>Updates an existing policy within the AgentCore Policy system. This operation allows modification of the policy description and definition while maintaining the policy's identity. The updated policy is validated against the Cedar schema before being applied. This is an asynchronous operation. Use the GetPolicy operation to poll the status field to track completion. If the updated policy is a temporal policy, the policy engine invalidates all active temporal sessions. If the update adds or removes temporal operators, the policy engine also invalidates active temporal sessions. For more information about temporal policy sessions, see session-based temporal policies. The policy engine returns an HTTP 409 ConflictException to in-flight sessions. To resume, you must start a new session with a new session ID.</td>
 </tr>
 <tr>
     <td><a href="#delete_policy"><CopyableCode code="delete_policy" /></a></td>
@@ -294,6 +304,7 @@ name,
 created_at,
 definition,
 description,
+enforcement_mode,
 policy_arn,
 policy_engine_id,
 policy_id,
@@ -317,6 +328,7 @@ name,
 created_at,
 definition,
 description,
+enforcement_mode,
 policy_arn,
 policy_engine_id,
 policy_id,
@@ -346,7 +358,7 @@ AND targetResourceScope = '{{ targetResourceScope }}'
 >
 <TabItem value="create_policy">
 
-Creates a policy within the AgentCore Policy system. Policies provide real-time, deterministic control over agentic interactions with AgentCore Gateway. Using the Cedar policy language, you can define fine-grained policies that specify which interactions with Gateway tools are permitted based on input parameters and OAuth claims, ensuring agents operate within defined boundaries and business rules. The policy is validated during creation against the Cedar schema generated from the Gateway's tools' input schemas, which defines the available tools, their parameters, and expected data types. This is an asynchronous operation. Use the GetPolicy operation to poll the status field to track completion.
+Creates a policy within the AgentCore Policy system. Policies provide real-time, deterministic control over agentic interactions with AgentCore Gateway. Using the Cedar policy language, you can define fine-grained policies that specify which interactions with Gateway tools are permitted based on input parameters and OAuth claims, ensuring agents operate within defined boundaries and business rules. The policy is validated during creation against the Cedar schema generated from the Gateway's tools' input schemas, which defines the available tools, their parameters, and expected data types. This is an asynchronous operation. Use the GetPolicy operation to poll the status field to track completion. If the new policy is a temporal policy, creating it invalidates the policy engine's active temporal sessions. For more information about temporal policy sessions, see session-based temporal policies. The policy engine returns an HTTP 409 ConflictException to in-flight sessions. To resume, you must start a new session with a new session ID.
 
 ```sql
 INSERT INTO aws.bedrock_agentcore_control.policies (
@@ -354,6 +366,7 @@ name,
 definition,
 description,
 validationMode,
+enforcementMode,
 clientToken,
 policy_engine_id,
 region
@@ -363,6 +376,7 @@ SELECT
 '{{ definition }}' /* required */,
 '{{ description }}',
 '{{ validationMode }}',
+'{{ enforcementMode }}',
 '{{ clientToken }}',
 '{{ policy_engine_id }}',
 '{{ region }}'
@@ -371,6 +385,7 @@ name,
 created_at,
 definition,
 description,
+enforcement_mode,
 policy_arn,
 policy_engine_id,
 policy_id,
@@ -402,11 +417,18 @@ updated_at
         policyGeneration:
           policyGenerationId: "{{ policyGenerationId }}"
           policyGenerationAssetId: "{{ policyGenerationAssetId }}"
+        policy:
+          statement: "{{ statement }}"
     - name: description
       value: "{{ description }}"
     - name: validationMode
       value: "{{ validationMode }}"
       valid_values: ['FAIL_ON_ANY_FINDINGS', 'IGNORE_ALL_FINDINGS']
+    - name: enforcementMode
+      value: "{{ enforcementMode }}"
+      description: |
+        The enforcement mode for a policy. Run this policy in LOG_ONLY mode to collect data on how it affects your application. Once you are satisfied with the data gathered, switch the policy to ACTIVE.
+      valid_values: ['ACTIVE', 'LOG_ONLY']
     - name: clientToken
       value: "{{ clientToken }}"
 `}</CodeBlock>
@@ -425,14 +447,15 @@ updated_at
 >
 <TabItem value="update_policy">
 
-Updates an existing policy within the AgentCore Policy system. This operation allows modification of the policy description and definition while maintaining the policy's identity. The updated policy is validated against the Cedar schema before being applied. This is an asynchronous operation. Use the GetPolicy operation to poll the status field to track completion.
+Updates an existing policy within the AgentCore Policy system. This operation allows modification of the policy description and definition while maintaining the policy's identity. The updated policy is validated against the Cedar schema before being applied. This is an asynchronous operation. Use the GetPolicy operation to poll the status field to track completion. If the updated policy is a temporal policy, the policy engine invalidates all active temporal sessions. If the update adds or removes temporal operators, the policy engine also invalidates active temporal sessions. For more information about temporal policy sessions, see session-based temporal policies. The policy engine returns an HTTP 409 ConflictException to in-flight sessions. To resume, you must start a new session with a new session ID.
 
 ```sql
 UPDATE aws.bedrock_agentcore_control.policies
 SET 
 description = '{{ description }}',
 definition = '{{ definition }}',
-validationMode = '{{ validationMode }}'
+validationMode = '{{ validationMode }}',
+enforcementMode = '{{ enforcementMode }}'
 WHERE 
 policy_engine_id = '{{ policy_engine_id }}' --required
 AND policy_id = '{{ policy_id }}' --required
@@ -442,6 +465,7 @@ name,
 created_at,
 definition,
 description,
+enforcement_mode,
 policy_arn,
 policy_engine_id,
 policy_id,

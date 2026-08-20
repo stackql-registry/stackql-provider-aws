@@ -78,12 +78,12 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="event_source_arn" /></td>
     <td><code>string</code></td>
-    <td>The Amazon Resource Name (ARN) of the event source. (pattern: &lt;code&gt;arn:(aws&#91;a-zA-Z0-9-&#93;*):(&#91;a-zA-Z0-9\-&#93;)+:(&#91;a-z&#93;&#123;2&#125;(-gov)?-&#91;a-z&#93;+-\d&#123;1&#125;)?:(\d&#123;12&#125;)?:(.*)&lt;/code&gt;)</td>
+    <td>The Amazon Resource Name (ARN) of the event source. (pattern: &lt;code&gt;arn:(aws&#91;a-zA-Z0-9-&#93;*):(&#91;a-zA-Z0-9\-&#93;)+:((eusc-)?&#91;a-z&#93;&#123;2&#125;((-gov)|(-iso(&#91;a-z&#93;?)))?-&#91;a-z&#93;+-\d&#123;1&#125;)?:(\d&#123;12&#125;)?:(.*)&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="event_source_mapping_arn" /></td>
     <td><code>string</code></td>
-    <td>The Amazon Resource Name (ARN) of the event source mapping. (pattern: &lt;code&gt;arn:(aws&#91;a-zA-Z-&#93;*)?:lambda:&#91;a-z&#93;&#123;2&#125;((-gov)|(-iso(&#91;a-z&#93;?)))?-&#91;a-z&#93;+-\d&#123;1&#125;:\d&#123;12&#125;:event-source-mapping:&#91;0-9a-fA-F&#93;&#123;8&#125;-&#91;0-9a-fA-F&#93;&#123;4&#125;-&#91;0-9a-fA-F&#93;&#123;4&#125;-&#91;0-9a-fA-F&#93;&#123;4&#125;-&#91;0-9a-fA-F&#93;&#123;12&#125;&lt;/code&gt;)</td>
+    <td>The Amazon Resource Name (ARN) of the event source mapping. (pattern: &lt;code&gt;arn:(aws&#91;a-zA-Z-&#93;*)?:lambda:(eusc-)?&#91;a-z&#93;&#123;2&#125;((-gov)|(-iso(&#91;a-z&#93;?)))?-&#91;a-z&#93;+-\d&#123;1&#125;:\d&#123;12&#125;:event-source-mapping:&#91;0-9a-fA-F&#93;&#123;8&#125;-&#91;0-9a-fA-F&#93;&#123;4&#125;-&#91;0-9a-fA-F&#93;&#123;4&#125;-&#91;0-9a-fA-F&#93;&#123;4&#125;-&#91;0-9a-fA-F&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="filter_criteria" /></td>
@@ -98,7 +98,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="function_arn" /></td>
     <td><code>string</code></td>
-    <td>The ARN of the Lambda function. (pattern: &lt;code&gt;arn:(aws&#91;a-zA-Z-&#93;*)?:lambda:&#91;a-z&#93;&#123;2&#125;((-gov)|(-iso(&#91;a-z&#93;?)))?-&#91;a-z&#93;+-\d&#123;1&#125;:\d&#123;12&#125;:function:&#91;a-zA-Z0-9-_&#93;+(:(\$LATEST|&#91;a-zA-Z0-9-_&#93;+))?&lt;/code&gt;)</td>
+    <td>The ARN of the Lambda function. (pattern: &lt;code&gt;arn:(aws&#91;a-zA-Z-&#93;*)?:lambda:(eusc-)?&#91;a-z&#93;&#123;2&#125;((-gov)|(-iso(&#91;a-z&#93;?)))?-&#91;a-z&#93;+-\d&#123;1&#125;:\d&#123;12&#125;:function:&#91;a-zA-Z0-9-_&#93;+(:(\$LATEST|&#91;a-zA-Z0-9-_&#93;+))?&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="function_response_types" /></td>
@@ -257,12 +257,12 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="event_source_arn" /></td>
     <td><code>string</code></td>
-    <td>The Amazon Resource Name (ARN) of the event source. (pattern: &lt;code&gt;arn:(aws&#91;a-zA-Z0-9-&#93;*):(&#91;a-zA-Z0-9\-&#93;)+:(&#91;a-z&#93;&#123;2&#125;(-gov)?-&#91;a-z&#93;+-\d&#123;1&#125;)?:(\d&#123;12&#125;)?:(.*)&lt;/code&gt;)</td>
+    <td>The Amazon Resource Name (ARN) of the event source. (pattern: &lt;code&gt;arn:(aws&#91;a-zA-Z0-9-&#93;*):(&#91;a-zA-Z0-9\-&#93;)+:((eusc-)?&#91;a-z&#93;&#123;2&#125;((-gov)|(-iso(&#91;a-z&#93;?)))?-&#91;a-z&#93;+-\d&#123;1&#125;)?:(\d&#123;12&#125;)?:(.*)&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="event_source_mapping_arn" /></td>
     <td><code>string</code></td>
-    <td>The Amazon Resource Name (ARN) of the event source mapping. (pattern: &lt;code&gt;arn:(aws&#91;a-zA-Z-&#93;*)?:lambda:&#91;a-z&#93;&#123;2&#125;((-gov)|(-iso(&#91;a-z&#93;?)))?-&#91;a-z&#93;+-\d&#123;1&#125;:\d&#123;12&#125;:event-source-mapping:&#91;0-9a-fA-F&#93;&#123;8&#125;-&#91;0-9a-fA-F&#93;&#123;4&#125;-&#91;0-9a-fA-F&#93;&#123;4&#125;-&#91;0-9a-fA-F&#93;&#123;4&#125;-&#91;0-9a-fA-F&#93;&#123;12&#125;&lt;/code&gt;)</td>
+    <td>The Amazon Resource Name (ARN) of the event source mapping. (pattern: &lt;code&gt;arn:(aws&#91;a-zA-Z-&#93;*)?:lambda:(eusc-)?&#91;a-z&#93;&#123;2&#125;((-gov)|(-iso(&#91;a-z&#93;?)))?-&#91;a-z&#93;+-\d&#123;1&#125;:\d&#123;12&#125;:event-source-mapping:&#91;0-9a-fA-F&#93;&#123;8&#125;-&#91;0-9a-fA-F&#93;&#123;4&#125;-&#91;0-9a-fA-F&#93;&#123;4&#125;-&#91;0-9a-fA-F&#93;&#123;4&#125;-&#91;0-9a-fA-F&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="filter_criteria" /></td>
@@ -277,7 +277,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="function_arn" /></td>
     <td><code>string</code></td>
-    <td>The ARN of the Lambda function. (pattern: &lt;code&gt;arn:(aws&#91;a-zA-Z-&#93;*)?:lambda:&#91;a-z&#93;&#123;2&#125;((-gov)|(-iso(&#91;a-z&#93;?)))?-&#91;a-z&#93;+-\d&#123;1&#125;:\d&#123;12&#125;:function:&#91;a-zA-Z0-9-_&#93;+(:(\$LATEST|&#91;a-zA-Z0-9-_&#93;+))?&lt;/code&gt;)</td>
+    <td>The ARN of the Lambda function. (pattern: &lt;code&gt;arn:(aws&#91;a-zA-Z-&#93;*)?:lambda:(eusc-)?&#91;a-z&#93;&#123;2&#125;((-gov)|(-iso(&#91;a-z&#93;?)))?-&#91;a-z&#93;+-\d&#123;1&#125;:\d&#123;12&#125;:function:&#91;a-zA-Z0-9-_&#93;+(:(\$LATEST|&#91;a-zA-Z0-9-_&#93;+))?&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="function_response_types" /></td>
@@ -623,6 +623,10 @@ FunctionName,
 Enabled,
 BatchSize,
 FilterCriteria,
+KMSKeyArn,
+MetricsConfig,
+LoggingConfig,
+ScalingConfig,
 MaximumBatchingWindowInSeconds,
 ParallelizationFactor,
 StartingPosition,
@@ -640,11 +644,7 @@ SelfManagedEventSource,
 FunctionResponseTypes,
 AmazonManagedKafkaEventSourceConfig,
 SelfManagedKafkaEventSourceConfig,
-ScalingConfig,
 DocumentDBEventSourceConfig,
-KMSKeyArn,
-MetricsConfig,
-LoggingConfig,
 ProvisionedPollerConfig,
 region
 )
@@ -654,6 +654,10 @@ SELECT
 {{ Enabled }},
 {{ BatchSize }},
 '{{ FilterCriteria }}',
+'{{ KMSKeyArn }}',
+'{{ MetricsConfig }}',
+'{{ LoggingConfig }}',
+'{{ ScalingConfig }}',
 {{ MaximumBatchingWindowInSeconds }},
 {{ ParallelizationFactor }},
 '{{ StartingPosition }}',
@@ -671,11 +675,7 @@ SELECT
 '{{ FunctionResponseTypes }}',
 '{{ AmazonManagedKafkaEventSourceConfig }}',
 '{{ SelfManagedKafkaEventSourceConfig }}',
-'{{ ScalingConfig }}',
 '{{ DocumentDBEventSourceConfig }}',
-'{{ KMSKeyArn }}',
-'{{ MetricsConfig }}',
-'{{ LoggingConfig }}',
 '{{ ProvisionedPollerConfig }}',
 '{{ region }}'
 RETURNING
@@ -737,6 +737,24 @@ uuid
       value:
         Filters:
           - Pattern: "{{ Pattern }}"
+    - name: KMSKeyArn
+      value: "{{ KMSKeyArn }}"
+    - name: MetricsConfig
+      description: |
+        The metrics configuration for your event source. Use this configuration object to define which metrics you want your event source mapping to produce.
+      value:
+        Metrics:
+          - "{{ Metrics }}"
+    - name: LoggingConfig
+      description: |
+        (Amazon MSK, and self-managed Apache Kafka only) The logging configuration for your event source. Use this configuration object to define the level of logs for your event source mapping.
+      value:
+        SystemLogLevel: "{{ SystemLogLevel }}"
+    - name: ScalingConfig
+      description: |
+        (Amazon SQS only) The scaling configuration for the event source. To remove the configuration, pass an empty value.
+      value:
+        MaximumConcurrency: {{ MaximumConcurrency }}
     - name: MaximumBatchingWindowInSeconds
       value: {{ MaximumBatchingWindowInSeconds }}
     - name: ParallelizationFactor
@@ -808,11 +826,6 @@ uuid
               URI: "{{ URI }}"
           SchemaValidationConfigs:
             - Attribute: "{{ Attribute }}"
-    - name: ScalingConfig
-      description: |
-        (Amazon SQS only) The scaling configuration for the event source. To remove the configuration, pass an empty value.
-      value:
-        MaximumConcurrency: {{ MaximumConcurrency }}
     - name: DocumentDBEventSourceConfig
       description: |
         Specific configuration settings for a DocumentDB event source.
@@ -820,19 +833,6 @@ uuid
         DatabaseName: "{{ DatabaseName }}"
         CollectionName: "{{ CollectionName }}"
         FullDocument: "{{ FullDocument }}"
-    - name: KMSKeyArn
-      value: "{{ KMSKeyArn }}"
-    - name: MetricsConfig
-      description: |
-        The metrics configuration for your event source. Use this configuration object to define which metrics you want your event source mapping to produce.
-      value:
-        Metrics:
-          - "{{ Metrics }}"
-    - name: LoggingConfig
-      description: |
-        (Amazon MSK, and self-managed Apache Kafka only) The logging configuration for your event source. Use this configuration object to define the level of logs for your event source mapping.
-      value:
-        SystemLogLevel: "{{ SystemLogLevel }}"
     - name: ProvisionedPollerConfig
       description: |
         The provisioned mode configuration for the event source. Use Provisioned Mode to customize the minimum and maximum number of event pollers for your event source.
@@ -865,22 +865,22 @@ FunctionName = '{{ FunctionName }}',
 Enabled = {{ Enabled }},
 BatchSize = {{ BatchSize }},
 FilterCriteria = '{{ FilterCriteria }}',
+KMSKeyArn = '{{ KMSKeyArn }}',
+MetricsConfig = '{{ MetricsConfig }}',
+LoggingConfig = '{{ LoggingConfig }}',
+ScalingConfig = '{{ ScalingConfig }}',
 MaximumBatchingWindowInSeconds = {{ MaximumBatchingWindowInSeconds }},
+ParallelizationFactor = {{ ParallelizationFactor }},
 DestinationConfig = '{{ DestinationConfig }}',
 MaximumRecordAgeInSeconds = {{ MaximumRecordAgeInSeconds }},
 BisectBatchOnFunctionError = {{ BisectBatchOnFunctionError }},
 MaximumRetryAttempts = {{ MaximumRetryAttempts }},
-ParallelizationFactor = {{ ParallelizationFactor }},
-SourceAccessConfigurations = '{{ SourceAccessConfigurations }}',
 TumblingWindowInSeconds = {{ TumblingWindowInSeconds }},
+SourceAccessConfigurations = '{{ SourceAccessConfigurations }}',
 FunctionResponseTypes = '{{ FunctionResponseTypes }}',
-ScalingConfig = '{{ ScalingConfig }}',
 AmazonManagedKafkaEventSourceConfig = '{{ AmazonManagedKafkaEventSourceConfig }}',
 SelfManagedKafkaEventSourceConfig = '{{ SelfManagedKafkaEventSourceConfig }}',
 DocumentDBEventSourceConfig = '{{ DocumentDBEventSourceConfig }}',
-KMSKeyArn = '{{ KMSKeyArn }}',
-MetricsConfig = '{{ MetricsConfig }}',
-LoggingConfig = '{{ LoggingConfig }}',
 ProvisionedPollerConfig = '{{ ProvisionedPollerConfig }}'
 WHERE 
 uuid = '{{ uuid }}' --required

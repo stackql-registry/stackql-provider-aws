@@ -659,7 +659,7 @@ association_description
         The names of Amazon Resource Names (ARNs) of the Change Calendar type documents you want to gate your associations under. The associations only run when that change calendar is open. For more information, see Amazon Web Services Systems Manager Change Calendar in the Amazon Web Services Systems Manager User Guide.
     - name: TargetLocations
       description: |
-        A location is a combination of Amazon Web Services Regions and Amazon Web Services accounts where you want to run the association. Use this action to create an association in multiple Regions and multiple accounts. The IncludeChildOrganizationUnits parameter is not supported by State Manager.
+        A location is a combination of Amazon Web Services Regions and Amazon Web Services accounts where you want to run the association. Use this action to create an association in multiple Regions and multiple accounts. The TargetLocationAlarmConfiguration parameter is not supported by State Manager.
       value:
         - Accounts: "{{ Accounts }}"
           Regions: "{{ Regions }}"

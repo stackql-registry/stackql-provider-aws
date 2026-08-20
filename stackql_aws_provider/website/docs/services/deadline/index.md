@@ -18,7 +18,7 @@ deadline service documentation.
 
 :::info[Service Summary]
 
-total resources: __33__  
+total resources: __34__  
 
 :::
 
@@ -59,6 +59,7 @@ total resources: __33__
 <a href="/services/deadline/storage_profiles_for_queues/">storage_profiles_for_queues</a><br />
 <a href="/services/deadline/tags/">tags</a><br />
 <a href="/services/deadline/tasks/">tasks</a><br />
+<a href="/services/deadline/volumes/">volumes</a><br />
 <a href="/services/deadline/workers/">workers</a>
 </div>
 </div>

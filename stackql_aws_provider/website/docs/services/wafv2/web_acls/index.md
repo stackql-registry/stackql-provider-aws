@@ -96,14 +96,14 @@ The following methods are available for this resource:
     <td><CopyableCode code="insert" /></td>
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-Name"><code>Name</code></a>, <a href="#parameter-Scope"><code>Scope</code></a>, <a href="#parameter-DefaultAction"><code>DefaultAction</code></a>, <a href="#parameter-VisibilityConfig"><code>VisibilityConfig</code></a></td>
     <td></td>
-    <td>Creates a WebACL per the specifications provided. A web ACL defines a collection of rules to use to inspect and control web requests. Each rule has a statement that defines what to look for in web requests and an action that WAF applies to requests that match the statement. In the web ACL, you assign a default action to take (allow, block) for any request that does not match any of the rules. The rules in a web ACL can be a combination of the types Rule, RuleGroup, and managed rule group. You can associate a web ACL with one or more Amazon Web Services resources to protect. The resource types include Amazon CloudFront distribution, Amazon API Gateway REST API, Application Load Balancer, AppSync GraphQL API, Amazon Cognito user pool, App Runner service, Amplify application, and Amazon Web Services Verified Access instance.</td>
+    <td>Creates a WebACL per the specifications provided. A web ACL defines a collection of rules to use to inspect and control web requests. Each rule has a statement that defines what to look for in web requests and an action that WAF applies to requests that match the statement. In the web ACL, you assign a default action to take (allow, block) for any request that does not match any of the rules. The rules in a web ACL can be a combination of the types Rule, RuleGroup, and managed rule group. You can associate a web ACL with one or more Amazon Web Services resources to protect. The resource types include Amazon CloudFront distribution, Amazon API Gateway REST API, Application Load Balancer, AppSync GraphQL API, Amazon Cognito user pool, App Runner service, Amplify application, Amazon Web Services Verified Access instance, and Amazon Bedrock AgentCore Gateway.</td>
 </tr>
 <tr>
     <td><a href="#update_web_acl"><CopyableCode code="update_web_acl" /></a></td>
     <td><CopyableCode code="update" /></td>
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-Name"><code>Name</code></a>, <a href="#parameter-Scope"><code>Scope</code></a>, <a href="#parameter-Id"><code>Id</code></a>, <a href="#parameter-DefaultAction"><code>DefaultAction</code></a>, <a href="#parameter-VisibilityConfig"><code>VisibilityConfig</code></a>, <a href="#parameter-LockToken"><code>LockToken</code></a></td>
     <td></td>
-    <td>Updates the specified WebACL. While updating a web ACL, WAF provides continuous coverage to the resources that you have associated with the web ACL. This operation completely replaces the mutable specifications that you already have for the web ACL with the ones that you provide to this call. To modify a web ACL, do the following: Retrieve it by calling GetWebACL Update its settings as needed Provide the complete web ACL specification to this call A web ACL defines a collection of rules to use to inspect and control web requests. Each rule has a statement that defines what to look for in web requests and an action that WAF applies to requests that match the statement. In the web ACL, you assign a default action to take (allow, block) for any request that does not match any of the rules. The rules in a web ACL can be a combination of the types Rule, RuleGroup, and managed rule group. You can associate a web ACL with one or more Amazon Web Services resources to protect. The resource types include Amazon CloudFront distribution, Amazon API Gateway REST API, Application Load Balancer, AppSync GraphQL API, Amazon Cognito user pool, App Runner service, Amplify application, and Amazon Web Services Verified Access instance. Temporary inconsistencies during updates When you create or change a web ACL or other WAF resources, the changes take a small amount of time to propagate to all areas where the resources are stored. The propagation time can be from a few seconds to a number of minutes. The following are examples of the temporary inconsistencies that you might notice during change propagation: After you create a web ACL, if you try to associate it with a resource, you might get an exception indicating that the web ACL is unavailable. After you add a rule group to a web ACL, the new rule group rules might be in effect in one area where the web ACL is used and not in another. After you change a rule action setting, you might see the old action in some places and the new action in others. After you add an IP address to an IP set that is in use in a blocking rule, the new address might be blocked in one area while still allowed in another.</td>
+    <td>Updates the specified WebACL. While updating a web ACL, WAF provides continuous coverage to the resources that you have associated with the web ACL. This operation completely replaces the mutable specifications that you already have for the web ACL with the ones that you provide to this call. To modify a web ACL, do the following: Retrieve it by calling GetWebACL Update its settings as needed Provide the complete web ACL specification to this call A web ACL defines a collection of rules to use to inspect and control web requests. Each rule has a statement that defines what to look for in web requests and an action that WAF applies to requests that match the statement. In the web ACL, you assign a default action to take (allow, block) for any request that does not match any of the rules. The rules in a web ACL can be a combination of the types Rule, RuleGroup, and managed rule group. You can associate a web ACL with one or more Amazon Web Services resources to protect. The resource types include Amazon CloudFront distribution, Amazon API Gateway REST API, Application Load Balancer, AppSync GraphQL API, Amazon Cognito user pool, App Runner service, Amplify application, Amazon Web Services Verified Access instance, and Amazon Bedrock AgentCore Gateway. Temporary inconsistencies during updates When you create or change a web ACL or other WAF resources, the changes take a small amount of time to propagate to all areas where the resources are stored. The propagation time can be from a few seconds to a number of minutes. The following are examples of the temporary inconsistencies that you might notice during change propagation: After you create a web ACL, if you try to associate it with a resource, you might get an exception indicating that the web ACL is unavailable. After you add a rule group to a web ACL, the new rule group rules might be in effect in one area where the web ACL is used and not in another. After you change a rule action setting, you might see the old action in some places and the new action in others. After you add an IP address to an IP set that is in use in a blocking rule, the new address might be blocked in one area while still allowed in another.</td>
 </tr>
 <tr>
     <td><a href="#associate_web_acl"><CopyableCode code="associate_web_acl" /></a></td>
@@ -186,7 +186,7 @@ WHERE region = '{{ region }}' -- required
 >
 <TabItem value="create_web_acl">
 
-Creates a WebACL per the specifications provided. A web ACL defines a collection of rules to use to inspect and control web requests. Each rule has a statement that defines what to look for in web requests and an action that WAF applies to requests that match the statement. In the web ACL, you assign a default action to take (allow, block) for any request that does not match any of the rules. The rules in a web ACL can be a combination of the types Rule, RuleGroup, and managed rule group. You can associate a web ACL with one or more Amazon Web Services resources to protect. The resource types include Amazon CloudFront distribution, Amazon API Gateway REST API, Application Load Balancer, AppSync GraphQL API, Amazon Cognito user pool, App Runner service, Amplify application, and Amazon Web Services Verified Access instance.
+Creates a WebACL per the specifications provided. A web ACL defines a collection of rules to use to inspect and control web requests. Each rule has a statement that defines what to look for in web requests and an action that WAF applies to requests that match the statement. In the web ACL, you assign a default action to take (allow, block) for any request that does not match any of the rules. The rules in a web ACL can be a combination of the types Rule, RuleGroup, and managed rule group. You can associate a web ACL with one or more Amazon Web Services resources to protect. The resource types include Amazon CloudFront distribution, Amazon API Gateway REST API, Application Load Balancer, AppSync GraphQL API, Amazon Cognito user pool, App Runner service, Amplify application, Amazon Web Services Verified Access instance, and Amazon Bedrock AgentCore Gateway.
 
 ```sql
 INSERT INTO aws.wafv2.web_acls (
@@ -205,6 +205,7 @@ TokenDomains,
 AssociationConfig,
 OnSourceDDoSProtectionConfig,
 ApplicationConfig,
+MonetizationConfig,
 region
 )
 SELECT 
@@ -223,6 +224,7 @@ SELECT
 '{{ AssociationConfig }}',
 '{{ OnSourceDDoSProtectionConfig }}',
 '{{ ApplicationConfig }}',
+'{{ MonetizationConfig }}',
 '{{ region }}'
 RETURNING
 summary
@@ -310,6 +312,9 @@ summary
               TextTransformations:
                 - Priority: {{ Priority }}
                   Type: "{{ Type }}"
+              PreParseTextTransformations:
+                - Priority: {{ Priority }}
+                  Type: "{{ Type }}"
               PositionalConstraint: "{{ PositionalConstraint }}"
             SqliMatchStatement:
               FieldToMatch:
@@ -347,6 +352,9 @@ summary
               TextTransformations:
                 - Priority: {{ Priority }}
                   Type: "{{ Type }}"
+              PreParseTextTransformations:
+                - Priority: {{ Priority }}
+                  Type: "{{ Type }}"
               SensitivityLevel: "{{ SensitivityLevel }}"
             XssMatchStatement:
               FieldToMatch:
@@ -382,6 +390,9 @@ summary
                 UriFragment:
                   FallbackBehavior: "{{ FallbackBehavior }}"
               TextTransformations:
+                - Priority: {{ Priority }}
+                  Type: "{{ Type }}"
+              PreParseTextTransformations:
                 - Priority: {{ Priority }}
                   Type: "{{ Type }}"
             SizeConstraintStatement:
@@ -422,6 +433,9 @@ summary
               TextTransformations:
                 - Priority: {{ Priority }}
                   Type: "{{ Type }}"
+              PreParseTextTransformations:
+                - Priority: {{ Priority }}
+                  Type: "{{ Type }}"
             GeoMatchStatement:
               CountryCodes:
                 - "{{ CountryCodes }}"
@@ -440,6 +454,7 @@ summary
                     Count: "{{ Count }}"
                     Captcha: "{{ Captcha }}"
                     Challenge: "{{ Challenge }}"
+                    Monetize: "{{ Monetize }}"
             IPSetReferenceStatement:
               ARN: "{{ ARN }}"
               IPSetForwardedIPConfig:
@@ -483,6 +498,9 @@ summary
               TextTransformations:
                 - Priority: {{ Priority }}
                   Type: "{{ Type }}"
+              PreParseTextTransformations:
+                - Priority: {{ Priority }}
+                  Type: "{{ Type }}"
             RateBasedStatement:
               Limit: {{ Limit }}
               EvaluationWindowSec: {{ EvaluationWindowSec }}
@@ -492,19 +510,23 @@ summary
                   SearchString: "{{ SearchString }}"
                   FieldToMatch: "{{ FieldToMatch }}"
                   TextTransformations: "{{ TextTransformations }}"
+                  PreParseTextTransformations: "{{ PreParseTextTransformations }}"
                   PositionalConstraint: "{{ PositionalConstraint }}"
                 SqliMatchStatement:
                   FieldToMatch: "{{ FieldToMatch }}"
                   TextTransformations: "{{ TextTransformations }}"
+                  PreParseTextTransformations: "{{ PreParseTextTransformations }}"
                   SensitivityLevel: "{{ SensitivityLevel }}"
                 XssMatchStatement:
                   FieldToMatch: "{{ FieldToMatch }}"
                   TextTransformations: "{{ TextTransformations }}"
+                  PreParseTextTransformations: "{{ PreParseTextTransformations }}"
                 SizeConstraintStatement:
                   FieldToMatch: "{{ FieldToMatch }}"
                   ComparisonOperator: "{{ ComparisonOperator }}"
                   Size: {{ Size }}
                   TextTransformations: "{{ TextTransformations }}"
+                  PreParseTextTransformations: "{{ PreParseTextTransformations }}"
                 GeoMatchStatement:
                   CountryCodes: "{{ CountryCodes }}"
                   ForwardedIPConfig: "{{ ForwardedIPConfig }}"
@@ -519,6 +541,7 @@ summary
                   ARN: "{{ ARN }}"
                   FieldToMatch: "{{ FieldToMatch }}"
                   TextTransformations: "{{ TextTransformations }}"
+                  PreParseTextTransformations: "{{ PreParseTextTransformations }}"
                 RateBasedStatement:
                   Limit: {{ Limit }}
                   EvaluationWindowSec: {{ EvaluationWindowSec }}
@@ -547,6 +570,7 @@ summary
                   RegexString: "{{ RegexString }}"
                   FieldToMatch: "{{ FieldToMatch }}"
                   TextTransformations: "{{ TextTransformations }}"
+                  PreParseTextTransformations: "{{ PreParseTextTransformations }}"
                 AsnMatchStatement:
                   AsnList: "{{ AsnList }}"
                   ForwardedIPConfig: "{{ ForwardedIPConfig }}"
@@ -583,19 +607,23 @@ summary
                     SearchString: "{{ SearchString }}"
                     FieldToMatch: "{{ FieldToMatch }}"
                     TextTransformations: "{{ TextTransformations }}"
+                    PreParseTextTransformations: "{{ PreParseTextTransformations }}"
                     PositionalConstraint: "{{ PositionalConstraint }}"
                   SqliMatchStatement:
                     FieldToMatch: "{{ FieldToMatch }}"
                     TextTransformations: "{{ TextTransformations }}"
+                    PreParseTextTransformations: "{{ PreParseTextTransformations }}"
                     SensitivityLevel: "{{ SensitivityLevel }}"
                   XssMatchStatement:
                     FieldToMatch: "{{ FieldToMatch }}"
                     TextTransformations: "{{ TextTransformations }}"
+                    PreParseTextTransformations: "{{ PreParseTextTransformations }}"
                   SizeConstraintStatement:
                     FieldToMatch: "{{ FieldToMatch }}"
                     ComparisonOperator: "{{ ComparisonOperator }}"
                     Size: {{ Size }}
                     TextTransformations: "{{ TextTransformations }}"
+                    PreParseTextTransformations: "{{ PreParseTextTransformations }}"
                   GeoMatchStatement:
                     CountryCodes: "{{ CountryCodes }}"
                     ForwardedIPConfig: "{{ ForwardedIPConfig }}"
@@ -610,6 +638,7 @@ summary
                     ARN: "{{ ARN }}"
                     FieldToMatch: "{{ FieldToMatch }}"
                     TextTransformations: "{{ TextTransformations }}"
+                    PreParseTextTransformations: "{{ PreParseTextTransformations }}"
                   RateBasedStatement:
                     Limit: {{ Limit }}
                     EvaluationWindowSec: {{ EvaluationWindowSec }}
@@ -638,6 +667,7 @@ summary
                     RegexString: "{{ RegexString }}"
                     FieldToMatch: "{{ FieldToMatch }}"
                     TextTransformations: "{{ TextTransformations }}"
+                    PreParseTextTransformations: "{{ PreParseTextTransformations }}"
                   AsnMatchStatement:
                     AsnList: "{{ AsnList }}"
                     ForwardedIPConfig: "{{ ForwardedIPConfig }}"
@@ -647,19 +677,23 @@ summary
                     SearchString: "{{ SearchString }}"
                     FieldToMatch: "{{ FieldToMatch }}"
                     TextTransformations: "{{ TextTransformations }}"
+                    PreParseTextTransformations: "{{ PreParseTextTransformations }}"
                     PositionalConstraint: "{{ PositionalConstraint }}"
                   SqliMatchStatement:
                     FieldToMatch: "{{ FieldToMatch }}"
                     TextTransformations: "{{ TextTransformations }}"
+                    PreParseTextTransformations: "{{ PreParseTextTransformations }}"
                     SensitivityLevel: "{{ SensitivityLevel }}"
                   XssMatchStatement:
                     FieldToMatch: "{{ FieldToMatch }}"
                     TextTransformations: "{{ TextTransformations }}"
+                    PreParseTextTransformations: "{{ PreParseTextTransformations }}"
                   SizeConstraintStatement:
                     FieldToMatch: "{{ FieldToMatch }}"
                     ComparisonOperator: "{{ ComparisonOperator }}"
                     Size: {{ Size }}
                     TextTransformations: "{{ TextTransformations }}"
+                    PreParseTextTransformations: "{{ PreParseTextTransformations }}"
                   GeoMatchStatement:
                     CountryCodes: "{{ CountryCodes }}"
                     ForwardedIPConfig: "{{ ForwardedIPConfig }}"
@@ -674,6 +708,7 @@ summary
                     ARN: "{{ ARN }}"
                     FieldToMatch: "{{ FieldToMatch }}"
                     TextTransformations: "{{ TextTransformations }}"
+                    PreParseTextTransformations: "{{ PreParseTextTransformations }}"
                   RateBasedStatement:
                     Limit: {{ Limit }}
                     EvaluationWindowSec: {{ EvaluationWindowSec }}
@@ -702,6 +737,7 @@ summary
                     RegexString: "{{ RegexString }}"
                     FieldToMatch: "{{ FieldToMatch }}"
                     TextTransformations: "{{ TextTransformations }}"
+                    PreParseTextTransformations: "{{ PreParseTextTransformations }}"
                   AsnMatchStatement:
                     AsnList: "{{ AsnList }}"
                     ForwardedIPConfig: "{{ ForwardedIPConfig }}"
@@ -711,19 +747,23 @@ summary
                   SearchString: "{{ SearchString }}"
                   FieldToMatch: "{{ FieldToMatch }}"
                   TextTransformations: "{{ TextTransformations }}"
+                  PreParseTextTransformations: "{{ PreParseTextTransformations }}"
                   PositionalConstraint: "{{ PositionalConstraint }}"
                 SqliMatchStatement:
                   FieldToMatch: "{{ FieldToMatch }}"
                   TextTransformations: "{{ TextTransformations }}"
+                  PreParseTextTransformations: "{{ PreParseTextTransformations }}"
                   SensitivityLevel: "{{ SensitivityLevel }}"
                 XssMatchStatement:
                   FieldToMatch: "{{ FieldToMatch }}"
                   TextTransformations: "{{ TextTransformations }}"
+                  PreParseTextTransformations: "{{ PreParseTextTransformations }}"
                 SizeConstraintStatement:
                   FieldToMatch: "{{ FieldToMatch }}"
                   ComparisonOperator: "{{ ComparisonOperator }}"
                   Size: {{ Size }}
                   TextTransformations: "{{ TextTransformations }}"
+                  PreParseTextTransformations: "{{ PreParseTextTransformations }}"
                 GeoMatchStatement:
                   CountryCodes: "{{ CountryCodes }}"
                   ForwardedIPConfig: "{{ ForwardedIPConfig }}"
@@ -738,6 +778,7 @@ summary
                   ARN: "{{ ARN }}"
                   FieldToMatch: "{{ FieldToMatch }}"
                   TextTransformations: "{{ TextTransformations }}"
+                  PreParseTextTransformations: "{{ PreParseTextTransformations }}"
                 RateBasedStatement:
                   Limit: {{ Limit }}
                   EvaluationWindowSec: {{ EvaluationWindowSec }}
@@ -766,6 +807,7 @@ summary
                   RegexString: "{{ RegexString }}"
                   FieldToMatch: "{{ FieldToMatch }}"
                   TextTransformations: "{{ TextTransformations }}"
+                  PreParseTextTransformations: "{{ PreParseTextTransformations }}"
                 AsnMatchStatement:
                   AsnList: "{{ AsnList }}"
                   ForwardedIPConfig: "{{ ForwardedIPConfig }}"
@@ -780,19 +822,23 @@ summary
                   SearchString: "{{ SearchString }}"
                   FieldToMatch: "{{ FieldToMatch }}"
                   TextTransformations: "{{ TextTransformations }}"
+                  PreParseTextTransformations: "{{ PreParseTextTransformations }}"
                   PositionalConstraint: "{{ PositionalConstraint }}"
                 SqliMatchStatement:
                   FieldToMatch: "{{ FieldToMatch }}"
                   TextTransformations: "{{ TextTransformations }}"
+                  PreParseTextTransformations: "{{ PreParseTextTransformations }}"
                   SensitivityLevel: "{{ SensitivityLevel }}"
                 XssMatchStatement:
                   FieldToMatch: "{{ FieldToMatch }}"
                   TextTransformations: "{{ TextTransformations }}"
+                  PreParseTextTransformations: "{{ PreParseTextTransformations }}"
                 SizeConstraintStatement:
                   FieldToMatch: "{{ FieldToMatch }}"
                   ComparisonOperator: "{{ ComparisonOperator }}"
                   Size: {{ Size }}
                   TextTransformations: "{{ TextTransformations }}"
+                  PreParseTextTransformations: "{{ PreParseTextTransformations }}"
                 GeoMatchStatement:
                   CountryCodes: "{{ CountryCodes }}"
                   ForwardedIPConfig: "{{ ForwardedIPConfig }}"
@@ -807,6 +853,7 @@ summary
                   ARN: "{{ ARN }}"
                   FieldToMatch: "{{ FieldToMatch }}"
                   TextTransformations: "{{ TextTransformations }}"
+                  PreParseTextTransformations: "{{ PreParseTextTransformations }}"
                 RateBasedStatement:
                   Limit: {{ Limit }}
                   EvaluationWindowSec: {{ EvaluationWindowSec }}
@@ -835,6 +882,7 @@ summary
                   RegexString: "{{ RegexString }}"
                   FieldToMatch: "{{ FieldToMatch }}"
                   TextTransformations: "{{ TextTransformations }}"
+                  PreParseTextTransformations: "{{ PreParseTextTransformations }}"
                 AsnMatchStatement:
                   AsnList: "{{ AsnList }}"
                   ForwardedIPConfig: "{{ ForwardedIPConfig }}"
@@ -870,6 +918,7 @@ summary
                     Count: "{{ Count }}"
                     Captcha: "{{ Captcha }}"
                     Challenge: "{{ Challenge }}"
+                    Monetize: "{{ Monetize }}"
             LabelMatchStatement:
               Scope: "{{ Scope }}"
               Key: "{{ Key }}"
@@ -910,6 +959,9 @@ summary
               TextTransformations:
                 - Priority: {{ Priority }}
                   Type: "{{ Type }}"
+              PreParseTextTransformations:
+                - Priority: {{ Priority }}
+                  Type: "{{ Type }}"
             AsnMatchStatement:
               AsnList:
                 - {{ AsnList }}
@@ -944,6 +996,8 @@ summary
                 InsertHeaders:
                   - Name: "{{ Name }}"
                     Value: "{{ Value }}"
+            Monetize:
+              PriceMultiplier: "{{ PriceMultiplier }}"
           OverrideAction:
             Count:
               CustomRequestHandling:
@@ -1025,6 +1079,16 @@ summary
         Attributes:
           - Name: "{{ Name }}"
             Values: "{{ Values }}"
+    - name: MonetizationConfig
+      description: |
+        The monetization configuration for the web ACL. Provide this when any rule in the web ACL uses the Monetize action.
+      value:
+        CryptoConfig:
+          PaymentNetworks:
+            - Chain: "{{ Chain }}"
+              WalletAddress: "{{ WalletAddress }}"
+              Prices: "{{ Prices }}"
+        CurrencyMode: "{{ CurrencyMode }}"
 `}</CodeBlock>
 
 </TabItem>
@@ -1043,7 +1107,7 @@ summary
 >
 <TabItem value="update_web_acl">
 
-Updates the specified WebACL. While updating a web ACL, WAF provides continuous coverage to the resources that you have associated with the web ACL. This operation completely replaces the mutable specifications that you already have for the web ACL with the ones that you provide to this call. To modify a web ACL, do the following: Retrieve it by calling GetWebACL Update its settings as needed Provide the complete web ACL specification to this call A web ACL defines a collection of rules to use to inspect and control web requests. Each rule has a statement that defines what to look for in web requests and an action that WAF applies to requests that match the statement. In the web ACL, you assign a default action to take (allow, block) for any request that does not match any of the rules. The rules in a web ACL can be a combination of the types Rule, RuleGroup, and managed rule group. You can associate a web ACL with one or more Amazon Web Services resources to protect. The resource types include Amazon CloudFront distribution, Amazon API Gateway REST API, Application Load Balancer, AppSync GraphQL API, Amazon Cognito user pool, App Runner service, Amplify application, and Amazon Web Services Verified Access instance. Temporary inconsistencies during updates When you create or change a web ACL or other WAF resources, the changes take a small amount of time to propagate to all areas where the resources are stored. The propagation time can be from a few seconds to a number of minutes. The following are examples of the temporary inconsistencies that you might notice during change propagation: After you create a web ACL, if you try to associate it with a resource, you might get an exception indicating that the web ACL is unavailable. After you add a rule group to a web ACL, the new rule group rules might be in effect in one area where the web ACL is used and not in another. After you change a rule action setting, you might see the old action in some places and the new action in others. After you add an IP address to an IP set that is in use in a blocking rule, the new address might be blocked in one area while still allowed in another.
+Updates the specified WebACL. While updating a web ACL, WAF provides continuous coverage to the resources that you have associated with the web ACL. This operation completely replaces the mutable specifications that you already have for the web ACL with the ones that you provide to this call. To modify a web ACL, do the following: Retrieve it by calling GetWebACL Update its settings as needed Provide the complete web ACL specification to this call A web ACL defines a collection of rules to use to inspect and control web requests. Each rule has a statement that defines what to look for in web requests and an action that WAF applies to requests that match the statement. In the web ACL, you assign a default action to take (allow, block) for any request that does not match any of the rules. The rules in a web ACL can be a combination of the types Rule, RuleGroup, and managed rule group. You can associate a web ACL with one or more Amazon Web Services resources to protect. The resource types include Amazon CloudFront distribution, Amazon API Gateway REST API, Application Load Balancer, AppSync GraphQL API, Amazon Cognito user pool, App Runner service, Amplify application, Amazon Web Services Verified Access instance, and Amazon Bedrock AgentCore Gateway. Temporary inconsistencies during updates When you create or change a web ACL or other WAF resources, the changes take a small amount of time to propagate to all areas where the resources are stored. The propagation time can be from a few seconds to a number of minutes. The following are examples of the temporary inconsistencies that you might notice during change propagation: After you create a web ACL, if you try to associate it with a resource, you might get an exception indicating that the web ACL is unavailable. After you add a rule group to a web ACL, the new rule group rules might be in effect in one area where the web ACL is used and not in another. After you change a rule action setting, you might see the old action in some places and the new action in others. After you add an IP address to an IP set that is in use in a blocking rule, the new address might be blocked in one area while still allowed in another.
 
 ```sql
 UPDATE aws.wafv2.web_acls
@@ -1063,7 +1127,8 @@ ChallengeConfig = '{{ ChallengeConfig }}',
 TokenDomains = '{{ TokenDomains }}',
 AssociationConfig = '{{ AssociationConfig }}',
 OnSourceDDoSProtectionConfig = '{{ OnSourceDDoSProtectionConfig }}',
-ApplicationConfig = '{{ ApplicationConfig }}'
+ApplicationConfig = '{{ ApplicationConfig }}',
+MonetizationConfig = '{{ MonetizationConfig }}'
 WHERE 
 region = '{{ region }}' --required
 AND Name = '{{ Name }}' --required

@@ -125,8 +125,8 @@ The following methods are available for this resource:
     <td><a href="#create_replace_root_volume_task"><CopyableCode code="create_replace_root_volume_task" /></a></td>
     <td><CopyableCode code="insert" /></td>
     <td><a href="#parameter-InstanceId"><code>InstanceId</code></a>, <a href="#parameter-region"><code>region</code></a></td>
-    <td><a href="#parameter-SnapshotId"><code>SnapshotId</code></a>, <a href="#parameter-ClientToken"><code>ClientToken</code></a>, <a href="#parameter-DryRun"><code>DryRun</code></a>, <a href="#parameter-TagSpecification"><code>TagSpecification</code></a>, <a href="#parameter-ImageId"><code>ImageId</code></a>, <a href="#parameter-DeleteReplacedRootVolume"><code>DeleteReplacedRootVolume</code></a>, <a href="#parameter-VolumeInitializationRate"><code>VolumeInitializationRate</code></a></td>
-    <td>Replaces the EBS-backed root volume for a running instance with a new volume that is restored to the original root volume's launch state, that is restored to a specific snapshot taken from the original root volume, or that is restored from an AMI that has the same key characteristics as that of the instance. For more information, see Replace a root volume in the Amazon EC2 User Guide.</td>
+    <td><a href="#parameter-SnapshotId"><code>SnapshotId</code></a>, <a href="#parameter-ClientToken"><code>ClientToken</code></a>, <a href="#parameter-DryRun"><code>DryRun</code></a>, <a href="#parameter-TagSpecification"><code>TagSpecification</code></a>, <a href="#parameter-ImageId"><code>ImageId</code></a>, <a href="#parameter-DeleteReplacedRootVolume"><code>DeleteReplacedRootVolume</code></a>, <a href="#parameter-VolumeInitializationRate"><code>VolumeInitializationRate</code></a>, <a href="#parameter-VolumeId"><code>VolumeId</code></a></td>
+    <td>Replaces the EBS-backed root volume for a running instance with a new volume that is restored to the original root volume's launch state, that is restored to a specific snapshot taken from the original root volume, that is restored from an AMI that has the same key characteristics as that of the instance, or that is replaced by a specified volume. For more information, see Replace a root volume in the Amazon EC2 User Guide.</td>
 </tr>
 </tbody>
 </table>
@@ -177,7 +177,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-ImageId">
     <td><CopyableCode code="ImageId" /></td>
     <td><code>string</code></td>
-    <td>The ID of the AMI to use to restore the root volume. The specified AMI must have the same product code, billing information, architecture type, and virtualization type as that of the instance. If you want to restore the replacement volume from a specific snapshot, or if you want to restore it to its launch state, omit this parameter.</td>
+    <td>The ID of the AMI to use to restore the root volume. The specified AMI must have the same product code, billing information, architecture type, and virtualization type as that of the instance. If you want to restore the replacement volume from a specific snapshot, if you want to restore it to its launch state, or if you want to replace the root volume with a specified volume, omit this parameter.</td>
 </tr>
 <tr id="parameter-MaxResults">
     <td><CopyableCode code="MaxResults" /></td>
@@ -197,12 +197,17 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-SnapshotId">
     <td><CopyableCode code="SnapshotId" /></td>
     <td><code>string</code></td>
-    <td>The ID of the snapshot from which to restore the replacement root volume. The specified snapshot must be a snapshot that you previously created from the original root volume. If you want to restore the replacement root volume to the initial launch state, or if you want to restore the replacement root volume from an AMI, omit this parameter.</td>
+    <td>The ID of the snapshot from which to restore the replacement root volume. The specified snapshot must be a snapshot that you previously created from the original root volume. If you want to restore the replacement root volume to the initial launch state, if you want to restore the replacement root volume from an AMI, or if you want to replace the root volume with a specified volume, omit this parameter.</td>
 </tr>
 <tr id="parameter-TagSpecification">
     <td><CopyableCode code="TagSpecification" /></td>
     <td><code>array</code></td>
     <td>The tags to apply to the root volume replacement task.</td>
+</tr>
+<tr id="parameter-VolumeId">
+    <td><CopyableCode code="VolumeId" /></td>
+    <td><code>string</code></td>
+    <td>The ID of the volume to use as the replacement root volume. The specified volume must be in the same Availability Zone as the instance, must be in the available state, and must not be attached to an instance. If the original root volume is encrypted, the specified volume must also be encrypted. If you want to restore the replacement root volume from a specific snapshot, an AMI, or to its launch state, omit this parameter.</td>
 </tr>
 <tr id="parameter-VolumeInitializationRate">
     <td><CopyableCode code="VolumeInitializationRate" /></td>
@@ -259,7 +264,7 @@ AND DryRun = '{{ DryRun }}'
 >
 <TabItem value="create_replace_root_volume_task">
 
-Replaces the EBS-backed root volume for a running instance with a new volume that is restored to the original root volume's launch state, that is restored to a specific snapshot taken from the original root volume, or that is restored from an AMI that has the same key characteristics as that of the instance. For more information, see Replace a root volume in the Amazon EC2 User Guide.
+Replaces the EBS-backed root volume for a running instance with a new volume that is restored to the original root volume's launch state, that is restored to a specific snapshot taken from the original root volume, that is restored from an AMI that has the same key characteristics as that of the instance, or that is replaced by a specified volume. For more information, see Replace a root volume in the Amazon EC2 User Guide.
 
 ```sql
 INSERT INTO aws.ec2.replace_root_volume_tasks (
@@ -271,7 +276,8 @@ DryRun,
 TagSpecification,
 ImageId,
 DeleteReplacedRootVolume,
-VolumeInitializationRate
+VolumeInitializationRate,
+VolumeId
 )
 SELECT 
 '{{ InstanceId }}',
@@ -282,7 +288,8 @@ SELECT
 '{{ TagSpecification }}',
 '{{ ImageId }}',
 '{{ DeleteReplacedRootVolume }}',
-'{{ VolumeInitializationRate }}'
+'{{ VolumeInitializationRate }}',
+'{{ VolumeId }}'
 RETURNING
 complete_time,
 delete_replaced_root_volume,
@@ -309,8 +316,8 @@ task_state
       description: Required parameter for the replace_root_volume_tasks resource.
     - name: SnapshotId
       value: "{{ SnapshotId }}"
-      description: The ID of the snapshot from which to restore the replacement root volume. The specified snapshot must be a snapshot that you previously created from the original root volume. If you want to restore the replacement root volume to the initial launch state, or if you want to restore the replacement root volume from an AMI, omit this parameter.
-      description: The ID of the snapshot from which to restore the replacement root volume. The specified snapshot must be a snapshot that you previously created from the original root volume. If you want to restore the replacement root volume to the initial launch state, or if you want to restore the replacement root volume from an AMI, omit this parameter.
+      description: The ID of the snapshot from which to restore the replacement root volume. The specified snapshot must be a snapshot that you previously created from the original root volume. If you want to restore the replacement root volume to the initial launch state, if you want to restore the replacement root volume from an AMI, or if you want to replace the root volume with a specified volume, omit this parameter.
+      description: The ID of the snapshot from which to restore the replacement root volume. The specified snapshot must be a snapshot that you previously created from the original root volume. If you want to restore the replacement root volume to the initial launch state, if you want to restore the replacement root volume from an AMI, or if you want to replace the root volume with a specified volume, omit this parameter.
     - name: ClientToken
       value: "{{ ClientToken }}"
       description: Unique, case-sensitive identifier you provide to ensure the idempotency of the request. If you do not specify a client token, a randomly generated token is used for the request to ensure idempotency. For more information, see Ensuring idempotency.
@@ -325,8 +332,8 @@ task_state
       description: The tags to apply to the root volume replacement task.
     - name: ImageId
       value: "{{ ImageId }}"
-      description: The ID of the AMI to use to restore the root volume. The specified AMI must have the same product code, billing information, architecture type, and virtualization type as that of the instance. If you want to restore the replacement volume from a specific snapshot, or if you want to restore it to its launch state, omit this parameter.
-      description: The ID of the AMI to use to restore the root volume. The specified AMI must have the same product code, billing information, architecture type, and virtualization type as that of the instance. If you want to restore the replacement volume from a specific snapshot, or if you want to restore it to its launch state, omit this parameter.
+      description: The ID of the AMI to use to restore the root volume. The specified AMI must have the same product code, billing information, architecture type, and virtualization type as that of the instance. If you want to restore the replacement volume from a specific snapshot, if you want to restore it to its launch state, or if you want to replace the root volume with a specified volume, omit this parameter.
+      description: The ID of the AMI to use to restore the root volume. The specified AMI must have the same product code, billing information, architecture type, and virtualization type as that of the instance. If you want to restore the replacement volume from a specific snapshot, if you want to restore it to its launch state, or if you want to replace the root volume with a specified volume, omit this parameter.
     - name: DeleteReplacedRootVolume
       value: {{ DeleteReplacedRootVolume }}
       description: Indicates whether to automatically delete the original root volume after the root volume replacement task completes. To delete the original root volume, specify true. If you choose to keep the original root volume after the replacement task completes, you must manually delete it when you no longer need it.
@@ -335,6 +342,10 @@ task_state
       value: "{{ VolumeInitializationRate }}"
       description: Specifies the Amazon EBS Provisioned Rate for Volume Initialization (volume initialization rate), in MiB/s, at which to download the snapshot blocks from Amazon S3 to the replacement root volume. This is also known as volume initialization. Specifying a volume initialization rate ensures that the volume is initialized at a predictable and consistent rate after creation. Omit this parameter if: You want to create the volume using fast snapshot restore. You must specify a snapshot that is enabled for fast snapshot restore. In this case, the volume is fully initialized at creation. If you specify a snapshot that is enabled for fast snapshot restore and a volume initialization rate, the volume will be initialized at the specified rate instead of fast snapshot restore. You want to create a volume that is initialized at the default rate. For more information, see Initialize Amazon EBS volumes in the Amazon EC2 User Guide. Valid range: 100 - 300 MiB/s
       description: Specifies the Amazon EBS Provisioned Rate for Volume Initialization (volume initialization rate), in MiB/s, at which to download the snapshot blocks from Amazon S3 to the replacement root volume. This is also known as volume initialization. Specifying a volume initialization rate ensures that the volume is initialized at a predictable and consistent rate after creation. Omit this parameter if: You want to create the volume using fast snapshot restore. You must specify a snapshot that is enabled for fast snapshot restore. In this case, the volume is fully initialized at creation. If you specify a snapshot that is enabled for fast snapshot restore and a volume initialization rate, the volume will be initialized at the specified rate instead of fast snapshot restore. You want to create a volume that is initialized at the default rate. For more information, see Initialize Amazon EBS volumes in the Amazon EC2 User Guide. Valid range: 100 - 300 MiB/s
+    - name: VolumeId
+      value: "{{ VolumeId }}"
+      description: The ID of the volume to use as the replacement root volume. The specified volume must be in the same Availability Zone as the instance, must be in the available state, and must not be attached to an instance. If the original root volume is encrypted, the specified volume must also be encrypted. If you want to restore the replacement root volume from a specific snapshot, an AMI, or to its launch state, omit this parameter.
+      description: The ID of the volume to use as the replacement root volume. The specified volume must be in the same Availability Zone as the instance, must be in the available state, and must not be attached to an instance. If the original root volume is encrypted, the specified volume must also be encrypted. If you want to restore the replacement root volume from a specific snapshot, an AMI, or to its launch state, omit this parameter.
 `}</CodeBlock>
 
 </TabItem>

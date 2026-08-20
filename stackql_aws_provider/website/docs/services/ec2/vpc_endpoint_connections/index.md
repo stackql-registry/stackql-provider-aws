@@ -75,6 +75,11 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Names (ARNs) of the network load balancers for the service.</td>
 </tr>
 <tr>
+    <td><CopyableCode code="payer_responsibilities" /></td>
+    <td><code>string</code></td>
+    <td>The payer responsibility settings for the endpoint.</td>
+</tr>
+<tr>
     <td><CopyableCode code="service_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the service to which the endpoint is connected.</td>
@@ -223,6 +228,7 @@ dns_entries,
 gateway_load_balancer_arns,
 ip_address_type,
 network_load_balancer_arns,
+payer_responsibilities,
 service_id,
 tags,
 vpc_endpoint_connection_id,

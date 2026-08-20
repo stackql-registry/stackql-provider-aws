@@ -115,6 +115,11 @@ The following fields are returned by `SELECT` queries:
     <td>Specifies the EncryptionAtRestOptions for the Elasticsearch domain.</td>
 </tr>
 <tr>
+    <td><CopyableCode code="engine_mode" /></td>
+    <td><code>object</code></td>
+    <td>The engine mode configured for the domain.</td>
+</tr>
+<tr>
     <td><CopyableCode code="log_publishing_options" /></td>
     <td><code>object</code></td>
     <td>Log publishing options for the given domain.</td>
@@ -133,6 +138,11 @@ The following fields are returned by `SELECT` queries:
     <td><CopyableCode code="snapshot_options" /></td>
     <td><code>object</code></td>
     <td>Specifies the SnapshotOptions for the Elasticsearch domain.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="use_case" /></td>
+    <td><code>object</code></td>
+    <td>The use case configured for the domain.</td>
 </tr>
 <tr>
     <td><CopyableCode code="vpc_options" /></td>
@@ -229,10 +239,12 @@ ebs_options,
 elasticsearch_cluster_config,
 elasticsearch_version,
 encryption_at_rest_options,
+engine_mode,
 log_publishing_options,
 modifying_properties,
 node_to_node_encryption_options,
 snapshot_options,
+use_case,
 vpc_options
 FROM aws.es.elasticsearch_domain_configs
 WHERE domain_name = '{{ domain_name }}' -- required
@@ -273,7 +285,9 @@ EncryptionAtRestOptions = '{{ EncryptionAtRestOptions }}',
 AutoTuneOptions = '{{ AutoTuneOptions }}',
 DryRun = {{ DryRun }},
 DeploymentStrategyOptions = '{{ DeploymentStrategyOptions }}',
-AutomatedSnapshotPauseOptions = '{{ AutomatedSnapshotPauseOptions }}'
+AutomatedSnapshotPauseOptions = '{{ AutomatedSnapshotPauseOptions }}',
+UseCase = '{{ UseCase }}',
+EngineMode = '{{ EngineMode }}'
 WHERE 
 domain_name = '{{ domain_name }}' --required
 AND region = '{{ region }}' --required

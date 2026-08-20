@@ -50,6 +50,11 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
+    <td><CopyableCode code="anomaly_detector_id" /></td>
+    <td><code>string</code></td>
+    <td>The unique identifier of the anomaly detector. The identifier does not restrict access to a specific anomaly detector in an IAM policy. Permissions for anomaly detector operations apply to all anomaly detectors in the account. (pattern: &lt;code&gt;&#91;A-Za-z0-9_./:%()+-&#93;+&lt;/code&gt;)</td>
+</tr>
+<tr>
     <td><CopyableCode code="configuration" /></td>
     <td><code>object</code></td>
     <td>The configuration specifies details about how the anomaly detection model is to be trained, including time ranges to exclude from use for training the model, and the time zone to use for the metric.</td>
@@ -173,6 +178,7 @@ Lists the anomaly detection models that you have created in your account. For si
 
 ```sql
 SELECT
+anomaly_detector_id,
 configuration,
 dimensions,
 metric_characteristics,
@@ -214,7 +220,9 @@ MetricCharacteristics = '{{ MetricCharacteristics }}',
 SingleMetricAnomalyDetector = '{{ SingleMetricAnomalyDetector }}',
 MetricMathAnomalyDetector = '{{ MetricMathAnomalyDetector }}'
 WHERE 
-region = '{{ region }}' --required;
+region = '{{ region }}' --required
+RETURNING
+anomaly_detector_id;
 ```
 </TabItem>
 </Tabs>

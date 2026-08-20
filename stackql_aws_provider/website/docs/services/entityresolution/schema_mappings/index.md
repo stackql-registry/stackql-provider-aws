@@ -182,7 +182,7 @@ The following methods are available for this resource:
     <td><CopyableCode code="delete" /></td>
     <td><a href="#parameter-schema_name"><code>schema_name</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>Deletes the SchemaMapping with a given name. This operation will succeed even if a schema with the given name does not exist. This operation will fail if there is a MatchingWorkflow object that references the SchemaMapping in the workflow's InputSourceConfig.</td>
+    <td>Deletes the SchemaMapping with a given name. This operation returns a ResourceNotFoundException if a schema with the given name does not exist. This operation will fail if there is a MatchingWorkflow object that references the SchemaMapping in the workflow's InputSourceConfig.</td>
 </tr>
 </tbody>
 </table>
@@ -377,7 +377,7 @@ schema_name;
 >
 <TabItem value="delete_schema_mapping">
 
-Deletes the SchemaMapping with a given name. This operation will succeed even if a schema with the given name does not exist. This operation will fail if there is a MatchingWorkflow object that references the SchemaMapping in the workflow's InputSourceConfig.
+Deletes the SchemaMapping with a given name. This operation returns a ResourceNotFoundException if a schema with the given name does not exist. This operation will fail if there is a MatchingWorkflow object that references the SchemaMapping in the workflow's InputSourceConfig.
 
 ```sql
 DELETE FROM aws.entityresolution.schema_mappings

@@ -52,12 +52,12 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="compute_arn" /></td>
     <td><code>string</code></td>
-    <td>The Amazon Resource Name (ARN) that is assigned to an Amazon GameLift Servers compute resource and uniquely identifies it. ARNs are unique across all Regions. Format is arn:aws:gamelift:<code>&lt;region&gt;</code>::compute/compute-a1234567-b8c9-0d1e-2fa3-b45c6d7e8912. (pattern: &lt;code&gt;^arn:.*:compute\/&#91;a-zA-Z0-9\-&#93;+(\/&#91;a-zA-Z0-9\-&#93;+)?&lt;/code&gt;)</td>
+    <td>The Amazon Resource Name (ARN) that is assigned to an Amazon GameLift Servers compute resource and uniquely identifies it. ARNs are unique across all Regions. Format is arn:aws:gamelift:<code>&lt;region&gt;</code>::compute/compute-a1234567-b8c9-0d1e-2fa3-b45c6d7e8912. (pattern: &lt;code&gt;^arn:.*:compute\/&#91;a-zA-Z0-9\-&#93;+(\/&#91;a-zA-Z0-9\-&#93;+)?$&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="compute_name" /></td>
     <td><code>string</code></td>
-    <td>The identifier of the compute resource to be accessed. This value might be either a compute name or an instance ID. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9\-&#93;+(\/&#91;a-zA-Z0-9\-&#93;+)?$|^arn:.*:compute\/&#91;a-zA-Z0-9\-&#93;+(\/&#91;a-zA-Z0-9\-&#93;+)?&lt;/code&gt;)</td>
+    <td>The identifier of the compute resource to be accessed. This value might be either a compute name or an instance ID. (pattern: &lt;code&gt;^(&#91;a-zA-Z0-9\-&#93;+(\/&#91;a-zA-Z0-9\-&#93;+)?|arn:.*:compute\/&#91;a-zA-Z0-9\-&#93;+(\/&#91;a-zA-Z0-9\-&#93;+)?)$&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="container_identifiers" /></td>

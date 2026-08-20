@@ -95,6 +95,11 @@ The following fields are returned by `SELECT` queries:
     <td>Post-launch actions activated.</td>
 </tr>
 <tr>
+    <td><CopyableCode code="recovery_mode" /></td>
+    <td><code>string</code></td>
+    <td>Recovery mode to use during launch. FAST skips conversion to reduce recovery time. OPTIMAL runs full conversion for maximum compatibility. (FAST, OPTIMAL)</td>
+</tr>
+<tr>
     <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>Tags of the Launch Configuration Template.</td>
@@ -199,6 +204,7 @@ launch_disposition,
 launch_into_source_instance,
 licensing,
 post_launch_enabled,
+recovery_mode,
 tags,
 target_instance_type_right_sizing_method
 FROM aws.drs.launch_configuration_templates
@@ -233,6 +239,7 @@ licensing,
 exportBucketArn,
 postLaunchEnabled,
 launchIntoSourceInstance,
+recoveryMode,
 region
 )
 SELECT 
@@ -245,6 +252,7 @@ SELECT
 '{{ exportBucketArn }}',
 {{ postLaunchEnabled }},
 {{ launchIntoSourceInstance }},
+'{{ recoveryMode }}',
 '{{ region }}'
 RETURNING
 launch_configuration_template
@@ -282,6 +290,11 @@ launch_configuration_template
       value: {{ postLaunchEnabled }}
     - name: launchIntoSourceInstance
       value: {{ launchIntoSourceInstance }}
+    - name: recoveryMode
+      value: "{{ recoveryMode }}"
+      description: |
+        Recovery mode to use during launch. FAST skips conversion to reduce recovery time. OPTIMAL runs full conversion for maximum compatibility.
+      valid_values: ['FAST', 'OPTIMAL']
 `}</CodeBlock>
 
 </TabItem>
@@ -311,7 +324,8 @@ copyTags = {{ copyTags }},
 licensing = '{{ licensing }}',
 exportBucketArn = '{{ exportBucketArn }}',
 postLaunchEnabled = {{ postLaunchEnabled }},
-launchIntoSourceInstance = {{ launchIntoSourceInstance }}
+launchIntoSourceInstance = {{ launchIntoSourceInstance }},
+recoveryMode = '{{ recoveryMode }}'
 WHERE 
 region = '{{ region }}' --required
 AND launchConfigurationTemplateID = '{{ launchConfigurationTemplateID }}' --required

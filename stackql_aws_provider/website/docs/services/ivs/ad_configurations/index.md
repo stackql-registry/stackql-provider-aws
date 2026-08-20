@@ -63,7 +63,12 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="media_tailor_playback_configurations" /></td>
     <td><code>array</code></td>
-    <td>List of integration configurations with media tailor resources.</td>
+    <td>List of integration configurations with MediaTailor resources. The first item in the list is the default playback configuration used for the ad configuration. To select a different configuration per viewing session, see Generate and Sign IVS Playback Tokens.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="post_roll_configuration" /></td>
+    <td><code>object</code></td>
+    <td>Configuration for the post-roll ad break to use for this ad configuration.</td>
 </tr>
 <tr>
     <td><CopyableCode code="tags" /></td>
@@ -97,7 +102,12 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="media_tailor_playback_configurations" /></td>
     <td><code>array</code></td>
-    <td>List of integration configurations with media tailor resources.</td>
+    <td>List of integration configurations with MediaTailor resources. The first item in the list is the default playback configuration used for the ad configuration. To select a different configuration per viewing session, see Generate and Sign IVS Playback Tokens.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="post_roll_configuration" /></td>
+    <td><code>object</code></td>
+    <td>Configuration for the post-roll ad break to use for this ad configuration.</td>
 </tr>
 <tr>
     <td><CopyableCode code="tags" /></td>
@@ -144,6 +154,13 @@ The following methods are available for this resource:
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-mediaTailorPlaybackConfigurations"><code>mediaTailorPlaybackConfigurations</code></a></td>
     <td></td>
     <td>Creates a new ad configuration to be used for server-side ad insertion.</td>
+</tr>
+<tr>
+    <td><a href="#update_ad_configuration"><CopyableCode code="update_ad_configuration" /></a></td>
+    <td><CopyableCode code="update" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-arn"><code>arn</code></a></td>
+    <td></td>
+    <td>Updates a specified ad configuration.</td>
 </tr>
 <tr>
     <td><a href="#delete_ad_configuration"><CopyableCode code="delete_ad_configuration" /></a></td>
@@ -194,6 +211,7 @@ SELECT
 name,
 arn,
 media_tailor_playback_configurations,
+post_roll_configuration,
 tags
 FROM aws.ivs.ad_configurations
 WHERE region = '{{ region }}' -- required
@@ -209,6 +227,7 @@ SELECT
 name,
 arn,
 media_tailor_playback_configurations,
+post_roll_configuration,
 tags
 FROM aws.ivs.ad_configurations
 WHERE region = '{{ region }}' -- required
@@ -235,12 +254,14 @@ Creates a new ad configuration to be used for server-side ad insertion.
 INSERT INTO aws.ivs.ad_configurations (
 name,
 mediaTailorPlaybackConfigurations,
+postRollConfiguration,
 tags,
 region
 )
 SELECT 
 '{{ name }}',
 '{{ mediaTailorPlaybackConfigurations }}' /* required */,
+'{{ postRollConfiguration }}',
 '{{ tags }}',
 '{{ region }}'
 RETURNING
@@ -261,10 +282,45 @@ ad_configuration
     - name: mediaTailorPlaybackConfigurations
       value:
         - playbackConfigurationArn: "{{ playbackConfigurationArn }}"
+    - name: postRollConfiguration
+      description: |
+        Configuration for the post-roll ad break to use for this ad configuration.
+      value:
+        durationSeconds: {{ durationSeconds }}
+        enabled: {{ enabled }}
     - name: tags
       value: "{{ tags }}"
 `}</CodeBlock>
 
+</TabItem>
+</Tabs>
+
+
+## `UPDATE` examples
+
+<Tabs
+    defaultValue="update_ad_configuration"
+    values={[
+        { label: 'update_ad_configuration', value: 'update_ad_configuration' }
+    ]}
+>
+<TabItem value="update_ad_configuration">
+
+Updates a specified ad configuration.
+
+```sql
+UPDATE aws.ivs.ad_configurations
+SET 
+arn = '{{ arn }}',
+name = '{{ name }}',
+mediaTailorPlaybackConfigurations = '{{ mediaTailorPlaybackConfigurations }}',
+postRollConfiguration = '{{ postRollConfiguration }}'
+WHERE 
+region = '{{ region }}' --required
+AND arn = '{{ arn }}' --required
+RETURNING
+ad_configuration;
+```
 </TabItem>
 </Tabs>
 

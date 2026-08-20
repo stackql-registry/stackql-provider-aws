@@ -306,11 +306,27 @@ provider_configuration_output
         coinbaseCdpConfiguration:
           apiKeyId: "{{ apiKeyId }}"
           apiKeySecret: "{{ apiKeySecret }}"
+          apiKeySecretSource: "{{ apiKeySecretSource }}"
+          apiKeySecretConfig:
+            secretId: "{{ secretId }}"
+            jsonKey: "{{ jsonKey }}"
           walletSecret: "{{ walletSecret }}"
+          walletSecretSource: "{{ walletSecretSource }}"
+          walletSecretConfig:
+            secretId: "{{ secretId }}"
+            jsonKey: "{{ jsonKey }}"
         stripePrivyConfiguration:
           appId: "{{ appId }}"
           appSecret: "{{ appSecret }}"
+          appSecretSource: "{{ appSecretSource }}"
+          appSecretConfig:
+            secretId: "{{ secretId }}"
+            jsonKey: "{{ jsonKey }}"
           authorizationPrivateKey: "{{ authorizationPrivateKey }}"
+          authorizationPrivateKeySource: "{{ authorizationPrivateKeySource }}"
+          authorizationPrivateKeyConfig:
+            secretId: "{{ secretId }}"
+            jsonKey: "{{ jsonKey }}"
           authorizationId: "{{ authorizationId }}"
     - name: tags
       value: "{{ tags }}"

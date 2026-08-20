@@ -140,6 +140,11 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the SecurityConfiguration structure to be used with the session. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
+    <td><CopyableCode code="session_type" /></td>
+    <td><code>string</code></td>
+    <td>The type of the session. (LIVY, SPARK_CONNECT)</td>
+</tr>
+<tr>
     <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The session status. (PROVISIONING, READY, FAILED, TIMEOUT, STOPPING, STOPPED)</td>
@@ -267,6 +272,7 @@ profile_name,
 progress,
 role,
 security_configuration,
+session_type,
 status,
 worker_type
 FROM aws.glue.sessions
@@ -307,6 +313,7 @@ SecurityConfiguration,
 GlueVersion,
 Tags,
 RequestOrigin,
+SessionType,
 region
 )
 SELECT 
@@ -325,6 +332,7 @@ SELECT
 '{{ GlueVersion }}',
 '{{ Tags }}',
 '{{ RequestOrigin }}',
+'{{ SessionType }}',
 '{{ region }}'
 RETURNING
 session
@@ -404,6 +412,11 @@ session
       value: "{{ RequestOrigin }}"
       description: |
         The origin of the request.
+    - name: SessionType
+      value: "{{ SessionType }}"
+      description: |
+        The type of session to create.
+      valid_values: ['LIVY', 'SPARK_CONNECT']
 `}</CodeBlock>
 
 </TabItem>

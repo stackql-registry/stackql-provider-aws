@@ -109,7 +109,7 @@ The following methods are available for this resource:
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-instance_id"><code>instance_id</code></a>, <a href="#parameter-view_id"><code>view_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td><a href="#parameter-nextToken"><code>nextToken</code></a>, <a href="#parameter-maxResults"><code>maxResults</code></a></td>
-    <td>Returns all the available versions for the specified Amazon Connect instance and view identifier. Results will be sorted from highest to lowest.</td>
+    <td>Returns all the available versions for the specified Connect Customer instance and view identifier. Results will be sorted from highest to lowest.</td>
 </tr>
 <tr>
     <td><a href="#create_view_version"><CopyableCode code="create_view_version" /></a></td>
@@ -144,7 +144,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-instance_id">
     <td><CopyableCode code="instance_id" /></td>
     <td><code>string</code></td>
-    <td>The identifier of the Amazon Connect instance. You can find the instanceId in the ARN of the instance.</td>
+    <td>The identifier of the Connect Customer instance. You can find the instanceId in the ARN of the instance.</td>
 </tr>
 <tr id="parameter-region">
     <td><CopyableCode code="region" /></td>
@@ -184,7 +184,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 >
 <TabItem value="list_view_versions">
 
-Returns all the available versions for the specified Amazon Connect instance and view identifier. Results will be sorted from highest to lowest.
+Returns all the available versions for the specified Connect Customer instance and view identifier. Results will be sorted from highest to lowest.
 
 ```sql
 SELECT

@@ -166,6 +166,11 @@ The following fields are returned by `SELECT` queries:
     <td>The key-value pair that exists if the OpenSearch Service domain uses VPC endpoints. For example: IPv4 IP addresses - 'vpc','vpc-endpoint-h2dsd34efgyghrtguk5gt6j2foh4.us-east-1.es.amazonaws.com' Dual stack IP addresses - 'vpcv2':'vpc-endpoint-h2dsd34efgyghrtguk5gt6j2foh4.aos.us-east-1.on.aws'</td>
 </tr>
 <tr>
+    <td><CopyableCode code="engine_mode" /></td>
+    <td><code>string</code></td>
+    <td>The engine mode for the domain. Valid values are GENERAL (the standard OpenSearch engine) and OPTIMIZED. If you don't specify an engine mode, GENERAL is used. OPTIMIZED requires OpenSearch 3.5 or later, OpenSearch Optimized instance types (OR1, OR2, OM2, or OI2) for the data tier, and is available only for the OBSERVABILITY use cases. The engine mode can't be changed after the domain is created. (GENERAL, OPTIMIZED)</td>
+</tr>
+<tr>
     <td><CopyableCode code="engine_version" /></td>
     <td><code>string</code></td>
     <td>Version of OpenSearch or Elasticsearch that the domain is running, in the format Elasticsearch_X.Y or OpenSearch_X.Y. (pattern: &lt;code&gt;^Elasticsearch_&#91;0-9&#93;&#123;1&#125;\.&#91;0-9&#93;&#123;1,2&#125;$|^OpenSearch_&#91;0-9&#93;&#123;1,2&#125;\.&#91;0-9&#93;&#123;1,2&#125;$&lt;/code&gt;)</td>
@@ -224,6 +229,11 @@ The following fields are returned by `SELECT` queries:
     <td><CopyableCode code="upgrade_processing" /></td>
     <td><code>boolean</code></td>
     <td>The status of a domain version upgrade to a new version of OpenSearch or Elasticsearch. True if OpenSearch Service is in the process of a version upgrade. False if the configuration is active.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="use_case" /></td>
+    <td><code>string</code></td>
+    <td>The primary use case for the domain, which determines the default configuration and the engine modes that are available. Valid values are SEARCH (full-text search, e-commerce, content discovery, and hybrid and semantic search), VECTOR (k-NN and semantic search, and retrieval-augmented generation), OBSERVABILITY (logs, metrics, traces, and dashboards), and MIXED (a combination of search and analytics). If you don't specify a use case, MIXED is used. (SEARCH, VECTOR, OBSERVABILITY, MIXED)</td>
 </tr>
 <tr>
     <td><CopyableCode code="vpc_options" /></td>
@@ -399,6 +409,7 @@ encryption_at_rest_options,
 endpoint,
 endpoint_v2,
 endpoints,
+engine_mode,
 engine_version,
 ip_address_type,
 identity_center_options,
@@ -411,6 +422,7 @@ service_software_options,
 snapshot_options,
 software_update_options,
 upgrade_processing,
+use_case,
 vpc_options
 FROM aws.opensearch.domains
 WHERE domain_name = '{{ domain_name }}' -- required
@@ -471,6 +483,8 @@ SoftwareUpdateOptions,
 AIMLOptions,
 DeploymentStrategyOptions,
 AutomatedSnapshotPauseOptions,
+UseCase,
+EngineMode,
 region
 )
 SELECT 
@@ -497,6 +511,8 @@ SELECT
 '{{ AIMLOptions }}',
 '{{ DeploymentStrategyOptions }}',
 '{{ AutomatedSnapshotPauseOptions }}',
+'{{ UseCase }}',
+'{{ EngineMode }}',
 '{{ region }}'
 RETURNING
 domain_status
@@ -700,6 +716,16 @@ domain_status
         Enabled: {{ Enabled }}
         StartTime: "{{ StartTime }}"
         EndTime: "{{ EndTime }}"
+    - name: UseCase
+      value: "{{ UseCase }}"
+      description: |
+        The primary use case for the domain, which determines the default configuration and the engine modes that are available. Valid values are SEARCH (full-text search, e-commerce, content discovery, and hybrid and semantic search), VECTOR (k-NN and semantic search, and retrieval-augmented generation), OBSERVABILITY (logs, metrics, traces, and dashboards), and MIXED (a combination of search and analytics). If you don't specify a use case, MIXED is used.
+      valid_values: ['SEARCH', 'VECTOR', 'OBSERVABILITY', 'MIXED']
+    - name: EngineMode
+      value: "{{ EngineMode }}"
+      description: |
+        The engine mode for the domain. Valid values are GENERAL (the standard OpenSearch engine) and OPTIMIZED. If you don't specify an engine mode, GENERAL is used. OPTIMIZED requires OpenSearch 3.5 or later, OpenSearch Optimized instance types (OR1, OR2, OM2, or OI2) for the data tier, and is available only for the OBSERVABILITY use cases. The engine mode can't be changed after the domain is created.
+      valid_values: ['GENERAL', 'OPTIMIZED']
 `}</CodeBlock>
 
 </TabItem>

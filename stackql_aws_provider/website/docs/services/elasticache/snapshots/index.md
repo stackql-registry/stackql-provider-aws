@@ -95,6 +95,11 @@ The following fields are returned by `SELECT` queries:
     <td>Enables data tiering. Data tiering is only supported for replication groups using the r6gd node type. This parameter must be set to true when using r6gd nodes. For more information, see Data tiering.</td>
 </tr>
 <tr>
+    <td><CopyableCode code="durability" /></td>
+    <td><code>string</code></td>
+    <td>The durability setting of the cluster when the snapshot was taken. When restoring from this snapshot, the cluster uses this durability setting unless overridden in the restore request. For more information, see Durability.</td>
+</tr>
+<tr>
     <td><CopyableCode code="engine" /></td>
     <td><code>string</code></td>
     <td>The name of the cache engine (memcached or redis) used by the source cluster.</td>
@@ -327,6 +332,7 @@ cache_node_type,
 cache_parameter_group_name,
 cache_subnet_group_name,
 data_tiering,
+durability,
 engine,
 engine_version,
 kms_key_id,
@@ -400,6 +406,7 @@ cache_node_type,
 cache_parameter_group_name,
 cache_subnet_group_name,
 data_tiering,
+durability,
 engine,
 engine_version,
 kms_key_id,

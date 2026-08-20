@@ -71,6 +71,11 @@ The following fields are returned by `SELECT` queries:
     <td>An object that provides a security control parameter name, description, and the options for customizing it. This object is excluded for a control that doesn't support custom parameters.</td>
 </tr>
 <tr>
+    <td><CopyableCode code="provider" /></td>
+    <td><code>string</code></td>
+    <td>The cloud provider whose resources the security control evaluates. For example, AWS or Azure. (AWS, Azure)</td>
+</tr>
+<tr>
     <td><CopyableCode code="remediation_url" /></td>
     <td><code>string</code></td>
     <td>A link to Security Hub CSPM documentation that explains how to remediate a failed finding for a security control. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
@@ -125,6 +130,11 @@ The following fields are returned by `SELECT` queries:
     <td>An object that provides a security control parameter name, description, and the options for customizing it. This object is excluded for a control that doesn't support custom parameters.</td>
 </tr>
 <tr>
+    <td><CopyableCode code="provider" /></td>
+    <td><code>string</code></td>
+    <td>The cloud provider whose resources the security control evaluates. For example, AWS or Azure. (AWS, Azure)</td>
+</tr>
+<tr>
     <td><CopyableCode code="remediation_url" /></td>
     <td><code>string</code></td>
     <td>A link to Security Hub CSPM documentation that explains how to remediate a failed finding for a security control. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
@@ -175,7 +185,7 @@ The following methods are available for this resource:
     <td><a href="#list_security_control_definitions"><CopyableCode code="list_security_control_definitions" /></a></td>
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
-    <td><a href="#parameter-StandardsArn"><code>StandardsArn</code></a>, <a href="#parameter-NextToken"><code>NextToken</code></a>, <a href="#parameter-MaxResults"><code>MaxResults</code></a></td>
+    <td><a href="#parameter-StandardsArn"><code>StandardsArn</code></a>, <a href="#parameter-NextToken"><code>NextToken</code></a>, <a href="#parameter-MaxResults"><code>MaxResults</code></a>, <a href="#parameter-Providers"><code>Providers</code></a></td>
     <td>Lists all of the security controls that apply to a specified standard.</td>
 </tr>
 </tbody>
@@ -214,6 +224,11 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     <td><code>string</code></td>
     <td>Optional pagination parameter.</td>
 </tr>
+<tr id="parameter-Providers">
+    <td><CopyableCode code="Providers" /></td>
+    <td><code>array</code></td>
+    <td>A list of cloud providers to filter the security control definitions by. For example, specify Azure to return only controls that evaluate Azure resources.</td>
+</tr>
 <tr id="parameter-StandardsArn">
     <td><CopyableCode code="StandardsArn" /></td>
     <td><code>string</code></td>
@@ -241,6 +256,7 @@ current_region_availability,
 customizable_properties,
 description,
 parameter_definitions,
+provider,
 remediation_url,
 security_control_id,
 severity_rating,
@@ -261,6 +277,7 @@ current_region_availability,
 customizable_properties,
 description,
 parameter_definitions,
+provider,
 remediation_url,
 security_control_id,
 severity_rating,
@@ -270,6 +287,7 @@ WHERE region = '{{ region }}' -- required
 AND StandardsArn = '{{ StandardsArn }}'
 AND NextToken = '{{ NextToken }}'
 AND MaxResults = '{{ MaxResults }}'
+AND Providers = '{{ Providers }}'
 ;
 ```
 </TabItem>

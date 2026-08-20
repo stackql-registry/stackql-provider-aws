@@ -131,6 +131,16 @@ The following fields are returned by `SELECT` queries:
     <td>The ID of the user pool. (pattern: &lt;code&gt;&#91;\w-&#93;+_&#91;0-9a-zA-Z&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
+    <td><CopyableCode code="issuer_configuration" /></td>
+    <td><code>object</code></td>
+    <td>The issuer configuration for the user pool, including token issuing settings.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="key_configuration" /></td>
+    <td><code>object</code></td>
+    <td>The key configuration for the user pool, including encryption settings.</td>
+</tr>
+<tr>
     <td><CopyableCode code="lambda_config" /></td>
     <td><code>object</code></td>
     <td>A collection of user pool Lambda triggers. Amazon Cognito invokes triggers at several possible stages of user pool operations. Triggers can modify the outcome of the operations that invoked them.</td>
@@ -260,6 +270,11 @@ The following fields are returned by `SELECT` queries:
     <td>The user pool name. (pattern: &lt;code&gt;&#91;\w\s+=,.@-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
+    <td><CopyableCode code="replica_regions" /></td>
+    <td><code>array</code></td>
+    <td>A list of Amazon Web Services Regions where replicas of this user pool exist.</td>
+</tr>
+<tr>
     <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The user pool status. (Enabled, Disabled)</td>
@@ -324,7 +339,7 @@ The following methods are available for this resource:
     <td><CopyableCode code="update" /></td>
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-UserPoolId"><code>UserPoolId</code></a></td>
     <td></td>
-    <td>Updates the configuration of a user pool. To avoid setting parameters to Amazon Cognito defaults, construct this API request to pass the existing configuration of your user pool, modified to include the changes that you want to make. With the exception of UserPoolTier, if you don't provide a value for an attribute, Amazon Cognito sets it to its default value. This action might generate an SMS text message. Starting June 1, 2021, US telecom carriers require you to register an origination phone number before you can send SMS messages to US phone numbers. If you use SMS text messages in Amazon Cognito, you must register a phone number with Amazon Pinpoint. Amazon Cognito uses the registered number automatically. Otherwise, Amazon Cognito users who must receive SMS messages might not be able to sign up, activate their accounts, or sign in. If you have never used SMS text messages with Amazon Cognito or any other Amazon Web Services service, Amazon Simple Notification Service might place your account in the SMS sandbox. In sandbox mode , you can send messages only to verified phone numbers. After you test your app while in the sandbox environment, you can move out of the sandbox and into production. For more information, see SMS message settings for Amazon Cognito user pools in the Amazon Cognito Developer Guide. Amazon Cognito evaluates Identity and Access Management (IAM) policies in requests for this API operation. For this operation, you must use IAM credentials to authorize requests, and you must grant yourself the corresponding IAM permission in a policy. Learn more Signing Amazon Web Services API Requests Using the Amazon Cognito user pools API and user pool endpoints</td>
+    <td>Updates the configuration of a user pool. To avoid setting parameters to Amazon Cognito defaults, construct this API request to pass the existing configuration of your user pool, modified to include the changes that you want to make. If you don't provide a value for an attribute, Amazon Cognito sets it to its default value. In secondary regions for user pools with multi-region replication, regional configurations for email, SMS, Lambda functions, and tags can be updated. Both global and regional settings must be provided as inputs, with global settings required to match existing values to maintain consistency across replicas. This action might generate an SMS text message. Starting June 1, 2021, US telecom carriers require you to register an origination phone number before you can send SMS messages to US phone numbers. If you use SMS text messages in Amazon Cognito, you must register a phone number with Amazon Pinpoint. Amazon Cognito uses the registered number automatically. Otherwise, Amazon Cognito users who must receive SMS messages might not be able to sign up, activate their accounts, or sign in. If you have never used SMS text messages with Amazon Cognito or any other Amazon Web Services service, Amazon Simple Notification Service might place your account in the SMS sandbox. In sandbox mode , you can send messages only to verified phone numbers. After you test your app while in the sandbox environment, you can move out of the sandbox and into production. For more information, see SMS message settings for Amazon Cognito user pools in the Amazon Cognito Developer Guide. Amazon Cognito evaluates Identity and Access Management (IAM) policies in requests for this API operation. For this operation, you must use IAM credentials to authorize requests, and you must grant yourself the corresponding IAM permission in a policy. Learn more Signing Amazon Web Services API Requests Using the Amazon Cognito user pools API and user pool endpoints</td>
 </tr>
 <tr>
     <td><a href="#delete_user_pool"><CopyableCode code="delete_user_pool" /></a></td>
@@ -563,6 +578,8 @@ email_verification_message,
 email_verification_subject,
 estimated_number_of_users,
 id,
+issuer_configuration,
+key_configuration,
 lambda_config,
 last_modified_date,
 mfa_configuration,
@@ -597,6 +614,7 @@ id,
 lambda_config,
 last_modified_date,
 name,
+replica_regions,
 status
 FROM aws.cognito_idp.user_pools
 WHERE region = '{{ region }}' -- required
@@ -645,6 +663,8 @@ UserPoolAddOns,
 UsernameConfiguration,
 AccountRecoverySetting,
 UserPoolTier,
+KeyConfiguration,
+IssuerConfiguration,
 region
 )
 SELECT 
@@ -672,6 +692,8 @@ SELECT
 '{{ UsernameConfiguration }}',
 '{{ AccountRecoverySetting }}',
 '{{ UserPoolTier }}',
+'{{ KeyConfiguration }}',
+'{{ IssuerConfiguration }}',
 '{{ region }}'
 RETURNING
 user_pool
@@ -781,7 +803,7 @@ user_pool
     - name: MfaConfiguration
       value: "{{ MfaConfiguration }}"
       description: |
-        Sets multi-factor authentication (MFA) to be on, off, or optional. When ON, all users must set up MFA before they can sign in. When OPTIONAL, your application must make a client-side determination of whether a user wants to register an MFA device. For user pools with adaptive authentication with threat protection, choose OPTIONAL. When MfaConfiguration is OPTIONAL, managed login doesn't automatically prompt users to set up MFA. Amazon Cognito generates MFA prompts in API responses and in managed login for users who have chosen and configured a preferred MFA factor.
+        Sets multi-factor authentication (MFA) to be on, off, or optional. When ON, all users must set up MFA before they can sign in. When OPTIONAL, your application must make a client-side determination of whether a user wants to register an MFA device. For user pools with adaptive authentication with threat protection, choose OPTIONAL. When MfaConfiguration is OPTIONAL, managed login doesn't automatically prompt users to set up MFA. Amazon Cognito generates MFA prompts in API responses and in managed login for users who have chosen and configured a preferred MFA factor. The CreateUserPool operation supports only SMS MFA configuration. If you set MfaConfiguration to either of these values, include an SmsConfiguration in the same request: ON – Requires MFA for all users OPTIONAL – Makes MFA optional for each user If you omit SmsConfiguration, the operation returns an InvalidParameterException. To configure TOTP or email MFA, use the SetUserPoolMfaConfig operation. You can also use SetUserPoolMfaConfig to add MFA factors later.
       valid_values: ['OFF', 'ON', 'OPTIONAL']
     - name: UserAttributeUpdateSettings
       description: |
@@ -811,6 +833,14 @@ user_pool
         SnsCallerArn: "{{ SnsCallerArn }}"
         ExternalId: "{{ ExternalId }}"
         SnsRegion: "{{ SnsRegion }}"
+        EumsSms:
+          CallerArn: "{{ CallerArn }}"
+          ExternalId: "{{ ExternalId }}"
+          OriginationIdentity: "{{ OriginationIdentity }}"
+          ConfigurationSetName: "{{ ConfigurationSetName }}"
+          InEntityId: "{{ InEntityId }}"
+          InTemplateId: "{{ InTemplateId }}"
+          Region: "{{ Region }}"
     - name: UserPoolTags
       value: "{{ UserPoolTags }}"
       description: |
@@ -864,6 +894,17 @@ user_pool
       description: |
         The user pool feature plan, or tier. This parameter determines the eligibility of the user pool for features like managed login, access-token customization, and threat protection. Defaults to ESSENTIALS.
       valid_values: ['LITE', 'ESSENTIALS', 'PLUS']
+    - name: KeyConfiguration
+      description: |
+        The key configuration for the user pool. Specifies the key type and KMS key ARN for encryption.
+      value:
+        KeyType: "{{ KeyType }}"
+        KmsKeyArn: "{{ KmsKeyArn }}"
+    - name: IssuerConfiguration
+      description: |
+        The issuer configuration for the user pool. Specifies the issuer type for token generation.
+      value:
+        Type: "{{ Type }}"
 `}</CodeBlock>
 
 </TabItem>
@@ -917,7 +958,7 @@ AND CustomAttributes = '{{ CustomAttributes }}' --required;
 </TabItem>
 <TabItem value="update_user_pool">
 
-Updates the configuration of a user pool. To avoid setting parameters to Amazon Cognito defaults, construct this API request to pass the existing configuration of your user pool, modified to include the changes that you want to make. With the exception of UserPoolTier, if you don't provide a value for an attribute, Amazon Cognito sets it to its default value. This action might generate an SMS text message. Starting June 1, 2021, US telecom carriers require you to register an origination phone number before you can send SMS messages to US phone numbers. If you use SMS text messages in Amazon Cognito, you must register a phone number with Amazon Pinpoint. Amazon Cognito uses the registered number automatically. Otherwise, Amazon Cognito users who must receive SMS messages might not be able to sign up, activate their accounts, or sign in. If you have never used SMS text messages with Amazon Cognito or any other Amazon Web Services service, Amazon Simple Notification Service might place your account in the SMS sandbox. In sandbox mode , you can send messages only to verified phone numbers. After you test your app while in the sandbox environment, you can move out of the sandbox and into production. For more information, see SMS message settings for Amazon Cognito user pools in the Amazon Cognito Developer Guide. Amazon Cognito evaluates Identity and Access Management (IAM) policies in requests for this API operation. For this operation, you must use IAM credentials to authorize requests, and you must grant yourself the corresponding IAM permission in a policy. Learn more Signing Amazon Web Services API Requests Using the Amazon Cognito user pools API and user pool endpoints
+Updates the configuration of a user pool. To avoid setting parameters to Amazon Cognito defaults, construct this API request to pass the existing configuration of your user pool, modified to include the changes that you want to make. If you don't provide a value for an attribute, Amazon Cognito sets it to its default value. In secondary regions for user pools with multi-region replication, regional configurations for email, SMS, Lambda functions, and tags can be updated. Both global and regional settings must be provided as inputs, with global settings required to match existing values to maintain consistency across replicas. This action might generate an SMS text message. Starting June 1, 2021, US telecom carriers require you to register an origination phone number before you can send SMS messages to US phone numbers. If you use SMS text messages in Amazon Cognito, you must register a phone number with Amazon Pinpoint. Amazon Cognito uses the registered number automatically. Otherwise, Amazon Cognito users who must receive SMS messages might not be able to sign up, activate their accounts, or sign in. If you have never used SMS text messages with Amazon Cognito or any other Amazon Web Services service, Amazon Simple Notification Service might place your account in the SMS sandbox. In sandbox mode , you can send messages only to verified phone numbers. After you test your app while in the sandbox environment, you can move out of the sandbox and into production. For more information, see SMS message settings for Amazon Cognito user pools in the Amazon Cognito Developer Guide. Amazon Cognito evaluates Identity and Access Management (IAM) policies in requests for this API operation. For this operation, you must use IAM credentials to authorize requests, and you must grant yourself the corresponding IAM permission in a policy. Learn more Signing Amazon Web Services API Requests Using the Amazon Cognito user pools API and user pool endpoints
 
 ```sql
 UPDATE aws.cognito_idp.user_pools
@@ -942,7 +983,9 @@ AdminCreateUserConfig = '{{ AdminCreateUserConfig }}',
 UserPoolAddOns = '{{ UserPoolAddOns }}',
 AccountRecoverySetting = '{{ AccountRecoverySetting }}',
 PoolName = '{{ PoolName }}',
-UserPoolTier = '{{ UserPoolTier }}'
+UserPoolTier = '{{ UserPoolTier }}',
+KeyConfiguration = '{{ KeyConfiguration }}',
+IssuerConfiguration = '{{ IssuerConfiguration }}'
 WHERE 
 region = '{{ region }}' --required
 AND UserPoolId = '{{ UserPoolId }}' --required;

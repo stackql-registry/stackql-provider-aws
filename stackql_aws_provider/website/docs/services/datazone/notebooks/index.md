@@ -88,7 +88,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
-    <td>The status of a notebook in Amazon SageMaker Unified Studio. (ACTIVE, ARCHIVED)</td>
+    <td>The status of a notebook in Amazon SageMaker Unified Studio. (ACTIVE, ARCHIVED, SYNC_IN_PROGRESS, SYNC_FAILED)</td>
 </tr>
 <tr>
     <td><CopyableCode code="updated_at" /></td>
@@ -165,6 +165,11 @@ The following fields are returned by `SELECT` queries:
     <td>The error details if the notebook is in a failed state.</td>
 </tr>
 <tr>
+    <td><CopyableCode code="git_metadata" /></td>
+    <td><code>object</code></td>
+    <td>The Git metadata associated with the notebook.</td>
+</tr>
+<tr>
     <td><CopyableCode code="lock_expires_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the notebook lock expires.</td>
@@ -197,7 +202,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
-    <td>The status of a notebook in Amazon SageMaker Unified Studio. (ACTIVE, ARCHIVED)</td>
+    <td>The status of a notebook in Amazon SageMaker Unified Studio. (ACTIVE, ARCHIVED, SYNC_IN_PROGRESS, SYNC_FAILED)</td>
 </tr>
 <tr>
     <td><CopyableCode code="updated_at" /></td>
@@ -284,6 +289,13 @@ The following methods are available for this resource:
     <td><a href="#parameter-domain_identifier"><code>domain_identifier</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-owningProjectIdentifier"><code>owningProjectIdentifier</code></a>, <a href="#parameter-sourceLocation"><code>sourceLocation</code></a>, <a href="#parameter-name"><code>name</code></a></td>
     <td></td>
     <td>Starts a notebook import in Amazon SageMaker Unified Studio. This operation imports a notebook from an Amazon Simple Storage Service location into a project.</td>
+</tr>
+<tr>
+    <td><a href="#start_notebook_sync"><CopyableCode code="start_notebook_sync" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-domain_identifier"><code>domain_identifier</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-owningProjectIdentifier"><code>owningProjectIdentifier</code></a>, <a href="#parameter-sourceLocation"><code>sourceLocation</code></a></td>
+    <td></td>
+    <td>Starts a notebook sync in Amazon SageMaker Unified Studio. This operation syncs a notebook from a Git repository into a project.</td>
 </tr>
 <tr>
     <td><a href="#stop_notebook_run"><CopyableCode code="stop_notebook_run" /></a></td>
@@ -409,6 +421,7 @@ description,
 domain_id,
 environment_configuration,
 error,
+git_metadata,
 lock_expires_at,
 locked_at,
 locked_by,
@@ -472,6 +485,7 @@ description,
 domain_id,
 environment_configuration,
 error,
+git_metadata,
 lock_expires_at,
 locked_at,
 locked_by,
@@ -551,6 +565,7 @@ description,
 domain_id,
 environment_configuration,
 error,
+git_metadata,
 lock_expires_at,
 locked_at,
 locked_by,
@@ -596,6 +611,7 @@ AND region = '{{ region }}' --required
         { label: 'start_notebook_run', value: 'start_notebook_run' },
         { label: 'start_notebook_export', value: 'start_notebook_export' },
         { label: 'start_notebook_import', value: 'start_notebook_import' },
+        { label: 'start_notebook_sync', value: 'start_notebook_sync' },
         { label: 'stop_notebook_run', value: 'stop_notebook_run' }
     ]}
 >
@@ -653,6 +669,27 @@ EXEC aws.datazone.notebooks.start_notebook_import
 '{
 "owningProjectIdentifier": "{{ owningProjectIdentifier }}", 
 "sourceLocation": "{{ sourceLocation }}", 
+"name": "{{ name }}", 
+"description": "{{ description }}", 
+"clientToken": "{{ clientToken }}"
+}'
+;
+```
+</TabItem>
+<TabItem value="start_notebook_sync">
+
+Starts a notebook sync in Amazon SageMaker Unified Studio. This operation syncs a notebook from a Git repository into a project.
+
+```sql
+EXEC aws.datazone.notebooks.start_notebook_sync 
+@domain_identifier='{{ domain_identifier }}' --required, 
+@region='{{ region }}' --required 
+@@json=
+'{
+"owningProjectIdentifier": "{{ owningProjectIdentifier }}", 
+"sourceLocation": "{{ sourceLocation }}", 
+"gitMetadata": "{{ gitMetadata }}", 
+"notebookId": "{{ notebookId }}", 
 "name": "{{ name }}", 
 "description": "{{ description }}", 
 "clientToken": "{{ clientToken }}"

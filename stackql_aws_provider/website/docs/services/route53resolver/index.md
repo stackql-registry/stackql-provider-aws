@@ -18,7 +18,7 @@ route53resolver service documentation.
 
 :::info[Service Summary]
 
-total resources: __19__  
+total resources: __20__  
 
 :::
 
@@ -31,12 +31,13 @@ total resources: __19__
 <a href="/services/route53resolver/firewall_rule_group_associations/">firewall_rule_group_associations</a><br />
 <a href="/services/route53resolver/firewall_rule_group_policies/">firewall_rule_group_policies</a><br />
 <a href="/services/route53resolver/firewall_rule_groups/">firewall_rule_groups</a><br />
+<a href="/services/route53resolver/firewall_rule_types/">firewall_rule_types</a><br />
 <a href="/services/route53resolver/firewall_rules/">firewall_rules</a><br />
 <a href="/services/route53resolver/outpost_resolvers/">outpost_resolvers</a><br />
-<a href="/services/route53resolver/resolver_configs/">resolver_configs</a><br />
-<a href="/services/route53resolver/resolver_dnssec_configs/">resolver_dnssec_configs</a>
+<a href="/services/route53resolver/resolver_configs/">resolver_configs</a>
 </div>
 <div class="providerDocColumn">
+<a href="/services/route53resolver/resolver_dnssec_configs/">resolver_dnssec_configs</a><br />
 <a href="/services/route53resolver/resolver_endpoint_ip_addresses/">resolver_endpoint_ip_addresses</a><br />
 <a href="/services/route53resolver/resolver_endpoints/">resolver_endpoints</a><br />
 <a href="/services/route53resolver/resolver_query_log_config_associations/">resolver_query_log_config_associations</a><br />

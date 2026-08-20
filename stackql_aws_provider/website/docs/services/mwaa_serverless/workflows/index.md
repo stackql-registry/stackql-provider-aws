@@ -51,6 +51,16 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
+    <td><CopyableCode code="code" /></td>
+    <td><code>object</code></td>
+    <td>The Amazon S3 location of the code artifacts provided during workflow creation or update.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="code_snapshotted_at" /></td>
+    <td><code>string (date-time)</code></td>
+    <td>The time at which the code artifacts were copied for this workflow, in ISO 8601 date-time format.</td>
+</tr>
+<tr>
     <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the workflow was created, in ISO 8601 date-time format.</td>
@@ -292,6 +302,8 @@ Retrieves detailed information about a workflow, including its configuration, st
 
 ```sql
 SELECT
+code,
+code_snapshotted_at,
 created_at,
 definition_s3_location,
 description,
@@ -353,6 +365,7 @@ INSERT INTO aws.mwaa_serverless.workflows (
 Name,
 ClientToken,
 DefinitionS3Location,
+Code,
 RoleArn,
 Description,
 EncryptionConfiguration,
@@ -367,6 +380,7 @@ SELECT
 '{{ Name }}',
 '{{ ClientToken }}',
 '{{ DefinitionS3Location }}' /* required */,
+'{{ Code }}',
 '{{ RoleArn }}' /* required */,
 '{{ Description }}',
 '{{ EncryptionConfiguration }}',
@@ -410,6 +424,14 @@ workflow_version
         Bucket: "{{ Bucket }}"
         ObjectKey: "{{ ObjectKey }}"
         VersionId: "{{ VersionId }}"
+    - name: Code
+      description: |
+        The location of code artifacts in Amazon S3 for the workflow. The service copies the code from this location at the time of the request.
+      value:
+        S3Location:
+          Bucket: "{{ Bucket }}"
+          ObjectKey: "{{ ObjectKey }}"
+          VersionId: "{{ VersionId }}"
     - name: RoleArn
       value: "{{ RoleArn }}"
       description: |
@@ -472,6 +494,7 @@ UPDATE aws.mwaa_serverless.workflows
 SET 
 WorkflowArn = '{{ WorkflowArn }}',
 DefinitionS3Location = '{{ DefinitionS3Location }}',
+Code = '{{ Code }}',
 RoleArn = '{{ RoleArn }}',
 Description = '{{ Description }}',
 LoggingConfiguration = '{{ LoggingConfiguration }}',

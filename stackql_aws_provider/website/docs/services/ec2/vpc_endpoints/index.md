@@ -105,6 +105,11 @@ The following fields are returned by `SELECT` queries:
     <td>The ID of the Amazon Web Services account that owns the endpoint.</td>
 </tr>
 <tr>
+    <td><CopyableCode code="payer_responsibilities" /></td>
+    <td><code>string</code></td>
+    <td>The payer responsibility settings for the endpoint.</td>
+</tr>
+<tr>
     <td><CopyableCode code="policy_document" /></td>
     <td><code>string</code></td>
     <td>The policy document associated with the endpoint, if applicable.</td>
@@ -209,6 +214,13 @@ The following methods are available for this resource:
     <td>Creates a VPC endpoint. A VPC endpoint provides a private connection between the specified VPC and the specified endpoint service. You can use an endpoint service provided by Amazon Web Services, an Amazon Web Services Marketplace Partner, or another Amazon Web Services account. For more information, see the Amazon Web Services PrivateLink User Guide.</td>
 </tr>
 <tr>
+    <td><a href="#modify_vpc_endpoint_payer_responsibility"><CopyableCode code="modify_vpc_endpoint_payer_responsibility" /></a></td>
+    <td><CopyableCode code="update" /></td>
+    <td><a href="#parameter-VpcEndpointId"><code>VpcEndpointId</code></a>, <a href="#parameter-PayerResponsibility"><code>PayerResponsibility</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td><a href="#parameter-DryRun"><code>DryRun</code></a>, <a href="#parameter-ServiceId"><code>ServiceId</code></a>, <a href="#parameter-Scope"><code>Scope</code></a></td>
+    <td>Modifies the billing account for VPC endpoint usage/charges.</td>
+</tr>
+<tr>
     <td><a href="#modify_vpc_endpoint"><CopyableCode code="modify_vpc_endpoint" /></a></td>
     <td><CopyableCode code="update" /></td>
     <td><a href="#parameter-VpcEndpointId"><code>VpcEndpointId</code></a>, <a href="#parameter-region"><code>region</code></a></td>
@@ -238,6 +250,11 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     </tr>
 </thead>
 <tbody>
+<tr id="parameter-PayerResponsibility">
+    <td><CopyableCode code="PayerResponsibility" /></td>
+    <td><code>string</code></td>
+    <td>The Amazon Web Services account to which the usage of VPC endpoint is charged.</td>
+</tr>
 <tr id="parameter-VpcEndpointId">
     <td><CopyableCode code="VpcEndpointId" /></td>
     <td><code>array</code></td>
@@ -343,10 +360,20 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     <td><code>array</code></td>
     <td>(Gateway endpoint) The route table IDs.</td>
 </tr>
+<tr id="parameter-Scope">
+    <td><CopyableCode code="Scope" /></td>
+    <td><code>string</code></td>
+    <td>The scope of usage/charges for which the billing account is being modified.</td>
+</tr>
 <tr id="parameter-SecurityGroupId">
     <td><CopyableCode code="SecurityGroupId" /></td>
     <td><code>array</code></td>
     <td>(Interface endpoint) The IDs of the security groups to associate with the endpoint network interfaces. If this parameter is not specified, we use the default security group for the VPC.</td>
+</tr>
+<tr id="parameter-ServiceId">
+    <td><CopyableCode code="ServiceId" /></td>
+    <td><code>string</code></td>
+    <td>The ID of the VPC endpoint service.</td>
 </tr>
 <tr id="parameter-ServiceName">
     <td><CopyableCode code="ServiceName" /></td>
@@ -416,6 +443,7 @@ ipv_6_prefixes,
 last_error,
 network_interface_ids,
 owner_id,
+payer_responsibilities,
 policy_document,
 private_dns_enabled,
 requester_managed,
@@ -508,6 +536,7 @@ ipv_6_prefixes,
 last_error,
 network_interface_ids,
 owner_id,
+payer_responsibilities,
 policy_document,
 private_dns_enabled,
 requester_managed,
@@ -609,11 +638,32 @@ vpc_id
 ## `UPDATE` examples
 
 <Tabs
-    defaultValue="modify_vpc_endpoint"
+    defaultValue="modify_vpc_endpoint_payer_responsibility"
     values={[
+        { label: 'modify_vpc_endpoint_payer_responsibility', value: 'modify_vpc_endpoint_payer_responsibility' },
         { label: 'modify_vpc_endpoint', value: 'modify_vpc_endpoint' }
     ]}
 >
+<TabItem value="modify_vpc_endpoint_payer_responsibility">
+
+Modifies the billing account for VPC endpoint usage/charges.
+
+```sql
+UPDATE aws.ec2.vpc_endpoints
+SET 
+-- No updatable properties
+WHERE 
+VpcEndpointId = '{{ VpcEndpointId }}' --required
+AND PayerResponsibility = '{{ PayerResponsibility }}' --required
+AND region = '{{ region }}' --required
+AND DryRun = {{ DryRun}}
+AND ServiceId = '{{ ServiceId}}'
+AND Scope = '{{ Scope}}'
+RETURNING
+payer_responsibilities,
+vpc_endpoint_id;
+```
+</TabItem>
 <TabItem value="modify_vpc_endpoint">
 
 Modifies attributes of a specified VPC endpoint. The attributes that you can modify depend on the type of VPC endpoint (interface, gateway, or Gateway Load Balancer). For more information, see the Amazon Web Services PrivateLink Guide.

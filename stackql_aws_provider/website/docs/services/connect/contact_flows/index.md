@@ -59,7 +59,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="content" /></td>
     <td><code>string</code></td>
-    <td>The JSON string that represents the content of the flow. For an example, see Example flow in Amazon Connect Flow language. Length Constraints: Minimum length of 1. Maximum length of 256000.</td>
+    <td>The JSON string that represents the content of the flow. For an example, see Example flow in Connect Customer Flow language. Length Constraints: Minimum length of 1. Maximum length of 256000.</td>
 </tr>
 <tr>
     <td><CopyableCode code="description" /></td>
@@ -109,7 +109,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="type" /></td>
     <td><code>string</code></td>
-    <td>The type of the flow. For descriptions of the available types, see Choose a flow type in the Amazon Connect Administrator Guide. (CONTACT_FLOW, CUSTOMER_QUEUE, CUSTOMER_HOLD, CUSTOMER_WHISPER, AGENT_HOLD, AGENT_WHISPER, OUTBOUND_WHISPER, AGENT_TRANSFER, QUEUE_TRANSFER, CAMPAIGN)</td>
+    <td>The type of the flow. For descriptions of the available types, see Choose a flow type in the Connect Customer Administrator Guide. (CONTACT_FLOW, CUSTOMER_QUEUE, CUSTOMER_HOLD, CUSTOMER_WHISPER, AGENT_HOLD, AGENT_WHISPER, OUTBOUND_WHISPER, AGENT_TRANSFER, QUEUE_TRANSFER, CAMPAIGN)</td>
 </tr>
 <tr>
     <td><CopyableCode code="version" /></td>
@@ -187,7 +187,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="content" /></td>
     <td><code>string</code></td>
-    <td>The JSON string that represents the content of the flow. For an example, see Example flow in Amazon Connect Flow language. Length Constraints: Minimum length of 1. Maximum length of 256000.</td>
+    <td>The JSON string that represents the content of the flow. For an example, see Example flow in Connect Customer Flow language. Length Constraints: Minimum length of 1. Maximum length of 256000.</td>
 </tr>
 <tr>
     <td><CopyableCode code="description" /></td>
@@ -237,7 +237,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="type" /></td>
     <td><code>string</code></td>
-    <td>The type of the flow. For descriptions of the available types, see Choose a flow type in the Amazon Connect Administrator Guide. (CONTACT_FLOW, CUSTOMER_QUEUE, CUSTOMER_HOLD, CUSTOMER_WHISPER, AGENT_HOLD, AGENT_WHISPER, OUTBOUND_WHISPER, AGENT_TRANSFER, QUEUE_TRANSFER, CAMPAIGN)</td>
+    <td>The type of the flow. For descriptions of the available types, see Choose a flow type in the Connect Customer Administrator Guide. (CONTACT_FLOW, CUSTOMER_QUEUE, CUSTOMER_HOLD, CUSTOMER_WHISPER, AGENT_HOLD, AGENT_WHISPER, OUTBOUND_WHISPER, AGENT_TRANSFER, QUEUE_TRANSFER, CAMPAIGN)</td>
 </tr>
 <tr>
     <td><CopyableCode code="version" /></td>
@@ -274,84 +274,84 @@ The following methods are available for this resource:
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-instance_id"><code>instance_id</code></a>, <a href="#parameter-contact_flow_id"><code>contact_flow_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>Describes the specified flow. You can also create and update flows using the Amazon Connect Flow language. Use the $SAVED alias in the request to describe the SAVED content of a Flow. For example, arn:aws:.../contact-flow/&#123;id&#125;:$SAVED. After a flow is published, $SAVED needs to be supplied to view saved content that has not been published. Use arn:aws:.../contact-flow/&#123;id&#125;:&#123;version&#125; to retrieve the content of a specific flow version. In the response, Status indicates the flow status as either SAVED or PUBLISHED. The PUBLISHED status will initiate validation on the content. SAVED does not initiate validation of the content. SAVED | PUBLISHED</td>
+    <td>Describes the specified flow. You can also create and update flows using the Connect Customer Flow language. Use the $SAVED alias in the request to describe the SAVED content of a Flow. For example, arn:aws:.../contact-flow/&#123;id&#125;:$SAVED. After a flow is published, $SAVED needs to be supplied to view saved content that has not been published. Use arn:aws:.../contact-flow/&#123;id&#125;:&#123;version&#125; to retrieve the content of a specific flow version. In the response, Status indicates the flow status as either SAVED or PUBLISHED. The PUBLISHED status will initiate validation on the content. SAVED does not initiate validation of the content. SAVED | PUBLISHED</td>
 </tr>
 <tr>
     <td><a href="#list_contact_flows"><CopyableCode code="list_contact_flows" /></a></td>
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-instance_id"><code>instance_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td><a href="#parameter-contactFlowTypes"><code>contactFlowTypes</code></a>, <a href="#parameter-nextToken"><code>nextToken</code></a>, <a href="#parameter-maxResults"><code>maxResults</code></a></td>
-    <td>Provides information about the flows for the specified Amazon Connect instance. You can also create and update flows using the Amazon Connect Flow language. For more information about flows, see Flows in the Amazon Connect Administrator Guide.</td>
+    <td>Provides information about the flows for the specified Connect Customer instance. You can also create and update flows using the Connect Customer Flow language. For more information about flows, see Flows in the Connect Customer Administrator Guide.</td>
 </tr>
 <tr>
     <td><a href="#search_contact_flows"><CopyableCode code="search_contact_flows" /></a></td>
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>Searches the flows in an Amazon Connect instance, with optional filtering.</td>
+    <td>Searches the flows in an Connect Customer instance, with optional filtering.</td>
 </tr>
 <tr>
     <td><a href="#create_contact_flow"><CopyableCode code="create_contact_flow" /></a></td>
     <td><CopyableCode code="insert" /></td>
     <td><a href="#parameter-instance_id"><code>instance_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>Creates a flow for the specified Amazon Connect instance. You can also create and update flows using the Amazon Connect Flow language.</td>
+    <td>Creates a flow for the specified Connect Customer instance. You can also create and update flows using the Connect Customer Flow language.</td>
 </tr>
 <tr>
     <td><a href="#associate_phone_number_contact_flow"><CopyableCode code="associate_phone_number_contact_flow" /></a></td>
     <td><CopyableCode code="update" /></td>
     <td><a href="#parameter-phone_number_id"><code>phone_number_id</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-InstanceId"><code>InstanceId</code></a>, <a href="#parameter-ContactFlowId"><code>ContactFlowId</code></a></td>
     <td></td>
-    <td>Associates a flow with a phone number claimed to your Amazon Connect instance. If the number is claimed to a traffic distribution group, and you are calling this API using an instance in the Amazon Web Services Region where the traffic distribution group was created, you can use either a full phone number ARN or UUID value for the PhoneNumberId URI request parameter. However, if the number is claimed to a traffic distribution group and you are calling this API using an instance in the alternate Amazon Web Services Region associated with the traffic distribution group, you must provide a full phone number ARN. If a UUID is provided in this scenario, you will receive a ResourceNotFoundException.</td>
+    <td>Associates a flow with a phone number claimed to your Connect Customer instance. If the number is claimed to a traffic distribution group, and you are calling this API using an instance in the Amazon Web Services Region where the traffic distribution group was created, you can use either a full phone number ARN or UUID value for the PhoneNumberId URI request parameter. However, if the number is claimed to a traffic distribution group and you are calling this API using an instance in the alternate Amazon Web Services Region associated with the traffic distribution group, you must provide a full phone number ARN. If a UUID is provided in this scenario, you will receive a ResourceNotFoundException.</td>
 </tr>
 <tr>
     <td><a href="#update_contact_flow_content"><CopyableCode code="update_contact_flow_content" /></a></td>
     <td><CopyableCode code="update" /></td>
     <td><a href="#parameter-instance_id"><code>instance_id</code></a>, <a href="#parameter-contact_flow_id"><code>contact_flow_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>Updates the specified flow. You can also create and update flows using the Amazon Connect Flow language. Use the $SAVED alias in the request to describe the SAVED content of a Flow. For example, arn:aws:.../contact-flow/&#123;id&#125;:$SAVED. After a flow is published, $SAVED needs to be supplied to view saved content that has not been published.</td>
+    <td>Updates the specified flow. You can also create and update flows using the Connect Customer Flow language. Use the $SAVED alias in the request to describe the SAVED content of a Flow. For example, arn:aws:.../contact-flow/&#123;id&#125;:$SAVED. After a flow is published, $SAVED needs to be supplied to view saved content that has not been published.</td>
 </tr>
 <tr>
     <td><a href="#disassociate_phone_number_contact_flow"><CopyableCode code="disassociate_phone_number_contact_flow" /></a></td>
     <td><CopyableCode code="update" /></td>
     <td><a href="#parameter-phone_number_id"><code>phone_number_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td><a href="#parameter-instanceId"><code>instanceId</code></a></td>
-    <td>Removes the flow association from a phone number claimed to your Amazon Connect instance. If the number is claimed to a traffic distribution group, and you are calling this API using an instance in the Amazon Web Services Region where the traffic distribution group was created, you can use either a full phone number ARN or UUID value for the PhoneNumberId URI request parameter. However, if the number is claimed to a traffic distribution group and you are calling this API using an instance in the alternate Amazon Web Services Region associated with the traffic distribution group, you must provide a full phone number ARN. If a UUID is provided in this scenario, you will receive a ResourceNotFoundException.</td>
+    <td>Removes the flow association from a phone number claimed to your Connect Customer instance. If the number is claimed to a traffic distribution group, and you are calling this API using an instance in the Amazon Web Services Region where the traffic distribution group was created, you can use either a full phone number ARN or UUID value for the PhoneNumberId URI request parameter. However, if the number is claimed to a traffic distribution group and you are calling this API using an instance in the alternate Amazon Web Services Region associated with the traffic distribution group, you must provide a full phone number ARN. If a UUID is provided in this scenario, you will receive a ResourceNotFoundException.</td>
 </tr>
 <tr>
     <td><a href="#delete_contact_flow"><CopyableCode code="delete_contact_flow" /></a></td>
     <td><CopyableCode code="delete" /></td>
     <td><a href="#parameter-instance_id"><code>instance_id</code></a>, <a href="#parameter-contact_flow_id"><code>contact_flow_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>Deletes a flow for the specified Amazon Connect instance.</td>
+    <td>Deletes a flow for the specified Connect Customer instance.</td>
 </tr>
 <tr>
     <td><a href="#start_chat_contact"><CopyableCode code="start_chat_contact" /></a></td>
     <td><CopyableCode code="exec" /></td>
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-InstanceId"><code>InstanceId</code></a>, <a href="#parameter-ContactFlowId"><code>ContactFlowId</code></a>, <a href="#parameter-ParticipantDetails"><code>ParticipantDetails</code></a></td>
     <td></td>
-    <td>Initiates a flow to start a new chat for the customer. Response of this API provides a token required to obtain credentials from the CreateParticipantConnection API in the Amazon Connect Participant Service. When a new chat contact is successfully created, clients must subscribe to the participant’s connection for the created chat within 5 minutes. This is achieved by invoking CreateParticipantConnection with WEBSOCKET and CONNECTION_CREDENTIALS. A 429 error occurs in the following situations: API rate limit is exceeded. API TPS throttling returns a TooManyRequests exception. The quota for concurrent active chats is exceeded. Active chat throttling returns a LimitExceededException. If you use the ChatDurationInMinutes parameter and receive a 400 error, your account may not support the ability to configure custom chat durations. For more information, contact Amazon Web Services Support. For more information about chat, see the following topics in the Amazon Connect Administrator Guide: Concepts: Web and mobile messaging capabilities in Amazon Connect Amazon Connect Chat security best practices</td>
+    <td>Initiates a flow to start a new chat for the customer. Response of this API provides a token required to obtain credentials from the CreateParticipantConnection API in the Connect Customer Participant Service. When a new chat contact is successfully created, clients must subscribe to the participant’s connection for the created chat within 5 minutes. This is achieved by invoking CreateParticipantConnection with WEBSOCKET and CONNECTION_CREDENTIALS. A 429 error occurs in the following situations: API rate limit is exceeded. API TPS throttling returns a TooManyRequests exception. The quota for concurrent active chats is exceeded. Active chat throttling returns a LimitExceededException. If you use the ChatDurationInMinutes parameter and receive a 400 error, your account may not support the ability to configure custom chat durations. For more information, contact Amazon Web Services Support. For more information about chat, see the following topics in the Connect Customer Administrator Guide: Concepts: Web and mobile messaging capabilities in Connect Customer Connect Customer Chat security best practices</td>
 </tr>
 <tr>
     <td><a href="#start_outbound_chat_contact"><CopyableCode code="start_outbound_chat_contact" /></a></td>
     <td><CopyableCode code="exec" /></td>
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-SourceEndpoint"><code>SourceEndpoint</code></a>, <a href="#parameter-DestinationEndpoint"><code>DestinationEndpoint</code></a>, <a href="#parameter-InstanceId"><code>InstanceId</code></a>, <a href="#parameter-SegmentAttributes"><code>SegmentAttributes</code></a>, <a href="#parameter-ContactFlowId"><code>ContactFlowId</code></a></td>
     <td></td>
-    <td>Initiates a new outbound SMS or WhatsApp contact to a customer. Response of this API provides the ContactId of the outbound SMS or WhatsApp contact created. SourceEndpoint only supports Endpoints with CONNECT_PHONENUMBER_ARN as Type and DestinationEndpoint only supports Endpoints with TELEPHONE_NUMBER as Type. ContactFlowId initiates the flow to manage the new contact created. This API can be used to initiate outbound SMS or WhatsApp contacts for an agent, or it can also deflect an ongoing contact to an outbound SMS or WhatsApp contact by using the StartOutboundChatContact Flow Action. For more information about using SMS or WhatsApp in Amazon Connect, see the following topics in the Amazon Connect Administrator Guide: Set up SMS messaging Request an SMS-enabled phone number through Amazon Web Services End User Messaging SMS Set up WhatsApp Business messaging</td>
+    <td>Initiates a new outbound SMS or WhatsApp contact to a customer. Response of this API provides the ContactId of the outbound SMS or WhatsApp contact created. SourceEndpoint only supports Endpoints with CONNECT_PHONENUMBER_ARN as Type and DestinationEndpoint only supports Endpoints with TELEPHONE_NUMBER as Type. ContactFlowId initiates the flow to manage the new contact created. This API can be used to initiate outbound SMS or WhatsApp contacts for an agent, or it can also deflect an ongoing contact to an outbound SMS or WhatsApp contact by using the StartOutboundChatContact Flow Action. For more information about using SMS or WhatsApp in Connect Customer, see the following topics in the Connect Customer Administrator Guide: Set up SMS messaging Request an SMS-enabled phone number through Amazon Web Services End User Messaging SMS Set up WhatsApp Business messaging</td>
 </tr>
 <tr>
     <td><a href="#start_outbound_voice_contact"><CopyableCode code="start_outbound_voice_contact" /></a></td>
     <td><CopyableCode code="exec" /></td>
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-DestinationPhoneNumber"><code>DestinationPhoneNumber</code></a>, <a href="#parameter-ContactFlowId"><code>ContactFlowId</code></a>, <a href="#parameter-InstanceId"><code>InstanceId</code></a></td>
     <td></td>
-    <td>Places an outbound call to a contact, and then initiates the flow. It performs the actions in the flow that's specified (in ContactFlowId). Agents do not initiate the outbound API, which means that they do not dial the contact. If the flow places an outbound call to a contact, and then puts the contact in queue, the call is then routed to the agent, like any other inbound case. Dialing timeout for this operation can be configured with the “RingTimeoutInSeconds” parameter. If not specified, the default dialing timeout will be 60 seconds which means if the call is not connected within 60 seconds, it fails. UK numbers with a 447 prefix are not allowed by default. Before you can dial these UK mobile numbers, you must submit a service quota increase request. For more information, see Amazon Connect Service Quotas in the Amazon Connect Administrator Guide. Campaign calls are not allowed by default. Before you can make a call with TrafficType = CAMPAIGN, you must submit a service quota increase request to the quota Amazon Connect campaigns. For Preview dialing mode, only the Amazon Connect outbound campaigns service principal is allowed to assume a role in your account and call this API with OutboundStrategy.</td>
+    <td>Places an outbound call to a contact, and then initiates the flow. It performs the actions in the flow that's specified (in ContactFlowId). Agents do not initiate the outbound API, which means that they do not dial the contact. If the flow places an outbound call to a contact, and then puts the contact in queue, the call is then routed to the agent, like any other inbound case. Dialing timeout for this operation can be configured with the “RingTimeoutInSeconds” parameter. If not specified, the default dialing timeout will be 60 seconds which means if the call is not connected within 60 seconds, it fails. UK numbers with a 447 prefix are not allowed by default. Before you can dial these UK mobile numbers, you must submit a service quota increase request. For more information, see Connect Customer Service Quotas in the Connect Customer Administrator Guide. Campaign calls are not allowed by default. Before you can make a call with TrafficType = CAMPAIGN, you must submit a service quota increase request to the quota Connect Customer campaigns. For Preview dialing mode, only the Amazon Connect outbound campaigns service principal is allowed to assume a role in your account and call this API with OutboundStrategy.</td>
 </tr>
 <tr>
     <td><a href="#start_web_rtc_contact"><CopyableCode code="start_web_rtc_contact" /></a></td>
     <td><CopyableCode code="exec" /></td>
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-ContactFlowId"><code>ContactFlowId</code></a>, <a href="#parameter-InstanceId"><code>InstanceId</code></a>, <a href="#parameter-ParticipantDetails"><code>ParticipantDetails</code></a></td>
     <td></td>
-    <td>Places an inbound in-app, web, or video call to a contact, and then initiates the flow. It performs the actions in the flow that are specified (in ContactFlowId) and present in the Amazon Connect instance (specified as InstanceId).</td>
+    <td>Places an inbound in-app, web, or video call to a contact, and then initiates the flow. It performs the actions in the flow that are specified (in ContactFlowId) and present in the Connect Customer instance (specified as InstanceId).</td>
 </tr>
 <tr>
     <td><a href="#transfer_contact"><CopyableCode code="transfer_contact" /></a></td>
@@ -372,7 +372,7 @@ The following methods are available for this resource:
     <td><CopyableCode code="exec" /></td>
     <td><a href="#parameter-instance_id"><code>instance_id</code></a>, <a href="#parameter-contact_flow_id"><code>contact_flow_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>The name of the flow. You can also create and update flows using the Amazon Connect Flow language.</td>
+    <td>The name of the flow. You can also create and update flows using the Connect Customer Flow language.</td>
 </tr>
 </tbody>
 </table>
@@ -398,7 +398,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-instance_id">
     <td><CopyableCode code="instance_id" /></td>
     <td><code>string</code></td>
-    <td>The identifier of the Amazon Connect instance.</td>
+    <td>The identifier of the Connect Customer instance.</td>
 </tr>
 <tr id="parameter-phone_number_id">
     <td><CopyableCode code="phone_number_id" /></td>
@@ -418,7 +418,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-instanceId">
     <td><CopyableCode code="instanceId" /></td>
     <td><code>string</code></td>
-    <td>The identifier of the Amazon Connect instance. You can find the instance ID in the Amazon Resource Name (ARN) of the instance.</td>
+    <td>The identifier of the Connect Customer instance. You can find the instance ID in the Amazon Resource Name (ARN) of the instance.</td>
 </tr>
 <tr id="parameter-maxResults">
     <td><CopyableCode code="maxResults" /></td>
@@ -445,7 +445,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 >
 <TabItem value="describe_contact_flow">
 
-Describes the specified flow. You can also create and update flows using the Amazon Connect Flow language. Use the $SAVED alias in the request to describe the SAVED content of a Flow. For example, arn:aws:.../contact-flow/&#123;id&#125;:$SAVED. After a flow is published, $SAVED needs to be supplied to view saved content that has not been published. Use arn:aws:.../contact-flow/&#123;id&#125;:&#123;version&#125; to retrieve the content of a specific flow version. In the response, Status indicates the flow status as either SAVED or PUBLISHED. The PUBLISHED status will initiate validation on the content. SAVED does not initiate validation of the content. SAVED | PUBLISHED
+Describes the specified flow. You can also create and update flows using the Connect Customer Flow language. Use the $SAVED alias in the request to describe the SAVED content of a Flow. For example, arn:aws:.../contact-flow/&#123;id&#125;:$SAVED. After a flow is published, $SAVED needs to be supplied to view saved content that has not been published. Use arn:aws:.../contact-flow/&#123;id&#125;:&#123;version&#125; to retrieve the content of a specific flow version. In the response, Status indicates the flow status as either SAVED or PUBLISHED. The PUBLISHED status will initiate validation on the content. SAVED does not initiate validation of the content. SAVED | PUBLISHED
 
 ```sql
 SELECT
@@ -472,7 +472,7 @@ AND region = '{{ region }}' -- required
 </TabItem>
 <TabItem value="list_contact_flows">
 
-Provides information about the flows for the specified Amazon Connect instance. You can also create and update flows using the Amazon Connect Flow language. For more information about flows, see Flows in the Amazon Connect Administrator Guide.
+Provides information about the flows for the specified Connect Customer instance. You can also create and update flows using the Connect Customer Flow language. For more information about flows, see Flows in the Connect Customer Administrator Guide.
 
 ```sql
 SELECT
@@ -493,7 +493,7 @@ AND maxResults = '{{ maxResults }}'
 </TabItem>
 <TabItem value="search_contact_flows">
 
-Searches the flows in an Amazon Connect instance, with optional filtering.
+Searches the flows in an Connect Customer instance, with optional filtering.
 
 ```sql
 SELECT
@@ -530,7 +530,7 @@ WHERE region = '{{ region }}' -- required
 >
 <TabItem value="create_contact_flow">
 
-Creates a flow for the specified Amazon Connect instance. You can also create and update flows using the Amazon Connect Flow language.
+Creates a flow for the specified Connect Customer instance. You can also create and update flows using the Connect Customer Flow language.
 
 ```sql
 INSERT INTO aws.connect.contact_flows (
@@ -602,7 +602,7 @@ flow_content_sha_256
 >
 <TabItem value="associate_phone_number_contact_flow">
 
-Associates a flow with a phone number claimed to your Amazon Connect instance. If the number is claimed to a traffic distribution group, and you are calling this API using an instance in the Amazon Web Services Region where the traffic distribution group was created, you can use either a full phone number ARN or UUID value for the PhoneNumberId URI request parameter. However, if the number is claimed to a traffic distribution group and you are calling this API using an instance in the alternate Amazon Web Services Region associated with the traffic distribution group, you must provide a full phone number ARN. If a UUID is provided in this scenario, you will receive a ResourceNotFoundException.
+Associates a flow with a phone number claimed to your Connect Customer instance. If the number is claimed to a traffic distribution group, and you are calling this API using an instance in the Amazon Web Services Region where the traffic distribution group was created, you can use either a full phone number ARN or UUID value for the PhoneNumberId URI request parameter. However, if the number is claimed to a traffic distribution group and you are calling this API using an instance in the alternate Amazon Web Services Region associated with the traffic distribution group, you must provide a full phone number ARN. If a UUID is provided in this scenario, you will receive a ResourceNotFoundException.
 
 ```sql
 UPDATE aws.connect.contact_flows
@@ -618,7 +618,7 @@ AND ContactFlowId = '{{ ContactFlowId }}' --required;
 </TabItem>
 <TabItem value="update_contact_flow_content">
 
-Updates the specified flow. You can also create and update flows using the Amazon Connect Flow language. Use the $SAVED alias in the request to describe the SAVED content of a Flow. For example, arn:aws:.../contact-flow/&#123;id&#125;:$SAVED. After a flow is published, $SAVED needs to be supplied to view saved content that has not been published.
+Updates the specified flow. You can also create and update flows using the Connect Customer Flow language. Use the $SAVED alias in the request to describe the SAVED content of a Flow. For example, arn:aws:.../contact-flow/&#123;id&#125;:$SAVED. After a flow is published, $SAVED needs to be supplied to view saved content that has not been published.
 
 ```sql
 UPDATE aws.connect.contact_flows
@@ -632,7 +632,7 @@ AND region = '{{ region }}' --required;
 </TabItem>
 <TabItem value="disassociate_phone_number_contact_flow">
 
-Removes the flow association from a phone number claimed to your Amazon Connect instance. If the number is claimed to a traffic distribution group, and you are calling this API using an instance in the Amazon Web Services Region where the traffic distribution group was created, you can use either a full phone number ARN or UUID value for the PhoneNumberId URI request parameter. However, if the number is claimed to a traffic distribution group and you are calling this API using an instance in the alternate Amazon Web Services Region associated with the traffic distribution group, you must provide a full phone number ARN. If a UUID is provided in this scenario, you will receive a ResourceNotFoundException.
+Removes the flow association from a phone number claimed to your Connect Customer instance. If the number is claimed to a traffic distribution group, and you are calling this API using an instance in the Amazon Web Services Region where the traffic distribution group was created, you can use either a full phone number ARN or UUID value for the PhoneNumberId URI request parameter. However, if the number is claimed to a traffic distribution group and you are calling this API using an instance in the alternate Amazon Web Services Region associated with the traffic distribution group, you must provide a full phone number ARN. If a UUID is provided in this scenario, you will receive a ResourceNotFoundException.
 
 ```sql
 UPDATE aws.connect.contact_flows
@@ -657,7 +657,7 @@ AND instanceId = '{{ instanceId}}';
 >
 <TabItem value="delete_contact_flow">
 
-Deletes a flow for the specified Amazon Connect instance.
+Deletes a flow for the specified Connect Customer instance.
 
 ```sql
 DELETE FROM aws.connect.contact_flows
@@ -686,7 +686,7 @@ AND region = '{{ region }}' --required
 >
 <TabItem value="start_chat_contact">
 
-Initiates a flow to start a new chat for the customer. Response of this API provides a token required to obtain credentials from the CreateParticipantConnection API in the Amazon Connect Participant Service. When a new chat contact is successfully created, clients must subscribe to the participant’s connection for the created chat within 5 minutes. This is achieved by invoking CreateParticipantConnection with WEBSOCKET and CONNECTION_CREDENTIALS. A 429 error occurs in the following situations: API rate limit is exceeded. API TPS throttling returns a TooManyRequests exception. The quota for concurrent active chats is exceeded. Active chat throttling returns a LimitExceededException. If you use the ChatDurationInMinutes parameter and receive a 400 error, your account may not support the ability to configure custom chat durations. For more information, contact Amazon Web Services Support. For more information about chat, see the following topics in the Amazon Connect Administrator Guide: Concepts: Web and mobile messaging capabilities in Amazon Connect Amazon Connect Chat security best practices
+Initiates a flow to start a new chat for the customer. Response of this API provides a token required to obtain credentials from the CreateParticipantConnection API in the Connect Customer Participant Service. When a new chat contact is successfully created, clients must subscribe to the participant’s connection for the created chat within 5 minutes. This is achieved by invoking CreateParticipantConnection with WEBSOCKET and CONNECTION_CREDENTIALS. A 429 error occurs in the following situations: API rate limit is exceeded. API TPS throttling returns a TooManyRequests exception. The quota for concurrent active chats is exceeded. Active chat throttling returns a LimitExceededException. If you use the ChatDurationInMinutes parameter and receive a 400 error, your account may not support the ability to configure custom chat durations. For more information, contact Amazon Web Services Support. For more information about chat, see the following topics in the Connect Customer Administrator Guide: Concepts: Web and mobile messaging capabilities in Connect Customer Connect Customer Chat security best practices
 
 ```sql
 EXEC aws.connect.contact_flows.start_chat_contact 
@@ -713,7 +713,7 @@ EXEC aws.connect.contact_flows.start_chat_contact
 </TabItem>
 <TabItem value="start_outbound_chat_contact">
 
-Initiates a new outbound SMS or WhatsApp contact to a customer. Response of this API provides the ContactId of the outbound SMS or WhatsApp contact created. SourceEndpoint only supports Endpoints with CONNECT_PHONENUMBER_ARN as Type and DestinationEndpoint only supports Endpoints with TELEPHONE_NUMBER as Type. ContactFlowId initiates the flow to manage the new contact created. This API can be used to initiate outbound SMS or WhatsApp contacts for an agent, or it can also deflect an ongoing contact to an outbound SMS or WhatsApp contact by using the StartOutboundChatContact Flow Action. For more information about using SMS or WhatsApp in Amazon Connect, see the following topics in the Amazon Connect Administrator Guide: Set up SMS messaging Request an SMS-enabled phone number through Amazon Web Services End User Messaging SMS Set up WhatsApp Business messaging
+Initiates a new outbound SMS or WhatsApp contact to a customer. Response of this API provides the ContactId of the outbound SMS or WhatsApp contact created. SourceEndpoint only supports Endpoints with CONNECT_PHONENUMBER_ARN as Type and DestinationEndpoint only supports Endpoints with TELEPHONE_NUMBER as Type. ContactFlowId initiates the flow to manage the new contact created. This API can be used to initiate outbound SMS or WhatsApp contacts for an agent, or it can also deflect an ongoing contact to an outbound SMS or WhatsApp contact by using the StartOutboundChatContact Flow Action. For more information about using SMS or WhatsApp in Connect Customer, see the following topics in the Connect Customer Administrator Guide: Set up SMS messaging Request an SMS-enabled phone number through Amazon Web Services End User Messaging SMS Set up WhatsApp Business messaging
 
 ```sql
 EXEC aws.connect.contact_flows.start_outbound_chat_contact 
@@ -739,7 +739,7 @@ EXEC aws.connect.contact_flows.start_outbound_chat_contact
 </TabItem>
 <TabItem value="start_outbound_voice_contact">
 
-Places an outbound call to a contact, and then initiates the flow. It performs the actions in the flow that's specified (in ContactFlowId). Agents do not initiate the outbound API, which means that they do not dial the contact. If the flow places an outbound call to a contact, and then puts the contact in queue, the call is then routed to the agent, like any other inbound case. Dialing timeout for this operation can be configured with the “RingTimeoutInSeconds” parameter. If not specified, the default dialing timeout will be 60 seconds which means if the call is not connected within 60 seconds, it fails. UK numbers with a 447 prefix are not allowed by default. Before you can dial these UK mobile numbers, you must submit a service quota increase request. For more information, see Amazon Connect Service Quotas in the Amazon Connect Administrator Guide. Campaign calls are not allowed by default. Before you can make a call with TrafficType = CAMPAIGN, you must submit a service quota increase request to the quota Amazon Connect campaigns. For Preview dialing mode, only the Amazon Connect outbound campaigns service principal is allowed to assume a role in your account and call this API with OutboundStrategy.
+Places an outbound call to a contact, and then initiates the flow. It performs the actions in the flow that's specified (in ContactFlowId). Agents do not initiate the outbound API, which means that they do not dial the contact. If the flow places an outbound call to a contact, and then puts the contact in queue, the call is then routed to the agent, like any other inbound case. Dialing timeout for this operation can be configured with the “RingTimeoutInSeconds” parameter. If not specified, the default dialing timeout will be 60 seconds which means if the call is not connected within 60 seconds, it fails. UK numbers with a 447 prefix are not allowed by default. Before you can dial these UK mobile numbers, you must submit a service quota increase request. For more information, see Connect Customer Service Quotas in the Connect Customer Administrator Guide. Campaign calls are not allowed by default. Before you can make a call with TrafficType = CAMPAIGN, you must submit a service quota increase request to the quota Connect Customer campaigns. For Preview dialing mode, only the Amazon Connect outbound campaigns service principal is allowed to assume a role in your account and call this API with OutboundStrategy.
 
 ```sql
 EXEC aws.connect.contact_flows.start_outbound_voice_contact 
@@ -768,7 +768,7 @@ EXEC aws.connect.contact_flows.start_outbound_voice_contact
 </TabItem>
 <TabItem value="start_web_rtc_contact">
 
-Places an inbound in-app, web, or video call to a contact, and then initiates the flow. It performs the actions in the flow that are specified (in ContactFlowId) and present in the Amazon Connect instance (specified as InstanceId).
+Places an inbound in-app, web, or video call to a contact, and then initiates the flow. It performs the actions in the flow that are specified (in ContactFlowId) and present in the Connect Customer instance (specified as InstanceId).
 
 ```sql
 EXEC aws.connect.contact_flows.start_web_rtc_contact 
@@ -783,7 +783,8 @@ EXEC aws.connect.contact_flows.start_web_rtc_contact
 "ParticipantDetails": "{{ ParticipantDetails }}", 
 "RelatedContactId": "{{ RelatedContactId }}", 
 "References": "{{ References }}", 
-"Description": "{{ Description }}"
+"Description": "{{ Description }}", 
+"SegmentAttributes": "{{ SegmentAttributes }}"
 }'
 ;
 ```
@@ -827,7 +828,7 @@ EXEC aws.connect.contact_flows.update_contact_flow_metadata
 </TabItem>
 <TabItem value="update_contact_flow_name">
 
-The name of the flow. You can also create and update flows using the Amazon Connect Flow language.
+The name of the flow. You can also create and update flows using the Connect Customer Flow language.
 
 ```sql
 EXEC aws.connect.contact_flows.update_contact_flow_name 

@@ -102,7 +102,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="type_" /></td>
     <td><code>string</code></td>
-    <td>The type of the connector. (VCENTER)</td>
+    <td>The type of the connector. (OPERATIONS_MANAGER, SDDC_MANAGER, VCENTER)</td>
 </tr>
 </tbody>
 </table>
@@ -136,7 +136,7 @@ The following methods are available for this resource:
     <td><CopyableCode code="insert" /></td>
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-environmentId"><code>environmentId</code></a>, <a href="#parameter-type"><code>type</code></a>, <a href="#parameter-applianceFqdn"><code>applianceFqdn</code></a>, <a href="#parameter-secretIdentifier"><code>secretIdentifier</code></a></td>
     <td></td>
-    <td>Creates a connector for an Amazon EVS environment. A connector establishes a connection to a VCF appliance, such as vCenter, using a fully qualified domain name and an Amazon Web Services Secrets Manager secret that stores the appliance credentials.</td>
+    <td>Creates a connector for an Amazon EVS environment. A connector allows the Amazon EVS control plane to interface with VCF appliances using a fully qualified domain name. You can create only one connector of each type per environment. For environments where Amazon EVS installs VCF, the SDDC_MANAGER connector is created automatically. Amazon EVS requires an active connector to SDDC Manager or VCF Operations Manager to monitor environment health and license compliance.</td>
 </tr>
 <tr>
     <td><a href="#update_environment_connector"><CopyableCode code="update_environment_connector" /></a></td>
@@ -220,7 +220,7 @@ WHERE region = '{{ region }}' -- required
 >
 <TabItem value="create_environment_connector">
 
-Creates a connector for an Amazon EVS environment. A connector establishes a connection to a VCF appliance, such as vCenter, using a fully qualified domain name and an Amazon Web Services Secrets Manager secret that stores the appliance credentials.
+Creates a connector for an Amazon EVS environment. A connector allows the Amazon EVS control plane to interface with VCF appliances using a fully qualified domain name. You can create only one connector of each type per environment. For environments where Amazon EVS installs VCF, the SDDC_MANAGER connector is created automatically. Amazon EVS requires an active connector to SDDC Manager or VCF Operations Manager to monitor environment health and license compliance.
 
 ```sql
 INSERT INTO aws.evs.environment_connectors (
@@ -262,8 +262,8 @@ connector
     - name: type
       value: "{{ type }}"
       description: |
-        The type of connector to create.
-      valid_values: ['VCENTER']
+        The type of connector to create. OPERATIONS_MANAGER: Connector to an Operations Manager appliance. Required for VCF 9x environments. SDDC_MANAGER: Connector to an SDDC Manager appliance. Required for VCF 5.x environments. VCENTER: Connector to a vCenter Server appliance. Required for features that depend on vCenter, such as Windows Server license-included.
+      valid_values: ['OPERATIONS_MANAGER', 'SDDC_MANAGER', 'VCENTER']
     - name: applianceFqdn
       value: "{{ applianceFqdn }}"
       description: |
@@ -271,7 +271,7 @@ connector
     - name: secretIdentifier
       value: "{{ secretIdentifier }}"
       description: |
-        The ARN or name of the Amazon Web Services Secrets Manager secret that stores the credentials for the VCF appliance. Do not use credentials with Administrator privileges. We recommend using a service account with the minimum required permissions.
+        The ARN or name of the Amazon Web Services Secrets Manager secret that stores the credentials for the VCF appliance. SDDC_MANAGER requires an apiKey field; OPERATIONS_MANAGER and VCENTER require username and password fields. Do not use credentials with Administrator privileges. We recommend using a service account with read-only permissions.
 `}</CodeBlock>
 
 </TabItem>

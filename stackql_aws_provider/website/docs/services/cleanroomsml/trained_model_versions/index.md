@@ -85,6 +85,11 @@ The following fields are returned by `SELECT` queries:
     <td>The membership ID of the member that created the trained model. (pattern: &lt;code&gt;&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
+    <td><CopyableCode code="ml_model_training_payer_account_id" /></td>
+    <td><code>string</code></td>
+    <td>The account ID of the member that is responsible for paying for model training costs. (pattern: &lt;code&gt;&#91;0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
+</tr>
+<tr>
     <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the trained model. (CREATE_PENDING, CREATE_IN_PROGRESS, CREATE_FAILED, ACTIVE, DELETE_PENDING, DELETE_IN_PROGRESS, DELETE_FAILED, INACTIVE, CANCEL_PENDING, CANCEL_IN_PROGRESS, CANCEL_FAILED)</td>
@@ -201,6 +206,7 @@ create_time,
 description,
 incremental_training_data_channels,
 membership_identifier,
+ml_model_training_payer_account_id,
 status,
 trained_model_arn,
 update_time,

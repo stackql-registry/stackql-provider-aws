@@ -51,6 +51,11 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
+    <td><CopyableCode code="clustering_config" /></td>
+    <td><code>object</code></td>
+    <td>Configuration for periodic batch evaluation clustering, specifying how often clustering jobs run.</td>
+</tr>
+<tr>
     <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the online evaluation configuration was created.</td>
@@ -86,9 +91,14 @@ The following fields are returned by `SELECT` queries:
     <td>The reason for failure if the online evaluation configuration execution failed.</td>
 </tr>
 <tr>
+    <td><CopyableCode code="insights" /></td>
+    <td><code>array</code></td>
+    <td>The list of insight types configured for this evaluation.</td>
+</tr>
+<tr>
     <td><CopyableCode code="online_evaluation_config_arn" /></td>
     <td><code>string</code></td>
-    <td>The Amazon Resource Name (ARN) of the online evaluation configuration. (pattern: &lt;code&gt;arn:aws:bedrock-agentcore:&#91;a-z0-9-&#93;+:&#91;0-9&#93;&#123;12&#125;:online-evaluation-config\/&#91;a-zA-Z&#93;&#91;a-zA-Z0-9-_&#93;&#123;0,99&#125;-&#91;a-zA-Z0-9&#93;&#123;10&#125;&lt;/code&gt;)</td>
+    <td>The Amazon Resource Name (ARN) of the online evaluation configuration. (pattern: &lt;code&gt;arn:aws&#91;a-zA-Z-&#93;*:bedrock-agentcore:&#91;a-z0-9-&#93;+:&#91;0-9&#93;&#123;12&#125;:online-evaluation-config\/&#91;a-zA-Z&#93;&#91;a-zA-Z0-9-_&#93;&#123;0,99&#125;-&#91;a-zA-Z0-9&#93;&#123;10&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="online_evaluation_config_id" /></td>
@@ -135,6 +145,11 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
+    <td><CopyableCode code="clustering_config" /></td>
+    <td><code>object</code></td>
+    <td>Configuration for periodic batch evaluation clustering, specifying how often clustering jobs run.</td>
+</tr>
+<tr>
     <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the online evaluation configuration was created.</td>
@@ -155,9 +170,14 @@ The following fields are returned by `SELECT` queries:
     <td>The reason for failure if the online evaluation configuration execution failed.</td>
 </tr>
 <tr>
+    <td><CopyableCode code="insights" /></td>
+    <td><code>array</code></td>
+    <td>The list of insight types configured for this evaluation.</td>
+</tr>
+<tr>
     <td><CopyableCode code="online_evaluation_config_arn" /></td>
     <td><code>string</code></td>
-    <td>The Amazon Resource Name (ARN) of the online evaluation configuration. (pattern: &lt;code&gt;arn:aws:bedrock-agentcore:&#91;a-z0-9-&#93;+:&#91;0-9&#93;&#123;12&#125;:online-evaluation-config\/&#91;a-zA-Z&#93;&#91;a-zA-Z0-9-_&#93;&#123;0,99&#125;-&#91;a-zA-Z0-9&#93;&#123;10&#125;&lt;/code&gt;)</td>
+    <td>The Amazon Resource Name (ARN) of the online evaluation configuration. (pattern: &lt;code&gt;arn:aws&#91;a-zA-Z-&#93;*:bedrock-agentcore:&#91;a-z0-9-&#93;+:&#91;0-9&#93;&#123;12&#125;:online-evaluation-config\/&#91;a-zA-Z&#93;&#91;a-zA-Z0-9-_&#93;&#123;0,99&#125;-&#91;a-zA-Z0-9&#93;&#123;10&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="online_evaluation_config_id" /></td>
@@ -216,7 +236,7 @@ The following methods are available for this resource:
 <tr>
     <td><a href="#create_online_evaluation_config"><CopyableCode code="create_online_evaluation_config" /></a></td>
     <td><CopyableCode code="insert" /></td>
-    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-onlineEvaluationConfigName"><code>onlineEvaluationConfigName</code></a>, <a href="#parameter-rule"><code>rule</code></a>, <a href="#parameter-dataSourceConfig"><code>dataSourceConfig</code></a>, <a href="#parameter-evaluators"><code>evaluators</code></a>, <a href="#parameter-evaluationExecutionRoleArn"><code>evaluationExecutionRoleArn</code></a>, <a href="#parameter-enableOnCreate"><code>enableOnCreate</code></a></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-onlineEvaluationConfigName"><code>onlineEvaluationConfigName</code></a>, <a href="#parameter-rule"><code>rule</code></a>, <a href="#parameter-dataSourceConfig"><code>dataSourceConfig</code></a>, <a href="#parameter-evaluationExecutionRoleArn"><code>evaluationExecutionRoleArn</code></a>, <a href="#parameter-enableOnCreate"><code>enableOnCreate</code></a></td>
     <td></td>
     <td>Creates an online evaluation configuration for continuous monitoring of agent performance. Online evaluation automatically samples live traffic from CloudWatch logs at specified rates and applies evaluators to assess agent quality in production.</td>
 </tr>
@@ -288,6 +308,7 @@ Retrieves detailed information about an online evaluation configuration, includi
 
 ```sql
 SELECT
+clustering_config,
 created_at,
 data_source_config,
 description,
@@ -295,6 +316,7 @@ evaluation_execution_role_arn,
 evaluators,
 execution_status,
 failure_reason,
+insights,
 online_evaluation_config_arn,
 online_evaluation_config_id,
 online_evaluation_config_name,
@@ -314,10 +336,12 @@ Lists all online evaluation configurations in the account, providing summary inf
 
 ```sql
 SELECT
+clustering_config,
 created_at,
 description,
 execution_status,
 failure_reason,
+insights,
 online_evaluation_config_arn,
 online_evaluation_config_id,
 online_evaluation_config_name,
@@ -354,6 +378,8 @@ description,
 rule,
 dataSourceConfig,
 evaluators,
+insights,
+clusteringConfig,
 evaluationExecutionRoleArn,
 enableOnCreate,
 tags,
@@ -365,7 +391,9 @@ SELECT
 '{{ description }}',
 '{{ rule }}' /* required */,
 '{{ dataSourceConfig }}' /* required */,
-'{{ evaluators }}' /* required */,
+'{{ evaluators }}',
+'{{ insights }}',
+'{{ clusteringConfig }}',
 '{{ evaluationExecutionRoleArn }}' /* required */,
 {{ enableOnCreate }} /* required */,
 '{{ tags }}',
@@ -422,6 +450,15 @@ status
     - name: evaluators
       value:
         - evaluatorId: "{{ evaluatorId }}"
+    - name: insights
+      value:
+        - insightId: "{{ insightId }}"
+    - name: clusteringConfig
+      description: |
+        Configuration for periodic batch evaluation clustering, specifying how often clustering jobs run.
+      value:
+        frequencies:
+          - "{{ frequencies }}"
     - name: evaluationExecutionRoleArn
       value: "{{ evaluationExecutionRoleArn }}"
     - name: enableOnCreate
@@ -454,6 +491,8 @@ description = '{{ description }}',
 rule = '{{ rule }}',
 dataSourceConfig = '{{ dataSourceConfig }}',
 evaluators = '{{ evaluators }}',
+insights = '{{ insights }}',
+clusteringConfig = '{{ clusteringConfig }}',
 evaluationExecutionRoleArn = '{{ evaluationExecutionRoleArn }}',
 executionStatus = '{{ executionStatus }}'
 WHERE 

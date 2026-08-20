@@ -89,7 +89,7 @@ The following methods are available for this resource:
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-instance_id"><code>instance_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>Gets the real-time active user data from the specified Amazon Connect instance.</td>
+    <td>Gets the real-time active user data from the specified Connect Customer instance.</td>
 </tr>
 </tbody>
 </table>
@@ -110,7 +110,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-instance_id">
     <td><CopyableCode code="instance_id" /></td>
     <td><code>string</code></td>
-    <td>The identifier of the Amazon Connect instance. You can find the instance ID in the Amazon Resource Name (ARN) of the instance.</td>
+    <td>The identifier of the Connect Customer instance. You can find the instance ID in the Amazon Resource Name (ARN) of the instance.</td>
 </tr>
 <tr id="parameter-region">
     <td><CopyableCode code="region" /></td>
@@ -130,7 +130,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 >
 <TabItem value="get_current_user_data">
 
-Gets the real-time active user data from the specified Amazon Connect instance.
+Gets the real-time active user data from the specified Connect Customer instance.
 
 ```sql
 SELECT

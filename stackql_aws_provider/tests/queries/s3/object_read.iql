@@ -1,0 +1,6 @@
+-- Rule 19 blob-payload read: GetObject SELECT projects the whole object
+-- body as the single `contents` column, verbatim.
+SELECT contents FROM aws.s3.objects
+WHERE region = '{{ global_region }}'
+  AND bucket = '{{ bucket_prefix }}-{{ caller_identity.account }}'
+  AND key = 'smoke/terraform.tfstate'

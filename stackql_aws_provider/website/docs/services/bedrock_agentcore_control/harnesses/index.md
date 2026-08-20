@@ -70,6 +70,11 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the harness. (pattern: &lt;code&gt;&#91;a-zA-Z&#93;&#91;a-zA-Z0-9_&#93;&#123;0,39&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
+    <td><CopyableCode code="harness_version" /></td>
+    <td><code>string</code></td>
+    <td>The latest version of the harness. (pattern: &lt;code&gt;(&#91;1-9&#93;&#91;0-9&#93;&#123;0,4&#125;)&lt;/code&gt;)</td>
+</tr>
+<tr>
     <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The current status of the harness. (CREATING, CREATE_FAILED, UPDATING, UPDATE_FAILED, READY, DELETING, DELETE_FAILED)</td>
@@ -104,7 +109,7 @@ The following methods are available for this resource:
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td><a href="#parameter-maxResults"><code>maxResults</code></a>, <a href="#parameter-nextToken"><code>nextToken</code></a></td>
-    <td>Operation to list Harnesses.</td>
+    <td>Operation to list harnesses.</td>
 </tr>
 </tbody>
 </table>
@@ -150,7 +155,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 >
 <TabItem value="list_harnesses">
 
-Operation to list Harnesses.
+Operation to list harnesses.
 
 ```sql
 SELECT
@@ -158,6 +163,7 @@ arn,
 created_at,
 harness_id,
 harness_name,
+harness_version,
 status,
 updated_at
 FROM aws.bedrock_agentcore_control.harnesses

@@ -65,6 +65,11 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the standard. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
 </tr>
 <tr>
+    <td><CopyableCode code="provider" /></td>
+    <td><code>string</code></td>
+    <td>The cloud provider whose resources the standard evaluates. For example, AWS or Azure. (AWS, Azure)</td>
+</tr>
+<tr>
     <td><CopyableCode code="standards_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the standard. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
@@ -98,7 +103,7 @@ The following methods are available for this resource:
     <td><a href="#describe_standards"><CopyableCode code="describe_standards" /></a></td>
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
-    <td><a href="#parameter-NextToken"><code>NextToken</code></a>, <a href="#parameter-MaxResults"><code>MaxResults</code></a></td>
+    <td><a href="#parameter-NextToken"><code>NextToken</code></a>, <a href="#parameter-MaxResults"><code>MaxResults</code></a>, <a href="#parameter-Providers"><code>Providers</code></a></td>
     <td>Returns a list of the available standards in Security Hub CSPM. For each standard, the results include the standard ARN, the name, and a description.</td>
 </tr>
 <tr>
@@ -146,6 +151,11 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     <td><code>string</code></td>
     <td>The token that is required for pagination. On your first call to the DescribeStandards operation, set the value of this parameter to NULL. For subsequent calls to the operation, to continue listing data, set the value of this parameter to the value returned from the previous response.</td>
 </tr>
+<tr id="parameter-Providers">
+    <td><CopyableCode code="Providers" /></td>
+    <td><code>array</code></td>
+    <td>A list of cloud providers to filter the standards by. For example, specify Azure to return only standards that evaluate Azure resources.</td>
+</tr>
 </tbody>
 </table>
 
@@ -166,12 +176,14 @@ SELECT
 description,
 enabled_by_default,
 name,
+provider,
 standards_arn,
 standards_managed_by
 FROM aws.securityhub.standards
 WHERE region = '{{ region }}' -- required
 AND NextToken = '{{ NextToken }}'
 AND MaxResults = '{{ MaxResults }}'
+AND Providers = '{{ Providers }}'
 ;
 ```
 </TabItem>

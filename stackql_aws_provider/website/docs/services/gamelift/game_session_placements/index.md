@@ -67,7 +67,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="game_session_arn" /></td>
     <td><code>string</code></td>
-    <td>An identifier for the game session that is unique across all regions. The value is always a full ARN in the following format: arn:aws:gamelift:`&lt;location&gt;`::gamesession/&lt;fleet ID&gt;/&lt;ID string&gt;. This value is the same as GameSessionId. This value isn't final until placement status is FULFILLED.</td>
+    <td>An identifier for the game session that is unique across all regions. The value is always a full ARN in the following format: For Home Region game session - arn:aws:gamelift:<code>&lt;home_region&gt;</code>::gamesession/&lt;fleet ID&gt;/&lt;ID string&gt;. For Remote Location game session - arn:aws:gamelift:<code>&lt;home_region&gt;</code>::gamesession/&lt;fleet ID&gt;/`&lt;location&gt;`/&lt;ID string&gt;. This value is the same as GameSessionId. This value isn't final until placement status is FULFILLED.</td>
 </tr>
 <tr>
     <td><CopyableCode code="game_session_data" /></td>
@@ -77,7 +77,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="game_session_id" /></td>
     <td><code>string</code></td>
-    <td>An identifier for the game session that is unique across all regions. The value is always a full ARN in the following format: arn:aws:gamelift:`&lt;location&gt;`::gamesession/&lt;fleet ID&gt;/&lt;ID string&gt;. This value is the same as GameSessionArn. This value isn't final until placement status is FULFILLED.</td>
+    <td>An identifier for the game session that is unique across all regions. The value is always a full ARN in the following format: For Home Region game session - arn:aws:gamelift:<code>&lt;home_region&gt;</code>::gamesession/&lt;fleet ID&gt;/&lt;ID string&gt;. For Remote Location game session - arn:aws:gamelift:<code>&lt;home_region&gt;</code>::gamesession/&lt;fleet ID&gt;/`&lt;location&gt;`/&lt;ID string&gt;. This value is the same as GameSessionArn. This value isn't final until placement status is FULFILLED.</td>
 </tr>
 <tr>
     <td><CopyableCode code="game_session_name" /></td>
@@ -87,7 +87,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="game_session_queue_name" /></td>
     <td><code>string</code></td>
-    <td>A descriptive label that is associated with game session queue. Queue names must be unique within each Region. (pattern: &lt;code&gt;&#91;a-zA-Z0-9-&#93;+&lt;/code&gt;)</td>
+    <td>A descriptive label that is associated with game session queue. Queue names must be unique within each Region. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9-&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="game_session_region" /></td>
@@ -97,7 +97,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="ip_address" /></td>
     <td><code>string</code></td>
-    <td>The IP address of the game session. To connect to a Amazon GameLift Servers game server, an app needs both the IP address and port number. This value isn't final until placement status is FULFILLED. (pattern: &lt;code&gt;^&#91;0-9A-Fa-f\:\.&#93;+&lt;/code&gt;)</td>
+    <td>The IP address of the game session. To connect to a Amazon GameLift Servers game server, an app needs both the IP address and port number. This value isn't final until placement status is FULFILLED. (pattern: &lt;code&gt;^&#91;0-9A-Fa-f\:\.&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="matchmaker_data" /></td>
@@ -117,7 +117,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="placement_id" /></td>
     <td><code>string</code></td>
-    <td>A unique identifier for a game session placement. (pattern: &lt;code&gt;&#91;a-zA-Z0-9-&#93;+&lt;/code&gt;)</td>
+    <td>A unique identifier for a game session placement. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9-&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="player_gateway_status" /></td>
@@ -127,7 +127,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="player_latencies" /></td>
     <td><code>array</code></td>
-    <td>A set of values, expressed in milliseconds, that indicates the amount of latency that a player experiences when connected to Amazon Web Services Regions.</td>
+    <td>A set of values, expressed in milliseconds, that indicates the amount of latency that a player experiences when connected to a fleet location (Amazon Web Services Regions or custom locations for Amazon GameLift Servers Anywhere fleets).</td>
 </tr>
 <tr>
     <td><CopyableCode code="port" /></td>

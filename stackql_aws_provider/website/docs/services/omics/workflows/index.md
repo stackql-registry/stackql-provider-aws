@@ -121,6 +121,16 @@ The following fields are returned by `SELECT` queries:
     <td>The workflow's parameter template.</td>
 </tr>
 <tr>
+    <td><CopyableCode code="profile_parameter_templates" /></td>
+    <td><code>object</code></td>
+    <td>A mapping of profile names to their parameter templates. Each profile defines its own set of parameters that you can use when starting a run with that profile.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="profiles" /></td>
+    <td><code>array</code></td>
+    <td>The list of Nextflow profiles that are available for this workflow. Profiles allow you to select predefined configuration settings at runtime.</td>
+</tr>
+<tr>
     <td><CopyableCode code="readme" /></td>
     <td><code>string</code></td>
     <td>The README content for the workflow, providing documentation and usage information. (pattern: &lt;code&gt;&#91;\p&#123;L&#125;||\p&#123;M&#125;||\p&#123;Z&#125;||\p&#123;S&#125;||\p&#123;N&#125;||\p&#123;P&#125;&#93;+&lt;/code&gt;)</td>
@@ -362,6 +372,8 @@ engine,
 main,
 metadata,
 parameter_template,
+profile_parameter_templates,
+profiles,
 readme,
 readme_path,
 status,

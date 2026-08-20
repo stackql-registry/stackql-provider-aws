@@ -55,6 +55,11 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon resource name (ARN) of the resource.</td>
 </tr>
 <tr>
+    <td><CopyableCode code="cfn_resource_type" /></td>
+    <td><code>string</code></td>
+    <td>The CloudFormation resource type identifier for the resource, such as AWS::EC2::Instance or AWS::S3::Bucket.</td>
+</tr>
+<tr>
     <td><CopyableCode code="last_reported_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that Resource Explorer last queried this resource and updated the index with the latest information about the resource.</td>
@@ -150,6 +155,7 @@ Returns a list of resources and their details that match the specified criteria.
 ```sql
 SELECT
 arn,
+cfn_resource_type,
 last_reported_at,
 owning_account_id,
 properties,

@@ -52,7 +52,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="constraints" /></td>
     <td><code>object</code></td>
-    <td>A list of key-value pairs that must be present in the encryption context of certain subsequent operations that the grant allows.</td>
+    <td>The constraints on the grant, such as encryption context pairs or a SourceArn, that restrict the subsequent operations the grant allows.</td>
 </tr>
 <tr>
     <td><CopyableCode code="creation_date" /></td>
@@ -67,7 +67,12 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="grantee_principal" /></td>
     <td><code>string</code></td>
-    <td>The identity that gets the permissions in the grant. The GranteePrincipal field in the ListGrants response usually contains the user or role designated as the grantee principal in the grant. However, when the grantee principal in the grant is an Amazon Web Services service, the GranteePrincipal field contains the service principal, which might represent several different grantee principals. (pattern: &lt;code&gt;^&#91;\w+=,.@:/-&#93;+$&lt;/code&gt;)</td>
+    <td>The identity that gets the permissions in the grant. When a grant is created with the GranteePrincipal field, the ListGrants response usually contains the user or role designated as the grantee principal in the grant. However, if the grantee principal is an Amazon Web Services service, the GranteePrincipal field contains an Amazon Web Services service principal, which might correspond to several different grantee principals, such as an IAM user, IAM role, or Amazon Web Services account. (pattern: &lt;code&gt;^&#91;\w+=,.@:/-&#93;+$&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="grantee_service_principal" /></td>
+    <td><code>string</code></td>
+    <td>The Amazon Web Services service principal that gets the permissions in the grant. (pattern: &lt;code&gt;^(&#91;A-Za-z0-9\-&#93;+)\.(&#91;A-Za-z0-9\-&#93;+)(\.&#91;A-Za-z0-9\-&#93;+)+$&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="issuing_account" /></td>
@@ -94,6 +99,11 @@ The following fields are returned by `SELECT` queries:
     <td><code>string</code></td>
     <td>The principal that can retire the grant. (pattern: &lt;code&gt;^&#91;\w+=,.@:/-&#93;+$&lt;/code&gt;)</td>
 </tr>
+<tr>
+    <td><CopyableCode code="retiring_service_principal" /></td>
+    <td><code>string</code></td>
+    <td>The Amazon Web Services service principal that can retire the grant. (pattern: &lt;code&gt;^(&#91;A-Za-z0-9\-&#93;+)\.(&#91;A-Za-z0-9\-&#93;+)(\.&#91;A-Za-z0-9\-&#93;+)+$&lt;/code&gt;)</td>
+</tr>
 </tbody>
 </table>
 </TabItem>
@@ -119,14 +129,14 @@ The following methods are available for this resource:
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>Gets a list of all grants for the specified KMS key. You must specify the KMS key in all requests. You can filter the grant list by grant ID or grantee principal. For detailed information about grants, including grant terminology, see Grants in KMS in the Key Management Service Developer Guide . For examples of creating grants in several programming languages, see Use CreateGrant with an Amazon Web Services SDK or CLI. The GranteePrincipal field in the ListGrants response usually contains the user or role designated as the grantee principal in the grant. However, when the grantee principal in the grant is an Amazon Web Services service, the GranteePrincipal field contains the service principal, which might represent several different grantee principals. Cross-account use: Yes. To perform this operation on a KMS key in a different Amazon Web Services account, specify the key ARN in the value of the KeyId parameter. Required permissions: kms:ListGrants (key policy) Related operations: CreateGrant ListRetirableGrants RetireGrant RevokeGrant Eventual consistency: The KMS API follows an eventual consistency model. For more information, see KMS eventual consistency.</td>
+    <td>Gets a list of all grants for the specified KMS key. You must specify the KMS key in all requests. You can filter the grant list by grant ID, grantee principal, or grantee service principal. For detailed information about grants, including grant terminology, see Grants in KMS in the Key Management Service Developer Guide . For examples of creating grants in several programming languages, see Use CreateGrant with an Amazon Web Services SDK or CLI. When a grant is created with the GranteePrincipal field, the ListGrants response usually contains the user or role designated as the grantee principal in the grant. However, if the grantee principal is an Amazon Web Services service, the GranteePrincipal field contains an Amazon Web Services service principal, which might correspond to several different grantee principals, such as an IAM user, IAM role, or Amazon Web Services account. When a grant is created with the GranteeServicePrincipal field, the ListGrants response always includes a GranteeServicePrincipal that indicates the grantee is actually an Amazon Web Services service principal. Cross-account use: Yes. To perform this operation on a KMS key in a different Amazon Web Services account, specify the key ARN in the value of the KeyId parameter. Required permissions: kms:ListGrants (key policy) Related operations: CreateGrant ListRetirableGrants RetireGrant RevokeGrant Eventual consistency: The KMS API follows an eventual consistency model. For more information, see KMS eventual consistency.</td>
 </tr>
 <tr>
     <td><a href="#create_grant"><CopyableCode code="create_grant" /></a></td>
     <td><CopyableCode code="insert" /></td>
-    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-KeyId"><code>KeyId</code></a>, <a href="#parameter-GranteePrincipal"><code>GranteePrincipal</code></a></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-KeyId"><code>KeyId</code></a></td>
     <td></td>
-    <td>Adds a grant to a KMS key. A grant is a policy instrument that allows Amazon Web Services principals to use KMS keys in cryptographic operations. It also can allow them to view a KMS key (DescribeKey) and create and manage grants. When authorizing access to a KMS key, grants are considered along with key policies and IAM policies. Grants are often used for temporary permissions because you can create one, use its permissions, and delete it without changing your key policies or IAM policies. For detailed information about grants, including grant terminology, see Grants in KMS in the Key Management Service Developer Guide . For examples of creating grants in several programming languages, see Use CreateGrant with an Amazon Web Services SDK or CLI. The CreateGrant operation returns a GrantToken and a GrantId. When you create, retire, or revoke a grant, there might be a brief delay, usually less than five minutes, until the grant is available throughout KMS. This state is known as eventual consistency. Once the grant has achieved eventual consistency, the grantee principal can use the permissions in the grant without identifying the grant. However, to use the permissions in the grant immediately, use the GrantToken that CreateGrant returns. For details, see Using a grant token in the Key Management Service Developer Guide . The CreateGrant operation also returns a GrantId. You can use the GrantId and a key identifier to identify the grant in the RetireGrant and RevokeGrant operations. To find the grant ID, use the ListGrants or ListRetirableGrants operations. The KMS key that you use for this operation must be in a compatible key state. For details, see Key states of KMS keys in the Key Management Service Developer Guide. Cross-account use: Yes. To perform this operation on a KMS key in a different Amazon Web Services account, specify the key ARN in the value of the KeyId parameter. Required permissions: kms:CreateGrant (key policy) Related operations: ListGrants ListRetirableGrants RetireGrant RevokeGrant Eventual consistency: The KMS API follows an eventual consistency model. For more information, see KMS eventual consistency.</td>
+    <td>Adds a grant to a KMS key. A grant is a policy instrument that allows Amazon Web Services principals to use KMS keys in cryptographic operations. It also can allow them to view a KMS key (DescribeKey) and create and manage grants. When authorizing access to a KMS key, grants are considered along with key policies and IAM policies. Grants are often used for temporary permissions because you can create one, use its permissions, and delete it without changing your key policies or IAM policies. You can create a grant for an Amazon Web Services principal (IAM user, IAM role, or Amazon Web Services account) by specifying the GranteePrincipal parameter. You can also create a grant for an Amazon Web Services service principal by specifying the GranteeServicePrincipal parameter. For detailed information about grants, including grant terminology, see Grants in KMS in the Key Management Service Developer Guide . For examples of creating grants in several programming languages, see Use CreateGrant with an Amazon Web Services SDK or CLI. The CreateGrant operation returns a GrantToken and a GrantId. When you create, retire, or revoke a grant, there might be a brief delay, usually less than five minutes, until the grant is available throughout KMS. This state is known as eventual consistency. Once the grant has achieved eventual consistency, the grantee principal can use the permissions in the grant without identifying the grant. However, to use the permissions in the grant immediately, use the GrantToken that CreateGrant returns. For details, see Using a grant token in the Key Management Service Developer Guide . The CreateGrant operation also returns a GrantId. You can use the GrantId and a key identifier to identify the grant in the RetireGrant and RevokeGrant operations. To find the grant ID, use the ListGrants or ListRetirableGrants operations. The KMS key that you use for this operation must be in a compatible key state. For details, see Key states of KMS keys in the Key Management Service Developer Guide. Cross-account use: Yes. To perform this operation on a KMS key in a different Amazon Web Services account, specify the key ARN in the value of the KeyId parameter. Required permissions: kms:CreateGrant (key policy) Related operations: ListGrants ListRetirableGrants RetireGrant RevokeGrant Eventual consistency: The KMS API follows an eventual consistency model. For more information, see KMS eventual consistency.</td>
 </tr>
 <tr>
     <td><a href="#revoke_grant"><CopyableCode code="revoke_grant" /></a></td>
@@ -169,7 +179,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 >
 <TabItem value="list_grants">
 
-Gets a list of all grants for the specified KMS key. You must specify the KMS key in all requests. You can filter the grant list by grant ID or grantee principal. For detailed information about grants, including grant terminology, see Grants in KMS in the Key Management Service Developer Guide . For examples of creating grants in several programming languages, see Use CreateGrant with an Amazon Web Services SDK or CLI. The GranteePrincipal field in the ListGrants response usually contains the user or role designated as the grantee principal in the grant. However, when the grantee principal in the grant is an Amazon Web Services service, the GranteePrincipal field contains the service principal, which might represent several different grantee principals. Cross-account use: Yes. To perform this operation on a KMS key in a different Amazon Web Services account, specify the key ARN in the value of the KeyId parameter. Required permissions: kms:ListGrants (key policy) Related operations: CreateGrant ListRetirableGrants RetireGrant RevokeGrant Eventual consistency: The KMS API follows an eventual consistency model. For more information, see KMS eventual consistency.
+Gets a list of all grants for the specified KMS key. You must specify the KMS key in all requests. You can filter the grant list by grant ID, grantee principal, or grantee service principal. For detailed information about grants, including grant terminology, see Grants in KMS in the Key Management Service Developer Guide . For examples of creating grants in several programming languages, see Use CreateGrant with an Amazon Web Services SDK or CLI. When a grant is created with the GranteePrincipal field, the ListGrants response usually contains the user or role designated as the grantee principal in the grant. However, if the grantee principal is an Amazon Web Services service, the GranteePrincipal field contains an Amazon Web Services service principal, which might correspond to several different grantee principals, such as an IAM user, IAM role, or Amazon Web Services account. When a grant is created with the GranteeServicePrincipal field, the ListGrants response always includes a GranteeServicePrincipal that indicates the grantee is actually an Amazon Web Services service principal. Cross-account use: Yes. To perform this operation on a KMS key in a different Amazon Web Services account, specify the key ARN in the value of the KeyId parameter. Required permissions: kms:ListGrants (key policy) Related operations: CreateGrant ListRetirableGrants RetireGrant RevokeGrant Eventual consistency: The KMS API follows an eventual consistency model. For more information, see KMS eventual consistency.
 
 ```sql
 SELECT
@@ -177,11 +187,13 @@ constraints,
 creation_date,
 grant_id,
 grantee_principal,
+grantee_service_principal,
 issuing_account,
 key_id,
 name,
 operations,
-retiring_principal
+retiring_principal,
+retiring_service_principal
 FROM aws.kms.grants
 WHERE region = '{{ region }}' -- required
 ;
@@ -201,7 +213,7 @@ WHERE region = '{{ region }}' -- required
 >
 <TabItem value="create_grant">
 
-Adds a grant to a KMS key. A grant is a policy instrument that allows Amazon Web Services principals to use KMS keys in cryptographic operations. It also can allow them to view a KMS key (DescribeKey) and create and manage grants. When authorizing access to a KMS key, grants are considered along with key policies and IAM policies. Grants are often used for temporary permissions because you can create one, use its permissions, and delete it without changing your key policies or IAM policies. For detailed information about grants, including grant terminology, see Grants in KMS in the Key Management Service Developer Guide . For examples of creating grants in several programming languages, see Use CreateGrant with an Amazon Web Services SDK or CLI. The CreateGrant operation returns a GrantToken and a GrantId. When you create, retire, or revoke a grant, there might be a brief delay, usually less than five minutes, until the grant is available throughout KMS. This state is known as eventual consistency. Once the grant has achieved eventual consistency, the grantee principal can use the permissions in the grant without identifying the grant. However, to use the permissions in the grant immediately, use the GrantToken that CreateGrant returns. For details, see Using a grant token in the Key Management Service Developer Guide . The CreateGrant operation also returns a GrantId. You can use the GrantId and a key identifier to identify the grant in the RetireGrant and RevokeGrant operations. To find the grant ID, use the ListGrants or ListRetirableGrants operations. The KMS key that you use for this operation must be in a compatible key state. For details, see Key states of KMS keys in the Key Management Service Developer Guide. Cross-account use: Yes. To perform this operation on a KMS key in a different Amazon Web Services account, specify the key ARN in the value of the KeyId parameter. Required permissions: kms:CreateGrant (key policy) Related operations: ListGrants ListRetirableGrants RetireGrant RevokeGrant Eventual consistency: The KMS API follows an eventual consistency model. For more information, see KMS eventual consistency.
+Adds a grant to a KMS key. A grant is a policy instrument that allows Amazon Web Services principals to use KMS keys in cryptographic operations. It also can allow them to view a KMS key (DescribeKey) and create and manage grants. When authorizing access to a KMS key, grants are considered along with key policies and IAM policies. Grants are often used for temporary permissions because you can create one, use its permissions, and delete it without changing your key policies or IAM policies. You can create a grant for an Amazon Web Services principal (IAM user, IAM role, or Amazon Web Services account) by specifying the GranteePrincipal parameter. You can also create a grant for an Amazon Web Services service principal by specifying the GranteeServicePrincipal parameter. For detailed information about grants, including grant terminology, see Grants in KMS in the Key Management Service Developer Guide . For examples of creating grants in several programming languages, see Use CreateGrant with an Amazon Web Services SDK or CLI. The CreateGrant operation returns a GrantToken and a GrantId. When you create, retire, or revoke a grant, there might be a brief delay, usually less than five minutes, until the grant is available throughout KMS. This state is known as eventual consistency. Once the grant has achieved eventual consistency, the grantee principal can use the permissions in the grant without identifying the grant. However, to use the permissions in the grant immediately, use the GrantToken that CreateGrant returns. For details, see Using a grant token in the Key Management Service Developer Guide . The CreateGrant operation also returns a GrantId. You can use the GrantId and a key identifier to identify the grant in the RetireGrant and RevokeGrant operations. To find the grant ID, use the ListGrants or ListRetirableGrants operations. The KMS key that you use for this operation must be in a compatible key state. For details, see Key states of KMS keys in the Key Management Service Developer Guide. Cross-account use: Yes. To perform this operation on a KMS key in a different Amazon Web Services account, specify the key ARN in the value of the KeyId parameter. Required permissions: kms:CreateGrant (key policy) Related operations: ListGrants ListRetirableGrants RetireGrant RevokeGrant Eventual consistency: The KMS API follows an eventual consistency model. For more information, see KMS eventual consistency.
 
 ```sql
 INSERT INTO aws.kms.grants (
@@ -213,17 +225,21 @@ Constraints,
 GrantTokens,
 Name,
 DryRun,
+GranteeServicePrincipal,
+RetiringServicePrincipal,
 region
 )
 SELECT 
 '{{ KeyId }}' /* required */,
-'{{ GranteePrincipal }}' /* required */,
+'{{ GranteePrincipal }}',
 '{{ RetiringPrincipal }}',
 '{{ Operations }}',
 '{{ Constraints }}',
 '{{ GrantTokens }}',
 '{{ Name }}',
 {{ DryRun }},
+'{{ GranteeServicePrincipal }}',
+'{{ RetiringServicePrincipal }}',
 '{{ region }}'
 RETURNING
 grant_id,
@@ -246,11 +262,11 @@ grant_token
     - name: GranteePrincipal
       value: "{{ GranteePrincipal }}"
       description: |
-        The identity that gets the permissions specified in the grant. To specify the grantee principal, use the Amazon Resource Name (ARN) of an Amazon Web Services principal. Valid principals include Amazon Web Services accounts, IAM users, IAM roles, federated users, and assumed role users. For help with the ARN syntax for a principal, see IAM ARNs in the Identity and Access Management User Guide .
+        The identity that gets the permissions specified in the grant. To specify the grantee principal, use the Amazon Resource Name (ARN) of an Amazon Web Services principal. Valid principals include Amazon Web Services accounts, IAM users, IAM roles, federated users, and assumed role users. For help with the ARN syntax for a principal, see IAM ARNs in the Identity and Access Management User Guide . You must specify either GranteePrincipal or GranteeServicePrincipal, but not both.
     - name: RetiringPrincipal
       value: "{{ RetiringPrincipal }}"
       description: |
-        The principal that has permission to use the RetireGrant operation to retire the grant. To specify the principal, use the Amazon Resource Name (ARN) of an Amazon Web Services principal. Valid principals include Amazon Web Services accounts, IAM users, IAM roles, federated users, and assumed role users. For help with the ARN syntax for a principal, see IAM ARNs in the Identity and Access Management User Guide . The grant determines the retiring principal. Other principals might have permission to retire the grant or revoke the grant. For details, see RevokeGrant and Retiring and revoking grants in the Key Management Service Developer Guide.
+        The principal that has permission to use the RetireGrant operation to retire the grant. To specify the principal, use the Amazon Resource Name (ARN) of an Amazon Web Services principal. Valid principals include Amazon Web Services accounts, IAM users, IAM roles, federated users, and assumed role users. For help with the ARN syntax for a principal, see IAM ARNs in the Identity and Access Management User Guide . The grant determines the retiring principal. Other principals might have permission to retire the grant or revoke the grant. For details, see RevokeGrant and Retiring and revoking grants in the Key Management Service Developer Guide. You can specify either RetiringPrincipal or RetiringServicePrincipal, but not both.
     - name: Operations
       value:
         - "{{ Operations }}"
@@ -258,10 +274,11 @@ grant_token
         A list of operations that the grant permits. This list must include only operations that are permitted in a grant. Also, the operation must be supported on the KMS key. For example, you cannot create a grant for a symmetric encryption KMS key that allows the Sign operation, or a grant for an asymmetric KMS key that allows the GenerateDataKey operation. If you try, KMS returns a ValidationError exception. For details, see Grant operations in the Key Management Service Developer Guide.
     - name: Constraints
       description: |
-        Specifies a grant constraint. Do not include confidential or sensitive information in this field. This field may be displayed in plaintext in CloudTrail logs and other output. KMS supports the EncryptionContextEquals and EncryptionContextSubset grant constraints, which allow the permissions in the grant only when the encryption context in the request matches (EncryptionContextEquals) or includes (EncryptionContextSubset) the encryption context specified in the constraint. The encryption context grant constraints are supported only on grant operations that include an EncryptionContext parameter, such as cryptographic operations on symmetric encryption KMS keys. Grants with grant constraints can include the DescribeKey and RetireGrant operations, but the constraint doesn't apply to these operations. If a grant with a grant constraint includes the CreateGrant operation, the constraint requires that any grants created with the CreateGrant permission have an equally strict or stricter encryption context constraint. You cannot use an encryption context grant constraint for cryptographic operations with asymmetric KMS keys or HMAC KMS keys. Operations with these keys don't support an encryption context. Each constraint value can include up to 8 encryption context pairs. The encryption context value in each constraint cannot exceed 384 characters. For information about grant constraints, see Using grant constraints in the Key Management Service Developer Guide. For more information about encryption context, see Encryption context in the Key Management Service Developer Guide .
+        Specifies a grant constraint. Do not include confidential or sensitive information in this field. This field may be displayed in plaintext in CloudTrail logs and other output. KMS supports the following grant constraints. EncryptionContextEquals and EncryptionContextSubset — These encryption context grant constraints allow the permissions in the grant only when the encryption context in the request matches (EncryptionContextEquals) or includes (EncryptionContextSubset) the encryption context specified in the constraint. Encryption context grant constraints are supported only on grant operations that include an EncryptionContext parameter, such as cryptographic operations on symmetric encryption KMS keys. You cannot use an encryption context grant constraint for cryptographic operations with asymmetric KMS keys or HMAC KMS keys. Operations with these keys don't support an encryption context. Grants with encryption context grant constraints can include the DescribeKey and RetireGrant operations, but the constraint doesn't apply to these operations. If a grant with an encryption context grant constraint includes the CreateGrant operation, the constraint requires that any grants created with the CreateGrant permission have an equally strict or stricter encryption context constraint. Each constraint value can include up to 8 encryption context pairs. The encryption context value in each constraint cannot exceed 384 characters. For more information about encryption context, see Encryption context in the Key Management Service Developer Guide . SourceArn — This grant constraint allows the permissions in the grant only when the request is made on behalf of a specific Amazon Web Services resource, identified by its Amazon Resource Name (ARN). This is effectively the same as having the aws:SourceArn global condition key in the grant. The SourceArn constraint is supported on grants for all types of KMS keys and can also be applied to the DescribeKey operation when specified in the request. However, it does not apply to RetireGrant operation. For information about grant constraints, see Using grant constraints in the Key Management Service Developer Guide.
       value:
         EncryptionContextSubset: "{{ EncryptionContextSubset }}"
         EncryptionContextEquals: "{{ EncryptionContextEquals }}"
+        SourceArn: "{{ SourceArn }}"
     - name: GrantTokens
       value:
         - "{{ GrantTokens }}"
@@ -275,6 +292,14 @@ grant_token
       value: {{ DryRun }}
       description: |
         Checks if your request will succeed. DryRun is an optional parameter. To learn more about how to use this parameter, see Testing your permissions in the Key Management Service Developer Guide.
+    - name: GranteeServicePrincipal
+      value: "{{ GranteeServicePrincipal }}"
+      description: |
+        The Amazon Web Services service principal that gets the permissions specified in the grant. When you specify a GranteeServicePrincipal, you must also specify a SourceArn grant constraint. In addition, you must specify either a RetiringPrincipal or a RetiringServicePrincipal. You must specify either GranteePrincipal or GranteeServicePrincipal, but not both.
+    - name: RetiringServicePrincipal
+      value: "{{ RetiringServicePrincipal }}"
+      description: |
+        The Amazon Web Services service principal that has permission to use the RetireGrant operation to retire the grant. You can specify either RetiringPrincipal or RetiringServicePrincipal, but not both.
 `}</CodeBlock>
 
 </TabItem>

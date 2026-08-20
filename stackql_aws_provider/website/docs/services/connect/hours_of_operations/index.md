@@ -236,14 +236,14 @@ The following methods are available for this resource:
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-instance_id"><code>instance_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td><a href="#parameter-nextToken"><code>nextToken</code></a>, <a href="#parameter-maxResults"><code>maxResults</code></a></td>
-    <td>Provides information about the hours of operation for the specified Amazon Connect instance. For more information about hours of operation, see Set the Hours of Operation for a Queue in the Amazon Connect Administrator Guide.</td>
+    <td>Provides information about the hours of operation for the specified Connect Customer instance. For more information about hours of operation, see Set the Hours of Operation for a Queue in the Connect Customer Administrator Guide.</td>
 </tr>
 <tr>
     <td><a href="#search_hours_of_operations"><CopyableCode code="search_hours_of_operations" /></a></td>
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>Searches the hours of operation in an Amazon Connect instance, with optional filtering.</td>
+    <td>Searches the hours of operation in an Connect Customer instance, with optional filtering.</td>
 </tr>
 <tr>
     <td><a href="#create_hours_of_operation"><CopyableCode code="create_hours_of_operation" /></a></td>
@@ -257,14 +257,14 @@ The following methods are available for this resource:
     <td><CopyableCode code="update" /></td>
     <td><a href="#parameter-instance_id"><code>instance_id</code></a>, <a href="#parameter-hours_of_operation_id"><code>hours_of_operation_id</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-ParentHoursOfOperationConfigs"><code>ParentHoursOfOperationConfigs</code></a></td>
     <td></td>
-    <td>Associates a set of hours of operations with another hours of operation. Refer to Administrator Guide here for more information on inheriting overrides from parent hours of operation(s).</td>
+    <td>Associates a set of hours of operations with another hours of operation. For more information about inheriting overrides from parent hours of operation, see Hours of operation overrides in the Administrator Guide.</td>
 </tr>
 <tr>
     <td><a href="#disassociate_hours_of_operations"><CopyableCode code="disassociate_hours_of_operations" /></a></td>
     <td><CopyableCode code="update" /></td>
     <td><a href="#parameter-instance_id"><code>instance_id</code></a>, <a href="#parameter-hours_of_operation_id"><code>hours_of_operation_id</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-ParentHoursOfOperationIds"><code>ParentHoursOfOperationIds</code></a></td>
     <td></td>
-    <td>Disassociates a set of hours of operations with another hours of operation. Refer to Administrator Guide here for more information on inheriting overrides from parent hours of operation(s).</td>
+    <td>Disassociates a set of hours of operations with another hours of operation. For more information about inheriting overrides from parent hours of operation, see Hours of operation overrides in the Administrator Guide.</td>
 </tr>
 <tr>
     <td><a href="#update_queue_hours_of_operation"><CopyableCode code="update_queue_hours_of_operation" /></a></td>
@@ -311,7 +311,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-instance_id">
     <td><CopyableCode code="instance_id" /></td>
     <td><code>string</code></td>
-    <td>The identifier of the Amazon Connect instance. You can find the instance ID in the Amazon Resource Name (ARN) of the instance.</td>
+    <td>The identifier of the Connect Customer instance. You can find the instance ID in the Amazon Resource Name (ARN) of the instance.</td>
 </tr>
 <tr id="parameter-queue_id">
     <td><CopyableCode code="queue_id" /></td>
@@ -371,7 +371,7 @@ AND region = '{{ region }}' -- required
 </TabItem>
 <TabItem value="list_hours_of_operations">
 
-Provides information about the hours of operation for the specified Amazon Connect instance. For more information about hours of operation, see Set the Hours of Operation for a Queue in the Amazon Connect Administrator Guide.
+Provides information about the hours of operation for the specified Connect Customer instance. For more information about hours of operation, see Set the Hours of Operation for a Queue in the Connect Customer Administrator Guide.
 
 ```sql
 SELECT
@@ -390,7 +390,7 @@ AND maxResults = '{{ maxResults }}'
 </TabItem>
 <TabItem value="search_hours_of_operations">
 
-Searches the hours of operation in an Amazon Connect instance, with optional filtering.
+Searches the hours of operation in an Connect Customer instance, with optional filtering.
 
 ```sql
 SELECT
@@ -501,7 +501,7 @@ hours_of_operation_id
 >
 <TabItem value="associate_hours_of_operations">
 
-Associates a set of hours of operations with another hours of operation. Refer to Administrator Guide here for more information on inheriting overrides from parent hours of operation(s).
+Associates a set of hours of operations with another hours of operation. For more information about inheriting overrides from parent hours of operation, see Hours of operation overrides in the Administrator Guide.
 
 ```sql
 UPDATE aws.connect.hours_of_operations
@@ -516,7 +516,7 @@ AND ParentHoursOfOperationConfigs = '{{ ParentHoursOfOperationConfigs }}' --requ
 </TabItem>
 <TabItem value="disassociate_hours_of_operations">
 
-Disassociates a set of hours of operations with another hours of operation. Refer to Administrator Guide here for more information on inheriting overrides from parent hours of operation(s).
+Disassociates a set of hours of operations with another hours of operation. For more information about inheriting overrides from parent hours of operation, see Hours of operation overrides in the Administrator Guide.
 
 ```sql
 UPDATE aws.connect.hours_of_operations

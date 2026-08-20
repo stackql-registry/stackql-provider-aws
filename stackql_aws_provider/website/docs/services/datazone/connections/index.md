@@ -118,7 +118,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="type_" /></td>
     <td><code>string</code></td>
-    <td>The type of the connection. (ATHENA, BIGQUERY, DATABRICKS, DOCUMENTDB, DYNAMODB, HYPERPOD, IAM, MYSQL, OPENSEARCH, ORACLE, POSTGRESQL, REDSHIFT, S3, SAPHANA, SNOWFLAKE, SPARK, SQLSERVER, TERADATA, VERTICA, WORKFLOWS_MWAA, AMAZON_Q, MLFLOW)</td>
+    <td>The type of the connection. (ATHENA, BIGQUERY, DATABRICKS, DOCUMENTDB, DYNAMODB, HYPERPOD, IAM, MYSQL, OPENSEARCH, ORACLE, POSTGRESQL, REDSHIFT, S3, SAPHANA, SNOWFLAKE, SPARK, SQLSERVER, TERADATA, VERTICA, WORKFLOWS_MWAA, AMAZON_Q, MLFLOW, VPC, GIT)</td>
 </tr>
 </tbody>
 </table>
@@ -187,7 +187,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="type_" /></td>
     <td><code>string</code></td>
-    <td>The connection type. (ATHENA, BIGQUERY, DATABRICKS, DOCUMENTDB, DYNAMODB, HYPERPOD, IAM, MYSQL, OPENSEARCH, ORACLE, POSTGRESQL, REDSHIFT, S3, SAPHANA, SNOWFLAKE, SPARK, SQLSERVER, TERADATA, VERTICA, WORKFLOWS_MWAA, AMAZON_Q, MLFLOW)</td>
+    <td>The connection type. (ATHENA, BIGQUERY, DATABRICKS, DOCUMENTDB, DYNAMODB, HYPERPOD, IAM, MYSQL, OPENSEARCH, ORACLE, POSTGRESQL, REDSHIFT, S3, SAPHANA, SNOWFLAKE, SPARK, SQLSERVER, TERADATA, VERTICA, WORKFLOWS_MWAA, AMAZON_Q, MLFLOW, VPC, GIT)</td>
 </tr>
 </tbody>
 </table>
@@ -572,6 +572,47 @@ type_
           s3Uri: "{{ s3Uri }}"
           s3AccessGrantLocationId: "{{ s3AccessGrantLocationId }}"
           registerS3AccessGrantLocation: {{ registerS3AccessGrantLocation }}
+        snowflakeProperties:
+          connectivityProperties:
+            connectionProperties: "{{ connectionProperties }}"
+            physicalConnectionRequirements:
+              subnetId: "{{ subnetId }}"
+              subnetIdList:
+                - "{{ subnetIdList }}"
+              securityGroupIdList:
+                - "{{ securityGroupIdList }}"
+              availabilityZone: "{{ availabilityZone }}"
+            name: "{{ name }}"
+            description: "{{ description }}"
+            validateCredentials: {{ validateCredentials }}
+            validateForComputeEnvironments:
+              - "{{ validateForComputeEnvironments }}"
+            sparkProperties: "{{ sparkProperties }}"
+            athenaProperties: "{{ athenaProperties }}"
+            pythonProperties: "{{ pythonProperties }}"
+            authenticationConfiguration:
+              authenticationType: "{{ authenticationType }}"
+              oAuth2Properties:
+                oAuth2GrantType: "{{ oAuth2GrantType }}"
+                oAuth2ClientApplication: "{{ oAuth2ClientApplication }}"
+                tokenUrl: "{{ tokenUrl }}"
+                tokenUrlParametersMap: "{{ tokenUrlParametersMap }}"
+                authorizationCodeProperties: "{{ authorizationCodeProperties }}"
+                oAuth2Credentials: "{{ oAuth2Credentials }}"
+              secretArn: "{{ secretArn }}"
+              kmsKeyArn: "{{ kmsKeyArn }}"
+              basicAuthenticationCredentials:
+                userName: "{{ userName }}"
+                password: "{{ password }}"
+              customAuthenticationCredentials: "{{ customAuthenticationCredentials }}"
+          snowflakeRole: "{{ snowflakeRole }}"
+          identityMapping:
+            usernameAttribute: "{{ usernameAttribute }}"
+            prefix: "{{ prefix }}"
+          lineageSync:
+            timezone: "{{ timezone }}"
+            enabled: {{ enabled }}
+            schedule: "{{ schedule }}"
         amazonQProperties:
           isEnabled: {{ isEnabled }}
           profileArn: "{{ profileArn }}"
@@ -583,6 +624,15 @@ type_
         workflowsServerlessProperties: "{{ workflowsServerlessProperties }}"
         lakehouseProperties:
           glueLineageSyncEnabled: {{ glueLineageSyncEnabled }}
+        vpcProperties:
+          vpcId: "{{ vpcId }}"
+          subnetIds:
+            - "{{ subnetIds }}"
+          securityGroupId: "{{ securityGroupId }}"
+        gitProperties:
+          codeConnectionArn: "{{ codeConnectionArn }}"
+          repositoryId: "{{ repositoryId }}"
+          defaultBranch: "{{ defaultBranch }}"
     - name: enableTrustedIdentityPropagation
       value: {{ enableTrustedIdentityPropagation }}
     - name: scope

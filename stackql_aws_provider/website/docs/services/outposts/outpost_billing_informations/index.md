@@ -55,6 +55,11 @@ The following fields are returned by `SELECT` queries:
     <td>The date your subscription starts.</td>
 </tr>
 <tr>
+    <td><CopyableCode code="currency" /></td>
+    <td><code>string</code></td>
+    <td>The currency of the subscription price. Currently only USD is supported. (USD)</td>
+</tr>
+<tr>
     <td><CopyableCode code="end_date" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date your subscription ends.</td>
@@ -170,6 +175,7 @@ Gets current and historical billing information about the specified Outpost.
 ```sql
 SELECT
 begin_date,
+currency,
 end_date,
 monthly_recurring_price,
 order_ids,

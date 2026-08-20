@@ -120,6 +120,11 @@ The following fields are returned by `SELECT` queries:
     <td>Not applicable. In Neptune the storage type is managed at the DB Cluster level.</td>
 </tr>
 <tr>
+    <td><CopyableCode code="supported_network_types" /></td>
+    <td><code>string</code></td>
+    <td>The network types supported by the orderable DB instance option.</td>
+</tr>
+<tr>
     <td><CopyableCode code="supports_enhanced_monitoring" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether a DB instance supports Enhanced Monitoring at intervals from 1 to 60 seconds.</td>
@@ -273,6 +278,7 @@ min_storage_size,
 multi_az_capable,
 read_replica_capable,
 storage_type,
+supported_network_types,
 supports_enhanced_monitoring,
 supports_global_databases,
 supports_iam_database_authentication,

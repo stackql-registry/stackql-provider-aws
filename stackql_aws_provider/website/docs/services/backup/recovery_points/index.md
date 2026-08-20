@@ -524,6 +524,7 @@ EXEC aws.backup.recovery_points.start_scan_job
 @@json=
 '{
 "BackupVaultName": "{{ BackupVaultName }}", 
+"ContinuousScanEndTime": "{{ ContinuousScanEndTime }}", 
 "IamRoleArn": "{{ IamRoleArn }}", 
 "IdempotencyToken": "{{ IdempotencyToken }}", 
 "MalwareScanner": "{{ MalwareScanner }}", 

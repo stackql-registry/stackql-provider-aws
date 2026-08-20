@@ -61,6 +61,11 @@ The following fields are returned by `SELECT` queries:
     <td>The unique identifier of the given association. (pattern: &lt;code&gt;&#91;a-zA-Z0-9-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
+    <td><CopyableCode code="capabilities" /></td>
+    <td><code>object</code></td>
+    <td>Enabled capabilities for this association.</td>
+</tr>
+<tr>
     <td><CopyableCode code="configuration" /></td>
     <td><code>object</code></td>
     <td>Union of all supported service configuration types. Each service has its own specific configuration structure.</td>
@@ -108,6 +113,11 @@ The following fields are returned by `SELECT` queries:
     <td><CopyableCode code="association_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the given association. (pattern: &lt;code&gt;&#91;a-zA-Z0-9-&#93;+&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="capabilities" /></td>
+    <td><code>object</code></td>
+    <td>Enabled capabilities for this association.</td>
 </tr>
 <tr>
     <td><CopyableCode code="configuration" /></td>
@@ -248,6 +258,7 @@ Retrieves given associations configured for a specific AgentSpace.
 SELECT
 agent_space_id,
 association_id,
+capabilities,
 configuration,
 created_at,
 service_id,
@@ -268,6 +279,7 @@ List all associations for given AgentSpace
 SELECT
 agent_space_id,
 association_id,
+capabilities,
 configuration,
 created_at,
 service_id,
@@ -300,7 +312,8 @@ Partially updates the configuration of an existing service association for an Ag
 ```sql
 UPDATE aws.devops_agent.associations
 SET 
-configuration = '{{ configuration }}'
+configuration = '{{ configuration }}',
+capabilities = '{{ capabilities }}'
 WHERE 
 agent_space_id = '{{ agent_space_id }}' --required
 AND association_id = '{{ association_id }}' --required

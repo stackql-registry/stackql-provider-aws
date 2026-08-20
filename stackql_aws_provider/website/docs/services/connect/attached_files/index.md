@@ -52,7 +52,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="associated_resource_arn" /></td>
     <td><code>string</code></td>
-    <td>The resource to which the attached file is (being) uploaded to. Cases are the only current supported resource.</td>
+    <td>The resource to which the attached file is (being) uploaded to. The supported resources are Cases, Email, and Task.</td>
 </tr>
 <tr>
     <td><CopyableCode code="created_by" /></td>
@@ -97,7 +97,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="file_use_case_type" /></td>
     <td><code>string</code></td>
-    <td>The use case for the file. (CONTACT_ANALYSIS, EMAIL_MESSAGE, EMAIL_MESSAGE_PLAIN_TEXT, EMAIL_MESSAGE_REDACTED, EMAIL_MESSAGE_PLAIN_TEXT_REDACTED, ATTACHMENT)</td>
+    <td>The use case for the file. (CONTACT_ANALYSIS, EMAIL_MESSAGE, EMAIL_MESSAGE_PLAIN_TEXT, EMAIL_MESSAGE_REDACTED, EMAIL_MESSAGE_PLAIN_TEXT_REDACTED, ATTACHMENT, VOICE_RECORDING)</td>
 </tr>
 <tr>
     <td><CopyableCode code="tags" /></td>
@@ -132,6 +132,13 @@ The following methods are available for this resource:
     <td>Provides a pre-signed URL for download of an approved attached file. This API also returns metadata about the attached file. It will only return a downloadURL if the status of the attached file is APPROVED.</td>
 </tr>
 <tr>
+    <td><a href="#create_attached_file"><CopyableCode code="create_attached_file" /></a></td>
+    <td><CopyableCode code="insert" /></td>
+    <td><a href="#parameter-instance_id"><code>instance_id</code></a>, <a href="#parameter-associatedResourceArn"><code>associatedResourceArn</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-FileUseCaseType"><code>FileUseCaseType</code></a>, <a href="#parameter-FileSourceUri"><code>FileSourceUri</code></a></td>
+    <td></td>
+    <td>Creates an attached file for a completed voice contact by copying a recording from a source S3 URI into Connect Customer managed storage. Use this API to attach voice recordings to contacts for downstream processing such as conversational analytics. The AssociatedResourceArn must be the ARN of a completed voice contact, FileUseCaseType must be set to VOICE_RECORDING, and FileSourceUri must be a valid S3 URI. For example, you can call CreateContact, then CreateAttachedFile, then StartContactConversationalAnalyticsJob to create a contact, attach a recording, and run post-call analytics.</td>
+</tr>
+<tr>
     <td><a href="#delete_attached_file"><CopyableCode code="delete_attached_file" /></a></td>
     <td><CopyableCode code="delete" /></td>
     <td><a href="#parameter-instance_id"><code>instance_id</code></a>, <a href="#parameter-file_id"><code>file_id</code></a>, <a href="#parameter-associatedResourceArn"><code>associatedResourceArn</code></a>, <a href="#parameter-region"><code>region</code></a></td>
@@ -143,7 +150,7 @@ The following methods are available for this resource:
     <td><CopyableCode code="exec" /></td>
     <td><a href="#parameter-instance_id"><code>instance_id</code></a>, <a href="#parameter-associatedResourceArn"><code>associatedResourceArn</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-FileName"><code>FileName</code></a>, <a href="#parameter-FileSizeInBytes"><code>FileSizeInBytes</code></a>, <a href="#parameter-FileUseCaseType"><code>FileUseCaseType</code></a></td>
     <td></td>
-    <td>Provides a pre-signed Amazon S3 URL in response for uploading your content. You may only use this API to upload attachments to an Amazon Connect Case or Amazon Connect Email.</td>
+    <td>Provides a pre-signed Amazon S3 URL in response for uploading your content. You may only use this API to upload attachments to a Connect Customer Case, Connect Customer Email, or Connect Customer Task.</td>
 </tr>
 </tbody>
 </table>
@@ -164,7 +171,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-associatedResourceArn">
     <td><CopyableCode code="associatedResourceArn" /></td>
     <td><code>string</code></td>
-    <td>The resource to which the attached file is (being) uploaded to. The supported resources are Cases and Email. This value must be a valid ARN.</td>
+    <td>The resource to which the attached file is (being) uploaded to. The supported resources are Cases, Email, and Task. This value must be a valid ARN.</td>
 </tr>
 <tr id="parameter-file_id">
     <td><CopyableCode code="file_id" /></td>
@@ -174,7 +181,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-instance_id">
     <td><CopyableCode code="instance_id" /></td>
     <td><code>string</code></td>
-    <td>The unique identifier of the Amazon Connect instance.</td>
+    <td>The unique identifier of the Connect Customer instance.</td>
 </tr>
 <tr id="parameter-region">
     <td><CopyableCode code="region" /></td>
@@ -226,6 +233,74 @@ AND urlExpiryInSeconds = '{{ urlExpiryInSeconds }}'
 </Tabs>
 
 
+## `INSERT` examples
+
+<Tabs
+    defaultValue="create_attached_file"
+    values={[
+        { label: 'create_attached_file', value: 'create_attached_file' },
+        { label: 'Manifest', value: 'manifest' }
+    ]}
+>
+<TabItem value="create_attached_file">
+
+Creates an attached file for a completed voice contact by copying a recording from a source S3 URI into Connect Customer managed storage. Use this API to attach voice recordings to contacts for downstream processing such as conversational analytics. The AssociatedResourceArn must be the ARN of a completed voice contact, FileUseCaseType must be set to VOICE_RECORDING, and FileSourceUri must be a valid S3 URI. For example, you can call CreateContact, then CreateAttachedFile, then StartContactConversationalAnalyticsJob to create a contact, attach a recording, and run post-call analytics.
+
+```sql
+INSERT INTO aws.connect.attached_files (
+ClientToken,
+FileUseCaseType,
+FileSourceUri,
+Tags,
+instance_id,
+associatedResourceArn,
+region
+)
+SELECT 
+'{{ ClientToken }}',
+'{{ FileUseCaseType }}' /* required */,
+'{{ FileSourceUri }}' /* required */,
+'{{ Tags }}',
+'{{ instance_id }}',
+'{{ associatedResourceArn }}',
+'{{ region }}'
+RETURNING
+creation_time,
+file_arn,
+file_id,
+file_status
+;
+```
+</TabItem>
+<TabItem value="manifest">
+
+<CodeBlock language="yaml">{`# Description fields are for documentation purposes
+- name: attached_files
+  props:
+    - name: instance_id
+      value: "{{ instance_id }}"
+      description: Required parameter for the attached_files resource.
+    - name: associatedResourceArn
+      value: "{{ associatedResourceArn }}"
+      description: Required parameter for the attached_files resource.
+    - name: region
+      value: "{{ region }}"
+      description: Required parameter for the attached_files resource.
+    - name: ClientToken
+      value: "{{ ClientToken }}"
+    - name: FileUseCaseType
+      value: "{{ FileUseCaseType }}"
+      valid_values: ['CONTACT_ANALYSIS', 'EMAIL_MESSAGE', 'EMAIL_MESSAGE_PLAIN_TEXT', 'EMAIL_MESSAGE_REDACTED', 'EMAIL_MESSAGE_PLAIN_TEXT_REDACTED', 'ATTACHMENT', 'VOICE_RECORDING']
+    - name: FileSourceUri
+      value: "{{ FileSourceUri }}"
+    - name: Tags
+      value: "{{ Tags }}"
+`}</CodeBlock>
+
+</TabItem>
+</Tabs>
+
+
 ## `DELETE` examples
 
 <Tabs
@@ -260,7 +335,7 @@ AND region = '{{ region }}' --required
 >
 <TabItem value="start_attached_file_upload">
 
-Provides a pre-signed Amazon S3 URL in response for uploading your content. You may only use this API to upload attachments to an Amazon Connect Case or Amazon Connect Email.
+Provides a pre-signed Amazon S3 URL in response for uploading your content. You may only use this API to upload attachments to a Connect Customer Case, Connect Customer Email, or Connect Customer Task.
 
 ```sql
 EXEC aws.connect.attached_files.start_attached_file_upload 

@@ -64,6 +64,11 @@ The following fields are returned by `SELECT` queries:
     <td><code>object</code></td>
     <td>Configuration for external Identity Provider OIDC authentication flow for the Operator App.</td>
 </tr>
+<tr>
+    <td><CopyableCode code="operator_app_url" /></td>
+    <td><code>string</code></td>
+    <td>The URL for operators to access the Operator App (pattern: &lt;code&gt;https:​//&#91;a-zA-Z0-9.-&#93;+(/.*)?&lt;/code&gt;)</td>
+</tr>
 </tbody>
 </table>
 </TabItem>
@@ -143,7 +148,8 @@ Get the full auth configuration of operator including any enabled auth flow
 SELECT
 iam,
 idc,
-idp
+idp,
+operator_app_url
 FROM aws.devops_agent.operator_apps
 WHERE agent_space_id = '{{ agent_space_id }}' -- required
 AND region = '{{ region }}' -- required

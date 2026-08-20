@@ -58,7 +58,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="deployment_instance_type" /></td>
     <td><code>string</code></td>
-    <td>The type of instance that hosts the optimized model that you create with the optimization job. (ml.p4d.24xlarge, ml.p4de.24xlarge, ml.p5.48xlarge, ml.p5e.48xlarge, ml.p5en.48xlarge, ml.g4dn.xlarge, ml.g4dn.2xlarge, ml.g4dn.4xlarge, ml.g4dn.8xlarge, ml.g4dn.12xlarge, ml.g4dn.16xlarge, ml.g5.xlarge, ml.g5.2xlarge, ml.g5.4xlarge, ml.g5.8xlarge, ml.g5.12xlarge, ml.g5.16xlarge, ml.g5.24xlarge, ml.g5.48xlarge, ml.g6.xlarge, ml.g6.2xlarge, ml.g6.4xlarge, ml.g6.8xlarge, ml.g6.12xlarge, ml.g6.16xlarge, ml.g6.24xlarge, ml.g6.48xlarge, ml.g6e.xlarge, ml.g6e.2xlarge, ml.g6e.4xlarge, ml.g6e.8xlarge, ml.g6e.12xlarge, ml.g6e.16xlarge, ml.g6e.24xlarge, ml.g6e.48xlarge, ml.inf2.xlarge, ml.inf2.8xlarge, ml.inf2.24xlarge, ml.inf2.48xlarge, ml.trn1.2xlarge, ml.trn1.32xlarge, ml.trn1n.32xlarge)</td>
+    <td>The type of instance that hosts the optimized model that you create with the optimization job. (ml.p4d.24xlarge, ml.p4de.24xlarge, ml.p5.48xlarge, ml.p5e.48xlarge, ml.p5en.48xlarge, ml.g4dn.xlarge, ml.g4dn.2xlarge, ml.g4dn.4xlarge, ml.g4dn.8xlarge, ml.g4dn.12xlarge, ml.g4dn.16xlarge, ml.g5.xlarge, ml.g5.2xlarge, ml.g5.4xlarge, ml.g5.8xlarge, ml.g5.12xlarge, ml.g5.16xlarge, ml.g5.24xlarge, ml.g5.48xlarge, ml.g6.xlarge, ml.g6.2xlarge, ml.g6.4xlarge, ml.g6.8xlarge, ml.g6.12xlarge, ml.g6.16xlarge, ml.g6.24xlarge, ml.g6.48xlarge, ml.g6e.xlarge, ml.g6e.2xlarge, ml.g6e.4xlarge, ml.g6e.8xlarge, ml.g6e.12xlarge, ml.g6e.16xlarge, ml.g6e.24xlarge, ml.g6e.48xlarge, ml.inf2.xlarge, ml.inf2.8xlarge, ml.inf2.24xlarge, ml.inf2.48xlarge, ml.trn1.2xlarge, ml.trn1.32xlarge, ml.trn1n.32xlarge, ml.p6-b200.48xlarge, ml.g7e.2xlarge, ml.g7e.4xlarge, ml.g7e.8xlarge, ml.g7e.12xlarge, ml.g7e.24xlarge, ml.g7e.48xlarge)</td>
 </tr>
 <tr>
     <td><CopyableCode code="failure_reason" /></td>
@@ -136,6 +136,11 @@ The following fields are returned by `SELECT` queries:
     <td>Specifies a limit to how long a job can run. When the job reaches the time limit, SageMaker ends the job. Use this API to cap costs. To stop a training job, SageMaker sends the algorithm the SIGTERM signal, which delays job termination for 120 seconds. Algorithms can use this 120-second window to save the model artifacts, so the results of training are not lost. The training algorithms provided by SageMaker automatically save the intermediate results of a model training job when possible. This attempt to save artifacts is only a best effort case as model might not be in a state from which it can be saved. For example, if training has just started, the model might not be ready to save. When saved, this intermediate data is a valid model artifact. You can use it to create a model with CreateModel. The Neural Topic Model (NTM) currently does not support saving intermediate model artifacts. When training NTMs, make sure that the maximum runtime is sufficient for the training job to complete.</td>
 </tr>
 <tr>
+    <td><CopyableCode code="training_plan_arns" /></td>
+    <td><code>array</code></td>
+    <td>The Amazon Resource Name (ARN) of the training plan associated with this optimization job. This field appears only when you specified a training plan when you created the job. Optimization jobs that use on-demand capacity don't return this field.</td>
+</tr>
+<tr>
     <td><CopyableCode code="vpc_config" /></td>
     <td><code>object</code></td>
     <td>A VPC in Amazon VPC that your optimized model has access to.</td>
@@ -162,7 +167,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="deployment_instance_type" /></td>
     <td><code>string</code></td>
-    <td>The type of instance that hosts the optimized model that you create with the optimization job. (ml.p4d.24xlarge, ml.p4de.24xlarge, ml.p5.48xlarge, ml.p5e.48xlarge, ml.p5en.48xlarge, ml.g4dn.xlarge, ml.g4dn.2xlarge, ml.g4dn.4xlarge, ml.g4dn.8xlarge, ml.g4dn.12xlarge, ml.g4dn.16xlarge, ml.g5.xlarge, ml.g5.2xlarge, ml.g5.4xlarge, ml.g5.8xlarge, ml.g5.12xlarge, ml.g5.16xlarge, ml.g5.24xlarge, ml.g5.48xlarge, ml.g6.xlarge, ml.g6.2xlarge, ml.g6.4xlarge, ml.g6.8xlarge, ml.g6.12xlarge, ml.g6.16xlarge, ml.g6.24xlarge, ml.g6.48xlarge, ml.g6e.xlarge, ml.g6e.2xlarge, ml.g6e.4xlarge, ml.g6e.8xlarge, ml.g6e.12xlarge, ml.g6e.16xlarge, ml.g6e.24xlarge, ml.g6e.48xlarge, ml.inf2.xlarge, ml.inf2.8xlarge, ml.inf2.24xlarge, ml.inf2.48xlarge, ml.trn1.2xlarge, ml.trn1.32xlarge, ml.trn1n.32xlarge)</td>
+    <td>The type of instance that hosts the optimized model that you create with the optimization job. (ml.p4d.24xlarge, ml.p4de.24xlarge, ml.p5.48xlarge, ml.p5e.48xlarge, ml.p5en.48xlarge, ml.g4dn.xlarge, ml.g4dn.2xlarge, ml.g4dn.4xlarge, ml.g4dn.8xlarge, ml.g4dn.12xlarge, ml.g4dn.16xlarge, ml.g5.xlarge, ml.g5.2xlarge, ml.g5.4xlarge, ml.g5.8xlarge, ml.g5.12xlarge, ml.g5.16xlarge, ml.g5.24xlarge, ml.g5.48xlarge, ml.g6.xlarge, ml.g6.2xlarge, ml.g6.4xlarge, ml.g6.8xlarge, ml.g6.12xlarge, ml.g6.16xlarge, ml.g6.24xlarge, ml.g6.48xlarge, ml.g6e.xlarge, ml.g6e.2xlarge, ml.g6e.4xlarge, ml.g6e.8xlarge, ml.g6e.12xlarge, ml.g6e.16xlarge, ml.g6e.24xlarge, ml.g6e.48xlarge, ml.inf2.xlarge, ml.inf2.8xlarge, ml.inf2.24xlarge, ml.inf2.48xlarge, ml.trn1.2xlarge, ml.trn1.32xlarge, ml.trn1n.32xlarge, ml.p6-b200.48xlarge, ml.g7e.2xlarge, ml.g7e.4xlarge, ml.g7e.8xlarge, ml.g7e.12xlarge, ml.g7e.24xlarge, ml.g7e.48xlarge)</td>
 </tr>
 <tr>
     <td><CopyableCode code="last_modified_time" /></td>
@@ -315,6 +320,7 @@ optimization_start_time,
 output_config,
 role_arn,
 stopping_condition,
+training_plan_arns,
 vpc_config
 FROM aws.sagemaker.optimization_jobs
 WHERE region = '{{ region }}' -- required
@@ -371,6 +377,7 @@ OutputConfig,
 StoppingCondition,
 Tags,
 VpcConfig,
+TrainingPlanArns,
 region
 )
 SELECT 
@@ -385,6 +392,7 @@ SELECT
 '{{ StoppingCondition }}' /* required */,
 '{{ Tags }}',
 '{{ VpcConfig }}',
+'{{ TrainingPlanArns }}',
 '{{ region }}'
 RETURNING
 optimization_job_arn
@@ -421,7 +429,7 @@ optimization_job_arn
       value: "{{ DeploymentInstanceType }}"
       description: |
         The type of instance that hosts the optimized model that you create with the optimization job.
-      valid_values: ['ml.p4d.24xlarge', 'ml.p4de.24xlarge', 'ml.p5.48xlarge', 'ml.p5e.48xlarge', 'ml.p5en.48xlarge', 'ml.g4dn.xlarge', 'ml.g4dn.2xlarge', 'ml.g4dn.4xlarge', 'ml.g4dn.8xlarge', 'ml.g4dn.12xlarge', 'ml.g4dn.16xlarge', 'ml.g5.xlarge', 'ml.g5.2xlarge', 'ml.g5.4xlarge', 'ml.g5.8xlarge', 'ml.g5.12xlarge', 'ml.g5.16xlarge', 'ml.g5.24xlarge', 'ml.g5.48xlarge', 'ml.g6.xlarge', 'ml.g6.2xlarge', 'ml.g6.4xlarge', 'ml.g6.8xlarge', 'ml.g6.12xlarge', 'ml.g6.16xlarge', 'ml.g6.24xlarge', 'ml.g6.48xlarge', 'ml.g6e.xlarge', 'ml.g6e.2xlarge', 'ml.g6e.4xlarge', 'ml.g6e.8xlarge', 'ml.g6e.12xlarge', 'ml.g6e.16xlarge', 'ml.g6e.24xlarge', 'ml.g6e.48xlarge', 'ml.inf2.xlarge', 'ml.inf2.8xlarge', 'ml.inf2.24xlarge', 'ml.inf2.48xlarge', 'ml.trn1.2xlarge', 'ml.trn1.32xlarge', 'ml.trn1n.32xlarge']
+      valid_values: ['ml.p4d.24xlarge', 'ml.p4de.24xlarge', 'ml.p5.48xlarge', 'ml.p5e.48xlarge', 'ml.p5en.48xlarge', 'ml.g4dn.xlarge', 'ml.g4dn.2xlarge', 'ml.g4dn.4xlarge', 'ml.g4dn.8xlarge', 'ml.g4dn.12xlarge', 'ml.g4dn.16xlarge', 'ml.g5.xlarge', 'ml.g5.2xlarge', 'ml.g5.4xlarge', 'ml.g5.8xlarge', 'ml.g5.12xlarge', 'ml.g5.16xlarge', 'ml.g5.24xlarge', 'ml.g5.48xlarge', 'ml.g6.xlarge', 'ml.g6.2xlarge', 'ml.g6.4xlarge', 'ml.g6.8xlarge', 'ml.g6.12xlarge', 'ml.g6.16xlarge', 'ml.g6.24xlarge', 'ml.g6.48xlarge', 'ml.g6e.xlarge', 'ml.g6e.2xlarge', 'ml.g6e.4xlarge', 'ml.g6e.8xlarge', 'ml.g6e.12xlarge', 'ml.g6e.16xlarge', 'ml.g6e.24xlarge', 'ml.g6e.48xlarge', 'ml.inf2.xlarge', 'ml.inf2.8xlarge', 'ml.inf2.24xlarge', 'ml.inf2.48xlarge', 'ml.trn1.2xlarge', 'ml.trn1.32xlarge', 'ml.trn1n.32xlarge', 'ml.p6-b200.48xlarge', 'ml.g7e.2xlarge', 'ml.g7e.4xlarge', 'ml.g7e.8xlarge', 'ml.g7e.12xlarge', 'ml.g7e.24xlarge', 'ml.g7e.48xlarge']
     - name: MaxInstanceCount
       value: {{ MaxInstanceCount }}
       description: |
@@ -477,6 +485,11 @@ optimization_job_arn
           - "{{ SecurityGroupIds }}"
         Subnets:
           - "{{ Subnets }}"
+    - name: TrainingPlanArns
+      value:
+        - "{{ TrainingPlanArns }}"
+      description: |
+        The Amazon Resource Name (ARN) of the training plan to use for this optimization job. When you use reserved capacity from a training plan, the optimization job runs on that reserved capacity instead of on-demand capacity. If you omit this field, the job uses on-demand capacity. You can specify at most one training plan. For more information about how to reserve GPU capacity for your optimization jobs using Amazon SageMaker Training Plans, see Reserve capacity with training plans.
 `}</CodeBlock>
 
 </TabItem>

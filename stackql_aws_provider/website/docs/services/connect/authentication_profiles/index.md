@@ -53,7 +53,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="allowed_ips" /></td>
     <td><code>array</code></td>
-    <td>A list of IP address range strings that are allowed to access the Amazon Connect instance. For more information about how to configure IP addresses, see Configure IP address based access control in the Amazon Connect Administrator Guide.</td>
+    <td>A list of IP address range strings that are allowed to access the Connect Customer instance. For more information about how to configure IP addresses, see Configure IP address based access control in the Connect Customer Administrator Guide.</td>
 </tr>
 <tr>
     <td><CopyableCode code="arn" /></td>
@@ -63,7 +63,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="blocked_ips" /></td>
     <td><code>array</code></td>
-    <td>A list of IP address range strings that are blocked from accessing the Amazon Connect instance. For more information about how to configure IP addresses, see Configure IP address based access control in the Amazon Connect Administrator Guide.</td>
+    <td>A list of IP address range strings that are blocked from accessing the Connect Customer instance. For more information about how to configure IP addresses, see Configure IP address based access control in the Connect Customer Administrator Guide.</td>
 </tr>
 <tr>
     <td><CopyableCode code="created_time" /></td>
@@ -83,7 +83,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="is_default" /></td>
     <td><code>boolean</code></td>
-    <td>Shows whether the authentication profile is the default authentication profile for the Amazon Connect instance. The default authentication profile applies to all agents in an Amazon Connect instance, unless overridden by another authentication profile.</td>
+    <td>Shows whether the authentication profile is the default authentication profile for the Connect Customer instance. The default authentication profile applies to all agents in an Connect Customer instance, unless overridden by another authentication profile.</td>
 </tr>
 <tr>
     <td><CopyableCode code="last_modified_region" /></td>
@@ -98,7 +98,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="max_session_duration" /></td>
     <td><code>integer</code></td>
-    <td>The long lived session duration for users logged in to Amazon Connect, in minutes. After this time period, users must log in again. For more information, see Configure the session duration in the Amazon Connect Administrator Guide.</td>
+    <td>The long lived session duration for users logged in to Connect Customer, in minutes. After this time period, users must log in again. For more information, see Configure the session duration in the Connect Customer Administrator Guide.</td>
 </tr>
 <tr>
     <td><CopyableCode code="name" /></td>
@@ -108,7 +108,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="periodic_session_duration" /></td>
     <td><code>integer</code></td>
-    <td>The short lived session duration configuration for users logged in to Amazon Connect, in minutes. This value determines the maximum possible time before an agent is authenticated. For more information, see Configure the session duration in the Amazon Connect Administrator Guide.</td>
+    <td>The short lived session duration configuration for users logged in to Connect Customer, in minutes. This value determines the maximum possible time before an agent is authenticated. For more information, see Configure the session duration in the Connect Customer Administrator Guide.</td>
 </tr>
 <tr>
     <td><CopyableCode code="session_inactivity_duration" /></td>
@@ -147,7 +147,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="is_default" /></td>
     <td><code>boolean</code></td>
-    <td>Shows whether the authentication profile is the default authentication profile for the Amazon Connect instance. The default authentication profile applies to all agents in an Amazon Connect instance, unless overridden by another authentication profile.</td>
+    <td>Shows whether the authentication profile is the default authentication profile for the Connect Customer instance. The default authentication profile applies to all agents in an Connect Customer instance, unless overridden by another authentication profile.</td>
 </tr>
 <tr>
     <td><CopyableCode code="last_modified_region" /></td>
@@ -189,21 +189,21 @@ The following methods are available for this resource:
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-authentication_profile_id"><code>authentication_profile_id</code></a>, <a href="#parameter-instance_id"><code>instance_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>This API is in preview release for Amazon Connect and is subject to change. To request access to this API, contact Amazon Web Services Support. Describes the target authentication profile.</td>
+    <td>This API is in preview release for Connect Customer and is subject to change. To request access to this API, contact Amazon Web Services Support. Describes the target authentication profile.</td>
 </tr>
 <tr>
     <td><a href="#list_authentication_profiles"><CopyableCode code="list_authentication_profiles" /></a></td>
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-instance_id"><code>instance_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td><a href="#parameter-maxResults"><code>maxResults</code></a>, <a href="#parameter-nextToken"><code>nextToken</code></a></td>
-    <td>This API is in preview release for Amazon Connect and is subject to change. To request access to this API, contact Amazon Web Services Support. Provides summary information about the authentication profiles in a specified Amazon Connect instance.</td>
+    <td>This API is in preview release for Connect Customer and is subject to change. To request access to this API, contact Amazon Web Services Support. Provides summary information about the authentication profiles in a specified Connect Customer instance.</td>
 </tr>
 <tr>
     <td><a href="#update_authentication_profile"><CopyableCode code="update_authentication_profile" /></a></td>
     <td><CopyableCode code="update" /></td>
     <td><a href="#parameter-authentication_profile_id"><code>authentication_profile_id</code></a>, <a href="#parameter-instance_id"><code>instance_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>This API is in preview release for Amazon Connect and is subject to change. To request access to this API, contact Amazon Web Services Support. Updates the selected authentication profile.</td>
+    <td>This API is in preview release for Connect Customer and is subject to change. To request access to this API, contact Amazon Web Services Support. Updates the selected authentication profile.</td>
 </tr>
 </tbody>
 </table>
@@ -229,7 +229,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-instance_id">
     <td><CopyableCode code="instance_id" /></td>
     <td><code>string</code></td>
-    <td>The identifier of the Amazon Connect instance. You can find the instance ID in the Amazon Resource Name (ARN) of the instance.</td>
+    <td>The identifier of the Connect Customer instance. You can find the instance ID in the Amazon Resource Name (ARN) of the instance.</td>
 </tr>
 <tr id="parameter-region">
     <td><CopyableCode code="region" /></td>
@@ -260,7 +260,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 >
 <TabItem value="describe_authentication_profile">
 
-This API is in preview release for Amazon Connect and is subject to change. To request access to this API, contact Amazon Web Services Support. Describes the target authentication profile.
+This API is in preview release for Connect Customer and is subject to change. To request access to this API, contact Amazon Web Services Support. Describes the target authentication profile.
 
 ```sql
 SELECT
@@ -287,7 +287,7 @@ AND region = '{{ region }}' -- required
 </TabItem>
 <TabItem value="list_authentication_profiles">
 
-This API is in preview release for Amazon Connect and is subject to change. To request access to this API, contact Amazon Web Services Support. Provides summary information about the authentication profiles in a specified Amazon Connect instance.
+This API is in preview release for Connect Customer and is subject to change. To request access to this API, contact Amazon Web Services Support. Provides summary information about the authentication profiles in a specified Connect Customer instance.
 
 ```sql
 SELECT
@@ -318,7 +318,7 @@ AND nextToken = '{{ nextToken }}'
 >
 <TabItem value="update_authentication_profile">
 
-This API is in preview release for Amazon Connect and is subject to change. To request access to this API, contact Amazon Web Services Support. Updates the selected authentication profile.
+This API is in preview release for Connect Customer and is subject to change. To request access to this API, contact Amazon Web Services Support. Updates the selected authentication profile.
 
 ```sql
 UPDATE aws.connect.authentication_profiles

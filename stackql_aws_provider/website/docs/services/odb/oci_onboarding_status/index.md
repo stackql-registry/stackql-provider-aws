@@ -50,9 +50,24 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
+    <td><CopyableCode code="autonomous_database_oci_integration_iam_roles" /></td>
+    <td><code>array</code></td>
+    <td>The list of Amazon Web Services Identity and Access Management (IAM) service roles used for Autonomous Database integration with Oracle Cloud Infrastructure (OCI).</td>
+</tr>
+<tr>
     <td><CopyableCode code="existing_tenancy_activation_link" /></td>
     <td><code>string</code></td>
     <td>The existing OCI tenancy activation link for your Amazon Web Services account.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="linked_oci_compartment_id" /></td>
+    <td><code>string</code></td>
+    <td>The unique identifier of the Oracle Cloud Infrastructure (OCI) compartment that is linked to your Amazon Web Services account.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="linked_oci_tenancy_id" /></td>
+    <td><code>string</code></td>
+    <td>The unique identifier of the Oracle Cloud Infrastructure (OCI) tenancy that is linked to your Amazon Web Services account.</td>
 </tr>
 <tr>
     <td><CopyableCode code="new_tenancy_activation_link" /></td>
@@ -68,6 +83,11 @@ The following fields are returned by `SELECT` queries:
     <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td> (NOT_STARTED, PENDING_LINK_GENERATION, PENDING_CUSTOMER_ACTION, PENDING_INITIALIZATION, ACTIVATING, ACTIVE_IN_HOME_REGION, ACTIVE, ACTIVE_LIMITED, FAILED, PUBLIC_OFFER_UNSUPPORTED, SUSPENDED, CANCELED)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="subscription_errors" /></td>
+    <td><code>array</code></td>
+    <td>The list of errors that occurred during the subscription process for your Amazon Web Services account, if any.</td>
 </tr>
 </tbody>
 </table>
@@ -134,10 +154,14 @@ Returns the tenancy activation link and onboarding status for your Amazon Web Se
 
 ```sql
 SELECT
+autonomous_database_oci_integration_iam_roles,
 existing_tenancy_activation_link,
+linked_oci_compartment_id,
+linked_oci_tenancy_id,
 new_tenancy_activation_link,
 oci_identity_domain,
-status
+status,
+subscription_errors
 FROM aws.odb.oci_onboarding_status
 WHERE region = '{{ region }}' -- required
 ;

@@ -77,7 +77,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
-    <td>A status code that gives the current status of the request. (CREATING, FAILED_CREATION, ATTACHING, ATTACHED, REMAP_DETACHING, REMAP_ATTACHING, DETACHING, FAILED_RESOURCE_GONE, DELETING, DELETE_FAILED_FAS_EXPIRED, UPDATING, UPDATE_FAILED, ISOLATED)</td>
+    <td>A status code that gives the current status of the request. (CREATING, FAILED_CREATION, FAILED_CREATION_INSUFFICIENT_EC2_CAPACITY_IN_OUTPOST, ATTACHING, ATTACHED, REMAP_DETACHING, REMAP_ATTACHING, DETACHING, FAILED_RESOURCE_GONE, DELETING, DELETE_FAILED_FAS_EXPIRED, UPDATING, UPDATE_FAILED, ISOLATED)</td>
 </tr>
 <tr>
     <td><CopyableCode code="status_message" /></td>

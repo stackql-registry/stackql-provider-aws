@@ -89,7 +89,7 @@ The following methods are available for this resource:
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td><a href="#parameter-key"><code>key</code></a></td>
-    <td>SearchNearby queries for points of interest within a radius from a central coordinates, returning place results with optional filters such as categories, business chains, food types and more. The API returns details such as a place name, address, phone, category, food type, contact, opening hours. Also, the API can return phonemes, time zones and more based on requested parameters. For more information, see Search Nearby in the Amazon Location Service Developer Guide.</td>
+    <td>SearchNearby queries for points of interest within a radius from a central coordinates, returning place results with optional filters such as categories, business chains, food types and more. The API returns details such as a place name, address, phone, category, food type, contact, opening hours. Also, the API can return phonemes, time zones and more based on requested parameters. Not supported in ap-southeast-1 and ap-southeast-5 regions for GrabMaps customers. For more information, see Search Nearby in the Amazon Location Service Developer Guide.</td>
 </tr>
 </tbody>
 </table>
@@ -130,7 +130,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 >
 <TabItem value="search_nearby">
 
-SearchNearby queries for points of interest within a radius from a central coordinates, returning place results with optional filters such as categories, business chains, food types and more. The API returns details such as a place name, address, phone, category, food type, contact, opening hours. Also, the API can return phonemes, time zones and more based on requested parameters. For more information, see Search Nearby in the Amazon Location Service Developer Guide.
+SearchNearby queries for points of interest within a radius from a central coordinates, returning place results with optional filters such as categories, business chains, food types and more. The API returns details such as a place name, address, phone, category, food type, contact, opening hours. Also, the API can return phonemes, time zones and more based on requested parameters. Not supported in ap-southeast-1 and ap-southeast-5 regions for GrabMaps customers. For more information, see Search Nearby in the Amazon Location Service Developer Guide.
 
 ```sql
 SELECT

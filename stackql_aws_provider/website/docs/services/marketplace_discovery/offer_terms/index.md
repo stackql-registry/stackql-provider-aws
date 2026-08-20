@@ -75,6 +75,11 @@ The following fields are returned by `SELECT` queries:
     <td>Defines a legal term containing documents proposed to buyers, such as EULAs and data subscription agreements.</td>
 </tr>
 <tr>
+    <td><CopyableCode code="net_payment_term" /></td>
+    <td><code>object</code></td>
+    <td>A net payment term.</td>
+</tr>
+<tr>
     <td><CopyableCode code="payment_schedule_term" /></td>
     <td><code>object</code></td>
     <td>Defines a payment schedule term with installment payments at specified dates.</td>
@@ -179,6 +184,7 @@ configurable_upfront_pricing_term,
 fixed_upfront_pricing_term,
 free_trial_pricing_term,
 legal_term,
+net_payment_term,
 payment_schedule_term,
 recurring_payment_term,
 renewal_term,

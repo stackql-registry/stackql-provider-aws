@@ -61,6 +61,11 @@ The following fields are returned by `SELECT` queries:
     <td>The timestamp when the policy was originally created.</td>
 </tr>
 <tr>
+    <td><CopyableCode code="enforcement_mode" /></td>
+    <td><code>string</code></td>
+    <td>The enforcement mode for a policy. Run this policy in LOG_ONLY mode to collect data on how it affects your application. Once you are satisfied with the data gathered, switch the policy to ACTIVE. (ACTIVE, LOG_ONLY)</td>
+</tr>
+<tr>
     <td><CopyableCode code="policy_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the policy. (pattern: &lt;code&gt;arn:aws&#91;-a-z&#93;&#123;0,7&#125;:bedrock-agentcore:&#91;a-z0-9-&#93;&#123;9,15&#125;:&#91;0-9&#93;&#123;12&#125;:policy-engine/&#91;a-zA-Z&#93;&#91;a-zA-Z0-9-_&#93;&#123;0,47&#125;-&#91;a-zA-Z0-9_&#93;&#123;10&#125;/policy/&#91;a-zA-Z&#93;&#91;a-zA-Z0-9-_&#93;&#123;0,47&#125;-&#91;a-zA-Z0-9_&#93;&#123;10&#125;&lt;/code&gt;)</td>
@@ -108,6 +113,11 @@ The following fields are returned by `SELECT` queries:
     <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the policy was originally created.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="enforcement_mode" /></td>
+    <td><code>string</code></td>
+    <td>The enforcement mode for a policy. Run this policy in LOG_ONLY mode to collect data on how it affects your application. Once you are satisfied with the data gathered, switch the policy to ACTIVE. (ACTIVE, LOG_ONLY)</td>
 </tr>
 <tr>
     <td><CopyableCode code="policy_arn" /></td>
@@ -234,6 +244,7 @@ Retrieves a metadata-only summary of a specific policy without decrypting custom
 SELECT
 name,
 created_at,
+enforcement_mode,
 policy_arn,
 policy_engine_id,
 policy_id,
@@ -254,6 +265,7 @@ Retrieves a paginated list of metadata-only policy summaries within a policy eng
 SELECT
 name,
 created_at,
+enforcement_mode,
 policy_arn,
 policy_engine_id,
 policy_id,

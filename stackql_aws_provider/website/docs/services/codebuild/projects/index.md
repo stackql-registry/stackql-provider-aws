@@ -461,6 +461,7 @@ webhook
           status:
             status: "{{ status }}"
             message: "{{ message }}"
+        hostKernel: "{{ hostKernel }}"
     - name: serviceRole
       value: "{{ serviceRole }}"
       description: |

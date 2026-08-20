@@ -161,7 +161,7 @@ The following methods are available for this resource:
     <td><CopyableCode code="exec" /></td>
     <td><a href="#parameter-application_id"><code>application_id</code></a>, <a href="#parameter-environment_id"><code>environment_id</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-DeploymentStrategyId"><code>DeploymentStrategyId</code></a>, <a href="#parameter-ConfigurationProfileId"><code>ConfigurationProfileId</code></a>, <a href="#parameter-ConfigurationVersion"><code>ConfigurationVersion</code></a></td>
     <td></td>
-    <td>Starts a deployment.</td>
+    <td>Starts a deployment. AppConfig Agent supports deploying feature flag or free-form configuration data to specific segments or individual users during a gradual rollout. Entity-based gradual deployments ensure that once a user or segment receives a configuration version, they continue to receive that same version throughout the deployment period, regardless of which compute resource serves their requests. For more information, see Using AppConfig Agent for user-based or entity-based gradual deployments</td>
 </tr>
 </tbody>
 </table>
@@ -388,7 +388,7 @@ EXEC aws.appconfig.applications.stop_deployment
 </TabItem>
 <TabItem value="start_deployment">
 
-Starts a deployment.
+Starts a deployment. AppConfig Agent supports deploying feature flag or free-form configuration data to specific segments or individual users during a gradual rollout. Entity-based gradual deployments ensure that once a user or segment receives a configuration version, they continue to receive that same version throughout the deployment period, regardless of which compute resource serves their requests. For more information, see Using AppConfig Agent for user-based or entity-based gradual deployments
 
 ```sql
 EXEC aws.appconfig.applications.start_deployment 
@@ -403,7 +403,8 @@ EXEC aws.appconfig.applications.start_deployment
 "Description": "{{ Description }}", 
 "Tags": "{{ Tags }}", 
 "KmsKeyIdentifier": "{{ KmsKeyIdentifier }}", 
-"DynamicExtensionParameters": "{{ DynamicExtensionParameters }}"
+"DynamicExtensionParameters": "{{ DynamicExtensionParameters }}", 
+"LatestDeploymentNumber": {{ LatestDeploymentNumber }}
 }'
 ;
 ```

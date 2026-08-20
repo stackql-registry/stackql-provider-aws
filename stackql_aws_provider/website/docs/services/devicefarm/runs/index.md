@@ -125,6 +125,16 @@ The following fields are returned by `SELECT` queries:
     <td>The IAM role associated with the run. (pattern: &lt;code&gt;^arn:aws:iam::&#91;0-9&#93;&#123;12&#125;:role/.+&lt;/code&gt;)</td>
 </tr>
 <tr>
+    <td><CopyableCode code="insights" /></td>
+    <td><code>object</code></td>
+    <td>The insights for the run, including the report status and job-level metrics. This field contains data only if you specified insightsTypes when you scheduled the run.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="insights_types" /></td>
+    <td><code>array</code></td>
+    <td>The types of insights requested for the run.</td>
+</tr>
+<tr>
     <td><CopyableCode code="job_timeout_minutes" /></td>
     <td><code>integer</code></td>
     <td>The number of minutes the job executes before it times out.</td>
@@ -318,6 +328,8 @@ device_selection_result,
 environment_variables,
 event_count,
 execution_role_arn,
+insights,
+insights_types,
 job_timeout_minutes,
 locale,
 location,

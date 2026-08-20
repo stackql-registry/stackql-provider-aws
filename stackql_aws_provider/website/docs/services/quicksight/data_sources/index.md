@@ -140,6 +140,11 @@ The following fields are returned by `SELECT` queries:
     <td>The time that this data source was created.</td>
 </tr>
 <tr>
+    <td><CopyableCode code="credential_status" /></td>
+    <td><code>string</code></td>
+    <td>The credential verification status of the data source. Valid values include: CONNECTED – Credential validation succeeded. AUTH_FAILED – Credential validation failed. NOT_VERIFIED – Credential validation has not been performed. (CONNECTED, AUTH_FAILED, NOT_VERIFIED)</td>
+</tr>
+<tr>
     <td><CopyableCode code="data_source_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the data source. This ID is unique per Amazon Web Services Region for each Amazon Web Services account.</td>
@@ -153,6 +158,11 @@ The following fields are returned by `SELECT` queries:
     <td><CopyableCode code="error_info" /></td>
     <td><code>object</code></td>
     <td>Error information from the last update or the creation of the data source.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="last_credential_verified_at" /></td>
+    <td><code>string (date-time)</code></td>
+    <td>The time that the credentials were last verified.</td>
 </tr>
 <tr>
     <td><CopyableCode code="last_updated_time" /></td>
@@ -348,9 +358,11 @@ SELECT
 alternate_data_source_parameters,
 arn,
 created_time,
+credential_status,
 data_source_id,
 data_source_parameters,
 error_info,
+last_credential_verified_at,
 last_updated_time,
 name,
 secret_arn,
@@ -588,6 +600,21 @@ status
           ConfluenceUrl: "{{ ConfluenceUrl }}"
         QBusinessParameters:
           ApplicationArn: "{{ ApplicationArn }}"
+        SharePointParameters:
+          SharePointDomain: "{{ SharePointDomain }}"
+          TenantId: "{{ TenantId }}"
+          ClientId: "{{ ClientId }}"
+          AuthType: "{{ AuthType }}"
+        GoogleDriveParameters:
+          AuthType: "{{ AuthType }}"
+        OneDriveParameters:
+          TenantId: "{{ TenantId }}"
+          ClientId: "{{ ClientId }}"
+          AuthType: "{{ AuthType }}"
+        FMKBParameters:
+          KnowledgeBaseArn: "{{ KnowledgeBaseArn }}"
+          LinkedDataSourceIds:
+            - "{{ LinkedDataSourceIds }}"
     - name: Credentials
       description: |
         Data source credentials. This is a variant type structure. For this structure to be valid, only one of the attributes can be non-null.
@@ -740,6 +767,21 @@ status
                 ConfluenceUrl: "{{ ConfluenceUrl }}"
               QBusinessParameters:
                 ApplicationArn: "{{ ApplicationArn }}"
+              SharePointParameters:
+                SharePointDomain: "{{ SharePointDomain }}"
+                TenantId: "{{ TenantId }}"
+                ClientId: "{{ ClientId }}"
+                AuthType: "{{ AuthType }}"
+              GoogleDriveParameters:
+                AuthType: "{{ AuthType }}"
+              OneDriveParameters:
+                TenantId: "{{ TenantId }}"
+                ClientId: "{{ ClientId }}"
+                AuthType: "{{ AuthType }}"
+              FMKBParameters:
+                KnowledgeBaseArn: "{{ KnowledgeBaseArn }}"
+                LinkedDataSourceIds:
+                  - "{{ LinkedDataSourceIds }}"
         CopySourceArn: "{{ CopySourceArn }}"
         SecretArn: "{{ SecretArn }}"
         KeyPairCredentials:

@@ -18,16 +18,18 @@ sustainability service documentation.
 
 :::info[Service Summary]
 
-total resources: __2__  
+total resources: __4__  
 
 :::
 
 ## Resources
 <div class="row">
 <div class="providerDocColumn">
-<a href="/services/sustainability/estimated_carbon_emissions/">estimated_carbon_emissions</a>
+<a href="/services/sustainability/estimated_carbon_emissions/">estimated_carbon_emissions</a><br />
+<a href="/services/sustainability/estimated_carbon_emissions_dimension_values/">estimated_carbon_emissions_dimension_values</a>
 </div>
 <div class="providerDocColumn">
-<a href="/services/sustainability/estimated_carbon_emissions_dimension_values/">estimated_carbon_emissions_dimension_values</a>
+<a href="/services/sustainability/estimated_water_allocation_dimension_values/">estimated_water_allocation_dimension_values</a><br />
+<a href="/services/sustainability/estimated_water_allocations/">estimated_water_allocations</a>
 </div>
 </div>

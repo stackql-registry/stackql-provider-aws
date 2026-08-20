@@ -79,7 +79,7 @@ The following methods are available for this resource:
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>Retrieves statistical information about Amazon Web Services resources and their associated security findings. You can use the Scopes parameter to define the data boundary for the query. Currently, Scopes supports AwsOrganizations, which lets you aggregate resources from your entire organization or from specific organizational units. Only the delegated administrator account can use Scopes.</td>
+    <td>Retrieves statistical information about Amazon Web Services resources and their associated security findings. You can use the Scopes parameter to define the data boundary for the query. Currently, Scopes supports AwsOrganizations, which lets you aggregate resources from your entire organization or from specific organizational units. Only the delegated administrator account can use Scopes. If you set GroupByField to ResourceSubCategory, ResourceInfo.AIDetails.HostResourceType, or ResourceInfo.AIDetails.CanonicalId, you must include a ResourceCategory string filter with comparison set to EQUALS and value AI/ML in the corresponding ResourceGroupByRule.</td>
 </tr>
 </tbody>
 </table>
@@ -115,7 +115,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 >
 <TabItem value="get_resources_statistics_v2">
 
-Retrieves statistical information about Amazon Web Services resources and their associated security findings. You can use the Scopes parameter to define the data boundary for the query. Currently, Scopes supports AwsOrganizations, which lets you aggregate resources from your entire organization or from specific organizational units. Only the delegated administrator account can use Scopes.
+Retrieves statistical information about Amazon Web Services resources and their associated security findings. You can use the Scopes parameter to define the data boundary for the query. Currently, Scopes supports AwsOrganizations, which lets you aggregate resources from your entire organization or from specific organizational units. Only the delegated administrator account can use Scopes. If you set GroupByField to ResourceSubCategory, ResourceInfo.AIDetails.HostResourceType, or ResourceInfo.AIDetails.CanonicalId, you must include a ResourceCategory string filter with comparison set to EQUALS and value AI/ML in the corresponding ResourceGroupByRule.
 
 ```sql
 SELECT

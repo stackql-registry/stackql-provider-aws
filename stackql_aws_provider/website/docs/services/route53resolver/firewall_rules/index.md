@@ -92,7 +92,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="dns_threat_protection" /></td>
     <td><code>string</code></td>
-    <td>The type of the DNS Firewall Advanced rule. Valid values are: DGA: Domain generation algorithms detection. DGAs are used by attackers to generate a large number of domains to to launch malware attacks. DNS_TUNNELING: DNS tunneling detection. DNS tunneling is used by attackers to exfiltrate data from the client by using the DNS tunnel without making a network connection to the client. (DGA, DNS_TUNNELING, DICTIONARY_DGA)</td>
+    <td>The type of the DNS Firewall Advanced rule. Valid values are: DGA: Domain generation algorithms detection. DGAs are used by attackers to generate a large number of domains to launch malware attacks. DNS_TUNNELING: DNS tunneling detection. DNS tunneling is used by attackers to exfiltrate data from the client by using the DNS tunnel without making a network connection to the client. DICTIONARY_DGA: Dictionary-based domain generation algorithms detection. Dictionary DGAs use wordlists to generate domains that appear more legitimate, making them harder to detect than traditional DGAs. (DGA, DNS_TUNNELING, DICTIONARY_DGA)</td>
 </tr>
 <tr>
     <td><CopyableCode code="firewall_domain_list_id" /></td>
@@ -108,6 +108,11 @@ The following fields are returned by `SELECT` queries:
     <td><CopyableCode code="firewall_rule_group_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the Firewall rule group of the rule.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="firewall_rule_type" /></td>
+    <td><code>object</code></td>
+    <td>The rule type configuration for the firewall rule. This is a tagged union — exactly one of its members will be populated. Possible members are: FirewallAdvancedContentCategory — an AWS-managed content category (for example, VIOLENCE_AND_HATE_SPEECH). FirewallAdvancedThreatCategory — an AWS-managed advanced threat category (for example, PHISHING). DnsThreatProtection — a built-in DNS Firewall Advanced threat detector (DGA, DNS_TUNNELING, or DICTIONARY_DGA). PartnerThreatProtection — a third-party threat feed delivered through AWS Marketplace. To enumerate the values supported in your account, call ListFirewallRuleTypes.</td>
 </tr>
 <tr>
     <td><CopyableCode code="firewall_threat_protection_id" /></td>
@@ -132,7 +137,17 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="qtype" /></td>
     <td><code>string</code></td>
-    <td>The DNS query type you want the rule to evaluate. Allowed values are; A: Returns an IPv4 address. AAAA: Returns an Ipv6 address. CAA: Restricts CAs that can create SSL/TLS certifications for the domain. CNAME: Returns another domain name. DS: Record that identifies the DNSSEC signing key of a delegated zone. MX: Specifies mail servers. NAPTR: Regular-expression-based rewriting of domain names. NS: Authoritative name servers. PTR: Maps an IP address to a domain name. SOA: Start of authority record for the zone. SPF: Lists the servers authorized to send emails from a domain. SRV: Application specific values that identify servers. TXT: Verifies email senders and application-specific values. A query type you define by using the DNS type ID, for example 28 for AAAA. The values must be defined as TYPENUMBER, where the NUMBER can be 1-65334, for example, TYPE28. For more information, see List of DNS record types.</td>
+    <td>The DNS query type you want the rule to evaluate. Allowed values are; A: Returns an IPv4 address. AAAA: Returns an Ipv6 address. CAA: Restricts CAs that can create SSL/TLS certifications for the domain. CNAME: Returns another domain name. DS: Record that identifies the DNSSEC signing key of a delegated zone. MX: Specifies mail servers. NAPTR: Regular-expression-based rewriting of domain names. NS: Authoritative name servers. PTR: Maps an IP address to a domain name. SOA: Start of authority record for the zone. SPF: Lists the servers authorized to send emails from a domain. SRV: Application specific values that identify servers. TXT: Verifies email senders and application-specific values. A query type you define by using the DNS type ID, for example 28 for AAAA. The values must be defined as TYPENUMBER, where the NUMBER can be 1-65534, for example, TYPE28. For more information, see List of DNS record types.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="status" /></td>
+    <td><code>string</code></td>
+    <td>The lifecycle state of the firewall rule. Possible values: CREATING — DNS Firewall is provisioning the rule. Rules created with the PartnerThreatProtection rule type begin in this state while DNS Firewall verifies the calling account's AWS Marketplace entitlement. COMPLETE — The rule is provisioned and enforcing matches. CREATION_FAILED — Provisioning failed. StatusMessage contains a human-readable reason. A rule in this state is immutable: UpdateFirewallRule rejects the request, and the rule must be removed with DeleteFirewallRule. For rules that do not require asynchronous provisioning, this field may be absent.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="status_message" /></td>
+    <td><code>string</code></td>
+    <td>An additional message about the rule's lifecycle state. Populated when Status is CREATION_FAILED to describe why provisioning failed.</td>
 </tr>
 </tbody>
 </table>
@@ -159,28 +174,28 @@ The following methods are available for this resource:
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>Retrieves the firewall rules that you have defined for the specified firewall rule group. DNS Firewall uses the rules in a rule group to filter DNS network traffic for a VPC. A single call might return only a partial list of the rules. For information, see MaxResults.</td>
+    <td>Retrieves the firewall rules that you have defined for the specified firewall rule group. DNS Firewall uses the rules in a rule group to filter DNS network traffic for a VPC. A single call might return only a partial list of the rules. For information, see MaxResults. For rules that require asynchronous provisioning, the response includes Status (see FirewallRuleStatus) and, on failure, StatusMessage with the reason.</td>
 </tr>
 <tr>
     <td><a href="#create_firewall_rule"><CopyableCode code="create_firewall_rule" /></a></td>
     <td><CopyableCode code="insert" /></td>
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-CreatorRequestId"><code>CreatorRequestId</code></a>, <a href="#parameter-FirewallRuleGroupId"><code>FirewallRuleGroupId</code></a></td>
     <td></td>
-    <td>Creates a single DNS Firewall rule in the specified rule group, using the specified domain list.</td>
+    <td>Creates a single DNS Firewall rule in the specified rule group. The rule can use any one of the following match sources, and the chosen source must be supplied through the matching request field — they are mutually exclusive: FirewallDomainListId — match a customer-managed or AWS-managed domain list. DnsThreatProtection — match a built-in DNS Firewall Advanced threat detector (DGA, DNS_TUNNELING, or DICTIONARY_DGA). FirewallRuleType — match one of the rule-type variants returned by ListFirewallRuleTypes: FirewallAdvancedContentCategory, FirewallAdvancedThreatCategory, DnsThreatProtection, or PartnerThreatProtection. The PartnerThreatProtection variant requires an active AWS Marketplace subscription to the named partner product. For rules that require asynchronous provisioning (today, the PartnerThreatProtection rule type), the rule's Status begins at CREATING and transitions to COMPLETE once the rule is provisioned and the marketplace entitlement is verified. If provisioning fails, Status becomes CREATION_FAILED and StatusMessage contains a human-readable reason; the rule is then immutable and must be removed with DeleteFirewallRule.</td>
 </tr>
 <tr>
     <td><a href="#update_firewall_rule"><CopyableCode code="update_firewall_rule" /></a></td>
     <td><CopyableCode code="update" /></td>
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-FirewallRuleGroupId"><code>FirewallRuleGroupId</code></a></td>
     <td></td>
-    <td>Updates the specified firewall rule.</td>
+    <td>Updates the specified firewall rule. The rule's FirewallRuleType, FirewallDomainListId, and top-level DnsThreatProtection match source cannot be changed after creation. Rules whose Status is CREATING or CREATION_FAILED cannot be updated; remove a failed rule with DeleteFirewallRule.</td>
 </tr>
 <tr>
     <td><a href="#delete_firewall_rule"><CopyableCode code="delete_firewall_rule" /></a></td>
     <td><CopyableCode code="delete" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>Deletes the specified firewall rule.</td>
+    <td>Deletes the specified firewall rule. Identify the rule using either FirewallDomainListId (for domain-list and DNS Firewall Advanced rules) or FirewallThreatProtectionId (for partner-managed and DNS Firewall Advanced rules) — together with FirewallRuleGroupId. DeleteFirewallRule is the only operation that succeeds against a rule whose Status is CREATION_FAILED.</td>
 </tr>
 </tbody>
 </table>
@@ -216,7 +231,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 >
 <TabItem value="list_firewall_rules">
 
-Retrieves the firewall rules that you have defined for the specified firewall rule group. DNS Firewall uses the rules in a rule group to filter DNS network traffic for a VPC. A single call might return only a partial list of the rules. For information, see MaxResults.
+Retrieves the firewall rules that you have defined for the specified firewall rule group. DNS Firewall uses the rules in a rule group to filter DNS network traffic for a VPC. A single call might return only a partial list of the rules. For information, see MaxResults. For rules that require asynchronous provisioning, the response includes Status (see FirewallRuleStatus) and, on failure, StatusMessage with the reason.
 
 ```sql
 SELECT
@@ -232,11 +247,14 @@ dns_threat_protection,
 firewall_domain_list_id,
 firewall_domain_redirection_action,
 firewall_rule_group_id,
+firewall_rule_type,
 firewall_threat_protection_id,
 modification_time,
 name,
 priority,
-qtype
+qtype,
+status,
+status_message
 FROM aws.route53resolver.firewall_rules
 WHERE region = '{{ region }}' -- required
 ;
@@ -256,7 +274,7 @@ WHERE region = '{{ region }}' -- required
 >
 <TabItem value="create_firewall_rule">
 
-Creates a single DNS Firewall rule in the specified rule group, using the specified domain list.
+Creates a single DNS Firewall rule in the specified rule group. The rule can use any one of the following match sources, and the chosen source must be supplied through the matching request field — they are mutually exclusive: FirewallDomainListId — match a customer-managed or AWS-managed domain list. DnsThreatProtection — match a built-in DNS Firewall Advanced threat detector (DGA, DNS_TUNNELING, or DICTIONARY_DGA). FirewallRuleType — match one of the rule-type variants returned by ListFirewallRuleTypes: FirewallAdvancedContentCategory, FirewallAdvancedThreatCategory, DnsThreatProtection, or PartnerThreatProtection. The PartnerThreatProtection variant requires an active AWS Marketplace subscription to the named partner product. For rules that require asynchronous provisioning (today, the PartnerThreatProtection rule type), the rule's Status begins at CREATING and transitions to COMPLETE once the rule is provisioned and the marketplace entitlement is verified. If provisioning fails, Status becomes CREATION_FAILED and StatusMessage contains a human-readable reason; the rule is then immutable and must be removed with DeleteFirewallRule.
 
 ```sql
 INSERT INTO aws.route53resolver.firewall_rules (
@@ -274,6 +292,7 @@ FirewallDomainRedirectionAction,
 Qtype,
 DnsThreatProtection,
 ConfidenceThreshold,
+FirewallRuleType,
 region
 )
 SELECT 
@@ -291,6 +310,7 @@ SELECT
 '{{ Qtype }}',
 '{{ DnsThreatProtection }}',
 '{{ ConfidenceThreshold }}',
+'{{ FirewallRuleType }}',
 '{{ region }}'
 RETURNING
 firewall_rule
@@ -356,17 +376,30 @@ firewall_rule
     - name: Qtype
       value: "{{ Qtype }}"
       description: |
-        The DNS query type you want the rule to evaluate. Allowed values are; A: Returns an IPv4 address. AAAA: Returns an Ipv6 address. CAA: Restricts CAs that can create SSL/TLS certifications for the domain. CNAME: Returns another domain name. DS: Record that identifies the DNSSEC signing key of a delegated zone. MX: Specifies mail servers. NAPTR: Regular-expression-based rewriting of domain names. NS: Authoritative name servers. PTR: Maps an IP address to a domain name. SOA: Start of authority record for the zone. SPF: Lists the servers authorized to send emails from a domain. SRV: Application specific values that identify servers. TXT: Verifies email senders and application-specific values. A query type you define by using the DNS type ID, for example 28 for AAAA. The values must be defined as TYPENUMBER, where the NUMBER can be 1-65334, for example, TYPE28. For more information, see List of DNS record types.
+        The DNS query type you want the rule to evaluate. Allowed values are; A: Returns an IPv4 address. AAAA: Returns an Ipv6 address. CAA: Restricts CAs that can create SSL/TLS certifications for the domain. CNAME: Returns another domain name. DS: Record that identifies the DNSSEC signing key of a delegated zone. MX: Specifies mail servers. NAPTR: Regular-expression-based rewriting of domain names. NS: Authoritative name servers. PTR: Maps an IP address to a domain name. SOA: Start of authority record for the zone. SPF: Lists the servers authorized to send emails from a domain. SRV: Application specific values that identify servers. TXT: Verifies email senders and application-specific values. A query type you define by using the DNS type ID, for example 28 for AAAA. The values must be defined as TYPENUMBER, where the NUMBER can be 1-65534, for example, TYPE28. For more information, see List of DNS record types.
     - name: DnsThreatProtection
       value: "{{ DnsThreatProtection }}"
       description: |
-        Use to create a DNS Firewall Advanced rule.
+        The type of the DNS Firewall Advanced rule. This setting is mutually exclusive with FirewallDomainListId and FirewallRuleType. Valid values are: DGA: Domain generation algorithms detection. DGAs are used by attackers to generate a large number of domains to launch malware attacks. DNS_TUNNELING: DNS tunneling detection. DNS tunneling is used by attackers to exfiltrate data from the client by using the DNS tunnel without making a network connection to the client. DICTIONARY_DGA: Dictionary-based domain generation algorithms detection. Dictionary DGAs use wordlists to generate domains that appear more legitimate, making them harder to detect than traditional DGAs.
       valid_values: ['DGA', 'DNS_TUNNELING', 'DICTIONARY_DGA']
     - name: ConfidenceThreshold
       value: "{{ ConfidenceThreshold }}"
       description: |
         The confidence threshold for DNS Firewall Advanced. You must provide this value when you create a DNS Firewall Advanced rule. The confidence level values mean: LOW: Provides the highest detection rate for threats, but also increases false positives. MEDIUM: Provides a balance between detecting threats and false positives. HIGH: Detects only the most well corroborated threats with a low rate of false positives.
       valid_values: ['LOW', 'MEDIUM', 'HIGH']
+    - name: FirewallRuleType
+      description: |
+        The rule type configuration for the firewall rule. This is a tagged union — set exactly one of its members. This setting is mutually exclusive with the top-level FirewallDomainListId and DnsThreatProtection fields. Use one of: FirewallAdvancedContentCategory — match an AWS-managed content category (for example, VIOLENCE_AND_HATE_SPEECH). FirewallAdvancedThreatCategory — match an AWS-managed advanced threat category (for example, PHISHING). DnsThreatProtection — match a built-in DNS Firewall Advanced threat detector (DGA, DNS_TUNNELING, or DICTIONARY_DGA). PartnerThreatProtection — match a third-party threat feed delivered through AWS Marketplace. The selected partner must be an active subscription on the calling account. To enumerate the values supported in your account, call ListFirewallRuleTypes.
+      value:
+        PartnerThreatProtection:
+          Partner: "{{ Partner }}"
+        FirewallAdvancedContentCategory:
+          Category: "{{ Category }}"
+        FirewallAdvancedThreatCategory:
+          Category: "{{ Category }}"
+        DnsThreatProtection:
+          Value: "{{ Value }}"
+          ConfidenceThreshold: "{{ ConfidenceThreshold }}"
 `}</CodeBlock>
 
 </TabItem>
@@ -383,7 +416,7 @@ firewall_rule
 >
 <TabItem value="update_firewall_rule">
 
-Updates the specified firewall rule.
+Updates the specified firewall rule. The rule's FirewallRuleType, FirewallDomainListId, and top-level DnsThreatProtection match source cannot be changed after creation. Rules whose Status is CREATING or CREATION_FAILED cannot be updated; remove a failed rule with DeleteFirewallRule.
 
 ```sql
 UPDATE aws.route53resolver.firewall_rules
@@ -401,7 +434,8 @@ Name = '{{ Name }}',
 FirewallDomainRedirectionAction = '{{ FirewallDomainRedirectionAction }}',
 Qtype = '{{ Qtype }}',
 DnsThreatProtection = '{{ DnsThreatProtection }}',
-ConfidenceThreshold = '{{ ConfidenceThreshold }}'
+ConfidenceThreshold = '{{ ConfidenceThreshold }}',
+FirewallRuleType = '{{ FirewallRuleType }}'
 WHERE 
 region = '{{ region }}' --required
 AND FirewallRuleGroupId = '{{ FirewallRuleGroupId }}' --required
@@ -422,7 +456,7 @@ firewall_rule;
 >
 <TabItem value="delete_firewall_rule">
 
-Deletes the specified firewall rule.
+Deletes the specified firewall rule. Identify the rule using either FirewallDomainListId (for domain-list and DNS Firewall Advanced rules) or FirewallThreatProtectionId (for partner-managed and DNS Firewall Advanced rules) — together with FirewallRuleGroupId. DeleteFirewallRule is the only operation that succeeds against a rule whose Status is CREATION_FAILED.
 
 ```sql
 DELETE FROM aws.route53resolver.firewall_rules

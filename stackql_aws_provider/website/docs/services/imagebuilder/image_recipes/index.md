@@ -261,6 +261,7 @@ tags,
 workingDirectory,
 additionalInstanceConfiguration,
 amiTags,
+amiWatermarks,
 clientToken,
 region
 )
@@ -275,6 +276,7 @@ SELECT
 '{{ workingDirectory }}',
 '{{ additionalInstanceConfiguration }}',
 '{{ amiTags }}',
+'{{ amiWatermarks }}',
 '{{ clientToken }}' /* required */,
 '{{ region }}'
 RETURNING
@@ -332,6 +334,11 @@ request_id
         userDataOverride: "{{ userDataOverride }}"
     - name: amiTags
       value: "{{ amiTags }}"
+    - name: amiWatermarks
+      value:
+        - "{{ amiWatermarks }}"
+      description: |
+        A list of AMI watermark names to attach to the output AMI. Names are case-sensitive. The recipe does not allow duplicate names.
     - name: clientToken
       value: "{{ clientToken }}"
 `}</CodeBlock>

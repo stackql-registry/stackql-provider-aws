@@ -273,6 +273,7 @@ rule_arn
               - "{{ LogTypes }}"
           MskMonitoringParameters:
             EnhancedMonitoring: "{{ EnhancedMonitoring }}"
+          KmsKeyArn: "{{ KmsKeyArn }}"
         Scope: "{{ Scope }}"
         SelectionCriteria: "{{ SelectionCriteria }}"
         AllowFieldUpdates: {{ AllowFieldUpdates }}

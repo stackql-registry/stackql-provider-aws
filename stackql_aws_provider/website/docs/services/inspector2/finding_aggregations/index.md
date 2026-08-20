@@ -70,6 +70,11 @@ The following fields are returned by `SELECT` queries:
     <td>An object that contains details about an aggregation response based on code repositories.</td>
 </tr>
 <tr>
+    <td><CopyableCode code="container_image_aggregation" /></td>
+    <td><code>object</code></td>
+    <td>An object that contains details about an aggregation response based on container images.</td>
+</tr>
+<tr>
     <td><CopyableCode code="ec_2_instance_aggregation" /></td>
     <td><code>object</code></td>
     <td>An object that contains details about an aggregation response based on Amazon EC2 instances.</td>
@@ -105,9 +110,19 @@ The following fields are returned by `SELECT` queries:
     <td>An object that contains details about an aggregation response based on Amazon ECR repositories.</td>
 </tr>
 <tr>
+    <td><CopyableCode code="serverless_function_aggregation" /></td>
+    <td><code>object</code></td>
+    <td>An object that contains details about an aggregation response based on serverless functions.</td>
+</tr>
+<tr>
     <td><CopyableCode code="title_aggregation" /></td>
     <td><code>object</code></td>
     <td>An object that contains details about an aggregation response based on finding title.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="vm_instance_aggregation" /></td>
+    <td><code>object</code></td>
+    <td>An object that contains details about an aggregation response based on VM instances.</td>
 </tr>
 </tbody>
 </table>
@@ -178,6 +193,7 @@ account_aggregation,
 ami_aggregation,
 aws_ecr_container_aggregation,
 code_repository_aggregation,
+container_image_aggregation,
 ec_2_instance_aggregation,
 finding_type_aggregation,
 image_layer_aggregation,
@@ -185,7 +201,9 @@ lambda_function_aggregation,
 lambda_layer_aggregation,
 package_aggregation,
 repository_aggregation,
-title_aggregation
+serverless_function_aggregation,
+title_aggregation,
+vm_instance_aggregation
 FROM aws.inspector2.finding_aggregations
 WHERE region = '{{ region }}' -- required
 ;

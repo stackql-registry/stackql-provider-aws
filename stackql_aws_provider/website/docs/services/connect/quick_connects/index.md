@@ -133,7 +133,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="quick_connect_type" /></td>
     <td><code>string</code></td>
-    <td>The type of quick connect. In the Amazon Connect admin website, when you create a quick connect, you are prompted to assign one of the following types: Agent (USER), External (PHONE_NUMBER), or Queue (QUEUE). (USER, QUEUE, PHONE_NUMBER, FLOW)</td>
+    <td>The type of quick connect. In the Connect Customer admin website, when you create a quick connect, you are prompted to assign one of the following types: Agent (USER), External (PHONE_NUMBER), or Queue (QUEUE). (USER, QUEUE, PHONE_NUMBER, FLOW)</td>
 </tr>
 </tbody>
 </table>
@@ -221,21 +221,21 @@ The following methods are available for this resource:
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-instance_id"><code>instance_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td><a href="#parameter-nextToken"><code>nextToken</code></a>, <a href="#parameter-maxResults"><code>maxResults</code></a>, <a href="#parameter-QuickConnectTypes"><code>QuickConnectTypes</code></a></td>
-    <td>Provides information about the quick connects for the specified Amazon Connect instance.</td>
+    <td>Provides information about the quick connects for the specified Connect Customer instance.</td>
 </tr>
 <tr>
     <td><a href="#search_quick_connects"><CopyableCode code="search_quick_connects" /></a></td>
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>Searches quick connects in an Amazon Connect instance, with optional filtering.</td>
+    <td>Searches quick connects in an Connect Customer instance, with optional filtering.</td>
 </tr>
 <tr>
     <td><a href="#create_quick_connect"><CopyableCode code="create_quick_connect" /></a></td>
     <td><CopyableCode code="insert" /></td>
     <td><a href="#parameter-instance_id"><code>instance_id</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-QuickConnectConfig"><code>QuickConnectConfig</code></a></td>
     <td></td>
-    <td>Creates a quick connect for the specified Amazon Connect instance.</td>
+    <td>Creates a quick connect for the specified Connect Customer instance.</td>
 </tr>
 <tr>
     <td><a href="#update_quick_connect_config"><CopyableCode code="update_quick_connect_config" /></a></td>
@@ -256,7 +256,7 @@ The following methods are available for this resource:
     <td><CopyableCode code="delete" /></td>
     <td><a href="#parameter-instance_id"><code>instance_id</code></a>, <a href="#parameter-quick_connect_id"><code>quick_connect_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>Deletes a quick connect. After calling DeleteUser, it's important to call DeleteQuickConnect to delete any records related to the deleted users. This will help you: Avoid dangling resources that impact your service quotas. Remove deleted users so they don't appear to agents as transfer options. Avoid the disruption of other Amazon Connect processes, such as instance replication and syncing if you're using Amazon Connect Global Resiliency.</td>
+    <td>Deletes a quick connect. After calling DeleteUser, it's important to call DeleteQuickConnect to delete any records related to the deleted users. This will help you: Avoid dangling resources that impact your service quotas. Remove deleted users so they don't appear to agents as transfer options. Avoid the disruption of other Connect Customer processes, such as instance replication and syncing if you're using Connect Customer Global Resiliency.</td>
 </tr>
 </tbody>
 </table>
@@ -277,7 +277,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-instance_id">
     <td><CopyableCode code="instance_id" /></td>
     <td><code>string</code></td>
-    <td>The identifier of the Amazon Connect instance. You can find the instance ID in the Amazon Resource Name (ARN) of the instance.</td>
+    <td>The identifier of the Connect Customer instance. You can find the instance ID in the Amazon Resource Name (ARN) of the instance.</td>
 </tr>
 <tr id="parameter-quick_connect_id">
     <td><CopyableCode code="quick_connect_id" /></td>
@@ -292,7 +292,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-QuickConnectTypes">
     <td><CopyableCode code="QuickConnectTypes" /></td>
     <td><code>array</code></td>
-    <td>The type of quick connect. In the Amazon Connect admin website, when you create a quick connect, you are prompted to assign one of the following types: Agent (USER), External (PHONE_NUMBER), or Queue (QUEUE).</td>
+    <td>The type of quick connect. In the Connect Customer admin website, when you create a quick connect, you are prompted to assign one of the following types: Agent (USER), External (PHONE_NUMBER), or Queue (QUEUE).</td>
 </tr>
 <tr id="parameter-maxResults">
     <td><CopyableCode code="maxResults" /></td>
@@ -340,7 +340,7 @@ AND region = '{{ region }}' -- required
 </TabItem>
 <TabItem value="list_quick_connects">
 
-Provides information about the quick connects for the specified Amazon Connect instance.
+Provides information about the quick connects for the specified Connect Customer instance.
 
 ```sql
 SELECT
@@ -361,7 +361,7 @@ AND QuickConnectTypes = '{{ QuickConnectTypes }}'
 </TabItem>
 <TabItem value="search_quick_connects">
 
-Searches quick connects in an Amazon Connect instance, with optional filtering.
+Searches quick connects in an Connect Customer instance, with optional filtering.
 
 ```sql
 SELECT
@@ -392,7 +392,7 @@ WHERE region = '{{ region }}' -- required
 >
 <TabItem value="create_quick_connect">
 
-Creates a quick connect for the specified Amazon Connect instance.
+Creates a quick connect for the specified Connect Customer instance.
 
 ```sql
 INSERT INTO aws.connect.quick_connects (
@@ -506,7 +506,7 @@ AND region = '{{ region }}' --required;
 >
 <TabItem value="delete_quick_connect">
 
-Deletes a quick connect. After calling DeleteUser, it's important to call DeleteQuickConnect to delete any records related to the deleted users. This will help you: Avoid dangling resources that impact your service quotas. Remove deleted users so they don't appear to agents as transfer options. Avoid the disruption of other Amazon Connect processes, such as instance replication and syncing if you're using Amazon Connect Global Resiliency.
+Deletes a quick connect. After calling DeleteUser, it's important to call DeleteQuickConnect to delete any records related to the deleted users. This will help you: Avoid dangling resources that impact your service quotas. Remove deleted users so they don't appear to agents as transfer options. Avoid the disruption of other Connect Customer processes, such as instance replication and syncing if you're using Connect Customer Global Resiliency.
 
 ```sql
 DELETE FROM aws.connect.quick_connects

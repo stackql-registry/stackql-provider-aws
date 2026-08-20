@@ -60,6 +60,11 @@ The following fields are returned by `SELECT` queries:
     <td>The current modification state.</td>
 </tr>
 <tr>
+    <td><CopyableCode code="operator" /></td>
+    <td><code>string</code></td>
+    <td>The service provider that manages the resource.</td>
+</tr>
+<tr>
     <td><CopyableCode code="original_iops" /></td>
     <td><code>integer</code></td>
     <td>The original IOPS rate of the volume.</td>
@@ -153,7 +158,7 @@ The following methods are available for this resource:
     <td><a href="#describe_volumes_modifications"><CopyableCode code="describe_volumes_modifications" /></a></td>
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
-    <td><a href="#parameter-DryRun"><code>DryRun</code></a>, <a href="#parameter-VolumeId"><code>VolumeId</code></a>, <a href="#parameter-Filter"><code>Filter</code></a>, <a href="#parameter-NextToken"><code>NextToken</code></a>, <a href="#parameter-MaxResults"><code>MaxResults</code></a></td>
+    <td><a href="#parameter-DryRun"><code>DryRun</code></a>, <a href="#parameter-VolumeId"><code>VolumeId</code></a>, <a href="#parameter-Filter"><code>Filter</code></a>, <a href="#parameter-NextToken"><code>NextToken</code></a>, <a href="#parameter-MaxResults"><code>MaxResults</code></a>, <a href="#parameter-IncludeManagedResources"><code>IncludeManagedResources</code></a></td>
     <td>Describes the most recent volume modification request for the specified EBS volumes. For more information, see Monitor the progress of volume modifications in the Amazon EBS User Guide.</td>
 </tr>
 </tbody>
@@ -186,6 +191,11 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     <td><CopyableCode code="Filter" /></td>
     <td><code>array</code></td>
     <td>The filters. modification-state - The current modification state (modifying | optimizing | completed | failed). original-iops - The original IOPS rate of the volume. original-size - The original size of the volume, in GiB. original-volume-type - The original volume type of the volume (standard | io1 | io2 | gp2 | sc1 | st1). originalMultiAttachEnabled - Indicates whether Multi-Attach support was enabled (true | false). start-time - The modification start time. target-iops - The target IOPS rate of the volume. target-size - The target size of the volume, in GiB. target-volume-type - The target volume type of the volume (standard | io1 | io2 | gp2 | sc1 | st1). targetMultiAttachEnabled - Indicates whether Multi-Attach support is to be enabled (true | false). volume-id - The ID of the volume.</td>
+</tr>
+<tr id="parameter-IncludeManagedResources">
+    <td><CopyableCode code="IncludeManagedResources" /></td>
+    <td><code>boolean</code></td>
+    <td>Indicates whether to include managed resources in the output. If this parameter is set to true, the output includes resources that are managed by Amazon Web Services services, even if managed resource visibility is set to hidden.</td>
 </tr>
 <tr id="parameter-MaxResults">
     <td><CopyableCode code="MaxResults" /></td>
@@ -221,6 +231,7 @@ Describes the most recent volume modification request for the specified EBS volu
 SELECT
 end_time,
 modification_state,
+operator,
 original_iops,
 original_multi_attach_enabled,
 original_size,
@@ -242,6 +253,7 @@ AND VolumeId = '{{ VolumeId }}'
 AND Filter = '{{ Filter }}'
 AND NextToken = '{{ NextToken }}'
 AND MaxResults = '{{ MaxResults }}'
+AND IncludeManagedResources = '{{ IncludeManagedResources }}'
 ;
 ```
 </TabItem>

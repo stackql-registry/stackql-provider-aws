@@ -199,7 +199,8 @@ TemplateBody = '{{ TemplateBody }}',
 DeliveryS3Bucket = '{{ DeliveryS3Bucket }}',
 DeliveryS3KeyPrefix = '{{ DeliveryS3KeyPrefix }}',
 ConformancePackInputParameters = '{{ ConformancePackInputParameters }}',
-ExcludedAccounts = '{{ ExcludedAccounts }}'
+ExcludedAccounts = '{{ ExcludedAccounts }}',
+Tags = '{{ Tags }}'
 WHERE 
 region = '{{ region }}' --required
 AND OrganizationConformancePackName = '{{ OrganizationConformancePackName }}' --required

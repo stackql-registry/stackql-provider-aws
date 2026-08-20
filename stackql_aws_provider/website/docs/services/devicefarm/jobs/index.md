@@ -80,6 +80,11 @@ The following fields are returned by `SELECT` queries:
     <td>Represents the total (metered or unmetered) minutes used by the job.</td>
 </tr>
 <tr>
+    <td><CopyableCode code="insights" /></td>
+    <td><code>object</code></td>
+    <td>The insights for the job, including the report status and test-level metrics. This field contains data only if you specified insightsTypes when you scheduled the run.</td>
+</tr>
+<tr>
     <td><CopyableCode code="instance_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the instance. (pattern: &lt;code&gt;^arn:aws:devicefarm:.+&lt;/code&gt;)</td>
@@ -202,6 +207,7 @@ counters,
 created,
 device,
 device_minutes,
+insights,
 instance_arn,
 message,
 result,

@@ -63,7 +63,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="payment_instrument_details" /></td>
     <td><code>object</code></td>
-    <td>Details specific to the instrument type</td>
+    <td>Details specific to the instrument type.</td>
 </tr>
 <tr>
     <td><CopyableCode code="payment_instrument_id" /></td>
@@ -73,7 +73,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="payment_instrument_type" /></td>
     <td><code>string</code></td>
-    <td>The type of payment instrument (EMBEDDED_CRYPTO_WALLET)</td>
+    <td>The type of payment instrument. (EMBEDDED_CRYPTO_WALLET)</td>
 </tr>
 <tr>
     <td><CopyableCode code="payment_manager_arn" /></td>
@@ -83,7 +83,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
-    <td>The current status of this payment instrument. (INITIATED, ACTIVE, FAILED, DELETED)</td>
+    <td>The current status of this payment instrument. (INITIATED, ACTIVE, FAILED, DELETED, BLOCKED)</td>
 </tr>
 <tr>
     <td><CopyableCode code="updated_at" /></td>
@@ -127,7 +127,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="payment_instrument_type" /></td>
     <td><code>string</code></td>
-    <td>The type of payment instrument (EMBEDDED_CRYPTO_WALLET)</td>
+    <td>The type of payment instrument. (EMBEDDED_CRYPTO_WALLET)</td>
 </tr>
 <tr>
     <td><CopyableCode code="payment_manager_arn" /></td>
@@ -137,7 +137,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
-    <td>The current status of this payment instrument. (INITIATED, ACTIVE, FAILED, DELETED)</td>
+    <td>The current status of this payment instrument. (INITIATED, ACTIVE, FAILED, DELETED, BLOCKED)</td>
 </tr>
 <tr>
     <td><CopyableCode code="updated_at" /></td>
@@ -174,35 +174,35 @@ The following methods are available for this resource:
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td><a href="#parameter-X-Amzn-Bedrock-AgentCore-Payments-User-Id"><code>X-Amzn-Bedrock-AgentCore-Payments-User-Id</code></a>, <a href="#parameter-X-Amzn-Bedrock-AgentCore-Payments-Agent-Name"><code>X-Amzn-Bedrock-AgentCore-Payments-Agent-Name</code></a></td>
-    <td>Get a payment instrument by ID</td>
+    <td>Get a payment instrument by ID.</td>
 </tr>
 <tr>
     <td><a href="#list_payment_instruments"><CopyableCode code="list_payment_instruments" /></a></td>
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td><a href="#parameter-X-Amzn-Bedrock-AgentCore-Payments-User-Id"><code>X-Amzn-Bedrock-AgentCore-Payments-User-Id</code></a>, <a href="#parameter-X-Amzn-Bedrock-AgentCore-Payments-Agent-Name"><code>X-Amzn-Bedrock-AgentCore-Payments-Agent-Name</code></a></td>
-    <td>List payment instruments for a manager</td>
+    <td>List payment instruments for a manager.</td>
 </tr>
 <tr>
     <td><a href="#create_payment_instrument"><CopyableCode code="create_payment_instrument" /></a></td>
     <td><CopyableCode code="insert" /></td>
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-paymentManagerArn"><code>paymentManagerArn</code></a>, <a href="#parameter-paymentConnectorId"><code>paymentConnectorId</code></a>, <a href="#parameter-paymentInstrumentType"><code>paymentInstrumentType</code></a>, <a href="#parameter-paymentInstrumentDetails"><code>paymentInstrumentDetails</code></a></td>
     <td><a href="#parameter-X-Amzn-Bedrock-AgentCore-Payments-User-Id"><code>X-Amzn-Bedrock-AgentCore-Payments-User-Id</code></a>, <a href="#parameter-X-Amzn-Bedrock-AgentCore-Payments-Agent-Name"><code>X-Amzn-Bedrock-AgentCore-Payments-Agent-Name</code></a></td>
-    <td>Create a new payment instrument for a connector</td>
+    <td>Create a new payment instrument for a connector.</td>
 </tr>
 <tr>
     <td><a href="#delete_payment_instrument"><CopyableCode code="delete_payment_instrument" /></a></td>
     <td><CopyableCode code="delete" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td><a href="#parameter-X-Amzn-Bedrock-AgentCore-Payments-User-Id"><code>X-Amzn-Bedrock-AgentCore-Payments-User-Id</code></a></td>
-    <td>Delete a payment instrument Marks a payment instrument as deleted by updating its status to DELETED. This is a soft delete operation that preserves the record in the database for audit and compliance purposes. The record remains queryable for audit purposes but is excluded from normal list and get operations. Deleting an already-deleted or non-existent instrument returns ResourceNotFoundException (404). Authorization: The caller must own the instrument (accountId, userId, and paymentManagerId must match). If authorization fails, a 403 Forbidden error is returned. Timestamp Management: The updatedAt timestamp is set to the current time, while createdAt is preserved. The version field is incremented for optimistic locking. Errors: ResourceNotFoundException: The instrument does not exist or is already deleted AccessDeniedException: The caller is not authorized to delete this instrument ValidationException: Required fields are missing or invalid InternalServerException: An unexpected server error occurred</td>
+    <td>Deletes a payment instrument. This is a soft delete operation that preserves the record for audit and compliance purposes.</td>
 </tr>
 <tr>
     <td><a href="#process_payment"><CopyableCode code="process_payment" /></a></td>
     <td><CopyableCode code="exec" /></td>
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-paymentManagerArn"><code>paymentManagerArn</code></a>, <a href="#parameter-paymentSessionId"><code>paymentSessionId</code></a>, <a href="#parameter-paymentInstrumentId"><code>paymentInstrumentId</code></a>, <a href="#parameter-paymentType"><code>paymentType</code></a>, <a href="#parameter-paymentInput"><code>paymentInput</code></a></td>
     <td><a href="#parameter-X-Amzn-Bedrock-AgentCore-Payments-User-Id"><code>X-Amzn-Bedrock-AgentCore-Payments-User-Id</code></a>, <a href="#parameter-X-Amzn-Bedrock-AgentCore-Payments-Agent-Name"><code>X-Amzn-Bedrock-AgentCore-Payments-Agent-Name</code></a></td>
-    <td>Process a payment transaction</td>
+    <td>Processes a payment using a payment instrument within a payment session.</td>
 </tr>
 </tbody>
 </table>
@@ -249,7 +249,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 >
 <TabItem value="get_payment_instrument">
 
-Get a payment instrument by ID
+Get a payment instrument by ID.
 
 ```sql
 SELECT
@@ -271,7 +271,7 @@ AND `X-Amzn-Bedrock-AgentCore-Payments-Agent-Name` = '{{ X-Amzn-Bedrock-AgentCor
 </TabItem>
 <TabItem value="list_payment_instruments">
 
-List payment instruments for a manager
+List payment instruments for a manager.
 
 ```sql
 SELECT
@@ -304,7 +304,7 @@ AND `X-Amzn-Bedrock-AgentCore-Payments-Agent-Name` = '{{ X-Amzn-Bedrock-AgentCor
 >
 <TabItem value="create_payment_instrument">
 
-Create a new payment instrument for a connector
+Create a new payment instrument for a connector.
 
 ```sql
 INSERT INTO aws.bedrock_agentcore.payment_instruments (
@@ -346,11 +346,11 @@ payment_instrument
     - name: paymentInstrumentType
       value: "{{ paymentInstrumentType }}"
       description: |
-        The type of payment instrument
+        The type of payment instrument.
       valid_values: ['EMBEDDED_CRYPTO_WALLET']
     - name: paymentInstrumentDetails
       description: |
-        Details specific to the instrument type
+        Details specific to the instrument type.
       value:
         embeddedCryptoWallet:
           network: "{{ network }}"
@@ -416,7 +416,7 @@ payment_instrument
 >
 <TabItem value="delete_payment_instrument">
 
-Delete a payment instrument Marks a payment instrument as deleted by updating its status to DELETED. This is a soft delete operation that preserves the record in the database for audit and compliance purposes. The record remains queryable for audit purposes but is excluded from normal list and get operations. Deleting an already-deleted or non-existent instrument returns ResourceNotFoundException (404). Authorization: The caller must own the instrument (accountId, userId, and paymentManagerId must match). If authorization fails, a 403 Forbidden error is returned. Timestamp Management: The updatedAt timestamp is set to the current time, while createdAt is preserved. The version field is incremented for optimistic locking. Errors: ResourceNotFoundException: The instrument does not exist or is already deleted AccessDeniedException: The caller is not authorized to delete this instrument ValidationException: Required fields are missing or invalid InternalServerException: An unexpected server error occurred
+Deletes a payment instrument. This is a soft delete operation that preserves the record for audit and compliance purposes.
 
 ```sql
 DELETE FROM aws.bedrock_agentcore.payment_instruments
@@ -438,7 +438,7 @@ AND `X-Amzn-Bedrock-AgentCore-Payments-User-Id` = '{{ X-Amzn-Bedrock-AgentCore-P
 >
 <TabItem value="process_payment">
 
-Process a payment transaction
+Processes a payment using a payment instrument within a payment session.
 
 ```sql
 EXEC aws.bedrock_agentcore.payment_instruments.process_payment 

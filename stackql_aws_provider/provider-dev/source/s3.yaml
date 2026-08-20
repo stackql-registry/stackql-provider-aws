@@ -9,12 +9,12 @@ info:
   x-apiVersion: '2006-03-01'
   x-endpointPrefix: s3
 servers:
-- url: https://s3.amazonaws.com
+- url: https://s3.{region}.amazonaws.com
   variables:
     region:
       default: us-east-1
       description: AWS region
-  description: Global endpoint for s3
+  description: Regional endpoint for s3
 paths:
   /{bucket}/{key}:
     delete:
@@ -1214,14 +1214,18 @@ paths:
         '200':
           description: Success
           content:
-            application/json:
+            application/octet-stream:
               schema:
-                $ref: '#/components/schemas/GetObjectOutputDisplay'
+                type: object
+                properties:
+                  contents:
+                    type: string
+                    description: The raw object content. Text objects only - binary content is not supported and may be mangled
+                      in transit.
       x-stackql-resource: objects
       x-stackql-method: get_object
       x-stackql-verb: SELECT
-      x-stackql-responseEnvelope: GetObjectOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
+      x-stackql-blobPayloadRead: contents
     head:
       operationId: HeadObject
       description: 'The HEAD operation retrieves metadata from an object without returning the object itself. This operation
@@ -8930,14 +8934,19 @@ paths:
         description: The account ID of the expected bucket owner. If the account ID that you provide does not match the actual
           owner of the bucket, the request fails with the HTTP status code 403 Forbidden (access denied).
       requestBody:
-        required: false
+        required: true
         content:
-          application/xml:
+          application/octet-stream:
             schema:
               type: object
+              required:
+              - contents
               properties:
-                Body:
-                  $ref: '#/components/schemas/Body'
+                contents:
+                  type: string
+                  x-stackQL-stringOnly: true
+                  description: The raw object content to write. Text objects only - binary content is not supported and may
+                    be mangled in transit.
       responses:
         '200':
           description: Success
@@ -8950,6 +8959,7 @@ paths:
       x-stackql-verb: REPLACE
       x-stackql-responseEnvelope: PutObjectOutputDisplay
       x-stackql-responseObjectKey: $.line_items
+      x-stackql-blobPayloadWrite: contents
   /{bucket}/{key}?renameObject:
     put:
       operationId: RenameObject
@@ -11692,13 +11702,6 @@ components:
       type: string
       enum:
       - ENABLED
-    GetObjectOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: '#/components/schemas/GetObjectOutputDisplay'
     GetObjectAclOutputDisplay:
       type: object
       properties:
@@ -14032,9 +14035,6 @@ components:
     WriteOffsetBytes:
       type: integer
       format: int64
-    Body:
-      type: string
-      format: byte
     PutObjectOutputDisplay:
       type: object
       properties:
@@ -14651,6 +14651,9 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/UpdateObjectEncryptionResponseDisplay'
+    Body:
+      type: string
+      format: byte
     UploadPartOutputDisplay:
       type: object
       properties:

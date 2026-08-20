@@ -480,6 +480,9 @@ version_arn
           DataSetReferences:
             - DataSetPlaceholder: "{{ DataSetPlaceholder }}"
               DataSetArn: "{{ DataSetArn }}"
+          TopicReferences:
+            - TopicPlaceholder: "{{ TopicPlaceholder }}"
+              TopicArn: "{{ TopicArn }}"
           Arn: "{{ Arn }}"
     - name: Tags
       value:
@@ -531,6 +534,9 @@ version_arn
         DataSetIdentifierDeclarations:
           - Identifier: "{{ Identifier }}"
             DataSetArn: "{{ DataSetArn }}"
+        TopicIdentifierDeclarations:
+          - Identifier: "{{ Identifier }}"
+            TopicArn: "{{ TopicArn }}"
         Sheets:
           - SheetId: "{{ SheetId }}"
             Title: "{{ Title }}"
@@ -556,6 +562,7 @@ version_arn
             Layouts: "{{ Layouts }}"
         CalculatedFields:
           - DataSetIdentifier: "{{ DataSetIdentifier }}"
+            TopicIdentifier: "{{ TopicIdentifier }}"
             Name: "{{ Name }}"
             Expression: "{{ Expression }}"
         ParameterDeclarations:
@@ -641,6 +648,7 @@ version_arn
         ColumnConfigurations:
           - Column:
               DataSetIdentifier: "{{ DataSetIdentifier }}"
+              TopicIdentifier: "{{ TopicIdentifier }}"
               ColumnName: "{{ ColumnName }}"
             FormatConfiguration:
               StringFormatConfiguration:
@@ -696,6 +704,16 @@ version_arn
           CustomActionDefaults:
             highlightOperation:
               Trigger: "{{ Trigger }}"
+          VisualMessages:
+            NoDataMessage:
+              Enabled: {{ Enabled }}
+              Title: "{{ Title }}"
+              TitleVisibility: "{{ TitleVisibility }}"
+              Description: "{{ Description }}"
+              DescriptionVisibility: "{{ DescriptionVisibility }}"
+              LinkText: "{{ LinkText }}"
+              LinkUrl: "{{ LinkUrl }}"
+              LinkVisibility: "{{ LinkVisibility }}"
         StaticFiles:
           - ImageStaticFile:
               StaticFileId: "{{ StaticFileId }}"

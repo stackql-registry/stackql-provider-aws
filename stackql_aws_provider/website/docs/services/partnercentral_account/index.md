@@ -18,7 +18,7 @@ partnercentral_account service documentation.
 
 :::info[Service Summary]
 
-total resources: __10__  
+total resources: __13__  
 
 :::
 
@@ -29,12 +29,15 @@ total resources: __10__
 <a href="/services/partnercentral_account/aws_training_certification_email_domains/">aws_training_certification_email_domains</a><br />
 <a href="/services/partnercentral_account/connection_invitations/">connection_invitations</a><br />
 <a href="/services/partnercentral_account/connection_preferences/">connection_preferences</a><br />
-<a href="/services/partnercentral_account/connections/">connections</a>
+<a href="/services/partnercentral_account/connections/">connections</a><br />
+<a href="/services/partnercentral_account/partners/">partners</a><br />
+<a href="/services/partnercentral_account/profile_update_tasks/">profile_update_tasks</a>
 </div>
 <div class="providerDocColumn">
-<a href="/services/partnercentral_account/partners/">partners</a><br />
-<a href="/services/partnercentral_account/profile_update_tasks/">profile_update_tasks</a><br />
 <a href="/services/partnercentral_account/profile_visibilities/">profile_visibilities</a><br />
+<a href="/services/partnercentral_account/qualifications_association_details/">qualifications_association_details</a><br />
+<a href="/services/partnercentral_account/qualifications_association_tasks/">qualifications_association_tasks</a><br />
+<a href="/services/partnercentral_account/qualifications_disassociation_tasks/">qualifications_disassociation_tasks</a><br />
 <a href="/services/partnercentral_account/tags/">tags</a><br />
 <a href="/services/partnercentral_account/verifications/">verifications</a>
 </div>

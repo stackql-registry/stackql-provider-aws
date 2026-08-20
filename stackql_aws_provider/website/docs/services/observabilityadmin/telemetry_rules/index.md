@@ -117,7 +117,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="resource_type" /></td>
     <td><code>string</code></td>
-    <td>The type of Amazon Web Services resource the rule applies to. (AWS::EC2::Instance, AWS::EC2::VPC, AWS::Lambda::Function, AWS::CloudTrail, AWS::EKS::Cluster, AWS::WAFv2::WebACL, AWS::ElasticLoadBalancingV2::LoadBalancer, AWS::Route53Resolver::ResolverEndpoint, AWS::BedrockAgentCore::Runtime, AWS::BedrockAgentCore::Browser, AWS::BedrockAgentCore::CodeInterpreter, AWS::BedrockAgentCore::Gateway, AWS::BedrockAgentCore::Memory, AWS::BedrockAgentCore::WorkloadIdentity, AWS::SecurityHub::Hub, AWS::CloudFront::Distribution, AWS::SecurityHub::HubV2, AWS::CloudWatch::OTelEnrichment, AWS::MSK::Cluster)</td>
+    <td>The type of Amazon Web Services resource the rule applies to. (AWS::EC2::Instance, AWS::EC2::VPC, AWS::Lambda::Function, AWS::CloudTrail, AWS::EKS::Cluster, AWS::WAFv2::WebACL, AWS::ElasticLoadBalancingV2::LoadBalancer, AWS::Route53Resolver::ResolverEndpoint, AWS::BedrockAgentCore::Runtime, AWS::BedrockAgentCore::Browser, AWS::BedrockAgentCore::CodeInterpreter, AWS::BedrockAgentCore::Gateway, AWS::BedrockAgentCore::Memory, AWS::BedrockAgentCore::WorkloadIdentity, AWS::SecurityHub::Hub, AWS::CloudFront::Distribution, AWS::SecurityHub::HubV2, AWS::CloudWatch::OTelEnrichment, AWS::MSK::Cluster, AWS::S3::Bucket, AWS::Bedrock::KnowledgeBase)</td>
 </tr>
 <tr>
     <td><CopyableCode code="rule_arn" /></td>
@@ -349,6 +349,7 @@ rule_arn
               - "{{ LogTypes }}"
           MskMonitoringParameters:
             EnhancedMonitoring: "{{ EnhancedMonitoring }}"
+          KmsKeyArn: "{{ KmsKeyArn }}"
         Scope: "{{ Scope }}"
         SelectionCriteria: "{{ SelectionCriteria }}"
         AllowFieldUpdates: {{ AllowFieldUpdates }}

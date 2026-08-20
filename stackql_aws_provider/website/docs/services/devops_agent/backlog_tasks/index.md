@@ -98,7 +98,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
-    <td>The current status of this task (PENDING_TRIAGE, LINKED, PENDING_START, IN_PROGRESS, PENDING_CUSTOMER_APPROVAL, COMPLETED, FAILED, TIMED_OUT, CANCELED)</td>
+    <td>The current status of this task (PENDING_TRIAGE, LINKED, PENDING_START, IN_PROGRESS, PENDING_CUSTOMER_APPROVAL, COMPLETED, FAILED, TIMED_OUT, CANCELED, SKIPPED)</td>
 </tr>
 <tr>
     <td><CopyableCode code="status_reason" /></td>
@@ -118,7 +118,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="task_type" /></td>
     <td><code>string</code></td>
-    <td>Types of tasks that can be created in the backlog (INVESTIGATION, EVALUATION)</td>
+    <td>Types of tasks that can be created in the backlog (INVESTIGATION, EVALUATION, RELEASE_READINESS_REVIEW, RELEASE_TESTING)</td>
 </tr>
 <tr>
     <td><CopyableCode code="title_" /></td>
@@ -197,7 +197,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
-    <td>The current status of this task (PENDING_TRIAGE, LINKED, PENDING_START, IN_PROGRESS, PENDING_CUSTOMER_APPROVAL, COMPLETED, FAILED, TIMED_OUT, CANCELED)</td>
+    <td>The current status of this task (PENDING_TRIAGE, LINKED, PENDING_START, IN_PROGRESS, PENDING_CUSTOMER_APPROVAL, COMPLETED, FAILED, TIMED_OUT, CANCELED, SKIPPED)</td>
 </tr>
 <tr>
     <td><CopyableCode code="status_reason" /></td>
@@ -217,7 +217,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="task_type" /></td>
     <td><code>string</code></td>
-    <td>Types of tasks that can be created in the backlog (INVESTIGATION, EVALUATION)</td>
+    <td>Types of tasks that can be created in the backlog (INVESTIGATION, EVALUATION, RELEASE_READINESS_REVIEW, RELEASE_TESTING)</td>
 </tr>
 <tr>
     <td><CopyableCode code="title_" /></td>
@@ -449,7 +449,7 @@ task
       value: "{{ taskType }}"
       description: |
         Types of tasks that can be created in the backlog
-      valid_values: ['INVESTIGATION', 'EVALUATION']
+      valid_values: ['INVESTIGATION', 'EVALUATION', 'RELEASE_READINESS_REVIEW', 'RELEASE_TESTING']
     - name: title
       value: "{{ title }}"
       description: |

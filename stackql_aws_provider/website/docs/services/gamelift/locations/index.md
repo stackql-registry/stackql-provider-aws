@@ -52,12 +52,12 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="location_arn" /></td>
     <td><code>string</code></td>
-    <td>The Amazon Resource Name (ARN) that is assigned to a custom location resource and uniquely identifies it. ARNs are unique across all Regions. Format is arn:aws:gamelift:<code>&lt;region&gt;</code>::location/location-a1234567-b8c9-0d1e-2fa3-b45c6d7e8912. (pattern: &lt;code&gt;^arn:.*:location\/custom-\S+&lt;/code&gt;)</td>
+    <td>The Amazon Resource Name (ARN) that is assigned to a custom location resource and uniquely identifies it. ARNs are unique across all Regions. Format is arn:aws:gamelift:<code>&lt;region&gt;</code>::location/location-a1234567-b8c9-0d1e-2fa3-b45c6d7e8912. (pattern: &lt;code&gt;^arn:.*:location\/custom-\S+$&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="location_name" /></td>
     <td><code>string</code></td>
-    <td>The location's name. (pattern: &lt;code&gt;^&#91;A-Za-z0-9\-&#93;+&lt;/code&gt;)</td>
+    <td>The location's name. (pattern: &lt;code&gt;^&#91;A-Za-z0-9\-&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="ping_beacon" /></td>
@@ -96,7 +96,7 @@ The following methods are available for this resource:
     <td><CopyableCode code="insert" /></td>
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-FleetId"><code>FleetId</code></a>, <a href="#parameter-Locations"><code>Locations</code></a></td>
     <td></td>
-    <td>This API works with the following fleet types: EC2, Container Adds remote locations to an EC2 and begins populating the new locations with instances. The new instances conform to the fleet's instance type, auto-scaling, and other configuration settings. You can't add remote locations to a fleet that resides in an Amazon Web Services Region that doesn't support multiple locations. Fleets created prior to March 2021 can't support multiple locations. To add fleet locations, specify the fleet to be updated and provide a list of one or more locations. If successful, this operation returns the list of added locations with their status set to NEW. Amazon GameLift Servers initiates the process of starting an instance in each added location. You can track the status of each new location by monitoring location creation events using DescribeFleetEvents. Learn more Setting up fleets Update fleet locations Amazon GameLift Servers service locations for managed hosting.</td>
+    <td>This API works with the following fleet types: EC2, Anywhere, Container Adds remote locations to an EC2 and begins populating the new locations with instances. The new instances conform to the fleet's instance type, auto-scaling, and other configuration settings. You can't add remote locations to a fleet that resides in an Amazon Web Services Region that doesn't support multiple locations. Fleets created prior to March 2021 can't support multiple locations. To add fleet locations, specify the fleet to be updated and provide a list of one or more locations. If successful, this operation returns the list of added locations with their status set to NEW. Amazon GameLift Servers initiates the process of starting an instance in each added location. You can track the status of each new location by monitoring location creation events using DescribeFleetEvents. Learn more Setting up fleets Update fleet locations Amazon GameLift Servers service locations for managed hosting.</td>
 </tr>
 <tr>
     <td><a href="#create_location"><CopyableCode code="create_location" /></a></td>
@@ -110,7 +110,7 @@ The following methods are available for this resource:
     <td><CopyableCode code="delete" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>This API works with the following fleet types: EC2, Container Removes locations from a multi-location fleet. When deleting a location, all game server process and all instances that are still active in the location are shut down. To delete fleet locations, identify the fleet ID and provide a list of the locations to be deleted. If successful, GameLift sets the location status to DELETING, and begins to shut down existing server processes and terminate instances in each location being deleted. When completed, the location status changes to TERMINATED. Learn more Setting up Amazon GameLift Servers fleets</td>
+    <td>This API works with the following fleet types: EC2, Anywhere, Container Removes locations from a multi-location fleet. When deleting a location, all game server process and all instances that are still active in the location are shut down. To delete fleet locations, identify the fleet ID and provide a list of the locations to be deleted. If successful, GameLift sets the location status to DELETING, and begins to shut down existing server processes and terminate instances in each location being deleted. When completed, the location status changes to TERMINATED. Learn more Setting up Amazon GameLift Servers fleets</td>
 </tr>
 <tr>
     <td><a href="#delete_location"><CopyableCode code="delete_location" /></a></td>
@@ -180,7 +180,7 @@ WHERE region = '{{ region }}' -- required
 >
 <TabItem value="create_fleet_locations">
 
-This API works with the following fleet types: EC2, Container Adds remote locations to an EC2 and begins populating the new locations with instances. The new instances conform to the fleet's instance type, auto-scaling, and other configuration settings. You can't add remote locations to a fleet that resides in an Amazon Web Services Region that doesn't support multiple locations. Fleets created prior to March 2021 can't support multiple locations. To add fleet locations, specify the fleet to be updated and provide a list of one or more locations. If successful, this operation returns the list of added locations with their status set to NEW. Amazon GameLift Servers initiates the process of starting an instance in each added location. You can track the status of each new location by monitoring location creation events using DescribeFleetEvents. Learn more Setting up fleets Update fleet locations Amazon GameLift Servers service locations for managed hosting.
+This API works with the following fleet types: EC2, Anywhere, Container Adds remote locations to an EC2 and begins populating the new locations with instances. The new instances conform to the fleet's instance type, auto-scaling, and other configuration settings. You can't add remote locations to a fleet that resides in an Amazon Web Services Region that doesn't support multiple locations. Fleets created prior to March 2021 can't support multiple locations. To add fleet locations, specify the fleet to be updated and provide a list of one or more locations. If successful, this operation returns the list of added locations with their status set to NEW. Amazon GameLift Servers initiates the process of starting an instance in each added location. You can track the status of each new location by monitoring location creation events using DescribeFleetEvents. Learn more Setting up fleets Update fleet locations Amazon GameLift Servers service locations for managed hosting.
 
 ```sql
 INSERT INTO aws.gamelift.locations (
@@ -262,7 +262,7 @@ location
 >
 <TabItem value="delete_fleet_locations">
 
-This API works with the following fleet types: EC2, Container Removes locations from a multi-location fleet. When deleting a location, all game server process and all instances that are still active in the location are shut down. To delete fleet locations, identify the fleet ID and provide a list of the locations to be deleted. If successful, GameLift sets the location status to DELETING, and begins to shut down existing server processes and terminate instances in each location being deleted. When completed, the location status changes to TERMINATED. Learn more Setting up Amazon GameLift Servers fleets
+This API works with the following fleet types: EC2, Anywhere, Container Removes locations from a multi-location fleet. When deleting a location, all game server process and all instances that are still active in the location are shut down. To delete fleet locations, identify the fleet ID and provide a list of the locations to be deleted. If successful, GameLift sets the location status to DELETING, and begins to shut down existing server processes and terminate instances in each location being deleted. When completed, the location status changes to TERMINATED. Learn more Setting up Amazon GameLift Servers fleets
 
 ```sql
 DELETE FROM aws.gamelift.locations

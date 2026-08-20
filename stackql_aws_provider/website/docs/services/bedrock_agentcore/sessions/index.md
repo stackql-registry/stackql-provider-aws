@@ -99,6 +99,13 @@ The following methods are available for this resource:
     <td>Updates a browser stream. To use this operation, you must have permissions to perform the bedrock:UpdateBrowserStream action.</td>
 </tr>
 <tr>
+    <td><a href="#delete_capacity_provider_session"><CopyableCode code="delete_capacity_provider_session" /></a></td>
+    <td><CopyableCode code="delete" /></td>
+    <td><a href="#parameter-capacity_provider_id"><code>capacity_provider_id</code></a>, <a href="#parameter-session_id"><code>session_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Deletes a session associated with a capacity provider in Amazon Bedrock AgentCore and makes the session unavailable for further use. To delete a capacity provider session, specify both the capacity provider identifier and the session ID. After you delete a session, you cannot restart it.</td>
+</tr>
+<tr>
     <td><a href="#save_browser_session_profile"><CopyableCode code="save_browser_session_profile" /></a></td>
     <td><CopyableCode code="exec" /></td>
     <td><a href="#parameter-profile_identifier"><code>profile_identifier</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-browserIdentifier"><code>browserIdentifier</code></a>, <a href="#parameter-sessionId"><code>sessionId</code></a></td>
@@ -131,6 +138,11 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     <td><code>string</code></td>
     <td>The identifier of the browser.</td>
 </tr>
+<tr id="parameter-capacity_provider_id">
+    <td><CopyableCode code="capacity_provider_id" /></td>
+    <td><code>string</code></td>
+    <td>The unique identifier of the capacity provider associated with the session.</td>
+</tr>
 <tr id="parameter-memory_id">
     <td><CopyableCode code="memory_id" /></td>
     <td><code>string</code></td>
@@ -150,6 +162,11 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     <td><CopyableCode code="sessionId" /></td>
     <td><code>string</code></td>
     <td>The identifier of the browser session.</td>
+</tr>
+<tr id="parameter-session_id">
+    <td><CopyableCode code="session_id" /></td>
+    <td><code>string</code></td>
+    <td>The unique identifier of the capacity provider session to delete.</td>
 </tr>
 <tr id="parameter-X-Amzn-Trace-Id">
     <td><CopyableCode code="X-Amzn-Trace-Id" /></td>
@@ -218,6 +235,29 @@ browser_identifier,
 session_id,
 streams,
 updated_at;
+```
+</TabItem>
+</Tabs>
+
+
+## `DELETE` examples
+
+<Tabs
+    defaultValue="delete_capacity_provider_session"
+    values={[
+        { label: 'delete_capacity_provider_session', value: 'delete_capacity_provider_session' }
+    ]}
+>
+<TabItem value="delete_capacity_provider_session">
+
+Deletes a session associated with a capacity provider in Amazon Bedrock AgentCore and makes the session unavailable for further use. To delete a capacity provider session, specify both the capacity provider identifier and the session ID. After you delete a session, you cannot restart it.
+
+```sql
+DELETE FROM aws.bedrock_agentcore.sessions
+WHERE capacity_provider_id = '{{ capacity_provider_id }}' --required
+AND session_id = '{{ session_id }}' --required
+AND region = '{{ region }}' --required
+;
 ```
 </TabItem>
 </Tabs>

@@ -63,7 +63,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="incremental_run_config" /></td>
     <td><code>object</code></td>
-    <td>Optional. An object that defines the incremental run type. This object contains only the incrementalRunType field, which appears as "Automatic" in the console. For workflows where resolutionType is ML_MATCHING or PROVIDER, incremental processing is not supported.</td>
+    <td>Optional. An object that defines the incremental run type. This object contains only the incrementalRunType field, which appears as "Automatic" in the console. For workflows where resolutionType is PROVIDER, incremental processing is not supported.</td>
 </tr>
 <tr>
     <td><CopyableCode code="input_source_config" /></td>
@@ -183,21 +183,21 @@ The following methods are available for this resource:
     <td><CopyableCode code="insert" /></td>
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-workflowName"><code>workflowName</code></a>, <a href="#parameter-inputSourceConfig"><code>inputSourceConfig</code></a>, <a href="#parameter-outputSourceConfig"><code>outputSourceConfig</code></a>, <a href="#parameter-resolutionTechniques"><code>resolutionTechniques</code></a>, <a href="#parameter-roleArn"><code>roleArn</code></a></td>
     <td></td>
-    <td>Creates a matching workflow that defines the configuration for a data processing job. The workflow name must be unique. To modify an existing workflow, use UpdateMatchingWorkflow. For workflows where resolutionType is ML_MATCHING or PROVIDER, incremental processing is not supported.</td>
+    <td>Creates a matching workflow that defines the configuration for a data processing job. The workflow name must be unique. To modify an existing workflow, use UpdateMatchingWorkflow. For workflows where resolutionType is PROVIDER, incremental processing is not supported.</td>
 </tr>
 <tr>
     <td><a href="#update_matching_workflow"><CopyableCode code="update_matching_workflow" /></a></td>
     <td><CopyableCode code="update" /></td>
     <td><a href="#parameter-workflow_name"><code>workflow_name</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-inputSourceConfig"><code>inputSourceConfig</code></a>, <a href="#parameter-outputSourceConfig"><code>outputSourceConfig</code></a>, <a href="#parameter-resolutionTechniques"><code>resolutionTechniques</code></a>, <a href="#parameter-roleArn"><code>roleArn</code></a></td>
     <td></td>
-    <td>Updates an existing matching workflow. The workflow must already exist for this operation to succeed. For workflows where resolutionType is ML_MATCHING or PROVIDER, incremental processing is not supported.</td>
+    <td>Updates an existing matching workflow. The workflow must already exist for this operation to succeed. For workflows where resolutionType is PROVIDER, incremental processing is not supported.</td>
 </tr>
 <tr>
     <td><a href="#delete_matching_workflow"><CopyableCode code="delete_matching_workflow" /></a></td>
     <td><CopyableCode code="delete" /></td>
     <td><a href="#parameter-workflow_name"><code>workflow_name</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>Deletes the MatchingWorkflow with a given name. This operation will succeed even if a workflow with the given name does not exist.</td>
+    <td>Deletes the MatchingWorkflow with a given name. This operation returns a ResourceNotFoundException if a workflow with the given name does not exist.</td>
 </tr>
 </tbody>
 </table>
@@ -302,7 +302,7 @@ AND maxResults = '{{ maxResults }}'
 >
 <TabItem value="create_matching_workflow">
 
-Creates a matching workflow that defines the configuration for a data processing job. The workflow name must be unique. To modify an existing workflow, use UpdateMatchingWorkflow. For workflows where resolutionType is ML_MATCHING or PROVIDER, incremental processing is not supported.
+Creates a matching workflow that defines the configuration for a data processing job. The workflow name must be unique. To modify an existing workflow, use UpdateMatchingWorkflow. For workflows where resolutionType is PROVIDER, incremental processing is not supported.
 
 ```sql
 INSERT INTO aws.entityresolution.matching_workflows (
@@ -381,6 +381,7 @@ workflow_name
               condition: "{{ condition }}"
           matchingConfig:
             enableTransitiveMatching: {{ enableTransitiveMatching }}
+        enableRealTimeMatching: {{ enableRealTimeMatching }}
         providerProperties:
           providerServiceArn: "{{ providerServiceArn }}"
           providerConfiguration: "{{ providerConfiguration }}"
@@ -388,7 +389,7 @@ workflow_name
             intermediateS3Path: "{{ intermediateS3Path }}"
     - name: incrementalRunConfig
       description: |
-        Optional. An object that defines the incremental run type. This object contains only the incrementalRunType field, which appears as "Automatic" in the console. For workflows where resolutionType is ML_MATCHING or PROVIDER, incremental processing is not supported.
+        Optional. An object that defines the incremental run type. This object contains only the incrementalRunType field, which appears as "Automatic" in the console. For workflows where resolutionType is PROVIDER, incremental processing is not supported.
       value:
         incrementalRunType: "{{ incrementalRunType }}"
     - name: roleArn
@@ -411,7 +412,7 @@ workflow_name
 >
 <TabItem value="update_matching_workflow">
 
-Updates an existing matching workflow. The workflow must already exist for this operation to succeed. For workflows where resolutionType is ML_MATCHING or PROVIDER, incremental processing is not supported.
+Updates an existing matching workflow. The workflow must already exist for this operation to succeed. For workflows where resolutionType is PROVIDER, incremental processing is not supported.
 
 ```sql
 UPDATE aws.entityresolution.matching_workflows
@@ -452,7 +453,7 @@ workflow_name;
 >
 <TabItem value="delete_matching_workflow">
 
-Deletes the MatchingWorkflow with a given name. This operation will succeed even if a workflow with the given name does not exist.
+Deletes the MatchingWorkflow with a given name. This operation returns a ResourceNotFoundException if a workflow with the given name does not exist.
 
 ```sql
 DELETE FROM aws.entityresolution.matching_workflows

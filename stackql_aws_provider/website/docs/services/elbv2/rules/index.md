@@ -111,7 +111,7 @@ The following methods are available for this resource:
     <td><CopyableCode code="insert" /></td>
     <td><a href="#parameter-ListenerArn"><code>ListenerArn</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td><a href="#parameter-Conditions"><code>Conditions</code></a>, <a href="#parameter-Priority"><code>Priority</code></a>, <a href="#parameter-Actions"><code>Actions</code></a>, <a href="#parameter-Tags"><code>Tags</code></a>, <a href="#parameter-Transforms"><code>Transforms</code></a></td>
-    <td>Creates a rule for the specified listener. The listener must be associated with an Application Load Balancer. Each rule consists of a priority, one or more actions, one or more conditions, and up to two optional transforms. Rules are evaluated in priority order, from the lowest value to the highest value. When the conditions for a rule are met, its actions are performed. If the conditions for no rules are met, the actions for the default rule are performed. For more information, see Listener rules in the Application Load Balancers Guide.</td>
+    <td>Creates a rule for the specified listener. The listener must be associated with an Application Load Balancer or a dual-stack Network Load Balancer. Each rule consists of a priority, one or more actions, and one or more conditions. Rules are evaluated in priority order, from the lowest value to the highest value. When the conditions for a rule are met, its actions are performed. If the conditions for no rules are met, the actions for the default rule are performed. For more information, see Listener rules in the Application Load Balancers Guide or Listener rules in the Network Load Balancers Guide.</td>
 </tr>
 <tr>
     <td><a href="#modify_rule"><CopyableCode code="modify_rule" /></a></td>
@@ -266,7 +266,7 @@ AND PageSize = '{{ PageSize }}'
 >
 <TabItem value="create_rule">
 
-Creates a rule for the specified listener. The listener must be associated with an Application Load Balancer. Each rule consists of a priority, one or more actions, one or more conditions, and up to two optional transforms. Rules are evaluated in priority order, from the lowest value to the highest value. When the conditions for a rule are met, its actions are performed. If the conditions for no rules are met, the actions for the default rule are performed. For more information, see Listener rules in the Application Load Balancers Guide.
+Creates a rule for the specified listener. The listener must be associated with an Application Load Balancer or a dual-stack Network Load Balancer. Each rule consists of a priority, one or more actions, and one or more conditions. Rules are evaluated in priority order, from the lowest value to the highest value. When the conditions for a rule are met, its actions are performed. If the conditions for no rules are met, the actions for the default rule are performed. For more information, see Listener rules in the Application Load Balancers Guide or Listener rules in the Network Load Balancers Guide.
 
 ```sql
 INSERT INTO aws.elbv2.rules (

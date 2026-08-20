@@ -87,7 +87,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="durable_config" /></td>
     <td><code>object</code></td>
-    <td>Configuration settings for durable functions, including execution timeout and retention period for execution history.</td>
+    <td>Configuration settings for durable functions, including execution timeout, retention period for execution history, and an optional ARN of the Key Management Service (KMS) customer managed key that is used to encrypt your durable execution's payload data, including input, output, and error payloads.</td>
 </tr>
 <tr>
     <td><CopyableCode code="environment" /></td>
@@ -107,12 +107,12 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="function_arn" /></td>
     <td><code>string</code></td>
-    <td>The function's Amazon Resource Name (ARN). (pattern: &lt;code&gt;arn:(aws&#91;a-zA-Z-&#93;*)?:lambda:&#91;a-z&#93;&#123;2&#125;((-gov)|(-iso(&#91;a-z&#93;?)))?-&#91;a-z&#93;+-\d&#123;1&#125;:\d&#123;12&#125;:function:&#91;a-zA-Z0-9-_\.&#93;+(:(\$LATEST(\.PUBLISHED)?|&#91;a-zA-Z0-9-_&#93;+))?&lt;/code&gt;)</td>
+    <td>The function's Amazon Resource Name (ARN). (pattern: &lt;code&gt;arn:(aws&#91;a-zA-Z-&#93;*)?:lambda:(eusc-)?&#91;a-z&#93;&#123;2&#125;((-gov)|(-iso(&#91;a-z&#93;?)))?-&#91;a-z&#93;+-\d&#123;1&#125;:\d&#123;12&#125;:function:&#91;a-zA-Z0-9-_\.&#93;+(:(\$LATEST(\.PUBLISHED)?|&#91;a-zA-Z0-9-_&#93;+))?&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="function_name" /></td>
     <td><code>string</code></td>
-    <td>The name of the function. (pattern: &lt;code&gt;(arn:(aws&#91;a-zA-Z-&#93;*)?:lambda:)?(&#91;a-z&#93;&#123;2&#125;((-gov)|(-iso(&#91;a-z&#93;?)))?-&#91;a-z&#93;+-\d&#123;1&#125;:)?(\d&#123;12&#125;:)?(function:)?(&#91;a-zA-Z0-9-_\.&#93;+)(:(\$LATEST(\.PUBLISHED)?|&#91;a-zA-Z0-9-_&#93;+))?&lt;/code&gt;)</td>
+    <td>The name of the function. (pattern: &lt;code&gt;(arn:(aws&#91;a-zA-Z-&#93;*)?:lambda:(eusc-)?&#91;a-z&#93;&#123;2&#125;((-gov)|(-iso(&#91;a-z&#93;?)))?-&#91;a-z&#93;+-\d&#123;1&#125;:\d&#123;12&#125;:|(((eusc-)?&#91;a-z&#93;&#123;2&#125;((-gov)|(-iso(&#91;a-z&#93;?)))?-&#91;a-z&#93;+-\d&#123;1&#125;:)?(\d&#123;12&#125;:)?))(function:)?(&#91;a-zA-Z0-9-_\.&#93;+)(:(\$LATEST(\.PUBLISHED)?|&#91;a-zA-Z0-9-_&#93;+))?&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="handler" /></td>
@@ -132,7 +132,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="last_modified" /></td>
     <td><code>string</code></td>
-    <td>The date and time that the function was last updated, in ISO-8601 format (YYYY-MM-DDThh:mm:ss.sTZD).</td>
+    <td>The date and time that the function was last updated, in ISO-8601 format (YYYY-MM-DDThh:mm:ss.sTZD). (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="last_update_status" /></td>
@@ -147,7 +147,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="last_update_status_reason_code" /></td>
     <td><code>string</code></td>
-    <td>The reason code for the last update that was performed on the function. (EniLimitExceeded, InsufficientRolePermissions, InvalidConfiguration, InternalError, SubnetOutOfIPAddresses, InvalidSubnet, InvalidSecurityGroup, ImageDeleted, ImageAccessDenied, InvalidImage, KMSKeyAccessDenied, KMSKeyNotFound, InvalidStateKMSKey, DisabledKMSKey, EFSIOError, EFSMountConnectivityError, EFSMountFailure, EFSMountTimeout, InvalidRuntime, InvalidZipFileException, FunctionError, VcpuLimitExceeded, CapacityProviderScalingLimitExceeded, InsufficientCapacity, EC2RequestLimitExceeded, FunctionError.InitTimeout, FunctionError.RuntimeInitError, FunctionError.ExtensionInitError, FunctionError.InvalidEntryPoint, FunctionError.InvalidWorkingDirectory, FunctionError.PermissionDenied, FunctionError.TooManyExtensions, FunctionError.InitResourceExhausted, DisallowedByVpcEncryptionControl)</td>
+    <td>The reason code for the last update that was performed on the function. (EniLimitExceeded, InsufficientRolePermissions, InvalidConfiguration, InternalError, SubnetOutOfIPAddresses, InvalidSubnet, InvalidSecurityGroup, ImageDeleted, ImageAccessDenied, InvalidImage, KMSKeyAccessDenied, KMSKeyNotFound, InvalidStateKMSKey, DisabledKMSKey, EFSIOError, EFSMountConnectivityError, EFSMountFailure, EFSMountTimeout, InvalidRuntime, InvalidZipFileException, FunctionError, ServiceQuotaExceededException, VcpuLimitExceeded, CapacityProviderScalingLimitExceeded, InsufficientCapacity, EC2RequestLimitExceeded, FunctionError.InitTimeout, FunctionError.RuntimeInitError, FunctionError.ExtensionInitError, FunctionError.InvalidEntryPoint, FunctionError.InvalidWorkingDirectory, FunctionError.PermissionDenied, FunctionError.TooManyExtensions, FunctionError.InitResourceExhausted, DisallowedByVpcEncryptionControl, DependencyError)</td>
 </tr>
 <tr>
     <td><CopyableCode code="layers" /></td>
@@ -162,7 +162,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="master_arn" /></td>
     <td><code>string</code></td>
-    <td>For Lambda@Edge functions, the ARN of the main function. (pattern: &lt;code&gt;arn:(aws&#91;a-zA-Z-&#93;*)?:lambda:&#91;a-z&#93;&#123;2&#125;((-gov)|(-iso(&#91;a-z&#93;?)))?-&#91;a-z&#93;+-\d&#123;1&#125;:\d&#123;12&#125;:function:&#91;a-zA-Z0-9-_&#93;+(:(\$LATEST|&#91;a-zA-Z0-9-_&#93;+))?&lt;/code&gt;)</td>
+    <td>For Lambda@Edge functions, the ARN of the main function. (pattern: &lt;code&gt;arn:(aws&#91;a-zA-Z-&#93;*)?:lambda:(eusc-)?&#91;a-z&#93;&#123;2&#125;((-gov)|(-iso(&#91;a-z&#93;?)))?-&#91;a-z&#93;+-\d&#123;1&#125;:\d&#123;12&#125;:function:&#91;a-zA-Z0-9-_&#93;+(:(\$LATEST|&#91;a-zA-Z0-9-_&#93;+))?&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="memory_size" /></td>
@@ -187,7 +187,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="runtime" /></td>
     <td><code>string</code></td>
-    <td>The identifier of the function's runtime. Runtime is required if the deployment package is a .zip file archive. Specifying a runtime results in an error if you're deploying a function using a container image. The following list includes deprecated runtimes. Lambda blocks creating new functions and updating existing functions shortly after each runtime is deprecated. For more information, see Runtime use after deprecation. For a list of all currently supported runtimes, see Supported runtimes. (nodejs, nodejs4.3, nodejs6.10, nodejs8.10, nodejs10.x, nodejs12.x, nodejs14.x, nodejs16.x, java8, java8.al2, java11, python2.7, python3.6, python3.7, python3.8, python3.9, dotnetcore1.0, dotnetcore2.0, dotnetcore2.1, dotnetcore3.1, dotnet6, dotnet8, nodejs4.3-edge, go1.x, ruby2.5, ruby2.7, provided, provided.al2, nodejs18.x, python3.10, java17, ruby3.2, ruby3.3, ruby3.4, python3.11, nodejs20.x, provided.al2023, python3.12, java21, python3.13, nodejs22.x, nodejs24.x, python3.14, java25, dotnet10, ruby4.0)</td>
+    <td>The identifier of the function's runtime. Runtime is required if the deployment package is a .zip file archive. Specifying a runtime results in an error if you're deploying a function using a container image. The following list includes deprecated runtimes. Lambda blocks creating new functions and updating existing functions shortly after each runtime is deprecated. For more information, see Runtime use after deprecation. For a list of all currently supported runtimes, see Supported runtimes. (nodejs, nodejs4.3, nodejs6.10, nodejs8.10, nodejs10.x, nodejs12.x, nodejs14.x, nodejs16.x, nodejs18.x, nodejs20.x, nodejs22.x, nodejs24.x, java8, java8.al2, java11, java17, java21, java25, python2.7, python3.6, python3.7, python3.8, python3.9, python3.10, python3.11, python3.12, python3.13, python3.14, dotnetcore1.0, dotnetcore2.0, dotnetcore2.1, dotnetcore3.1, dotnet6, dotnet8, dotnet10, nodejs4.3-edge, go1.x, ruby2.5, ruby2.7, ruby3.2, ruby3.3, ruby3.4, ruby4.0, provided, provided.al2, provided.al2023, nodejs26.x, python3.15, java8.al2023, java11.al2023, java17.al2023)</td>
 </tr>
 <tr>
     <td><CopyableCode code="runtime_version_config" /></td>
@@ -197,12 +197,12 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="signing_job_arn" /></td>
     <td><code>string</code></td>
-    <td>The ARN of the signing job. (pattern: &lt;code&gt;arn:(aws&#91;a-zA-Z0-9-&#93;*):(&#91;a-zA-Z0-9\-&#93;)+:(&#91;a-z&#93;&#123;2&#125;(-gov)?-&#91;a-z&#93;+-\d&#123;1&#125;)?:(\d&#123;12&#125;)?:(.*)&lt;/code&gt;)</td>
+    <td>The ARN of the signing job. (pattern: &lt;code&gt;arn:(aws&#91;a-zA-Z0-9-&#93;*):(&#91;a-zA-Z0-9\-&#93;)+:((eusc-)?&#91;a-z&#93;&#123;2&#125;((-gov)|(-iso(&#91;a-z&#93;?)))?-&#91;a-z&#93;+-\d&#123;1&#125;)?:(\d&#123;12&#125;)?:(.*)&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="signing_profile_version_arn" /></td>
     <td><code>string</code></td>
-    <td>The ARN of the signing profile version. (pattern: &lt;code&gt;arn:(aws&#91;a-zA-Z0-9-&#93;*):(&#91;a-zA-Z0-9\-&#93;)+:(&#91;a-z&#93;&#123;2&#125;(-gov)?-&#91;a-z&#93;+-\d&#123;1&#125;)?:(\d&#123;12&#125;)?:(.*)&lt;/code&gt;)</td>
+    <td>The ARN of the signing profile version. (pattern: &lt;code&gt;arn:(aws&#91;a-zA-Z0-9-&#93;*):(&#91;a-zA-Z0-9\-&#93;)+:((eusc-)?&#91;a-z&#93;&#123;2&#125;((-gov)|(-iso(&#91;a-z&#93;?)))?-&#91;a-z&#93;+-\d&#123;1&#125;)?:(\d&#123;12&#125;)?:(.*)&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="snap_start" /></td>
@@ -222,7 +222,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="state_reason_code" /></td>
     <td><code>string</code></td>
-    <td>The reason code for the function's current state. When the code is Creating, you can't invoke or modify the function. (Idle, Creating, Restoring, EniLimitExceeded, InsufficientRolePermissions, InvalidConfiguration, InternalError, SubnetOutOfIPAddresses, InvalidSubnet, InvalidSecurityGroup, ImageDeleted, ImageAccessDenied, InvalidImage, KMSKeyAccessDenied, KMSKeyNotFound, InvalidStateKMSKey, DisabledKMSKey, EFSIOError, EFSMountConnectivityError, EFSMountFailure, EFSMountTimeout, InvalidRuntime, InvalidZipFileException, FunctionError, DrainingDurableExecutions, VcpuLimitExceeded, CapacityProviderScalingLimitExceeded, InsufficientCapacity, EC2RequestLimitExceeded, FunctionError.InitTimeout, FunctionError.RuntimeInitError, FunctionError.ExtensionInitError, FunctionError.InvalidEntryPoint, FunctionError.InvalidWorkingDirectory, FunctionError.PermissionDenied, FunctionError.TooManyExtensions, FunctionError.InitResourceExhausted, DisallowedByVpcEncryptionControl)</td>
+    <td>The reason code for the function's current state. When the code is Creating, you can't invoke or modify the function. (Idle, Creating, Restoring, EniLimitExceeded, InsufficientRolePermissions, InvalidConfiguration, InternalError, SubnetOutOfIPAddresses, InvalidSubnet, InvalidSecurityGroup, ImageDeleted, ImageAccessDenied, InvalidImage, KMSKeyAccessDenied, KMSKeyNotFound, InvalidStateKMSKey, DisabledKMSKey, EFSIOError, EFSMountConnectivityError, EFSMountFailure, EFSMountTimeout, InvalidRuntime, InvalidZipFileException, FunctionError, ServiceQuotaExceededException, VcpuLimitExceeded, CapacityProviderScalingLimitExceeded, InsufficientCapacity, EC2RequestLimitExceeded, FunctionError.InitTimeout, FunctionError.RuntimeInitError, FunctionError.ExtensionInitError, FunctionError.InvalidEntryPoint, FunctionError.InvalidWorkingDirectory, FunctionError.PermissionDenied, FunctionError.TooManyExtensions, FunctionError.InitResourceExhausted, DisallowedByVpcEncryptionControl, DrainingDurableExecutions, DependencyError)</td>
 </tr>
 <tr>
     <td><CopyableCode code="tenancy_config" /></td>

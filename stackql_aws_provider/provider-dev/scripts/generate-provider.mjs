@@ -703,6 +703,8 @@ function rewriteService(spec, serviceAlias, fileName, mappings, paramPromotions)
       const pagReqTokenKey = op['x-stackql-pagination-request-token-key'];
       const pagReqTokenLoc = op['x-stackql-pagination-request-token-location'];
       const pagRespTokenKey = op['x-stackql-pagination-response-token-key'];
+      const blobReadCol = op['x-stackql-blobPayloadRead'];
+      const blobWriteCol = op['x-stackql-blobPayloadWrite'];
 
       // Strip x-stackql-* tags from the operation regardless of whether
       // we register them (keeps output clean).
@@ -717,6 +719,8 @@ function rewriteService(spec, serviceAlias, fileName, mappings, paramPromotions)
       delete op['x-stackql-pagination-request-token-key'];
       delete op['x-stackql-pagination-request-token-location'];
       delete op['x-stackql-pagination-response-token-key'];
+      delete op['x-stackql-blobPayloadRead'];
+      delete op['x-stackql-blobPayloadWrite'];
 
       if (!resource || !method || !verb) continue;
 
@@ -797,7 +801,22 @@ function rewriteService(spec, serviceAlias, fileName, mappings, paramPromotions)
       // spec's info.x-protocol hint, and emits {"line_items": [...]} -
       // one row per list element (or the singleton as a single row). No
       // per-op template body is needed; the schema drives the projection.
-      if (transformType && transformBody && responseEnvelope) {
+      if (blobReadCol) {
+        // Raw blob-payload read (rule 19, cloudflare workers-kv recipe).
+        // `overrideMediaType` + a transform routes any-sdk down its
+        // raw-body path: the whole body is read verbatim (no wire
+        // Content-Type sniffing - an S3 object's Content-Type is whatever
+        // the uploader set) and the text template wraps it as a one-row
+        // array. No objectKey and no schema_override: the transform output
+        // IS the row array, and columns come from the op's octet-stream
+        // 200 schema ({contents: string}).
+        responseBlock.overrideMediaType = 'application/json';
+        responseBlock.transform = {
+          type: 'golang_template_text_v0.3.0',
+          body: `[{"${blobReadCol}": {{ toJson . }}}]`,
+        };
+        delete responseBlock.objectKey;
+      } else if (transformType && transformBody && responseEnvelope) {
         // Scalar-list explode (stage 1 emitted a golang template + faux
         // envelope). mxj templates consume the XML body; json templates
         // consume the raw JSON body (mediaType stays application/json).
@@ -901,9 +920,25 @@ function rewriteService(spec, serviceAlias, fileName, mappings, paramPromotions)
       // activates any-sdk's schema-driven JSON-map -> XML body marshalling
       // (matches the canonical aws test-registry s3 pattern; per-op
       // request transforms remain available as overrides).
-      if (protocol === 'rest-xml' && op.requestBody) {
+      if (protocol === 'rest-xml' && op.requestBody && !blobWriteCol) {
         methodEntry.request = methodEntry.request || {};
         methodEntry.request.mediaType = 'application/xml';
+      }
+      // Raw blob-payload write (rule 19): the SQL-supplied `contents` body
+      // field is rendered verbatim as the raw request body - any-sdk's
+      // marshalBody routes transform-bearing requests through
+      // transformRequestBodyBytes BEFORE its JSON/XML-only switch, so this
+      // is the one shape a non-XML/JSON body can take without core
+      // changes. mediaType must exactly match the op's octet-stream
+      // content key so the loader binds the body schema and the
+      // required-param scan sees `contents`.
+      if (blobWriteCol) {
+        methodEntry.request = methodEntry.request || {};
+        methodEntry.request.mediaType = 'application/octet-stream';
+        methodEntry.request.transform = {
+          type: 'golang_template_json_v0.1.0',
+          body: `{{ .${blobWriteCol} }}`,
+        };
       }
 
       // For query/ec2 protocols, the `$ref` points at the GET form so
@@ -967,6 +1002,21 @@ function rewriteService(spec, serviceAlias, fileName, mappings, paramPromotions)
           verbCands[existingIdx].pinned = pinned;
         } else {
           verbCands.push({ method, requiredParams: finalSig, pinned });
+        }
+        // A raw blob-payload write is create-or-overwrite (S3 PutObject):
+        // the one method backs BOTH insert and replace. Register it as a
+        // candidate in the twin bucket too - both sqlVerbs arrays $ref the
+        // same methods entry, and each bucket's signature dedupe sees it.
+        if (blobWriteCol && (verbKey === 'insert' || verbKey === 'replace')) {
+          const twinKey = verbKey === 'insert' ? 'replace' : 'insert';
+          const twinCands = (resourceCands[twinKey] = resourceCands[twinKey] || []);
+          const twinIdx = twinCands.findIndex((c) => c.method === method);
+          if (twinIdx >= 0) {
+            twinCands[twinIdx].requiredParams = finalSig;
+            twinCands[twinIdx].pinned = pinned;
+          } else {
+            twinCands.push({ method, requiredParams: finalSig, pinned });
+          }
         }
       }
     }

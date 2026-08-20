@@ -66,6 +66,16 @@ The following fields are returned by `SELECT` queries:
     <td>The URL for the ad decision server (ADS). This includes the specification of static parameters and placeholders for dynamic parameters. AWS Elemental MediaTailor substitutes player-specific and session-specific parameters as needed when calling the ADS. Alternately, for testing, you can provide a static VAST URL. The maximum length is 25,000 characters.</td>
 </tr>
 <tr>
+    <td><CopyableCode code="ads_personalization_concurrency" /></td>
+    <td><code>object</code></td>
+    <td>The concurrency settings for ad decision server interactions. These settings control how many simultaneous ADS requests MediaTailor makes per manifest request.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="ads_personalization_timeouts" /></td>
+    <td><code>object</code></td>
+    <td>The timeout settings for ad decision server interactions. These settings control how long MediaTailor waits for ADS responses and the total time budget for ad personalization across live, VOD, and prefetch workflows.</td>
+</tr>
+<tr>
     <td><CopyableCode code="avail_suppression" /></td>
     <td><code>object</code></td>
     <td>The configuration for avail suppression, also known as ad suppression. For more information about ad suppression, see Ad Suppression.</td>
@@ -89,6 +99,16 @@ The following fields are returned by `SELECT` queries:
     <td><CopyableCode code="dash_configuration" /></td>
     <td><code>object</code></td>
     <td>The configuration for DASH content.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="dual_stack_playback_endpoint_prefix" /></td>
+    <td><code>string</code></td>
+    <td>The dual-stack (IPv4 and IPv6) URL that your player accesses to get a manifest from AWS Elemental MediaTailor. The session uses server-side reporting.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="dual_stack_session_initialization_endpoint_prefix" /></td>
+    <td><code>string</code></td>
+    <td>The dual-stack (IPv4 and IPv6) URL that your player uses to initialize a session that uses client-side reporting.</td>
 </tr>
 <tr>
     <td><CopyableCode code="function_mapping" /></td>
@@ -138,12 +158,12 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="playback_endpoint_prefix" /></td>
     <td><code>string</code></td>
-    <td>The URL that the player accesses to get a manifest from AWS Elemental MediaTailor. This session will use server-side reporting.</td>
+    <td>The URL that your player accesses to get a manifest from AWS Elemental MediaTailor. The session uses server-side reporting.</td>
 </tr>
 <tr>
     <td><CopyableCode code="session_initialization_endpoint_prefix" /></td>
     <td><code>string</code></td>
-    <td>The URL that the player uses to initialize a session that uses client-side reporting.</td>
+    <td>The URL that your player uses to initialize a session that uses client-side reporting.</td>
 </tr>
 <tr>
     <td><CopyableCode code="slate_ad_url" /></td>
@@ -195,6 +215,16 @@ The following fields are returned by `SELECT` queries:
     <td>The URL for the ad decision server (ADS). This includes the specification of static parameters and placeholders for dynamic parameters. AWS Elemental MediaTailor substitutes player-specific and session-specific parameters as needed when calling the ADS. Alternately, for testing you can provide a static VAST URL. The maximum length is 25,000 characters.</td>
 </tr>
 <tr>
+    <td><CopyableCode code="ads_personalization_concurrency" /></td>
+    <td><code>object</code></td>
+    <td>The concurrency settings for ad decision server interactions. These settings control how many simultaneous ADS requests MediaTailor makes per manifest request.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="ads_personalization_timeouts" /></td>
+    <td><code>object</code></td>
+    <td>The timeout settings for ad decision server interactions. These settings control how long MediaTailor waits for ADS responses and the total time budget for ad personalization across live, VOD, and prefetch workflows.</td>
+</tr>
+<tr>
     <td><CopyableCode code="avail_suppression" /></td>
     <td><code>object</code></td>
     <td>The configuration for avail suppression, also known as ad suppression. For more information about ad suppression, see Ad Suppression.</td>
@@ -218,6 +248,16 @@ The following fields are returned by `SELECT` queries:
     <td><CopyableCode code="dash_configuration" /></td>
     <td><code>object</code></td>
     <td>The configuration for a DASH source.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="dual_stack_playback_endpoint_prefix" /></td>
+    <td><code>string</code></td>
+    <td>The dual-stack (IPv4 and IPv6) URL that your player accesses to get a manifest from AWS Elemental MediaTailor.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="dual_stack_session_initialization_endpoint_prefix" /></td>
+    <td><code>string</code></td>
+    <td>The dual-stack (IPv4 and IPv6) URL that your player uses to initialize a session that uses client-side reporting.</td>
 </tr>
 <tr>
     <td><CopyableCode code="function_mapping" /></td>
@@ -267,12 +307,12 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="playback_endpoint_prefix" /></td>
     <td><code>string</code></td>
-    <td>The URL that the player accesses to get a manifest from AWS Elemental MediaTailor.</td>
+    <td>The URL that your player accesses to get a manifest from AWS Elemental MediaTailor.</td>
 </tr>
 <tr>
     <td><CopyableCode code="session_initialization_endpoint_prefix" /></td>
     <td><code>string</code></td>
-    <td>The URL that the player uses to initialize a session that uses client-side reporting.</td>
+    <td>The URL that your player uses to initialize a session that uses client-side reporting.</td>
 </tr>
 <tr>
     <td><CopyableCode code="slate_ad_url" /></td>
@@ -406,11 +446,15 @@ SELECT
 ad_conditioning_configuration,
 ad_decision_server_configuration,
 ad_decision_server_url,
+ads_personalization_concurrency,
+ads_personalization_timeouts,
 avail_suppression,
 bumper,
 cdn_configuration,
 configuration_aliases,
 dash_configuration,
+dual_stack_playback_endpoint_prefix,
+dual_stack_session_initialization_endpoint_prefix,
 function_mapping,
 hls_configuration,
 insertion_mode,
@@ -441,11 +485,15 @@ SELECT
 ad_conditioning_configuration,
 ad_decision_server_configuration,
 ad_decision_server_url,
+ads_personalization_concurrency,
+ads_personalization_timeouts,
 avail_suppression,
 bumper,
 cdn_configuration,
 configuration_aliases,
 dash_configuration,
+dual_stack_playback_endpoint_prefix,
+dual_stack_session_initialization_endpoint_prefix,
 function_mapping,
 hls_configuration,
 insertion_mode,
@@ -503,18 +551,24 @@ TranscodeProfileName = '{{ TranscodeProfileName }}',
 VideoContentSourceUrl = '{{ VideoContentSourceUrl }}',
 AdConditioningConfiguration = '{{ AdConditioningConfiguration }}',
 AdDecisionServerConfiguration = '{{ AdDecisionServerConfiguration }}',
-FunctionMapping = '{{ FunctionMapping }}'
+FunctionMapping = '{{ FunctionMapping }}',
+AdsPersonalizationTimeouts = '{{ AdsPersonalizationTimeouts }}',
+AdsPersonalizationConcurrency = '{{ AdsPersonalizationConcurrency }}'
 WHERE 
 region = '{{ region }}' --required
 RETURNING
 ad_conditioning_configuration,
 ad_decision_server_configuration,
 ad_decision_server_url,
+ads_personalization_concurrency,
+ads_personalization_timeouts,
 avail_suppression,
 bumper,
 cdn_configuration,
 configuration_aliases,
 dash_configuration,
+dual_stack_playback_endpoint_prefix,
+dual_stack_session_initialization_endpoint_prefix,
 function_mapping,
 hls_configuration,
 insertion_mode,

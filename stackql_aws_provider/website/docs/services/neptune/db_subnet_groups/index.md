@@ -75,6 +75,11 @@ The following fields are returned by `SELECT` queries:
     <td>Contains a list of Subnet elements.</td>
 </tr>
 <tr>
+    <td><CopyableCode code="supported_network_types" /></td>
+    <td><code>string</code></td>
+    <td>The network types supported by the DB subnet group. Valid network types include IPV4 and DUAL. A DB subnet group supports DUAL if all subnets in the group have both IPv4 and IPv6 CIDRs.</td>
+</tr>
+<tr>
     <td><CopyableCode code="vpc_id" /></td>
     <td><code>string</code></td>
     <td>Provides the VpcId of the DB subnet group.</td>
@@ -215,6 +220,7 @@ db_subnet_group_description,
 db_subnet_group_name,
 subnet_group_status,
 subnets,
+supported_network_types,
 vpc_id
 FROM aws.neptune.db_subnet_groups
 WHERE region = '{{ region }}' -- required
@@ -261,6 +267,7 @@ db_subnet_group_description,
 db_subnet_group_name,
 subnet_group_status,
 subnets,
+supported_network_types,
 vpc_id
 ;
 ```
@@ -319,6 +326,7 @@ db_subnet_group_description,
 db_subnet_group_name,
 subnet_group_status,
 subnets,
+supported_network_types,
 vpc_id;
 ```
 </TabItem>

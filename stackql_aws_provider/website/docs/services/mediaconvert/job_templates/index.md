@@ -610,7 +610,7 @@ job_template
                 DestinationSettings:
                   S3Settings: "{{ S3Settings }}"
                 Encryption:
-                  ClearLead: "{{ ClearLead }}"
+                  ClearLeadSegments: {{ ClearLeadSegments }}
                   ConstantInitializationVector: "{{ ConstantInitializationVector }}"
                   EncryptionMethod: "{{ EncryptionMethod }}"
                   InitializationVectorInManifest: "{{ InitializationVectorInManifest }}"
@@ -626,6 +626,13 @@ job_template
                   ThumbnailWidth: {{ ThumbnailWidth }}
                   TileHeight: {{ TileHeight }}
                   TileWidth: {{ TileWidth }}
+                ImageBasedTrickPlayVariants:
+                  - IntervalCadence: "{{ IntervalCadence }}"
+                    ThumbnailHeight: {{ ThumbnailHeight }}
+                    ThumbnailInterval: {{ ThumbnailInterval }}
+                    ThumbnailWidth: {{ ThumbnailWidth }}
+                    TileHeight: {{ TileHeight }}
+                    TileWidth: {{ TileWidth }}
                 ManifestCompression: "{{ ManifestCompression }}"
                 ManifestDurationFormat: "{{ ManifestDurationFormat }}"
                 MinBufferTime: {{ MinBufferTime }}
@@ -666,6 +673,13 @@ job_template
                   ThumbnailWidth: {{ ThumbnailWidth }}
                   TileHeight: {{ TileHeight }}
                   TileWidth: {{ TileWidth }}
+                ImageBasedTrickPlayVariants:
+                  - IntervalCadence: "{{ IntervalCadence }}"
+                    ThumbnailHeight: {{ ThumbnailHeight }}
+                    ThumbnailInterval: {{ ThumbnailInterval }}
+                    ThumbnailWidth: {{ ThumbnailWidth }}
+                    TileHeight: {{ TileHeight }}
+                    TileWidth: {{ TileWidth }}
                 MinBufferTime: {{ MinBufferTime }}
                 MinFinalSegmentLength: {{ MinFinalSegmentLength }}
                 MpdManifestBandwidthType: "{{ MpdManifestBandwidthType }}"
@@ -717,6 +731,13 @@ job_template
                   ThumbnailWidth: {{ ThumbnailWidth }}
                   TileHeight: {{ TileHeight }}
                   TileWidth: {{ TileWidth }}
+                ImageBasedTrickPlayVariants:
+                  - IntervalCadence: "{{ IntervalCadence }}"
+                    ThumbnailHeight: {{ ThumbnailHeight }}
+                    ThumbnailInterval: {{ ThumbnailInterval }}
+                    ThumbnailWidth: {{ ThumbnailWidth }}
+                    TileHeight: {{ TileHeight }}
+                    TileWidth: {{ TileWidth }}
                 ManifestCompression: "{{ ManifestCompression }}"
                 ManifestDurationFormat: "{{ ManifestDurationFormat }}"
                 MinFinalSegmentLength: {{ MinFinalSegmentLength }}

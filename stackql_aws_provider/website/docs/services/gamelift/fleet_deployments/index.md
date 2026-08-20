@@ -97,27 +97,27 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="fleet_id" /></td>
     <td><code>string</code></td>
-    <td>A unique identifier for the container fleet. (pattern: &lt;code&gt;^&#91;a-z&#93;*fleet-&#91;a-zA-Z0-9\-&#93;+&lt;/code&gt;)</td>
+    <td>A unique identifier for the container fleet. (pattern: &lt;code&gt;^&#91;a-z&#93;*fleet-&#91;a-zA-Z0-9\-&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="game_server_binary_arn" /></td>
     <td><code>string</code></td>
-    <td>The unique identifier for the version of the game server container group definition that is being deployed. (pattern: &lt;code&gt;&#91;a-zA-Z0-9:/-&#93;+&lt;/code&gt;)</td>
+    <td>The unique identifier for the version of the game server container group definition that is being deployed. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9:/-&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="per_instance_binary_arn" /></td>
     <td><code>string</code></td>
-    <td>The unique identifier for the version of the per-instance container group definition that is being deployed. (pattern: &lt;code&gt;&#91;a-zA-Z0-9:/-&#93;+&lt;/code&gt;)</td>
+    <td>The unique identifier for the version of the per-instance container group definition that is being deployed. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9:/-&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="rollback_game_server_binary_arn" /></td>
     <td><code>string</code></td>
-    <td>The unique identifier for the version of the game server container group definition to roll back to if deployment fails. Amazon GameLift Servers sets this property to the container group definition version that the fleet used when it was last active. (pattern: &lt;code&gt;&#91;a-zA-Z0-9:/-&#93;+&lt;/code&gt;)</td>
+    <td>The unique identifier for the version of the game server container group definition to roll back to if deployment fails. Amazon GameLift Servers sets this property to the container group definition version that the fleet used when it was last active. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9:/-&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="rollback_per_instance_binary_arn" /></td>
     <td><code>string</code></td>
-    <td>The unique identifier for the version of the per-instance container group definition to roll back to if deployment fails. Amazon GameLift Servers sets this property to the container group definition version that the fleet used when it was last active. (pattern: &lt;code&gt;&#91;a-zA-Z0-9:/-&#93;+&lt;/code&gt;)</td>
+    <td>The unique identifier for the version of the per-instance container group definition to roll back to if deployment fails. Amazon GameLift Servers sets this property to the container group definition version that the fleet used when it was last active. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9:/-&#93;+$&lt;/code&gt;)</td>
 </tr>
 </tbody>
 </table>

@@ -130,6 +130,11 @@ The following fields are returned by `SELECT` queries:
     <td>The current status of the serverless cache. The allowed values are CREATING, AVAILABLE, DELETING, CREATE-FAILED and MODIFYING.</td>
 </tr>
 <tr>
+    <td><CopyableCode code="storage_encryption_type" /></td>
+    <td><code>string</code></td>
+    <td>Indicates the type of encryption for data stored at rest in the serverless cache. Serverless caches are always encrypted at rest. The value is sse-elasticache if an ElastiCache service-managed key is used, or sse-kms if a customer-managed KMS key is used.</td>
+</tr>
+<tr>
     <td><CopyableCode code="subnet_ids" /></td>
     <td><code>string</code></td>
     <td>If no subnet IDs are given and your VPC is in us-west-1, then ElastiCache will select 2 default subnets across AZs in your VPC. For all other Regions, if no subnet IDs are given then ElastiCache will select 3 default subnets across AZs in your default VPC.</td>
@@ -290,7 +295,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-NetworkType">
     <td><CopyableCode code="NetworkType" /></td>
     <td><code>string</code></td>
-    <td>The IP protocol version used by the serverless cache. Must be either ipv4 | ipv6 | dual_stack. ipv6 is only supported with ipv6-only subnets. If not specified, defaults to ipv4, unless all provided subnets are IPv6-only, in which case it defaults to ipv6.</td>
+    <td>The IP protocol version used by the serverless cache. Must be either ipv4 | ipv6 | dual_stack. ipv6 is only supported with IPv6-only subnets. If not specified, defaults to ipv4, unless all provided subnets are IPv6-only, in which case it defaults to ipv6.</td>
 </tr>
 <tr id="parameter-NextToken">
     <td><CopyableCode code="NextToken" /></td>
@@ -370,6 +375,7 @@ security_group_ids,
 serverless_cache_name,
 snapshot_retention_limit,
 status,
+storage_encryption_type,
 subnet_ids,
 user_group_id
 FROM aws.elasticache.serverless_caches
@@ -447,6 +453,7 @@ security_group_ids,
 serverless_cache_name,
 snapshot_retention_limit,
 status,
+storage_encryption_type,
 subnet_ids,
 user_group_id
 ;
@@ -513,8 +520,8 @@ user_group_id
       description: The daily time that snapshots will be created from the new serverless cache. By default this number is populated with 0, i.e. no snapshots will be created on an automatic daily basis. Available for Valkey, Redis OSS and Serverless Memcached only.
     - name: NetworkType
       value: "{{ NetworkType }}"
-      description: The IP protocol version used by the serverless cache. Must be either ipv4 | ipv6 | dual_stack. ipv6 is only supported with ipv6-only subnets. If not specified, defaults to ipv4, unless all provided subnets are IPv6-only, in which case it defaults to ipv6.
-      description: The IP protocol version used by the serverless cache. Must be either ipv4 | ipv6 | dual_stack. ipv6 is only supported with ipv6-only subnets. If not specified, defaults to ipv4, unless all provided subnets are IPv6-only, in which case it defaults to ipv6.
+      description: The IP protocol version used by the serverless cache. Must be either ipv4 | ipv6 | dual_stack. ipv6 is only supported with IPv6-only subnets. If not specified, defaults to ipv4, unless all provided subnets are IPv6-only, in which case it defaults to ipv6.
+      description: The IP protocol version used by the serverless cache. Must be either ipv4 | ipv6 | dual_stack. ipv6 is only supported with IPv6-only subnets. If not specified, defaults to ipv4, unless all provided subnets are IPv6-only, in which case it defaults to ipv6.
 `}</CodeBlock>
 
 </TabItem>
@@ -566,6 +573,7 @@ security_group_ids,
 serverless_cache_name,
 snapshot_retention_limit,
 status,
+storage_encryption_type,
 subnet_ids,
 user_group_id;
 ```

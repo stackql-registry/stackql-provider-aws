@@ -84,7 +84,7 @@ The following methods are available for this resource:
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>Searches tags used in an Amazon Connect instance using optional search criteria.</td>
+    <td>Searches tags used in an Connect Customer instance using optional search criteria.</td>
 </tr>
 </tbody>
 </table>
@@ -120,7 +120,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 >
 <TabItem value="search_resource_tags">
 
-Searches tags used in an Amazon Connect instance using optional search criteria.
+Searches tags used in an Connect Customer instance using optional search criteria.
 
 ```sql
 SELECT

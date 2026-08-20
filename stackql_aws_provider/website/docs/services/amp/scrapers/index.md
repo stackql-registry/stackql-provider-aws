@@ -71,6 +71,11 @@ The following fields are returned by `SELECT` queries:
     <td>Where to send the metrics from a scraper.</td>
 </tr>
 <tr>
+    <td><CopyableCode code="exporters" /></td>
+    <td><code>array</code></td>
+    <td>A list of exporter configurations for a scraper. You can configure at most one Amazon OpenSearch Service domain.</td>
+</tr>
+<tr>
     <td><CopyableCode code="last_modified_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the scraper was last modified.</td>
@@ -148,6 +153,11 @@ The following fields are returned by `SELECT` queries:
     <td><CopyableCode code="destination" /></td>
     <td><code>object</code></td>
     <td>Where to send the metrics from a scraper.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="exporters" /></td>
+    <td><code>array</code></td>
+    <td>A list of exporter configurations for a scraper. You can configure at most one Amazon OpenSearch Service domain.</td>
 </tr>
 <tr>
     <td><CopyableCode code="last_modified_at" /></td>
@@ -228,7 +238,7 @@ The following methods are available for this resource:
     <td><CopyableCode code="insert" /></td>
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-scrapeConfiguration"><code>scrapeConfiguration</code></a>, <a href="#parameter-source"><code>source</code></a>, <a href="#parameter-destination"><code>destination</code></a></td>
     <td></td>
-    <td>The CreateScraper operation creates a scraper to collect metrics. A scraper pulls metrics from Prometheus-compatible sources and sends them to your Amazon Managed Service for Prometheus workspace. You can configure scrapers to collect metrics from Amazon EKS clusters, Amazon MSK clusters, or from VPC-based sources that support DNS-based service discovery. Scrapers are flexible, and can be configured to control what metrics are collected, the frequency of collection, what transformations are applied to the metrics, and more. An IAM role will be created for you that Amazon Managed Service for Prometheus uses to access the metrics in your source. You must configure this role with a policy that allows it to scrape metrics from your source. For Amazon EKS sources, see Configuring your Amazon EKS cluster in the Amazon Managed Service for Prometheus User Guide. The scrapeConfiguration parameter contains the base-64 encoded YAML configuration for the scraper. When creating a scraper, the service creates a Network Interface in each Availability Zone that are passed into CreateScraper through subnets. These network interfaces are used to connect to your source within the VPC for scraping metrics. For more information about collectors, including what metrics are collected, and how to configure the scraper, see Using an Amazon Web Services managed collector in the Amazon Managed Service for Prometheus User Guide.</td>
+    <td>Creates a scraper to collect metrics from Prometheus-compatible sources. The scraper sends the collected metrics to Amazon Managed Service for Prometheus workspaces or CloudWatch datasets. You can configure scrapers to collect metrics from Amazon EKS clusters, Amazon MSK clusters, or from VPC-based sources that support DNS-based service discovery. Scrapers are flexible. You can configure a scraper to control which metrics to collect, the frequency of collection, which transformations to apply to the metrics, and more. An IAM role will be created for you that Amazon Managed Service for Prometheus uses to access the metrics in your source. You must configure this role with a policy that allows it to scrape metrics from your source. For Amazon EKS sources, see Configuring your Amazon EKS cluster in the Amazon Managed Service for Prometheus User Guide. The scrapeConfiguration parameter contains the base-64 encoded YAML configuration for the scraper. When creating a scraper, the service creates a Network Interface in each Availability Zone that are passed into CreateScraper through subnets. These network interfaces are used to connect to your source within the VPC for scraping metrics. For more information about collectors, including what metrics are collected, and how to configure the scraper, see Using an Amazon Web Services managed collector in the Amazon Managed Service for Prometheus User Guide.</td>
 </tr>
 <tr>
     <td><a href="#update_scraper"><CopyableCode code="update_scraper" /></a></td>
@@ -312,6 +322,7 @@ alias,
 arn,
 created_at,
 destination,
+exporters,
 last_modified_at,
 role_arn,
 role_configuration,
@@ -337,6 +348,7 @@ alias,
 arn,
 created_at,
 destination,
+exporters,
 last_modified_at,
 role_arn,
 role_configuration,
@@ -367,7 +379,7 @@ AND maxResults = '{{ maxResults }}'
 >
 <TabItem value="create_scraper">
 
-The CreateScraper operation creates a scraper to collect metrics. A scraper pulls metrics from Prometheus-compatible sources and sends them to your Amazon Managed Service for Prometheus workspace. You can configure scrapers to collect metrics from Amazon EKS clusters, Amazon MSK clusters, or from VPC-based sources that support DNS-based service discovery. Scrapers are flexible, and can be configured to control what metrics are collected, the frequency of collection, what transformations are applied to the metrics, and more. An IAM role will be created for you that Amazon Managed Service for Prometheus uses to access the metrics in your source. You must configure this role with a policy that allows it to scrape metrics from your source. For Amazon EKS sources, see Configuring your Amazon EKS cluster in the Amazon Managed Service for Prometheus User Guide. The scrapeConfiguration parameter contains the base-64 encoded YAML configuration for the scraper. When creating a scraper, the service creates a Network Interface in each Availability Zone that are passed into CreateScraper through subnets. These network interfaces are used to connect to your source within the VPC for scraping metrics. For more information about collectors, including what metrics are collected, and how to configure the scraper, see Using an Amazon Web Services managed collector in the Amazon Managed Service for Prometheus User Guide.
+Creates a scraper to collect metrics from Prometheus-compatible sources. The scraper sends the collected metrics to Amazon Managed Service for Prometheus workspaces or CloudWatch datasets. You can configure scrapers to collect metrics from Amazon EKS clusters, Amazon MSK clusters, or from VPC-based sources that support DNS-based service discovery. Scrapers are flexible. You can configure a scraper to control which metrics to collect, the frequency of collection, which transformations to apply to the metrics, and more. An IAM role will be created for you that Amazon Managed Service for Prometheus uses to access the metrics in your source. You must configure this role with a policy that allows it to scrape metrics from your source. For Amazon EKS sources, see Configuring your Amazon EKS cluster in the Amazon Managed Service for Prometheus User Guide. The scrapeConfiguration parameter contains the base-64 encoded YAML configuration for the scraper. When creating a scraper, the service creates a Network Interface in each Availability Zone that are passed into CreateScraper through subnets. These network interfaces are used to connect to your source within the VPC for scraping metrics. For more information about collectors, including what metrics are collected, and how to configure the scraper, see Using an Amazon Web Services managed collector in the Amazon Managed Service for Prometheus User Guide.
 
 ```sql
 INSERT INTO aws.amp.scrapers (
@@ -378,6 +390,7 @@ destination,
 roleConfiguration,
 clientToken,
 tags,
+exporters,
 region
 )
 SELECT 
@@ -388,6 +401,7 @@ SELECT
 '{{ roleConfiguration }}',
 '{{ clientToken }}',
 '{{ tags }}',
+'{{ exporters }}',
 '{{ region }}'
 RETURNING
 arn,
@@ -435,6 +449,8 @@ tags
       value:
         ampConfiguration:
           workspaceArn: "{{ workspaceArn }}"
+        cloudWatchConfiguration:
+          datasetArn: "{{ datasetArn }}"
     - name: roleConfiguration
       description: |
         Use this structure to enable cross-account access, so that you can use a target account to access Prometheus metrics from source accounts.
@@ -449,6 +465,12 @@ tags
       value: "{{ tags }}"
       description: |
         A tag associated with a resource.
+    - name: exporters
+      description: |
+        A list of exporter configurations for a scraper. You can configure at most one Amazon OpenSearch Service domain.
+      value:
+        - openSearchConfiguration:
+            domainArn: "{{ domainArn }}"
 `}</CodeBlock>
 
 </TabItem>
@@ -474,7 +496,8 @@ alias = '{{ alias }}',
 scrapeConfiguration = '{{ scrapeConfiguration }}',
 destination = '{{ destination }}',
 roleConfiguration = '{{ roleConfiguration }}',
-clientToken = '{{ clientToken }}'
+clientToken = '{{ clientToken }}',
+exporters = '{{ exporters }}'
 WHERE 
 scraper_id = '{{ scraper_id }}' --required
 AND region = '{{ region }}' --required

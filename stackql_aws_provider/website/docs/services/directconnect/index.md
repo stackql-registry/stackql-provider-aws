@@ -18,7 +18,7 @@ directconnect service documentation.
 
 :::info[Service Summary]
 
-total resources: __20__  
+total resources: __21__  
 
 :::
 
@@ -34,10 +34,10 @@ total resources: __20__
 <a href="/services/directconnect/direct_connect_gateway_associations/">direct_connect_gateway_associations</a><br />
 <a href="/services/directconnect/direct_connect_gateway_attachments/">direct_connect_gateway_attachments</a><br />
 <a href="/services/directconnect/direct_connect_gateways/">direct_connect_gateways</a><br />
-<a href="/services/directconnect/hosted_connections/">hosted_connections</a>
+<a href="/services/directconnect/hosted_connections/">hosted_connections</a><br />
+<a href="/services/directconnect/interconnect_loas/">interconnect_loas</a>
 </div>
 <div class="providerDocColumn">
-<a href="/services/directconnect/interconnect_loas/">interconnect_loas</a><br />
 <a href="/services/directconnect/interconnects/">interconnects</a><br />
 <a href="/services/directconnect/lags/">lags</a><br />
 <a href="/services/directconnect/loas/">loas</a><br />
@@ -45,6 +45,7 @@ total resources: __20__
 <a href="/services/directconnect/router_configurations/">router_configurations</a><br />
 <a href="/services/directconnect/tags/">tags</a><br />
 <a href="/services/directconnect/virtual_gateways/">virtual_gateways</a><br />
+<a href="/services/directconnect/virtual_interface_routes/">virtual_interface_routes</a><br />
 <a href="/services/directconnect/virtual_interface_test_histories/">virtual_interface_test_histories</a><br />
 <a href="/services/directconnect/virtual_interfaces/">virtual_interfaces</a>
 </div>

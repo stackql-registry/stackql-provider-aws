@@ -18,19 +18,21 @@ gameliftstreams service documentation.
 
 :::info[Service Summary]
 
-total resources: __5__  
+total resources: __7__  
 
 :::
 
 ## Resources
 <div class="row">
 <div class="providerDocColumn">
+<a href="/services/gameliftstreams/application_shader_caches/">application_shader_caches</a><br />
 <a href="/services/gameliftstreams/applications/">applications</a><br />
 <a href="/services/gameliftstreams/stream_groups/">stream_groups</a><br />
 <a href="/services/gameliftstreams/stream_sessions/">stream_sessions</a>
 </div>
 <div class="providerDocColumn">
 <a href="/services/gameliftstreams/stream_sessions_by_accounts/">stream_sessions_by_accounts</a><br />
+<a href="/services/gameliftstreams/stream_urls/">stream_urls</a><br />
 <a href="/services/gameliftstreams/tags/">tags</a>
 </div>
 </div>

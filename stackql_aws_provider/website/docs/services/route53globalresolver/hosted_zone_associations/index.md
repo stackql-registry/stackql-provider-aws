@@ -174,9 +174,9 @@ The following methods are available for this resource:
 <tr>
     <td><a href="#list_hosted_zone_associations"><CopyableCode code="list_hosted_zone_associations" /></a></td>
     <td><CopyableCode code="select" /></td>
-    <td><a href="#parameter-resource_arn"><code>resource_arn</code></a>, <a href="#parameter-region"><code>region</code></a></td>
-    <td><a href="#parameter-max_results"><code>max_results</code></a>, <a href="#parameter-next_token"><code>next_token</code></a></td>
-    <td>Lists all hosted zone associations for a Route 53 Global Resolver resource with pagination support. Route 53 Global Resolver is a global service that supports resolvers in multiple Amazon Web Services Regions but you must specify the US East (Ohio) Region to create, update, or otherwise work with Route 53 Global Resolver resources. That is, for example, specify --region us-east-2 on Amazon Web Services CLI commands.</td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td><a href="#parameter-max_results"><code>max_results</code></a>, <a href="#parameter-next_token"><code>next_token</code></a>, <a href="#parameter-resourceArn"><code>resourceArn</code></a></td>
+    <td>Lists hosted zone associations with pagination support. Specify a DNS view through the resourceArn parameter to list the hosted zone associations for that DNS view, or omit it to list all hosted zone associations in your Amazon Web Services account. Route 53 Global Resolver is a global service that supports resolvers in multiple Amazon Web Services Regions but you must specify the US East (Ohio) Region to create, update, or otherwise work with Route 53 Global Resolver resources. That is, for example, specify --region us-east-2 on Amazon Web Services CLI commands.</td>
 </tr>
 <tr>
     <td><a href="#update_hosted_zone_association"><CopyableCode code="update_hosted_zone_association" /></a></td>
@@ -211,11 +211,6 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     <td><code>string</code></td>
     <td>AWS region (default: us-east-1)</td>
 </tr>
-<tr id="parameter-resource_arn">
-    <td><CopyableCode code="resource_arn" /></td>
-    <td><code>string</code></td>
-    <td>Amazon Resource Name (ARN) of the DNS view.</td>
-</tr>
 <tr id="parameter-max_results">
     <td><CopyableCode code="max_results" /></td>
     <td><code>integer</code></td>
@@ -225,6 +220,11 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>A pagination token used for large sets of results that can't be returned in a single response.</td>
+</tr>
+<tr id="parameter-resourceArn">
+    <td><CopyableCode code="resourceArn" /></td>
+    <td><code>string</code></td>
+    <td>The Amazon Resource Name (ARN) of the DNS view to list hosted zone associations for. This parameter is optional; if you omit it, all hosted zone associations in your Amazon Web Services account are returned.</td>
 </tr>
 </tbody>
 </table>
@@ -260,7 +260,7 @@ AND region = '{{ region }}' -- required
 </TabItem>
 <TabItem value="list_hosted_zone_associations">
 
-Lists all hosted zone associations for a Route 53 Global Resolver resource with pagination support. Route 53 Global Resolver is a global service that supports resolvers in multiple Amazon Web Services Regions but you must specify the US East (Ohio) Region to create, update, or otherwise work with Route 53 Global Resolver resources. That is, for example, specify --region us-east-2 on Amazon Web Services CLI commands.
+Lists hosted zone associations with pagination support. Specify a DNS view through the resourceArn parameter to list the hosted zone associations for that DNS view, or omit it to list all hosted zone associations in your Amazon Web Services account. Route 53 Global Resolver is a global service that supports resolvers in multiple Amazon Web Services Regions but you must specify the US East (Ohio) Region to create, update, or otherwise work with Route 53 Global Resolver resources. That is, for example, specify --region us-east-2 on Amazon Web Services CLI commands.
 
 ```sql
 SELECT
@@ -273,10 +273,10 @@ resource_arn,
 status,
 updated_at
 FROM aws.route53globalresolver.hosted_zone_associations
-WHERE resource_arn = '{{ resource_arn }}' -- required
-AND region = '{{ region }}' -- required
+WHERE region = '{{ region }}' -- required
 AND max_results = '{{ max_results }}'
 AND next_token = '{{ next_token }}'
+AND resourceArn = '{{ resourceArn }}'
 ;
 ```
 </TabItem>

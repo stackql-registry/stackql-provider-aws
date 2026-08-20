@@ -52,12 +52,12 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="allowed_tools" /></td>
     <td><code>array</code></td>
-    <td>The allowed tools of the Harness. All tools are allowed by default.</td>
+    <td>The allowed tools of the harness. All tools are allowed by default.</td>
 </tr>
 <tr>
     <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
-    <td>The ARN of the Harness. (pattern: &lt;code&gt;arn:(&#91;^:&#93;+)?:bedrock-agentcore:&#91;a-z0-9-&#93;+:&#91;0-9&#93;&#123;12&#125;:harness/&#91;a-zA-Z&#93;&#91;a-zA-Z0-9_&#93;&#123;0,39&#125;-&#91;a-zA-Z0-9&#93;&#123;10&#125;&lt;/code&gt;)</td>
+    <td>The ARN of the harness. (pattern: &lt;code&gt;arn:(&#91;^:&#93;+)?:bedrock-agentcore:&#91;a-z0-9-&#93;+:&#91;0-9&#93;&#123;12&#125;:harness/&#91;a-zA-Z&#93;&#91;a-zA-Z0-9_&#93;&#123;0,39&#125;-&#91;a-zA-Z0-9&#93;&#123;10&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="authorizer_configuration" /></td>
@@ -67,7 +67,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
-    <td>The createdAt time of the Harness.</td>
+    <td>The createdAt time of the harness.</td>
 </tr>
 <tr>
     <td><CopyableCode code="environment" /></td>
@@ -82,12 +82,12 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="environment_variables" /></td>
     <td><code>object</code></td>
-    <td>Environment variables exposed in the environment in which the Harness operates.</td>
+    <td>Environment variables exposed in the environment in which the harness operates.</td>
 </tr>
 <tr>
     <td><CopyableCode code="execution_role_arn" /></td>
     <td><code>string</code></td>
-    <td>IAM role the Harness assumes when running. (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:iam::(&#91;0-9&#93;&#123;12&#125;)?:role/.+&lt;/code&gt;)</td>
+    <td>IAM role the harness assumes when running. (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:iam::(&#91;0-9&#93;&#123;12&#125;)?:role/.+&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="failure_reason" /></td>
@@ -97,12 +97,17 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="harness_id" /></td>
     <td><code>string</code></td>
-    <td>The ID of the Harness. (pattern: &lt;code&gt;&#91;a-zA-Z&#93;&#91;a-zA-Z0-9_&#93;&#123;0,39&#125;-&#91;a-zA-Z0-9&#93;&#123;10&#125;&lt;/code&gt;)</td>
+    <td>The ID of the harness. (pattern: &lt;code&gt;&#91;a-zA-Z&#93;&#91;a-zA-Z0-9_&#93;&#123;0,39&#125;-&#91;a-zA-Z0-9&#93;&#123;10&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="harness_name" /></td>
     <td><code>string</code></td>
-    <td>The name of the Harness. (pattern: &lt;code&gt;&#91;a-zA-Z&#93;&#91;a-zA-Z0-9_&#93;&#123;0,39&#125;&lt;/code&gt;)</td>
+    <td>The name of the harness. (pattern: &lt;code&gt;&#91;a-zA-Z&#93;&#91;a-zA-Z0-9_&#93;&#123;0,39&#125;&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="harness_version" /></td>
+    <td><code>string</code></td>
+    <td>The version of the harness. Incremented on every successful UpdateHarness. (pattern: &lt;code&gt;(&#91;1-9&#93;&#91;0-9&#93;&#123;0,4&#125;)&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="max_iterations" /></td>
@@ -127,17 +132,17 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="skills" /></td>
     <td><code>array</code></td>
-    <td>The skills of the Harness.</td>
+    <td>The skills of the harness.</td>
 </tr>
 <tr>
     <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
-    <td>The status of the Harness. (CREATING, CREATE_FAILED, UPDATING, UPDATE_FAILED, READY, DELETING, DELETE_FAILED)</td>
+    <td>The status of the harness. (CREATING, CREATE_FAILED, UPDATING, UPDATE_FAILED, READY, DELETING, DELETE_FAILED)</td>
 </tr>
 <tr>
     <td><CopyableCode code="system_prompt" /></td>
     <td><code>array</code></td>
-    <td>The system prompt of the Harness.</td>
+    <td>The system prompt of the harness.</td>
 </tr>
 <tr>
     <td><CopyableCode code="timeout_seconds" /></td>
@@ -147,7 +152,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="tools" /></td>
     <td><code>array</code></td>
-    <td>The tools of the Harness.</td>
+    <td>The tools of the harness.</td>
 </tr>
 <tr>
     <td><CopyableCode code="truncation" /></td>
@@ -157,7 +162,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
-    <td>The updatedAt time of the Harness.</td>
+    <td>The updatedAt time of the harness.</td>
 </tr>
 </tbody>
 </table>
@@ -183,28 +188,28 @@ The following methods are available for this resource:
     <td><a href="#get_harness"><CopyableCode code="get_harness" /></a></td>
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-harness_id"><code>harness_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
-    <td></td>
-    <td>Operation to get a single Harness.</td>
+    <td><a href="#parameter-harnessVersion"><code>harnessVersion</code></a></td>
+    <td>Operation to get a single harness.</td>
 </tr>
 <tr>
     <td><a href="#create_harness"><CopyableCode code="create_harness" /></a></td>
     <td><CopyableCode code="insert" /></td>
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-harnessName"><code>harnessName</code></a>, <a href="#parameter-executionRoleArn"><code>executionRoleArn</code></a></td>
     <td></td>
-    <td>Operation to create a Harness.</td>
+    <td>Operation to create a harness.</td>
 </tr>
 <tr>
     <td><a href="#update_harness"><CopyableCode code="update_harness" /></a></td>
     <td><CopyableCode code="update" /></td>
     <td><a href="#parameter-harness_id"><code>harness_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>Operation to update a Harness.</td>
+    <td>Operation to update a harness.</td>
 </tr>
 <tr>
     <td><a href="#delete_harness"><CopyableCode code="delete_harness" /></a></td>
     <td><CopyableCode code="delete" /></td>
     <td><a href="#parameter-harness_id"><code>harness_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
-    <td><a href="#parameter-clientToken"><code>clientToken</code></a></td>
+    <td><a href="#parameter-clientToken"><code>clientToken</code></a>, <a href="#parameter-deleteManagedMemory"><code>deleteManagedMemory</code></a></td>
     <td>Operation to delete a Harness.</td>
 </tr>
 </tbody>
@@ -238,6 +243,16 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     <td><code>string</code></td>
     <td>A unique, case-sensitive identifier to ensure idempotency of the request.</td>
 </tr>
+<tr id="parameter-deleteManagedMemory">
+    <td><CopyableCode code="deleteManagedMemory" /></td>
+    <td><code>boolean</code></td>
+    <td>Whether to delete the managed memory on harness deletion. Default: true. If false, the memory is disassociated and becomes a regular customer-owned resource.</td>
+</tr>
+<tr id="parameter-harnessVersion">
+    <td><CopyableCode code="harnessVersion" /></td>
+    <td><code>string</code></td>
+    <td>Specific version of the harness to retrieve. If omitted, returns the current Harness configuration, including its status.</td>
+</tr>
 </tbody>
 </table>
 
@@ -251,7 +266,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 >
 <TabItem value="get_harness">
 
-Operation to get a single Harness.
+Operation to get a single harness.
 
 ```sql
 SELECT
@@ -266,6 +281,7 @@ execution_role_arn,
 failure_reason,
 harness_id,
 harness_name,
+harness_version,
 max_iterations,
 max_tokens,
 memory,
@@ -280,6 +296,7 @@ updated_at
 FROM aws.bedrock_agentcore_control.harness
 WHERE harness_id = '{{ harness_id }}' -- required
 AND region = '{{ region }}' -- required
+AND harnessVersion = '{{ harnessVersion }}'
 ;
 ```
 </TabItem>
@@ -297,7 +314,7 @@ AND region = '{{ region }}' -- required
 >
 <TabItem value="create_harness">
 
-Operation to create a Harness.
+Operation to create a harness.
 
 ```sql
 INSERT INTO aws.bedrock_agentcore_control.harness (
@@ -385,6 +402,9 @@ harness
               efsAccessPoint:
                 accessPointArn: "{{ accessPointArn }}"
                 mountPath: "{{ mountPath }}"
+              capacityProviderVolume:
+                volumeName: "{{ volumeName }}"
+                mountPath: "{{ mountPath }}"
     - name: environmentArtifact
       description: |
         The environment artifact for a harness, such as a container image containing custom dependencies.
@@ -405,6 +425,7 @@ harness
             - "{{ allowedClients }}"
           allowedScopes:
             - "{{ allowedScopes }}"
+          advertisedScopeMapping: "{{ advertisedScopeMapping }}"
           customClaims:
             - inboundTokenClaimName: "{{ inboundTokenClaimName }}"
               inboundTokenClaimValueType: "{{ inboundTokenClaimValueType }}"
@@ -437,6 +458,11 @@ harness
                   securityGroupIds: "{{ securityGroupIds }}"
                   tags: "{{ tags }}"
                   routingDomain: "{{ routingDomain }}"
+          allowedWorkloadConfiguration:
+            hostingEnvironments:
+              - arn: "{{ arn }}"
+            workloadIdentities:
+              - "{{ workloadIdentities }}"
     - name: model
       description: |
         Specification of which model to use.
@@ -446,12 +472,16 @@ harness
           maxTokens: {{ maxTokens }}
           temperature: {{ temperature }}
           topP: {{ topP }}
+          apiFormat: "{{ apiFormat }}"
+          additionalParams: "{{ additionalParams }}"
         openAiModelConfig:
           modelId: "{{ modelId }}"
           apiKeyArn: "{{ apiKeyArn }}"
           maxTokens: {{ maxTokens }}
           temperature: {{ temperature }}
           topP: {{ topP }}
+          apiFormat: "{{ apiFormat }}"
+          additionalParams: "{{ additionalParams }}"
         geminiModelConfig:
           modelId: "{{ modelId }}"
           apiKeyArn: "{{ apiKeyArn }}"
@@ -459,6 +489,15 @@ harness
           temperature: {{ temperature }}
           topP: {{ topP }}
           topK: {{ topK }}
+          additionalParams: "{{ additionalParams }}"
+        liteLlmModelConfig:
+          modelId: "{{ modelId }}"
+          apiKeyArn: "{{ apiKeyArn }}"
+          apiBase: "{{ apiBase }}"
+          maxTokens: {{ maxTokens }}
+          temperature: {{ temperature }}
+          topP: {{ topP }}
+          additionalParams: "{{ additionalParams }}"
     - name: systemPrompt
       value:
         - text: "{{ text }}"
@@ -491,6 +530,17 @@ harness
     - name: skills
       value:
         - path: "{{ path }}"
+          s3:
+            uri: "{{ uri }}"
+          git:
+            url: "{{ url }}"
+            path: "{{ path }}"
+            auth:
+              credentialArn: "{{ credentialArn }}"
+              username: "{{ username }}"
+          awsSkills:
+            paths:
+              - "{{ paths }}"
     - name: allowedTools
       value:
         - "{{ allowedTools }}"
@@ -503,6 +553,13 @@ harness
           actorId: "{{ actorId }}"
           messagesCount: {{ messagesCount }}
           retrievalConfig: "{{ retrievalConfig }}"
+        managedMemoryConfiguration:
+          arn: "{{ arn }}"
+          strategies:
+            - "{{ strategies }}"
+          eventExpiryDuration: {{ eventExpiryDuration }}
+          encryptionKeyArn: "{{ encryptionKeyArn }}"
+        disabled: "{{ disabled }}"
     - name: truncation
       description: |
         Configuration for truncating conversation context when it exceeds model limits.
@@ -539,7 +596,7 @@ harness
 >
 <TabItem value="update_harness">
 
-Operation to update a Harness.
+Operation to update a harness.
 
 ```sql
 UPDATE aws.bedrock_agentcore_control.harness
@@ -587,6 +644,7 @@ DELETE FROM aws.bedrock_agentcore_control.harness
 WHERE harness_id = '{{ harness_id }}' --required
 AND region = '{{ region }}' --required
 AND clientToken = '{{ clientToken }}'
+AND deleteManagedMemory = '{{ deleteManagedMemory }}'
 ;
 ```
 </TabItem>

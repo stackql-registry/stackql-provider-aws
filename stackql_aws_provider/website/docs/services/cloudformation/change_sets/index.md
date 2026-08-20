@@ -182,7 +182,7 @@ The following methods are available for this resource:
     <td><a href="#create_change_set"><CopyableCode code="create_change_set" /></a></td>
     <td><CopyableCode code="insert" /></td>
     <td><a href="#parameter-StackName"><code>StackName</code></a>, <a href="#parameter-ChangeSetName"><code>ChangeSetName</code></a>, <a href="#parameter-region"><code>region</code></a></td>
-    <td><a href="#parameter-TemplateBody"><code>TemplateBody</code></a>, <a href="#parameter-TemplateURL"><code>TemplateURL</code></a>, <a href="#parameter-UsePreviousTemplate"><code>UsePreviousTemplate</code></a>, <a href="#parameter-Parameters"><code>Parameters</code></a>, <a href="#parameter-Capabilities"><code>Capabilities</code></a>, <a href="#parameter-ResourceTypes"><code>ResourceTypes</code></a>, <a href="#parameter-RoleARN"><code>RoleARN</code></a>, <a href="#parameter-RollbackConfiguration"><code>RollbackConfiguration</code></a>, <a href="#parameter-NotificationARNs"><code>NotificationARNs</code></a>, <a href="#parameter-Tags"><code>Tags</code></a>, <a href="#parameter-ClientToken"><code>ClientToken</code></a>, <a href="#parameter-Description"><code>Description</code></a>, <a href="#parameter-ChangeSetType"><code>ChangeSetType</code></a>, <a href="#parameter-ResourcesToImport"><code>ResourcesToImport</code></a>, <a href="#parameter-IncludeNestedStacks"><code>IncludeNestedStacks</code></a>, <a href="#parameter-OnStackFailure"><code>OnStackFailure</code></a>, <a href="#parameter-ImportExistingResources"><code>ImportExistingResources</code></a>, <a href="#parameter-DeploymentMode"><code>DeploymentMode</code></a></td>
+    <td><a href="#parameter-TemplateBody"><code>TemplateBody</code></a>, <a href="#parameter-TemplateURL"><code>TemplateURL</code></a>, <a href="#parameter-UsePreviousTemplate"><code>UsePreviousTemplate</code></a>, <a href="#parameter-Parameters"><code>Parameters</code></a>, <a href="#parameter-Capabilities"><code>Capabilities</code></a>, <a href="#parameter-ResourceTypes"><code>ResourceTypes</code></a>, <a href="#parameter-RoleARN"><code>RoleARN</code></a>, <a href="#parameter-RollbackConfiguration"><code>RollbackConfiguration</code></a>, <a href="#parameter-NotificationARNs"><code>NotificationARNs</code></a>, <a href="#parameter-Tags"><code>Tags</code></a>, <a href="#parameter-ClientToken"><code>ClientToken</code></a>, <a href="#parameter-Description"><code>Description</code></a>, <a href="#parameter-ChangeSetType"><code>ChangeSetType</code></a>, <a href="#parameter-ResourcesToImport"><code>ResourcesToImport</code></a>, <a href="#parameter-IncludeNestedStacks"><code>IncludeNestedStacks</code></a>, <a href="#parameter-OnStackFailure"><code>OnStackFailure</code></a>, <a href="#parameter-ImportExistingResources"><code>ImportExistingResources</code></a>, <a href="#parameter-DeploymentMode"><code>DeploymentMode</code></a>, <a href="#parameter-DeploymentConfig"><code>DeploymentConfig</code></a>, <a href="#parameter-DisableValidation"><code>DisableValidation</code></a></td>
     <td>Creates a list of changes that will be applied to a stack so that you can review the changes before executing them. You can create a change set for a stack that doesn't exist or an existing stack. If you create a change set for a stack that doesn't exist, the change set shows all of the resources that CloudFormation will create. If you create a change set for an existing stack, CloudFormation compares the stack's information with the information that you submit in the change set and lists the differences. Use change sets to understand which resources CloudFormation will create or change, and how it will change resources in an existing stack, before you create or update a stack. To create a change set for a stack that doesn't exist, for the ChangeSetType parameter, specify CREATE. To create a change set for an existing stack, specify UPDATE for the ChangeSetType parameter. To create a change set for an import operation, specify IMPORT for the ChangeSetType parameter. After the CreateChangeSet call successfully completes, CloudFormation starts creating the change set. To check the status of the change set or to review it, use the DescribeChangeSet action. When you are satisfied with the changes the change set will make, execute the change set by using the ExecuteChangeSet action. CloudFormation doesn't make changes until you execute the change set. To create a change set for the entire stack hierarchy, set IncludeNestedStacks to True.</td>
 </tr>
 <tr>
@@ -250,6 +250,11 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     <td><code>string</code></td>
     <td>A unique identifier for this CreateChangeSet request. Specify this token if you plan to retry requests so that CloudFormation knows that you're not attempting to create another change set with the same name. You might retry CreateChangeSet requests to ensure that CloudFormation successfully received them.</td>
 </tr>
+<tr id="parameter-DeploymentConfig">
+    <td><CopyableCode code="DeploymentConfig" /></td>
+    <td><code>object</code></td>
+    <td>The deployment configuration for this stack operation, including the deployment mode.</td>
+</tr>
 <tr id="parameter-DeploymentMode">
     <td><CopyableCode code="DeploymentMode" /></td>
     <td><code>string</code></td>
@@ -264,6 +269,11 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     <td><CopyableCode code="DisableRollback" /></td>
     <td><code>boolean</code></td>
     <td>Preserves the state of previously provisioned resources when an operation fails. This parameter can't be specified when the OnStackFailure parameter to the CreateChangeSet API operation was specified. True - if the stack creation fails, do nothing. This is equivalent to specifying DO_NOTHING for the OnStackFailure parameter to the CreateChangeSet API operation. False - if the stack creation fails, roll back the stack. This is equivalent to specifying ROLLBACK for the OnStackFailure parameter to the CreateChangeSet API operation. Default: True</td>
+</tr>
+<tr id="parameter-DisableValidation">
+    <td><CopyableCode code="DisableValidation" /></td>
+    <td><code>boolean</code></td>
+    <td>Set to true to disable pre-deployment validations in changeset or stack operations. Default: false</td>
 </tr>
 <tr id="parameter-ImportExistingResources">
     <td><CopyableCode code="ImportExistingResources" /></td>
@@ -444,7 +454,9 @@ ResourcesToImport,
 IncludeNestedStacks,
 OnStackFailure,
 ImportExistingResources,
-DeploymentMode
+DeploymentMode,
+DeploymentConfig,
+DisableValidation
 )
 SELECT 
 '{{ StackName }}',
@@ -467,7 +479,9 @@ SELECT
 '{{ IncludeNestedStacks }}',
 '{{ OnStackFailure }}',
 '{{ ImportExistingResources }}',
-'{{ DeploymentMode }}'
+'{{ DeploymentMode }}',
+'{{ DeploymentConfig }}',
+'{{ DisableValidation }}'
 RETURNING
 line_items
 ;
@@ -559,6 +573,14 @@ line_items
       value: "{{ DeploymentMode }}"
       description: Determines how CloudFormation handles configuration drift during deployment. REVERT_DRIFT – Creates a drift-aware change set that brings actual resource states in line with template definitions. Provides a three-way comparison between actual state, previous deployment state, and desired state. For more information, see Using drift-aware change sets in the CloudFormation User Guide.
       description: Determines how CloudFormation handles configuration drift during deployment. REVERT_DRIFT – Creates a drift-aware change set that brings actual resource states in line with template definitions. Provides a three-way comparison between actual state, previous deployment state, and desired state. For more information, see Using drift-aware change sets in the CloudFormation User Guide.
+    - name: DeploymentConfig
+      value: "{{ DeploymentConfig }}"
+      description: The deployment configuration for this stack operation, including the deployment mode.
+      description: The deployment configuration for this stack operation, including the deployment mode.
+    - name: DisableValidation
+      value: {{ DisableValidation }}
+      description: Set to true to disable pre-deployment validations in changeset or stack operations. Default: false
+      description: Set to true to disable pre-deployment validations in changeset or stack operations. Default: false
 `}</CodeBlock>
 
 </TabItem>

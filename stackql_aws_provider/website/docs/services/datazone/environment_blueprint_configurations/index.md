@@ -51,6 +51,11 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
+    <td><CopyableCode code="allow_user_provided_configurations" /></td>
+    <td><code>boolean</code></td>
+    <td>Specifies whether user-provided resource configurations are allowed for the environment blueprint.</td>
+</tr>
+<tr>
     <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when this blueprint was created.</td>
@@ -96,6 +101,11 @@ The following fields are returned by `SELECT` queries:
     <td>The regional parameters of the blueprint.</td>
 </tr>
 <tr>
+    <td><CopyableCode code="resource_configurations" /></td>
+    <td><code>array</code></td>
+    <td>The resource configurations of the environment blueprint.</td>
+</tr>
+<tr>
     <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when this blueprint was upated.</td>
@@ -114,6 +124,11 @@ The following fields are returned by `SELECT` queries:
     </tr>
 </thead>
 <tbody>
+<tr>
+    <td><CopyableCode code="allow_user_provided_configurations" /></td>
+    <td><code>boolean</code></td>
+    <td>Specifies whether user-provided resource configurations are allowed for the environment blueprint.</td>
+</tr>
 <tr>
     <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
@@ -158,6 +173,11 @@ The following fields are returned by `SELECT` queries:
     <td><CopyableCode code="regional_parameters" /></td>
     <td><code>object</code></td>
     <td>The regional parameters of the environment blueprint.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="resource_configurations" /></td>
+    <td><code>array</code></td>
+    <td>The resource configurations of the environment blueprint.</td>
 </tr>
 <tr>
     <td><CopyableCode code="updated_at" /></td>
@@ -271,6 +291,7 @@ Gets the blueprint configuration in Amazon DataZone.
 
 ```sql
 SELECT
+allow_user_provided_configurations,
 created_at,
 domain_id,
 enabled_regions,
@@ -280,6 +301,7 @@ manage_access_role_arn,
 provisioning_configurations,
 provisioning_role_arn,
 regional_parameters,
+resource_configurations,
 updated_at
 FROM aws.datazone.environment_blueprint_configurations
 WHERE domain_identifier = '{{ domain_identifier }}' -- required
@@ -294,6 +316,7 @@ Lists blueprint configurations for a Amazon DataZone environment.
 
 ```sql
 SELECT
+allow_user_provided_configurations,
 created_at,
 domain_id,
 enabled_regions,
@@ -303,6 +326,7 @@ manage_access_role_arn,
 provisioning_configurations,
 provisioning_role_arn,
 regional_parameters,
+resource_configurations,
 updated_at
 FROM aws.datazone.environment_blueprint_configurations
 WHERE domain_identifier = '{{ domain_identifier }}' -- required
@@ -335,6 +359,8 @@ manageAccessRoleArn = '{{ manageAccessRoleArn }}',
 environmentRolePermissionBoundary = '{{ environmentRolePermissionBoundary }}',
 enabledRegions = '{{ enabledRegions }}',
 regionalParameters = '{{ regionalParameters }}',
+resourceConfigurations = '{{ resourceConfigurations }}',
+allowUserProvidedConfigurations = {{ allowUserProvidedConfigurations }},
 globalParameters = '{{ globalParameters }}',
 provisioningConfigurations = '{{ provisioningConfigurations }}'
 WHERE 
@@ -343,6 +369,7 @@ AND environment_blueprint_identifier = '{{ environment_blueprint_identifier }}' 
 AND region = '{{ region }}' --required
 AND enabledRegions = '{{ enabledRegions }}' --required
 RETURNING
+allow_user_provided_configurations,
 created_at,
 domain_id,
 enabled_regions,
@@ -352,6 +379,7 @@ manage_access_role_arn,
 provisioning_configurations,
 provisioning_role_arn,
 regional_parameters,
+resource_configurations,
 updated_at;
 ```
 </TabItem>

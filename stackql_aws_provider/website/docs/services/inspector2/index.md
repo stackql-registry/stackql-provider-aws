@@ -18,7 +18,7 @@ inspector2 service documentation.
 
 :::info[Service Summary]
 
-total resources: __33__  
+total resources: __35__  
 
 :::
 
@@ -40,10 +40,12 @@ total resources: __33__
 <a href="/services/inspector2/code_security_scans/">code_security_scans</a><br />
 <a href="/services/inspector2/code_snippets/">code_snippets</a><br />
 <a href="/services/inspector2/configurations/">configurations</a><br />
-<a href="/services/inspector2/coverage_statistics/">coverage_statistics</a><br />
-<a href="/services/inspector2/coverages/">coverages</a>
+<a href="/services/inspector2/connector_scan_configurations/">connector_scan_configurations</a><br />
+<a href="/services/inspector2/connectors/">connectors</a><br />
+<a href="/services/inspector2/coverage_statistics/">coverage_statistics</a>
 </div>
 <div class="providerDocColumn">
+<a href="/services/inspector2/coverages/">coverages</a><br />
 <a href="/services/inspector2/delegated_admin_accounts/">delegated_admin_accounts</a><br />
 <a href="/services/inspector2/ec2_deep_inspection_configurations/">ec2_deep_inspection_configurations</a><br />
 <a href="/services/inspector2/encryption_keys/">encryption_keys</a><br />

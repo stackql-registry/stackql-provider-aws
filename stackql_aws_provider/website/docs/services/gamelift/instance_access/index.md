@@ -57,17 +57,17 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="fleet_id" /></td>
     <td><code>string</code></td>
-    <td>A unique identifier for the fleet containing the instance to be accessed. (pattern: &lt;code&gt;^&#91;a-z&#93;*fleet-&#91;a-zA-Z0-9\-&#93;+&lt;/code&gt;)</td>
+    <td>A unique identifier for the fleet containing the instance to be accessed. (pattern: &lt;code&gt;^&#91;a-z&#93;*fleet-&#91;a-zA-Z0-9\-&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="instance_id" /></td>
     <td><code>string</code></td>
-    <td>A unique identifier for the instance to be accessed. (pattern: &lt;code&gt;&#91;a-zA-Z0-9\.-&#93;+&lt;/code&gt;)</td>
+    <td>A unique identifier for the instance to be accessed. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9\.-&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="ip_address" /></td>
     <td><code>string</code></td>
-    <td>IP address assigned to the instance. (pattern: &lt;code&gt;^&#91;0-9A-Fa-f\:\.&#93;+&lt;/code&gt;)</td>
+    <td>IP address assigned to the instance. (pattern: &lt;code&gt;^&#91;0-9A-Fa-f\:\.&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="operating_system" /></td>

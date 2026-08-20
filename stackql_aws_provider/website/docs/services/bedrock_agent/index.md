@@ -18,7 +18,7 @@ bedrock_agent service documentation.
 
 :::info[Service Summary]
 
-total resources: __17__  
+total resources: __18__  
 
 :::
 
@@ -43,6 +43,7 @@ total resources: __17__
 <a href="/services/bedrock_agent/knowledge_base_documents/">knowledge_base_documents</a><br />
 <a href="/services/bedrock_agent/knowledge_bases/">knowledge_bases</a><br />
 <a href="/services/bedrock_agent/prompts/">prompts</a><br />
+<a href="/services/bedrock_agent/resource_policies/">resource_policies</a><br />
 <a href="/services/bedrock_agent/tags/">tags</a>
 </div>
 </div>

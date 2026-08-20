@@ -105,6 +105,11 @@ The following fields are returned by `SELECT` queries:
     <td>Details about the metrics status for trained model inference job.</td>
 </tr>
 <tr>
+    <td><CopyableCode code="ml_model_inference_payer_account_id" /></td>
+    <td><code>string</code></td>
+    <td>The account ID of the member that is responsible for paying for model inference costs. (pattern: &lt;code&gt;&#91;0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
+</tr>
+<tr>
     <td><CopyableCode code="output_configuration" /></td>
     <td><code>object</code></td>
     <td>Returns output configuration information for the trained model inference job.</td>
@@ -235,6 +240,7 @@ logs_status_details,
 membership_identifier,
 metrics_status,
 metrics_status_details,
+ml_model_inference_payer_account_id,
 output_configuration,
 status,
 trained_model_arn,

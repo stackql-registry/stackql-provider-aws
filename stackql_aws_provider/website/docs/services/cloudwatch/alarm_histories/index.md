@@ -67,7 +67,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="alarm_type" /></td>
     <td><code>string</code></td>
-    <td>The type of alarm, either metric alarm or composite alarm. (CompositeAlarm, MetricAlarm)</td>
+    <td>The type of alarm, either metric alarm or composite alarm. (CompositeAlarm, MetricAlarm, LogAlarm)</td>
 </tr>
 <tr>
     <td><CopyableCode code="history_data" /></td>

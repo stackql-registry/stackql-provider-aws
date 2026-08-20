@@ -57,7 +57,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="requests" /></td>
     <td><code>array</code></td>
-    <td>A paginated list of metadata model conversions.</td>
+    <td>A paginated list of metadata model conversion requests. DMS never populates the ExportSqlDetails field for this operation.</td>
 </tr>
 </tbody>
 </table>
@@ -84,7 +84,7 @@ The following methods are available for this resource:
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>Returns a paginated list of metadata model conversions for a migration project.</td>
+    <td>Returns a paginated list of metadata model conversion requests for a migration project, initiated by StartMetadataModelConversion. To cancel a queued or in-progress request, call CancelMetadataModelConversion. Required permissions: dms:ListMetadataModelConversions. For more information, see Actions, resources, and condition keys for Database Migration Service.</td>
 </tr>
 </tbody>
 </table>
@@ -120,7 +120,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 >
 <TabItem value="describe_metadata_model_conversions">
 
-Returns a paginated list of metadata model conversions for a migration project.
+Returns a paginated list of metadata model conversion requests for a migration project, initiated by StartMetadataModelConversion. To cancel a queued or in-progress request, call CancelMetadataModelConversion. Required permissions: dms:ListMetadataModelConversions. For more information, see Actions, resources, and condition keys for Database Migration Service.
 
 ```sql
 SELECT

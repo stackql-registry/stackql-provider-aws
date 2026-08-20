@@ -58,7 +58,17 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="api_key_secret_arn" /></td>
     <td><code>object</code></td>
-    <td>Contains information about a secret in AWS Secrets Manager.</td>
+    <td>Contains information about a secret in Amazon Web Services Secrets Manager.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="api_key_secret_json_key" /></td>
+    <td><code>string</code></td>
+    <td>The JSON key used to extract the API key value from the Amazon Web Services Secrets Manager secret.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="api_key_secret_source" /></td>
+    <td><code>string</code></td>
+    <td>The source type of the API key secret. Either MANAGED if the secret is managed by the service, or EXTERNAL if managed by the user in Amazon Web Services Secrets Manager. (MANAGED, EXTERNAL)</td>
 </tr>
 <tr>
     <td><CopyableCode code="created_time" /></td>
@@ -146,14 +156,14 @@ The following methods are available for this resource:
 <tr>
     <td><a href="#create_api_key_credential_provider"><CopyableCode code="create_api_key_credential_provider" /></a></td>
     <td><CopyableCode code="insert" /></td>
-    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-name"><code>name</code></a>, <a href="#parameter-apiKey"><code>apiKey</code></a></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-name"><code>name</code></a></td>
     <td></td>
     <td>Creates a new API key credential provider.</td>
 </tr>
 <tr>
     <td><a href="#update_api_key_credential_provider"><CopyableCode code="update_api_key_credential_provider" /></a></td>
     <td><CopyableCode code="update" /></td>
-    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-name"><code>name</code></a>, <a href="#parameter-apiKey"><code>apiKey</code></a></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-name"><code>name</code></a></td>
     <td></td>
     <td>Updates an existing API key credential provider.</td>
 </tr>
@@ -205,6 +215,8 @@ Retrieves information about an API key credential provider.
 SELECT
 name,
 api_key_secret_arn,
+api_key_secret_json_key,
+api_key_secret_source,
 created_time,
 credential_provider_arn,
 last_updated_time
@@ -248,17 +260,23 @@ Creates a new API key credential provider.
 INSERT INTO aws.bedrock_agentcore_control.api_key_credential_providers (
 name,
 apiKey,
+apiKeySecretConfig,
+apiKeySecretSource,
 tags,
 region
 )
 SELECT 
 '{{ name }}' /* required */,
-'{{ apiKey }}' /* required */,
+'{{ apiKey }}',
+'{{ apiKeySecretConfig }}',
+'{{ apiKeySecretSource }}',
 '{{ tags }}',
 '{{ region }}'
 RETURNING
 name,
 api_key_secret_arn,
+api_key_secret_json_key,
+api_key_secret_source,
 credential_provider_arn
 ;
 ```
@@ -275,6 +293,15 @@ credential_provider_arn
       value: "{{ name }}"
     - name: apiKey
       value: "{{ apiKey }}"
+    - name: apiKeySecretConfig
+      description: |
+        Contains a reference to a secret stored in Amazon Web Services Secrets Manager.
+      value:
+        secretId: "{{ secretId }}"
+        jsonKey: "{{ jsonKey }}"
+    - name: apiKeySecretSource
+      value: "{{ apiKeySecretSource }}"
+      valid_values: ['MANAGED', 'EXTERNAL']
     - name: tags
       value: "{{ tags }}"
 `}</CodeBlock>
@@ -299,14 +326,17 @@ Updates an existing API key credential provider.
 UPDATE aws.bedrock_agentcore_control.api_key_credential_providers
 SET 
 name = '{{ name }}',
-apiKey = '{{ apiKey }}'
+apiKey = '{{ apiKey }}',
+apiKeySecretConfig = '{{ apiKeySecretConfig }}',
+apiKeySecretSource = '{{ apiKeySecretSource }}'
 WHERE 
 region = '{{ region }}' --required
 AND name = '{{ name }}' --required
-AND apiKey = '{{ apiKey }}' --required
 RETURNING
 name,
 api_key_secret_arn,
+api_key_secret_json_key,
+api_key_secret_source,
 created_time,
 credential_provider_arn,
 last_updated_time;

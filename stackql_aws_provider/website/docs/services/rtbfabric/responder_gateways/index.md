@@ -86,9 +86,9 @@ The following fields are returned by `SELECT` queries:
     <td>The type of gateway. (EXTERNAL, INTERNAL)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="inbound_links_count" /></td>
+    <td><CopyableCode code="links_requested_count" /></td>
     <td><code>integer</code></td>
-    <td>The count of inbound links for the responder gateway.</td>
+    <td>The count of requested links waiting for the responder gateway to accept or reject.</td>
 </tr>
 <tr>
     <td><CopyableCode code="listener_config" /></td>
@@ -285,7 +285,7 @@ domain_name,
 external_inbound_endpoint,
 gateway_id,
 gateway_type,
-inbound_links_count,
+links_requested_count,
 listener_config,
 managed_endpoint_configuration,
 port,

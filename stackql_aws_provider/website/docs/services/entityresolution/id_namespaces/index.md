@@ -202,7 +202,7 @@ The following methods are available for this resource:
     <td><CopyableCode code="delete" /></td>
     <td><a href="#parameter-id_namespace_name"><code>id_namespace_name</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>Deletes the IdNamespace with a given name.</td>
+    <td>Deletes the IdNamespace with a given name. This operation returns a ResourceNotFoundException if an ID namespace with the given name does not exist.</td>
 </tr>
 </tbody>
 </table>
@@ -435,7 +435,7 @@ updated_at;
 >
 <TabItem value="delete_id_namespace">
 
-Deletes the IdNamespace with a given name.
+Deletes the IdNamespace with a given name. This operation returns a ResourceNotFoundException if an ID namespace with the given name does not exist.
 
 ```sql
 DELETE FROM aws.entityresolution.id_namespaces

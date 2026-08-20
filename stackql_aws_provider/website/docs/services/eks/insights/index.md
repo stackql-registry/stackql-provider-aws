@@ -68,7 +68,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="category" /></td>
     <td><code>string</code></td>
-    <td>The category of the insight. (UPGRADE_READINESS, MISCONFIGURATION)</td>
+    <td>The category of the insight. (UPGRADE_READINESS, MISCONFIGURATION, ROLLBACK_READINESS)</td>
 </tr>
 <tr>
     <td><CopyableCode code="category_specific_summary" /></td>
@@ -137,7 +137,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="category" /></td>
     <td><code>string</code></td>
-    <td>The category of the insight. (UPGRADE_READINESS, MISCONFIGURATION)</td>
+    <td>The category of the insight. (UPGRADE_READINESS, MISCONFIGURATION, ROLLBACK_READINESS)</td>
 </tr>
 <tr>
     <td><CopyableCode code="description" /></td>

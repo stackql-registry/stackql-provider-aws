@@ -136,6 +136,11 @@ The following fields are returned by `SELECT` queries:
     <td>The size of the window (in seconds) to create a window of the live stream that's available for on-demand viewing. Viewers can start-over or catch-up on content that falls within the window.</td>
 </tr>
 <tr>
+    <td><CopyableCode code="stream_name_output_mode" /></td>
+    <td><code>string</code></td>
+    <td>The output mode for stream names in egress manifests for this origin endpoint. (INDEX, PASSTHROUGH_NAME)</td>
+</tr>
+<tr>
     <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>The comma-separated list of tag key:value pairs assigned to the origin endpoint.</td>
@@ -223,6 +228,11 @@ The following fields are returned by `SELECT` queries:
     <td><CopyableCode code="origin_endpoint_name" /></td>
     <td><code>string</code></td>
     <td>The name that describes the origin endpoint. The name is the primary identifier for the origin endpoint, and and must be unique for your account in the AWS Region and channel. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_-&#93;+&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="stream_name_output_mode" /></td>
+    <td><code>string</code></td>
+    <td>The output mode for stream names in egress manifests for this origin endpoint. (INDEX, PASSTHROUGH_NAME)</td>
 </tr>
 <tr>
     <td><CopyableCode code="uri_separator" /></td>
@@ -394,6 +404,7 @@ origin_endpoint_name,
 reset_at,
 segment,
 startover_window_seconds,
+stream_name_output_mode,
 tags,
 uri_separator
 FROM aws.mediapackagev2.origin_endpoints
@@ -423,6 +434,7 @@ low_latency_hls_manifests,
 modified_at,
 mss_manifests,
 origin_endpoint_name,
+stream_name_output_mode,
 uri_separator
 FROM aws.mediapackagev2.origin_endpoints
 WHERE channel_group_name = '{{ channel_group_name }}' -- required
@@ -462,6 +474,7 @@ DashManifests,
 MssManifests,
 ForceEndpointErrorConfiguration,
 UriSeparator,
+StreamNameOutputMode,
 Tags,
 channel_group_name,
 channel_name,
@@ -480,6 +493,7 @@ SELECT
 '{{ MssManifests }}',
 '{{ ForceEndpointErrorConfiguration }}',
 '{{ UriSeparator }}',
+'{{ StreamNameOutputMode }}',
 '{{ Tags }}',
 '{{ channel_group_name }}',
 '{{ channel_name }}',
@@ -502,6 +516,7 @@ mss_manifests,
 origin_endpoint_name,
 segment,
 startover_window_seconds,
+stream_name_output_mode,
 tags,
 uri_separator
 ;
@@ -559,6 +574,7 @@ uri_separator
             RoleArn: "{{ RoleArn }}"
             Url: "{{ Url }}"
             CertificateArn: "{{ CertificateArn }}"
+        OutputTimestampMode: "{{ OutputTimestampMode }}"
     - name: Description
       value: "{{ Description }}"
     - name: StartoverWindowSeconds
@@ -645,6 +661,7 @@ uri_separator
               - ReportingUrl: "{{ ReportingUrl }}"
                 Probability: {{ Probability }}
           Compactness: "{{ Compactness }}"
+          AudioTimelinePattern: "{{ AudioTimelinePattern }}"
           SubtitleConfiguration:
             TtmlConfiguration:
               TtmlProfile: "{{ TtmlProfile }}"
@@ -672,6 +689,9 @@ uri_separator
     - name: UriSeparator
       value: "{{ UriSeparator }}"
       valid_values: ['UNDERSCORE', 'HYPHEN']
+    - name: StreamNameOutputMode
+      value: "{{ StreamNameOutputMode }}"
+      valid_values: ['INDEX', 'PASSTHROUGH_NAME']
     - name: Tags
       value: "{{ Tags }}"
     - name: x-amzn-client-token
@@ -708,7 +728,8 @@ LowLatencyHlsManifests = '{{ LowLatencyHlsManifests }}',
 DashManifests = '{{ DashManifests }}',
 MssManifests = '{{ MssManifests }}',
 ForceEndpointErrorConfiguration = '{{ ForceEndpointErrorConfiguration }}',
-UriSeparator = '{{ UriSeparator }}'
+UriSeparator = '{{ UriSeparator }}',
+StreamNameOutputMode = '{{ StreamNameOutputMode }}'
 WHERE 
 channel_group_name = '{{ channel_group_name }}' --required
 AND channel_name = '{{ channel_name }}' --required
@@ -733,6 +754,7 @@ mss_manifests,
 origin_endpoint_name,
 segment,
 startover_window_seconds,
+stream_name_output_mode,
 tags,
 uri_separator;
 ```

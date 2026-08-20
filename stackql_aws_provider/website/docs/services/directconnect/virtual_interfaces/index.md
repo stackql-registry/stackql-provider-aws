@@ -84,7 +84,7 @@ The following methods are available for this resource:
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>Displays all virtual interfaces for an Amazon Web Services account. Virtual interfaces deleted fewer than 15 minutes before you make the request are also returned. If you specify a connection ID, only the virtual interfaces associated with the connection are returned. If you specify a virtual interface ID, then only a single virtual interface is returned. A virtual interface (VLAN) transmits the traffic between the Direct Connect location and the customer network. If you're using an asn, the response includes ASN value in both the asn and asnLong fields. If you're using asnLong, the response returns a value of 0 (zero) for the asn attribute because it exceeds the highest ASN value of 2,147,483,647 that it can support</td>
+    <td>Displays all virtual interfaces for an Amazon Web Services account. Virtual interfaces deleted fewer than 15 minutes before you make the request are also returned. If you specify a connection ID, only the virtual interfaces associated with the connection are returned. If you specify a virtual interface ID, then only a single virtual interface is returned. A virtual interface (VLAN) transmits the traffic between the Direct Connect location and the customer network. If you're using an asn, the response includes the ASN value in both the asn and asnLong fields. If you're using asnLong, the response returns a value of 0 (zero) for the asn attribute because it exceeds the highest ASN value of 2,147,483,647 that it can support</td>
 </tr>
 <tr>
     <td><a href="#create_private_virtual_interface"><CopyableCode code="create_private_virtual_interface" /></a></td>
@@ -211,7 +211,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 >
 <TabItem value="describe_virtual_interfaces">
 
-Displays all virtual interfaces for an Amazon Web Services account. Virtual interfaces deleted fewer than 15 minutes before you make the request are also returned. If you specify a connection ID, only the virtual interfaces associated with the connection are returned. If you specify a virtual interface ID, then only a single virtual interface is returned. A virtual interface (VLAN) transmits the traffic between the Direct Connect location and the customer network. If you're using an asn, the response includes ASN value in both the asn and asnLong fields. If you're using asnLong, the response returns a value of 0 (zero) for the asn attribute because it exceeds the highest ASN value of 2,147,483,647 that it can support
+Displays all virtual interfaces for an Amazon Web Services account. Virtual interfaces deleted fewer than 15 minutes before you make the request are also returned. If you specify a connection ID, only the virtual interfaces associated with the connection are returned. If you specify a virtual interface ID, then only a single virtual interface is returned. A virtual interface (VLAN) transmits the traffic between the Direct Connect location and the customer network. If you're using an asn, the response includes the ASN value in both the asn and asnLong fields. If you're using asnLong, the response returns a value of 0 (zero) for the asn attribute because it exceeds the highest ASN value of 2,147,483,647 that it can support
 
 ```sql
 SELECT
@@ -268,6 +268,7 @@ jumbo_frame_capable,
 location,
 mtu,
 owner_account,
+rate_limit,
 region,
 route_filter_prefixes,
 site_link_enabled,
@@ -313,6 +314,7 @@ jumbo_frame_capable,
 location,
 mtu,
 owner_account,
+rate_limit,
 region,
 route_filter_prefixes,
 site_link_enabled,
@@ -376,6 +378,7 @@ virtual_interface
           - key: "{{ key }}"
             value: "{{ value }}"
         enableSiteLink: {{ enableSiteLink }}
+        rateLimit: "{{ rateLimit }}"
     - name: newPublicVirtualInterface
       description: |
         Information about the public virtual interface.
@@ -393,6 +396,7 @@ virtual_interface
         tags:
           - key: "{{ key }}"
             value: "{{ value }}"
+        rateLimit: "{{ rateLimit }}"
     - name: newTransitVirtualInterface
       description: |
         Information about the transit virtual interface.
@@ -411,6 +415,7 @@ virtual_interface
           - key: "{{ key }}"
             value: "{{ value }}"
         enableSiteLink: {{ enableSiteLink }}
+        rateLimit: "{{ rateLimit }}"
 `}</CodeBlock>
 
 </TabItem>
@@ -462,6 +467,7 @@ jumbo_frame_capable,
 location,
 mtu,
 owner_account,
+rate_limit,
 region,
 route_filter_prefixes,
 site_link_enabled,
@@ -507,6 +513,7 @@ jumbo_frame_capable,
 location,
 mtu,
 owner_account,
+rate_limit,
 region,
 route_filter_prefixes,
 site_link_enabled,
@@ -569,6 +576,7 @@ jumbo_frame_capable,
 location,
 mtu,
 owner_account,
+rate_limit,
 region,
 route_filter_prefixes,
 site_link_enabled,
@@ -591,7 +599,8 @@ SET
 virtualInterfaceId = '{{ virtualInterfaceId }}',
 mtu = {{ mtu }},
 enableSiteLink = {{ enableSiteLink }},
-virtualInterfaceName = '{{ virtualInterfaceName }}'
+virtualInterfaceName = '{{ virtualInterfaceName }}',
+rateLimit = '{{ rateLimit }}'
 WHERE 
 region = '{{ region }}' --required
 AND virtualInterfaceId = '{{ virtualInterfaceId }}' --required
@@ -613,6 +622,7 @@ jumbo_frame_capable,
 location,
 mtu,
 owner_account,
+rate_limit,
 region,
 route_filter_prefixes,
 site_link_enabled,

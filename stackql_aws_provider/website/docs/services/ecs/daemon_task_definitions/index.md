@@ -81,9 +81,19 @@ The following fields are returned by `SELECT` queries:
     <td>The name of a family that this daemon task definition is registered to.</td>
 </tr>
 <tr>
+    <td><CopyableCode code="ipc_mode" /></td>
+    <td><code>string</code></td>
+    <td>The IPC namespace mode for the daemon. The valid values are none and shared. The default is none. If none is specified or no value is provided, the daemon runs with its own IPC namespace, isolated from other tasks. If shared is specified, the daemon joins the host IPC namespace, making it accessible to non-daemon tasks that use ipcMode: "host" or other daemons that use ipcMode: "shared". (none, shared)</td>
+</tr>
+<tr>
     <td><CopyableCode code="memory" /></td>
     <td><code>string</code></td>
     <td>The amount of memory (in MiB) used by the daemon task.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="pid_mode" /></td>
+    <td><code>string</code></td>
+    <td>The PID namespace mode for the daemon. The valid values are none and shared. The default is none. If none is specified or no value is provided, the daemon runs with its own PID namespace, isolated from other tasks. If shared is specified, the daemon joins the host PID namespace, making it accessible to non-daemon tasks that use pidMode: "host" or other daemons that use pidMode: "shared". (none, shared)</td>
 </tr>
 <tr>
     <td><CopyableCode code="registered_at" /></td>
@@ -232,7 +242,9 @@ daemon_task_definition_arn,
 delete_requested_at,
 execution_role_arn,
 family,
+ipc_mode,
 memory,
+pid_mode,
 registered_at,
 registered_by,
 revision,
@@ -283,6 +295,8 @@ cpu,
 memory,
 volumes,
 tags,
+pidMode,
+ipcMode,
 region
 )
 SELECT 
@@ -294,6 +308,8 @@ SELECT
 '{{ memory }}',
 '{{ volumes }}',
 '{{ tags }}',
+'{{ pidMode }}',
+'{{ ipcMode }}',
 '{{ region }}'
 RETURNING
 daemon_task_definition_arn
@@ -406,6 +422,16 @@ daemon_task_definition_arn
       value:
         - key: "{{ key }}"
           value: "{{ value }}"
+    - name: pidMode
+      value: "{{ pidMode }}"
+      description: |
+        The PID namespace mode for the daemon. The valid values are none and shared. The default is none. If none is specified or no value is provided, the daemon runs with its own PID namespace, isolated from other tasks. If shared is specified, the daemon joins the host PID namespace, making it accessible to non-daemon tasks that use pidMode: "host" or other daemons that use pidMode: "shared".
+      valid_values: ['none', 'shared']
+    - name: ipcMode
+      value: "{{ ipcMode }}"
+      description: |
+        The IPC namespace mode for the daemon. The valid values are none and shared. The default is none. If none is specified or no value is provided, the daemon runs with its own IPC namespace, isolated from other tasks. If shared is specified, the daemon joins the host IPC namespace, making it accessible to non-daemon tasks that use ipcMode: "host" or other daemons that use ipcMode: "shared".
+      valid_values: ['none', 'shared']
 `}</CodeBlock>
 
 </TabItem>

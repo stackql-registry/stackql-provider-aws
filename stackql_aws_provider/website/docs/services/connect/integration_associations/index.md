@@ -52,7 +52,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="instance_id" /></td>
     <td><code>string</code></td>
-    <td>The identifier of the Amazon Connect instance. You can find the instance ID in the Amazon Resource Name (ARN) of the instance.</td>
+    <td>The identifier of the Connect Customer instance. You can find the instance ID in the Amazon Resource Name (ARN) of the instance.</td>
 </tr>
 <tr>
     <td><CopyableCode code="integration_arn" /></td>
@@ -114,21 +114,21 @@ The following methods are available for this resource:
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-instance_id"><code>instance_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td><a href="#parameter-integrationType"><code>integrationType</code></a>, <a href="#parameter-nextToken"><code>nextToken</code></a>, <a href="#parameter-maxResults"><code>maxResults</code></a>, <a href="#parameter-integrationArn"><code>integrationArn</code></a></td>
-    <td>Provides summary information about the Amazon Web Services resource associations for the specified Amazon Connect instance.</td>
+    <td>Provides summary information about the Amazon Web Services resource associations for the specified Connect Customer instance.</td>
 </tr>
 <tr>
     <td><a href="#create_integration_association"><CopyableCode code="create_integration_association" /></a></td>
     <td><CopyableCode code="insert" /></td>
     <td><a href="#parameter-instance_id"><code>instance_id</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-IntegrationType"><code>IntegrationType</code></a>, <a href="#parameter-IntegrationArn"><code>IntegrationArn</code></a></td>
     <td></td>
-    <td>Creates an Amazon Web Services resource association with an Amazon Connect instance.</td>
+    <td>Creates an Amazon Web Services resource association with an Connect Customer instance.</td>
 </tr>
 <tr>
     <td><a href="#delete_integration_association"><CopyableCode code="delete_integration_association" /></a></td>
     <td><CopyableCode code="delete" /></td>
     <td><a href="#parameter-instance_id"><code>instance_id</code></a>, <a href="#parameter-integration_association_id"><code>integration_association_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>Deletes an Amazon Web Services resource association from an Amazon Connect instance. The association must not have any use cases associated with it.</td>
+    <td>Deletes an Amazon Web Services resource association from an Connect Customer instance. The association must not have any use cases associated with it.</td>
 </tr>
 </tbody>
 </table>
@@ -149,7 +149,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-instance_id">
     <td><CopyableCode code="instance_id" /></td>
     <td><code>string</code></td>
-    <td>The identifier of the Amazon Connect instance. You can find the instance ID in the Amazon Resource Name (ARN) of the instance.</td>
+    <td>The identifier of the Connect Customer instance. You can find the instance ID in the Amazon Resource Name (ARN) of the instance.</td>
 </tr>
 <tr id="parameter-integration_association_id">
     <td><CopyableCode code="integration_association_id" /></td>
@@ -194,7 +194,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 >
 <TabItem value="list_integration_associations">
 
-Provides summary information about the Amazon Web Services resource associations for the specified Amazon Connect instance.
+Provides summary information about the Amazon Web Services resource associations for the specified Connect Customer instance.
 
 ```sql
 SELECT
@@ -230,7 +230,7 @@ AND integrationArn = '{{ integrationArn }}'
 >
 <TabItem value="create_integration_association">
 
-Creates an Amazon Web Services resource association with an Amazon Connect instance.
+Creates an Amazon Web Services resource association with an Connect Customer instance.
 
 ```sql
 INSERT INTO aws.connect.integration_associations (
@@ -299,7 +299,7 @@ integration_association_id
 >
 <TabItem value="delete_integration_association">
 
-Deletes an Amazon Web Services resource association from an Amazon Connect instance. The association must not have any use cases associated with it.
+Deletes an Amazon Web Services resource association from an Connect Customer instance. The association must not have any use cases associated with it.
 
 ```sql
 DELETE FROM aws.connect.integration_associations

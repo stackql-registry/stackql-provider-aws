@@ -18,13 +18,16 @@ backup service documentation.
 
 :::info[Service Summary]
 
-total resources: __41__  
+total resources: __45__  
 
 :::
 
 ## Resources
 <div class="row">
 <div class="providerDocColumn">
+<a href="/services/backup/backup_access_points/">backup_access_points</a><br />
+<a href="/services/backup/backup_access_points_by_recovery_points/">backup_access_points_by_recovery_points</a><br />
+<a href="/services/backup/backup_access_points_by_resources/">backup_access_points_by_resources</a><br />
 <a href="/services/backup/backup_job_summaries/">backup_job_summaries</a><br />
 <a href="/services/backup/backup_jobs/">backup_jobs</a><br />
 <a href="/services/backup/backup_plan_from_jsons/">backup_plan_from_jsons</a><br />
@@ -42,12 +45,13 @@ total resources: __41__
 <a href="/services/backup/global_settings/">global_settings</a><br />
 <a href="/services/backup/indexed_recovery_points/">indexed_recovery_points</a><br />
 <a href="/services/backup/legal_holds/">legal_holds</a><br />
+<a href="/services/backup/pitr_malware_scan_results/">pitr_malware_scan_results</a><br />
 <a href="/services/backup/protected_resources/">protected_resources</a><br />
-<a href="/services/backup/protected_resources_by_backup_vaults/">protected_resources_by_backup_vaults</a><br />
-<a href="/services/backup/recovery_point_index_details/">recovery_point_index_details</a><br />
-<a href="/services/backup/recovery_point_restore_metadatas/">recovery_point_restore_metadatas</a>
+<a href="/services/backup/protected_resources_by_backup_vaults/">protected_resources_by_backup_vaults</a>
 </div>
 <div class="providerDocColumn">
+<a href="/services/backup/recovery_point_index_details/">recovery_point_index_details</a><br />
+<a href="/services/backup/recovery_point_restore_metadatas/">recovery_point_restore_metadatas</a><br />
 <a href="/services/backup/recovery_points/">recovery_points</a><br />
 <a href="/services/backup/recovery_points_by_backup_vaults/">recovery_points_by_backup_vaults</a><br />
 <a href="/services/backup/recovery_points_by_legal_holds/">recovery_points_by_legal_holds</a><br />

@@ -52,12 +52,12 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="alias_arn" /></td>
     <td><code>string</code></td>
-    <td>The Amazon Resource Name (ARN) that is assigned to a Amazon GameLift Servers alias resource and uniquely identifies it. ARNs are unique across all Regions. Format is arn:aws:gamelift:<code>&lt;region&gt;</code>::alias/alias-a1234567-b8c9-0d1e-2fa3-b45c6d7e8912. In a GameLift alias ARN, the resource ID matches the alias ID value. (pattern: &lt;code&gt;^arn:.*:alias\/alias-\S+&lt;/code&gt;)</td>
+    <td>The Amazon Resource Name (ARN) that is assigned to a Amazon GameLift Servers alias resource and uniquely identifies it. ARNs are unique across all Regions. Format is arn:aws:gamelift:<code>&lt;region&gt;</code>::alias/alias-a1234567-b8c9-0d1e-2fa3-b45c6d7e8912. In a GameLift alias ARN, the resource ID matches the alias ID value. (pattern: &lt;code&gt;^arn:.*:alias\/alias-\S+$&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="alias_id" /></td>
     <td><code>string</code></td>
-    <td>A unique identifier for the alias. Alias IDs are unique within a Region. (pattern: &lt;code&gt;^alias-\S+&lt;/code&gt;)</td>
+    <td>A unique identifier for the alias. Alias IDs are unique within a Region. (pattern: &lt;code&gt;^alias-\S+$&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="creation_time" /></td>
@@ -77,7 +77,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
-    <td>A descriptive label that is associated with an alias. Alias names do not need to be unique. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
+    <td>A descriptive label that is associated with an alias. Alias names do not need to be unique. (pattern: &lt;code&gt;^.*\S.*$&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="routing_strategy" /></td>

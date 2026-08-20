@@ -133,7 +133,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="runtime_environment" /></td>
     <td><code>string</code></td>
-    <td>The runtime environment for the application. (SQL-1_0, FLINK-1_6, FLINK-1_8, ZEPPELIN-FLINK-1_0, FLINK-1_11, FLINK-1_13, ZEPPELIN-FLINK-2_0, FLINK-1_15, ZEPPELIN-FLINK-3_0, FLINK-1_18, FLINK-1_19, FLINK-1_20, FLINK-2_2)</td>
+    <td>The runtime environment for the application. (SQL-1_0, FLINK-1_6, FLINK-1_8, ZEPPELIN-FLINK-1_0, FLINK-1_11, FLINK-1_13, ZEPPELIN-FLINK-2_0, FLINK-1_15, ZEPPELIN-FLINK-3_0, FLINK-1_18, FLINK-1_19, FLINK-1_20, FLINK-2_2, FLINK-2_3)</td>
 </tr>
 <tr>
     <td><CopyableCode code="service_execution_role" /></td>
@@ -182,7 +182,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="runtime_environment" /></td>
     <td><code>string</code></td>
-    <td>The runtime environment for the application. (SQL-1_0, FLINK-1_6, FLINK-1_8, ZEPPELIN-FLINK-1_0, FLINK-1_11, FLINK-1_13, ZEPPELIN-FLINK-2_0, FLINK-1_15, ZEPPELIN-FLINK-3_0, FLINK-1_18, FLINK-1_19, FLINK-1_20, FLINK-2_2)</td>
+    <td>The runtime environment for the application. (SQL-1_0, FLINK-1_6, FLINK-1_8, ZEPPELIN-FLINK-1_0, FLINK-1_11, FLINK-1_13, ZEPPELIN-FLINK-2_0, FLINK-1_15, ZEPPELIN-FLINK-3_0, FLINK-1_18, FLINK-1_19, FLINK-1_20, FLINK-2_2, FLINK-2_3)</td>
 </tr>
 </tbody>
 </table>
@@ -515,7 +515,7 @@ authorized_url
       value: "{{ RuntimeEnvironment }}"
       description: |
         The runtime environment for the application.
-      valid_values: ['SQL-1_0', 'FLINK-1_6', 'FLINK-1_8', 'ZEPPELIN-FLINK-1_0', 'FLINK-1_11', 'FLINK-1_13', 'ZEPPELIN-FLINK-2_0', 'FLINK-1_15', 'ZEPPELIN-FLINK-3_0', 'FLINK-1_18', 'FLINK-1_19', 'FLINK-1_20', 'FLINK-2_2']
+      valid_values: ['SQL-1_0', 'FLINK-1_6', 'FLINK-1_8', 'ZEPPELIN-FLINK-1_0', 'FLINK-1_11', 'FLINK-1_13', 'ZEPPELIN-FLINK-2_0', 'FLINK-1_15', 'ZEPPELIN-FLINK-3_0', 'FLINK-1_18', 'FLINK-1_19', 'FLINK-1_20', 'FLINK-2_2', 'FLINK-2_3']
     - name: ServiceExecutionRole
       value: "{{ ServiceExecutionRole }}"
       description: |

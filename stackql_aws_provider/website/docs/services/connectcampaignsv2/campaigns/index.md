@@ -478,6 +478,12 @@ tags
               bandwidthAllocation: {{ bandwidthAllocation }}
             predictive:
               bandwidthAllocation: {{ bandwidthAllocation }}
+              pacingStrategies:
+                - abandonmentRate:
+                    targetRate: {{ targetRate }}
+                    connectionStartPoint: "{{ connectionStartPoint }}"
+                    connectionThresholdSeconds: {{ connectionThresholdSeconds }}
+                    evaluationWindow: "{{ evaluationWindow }}"
             agentless: "{{ agentless }}"
             preview:
               bandwidthAllocation: {{ bandwidthAllocation }}

@@ -221,7 +221,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-MaxResults">
     <td><CopyableCode code="MaxResults" /></td>
     <td><code>integer</code></td>
-    <td>The maximum number of results to return in the request.</td>
+    <td>The maximum number of items to return for this request. To get the next page of items, make another request with the token returned in the output. For more information, see Pagination.</td>
 </tr>
 <tr id="parameter-NextToken">
     <td><CopyableCode code="NextToken" /></td>

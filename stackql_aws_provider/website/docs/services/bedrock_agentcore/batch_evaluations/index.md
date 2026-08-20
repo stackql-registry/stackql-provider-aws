@@ -58,7 +58,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="batch_evaluation_id" /></td>
     <td><code>string</code></td>
-    <td>Unique identifier for a batch evaluation (name-prefixed format) (pattern: &lt;code&gt;&#91;a-zA-Z&#93;&#91;a-zA-Z0-9-_&#93;&#123;0,99&#125;-&#91;a-zA-Z0-9&#93;&#123;10&#125;&lt;/code&gt;)</td>
+    <td>The unique identifier for a batch evaluation. (pattern: &lt;code&gt;&#91;a-zA-Z&#93;&#91;a-zA-Z0-9-_&#93;&#123;0,99&#125;-&#91;a-zA-Z0-9&#93;&#123;10&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="batch_evaluation_name" /></td>
@@ -96,6 +96,26 @@ The following fields are returned by `SELECT` queries:
     <td>The list of evaluators applied during the batch evaluation.</td>
 </tr>
 <tr>
+    <td><CopyableCode code="execution_summary_result" /></td>
+    <td><code>object</code></td>
+    <td>The execution summary clustering results from insights, containing grouped execution patterns across evaluated sessions.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="failure_analysis_result" /></td>
+    <td><code>object</code></td>
+    <td>The failure analysis results from insights, containing categorized failure clusters with root causes and recommendations.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="insights" /></td>
+    <td><code>array</code></td>
+    <td>The list of insight analyses applied during the batch evaluation.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="kms_key_arn" /></td>
+    <td><code>string</code></td>
+    <td>The ARN of the KMS key used to encrypt evaluation data. (pattern: &lt;code&gt;arn:aws(|-cn|-us-gov):kms:&#91;a-zA-Z0-9-&#93;*:&#91;0-9&#93;&#123;12&#125;:key/&#91;a-zA-Z0-9-&#93;&#123;36&#125;&lt;/code&gt;)</td>
+</tr>
+<tr>
     <td><CopyableCode code="output_config" /></td>
     <td><code>object</code></td>
     <td>The output configuration specifying where evaluation results are written.</td>
@@ -109,6 +129,11 @@ The following fields are returned by `SELECT` queries:
     <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the batch evaluation was last updated.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="user_intent_result" /></td>
+    <td><code>object</code></td>
+    <td>The user intent clustering results from insights, containing grouped user intents across evaluated sessions.</td>
 </tr>
 </tbody>
 </table>
@@ -132,7 +157,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="batch_evaluation_id" /></td>
     <td><code>string</code></td>
-    <td>Unique identifier for a batch evaluation (name-prefixed format) (pattern: &lt;code&gt;&#91;a-zA-Z&#93;&#91;a-zA-Z0-9-_&#93;&#123;0,99&#125;-&#91;a-zA-Z0-9&#93;&#123;10&#125;&lt;/code&gt;)</td>
+    <td>The unique identifier for a batch evaluation. (pattern: &lt;code&gt;&#91;a-zA-Z&#93;&#91;a-zA-Z0-9-_&#93;&#123;0,99&#125;-&#91;a-zA-Z0-9&#93;&#123;10&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="batch_evaluation_name" /></td>
@@ -163,6 +188,16 @@ The following fields are returned by `SELECT` queries:
     <td><CopyableCode code="evaluators" /></td>
     <td><code>array</code></td>
     <td>The list of evaluators applied during the batch evaluation.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="insights" /></td>
+    <td><code>array</code></td>
+    <td>The list of insight analyses applied during the batch evaluation.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="kms_key_arn" /></td>
+    <td><code>string</code></td>
+    <td>The ARN of the KMS key used to encrypt evaluation data. (pattern: &lt;code&gt;arn:aws(|-cn|-us-gov):kms:&#91;a-zA-Z0-9-&#93;*:&#91;0-9&#93;&#123;12&#125;:key/&#91;a-zA-Z0-9-&#93;&#123;36&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="status" /></td>
@@ -292,9 +327,14 @@ description,
 error_details,
 evaluation_results,
 evaluators,
+execution_summary_result,
+failure_analysis_result,
+insights,
+kms_key_arn,
 output_config,
 status,
-updated_at
+updated_at,
+user_intent_result
 FROM aws.bedrock_agentcore.batch_evaluations
 WHERE batch_evaluation_id = '{{ batch_evaluation_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -315,6 +355,8 @@ description,
 error_details,
 evaluation_results,
 evaluators,
+insights,
+kms_key_arn,
 status,
 updated_at
 FROM aws.bedrock_agentcore.batch_evaluations
@@ -369,9 +411,12 @@ EXEC aws.bedrock_agentcore.batch_evaluations.start_batch_evaluation
 '{
 "batchEvaluationName": "{{ batchEvaluationName }}", 
 "evaluators": "{{ evaluators }}", 
+"insights": "{{ insights }}", 
 "dataSourceConfig": "{{ dataSourceConfig }}", 
 "clientToken": "{{ clientToken }}", 
 "evaluationMetadata": "{{ evaluationMetadata }}", 
+"tags": "{{ tags }}", 
+"kmsKeyArn": "{{ kmsKeyArn }}", 
 "description": "{{ description }}"
 }'
 ;

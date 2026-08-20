@@ -18,13 +18,19 @@ wellarchitected service documentation.
 
 :::info[Service Summary]
 
-total resources: __26__  
+total resources: __32__  
 
 :::
 
 ## Resources
 <div class="row">
 <div class="providerDocColumn">
+<a href="/services/wellarchitected/agent_contexts/">agent_contexts</a><br />
+<a href="/services/wellarchitected/agent_goals/">agent_goals</a><br />
+<a href="/services/wellarchitected/agent_profiles/">agent_profiles</a><br />
+<a href="/services/wellarchitected/agent_recommendation_generations/">agent_recommendation_generations</a><br />
+<a href="/services/wellarchitected/agent_recommendation_items/">agent_recommendation_items</a><br />
+<a href="/services/wellarchitected/agent_recommendations/">agent_recommendations</a><br />
 <a href="/services/wellarchitected/answers/">answers</a><br />
 <a href="/services/wellarchitected/check_details/">check_details</a><br />
 <a href="/services/wellarchitected/check_summaries/">check_summaries</a><br />
@@ -34,12 +40,12 @@ total resources: __26__
 <a href="/services/wellarchitected/lens_review_improvements/">lens_review_improvements</a><br />
 <a href="/services/wellarchitected/lens_review_reports/">lens_review_reports</a><br />
 <a href="/services/wellarchitected/lens_reviews/">lens_reviews</a><br />
-<a href="/services/wellarchitected/lens_shares/">lens_shares</a><br />
-<a href="/services/wellarchitected/lens_version_differences/">lens_version_differences</a><br />
-<a href="/services/wellarchitected/lenses/">lenses</a><br />
-<a href="/services/wellarchitected/milestones/">milestones</a>
+<a href="/services/wellarchitected/lens_shares/">lens_shares</a>
 </div>
 <div class="providerDocColumn">
+<a href="/services/wellarchitected/lens_version_differences/">lens_version_differences</a><br />
+<a href="/services/wellarchitected/lenses/">lenses</a><br />
+<a href="/services/wellarchitected/milestones/">milestones</a><br />
 <a href="/services/wellarchitected/notifications/">notifications</a><br />
 <a href="/services/wellarchitected/profile_notifications/">profile_notifications</a><br />
 <a href="/services/wellarchitected/profile_shares/">profile_shares</a><br />

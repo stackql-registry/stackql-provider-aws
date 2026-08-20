@@ -53,7 +53,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="capacity_provider_arn" /></td>
     <td><code>string</code></td>
-    <td>The Amazon Resource Name (ARN) of the capacity provider. (pattern: &lt;code&gt;arn:aws&#91;a-zA-Z-&#93;*:lambda:&#91;a-z&#93;&#123;2&#125;((-gov)|(-iso(&#91;a-z&#93;?)))?-&#91;a-z&#93;+-\d&#123;1&#125;:\d&#123;12&#125;:capacity-provider:&#91;a-zA-Z0-9-_&#93;+&lt;/code&gt;)</td>
+    <td>The Amazon Resource Name (ARN) of the capacity provider. (pattern: &lt;code&gt;arn:aws&#91;a-zA-Z-&#93;*:lambda:(eusc-)?&#91;a-z&#93;&#123;2&#125;((-gov)|(-iso(&#91;a-z&#93;?)))?-&#91;a-z&#93;+-\d&#123;1&#125;:\d&#123;12&#125;:capacity-provider:&#91;a-zA-Z0-9-_&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="capacity_provider_scaling_config" /></td>
@@ -73,7 +73,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="last_modified" /></td>
     <td><code>string</code></td>
-    <td>The date and time when the capacity provider was last modified.</td>
+    <td>The date and time when the capacity provider was last modified. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="permissions_config" /></td>
@@ -81,9 +81,19 @@ The following fields are returned by `SELECT` queries:
     <td>Configuration that specifies the permissions required for the capacity provider to manage compute resources.</td>
 </tr>
 <tr>
+    <td><CopyableCode code="propagate_tags" /></td>
+    <td><code>object</code></td>
+    <td>Configuration for tag propagation to managed resources launched by the capacity provider.</td>
+</tr>
+<tr>
     <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The current state of the capacity provider. (Pending, Active, Failed, Deleting)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="telemetry_config" /></td>
+    <td><code>object</code></td>
+    <td>Configuration that specifies the telemetry collection for the capacity provider.</td>
 </tr>
 <tr>
     <td><CopyableCode code="vpc_config" /></td>
@@ -107,7 +117,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="capacity_provider_arn" /></td>
     <td><code>string</code></td>
-    <td>The Amazon Resource Name (ARN) of the capacity provider. (pattern: &lt;code&gt;arn:aws&#91;a-zA-Z-&#93;*:lambda:&#91;a-z&#93;&#123;2&#125;((-gov)|(-iso(&#91;a-z&#93;?)))?-&#91;a-z&#93;+-\d&#123;1&#125;:\d&#123;12&#125;:capacity-provider:&#91;a-zA-Z0-9-_&#93;+&lt;/code&gt;)</td>
+    <td>The Amazon Resource Name (ARN) of the capacity provider. (pattern: &lt;code&gt;arn:aws&#91;a-zA-Z-&#93;*:lambda:(eusc-)?&#91;a-z&#93;&#123;2&#125;((-gov)|(-iso(&#91;a-z&#93;?)))?-&#91;a-z&#93;+-\d&#123;1&#125;:\d&#123;12&#125;:capacity-provider:&#91;a-zA-Z0-9-_&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="capacity_provider_scaling_config" /></td>
@@ -127,7 +137,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="last_modified" /></td>
     <td><code>string</code></td>
-    <td>The date and time when the capacity provider was last modified.</td>
+    <td>The date and time when the capacity provider was last modified. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="permissions_config" /></td>
@@ -135,9 +145,19 @@ The following fields are returned by `SELECT` queries:
     <td>Configuration that specifies the permissions required for the capacity provider to manage compute resources.</td>
 </tr>
 <tr>
+    <td><CopyableCode code="propagate_tags" /></td>
+    <td><code>object</code></td>
+    <td>Configuration for tag propagation to managed resources launched by the capacity provider.</td>
+</tr>
+<tr>
     <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The current state of the capacity provider. (Pending, Active, Failed, Deleting)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="telemetry_config" /></td>
+    <td><code>object</code></td>
+    <td>Configuration that specifies the telemetry collection for the capacity provider.</td>
 </tr>
 <tr>
     <td><CopyableCode code="vpc_config" /></td>
@@ -264,7 +284,9 @@ instance_requirements,
 kms_key_arn,
 last_modified,
 permissions_config,
+propagate_tags,
 state,
+telemetry_config,
 vpc_config
 FROM aws.lambda.capacity_providers
 WHERE capacity_provider_name = '{{ capacity_provider_name }}' -- required
@@ -284,7 +306,9 @@ instance_requirements,
 kms_key_arn,
 last_modified,
 permissions_config,
+propagate_tags,
 state,
+telemetry_config,
 vpc_config
 FROM aws.lambda.capacity_providers
 WHERE region = '{{ region }}' -- required
@@ -319,6 +343,8 @@ InstanceRequirements,
 CapacityProviderScalingConfig,
 KmsKeyArn,
 Tags,
+PropagateTags,
+TelemetryConfig,
 region
 )
 SELECT 
@@ -329,6 +355,8 @@ SELECT
 '{{ CapacityProviderScalingConfig }}',
 '{{ KmsKeyArn }}',
 '{{ Tags }}',
+'{{ PropagateTags }}',
+'{{ TelemetryConfig }}',
 '{{ region }}'
 RETURNING
 capacity_provider
@@ -381,6 +409,19 @@ capacity_provider
       value: "{{ KmsKeyArn }}"
     - name: Tags
       value: "{{ Tags }}"
+    - name: PropagateTags
+      description: |
+        Configuration for tag propagation to managed resources launched by the capacity provider.
+      value:
+        Mode: "{{ Mode }}"
+        ExplicitTags: "{{ ExplicitTags }}"
+    - name: TelemetryConfig
+      description: |
+        Configuration that specifies the telemetry collection for the capacity provider.
+      value:
+        LoggingConfig:
+          SystemLogLevel: "{{ SystemLogLevel }}"
+          LogGroup: "{{ LogGroup }}"
 `}</CodeBlock>
 
 </TabItem>
@@ -402,7 +443,9 @@ Updates the configuration of an existing capacity provider.
 ```sql
 UPDATE aws.lambda.capacity_providers
 SET 
-CapacityProviderScalingConfig = '{{ CapacityProviderScalingConfig }}'
+CapacityProviderScalingConfig = '{{ CapacityProviderScalingConfig }}',
+PropagateTags = '{{ PropagateTags }}',
+TelemetryConfig = '{{ TelemetryConfig }}'
 WHERE 
 capacity_provider_name = '{{ capacity_provider_name }}' --required
 AND region = '{{ region }}' --required

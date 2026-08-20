@@ -56,6 +56,11 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the firewall domain list.</td>
 </tr>
 <tr>
+    <td><CopyableCode code="category" /></td>
+    <td><code>string</code></td>
+    <td>The category of the domain list.</td>
+</tr>
+<tr>
     <td><CopyableCode code="creation_time" /></td>
     <td><code>string</code></td>
     <td>The date and time that the domain list was created, in Unix time format and Coordinated Universal Time (UTC).</td>
@@ -74,6 +79,11 @@ The following fields are returned by `SELECT` queries:
     <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The ID of the domain list.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="managed_list_type" /></td>
+    <td><code>string</code></td>
+    <td>The type of the managed domain list, for example THREAT. (THREAT, CONTENT)</td>
 </tr>
 <tr>
     <td><CopyableCode code="managed_owner_name" /></td>
@@ -120,6 +130,11 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the firewall domain list metadata.</td>
 </tr>
 <tr>
+    <td><CopyableCode code="category" /></td>
+    <td><code>string</code></td>
+    <td>The category of the domain list.</td>
+</tr>
+<tr>
     <td><CopyableCode code="creator_request_id" /></td>
     <td><code>string</code></td>
     <td>A unique string defined by you to identify the request. This allows you to retry failed requests without the risk of running the operation twice. This can be any unique string, for example, a timestamp.</td>
@@ -128,6 +143,11 @@ The following fields are returned by `SELECT` queries:
     <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The ID of the domain list.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="managed_list_type" /></td>
+    <td><code>string</code></td>
+    <td>The type of the managed domain list, for example THREAT. (THREAT, CONTENT)</td>
 </tr>
 <tr>
     <td><CopyableCode code="managed_owner_name" /></td>
@@ -227,10 +247,12 @@ Retrieves the specified firewall domain list.
 ```sql
 SELECT
 arn,
+category,
 creation_time,
 creator_request_id,
 domain_count,
 id,
+managed_list_type,
 managed_owner_name,
 modification_time,
 name,
@@ -248,8 +270,10 @@ Retrieves the firewall domain lists that you have defined. For each firewall dom
 ```sql
 SELECT
 arn,
+category,
 creator_request_id,
 id,
+managed_list_type,
 managed_owner_name,
 name
 FROM aws.route53resolver.firewall_domain_lists

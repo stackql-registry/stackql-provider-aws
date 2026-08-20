@@ -88,7 +88,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="managed_by" /></td>
     <td><code>string</code></td>
-    <td>The AWS service that manages the resource gateway.</td>
+    <td>The Amazon Web Services service that manages the resource gateway.</td>
 </tr>
 <tr>
     <td><CopyableCode code="resource_config_dns_resolution" /></td>
@@ -103,7 +103,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="service_managed" /></td>
     <td><code>boolean</code></td>
-    <td>Indicates whether the resource gateway is managed by an AWS service.</td>
+    <td>Indicates whether the resource gateway is managed by an Amazon Web Services service.</td>
 </tr>
 <tr>
     <td><CopyableCode code="status" /></td>

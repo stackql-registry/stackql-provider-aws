@@ -176,14 +176,14 @@ The following methods are available for this resource:
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-instance_id"><code>instance_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>Searches for vocabularies within a specific Amazon Connect instance using State, NameStartsWith, and LanguageCode.</td>
+    <td>Searches for vocabularies within a specific Connect Customer instance using State, NameStartsWith, and LanguageCode.</td>
 </tr>
 <tr>
     <td><a href="#create_vocabulary"><CopyableCode code="create_vocabulary" /></a></td>
     <td><CopyableCode code="insert" /></td>
     <td><a href="#parameter-instance_id"><code>instance_id</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-VocabularyName"><code>VocabularyName</code></a>, <a href="#parameter-LanguageCode"><code>LanguageCode</code></a>, <a href="#parameter-Content"><code>Content</code></a></td>
     <td></td>
-    <td>Creates a custom vocabulary associated with your Amazon Connect instance. You can set a custom vocabulary to be your default vocabulary for a given language. Contact Lens for Amazon Connect uses the default vocabulary in post-call and real-time contact analysis sessions for that language.</td>
+    <td>Creates a custom vocabulary associated with your Connect Customer instance. You can set a custom vocabulary to be your default vocabulary for a given language. Contact Lens for Connect Customer uses the default vocabulary in post-call and real-time contact analysis sessions for that language.</td>
 </tr>
 <tr>
     <td><a href="#delete_vocabulary"><CopyableCode code="delete_vocabulary" /></a></td>
@@ -211,7 +211,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-instance_id">
     <td><CopyableCode code="instance_id" /></td>
     <td><code>string</code></td>
-    <td>The identifier of the Amazon Connect instance. You can find the instance ID in the Amazon Resource Name (ARN) of the instance.</td>
+    <td>The identifier of the Connect Customer instance. You can find the instance ID in the Amazon Resource Name (ARN) of the instance.</td>
 </tr>
 <tr id="parameter-region">
     <td><CopyableCode code="region" /></td>
@@ -259,7 +259,7 @@ AND region = '{{ region }}' -- required
 </TabItem>
 <TabItem value="search_vocabularies">
 
-Searches for vocabularies within a specific Amazon Connect instance using State, NameStartsWith, and LanguageCode.
+Searches for vocabularies within a specific Connect Customer instance using State, NameStartsWith, and LanguageCode.
 
 ```sql
 SELECT
@@ -290,7 +290,7 @@ AND region = '{{ region }}' -- required
 >
 <TabItem value="create_vocabulary">
 
-Creates a custom vocabulary associated with your Amazon Connect instance. You can set a custom vocabulary to be your default vocabulary for a given language. Contact Lens for Amazon Connect uses the default vocabulary in post-call and real-time contact analysis sessions for that language.
+Creates a custom vocabulary associated with your Connect Customer instance. You can set a custom vocabulary to be your default vocabulary for a given language. Contact Lens for Connect Customer uses the default vocabulary in post-call and real-time contact analysis sessions for that language.
 
 ```sql
 INSERT INTO aws.connect.vocabularies (

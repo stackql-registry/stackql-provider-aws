@@ -54,7 +54,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="attribute_configuration" /></td>
     <td><code>object</code></td>
-    <td>Custom metadata that is associated to predefined attributes to control behavior in upstream services, such as controlling how a predefined attribute should be displayed in the Amazon Connect admin website.</td>
+    <td>Custom metadata that is associated to predefined attributes to control behavior in upstream services, such as controlling how a predefined attribute should be displayed in the Connect Customer admin website.</td>
 </tr>
 <tr>
     <td><CopyableCode code="last_modified_region" /></td>
@@ -74,7 +74,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="purposes" /></td>
     <td><code>array</code></td>
-    <td>Values that enable you to categorize your predefined attributes. You can use them in custom UI elements across the Amazon Connect admin website.</td>
+    <td>Values that enable you to categorize your predefined attributes. You can use them in custom UI elements across the Connect Customer admin website.</td>
 </tr>
 <tr>
     <td><CopyableCode code="values" /></td>
@@ -127,7 +127,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="attribute_configuration" /></td>
     <td><code>object</code></td>
-    <td>Custom metadata that is associated to predefined attributes to control behavior in upstream services, such as controlling how a predefined attribute should be displayed in the Amazon Connect admin website.</td>
+    <td>Custom metadata that is associated to predefined attributes to control behavior in upstream services, such as controlling how a predefined attribute should be displayed in the Connect Customer admin website.</td>
 </tr>
 <tr>
     <td><CopyableCode code="last_modified_region" /></td>
@@ -147,7 +147,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="purposes" /></td>
     <td><code>array</code></td>
-    <td>Values that enable you to categorize your predefined attributes. You can use them in custom UI elements across the Amazon Connect admin website.</td>
+    <td>Values that enable you to categorize your predefined attributes. You can use them in custom UI elements across the Connect Customer admin website.</td>
 </tr>
 <tr>
     <td><CopyableCode code="values" /></td>
@@ -179,42 +179,42 @@ The following methods are available for this resource:
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-instance_id"><code>instance_id</code></a>, <a href="#parameter-name"><code>name</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>Describes a predefined attribute for the specified Amazon Connect instance. A predefined attribute is made up of a name and a value. You can use predefined attributes for: Routing proficiency (for example, agent certification) that has predefined values (for example, a list of possible certifications). For more information, see Create predefined attributes for routing contacts to agents. Contact information that varies between transfers or conferences, such as the name of the business unit handling the contact. For more information, see Use contact segment attributes. For the predefined attributes per instance quota, see Amazon Connect quotas. Endpoints: See Amazon Connect endpoints and quotas.</td>
+    <td>Describes a predefined attribute for the specified Connect Customer instance. A predefined attribute is made up of a name and a value. You can use predefined attributes for: Routing proficiency (for example, agent certification) that has predefined values (for example, a list of possible certifications). For more information, see Create predefined attributes for routing contacts to agents. Contact information that varies between transfers or conferences, such as the name of the business unit handling the contact. For more information, see Use contact segment attributes. For the predefined attributes per instance quota, see Connect Customer quotas. Endpoints: See Connect Customer endpoints and quotas.</td>
 </tr>
 <tr>
     <td><a href="#list_predefined_attributes"><CopyableCode code="list_predefined_attributes" /></a></td>
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-instance_id"><code>instance_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td><a href="#parameter-nextToken"><code>nextToken</code></a>, <a href="#parameter-maxResults"><code>maxResults</code></a></td>
-    <td>Lists predefined attributes for the specified Amazon Connect instance. A predefined attribute is made up of a name and a value. You can use predefined attributes for: Routing proficiency (for example, agent certification) that has predefined values (for example, a list of possible certifications). For more information, see Create predefined attributes for routing contacts to agents. Contact information that varies between transfers or conferences, such as the name of the business unit handling the contact. For more information, see Use contact segment attributes. For the predefined attributes per instance quota, see Amazon Connect quotas. Endpoints: See Amazon Connect endpoints and quotas.</td>
+    <td>Lists predefined attributes for the specified Connect Customer instance. A predefined attribute is made up of a name and a value. You can use predefined attributes for: Routing proficiency (for example, agent certification) that has predefined values (for example, a list of possible certifications). For more information, see Create predefined attributes for routing contacts to agents. Contact information that varies between transfers or conferences, such as the name of the business unit handling the contact. For more information, see Use contact segment attributes. For the predefined attributes per instance quota, see Connect Customer quotas. Endpoints: See Connect Customer endpoints and quotas.</td>
 </tr>
 <tr>
     <td><a href="#search_predefined_attributes"><CopyableCode code="search_predefined_attributes" /></a></td>
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>Searches predefined attributes that meet certain criteria. A predefined attribute is made up of a name and a value. You can use predefined attributes for: Routing proficiency (for example, agent certification) that has predefined values (for example, a list of possible certifications). For more information, see Create predefined attributes for routing contacts to agents. Contact information that varies between transfers or conferences, such as the name of the business unit handling the contact. For more information, see Use contact segment attributes. For the predefined attributes per instance quota, see Amazon Connect quotas. Endpoints: See Amazon Connect endpoints and quotas.</td>
+    <td>Searches predefined attributes that meet certain criteria. A predefined attribute is made up of a name and a value. You can use predefined attributes for: Routing proficiency (for example, agent certification) that has predefined values (for example, a list of possible certifications). For more information, see Create predefined attributes for routing contacts to agents. Contact information that varies between transfers or conferences, such as the name of the business unit handling the contact. For more information, see Use contact segment attributes. For the predefined attributes per instance quota, see Connect Customer quotas. Endpoints: See Connect Customer endpoints and quotas.</td>
 </tr>
 <tr>
     <td><a href="#create_predefined_attribute"><CopyableCode code="create_predefined_attribute" /></a></td>
     <td><CopyableCode code="insert" /></td>
     <td><a href="#parameter-instance_id"><code>instance_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>Creates a new predefined attribute for the specified Amazon Connect instance. A predefined attribute is made up of a name and a value. For the predefined attributes per instance quota, see Amazon Connect quotas. Use cases Following are common uses cases for this API: Create an attribute for routing proficiency (for example, agent certification) that has predefined values (for example, a list of possible certifications). For more information, see Create predefined attributes for routing contacts to agents. Create an attribute for business unit name that has a list of predefined business unit names used in your organization. This is a use case where information for a contact varies between transfers or conferences. For more information, see Use contact segment attributes. Endpoints: See Amazon Connect endpoints and quotas.</td>
+    <td>Creates a new predefined attribute for the specified Connect Customer instance. A predefined attribute is made up of a name and a value. For the predefined attributes per instance quota, see Connect Customer quotas. Use cases Following are common uses cases for this API: Create an attribute for routing proficiency (for example, agent certification) that has predefined values (for example, a list of possible certifications). For more information, see Create predefined attributes for routing contacts to agents. Create an attribute for business unit name that has a list of predefined business unit names used in your organization. This is a use case where information for a contact varies between transfers or conferences. For more information, see Use contact segment attributes. Endpoints: See Connect Customer endpoints and quotas.</td>
 </tr>
 <tr>
     <td><a href="#update_predefined_attribute"><CopyableCode code="update_predefined_attribute" /></a></td>
     <td><CopyableCode code="update" /></td>
     <td><a href="#parameter-instance_id"><code>instance_id</code></a>, <a href="#parameter-name"><code>name</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>Updates a predefined attribute for the specified Amazon Connect instance. A predefined attribute is made up of a name and a value. For the predefined attributes per instance quota, see Amazon Connect quotas. Use cases Following are common uses cases for this API: Update routing proficiency (for example, agent certification) that has predefined values (for example, a list of possible certifications). For more information, see Create predefined attributes for routing contacts to agents. Update an attribute for business unit name that has a list of predefined business unit names used in your organization. This is a use case where information for a contact varies between transfers or conferences. For more information, see Use contact segment attributes. Endpoints: See Amazon Connect endpoints and quotas.</td>
+    <td>Updates a predefined attribute for the specified Connect Customer instance. A predefined attribute is made up of a name and a value. For the predefined attributes per instance quota, see Connect Customer quotas. Use cases Following are common uses cases for this API: Update routing proficiency (for example, agent certification) that has predefined values (for example, a list of possible certifications). For more information, see Create predefined attributes for routing contacts to agents. Update an attribute for business unit name that has a list of predefined business unit names used in your organization. This is a use case where information for a contact varies between transfers or conferences. For more information, see Use contact segment attributes. Endpoints: See Connect Customer endpoints and quotas.</td>
 </tr>
 <tr>
     <td><a href="#delete_predefined_attribute"><CopyableCode code="delete_predefined_attribute" /></a></td>
     <td><CopyableCode code="delete" /></td>
     <td><a href="#parameter-instance_id"><code>instance_id</code></a>, <a href="#parameter-name"><code>name</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>Deletes a predefined attribute from the specified Amazon Connect instance.</td>
+    <td>Deletes a predefined attribute from the specified Connect Customer instance.</td>
 </tr>
 </tbody>
 </table>
@@ -235,7 +235,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-instance_id">
     <td><CopyableCode code="instance_id" /></td>
     <td><code>string</code></td>
-    <td>The identifier of the Amazon Connect instance. You can find the instance ID in the Amazon Resource Name (ARN) of the instance.</td>
+    <td>The identifier of the Connect Customer instance. You can find the instance ID in the Amazon Resource Name (ARN) of the instance.</td>
 </tr>
 <tr id="parameter-name">
     <td><CopyableCode code="name" /></td>
@@ -272,7 +272,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 >
 <TabItem value="describe_predefined_attribute">
 
-Describes a predefined attribute for the specified Amazon Connect instance. A predefined attribute is made up of a name and a value. You can use predefined attributes for: Routing proficiency (for example, agent certification) that has predefined values (for example, a list of possible certifications). For more information, see Create predefined attributes for routing contacts to agents. Contact information that varies between transfers or conferences, such as the name of the business unit handling the contact. For more information, see Use contact segment attributes. For the predefined attributes per instance quota, see Amazon Connect quotas. Endpoints: See Amazon Connect endpoints and quotas.
+Describes a predefined attribute for the specified Connect Customer instance. A predefined attribute is made up of a name and a value. You can use predefined attributes for: Routing proficiency (for example, agent certification) that has predefined values (for example, a list of possible certifications). For more information, see Create predefined attributes for routing contacts to agents. Contact information that varies between transfers or conferences, such as the name of the business unit handling the contact. For more information, see Use contact segment attributes. For the predefined attributes per instance quota, see Connect Customer quotas. Endpoints: See Connect Customer endpoints and quotas.
 
 ```sql
 SELECT
@@ -291,7 +291,7 @@ AND region = '{{ region }}' -- required
 </TabItem>
 <TabItem value="list_predefined_attributes">
 
-Lists predefined attributes for the specified Amazon Connect instance. A predefined attribute is made up of a name and a value. You can use predefined attributes for: Routing proficiency (for example, agent certification) that has predefined values (for example, a list of possible certifications). For more information, see Create predefined attributes for routing contacts to agents. Contact information that varies between transfers or conferences, such as the name of the business unit handling the contact. For more information, see Use contact segment attributes. For the predefined attributes per instance quota, see Amazon Connect quotas. Endpoints: See Amazon Connect endpoints and quotas.
+Lists predefined attributes for the specified Connect Customer instance. A predefined attribute is made up of a name and a value. You can use predefined attributes for: Routing proficiency (for example, agent certification) that has predefined values (for example, a list of possible certifications). For more information, see Create predefined attributes for routing contacts to agents. Contact information that varies between transfers or conferences, such as the name of the business unit handling the contact. For more information, see Use contact segment attributes. For the predefined attributes per instance quota, see Connect Customer quotas. Endpoints: See Connect Customer endpoints and quotas.
 
 ```sql
 SELECT
@@ -308,7 +308,7 @@ AND maxResults = '{{ maxResults }}'
 </TabItem>
 <TabItem value="search_predefined_attributes">
 
-Searches predefined attributes that meet certain criteria. A predefined attribute is made up of a name and a value. You can use predefined attributes for: Routing proficiency (for example, agent certification) that has predefined values (for example, a list of possible certifications). For more information, see Create predefined attributes for routing contacts to agents. Contact information that varies between transfers or conferences, such as the name of the business unit handling the contact. For more information, see Use contact segment attributes. For the predefined attributes per instance quota, see Amazon Connect quotas. Endpoints: See Amazon Connect endpoints and quotas.
+Searches predefined attributes that meet certain criteria. A predefined attribute is made up of a name and a value. You can use predefined attributes for: Routing proficiency (for example, agent certification) that has predefined values (for example, a list of possible certifications). For more information, see Create predefined attributes for routing contacts to agents. Contact information that varies between transfers or conferences, such as the name of the business unit handling the contact. For more information, see Use contact segment attributes. For the predefined attributes per instance quota, see Connect Customer quotas. Endpoints: See Connect Customer endpoints and quotas.
 
 ```sql
 SELECT
@@ -337,7 +337,7 @@ WHERE region = '{{ region }}' -- required
 >
 <TabItem value="create_predefined_attribute">
 
-Creates a new predefined attribute for the specified Amazon Connect instance. A predefined attribute is made up of a name and a value. For the predefined attributes per instance quota, see Amazon Connect quotas. Use cases Following are common uses cases for this API: Create an attribute for routing proficiency (for example, agent certification) that has predefined values (for example, a list of possible certifications). For more information, see Create predefined attributes for routing contacts to agents. Create an attribute for business unit name that has a list of predefined business unit names used in your organization. This is a use case where information for a contact varies between transfers or conferences. For more information, see Use contact segment attributes. Endpoints: See Amazon Connect endpoints and quotas.
+Creates a new predefined attribute for the specified Connect Customer instance. A predefined attribute is made up of a name and a value. For the predefined attributes per instance quota, see Connect Customer quotas. Use cases Following are common uses cases for this API: Create an attribute for routing proficiency (for example, agent certification) that has predefined values (for example, a list of possible certifications). For more information, see Create predefined attributes for routing contacts to agents. Create an attribute for business unit name that has a list of predefined business unit names used in your organization. This is a use case where information for a contact varies between transfers or conferences. For more information, see Use contact segment attributes. Endpoints: See Connect Customer endpoints and quotas.
 
 ```sql
 INSERT INTO aws.connect.predefined_attributes (
@@ -382,7 +382,7 @@ SELECT
         - "{{ Purposes }}"
     - name: AttributeConfiguration
       description: |
-        Custom metadata that is associated to predefined attributes to control behavior in upstream services, such as controlling how a predefined attribute should be displayed in the Amazon Connect admin website.
+        Custom metadata that is associated to predefined attributes to control behavior in upstream services, such as controlling how a predefined attribute should be displayed in the Connect Customer admin website.
       value:
         EnableValueValidationOnAssociation: {{ EnableValueValidationOnAssociation }}
 `}</CodeBlock>
@@ -401,7 +401,7 @@ SELECT
 >
 <TabItem value="update_predefined_attribute">
 
-Updates a predefined attribute for the specified Amazon Connect instance. A predefined attribute is made up of a name and a value. For the predefined attributes per instance quota, see Amazon Connect quotas. Use cases Following are common uses cases for this API: Update routing proficiency (for example, agent certification) that has predefined values (for example, a list of possible certifications). For more information, see Create predefined attributes for routing contacts to agents. Update an attribute for business unit name that has a list of predefined business unit names used in your organization. This is a use case where information for a contact varies between transfers or conferences. For more information, see Use contact segment attributes. Endpoints: See Amazon Connect endpoints and quotas.
+Updates a predefined attribute for the specified Connect Customer instance. A predefined attribute is made up of a name and a value. For the predefined attributes per instance quota, see Connect Customer quotas. Use cases Following are common uses cases for this API: Update routing proficiency (for example, agent certification) that has predefined values (for example, a list of possible certifications). For more information, see Create predefined attributes for routing contacts to agents. Update an attribute for business unit name that has a list of predefined business unit names used in your organization. This is a use case where information for a contact varies between transfers or conferences. For more information, see Use contact segment attributes. Endpoints: See Connect Customer endpoints and quotas.
 
 ```sql
 UPDATE aws.connect.predefined_attributes
@@ -428,7 +428,7 @@ AND region = '{{ region }}' --required;
 >
 <TabItem value="delete_predefined_attribute">
 
-Deletes a predefined attribute from the specified Amazon Connect instance.
+Deletes a predefined attribute from the specified Connect Customer instance.
 
 ```sql
 DELETE FROM aws.connect.predefined_attributes

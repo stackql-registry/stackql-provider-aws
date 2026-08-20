@@ -53,7 +53,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
-    <td>The name of the analyzer. (pattern: &lt;code&gt;&#91;A-Za-z&#93;&#91;A-Za-z0-9_.-&#93;*&lt;/code&gt;)</td>
+    <td>The name of the analyzer. (pattern: &lt;code&gt;&#91;A-Za-z_&#93;&#91;A-Za-z0-9_.-&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="arn" /></td>
@@ -79,6 +79,11 @@ The following fields are returned by `SELECT` queries:
     <td><CopyableCode code="last_resource_analyzed_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the most recently analyzed resource was analyzed.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="managed_by" /></td>
+    <td><code>string</code></td>
+    <td>The service principal that manages this analyzer (for example, securityhubv2.amazonaws.com). This field is only present for service-linked analyzers and is not included for customer-managed analyzers.</td>
 </tr>
 <tr>
     <td><CopyableCode code="status" /></td>
@@ -117,7 +122,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
-    <td>The name of the analyzer. (pattern: &lt;code&gt;&#91;A-Za-z&#93;&#91;A-Za-z0-9_.-&#93;*&lt;/code&gt;)</td>
+    <td>The name of the analyzer. (pattern: &lt;code&gt;&#91;A-Za-z_&#93;&#91;A-Za-z0-9_.-&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="arn" /></td>
@@ -143,6 +148,11 @@ The following fields are returned by `SELECT` queries:
     <td><CopyableCode code="last_resource_analyzed_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time at which the most recently analyzed resource was analyzed.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="managed_by" /></td>
+    <td><code>string</code></td>
+    <td>The service principal that manages this analyzer (for example, securityhubv2.amazonaws.com). This field is only present for service-linked analyzers and is not included for customer-managed analyzers.</td>
 </tr>
 <tr>
     <td><CopyableCode code="status" /></td>
@@ -206,6 +216,13 @@ The following methods are available for this resource:
     <td>Creates an analyzer for your account.</td>
 </tr>
 <tr>
+    <td><a href="#create_service_linked_analyzer"><CopyableCode code="create_service_linked_analyzer" /></a></td>
+    <td><CopyableCode code="insert" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-type"><code>type</code></a></td>
+    <td></td>
+    <td>Creates a service-linked analyzer managed by an Amazon Web Services service. This operation can only be invoked by authorized Amazon Web Services services. Direct customer invocation returns AccessDeniedException. Service-linked analyzers enable Amazon Web Services services to create and manage analyzers on behalf of customers. The lifecycle of these analyzers is managed by the calling service.</td>
+</tr>
+<tr>
     <td><a href="#update_analyzer"><CopyableCode code="update_analyzer" /></a></td>
     <td><CopyableCode code="update" /></td>
     <td><a href="#parameter-analyzer_name"><code>analyzer_name</code></a>, <a href="#parameter-region"><code>region</code></a></td>
@@ -225,6 +242,13 @@ The following methods are available for this resource:
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-analyzerArn"><code>analyzerArn</code></a>, <a href="#parameter-ruleName"><code>ruleName</code></a></td>
     <td></td>
     <td>Retroactively applies the archive rule to existing findings that meet the archive rule criteria.</td>
+</tr>
+<tr>
+    <td><a href="#delete_service_linked_analyzer"><CopyableCode code="delete_service_linked_analyzer" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-analyzer_name"><code>analyzer_name</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td><a href="#parameter-clientToken"><code>clientToken</code></a></td>
+    <td>Deletes a service-linked analyzer. This operation can be invoked by both authorized Amazon Web Services services and customers. When invoked by a customer, IAM Access Analyzer performs a callback to the managing service to verify whether the analyzer is still in use and can be deleted. If the service indicates the analyzer is still in use, the deletion is rejected with ConflictException.</td>
 </tr>
 <tr>
     <td><a href="#start_resource_scan"><CopyableCode code="start_resource_scan" /></a></td>
@@ -252,7 +276,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-analyzer_name">
     <td><CopyableCode code="analyzer_name" /></td>
     <td><code>string</code></td>
-    <td>The name of the analyzer to delete.</td>
+    <td>The name of the service-linked analyzer to delete. Service-linked analyzer names follow the format _AccessAnalyzerFor&#123;ServiceName&#125;-&#123;Id&#125;.</td>
 </tr>
 <tr id="parameter-region">
     <td><CopyableCode code="region" /></td>
@@ -303,6 +327,7 @@ configuration,
 created_at,
 last_resource_analyzed,
 last_resource_analyzed_at,
+managed_by,
 status,
 status_reason,
 tags,
@@ -325,6 +350,7 @@ configuration,
 created_at,
 last_resource_analyzed,
 last_resource_analyzed_at,
+managed_by,
 status,
 status_reason,
 tags,
@@ -346,6 +372,7 @@ AND type = '{{ type }}'
     defaultValue="create_analyzer"
     values={[
         { label: 'create_analyzer', value: 'create_analyzer' },
+        { label: 'create_service_linked_analyzer', value: 'create_service_linked_analyzer' },
         { label: 'Manifest', value: 'manifest' }
     ]}
 >
@@ -368,6 +395,29 @@ SELECT
 '{{ type }}' /* required */,
 '{{ archiveRules }}',
 '{{ tags }}',
+'{{ clientToken }}',
+'{{ configuration }}',
+'{{ region }}'
+RETURNING
+arn
+;
+```
+</TabItem>
+<TabItem value="create_service_linked_analyzer">
+
+Creates a service-linked analyzer managed by an Amazon Web Services service. This operation can only be invoked by authorized Amazon Web Services services. Direct customer invocation returns AccessDeniedException. Service-linked analyzers enable Amazon Web Services services to create and manage analyzers on behalf of customers. The lifecycle of these analyzers is managed by the calling service.
+
+```sql
+INSERT INTO aws.accessanalyzer.analyzers (
+type,
+archiveRules,
+clientToken,
+configuration,
+region
+)
+SELECT 
+'{{ type }}' /* required */,
+'{{ archiveRules }}',
 '{{ clientToken }}',
 '{{ configuration }}',
 '{{ region }}'
@@ -474,6 +524,7 @@ AND clientToken = '{{ clientToken }}'
     defaultValue="apply_archive_rule"
     values={[
         { label: 'apply_archive_rule', value: 'apply_archive_rule' },
+        { label: 'delete_service_linked_analyzer', value: 'delete_service_linked_analyzer' },
         { label: 'start_resource_scan', value: 'start_resource_scan' }
     ]}
 >
@@ -490,6 +541,18 @@ EXEC aws.accessanalyzer.analyzers.apply_archive_rule
 "ruleName": "{{ ruleName }}", 
 "clientToken": "{{ clientToken }}"
 }'
+;
+```
+</TabItem>
+<TabItem value="delete_service_linked_analyzer">
+
+Deletes a service-linked analyzer. This operation can be invoked by both authorized Amazon Web Services services and customers. When invoked by a customer, IAM Access Analyzer performs a callback to the managing service to verify whether the analyzer is still in use and can be deleted. If the service indicates the analyzer is still in use, the deletion is rejected with ConflictException.
+
+```sql
+EXEC aws.accessanalyzer.analyzers.delete_service_linked_analyzer 
+@analyzer_name='{{ analyzer_name }}' --required, 
+@region='{{ region }}' --required, 
+@clientToken='{{ clientToken }}'
 ;
 ```
 </TabItem>

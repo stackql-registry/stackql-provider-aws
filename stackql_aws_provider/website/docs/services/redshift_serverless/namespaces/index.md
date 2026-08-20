@@ -121,6 +121,11 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the namespace. Must be between 3-64 alphanumeric characters in lowercase, and it cannot be a reserved word. A list of reserved words can be found in Reserved Words in the Amazon Redshift Database Developer Guide. (pattern: &lt;code&gt;^&#91;a-z0-9-&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
+    <td><CopyableCode code="s_3_table_publish_status" /></td>
+    <td><code>object</code></td>
+    <td>The current Amazon S3 Tables log-publishing status for the namespace. Not returned when S3 Tables publishing has never been configured for the namespace.</td>
+</tr>
+<tr>
     <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the namespace. (AVAILABLE, MODIFYING, DELETING)</td>
@@ -210,6 +215,11 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the namespace. Must be between 3-64 alphanumeric characters in lowercase, and it cannot be a reserved word. A list of reserved words can be found in Reserved Words in the Amazon Redshift Database Developer Guide. (pattern: &lt;code&gt;^&#91;a-z0-9-&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
+    <td><CopyableCode code="s_3_table_publish_status" /></td>
+    <td><code>object</code></td>
+    <td>The current Amazon S3 Tables log-publishing status for the namespace. Not returned when S3 Tables publishing has never been configured for the namespace.</td>
+</tr>
+<tr>
     <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the namespace. (AVAILABLE, MODIFYING, DELETING)</td>
@@ -260,7 +270,7 @@ The following methods are available for this resource:
     <td><CopyableCode code="update" /></td>
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-namespaceName"><code>namespaceName</code></a></td>
     <td></td>
-    <td>Updates a namespace with the specified settings. Unless required, you can't update multiple parameters in one request. For example, you must specify both adminUsername and adminUserPassword to update either field, but you can't update both kmsKeyId and logExports in a single request.</td>
+    <td>Updates a namespace with the specified settings. Unless required, you can't update multiple parameters in one request. For example, you must specify both adminUsername and adminUserPassword to update either field, but you can't update both kmsKeyId and logExports in a single request. Similarly, an S3 Tables log-publishing update (a request where logDestinationType is s3table) cannot be combined with any other namespace configuration change and must be submitted as its own request.</td>
 </tr>
 <tr>
     <td><a href="#delete_namespace"><CopyableCode code="delete_namespace" /></a></td>
@@ -343,6 +353,7 @@ log_exports,
 namespace_arn,
 namespace_id,
 namespace_name,
+s_3_table_publish_status,
 status
 FROM aws.redshift_serverless.namespaces
 WHERE region = '{{ region }}' -- required
@@ -369,6 +380,7 @@ log_exports,
 namespace_arn,
 namespace_id,
 namespace_name,
+s_3_table_publish_status,
 status
 FROM aws.redshift_serverless.namespaces
 WHERE region = '{{ region }}' -- required
@@ -502,7 +514,7 @@ namespace
 >
 <TabItem value="update_namespace">
 
-Updates a namespace with the specified settings. Unless required, you can't update multiple parameters in one request. For example, you must specify both adminUsername and adminUserPassword to update either field, but you can't update both kmsKeyId and logExports in a single request.
+Updates a namespace with the specified settings. Unless required, you can't update multiple parameters in one request. For example, you must specify both adminUsername and adminUserPassword to update either field, but you can't update both kmsKeyId and logExports in a single request. Similarly, an S3 Tables log-publishing update (a request where logDestinationType is s3table) cannot be combined with any other namespace configuration change and must be submitted as its own request.
 
 ```sql
 UPDATE aws.redshift_serverless.namespaces
@@ -513,9 +525,14 @@ adminUsername = '{{ adminUsername }}',
 defaultIamRoleArn = '{{ defaultIamRoleArn }}',
 iamRoles = '{{ iamRoles }}',
 kmsKeyId = '{{ kmsKeyId }}',
+logDestinationType = '{{ logDestinationType }}',
 logExports = '{{ logExports }}',
 manageAdminPassword = {{ manageAdminPassword }},
-namespaceName = '{{ namespaceName }}'
+namespaceName = '{{ namespaceName }}',
+s3TableAction = '{{ s3TableAction }}',
+s3TableGranularity = '{{ s3TableGranularity }}',
+s3TableKmsKeyId = '{{ s3TableKmsKeyId }}',
+s3TableNames = '{{ s3TableNames }}'
 WHERE 
 region = '{{ region }}' --required
 AND namespaceName = '{{ namespaceName }}' --required
@@ -567,6 +584,7 @@ EXEC aws.redshift_serverless.namespaces.restore_from_snapshot
 @@json=
 '{
 "adminPasswordSecretKmsKeyId": "{{ adminPasswordSecretKmsKeyId }}", 
+"maintainIntegration": {{ maintainIntegration }}, 
 "manageAdminPassword": {{ manageAdminPassword }}, 
 "namespaceName": "{{ namespaceName }}", 
 "ownerAccount": "{{ ownerAccount }}", 

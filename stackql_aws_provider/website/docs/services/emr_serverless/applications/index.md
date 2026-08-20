@@ -98,7 +98,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="image_configuration" /></td>
     <td><code>object</code></td>
-    <td>The image configuration applied to all worker types.</td>
+    <td>The applied image configuration.</td>
 </tr>
 <tr>
     <td><CopyableCode code="initial_capacity" /></td>
@@ -576,6 +576,7 @@ arn
         The image configuration.
       value:
         imageUri: "{{ imageUri }}"
+        applicationLevelDigestResolution: {{ applicationLevelDigestResolution }}
     - name: workerTypeSpecifications
       value: "{{ workerTypeSpecifications }}"
     - name: runtimeConfiguration

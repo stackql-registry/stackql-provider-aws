@@ -73,7 +73,12 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
-    <td>The description of the payment manager. (pattern: &lt;code&gt;&#91;a-zA-Z0-9\s&#93;+&lt;/code&gt;)</td>
+    <td>The description of the payment manager. (pattern: &lt;code&gt;&#91;^\p&#123;C&#125;&#93;*&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="kms_key_arn" /></td>
+    <td><code>string</code></td>
+    <td>The Amazon Resource Name (ARN) of the KMS key used to encrypt sensitive payment manager data at rest, if configured. (pattern: &lt;code&gt;arn:aws(|-cn|-us-gov):kms:&#91;a-zA-Z0-9-&#93;*:&#91;0-9&#93;&#123;12&#125;:key/&#91;a-zA-Z0-9-&#93;&#123;36&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="last_updated_at" /></td>
@@ -142,7 +147,12 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
-    <td>The description of the payment manager. (pattern: &lt;code&gt;&#91;a-zA-Z0-9\s&#93;+&lt;/code&gt;)</td>
+    <td>The description of the payment manager. (pattern: &lt;code&gt;&#91;^\p&#123;C&#125;&#93;*&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="kms_key_arn" /></td>
+    <td><code>string</code></td>
+    <td>The Amazon Resource Name (ARN) of the KMS key used to encrypt sensitive payment manager data at rest, if configured. (pattern: &lt;code&gt;arn:aws(|-cn|-us-gov):kms:&#91;a-zA-Z0-9-&#93;*:&#91;0-9&#93;&#123;12&#125;:key/&#91;a-zA-Z0-9-&#93;&#123;36&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="last_updated_at" /></td>
@@ -288,6 +298,7 @@ authorizer_configuration,
 authorizer_type,
 created_at,
 description,
+kms_key_arn,
 last_updated_at,
 payment_manager_arn,
 payment_manager_id,
@@ -311,6 +322,7 @@ name,
 authorizer_type,
 created_at,
 description,
+kms_key_arn,
 last_updated_at,
 payment_manager_arn,
 payment_manager_id,
@@ -348,6 +360,7 @@ authorizerConfiguration,
 roleArn,
 clientToken,
 tags,
+kmsKeyArn,
 region
 )
 SELECT 
@@ -358,12 +371,14 @@ SELECT
 '{{ roleArn }}' /* required */,
 '{{ clientToken }}',
 '{{ tags }}',
+'{{ kmsKeyArn }}',
 '{{ region }}'
 RETURNING
 name,
 authorizer_configuration,
 authorizer_type,
 created_at,
+kms_key_arn,
 payment_manager_arn,
 payment_manager_id,
 role_arn,
@@ -400,6 +415,7 @@ workload_identity_details
             - "{{ allowedClients }}"
           allowedScopes:
             - "{{ allowedScopes }}"
+          advertisedScopeMapping: "{{ advertisedScopeMapping }}"
           customClaims:
             - inboundTokenClaimName: "{{ inboundTokenClaimName }}"
               inboundTokenClaimValueType: "{{ inboundTokenClaimValueType }}"
@@ -432,12 +448,19 @@ workload_identity_details
                   securityGroupIds: "{{ securityGroupIds }}"
                   tags: "{{ tags }}"
                   routingDomain: "{{ routingDomain }}"
+          allowedWorkloadConfiguration:
+            hostingEnvironments:
+              - arn: "{{ arn }}"
+            workloadIdentities:
+              - "{{ workloadIdentities }}"
     - name: roleArn
       value: "{{ roleArn }}"
     - name: clientToken
       value: "{{ clientToken }}"
     - name: tags
       value: "{{ tags }}"
+    - name: kmsKeyArn
+      value: "{{ kmsKeyArn }}"
 `}</CodeBlock>
 
 </TabItem>
@@ -463,13 +486,15 @@ description = '{{ description }}',
 authorizerType = '{{ authorizerType }}',
 authorizerConfiguration = '{{ authorizerConfiguration }}',
 roleArn = '{{ roleArn }}',
-clientToken = '{{ clientToken }}'
+clientToken = '{{ clientToken }}',
+kmsKeyArn = '{{ kmsKeyArn }}'
 WHERE 
 payment_manager_id = '{{ payment_manager_id }}' --required
 AND region = '{{ region }}' --required
 RETURNING
 name,
 authorizer_type,
+kms_key_arn,
 last_updated_at,
 payment_manager_arn,
 payment_manager_id,

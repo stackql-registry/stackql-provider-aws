@@ -362,6 +362,7 @@ connection_type_arn
             - "{{ AllowedValues }}"
           PropertyLocation: "{{ PropertyLocation }}"
           PropertyType: "{{ PropertyType }}"
+          Format: "{{ Format }}"
         AdditionalRequestParameters:
           - Name: "{{ Name }}"
             KeyOverride: "{{ KeyOverride }}"
@@ -370,6 +371,7 @@ connection_type_arn
             AllowedValues: "{{ AllowedValues }}"
             PropertyLocation: "{{ PropertyLocation }}"
             PropertyType: "{{ PropertyType }}"
+            Format: "{{ Format }}"
     - name: ConnectorAuthenticationConfiguration
       description: |
         Defines the supported authentication types and required properties for this connection type, including Basic, OAuth2, and Custom authentication methods.
@@ -388,6 +390,7 @@ connection_type_arn
                 - "{{ AllowedValues }}"
               PropertyLocation: "{{ PropertyLocation }}"
               PropertyType: "{{ PropertyType }}"
+              Format: "{{ Format }}"
             RequestMethod: "{{ RequestMethod }}"
             ContentType: "{{ ContentType }}"
             ClientId:
@@ -399,6 +402,7 @@ connection_type_arn
                 - "{{ AllowedValues }}"
               PropertyLocation: "{{ PropertyLocation }}"
               PropertyType: "{{ PropertyType }}"
+              Format: "{{ Format }}"
             ClientSecret:
               Name: "{{ Name }}"
               KeyOverride: "{{ KeyOverride }}"
@@ -408,6 +412,7 @@ connection_type_arn
                 - "{{ AllowedValues }}"
               PropertyLocation: "{{ PropertyLocation }}"
               PropertyType: "{{ PropertyType }}"
+              Format: "{{ Format }}"
             Scope:
               Name: "{{ Name }}"
               KeyOverride: "{{ KeyOverride }}"
@@ -417,6 +422,7 @@ connection_type_arn
                 - "{{ AllowedValues }}"
               PropertyLocation: "{{ PropertyLocation }}"
               PropertyType: "{{ PropertyType }}"
+              Format: "{{ Format }}"
             TokenUrlParameters:
               - Name: "{{ Name }}"
                 KeyOverride: "{{ KeyOverride }}"
@@ -425,6 +431,7 @@ connection_type_arn
                 AllowedValues: "{{ AllowedValues }}"
                 PropertyLocation: "{{ PropertyLocation }}"
                 PropertyType: "{{ PropertyType }}"
+                Format: "{{ Format }}"
           JWTBearerProperties:
             TokenUrl:
               Name: "{{ Name }}"
@@ -435,6 +442,7 @@ connection_type_arn
                 - "{{ AllowedValues }}"
               PropertyLocation: "{{ PropertyLocation }}"
               PropertyType: "{{ PropertyType }}"
+              Format: "{{ Format }}"
             RequestMethod: "{{ RequestMethod }}"
             ContentType: "{{ ContentType }}"
             JwtToken:
@@ -446,6 +454,7 @@ connection_type_arn
                 - "{{ AllowedValues }}"
               PropertyLocation: "{{ PropertyLocation }}"
               PropertyType: "{{ PropertyType }}"
+              Format: "{{ Format }}"
             TokenUrlParameters:
               - Name: "{{ Name }}"
                 KeyOverride: "{{ KeyOverride }}"
@@ -454,6 +463,7 @@ connection_type_arn
                 AllowedValues: "{{ AllowedValues }}"
                 PropertyLocation: "{{ PropertyLocation }}"
                 PropertyType: "{{ PropertyType }}"
+                Format: "{{ Format }}"
           AuthorizationCodeProperties:
             AuthorizationCodeUrl:
               Name: "{{ Name }}"
@@ -464,6 +474,7 @@ connection_type_arn
                 - "{{ AllowedValues }}"
               PropertyLocation: "{{ PropertyLocation }}"
               PropertyType: "{{ PropertyType }}"
+              Format: "{{ Format }}"
             AuthorizationCode:
               Name: "{{ Name }}"
               KeyOverride: "{{ KeyOverride }}"
@@ -473,6 +484,7 @@ connection_type_arn
                 - "{{ AllowedValues }}"
               PropertyLocation: "{{ PropertyLocation }}"
               PropertyType: "{{ PropertyType }}"
+              Format: "{{ Format }}"
             RedirectUri:
               Name: "{{ Name }}"
               KeyOverride: "{{ KeyOverride }}"
@@ -482,6 +494,7 @@ connection_type_arn
                 - "{{ AllowedValues }}"
               PropertyLocation: "{{ PropertyLocation }}"
               PropertyType: "{{ PropertyType }}"
+              Format: "{{ Format }}"
             TokenUrl:
               Name: "{{ Name }}"
               KeyOverride: "{{ KeyOverride }}"
@@ -491,6 +504,7 @@ connection_type_arn
                 - "{{ AllowedValues }}"
               PropertyLocation: "{{ PropertyLocation }}"
               PropertyType: "{{ PropertyType }}"
+              Format: "{{ Format }}"
             RequestMethod: "{{ RequestMethod }}"
             ContentType: "{{ ContentType }}"
             ClientId:
@@ -502,6 +516,7 @@ connection_type_arn
                 - "{{ AllowedValues }}"
               PropertyLocation: "{{ PropertyLocation }}"
               PropertyType: "{{ PropertyType }}"
+              Format: "{{ Format }}"
             ClientSecret:
               Name: "{{ Name }}"
               KeyOverride: "{{ KeyOverride }}"
@@ -511,6 +526,7 @@ connection_type_arn
                 - "{{ AllowedValues }}"
               PropertyLocation: "{{ PropertyLocation }}"
               PropertyType: "{{ PropertyType }}"
+              Format: "{{ Format }}"
             Scope:
               Name: "{{ Name }}"
               KeyOverride: "{{ KeyOverride }}"
@@ -520,6 +536,7 @@ connection_type_arn
                 - "{{ AllowedValues }}"
               PropertyLocation: "{{ PropertyLocation }}"
               PropertyType: "{{ PropertyType }}"
+              Format: "{{ Format }}"
             Prompt:
               Name: "{{ Name }}"
               KeyOverride: "{{ KeyOverride }}"
@@ -529,6 +546,7 @@ connection_type_arn
                 - "{{ AllowedValues }}"
               PropertyLocation: "{{ PropertyLocation }}"
               PropertyType: "{{ PropertyType }}"
+              Format: "{{ Format }}"
             TokenUrlParameters:
               - Name: "{{ Name }}"
                 KeyOverride: "{{ KeyOverride }}"
@@ -537,6 +555,7 @@ connection_type_arn
                 AllowedValues: "{{ AllowedValues }}"
                 PropertyLocation: "{{ PropertyLocation }}"
                 PropertyType: "{{ PropertyType }}"
+                Format: "{{ Format }}"
         BasicAuthenticationProperties:
           Username:
             Name: "{{ Name }}"
@@ -547,6 +566,7 @@ connection_type_arn
               - "{{ AllowedValues }}"
             PropertyLocation: "{{ PropertyLocation }}"
             PropertyType: "{{ PropertyType }}"
+            Format: "{{ Format }}"
           Password:
             Name: "{{ Name }}"
             KeyOverride: "{{ KeyOverride }}"
@@ -556,6 +576,7 @@ connection_type_arn
               - "{{ AllowedValues }}"
             PropertyLocation: "{{ PropertyLocation }}"
             PropertyType: "{{ PropertyType }}"
+            Format: "{{ Format }}"
         CustomAuthenticationProperties:
           AuthenticationParameters:
             - Name: "{{ Name }}"
@@ -565,6 +586,7 @@ connection_type_arn
               AllowedValues: "{{ AllowedValues }}"
               PropertyLocation: "{{ PropertyLocation }}"
               PropertyType: "{{ PropertyType }}"
+              Format: "{{ Format }}"
     - name: RestConfiguration
       description: |
         Defines the HTTP request and response configuration, validation endpoint, and entity configurations for REST API interactions.
@@ -580,6 +602,7 @@ connection_type_arn
               AllowedValues: "{{ AllowedValues }}"
               PropertyLocation: "{{ PropertyLocation }}"
               PropertyType: "{{ PropertyType }}"
+              Format: "{{ Format }}"
           ResponseConfiguration:
             ResultPath: "{{ ResultPath }}"
             ErrorPath: "{{ ErrorPath }}"
@@ -606,6 +629,19 @@ connection_type_arn
                 DefaultValue: "{{ DefaultValue }}"
                 PropertyLocation: "{{ PropertyLocation }}"
                 Value: "{{ Value }}"
+          FilterConfiguration:
+            FilterMode: "{{ FilterMode }}"
+            OperatorMappings: "{{ OperatorMappings }}"
+            DateTimeFormat: "{{ DateTimeFormat }}"
+            StripQuotes: {{ StripQuotes }}
+            BetweenConfiguration:
+              LowBoundKey: "{{ LowBoundKey }}"
+              HighBoundKey: "{{ HighBoundKey }}"
+              Template: "{{ Template }}"
+            FilterStringConfiguration:
+              QueryParameterName: "{{ QueryParameterName }}"
+              QuoteStringValues: {{ QuoteStringValues }}
+              QuoteCharacter: "{{ QuoteCharacter }}"
         ValidationEndpointConfiguration:
           RequestMethod: "{{ RequestMethod }}"
           RequestPath: "{{ RequestPath }}"
@@ -617,6 +653,7 @@ connection_type_arn
               AllowedValues: "{{ AllowedValues }}"
               PropertyLocation: "{{ PropertyLocation }}"
               PropertyType: "{{ PropertyType }}"
+              Format: "{{ Format }}"
           ResponseConfiguration:
             ResultPath: "{{ ResultPath }}"
             ErrorPath: "{{ ErrorPath }}"
@@ -643,6 +680,19 @@ connection_type_arn
                 DefaultValue: "{{ DefaultValue }}"
                 PropertyLocation: "{{ PropertyLocation }}"
                 Value: "{{ Value }}"
+          FilterConfiguration:
+            FilterMode: "{{ FilterMode }}"
+            OperatorMappings: "{{ OperatorMappings }}"
+            DateTimeFormat: "{{ DateTimeFormat }}"
+            StripQuotes: {{ StripQuotes }}
+            BetweenConfiguration:
+              LowBoundKey: "{{ LowBoundKey }}"
+              HighBoundKey: "{{ HighBoundKey }}"
+              Template: "{{ Template }}"
+            FilterStringConfiguration:
+              QueryParameterName: "{{ QueryParameterName }}"
+              QuoteStringValues: {{ QuoteStringValues }}
+              QuoteCharacter: "{{ QuoteCharacter }}"
         EntityConfigurations: "{{ EntityConfigurations }}"
     - name: Tags
       value: "{{ Tags }}"

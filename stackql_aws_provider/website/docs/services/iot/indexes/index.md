@@ -126,7 +126,7 @@ The following methods are available for this resource:
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>The query search index. Requires permission to access the SearchIndex action.</td>
+    <td>Searches the specified index. If a device has never connected to IoT Core or was disconnected for more than 1 hour before fleet indexing's thingConnectivityIndexingMode was enabled, the connectivity object for this device in the response will have the connected field set to false with no additional session details. Requires permission to access the SearchIndex action.</td>
 </tr>
 </tbody>
 </table>
@@ -183,7 +183,7 @@ AND region = '{{ region }}' -- required
 </TabItem>
 <TabItem value="search_index">
 
-The query search index. Requires permission to access the SearchIndex action.
+Searches the specified index. If a device has never connected to IoT Core or was disconnected for more than 1 hour before fleet indexing's thingConnectivityIndexingMode was enabled, the connectivity object for this device in the response will have the connected field set to false with no additional session details. Requires permission to access the SearchIndex action.
 
 ```sql
 SELECT

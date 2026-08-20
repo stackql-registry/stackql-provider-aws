@@ -63,12 +63,12 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="agent_runtime_arn" /></td>
     <td><code>string</code></td>
-    <td>The Amazon Resource Name (ARN) of the AgentCore Runtime. (pattern: &lt;code&gt;arn:(-&#91;^:&#93;+)?:bedrock-agentcore:&#91;a-z0-9-&#93;+:&#91;0-9&#93;&#123;12&#125;:agent/&#91;A-Fa-f0-9&#93;&#123;8&#125;-&#91;A-Fa-f0-9&#93;&#123;4&#125;-&#91;A-Fa-f0-9&#93;&#123;4&#125;-&#91;A-Fa-f0-9&#93;&#123;4&#125;-&#91;A-Fa-f0-9&#93;&#123;12&#125;:(&#91;0-9&#93;&#123;0,4&#125;&#91;1-9&#93;&#91;0-9&#93;&#123;0,4&#125;)&lt;/code&gt;)</td>
+    <td>The Amazon Resource Name (ARN) of the AgentCore Runtime. (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:bedrock-agentcore:&#91;a-z0-9-&#93;+:&#91;0-9&#93;&#123;12&#125;:runtime/&#91;a-zA-Z&#93;&#91;a-zA-Z0-9_&#93;&#123;0,47&#125;-&#91;a-zA-Z0-9&#93;&#123;10&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="agent_runtime_endpoint_arn" /></td>
     <td><code>string</code></td>
-    <td>The Amazon Resource Name (ARN) of the AgentCore Runtime endpoint. (pattern: &lt;code&gt;arn:(-&#91;^:&#93;+)?:bedrock-agentcore:&#91;a-z0-9-&#93;+:&#91;0-9&#93;&#123;12&#125;:agentEndpoint/&#91;A-Fa-f0-9&#93;&#123;8&#125;-&#91;A-Fa-f0-9&#93;&#123;4&#125;-&#91;A-Fa-f0-9&#93;&#123;4&#125;-&#91;A-Fa-f0-9&#93;&#123;4&#125;-&#91;A-Fa-f0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
+    <td>The Amazon Resource Name (ARN) of the AgentCore Runtime endpoint. (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:bedrock-agentcore:&#91;a-z0-9-&#93;+:&#91;0-9&#93;&#123;12&#125;:runtime/&#91;a-zA-Z&#93;&#91;a-zA-Z0-9_&#93;&#123;0,47&#125;-&#91;a-zA-Z0-9&#93;&#123;10&#125;/runtime-endpoint/&#91;a-zA-Z&#93;&#91;a-zA-Z0-9_&#93;&#123;0,47&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="created_at" /></td>
@@ -132,12 +132,12 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="agent_runtime_arn" /></td>
     <td><code>string</code></td>
-    <td>The Amazon Resource Name (ARN) of the agent runtime associated with the endpoint. (pattern: &lt;code&gt;arn:(-&#91;^:&#93;+)?:bedrock-agentcore:&#91;a-z0-9-&#93;+:&#91;0-9&#93;&#123;12&#125;:agent/&#91;A-Fa-f0-9&#93;&#123;8&#125;-&#91;A-Fa-f0-9&#93;&#123;4&#125;-&#91;A-Fa-f0-9&#93;&#123;4&#125;-&#91;A-Fa-f0-9&#93;&#123;4&#125;-&#91;A-Fa-f0-9&#93;&#123;12&#125;:(&#91;0-9&#93;&#123;0,4&#125;&#91;1-9&#93;&#91;0-9&#93;&#123;0,4&#125;)&lt;/code&gt;)</td>
+    <td>The Amazon Resource Name (ARN) of the agent runtime associated with the endpoint. (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:bedrock-agentcore:&#91;a-z0-9-&#93;+:&#91;0-9&#93;&#123;12&#125;:runtime/&#91;a-zA-Z&#93;&#91;a-zA-Z0-9_&#93;&#123;0,47&#125;-&#91;a-zA-Z0-9&#93;&#123;10&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="agent_runtime_endpoint_arn" /></td>
     <td><code>string</code></td>
-    <td>The Amazon Resource Name (ARN) of the agent runtime endpoint. (pattern: &lt;code&gt;arn:(-&#91;^:&#93;+)?:bedrock-agentcore:&#91;a-z0-9-&#93;+:&#91;0-9&#93;&#123;12&#125;:agentEndpoint/&#91;A-Fa-f0-9&#93;&#123;8&#125;-&#91;A-Fa-f0-9&#93;&#123;4&#125;-&#91;A-Fa-f0-9&#93;&#123;4&#125;-&#91;A-Fa-f0-9&#93;&#123;4&#125;-&#91;A-Fa-f0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
+    <td>The Amazon Resource Name (ARN) of the agent runtime endpoint. (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:bedrock-agentcore:&#91;a-z0-9-&#93;+:&#91;0-9&#93;&#123;12&#125;:runtime/&#91;a-zA-Z&#93;&#91;a-zA-Z0-9_&#93;&#123;0,47&#125;-&#91;a-zA-Z0-9&#93;&#123;10&#125;/runtime-endpoint/&#91;a-zA-Z&#93;&#91;a-zA-Z0-9_&#93;&#123;0,47&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="created_at" /></td>
@@ -222,7 +222,7 @@ The following methods are available for this resource:
     <td><CopyableCode code="delete" /></td>
     <td><a href="#parameter-agent_runtime_id"><code>agent_runtime_id</code></a>, <a href="#parameter-endpoint_name"><code>endpoint_name</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td><a href="#parameter-clientToken"><code>clientToken</code></a></td>
-    <td>Deletes an AAgentCore Runtime endpoint.</td>
+    <td>Deletes an AgentCore Runtime endpoint.</td>
 </tr>
 </tbody>
 </table>
@@ -447,7 +447,7 @@ target_version;
 >
 <TabItem value="delete_agent_runtime_endpoint">
 
-Deletes an AAgentCore Runtime endpoint.
+Deletes an AgentCore Runtime endpoint.
 
 ```sql
 DELETE FROM aws.bedrock_agentcore_control.agent_runtime_endpoints

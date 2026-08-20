@@ -84,28 +84,28 @@ The following methods are available for this resource:
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>Returns a paginated list of data providers for your account in the current region.</td>
+    <td>Returns a paginated list of data providers for your account in the current region. Required permissions: dms:ListDataProviders. For more information, see Actions, resources, and condition keys for Database Migration Service.</td>
 </tr>
 <tr>
     <td><a href="#create_data_provider"><CopyableCode code="create_data_provider" /></a></td>
     <td><CopyableCode code="insert" /></td>
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-Engine"><code>Engine</code></a>, <a href="#parameter-Settings"><code>Settings</code></a></td>
     <td></td>
-    <td>Creates a data provider using the provided settings. A data provider stores a data store type and location information about your database.</td>
+    <td>Creates a data provider using the provided settings. A data provider stores a data store type and location information about your database. Required permissions: dms:CreateDataProvider. For more information, see Actions, resources, and condition keys for Database Migration Service.</td>
 </tr>
 <tr>
     <td><a href="#modify_data_provider"><CopyableCode code="modify_data_provider" /></a></td>
     <td><CopyableCode code="update" /></td>
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-DataProviderIdentifier"><code>DataProviderIdentifier</code></a></td>
     <td></td>
-    <td>Modifies the specified data provider using the provided settings. You must remove the data provider from all migration projects before you can modify it.</td>
+    <td>Modifies the specified data provider using the provided settings. Required permissions: dms:UpdateDataProvider. For more information, see Actions, resources, and condition keys for Database Migration Service. You must remove the data provider from all migration projects before you can modify it.</td>
 </tr>
 <tr>
     <td><a href="#delete_data_provider"><CopyableCode code="delete_data_provider" /></a></td>
     <td><CopyableCode code="delete" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>Deletes the specified data provider. All migration projects associated with the data provider must be deleted or modified before you can delete the data provider.</td>
+    <td>Deletes the specified data provider. Required permissions: dms:DeleteDataProvider. For more information, see Actions, resources, and condition keys for Database Migration Service. All migration projects associated with the data provider must be deleted or modified before you can delete the data provider.</td>
 </tr>
 </tbody>
 </table>
@@ -141,7 +141,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 >
 <TabItem value="describe_data_providers">
 
-Returns a paginated list of data providers for your account in the current region.
+Returns a paginated list of data providers for your account in the current region. Required permissions: dms:ListDataProviders. For more information, see Actions, resources, and condition keys for Database Migration Service.
 
 ```sql
 SELECT
@@ -166,7 +166,7 @@ WHERE region = '{{ region }}' -- required
 >
 <TabItem value="create_data_provider">
 
-Creates a data provider using the provided settings. A data provider stores a data store type and location information about your database.
+Creates a data provider using the provided settings. A data provider stores a data store type and location information about your database. Required permissions: dms:CreateDataProvider. For more information, see Actions, resources, and condition keys for Database Migration Service.
 
 ```sql
 INSERT INTO aws.dms.data_providers (
@@ -210,7 +210,7 @@ data_provider
     - name: Engine
       value: "{{ Engine }}"
       description: |
-        The type of database engine for the data provider. Valid values include "aurora", "aurora-postgresql", "mysql", "oracle", "postgres", "sqlserver", redshift, mariadb, mongodb, db2, db2-zos, docdb, and sybase. A value of "aurora" represents Amazon Aurora MySQL-Compatible Edition.
+        The type of database engine for the data provider. Valid values: aurora, aurora-postgresql, db2, db2-zos, docdb, mariadb, mongodb, mysql, oracle, postgres, redshift, sqlserver, and sybase. A value of aurora represents Amazon Aurora MySQL-Compatible Edition.
     - name: Virtual
       value: {{ Virtual }}
       description: |
@@ -331,7 +331,7 @@ data_provider
 >
 <TabItem value="modify_data_provider">
 
-Modifies the specified data provider using the provided settings. You must remove the data provider from all migration projects before you can modify it.
+Modifies the specified data provider using the provided settings. Required permissions: dms:UpdateDataProvider. For more information, see Actions, resources, and condition keys for Database Migration Service. You must remove the data provider from all migration projects before you can modify it.
 
 ```sql
 UPDATE aws.dms.data_providers
@@ -363,7 +363,7 @@ data_provider;
 >
 <TabItem value="delete_data_provider">
 
-Deletes the specified data provider. All migration projects associated with the data provider must be deleted or modified before you can delete the data provider.
+Deletes the specified data provider. Required permissions: dms:DeleteDataProvider. For more information, see Actions, resources, and condition keys for Database Migration Service. All migration projects associated with the data provider must be deleted or modified before you can delete the data provider.
 
 ```sql
 DELETE FROM aws.dms.data_providers

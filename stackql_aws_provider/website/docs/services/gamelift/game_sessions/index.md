@@ -52,7 +52,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="compute_name" /></td>
     <td><code>string</code></td>
-    <td>A descriptive label for the compute resource. The compute resource that is hosting the game session. For EC2 fleets, this is the EC2 instance ID. For Container fleets, each game server container group on a fleet instance is assigned a compute name. For Anywhere fleets, this is the custom compute name. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9\-&#93;+(\/&#91;a-zA-Z0-9\-&#93;+)?&lt;/code&gt;)</td>
+    <td>A descriptive label for the compute resource. The compute resource that is hosting the game session. For EC2 fleets, this is the EC2 instance ID. For Container fleets, each game server container group on a fleet instance is assigned a compute name. For Anywhere fleets, this is the custom compute name. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9\-&#93;+(\/&#91;a-zA-Z0-9\-&#93;+)?$&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="creation_time" /></td>
@@ -82,7 +82,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="fleet_id" /></td>
     <td><code>string</code></td>
-    <td>A unique identifier for the fleet that the game session is running on. (pattern: &lt;code&gt;^&#91;a-z&#93;*fleet-&#91;a-zA-Z0-9\-&#93;+&lt;/code&gt;)</td>
+    <td>A unique identifier for the fleet that the game session is running on. (pattern: &lt;code&gt;^&#91;a-z&#93;*fleet-&#91;a-zA-Z0-9\-&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="game_properties" /></td>
@@ -97,17 +97,17 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="game_session_id" /></td>
     <td><code>string</code></td>
-    <td>An identifier for the game session that is unique across all regions. The value is always a full ARN in the following format: arn:aws:gamelift:`&lt;location&gt;`::gamesession/&lt;fleet ID&gt;/&lt;ID string&gt;.</td>
+    <td>An identifier for the game session that is unique across all regions. The value is always a full ARN in the following format: For Home Region game session - arn:aws:gamelift:<code>&lt;home_region&gt;</code>::gamesession/&lt;fleet ID&gt;/&lt;ID string&gt;. For Remote Location game session - arn:aws:gamelift:<code>&lt;home_region&gt;</code>::gamesession/&lt;fleet ID&gt;/`&lt;location&gt;`/&lt;ID string&gt;.</td>
 </tr>
 <tr>
     <td><CopyableCode code="ip_address" /></td>
     <td><code>string</code></td>
-    <td>The IP address of the game session. To connect to a Amazon GameLift Servers game server, an app needs both the IP address and port number. (pattern: &lt;code&gt;^&#91;0-9A-Fa-f\:\.&#93;+&lt;/code&gt;)</td>
+    <td>The IP address of the game session. To connect to a Amazon GameLift Servers game server, an app needs both the IP address and port number. (pattern: &lt;code&gt;^&#91;0-9A-Fa-f\:\.&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="location" /></td>
     <td><code>string</code></td>
-    <td>The fleet location where the game session is running. This value might specify the fleet's home Region or a remote location. Location is expressed as an Amazon Web Services Region code such as us-west-2. (pattern: &lt;code&gt;^&#91;A-Za-z0-9\-&#93;+&lt;/code&gt;)</td>
+    <td>The fleet location where the game session is running. This value might specify the fleet's home Region or a remote location. Location is expressed as an Amazon Web Services Region code such as us-west-2. (pattern: &lt;code&gt;^&#91;A-Za-z0-9\-&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="matchmaker_data" /></td>
@@ -375,7 +375,7 @@ game_session
     - name: IdempotencyToken
       value: "{{ IdempotencyToken }}"
       description: |
-        Custom string that uniquely identifies the new game session request. This is useful for ensuring that game session requests with the same idempotency token are processed only once. Subsequent requests with the same string return the original GameSession object, with an updated status. Maximum token length is 48 characters. If provided, this string is included in the new game session's ID. The value is always a full ARN in the following format: arn:aws:gamelift:\`<location>\`::gamesession/<fleet ID>/<ID string>. Idempotency tokens remain in use for 30 days after a game session has ended; game session objects are retained for this time period and then deleted.
+        Custom string that uniquely identifies the new game session request. This is useful for ensuring that game session requests with the same idempotency token are processed only once. Subsequent requests with the same string return the original GameSession object, with an updated status. Maximum token length is 48 characters. If provided, this string is included in the new game session's ID. The value is always a full ARN in the following format: For Home Region game session - arn:aws:gamelift:\`<home_region>\`::gamesession/<fleet ID>/<ID string>. For Remote Location game session - arn:aws:gamelift:\`<home_region>\`::gamesession/<fleet ID>/\`<location>\`/<ID string>. Idempotency tokens remain in use for 30 days after a game session has ended; game session objects are retained for this time period and then deleted.
     - name: GameSessionData
       value: "{{ GameSessionData }}"
       description: |

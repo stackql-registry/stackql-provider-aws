@@ -93,7 +93,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="type" /></td>
     <td><code>string</code></td>
-    <td>The type of configurations contained in the profile. AppConfig supports feature flags and freeform configurations. We recommend you create feature flag configurations to enable or disable new features and freeform configurations to distribute configurations to an application. When calling this API, enter one of the following values for Type: AWS.AppConfig.FeatureFlags AWS.Freeform (pattern: &lt;code&gt;^&#91;a-zA-Z\.&#93;+&lt;/code&gt;)</td>
+    <td>The type of configurations contained in the profile. AppConfig supports feature flags and freeform configurations. We recommend you create feature flag configurations to enable or disable new features and freeform configurations to distribute configurations to an application. When calling this API, enter one of the following values for Type: AWS.AppConfig.FeatureFlags AWS.Freeform (pattern: &lt;code&gt;^&#91;a-zA-Z0-9\.\-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="validators" /></td>
@@ -137,7 +137,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="type" /></td>
     <td><code>string</code></td>
-    <td>The type of configurations contained in the profile. AppConfig supports feature flags and freeform configurations. We recommend you create feature flag configurations to enable or disable new features and freeform configurations to distribute configurations to an application. When calling this API, enter one of the following values for Type: AWS.AppConfig.FeatureFlags AWS.Freeform (pattern: &lt;code&gt;^&#91;a-zA-Z\.&#93;+&lt;/code&gt;)</td>
+    <td>The type of configurations contained in the profile. AppConfig supports feature flags and freeform configurations. We recommend you create feature flag configurations to enable or disable new features and freeform configurations to distribute configurations to an application. When calling this API, enter one of the following values for Type: AWS.AppConfig.FeatureFlags AWS.Freeform (pattern: &lt;code&gt;^&#91;a-zA-Z0-9\.\-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="validator_types" /></td>

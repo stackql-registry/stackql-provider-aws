@@ -51,6 +51,11 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
+    <td><CopyableCode code="additional_run_options" /></td>
+    <td><code>object</code></td>
+    <td>Additional run options you can specify for a recommendation run.</td>
+</tr>
+<tr>
     <td><CopyableCode code="completed_on" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when this run was completed.</td>
@@ -68,7 +73,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="data_source" /></td>
     <td><code>object</code></td>
-    <td>The data source (an Glue table) associated with this run.</td>
+    <td>A data source (an Glue table) for which you want data quality results.</td>
 </tr>
 <tr>
     <td><CopyableCode code="error_string" /></td>
@@ -217,6 +222,7 @@ Gets the specified recommendation run that was used to generate rules.
 
 ```sql
 SELECT
+additional_run_options,
 completed_on,
 created_ruleset_name,
 data_quality_security_configuration,

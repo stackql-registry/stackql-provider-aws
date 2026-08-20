@@ -842,6 +842,7 @@ training_job_arn
         Peft: "{{ Peft }}"
         EvaluationType: "{{ EvaluationType }}"
         EvaluatorArn: "{{ EvaluatorArn }}"
+        SequenceLength: "{{ SequenceLength }}"
     - name: MlflowConfig
       description: |
         The MLflow configuration using SageMaker managed MLflow.

@@ -106,6 +106,11 @@ The following fields are returned by `SELECT` queries:
     <td>The settings for what common media server data (CMSD) headers AWS Elemental MediaPackage includes in responses to the CDN.</td>
 </tr>
 <tr>
+    <td><CopyableCode code="output_locking_mode" /></td>
+    <td><code>string</code></td>
+    <td>The output locking mode configured for the channel. The allowed values are: EPOCH_LOCKED - The channel uses epoch-locked behavior with deterministic sequence numbering and fixed segment boundaries aligned to epoch time. NON_EPOCH_LOCKED - The channel uses non-epoch-locked behavior with duration-based segment combining and monotonically increasing sequence numbers starting from 0. (EPOCH_LOCKED, NON_EPOCH_LOCKED)</td>
+</tr>
+<tr>
     <td><CopyableCode code="reset_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time that the channel was last reset.</td>
@@ -163,6 +168,11 @@ The following fields are returned by `SELECT` queries:
     <td><CopyableCode code="modified_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the channel was modified.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="output_locking_mode" /></td>
+    <td><code>string</code></td>
+    <td>The output locking mode configured for the channel. The allowed values are: EPOCH_LOCKED - The channel uses epoch-locked behavior with deterministic sequence numbering and fixed segment boundaries aligned to epoch time. NON_EPOCH_LOCKED - The channel uses non-epoch-locked behavior with duration-based segment combining and monotonically increasing sequence numbers starting from 0. (EPOCH_LOCKED, NON_EPOCH_LOCKED)</td>
 </tr>
 </tbody>
 </table>
@@ -306,6 +316,7 @@ input_switch_configuration,
 input_type,
 modified_at,
 output_header_configuration,
+output_locking_mode,
 reset_at,
 tags
 FROM aws.mediapackagev2.channels
@@ -327,7 +338,8 @@ channel_name,
 created_at,
 description,
 input_type,
-modified_at
+modified_at,
+output_locking_mode
 FROM aws.mediapackagev2.channels
 WHERE channel_group_name = '{{ channel_group_name }}' -- required
 AND region = '{{ region }}' -- required
@@ -359,6 +371,7 @@ InputType,
 Description,
 InputSwitchConfiguration,
 OutputHeaderConfiguration,
+OutputLockingMode,
 Tags,
 channel_group_name,
 region,
@@ -370,6 +383,7 @@ SELECT
 '{{ Description }}',
 '{{ InputSwitchConfiguration }}',
 '{{ OutputHeaderConfiguration }}',
+'{{ OutputLockingMode }}',
 '{{ Tags }}',
 '{{ channel_group_name }}',
 '{{ region }}',
@@ -386,6 +400,7 @@ input_switch_configuration,
 input_type,
 modified_at,
 output_header_configuration,
+output_locking_mode,
 tags
 ;
 ```
@@ -419,6 +434,9 @@ tags
         The settings for what common media server data (CMSD) headers AWS Elemental MediaPackage includes in responses to the CDN.
       value:
         PublishMQCS: {{ PublishMQCS }}
+    - name: OutputLockingMode
+      value: "{{ OutputLockingMode }}"
+      valid_values: ['EPOCH_LOCKED', 'NON_EPOCH_LOCKED']
     - name: Tags
       value: "{{ Tags }}"
     - name: x-amzn-client-token
@@ -466,6 +484,7 @@ input_switch_configuration,
 input_type,
 modified_at,
 output_header_configuration,
+output_locking_mode,
 tags;
 ```
 </TabItem>

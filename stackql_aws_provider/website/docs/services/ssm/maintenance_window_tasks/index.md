@@ -197,7 +197,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="task_arn" /></td>
     <td><code>string</code></td>
-    <td>The resource that the task uses during execution. For RUN_COMMAND and AUTOMATION task types, TaskArn is the Amazon Web Services Systems Manager (SSM document) name or ARN. For LAMBDA tasks, it's the function name or ARN. For STEP_FUNCTIONS tasks, it's the state machine ARN.</td>
+    <td>The resource that the task uses during execution. For RUN_COMMAND and AUTOMATION task types, TaskArn is the Amazon Web Services Systems Manager (SSM document) name or ARN. For LAMBDA tasks, it's the function name or ARN. For STEP_FUNCTIONS tasks, it's the state machine ARN. Maintenance Window does not validate the TaskArn when you register a task. A successful registration does not guarantee that the TaskArn is valid.</td>
 </tr>
 <tr>
     <td><CopyableCode code="task_parameters" /></td>

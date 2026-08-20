@@ -93,7 +93,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
-    <td>The status of the knowledge base. The following statuses are possible: CREATING – The knowledge base is being created. ACTIVE – The knowledge base is ready to be queried. DELETING – The knowledge base is being deleted. UPDATING – The knowledge base is being updated. FAILED – The knowledge base API operation failed. (CREATING, ACTIVE, DELETING, UPDATING, FAILED, DELETE_UNSUCCESSFUL)</td>
+    <td>The status of the knowledge base. The following statuses are possible: CREATING – The knowledge base is being created. ACTIVE – The knowledge base is ready to be queried. DELETING – The knowledge base is being deleted. UPDATING – The knowledge base is being updated. FAILED – The knowledge base API operation failed. (CREATING, ACTIVE, DELETING, UPDATING, FAILED, DELETE_UNSUCCESSFUL, UPDATE_UNSUCCESSFUL)</td>
 </tr>
 <tr>
     <td><CopyableCode code="storage_configuration" /></td>
@@ -137,7 +137,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
-    <td>The status of the knowledge base. (CREATING, ACTIVE, DELETING, UPDATING, FAILED, DELETE_UNSUCCESSFUL)</td>
+    <td>The status of the knowledge base. (CREATING, ACTIVE, DELETING, UPDATING, FAILED, DELETE_UNSUCCESSFUL, UPDATE_UNSUCCESSFUL)</td>
 </tr>
 <tr>
     <td><CopyableCode code="updated_at" /></td>
@@ -183,7 +183,7 @@ The following methods are available for this resource:
     <td><CopyableCode code="insert" /></td>
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-name"><code>name</code></a>, <a href="#parameter-roleArn"><code>roleArn</code></a>, <a href="#parameter-knowledgeBaseConfiguration"><code>knowledgeBaseConfiguration</code></a></td>
     <td></td>
-    <td>Creates a knowledge base. A knowledge base contains your data sources so that Large Language Models (LLMs) can use your data. To create a knowledge base, you must first set up your data sources and configure a supported vector store. For more information, see Set up a knowledge base. If you prefer to let Amazon Bedrock create and manage a vector store for you in Amazon OpenSearch Service, use the console. For more information, see Create a knowledge base. Provide the name and an optional description. Provide the Amazon Resource Name (ARN) with permissions to create a knowledge base in the roleArn field. Provide the embedding model to use in the embeddingModelArn field in the knowledgeBaseConfiguration object. Provide the configuration for your vector store in the storageConfiguration object. For an Amazon OpenSearch Service database, use the opensearchServerlessConfiguration object. For more information, see Create a vector store in Amazon OpenSearch Service. For an Amazon Aurora database, use the RdsConfiguration object. For more information, see Create a vector store in Amazon Aurora. For a Pinecone database, use the pineconeConfiguration object. For more information, see Create a vector store in Pinecone. For a Redis Enterprise Cloud database, use the redisEnterpriseCloudConfiguration object. For more information, see Create a vector store in Redis Enterprise Cloud.</td>
+    <td>Creates a knowledge base. A knowledge base contains your data sources so that Large Language Models (LLMs) can use your data. To create a knowledge base, you must first set up your data sources and configure a supported vector store. For more information, see Set up a knowledge base. To create a managed knowledge base, provide a managedKnowledgeBaseConfiguration during creation. For more information, see Build a managed knowledge base. Provide the name and an optional description. Provide the Amazon Resource Name (ARN) with permissions to create a knowledge base in the roleArn field. For managed knowledge bases, set embeddingModelType to MANAGED to use the service-managed embedding model, or CUSTOM with an embeddingModelArn to use your own. To use your own KMS key for encryption, provide the ARN in serverSideEncryptionConfiguration. No vector store configuration is required for managed knowledge bases. For self-managed knowledge bases, provide the embedding model to use in the embeddingModelArn field in the knowledgeBaseConfiguration object. For self-managed knowledge bases, provide the configuration for your vector store in the storageConfiguration object. For an Amazon OpenSearch Service database, use the opensearchServerlessConfiguration object. For more information, see Create a vector store in Amazon OpenSearch Service. For an Amazon Aurora database, use the RdsConfiguration object. For more information, see Create a vector store in Amazon Aurora. For a Pinecone database, use the pineconeConfiguration object. For more information, see Create a vector store in Pinecone. For a Redis Enterprise Cloud database, use the redisEnterpriseCloudConfiguration object. For more information, see Create a vector store in Redis Enterprise Cloud.</td>
 </tr>
 <tr>
     <td><a href="#update_knowledge_base"><CopyableCode code="update_knowledge_base" /></a></td>
@@ -314,7 +314,7 @@ WHERE region = '{{ region }}' -- required
 >
 <TabItem value="create_knowledge_base">
 
-Creates a knowledge base. A knowledge base contains your data sources so that Large Language Models (LLMs) can use your data. To create a knowledge base, you must first set up your data sources and configure a supported vector store. For more information, see Set up a knowledge base. If you prefer to let Amazon Bedrock create and manage a vector store for you in Amazon OpenSearch Service, use the console. For more information, see Create a knowledge base. Provide the name and an optional description. Provide the Amazon Resource Name (ARN) with permissions to create a knowledge base in the roleArn field. Provide the embedding model to use in the embeddingModelArn field in the knowledgeBaseConfiguration object. Provide the configuration for your vector store in the storageConfiguration object. For an Amazon OpenSearch Service database, use the opensearchServerlessConfiguration object. For more information, see Create a vector store in Amazon OpenSearch Service. For an Amazon Aurora database, use the RdsConfiguration object. For more information, see Create a vector store in Amazon Aurora. For a Pinecone database, use the pineconeConfiguration object. For more information, see Create a vector store in Pinecone. For a Redis Enterprise Cloud database, use the redisEnterpriseCloudConfiguration object. For more information, see Create a vector store in Redis Enterprise Cloud.
+Creates a knowledge base. A knowledge base contains your data sources so that Large Language Models (LLMs) can use your data. To create a knowledge base, you must first set up your data sources and configure a supported vector store. For more information, see Set up a knowledge base. To create a managed knowledge base, provide a managedKnowledgeBaseConfiguration during creation. For more information, see Build a managed knowledge base. Provide the name and an optional description. Provide the Amazon Resource Name (ARN) with permissions to create a knowledge base in the roleArn field. For managed knowledge bases, set embeddingModelType to MANAGED to use the service-managed embedding model, or CUSTOM with an embeddingModelArn to use your own. To use your own KMS key for encryption, provide the ARN in serverSideEncryptionConfiguration. No vector store configuration is required for managed knowledge bases. For self-managed knowledge bases, provide the embedding model to use in the embeddingModelArn field in the knowledgeBaseConfiguration object. For self-managed knowledge bases, provide the configuration for your vector store in the storageConfiguration object. For an Amazon OpenSearch Service database, use the opensearchServerlessConfiguration object. For more information, see Create a vector store in Amazon OpenSearch Service. For an Amazon Aurora database, use the RdsConfiguration object. For more information, see Create a vector store in Amazon Aurora. For a Pinecone database, use the pineconeConfiguration object. For more information, see Create a vector store in Pinecone. For a Redis Enterprise Cloud database, use the redisEnterpriseCloudConfiguration object. For more information, see Create a vector store in Redis Enterprise Cloud.
 
 ```sql
 INSERT INTO aws.bedrock_agent.knowledge_bases (
@@ -379,6 +379,21 @@ knowledge_base
               - type_: "{{ type_ }}"
                 s3Location:
                   uri: "{{ uri }}"
+        managedKnowledgeBaseConfiguration:
+          embeddingModelType: "{{ embeddingModelType }}"
+          embeddingModelArn: "{{ embeddingModelArn }}"
+          embeddingModelConfiguration:
+            bedrockEmbeddingModelConfiguration:
+              dimensions: {{ dimensions }}
+              embeddingDataType: "{{ embeddingDataType }}"
+              audio:
+                - segmentationConfiguration:
+                    fixedLengthDuration: {{ fixedLengthDuration }}
+              video:
+                - segmentationConfiguration:
+                    fixedLengthDuration: {{ fixedLengthDuration }}
+          serverSideEncryptionConfiguration:
+            kmsKeyArn: "{{ kmsKeyArn }}"
         kendraKnowledgeBaseConfiguration:
           kendraIndexArn: "{{ kendraIndexArn }}"
         sqlKnowledgeBaseConfiguration:

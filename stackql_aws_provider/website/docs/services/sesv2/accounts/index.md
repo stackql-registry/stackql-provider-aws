@@ -65,6 +65,11 @@ The following fields are returned by `SELECT` queries:
     <td>The reputation status of your Amazon SES account. The status can be one of the following: HEALTHY – There are no reputation-related issues that currently impact your account. PROBATION – We've identified potential issues with your Amazon SES account. We're placing your account under review while you work on correcting these issues. SHUTDOWN – Your account's ability to send email is currently paused because of an issue with the email sent from your account. When you correct the issue, you can contact us and request that your account's ability to send email is resumed.</td>
 </tr>
 <tr>
+    <td><CopyableCode code="pricing_attributes" /></td>
+    <td><code>object</code></td>
+    <td>The pricing attributes that apply to your Amazon SES account, including the currently active pricing plan and any scheduled change.</td>
+</tr>
+<tr>
     <td><CopyableCode code="production_access_enabled" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether or not your account has production access in the current Amazon Web Services Region. If the value is false, then your account is in the sandbox. When your account is in the sandbox, you can only send email to verified identities. If the value is true, then your account has production access. When your account has production access, you can send email to any address. The sending quota and maximum sending rate for your account vary based on your specific use case.</td>
@@ -122,6 +127,13 @@ The following methods are available for this resource:
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-MailType"><code>MailType</code></a>, <a href="#parameter-WebsiteURL"><code>WebsiteURL</code></a></td>
     <td></td>
     <td>Update your Amazon SES account details.</td>
+</tr>
+<tr>
+    <td><a href="#put_account_pricing_attributes"><CopyableCode code="put_account_pricing_attributes" /></a></td>
+    <td><CopyableCode code="replace" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-Plan"><code>Plan</code></a></td>
+    <td></td>
+    <td>Set the pricing plan for your Amazon SES account. Use this operation to choose a billing plan that packages multiple Amazon SES features at a single rate.</td>
 </tr>
 <tr>
     <td><a href="#put_account_vdm_attributes"><CopyableCode code="put_account_vdm_attributes" /></a></td>
@@ -192,6 +204,7 @@ SELECT
 dedicated_ip_auto_warmup_enabled,
 details,
 enforcement_status,
+pricing_attributes,
 production_access_enabled,
 send_quota,
 sending_enabled,
@@ -211,6 +224,7 @@ WHERE region = '{{ region }}' -- required
     defaultValue="put_account_details"
     values={[
         { label: 'put_account_details', value: 'put_account_details' },
+        { label: 'put_account_pricing_attributes', value: 'put_account_pricing_attributes' },
         { label: 'put_account_vdm_attributes', value: 'put_account_vdm_attributes' },
         { label: 'put_account_dedicated_ip_warmup_attributes', value: 'put_account_dedicated_ip_warmup_attributes' }
     ]}
@@ -232,6 +246,19 @@ WHERE
 region = '{{ region }}' --required
 AND MailType = '{{ MailType }}' --required
 AND WebsiteURL = '{{ WebsiteURL }}' --required;
+```
+</TabItem>
+<TabItem value="put_account_pricing_attributes">
+
+Set the pricing plan for your Amazon SES account. Use this operation to choose a billing plan that packages multiple Amazon SES features at a single rate.
+
+```sql
+REPLACE aws.sesv2.accounts
+SET 
+Plan = '{{ Plan }}'
+WHERE 
+region = '{{ region }}' --required
+AND Plan = '{{ Plan }}' --required;
 ```
 </TabItem>
 <TabItem value="put_account_vdm_attributes">

@@ -156,6 +156,11 @@ The following fields are returned by `SELECT` queries:
     <td>Map containing the Elasticsearch domain endpoints used to submit index and search requests. Example key, value: 'vpc','vpc-endpoint-h2dsd34efgyghrtguk5gt6j2foh4.us-east-1.es.amazonaws.com'.</td>
 </tr>
 <tr>
+    <td><CopyableCode code="engine_mode" /></td>
+    <td><code>string</code></td>
+    <td>The engine mode for the domain. Valid values are GENERAL (the standard Elasticsearch/OpenSearch engine) and OPTIMIZED (the cost- and performance-optimized engine for observability and log-analytics workloads). If you don't specify an engine mode, GENERAL is used. OPTIMIZED requires OpenSearch 3.5 or later, OpenSearch Optimized instance types (OR1, OR2, OM2, or OI2) for the data tier, and encryption at rest, and is available only for the OBSERVABILITY and MIXED use cases. The engine mode can't be changed after the domain is created. (GENERAL, OPTIMIZED)</td>
+</tr>
+<tr>
     <td><CopyableCode code="log_publishing_options" /></td>
     <td><code>object</code></td>
     <td>Log publishing options for the given domain.</td>
@@ -189,6 +194,11 @@ The following fields are returned by `SELECT` queries:
     <td><CopyableCode code="upgrade_processing" /></td>
     <td><code>boolean</code></td>
     <td>The status of an Elasticsearch domain version upgrade. True if Amazon Elasticsearch Service is undergoing a version upgrade. False if the configuration is active.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="use_case" /></td>
+    <td><code>string</code></td>
+    <td>The primary use case for the domain, which determines the default configuration and the engine modes that are available. Valid values are SEARCH (full-text search, e-commerce, content discovery, and hybrid and semantic search), VECTOR (k-NN and semantic search, and retrieval-augmented generation), OBSERVABILITY (logs, metrics, traces, and dashboards), and MIXED (a combination of search and analytics). If you don't specify a use case, MIXED is used. (SEARCH, VECTOR, OBSERVABILITY, MIXED)</td>
 </tr>
 <tr>
     <td><CopyableCode code="vpc_options" /></td>
@@ -327,6 +337,7 @@ elasticsearch_version,
 encryption_at_rest_options,
 endpoint,
 endpoints,
+engine_mode,
 log_publishing_options,
 modifying_properties,
 node_to_node_encryption_options,
@@ -334,6 +345,7 @@ processing,
 service_software_options,
 snapshot_options,
 upgrade_processing,
+use_case,
 vpc_options
 FROM aws.es.elasticsearch_domains
 WHERE domain_name = '{{ domain_name }}' -- required
@@ -389,6 +401,8 @@ AutoTuneOptions,
 TagList,
 DeploymentStrategyOptions,
 AutomatedSnapshotPauseOptions,
+UseCase,
+EngineMode,
 region
 )
 SELECT 
@@ -410,6 +424,8 @@ SELECT
 '{{ TagList }}',
 '{{ DeploymentStrategyOptions }}',
 '{{ AutomatedSnapshotPauseOptions }}',
+'{{ UseCase }}',
+'{{ EngineMode }}',
 '{{ region }}'
 RETURNING
 domain_status
@@ -557,6 +573,16 @@ domain_status
         Enabled: {{ Enabled }}
         StartTime: "{{ StartTime }}"
         EndTime: "{{ EndTime }}"
+    - name: UseCase
+      value: "{{ UseCase }}"
+      description: |
+        The primary use case for the domain, which determines the default configuration and the engine modes that are available. Valid values are SEARCH (full-text search, e-commerce, content discovery, and hybrid and semantic search), VECTOR (k-NN and semantic search, and retrieval-augmented generation), OBSERVABILITY (logs, metrics, traces, and dashboards), and MIXED (a combination of search and analytics). If you don't specify a use case, MIXED is used.
+      valid_values: ['SEARCH', 'VECTOR', 'OBSERVABILITY', 'MIXED']
+    - name: EngineMode
+      value: "{{ EngineMode }}"
+      description: |
+        The engine mode for the domain. Valid values are GENERAL (the standard Elasticsearch/OpenSearch engine) and OPTIMIZED (the cost- and performance-optimized engine for observability and log-analytics workloads). If you don't specify an engine mode, GENERAL is used. OPTIMIZED requires OpenSearch 3.5 or later, OpenSearch Optimized instance types (OR1, OR2, OM2, or OI2) for the data tier, and encryption at rest, and is available only for the OBSERVABILITY and MIXED use cases. The engine mode can't be changed after the domain is created.
+      valid_values: ['GENERAL', 'OPTIMIZED']
 `}</CodeBlock>
 
 </TabItem>

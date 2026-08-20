@@ -163,7 +163,7 @@ The following methods are available for this resource:
     <td><a href="#get_flow_version"><CopyableCode code="get_flow_version" /></a></td>
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-flow_identifier"><code>flow_identifier</code></a>, <a href="#parameter-flow_version"><code>flow_version</code></a>, <a href="#parameter-region"><code>region</code></a></td>
-    <td></td>
+    <td><a href="#parameter-includedData"><code>includedData</code></a></td>
     <td>Retrieves information about a version of a flow. For more information, see Deploy a flow in Amazon Bedrock in the Amazon Bedrock User Guide.</td>
 </tr>
 <tr>
@@ -218,6 +218,11 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     <td><code>string</code></td>
     <td>AWS region (default: us-east-1)</td>
 </tr>
+<tr id="parameter-includedData">
+    <td><CopyableCode code="includedData" /></td>
+    <td><code>string</code></td>
+    <td>Controls the scope of data returned. Set to METADATA_ONLY to return only resource metadata. Set to ALL_DATA or omit this field to return the full response.</td>
+</tr>
 <tr id="parameter-maxResults">
     <td><CopyableCode code="maxResults" /></td>
     <td><code>integer</code></td>
@@ -265,6 +270,7 @@ FROM aws.bedrock_agent.flow_versions
 WHERE flow_identifier = '{{ flow_identifier }}' -- required
 AND flow_version = '{{ flow_version }}' -- required
 AND region = '{{ region }}' -- required
+AND includedData = '{{ includedData }}'
 ;
 ```
 </TabItem>

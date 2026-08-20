@@ -111,6 +111,11 @@ The following fields are returned by `SELECT` queries:
     <td>Details about the status information for the model metrics.</td>
 </tr>
 <tr>
+    <td><CopyableCode code="ml_model_training_payer_account_id" /></td>
+    <td><code>string</code></td>
+    <td>The account ID of the member that is responsible for paying for model training costs. (pattern: &lt;code&gt;&#91;0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
+</tr>
+<tr>
     <td><CopyableCode code="resource_config" /></td>
     <td><code>object</code></td>
     <td>Information about the EC2 resources that are used to train the model.</td>
@@ -208,6 +213,11 @@ The following fields are returned by `SELECT` queries:
     <td><CopyableCode code="membership_identifier" /></td>
     <td><code>string</code></td>
     <td>The membership ID of the member that created the trained model. (pattern: &lt;code&gt;&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="ml_model_training_payer_account_id" /></td>
+    <td><code>string</code></td>
+    <td>The account ID of the member that is responsible for paying for model training costs. (pattern: &lt;code&gt;&#91;0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="status" /></td>
@@ -339,6 +349,7 @@ logs_status_details,
 membership_identifier,
 metrics_status,
 metrics_status_details,
+ml_model_training_payer_account_id,
 resource_config,
 status,
 status_details,
@@ -370,6 +381,7 @@ creator_account_id,
 description,
 incremental_training_data_channels,
 membership_identifier,
+ml_model_training_payer_account_id,
 status,
 trained_model_arn,
 update_time,

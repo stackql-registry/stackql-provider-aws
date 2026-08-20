@@ -62,7 +62,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="data_type" /></td>
     <td><code>string</code></td>
-    <td>The data type of the time series. If you specify STRUCT, you must also specify dataTypeSpec to identify the type of the structure for this time series. (STRING, INTEGER, DOUBLE, BOOLEAN, STRUCT)</td>
+    <td>The data type of the time series. If you specify STRUCT, you must also specify dataTypeSpec to identify the type of the structure for this time series. (STRING, INTEGER, DOUBLE, BOOLEAN, STRUCT, VIDEO, ANNOTATION, JSON)</td>
 </tr>
 <tr>
     <td><CopyableCode code="data_type_spec" /></td>
@@ -94,6 +94,11 @@ The following fields are returned by `SELECT` queries:
     <td><code>string (date-time)</code></td>
     <td>The date that the time series was last updated, in Unix epoch time.</td>
 </tr>
+<tr>
+    <td><CopyableCode code="workspace_name" /></td>
+    <td><code>string</code></td>
+    <td>The name of the workspace. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9_-&#93;+$&lt;/code&gt;)</td>
+</tr>
 </tbody>
 </table>
 </TabItem>
@@ -118,21 +123,21 @@ The following methods are available for this resource:
     <td><a href="#describe_time_series"><CopyableCode code="describe_time_series" /></a></td>
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
-    <td><a href="#parameter-alias"><code>alias</code></a>, <a href="#parameter-assetId"><code>assetId</code></a>, <a href="#parameter-propertyId"><code>propertyId</code></a></td>
+    <td><a href="#parameter-alias"><code>alias</code></a>, <a href="#parameter-assetId"><code>assetId</code></a>, <a href="#parameter-propertyId"><code>propertyId</code></a>, <a href="#parameter-workspaceName"><code>workspaceName</code></a></td>
     <td>Retrieves information about a time series (data stream). To identify a time series, do one of the following: If the time series isn't associated with an asset property, specify the alias of the time series. If the time series is associated with an asset property, specify one of the following: The alias of the time series. The assetId and propertyId that identifies the asset property.</td>
 </tr>
 <tr>
     <td><a href="#delete_time_series"><CopyableCode code="delete_time_series" /></a></td>
     <td><CopyableCode code="delete" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
-    <td><a href="#parameter-alias"><code>alias</code></a>, <a href="#parameter-assetId"><code>assetId</code></a>, <a href="#parameter-propertyId"><code>propertyId</code></a></td>
-    <td>Deletes a time series (data stream). If you delete a time series that's associated with an asset property, the asset property still exists, but the time series will no longer be associated with this asset property. To identify a time series, do one of the following: If the time series isn't associated with an asset property, specify the alias of the time series. If the time series is associated with an asset property, specify one of the following: The alias of the time series. The assetId and propertyId that identifies the asset property.</td>
+    <td><a href="#parameter-alias"><code>alias</code></a>, <a href="#parameter-assetId"><code>assetId</code></a>, <a href="#parameter-propertyId"><code>propertyId</code></a>, <a href="#parameter-workspaceName"><code>workspaceName</code></a></td>
+    <td>Deletes a time series (data stream). If you delete a time series that's associated with an asset property, the asset property still exists, but the time series will no longer be associated with this asset property. You can't delete a time series until all of its data segments have been deleted from session datasets. To identify a time series, do one of the following: If the time series isn't associated with an asset property, specify the alias of the time series. If the time series is associated with an asset property, specify one of the following: The alias of the time series. The assetId and propertyId that identifies the asset property.</td>
 </tr>
 <tr>
     <td><a href="#list_time_series"><CopyableCode code="list_time_series" /></a></td>
     <td><CopyableCode code="exec" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
-    <td><a href="#parameter-nextToken"><code>nextToken</code></a>, <a href="#parameter-maxResults"><code>maxResults</code></a>, <a href="#parameter-assetId"><code>assetId</code></a>, <a href="#parameter-aliasPrefix"><code>aliasPrefix</code></a>, <a href="#parameter-timeSeriesType"><code>timeSeriesType</code></a></td>
+    <td><a href="#parameter-nextToken"><code>nextToken</code></a>, <a href="#parameter-maxResults"><code>maxResults</code></a>, <a href="#parameter-assetId"><code>assetId</code></a>, <a href="#parameter-aliasPrefix"><code>aliasPrefix</code></a>, <a href="#parameter-timeSeriesType"><code>timeSeriesType</code></a>, <a href="#parameter-workspaceName"><code>workspaceName</code></a></td>
     <td>Retrieves a paginated list of time series (data streams).</td>
 </tr>
 </tbody>
@@ -191,6 +196,11 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     <td><code>string</code></td>
     <td>The type of the time series. The time series type can be one of the following values: ASSOCIATED – The time series is associated with an asset property. DISASSOCIATED – The time series isn't associated with any asset property.</td>
 </tr>
+<tr id="parameter-workspaceName">
+    <td><CopyableCode code="workspaceName" /></td>
+    <td><code>string</code></td>
+    <td>The name of the workspace.</td>
+</tr>
 </tbody>
 </table>
 
@@ -216,12 +226,14 @@ property_id,
 time_series_arn,
 time_series_creation_date,
 time_series_id,
-time_series_last_update_date
+time_series_last_update_date,
+workspace_name
 FROM aws.iotsitewise.time_series
 WHERE region = '{{ region }}' -- required
 AND alias = '{{ alias }}'
 AND assetId = '{{ assetId }}'
 AND propertyId = '{{ propertyId }}'
+AND workspaceName = '{{ workspaceName }}'
 ;
 ```
 </TabItem>
@@ -238,7 +250,7 @@ AND propertyId = '{{ propertyId }}'
 >
 <TabItem value="delete_time_series">
 
-Deletes a time series (data stream). If you delete a time series that's associated with an asset property, the asset property still exists, but the time series will no longer be associated with this asset property. To identify a time series, do one of the following: If the time series isn't associated with an asset property, specify the alias of the time series. If the time series is associated with an asset property, specify one of the following: The alias of the time series. The assetId and propertyId that identifies the asset property.
+Deletes a time series (data stream). If you delete a time series that's associated with an asset property, the asset property still exists, but the time series will no longer be associated with this asset property. You can't delete a time series until all of its data segments have been deleted from session datasets. To identify a time series, do one of the following: If the time series isn't associated with an asset property, specify the alias of the time series. If the time series is associated with an asset property, specify one of the following: The alias of the time series. The assetId and propertyId that identifies the asset property.
 
 ```sql
 DELETE FROM aws.iotsitewise.time_series
@@ -246,6 +258,7 @@ WHERE region = '{{ region }}' --required
 AND alias = '{{ alias }}'
 AND assetId = '{{ assetId }}'
 AND propertyId = '{{ propertyId }}'
+AND workspaceName = '{{ workspaceName }}'
 ;
 ```
 </TabItem>
@@ -271,7 +284,8 @@ EXEC aws.iotsitewise.time_series.list_time_series
 @maxResults='{{ maxResults }}', 
 @assetId='{{ assetId }}', 
 @aliasPrefix='{{ aliasPrefix }}', 
-@timeSeriesType='{{ timeSeriesType }}'
+@timeSeriesType='{{ timeSeriesType }}', 
+@workspaceName='{{ workspaceName }}'
 ;
 ```
 </TabItem>

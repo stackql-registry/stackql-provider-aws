@@ -105,7 +105,7 @@ The following methods are available for this resource:
     <td><a href="#allocate_ipam_pool_cidr"><CopyableCode code="allocate_ipam_pool_cidr" /></a></td>
     <td><CopyableCode code="update" /></td>
     <td><a href="#parameter-IpamPoolId"><code>IpamPoolId</code></a>, <a href="#parameter-region"><code>region</code></a></td>
-    <td><a href="#parameter-DryRun"><code>DryRun</code></a>, <a href="#parameter-Cidr"><code>Cidr</code></a>, <a href="#parameter-NetmaskLength"><code>NetmaskLength</code></a>, <a href="#parameter-ClientToken"><code>ClientToken</code></a>, <a href="#parameter-Description"><code>Description</code></a>, <a href="#parameter-PreviewNextCidr"><code>PreviewNextCidr</code></a>, <a href="#parameter-AllowedCidr"><code>AllowedCidr</code></a>, <a href="#parameter-DisallowedCidr"><code>DisallowedCidr</code></a></td>
+    <td><a href="#parameter-DryRun"><code>DryRun</code></a>, <a href="#parameter-Cidr"><code>Cidr</code></a>, <a href="#parameter-NetmaskLength"><code>NetmaskLength</code></a>, <a href="#parameter-ClientToken"><code>ClientToken</code></a>, <a href="#parameter-Description"><code>Description</code></a>, <a href="#parameter-PreviewNextCidr"><code>PreviewNextCidr</code></a>, <a href="#parameter-AllowedCidr"><code>AllowedCidr</code></a>, <a href="#parameter-DisallowedCidr"><code>DisallowedCidr</code></a>, <a href="#parameter-TagSpecification"><code>TagSpecification</code></a></td>
     <td>Allocate a CIDR from an IPAM pool. The Region you use should be the IPAM pool locale. The locale is the Amazon Web Services Region where this IPAM pool is available for allocations. In IPAM, an allocation is a CIDR assignment from an IPAM pool to another IPAM pool or to a resource. For more information, see Allocate CIDRs in the Amazon VPC IPAM User Guide. This action creates an allocation with strong consistency. The returned CIDR will not overlap with any other allocations from the same pool.</td>
 </tr>
 <tr>
@@ -196,7 +196,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-MaxResults">
     <td><CopyableCode code="MaxResults" /></td>
     <td><code>integer</code></td>
-    <td>The maximum number of results to return in the request.</td>
+    <td>The maximum number of items to return for this request. To get the next page of items, make another request with the token returned in the output. For more information, see Pagination.</td>
 </tr>
 <tr id="parameter-NetmaskLength">
     <td><CopyableCode code="NetmaskLength" /></td>
@@ -212,6 +212,11 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     <td><CopyableCode code="PreviewNextCidr" /></td>
     <td><code>boolean</code></td>
     <td>A preview of the next available CIDR in a pool.</td>
+</tr>
+<tr id="parameter-TagSpecification">
+    <td><CopyableCode code="TagSpecification" /></td>
+    <td><code>array</code></td>
+    <td>The key/value combination of a tag assigned to the resource. Use the tag key in the filter name and the tag value as the filter value. For example, to find all resources that have a tag with the key Owner and the value TeamA, specify tag:Owner for the filter name and TeamA for the filter value. If you specify tags, the request is authorized against the allocation resource in addition to the pool resource.</td>
 </tr>
 <tr id="parameter-VerificationMethod">
     <td><CopyableCode code="VerificationMethod" /></td>
@@ -280,6 +285,7 @@ AND Description = '{{ Description}}'
 AND PreviewNextCidr = {{ PreviewNextCidr}}
 AND AllowedCidr = '{{ AllowedCidr}}'
 AND DisallowedCidr = '{{ DisallowedCidr}}'
+AND TagSpecification = '{{ TagSpecification}}'
 RETURNING
 cidr,
 description,
@@ -287,7 +293,8 @@ ipam_pool_allocation_id,
 resource_id,
 resource_owner,
 resource_region,
-resource_type;
+resource_type,
+tags;
 ```
 </TabItem>
 </Tabs>

@@ -133,6 +133,13 @@ The following methods are available for this resource:
     <td>Updates the properties of the specified proxy.</td>
 </tr>
 <tr>
+    <td><a href="#update_proxy_settings"><CopyableCode code="update_proxy_settings" /></a></td>
+    <td><CopyableCode code="update" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Modifies the proxy listener configuration of a proxy mode firewall. Proxy mode firewalls are created with NoSourcePreservation set to TRUE. Use this operation to change the ports and protocols on which the firewall's proxy listens for traffic.</td>
+</tr>
+<tr>
     <td><a href="#delete_proxy"><CopyableCode code="delete_proxy" /></a></td>
     <td><CopyableCode code="delete" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
@@ -293,7 +300,8 @@ update_token
 <Tabs
     defaultValue="update_proxy"
     values={[
-        { label: 'update_proxy', value: 'update_proxy' }
+        { label: 'update_proxy', value: 'update_proxy' },
+        { label: 'update_proxy_settings', value: 'update_proxy_settings' }
     ]}
 >
 <TabItem value="update_proxy">
@@ -316,6 +324,26 @@ AND NatGatewayId = '{{ NatGatewayId }}' --required
 AND UpdateToken = '{{ UpdateToken }}' --required
 RETURNING
 proxy,
+update_token;
+```
+</TabItem>
+<TabItem value="update_proxy_settings">
+
+Modifies the proxy listener configuration of a proxy mode firewall. Proxy mode firewalls are created with NoSourcePreservation set to TRUE. Use this operation to change the ports and protocols on which the firewall's proxy listens for traffic.
+
+```sql
+UPDATE aws.network_firewall.proxies
+SET 
+FirewallArn = '{{ FirewallArn }}',
+FirewallName = '{{ FirewallName }}',
+UpdateToken = '{{ UpdateToken }}',
+ProxySettings = '{{ ProxySettings }}'
+WHERE 
+region = '{{ region }}' --required
+RETURNING
+firewall_arn,
+firewall_name,
+proxy_settings,
 update_token;
 ```
 </TabItem>

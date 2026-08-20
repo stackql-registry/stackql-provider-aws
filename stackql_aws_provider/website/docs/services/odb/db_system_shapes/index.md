@@ -160,6 +160,11 @@ The following fields are returned by `SELECT` queries:
     <td>The runtime minimum number of CPU cores that can be enabled for the shape.</td>
 </tr>
 <tr>
+    <td><CopyableCode code="shape_attributes" /></td>
+    <td><code>array</code></td>
+    <td>If provided and applicable, return DB System shape parameters based on the shape attribute provided.</td>
+</tr>
+<tr>
     <td><CopyableCode code="shape_family" /></td>
     <td><code>string</code></td>
     <td>The family of the shape.</td>
@@ -256,6 +261,7 @@ min_storage_count,
 minimum_core_count,
 minimum_node_count,
 runtime_minimum_core_count,
+shape_attributes,
 shape_family,
 shape_type
 FROM aws.odb.db_system_shapes

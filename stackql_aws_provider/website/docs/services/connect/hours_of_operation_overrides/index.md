@@ -275,7 +275,7 @@ The following methods are available for this resource:
     <td><CopyableCode code="insert" /></td>
     <td><a href="#parameter-instance_id"><code>instance_id</code></a>, <a href="#parameter-hours_of_operation_id"><code>hours_of_operation_id</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-EffectiveFrom"><code>EffectiveFrom</code></a>, <a href="#parameter-EffectiveTill"><code>EffectiveTill</code></a></td>
     <td></td>
-    <td>Creates an hours of operation override in an Amazon Connect hours of operation resource.</td>
+    <td>Creates an hours of operation override in an Connect Customer hours of operation resource.</td>
 </tr>
 <tr>
     <td><a href="#update_hours_of_operation_override"><CopyableCode code="update_hours_of_operation_override" /></a></td>
@@ -289,7 +289,7 @@ The following methods are available for this resource:
     <td><CopyableCode code="delete" /></td>
     <td><a href="#parameter-instance_id"><code>instance_id</code></a>, <a href="#parameter-hours_of_operation_id"><code>hours_of_operation_id</code></a>, <a href="#parameter-hours_of_operation_override_id"><code>hours_of_operation_override_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>Deletes an hours of operation override in an Amazon Connect hours of operation resource.</td>
+    <td>Deletes an hours of operation override in an Connect Customer hours of operation resource.</td>
 </tr>
 </tbody>
 </table>
@@ -320,7 +320,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-instance_id">
     <td><CopyableCode code="instance_id" /></td>
     <td><code>string</code></td>
-    <td>The identifier of the Amazon Connect instance.</td>
+    <td>The identifier of the Connect Customer instance.</td>
 </tr>
 <tr id="parameter-region">
     <td><CopyableCode code="region" /></td>
@@ -434,7 +434,7 @@ WHERE region = '{{ region }}' -- required
 >
 <TabItem value="create_hours_of_operation_override">
 
-Creates an hours of operation override in an Amazon Connect hours of operation resource.
+Creates an hours of operation override in an Connect Customer hours of operation resource.
 
 ```sql
 INSERT INTO aws.connect.hours_of_operation_overrides (
@@ -560,7 +560,7 @@ AND region = '{{ region }}' --required;
 >
 <TabItem value="delete_hours_of_operation_override">
 
-Deletes an hours of operation override in an Amazon Connect hours of operation resource.
+Deletes an hours of operation override in an Connect Customer hours of operation resource.
 
 ```sql
 DELETE FROM aws.connect.hours_of_operation_overrides

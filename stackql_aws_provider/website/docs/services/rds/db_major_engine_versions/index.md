@@ -115,7 +115,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-Engine">
     <td><CopyableCode code="Engine" /></td>
     <td><code>string</code></td>
-    <td>The database engine to return major version details for. Valid Values: aurora-mysql aurora-postgresql custom-sqlserver-ee custom-sqlserver-se custom-sqlserver-web db2-ae db2-se mariadb mysql oracle-ee oracle-ee-cdb oracle-se2 oracle-se2-cdb postgres sqlserver-ee sqlserver-se sqlserver-ex sqlserver-web</td>
+    <td>The database engine to return major version details for. Valid Values: aurora-mysql aurora-postgresql custom-sqlserver-ee custom-sqlserver-se custom-sqlserver-web db2-ae db2-ce db2-se mariadb mysql oracle-ee oracle-ee-cdb oracle-se2 oracle-se2-cdb postgres sqlserver-ee sqlserver-se sqlserver-ex sqlserver-web</td>
 </tr>
 <tr id="parameter-MajorEngineVersion">
     <td><CopyableCode code="MajorEngineVersion" /></td>

@@ -18,7 +18,7 @@ devops_agent service documentation.
 
 :::info[Service Summary]
 
-total resources: __15__  
+total resources: __21__  
 
 :::
 
@@ -27,20 +27,26 @@ total resources: __15__
 <div class="providerDocColumn">
 <a href="/services/devops_agent/account_usages/">account_usages</a><br />
 <a href="/services/devops_agent/agent_spaces/">agent_spaces</a><br />
+<a href="/services/devops_agent/asset_contents/">asset_contents</a><br />
+<a href="/services/devops_agent/asset_files/">asset_files</a><br />
+<a href="/services/devops_agent/asset_types/">asset_types</a><br />
+<a href="/services/devops_agent/asset_versions/">asset_versions</a><br />
+<a href="/services/devops_agent/assets/">assets</a><br />
 <a href="/services/devops_agent/associations/">associations</a><br />
 <a href="/services/devops_agent/backlog_tasks/">backlog_tasks</a><br />
 <a href="/services/devops_agent/chats/">chats</a><br />
-<a href="/services/devops_agent/executions/">executions</a><br />
-<a href="/services/devops_agent/goals/">goals</a><br />
-<a href="/services/devops_agent/journal_records/">journal_records</a>
+<a href="/services/devops_agent/executions/">executions</a>
 </div>
 <div class="providerDocColumn">
+<a href="/services/devops_agent/goals/">goals</a><br />
+<a href="/services/devops_agent/journal_records/">journal_records</a><br />
 <a href="/services/devops_agent/operator_apps/">operator_apps</a><br />
 <a href="/services/devops_agent/pending_messages/">pending_messages</a><br />
 <a href="/services/devops_agent/private_connections/">private_connections</a><br />
 <a href="/services/devops_agent/recommendations/">recommendations</a><br />
 <a href="/services/devops_agent/services/">services</a><br />
 <a href="/services/devops_agent/tags/">tags</a><br />
+<a href="/services/devops_agent/triggers/">triggers</a><br />
 <a href="/services/devops_agent/webhooks/">webhooks</a>
 </div>
 </div>

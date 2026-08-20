@@ -75,6 +75,11 @@ The following fields are returned by `SELECT` queries:
     <td>The version of managed login branding that you want to apply to your domain. A value of 1 indicates hosted UI (classic) branding and a version of 2 indicates managed login branding. Managed login requires that your user pool be configured for any feature plan other than Lite.</td>
 </tr>
 <tr>
+    <td><CopyableCode code="routing" /></td>
+    <td><code>object</code></td>
+    <td>The routing configuration for the domain, including failover settings for multi-region deployments. Currently only Failover configurations are allowed.</td>
+</tr>
+<tr>
     <td><CopyableCode code="s3_bucket" /></td>
     <td><code>string</code></td>
     <td>The Amazon S3 bucket where the static files for this domain are stored. (pattern: &lt;code&gt;^&#91;0-9A-Za-z\.\-_&#93;*(?&lt;!\.)$&lt;/code&gt;)</td>
@@ -185,6 +190,7 @@ cloud_front_distribution,
 custom_domain_config,
 domain,
 managed_login_version,
+routing,
 s3_bucket,
 status,
 user_pool_id,
@@ -216,6 +222,7 @@ Domain,
 UserPoolId,
 ManagedLoginVersion,
 CustomDomainConfig,
+Routing,
 region
 )
 SELECT 
@@ -223,10 +230,12 @@ SELECT
 '{{ UserPoolId }}' /* required */,
 {{ ManagedLoginVersion }},
 '{{ CustomDomainConfig }}',
+'{{ Routing }}',
 '{{ region }}'
 RETURNING
 cloud_front_domain,
-managed_login_version
+managed_login_version,
+routing
 ;
 ```
 </TabItem>
@@ -249,12 +258,20 @@ managed_login_version
     - name: ManagedLoginVersion
       value: {{ ManagedLoginVersion }}
       description: |
-        The version of managed login branding that you want to apply to your domain. A value of 1 indicates hosted UI (classic) and a version of 2 indicates managed login. Managed login requires that your user pool be configured for any feature plan other than Lite.
+        The version of managed login branding that you want to apply to your domain. A value of 1 indicates hosted UI (classic) and a version of 2 indicates managed login. Managed login requires that your user pool be configured for any feature plan other than Lite. A ManagedLoginVersion value of 2 does not activate managed login pages for your app client. When you create an app client programmatically, your app client has no branding style. To use managed login, create a branding style using the CreateManagedLoginBranding operation. When you use the console, Amazon Cognito assigns a default branding style automatically. When you use the API or an SDK, you must create a branding style yourself.
     - name: CustomDomainConfig
       description: |
         The configuration for a custom domain. Configures your domain with an Certificate Manager certificate in the us-east-1 Region. Provide this parameter only if you want to use a custom domain for your user pool. Otherwise, you can omit this parameter and use a prefix domain instead. When you create a custom domain, the passkey RP ID defaults to the custom domain. If you had a prefix domain active, this will cause passkey integration for your prefix domain to stop working due to a mismatch in RP ID. To keep the prefix domain passkey integration working, you can explicitly set RP ID to the prefix domain.
       value:
         CertificateArn: "{{ CertificateArn }}"
+        SecurityPolicy: "{{ SecurityPolicy }}"
+    - name: Routing
+      description: |
+        The configuration of routing for requests to the domain for replicas of a replicated user pool. The routing configuration is currently only supported for custom domains.
+      value:
+        Failover:
+          SecondaryRegion: "{{ SecondaryRegion }}"
+          PrimaryRoute53HealthCheckId: "{{ PrimaryRoute53HealthCheckId }}"
 `}</CodeBlock>
 
 </TabItem>
@@ -279,14 +296,16 @@ SET
 Domain = '{{ Domain }}',
 UserPoolId = '{{ UserPoolId }}',
 ManagedLoginVersion = {{ ManagedLoginVersion }},
-CustomDomainConfig = '{{ CustomDomainConfig }}'
+CustomDomainConfig = '{{ CustomDomainConfig }}',
+Routing = '{{ Routing }}'
 WHERE 
 region = '{{ region }}' --required
 AND Domain = '{{ Domain }}' --required
 AND UserPoolId = '{{ UserPoolId }}' --required
 RETURNING
 cloud_front_domain,
-managed_login_version;
+managed_login_version,
+routing;
 ```
 </TabItem>
 </Tabs>

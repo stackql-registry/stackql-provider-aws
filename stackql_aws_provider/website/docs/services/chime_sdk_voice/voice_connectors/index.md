@@ -63,7 +63,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="integration_type" /></td>
     <td><code>string</code></td>
-    <td>The connectors for use with Amazon Connect. (CONNECT_CALL_TRANSFER_CONNECTOR, CONNECT_ANALYTICS_CONNECTOR)</td>
+    <td>The connectors for use with Connect Customer. (CONNECT_CALL_TRANSFER_CONNECTOR, CONNECT_ANALYTICS_CONNECTOR)</td>
 </tr>
 <tr>
     <td><CopyableCode code="name" /></td>
@@ -73,7 +73,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="network_type" /></td>
     <td><code>string</code></td>
-    <td>The type of network of the Voice Connector. Either IPv4 only or dual-stack (IPv4 and IPv6). (IPV4_ONLY, DUAL_STACK)</td>
+    <td>The type of network for the Voice Connector. (IPV4_ONLY, DUAL_STACK)</td>
 </tr>
 <tr>
     <td><CopyableCode code="outbound_host_name" /></td>
@@ -98,7 +98,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="voice_connector_id" /></td>
     <td><code>string</code></td>
-    <td>The Voice Connector's ID. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
+    <td>The Voice Connector's ID. (pattern: &lt;code&gt;(&#91;a-z0-9&#93;&#123;21,22&#125;|&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;)&lt;/code&gt;)</td>
 </tr>
 </tbody>
 </table>

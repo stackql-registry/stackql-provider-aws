@@ -54,12 +54,12 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="allowed_access_control_hierarchy_group_id" /></td>
     <td><code>string</code></td>
-    <td>The identifier of the hierarchy group that a security profile uses to restrict access to resources in Amazon Connect.</td>
+    <td>The identifier of the hierarchy group that a security profile uses to restrict access to resources in Connect Customer.</td>
 </tr>
 <tr>
     <td><CopyableCode code="allowed_access_control_tags" /></td>
     <td><code>object</code></td>
-    <td>The list of tags that a security profile uses to restrict access to resources in Amazon Connect.</td>
+    <td>The list of tags that a security profile uses to restrict access to resources in Connect Customer.</td>
 </tr>
 <tr>
     <td><CopyableCode code="arn" /></td>
@@ -79,7 +79,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="hierarchy_restricted_resources" /></td>
     <td><code>array</code></td>
-    <td>The list of resources that a security profile applies hierarchy restrictions to in Amazon Connect. Following are acceptable ResourceNames: User.</td>
+    <td>The list of resources that a security profile applies hierarchy restrictions to in Connect Customer. Following are acceptable ResourceNames: User.</td>
 </tr>
 <tr>
     <td><CopyableCode code="id" /></td>
@@ -109,7 +109,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="tag_restricted_resources" /></td>
     <td><code>array</code></td>
-    <td>The list of resources that a security profile applies tag restrictions to in Amazon Connect.</td>
+    <td>The list of resources that a security profile applies tag restrictions to in Connect Customer.</td>
 </tr>
 <tr>
     <td><CopyableCode code="tags" /></td>
@@ -224,28 +224,28 @@ The following methods are available for this resource:
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-security_profile_id"><code>security_profile_id</code></a>, <a href="#parameter-instance_id"><code>instance_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>Gets basic information about the security profile. For information about security profiles, see Security Profiles in the Amazon Connect Administrator Guide. For a mapping of the API name and user interface name of the security profile permissions, see List of security profile permissions.</td>
+    <td>Gets basic information about the security profile. For information about security profiles, see Security Profiles in the Connect Customer Administrator Guide. For a mapping of the API name and user interface name of the security profile permissions, see List of security profile permissions.</td>
 </tr>
 <tr>
     <td><a href="#list_security_profiles"><CopyableCode code="list_security_profiles" /></a></td>
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-instance_id"><code>instance_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td><a href="#parameter-nextToken"><code>nextToken</code></a>, <a href="#parameter-maxResults"><code>maxResults</code></a></td>
-    <td>Provides summary information about the security profiles for the specified Amazon Connect instance. For more information about security profiles, see Security Profiles in the Amazon Connect Administrator Guide. For a mapping of the API name and user interface name of the security profile permissions, see List of security profile permissions.</td>
+    <td>Provides summary information about the security profiles for the specified Connect Customer instance. For more information about security profiles, see Security Profiles in the Connect Customer Administrator Guide. For a mapping of the API name and user interface name of the security profile permissions, see List of security profile permissions.</td>
 </tr>
 <tr>
     <td><a href="#search_security_profiles"><CopyableCode code="search_security_profiles" /></a></td>
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>Searches security profiles in an Amazon Connect instance, with optional filtering. For information about security profiles, see Security Profiles in the Amazon Connect Administrator Guide. For a mapping of the API name and user interface name of the security profile permissions, see List of security profile permissions.</td>
+    <td>Searches security profiles in an Connect Customer instance, with optional filtering. For information about security profiles, see Security Profiles in the Connect Customer Administrator Guide. For a mapping of the API name and user interface name of the security profile permissions, see List of security profile permissions.</td>
 </tr>
 <tr>
     <td><a href="#create_security_profile"><CopyableCode code="create_security_profile" /></a></td>
     <td><CopyableCode code="insert" /></td>
     <td><a href="#parameter-instance_id"><code>instance_id</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-SecurityProfileName"><code>SecurityProfileName</code></a></td>
     <td></td>
-    <td>Creates a security profile. For information about security profiles, see Security Profiles in the Amazon Connect Administrator Guide. For a mapping of the API name and user interface name of the security profile permissions, see List of security profile permissions.</td>
+    <td>Creates a security profile. For information about security profiles, see Security Profiles in the Connect Customer Administrator Guide. For a mapping of the API name and user interface name of the security profile permissions, see List of security profile permissions.</td>
 </tr>
 <tr>
     <td><a href="#associate_security_profiles"><CopyableCode code="associate_security_profiles" /></a></td>
@@ -266,7 +266,7 @@ The following methods are available for this resource:
     <td><CopyableCode code="update" /></td>
     <td><a href="#parameter-security_profile_id"><code>security_profile_id</code></a>, <a href="#parameter-instance_id"><code>instance_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>Updates a security profile. For information about security profiles, see Security Profiles in the Amazon Connect Administrator Guide. For a mapping of the API name and user interface name of the security profile permissions, see List of security profile permissions.</td>
+    <td>Updates a security profile. For information about security profiles, see Security Profiles in the Connect Customer Administrator Guide. For a mapping of the API name and user interface name of the security profile permissions, see List of security profile permissions.</td>
 </tr>
 <tr>
     <td><a href="#delete_security_profile"><CopyableCode code="delete_security_profile" /></a></td>
@@ -343,7 +343,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 >
 <TabItem value="describe_security_profile">
 
-Gets basic information about the security profile. For information about security profiles, see Security Profiles in the Amazon Connect Administrator Guide. For a mapping of the API name and user interface name of the security profile permissions, see List of security profile permissions.
+Gets basic information about the security profile. For information about security profiles, see Security Profiles in the Connect Customer Administrator Guide. For a mapping of the API name and user interface name of the security profile permissions, see List of security profile permissions.
 
 ```sql
 SELECT
@@ -369,7 +369,7 @@ AND region = '{{ region }}' -- required
 </TabItem>
 <TabItem value="list_security_profiles">
 
-Provides summary information about the security profiles for the specified Amazon Connect instance. For more information about security profiles, see Security Profiles in the Amazon Connect Administrator Guide. For a mapping of the API name and user interface name of the security profile permissions, see List of security profile permissions.
+Provides summary information about the security profiles for the specified Connect Customer instance. For more information about security profiles, see Security Profiles in the Connect Customer Administrator Guide. For a mapping of the API name and user interface name of the security profile permissions, see List of security profile permissions.
 
 ```sql
 SELECT
@@ -388,7 +388,7 @@ AND maxResults = '{{ maxResults }}'
 </TabItem>
 <TabItem value="search_security_profiles">
 
-Searches security profiles in an Amazon Connect instance, with optional filtering. For information about security profiles, see Security Profiles in the Amazon Connect Administrator Guide. For a mapping of the API name and user interface name of the security profile permissions, see List of security profile permissions.
+Searches security profiles in an Connect Customer instance, with optional filtering. For information about security profiles, see Security Profiles in the Connect Customer Administrator Guide. For a mapping of the API name and user interface name of the security profile permissions, see List of security profile permissions.
 
 ```sql
 SELECT
@@ -417,7 +417,7 @@ WHERE region = '{{ region }}' -- required
 >
 <TabItem value="create_security_profile">
 
-Creates a security profile. For information about security profiles, see Security Profiles in the Amazon Connect Administrator Guide. For a mapping of the API name and user interface name of the security profile permissions, see List of security profile permissions.
+Creates a security profile. For information about security profiles, see Security Profiles in the Connect Customer Administrator Guide. For a mapping of the API name and user interface name of the security profile permissions, see List of security profile permissions.
 
 ```sql
 INSERT INTO aws.connect.security_profiles (
@@ -555,7 +555,7 @@ AND SecurityProfileIds = '{{ SecurityProfileIds }}' --required;
 </TabItem>
 <TabItem value="update_security_profile">
 
-Updates a security profile. For information about security profiles, see Security Profiles in the Amazon Connect Administrator Guide. For a mapping of the API name and user interface name of the security profile permissions, see List of security profile permissions.
+Updates a security profile. For information about security profiles, see Security Profiles in the Connect Customer Administrator Guide. For a mapping of the API name and user interface name of the security profile permissions, see List of security profile permissions.
 
 ```sql
 UPDATE aws.connect.security_profiles

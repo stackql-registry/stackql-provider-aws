@@ -60,6 +60,11 @@ The following fields are returned by `SELECT` queries:
     <td>The structure containing the session credentials.</td>
 </tr>
 <tr>
+    <td><CopyableCode code="endpoint_credentials" /></td>
+    <td><code>object</code></td>
+    <td>The session credentials that the operation returns.</td>
+</tr>
+<tr>
     <td><CopyableCode code="expires_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the session token will expire.</td>
@@ -141,6 +146,7 @@ Generate a session token to connect to a managed endpoint.
 SELECT
 id,
 credentials,
+endpoint_credentials,
 expires_at
 FROM aws.emr_containers.managed_endpoint_session_credentials
 WHERE endpoint_id = '{{ endpoint_id }}' -- required

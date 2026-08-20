@@ -163,7 +163,7 @@ The following methods are available for this resource:
     <td><CopyableCode code="insert" /></td>
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-EndpointName"><code>EndpointName</code></a>, <a href="#parameter-Details"><code>Details</code></a></td>
     <td></td>
-    <td>Creates a multi-region endpoint (global-endpoint). The primary region is going to be the AWS-Region where the operation is executed. The secondary region has to be provided in request's parameters. From the data flow standpoint there is no difference between primary and secondary regions - sending traffic will be split equally between the two. The primary region is the region where the resource has been created and where it can be managed.</td>
+    <td>Creates a multi-region endpoint (global-endpoint). The primary region is going to be the AWS-Region where the operation is executed. The secondary region has to be provided in request's parameters. From the data flow standpoint there is no difference between primary and secondary regions - sending traffic is divided between the two. The primary region is the region where the resource has been created and where it can be managed.</td>
 </tr>
 <tr>
     <td><a href="#delete_multi_region_endpoint"><CopyableCode code="delete_multi_region_endpoint" /></a></td>
@@ -271,7 +271,7 @@ AND PageSize = '{{ PageSize }}'
 >
 <TabItem value="create_multi_region_endpoint">
 
-Creates a multi-region endpoint (global-endpoint). The primary region is going to be the AWS-Region where the operation is executed. The secondary region has to be provided in request's parameters. From the data flow standpoint there is no difference between primary and secondary regions - sending traffic will be split equally between the two. The primary region is the region where the resource has been created and where it can be managed.
+Creates a multi-region endpoint (global-endpoint). The primary region is going to be the AWS-Region where the operation is executed. The secondary region has to be provided in request's parameters. From the data flow standpoint there is no difference between primary and secondary regions - sending traffic is divided between the two. The primary region is the region where the resource has been created and where it can be managed.
 
 ```sql
 INSERT INTO aws.sesv2.multi_region_endpoints (

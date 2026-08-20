@@ -178,7 +178,7 @@ The following methods are available for this resource:
     <td><CopyableCode code="insert" /></td>
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-validationSettings"><code>validationSettings</code></a></td>
     <td></td>
-    <td>Creates a policy store. A policy store is a container for policy resources. Although Cedar supports multiple namespaces, Verified Permissions currently supports only one namespace per policy store. Verified Permissions is eventually consistent . It can take a few seconds for a new or changed element to propagate through the service and be visible in the results of other Verified Permissions operations.</td>
+    <td>Creates a policy store. A policy store is a container for policy resources. As of May 2026, Verified Permissions has aligned with Cedar and now supports multiple namespaces. Verified Permissions is eventually consistent . It can take a few seconds for a new or changed element to propagate through the service and be visible in the results of other Verified Permissions operations.</td>
 </tr>
 <tr>
     <td><a href="#update_policy_store"><CopyableCode code="update_policy_store" /></a></td>
@@ -306,7 +306,7 @@ WHERE region = '{{ region }}' -- required
 >
 <TabItem value="create_policy_store">
 
-Creates a policy store. A policy store is a container for policy resources. Although Cedar supports multiple namespaces, Verified Permissions currently supports only one namespace per policy store. Verified Permissions is eventually consistent . It can take a few seconds for a new or changed element to propagate through the service and be visible in the results of other Verified Permissions operations.
+Creates a policy store. A policy store is a container for policy resources. As of May 2026, Verified Permissions has aligned with Cedar and now supports multiple namespaces. Verified Permissions is eventually consistent . It can take a few seconds for a new or changed element to propagate through the service and be visible in the results of other Verified Permissions operations.
 
 ```sql
 INSERT INTO aws.verifiedpermissions.policy_stores (

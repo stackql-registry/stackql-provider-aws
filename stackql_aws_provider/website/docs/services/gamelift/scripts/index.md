@@ -68,12 +68,12 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="script_arn" /></td>
     <td><code>string</code></td>
-    <td>The Amazon Resource Name (ARN) that is assigned to a Amazon GameLift Servers script resource and uniquely identifies it. ARNs are unique across all Regions. In a GameLift script ARN, the resource ID matches the ScriptId value. (pattern: &lt;code&gt;^arn:.*:script\/script-\S+&lt;/code&gt;)</td>
+    <td>The Amazon Resource Name (ARN) that is assigned to a Amazon GameLift Servers script resource and uniquely identifies it. ARNs are unique across all Regions. In a GameLift script ARN, the resource ID matches the ScriptId value. (pattern: &lt;code&gt;^arn:.*:script\/script-\S+$&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="script_id" /></td>
     <td><code>string</code></td>
-    <td>A unique identifier for the Realtime script (pattern: &lt;code&gt;^script-\S+&lt;/code&gt;)</td>
+    <td>A unique identifier for the Realtime script (pattern: &lt;code&gt;^script-\S+$&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="size_on_disk" /></td>
@@ -122,12 +122,12 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="script_arn" /></td>
     <td><code>string</code></td>
-    <td>The Amazon Resource Name (ARN) that is assigned to a Amazon GameLift Servers script resource and uniquely identifies it. ARNs are unique across all Regions. In a GameLift script ARN, the resource ID matches the ScriptId value. (pattern: &lt;code&gt;^arn:.*:script\/script-\S+&lt;/code&gt;)</td>
+    <td>The Amazon Resource Name (ARN) that is assigned to a Amazon GameLift Servers script resource and uniquely identifies it. ARNs are unique across all Regions. In a GameLift script ARN, the resource ID matches the ScriptId value. (pattern: &lt;code&gt;^arn:.*:script\/script-\S+$&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="script_id" /></td>
     <td><code>string</code></td>
-    <td>A unique identifier for the Realtime script (pattern: &lt;code&gt;^script-\S+&lt;/code&gt;)</td>
+    <td>A unique identifier for the Realtime script (pattern: &lt;code&gt;^script-\S+$&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="size_on_disk" /></td>

@@ -106,6 +106,11 @@ The following fields are returned by `SELECT` queries:
     <td>The date and time the resource was modified.</td>
 </tr>
 <tr>
+    <td><CopyableCode code="node_lifecycle_actions" /></td>
+    <td><code>object</code></td>
+    <td>The lifecycle actions to run on compute nodes in the compute node group. Use lifecycle actions to run custom scripts at defined stages of a compute node's lifecycle, such as when a compute node finishes bootstrapping or becomes ready to accept jobs.</td>
+</tr>
+<tr>
     <td><CopyableCode code="purchase_option" /></td>
     <td><code>string</code></td>
     <td>Specifies how EC2 instances are purchased on your behalf. PCS supports On-Demand Instances, Spot Instances, Interruptible Capacity Reservations, On-Demand Capacity Reservations, and Amazon EC2 Capacity Blocks for ML. For more information, see Amazon EC2 billing and purchasing options in the Amazon Elastic Compute Cloud User Guide. For more information about PCS support for Capacity Blocks, see Using Amazon EC2 Capacity Blocks for ML with PCS in the PCS User Guide. For more information about PCS support for interruptible capacity reservations, see Using I-ODCRs with PCS in the PCS User Guide. Choose On-Demand if you plan to use an On-Demand Capacity Reservation (ODCR). For more information, see Using ODCRs with PCS. If you don't provide this option, it defaults to On-Demand. (ONDEMAND, SPOT, CAPACITY_BLOCK, INTERRUPTIBLE_CAPACITY_RESERVATION)</td>
@@ -296,6 +301,7 @@ error_info,
 iam_instance_profile_arn,
 instance_configs,
 modified_at,
+node_lifecycle_actions,
 purchase_option,
 scaling_configuration,
 slurm_configuration,
@@ -355,6 +361,7 @@ scalingConfiguration,
 instanceConfigs,
 spotOptions,
 slurmConfiguration,
+nodeLifecycleActions,
 clientToken,
 tags,
 region
@@ -371,6 +378,7 @@ SELECT
 '{{ instanceConfigs }}' /* required */,
 '{{ spotOptions }}',
 '{{ slurmConfiguration }}',
+'{{ nodeLifecycleActions }}',
 '{{ clientToken }}',
 '{{ tags }}',
 '{{ region }}'
@@ -394,8 +402,12 @@ SELECT
 '{{ bootstrapId }}' /* required */,
 '{{ region }}'
 RETURNING
+cluster_name,
+compute_node_group_id,
+compute_node_group_name,
 endpoints,
 node_id,
+node_lifecycle_actions,
 shared_secret
 ;
 ```
@@ -460,9 +472,34 @@ shared_secret
       description: |
         Additional options related to the Slurm scheduler.
       value:
+        scaleDownIdleTimeInSeconds: {{ scaleDownIdleTimeInSeconds }}
         slurmCustomSettings:
           - parameterName: "{{ parameterName }}"
             parameterValue: "{{ parameterValue }}"
+    - name: nodeLifecycleActions
+      description: |
+        The lifecycle actions to run on compute nodes in the compute node group. Use lifecycle actions to run custom scripts at defined stages of a compute node's lifecycle, such as when a compute node finishes bootstrapping or becomes ready to accept jobs.
+      value:
+        stages:
+          nodeBootstrapped:
+            - name: "{{ name }}"
+              scriptSource:
+                scriptLocation: "{{ scriptLocation }}"
+                s3VersionId: "{{ s3VersionId }}"
+                checksum: "{{ checksum }}"
+              arguments: "{{ arguments }}"
+              onError: "{{ onError }}"
+              executionPolicy: "{{ executionPolicy }}"
+          nodeReady:
+            - name: "{{ name }}"
+              scriptSource:
+                scriptLocation: "{{ scriptLocation }}"
+                s3VersionId: "{{ s3VersionId }}"
+                checksum: "{{ checksum }}"
+              arguments: "{{ arguments }}"
+              onError: "{{ onError }}"
+              executionPolicy: "{{ executionPolicy }}"
+        scriptCachingPolicy: "{{ scriptCachingPolicy }}"
     - name: clientToken
       value: "{{ clientToken }}"
       description: |
@@ -506,6 +543,7 @@ spotOptions = '{{ spotOptions }}',
 scalingConfiguration = '{{ scalingConfiguration }}',
 iamInstanceProfileArn = '{{ iamInstanceProfileArn }}',
 slurmConfiguration = '{{ slurmConfiguration }}',
+nodeLifecycleActions = '{{ nodeLifecycleActions }}',
 clientToken = '{{ clientToken }}'
 WHERE 
 region = '{{ region }}' --required

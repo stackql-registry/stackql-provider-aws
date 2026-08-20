@@ -225,6 +225,11 @@ The following fields are returned by `SELECT` queries:
     <td>Specifies if the DB instance is a Multi-AZ deployment.</td>
 </tr>
 <tr>
+    <td><CopyableCode code="network_type" /></td>
+    <td><code>string</code></td>
+    <td>The network type of the DB instance. Inherited from the DB cluster. Valid Values: IPV4, DUAL</td>
+</tr>
+<tr>
     <td><CopyableCode code="option_group_memberships" /></td>
     <td><code>string</code></td>
     <td>(Not supported by Neptune)</td>
@@ -727,6 +732,7 @@ master_username,
 monitoring_interval,
 monitoring_role_arn,
 multi_az,
+network_type,
 option_group_memberships,
 pending_modified_values,
 performance_insights_enabled,
@@ -898,6 +904,7 @@ master_username,
 monitoring_interval,
 monitoring_role_arn,
 multi_az,
+network_type,
 option_group_memberships,
 pending_modified_values,
 performance_insights_enabled,
@@ -1193,6 +1200,7 @@ master_username,
 monitoring_interval,
 monitoring_role_arn,
 multi_az,
+network_type,
 option_group_memberships,
 pending_modified_values,
 performance_insights_enabled,

@@ -115,6 +115,11 @@ The following fields are returned by `SELECT` queries:
     <td>Key-value pairs to enable encryption at rest.</td>
 </tr>
 <tr>
+    <td><CopyableCode code="engine_mode" /></td>
+    <td><code>object</code></td>
+    <td>The engine mode configured for the domain.</td>
+</tr>
+<tr>
     <td><CopyableCode code="engine_version" /></td>
     <td><code>object</code></td>
     <td>The OpenSearch or Elasticsearch version that the domain is running.</td>
@@ -158,6 +163,11 @@ The following fields are returned by `SELECT` queries:
     <td><CopyableCode code="software_update_options" /></td>
     <td><code>object</code></td>
     <td>Software update options for the domain.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="use_case" /></td>
+    <td><code>object</code></td>
+    <td>The use case configured for the domain.</td>
 </tr>
 <tr>
     <td><CopyableCode code="vpc_options" /></td>
@@ -261,6 +271,7 @@ deployment_strategy_options,
 domain_endpoint_options,
 ebs_options,
 encryption_at_rest_options,
+engine_mode,
 engine_version,
 ip_address_type,
 identity_center_options,
@@ -270,6 +281,7 @@ node_to_node_encryption_options,
 off_peak_window_options,
 snapshot_options,
 software_update_options,
+use_case,
 vpc_options
 FROM aws.opensearch.domain_configs
 WHERE domain_name = '{{ domain_name }}' -- required
@@ -316,7 +328,9 @@ OffPeakWindowOptions = '{{ OffPeakWindowOptions }}',
 SoftwareUpdateOptions = '{{ SoftwareUpdateOptions }}',
 AIMLOptions = '{{ AIMLOptions }}',
 DeploymentStrategyOptions = '{{ DeploymentStrategyOptions }}',
-AutomatedSnapshotPauseOptions = '{{ AutomatedSnapshotPauseOptions }}'
+AutomatedSnapshotPauseOptions = '{{ AutomatedSnapshotPauseOptions }}',
+UseCase = '{{ UseCase }}',
+EngineMode = '{{ EngineMode }}'
 WHERE 
 domain_name = '{{ domain_name }}' --required
 AND region = '{{ region }}' --required

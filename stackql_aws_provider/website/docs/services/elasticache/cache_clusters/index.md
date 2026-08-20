@@ -308,7 +308,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-ApplyImmediately">
     <td><CopyableCode code="ApplyImmediately" /></td>
     <td><code>boolean</code></td>
-    <td>If true, this parameter causes the modifications in this request and any pending modifications to be applied, asynchronously and as soon as possible, regardless of the PreferredMaintenanceWindow setting for the cluster. If false, changes to the cluster are applied on the next maintenance reboot, or the next failure reboot, whichever occurs first. If you perform a ModifyCacheCluster before a pending modification is applied, the pending modification is replaced by the newer modification. Valid values: true | false Default: false</td>
+    <td>If true, this parameter causes the modifications in this request and any pending modifications to be applied, asynchronously and as soon as possible, regardless of the PreferredMaintenanceWindow setting for the cluster. If false, changes to the cluster are applied on the next maintenance reboot, or the next failure reboot, whichever occurs first. If you perform a ModifyCacheCluster before a pending modification is applied, the pending modification is replaced by the newer modification. However, a pending node-count increase on Memcached clusters cannot be superseded by a request to add fewer nodes. To change a pending node addition, first cancel it by setting NumCacheNodes equal to the current number of nodes in the cluster, then submit the new request. See the NumCacheNodes parameter for details on node scaling behavior. Valid values: true | false Default: false</td>
 </tr>
 <tr id="parameter-AuthToken">
     <td><CopyableCode code="AuthToken" /></td>

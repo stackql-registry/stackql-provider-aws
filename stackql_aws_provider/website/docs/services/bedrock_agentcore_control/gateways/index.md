@@ -53,7 +53,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
-    <td>The name of the gateway. (pattern: &lt;code&gt;(&#91;0-9a-zA-Z&#93;&#91;-&#93;?)&#123;1,100&#125;&lt;/code&gt;)</td>
+    <td>The name of the gateway. (pattern: &lt;code&gt;(&#91;0-9a-zA-Z&#93;&#91;-&#93;?)&#123;1,48&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="authorizer_configuration" /></td>
@@ -69,6 +69,11 @@ The following fields are returned by `SELECT` queries:
     <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the gateway was created.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="custom_transform_configuration" /></td>
+    <td><code>object</code></td>
+    <td>The custom transformation configuration for the gateway. This configuration defines how the gateway transforms requests and responses.</td>
 </tr>
 <tr>
     <td><CopyableCode code="description" /></td>
@@ -141,6 +146,16 @@ The following fields are returned by `SELECT` queries:
     <td>The timestamp when the gateway was last updated.</td>
 </tr>
 <tr>
+    <td><CopyableCode code="waf_configuration" /></td>
+    <td><code>object</code></td>
+    <td>The Amazon Web Services WAF configuration for the gateway.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="web_acl_arn" /></td>
+    <td><code>string</code></td>
+    <td>The Amazon Resource Name (ARN) of the Amazon Web Services WAF web ACL associated with the gateway. (pattern: &lt;code&gt;arn:&#91;a-z0-9\-&#93;+:wafv2:&#91;a-z0-9\-&#93;+:&#91;0-9&#93;&#123;12&#125;:regional/webacl/.+&lt;/code&gt;)</td>
+</tr>
+<tr>
     <td><CopyableCode code="workload_identity_details" /></td>
     <td><code>object</code></td>
     <td>The information about the workload identity.</td>
@@ -162,7 +177,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
-    <td>The name of the gateway. (pattern: &lt;code&gt;(&#91;0-9a-zA-Z&#93;&#91;-&#93;?)&#123;1,100&#125;&lt;/code&gt;)</td>
+    <td>The name of the gateway. (pattern: &lt;code&gt;(&#91;0-9a-zA-Z&#93;&#91;-&#93;?)&#123;1,48&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="authorizer_type" /></td>
@@ -312,6 +327,7 @@ name,
 authorizer_configuration,
 authorizer_type,
 created_at,
+custom_transform_configuration,
 description,
 exception_level,
 gateway_arn,
@@ -326,6 +342,8 @@ role_arn,
 status,
 status_reasons,
 updated_at,
+waf_configuration,
+web_acl_arn,
 workload_identity_details
 FROM aws.bedrock_agentcore_control.gateways
 WHERE gateway_identifier = '{{ gateway_identifier }}' -- required
@@ -407,6 +425,7 @@ name,
 authorizer_configuration,
 authorizer_type,
 created_at,
+custom_transform_configuration,
 description,
 exception_level,
 gateway_arn,
@@ -421,6 +440,8 @@ role_arn,
 status,
 status_reasons,
 updated_at,
+waf_configuration,
+web_acl_arn,
 workload_identity_details
 ;
 ```
@@ -472,6 +493,7 @@ workload_identity_details
             - "{{ allowedClients }}"
           allowedScopes:
             - "{{ allowedScopes }}"
+          advertisedScopeMapping: "{{ advertisedScopeMapping }}"
           customClaims:
             - inboundTokenClaimName: "{{ inboundTokenClaimName }}"
               inboundTokenClaimValueType: "{{ inboundTokenClaimValueType }}"
@@ -504,6 +526,11 @@ workload_identity_details
                   securityGroupIds: "{{ securityGroupIds }}"
                   tags: "{{ tags }}"
                   routingDomain: "{{ routingDomain }}"
+          allowedWorkloadConfiguration:
+            hostingEnvironments:
+              - arn: "{{ arn }}"
+            workloadIdentities:
+              - "{{ workloadIdentities }}"
     - name: kmsKeyArn
       value: "{{ kmsKeyArn }}"
     - name: interceptorConfigurations
@@ -514,6 +541,9 @@ workload_identity_details
           interceptionPoints: "{{ interceptionPoints }}"
           inputConfiguration:
             passRequestHeaders: {{ passRequestHeaders }}
+            payloadFilter:
+              exclude:
+                - field: "{{ field }}"
     - name: policyEngineConfiguration
       description: |
         The configuration for a policy engine associated with a gateway. A policy engine is a collection of policies that evaluates and authorizes agent tool calls. When associated with a gateway, the policy engine intercepts all agent requests and determines whether to allow or deny each action based on the defined policies.
@@ -554,9 +584,11 @@ protocolConfiguration = '{{ protocolConfiguration }}',
 authorizerType = '{{ authorizerType }}',
 authorizerConfiguration = '{{ authorizerConfiguration }}',
 kmsKeyArn = '{{ kmsKeyArn }}',
+customTransformConfiguration = '{{ customTransformConfiguration }}',
 interceptorConfigurations = '{{ interceptorConfigurations }}',
 policyEngineConfiguration = '{{ policyEngineConfiguration }}',
-exceptionLevel = '{{ exceptionLevel }}'
+exceptionLevel = '{{ exceptionLevel }}',
+wafConfiguration = '{{ wafConfiguration }}'
 WHERE 
 gateway_identifier = '{{ gateway_identifier }}' --required
 AND region = '{{ region }}' --required
@@ -568,6 +600,7 @@ name,
 authorizer_configuration,
 authorizer_type,
 created_at,
+custom_transform_configuration,
 description,
 exception_level,
 gateway_arn,
@@ -582,6 +615,8 @@ role_arn,
 status,
 status_reasons,
 updated_at,
+waf_configuration,
+web_acl_arn,
 workload_identity_details;
 ```
 </TabItem>

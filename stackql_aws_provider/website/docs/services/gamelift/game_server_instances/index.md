@@ -52,12 +52,12 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="game_server_group_arn" /></td>
     <td><code>string</code></td>
-    <td>A generated unique identifier for the game server group that includes the game server instance. (pattern: &lt;code&gt;^arn:.*:gameservergroup\/&#91;a-zA-Z0-9-\.&#93;*&lt;/code&gt;)</td>
+    <td>A generated unique identifier for the game server group that includes the game server instance. (pattern: &lt;code&gt;^arn:.*:gameservergroup\/&#91;a-zA-Z0-9-\.&#93;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="game_server_group_name" /></td>
     <td><code>string</code></td>
-    <td>A developer-defined identifier for the game server group that includes the game server instance. The name is unique for each Region in each Amazon Web Services account. (pattern: &lt;code&gt;&#91;a-zA-Z0-9-\.&#93;+&lt;/code&gt;)</td>
+    <td>A developer-defined identifier for the game server group that includes the game server instance. The name is unique for each Region in each Amazon Web Services account. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9-\.&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="instance_id" /></td>

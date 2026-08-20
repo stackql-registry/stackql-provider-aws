@@ -101,6 +101,11 @@ The following fields are returned by `SELECT` queries:
     <td>The friendly name that identifies the role.</td>
 </tr>
 <tr>
+    <td><CopyableCode code="source_role_template" /></td>
+    <td><code>string</code></td>
+    <td>Contains information about the role template that this role was created from. This member is present only for roles created with AcquireRole.</td>
+</tr>
+<tr>
     <td><CopyableCode code="tags" /></td>
     <td><code>string</code></td>
     <td>A list of tags that are attached to the role. For more information about tagging, see Tagging IAM resources in the IAM User Guide.</td>
@@ -168,6 +173,11 @@ The following fields are returned by `SELECT` queries:
     <td><CopyableCode code="role_name" /></td>
     <td><code>string</code></td>
     <td>The friendly name that identifies the role.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="source_role_template" /></td>
+    <td><code>string</code></td>
+    <td>Contains information about the role template that this role was created from. This member is present only for roles created with AcquireRole.</td>
 </tr>
 <tr>
     <td><CopyableCode code="tags" /></td>
@@ -378,6 +388,7 @@ permissions_boundary,
 role_id,
 role_last_used,
 role_name,
+source_role_template,
 tags
 FROM aws.iam.roles
 WHERE RoleName = '{{ RoleName }}' -- required
@@ -401,6 +412,7 @@ permissions_boundary,
 role_id,
 role_last_used,
 role_name,
+source_role_template,
 tags
 FROM aws.iam.roles
 WHERE region = '{{ region }}' -- required
@@ -458,6 +470,7 @@ permissions_boundary,
 role_id,
 role_last_used,
 role_name,
+source_role_template,
 tags
 ;
 ```
@@ -489,6 +502,7 @@ permissions_boundary,
 role_id,
 role_last_used,
 role_name,
+source_role_template,
 tags
 ;
 ```

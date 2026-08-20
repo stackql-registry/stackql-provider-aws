@@ -226,6 +226,7 @@ minimum_links,
 number_of_connections,
 owner_account,
 provider_name,
+rate_limiter_status,
 region,
 tags
 ;
@@ -328,6 +329,7 @@ partner_interconnect_mac_sec_capable,
 partner_name,
 port_encryption_status,
 provider_name,
+rate_limiter_status,
 region,
 tags,
 vlan;
@@ -367,6 +369,7 @@ minimum_links,
 number_of_connections,
 owner_account,
 provider_name,
+rate_limiter_status,
 region,
 tags;
 ```

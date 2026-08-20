@@ -53,7 +53,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="agent_runtime_arn" /></td>
     <td><code>string</code></td>
-    <td>The Amazon Resource Name (ARN) of the AgentCore Runtime. (pattern: &lt;code&gt;arn:(-&#91;^:&#93;+)?:bedrock-agentcore:&#91;a-z0-9-&#93;+:&#91;0-9&#93;&#123;12&#125;:agent/&#91;A-Fa-f0-9&#93;&#123;8&#125;-&#91;A-Fa-f0-9&#93;&#123;4&#125;-&#91;A-Fa-f0-9&#93;&#123;4&#125;-&#91;A-Fa-f0-9&#93;&#123;4&#125;-&#91;A-Fa-f0-9&#93;&#123;12&#125;:(&#91;0-9&#93;&#123;0,4&#125;&#91;1-9&#93;&#91;0-9&#93;&#123;0,4&#125;)&lt;/code&gt;)</td>
+    <td>The Amazon Resource Name (ARN) of the AgentCore Runtime. (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:bedrock-agentcore:&#91;a-z0-9-&#93;+:&#91;0-9&#93;&#123;12&#125;:runtime/&#91;a-zA-Z&#93;&#91;a-zA-Z0-9_&#93;&#123;0,47&#125;-&#91;a-zA-Z0-9&#93;&#123;10&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="agent_runtime_artifact" /></td>
@@ -79,6 +79,11 @@ The following fields are returned by `SELECT` queries:
     <td><CopyableCode code="authorizer_configuration" /></td>
     <td><code>object</code></td>
     <td>Represents inbound authorization configuration options used to authenticate incoming requests.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="capacity_provider_configuration" /></td>
+    <td><code>object</code></td>
+    <td>Configuration for customer-managed compute capacity for the AgentCore Runtime. A capacity provider runs the AgentCore Runtime on the Instances compute type, using Amazon Web Services managed compute in your account.</td>
 </tr>
 <tr>
     <td><CopyableCode code="created_at" /></td>
@@ -167,7 +172,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="agent_runtime_arn" /></td>
     <td><code>string</code></td>
-    <td>The Amazon Resource Name (ARN) of the agent runtime. (pattern: &lt;code&gt;arn:(-&#91;^:&#93;+)?:bedrock-agentcore:&#91;a-z0-9-&#93;+:&#91;0-9&#93;&#123;12&#125;:agent/&#91;A-Fa-f0-9&#93;&#123;8&#125;-&#91;A-Fa-f0-9&#93;&#123;4&#125;-&#91;A-Fa-f0-9&#93;&#123;4&#125;-&#91;A-Fa-f0-9&#93;&#123;4&#125;-&#91;A-Fa-f0-9&#93;&#123;12&#125;:(&#91;0-9&#93;&#123;0,4&#125;&#91;1-9&#93;&#91;0-9&#93;&#123;0,4&#125;)&lt;/code&gt;)</td>
+    <td>The Amazon Resource Name (ARN) of the agent runtime. (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:bedrock-agentcore:&#91;a-z0-9-&#93;+:&#91;0-9&#93;&#123;12&#125;:runtime/&#91;a-zA-Z&#93;&#91;a-zA-Z0-9_&#93;&#123;0,47&#125;-&#91;a-zA-Z0-9&#93;&#123;10&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="agent_runtime_id" /></td>
@@ -236,14 +241,14 @@ The following methods are available for this resource:
 <tr>
     <td><a href="#create_agent_runtime"><CopyableCode code="create_agent_runtime" /></a></td>
     <td><CopyableCode code="insert" /></td>
-    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-agentRuntimeName"><code>agentRuntimeName</code></a>, <a href="#parameter-agentRuntimeArtifact"><code>agentRuntimeArtifact</code></a>, <a href="#parameter-roleArn"><code>roleArn</code></a>, <a href="#parameter-networkConfiguration"><code>networkConfiguration</code></a></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-agentRuntimeName"><code>agentRuntimeName</code></a>, <a href="#parameter-agentRuntimeArtifact"><code>agentRuntimeArtifact</code></a>, <a href="#parameter-roleArn"><code>roleArn</code></a></td>
     <td></td>
     <td>Creates an Amazon Bedrock AgentCore Runtime.</td>
 </tr>
 <tr>
     <td><a href="#update_agent_runtime"><CopyableCode code="update_agent_runtime" /></a></td>
     <td><CopyableCode code="update" /></td>
-    <td><a href="#parameter-agent_runtime_id"><code>agent_runtime_id</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-agentRuntimeArtifact"><code>agentRuntimeArtifact</code></a>, <a href="#parameter-roleArn"><code>roleArn</code></a>, <a href="#parameter-networkConfiguration"><code>networkConfiguration</code></a></td>
+    <td><a href="#parameter-agent_runtime_id"><code>agent_runtime_id</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-agentRuntimeArtifact"><code>agentRuntimeArtifact</code></a>, <a href="#parameter-roleArn"><code>roleArn</code></a></td>
     <td></td>
     <td>Updates an existing Amazon Secure Agent.</td>
 </tr>
@@ -251,8 +256,8 @@ The following methods are available for this resource:
     <td><a href="#delete_agent_runtime"><CopyableCode code="delete_agent_runtime" /></a></td>
     <td><CopyableCode code="delete" /></td>
     <td><a href="#parameter-agent_runtime_id"><code>agent_runtime_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
-    <td><a href="#parameter-clientToken"><code>clientToken</code></a></td>
-    <td>Deletes an Amazon Bedrock AgentCore Runtime.</td>
+    <td><a href="#parameter-version"><code>version</code></a>, <a href="#parameter-clientToken"><code>clientToken</code></a></td>
+    <td>Deletes an Amazon Bedrock AgentCore Runtime, or a single version of an AgentCore Runtime when you provide the version qualifier.</td>
 </tr>
 </tbody>
 </table>
@@ -298,7 +303,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-version">
     <td><CopyableCode code="version" /></td>
     <td><code>string</code></td>
-    <td>The version of the AgentCore Runtime to retrieve.</td>
+    <td>The version of the AgentCore Runtime to delete. When you provide this value, only that version is deleted. When you omit it, the entire AgentCore Runtime and all of its versions are deleted.</td>
 </tr>
 </tbody>
 </table>
@@ -324,6 +329,7 @@ agent_runtime_id,
 agent_runtime_name,
 agent_runtime_version,
 authorizer_configuration,
+capacity_provider_configuration,
 created_at,
 description,
 environment_variables,
@@ -395,6 +401,7 @@ protocolConfiguration,
 lifecycleConfiguration,
 environmentVariables,
 filesystemConfigurations,
+capacityProviderConfiguration,
 tags,
 region
 )
@@ -402,7 +409,7 @@ SELECT
 '{{ agentRuntimeName }}' /* required */,
 '{{ agentRuntimeArtifact }}' /* required */,
 '{{ roleArn }}' /* required */,
-'{{ networkConfiguration }}' /* required */,
+'{{ networkConfiguration }}',
 '{{ clientToken }}',
 '{{ description }}',
 '{{ authorizerConfiguration }}',
@@ -411,6 +418,7 @@ SELECT
 '{{ lifecycleConfiguration }}',
 '{{ environmentVariables }}',
 '{{ filesystemConfigurations }}',
+'{{ capacityProviderConfiguration }}',
 '{{ tags }}',
 '{{ region }}'
 RETURNING
@@ -477,6 +485,7 @@ workload_identity_details
             - "{{ allowedClients }}"
           allowedScopes:
             - "{{ allowedScopes }}"
+          advertisedScopeMapping: "{{ advertisedScopeMapping }}"
           customClaims:
             - inboundTokenClaimName: "{{ inboundTokenClaimName }}"
               inboundTokenClaimValueType: "{{ inboundTokenClaimValueType }}"
@@ -509,6 +518,11 @@ workload_identity_details
                   securityGroupIds: "{{ securityGroupIds }}"
                   tags: "{{ tags }}"
                   routingDomain: "{{ routingDomain }}"
+          allowedWorkloadConfiguration:
+            hostingEnvironments:
+              - arn: "{{ arn }}"
+            workloadIdentities:
+              - "{{ workloadIdentities }}"
     - name: requestHeaderConfiguration
       description: |
         Configuration for HTTP request headers that will be passed through to the runtime.
@@ -538,6 +552,14 @@ workload_identity_details
           efsAccessPoint:
             accessPointArn: "{{ accessPointArn }}"
             mountPath: "{{ mountPath }}"
+          capacityProviderVolume:
+            volumeName: "{{ volumeName }}"
+            mountPath: "{{ mountPath }}"
+    - name: capacityProviderConfiguration
+      description: |
+        Configuration for customer-managed compute capacity for the AgentCore Runtime. A capacity provider runs the AgentCore Runtime on the Instances compute type, using Amazon Web Services managed compute in your account.
+      value:
+        capacityProviderArn: "{{ capacityProviderArn }}"
     - name: tags
       value: "{{ tags }}"
 `}</CodeBlock>
@@ -572,13 +594,13 @@ lifecycleConfiguration = '{{ lifecycleConfiguration }}',
 metadataConfiguration = '{{ metadataConfiguration }}',
 environmentVariables = '{{ environmentVariables }}',
 filesystemConfigurations = '{{ filesystemConfigurations }}',
+capacityProviderConfiguration = '{{ capacityProviderConfiguration }}',
 clientToken = '{{ clientToken }}'
 WHERE 
 agent_runtime_id = '{{ agent_runtime_id }}' --required
 AND region = '{{ region }}' --required
 AND agentRuntimeArtifact = '{{ agentRuntimeArtifact }}' --required
 AND roleArn = '{{ roleArn }}' --required
-AND networkConfiguration = '{{ networkConfiguration }}' --required
 RETURNING
 agent_runtime_arn,
 agent_runtime_id,
@@ -602,12 +624,13 @@ workload_identity_details;
 >
 <TabItem value="delete_agent_runtime">
 
-Deletes an Amazon Bedrock AgentCore Runtime.
+Deletes an Amazon Bedrock AgentCore Runtime, or a single version of an AgentCore Runtime when you provide the version qualifier.
 
 ```sql
 DELETE FROM aws.bedrock_agentcore_control.agent_runtimes
 WHERE agent_runtime_id = '{{ agent_runtime_id }}' --required
 AND region = '{{ region }}' --required
+AND version = '{{ version }}'
 AND clientToken = '{{ clientToken }}'
 ;
 ```

@@ -50,6 +50,11 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
+    <td><CopyableCode code="cfn_resource_types" /></td>
+    <td><code>array</code></td>
+    <td>The CloudFormation resource type identifiers for this resource type, such as AWS::EC2::Instance.</td>
+</tr>
+<tr>
     <td><CopyableCode code="resource_type" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the resource type.</td>
@@ -124,6 +129,7 @@ Retrieves a list of all resource types currently supported by Amazon Web Service
 
 ```sql
 SELECT
+cfn_resource_types,
 resource_type,
 service
 FROM aws.resource_explorer_2.supported_resource_types

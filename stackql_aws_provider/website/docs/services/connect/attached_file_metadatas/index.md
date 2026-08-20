@@ -105,7 +105,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-associatedResourceArn">
     <td><CopyableCode code="associatedResourceArn" /></td>
     <td><code>string</code></td>
-    <td>The resource to which the attached file is (being) uploaded to. The supported resources are Cases and Email. This value must be a valid ARN.</td>
+    <td>The resource to which the attached file is (being) uploaded to. The supported resources are Cases, Email, and Task. This value must be a valid ARN.</td>
 </tr>
 <tr id="parameter-instance_id">
     <td><CopyableCode code="instance_id" /></td>

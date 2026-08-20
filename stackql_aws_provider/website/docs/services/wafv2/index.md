@@ -18,7 +18,7 @@ wafv2 service documentation.
 
 :::info[Service Summary]
 
-total resources: __22__  
+total resources: __26__  
 
 :::
 
@@ -35,15 +35,19 @@ total resources: __22__
 <a href="/services/wafv2/managed_products_by_vendors/">managed_products_by_vendors</a><br />
 <a href="/services/wafv2/managed_rule_groups/">managed_rule_groups</a><br />
 <a href="/services/wafv2/managed_rule_sets/">managed_rule_sets</a><br />
-<a href="/services/wafv2/mobile_sdk_releases/">mobile_sdk_releases</a>
+<a href="/services/wafv2/mobile_sdk_releases/">mobile_sdk_releases</a><br />
+<a href="/services/wafv2/permission_policies/">permission_policies</a><br />
+<a href="/services/wafv2/rate_based_statement_managed_keys/">rate_based_statement_managed_keys</a>
 </div>
 <div class="providerDocColumn">
-<a href="/services/wafv2/permission_policies/">permission_policies</a><br />
-<a href="/services/wafv2/rate_based_statement_managed_keys/">rate_based_statement_managed_keys</a><br />
 <a href="/services/wafv2/regex_pattern_sets/">regex_pattern_sets</a><br />
 <a href="/services/wafv2/resources_for_web_acls/">resources_for_web_acls</a><br />
+<a href="/services/wafv2/revenue_statistics/">revenue_statistics</a><br />
+<a href="/services/wafv2/revenue_statistics_summaries/">revenue_statistics_summaries</a><br />
+<a href="/services/wafv2/revenue_statistics_time_series/">revenue_statistics_time_series</a><br />
 <a href="/services/wafv2/rule_groups/">rule_groups</a><br />
 <a href="/services/wafv2/sampled_requests/">sampled_requests</a><br />
+<a href="/services/wafv2/settlement_records/">settlement_records</a><br />
 <a href="/services/wafv2/tags/">tags</a><br />
 <a href="/services/wafv2/top_path_statistics_by_traffics/">top_path_statistics_by_traffics</a><br />
 <a href="/services/wafv2/web_ac_ls/">web_ac_ls</a><br />

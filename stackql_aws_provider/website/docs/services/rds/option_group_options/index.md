@@ -180,7 +180,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-EngineName">
     <td><CopyableCode code="EngineName" /></td>
     <td><code>string</code></td>
-    <td>The name of the engine to describe options for. Valid Values: db2-ae db2-se mariadb mysql oracle-ee oracle-ee-cdb oracle-se2 oracle-se2-cdb postgres sqlserver-ee sqlserver-se sqlserver-ex sqlserver-web</td>
+    <td>The name of the engine to describe options for. Valid Values: db2-ae db2-ce db2-se mariadb mysql oracle-ee oracle-ee-cdb oracle-se2 oracle-se2-cdb postgres sqlserver-ee sqlserver-se sqlserver-ex sqlserver-web</td>
 </tr>
 <tr id="parameter-region">
     <td><CopyableCode code="region" /></td>

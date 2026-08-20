@@ -594,6 +594,12 @@ fleet_id
             resourceConfigurationArns:
               - "{{ resourceConfigurationArns }}"
           storageProfileId: "{{ storageProfileId }}"
+          persistentVolumeConfiguration:
+            sizeGiB: {{ sizeGiB }}
+            iops: {{ iops }}
+            throughputMiB: {{ throughputMiB }}
+            mountPath: "{{ mountPath }}"
+            lastUsedTtlHours: {{ lastUsedTtlHours }}
           autoScalingConfiguration:
             standbyWorkerCount: {{ standbyWorkerCount }}
             workerIdleDurationSeconds: {{ workerIdleDurationSeconds }}
@@ -635,7 +641,8 @@ UPDATE aws.deadline.fleets
 SET 
 principalType = '{{ principalType }}',
 identityStoreId = '{{ identityStoreId }}',
-membershipLevel = '{{ membershipLevel }}'
+membershipLevel = '{{ membershipLevel }}',
+identityCenterRegion = '{{ identityCenterRegion }}'
 WHERE 
 farm_id = '{{ farm_id }}' --required
 AND fleet_id = '{{ fleet_id }}' --required

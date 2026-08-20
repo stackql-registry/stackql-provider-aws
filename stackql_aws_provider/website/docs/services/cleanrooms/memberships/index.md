@@ -275,6 +275,13 @@ The following methods are available for this resource:
     <td>Deletes a specified membership. All resources under a membership must be deleted.</td>
 </tr>
 <tr>
+    <td><a href="#start_analysis_log_export"><CopyableCode code="start_analysis_log_export" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-membership_identifier"><code>membership_identifier</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-analysisId"><code>analysisId</code></a>, <a href="#parameter-analysisType"><code>analysisType</code></a>, <a href="#parameter-resultConfiguration"><code>resultConfiguration</code></a></td>
+    <td></td>
+    <td>Starts an export of the Apache Spark logs for a protected query to an Amazon S3 bucket that you own. Use the exported logs to diagnose a query that failed or that ran more slowly than you expected. Clean Rooms exports a redacted copy of the Spark logs instead of the raw logs. Analyze the exported logs with the tooling of your choice, such as Spark History Server. For details about what the exported logs contain, see https:​//docs.aws.amazon.com/clean-rooms/latest/userguide/export-analysis-logs-contents.html. The export runs asynchronously and returns with a status of IN_PROGRESS. Call GetAnalysisLogExport to poll for the final status. To use this operation, you must have the CAN_EXPORT_QUERY_ANALYSIS_LOG ability for your membership. You must also be the query runner or the query payer. Having the ability alone is not sufficient. The query must have reached a terminal state, and it must have reached the execution stage. A query that failed validation or that was canceled before it started produces no Spark logs. Log export isn't supported for queries that use differential privacy, and isn't supported for PySpark jobs. The destination bucket must be in the same Amazon Web Services Region as the collaboration. Cross-Region export isn't supported. For more information, see https:​//docs.aws.amazon.com/clean-rooms/latest/userguide/export-analysis-logs.html.</td>
+</tr>
+<tr>
     <td><a href="#start_protected_job"><CopyableCode code="start_protected_job" /></a></td>
     <td><CopyableCode code="exec" /></td>
     <td><a href="#parameter-membership_identifier"><code>membership_identifier</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-type"><code>type</code></a>, <a href="#parameter-jobParameters"><code>jobParameters</code></a></td>
@@ -529,7 +536,8 @@ SET
 queryLogStatus = '{{ queryLogStatus }}',
 jobLogStatus = '{{ jobLogStatus }}',
 defaultResultConfiguration = '{{ defaultResultConfiguration }}',
-defaultJobResultConfiguration = '{{ defaultJobResultConfiguration }}'
+defaultJobResultConfiguration = '{{ defaultJobResultConfiguration }}',
+membershipPaymentConfiguration = '{{ membershipPaymentConfiguration }}'
 WHERE 
 membership_identifier = '{{ membership_identifier }}' --required
 AND region = '{{ region }}' --required
@@ -565,13 +573,31 @@ AND region = '{{ region }}' --required
 ## Lifecycle Methods
 
 <Tabs
-    defaultValue="start_protected_job"
+    defaultValue="start_analysis_log_export"
     values={[
+        { label: 'start_analysis_log_export', value: 'start_analysis_log_export' },
         { label: 'start_protected_job', value: 'start_protected_job' },
         { label: 'start_protected_query', value: 'start_protected_query' },
         { label: 'preview_privacy_impact', value: 'preview_privacy_impact' }
     ]}
 >
+<TabItem value="start_analysis_log_export">
+
+Starts an export of the Apache Spark logs for a protected query to an Amazon S3 bucket that you own. Use the exported logs to diagnose a query that failed or that ran more slowly than you expected. Clean Rooms exports a redacted copy of the Spark logs instead of the raw logs. Analyze the exported logs with the tooling of your choice, such as Spark History Server. For details about what the exported logs contain, see https://docs.aws.amazon.com/clean-rooms/latest/userguide/export-analysis-logs-contents.html. The export runs asynchronously and returns with a status of IN_PROGRESS. Call GetAnalysisLogExport to poll for the final status. To use this operation, you must have the CAN_EXPORT_QUERY_ANALYSIS_LOG ability for your membership. You must also be the query runner or the query payer. Having the ability alone is not sufficient. The query must have reached a terminal state, and it must have reached the execution stage. A query that failed validation or that was canceled before it started produces no Spark logs. Log export isn't supported for queries that use differential privacy, and isn't supported for PySpark jobs. The destination bucket must be in the same Amazon Web Services Region as the collaboration. Cross-Region export isn't supported. For more information, see https://docs.aws.amazon.com/clean-rooms/latest/userguide/export-analysis-logs.html.
+
+```sql
+EXEC aws.cleanrooms.memberships.start_analysis_log_export 
+@membership_identifier='{{ membership_identifier }}' --required, 
+@region='{{ region }}' --required 
+@@json=
+'{
+"analysisId": "{{ analysisId }}", 
+"analysisType": "{{ analysisType }}", 
+"resultConfiguration": "{{ resultConfiguration }}"
+}'
+;
+```
+</TabItem>
 <TabItem value="start_protected_job">
 
 Creates a protected job that is started by Clean Rooms.
@@ -585,7 +611,8 @@ EXEC aws.cleanrooms.memberships.start_protected_job
 "type": "{{ type }}", 
 "jobParameters": "{{ jobParameters }}", 
 "resultConfiguration": "{{ resultConfiguration }}", 
-"computeConfiguration": "{{ computeConfiguration }}"
+"computeConfiguration": "{{ computeConfiguration }}", 
+"jobComputePayerAccountId": "{{ jobComputePayerAccountId }}"
 }'
 ;
 ```
@@ -603,7 +630,8 @@ EXEC aws.cleanrooms.memberships.start_protected_query
 "type": "{{ type }}", 
 "sqlParameters": "{{ sqlParameters }}", 
 "resultConfiguration": "{{ resultConfiguration }}", 
-"computeConfiguration": "{{ computeConfiguration }}"
+"computeConfiguration": "{{ computeConfiguration }}", 
+"queryComputePayerAccountId": "{{ queryComputePayerAccountId }}"
 }'
 ;
 ```

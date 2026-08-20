@@ -57,7 +57,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="aws_service_name" /></td>
     <td><code>string</code></td>
-    <td>The Amazon Web Services service name that owns the specified blocking instance. (AWS, EC2, ELASTICACHE, ELB, RDS, ROUTE53)</td>
+    <td>The Amazon Web Services service name that owns the specified blocking instance. (AWS, EC2, EKS, ELASTICACHE, ELB, RDS, ROUTE53)</td>
 </tr>
 <tr>
     <td><CopyableCode code="instance_id" /></td>

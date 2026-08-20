@@ -101,7 +101,7 @@ The following methods are available for this resource:
     <td><CopyableCode code="update" /></td>
     <td><a href="#parameter-instance_id"><code>instance_id</code></a>, <a href="#parameter-queue_id"><code>queue_id</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-EmailAddressesConfig"><code>EmailAddressesConfig</code></a></td>
     <td></td>
-    <td>Associates a set of email addresses with a queue to enable agents to select different "From" (system) email addresses when replying to inbound email contacts or initiating outbound email contacts. This allows agents to handle email contacts across different brands and business units within the same queue. Important things to know You can associate up to 49 additional email addresses with a single queue, plus 1 default outbound email address, for a total of 50. The email addresses must already exist in the Amazon Connect instance before they can be associated with a queue. Agents will be able to select from these associated email addresses when handling email contacts in the queue. For inbound email contacts, agents can select from email addresses associated with the queue where the contact was accepted. For outbound email contacts, agents can select from email addresses associated with their default outbound queue configured in their routing profile.</td>
+    <td>Associates a set of email addresses with a queue to enable agents to select different "From" (system) email addresses when replying to inbound email contacts or initiating outbound email contacts. This allows agents to handle email contacts across different brands and business units within the same queue. Important things to know You can associate up to 49 additional email addresses with a single queue, plus 1 default outbound email address, for a total of 50. The email addresses must already exist in the Connect Customer instance before they can be associated with a queue. Agents will be able to select from these associated email addresses when handling email contacts in the queue. For inbound email contacts, agents can select from email addresses associated with the queue where the contact was accepted. For outbound email contacts, agents can select from email addresses associated with their default outbound queue configured in their routing profile.</td>
 </tr>
 <tr>
     <td><a href="#disassociate_queue_email_addresses"><CopyableCode code="disassociate_queue_email_addresses" /></a></td>
@@ -129,7 +129,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-instance_id">
     <td><CopyableCode code="instance_id" /></td>
     <td><code>string</code></td>
-    <td>The identifier of the Amazon Connect instance. You can find the instance ID in the Amazon Resource Name (ARN) of the instance.</td>
+    <td>The identifier of the Connect Customer instance. You can find the instance ID in the Amazon Resource Name (ARN) of the instance.</td>
 </tr>
 <tr id="parameter-queue_id">
     <td><CopyableCode code="queue_id" /></td>
@@ -195,7 +195,7 @@ AND maxResults = '{{ maxResults }}'
 >
 <TabItem value="associate_queue_email_addresses">
 
-Associates a set of email addresses with a queue to enable agents to select different "From" (system) email addresses when replying to inbound email contacts or initiating outbound email contacts. This allows agents to handle email contacts across different brands and business units within the same queue. Important things to know You can associate up to 49 additional email addresses with a single queue, plus 1 default outbound email address, for a total of 50. The email addresses must already exist in the Amazon Connect instance before they can be associated with a queue. Agents will be able to select from these associated email addresses when handling email contacts in the queue. For inbound email contacts, agents can select from email addresses associated with the queue where the contact was accepted. For outbound email contacts, agents can select from email addresses associated with their default outbound queue configured in their routing profile.
+Associates a set of email addresses with a queue to enable agents to select different "From" (system) email addresses when replying to inbound email contacts or initiating outbound email contacts. This allows agents to handle email contacts across different brands and business units within the same queue. Important things to know You can associate up to 49 additional email addresses with a single queue, plus 1 default outbound email address, for a total of 50. The email addresses must already exist in the Connect Customer instance before they can be associated with a queue. Agents will be able to select from these associated email addresses when handling email contacts in the queue. For inbound email contacts, agents can select from email addresses associated with the queue where the contact was accepted. For outbound email contacts, agents can select from email addresses associated with their default outbound queue configured in their routing profile.
 
 ```sql
 UPDATE aws.connect.queue_email_addresses

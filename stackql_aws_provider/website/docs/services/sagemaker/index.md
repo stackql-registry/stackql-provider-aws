@@ -18,7 +18,7 @@ sagemaker service documentation.
 
 :::info[Service Summary]
 
-total resources: __103__  
+total resources: __105__  
 
 :::
 
@@ -70,15 +70,17 @@ total resources: __103__
 <a href="/services/sagemaker/inference_experiments/">inference_experiments</a><br />
 <a href="/services/sagemaker/inference_recommendations_job_steps/">inference_recommendations_job_steps</a><br />
 <a href="/services/sagemaker/inference_recommendations_jobs/">inference_recommendations_jobs</a><br />
+<a href="/services/sagemaker/job_schema_versions/">job_schema_versions</a><br />
+<a href="/services/sagemaker/jobs/">jobs</a><br />
 <a href="/services/sagemaker/labeling_jobs/">labeling_jobs</a><br />
 <a href="/services/sagemaker/labeling_jobs_for_workteams/">labeling_jobs_for_workteams</a><br />
 <a href="/services/sagemaker/lineage_group_policies/">lineage_group_policies</a><br />
 <a href="/services/sagemaker/lineage_groups/">lineage_groups</a><br />
 <a href="/services/sagemaker/mlflow_apps/">mlflow_apps</a><br />
-<a href="/services/sagemaker/mlflow_tracking_servers/">mlflow_tracking_servers</a><br />
-<a href="/services/sagemaker/model_bias_job_definitions/">model_bias_job_definitions</a>
+<a href="/services/sagemaker/mlflow_tracking_servers/">mlflow_tracking_servers</a>
 </div>
 <div class="providerDocColumn">
+<a href="/services/sagemaker/model_bias_job_definitions/">model_bias_job_definitions</a><br />
 <a href="/services/sagemaker/model_card_export_jobs/">model_card_export_jobs</a><br />
 <a href="/services/sagemaker/model_card_versions/">model_card_versions</a><br />
 <a href="/services/sagemaker/model_cards/">model_cards</a><br />

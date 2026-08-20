@@ -434,6 +434,11 @@ status
           - blueprintArn: "{{ blueprintArn }}"
             blueprintVersion: "{{ blueprintVersion }}"
             blueprintStage: "{{ blueprintStage }}"
+        document:
+          fallbackBlueprints:
+            - blueprintArn: "{{ blueprintArn }}"
+              blueprintVersion: "{{ blueprintVersion }}"
+              blueprintStage: "{{ blueprintStage }}"
     - name: overrideConfiguration
       description: |
         Override configuration

@@ -265,7 +265,7 @@ The following methods are available for this resource:
     <td><CopyableCode code="exec" /></td>
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-PoolId"><code>PoolId</code></a></td>
     <td></td>
-    <td>Starts the specified pool. You cannot start a pool unless it has a running mode of AutoStop and a state of STOPPED.</td>
+    <td>End of support notice: On December 31, 2027, Amazon Web Services will end support for Amazon WorkSpaces Pools. After December 31, 2027, you will no longer be able to access the Amazon WorkSpaces Pools console or Amazon WorkSpaces Pools resources. For more information, see Amazon WorkSpaces Pools end of support. Starts the specified pool. You cannot start a pool unless it has a running mode of AutoStop and a state of STOPPED.</td>
 </tr>
 <tr>
     <td><a href="#stop_workspaces"><CopyableCode code="stop_workspaces" /></a></td>
@@ -279,7 +279,7 @@ The following methods are available for this resource:
     <td><CopyableCode code="exec" /></td>
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-PoolId"><code>PoolId</code></a></td>
     <td></td>
-    <td>Stops the specified pool. You cannot stop a WorkSpace pool unless it has a running mode of AutoStop and a state of AVAILABLE, IMPAIRED, UNHEALTHY, or ERROR.</td>
+    <td>End of support notice: On December 31, 2027, Amazon Web Services will end support for Amazon WorkSpaces Pools. After December 31, 2027, you will no longer be able to access the Amazon WorkSpaces Pools console or Amazon WorkSpaces Pools resources. For more information, see Amazon WorkSpaces Pools end of support. Stops the specified pool. You cannot stop a WorkSpace pool unless it has a running mode of AutoStop and a state of AVAILABLE, IMPAIRED, UNHEALTHY, or ERROR.</td>
 </tr>
 </tbody>
 </table>
@@ -438,6 +438,7 @@ pending_requests
             GlobalAccelerator:
               Mode: "{{ Mode }}"
               PreferredProtocol: "{{ PreferredProtocol }}"
+            NestedVirtualizationEnabled: {{ NestedVirtualizationEnabled }}
           Tags: "{{ Tags }}"
           WorkspaceName: "{{ WorkspaceName }}"
           Ipv6Address: "{{ Ipv6Address }}"
@@ -638,7 +639,7 @@ EXEC aws.workspaces.workspaces.start_workspaces
 </TabItem>
 <TabItem value="start_workspaces_pool">
 
-Starts the specified pool. You cannot start a pool unless it has a running mode of AutoStop and a state of STOPPED.
+End of support notice: On December 31, 2027, Amazon Web Services will end support for Amazon WorkSpaces Pools. After December 31, 2027, you will no longer be able to access the Amazon WorkSpaces Pools console or Amazon WorkSpaces Pools resources. For more information, see Amazon WorkSpaces Pools end of support. Starts the specified pool. You cannot start a pool unless it has a running mode of AutoStop and a state of STOPPED.
 
 ```sql
 EXEC aws.workspaces.workspaces.start_workspaces_pool 
@@ -666,7 +667,7 @@ EXEC aws.workspaces.workspaces.stop_workspaces
 </TabItem>
 <TabItem value="stop_workspaces_pool">
 
-Stops the specified pool. You cannot stop a WorkSpace pool unless it has a running mode of AutoStop and a state of AVAILABLE, IMPAIRED, UNHEALTHY, or ERROR.
+End of support notice: On December 31, 2027, Amazon Web Services will end support for Amazon WorkSpaces Pools. After December 31, 2027, you will no longer be able to access the Amazon WorkSpaces Pools console or Amazon WorkSpaces Pools resources. For more information, see Amazon WorkSpaces Pools end of support. Stops the specified pool. You cannot stop a WorkSpace pool unless it has a running mode of AutoStop and a state of AVAILABLE, IMPAIRED, UNHEALTHY, or ERROR.
 
 ```sql
 EXEC aws.workspaces.workspaces.stop_workspaces_pool 

@@ -155,7 +155,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-Authentication">
     <td><CopyableCode code="Authentication" /></td>
     <td><code>string</code></td>
-    <td>Amazon WorkDocs authentication token. Not required when using Amazon Web Services administrator credentials to access the API.</td>
+    <td>WorkDocs authentication token. Not required when using Amazon Web Services administrator credentials to access the API.</td>
 </tr>
 <tr id="parameter-collectionType">
     <td><CopyableCode code="collectionType" /></td>

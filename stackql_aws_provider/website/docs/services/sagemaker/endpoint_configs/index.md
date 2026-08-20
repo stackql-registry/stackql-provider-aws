@@ -359,6 +359,9 @@ endpoint_config_arn
               CooldownInMinutes: {{ CooldownInMinutes }}
           RoutingConfig:
             RoutingStrategy: "{{ RoutingStrategy }}"
+            PrefixAwareRoutingConfig:
+              PrefixLength: {{ PrefixLength }}
+              ConcurrencyThreshold: {{ ConcurrencyThreshold }}
           InferenceAmiVersion: "{{ InferenceAmiVersion }}"
           CapacityReservationConfig:
             CapacityReservationPreference: "{{ CapacityReservationPreference }}"
@@ -387,7 +390,7 @@ endpoint_config_arn
     - name: KmsKeyId
       value: "{{ KmsKeyId }}"
       description: |
-        The Amazon Resource Name (ARN) of a Amazon Web Services Key Management Service key that SageMaker uses to encrypt data on the storage volume attached to the ML compute instance that hosts the endpoint. The KmsKeyId can be any of the following formats: Key ID: 1234abcd-12ab-34cd-56ef-1234567890ab Key ARN: arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab Alias name: alias/ExampleAlias Alias name ARN: arn:aws:kms:us-west-2:111122223333:alias/ExampleAlias The KMS key policy must grant permission to the IAM role that you specify in your CreateEndpoint, UpdateEndpoint requests. For more information, refer to the Amazon Web Services Key Management Service section Using Key Policies in Amazon Web Services KMS Certain Nitro-based instances include local storage, dependent on the instance type. Local storage volumes are encrypted using a hardware module on the instance. You can't request a KmsKeyId when using an instance type with local storage. If any of the models that you specify in the ProductionVariants parameter use nitro-based instances with local storage, do not specify a value for the KmsKeyId parameter. If you specify a value for KmsKeyId when using any nitro-based instances with local storage, the call to CreateEndpointConfig fails. For a list of instance types that support local instance storage, see Instance Store Volumes. For more information about local instance storage encryption, see SSD Instance Store Volumes.
+        The Amazon Resource Name (ARN) of a Amazon Web Services Key Management Service key that SageMaker uses to encrypt data on the storage volume attached to the ML compute instance that hosts the endpoint. The KmsKeyId can be any of the following formats: Key ID: 1234abcd-12ab-34cd-56ef-1234567890ab Key ARN: arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab Alias name: alias/ExampleAlias Alias name ARN: arn:aws:kms:us-west-2:111122223333:alias/ExampleAlias The KMS key policy must grant permission to the IAM role that you specify in your CreateEndpoint, UpdateEndpoint requests. For more information, refer to the Amazon Web Services Key Management Service section Using Key Policies in Amazon Web Services KMS Certain Nitro-based instances include local storage, dependent on the instance type. Local storage volumes are encrypted using a hardware module on the instance. If any of the models that you specify in the ProductionVariants parameter use nitro-based instances with local storage, the KmsKeyId parameter does not encrypt instance local storage. For a list of instance types that support local instance storage, see Instance Store Volumes. For more information about local instance storage encryption, see SSD Instance Store Volumes.
     - name: AsyncInferenceConfig
       description: |
         Specifies configuration for how an endpoint performs asynchronous inference. This is a required field in order for your Endpoint to be invoked using InvokeEndpointAsync.
@@ -468,6 +471,9 @@ endpoint_config_arn
               CooldownInMinutes: {{ CooldownInMinutes }}
           RoutingConfig:
             RoutingStrategy: "{{ RoutingStrategy }}"
+            PrefixAwareRoutingConfig:
+              PrefixLength: {{ PrefixLength }}
+              ConcurrencyThreshold: {{ ConcurrencyThreshold }}
           InferenceAmiVersion: "{{ InferenceAmiVersion }}"
           CapacityReservationConfig:
             CapacityReservationPreference: "{{ CapacityReservationPreference }}"
@@ -493,6 +499,7 @@ endpoint_config_arn
         The configuration parameters for utilization metrics.
       value:
         EnableEnhancedMetrics: {{ EnableEnhancedMetrics }}
+        EnableDetailedObservability: {{ EnableDetailedObservability }}
         MetricPublishFrequencyInSeconds: {{ MetricPublishFrequencyInSeconds }}
 `}</CodeBlock>
 

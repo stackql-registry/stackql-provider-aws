@@ -168,14 +168,14 @@ The following methods are available for this resource:
     <td><CopyableCode code="insert" /></td>
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-projectId"><code>projectId</code></a>, <a href="#parameter-dashboardName"><code>dashboardName</code></a>, <a href="#parameter-dashboardDefinition"><code>dashboardDefinition</code></a></td>
     <td></td>
-    <td>Creates a dashboard in an IoT SiteWise Monitor project.</td>
+    <td>The IoT SiteWise Monitor feature will no longer be open to new customers starting November 7, 2025. If you would like to use the IoT SiteWise Monitor feature, sign up prior to that date. Existing customers can continue to use the service as normal. For more information, see IoT SiteWise Monitor availability change. Creates a dashboard in an IoT SiteWise Monitor project.</td>
 </tr>
 <tr>
     <td><a href="#update_dashboard"><CopyableCode code="update_dashboard" /></a></td>
     <td><CopyableCode code="update" /></td>
     <td><a href="#parameter-dashboard_id"><code>dashboard_id</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-dashboardName"><code>dashboardName</code></a>, <a href="#parameter-dashboardDefinition"><code>dashboardDefinition</code></a></td>
     <td></td>
-    <td>Updates an IoT SiteWise Monitor dashboard.</td>
+    <td>The IoT SiteWise Monitor feature will no longer be open to new customers starting November 7, 2025. If you would like to use the IoT SiteWise Monitor feature, sign up prior to that date. Existing customers can continue to use the service as normal. For more information, see IoT SiteWise Monitor availability change. Updates an IoT SiteWise Monitor dashboard.</td>
 </tr>
 <tr>
     <td><a href="#delete_dashboard"><CopyableCode code="delete_dashboard" /></a></td>
@@ -295,7 +295,7 @@ AND region = '{{ region }}' -- required
 >
 <TabItem value="create_dashboard">
 
-Creates a dashboard in an IoT SiteWise Monitor project.
+The IoT SiteWise Monitor feature will no longer be open to new customers starting November 7, 2025. If you would like to use the IoT SiteWise Monitor feature, sign up prior to that date. Existing customers can continue to use the service as normal. For more information, see IoT SiteWise Monitor availability change. Creates a dashboard in an IoT SiteWise Monitor project.
 
 ```sql
 INSERT INTO aws.iotsitewise.dashboards (
@@ -357,7 +357,7 @@ dashboard_id
 >
 <TabItem value="update_dashboard">
 
-Updates an IoT SiteWise Monitor dashboard.
+The IoT SiteWise Monitor feature will no longer be open to new customers starting November 7, 2025. If you would like to use the IoT SiteWise Monitor feature, sign up prior to that date. Existing customers can continue to use the service as normal. For more information, see IoT SiteWise Monitor availability change. Updates an IoT SiteWise Monitor dashboard.
 
 ```sql
 UPDATE aws.iotsitewise.dashboards

@@ -88,7 +88,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="domain_id" /></td>
     <td><code>string</code></td>
-    <td>Types duplicated from IronmanApiServiceModel for federation. These types are defined in other service directories and are not available via IronmanApiServiceCommonModel. (pattern: &lt;code&gt;d-(-*&#91;a-z0-9&#93;)&#123;1,61&#125;&lt;/code&gt;)</td>
+    <td>The domain ID. (pattern: &lt;code&gt;d-(-*&#91;a-z0-9&#93;)&#123;1,61&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="domain_name" /></td>
@@ -104,6 +104,11 @@ The following fields are returned by `SELECT` queries:
     <td><CopyableCode code="failure_reason" /></td>
     <td><code>string</code></td>
     <td>The failure reason.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="home_efs_file_system_creation" /></td>
+    <td><code>string</code></td>
+    <td>Indicates whether a home EFS file system is created for the domain. (Enabled, Disabled)</td>
 </tr>
 <tr>
     <td><CopyableCode code="home_efs_file_system_id" /></td>
@@ -192,7 +197,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="domain_id" /></td>
     <td><code>string</code></td>
-    <td>Types duplicated from IronmanApiServiceModel for federation. These types are defined in other service directories and are not available via IronmanApiServiceCommonModel. (pattern: &lt;code&gt;d-(-*&#91;a-z0-9&#93;)&#123;1,61&#125;&lt;/code&gt;)</td>
+    <td>The domain ID. (pattern: &lt;code&gt;d-(-*&#91;a-z0-9&#93;)&#123;1,61&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="domain_name" /></td>
@@ -319,6 +324,7 @@ domain_id,
 domain_name,
 domain_settings,
 failure_reason,
+home_efs_file_system_creation,
 home_efs_file_system_id,
 home_efs_file_system_kms_key_id,
 kms_key_id,
@@ -383,6 +389,7 @@ AppNetworkAccessType,
 HomeEfsFileSystemKmsKeyId,
 KmsKeyId,
 AppSecurityGroupManagement,
+HomeEfsFileSystemCreation,
 TagPropagation,
 DefaultSpaceSettings,
 region
@@ -399,6 +406,7 @@ SELECT
 '{{ HomeEfsFileSystemKmsKeyId }}',
 '{{ KmsKeyId }}',
 '{{ AppSecurityGroupManagement }}',
+'{{ HomeEfsFileSystemCreation }}',
 '{{ TagPropagation }}',
 '{{ DefaultSpaceSettings }}',
 '{{ region }}'
@@ -660,6 +668,11 @@ url
       description: |
         The entity that creates and manages the required security groups for inter-app communication in VPCOnly mode. Required when CreateDomain.AppNetworkAccessType is VPCOnly and DomainSettings.RStudioServerProDomainSettings.DomainExecutionRoleArn is provided. If setting up the domain for use with RStudio, this value must be set to Service.
       valid_values: ['Service', 'Customer']
+    - name: HomeEfsFileSystemCreation
+      value: "{{ HomeEfsFileSystemCreation }}"
+      description: |
+        Indicates whether to create a home EFS file system for the domain. Defaults to Enabled. Set to Disabled to skip EFS creation and reduce domain creation time. You can enable EFS later by calling UpdateDomain.
+      valid_values: ['Enabled', 'Disabled']
     - name: TagPropagation
       value: "{{ TagPropagation }}"
       description: |
@@ -772,6 +785,7 @@ DefaultSpaceSettings = '{{ DefaultSpaceSettings }}',
 SubnetIds = '{{ SubnetIds }}',
 AppNetworkAccessType = '{{ AppNetworkAccessType }}',
 TagPropagation = '{{ TagPropagation }}',
+HomeEfsFileSystemCreation = '{{ HomeEfsFileSystemCreation }}',
 VpcId = '{{ VpcId }}'
 WHERE 
 region = '{{ region }}' --required

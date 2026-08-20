@@ -216,14 +216,14 @@ The following methods are available for this resource:
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-instance_id"><code>instance_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td><a href="#parameter-nextToken"><code>nextToken</code></a>, <a href="#parameter-maxResults"><code>maxResults</code></a></td>
-    <td>Provides summary information about the hierarchy groups for the specified Amazon Connect instance. For more information about agent hierarchies, see Set Up Agent Hierarchies in the Amazon Connect Administrator Guide.</td>
+    <td>Provides summary information about the hierarchy groups for the specified Connect Customer instance. For more information about agent hierarchies, see Set Up Agent Hierarchies in the Connect Customer Administrator Guide.</td>
 </tr>
 <tr>
     <td><a href="#search_user_hierarchy_groups"><CopyableCode code="search_user_hierarchy_groups" /></a></td>
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>Searches UserHierarchyGroups in an Amazon Connect instance, with optional filtering. The UserHierarchyGroup with "LevelId": "0" is the foundation for building levels on top of an instance. It is not user-definable, nor is it visible in the UI.</td>
+    <td>Searches UserHierarchyGroups in an Connect Customer instance, with optional filtering. The UserHierarchyGroup with "LevelId": "0" is the foundation for building levels on top of an instance. It is not user-definable, nor is it visible in the UI.</td>
 </tr>
 <tr>
     <td><a href="#create_user_hierarchy_group"><CopyableCode code="create_user_hierarchy_group" /></a></td>
@@ -270,7 +270,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-instance_id">
     <td><CopyableCode code="instance_id" /></td>
     <td><code>string</code></td>
-    <td>The identifier of the Amazon Connect instance. You can find the instance ID in the Amazon Resource Name (ARN) of the instance.</td>
+    <td>The identifier of the Connect Customer instance. You can find the instance ID in the Amazon Resource Name (ARN) of the instance.</td>
 </tr>
 <tr id="parameter-region">
     <td><CopyableCode code="region" /></td>
@@ -323,7 +323,7 @@ AND region = '{{ region }}' -- required
 </TabItem>
 <TabItem value="list_user_hierarchy_groups">
 
-Provides summary information about the hierarchy groups for the specified Amazon Connect instance. For more information about agent hierarchies, see Set Up Agent Hierarchies in the Amazon Connect Administrator Guide.
+Provides summary information about the hierarchy groups for the specified Connect Customer instance. For more information about agent hierarchies, see Set Up Agent Hierarchies in the Connect Customer Administrator Guide.
 
 ```sql
 SELECT
@@ -342,7 +342,7 @@ AND maxResults = '{{ maxResults }}'
 </TabItem>
 <TabItem value="search_user_hierarchy_groups">
 
-Searches UserHierarchyGroups in an Amazon Connect instance, with optional filtering. The UserHierarchyGroup with "LevelId": "0" is the foundation for building levels on top of an instance. It is not user-definable, nor is it visible in the UI.
+Searches UserHierarchyGroups in an Connect Customer instance, with optional filtering. The UserHierarchyGroup with "LevelId": "0" is the foundation for building levels on top of an instance. It is not user-definable, nor is it visible in the UI.
 
 ```sql
 SELECT

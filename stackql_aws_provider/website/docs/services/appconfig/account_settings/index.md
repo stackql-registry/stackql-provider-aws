@@ -156,11 +156,13 @@ Updates the value of the DeletionProtection parameter.
 ```sql
 UPDATE aws.appconfig.account_settings
 SET 
-DeletionProtection = '{{ DeletionProtection }}'
+DeletionProtection = '{{ DeletionProtection }}',
+VendedMetrics = '{{ VendedMetrics }}'
 WHERE 
 region = '{{ region }}' --required
 RETURNING
-deletion_protection;
+deletion_protection,
+vended_metrics;
 ```
 </TabItem>
 </Tabs>

@@ -113,7 +113,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="voice_connector_id" /></td>
     <td><code>string</code></td>
-    <td>The Voice Connector ID. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
+    <td>The Voice Connector ID. (pattern: &lt;code&gt;(&#91;a-z0-9&#93;&#123;21,22&#125;|&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;)&lt;/code&gt;)</td>
 </tr>
 </tbody>
 </table>
@@ -164,35 +164,35 @@ The following methods are available for this resource:
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-voice_connector_id"><code>voice_connector_id</code></a>, <a href="#parameter-proxy_session_id"><code>proxy_session_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>Retrieves the specified proxy session details for the specified Amazon Chime SDK Voice Connector.</td>
+    <td>Retrieves the specified proxy session details for the specified Amazon Chime SDK Voice Connector. End of support notice: On April 7, 2026, AWS will end support for Amazon Chime SDK proxy sessions.</td>
 </tr>
 <tr>
     <td><a href="#list_proxy_sessions"><CopyableCode code="list_proxy_sessions" /></a></td>
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-voice_connector_id"><code>voice_connector_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td><a href="#parameter-status"><code>status</code></a>, <a href="#parameter-next-token"><code>next-token</code></a>, <a href="#parameter-max-results"><code>max-results</code></a></td>
-    <td>Lists the proxy sessions for the specified Amazon Chime SDK Voice Connector.</td>
+    <td>Lists the proxy sessions for the specified Amazon Chime SDK Voice Connector. End of support notice: On April 7, 2026, AWS will end support for Amazon Chime SDK proxy sessions.</td>
 </tr>
 <tr>
     <td><a href="#create_proxy_session"><CopyableCode code="create_proxy_session" /></a></td>
     <td><CopyableCode code="insert" /></td>
     <td><a href="#parameter-voice_connector_id"><code>voice_connector_id</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-ParticipantPhoneNumbers"><code>ParticipantPhoneNumbers</code></a>, <a href="#parameter-Capabilities"><code>Capabilities</code></a></td>
     <td></td>
-    <td>Creates a proxy session for the specified Amazon Chime SDK Voice Connector for the specified participant phone numbers.</td>
+    <td>Creates a proxy session for the specified Amazon Chime SDK Voice Connector for the specified participant phone numbers. End of support notice: On April 7, 2026, AWS will end support for Amazon Chime SDK proxy sessions.</td>
 </tr>
 <tr>
     <td><a href="#update_proxy_session"><CopyableCode code="update_proxy_session" /></a></td>
     <td><CopyableCode code="update" /></td>
     <td><a href="#parameter-voice_connector_id"><code>voice_connector_id</code></a>, <a href="#parameter-proxy_session_id"><code>proxy_session_id</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-Capabilities"><code>Capabilities</code></a></td>
     <td></td>
-    <td>Updates the specified proxy session details, such as voice or SMS capabilities.</td>
+    <td>Updates the specified proxy session details, such as voice or SMS capabilities. End of support notice: On April 7, 2026, AWS will end support for Amazon Chime SDK proxy sessions.</td>
 </tr>
 <tr>
     <td><a href="#delete_proxy_session"><CopyableCode code="delete_proxy_session" /></a></td>
     <td><CopyableCode code="delete" /></td>
     <td><a href="#parameter-voice_connector_id"><code>voice_connector_id</code></a>, <a href="#parameter-proxy_session_id"><code>proxy_session_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>Deletes the specified proxy session from the specified Amazon Chime SDK Voice Connector.</td>
+    <td>Deletes the specified proxy session from the specified Amazon Chime SDK Voice Connector. End of support notice: On April 7, 2026, AWS will end support for Amazon Chime SDK proxy sessions.</td>
 </tr>
 </tbody>
 </table>
@@ -254,7 +254,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 >
 <TabItem value="get_proxy_session">
 
-Retrieves the specified proxy session details for the specified Amazon Chime SDK Voice Connector.
+Retrieves the specified proxy session details for the specified Amazon Chime SDK Voice Connector. End of support notice: On April 7, 2026, AWS will end support for Amazon Chime SDK proxy sessions.
 
 ```sql
 SELECT
@@ -280,7 +280,7 @@ AND region = '{{ region }}' -- required
 </TabItem>
 <TabItem value="list_proxy_sessions">
 
-Lists the proxy sessions for the specified Amazon Chime SDK Voice Connector.
+Lists the proxy sessions for the specified Amazon Chime SDK Voice Connector. End of support notice: On April 7, 2026, AWS will end support for Amazon Chime SDK proxy sessions.
 
 ```sql
 SELECT
@@ -309,7 +309,7 @@ AND `max-results` = '{{ max-results }}'
 >
 <TabItem value="create_proxy_session">
 
-Creates a proxy session for the specified Amazon Chime SDK Voice Connector for the specified participant phone numbers.
+Creates a proxy session for the specified Amazon Chime SDK Voice Connector for the specified participant phone numbers. End of support notice: On April 7, 2026, AWS will end support for Amazon Chime SDK proxy sessions.
 
 ```sql
 INSERT INTO aws.chime_sdk_voice.proxy_sessions (
@@ -387,7 +387,7 @@ proxy_session
 >
 <TabItem value="update_proxy_session">
 
-Updates the specified proxy session details, such as voice or SMS capabilities.
+Updates the specified proxy session details, such as voice or SMS capabilities. End of support notice: On April 7, 2026, AWS will end support for Amazon Chime SDK proxy sessions.
 
 ```sql
 UPDATE aws.chime_sdk_voice.proxy_sessions
@@ -416,7 +416,7 @@ proxy_session;
 >
 <TabItem value="delete_proxy_session">
 
-Deletes the specified proxy session from the specified Amazon Chime SDK Voice Connector.
+Deletes the specified proxy session from the specified Amazon Chime SDK Voice Connector. End of support notice: On April 7, 2026, AWS will end support for Amazon Chime SDK proxy sessions.
 
 ```sql
 DELETE FROM aws.chime_sdk_voice.proxy_sessions

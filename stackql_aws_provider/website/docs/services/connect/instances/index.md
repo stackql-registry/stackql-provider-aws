@@ -58,7 +58,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="replication_configuration" /></td>
     <td><code>object</code></td>
-    <td>Status information about the replication process. This field is included only when you are using the ReplicateInstance API to replicate an Amazon Connect instance across Amazon Web Services Regions. For information about replicating Amazon Connect instances, see Create a replica of your existing Amazon Connect instance in the Amazon Connect Administrator Guide.</td>
+    <td>Status information about the replication process. This field is included only when you are using the ReplicateInstance API to replicate an Connect Customer instance across Amazon Web Services Regions. For information about replicating Connect Customer instances, see Create a replica of your existing Connect Customer instance in the Connect Customer Administrator Guide.</td>
 </tr>
 </tbody>
 </table>
@@ -102,7 +102,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="instance_access_url" /></td>
     <td><code>string</code></td>
-    <td>This URL allows contact center users to access the Amazon Connect admin website.</td>
+    <td>This URL allows contact center users to access the Connect Customer admin website.</td>
 </tr>
 <tr>
     <td><CopyableCode code="instance_alias" /></td>
@@ -149,35 +149,42 @@ The following methods are available for this resource:
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-instance_id"><code>instance_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>This API is in preview release for Amazon Connect and is subject to change. Returns the current state of the specified instance identifier. It tracks the instance while it is being created and returns an error status, if applicable. If an instance is not created successfully, the instance status reason field returns details relevant to the reason. The instance in a failed state is returned only for 24 hours after the CreateInstance API was invoked.</td>
+    <td>This API is in preview release for Connect Customer and is subject to change. Returns the current state of the specified instance identifier. It tracks the instance while it is being created and returns an error status, if applicable. If an instance is not created successfully, the instance status reason field returns details relevant to the reason. The instance in a failed state is returned only for 24 hours after the CreateInstance API was invoked.</td>
 </tr>
 <tr>
     <td><a href="#list_instances"><CopyableCode code="list_instances" /></a></td>
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td><a href="#parameter-nextToken"><code>nextToken</code></a>, <a href="#parameter-maxResults"><code>maxResults</code></a></td>
-    <td>This API is in preview release for Amazon Connect and is subject to change. Return a list of instances which are in active state, creation-in-progress state, and failed state. Instances that aren't successfully created (they are in a failed state) are returned only for 24 hours after the CreateInstance API was invoked.</td>
+    <td>This API is in preview release for Connect Customer and is subject to change. Return a list of instances which are in active state, creation-in-progress state, and failed state. Instances that aren't successfully created (they are in a failed state) are returned only for 24 hours after the CreateInstance API was invoked.</td>
 </tr>
 <tr>
     <td><a href="#create_push_notification_registration"><CopyableCode code="create_push_notification_registration" /></a></td>
     <td><CopyableCode code="insert" /></td>
     <td><a href="#parameter-instance_id"><code>instance_id</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-PinpointAppArn"><code>PinpointAppArn</code></a>, <a href="#parameter-DeviceToken"><code>DeviceToken</code></a>, <a href="#parameter-DeviceType"><code>DeviceType</code></a>, <a href="#parameter-ContactConfiguration"><code>ContactConfiguration</code></a></td>
     <td></td>
-    <td>Creates registration for a device token and a chat contact to receive real-time push notifications. For more information about push notifications, see Set up push notifications in Amazon Connect for mobile chat in the Amazon Connect Administrator Guide.</td>
+    <td>Creates registration for a device token and a chat contact to receive real-time push notifications. For more information about push notifications, see Set up push notifications in Connect Customer for mobile chat in the Connect Customer Administrator Guide.</td>
 </tr>
 <tr>
     <td><a href="#create_persistent_contact_association"><CopyableCode code="create_persistent_contact_association" /></a></td>
     <td><CopyableCode code="insert" /></td>
     <td><a href="#parameter-instance_id"><code>instance_id</code></a>, <a href="#parameter-initial_contact_id"><code>initial_contact_id</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-RehydrationType"><code>RehydrationType</code></a>, <a href="#parameter-SourceContactId"><code>SourceContactId</code></a></td>
     <td></td>
-    <td>Enables rehydration of chats for the lifespan of a contact. For more information about chat rehydration, see Enable persistent chat in the Amazon Connect Administrator Guide.</td>
+    <td>Enables rehydration of chats for the lifespan of a contact. For more information about chat rehydration, see Enable persistent chat in the Connect Customer Administrator Guide.</td>
+</tr>
+<tr>
+    <td><a href="#create_auth_code"><CopyableCode code="create_auth_code" /></a></td>
+    <td><CopyableCode code="insert" /></td>
+    <td><a href="#parameter-instance_id"><code>instance_id</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-Scope"><code>Scope</code></a>, <a href="#parameter-SessionInactivityDurationMinutes"><code>SessionInactivityDurationMinutes</code></a></td>
+    <td></td>
+    <td>Creates an authorization code for the specified Connect Customer instance. The authorization code can be used to establish a session with scoped permissions defined by the specified scope parameters.</td>
 </tr>
 <tr>
     <td><a href="#create_instance"><CopyableCode code="create_instance" /></a></td>
     <td><CopyableCode code="insert" /></td>
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-IdentityManagementType"><code>IdentityManagementType</code></a>, <a href="#parameter-InboundCallsEnabled"><code>InboundCallsEnabled</code></a>, <a href="#parameter-OutboundCallsEnabled"><code>OutboundCallsEnabled</code></a></td>
     <td></td>
-    <td>This API is in preview release for Amazon Connect and is subject to change. Initiates an Amazon Connect instance with all the supported channels enabled. It does not attach any storage, such as Amazon Simple Storage Service (Amazon S3) or Amazon Kinesis. It also does not allow for any configurations on features, such as Contact Lens for Amazon Connect. For more information, see Create an Amazon Connect instance in the Amazon Connect Administrator Guide. Amazon Connect enforces a limit on the total number of instances that you can create or delete in 30 days. If you exceed this limit, you will get an error message indicating there has been an excessive number of attempts at creating or deleting instances. You must wait 30 days before you can restart creating and deleting instances in your account.</td>
+    <td>This API is in preview release for Connect Customer and is subject to change. Initiates an Connect Customer instance with all the supported channels enabled. It does not attach any storage, such as Amazon Simple Storage Service (Amazon S3) or Amazon Kinesis. It also does not allow for any configurations on features, such as Contact Lens for Connect Customer. For more information, see Create an Connect Customer instance in the Connect Customer Administrator Guide. Connect Customer enforces a limit on the total number of instances that you can create or delete in 30 days. If you exceed this limit, you will get an error message indicating there has been an excessive number of attempts at creating or deleting instances. You must wait 30 days before you can restart creating and deleting instances in your account.</td>
 </tr>
 <tr>
     <td><a href="#create_participant"><CopyableCode code="create_participant" /></a></td>
@@ -212,14 +219,14 @@ The following methods are available for this resource:
     <td><CopyableCode code="update" /></td>
     <td><a href="#parameter-instance_id"><code>instance_id</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-DataSetId"><code>DataSetId</code></a></td>
     <td></td>
-    <td>Associates the specified dataset for a Amazon Connect instance with the target account. You can associate only one dataset in a single call.</td>
+    <td>Associates the specified dataset for a Connect Customer instance with the target account. You can associate only one dataset in a single call.</td>
 </tr>
 <tr>
     <td><a href="#update_participant_authentication"><CopyableCode code="update_participant_authentication" /></a></td>
     <td><CopyableCode code="update" /></td>
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-State"><code>State</code></a>, <a href="#parameter-InstanceId"><code>InstanceId</code></a></td>
     <td></td>
-    <td>Instructs Amazon Connect to resume the authentication process. The subsequent actions depend on the request body contents: If a code is provided: Connect retrieves the identity information from Amazon Cognito and imports it into Connect Customer Profiles. If an error is provided: The error branch of the Authenticate Customer block is executed. The API returns a success response to acknowledge the request. However, the interaction and exchange of identity information occur asynchronously after the response is returned.</td>
+    <td>Instructs Connect Customer to resume the authentication process. The subsequent actions depend on the request body contents: If a code is provided: Connect retrieves the identity information from Amazon Cognito and imports it into Connect Customer Profiles. If an error is provided: The error branch of the Authenticate Customer block is executed. The API returns a success response to acknowledge the request. However, the interaction and exchange of identity information occur asynchronously after the response is returned.</td>
 </tr>
 <tr>
     <td><a href="#delete_push_notification_registration"><CopyableCode code="delete_push_notification_registration" /></a></td>
@@ -229,39 +236,46 @@ The following methods are available for this resource:
     <td>Deletes registration for a device token and a chat contact.</td>
 </tr>
 <tr>
+    <td><a href="#delete_session"><CopyableCode code="delete_session" /></a></td>
+    <td><CopyableCode code="delete" /></td>
+    <td><a href="#parameter-instance_id"><code>instance_id</code></a>, <a href="#parameter-session_id"><code>session_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Deletes a session for the specified Connect Customer instance.</td>
+</tr>
+<tr>
     <td><a href="#delete_instance"><CopyableCode code="delete_instance" /></a></td>
     <td><CopyableCode code="delete" /></td>
     <td><a href="#parameter-instance_id"><code>instance_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td><a href="#parameter-clientToken"><code>clientToken</code></a></td>
-    <td>This API is in preview release for Amazon Connect and is subject to change. Deletes the Amazon Connect instance. For more information, see Delete your Amazon Connect instance in the Amazon Connect Administrator Guide. Amazon Connect enforces a limit on the total number of instances that you can create or delete in 30 days. If you exceed this limit, you will get an error message indicating there has been an excessive number of attempts at creating or deleting instances. You must wait 30 days before you can restart creating and deleting instances in your account.</td>
+    <td>This API is in preview release for Connect Customer and is subject to change. Deletes the Connect Customer instance. For more information, see Delete your Connect Customer instance in the Connect Customer Administrator Guide. Connect Customer enforces a limit on the total number of instances that you can create or delete in 30 days. If you exceed this limit, you will get an error message indicating there has been an excessive number of attempts at creating or deleting instances. You must wait 30 days before you can restart creating and deleting instances in your account.</td>
 </tr>
 <tr>
     <td><a href="#disassociate_analytics_data_set"><CopyableCode code="disassociate_analytics_data_set" /></a></td>
     <td><CopyableCode code="exec" /></td>
     <td><a href="#parameter-instance_id"><code>instance_id</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-DataSetId"><code>DataSetId</code></a></td>
     <td></td>
-    <td>Removes the dataset ID associated with a given Amazon Connect instance.</td>
+    <td>Removes the dataset ID associated with a given Connect Customer instance.</td>
 </tr>
 <tr>
     <td><a href="#batch_associate_analytics_data_set"><CopyableCode code="batch_associate_analytics_data_set" /></a></td>
     <td><CopyableCode code="exec" /></td>
     <td><a href="#parameter-instance_id"><code>instance_id</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-DataSetIds"><code>DataSetIds</code></a></td>
     <td></td>
-    <td>Associates a list of analytics datasets for a given Amazon Connect instance to a target account. You can associate multiple datasets in a single call.</td>
+    <td>Associates a list of analytics datasets for a given Connect Customer instance to a target account. You can associate multiple datasets in a single call.</td>
 </tr>
 <tr>
     <td><a href="#batch_disassociate_analytics_data_set"><CopyableCode code="batch_disassociate_analytics_data_set" /></a></td>
     <td><CopyableCode code="exec" /></td>
     <td><a href="#parameter-instance_id"><code>instance_id</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-DataSetIds"><code>DataSetIds</code></a></td>
     <td></td>
-    <td>Removes a list of analytics datasets associated with a given Amazon Connect instance. You can disassociate multiple datasets in a single call.</td>
+    <td>Removes a list of analytics datasets associated with a given Connect Customer instance. You can disassociate multiple datasets in a single call.</td>
 </tr>
 <tr>
     <td><a href="#batch_put_contact"><CopyableCode code="batch_put_contact" /></a></td>
     <td><CopyableCode code="exec" /></td>
     <td><a href="#parameter-instance_id"><code>instance_id</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-ContactDataRequestList"><code>ContactDataRequestList</code></a></td>
     <td></td>
-    <td>Only the Amazon Connect outbound campaigns service principal is allowed to assume a role in your account and call this API. Allows you to create a batch of contacts in Amazon Connect. The outbound campaigns capability ingests dial requests via the PutDialRequestBatch API. It then uses BatchPutContact to create contacts corresponding to those dial requests. If agents are available, the dial requests are dialed out, which results in a voice call. The resulting voice call uses the same contactId that was created by BatchPutContact.</td>
+    <td>Only the Connect Customer outbound campaigns service principal is allowed to assume a role in your account and call this API. Allows you to create a batch of contacts in Connect Customer. The outbound campaigns capability ingests dial requests via the PutDialRequestBatch API. It then uses BatchPutContact to create contacts corresponding to those dial requests. If agents are available, the dial requests are dialed out, which results in a voice call. The resulting voice call uses the same contactId that was created by BatchPutContact.</td>
 </tr>
 <tr>
     <td><a href="#complete_attached_file_upload"><CopyableCode code="complete_attached_file_upload" /></a></td>
@@ -282,7 +296,7 @@ The following methods are available for this resource:
     <td><CopyableCode code="exec" /></td>
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-InstanceId"><code>InstanceId</code></a>, <a href="#parameter-SourcePhoneNumberArn"><code>SourcePhoneNumberArn</code></a></td>
     <td></td>
-    <td>Imports a claimed phone number from an external service, such as Amazon Web Services End User Messaging, into an Amazon Connect instance. You can call this API only in the same Amazon Web Services Region where the Amazon Connect instance was created. Call the DescribePhoneNumber API to verify the status of a previous ImportPhoneNumber operation. If you plan to claim or import numbers and then release numbers frequently, contact us for a service quota exception. Otherwise, it is possible you will be blocked from claiming and releasing any more numbers until up to 180 days past the oldest number released has expired. By default you can claim or import and then release up to 200% of your maximum number of active phone numbers. If you claim or import and then release phone numbers using the UI or API during a rolling 180 day cycle that exceeds 200% of your phone number service level quota, you will be blocked from claiming or importing any more numbers until 180 days past the oldest number released has expired. For example, if you already have 99 claimed or imported numbers and a service level quota of 99 phone numbers, and in any 180 day period you release 99, claim 99, and then release 99, you will have exceeded the 200% limit. At that point you are blocked from claiming any more numbers until you open an Amazon Web Services Support ticket.</td>
+    <td>Imports a claimed phone number from an external service, such as Amazon Web Services End User Messaging, into an Connect Customer instance. You can call this API only in the same Amazon Web Services Region where the Connect Customer instance was created. Call the DescribePhoneNumber API to verify the status of a previous ImportPhoneNumber operation. If you plan to claim or import numbers and then release numbers frequently, contact us for a service quota exception. Otherwise, it is possible you will be blocked from claiming and releasing any more numbers until up to 180 days past the oldest number released has expired. By default you can claim or import and then release up to 200% of your maximum number of active phone numbers. If you claim or import and then release phone numbers using the UI or API during a rolling 180 day cycle that exceeds 200% of your phone number service level quota, you will be blocked from claiming or importing any more numbers until 180 days past the oldest number released has expired. For example, if you already have 99 claimed or imported numbers and a service level quota of 99 phone numbers, and in any 180 day period you release 99, claim 99, and then release 99, you will have exceeded the 200% limit. At that point you are blocked from claiming any more numbers until you open an Amazon Web Services Support ticket.</td>
 </tr>
 <tr>
     <td><a href="#monitor_contact"><CopyableCode code="monitor_contact" /></a></td>
@@ -303,7 +317,7 @@ The following methods are available for this resource:
     <td><CopyableCode code="exec" /></td>
     <td><a href="#parameter-instance_id"><code>instance_id</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-ReplicaRegion"><code>ReplicaRegion</code></a>, <a href="#parameter-ReplicaAlias"><code>ReplicaAlias</code></a></td>
     <td></td>
-    <td>Replicates an Amazon Connect instance in the specified Amazon Web Services Region and copies configuration information for Amazon Connect resources across Amazon Web Services Regions. For more information about replicating an Amazon Connect instance, see Create a replica of your existing Amazon Connect instance in the Amazon Connect Administrator Guide.</td>
+    <td>Replicates an Connect Customer instance in the specified Amazon Web Services Region and copies configuration information for Connect Customer resources across Amazon Web Services Regions. For more information about replicating an Connect Customer instance, see Create a replica of your existing Connect Customer instance in the Connect Customer Administrator Guide.</td>
 </tr>
 <tr>
     <td><a href="#resume_contact"><CopyableCode code="resume_contact" /></a></td>
@@ -317,7 +331,21 @@ The following methods are available for this resource:
     <td><CopyableCode code="exec" /></td>
     <td><a href="#parameter-instance_id"><code>instance_id</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-FromEmailAddress"><code>FromEmailAddress</code></a>, <a href="#parameter-DestinationEmailAddress"><code>DestinationEmailAddress</code></a>, <a href="#parameter-EmailMessage"><code>EmailMessage</code></a>, <a href="#parameter-TrafficType"><code>TrafficType</code></a></td>
     <td></td>
-    <td>Send outbound email for outbound campaigns. For more information about outbound campaigns, see Set up Amazon Connect outbound campaigns. Only the Amazon Connect outbound campaigns service principal is allowed to assume a role in your account and call this API.</td>
+    <td>Send outbound email for outbound campaigns. For more information about outbound campaigns, see Set up Connect Customer outbound campaigns. Only the Connect Customer outbound campaigns service principal is allowed to assume a role in your account and call this API.</td>
+</tr>
+<tr>
+    <td><a href="#send_outbound_web_notification"><CopyableCode code="send_outbound_web_notification" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-instance_id"><code>instance_id</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-BrowserId"><code>BrowserId</code></a>, <a href="#parameter-SessionId"><code>SessionId</code></a>, <a href="#parameter-ExpiresAt"><code>ExpiresAt</code></a>, <a href="#parameter-Source"><code>Source</code></a>, <a href="#parameter-Destination"><code>Destination</code></a>, <a href="#parameter-Content"><code>Content</code></a></td>
+    <td></td>
+    <td>Sends an outbound web notification to a customer's web browser for outbound campaigns. For more information about outbound campaigns, see Set up Connect Customer outbound campaigns. Only the Connect Customer outbound campaigns service principal is allowed to assume a role in your account and call this API.</td>
+</tr>
+<tr>
+    <td><a href="#start_assistant_contact"><CopyableCode code="start_assistant_contact" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-InstanceId"><code>InstanceId</code></a>, <a href="#parameter-AiAgent"><code>AiAgent</code></a>, <a href="#parameter-ParticipantDetails"><code>ParticipantDetails</code></a></td>
+    <td></td>
+    <td>Starts a chat contact with an AI agent. Use the returned ParticipantToken with the CreateParticipantConnection operation. For more information about chat, see the following topics in the Connect Customer Administrator Guide: Concepts: Web and mobile messaging capabilities in Connect Customer Connect Customer Chat security best practices</td>
 </tr>
 <tr>
     <td><a href="#start_email_contact"><CopyableCode code="start_email_contact" /></a></td>
@@ -338,14 +366,14 @@ The following methods are available for this resource:
     <td><CopyableCode code="exec" /></td>
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-InstanceId"><code>InstanceId</code></a>, <a href="#parameter-ContactId"><code>ContactId</code></a></td>
     <td></td>
-    <td>Starts screen sharing for a contact. For more information about screen sharing, see Set up in-app, web, video calling, and screen sharing capabilities in the Amazon Connect Administrator Guide.</td>
+    <td>Starts screen sharing for a contact. For more information about screen sharing, see Set up in-app, web, video calling, and screen sharing capabilities in the Connect Customer Administrator Guide.</td>
 </tr>
 <tr>
     <td><a href="#start_task_contact"><CopyableCode code="start_task_contact" /></a></td>
     <td><CopyableCode code="exec" /></td>
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-InstanceId"><code>InstanceId</code></a>, <a href="#parameter-Name"><code>Name</code></a></td>
     <td></td>
-    <td>Initiates a flow to start a new task contact. For more information about task contacts, see Concepts: Tasks in Amazon Connect in the Amazon Connect Administrator Guide. When using PreviousContactId and RelatedContactId input parameters, note the following: PreviousContactId Any updates to user-defined task contact attributes on any contact linked through the same PreviousContactId will affect every contact in the chain. There can be a maximum of 12 linked task contacts in a chain. That is, 12 task contacts can be created that share the same PreviousContactId. RelatedContactId Copies contact attributes from the related task contact to the new contact. Any update on attributes in a new task contact does not update attributes on previous contact. There’s no limit on the number of task contacts that can be created that use the same RelatedContactId. In addition, when calling StartTaskContact include only one of these parameters: ContactFlowID, QuickConnectID, or TaskTemplateID. Only one parameter is required as long as the task template has a flow configured to run it. If more than one parameter is specified, or only the TaskTemplateID is specified but it does not have a flow configured, the request returns an error because Amazon Connect cannot identify the unique flow to run when the task is created. A ServiceQuotaExceededException occurs when the number of open tasks exceeds the active tasks quota or there are already 12 tasks referencing the same PreviousContactId. For more information about service quotas for task contacts, see Amazon Connect service quotas in the Amazon Connect Administrator Guide.</td>
+    <td>Initiates a flow to start a new task contact. For more information about task contacts, see Concepts: Tasks in Connect Customer in the Connect Customer Administrator Guide. When using PreviousContactId and RelatedContactId input parameters, note the following: PreviousContactId Any updates to user-defined task contact attributes on any contact linked through the same PreviousContactId will affect every contact in the chain. There can be a maximum of 12 linked task contacts in a chain. That is, 12 task contacts can be created that share the same PreviousContactId. RelatedContactId Copies contact attributes from the related task contact to the new contact. Any update on attributes in a new task contact does not update attributes on previous contact. There’s no limit on the number of task contacts that can be created that use the same RelatedContactId. In addition, when calling StartTaskContact include only one of these parameters: ContactFlowID, QuickConnectID, or TaskTemplateID. Only one parameter is required as long as the task template has a flow configured to run it. If more than one parameter is specified, or only the TaskTemplateID is specified but it does not have a flow configured, the request returns an error because Connect Customer cannot identify the unique flow to run when the task is created. A ServiceQuotaExceededException occurs when the number of open tasks exceeds the active tasks quota or there are already 12 tasks referencing the same PreviousContactId. For more information about service quotas for task contacts, see Connect Customer service quotas in the Connect Customer Administrator Guide.</td>
 </tr>
 <tr>
     <td><a href="#stop_contact"><CopyableCode code="stop_contact" /></a></td>
@@ -380,12 +408,12 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-associatedResourceArn">
     <td><CopyableCode code="associatedResourceArn" /></td>
     <td><code>string</code></td>
-    <td>The resource to which the attached file is (being) uploaded to. The supported resources are Cases and Email. This value must be a valid ARN.</td>
+    <td>The resource to which the attached file is (being) uploaded to. The supported resources are Cases, Email, and Task. This value must be a valid ARN.</td>
 </tr>
 <tr id="parameter-contact_id">
     <td><CopyableCode code="contact_id" /></td>
     <td><code>string</code></td>
-    <td>The identifier of the contact in this instance of Amazon Connect.</td>
+    <td>The identifier of the contact in this instance of Connect Customer.</td>
 </tr>
 <tr id="parameter-file_id">
     <td><CopyableCode code="file_id" /></td>
@@ -400,7 +428,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-instance_id">
     <td><CopyableCode code="instance_id" /></td>
     <td><code>string</code></td>
-    <td>The identifier of the Amazon Connect instance. You can find the instance ID in the Amazon Resource Name (ARN) of the instance.</td>
+    <td>The identifier of the Connect Customer instance. You can find the instance ID in the Amazon Resource Name (ARN) of the instance.</td>
 </tr>
 <tr id="parameter-region">
     <td><CopyableCode code="region" /></td>
@@ -422,6 +450,11 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     <td><code>string</code></td>
     <td>A valid resource type.</td>
 </tr>
+<tr id="parameter-session_id">
+    <td><CopyableCode code="session_id" /></td>
+    <td><code>string</code></td>
+    <td>The identifier of the session to delete.</td>
+</tr>
 <tr id="parameter-user_id">
     <td><CopyableCode code="user_id" /></td>
     <td><code>string</code></td>
@@ -435,7 +468,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-contactId">
     <td><CopyableCode code="contactId" /></td>
     <td><code>string</code></td>
-    <td>The identifier of the contact within the Amazon Connect instance.</td>
+    <td>The identifier of the contact within the Connect Customer instance.</td>
 </tr>
 <tr id="parameter-maxResults">
     <td><CopyableCode code="maxResults" /></td>
@@ -461,7 +494,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 >
 <TabItem value="describe_instance">
 
-This API is in preview release for Amazon Connect and is subject to change. Returns the current state of the specified instance identifier. It tracks the instance while it is being created and returns an error status, if applicable. If an instance is not created successfully, the instance status reason field returns details relevant to the reason. The instance in a failed state is returned only for 24 hours after the CreateInstance API was invoked.
+This API is in preview release for Connect Customer and is subject to change. Returns the current state of the specified instance identifier. It tracks the instance while it is being created and returns an error status, if applicable. If an instance is not created successfully, the instance status reason field returns details relevant to the reason. The instance in a failed state is returned only for 24 hours after the CreateInstance API was invoked.
 
 ```sql
 SELECT
@@ -475,7 +508,7 @@ AND region = '{{ region }}' -- required
 </TabItem>
 <TabItem value="list_instances">
 
-This API is in preview release for Amazon Connect and is subject to change. Return a list of instances which are in active state, creation-in-progress state, and failed state. Instances that aren't successfully created (they are in a failed state) are returned only for 24 hours after the CreateInstance API was invoked.
+This API is in preview release for Connect Customer and is subject to change. Return a list of instances which are in active state, creation-in-progress state, and failed state. Instances that aren't successfully created (they are in a failed state) are returned only for 24 hours after the CreateInstance API was invoked.
 
 ```sql
 SELECT
@@ -506,6 +539,7 @@ AND maxResults = '{{ maxResults }}'
     values={[
         { label: 'create_push_notification_registration', value: 'create_push_notification_registration' },
         { label: 'create_persistent_contact_association', value: 'create_persistent_contact_association' },
+        { label: 'create_auth_code', value: 'create_auth_code' },
         { label: 'create_instance', value: 'create_instance' },
         { label: 'create_participant', value: 'create_participant' },
         { label: 'Manifest', value: 'manifest' }
@@ -513,7 +547,7 @@ AND maxResults = '{{ maxResults }}'
 >
 <TabItem value="create_push_notification_registration">
 
-Creates registration for a device token and a chat contact to receive real-time push notifications. For more information about push notifications, see Set up push notifications in Amazon Connect for mobile chat in the Amazon Connect Administrator Guide.
+Creates registration for a device token and a chat contact to receive real-time push notifications. For more information about push notifications, see Set up push notifications in Connect Customer for mobile chat in the Connect Customer Administrator Guide.
 
 ```sql
 INSERT INTO aws.connect.instances (
@@ -540,7 +574,7 @@ registration_id
 </TabItem>
 <TabItem value="create_persistent_contact_association">
 
-Enables rehydration of chats for the lifespan of a contact. For more information about chat rehydration, see Enable persistent chat in the Amazon Connect Administrator Guide.
+Enables rehydration of chats for the lifespan of a contact. For more information about chat rehydration, see Enable persistent chat in the Connect Customer Administrator Guide.
 
 ```sql
 INSERT INTO aws.connect.instances (
@@ -563,9 +597,35 @@ continued_from_contact_id
 ;
 ```
 </TabItem>
+<TabItem value="create_auth_code">
+
+Creates an authorization code for the specified Connect Customer instance. The authorization code can be used to establish a session with scoped permissions defined by the specified scope parameters.
+
+```sql
+INSERT INTO aws.connect.instances (
+Scope,
+MaxSessionDurationMinutes,
+SessionInactivityDurationMinutes,
+instance_id,
+region
+)
+SELECT 
+'{{ Scope }}' /* required */,
+{{ MaxSessionDurationMinutes }},
+{{ SessionInactivityDurationMinutes }} /* required */,
+'{{ instance_id }}',
+'{{ region }}'
+RETURNING
+auth_code,
+entity_id,
+entity_type,
+session_id
+;
+```
+</TabItem>
 <TabItem value="create_instance">
 
-This API is in preview release for Amazon Connect and is subject to change. Initiates an Amazon Connect instance with all the supported channels enabled. It does not attach any storage, such as Amazon Simple Storage Service (Amazon S3) or Amazon Kinesis. It also does not allow for any configurations on features, such as Contact Lens for Amazon Connect. For more information, see Create an Amazon Connect instance in the Amazon Connect Administrator Guide. Amazon Connect enforces a limit on the total number of instances that you can create or delete in 30 days. If you exceed this limit, you will get an error message indicating there has been an excessive number of attempts at creating or deleting instances. You must wait 30 days before you can restart creating and deleting instances in your account.
+This API is in preview release for Connect Customer and is subject to change. Initiates an Connect Customer instance with all the supported channels enabled. It does not attach any storage, such as Amazon Simple Storage Service (Amazon S3) or Amazon Kinesis. It also does not allow for any configurations on features, such as Contact Lens for Connect Customer. For more information, see Create an Connect Customer instance in the Connect Customer Administrator Guide. Connect Customer enforces a limit on the total number of instances that you can create or delete in 30 days. If you exceed this limit, you will get an error message indicating there has been an excessive number of attempts at creating or deleting instances. You must wait 30 days before you can restart creating and deleting instances in your account.
 
 ```sql
 INSERT INTO aws.connect.instances (
@@ -652,6 +712,19 @@ participant_id
       valid_values: ['ENTIRE_PAST_SESSION', 'FROM_SEGMENT']
     - name: SourceContactId
       value: "{{ SourceContactId }}"
+    - name: Scope
+      description: |
+        Contains the scope configuration for an authorization code. Defines the permissions and access boundaries for the session.
+      value:
+        SecurityProfileIds:
+          - "{{ SecurityProfileIds }}"
+        EntityType: "{{ EntityType }}"
+        EntityId: "{{ EntityId }}"
+        DomainName: "{{ DomainName }}"
+    - name: MaxSessionDurationMinutes
+      value: {{ MaxSessionDurationMinutes }}
+    - name: SessionInactivityDurationMinutes
+      value: {{ SessionInactivityDurationMinutes }}
     - name: IdentityManagementType
       value: "{{ IdentityManagementType }}"
       valid_values: ['SAML', 'CONNECT_MANAGED', 'EXISTING_DIRECTORY']
@@ -746,7 +819,7 @@ AND ChannelConfiguration = '{{ ChannelConfiguration }}' --required;
 </TabItem>
 <TabItem value="associate_analytics_data_set">
 
-Associates the specified dataset for a Amazon Connect instance with the target account. You can associate only one dataset in a single call.
+Associates the specified dataset for a Connect Customer instance with the target account. You can associate only one dataset in a single call.
 
 ```sql
 UPDATE aws.connect.instances
@@ -766,7 +839,7 @@ target_account_id;
 </TabItem>
 <TabItem value="update_participant_authentication">
 
-Instructs Amazon Connect to resume the authentication process. The subsequent actions depend on the request body contents: If a code is provided: Connect retrieves the identity information from Amazon Cognito and imports it into Connect Customer Profiles. If an error is provided: The error branch of the Authenticate Customer block is executed. The API returns a success response to acknowledge the request. However, the interaction and exchange of identity information occur asynchronously after the response is returned.
+Instructs Connect Customer to resume the authentication process. The subsequent actions depend on the request body contents: If a code is provided: Connect retrieves the identity information from Amazon Cognito and imports it into Connect Customer Profiles. If an error is provided: The error branch of the Authenticate Customer block is executed. The API returns a success response to acknowledge the request. However, the interaction and exchange of identity information occur asynchronously after the response is returned.
 
 ```sql
 UPDATE aws.connect.instances
@@ -791,6 +864,7 @@ AND InstanceId = '{{ InstanceId }}' --required;
     defaultValue="delete_push_notification_registration"
     values={[
         { label: 'delete_push_notification_registration', value: 'delete_push_notification_registration' },
+        { label: 'delete_session', value: 'delete_session' },
         { label: 'delete_instance', value: 'delete_instance' }
     ]}
 >
@@ -807,9 +881,21 @@ AND contactId = '{{ contactId }}'
 ;
 ```
 </TabItem>
+<TabItem value="delete_session">
+
+Deletes a session for the specified Connect Customer instance.
+
+```sql
+DELETE FROM aws.connect.instances
+WHERE instance_id = '{{ instance_id }}' --required
+AND session_id = '{{ session_id }}' --required
+AND region = '{{ region }}' --required
+;
+```
+</TabItem>
 <TabItem value="delete_instance">
 
-This API is in preview release for Amazon Connect and is subject to change. Deletes the Amazon Connect instance. For more information, see Delete your Amazon Connect instance in the Amazon Connect Administrator Guide. Amazon Connect enforces a limit on the total number of instances that you can create or delete in 30 days. If you exceed this limit, you will get an error message indicating there has been an excessive number of attempts at creating or deleting instances. You must wait 30 days before you can restart creating and deleting instances in your account.
+This API is in preview release for Connect Customer and is subject to change. Deletes the Connect Customer instance. For more information, see Delete your Connect Customer instance in the Connect Customer Administrator Guide. Connect Customer enforces a limit on the total number of instances that you can create or delete in 30 days. If you exceed this limit, you will get an error message indicating there has been an excessive number of attempts at creating or deleting instances. You must wait 30 days before you can restart creating and deleting instances in your account.
 
 ```sql
 DELETE FROM aws.connect.instances
@@ -839,6 +925,8 @@ AND clientToken = '{{ clientToken }}'
         { label: 'replicate_instance', value: 'replicate_instance' },
         { label: 'resume_contact', value: 'resume_contact' },
         { label: 'send_outbound_email', value: 'send_outbound_email' },
+        { label: 'send_outbound_web_notification', value: 'send_outbound_web_notification' },
+        { label: 'start_assistant_contact', value: 'start_assistant_contact' },
         { label: 'start_email_contact', value: 'start_email_contact' },
         { label: 'start_outbound_email_contact', value: 'start_outbound_email_contact' },
         { label: 'start_screen_sharing', value: 'start_screen_sharing' },
@@ -849,7 +937,7 @@ AND clientToken = '{{ clientToken }}'
 >
 <TabItem value="disassociate_analytics_data_set">
 
-Removes the dataset ID associated with a given Amazon Connect instance.
+Removes the dataset ID associated with a given Connect Customer instance.
 
 ```sql
 EXEC aws.connect.instances.disassociate_analytics_data_set 
@@ -865,7 +953,7 @@ EXEC aws.connect.instances.disassociate_analytics_data_set
 </TabItem>
 <TabItem value="batch_associate_analytics_data_set">
 
-Associates a list of analytics datasets for a given Amazon Connect instance to a target account. You can associate multiple datasets in a single call.
+Associates a list of analytics datasets for a given Connect Customer instance to a target account. You can associate multiple datasets in a single call.
 
 ```sql
 EXEC aws.connect.instances.batch_associate_analytics_data_set 
@@ -881,7 +969,7 @@ EXEC aws.connect.instances.batch_associate_analytics_data_set
 </TabItem>
 <TabItem value="batch_disassociate_analytics_data_set">
 
-Removes a list of analytics datasets associated with a given Amazon Connect instance. You can disassociate multiple datasets in a single call.
+Removes a list of analytics datasets associated with a given Connect Customer instance. You can disassociate multiple datasets in a single call.
 
 ```sql
 EXEC aws.connect.instances.batch_disassociate_analytics_data_set 
@@ -897,7 +985,7 @@ EXEC aws.connect.instances.batch_disassociate_analytics_data_set
 </TabItem>
 <TabItem value="batch_put_contact">
 
-Only the Amazon Connect outbound campaigns service principal is allowed to assume a role in your account and call this API. Allows you to create a batch of contacts in Amazon Connect. The outbound campaigns capability ingests dial requests via the PutDialRequestBatch API. It then uses BatchPutContact to create contacts corresponding to those dial requests. If agents are available, the dial requests are dialed out, which results in a voice call. The resulting voice call uses the same contactId that was created by BatchPutContact.
+Only the Connect Customer outbound campaigns service principal is allowed to assume a role in your account and call this API. Allows you to create a batch of contacts in Connect Customer. The outbound campaigns capability ingests dial requests via the PutDialRequestBatch API. It then uses BatchPutContact to create contacts corresponding to those dial requests. If agents are available, the dial requests are dialed out, which results in a voice call. The resulting voice call uses the same contactId that was created by BatchPutContact.
 
 ```sql
 EXEC aws.connect.instances.batch_put_contact 
@@ -942,7 +1030,7 @@ EXEC aws.connect.instances.dismiss_user_contact
 </TabItem>
 <TabItem value="import_phone_number">
 
-Imports a claimed phone number from an external service, such as Amazon Web Services End User Messaging, into an Amazon Connect instance. You can call this API only in the same Amazon Web Services Region where the Amazon Connect instance was created. Call the DescribePhoneNumber API to verify the status of a previous ImportPhoneNumber operation. If you plan to claim or import numbers and then release numbers frequently, contact us for a service quota exception. Otherwise, it is possible you will be blocked from claiming and releasing any more numbers until up to 180 days past the oldest number released has expired. By default you can claim or import and then release up to 200% of your maximum number of active phone numbers. If you claim or import and then release phone numbers using the UI or API during a rolling 180 day cycle that exceeds 200% of your phone number service level quota, you will be blocked from claiming or importing any more numbers until 180 days past the oldest number released has expired. For example, if you already have 99 claimed or imported numbers and a service level quota of 99 phone numbers, and in any 180 day period you release 99, claim 99, and then release 99, you will have exceeded the 200% limit. At that point you are blocked from claiming any more numbers until you open an Amazon Web Services Support ticket.
+Imports a claimed phone number from an external service, such as Amazon Web Services End User Messaging, into an Connect Customer instance. You can call this API only in the same Amazon Web Services Region where the Connect Customer instance was created. Call the DescribePhoneNumber API to verify the status of a previous ImportPhoneNumber operation. If you plan to claim or import numbers and then release numbers frequently, contact us for a service quota exception. Otherwise, it is possible you will be blocked from claiming and releasing any more numbers until up to 180 days past the oldest number released has expired. By default you can claim or import and then release up to 200% of your maximum number of active phone numbers. If you claim or import and then release phone numbers using the UI or API during a rolling 180 day cycle that exceeds 200% of your phone number service level quota, you will be blocked from claiming or importing any more numbers until 180 days past the oldest number released has expired. For example, if you already have 99 claimed or imported numbers and a service level quota of 99 phone numbers, and in any 180 day period you release 99, claim 99, and then release 99, you will have exceeded the 200% limit. At that point you are blocked from claiming any more numbers until you open an Amazon Web Services Support ticket.
 
 ```sql
 EXEC aws.connect.instances.import_phone_number 
@@ -994,7 +1082,7 @@ EXEC aws.connect.instances.pause_contact
 </TabItem>
 <TabItem value="replicate_instance">
 
-Replicates an Amazon Connect instance in the specified Amazon Web Services Region and copies configuration information for Amazon Connect resources across Amazon Web Services Regions. For more information about replicating an Amazon Connect instance, see Create a replica of your existing Amazon Connect instance in the Amazon Connect Administrator Guide.
+Replicates an Connect Customer instance in the specified Amazon Web Services Region and copies configuration information for Connect Customer resources across Amazon Web Services Regions. For more information about replicating an Connect Customer instance, see Create a replica of your existing Connect Customer instance in the Connect Customer Administrator Guide.
 
 ```sql
 EXEC aws.connect.instances.replicate_instance 
@@ -1027,7 +1115,7 @@ EXEC aws.connect.instances.resume_contact
 </TabItem>
 <TabItem value="send_outbound_email">
 
-Send outbound email for outbound campaigns. For more information about outbound campaigns, see Set up Amazon Connect outbound campaigns. Only the Amazon Connect outbound campaigns service principal is allowed to assume a role in your account and call this API.
+Send outbound email for outbound campaigns. For more information about outbound campaigns, see Set up Connect Customer outbound campaigns. Only the Connect Customer outbound campaigns service principal is allowed to assume a role in your account and call this API.
 
 ```sql
 EXEC aws.connect.instances.send_outbound_email 
@@ -1042,6 +1130,48 @@ EXEC aws.connect.instances.send_outbound_email
 "TrafficType": "{{ TrafficType }}", 
 "SourceCampaign": "{{ SourceCampaign }}", 
 "ClientToken": "{{ ClientToken }}"
+}'
+;
+```
+</TabItem>
+<TabItem value="send_outbound_web_notification">
+
+Sends an outbound web notification to a customer's web browser for outbound campaigns. For more information about outbound campaigns, see Set up Connect Customer outbound campaigns. Only the Connect Customer outbound campaigns service principal is allowed to assume a role in your account and call this API.
+
+```sql
+EXEC aws.connect.instances.send_outbound_web_notification 
+@instance_id='{{ instance_id }}' --required, 
+@region='{{ region }}' --required 
+@@json=
+'{
+"ClientToken": "{{ ClientToken }}", 
+"BrowserId": "{{ BrowserId }}", 
+"SessionId": "{{ SessionId }}", 
+"ExpiresAt": "{{ ExpiresAt }}", 
+"Source": "{{ Source }}", 
+"Destination": "{{ Destination }}", 
+"Content": "{{ Content }}"
+}'
+;
+```
+</TabItem>
+<TabItem value="start_assistant_contact">
+
+Starts a chat contact with an AI agent. Use the returned ParticipantToken with the CreateParticipantConnection operation. For more information about chat, see the following topics in the Connect Customer Administrator Guide: Concepts: Web and mobile messaging capabilities in Connect Customer Connect Customer Chat security best practices
+
+```sql
+EXEC aws.connect.instances.start_assistant_contact 
+@region='{{ region }}' --required 
+@@json=
+'{
+"InstanceId": "{{ InstanceId }}", 
+"AiAgent": "{{ AiAgent }}", 
+"ParticipantDetails": "{{ ParticipantDetails }}", 
+"InitialMessage": "{{ InitialMessage }}", 
+"Attributes": "{{ Attributes }}", 
+"ClientToken": "{{ ClientToken }}", 
+"PersistentChat": "{{ PersistentChat }}", 
+"RelatedContactId": "{{ RelatedContactId }}"
 }'
 ;
 ```
@@ -1095,7 +1225,7 @@ EXEC aws.connect.instances.start_outbound_email_contact
 </TabItem>
 <TabItem value="start_screen_sharing">
 
-Starts screen sharing for a contact. For more information about screen sharing, see Set up in-app, web, video calling, and screen sharing capabilities in the Amazon Connect Administrator Guide.
+Starts screen sharing for a contact. For more information about screen sharing, see Set up in-app, web, video calling, and screen sharing capabilities in the Connect Customer Administrator Guide.
 
 ```sql
 EXEC aws.connect.instances.start_screen_sharing 
@@ -1111,7 +1241,7 @@ EXEC aws.connect.instances.start_screen_sharing
 </TabItem>
 <TabItem value="start_task_contact">
 
-Initiates a flow to start a new task contact. For more information about task contacts, see Concepts: Tasks in Amazon Connect in the Amazon Connect Administrator Guide. When using PreviousContactId and RelatedContactId input parameters, note the following: PreviousContactId Any updates to user-defined task contact attributes on any contact linked through the same PreviousContactId will affect every contact in the chain. There can be a maximum of 12 linked task contacts in a chain. That is, 12 task contacts can be created that share the same PreviousContactId. RelatedContactId Copies contact attributes from the related task contact to the new contact. Any update on attributes in a new task contact does not update attributes on previous contact. There’s no limit on the number of task contacts that can be created that use the same RelatedContactId. In addition, when calling StartTaskContact include only one of these parameters: ContactFlowID, QuickConnectID, or TaskTemplateID. Only one parameter is required as long as the task template has a flow configured to run it. If more than one parameter is specified, or only the TaskTemplateID is specified but it does not have a flow configured, the request returns an error because Amazon Connect cannot identify the unique flow to run when the task is created. A ServiceQuotaExceededException occurs when the number of open tasks exceeds the active tasks quota or there are already 12 tasks referencing the same PreviousContactId. For more information about service quotas for task contacts, see Amazon Connect service quotas in the Amazon Connect Administrator Guide.
+Initiates a flow to start a new task contact. For more information about task contacts, see Concepts: Tasks in Connect Customer in the Connect Customer Administrator Guide. When using PreviousContactId and RelatedContactId input parameters, note the following: PreviousContactId Any updates to user-defined task contact attributes on any contact linked through the same PreviousContactId will affect every contact in the chain. There can be a maximum of 12 linked task contacts in a chain. That is, 12 task contacts can be created that share the same PreviousContactId. RelatedContactId Copies contact attributes from the related task contact to the new contact. Any update on attributes in a new task contact does not update attributes on previous contact. There’s no limit on the number of task contacts that can be created that use the same RelatedContactId. In addition, when calling StartTaskContact include only one of these parameters: ContactFlowID, QuickConnectID, or TaskTemplateID. Only one parameter is required as long as the task template has a flow configured to run it. If more than one parameter is specified, or only the TaskTemplateID is specified but it does not have a flow configured, the request returns an error because Connect Customer cannot identify the unique flow to run when the task is created. A ServiceQuotaExceededException occurs when the number of open tasks exceeds the active tasks quota or there are already 12 tasks referencing the same PreviousContactId. For more information about service quotas for task contacts, see Connect Customer service quotas in the Connect Customer Administrator Guide.
 
 ```sql
 EXEC aws.connect.instances.start_task_contact 

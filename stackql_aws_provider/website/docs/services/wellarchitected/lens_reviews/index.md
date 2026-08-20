@@ -92,7 +92,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
-    <td>The token to use to retrieve the next set of results.</td>
+    <td>The token to use to retrieve the next set of results. (pattern: &lt;code&gt;&#91;A-Za-z0-9+\/=_-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="workload_id" /></td>

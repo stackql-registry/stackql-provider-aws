@@ -245,6 +245,11 @@ The following fields are returned by `SELECT` queries:
     <td>The status of the lakehouse registration for the cluster. Indicates whether the cluster is successfully registered with Amazon Redshift federated permissions.</td>
 </tr>
 <tr>
+    <td><CopyableCode code="logging_publish_status" /></td>
+    <td><code>string</code></td>
+    <td>The status of system table publishing for the cluster. This field is present only when system table publishing is configured.</td>
+</tr>
+<tr>
     <td><CopyableCode code="maintenance_track_name" /></td>
     <td><code>string</code></td>
     <td>The name of the maintenance track for the cluster.</td>
@@ -437,7 +442,7 @@ The following methods are available for this resource:
     <td><a href="#disable_logging"><CopyableCode code="disable_logging" /></a></td>
     <td><CopyableCode code="exec" /></td>
     <td><a href="#parameter-ClusterIdentifier"><code>ClusterIdentifier</code></a>, <a href="#parameter-region"><code>region</code></a></td>
-    <td></td>
+    <td><a href="#parameter-LogDestinationType"><code>LogDestinationType</code></a>, <a href="#parameter-LogExports"><code>LogExports</code></a></td>
     <td>Stops logging information, such as queries and connection attempts, for the specified Amazon Redshift cluster.</td>
 </tr>
 <tr>
@@ -451,7 +456,7 @@ The following methods are available for this resource:
     <td><a href="#enable_logging"><CopyableCode code="enable_logging" /></a></td>
     <td><CopyableCode code="exec" /></td>
     <td><a href="#parameter-ClusterIdentifier"><code>ClusterIdentifier</code></a>, <a href="#parameter-region"><code>region</code></a></td>
-    <td><a href="#parameter-BucketName"><code>BucketName</code></a>, <a href="#parameter-S3KeyPrefix"><code>S3KeyPrefix</code></a>, <a href="#parameter-LogDestinationType"><code>LogDestinationType</code></a>, <a href="#parameter-LogExports"><code>LogExports</code></a></td>
+    <td><a href="#parameter-BucketName"><code>BucketName</code></a>, <a href="#parameter-S3KeyPrefix"><code>S3KeyPrefix</code></a>, <a href="#parameter-LogDestinationType"><code>LogDestinationType</code></a>, <a href="#parameter-LogExports"><code>LogExports</code></a>, <a href="#parameter-S3TableKmsKeyId"><code>S3TableKmsKeyId</code></a>, <a href="#parameter-S3TableGranularity"><code>S3TableGranularity</code></a></td>
     <td>Starts logging information, such as queries and connection attempts, for the specified Amazon Redshift cluster.</td>
 </tr>
 <tr>
@@ -515,7 +520,7 @@ The following methods are available for this resource:
     <td><CopyableCode code="exec" /></td>
     <td><a href="#parameter-ClusterIdentifier"><code>ClusterIdentifier</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td><a href="#parameter-ClusterType"><code>ClusterType</code></a>, <a href="#parameter-NodeType"><code>NodeType</code></a>, <a href="#parameter-NumberOfNodes"><code>NumberOfNodes</code></a>, <a href="#parameter-Classic"><code>Classic</code></a>, <a href="#parameter-ReservedNodeId"><code>ReservedNodeId</code></a>, <a href="#parameter-TargetReservedNodeOfferingId"><code>TargetReservedNodeOfferingId</code></a></td>
-    <td>Changes the size of the cluster. You can change the cluster's type, or change the number or type of nodes. The default behavior is to use the elastic resize method. With an elastic resize, your cluster is available for read and write operations more quickly than with the classic resize method. Elastic resize operations have the following restrictions: You can only resize clusters of the following types: dc2.large dc2.8xlarge rg.xlarge rg.4xlarge ra3.large ra3.xlplus ra3.4xlarge ra3.16xlarge The type of nodes that you add must match the node type for the cluster.</td>
+    <td>Changes the size of the cluster. You can change the cluster's type, or change the number or type of nodes. The default behavior is to use the elastic resize method. With an elastic resize, your cluster is available for read and write operations more quickly than with the classic resize method. Elastic resize operations have the following restrictions: You can only resize clusters of the following types: dc2.large dc2.8xlarge rg.large rg.xlarge rg.4xlarge rg.12xlarge ra3.large ra3.xlplus ra3.4xlarge ra3.16xlarge The type of nodes that you add must match the node type for the cluster.</td>
 </tr>
 <tr>
     <td><a href="#restore_from_cluster_snapshot"><CopyableCode code="restore_from_cluster_snapshot" /></a></td>
@@ -584,7 +589,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-NodeType">
     <td><CopyableCode code="NodeType" /></td>
     <td><code>string</code></td>
-    <td>The node type to be provisioned for the cluster. For information about node types, go to Working with Clusters in the Amazon Redshift Cluster Management Guide. Valid Values: dc2.large | dc2.8xlarge| rg.xlarge | rg.4xlarge | ra3.large | ra3.xlplus | ra3.4xlarge | ra3.16xlarge</td>
+    <td>The node type to be provisioned for the cluster. For information about node types, go to Working with Clusters in the Amazon Redshift Cluster Management Guide. Valid Values: dc2.large | dc2.8xlarge | rg.large | rg.xlarge | rg.4xlarge | rg.12xlarge | ra3.large | ra3.xlplus | ra3.4xlarge | ra3.16xlarge</td>
 </tr>
 <tr id="parameter-RetentionPeriod">
     <td><CopyableCode code="RetentionPeriod" /></td>
@@ -824,12 +829,12 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-LogDestinationType">
     <td><CopyableCode code="LogDestinationType" /></td>
     <td><code>string</code></td>
-    <td>The log destination type. An enum with possible values of s3 and cloudwatch.</td>
+    <td>The log destination type. An enum with possible values of s3, cloudwatch, and s3table.</td>
 </tr>
 <tr id="parameter-LogExports">
     <td><CopyableCode code="LogExports" /></td>
     <td><code>array</code></td>
-    <td>The collection of exported log types. Possible values are connectionlog, useractivitylog, and userlog.</td>
+    <td>The collection of exported log types. When LogDestinationType is s3 or cloudwatch, possible values are connectionlog, useractivitylog, and userlog. When LogDestinationType is s3table, the values are the names of the system tables to publish. Omitting this parameter, passing an empty list, or including the value all publishes all current and future system tables.</td>
 </tr>
 <tr id="parameter-MaintenanceTrackName">
     <td><CopyableCode code="MaintenanceTrackName" /></td>
@@ -935,6 +940,16 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     <td><CopyableCode code="S3KeyPrefix" /></td>
     <td><code>string</code></td>
     <td>The prefix applied to the log file names. Valid characters are any letter from any language, any whitespace character, any numeric character, and the following characters: underscore (_), period (.), colon (:), slash (/), equal (=), plus (+), backslash (\), hyphen (-), at symbol (@).</td>
+</tr>
+<tr id="parameter-S3TableGranularity">
+    <td><CopyableCode code="S3TableGranularity" /></td>
+    <td><code>string</code></td>
+    <td>The scope of system table publishing. Valid values are cluster and account. A value of cluster scopes publishing to the individual cluster. A value of account scopes publishing to the Amazon Web Services account. This parameter is valid only when LogDestinationType is s3table.</td>
+</tr>
+<tr id="parameter-S3TableKmsKeyId">
+    <td><CopyableCode code="S3TableKmsKeyId" /></td>
+    <td><code>string</code></td>
+    <td>The identifier of a customer managed KMS key used to encrypt the S3 tables. This parameter is valid only when LogDestinationType is s3table.</td>
 </tr>
 <tr id="parameter-SkipFinalClusterSnapshot">
     <td><CopyableCode code="SkipFinalClusterSnapshot" /></td>
@@ -1067,6 +1082,7 @@ iam_roles,
 ip_address_type,
 kms_key_id,
 lakehouse_registration_status,
+logging_publish_status,
 maintenance_track_name,
 manual_snapshot_retention_period,
 master_password_secret_arn,
@@ -1245,6 +1261,7 @@ iam_roles,
 ip_address_type,
 kms_key_id,
 lakehouse_registration_status,
+logging_publish_status,
 maintenance_track_name,
 manual_snapshot_retention_period,
 master_password_secret_arn,
@@ -1509,6 +1526,7 @@ iam_roles,
 ip_address_type,
 kms_key_id,
 lakehouse_registration_status,
+logging_publish_status,
 maintenance_track_name,
 manual_snapshot_retention_period,
 master_password_secret_arn,
@@ -1615,6 +1633,7 @@ iam_roles,
 ip_address_type,
 kms_key_id,
 lakehouse_registration_status,
+logging_publish_status,
 maintenance_track_name,
 manual_snapshot_retention_period,
 master_password_secret_arn,
@@ -1726,7 +1745,9 @@ Stops logging information, such as queries and connection attempts, for the spec
 ```sql
 EXEC aws.redshift.clusters.disable_logging 
 @ClusterIdentifier='{{ ClusterIdentifier }}' --required, 
-@region='{{ region }}' --required
+@region='{{ region }}' --required, 
+@LogDestinationType='{{ LogDestinationType }}', 
+@LogExports='{{ LogExports }}'
 ;
 ```
 </TabItem>
@@ -1752,7 +1773,9 @@ EXEC aws.redshift.clusters.enable_logging
 @BucketName='{{ BucketName }}', 
 @S3KeyPrefix='{{ S3KeyPrefix }}', 
 @LogDestinationType='{{ LogDestinationType }}', 
-@LogExports='{{ LogExports }}'
+@LogExports='{{ LogExports }}', 
+@S3TableKmsKeyId='{{ S3TableKmsKeyId }}', 
+@S3TableGranularity='{{ S3TableGranularity }}'
 ;
 ```
 </TabItem>
@@ -1864,7 +1887,7 @@ EXEC aws.redshift.clusters.reboot_cluster
 </TabItem>
 <TabItem value="resize_cluster">
 
-Changes the size of the cluster. You can change the cluster's type, or change the number or type of nodes. The default behavior is to use the elastic resize method. With an elastic resize, your cluster is available for read and write operations more quickly than with the classic resize method. Elastic resize operations have the following restrictions: You can only resize clusters of the following types: dc2.large dc2.8xlarge rg.xlarge rg.4xlarge ra3.large ra3.xlplus ra3.4xlarge ra3.16xlarge The type of nodes that you add must match the node type for the cluster.
+Changes the size of the cluster. You can change the cluster's type, or change the number or type of nodes. The default behavior is to use the elastic resize method. With an elastic resize, your cluster is available for read and write operations more quickly than with the classic resize method. Elastic resize operations have the following restrictions: You can only resize clusters of the following types: dc2.large dc2.8xlarge rg.large rg.xlarge rg.4xlarge rg.12xlarge ra3.large ra3.xlplus ra3.4xlarge ra3.16xlarge The type of nodes that you add must match the node type for the cluster.
 
 ```sql
 EXEC aws.redshift.clusters.resize_cluster 

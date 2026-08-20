@@ -140,6 +140,11 @@ The following fields are returned by `SELECT` queries:
     <td>The date and time when the agreement ends. The field is null for pay-as-you-go agreements, which don’t have end dates.</td>
 </tr>
 <tr>
+    <td><CopyableCode code="entitlements" /></td>
+    <td><code>array</code></td>
+    <td>A list of entitlements associated with the agreement.</td>
+</tr>
+<tr>
     <td><CopyableCode code="proposal_summary" /></td>
     <td><code>object</code></td>
     <td>A summary of the proposal</td>
@@ -335,6 +340,7 @@ acceptor,
 agreement_id,
 agreement_type,
 end_time,
+entitlements,
 proposal_summary,
 proposer,
 start_time,

@@ -672,6 +672,17 @@ state
       value: "{{ KafkaVersion }}"
     - name: LoggingInfo
       value:
+        AuthorizerLogs:
+          CloudWatchLogs:
+            Enabled: {{ Enabled }}
+            LogGroup: "{{ LogGroup }}"
+          Firehose:
+            DeliveryStream: "{{ DeliveryStream }}"
+            Enabled: {{ Enabled }}
+          S3:
+            Bucket: "{{ Bucket }}"
+            Enabled: {{ Enabled }}
+            Prefix: "{{ Prefix }}"
         BrokerLogs:
           CloudWatchLogs:
             Enabled: {{ Enabled }}

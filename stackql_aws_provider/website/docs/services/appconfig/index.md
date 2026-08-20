@@ -18,7 +18,7 @@ appconfig service documentation.
 
 :::info[Service Summary]
 
-total resources: __11__  
+total resources: __14__  
 
 :::
 
@@ -30,10 +30,13 @@ total resources: __11__
 <a href="/services/appconfig/configuration_profiles/">configuration_profiles</a><br />
 <a href="/services/appconfig/configurations/">configurations</a><br />
 <a href="/services/appconfig/deployment_strategies/">deployment_strategies</a><br />
-<a href="/services/appconfig/deployments/">deployments</a>
+<a href="/services/appconfig/deployments/">deployments</a><br />
+<a href="/services/appconfig/environments/">environments</a>
 </div>
 <div class="providerDocColumn">
-<a href="/services/appconfig/environments/">environments</a><br />
+<a href="/services/appconfig/experiment_definitions/">experiment_definitions</a><br />
+<a href="/services/appconfig/experiment_run_events/">experiment_run_events</a><br />
+<a href="/services/appconfig/experiment_runs/">experiment_runs</a><br />
 <a href="/services/appconfig/extension_associations/">extension_associations</a><br />
 <a href="/services/appconfig/extensions/">extensions</a><br />
 <a href="/services/appconfig/hosted_configuration_versions/">hosted_configuration_versions</a><br />

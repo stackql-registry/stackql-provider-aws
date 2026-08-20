@@ -78,7 +78,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="current_resource_type" /></td>
     <td><code>string</code></td>
-    <td>The type of resource. (Ec2Instance, LambdaFunction, EbsVolume, EcsService, Ec2AutoScalingGroup, Ec2InstanceSavingsPlans, ComputeSavingsPlans, SageMakerSavingsPlans, Ec2ReservedInstances, RdsReservedInstances, OpenSearchReservedInstances, RedshiftReservedInstances, ElastiCacheReservedInstances, RdsDbInstanceStorage, RdsDbInstance, AuroraDbClusterStorage, DynamoDbReservedCapacity, MemoryDbReservedInstances, NatGateway)</td>
+    <td>The type of resource. (Ec2Instance, LambdaFunction, EbsVolume, EcsService, Ec2AutoScalingGroup, Ec2InstanceSavingsPlans, ComputeSavingsPlans, SageMakerSavingsPlans, Ec2ReservedInstances, RdsReservedInstances, OpenSearchReservedInstances, RedshiftReservedInstances, ElastiCacheReservedInstances, RdsDbInstanceStorage, RdsDbInstance, AuroraDbClusterStorage, DynamoDbReservedCapacity, MemoryDbReservedInstances, NatGateway, DynamoDBTable, ElastiCacheCluster, MemoryDBCluster, DocumentDBCluster, WorkSpaces, SageMakerEndpoint)</td>
 </tr>
 <tr>
     <td><CopyableCode code="estimated_monthly_cost" /></td>
@@ -128,7 +128,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="recommended_resource_type" /></td>
     <td><code>string</code></td>
-    <td>The resource type of the recommendation. (Ec2Instance, LambdaFunction, EbsVolume, EcsService, Ec2AutoScalingGroup, Ec2InstanceSavingsPlans, ComputeSavingsPlans, SageMakerSavingsPlans, Ec2ReservedInstances, RdsReservedInstances, OpenSearchReservedInstances, RedshiftReservedInstances, ElastiCacheReservedInstances, RdsDbInstanceStorage, RdsDbInstance, AuroraDbClusterStorage, DynamoDbReservedCapacity, MemoryDbReservedInstances, NatGateway)</td>
+    <td>The resource type of the recommendation. (Ec2Instance, LambdaFunction, EbsVolume, EcsService, Ec2AutoScalingGroup, Ec2InstanceSavingsPlans, ComputeSavingsPlans, SageMakerSavingsPlans, Ec2ReservedInstances, RdsReservedInstances, OpenSearchReservedInstances, RedshiftReservedInstances, ElastiCacheReservedInstances, RdsDbInstanceStorage, RdsDbInstance, AuroraDbClusterStorage, DynamoDbReservedCapacity, MemoryDbReservedInstances, NatGateway, DynamoDBTable, ElastiCacheCluster, MemoryDBCluster, DocumentDBCluster, WorkSpaces, SageMakerEndpoint)</td>
 </tr>
 <tr>
     <td><CopyableCode code="region" /></td>

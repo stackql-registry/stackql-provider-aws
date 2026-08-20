@@ -197,7 +197,8 @@ OrganizationConfigRuleName = '{{ OrganizationConfigRuleName }}',
 OrganizationManagedRuleMetadata = '{{ OrganizationManagedRuleMetadata }}',
 OrganizationCustomRuleMetadata = '{{ OrganizationCustomRuleMetadata }}',
 ExcludedAccounts = '{{ ExcludedAccounts }}',
-OrganizationCustomPolicyRuleMetadata = '{{ OrganizationCustomPolicyRuleMetadata }}'
+OrganizationCustomPolicyRuleMetadata = '{{ OrganizationCustomPolicyRuleMetadata }}',
+Tags = '{{ Tags }}'
 WHERE 
 region = '{{ region }}' --required
 AND OrganizationConfigRuleName = '{{ OrganizationConfigRuleName }}' --required

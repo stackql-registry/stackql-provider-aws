@@ -303,6 +303,7 @@ partner_interconnect_mac_sec_capable,
 partner_name,
 port_encryption_status,
 provider_name,
+rate_limiter_status,
 region,
 tags,
 vlan;

@@ -55,6 +55,11 @@ The following fields are returned by `SELECT` queries:
     <td>Specifies the catalog in which the AWS Opportunity exists. This is the environment (e.g., AWS or Sandbox) where the opportunity is being managed. (pattern: &lt;code&gt;&#91;a-zA-Z&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
+    <td><CopyableCode code="cosell_motion" /></td>
+    <td><code>string</code></td>
+    <td>Engagement classification for this opportunity. Read-only. Null before scoring. Known values: AWS Field-engaged, Agent-engaged, Partner-led.</td>
+</tr>
+<tr>
     <td><CopyableCode code="customer" /></td>
     <td><code>object</code></td>
     <td>Provides details about the customer associated with the AWS Opportunity, including account information, industry, and other customer data. These details help partners understand the business context of the opportunity.</td>
@@ -175,6 +180,7 @@ Retrieves a summary of an AWS Opportunity. This summary includes high-level deta
 ```sql
 SELECT
 catalog,
+cosell_motion,
 customer,
 insights,
 involvement_type,

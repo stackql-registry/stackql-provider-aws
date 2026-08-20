@@ -84,14 +84,14 @@ The following methods are available for this resource:
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>Retrieves setting configurations for Inspector scans.</td>
+    <td>Retrieves setting configurations for Amazon Inspector scans. If you specify an accountId, this operation returns the scan configuration for that member account. You must be the delegated administrator for the specified member account. If you do not specify an accountId, this operation returns your own scan configuration.</td>
 </tr>
 <tr>
     <td><a href="#update_configuration"><CopyableCode code="update_configuration" /></a></td>
     <td><CopyableCode code="update" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>Updates setting configurations for your Amazon Inspector account. When you use this API as an Amazon Inspector delegated administrator this updates the setting for all accounts you manage. Member accounts in an organization cannot update this setting.</td>
+    <td>Updates the scan configuration for your Amazon Inspector account. If you don't specify an accountId, this operation updates the delegated administrator's configuration and propagates it to member accounts that have not been individually configured. If you specify an accountId, this operation updates that member account's configuration. Only the delegated administrator can specify an accountId; member accounts cannot call this operation.</td>
 </tr>
 </tbody>
 </table>
@@ -127,7 +127,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 >
 <TabItem value="get_configuration">
 
-Retrieves setting configurations for Inspector scans.
+Retrieves setting configurations for Amazon Inspector scans. If you specify an accountId, this operation returns the scan configuration for that member account. You must be the delegated administrator for the specified member account. If you do not specify an accountId, this operation returns your own scan configuration.
 
 ```sql
 SELECT
@@ -151,13 +151,15 @@ WHERE region = '{{ region }}' -- required
 >
 <TabItem value="update_configuration">
 
-Updates setting configurations for your Amazon Inspector account. When you use this API as an Amazon Inspector delegated administrator this updates the setting for all accounts you manage. Member accounts in an organization cannot update this setting.
+Updates the scan configuration for your Amazon Inspector account. If you don't specify an accountId, this operation updates the delegated administrator's configuration and propagates it to member accounts that have not been individually configured. If you specify an accountId, this operation updates that member account's configuration. Only the delegated administrator can specify an accountId; member accounts cannot call this operation.
 
 ```sql
 UPDATE aws.inspector2.configurations
 SET 
+accountId = '{{ accountId }}',
 ecrConfiguration = '{{ ecrConfiguration }}',
-ec2Configuration = '{{ ec2Configuration }}'
+ec2Configuration = '{{ ec2Configuration }}',
+updateConfigurationInheritance = '{{ updateConfigurationInheritance }}'
 WHERE 
 region = '{{ region }}' --required;
 ```

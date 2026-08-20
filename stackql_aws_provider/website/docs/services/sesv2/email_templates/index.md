@@ -114,7 +114,7 @@ The following methods are available for this resource:
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-template_name"><code>template_name</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>Displays the template object (which includes the subject line, HTML part and text part) for the template you specify. You can execute this operation no more than once per second.</td>
+    <td>Displays the template object (which includes the subject line, HTML part and text part) for the template you specify. You can execute this operation no more than 50 times per second.</td>
 </tr>
 <tr>
     <td><a href="#list_email_templates"><CopyableCode code="list_email_templates" /></a></td>
@@ -194,7 +194,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 >
 <TabItem value="get_email_template">
 
-Displays the template object (which includes the subject line, HTML part and text part) for the template you specify. You can execute this operation no more than once per second.
+Displays the template object (which includes the subject line, HTML part and text part) for the template you specify. You can execute this operation no more than 50 times per second.
 
 ```sql
 SELECT

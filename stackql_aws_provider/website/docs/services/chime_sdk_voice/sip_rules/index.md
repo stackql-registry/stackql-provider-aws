@@ -181,7 +181,7 @@ The following methods are available for this resource:
 <tr>
     <td><a href="#create_sip_rule"><CopyableCode code="create_sip_rule" /></a></td>
     <td><CopyableCode code="insert" /></td>
-    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-TriggerType"><code>TriggerType</code></a>, <a href="#parameter-TriggerValue"><code>TriggerValue</code></a></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-TriggerType"><code>TriggerType</code></a>, <a href="#parameter-TriggerValue"><code>TriggerValue</code></a>, <a href="#parameter-TargetApplications"><code>TargetApplications</code></a></td>
     <td></td>
     <td>Creates a SIP rule, which can be used to run a SIP media application as a target for a specific trigger type. For more information about SIP rules, see Managing SIP media applications and rules in the Amazon Chime SDK Administrator Guide.</td>
 </tr>
@@ -324,7 +324,7 @@ SELECT
 '{{ TriggerType }}' /* required */,
 '{{ TriggerValue }}' /* required */,
 {{ Disabled }},
-'{{ TargetApplications }}',
+'{{ TargetApplications }}' /* required */,
 '{{ region }}'
 RETURNING
 sip_rule

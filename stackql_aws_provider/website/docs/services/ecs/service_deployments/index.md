@@ -118,6 +118,13 @@ The following methods are available for this resource:
     <td></td>
     <td>This operation lists all the service deployments that meet the specified filter criteria. A service deployment happens when you release a software update for the service. You route traffic from the running service revisions to the new service revison and control the number of running tasks. This API returns the values that you use for the request parameters in DescribeServiceRevisions.</td>
 </tr>
+<tr>
+    <td><a href="#continue_service_deployment"><CopyableCode code="continue_service_deployment" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-serviceDeploymentArn"><code>serviceDeploymentArn</code></a>, <a href="#parameter-hookId"><code>hookId</code></a></td>
+    <td></td>
+    <td>Continues or rolls back an Amazon ECS service deployment that is paused at a lifecycle hook. When a service deployment reaches a lifecycle stage that has a PAUSE hook configured, the deployment pauses and waits for an explicit action. Use this API to either continue the deployment to the next stage or roll back to the previous service revision. To find the hookId of the paused hook, call DescribeServiceDeployments and inspect the lifecycleHookDetails field. For more information, see Continuing Amazon ECS service deployments in the Amazon Elastic Container Service Developer Guide.</td>
+</tr>
 </tbody>
 </table>
 
@@ -174,6 +181,33 @@ next_token,
 service_deployments
 FROM aws.ecs.service_deployments
 WHERE region = '{{ region }}' -- required
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="continue_service_deployment"
+    values={[
+        { label: 'continue_service_deployment', value: 'continue_service_deployment' }
+    ]}
+>
+<TabItem value="continue_service_deployment">
+
+Continues or rolls back an Amazon ECS service deployment that is paused at a lifecycle hook. When a service deployment reaches a lifecycle stage that has a PAUSE hook configured, the deployment pauses and waits for an explicit action. Use this API to either continue the deployment to the next stage or roll back to the previous service revision. To find the hookId of the paused hook, call DescribeServiceDeployments and inspect the lifecycleHookDetails field. For more information, see Continuing Amazon ECS service deployments in the Amazon Elastic Container Service Developer Guide.
+
+```sql
+EXEC aws.ecs.service_deployments.continue_service_deployment 
+@region='{{ region }}' --required 
+@@json=
+'{
+"serviceDeploymentArn": "{{ serviceDeploymentArn }}", 
+"hookId": "{{ hookId }}", 
+"action": "{{ action }}"
+}'
 ;
 ```
 </TabItem>

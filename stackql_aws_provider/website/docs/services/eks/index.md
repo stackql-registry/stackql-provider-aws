@@ -18,7 +18,7 @@ eks service documentation.
 
 :::info[Service Summary]
 
-total resources: __19__  
+total resources: __20__  
 
 :::
 
@@ -32,11 +32,12 @@ total resources: __19__
 <a href="/services/eks/addons/">addons</a><br />
 <a href="/services/eks/associated_access_policies/">associated_access_policies</a><br />
 <a href="/services/eks/capabilities/">capabilities</a><br />
+<a href="/services/eks/certificate_authorities/">certificate_authorities</a><br />
 <a href="/services/eks/cluster_versions/">cluster_versions</a><br />
-<a href="/services/eks/clusters/">clusters</a><br />
-<a href="/services/eks/eks_anywhere_subscriptions/">eks_anywhere_subscriptions</a>
+<a href="/services/eks/clusters/">clusters</a>
 </div>
 <div class="providerDocColumn">
+<a href="/services/eks/eks_anywhere_subscriptions/">eks_anywhere_subscriptions</a><br />
 <a href="/services/eks/encryption_configs/">encryption_configs</a><br />
 <a href="/services/eks/fargate_profiles/">fargate_profiles</a><br />
 <a href="/services/eks/identity_provider_configs/">identity_provider_configs</a><br />

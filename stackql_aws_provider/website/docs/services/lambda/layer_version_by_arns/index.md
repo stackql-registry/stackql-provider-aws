@@ -67,7 +67,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="created_date" /></td>
     <td><code>string</code></td>
-    <td>The date that the layer version was created, in ISO-8601 format (YYYY-MM-DDThh:mm:ss.sTZD).</td>
+    <td>The date that the layer version was created, in ISO-8601 format (YYYY-MM-DDThh:mm:ss.sTZD). (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="description" /></td>
@@ -77,17 +77,17 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="layer_arn" /></td>
     <td><code>string</code></td>
-    <td>The ARN of the layer. (pattern: &lt;code&gt;arn:&#91;a-zA-Z0-9-&#93;+:lambda:&#91;a-zA-Z0-9-&#93;+:\d&#123;12&#125;:layer:&#91;a-zA-Z0-9-_&#93;+&lt;/code&gt;)</td>
+    <td>The ARN of the layer. (pattern: &lt;code&gt;arn:(aws&#91;a-zA-Z-&#93;*)?:lambda:(eusc-)?&#91;a-z&#93;&#123;2&#125;((-gov)|(-iso(&#91;a-z&#93;?)))?-&#91;a-z&#93;+-\d&#123;1&#125;:\d&#123;12&#125;:layer:&#91;a-zA-Z0-9-_&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="layer_version_arn" /></td>
     <td><code>string</code></td>
-    <td>The ARN of the layer version. (pattern: &lt;code&gt;arn:&#91;a-zA-Z0-9-&#93;+:lambda:&#91;a-zA-Z0-9-&#93;+:\d&#123;12&#125;:layer:&#91;a-zA-Z0-9-_&#93;+:&#91;0-9&#93;+&lt;/code&gt;)</td>
+    <td>The ARN of the layer version. (pattern: &lt;code&gt;((arn:(aws&#91;a-zA-Z-&#93;*)?:lambda:(eusc-)?&#91;a-z&#93;&#123;2&#125;((-gov)|(-iso(&#91;a-z&#93;?)))?-&#91;a-z&#93;+-\d&#123;1&#125;:\d&#123;12&#125;:layer:&#91;a-zA-Z0-9-_&#93;+:&#91;0-9&#93;+)|(arn:&#91;a-zA-Z0-9-&#93;+:lambda:::awslayer:&#91;a-zA-Z0-9-_&#93;+))&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="license_info" /></td>
     <td><code>string</code></td>
-    <td>The layer's software license.</td>
+    <td>The layer's software license. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="version" /></td>

@@ -18,7 +18,7 @@ emr service documentation.
 
 :::info[Service Summary]
 
-total resources: __21__  
+total resources: __23__  
 
 :::
 
@@ -35,14 +35,16 @@ total resources: __21__
 <a href="/services/emr/instances/">instances</a><br />
 <a href="/services/emr/job_flows/">job_flows</a><br />
 <a href="/services/emr/managed_scaling_policies/">managed_scaling_policies</a><br />
-<a href="/services/emr/notebook_executions/">notebook_executions</a>
+<a href="/services/emr/notebook_executions/">notebook_executions</a><br />
+<a href="/services/emr/on_cluster_app_ui_presigned_urls/">on_cluster_app_ui_presigned_urls</a>
 </div>
 <div class="providerDocColumn">
-<a href="/services/emr/on_cluster_app_ui_presigned_urls/">on_cluster_app_ui_presigned_urls</a><br />
 <a href="/services/emr/persistent_app_ui_presigned_urls/">persistent_app_ui_presigned_urls</a><br />
 <a href="/services/emr/persistent_app_uis/">persistent_app_uis</a><br />
 <a href="/services/emr/release_labels/">release_labels</a><br />
 <a href="/services/emr/security_configurations/">security_configurations</a><br />
+<a href="/services/emr/session_endpoints/">session_endpoints</a><br />
+<a href="/services/emr/sessions/">sessions</a><br />
 <a href="/services/emr/steps/">steps</a><br />
 <a href="/services/emr/studio_session_mappings/">studio_session_mappings</a><br />
 <a href="/services/emr/studios/">studios</a><br />

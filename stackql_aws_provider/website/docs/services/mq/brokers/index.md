@@ -186,6 +186,11 @@ The following fields are returned by `SELECT` queries:
     <td>The list of pending security groups to authorize connections to brokers.</td>
 </tr>
 <tr>
+    <td><CopyableCode code="pending_storage_size" /></td>
+    <td><code>integer</code></td>
+    <td>The pending storage size in GB, to be applied on the next broker restart.</td>
+</tr>
+<tr>
     <td><CopyableCode code="publicly_accessible" /></td>
     <td><code>boolean</code></td>
     <td>Enables connections from applications outside of the VPC that hosts the broker's subnets.</td>
@@ -194,6 +199,11 @@ The following fields are returned by `SELECT` queries:
     <td><CopyableCode code="security_groups" /></td>
     <td><code>array</code></td>
     <td>The list of rules (1 minimum, 125 maximum) that authorize connections to brokers.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="storage_size" /></td>
+    <td><code>integer</code></td>
+    <td>The broker's storage size in GB.</td>
 </tr>
 <tr>
     <td><CopyableCode code="storage_type" /></td>
@@ -405,8 +415,10 @@ pending_engine_version,
 pending_host_instance_type,
 pending_ldap_server_metadata,
 pending_security_groups,
+pending_storage_size,
 publicly_accessible,
 security_groups,
+storage_size,
 storage_type,
 subnet_ids,
 tags,
@@ -471,6 +483,7 @@ Logs,
 MaintenanceWindowStartTime,
 PubliclyAccessible,
 SecurityGroups,
+StorageSize,
 StorageType,
 SubnetIds,
 Tags,
@@ -495,6 +508,7 @@ SELECT
 '{{ MaintenanceWindowStartTime }}',
 {{ PubliclyAccessible }} /* required */,
 '{{ SecurityGroups }}',
+{{ StorageSize }},
 '{{ StorageType }}',
 '{{ SubnetIds }}',
 '{{ Tags }}',
@@ -587,6 +601,8 @@ broker_id
     - name: SecurityGroups
       value:
         - "{{ SecurityGroups }}"
+    - name: StorageSize
+      value: {{ StorageSize }}
     - name: StorageType
       value: "{{ StorageType }}"
       description: |
@@ -640,7 +656,9 @@ HostInstanceType = '{{ HostInstanceType }}',
 LdapServerMetadata = '{{ LdapServerMetadata }}',
 Logs = '{{ Logs }}',
 MaintenanceWindowStartTime = '{{ MaintenanceWindowStartTime }}',
+ResourceShareArns = '{{ ResourceShareArns }}',
 SecurityGroups = '{{ SecurityGroups }}',
+StorageSize = {{ StorageSize }},
 DataReplicationMode = '{{ DataReplicationMode }}'
 WHERE 
 `broker-id` = '{{ broker-id }}' --required
@@ -659,7 +677,9 @@ logs,
 maintenance_window_start_time,
 pending_data_replication_metadata,
 pending_data_replication_mode,
-security_groups;
+resource_share_arns,
+security_groups,
+storage_size;
 ```
 </TabItem>
 </Tabs>

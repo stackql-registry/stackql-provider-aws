@@ -18,7 +18,7 @@ socialmessaging service documentation.
 
 :::info[Service Summary]
 
-total resources: __8__  
+total resources: __12__  
 
 :::
 
@@ -28,10 +28,14 @@ total resources: __8__
 <a href="/services/socialmessaging/linked_whats_app_business_account_phone_numbers/">linked_whats_app_business_account_phone_numbers</a><br />
 <a href="/services/socialmessaging/linked_whats_app_business_accounts/">linked_whats_app_business_accounts</a><br />
 <a href="/services/socialmessaging/tags/">tags</a><br />
-<a href="/services/socialmessaging/whats_app_business_account_event_destinations/">whats_app_business_account_event_destinations</a>
+<a href="/services/socialmessaging/whats_app_business_account_event_destinations/">whats_app_business_account_event_destinations</a><br />
+<a href="/services/socialmessaging/whats_app_business_accounts/">whats_app_business_accounts</a><br />
+<a href="/services/socialmessaging/whats_app_datasets/">whats_app_datasets</a>
 </div>
 <div class="providerDocColumn">
-<a href="/services/socialmessaging/whats_app_business_accounts/">whats_app_business_accounts</a><br />
+<a href="/services/socialmessaging/whats_app_flow_assets/">whats_app_flow_assets</a><br />
+<a href="/services/socialmessaging/whats_app_flow_previews/">whats_app_flow_previews</a><br />
+<a href="/services/socialmessaging/whats_app_flows/">whats_app_flows</a><br />
 <a href="/services/socialmessaging/whats_app_message_medias/">whats_app_message_medias</a><br />
 <a href="/services/socialmessaging/whats_app_message_templates/">whats_app_message_templates</a><br />
 <a href="/services/socialmessaging/whats_app_template_libraries/">whats_app_template_libraries</a>

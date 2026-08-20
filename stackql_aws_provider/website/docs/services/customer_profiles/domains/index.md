@@ -93,7 +93,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="rule_based_matching" /></td>
     <td><code>object</code></td>
-    <td>The process of matching duplicate profiles using the Rule-Based matching. If RuleBasedMatching = true, Amazon Connect Customer Profiles will start to match and merge your profiles according to your configuration in the RuleBasedMatchingRequest. You can use the ListRuleBasedMatches and GetSimilarProfiles API to return and review the results. Also, if you have configured ExportingConfig in the RuleBasedMatchingRequest, you can download the results from S3.</td>
+    <td>The process of matching duplicate profiles using the Rule-Based matching. If RuleBasedMatching = true, Connect Customer Customer Profiles will start to match and merge your profiles according to your configuration in the RuleBasedMatchingRequest. You can use the ListRuleBasedMatches and GetSimilarProfiles API to return and review the results. Also, if you have configured ExportingConfig in the RuleBasedMatchingRequest, you can download the results from S3.</td>
 </tr>
 <tr>
     <td><CopyableCode code="stats" /></td>
@@ -168,7 +168,7 @@ The following methods are available for this resource:
     <td><CopyableCode code="insert" /></td>
     <td><a href="#parameter-domain_name"><code>domain_name</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-DefaultExpirationDays"><code>DefaultExpirationDays</code></a></td>
     <td></td>
-    <td>Creates a domain, which is a container for all customer data, such as customer profile attributes, object types, profile keys, and encryption keys. You can create multiple domains, and each domain can have multiple third-party integrations. Each Amazon Connect instance can be associated with only one domain. Multiple Amazon Connect instances can be associated with one domain. Use this API or UpdateDomain to enable identity resolution: set Matching to true. To prevent cross-service impersonation when you call this API, see Cross-service confused deputy prevention for sample policies that you should apply. It is not possible to associate a Customer Profiles domain with an Amazon Connect Instance directly from the API. If you would like to create a domain and associate a Customer Profiles domain, use the Amazon Connect admin website. For more information, see Enable Customer Profiles. Each Amazon Connect instance can be associated with only one domain. Multiple Amazon Connect instances can be associated with one domain.</td>
+    <td>Creates a domain, which is a container for all customer data, such as customer profile attributes, object types, profile keys, and encryption keys. You can create multiple domains, and each domain can have multiple third-party integrations. Each Connect Customer instance can be associated with only one domain. Multiple Connect Customer instances can be associated with one domain. Use this API or UpdateDomain to enable identity resolution: set Matching to true. To prevent cross-service impersonation when you call this API, see Cross-service confused deputy prevention for sample policies that you should apply. It is not possible to associate a Customer Profiles domain with an Amazon Connect Instance directly from the API. If you would like to create a domain and associate a Customer Profiles domain, use the Amazon Connect admin website. For more information, see Enable Customer Profiles. Each Amazon Connect instance can be associated with only one domain. Multiple Amazon Connect instances can be associated with one domain.</td>
 </tr>
 <tr>
     <td><a href="#update_domain"><CopyableCode code="update_domain" /></a></td>
@@ -183,6 +183,13 @@ The following methods are available for this resource:
     <td><a href="#parameter-domain_name"><code>domain_name</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td></td>
     <td>Deletes a specific domain and all of its customer data, such as customer profile attributes and their related objects.</td>
+</tr>
+<tr>
+    <td><a href="#batch_put_profile_object"><CopyableCode code="batch_put_profile_object" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-domain_name"><code>domain_name</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-ObjectTypeName"><code>ObjectTypeName</code></a></td>
+    <td></td>
+    <td>Adds multiple profile objects to a domain of a given ObjectType in a single API call. When adding a specific profile object, like a Contact Record, an inferred profile can get created if it is not mapped to an existing profile. The resulting profile will only have a phone number populated in the standard ProfileObject. Any additional Contact Records with the same phone number will be mapped to the same inferred profile. When a ProfileObject is created and if a ProfileObjectType already exists for the ProfileObject, it will provide data to a standard profile depending on the ProfileObjectType definition. BatchPutProfileObject needs an ObjectType, which can be created using PutProfileObjectType.</td>
 </tr>
 <tr>
     <td><a href="#detect_profile_object_type"><CopyableCode code="detect_profile_object_type" /></a></td>
@@ -310,7 +317,7 @@ AND `max-results` = '{{ max-results }}'
 >
 <TabItem value="create_domain">
 
-Creates a domain, which is a container for all customer data, such as customer profile attributes, object types, profile keys, and encryption keys. You can create multiple domains, and each domain can have multiple third-party integrations. Each Amazon Connect instance can be associated with only one domain. Multiple Amazon Connect instances can be associated with one domain. Use this API or UpdateDomain to enable identity resolution: set Matching to true. To prevent cross-service impersonation when you call this API, see Cross-service confused deputy prevention for sample policies that you should apply. It is not possible to associate a Customer Profiles domain with an Amazon Connect Instance directly from the API. If you would like to create a domain and associate a Customer Profiles domain, use the Amazon Connect admin website. For more information, see Enable Customer Profiles. Each Amazon Connect instance can be associated with only one domain. Multiple Amazon Connect instances can be associated with one domain.
+Creates a domain, which is a container for all customer data, such as customer profile attributes, object types, profile keys, and encryption keys. You can create multiple domains, and each domain can have multiple third-party integrations. Each Connect Customer instance can be associated with only one domain. Multiple Connect Customer instances can be associated with one domain. Use this API or UpdateDomain to enable identity resolution: set Matching to true. To prevent cross-service impersonation when you call this API, see Cross-service confused deputy prevention for sample policies that you should apply. It is not possible to associate a Customer Profiles domain with an Amazon Connect Instance directly from the API. If you would like to create a domain and associate a Customer Profiles domain, use the Amazon Connect admin website. For more information, see Enable Customer Profiles. Each Amazon Connect instance can be associated with only one domain. Multiple Amazon Connect instances can be associated with one domain.
 
 ```sql
 INSERT INTO aws.customer_profiles.domains (
@@ -489,13 +496,30 @@ AND region = '{{ region }}' --required
 ## Lifecycle Methods
 
 <Tabs
-    defaultValue="detect_profile_object_type"
+    defaultValue="batch_put_profile_object"
     values={[
+        { label: 'batch_put_profile_object', value: 'batch_put_profile_object' },
         { label: 'detect_profile_object_type', value: 'detect_profile_object_type' },
         { label: 'start_upload_job', value: 'start_upload_job' },
         { label: 'stop_upload_job', value: 'stop_upload_job' }
     ]}
 >
+<TabItem value="batch_put_profile_object">
+
+Adds multiple profile objects to a domain of a given ObjectType in a single API call. When adding a specific profile object, like a Contact Record, an inferred profile can get created if it is not mapped to an existing profile. The resulting profile will only have a phone number populated in the standard ProfileObject. Any additional Contact Records with the same phone number will be mapped to the same inferred profile. When a ProfileObject is created and if a ProfileObjectType already exists for the ProfileObject, it will provide data to a standard profile depending on the ProfileObjectType definition. BatchPutProfileObject needs an ObjectType, which can be created using PutProfileObjectType.
+
+```sql
+EXEC aws.customer_profiles.domains.batch_put_profile_object 
+@domain_name='{{ domain_name }}' --required, 
+@region='{{ region }}' --required 
+@@json=
+'{
+"ObjectTypeName": "{{ ObjectTypeName }}", 
+"Items": "{{ Items }}"
+}'
+;
+```
+</TabItem>
 <TabItem value="detect_profile_object_type">
 
 The process of detecting profile object type mapping by using given objects.

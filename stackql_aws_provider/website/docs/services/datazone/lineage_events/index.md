@@ -168,6 +168,13 @@ The following methods are available for this resource:
     <td><a href="#parameter-maxResults"><code>maxResults</code></a>, <a href="#parameter-timestampAfter"><code>timestampAfter</code></a>, <a href="#parameter-timestampBefore"><code>timestampBefore</code></a>, <a href="#parameter-processingStatus"><code>processingStatus</code></a>, <a href="#parameter-sortOrder"><code>sortOrder</code></a>, <a href="#parameter-nextToken"><code>nextToken</code></a></td>
     <td>Lists lineage events.</td>
 </tr>
+<tr>
+    <td><a href="#delete_lineage_event"><CopyableCode code="delete_lineage_event" /></a></td>
+    <td><CopyableCode code="delete" /></td>
+    <td><a href="#parameter-domain_identifier"><code>domain_identifier</code></a>, <a href="#parameter-identifier"><code>identifier</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Deletes the specified lineage event.</td>
+</tr>
 </tbody>
 </table>
 
@@ -187,7 +194,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-domain_identifier">
     <td><CopyableCode code="domain_identifier" /></td>
     <td><code>string</code></td>
-    <td>The ID of the domain where you want to list lineage events.</td>
+    <td>The ID of the domain.</td>
 </tr>
 <tr id="parameter-identifier">
     <td><CopyableCode code="identifier" /></td>
@@ -283,6 +290,29 @@ AND timestampBefore = '{{ timestampBefore }}'
 AND processingStatus = '{{ processingStatus }}'
 AND sortOrder = '{{ sortOrder }}'
 AND nextToken = '{{ nextToken }}'
+;
+```
+</TabItem>
+</Tabs>
+
+
+## `DELETE` examples
+
+<Tabs
+    defaultValue="delete_lineage_event"
+    values={[
+        { label: 'delete_lineage_event', value: 'delete_lineage_event' }
+    ]}
+>
+<TabItem value="delete_lineage_event">
+
+Deletes the specified lineage event.
+
+```sql
+DELETE FROM aws.datazone.lineage_events
+WHERE domain_identifier = '{{ domain_identifier }}' --required
+AND identifier = '{{ identifier }}' --required
+AND region = '{{ region }}' --required
 ;
 ```
 </TabItem>

@@ -36,7 +36,8 @@ The following fields are returned by `SELECT` queries:
     defaultValue="describe_rule"
     values={[
         { label: 'describe_rule', value: 'describe_rule' },
-        { label: 'list_rules', value: 'list_rules' }
+        { label: 'list_rules', value: 'list_rules' },
+        { label: 'search_rules', value: 'search_rules' }
     ]}
 >
 <TabItem value="describe_rule">
@@ -91,6 +92,11 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the rule.</td>
 </tr>
 <tr>
+    <td><CopyableCode code="rule_capability_tiers" /></td>
+    <td><code>array</code></td>
+    <td>The list of capability tiers associated with the rule. Used for categorizing rules by capability (for example, GenerativeAI).</td>
+</tr>
+<tr>
     <td><CopyableCode code="rule_id" /></td>
     <td><code>string</code></td>
     <td>A unique identifier for the rule.</td>
@@ -132,7 +138,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="event_source_name" /></td>
     <td><code>string</code></td>
-    <td>The name of the event source. (OnPostCallAnalysisAvailable, OnRealTimeCallAnalysisAvailable, OnRealTimeChatAnalysisAvailable, OnPostChatAnalysisAvailable, OnEmailAnalysisAvailable, OnZendeskTicketCreate, OnZendeskTicketStatusUpdate, OnSalesforceCaseCreate, OnContactEvaluationSubmit, OnMetricDataUpdate, OnCaseCreate, OnCaseUpdate, OnSlaBreach, OnAlertUpdate, OnSchedulePublish, OnScheduleUpdate, OnScheduleTimeOffRequestActivity)</td>
+    <td>The name of the event source. (OnPostCallAnalysisAvailable, OnRealTimeCallAnalysisAvailable, OnRealTimeChatAnalysisAvailable, OnPostChatAnalysisAvailable, OnAfterCallWorkAvailable, OnAfterChatWorkAvailable, OnEmailAnalysisAvailable, OnZendeskTicketCreate, OnZendeskTicketStatusUpdate, OnSalesforceCaseCreate, OnContactEvaluationSubmit, OnMetricDataUpdate, OnCaseCreate, OnCaseUpdate, OnSlaBreach, OnAlertUpdate, OnSchedulePublish, OnScheduleUpdate, OnScheduleTimeOffRequestActivity)</td>
 </tr>
 <tr>
     <td><CopyableCode code="last_updated_time" /></td>
@@ -155,9 +161,83 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the rule.</td>
 </tr>
 <tr>
+    <td><CopyableCode code="rule_capability_tiers" /></td>
+    <td><code>array</code></td>
+    <td>The list of capability tiers associated with the rule. Used for categorizing rules by capability (for example, GenerativeAI).</td>
+</tr>
+<tr>
     <td><CopyableCode code="rule_id" /></td>
     <td><code>string</code></td>
     <td>A unique identifier for the rule.</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
+<TabItem value="search_rules">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="action_summaries" /></td>
+    <td><code>array</code></td>
+    <td>A list of ActionTypes associated with a rule.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="created_time" /></td>
+    <td><code>string (date-time)</code></td>
+    <td>The timestamp for when the rule was created.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="last_updated_by" /></td>
+    <td><code>string</code></td>
+    <td>The Amazon Resource Name (ARN) of the user who last updated the rule.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="last_updated_time" /></td>
+    <td><code>string (date-time)</code></td>
+    <td>The timestamp for when the rule was last updated.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="name" /></td>
+    <td><code>string</code></td>
+    <td>The name of the rule. (pattern: &lt;code&gt;^&#91;0-9a-zA-Z._-&#93;+&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="publish_status" /></td>
+    <td><code>string</code></td>
+    <td>The publish status of the rule. (DRAFT, PUBLISHED)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="rule_arn" /></td>
+    <td><code>string</code></td>
+    <td>The Amazon Resource Name (ARN) of the rule.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="rule_capability_tiers" /></td>
+    <td><code>array</code></td>
+    <td>The list of capability tiers associated with the rule. Used for categorizing rules by capability (for example, GenerativeAI).</td>
+</tr>
+<tr>
+    <td><CopyableCode code="rule_id" /></td>
+    <td><code>string</code></td>
+    <td>A unique identifier for the rule.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="tags" /></td>
+    <td><code>object</code></td>
+    <td>The tags used to organize, track, or control access for this resource. For example, &#123; "Tags": &#123;"key1":"value1", "key2":"value2"&#125; &#125;.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="trigger_event_source" /></td>
+    <td><code>object</code></td>
+    <td>The name of the event source. This field is required if TriggerEventSource is one of the following values: OnZendeskTicketCreate | OnZendeskTicketStatusUpdate | OnSalesforceCaseCreate | OnContactEvaluationSubmit | OnMetricDataUpdate.</td>
 </tr>
 </tbody>
 </table>
@@ -184,35 +264,42 @@ The following methods are available for this resource:
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-instance_id"><code>instance_id</code></a>, <a href="#parameter-rule_id"><code>rule_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>Describes a rule for the specified Amazon Connect instance.</td>
+    <td>Describes a rule for the specified Connect Customer instance.</td>
 </tr>
 <tr>
     <td><a href="#list_rules"><CopyableCode code="list_rules" /></a></td>
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-instance_id"><code>instance_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td><a href="#parameter-publishStatus"><code>publishStatus</code></a>, <a href="#parameter-eventSourceName"><code>eventSourceName</code></a>, <a href="#parameter-maxResults"><code>maxResults</code></a>, <a href="#parameter-nextToken"><code>nextToken</code></a></td>
-    <td>List all rules for the specified Amazon Connect instance.</td>
+    <td>List all rules for the specified Connect Customer instance.</td>
+</tr>
+<tr>
+    <td><a href="#search_rules"><CopyableCode code="search_rules" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Searches rules in an Connect Customer instance, with optional filtering.</td>
 </tr>
 <tr>
     <td><a href="#create_rule"><CopyableCode code="create_rule" /></a></td>
     <td><CopyableCode code="insert" /></td>
     <td><a href="#parameter-instance_id"><code>instance_id</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-TriggerEventSource"><code>TriggerEventSource</code></a>, <a href="#parameter-Function"><code>Function</code></a>, <a href="#parameter-Actions"><code>Actions</code></a>, <a href="#parameter-PublishStatus"><code>PublishStatus</code></a></td>
     <td></td>
-    <td>Creates a rule for the specified Amazon Connect instance. Use the Rules Function language to code conditions for the rule.</td>
+    <td>Creates a rule for the specified Connect Customer instance. Use the Rules Function language to code conditions for the rule.</td>
 </tr>
 <tr>
     <td><a href="#update_rule"><CopyableCode code="update_rule" /></a></td>
     <td><CopyableCode code="update" /></td>
     <td><a href="#parameter-rule_id"><code>rule_id</code></a>, <a href="#parameter-instance_id"><code>instance_id</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-Function"><code>Function</code></a>, <a href="#parameter-Actions"><code>Actions</code></a>, <a href="#parameter-PublishStatus"><code>PublishStatus</code></a></td>
     <td></td>
-    <td>Updates a rule for the specified Amazon Connect instance. Use the Rules Function language to code conditions for the rule.</td>
+    <td>Updates a rule for the specified Connect Customer instance. Use the Rules Function language to code conditions for the rule.</td>
 </tr>
 <tr>
     <td><a href="#delete_rule"><CopyableCode code="delete_rule" /></a></td>
     <td><CopyableCode code="delete" /></td>
     <td><a href="#parameter-instance_id"><code>instance_id</code></a>, <a href="#parameter-rule_id"><code>rule_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>Deletes a rule for the specified Amazon Connect instance.</td>
+    <td>Deletes a rule for the specified Connect Customer instance.</td>
 </tr>
 </tbody>
 </table>
@@ -233,7 +320,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-instance_id">
     <td><CopyableCode code="instance_id" /></td>
     <td><code>string</code></td>
-    <td>The identifier of the Amazon Connect instance. You can find the instance ID in the Amazon Resource Name (ARN) of the instance.</td>
+    <td>The identifier of the Connect Customer instance. You can find the instance ID in the Amazon Resource Name (ARN) of the instance.</td>
 </tr>
 <tr id="parameter-region">
     <td><CopyableCode code="region" /></td>
@@ -274,12 +361,13 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     defaultValue="describe_rule"
     values={[
         { label: 'describe_rule', value: 'describe_rule' },
-        { label: 'list_rules', value: 'list_rules' }
+        { label: 'list_rules', value: 'list_rules' },
+        { label: 'search_rules', value: 'search_rules' }
     ]}
 >
 <TabItem value="describe_rule">
 
-Describes a rule for the specified Amazon Connect instance.
+Describes a rule for the specified Connect Customer instance.
 
 ```sql
 SELECT
@@ -291,6 +379,7 @@ last_updated_time,
 name,
 publish_status,
 rule_arn,
+rule_capability_tiers,
 rule_id,
 tags,
 trigger_event_source
@@ -303,7 +392,7 @@ AND region = '{{ region }}' -- required
 </TabItem>
 <TabItem value="list_rules">
 
-List all rules for the specified Amazon Connect instance.
+List all rules for the specified Connect Customer instance.
 
 ```sql
 SELECT
@@ -314,6 +403,7 @@ last_updated_time,
 name,
 publish_status,
 rule_arn,
+rule_capability_tiers,
 rule_id
 FROM aws.connect.rules
 WHERE instance_id = '{{ instance_id }}' -- required
@@ -322,6 +412,28 @@ AND publishStatus = '{{ publishStatus }}'
 AND eventSourceName = '{{ eventSourceName }}'
 AND maxResults = '{{ maxResults }}'
 AND nextToken = '{{ nextToken }}'
+;
+```
+</TabItem>
+<TabItem value="search_rules">
+
+Searches rules in an Connect Customer instance, with optional filtering.
+
+```sql
+SELECT
+action_summaries,
+created_time,
+last_updated_by,
+last_updated_time,
+name,
+publish_status,
+rule_arn,
+rule_capability_tiers,
+rule_id,
+tags,
+trigger_event_source
+FROM aws.connect.rules
+WHERE region = '{{ region }}' -- required
 ;
 ```
 </TabItem>
@@ -339,7 +451,7 @@ AND nextToken = '{{ nextToken }}'
 >
 <TabItem value="create_rule">
 
-Creates a rule for the specified Amazon Connect instance. Use the Rules Function language to code conditions for the rule.
+Creates a rule for the specified Connect Customer instance. Use the Rules Function language to code conditions for the rule.
 
 ```sql
 INSERT INTO aws.connect.rules (
@@ -444,6 +556,9 @@ rule_id
           EndAssociatedTasksAction: "{{ EndAssociatedTasksAction }}"
           SubmitAutoEvaluationAction:
             EvaluationFormId: "{{ EvaluationFormId }}"
+          ExtractInformationAction:
+            RulesExtractionDefinitions:
+              - Identifier: "{{ Identifier }}"
     - name: PublishStatus
       value: "{{ PublishStatus }}"
       valid_values: ['DRAFT', 'PUBLISHED']
@@ -465,7 +580,7 @@ rule_id
 >
 <TabItem value="update_rule">
 
-Updates a rule for the specified Amazon Connect instance. Use the Rules Function language to code conditions for the rule.
+Updates a rule for the specified Connect Customer instance. Use the Rules Function language to code conditions for the rule.
 
 ```sql
 UPDATE aws.connect.rules
@@ -496,7 +611,7 @@ AND PublishStatus = '{{ PublishStatus }}' --required;
 >
 <TabItem value="delete_rule">
 
-Deletes a rule for the specified Amazon Connect instance.
+Deletes a rule for the specified Connect Customer instance.
 
 ```sql
 DELETE FROM aws.connect.rules

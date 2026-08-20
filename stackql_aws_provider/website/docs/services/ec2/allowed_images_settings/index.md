@@ -96,7 +96,7 @@ The following methods are available for this resource:
     <td><CopyableCode code="replace" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td><a href="#parameter-ImageCriterion"><code>ImageCriterion</code></a>, <a href="#parameter-DryRun"><code>DryRun</code></a></td>
-    <td>Sets or replaces the criteria for Allowed AMIs. The Allowed AMIs feature does not restrict the AMIs owned by your account. Regardless of the criteria you set, the AMIs created by your account will always be discoverable and usable by users in your account. For more information, see Control the discovery and use of AMIs in Amazon EC2 with Allowed AMIs in Amazon EC2 User Guide.</td>
+    <td>Sets or replaces the criteria for Allowed AMIs. The ImageCriteria can include up to: 10 ImageCriterion The Allowed AMIs feature does not restrict the AMIs owned by your account. Regardless of the criteria you set, the AMIs created by your account will always be discoverable and usable by users in your account. For more information, see Control the discovery and use of AMIs in Amazon EC2 with Allowed AMIs in Amazon EC2 User Guide.</td>
 </tr>
 <tr>
     <td><a href="#disable_allowed_images_settings"><CopyableCode code="disable_allowed_images_settings" /></a></td>
@@ -187,7 +187,7 @@ AND DryRun = '{{ DryRun }}'
 >
 <TabItem value="replace_image_criteria_in_allowed_images_settings">
 
-Sets or replaces the criteria for Allowed AMIs. The Allowed AMIs feature does not restrict the AMIs owned by your account. Regardless of the criteria you set, the AMIs created by your account will always be discoverable and usable by users in your account. For more information, see Control the discovery and use of AMIs in Amazon EC2 with Allowed AMIs in Amazon EC2 User Guide.
+Sets or replaces the criteria for Allowed AMIs. The ImageCriteria can include up to: 10 ImageCriterion The Allowed AMIs feature does not restrict the AMIs owned by your account. Regardless of the criteria you set, the AMIs created by your account will always be discoverable and usable by users in your account. For more information, see Control the discovery and use of AMIs in Amazon EC2 with Allowed AMIs in Amazon EC2 User Guide.
 
 ```sql
 REPLACE aws.ec2.allowed_images_settings

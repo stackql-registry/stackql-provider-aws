@@ -62,12 +62,12 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="compliant_evidence_count" /></td>
     <td><code>integer</code></td>
-    <td>The number of compliance check evidence that Audit Manager classified as compliant on the lastUpdated date. This includes evidence that was collected from Security Hub with a Pass ruling, or collected from Config with a Compliant ruling.</td>
+    <td>The number of compliance check evidence that Audit Manager classified as compliant on the lastUpdated date. This includes evidence that was collected from Security Hub CSPM with a Pass ruling, or collected from Config with a Compliant ruling.</td>
 </tr>
 <tr>
     <td><CopyableCode code="inconclusive_evidence_count" /></td>
     <td><code>integer</code></td>
-    <td>The number of evidence without a compliance check ruling. Evidence is inconclusive when the associated control uses Security Hub or Config as a data source but you didn't enable those services. This is also the case when a control uses a data source that doesn’t support compliance checks (for example: manual evidence, API calls, or CloudTrail). If evidence has a compliance check status of not applicable, it's classed as inconclusive in Insights data.</td>
+    <td>The number of evidence without a compliance check ruling. Evidence is inconclusive when the associated control uses Security Hub CSPM or Config as a data source but you didn't enable those services. This is also the case when a control uses a data source that doesn’t support compliance checks (for example: manual evidence, API calls, or CloudTrail). If evidence has a compliance check status of not applicable, it's classed as inconclusive in Insights data.</td>
 </tr>
 <tr>
     <td><CopyableCode code="last_updated" /></td>
@@ -77,7 +77,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="noncompliant_evidence_count" /></td>
     <td><code>integer</code></td>
-    <td>The number of compliance check evidence that Audit Manager classified as non-compliant on the lastUpdated date. This includes evidence that was collected from Security Hub with a Fail ruling, or collected from Config with a Non-compliant ruling.</td>
+    <td>The number of compliance check evidence that Audit Manager classified as non-compliant on the lastUpdated date. This includes evidence that was collected from Security Hub CSPM with a Fail ruling, or collected from Config with a Non-compliant ruling.</td>
 </tr>
 <tr>
     <td><CopyableCode code="total_assessment_controls_count" /></td>

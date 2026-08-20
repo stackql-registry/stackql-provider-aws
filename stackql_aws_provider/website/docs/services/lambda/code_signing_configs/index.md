@@ -58,7 +58,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="code_signing_config_arn" /></td>
     <td><code>string</code></td>
-    <td>The Amazon Resource Name (ARN) of the Code signing configuration. (pattern: &lt;code&gt;arn:(aws&#91;a-zA-Z-&#93;*)?:lambda:&#91;a-z&#93;&#123;2&#125;((-gov)|(-iso(b?)))?-&#91;a-z&#93;+-\d&#123;1&#125;:\d&#123;12&#125;:code-signing-config:csc-&#91;a-z0-9&#93;&#123;17&#125;&lt;/code&gt;)</td>
+    <td>The Amazon Resource Name (ARN) of the Code signing configuration. (pattern: &lt;code&gt;arn:(aws&#91;a-zA-Z-&#93;*)?:lambda:(eusc-)?&#91;a-z&#93;&#123;2&#125;((-gov)|(-iso(&#91;a-z&#93;?)))?-&#91;a-z&#93;+-\d&#123;1&#125;:\d&#123;12&#125;:code-signing-config:csc-&#91;a-z0-9&#93;&#123;17&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="code_signing_config_id" /></td>
@@ -78,7 +78,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="last_modified" /></td>
     <td><code>string</code></td>
-    <td>The date and time that the Code signing configuration was last modified, in ISO-8601 format (YYYY-MM-DDThh:mm:ss.sTZD).</td>
+    <td>The date and time that the Code signing configuration was last modified, in ISO-8601 format (YYYY-MM-DDThh:mm:ss.sTZD). (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
 </tbody>
 </table>
@@ -102,7 +102,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="code_signing_config_arn" /></td>
     <td><code>string</code></td>
-    <td>The Amazon Resource Name (ARN) of the Code signing configuration. (pattern: &lt;code&gt;arn:(aws&#91;a-zA-Z-&#93;*)?:lambda:&#91;a-z&#93;&#123;2&#125;((-gov)|(-iso(b?)))?-&#91;a-z&#93;+-\d&#123;1&#125;:\d&#123;12&#125;:code-signing-config:csc-&#91;a-z0-9&#93;&#123;17&#125;&lt;/code&gt;)</td>
+    <td>The Amazon Resource Name (ARN) of the Code signing configuration. (pattern: &lt;code&gt;arn:(aws&#91;a-zA-Z-&#93;*)?:lambda:(eusc-)?&#91;a-z&#93;&#123;2&#125;((-gov)|(-iso(&#91;a-z&#93;?)))?-&#91;a-z&#93;+-\d&#123;1&#125;:\d&#123;12&#125;:code-signing-config:csc-&#91;a-z0-9&#93;&#123;17&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="code_signing_config_id" /></td>
@@ -122,7 +122,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="last_modified" /></td>
     <td><code>string</code></td>
-    <td>The date and time that the Code signing configuration was last modified, in ISO-8601 format (YYYY-MM-DDThh:mm:ss.sTZD).</td>
+    <td>The date and time that the Code signing configuration was last modified, in ISO-8601 format (YYYY-MM-DDThh:mm:ss.sTZD). (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
 </tbody>
 </table>

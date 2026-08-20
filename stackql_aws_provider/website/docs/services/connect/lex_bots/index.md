@@ -84,21 +84,21 @@ The following methods are available for this resource:
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-instance_id"><code>instance_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td><a href="#parameter-nextToken"><code>nextToken</code></a>, <a href="#parameter-maxResults"><code>maxResults</code></a></td>
-    <td>This API is in preview release for Amazon Connect and is subject to change. Returns a paginated list of all the Amazon Lex V1 bots currently associated with the instance. To return both Amazon Lex V1 and V2 bots, use the ListBots API.</td>
+    <td>This API is in preview release for Connect Customer and is subject to change. Returns a paginated list of all the Amazon Lex V1 bots currently associated with the instance. To return both Amazon Lex V1 and V2 bots, use the ListBots API.</td>
 </tr>
 <tr>
     <td><a href="#disassociate_lex_bot"><CopyableCode code="disassociate_lex_bot" /></a></td>
     <td><CopyableCode code="update" /></td>
     <td><a href="#parameter-instance_id"><code>instance_id</code></a>, <a href="#parameter-botName"><code>botName</code></a>, <a href="#parameter-lexRegion"><code>lexRegion</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td><a href="#parameter-clientToken"><code>clientToken</code></a></td>
-    <td>This API is in preview release for Amazon Connect and is subject to change. Revokes authorization from the specified instance to access the specified Amazon Lex bot.</td>
+    <td>This API is in preview release for Connect Customer and is subject to change. Revokes authorization from the specified instance to access the specified Amazon Lex bot.</td>
 </tr>
 <tr>
     <td><a href="#associate_lex_bot"><CopyableCode code="associate_lex_bot" /></a></td>
     <td><CopyableCode code="update" /></td>
     <td><a href="#parameter-instance_id"><code>instance_id</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-LexBot"><code>LexBot</code></a></td>
     <td></td>
-    <td>This API is in preview release for Amazon Connect and is subject to change. Allows the specified Amazon Connect instance to access the specified Amazon Lex V1 bot. This API only supports the association of Amazon Lex V1 bots.</td>
+    <td>This API is in preview release for Connect Customer and is subject to change. Allows the specified Connect Customer instance to access the specified Amazon Lex V1 bot. This API only supports the association of Amazon Lex V1 bots.</td>
 </tr>
 </tbody>
 </table>
@@ -124,7 +124,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-instance_id">
     <td><CopyableCode code="instance_id" /></td>
     <td><code>string</code></td>
-    <td>The identifier of the Amazon Connect instance. You can find the instance ID in the Amazon Resource Name (ARN) of the instance.</td>
+    <td>The identifier of the Connect Customer instance. You can find the instance ID in the Amazon Resource Name (ARN) of the instance.</td>
 </tr>
 <tr id="parameter-lexRegion">
     <td><CopyableCode code="lexRegion" /></td>
@@ -164,7 +164,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 >
 <TabItem value="list_lex_bots">
 
-This API is in preview release for Amazon Connect and is subject to change. Returns a paginated list of all the Amazon Lex V1 bots currently associated with the instance. To return both Amazon Lex V1 and V2 bots, use the ListBots API.
+This API is in preview release for Connect Customer and is subject to change. Returns a paginated list of all the Amazon Lex V1 bots currently associated with the instance. To return both Amazon Lex V1 and V2 bots, use the ListBots API.
 
 ```sql
 SELECT
@@ -192,7 +192,7 @@ AND maxResults = '{{ maxResults }}'
 >
 <TabItem value="disassociate_lex_bot">
 
-This API is in preview release for Amazon Connect and is subject to change. Revokes authorization from the specified instance to access the specified Amazon Lex bot.
+This API is in preview release for Connect Customer and is subject to change. Revokes authorization from the specified instance to access the specified Amazon Lex bot.
 
 ```sql
 UPDATE aws.connect.lex_bots
@@ -208,7 +208,7 @@ AND clientToken = '{{ clientToken}}';
 </TabItem>
 <TabItem value="associate_lex_bot">
 
-This API is in preview release for Amazon Connect and is subject to change. Allows the specified Amazon Connect instance to access the specified Amazon Lex V1 bot. This API only supports the association of Amazon Lex V1 bots.
+This API is in preview release for Connect Customer and is subject to change. Allows the specified Connect Customer instance to access the specified Amazon Lex V1 bot. This API only supports the association of Amazon Lex V1 bots.
 
 ```sql
 UPDATE aws.connect.lex_bots

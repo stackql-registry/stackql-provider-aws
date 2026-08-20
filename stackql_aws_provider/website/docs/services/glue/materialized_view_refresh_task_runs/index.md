@@ -108,7 +108,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="role" /></td>
     <td><code>string</code></td>
-    <td>The IAM role that the service assumes to generate statistics.</td>
+    <td>The IAM role that the service assumes to run the materialized view refresh task.</td>
 </tr>
 <tr>
     <td><CopyableCode code="start_time" /></td>
@@ -123,7 +123,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="table_name" /></td>
     <td><code>string</code></td>
-    <td>The name of the table for which statistics is generated.</td>
+    <td>The name of the materialized view.</td>
 </tr>
 </tbody>
 </table>
@@ -197,7 +197,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="role" /></td>
     <td><code>string</code></td>
-    <td>The IAM role that the service assumes to generate statistics.</td>
+    <td>The IAM role that the service assumes to run the materialized view refresh task.</td>
 </tr>
 <tr>
     <td><CopyableCode code="start_time" /></td>
@@ -212,7 +212,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="table_name" /></td>
     <td><code>string</code></td>
-    <td>The name of the table for which statistics is generated.</td>
+    <td>The name of the materialized view.</td>
 </tr>
 </tbody>
 </table>

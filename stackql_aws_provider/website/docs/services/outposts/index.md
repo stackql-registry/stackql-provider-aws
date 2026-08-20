@@ -18,7 +18,7 @@ outposts service documentation.
 
 :::info[Service Summary]
 
-total resources: __15__  
+total resources: __18__  
 
 :::
 
@@ -31,6 +31,7 @@ total resources: __15__
 <a href="/services/outposts/capacity_tasks/">capacity_tasks</a><br />
 <a href="/services/outposts/catalog_items/">catalog_items</a><br />
 <a href="/services/outposts/connections/">connections</a><br />
+<a href="/services/outposts/orderable_instance_types/">orderable_instance_types</a><br />
 <a href="/services/outposts/orders/">orders</a><br />
 <a href="/services/outposts/outpost_billing_informations/">outpost_billing_informations</a>
 </div>
@@ -38,6 +39,8 @@ total resources: __15__
 <a href="/services/outposts/outpost_instance_types/">outpost_instance_types</a><br />
 <a href="/services/outposts/outpost_supported_instance_types/">outpost_supported_instance_types</a><br />
 <a href="/services/outposts/outposts/">outposts</a><br />
+<a href="/services/outposts/private_connectivity_configs/">private_connectivity_configs</a><br />
+<a href="/services/outposts/quotes/">quotes</a><br />
 <a href="/services/outposts/renewal_pricings/">renewal_pricings</a><br />
 <a href="/services/outposts/site_address/">site_address</a><br />
 <a href="/services/outposts/sites/">sites</a><br />

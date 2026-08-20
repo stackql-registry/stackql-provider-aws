@@ -151,7 +151,7 @@ The following methods are available for this resource:
 <tr>
     <td><a href="#create_performance_analysis_report"><CopyableCode code="create_performance_analysis_report" /></a></td>
     <td><CopyableCode code="insert" /></td>
-    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-ServiceType"><code>ServiceType</code></a>, <a href="#parameter-Identifier"><code>Identifier</code></a>, <a href="#parameter-StartTime"><code>StartTime</code></a>, <a href="#parameter-EndTime"><code>EndTime</code></a></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-ServiceType"><code>ServiceType</code></a>, <a href="#parameter-Identifier"><code>Identifier</code></a>, <a href="#parameter-StartTime"><code>StartTime</code></a></td>
     <td></td>
     <td>Creates a new performance analysis report for a specific time period for the DB instance.</td>
 </tr>
@@ -256,7 +256,7 @@ SELECT
 '{{ ServiceType }}' /* required */,
 '{{ Identifier }}' /* required */,
 '{{ StartTime }}' /* required */,
-'{{ EndTime }}' /* required */,
+'{{ EndTime }}',
 '{{ Tags }}',
 '{{ region }}'
 RETURNING

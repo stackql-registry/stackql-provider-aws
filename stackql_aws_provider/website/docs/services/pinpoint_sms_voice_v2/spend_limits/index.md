@@ -62,7 +62,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
-    <td>The name for the SpendLimit. (TEXT_MESSAGE_MONTHLY_SPEND_LIMIT, VOICE_MESSAGE_MONTHLY_SPEND_LIMIT, MEDIA_MESSAGE_MONTHLY_SPEND_LIMIT, NOTIFY_MESSAGE_MONTHLY_SPEND_LIMIT)</td>
+    <td>The name for the SpendLimit. (TEXT_MESSAGE_MONTHLY_SPEND_LIMIT, VOICE_MESSAGE_MONTHLY_SPEND_LIMIT, MEDIA_MESSAGE_MONTHLY_SPEND_LIMIT, NOTIFY_MESSAGE_MONTHLY_SPEND_LIMIT, RCS_MESSAGE_MONTHLY_SPEND_LIMIT)</td>
 </tr>
 <tr>
     <td><CopyableCode code="overridden" /></td>

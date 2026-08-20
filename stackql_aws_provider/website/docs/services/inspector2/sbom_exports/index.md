@@ -239,6 +239,41 @@ report_id
           - comparison: "{{ comparison }}"
             key: "{{ key }}"
             value: "{{ value }}"
+        cloudProvider:
+          - comparison: "{{ comparison }}"
+            value: "{{ value }}"
+        cloudProviderAccountId:
+          - comparison: "{{ comparison }}"
+            value: "{{ value }}"
+        cloudProviderOrgId:
+          - comparison: "{{ comparison }}"
+            value: "{{ value }}"
+        cloudProviderRegion:
+          - comparison: "{{ comparison }}"
+            value: "{{ value }}"
+        cloudVmInstanceTags:
+          - comparison: "{{ comparison }}"
+            key: "{{ key }}"
+            value: "{{ value }}"
+        cloudContainerImageTags:
+          - comparison: "{{ comparison }}"
+            value: "{{ value }}"
+        cloudContainerRepositoryName:
+          - comparison: "{{ comparison }}"
+            value: "{{ value }}"
+        cloudContainerRegistryName:
+          - comparison: "{{ comparison }}"
+            value: "{{ value }}"
+        cloudServerlessFunctionName:
+          - comparison: "{{ comparison }}"
+            value: "{{ value }}"
+        cloudServerlessFunctionRuntime:
+          - comparison: "{{ comparison }}"
+            value: "{{ value }}"
+        cloudServerlessFunctionTags:
+          - comparison: "{{ comparison }}"
+            key: "{{ key }}"
+            value: "{{ value }}"
     - name: reportFormat
       value: "{{ reportFormat }}"
       valid_values: ['CYCLONEDX_1_4', 'SPDX_2_3']

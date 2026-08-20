@@ -277,6 +277,21 @@ analysis_rule
             differentialPrivacy:
               columns:
                 - name: "{{ name }}"
+            aggregationThresholds:
+              - identityColumns: "{{ identityColumns }}"
+                minimumIdentityCount: {{ minimumIdentityCount }}
+                type_: "{{ type_ }}"
+                outputColumnThresholds: "{{ outputColumnThresholds }}"
+                allowedAggregateExpressionType: "{{ allowedAggregateExpressionType }}"
+            comparisonControls:
+              allowedLiteralComparisonColumns:
+                - "{{ allowedLiteralComparisonColumns }}"
+              allowedColumnComparisonColumns:
+                - "{{ allowedColumnComparisonColumns }}"
+            allowedResultReceivers:
+              - "{{ allowedResultReceivers }}"
+            allowedAdditionalAnalyses:
+              - "{{ allowedAdditionalAnalyses }}"
 `}</CodeBlock>
 
 </TabItem>

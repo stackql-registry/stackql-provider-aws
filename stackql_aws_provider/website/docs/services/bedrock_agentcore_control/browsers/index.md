@@ -101,6 +101,11 @@ The following fields are returned by `SELECT` queries:
     <td>The reason for failure if the browser is in a failed state.</td>
 </tr>
 <tr>
+    <td><CopyableCode code="filesystem_configurations" /></td>
+    <td><code>array</code></td>
+    <td>The file system configurations to mount into the session. Each configuration maps an access point to a path inside the session. You can specify up to 4 configurations. The maximum is 2 Amazon Simple Storage Service (Amazon S3) Files access points and 2 Amazon Elastic File System (Amazon EFS) access points.</td>
+</tr>
+<tr>
     <td><CopyableCode code="last_updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the browser was last updated.</td>
@@ -291,6 +296,7 @@ description,
 enterprise_policies,
 execution_role_arn,
 failure_reason,
+filesystem_configurations,
 last_updated_at,
 network_configuration,
 recording,
@@ -348,6 +354,7 @@ recording,
 browserSigning,
 enterprisePolicies,
 certificates,
+filesystemConfigurations,
 clientToken,
 tags,
 region
@@ -361,6 +368,7 @@ SELECT
 '{{ browserSigning }}',
 '{{ enterprisePolicies }}',
 '{{ certificates }}',
+'{{ filesystemConfigurations }}',
 '{{ clientToken }}',
 '{{ tags }}',
 '{{ region }}'
@@ -424,6 +432,18 @@ status
         - location:
             secretsManager:
               secretArn: "{{ secretArn }}"
+    - name: filesystemConfigurations
+      description: |
+        The file system configurations to mount into the session. Each configuration maps an access point to a path inside the session. You can specify up to 4 configurations. The maximum is 2 Amazon Simple Storage Service (Amazon S3) Files access points and 2 Amazon Elastic File System (Amazon EFS) access points.
+      value:
+        - s3FilesConfiguration:
+            accessPointArn: "{{ accessPointArn }}"
+            mountPath: "{{ mountPath }}"
+            fileSystemArn: "{{ fileSystemArn }}"
+          efsConfiguration:
+            accessPointArn: "{{ accessPointArn }}"
+            mountPath: "{{ mountPath }}"
+            fileSystemArn: "{{ fileSystemArn }}"
     - name: clientToken
       value: "{{ clientToken }}"
     - name: tags

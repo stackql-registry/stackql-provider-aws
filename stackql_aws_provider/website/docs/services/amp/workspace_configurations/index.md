@@ -55,9 +55,19 @@ The following fields are returned by `SELECT` queries:
     <td>This is an array of structures, where each structure displays one label sets for the workspace and the limits for that label set.</td>
 </tr>
 <tr>
+    <td><CopyableCode code="out_of_order_time_window_in_seconds" /></td>
+    <td><code>integer</code></td>
+    <td>This field displays the out of order time window in seconds for accepting out of order samples.</td>
+</tr>
+<tr>
     <td><CopyableCode code="retention_period_in_days" /></td>
     <td><code>integer</code></td>
     <td>This field displays how many days that metrics are retained in the workspace.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="rule_query_offset_in_seconds" /></td>
+    <td><code>integer</code></td>
+    <td>This field displays the duration in seconds that rule evaluation queries are offset into the past.</td>
 </tr>
 <tr>
     <td><CopyableCode code="status" /></td>
@@ -142,7 +152,9 @@ Use this operation to return information about the configuration of a workspace.
 ```sql
 SELECT
 limits_per_label_set,
+out_of_order_time_window_in_seconds,
 retention_period_in_days,
+rule_query_offset_in_seconds,
 status
 FROM aws.amp.workspace_configurations
 WHERE workspace_id = '{{ workspace_id }}' -- required
@@ -170,7 +182,9 @@ UPDATE aws.amp.workspace_configurations
 SET 
 clientToken = '{{ clientToken }}',
 limitsPerLabelSet = '{{ limitsPerLabelSet }}',
-retentionPeriodInDays = {{ retentionPeriodInDays }}
+retentionPeriodInDays = {{ retentionPeriodInDays }},
+outOfOrderTimeWindowInSeconds = {{ outOfOrderTimeWindowInSeconds }},
+ruleQueryOffsetInSeconds = {{ ruleQueryOffsetInSeconds }}
 WHERE 
 workspace_id = '{{ workspace_id }}' --required
 AND region = '{{ region }}' --required

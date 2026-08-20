@@ -57,7 +57,7 @@ The following fields are returned by `SELECT` queries:
 </tr>
 <tr>
     <td><CopyableCode code="foc_date" /></td>
-    <td><code>string (date-time)</code></td>
+    <td><code>string</code></td>
     <td>The Firm Order Commitment (FOC) date for phone number porting orders. This field is null if a phone number order is not a porting order.</td>
 </tr>
 <tr>

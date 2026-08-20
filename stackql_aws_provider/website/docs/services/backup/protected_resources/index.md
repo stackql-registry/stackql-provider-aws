@@ -171,7 +171,7 @@ The following methods are available for this resource:
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td><a href="#parameter-nextToken"><code>nextToken</code></a>, <a href="#parameter-maxResults"><code>maxResults</code></a></td>
-    <td>Returns an array of resources successfully backed up by Backup, including the time the resource was saved, an Amazon Resource Name (ARN) of the resource, and a resource type.</td>
+    <td>Returns an array of resources with recovery points created by Backup (regardless of the recovery point's status), including the time the resource was saved, an Amazon Resource Name (ARN) of the resource, and a resource type.</td>
 </tr>
 </tbody>
 </table>
@@ -244,7 +244,7 @@ AND region = '{{ region }}' -- required
 </TabItem>
 <TabItem value="list_protected_resources">
 
-Returns an array of resources successfully backed up by Backup, including the time the resource was saved, an Amazon Resource Name (ARN) of the resource, and a resource type.
+Returns an array of resources with recovery points created by Backup (regardless of the recovery point's status), including the time the resource was saved, an Amazon Resource Name (ARN) of the resource, and a resource type.
 
 ```sql
 SELECT

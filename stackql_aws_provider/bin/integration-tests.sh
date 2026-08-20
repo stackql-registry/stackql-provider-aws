@@ -457,6 +457,151 @@ if [[ "$MODE" != "describe" && "${AWS_RUN_DML_TESTS:-0}" == "1" ]]; then
 fi
 # --- end rest-xml DML lifecycle -----------------------------------------------
 
+# --- S3 object content CRUD (aws.s3.objects, rule 19 blob-payload) -----------
+# Exercises the raw object-content path end to end with a fictitious
+# terraform.tfstate as the specimen (tests/fixtures/terraform.tfstate):
+#   INSERT (PutObject, raw body via request transform), SELECT (GetObject,
+#   contents column must match the fixture EXACTLY), REPLACE (overwrite,
+#   serial bumped), SELECT verify, DELETE, NoSuchKey confirm.
+# A dedicated bucket is created for the test and removed afterwards.
+# Text objects only - binary is out of scope. SQL literals need MySQL-style
+# escaping (backslashes doubled) - the generator below handles it.
+if [[ "$MODE" != "describe" && "${AWS_RUN_DML_TESTS:-0}" == "1" ]]; then
+  echo "--- S3 object content CRUD (s3.objects: INSERT, SELECT, REPLACE, DELETE) ---"
+  S3OBJ_REGION="${S3OBJ_REGION:-us-east-1}"   # us-east-1: CreateBucket needs no body
+  s3obj_acct=$("$STACKQL" --registry="$REG" exec "SELECT Account FROM aws.sts.caller_identities WHERE region = 'us-east-1'" 2>&1 | grep -oE '[0-9]{12}' | head -1)
+  S3OBJ_BUCKET="${S3OBJ_TEST_BUCKET:-stackql-objcrud-${s3obj_acct:-noacct}}"
+  S3OBJ_KEY="env/terraform.tfstate"
+  S3OBJ_FIXTURE="${BASE_DIR}/tests/fixtures/terraform.tfstate"
+  S3OBJ_TMP=$(mktemp -d)
+  PYBIN=$(command -v python3 || command -v python)
+
+  # Generate the INSERT / REPLACE statements + expected payloads from the
+  # fixture (newline-preserving IO; backslash + quote escaping for the SQL
+  # literal).
+  "$PYBIN" - "$S3OBJ_FIXTURE" "$S3OBJ_TMP" "$S3OBJ_REGION" "$S3OBJ_BUCKET" "$S3OBJ_KEY" <<'PYEOF'
+import io, sys
+fixture, tmp, region, bucket, key = sys.argv[1:6]
+with io.open(fixture, encoding="utf-8", newline="") as f:
+    content = f.read()
+esc = lambda s: s.replace("\\", "\\\\").replace("'", "''")
+replaced = content.replace('"serial": 11', '"serial": 12')
+assert replaced != content
+def w(name, text):
+    with io.open(tmp + "/" + name, "w", encoding="utf-8", newline="") as f:
+        f.write(text)
+w("expected1.tfstate", content)
+w("expected2.tfstate", replaced)
+w("insert.sql", "INSERT INTO aws.s3.objects(region, bucket, key, contents) "
+  f"SELECT '{region}', '{bucket}', '{key}', '{esc(content)}'")
+w("replace.sql", f"REPLACE aws.s3.objects SET contents = '{esc(replaced)}' "
+  f"WHERE region = '{region}' AND bucket = '{bucket}' AND key = '{key}'")
+PYEOF
+
+  s3obj_compare() {  # $1 = expected file, $2 = SELECT --output json capture
+    # (python reads its script from stdin via the heredoc, so the SELECT
+    # rows must come in as a file argument - never as piped stdin)
+    "$PYBIN" - "$1" "$2" <<'PYEOF'
+import io, json, sys
+with io.open(sys.argv[1], encoding="utf-8", newline="") as f:
+    want = f.read()
+with io.open(sys.argv[2], encoding="utf-8") as f:
+    rows = json.load(f)
+sys.exit(0 if rows and rows[0].get("contents") == want else 1)
+PYEOF
+  }
+
+  printf "  %-65s " "0. INSERT aws.s3.buckets (dedicated test bucket)"
+  s3obj_mk=$("$STACKQL" --registry="$REG" exec "INSERT INTO aws.s3.buckets(region, bucket) SELECT '${S3OBJ_REGION}', '${S3OBJ_BUCKET}'" 2>&1)
+  if (( $? != 0 )) || echo "$s3obj_mk" | grep -qiE "error|exception|denied|invalid|malformed"; then
+    echo "FAIL"
+    FAILURES+=("INSERT s3.buckets (objcrud): $(echo "$s3obj_mk" | head -3)")
+    ((FAIL++)) || true
+  else
+    echo "ok"
+    ((PASS++)) || true
+
+    printf "  %-65s " "1. INSERT aws.s3.objects (tfstate fixture as contents)"
+    s3obj_ins=$("$STACKQL" --registry="$REG" exec -i "$S3OBJ_TMP/insert.sql" 2>&1)
+    if (( $? != 0 )) || echo "$s3obj_ins" | grep -qiE "error|exception|denied|invalid"; then
+      echo "FAIL"
+      FAILURES+=("INSERT s3.objects: $(echo "$s3obj_ins" | head -3)")
+      ((FAIL++)) || true
+    else
+      echo "ok"
+      ((PASS++)) || true
+    fi
+
+    printf "  %-65s " "2. SELECT contents == fixture (exact)"
+    "$STACKQL" --registry="$REG" --output json exec "SELECT contents FROM aws.s3.objects WHERE region = '${S3OBJ_REGION}' AND bucket = '${S3OBJ_BUCKET}' AND key = '${S3OBJ_KEY}'" > "$S3OBJ_TMP/sel1.json" 2>/dev/null
+    if s3obj_compare "$S3OBJ_TMP/expected1.tfstate" "$S3OBJ_TMP/sel1.json"; then
+      echo "ok"
+      ((PASS++)) || true
+    else
+      echo "FAIL"
+      FAILURES+=("SELECT s3.objects contents != fixture")
+      ((FAIL++)) || true
+    fi
+
+    printf "  %-65s " "3. REPLACE contents (serial 11 -> 12)"
+    s3obj_rep=$("$STACKQL" --registry="$REG" exec -i "$S3OBJ_TMP/replace.sql" 2>&1)
+    if (( $? != 0 )) || echo "$s3obj_rep" | grep -qiE "error|exception|denied|invalid"; then
+      echo "FAIL"
+      FAILURES+=("REPLACE s3.objects: $(echo "$s3obj_rep" | head -3)")
+      ((FAIL++)) || true
+    else
+      echo "ok"
+      ((PASS++)) || true
+    fi
+
+    printf "  %-65s " "4. SELECT contents == replaced (exact)"
+    "$STACKQL" --registry="$REG" --output json exec "SELECT contents FROM aws.s3.objects WHERE region = '${S3OBJ_REGION}' AND bucket = '${S3OBJ_BUCKET}' AND key = '${S3OBJ_KEY}'" > "$S3OBJ_TMP/sel2.json" 2>/dev/null
+    if s3obj_compare "$S3OBJ_TMP/expected2.tfstate" "$S3OBJ_TMP/sel2.json"; then
+      echo "ok"
+      ((PASS++)) || true
+    else
+      echo "FAIL"
+      FAILURES+=("SELECT s3.objects after REPLACE != expected")
+      ((FAIL++)) || true
+    fi
+
+    printf "  %-65s " "5. DELETE aws.s3.objects"
+    s3obj_del=$("$STACKQL" --registry="$REG" exec "DELETE FROM aws.s3.objects WHERE region = '${S3OBJ_REGION}' AND bucket = '${S3OBJ_BUCKET}' AND key = '${S3OBJ_KEY}'" 2>&1)
+    if (( $? != 0 )) || echo "$s3obj_del" | grep -qiE "error|exception|denied|invalid"; then
+      echo "FAIL"
+      FAILURES+=("DELETE s3.objects: $(echo "$s3obj_del" | head -3)")
+      ((FAIL++)) || true
+    else
+      echo "ok"
+      ((PASS++)) || true
+    fi
+
+    printf "  %-65s " "6. SELECT after DELETE returns NoSuchKey"
+    s3obj_gone=$("$STACKQL" --registry="$REG" exec "SELECT contents FROM aws.s3.objects WHERE region = '${S3OBJ_REGION}' AND bucket = '${S3OBJ_BUCKET}' AND key = '${S3OBJ_KEY}'" 2>&1)
+    if echo "$s3obj_gone" | grep -q "NoSuchKey"; then
+      echo "ok"
+      ((PASS++)) || true
+    else
+      echo "FAIL"
+      FAILURES+=("SELECT after DELETE did not NoSuchKey: $(echo "$s3obj_gone" | head -3)")
+      ((FAIL++)) || true
+    fi
+
+    printf "  %-65s " "7. DELETE aws.s3.buckets (cleanup)"
+    s3obj_rmb=$("$STACKQL" --registry="$REG" exec "DELETE FROM aws.s3.buckets WHERE region = '${S3OBJ_REGION}' AND bucket = '${S3OBJ_BUCKET}'" 2>&1)
+    if (( $? != 0 )) || echo "$s3obj_rmb" | grep -qiE "error|exception|denied|invalid"; then
+      echo "FAIL"
+      FAILURES+=("DELETE s3.buckets (objcrud): $(echo "$s3obj_rmb" | head -3)")
+      ((FAIL++)) || true
+    else
+      echo "ok"
+      ((PASS++)) || true
+    fi
+  fi
+  rm -rf "$S3OBJ_TMP"
+fi
+# --- end S3 object content CRUD -----------------------------------------------
+
 # --- aws-json DML lifecycle (dynamodb.tables) -------------------------------
 # Exercises the aws-json (POST-body) protocol end to end: CREATE with a
 # list-of-struct body field (KeySchema / AttributeDefinitions passed as JSON

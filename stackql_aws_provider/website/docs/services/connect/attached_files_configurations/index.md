@@ -63,7 +63,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="instance_id" /></td>
     <td><code>string</code></td>
-    <td>The identifier of the Amazon Connect instance.</td>
+    <td>The identifier of the Connect Customer instance.</td>
 </tr>
 <tr>
     <td><CopyableCode code="last_modified_time" /></td>
@@ -102,7 +102,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="instance_id" /></td>
     <td><code>string</code></td>
-    <td>The identifier of the Amazon Connect instance.</td>
+    <td>The identifier of the Connect Customer instance.</td>
 </tr>
 <tr>
     <td><CopyableCode code="maximum_size_limit_in_bytes" /></td>
@@ -134,21 +134,21 @@ The following methods are available for this resource:
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-instance_id"><code>instance_id</code></a>, <a href="#parameter-attachment_scope"><code>attachment_scope</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>Describes the attached files configuration for the specified Amazon Connect instance and attachment scope. If a custom configuration exists for the specified attachment scope, the custom configuration is returned. If no custom configuration exists, the default configuration values for that attachment scope are returned.</td>
+    <td>Describes the attached files configuration for the specified Connect Customer instance and attachment scope. If a custom configuration exists for the specified attachment scope, the custom configuration is returned. If no custom configuration exists, the default configuration values for that attachment scope are returned.</td>
 </tr>
 <tr>
     <td><a href="#list_attached_files_configurations"><CopyableCode code="list_attached_files_configurations" /></a></td>
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-instance_id"><code>instance_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td><a href="#parameter-maxResults"><code>maxResults</code></a>, <a href="#parameter-nextToken"><code>nextToken</code></a></td>
-    <td>Provides summary information about the attached files configurations for the specified Amazon Connect instance. This API returns effective configurations (custom overrides or defaults) for each attachment scope. If no custom configuration exists for a scope, the default configuration values are returned.</td>
+    <td>Provides summary information about the attached files configurations for the specified Connect Customer instance. This API returns effective configurations (custom overrides or defaults) for each attachment scope. If no custom configuration exists for a scope, the default configuration values are returned.</td>
 </tr>
 <tr>
     <td><a href="#update_attached_files_configuration"><CopyableCode code="update_attached_files_configuration" /></a></td>
     <td><CopyableCode code="update" /></td>
     <td><a href="#parameter-instance_id"><code>instance_id</code></a>, <a href="#parameter-attachment_scope"><code>attachment_scope</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>Updates the attached files configuration for the specified Amazon Connect instance and attachment scope. If no instance-specific configuration exists, this operation creates one. Partial updates are supported—only specified fields are updated, while unspecified fields retain their current values.</td>
+    <td>Updates the attached files configuration for the specified Connect Customer instance and attachment scope. If no instance-specific configuration exists, this operation creates one. Partial updates are supported—only specified fields are updated, while unspecified fields retain their current values.</td>
 </tr>
 </tbody>
 </table>
@@ -174,7 +174,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-instance_id">
     <td><CopyableCode code="instance_id" /></td>
     <td><code>string</code></td>
-    <td>The identifier of the Amazon Connect instance. You can find the instance ID in the Amazon Resource Name (ARN) of the instance.</td>
+    <td>The identifier of the Connect Customer instance. You can find the instance ID in the Amazon Resource Name (ARN) of the instance.</td>
 </tr>
 <tr id="parameter-region">
     <td><CopyableCode code="region" /></td>
@@ -205,7 +205,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 >
 <TabItem value="describe_attached_files_configuration">
 
-Describes the attached files configuration for the specified Amazon Connect instance and attachment scope. If a custom configuration exists for the specified attachment scope, the custom configuration is returned. If no custom configuration exists, the default configuration values for that attachment scope are returned.
+Describes the attached files configuration for the specified Connect Customer instance and attachment scope. If a custom configuration exists for the specified attachment scope, the custom configuration is returned. If no custom configuration exists, the default configuration values for that attachment scope are returned.
 
 ```sql
 SELECT
@@ -223,7 +223,7 @@ AND region = '{{ region }}' -- required
 </TabItem>
 <TabItem value="list_attached_files_configurations">
 
-Provides summary information about the attached files configurations for the specified Amazon Connect instance. This API returns effective configurations (custom overrides or defaults) for each attachment scope. If no custom configuration exists for a scope, the default configuration values are returned.
+Provides summary information about the attached files configurations for the specified Connect Customer instance. This API returns effective configurations (custom overrides or defaults) for each attachment scope. If no custom configuration exists for a scope, the default configuration values are returned.
 
 ```sql
 SELECT
@@ -252,7 +252,7 @@ AND nextToken = '{{ nextToken }}'
 >
 <TabItem value="update_attached_files_configuration">
 
-Updates the attached files configuration for the specified Amazon Connect instance and attachment scope. If no instance-specific configuration exists, this operation creates one. Partial updates are supported—only specified fields are updated, while unspecified fields retain their current values.
+Updates the attached files configuration for the specified Connect Customer instance and attachment scope. If no instance-specific configuration exists, this operation creates one. Partial updates are supported—only specified fields are updated, while unspecified fields retain their current values.
 
 ```sql
 UPDATE aws.connect.attached_files_configurations

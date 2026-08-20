@@ -316,7 +316,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-TagSpecification">
     <td><CopyableCode code="TagSpecification" /></td>
     <td><code>array</code></td>
-    <td>The key-value pair for tagging the EC2 Fleet request on creation. For more information, see Tag your resources. If the fleet type is instant, specify a resource type of fleet to tag the fleet or instance to tag the instances at launch. If the fleet type is maintain or request, specify a resource type of fleet to tag the fleet. You cannot specify a resource type of instance. To tag instances at launch, specify the tags in a launch template.</td>
+    <td>The key-value pair for tagging the EC2 Fleet request on creation. For more information, see Tag your resources. If the fleet type is instant, specify a resource type of fleet to tag the fleet, instance to tag the instances at launch, volume to tag the volumes at launch, or network-interface to tag the network interfaces at launch. If the fleet type is maintain or request, specify a resource type of fleet to tag the fleet. You cannot specify a resource type of instance, volume, or network-interface. To tag instances at launch, specify the tags in a launch template.</td>
 </tr>
 <tr id="parameter-TargetCapacitySpecification">
     <td><CopyableCode code="TargetCapacitySpecification" /></td>
@@ -511,8 +511,8 @@ instances
       description: Indicates whether EC2 Fleet should replace unhealthy Spot Instances. Supported only for fleets of type maintain. For more information, see EC2 Fleet health checks in the Amazon EC2 User Guide.
     - name: TagSpecification
       value: "{{ TagSpecification }}"
-      description: The key-value pair for tagging the EC2 Fleet request on creation. For more information, see Tag your resources. If the fleet type is instant, specify a resource type of fleet to tag the fleet or instance to tag the instances at launch. If the fleet type is maintain or request, specify a resource type of fleet to tag the fleet. You cannot specify a resource type of instance. To tag instances at launch, specify the tags in a launch template.
-      description: The key-value pair for tagging the EC2 Fleet request on creation. For more information, see Tag your resources. If the fleet type is instant, specify a resource type of fleet to tag the fleet or instance to tag the instances at launch. If the fleet type is maintain or request, specify a resource type of fleet to tag the fleet. You cannot specify a resource type of instance. To tag instances at launch, specify the tags in a launch template.
+      description: The key-value pair for tagging the EC2 Fleet request on creation. For more information, see Tag your resources. If the fleet type is instant, specify a resource type of fleet to tag the fleet, instance to tag the instances at launch, volume to tag the volumes at launch, or network-interface to tag the network interfaces at launch. If the fleet type is maintain or request, specify a resource type of fleet to tag the fleet. You cannot specify a resource type of instance, volume, or network-interface. To tag instances at launch, specify the tags in a launch template.
+      description: The key-value pair for tagging the EC2 Fleet request on creation. For more information, see Tag your resources. If the fleet type is instant, specify a resource type of fleet to tag the fleet, instance to tag the instances at launch, volume to tag the volumes at launch, or network-interface to tag the network interfaces at launch. If the fleet type is maintain or request, specify a resource type of fleet to tag the fleet. You cannot specify a resource type of instance, volume, or network-interface. To tag instances at launch, specify the tags in a launch template.
     - name: Context
       value: "{{ Context }}"
       description: Reserved.

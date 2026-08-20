@@ -55,6 +55,11 @@ The following fields are returned by `SELECT` queries:
     <td>The SolutionBase structure provides essential information about a solution. (pattern: &lt;code&gt;S-&#91;0-9&#93;&#123;1,19&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
+    <td><CopyableCode code="aws_marketplace_solution_arn" /></td>
+    <td><code>string</code></td>
+    <td>The Amazon Resource Name (ARN) of the AWS Marketplace solution associated with this partner solution. (pattern: &lt;code&gt;arn:.*&lt;/code&gt;)</td>
+</tr>
+<tr>
     <td><CopyableCode code="catalog" /></td>
     <td><code>string</code></td>
     <td>Specifies the catalog in which the solution is hosted, either AWS or Sandbox. This helps partners differentiate between live solutions and those in testing environments. (pattern: &lt;code&gt;&#91;a-zA-Z&#93;+&lt;/code&gt;)</td>
@@ -150,6 +155,7 @@ Retrieves a list of Partner Solutions that the partner registered on Partner Cen
 ```sql
 SELECT
 arn,
+aws_marketplace_solution_arn,
 catalog,
 category,
 created_date,

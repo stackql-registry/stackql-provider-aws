@@ -52,7 +52,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="cdr_bucket" /></td>
     <td><code>string</code></td>
-    <td>The S3 bucket that stores the Voice Connector's call detail records.</td>
+    <td>The S3 bucket that stores the Voice Connector's call detail records. (pattern: &lt;code&gt;(?!(^xn--|.+-s3alias$))^&#91;a-z0-9&#93;&#91;a-z0-9-&#93;&#123;1,61&#125;&#91;a-z0-9&#93;$&lt;/code&gt;)</td>
 </tr>
 </tbody>
 </table>
@@ -84,7 +84,7 @@ The following methods are available for this resource:
 <tr>
     <td><a href="#update_global_settings"><CopyableCode code="update_global_settings" /></a></td>
     <td><CopyableCode code="update" /></td>
-    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-VoiceConnector"><code>VoiceConnector</code></a></td>
     <td></td>
     <td>Updates global settings for the Amazon Chime SDK Voice Connectors in an AWS account.</td>
 </tr>
@@ -152,7 +152,8 @@ UPDATE aws.chime_sdk_voice.global_settings
 SET 
 VoiceConnector = '{{ VoiceConnector }}'
 WHERE 
-region = '{{ region }}' --required;
+region = '{{ region }}' --required
+AND VoiceConnector = '{{ VoiceConnector }}' --required;
 ```
 </TabItem>
 </Tabs>

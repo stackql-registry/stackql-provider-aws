@@ -419,6 +419,7 @@ SELECT
 '{{ ClientToken }}',
 '{{ region }}'
 RETURNING
+currency,
 monthly_recurring_price,
 outpost_id,
 payment_option,

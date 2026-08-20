@@ -18,7 +18,7 @@ ssm service documentation.
 
 :::info[Service Summary]
 
-total resources: __65__  
+total resources: __66__  
 
 :::
 
@@ -35,6 +35,7 @@ total resources: __65__
 <a href="/services/ssm/automation_step_executions/">automation_step_executions</a><br />
 <a href="/services/ssm/available_patches/">available_patches</a><br />
 <a href="/services/ssm/calendar_states/">calendar_states</a><br />
+<a href="/services/ssm/cloud_connectors/">cloud_connectors</a><br />
 <a href="/services/ssm/command_invocations/">command_invocations</a><br />
 <a href="/services/ssm/commands/">commands</a><br />
 <a href="/services/ssm/compliance_items/">compliance_items</a><br />
@@ -56,10 +57,10 @@ total resources: __65__
 <a href="/services/ssm/instance_patches/">instance_patches</a><br />
 <a href="/services/ssm/instance_properties/">instance_properties</a><br />
 <a href="/services/ssm/inventories/">inventories</a><br />
-<a href="/services/ssm/inventory_deletions/">inventory_deletions</a><br />
-<a href="/services/ssm/inventory_entries/">inventory_entries</a>
+<a href="/services/ssm/inventory_deletions/">inventory_deletions</a>
 </div>
 <div class="providerDocColumn">
+<a href="/services/ssm/inventory_entries/">inventory_entries</a><br />
 <a href="/services/ssm/inventory_schemas/">inventory_schemas</a><br />
 <a href="/services/ssm/maintenance_window_execution_task_invocations/">maintenance_window_execution_task_invocations</a><br />
 <a href="/services/ssm/maintenance_window_execution_tasks/">maintenance_window_execution_tasks</a><br />

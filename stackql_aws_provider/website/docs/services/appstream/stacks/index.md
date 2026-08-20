@@ -381,6 +381,7 @@ stack
         ScreenshotsUploadEnabled: {{ ScreenshotsUploadEnabled }}
         ScreenResolution: "{{ ScreenResolution }}"
         ScreenImageFormat: "{{ ScreenImageFormat }}"
+        UserControlMode: "{{ UserControlMode }}"
 `}</CodeBlock>
 
 </TabItem>

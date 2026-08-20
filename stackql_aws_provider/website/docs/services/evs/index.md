@@ -18,19 +18,20 @@ evs service documentation.
 
 :::info[Service Summary]
 
-total resources: __7__  
+total resources: __8__  
 
 :::
 
 ## Resources
 <div class="row">
 <div class="providerDocColumn">
+<a href="/services/evs/depot_urls/">depot_urls</a><br />
 <a href="/services/evs/environment_connectors/">environment_connectors</a><br />
 <a href="/services/evs/environment_hosts/">environment_hosts</a><br />
-<a href="/services/evs/environment_vlans/">environment_vlans</a><br />
-<a href="/services/evs/environments/">environments</a>
+<a href="/services/evs/environment_vlans/">environment_vlans</a>
 </div>
 <div class="providerDocColumn">
+<a href="/services/evs/environments/">environments</a><br />
 <a href="/services/evs/tags/">tags</a><br />
 <a href="/services/evs/versions/">versions</a><br />
 <a href="/services/evs/vm_entitlements/">vm_entitlements</a>

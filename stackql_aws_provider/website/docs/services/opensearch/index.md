@@ -18,7 +18,7 @@ opensearch service documentation.
 
 :::info[Service Summary]
 
-total resources: __37__  
+total resources: __39__  
 
 :::
 
@@ -28,6 +28,7 @@ total resources: __37__
 <a href="/services/opensearch/applications/">applications</a><br />
 <a href="/services/opensearch/capabilities/">capabilities</a><br />
 <a href="/services/opensearch/compatible_versions/">compatible_versions</a><br />
+<a href="/services/opensearch/data_source_attachments/">data_source_attachments</a><br />
 <a href="/services/opensearch/data_sources/">data_sources</a><br />
 <a href="/services/opensearch/default_application_settings/">default_application_settings</a><br />
 <a href="/services/opensearch/direct_query_data_sources/">direct_query_data_sources</a><br />
@@ -50,6 +51,7 @@ total resources: __37__
 <a href="/services/opensearch/insights/">insights</a><br />
 <a href="/services/opensearch/instance_type_details/">instance_type_details</a><br />
 <a href="/services/opensearch/instance_type_limits/">instance_type_limits</a><br />
+<a href="/services/opensearch/migrations/">migrations</a><br />
 <a href="/services/opensearch/outbound_connections/">outbound_connections</a><br />
 <a href="/services/opensearch/package_version_histories/">package_version_histories</a><br />
 <a href="/services/opensearch/packages/">packages</a><br />

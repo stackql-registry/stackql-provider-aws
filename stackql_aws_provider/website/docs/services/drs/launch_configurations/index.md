@@ -90,6 +90,11 @@ The following fields are returned by `SELECT` queries:
     <td>Whether we want to activate post-launch actions for the Source Server.</td>
 </tr>
 <tr>
+    <td><CopyableCode code="recovery_mode" /></td>
+    <td><code>string</code></td>
+    <td>Recovery mode to use during launch. FAST skips conversion to reduce recovery time. OPTIMAL runs full conversion for maximum compatibility. (FAST, OPTIMAL)</td>
+</tr>
+<tr>
     <td><CopyableCode code="source_server_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the Source Server for this launch configuration. (pattern: &lt;code&gt;s-&#91;0-9a-zA-Z&#93;&#123;17&#125;&lt;/code&gt;)</td>
@@ -179,6 +184,7 @@ launch_disposition,
 launch_into_instance_properties,
 licensing,
 post_launch_enabled,
+recovery_mode,
 source_server_id,
 target_instance_type_right_sizing_method
 FROM aws.drs.launch_configurations
@@ -212,7 +218,8 @@ copyPrivateIp = {{ copyPrivateIp }},
 copyTags = {{ copyTags }},
 licensing = '{{ licensing }}',
 postLaunchEnabled = {{ postLaunchEnabled }},
-launchIntoInstanceProperties = '{{ launchIntoInstanceProperties }}'
+launchIntoInstanceProperties = '{{ launchIntoInstanceProperties }}',
+recoveryMode = '{{ recoveryMode }}'
 WHERE 
 region = '{{ region }}' --required
 AND sourceServerID = '{{ sourceServerID }}' --required
@@ -225,6 +232,7 @@ launch_disposition,
 launch_into_instance_properties,
 licensing,
 post_launch_enabled,
+recovery_mode,
 source_server_id,
 target_instance_type_right_sizing_method;
 ```

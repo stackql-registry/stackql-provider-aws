@@ -209,6 +209,13 @@ The following methods are available for this resource:
     <td></td>
     <td>Deletes a specified OpenSearch application.</td>
 </tr>
+<tr>
+    <td><a href="#start_migration"><CopyableCode code="start_migration" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-applicationId"><code>applicationId</code></a>, <a href="#parameter-migrationOptions"><code>migrationOptions</code></a></td>
+    <td></td>
+    <td>Initiates a migration job to migrate saved objects from a data source to an Amazon OpenSearch Service application workspace. Saved objects include dashboards, visualizations, index patterns, and searches. You can specify export filters to control the scope of the migration and a conflict resolution strategy for handling existing objects in the target workspace.</td>
+</tr>
 </tbody>
 </table>
 
@@ -413,7 +420,8 @@ Updates the configuration and settings of an existing OpenSearch application.
 UPDATE aws.opensearch.applications
 SET 
 dataSources = '{{ dataSources }}',
-appConfigs = '{{ appConfigs }}'
+appConfigs = '{{ appConfigs }}',
+iamIdentityCenterOptions = '{{ iamIdentityCenterOptions }}'
 WHERE 
 id = '{{ id }}' --required
 AND region = '{{ region }}' --required
@@ -447,6 +455,33 @@ Deletes a specified OpenSearch application.
 DELETE FROM aws.opensearch.applications
 WHERE id = '{{ id }}' --required
 AND region = '{{ region }}' --required
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="start_migration"
+    values={[
+        { label: 'start_migration', value: 'start_migration' }
+    ]}
+>
+<TabItem value="start_migration">
+
+Initiates a migration job to migrate saved objects from a data source to an Amazon OpenSearch Service application workspace. Saved objects include dashboards, visualizations, index patterns, and searches. You can specify export filters to control the scope of the migration and a conflict resolution strategy for handling existing objects in the target workspace.
+
+```sql
+EXEC aws.opensearch.applications.start_migration 
+@region='{{ region }}' --required 
+@@json=
+'{
+"applicationId": "{{ applicationId }}", 
+"migrationOptions": "{{ migrationOptions }}", 
+"clientToken": "{{ clientToken }}"
+}'
 ;
 ```
 </TabItem>

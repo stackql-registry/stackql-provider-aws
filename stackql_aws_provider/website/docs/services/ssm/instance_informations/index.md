@@ -150,9 +150,14 @@ The following fields are returned by `SELECT` queries:
     <td>The ID of the source resource. For IoT Greengrass devices, SourceId is the Thing name. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9:_-&#93;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
+    <td><CopyableCode code="source_location" /></td>
+    <td><code>string</code></td>
+    <td>The location of the source resource in the third-party cloud environment. (pattern: &lt;code&gt;^.&#123;1,128&#125;$&lt;/code&gt;)</td>
+</tr>
+<tr>
     <td><CopyableCode code="source_type" /></td>
     <td><code>string</code></td>
-    <td>The type of the source resource. For IoT Greengrass devices, SourceType is AWS::IoT::Thing. (AWS::EC2::Instance, AWS::IoT::Thing, AWS::SSM::ManagedInstance)</td>
+    <td>The type of the source resource. For IoT Greengrass devices, SourceType is AWS::IoT::Thing. For Azure Virtual Machines, SourceType is Microsoft.Compute/virtualMachines. (AWS::EC2::Instance, AWS::IoT::Thing, AWS::SSM::ManagedInstance, Microsoft.Compute/virtualMachines)</td>
 </tr>
 </tbody>
 </table>
@@ -239,6 +244,7 @@ platform_version,
 registration_date,
 resource_type,
 source_id,
+source_location,
 source_type
 FROM aws.ssm.instance_informations
 WHERE region = '{{ region }}' -- required

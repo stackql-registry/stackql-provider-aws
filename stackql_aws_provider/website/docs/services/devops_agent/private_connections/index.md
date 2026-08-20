@@ -61,6 +61,16 @@ The following fields are returned by `SELECT` queries:
     <td>The expiry time of the certificate associated with the Private Connection. Only present when a certificate is associated.</td>
 </tr>
 <tr>
+    <td><CopyableCode code="dns_resolution" /></td>
+    <td><code>string</code></td>
+    <td>DNS resolution mode for the Private Connection's resource gateway. (PUBLIC, IN_VPC)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="failure_message" /></td>
+    <td><code>string</code></td>
+    <td>Message describing the reason for a failed Private Connection, if applicable.</td>
+</tr>
+<tr>
     <td><CopyableCode code="host_address" /></td>
     <td><code>string</code></td>
     <td>IP address or DNS name of the target resource. Only present for service-managed Private Connections. (pattern: &lt;code&gt;&#91;a-zA-Z0-9.:\-&#93;+&lt;/code&gt;)</td>
@@ -215,6 +225,8 @@ Retrieves details of an existing Private Connection.
 SELECT
 name,
 certificate_expiry_time,
+dns_resolution,
+failure_message,
 host_address,
 resource_configuration_id,
 resource_gateway_id,
@@ -271,6 +283,8 @@ SELECT
 RETURNING
 name,
 certificate_expiry_time,
+dns_resolution,
+failure_message,
 host_address,
 resource_configuration_id,
 resource_gateway_id,
@@ -309,6 +323,7 @@ vpc_id
           portRanges:
             - "{{ portRanges }}"
           certificate: "{{ certificate }}"
+          dnsResolution: "{{ dnsResolution }}"
         selfManaged:
           resourceConfigurationId: "{{ resourceConfigurationId }}"
           certificate: "{{ certificate }}"
@@ -345,6 +360,8 @@ AND certificate = '{{ certificate }}' --required
 RETURNING
 name,
 certificate_expiry_time,
+dns_resolution,
+failure_message,
 host_address,
 resource_configuration_id,
 resource_gateway_id,

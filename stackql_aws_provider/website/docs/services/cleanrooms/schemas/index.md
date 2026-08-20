@@ -148,7 +148,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="type_" /></td>
     <td><code>string</code></td>
-    <td>The type of schema. (TABLE, ID_MAPPING_TABLE)</td>
+    <td>The type of schema. (TABLE, ID_MAPPING_TABLE, INTERMEDIATE_TABLE)</td>
 </tr>
 <tr>
     <td><CopyableCode code="update_time" /></td>
@@ -217,7 +217,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="type_" /></td>
     <td><code>string</code></td>
-    <td>The type of schema object. (TABLE, ID_MAPPING_TABLE)</td>
+    <td>The type of schema object. (TABLE, ID_MAPPING_TABLE, INTERMEDIATE_TABLE)</td>
 </tr>
 <tr>
     <td><CopyableCode code="update_time" /></td>

@@ -96,14 +96,24 @@ The following fields are returned by `SELECT` queries:
     <td>The indexed metadata keys for this memory. Only indexed keys can be used in metadata filters.</td>
 </tr>
 <tr>
+    <td><CopyableCode code="managed_by_resource_arn" /></td>
+    <td><code>string</code></td>
+    <td>ARN of the resource managing this memory (e.g. a harness). When set, strategy modifications and deletion are only allowed through the managing resource. (pattern: &lt;code&gt;arn:&#91;a-z0-9-\.&#93;&#123;1,63&#125;:&#91;a-z0-9-\.&#93;&#123;0,63&#125;:&#91;a-z0-9-\.&#93;&#123;0,63&#125;:&#91;a-z0-9-\.&#93;&#123;0,63&#125;:&#91;^/&#93;.&#123;0,1023&#125;&lt;/code&gt;)</td>
+</tr>
+<tr>
     <td><CopyableCode code="memory_execution_role_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the IAM role that provides permissions for the memory. (pattern: &lt;code&gt;arn:&#91;a-z0-9-\.&#93;&#123;1,63&#125;:&#91;a-z0-9-\.&#93;&#123;0,63&#125;:&#91;a-z0-9-\.&#93;&#123;0,63&#125;:&#91;a-z0-9-\.&#93;&#123;0,63&#125;:&#91;^/&#93;.&#123;0,1023&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
+    <td><CopyableCode code="namespace_keys" /></td>
+    <td><code>array</code></td>
+    <td>The namespace variable key definitions for this memory. Namespace keys define custom variables used in namespaceTemplates with optional validation rules.</td>
+</tr>
+<tr>
     <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
-    <td>The current status of the memory. (CREATING, ACTIVE, FAILED, DELETING)</td>
+    <td>The current status of the memory. (CREATING, ACTIVE, FAILED, DELETING, UPDATING)</td>
 </tr>
 <tr>
     <td><CopyableCode code="strategies" /></td>
@@ -150,9 +160,14 @@ The following fields are returned by `SELECT` queries:
     <td>The timestamp when the memory was created.</td>
 </tr>
 <tr>
+    <td><CopyableCode code="managed_by_resource_arn" /></td>
+    <td><code>string</code></td>
+    <td>ARN of the resource managing this memory (e.g. a harness). Null if not managed. (pattern: &lt;code&gt;arn:&#91;a-z0-9-\.&#93;&#123;1,63&#125;:&#91;a-z0-9-\.&#93;&#123;0,63&#125;:&#91;a-z0-9-\.&#93;&#123;0,63&#125;:&#91;a-z0-9-\.&#93;&#123;0,63&#125;:&#91;^/&#93;.&#123;0,1023&#125;&lt;/code&gt;)</td>
+</tr>
+<tr>
     <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
-    <td>The current status of the memory. (CREATING, ACTIVE, FAILED, DELETING)</td>
+    <td>The current status of the memory. (CREATING, ACTIVE, FAILED, DELETING, UPDATING)</td>
 </tr>
 <tr>
     <td><CopyableCode code="updated_at" /></td>
@@ -277,7 +292,9 @@ encryption_key_arn,
 event_expiry_duration,
 failure_reason,
 indexed_keys,
+managed_by_resource_arn,
 memory_execution_role_arn,
+namespace_keys,
 status,
 strategies,
 stream_delivery_resources,
@@ -298,6 +315,7 @@ SELECT
 id,
 arn,
 created_at,
+managed_by_resource_arn,
 status,
 updated_at
 FROM aws.bedrock_agentcore_control.memories
@@ -331,6 +349,7 @@ memoryExecutionRoleArn,
 eventExpiryDuration,
 memoryStrategies,
 indexedKeys,
+namespaceKeys,
 streamDeliveryResources,
 tags,
 region
@@ -344,6 +363,7 @@ SELECT
 {{ eventExpiryDuration }} /* required */,
 '{{ memoryStrategies }}',
 '{{ indexedKeys }}',
+'{{ namespaceKeys }}',
 '{{ streamDeliveryResources }}',
 '{{ tags }}',
 '{{ region }}'
@@ -385,6 +405,7 @@ memory
               metadataSchema:
                 - key: "{{ key }}"
                   type_: "{{ type_ }}"
+                  extractionType: "{{ extractionType }}"
                   extractionConfig:
                     llmExtractionConfig: "{{ llmExtractionConfig }}"
           summaryMemoryStrategy:
@@ -398,6 +419,7 @@ memory
               metadataSchema:
                 - key: "{{ key }}"
                   type_: "{{ type_ }}"
+                  extractionType: "{{ extractionType }}"
                   extractionConfig:
                     llmExtractionConfig: "{{ llmExtractionConfig }}"
           userPreferenceMemoryStrategy:
@@ -411,6 +433,7 @@ memory
               metadataSchema:
                 - key: "{{ key }}"
                   type_: "{{ type_ }}"
+                  extractionType: "{{ extractionType }}"
                   extractionConfig:
                     llmExtractionConfig: "{{ llmExtractionConfig }}"
           customMemoryStrategy:
@@ -468,6 +491,7 @@ memory
               metadataSchema:
                 - key: "{{ key }}"
                   type_: "{{ type_ }}"
+                  extractionType: "{{ extractionType }}"
                   extractionConfig:
                     llmExtractionConfig: "{{ llmExtractionConfig }}"
           episodicMemoryStrategy:
@@ -486,18 +510,27 @@ memory
                 metadataSchema:
                   - key: "{{ key }}"
                     type_: "{{ type_ }}"
+                    extractionType: "{{ extractionType }}"
                     extractionConfig:
                       llmExtractionConfig: "{{ llmExtractionConfig }}"
             memoryRecordSchema:
               metadataSchema:
                 - key: "{{ key }}"
                   type_: "{{ type_ }}"
+                  extractionType: "{{ extractionType }}"
                   extractionConfig:
                     llmExtractionConfig: "{{ llmExtractionConfig }}"
     - name: indexedKeys
       value:
         - key: "{{ key }}"
           type_: "{{ type_ }}"
+    - name: namespaceKeys
+      value:
+        - key: "{{ key }}"
+          validation:
+            allowedValues:
+              - "{{ allowedValues }}"
+            regexPattern: "{{ regexPattern }}"
     - name: streamDeliveryResources
       description: |
         Configuration for streaming memory record data to external resources.
@@ -537,6 +570,7 @@ eventExpiryDuration = {{ eventExpiryDuration }},
 memoryExecutionRoleArn = '{{ memoryExecutionRoleArn }}',
 memoryStrategies = '{{ memoryStrategies }}',
 addIndexedKeys = '{{ addIndexedKeys }}',
+namespaceKeys = '{{ namespaceKeys }}',
 streamDeliveryResources = '{{ streamDeliveryResources }}'
 WHERE 
 memory_id = '{{ memory_id }}' --required

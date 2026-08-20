@@ -93,7 +93,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="instance_id" /></td>
     <td><code>string</code></td>
-    <td>The identifier of the Amazon Connect instance. You can find the instance ID in the Amazon Resource Name (ARN) of the instance.</td>
+    <td>The identifier of the Connect Customer instance. You can find the instance ID in the Amazon Resource Name (ARN) of the instance.</td>
 </tr>
 <tr>
     <td><CopyableCode code="last_modified_time" /></td>
@@ -194,28 +194,35 @@ The following methods are available for this resource:
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-instance_id"><code>instance_id</code></a>, <a href="#parameter-task_template_id"><code>task_template_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td><a href="#parameter-snapshotVersion"><code>snapshotVersion</code></a></td>
-    <td>Gets details about a specific task template in the specified Amazon Connect instance.</td>
+    <td>Gets details about a specific task template in the specified Connect Customer instance.</td>
 </tr>
 <tr>
     <td><a href="#list_task_templates"><CopyableCode code="list_task_templates" /></a></td>
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-instance_id"><code>instance_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td><a href="#parameter-nextToken"><code>nextToken</code></a>, <a href="#parameter-maxResults"><code>maxResults</code></a>, <a href="#parameter-status"><code>status</code></a>, <a href="#parameter-name"><code>name</code></a></td>
-    <td>Lists task templates for the specified Amazon Connect instance.</td>
+    <td>Lists task templates for the specified Connect Customer instance.</td>
 </tr>
 <tr>
     <td><a href="#create_task_template"><CopyableCode code="create_task_template" /></a></td>
     <td><CopyableCode code="insert" /></td>
     <td><a href="#parameter-instance_id"><code>instance_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>Creates a new task template in the specified Amazon Connect instance.</td>
+    <td>Creates a new task template in the specified Connect Customer instance.</td>
+</tr>
+<tr>
+    <td><a href="#update_contact_task_template"><CopyableCode code="update_contact_task_template" /></a></td>
+    <td><CopyableCode code="update" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-InstanceId"><code>InstanceId</code></a>, <a href="#parameter-TaskTemplateId"><code>TaskTemplateId</code></a>, <a href="#parameter-ContactId"><code>ContactId</code></a></td>
+    <td></td>
+    <td>Updates the task template association on an existing task contact. You can update the task template on a contact before assignment to support tasks that are created without a template (for example Rules or disconnect flows) or change the agent interaction form to represent the latest task data (for example an initial request that was submitted as a refund gets updated to an account cancellation and requires a new template). This operation can only be used with task contacts that are in progress and not connected to an agent. A task template can be updated a maximum of 5 times per contact. The task's references must be compatible with the fields of the target task template. If the target template has a required field, the task must have a corresponding reference with a matching name and compatible type. The following task template field types map to reference types: TEXT, TEXT_AREA, BOOLEAN, and SINGLE_SELECT map to references of type STRING. NUMBER maps to references of type NUMBER. DATE_TIME maps to references of type DATE. URL maps to references of type URL. EMAIL maps to references of type EMAIL. References corresponding to TEXT fields must be fewer than 512 characters. TEXT_AREA fields must be fewer than 4,096 characters. BOOLEAN fields must have a value of true or false. An InvalidRequestException occurs when UpdateContactTaskTemplate is called on a connected or terminated task, when it is called on non-task contacts, and when the task contact already uses the provided task template. A PropertyValidationException occurs when the task's references conflict with the task template's fields, for example if the task is missing a reference that matches a required field, or if the task has a reference that matches a required field's name but not its datatype.</td>
 </tr>
 <tr>
     <td><a href="#update_task_template"><CopyableCode code="update_task_template" /></a></td>
     <td><CopyableCode code="update" /></td>
     <td><a href="#parameter-task_template_id"><code>task_template_id</code></a>, <a href="#parameter-instance_id"><code>instance_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>Updates details about a specific task template in the specified Amazon Connect instance. This operation does not support partial updates. Instead it does a full update of template content.</td>
+    <td>Updates details about a specific task template in the specified Connect Customer instance. This operation does not support partial updates. Instead it does a full update of template content.</td>
 </tr>
 <tr>
     <td><a href="#delete_task_template"><CopyableCode code="delete_task_template" /></a></td>
@@ -243,7 +250,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-instance_id">
     <td><CopyableCode code="instance_id" /></td>
     <td><code>string</code></td>
-    <td>The identifier of the Amazon Connect instance. You can find the instance ID in the Amazon Resource Name (ARN) of the instance.</td>
+    <td>The identifier of the Connect Customer instance. You can find the instance ID in the Amazon Resource Name (ARN) of the instance.</td>
 </tr>
 <tr id="parameter-region">
     <td><CopyableCode code="region" /></td>
@@ -294,7 +301,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 >
 <TabItem value="get_task_template">
 
-Gets details about a specific task template in the specified Amazon Connect instance.
+Gets details about a specific task template in the specified Connect Customer instance.
 
 ```sql
 SELECT
@@ -322,7 +329,7 @@ AND snapshotVersion = '{{ snapshotVersion }}'
 </TabItem>
 <TabItem value="list_task_templates">
 
-Lists task templates for the specified Amazon Connect instance.
+Lists task templates for the specified Connect Customer instance.
 
 ```sql
 SELECT
@@ -357,7 +364,7 @@ AND name = '{{ name }}'
 >
 <TabItem value="create_task_template">
 
-Creates a new task template in the specified Amazon Connect instance.
+Creates a new task template in the specified Connect Customer instance.
 
 ```sql
 INSERT INTO aws.connect.task_templates (
@@ -452,14 +459,32 @@ id
 ## `UPDATE` examples
 
 <Tabs
-    defaultValue="update_task_template"
+    defaultValue="update_contact_task_template"
     values={[
+        { label: 'update_contact_task_template', value: 'update_contact_task_template' },
         { label: 'update_task_template', value: 'update_task_template' }
     ]}
 >
+<TabItem value="update_contact_task_template">
+
+Updates the task template association on an existing task contact. You can update the task template on a contact before assignment to support tasks that are created without a template (for example Rules or disconnect flows) or change the agent interaction form to represent the latest task data (for example an initial request that was submitted as a refund gets updated to an account cancellation and requires a new template). This operation can only be used with task contacts that are in progress and not connected to an agent. A task template can be updated a maximum of 5 times per contact. The task's references must be compatible with the fields of the target task template. If the target template has a required field, the task must have a corresponding reference with a matching name and compatible type. The following task template field types map to reference types: TEXT, TEXT_AREA, BOOLEAN, and SINGLE_SELECT map to references of type STRING. NUMBER maps to references of type NUMBER. DATE_TIME maps to references of type DATE. URL maps to references of type URL. EMAIL maps to references of type EMAIL. References corresponding to TEXT fields must be fewer than 512 characters. TEXT_AREA fields must be fewer than 4,096 characters. BOOLEAN fields must have a value of true or false. An InvalidRequestException occurs when UpdateContactTaskTemplate is called on a connected or terminated task, when it is called on non-task contacts, and when the task contact already uses the provided task template. A PropertyValidationException occurs when the task's references conflict with the task template's fields, for example if the task is missing a reference that matches a required field, or if the task has a reference that matches a required field's name but not its datatype.
+
+```sql
+UPDATE aws.connect.task_templates
+SET 
+InstanceId = '{{ InstanceId }}',
+TaskTemplateId = '{{ TaskTemplateId }}',
+ContactId = '{{ ContactId }}'
+WHERE 
+region = '{{ region }}' --required
+AND InstanceId = '{{ InstanceId }}' --required
+AND TaskTemplateId = '{{ TaskTemplateId }}' --required
+AND ContactId = '{{ ContactId }}' --required;
+```
+</TabItem>
 <TabItem value="update_task_template">
 
-Updates details about a specific task template in the specified Amazon Connect instance. This operation does not support partial updates. Instead it does a full update of template content.
+Updates details about a specific task template in the specified Connect Customer instance. This operation does not support partial updates. Instead it does a full update of template content.
 
 ```sql
 UPDATE aws.connect.task_templates

@@ -210,6 +210,11 @@ The following fields are returned by `SELECT` queries:
     <td>Specifies whether the DB cluster has instances in multiple Availability Zones.</td>
 </tr>
 <tr>
+    <td><CopyableCode code="network_type" /></td>
+    <td><code>string</code></td>
+    <td>The network type of the DB cluster. Valid Values: IPV4 – The DB cluster uses only IPv4 addresses for communication. DUAL – The DB cluster uses both IPv4 and IPv6 addresses for communication.</td>
+</tr>
+<tr>
     <td><CopyableCode code="pending_modified_values" /></td>
     <td><code>string</code></td>
     <td>This data type is used as a response element in the ModifyDBCluster operation and contains changes that will be applied during the next maintenance window.</td>
@@ -305,7 +310,7 @@ The following methods are available for this resource:
     <td><a href="#create_db_cluster"><CopyableCode code="create_db_cluster" /></a></td>
     <td><CopyableCode code="insert" /></td>
     <td><a href="#parameter-DBClusterIdentifier"><code>DBClusterIdentifier</code></a>, <a href="#parameter-region"><code>region</code></a></td>
-    <td><a href="#parameter-AvailabilityZones"><code>AvailabilityZones</code></a>, <a href="#parameter-BackupRetentionPeriod"><code>BackupRetentionPeriod</code></a>, <a href="#parameter-CharacterSetName"><code>CharacterSetName</code></a>, <a href="#parameter-CopyTagsToSnapshot"><code>CopyTagsToSnapshot</code></a>, <a href="#parameter-DatabaseName"><code>DatabaseName</code></a>, <a href="#parameter-DBClusterParameterGroupName"><code>DBClusterParameterGroupName</code></a>, <a href="#parameter-VpcSecurityGroupIds"><code>VpcSecurityGroupIds</code></a>, <a href="#parameter-DBSubnetGroupName"><code>DBSubnetGroupName</code></a>, <a href="#parameter-Engine"><code>Engine</code></a>, <a href="#parameter-EngineVersion"><code>EngineVersion</code></a>, <a href="#parameter-Port"><code>Port</code></a>, <a href="#parameter-MasterUsername"><code>MasterUsername</code></a>, <a href="#parameter-MasterUserPassword"><code>MasterUserPassword</code></a>, <a href="#parameter-OptionGroupName"><code>OptionGroupName</code></a>, <a href="#parameter-PreferredBackupWindow"><code>PreferredBackupWindow</code></a>, <a href="#parameter-PreferredMaintenanceWindow"><code>PreferredMaintenanceWindow</code></a>, <a href="#parameter-ReplicationSourceIdentifier"><code>ReplicationSourceIdentifier</code></a>, <a href="#parameter-Tags"><code>Tags</code></a>, <a href="#parameter-StorageEncrypted"><code>StorageEncrypted</code></a>, <a href="#parameter-KmsKeyId"><code>KmsKeyId</code></a>, <a href="#parameter-PreSignedUrl"><code>PreSignedUrl</code></a>, <a href="#parameter-EnableIAMDatabaseAuthentication"><code>EnableIAMDatabaseAuthentication</code></a>, <a href="#parameter-EnableCloudwatchLogsExports"><code>EnableCloudwatchLogsExports</code></a>, <a href="#parameter-DeletionProtection"><code>DeletionProtection</code></a>, <a href="#parameter-ServerlessV2ScalingConfiguration"><code>ServerlessV2ScalingConfiguration</code></a>, <a href="#parameter-GlobalClusterIdentifier"><code>GlobalClusterIdentifier</code></a>, <a href="#parameter-StorageType"><code>StorageType</code></a></td>
+    <td><a href="#parameter-AvailabilityZones"><code>AvailabilityZones</code></a>, <a href="#parameter-BackupRetentionPeriod"><code>BackupRetentionPeriod</code></a>, <a href="#parameter-CharacterSetName"><code>CharacterSetName</code></a>, <a href="#parameter-CopyTagsToSnapshot"><code>CopyTagsToSnapshot</code></a>, <a href="#parameter-DatabaseName"><code>DatabaseName</code></a>, <a href="#parameter-DBClusterParameterGroupName"><code>DBClusterParameterGroupName</code></a>, <a href="#parameter-VpcSecurityGroupIds"><code>VpcSecurityGroupIds</code></a>, <a href="#parameter-DBSubnetGroupName"><code>DBSubnetGroupName</code></a>, <a href="#parameter-Engine"><code>Engine</code></a>, <a href="#parameter-EngineVersion"><code>EngineVersion</code></a>, <a href="#parameter-Port"><code>Port</code></a>, <a href="#parameter-MasterUsername"><code>MasterUsername</code></a>, <a href="#parameter-MasterUserPassword"><code>MasterUserPassword</code></a>, <a href="#parameter-OptionGroupName"><code>OptionGroupName</code></a>, <a href="#parameter-PreferredBackupWindow"><code>PreferredBackupWindow</code></a>, <a href="#parameter-PreferredMaintenanceWindow"><code>PreferredMaintenanceWindow</code></a>, <a href="#parameter-ReplicationSourceIdentifier"><code>ReplicationSourceIdentifier</code></a>, <a href="#parameter-Tags"><code>Tags</code></a>, <a href="#parameter-StorageEncrypted"><code>StorageEncrypted</code></a>, <a href="#parameter-KmsKeyId"><code>KmsKeyId</code></a>, <a href="#parameter-PreSignedUrl"><code>PreSignedUrl</code></a>, <a href="#parameter-EnableIAMDatabaseAuthentication"><code>EnableIAMDatabaseAuthentication</code></a>, <a href="#parameter-EnableCloudwatchLogsExports"><code>EnableCloudwatchLogsExports</code></a>, <a href="#parameter-DeletionProtection"><code>DeletionProtection</code></a>, <a href="#parameter-ServerlessV2ScalingConfiguration"><code>ServerlessV2ScalingConfiguration</code></a>, <a href="#parameter-GlobalClusterIdentifier"><code>GlobalClusterIdentifier</code></a>, <a href="#parameter-StorageType"><code>StorageType</code></a>, <a href="#parameter-NetworkType"><code>NetworkType</code></a></td>
     <td>Creates a new Amazon Neptune DB cluster. You can use the ReplicationSourceIdentifier parameter to create the DB cluster as a Read Replica of another DB cluster or Amazon Neptune DB instance. Note that when you create a new cluster using CreateDBCluster directly, deletion protection is disabled by default (when you create a new production cluster in the console, deletion protection is enabled by default). You can only delete a DB cluster if its DeletionProtection field is set to false.</td>
 </tr>
 <tr>
@@ -319,7 +324,7 @@ The following methods are available for this resource:
     <td><a href="#modify_db_cluster"><CopyableCode code="modify_db_cluster" /></a></td>
     <td><CopyableCode code="update" /></td>
     <td><a href="#parameter-DBClusterIdentifier"><code>DBClusterIdentifier</code></a>, <a href="#parameter-region"><code>region</code></a></td>
-    <td><a href="#parameter-NewDBClusterIdentifier"><code>NewDBClusterIdentifier</code></a>, <a href="#parameter-ApplyImmediately"><code>ApplyImmediately</code></a>, <a href="#parameter-BackupRetentionPeriod"><code>BackupRetentionPeriod</code></a>, <a href="#parameter-DBClusterParameterGroupName"><code>DBClusterParameterGroupName</code></a>, <a href="#parameter-VpcSecurityGroupIds"><code>VpcSecurityGroupIds</code></a>, <a href="#parameter-Port"><code>Port</code></a>, <a href="#parameter-MasterUserPassword"><code>MasterUserPassword</code></a>, <a href="#parameter-OptionGroupName"><code>OptionGroupName</code></a>, <a href="#parameter-PreferredBackupWindow"><code>PreferredBackupWindow</code></a>, <a href="#parameter-PreferredMaintenanceWindow"><code>PreferredMaintenanceWindow</code></a>, <a href="#parameter-EnableIAMDatabaseAuthentication"><code>EnableIAMDatabaseAuthentication</code></a>, <a href="#parameter-CloudwatchLogsExportConfiguration"><code>CloudwatchLogsExportConfiguration</code></a>, <a href="#parameter-EngineVersion"><code>EngineVersion</code></a>, <a href="#parameter-AllowMajorVersionUpgrade"><code>AllowMajorVersionUpgrade</code></a>, <a href="#parameter-DBInstanceParameterGroupName"><code>DBInstanceParameterGroupName</code></a>, <a href="#parameter-DeletionProtection"><code>DeletionProtection</code></a>, <a href="#parameter-CopyTagsToSnapshot"><code>CopyTagsToSnapshot</code></a>, <a href="#parameter-ServerlessV2ScalingConfiguration"><code>ServerlessV2ScalingConfiguration</code></a>, <a href="#parameter-StorageType"><code>StorageType</code></a></td>
+    <td><a href="#parameter-NewDBClusterIdentifier"><code>NewDBClusterIdentifier</code></a>, <a href="#parameter-ApplyImmediately"><code>ApplyImmediately</code></a>, <a href="#parameter-BackupRetentionPeriod"><code>BackupRetentionPeriod</code></a>, <a href="#parameter-DBClusterParameterGroupName"><code>DBClusterParameterGroupName</code></a>, <a href="#parameter-VpcSecurityGroupIds"><code>VpcSecurityGroupIds</code></a>, <a href="#parameter-Port"><code>Port</code></a>, <a href="#parameter-MasterUserPassword"><code>MasterUserPassword</code></a>, <a href="#parameter-OptionGroupName"><code>OptionGroupName</code></a>, <a href="#parameter-PreferredBackupWindow"><code>PreferredBackupWindow</code></a>, <a href="#parameter-PreferredMaintenanceWindow"><code>PreferredMaintenanceWindow</code></a>, <a href="#parameter-EnableIAMDatabaseAuthentication"><code>EnableIAMDatabaseAuthentication</code></a>, <a href="#parameter-CloudwatchLogsExportConfiguration"><code>CloudwatchLogsExportConfiguration</code></a>, <a href="#parameter-EngineVersion"><code>EngineVersion</code></a>, <a href="#parameter-AllowMajorVersionUpgrade"><code>AllowMajorVersionUpgrade</code></a>, <a href="#parameter-DBInstanceParameterGroupName"><code>DBInstanceParameterGroupName</code></a>, <a href="#parameter-DeletionProtection"><code>DeletionProtection</code></a>, <a href="#parameter-CopyTagsToSnapshot"><code>CopyTagsToSnapshot</code></a>, <a href="#parameter-ServerlessV2ScalingConfiguration"><code>ServerlessV2ScalingConfiguration</code></a>, <a href="#parameter-StorageType"><code>StorageType</code></a>, <a href="#parameter-NetworkType"><code>NetworkType</code></a></td>
     <td>Modify a setting for a DB cluster. You can change one or more database configuration parameters by specifying these parameters and the new values in the request.</td>
 </tr>
 <tr>
@@ -354,14 +359,14 @@ The following methods are available for this resource:
     <td><a href="#restore_db_cluster_from_snapshot"><CopyableCode code="restore_db_cluster_from_snapshot" /></a></td>
     <td><CopyableCode code="exec" /></td>
     <td><a href="#parameter-DBClusterIdentifier"><code>DBClusterIdentifier</code></a>, <a href="#parameter-SnapshotIdentifier"><code>SnapshotIdentifier</code></a>, <a href="#parameter-region"><code>region</code></a></td>
-    <td><a href="#parameter-AvailabilityZones"><code>AvailabilityZones</code></a>, <a href="#parameter-Engine"><code>Engine</code></a>, <a href="#parameter-EngineVersion"><code>EngineVersion</code></a>, <a href="#parameter-Port"><code>Port</code></a>, <a href="#parameter-DBSubnetGroupName"><code>DBSubnetGroupName</code></a>, <a href="#parameter-DatabaseName"><code>DatabaseName</code></a>, <a href="#parameter-OptionGroupName"><code>OptionGroupName</code></a>, <a href="#parameter-VpcSecurityGroupIds"><code>VpcSecurityGroupIds</code></a>, <a href="#parameter-Tags"><code>Tags</code></a>, <a href="#parameter-KmsKeyId"><code>KmsKeyId</code></a>, <a href="#parameter-EnableIAMDatabaseAuthentication"><code>EnableIAMDatabaseAuthentication</code></a>, <a href="#parameter-EnableCloudwatchLogsExports"><code>EnableCloudwatchLogsExports</code></a>, <a href="#parameter-DBClusterParameterGroupName"><code>DBClusterParameterGroupName</code></a>, <a href="#parameter-DeletionProtection"><code>DeletionProtection</code></a>, <a href="#parameter-CopyTagsToSnapshot"><code>CopyTagsToSnapshot</code></a>, <a href="#parameter-ServerlessV2ScalingConfiguration"><code>ServerlessV2ScalingConfiguration</code></a>, <a href="#parameter-StorageType"><code>StorageType</code></a></td>
+    <td><a href="#parameter-AvailabilityZones"><code>AvailabilityZones</code></a>, <a href="#parameter-Engine"><code>Engine</code></a>, <a href="#parameter-EngineVersion"><code>EngineVersion</code></a>, <a href="#parameter-Port"><code>Port</code></a>, <a href="#parameter-DBSubnetGroupName"><code>DBSubnetGroupName</code></a>, <a href="#parameter-DatabaseName"><code>DatabaseName</code></a>, <a href="#parameter-OptionGroupName"><code>OptionGroupName</code></a>, <a href="#parameter-VpcSecurityGroupIds"><code>VpcSecurityGroupIds</code></a>, <a href="#parameter-Tags"><code>Tags</code></a>, <a href="#parameter-KmsKeyId"><code>KmsKeyId</code></a>, <a href="#parameter-EnableIAMDatabaseAuthentication"><code>EnableIAMDatabaseAuthentication</code></a>, <a href="#parameter-EnableCloudwatchLogsExports"><code>EnableCloudwatchLogsExports</code></a>, <a href="#parameter-DBClusterParameterGroupName"><code>DBClusterParameterGroupName</code></a>, <a href="#parameter-DeletionProtection"><code>DeletionProtection</code></a>, <a href="#parameter-CopyTagsToSnapshot"><code>CopyTagsToSnapshot</code></a>, <a href="#parameter-ServerlessV2ScalingConfiguration"><code>ServerlessV2ScalingConfiguration</code></a>, <a href="#parameter-StorageType"><code>StorageType</code></a>, <a href="#parameter-NetworkType"><code>NetworkType</code></a></td>
     <td>Creates a new DB cluster from a DB snapshot or DB cluster snapshot. If a DB snapshot is specified, the target DB cluster is created from the source DB snapshot with a default configuration and default security group. If a DB cluster snapshot is specified, the target DB cluster is created from the source DB cluster restore point with the same configuration as the original source DB cluster, except that the new DB cluster is created with the default security group.</td>
 </tr>
 <tr>
     <td><a href="#restore_db_cluster_to_point_in_time"><CopyableCode code="restore_db_cluster_to_point_in_time" /></a></td>
     <td><CopyableCode code="exec" /></td>
     <td><a href="#parameter-DBClusterIdentifier"><code>DBClusterIdentifier</code></a>, <a href="#parameter-SourceDBClusterIdentifier"><code>SourceDBClusterIdentifier</code></a>, <a href="#parameter-region"><code>region</code></a></td>
-    <td><a href="#parameter-RestoreType"><code>RestoreType</code></a>, <a href="#parameter-RestoreToTime"><code>RestoreToTime</code></a>, <a href="#parameter-UseLatestRestorableTime"><code>UseLatestRestorableTime</code></a>, <a href="#parameter-Port"><code>Port</code></a>, <a href="#parameter-DBSubnetGroupName"><code>DBSubnetGroupName</code></a>, <a href="#parameter-OptionGroupName"><code>OptionGroupName</code></a>, <a href="#parameter-VpcSecurityGroupIds"><code>VpcSecurityGroupIds</code></a>, <a href="#parameter-Tags"><code>Tags</code></a>, <a href="#parameter-KmsKeyId"><code>KmsKeyId</code></a>, <a href="#parameter-EnableIAMDatabaseAuthentication"><code>EnableIAMDatabaseAuthentication</code></a>, <a href="#parameter-EnableCloudwatchLogsExports"><code>EnableCloudwatchLogsExports</code></a>, <a href="#parameter-DBClusterParameterGroupName"><code>DBClusterParameterGroupName</code></a>, <a href="#parameter-DeletionProtection"><code>DeletionProtection</code></a>, <a href="#parameter-ServerlessV2ScalingConfiguration"><code>ServerlessV2ScalingConfiguration</code></a>, <a href="#parameter-StorageType"><code>StorageType</code></a></td>
+    <td><a href="#parameter-RestoreType"><code>RestoreType</code></a>, <a href="#parameter-RestoreToTime"><code>RestoreToTime</code></a>, <a href="#parameter-UseLatestRestorableTime"><code>UseLatestRestorableTime</code></a>, <a href="#parameter-Port"><code>Port</code></a>, <a href="#parameter-DBSubnetGroupName"><code>DBSubnetGroupName</code></a>, <a href="#parameter-OptionGroupName"><code>OptionGroupName</code></a>, <a href="#parameter-VpcSecurityGroupIds"><code>VpcSecurityGroupIds</code></a>, <a href="#parameter-Tags"><code>Tags</code></a>, <a href="#parameter-KmsKeyId"><code>KmsKeyId</code></a>, <a href="#parameter-EnableIAMDatabaseAuthentication"><code>EnableIAMDatabaseAuthentication</code></a>, <a href="#parameter-EnableCloudwatchLogsExports"><code>EnableCloudwatchLogsExports</code></a>, <a href="#parameter-DBClusterParameterGroupName"><code>DBClusterParameterGroupName</code></a>, <a href="#parameter-DeletionProtection"><code>DeletionProtection</code></a>, <a href="#parameter-ServerlessV2ScalingConfiguration"><code>ServerlessV2ScalingConfiguration</code></a>, <a href="#parameter-StorageType"><code>StorageType</code></a>, <a href="#parameter-NetworkType"><code>NetworkType</code></a></td>
     <td>Restores a DB cluster to an arbitrary point in time. Users can restore to any point in time before LatestRestorableTime for up to BackupRetentionPeriod days. The target DB cluster is created from the source DB cluster with the same configuration as the original DB cluster, except that the new DB cluster is created with the default DB security group. This action only restores the DB cluster, not the DB instances for that DB cluster. You must invoke the CreateDBInstance action to create DB instances for the restored DB cluster, specifying the identifier of the restored DB cluster in DBClusterIdentifier. You can create DB instances only after the RestoreDBClusterToPointInTime action has completed and the DB cluster is available.</td>
 </tr>
 <tr>
@@ -564,6 +569,11 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     <td><code>integer</code></td>
     <td>The maximum number of records to include in the response. If more records exist than the specified MaxRecords value, a pagination token called a marker is included in the response so that the remaining results can be retrieved. Default: 100 Constraints: Minimum 20, maximum 100.</td>
 </tr>
+<tr id="parameter-NetworkType">
+    <td><CopyableCode code="NetworkType" /></td>
+    <td><code>string</code></td>
+    <td>The network type of the DB cluster. Valid Values: IPV4 – ( the default ) The DB cluster uses only IPv4 addresses for communication. DUAL – The DB cluster uses both IPv4 and IPv6 addresses for communication. The DB subnet group associated with the cluster must support IPv6.</td>
+</tr>
 <tr id="parameter-NewDBClusterIdentifier">
     <td><CopyableCode code="NewDBClusterIdentifier" /></td>
     <td><code>string</code></td>
@@ -693,6 +703,7 @@ kms_key_id,
 latest_restorable_time,
 master_username,
 multi_az,
+network_type,
 pending_modified_values,
 percent_progress,
 port,
@@ -761,7 +772,8 @@ EnableCloudwatchLogsExports,
 DeletionProtection,
 ServerlessV2ScalingConfiguration,
 GlobalClusterIdentifier,
-StorageType
+StorageType,
+NetworkType
 )
 SELECT 
 '{{ DBClusterIdentifier }}',
@@ -792,7 +804,8 @@ SELECT
 '{{ DeletionProtection }}',
 '{{ ServerlessV2ScalingConfiguration }}',
 '{{ GlobalClusterIdentifier }}',
-'{{ StorageType }}'
+'{{ StorageType }}',
+'{{ NetworkType }}'
 RETURNING
 allocated_storage,
 associated_roles,
@@ -826,6 +839,7 @@ kms_key_id,
 latest_restorable_time,
 master_username,
 multi_az,
+network_type,
 pending_modified_values,
 percent_progress,
 port,
@@ -871,8 +885,8 @@ vpc_security_groups
       description: If set to true, tags are copied to any snapshot of the DB cluster that is created.
     - name: DatabaseName
       value: "{{ DatabaseName }}"
-      description: The name for your database of up to 64 alpha-numeric characters. If you do not provide a name, Amazon Neptune will not create a database in the DB cluster you are creating.
-      description: The name for your database of up to 64 alpha-numeric characters. If you do not provide a name, Amazon Neptune will not create a database in the DB cluster you are creating.
+      description: Not supported by Neptune.
+      description: Not supported by Neptune.
     - name: DBClusterParameterGroupName
       value: "{{ DBClusterParameterGroupName }}"
       description: The name of the DB cluster parameter group to associate with this DB cluster. If this argument is omitted, the default is used. Constraints: If supplied, must match the name of an existing DBClusterParameterGroup.
@@ -961,6 +975,10 @@ vpc_security_groups
       value: "{{ StorageType }}"
       description: The storage type for the new DB cluster. Valid Values: standard – ( the default ) Configures cost-effective database storage for applications with moderate to small I/O usage. When set to standard, the storage type is not returned in the response. iopt1 – Enables I/O-Optimized storage that's designed to meet the needs of I/O-intensive graph workloads that require predictable pricing with low I/O latency and consistent I/O throughput. Neptune I/O-Optimized storage is only available starting with engine release 1.3.0.0.
       description: The storage type for the new DB cluster. Valid Values: standard – ( the default ) Configures cost-effective database storage for applications with moderate to small I/O usage. When set to standard, the storage type is not returned in the response. iopt1 – Enables I/O-Optimized storage that's designed to meet the needs of I/O-intensive graph workloads that require predictable pricing with low I/O latency and consistent I/O throughput. Neptune I/O-Optimized storage is only available starting with engine release 1.3.0.0.
+    - name: NetworkType
+      value: "{{ NetworkType }}"
+      description: The network type of the DB cluster. Valid Values: IPV4 – ( the default ) The DB cluster uses only IPv4 addresses for communication. DUAL – The DB cluster uses both IPv4 and IPv6 addresses for communication. The DB subnet group associated with the cluster must support IPv6.
+      description: The network type of the DB cluster. Valid Values: IPV4 – ( the default ) The DB cluster uses only IPv4 addresses for communication. DUAL – The DB cluster uses both IPv4 and IPv6 addresses for communication. The DB subnet group associated with the cluster must support IPv6.
 `}</CodeBlock>
 
 </TabItem>
@@ -1021,6 +1039,7 @@ AND DeletionProtection = {{ DeletionProtection}}
 AND CopyTagsToSnapshot = {{ CopyTagsToSnapshot}}
 AND ServerlessV2ScalingConfiguration = '{{ ServerlessV2ScalingConfiguration}}'
 AND StorageType = '{{ StorageType}}'
+AND NetworkType = '{{ NetworkType}}'
 RETURNING
 allocated_storage,
 associated_roles,
@@ -1054,6 +1073,7 @@ kms_key_id,
 latest_restorable_time,
 master_username,
 multi_az,
+network_type,
 pending_modified_values,
 percent_progress,
 port,
@@ -1175,7 +1195,8 @@ EXEC aws.neptune.db_clusters.restore_db_cluster_from_snapshot
 @DeletionProtection={{ DeletionProtection }}, 
 @CopyTagsToSnapshot={{ CopyTagsToSnapshot }}, 
 @ServerlessV2ScalingConfiguration='{{ ServerlessV2ScalingConfiguration }}', 
-@StorageType='{{ StorageType }}'
+@StorageType='{{ StorageType }}', 
+@NetworkType='{{ NetworkType }}'
 ;
 ```
 </TabItem>
@@ -1202,7 +1223,8 @@ EXEC aws.neptune.db_clusters.restore_db_cluster_to_point_in_time
 @DBClusterParameterGroupName='{{ DBClusterParameterGroupName }}', 
 @DeletionProtection={{ DeletionProtection }}, 
 @ServerlessV2ScalingConfiguration='{{ ServerlessV2ScalingConfiguration }}', 
-@StorageType='{{ StorageType }}'
+@StorageType='{{ StorageType }}', 
+@NetworkType='{{ NetworkType }}'
 ;
 ```
 </TabItem>

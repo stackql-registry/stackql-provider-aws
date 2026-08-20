@@ -66,6 +66,11 @@ The following fields are returned by `SELECT` queries:
     <td>The ARN of the endpoint. (pattern: &lt;code&gt;^arn:(aws&#91;a-zA-Z0-9-&#93;*):emr-containers:.+:(\d&#123;12&#125;):\/virtualclusters\/&#91;0-9a-zA-Z&#93;+\/endpoints\/&#91;0-9a-zA-Z&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
+    <td><CopyableCode code="auth_proxy_url" /></td>
+    <td><code>string</code></td>
+    <td>The authentication proxy URL of the endpoint. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDBFF-\uDC00\uDFFF\r\n\t&#93;*&lt;/code&gt;)</td>
+</tr>
+<tr>
     <td><CopyableCode code="certificate_arn" /></td>
     <td><code>string</code></td>
     <td>The certificate ARN of the endpoint. This field is under deprecation and will be removed in future. (pattern: &lt;code&gt;^arn:(aws&#91;a-zA-Z0-9-&#93;*):acm:.+:(\d&#123;12&#125;):certificate/.+$&lt;/code&gt;)</td>
@@ -168,6 +173,11 @@ The following fields are returned by `SELECT` queries:
     <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the endpoint. (pattern: &lt;code&gt;^arn:(aws&#91;a-zA-Z0-9-&#93;*):emr-containers:.+:(\d&#123;12&#125;):\/virtualclusters\/&#91;0-9a-zA-Z&#93;+\/endpoints\/&#91;0-9a-zA-Z&#93;+$&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="auth_proxy_url" /></td>
+    <td><code>string</code></td>
+    <td>The authentication proxy URL of the endpoint. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDBFF-\uDC00\uDFFF\r\n\t&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="certificate_arn" /></td>
@@ -374,6 +384,7 @@ SELECT
 id,
 name,
 arn,
+auth_proxy_url,
 certificate_arn,
 certificate_authority,
 configuration_overrides,
@@ -405,6 +416,7 @@ SELECT
 id,
 name,
 arn,
+auth_proxy_url,
 certificate_arn,
 certificate_authority,
 configuration_overrides,
@@ -458,6 +470,7 @@ certificateArn,
 configurationOverrides,
 clientToken,
 tags,
+sessionIdleTimeoutInMinutes,
 virtual_cluster_id,
 region
 )
@@ -470,6 +483,7 @@ SELECT
 '{{ configurationOverrides }}',
 '{{ clientToken }}' /* required */,
 '{{ tags }}',
+{{ sessionIdleTimeoutInMinutes }},
 '{{ virtual_cluster_id }}',
 '{{ region }}'
 RETURNING
@@ -519,6 +533,7 @@ virtual_cluster_id
             logStreamNamePrefix: "{{ logStreamNamePrefix }}"
           s3MonitoringConfiguration:
             logUri: "{{ logUri }}"
+            encryptionKeyArn: "{{ encryptionKeyArn }}"
           containerLogRotationConfiguration:
             rotationSize: "{{ rotationSize }}"
             maxFilesToKeep: {{ maxFilesToKeep }}
@@ -526,6 +541,8 @@ virtual_cluster_id
       value: "{{ clientToken }}"
     - name: tags
       value: "{{ tags }}"
+    - name: sessionIdleTimeoutInMinutes
+      value: {{ sessionIdleTimeoutInMinutes }}
 `}</CodeBlock>
 
 </TabItem>

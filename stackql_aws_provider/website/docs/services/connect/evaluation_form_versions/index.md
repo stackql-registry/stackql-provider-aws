@@ -119,7 +119,7 @@ The following methods are available for this resource:
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-instance_id"><code>instance_id</code></a>, <a href="#parameter-evaluation_form_id"><code>evaluation_form_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td><a href="#parameter-maxResults"><code>maxResults</code></a>, <a href="#parameter-nextToken"><code>nextToken</code></a></td>
-    <td>Lists versions of an evaluation form in the specified Amazon Connect instance.</td>
+    <td>Lists versions of an evaluation form in the specified Connect Customer instance.</td>
 </tr>
 </tbody>
 </table>
@@ -145,7 +145,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-instance_id">
     <td><CopyableCode code="instance_id" /></td>
     <td><code>string</code></td>
-    <td>The identifier of the Amazon Connect instance. You can find the instance ID in the Amazon Resource Name (ARN) of the instance.</td>
+    <td>The identifier of the Connect Customer instance. You can find the instance ID in the Amazon Resource Name (ARN) of the instance.</td>
 </tr>
 <tr id="parameter-region">
     <td><CopyableCode code="region" /></td>
@@ -175,7 +175,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 >
 <TabItem value="list_evaluation_form_versions">
 
-Lists versions of an evaluation form in the specified Amazon Connect instance.
+Lists versions of an evaluation form in the specified Connect Customer instance.
 
 ```sql
 SELECT

@@ -175,6 +175,13 @@ The following methods are available for this resource:
     <td></td>
     <td>Creates a security configuration. Security configurations in Amazon EMR on EKS are templates for different security setups. You can use security configurations to configure the Lake Formation integration setup. You can also create a security configuration to re-use a security setup each time you create a virtual cluster.</td>
 </tr>
+<tr>
+    <td><a href="#delete_security_configuration"><CopyableCode code="delete_security_configuration" /></a></td>
+    <td><CopyableCode code="delete" /></td>
+    <td><a href="#parameter-security_configuration_id"><code>security_configuration_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Deletes a security configuration.</td>
+</tr>
 </tbody>
 </table>
 
@@ -199,7 +206,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-security_configuration_id">
     <td><CopyableCode code="security_configuration_id" /></td>
     <td><code>string</code></td>
-    <td>The ID of the security configuration.</td>
+    <td>The ID of the security configuration to delete.</td>
 </tr>
 <tr id="parameter-createdAfter">
     <td><CopyableCode code="createdAfter" /></td>
@@ -352,9 +359,39 @@ arn
                 certificateProviderType: "{{ certificateProviderType }}"
                 publicCertificateSecretArn: "{{ publicCertificateSecretArn }}"
                 privateCertificateSecretArn: "{{ privateCertificateSecretArn }}"
+        authenticationConfiguration:
+          identityCenterConfiguration:
+            enableIdentityCenter: {{ enableIdentityCenter }}
+            identityCenterApplicationAssignmentRequired: {{ identityCenterApplicationAssignmentRequired }}
+            identityCenterInstanceARN: "{{ identityCenterInstanceARN }}"
+            emrIdentityCenterApplicationARN: "{{ emrIdentityCenterApplicationARN }}"
+          iamConfiguration:
+            systemRole: "{{ systemRole }}"
     - name: tags
       value: "{{ tags }}"
 `}</CodeBlock>
 
+</TabItem>
+</Tabs>
+
+
+## `DELETE` examples
+
+<Tabs
+    defaultValue="delete_security_configuration"
+    values={[
+        { label: 'delete_security_configuration', value: 'delete_security_configuration' }
+    ]}
+>
+<TabItem value="delete_security_configuration">
+
+Deletes a security configuration.
+
+```sql
+DELETE FROM aws.emr_containers.security_configurations
+WHERE security_configuration_id = '{{ security_configuration_id }}' --required
+AND region = '{{ region }}' --required
+;
+```
 </TabItem>
 </Tabs>

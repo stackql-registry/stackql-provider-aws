@@ -93,7 +93,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="data_source" /></td>
     <td><code>object</code></td>
-    <td>The table associated with the data quality result, if any.</td>
+    <td>A data source (an Glue table) for which you want data quality results.</td>
 </tr>
 <tr>
     <td><CopyableCode code="evaluation_context" /></td>

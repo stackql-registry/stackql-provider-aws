@@ -149,35 +149,35 @@ The following methods are available for this resource:
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-instance_id"><code>instance_id</code></a>, <a href="#parameter-association_id"><code>association_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td><a href="#parameter-resourceType"><code>resourceType</code></a></td>
-    <td>This API is in preview release for Amazon Connect and is subject to change. Retrieves the current storage configurations for the specified resource type, association ID, and instance ID.</td>
+    <td>This API is in preview release for Connect Customer and is subject to change. Retrieves the current storage configurations for the specified resource type, association ID, and instance ID.</td>
 </tr>
 <tr>
     <td><a href="#list_instance_storage_configs"><CopyableCode code="list_instance_storage_configs" /></a></td>
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-instance_id"><code>instance_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td><a href="#parameter-resourceType"><code>resourceType</code></a>, <a href="#parameter-nextToken"><code>nextToken</code></a>, <a href="#parameter-maxResults"><code>maxResults</code></a></td>
-    <td>This API is in preview release for Amazon Connect and is subject to change. Returns a paginated list of storage configs for the identified instance and resource type.</td>
+    <td>This API is in preview release for Connect Customer and is subject to change. Returns a paginated list of storage configs for the identified instance and resource type.</td>
 </tr>
 <tr>
     <td><a href="#associate_instance_storage_config"><CopyableCode code="associate_instance_storage_config" /></a></td>
     <td><CopyableCode code="update" /></td>
     <td><a href="#parameter-instance_id"><code>instance_id</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-ResourceType"><code>ResourceType</code></a>, <a href="#parameter-StorageConfig"><code>StorageConfig</code></a></td>
     <td></td>
-    <td>This API is in preview release for Amazon Connect and is subject to change. Associates a storage resource type for the first time. You can only associate one type of storage configuration in a single call. This means, for example, that you can't define an instance with multiple S3 buckets for storing chat transcripts. This API does not create a resource that doesn't exist. It only associates it to the instance. Ensure that the resource being specified in the storage configuration, like an S3 bucket, exists when being used for association.</td>
+    <td>This API is in preview release for Connect Customer and is subject to change. Associates a storage resource type for the first time. You can only associate one type of storage configuration in a single call. This means, for example, that you can't define an instance with multiple S3 buckets for storing chat transcripts. This API does not create a resource that doesn't exist. It only associates it to the instance. Ensure that the resource being specified in the storage configuration, like an S3 bucket, exists when being used for association.</td>
 </tr>
 <tr>
     <td><a href="#update_instance_storage_config"><CopyableCode code="update_instance_storage_config" /></a></td>
     <td><CopyableCode code="update" /></td>
     <td><a href="#parameter-instance_id"><code>instance_id</code></a>, <a href="#parameter-association_id"><code>association_id</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-StorageConfig"><code>StorageConfig</code></a></td>
     <td><a href="#parameter-resourceType"><code>resourceType</code></a></td>
-    <td>This API is in preview release for Amazon Connect and is subject to change. Updates an existing configuration for a resource type. This API is idempotent.</td>
+    <td>This API is in preview release for Connect Customer and is subject to change. Updates an existing configuration for a resource type. This API is idempotent.</td>
 </tr>
 <tr>
     <td><a href="#disassociate_instance_storage_config"><CopyableCode code="disassociate_instance_storage_config" /></a></td>
     <td><CopyableCode code="update" /></td>
     <td><a href="#parameter-instance_id"><code>instance_id</code></a>, <a href="#parameter-association_id"><code>association_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td><a href="#parameter-resourceType"><code>resourceType</code></a>, <a href="#parameter-clientToken"><code>clientToken</code></a></td>
-    <td>This API is in preview release for Amazon Connect and is subject to change. Removes the storage type configurations for the specified resource type and association ID.</td>
+    <td>This API is in preview release for Connect Customer and is subject to change. Removes the storage type configurations for the specified resource type and association ID.</td>
 </tr>
 </tbody>
 </table>
@@ -203,7 +203,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-instance_id">
     <td><CopyableCode code="instance_id" /></td>
     <td><code>string</code></td>
-    <td>The identifier of the Amazon Connect instance. You can find the instance ID in the Amazon Resource Name (ARN) of the instance.</td>
+    <td>The identifier of the Connect Customer instance. You can find the instance ID in the Amazon Resource Name (ARN) of the instance.</td>
 </tr>
 <tr id="parameter-region">
     <td><CopyableCode code="region" /></td>
@@ -244,7 +244,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 >
 <TabItem value="describe_instance_storage_config">
 
-This API is in preview release for Amazon Connect and is subject to change. Retrieves the current storage configurations for the specified resource type, association ID, and instance ID.
+This API is in preview release for Connect Customer and is subject to change. Retrieves the current storage configurations for the specified resource type, association ID, and instance ID.
 
 ```sql
 SELECT
@@ -264,7 +264,7 @@ AND resourceType = '{{ resourceType }}'
 </TabItem>
 <TabItem value="list_instance_storage_configs">
 
-This API is in preview release for Amazon Connect and is subject to change. Returns a paginated list of storage configs for the identified instance and resource type.
+This API is in preview release for Connect Customer and is subject to change. Returns a paginated list of storage configs for the identified instance and resource type.
 
 ```sql
 SELECT
@@ -298,7 +298,7 @@ AND maxResults = '{{ maxResults }}'
 >
 <TabItem value="associate_instance_storage_config">
 
-This API is in preview release for Amazon Connect and is subject to change. Associates a storage resource type for the first time. You can only associate one type of storage configuration in a single call. This means, for example, that you can't define an instance with multiple S3 buckets for storing chat transcripts. This API does not create a resource that doesn't exist. It only associates it to the instance. Ensure that the resource being specified in the storage configuration, like an S3 bucket, exists when being used for association.
+This API is in preview release for Connect Customer and is subject to change. Associates a storage resource type for the first time. You can only associate one type of storage configuration in a single call. This means, for example, that you can't define an instance with multiple S3 buckets for storing chat transcripts. This API does not create a resource that doesn't exist. It only associates it to the instance. Ensure that the resource being specified in the storage configuration, like an S3 bucket, exists when being used for association.
 
 ```sql
 UPDATE aws.connect.instance_storage_configs
@@ -317,7 +317,7 @@ association_id;
 </TabItem>
 <TabItem value="update_instance_storage_config">
 
-This API is in preview release for Amazon Connect and is subject to change. Updates an existing configuration for a resource type. This API is idempotent.
+This API is in preview release for Connect Customer and is subject to change. Updates an existing configuration for a resource type. This API is idempotent.
 
 ```sql
 UPDATE aws.connect.instance_storage_configs
@@ -334,7 +334,7 @@ AND resourceType = '{{ resourceType}}';
 </TabItem>
 <TabItem value="disassociate_instance_storage_config">
 
-This API is in preview release for Amazon Connect and is subject to change. Removes the storage type configurations for the specified resource type and association ID.
+This API is in preview release for Connect Customer and is subject to change. Removes the storage type configurations for the specified resource type and association ID.
 
 ```sql
 UPDATE aws.connect.instance_storage_configs

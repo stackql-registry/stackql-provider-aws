@@ -56,6 +56,11 @@ The following fields are returned by `SELECT` queries:
     <td>A UUID that is used to track the update.</td>
 </tr>
 <tr>
+    <td><CopyableCode code="cancellation" /></td>
+    <td><code>object</code></td>
+    <td>The latest cancellation information for the update. This field is present only if any cancellation is attempted for the update.</td>
+</tr>
+<tr>
     <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The Unix epoch timestamp at object creation.</td>
@@ -78,7 +83,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="type_" /></td>
     <td><code>string</code></td>
-    <td>The type of the update. (VersionUpdate, EndpointAccessUpdate, LoggingUpdate, ConfigUpdate, AssociateIdentityProviderConfig, DisassociateIdentityProviderConfig, AssociateEncryptionConfig, AddonUpdate, VpcConfigUpdate, AccessConfigUpdate, UpgradePolicyUpdate, ZonalShiftConfigUpdate, AutoModeUpdate, RemoteNetworkConfigUpdate, DeletionProtectionUpdate, ControlPlaneScalingConfigUpdate, VendedLogsUpdate)</td>
+    <td>The type of the update. (VersionUpdate, EndpointAccessUpdate, LoggingUpdate, ConfigUpdate, AssociateIdentityProviderConfig, DisassociateIdentityProviderConfig, AssociateEncryptionConfig, AddonUpdate, VpcConfigUpdate, AccessConfigUpdate, UpgradePolicyUpdate, ZonalShiftConfigUpdate, AutoModeUpdate, RemoteNetworkConfigUpdate, DeletionProtectionUpdate, CapabilityUpdate, ControlPlaneScalingConfigUpdate, VendedLogsUpdate, ControlPlaneEgressUpdate, VersionRollback, ControlPlaneComponentConfigUpdate, CertificateAuthorityUpdate)</td>
 </tr>
 </tbody>
 </table>
@@ -133,6 +138,13 @@ The following methods are available for this resource:
     <td><a href="#parameter-nodegroupName"><code>nodegroupName</code></a>, <a href="#parameter-addonName"><code>addonName</code></a>, <a href="#parameter-capabilityName"><code>capabilityName</code></a>, <a href="#parameter-nextToken"><code>nextToken</code></a>, <a href="#parameter-maxResults"><code>maxResults</code></a></td>
     <td>Lists the updates associated with an Amazon EKS resource in your Amazon Web Services account, in the specified Amazon Web Services Region.</td>
 </tr>
+<tr>
+    <td><a href="#cancel_update"><CopyableCode code="cancel_update" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-name"><code>name</code></a>, <a href="#parameter-update_id"><code>update_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Cancels an in-progress update to an Amazon EKS cluster on a best-effort basis. Cancellation is only performed if the update can be cancelled. Currently, this is supported for VersionRollback update types on EKS Auto Mode clusters when nodes are rolling back. A successful cancellation stops the node rollback. After cancellation, nodes converge to the current cluster version honoring configured disruption controls. If the control plane rollback has already begun, the cancellation request fails.</td>
+</tr>
 </tbody>
 </table>
 
@@ -152,7 +164,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-name">
     <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
-    <td>The name of the Amazon EKS cluster to list updates for.</td>
+    <td>The name of the Amazon EKS cluster associated with the update.</td>
 </tr>
 <tr id="parameter-region">
     <td><CopyableCode code="region" /></td>
@@ -162,7 +174,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-update_id">
     <td><CopyableCode code="update_id" /></td>
     <td><code>string</code></td>
-    <td>The ID of the update to describe.</td>
+    <td>The ID of the update to cancel.</td>
 </tr>
 <tr id="parameter-addonName">
     <td><CopyableCode code="addonName" /></td>
@@ -208,6 +220,7 @@ Describes an update to an Amazon EKS resource. When the status of the update is 
 ```sql
 SELECT
 id,
+cancellation,
 created_at,
 errors,
 params,
@@ -238,6 +251,33 @@ AND addonName = '{{ addonName }}'
 AND capabilityName = '{{ capabilityName }}'
 AND nextToken = '{{ nextToken }}'
 AND maxResults = '{{ maxResults }}'
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="cancel_update"
+    values={[
+        { label: 'cancel_update', value: 'cancel_update' }
+    ]}
+>
+<TabItem value="cancel_update">
+
+Cancels an in-progress update to an Amazon EKS cluster on a best-effort basis. Cancellation is only performed if the update can be cancelled. Currently, this is supported for VersionRollback update types on EKS Auto Mode clusters when nodes are rolling back. A successful cancellation stops the node rollback. After cancellation, nodes converge to the current cluster version honoring configured disruption controls. If the control plane rollback has already begun, the cancellation request fails.
+
+```sql
+EXEC aws.eks.updates.cancel_update 
+@name='{{ name }}' --required, 
+@update_id='{{ update_id }}' --required, 
+@region='{{ region }}' --required 
+@@json=
+'{
+"clientRequestToken": "{{ clientRequestToken }}"
+}'
 ;
 ```
 </TabItem>

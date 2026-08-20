@@ -173,7 +173,7 @@ The following methods are available for this resource:
     <td><a href="#get_prompt"><CopyableCode code="get_prompt" /></a></td>
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-prompt_identifier"><code>prompt_identifier</code></a>, <a href="#parameter-region"><code>region</code></a></td>
-    <td><a href="#parameter-promptVersion"><code>promptVersion</code></a></td>
+    <td><a href="#parameter-promptVersion"><code>promptVersion</code></a>, <a href="#parameter-includedData"><code>includedData</code></a></td>
     <td>Retrieves information about the working draft (DRAFT version) of a prompt or a version of it, depending on whether you include the promptVersion field or not. For more information, see View information about prompts using Prompt management and View information about a version of your prompt in the Amazon Bedrock User Guide.</td>
 </tr>
 <tr>
@@ -237,6 +237,11 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     <td><code>string</code></td>
     <td>AWS region (default: us-east-1)</td>
 </tr>
+<tr id="parameter-includedData">
+    <td><CopyableCode code="includedData" /></td>
+    <td><code>string</code></td>
+    <td>Controls the scope of data returned. Set to METADATA_ONLY to return only resource metadata. Set to ALL_DATA or omit this field to return the full response.</td>
+</tr>
 <tr id="parameter-maxResults">
     <td><CopyableCode code="maxResults" /></td>
     <td><code>integer</code></td>
@@ -289,6 +294,7 @@ FROM aws.bedrock_agent.prompts
 WHERE prompt_identifier = '{{ prompt_identifier }}' -- required
 AND region = '{{ region }}' -- required
 AND promptVersion = '{{ promptVersion }}'
+AND includedData = '{{ includedData }}'
 ;
 ```
 </TabItem>

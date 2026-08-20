@@ -480,6 +480,7 @@ asset_id = '{{ asset_id }}' --required
 AND region = '{{ region }}' --required
 AND assetName = '{{ assetName }}' --required
 RETURNING
+asset_id,
 asset_status;
 ```
 </TabItem>

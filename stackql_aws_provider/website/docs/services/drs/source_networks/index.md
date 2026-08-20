@@ -92,7 +92,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="source_region" /></td>
     <td><code>string</code></td>
-    <td>Region containing the VPC protected by the Source Network. (pattern: &lt;code&gt;(us(-gov)?|ap|ca|cn|eu|eusc|sa|af|me|il)-(&#91;a-z&#93;&#123;2&#125;-)?(central|north|(north(?:east|west))|south|south(?:east|west)|east|west)-&#91;0-9&#93;&lt;/code&gt;)</td>
+    <td>Region containing the VPC protected by the Source Network. (pattern: &lt;code&gt;(us(-gov)?|ap|ca|cn|eu|eusc|sa|af|me|mx|il)-(&#91;a-z&#93;&#123;2&#125;-)?(central|north|(north(?:east|west))|south|south(?:east|west)|east|west)-&#91;0-9&#93;&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="source_vpc_id" /></td>

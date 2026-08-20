@@ -52,12 +52,12 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="destination_file_path" /></td>
     <td><code>string</code></td>
-    <td>The file path of the Amazon S3 bucket where you want to download your tax document to. (pattern: &lt;code&gt;^&#91;\s\S&#93;*$&lt;/code&gt;)</td>
+    <td>The file path of the Amazon S3 bucket where you want to download your tax document to. (pattern: &lt;code&gt;&#91;\s\S&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="presigned_s3_url" /></td>
     <td><code>string</code></td>
-    <td>The Amazon S3 presigned URL of the tax registration document. (pattern: &lt;code&gt;^https.*\S.*$&lt;/code&gt;)</td>
+    <td>The Amazon S3 presigned URL of the tax registration document. (pattern: &lt;code&gt;https.*\S.*&lt;/code&gt;)</td>
 </tr>
 </tbody>
 </table>

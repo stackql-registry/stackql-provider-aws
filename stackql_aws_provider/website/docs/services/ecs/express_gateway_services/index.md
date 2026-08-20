@@ -129,7 +129,7 @@ The following methods are available for this resource:
 <tr>
     <td><a href="#create_express_gateway_service"><CopyableCode code="create_express_gateway_service" /></a></td>
     <td><CopyableCode code="insert" /></td>
-    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-executionRoleArn"><code>executionRoleArn</code></a>, <a href="#parameter-infrastructureRoleArn"><code>infrastructureRoleArn</code></a>, <a href="#parameter-primaryContainer"><code>primaryContainer</code></a></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-infrastructureRoleArn"><code>infrastructureRoleArn</code></a></td>
     <td></td>
     <td>Creates an Express service that simplifies deploying containerized web applications on Amazon ECS with managed Amazon Web Services infrastructure. This operation provisions and configures Application Load Balancers, target groups, security groups, and auto-scaling policies automatically. Specify a primary container configuration with your application image and basic settings. Amazon ECS creates the necessary Amazon Web Services resources for traffic distribution, health monitoring, network access control, and capacity management. Provide an execution role for task operations and an infrastructure role for managing Amazon Web Services resources on your behalf.</td>
 </tr>
@@ -230,21 +230,23 @@ cpu,
 memory,
 scalingTarget,
 tags,
+taskDefinitionArn,
 region
 )
 SELECT 
-'{{ executionRoleArn }}' /* required */,
+'{{ executionRoleArn }}',
 '{{ infrastructureRoleArn }}' /* required */,
 '{{ serviceName }}',
 '{{ cluster }}',
 '{{ healthCheckPath }}',
-'{{ primaryContainer }}' /* required */,
+'{{ primaryContainer }}',
 '{{ taskRoleArn }}',
 '{{ networkConfiguration }}',
 '{{ cpu }}',
 '{{ memory }}',
 '{{ scalingTarget }}',
 '{{ tags }}',
+'{{ taskDefinitionArn }}',
 '{{ region }}'
 RETURNING
 service
@@ -332,6 +334,10 @@ service
       value:
         - key: "{{ key }}"
           value: "{{ value }}"
+    - name: taskDefinitionArn
+      value: "{{ taskDefinitionArn }}"
+      description: |
+        The Amazon Resource Name (ARN) of a task definition to use to create the Express Gateway service. This allows you to manage your own task definition, giving you more control over the service configuration such as adding sidecar containers. The task definition must have a container named Main with a single TCP port mapping that includes a container port and port name. The task definition must also have FARGATE compatibility. If you provide a task definition ARN, you cannot also specify primaryContainer, executionRoleArn, taskRoleArn, cpu, or memory.
 `}</CodeBlock>
 
 </TabItem>
@@ -361,7 +367,8 @@ taskRoleArn = '{{ taskRoleArn }}',
 networkConfiguration = '{{ networkConfiguration }}',
 cpu = '{{ cpu }}',
 memory = '{{ memory }}',
-scalingTarget = '{{ scalingTarget }}'
+scalingTarget = '{{ scalingTarget }}',
+taskDefinitionArn = '{{ taskDefinitionArn }}'
 WHERE 
 region = '{{ region }}' --required
 AND serviceArn = '{{ serviceArn }}' --required

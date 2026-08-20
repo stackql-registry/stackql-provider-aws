@@ -344,6 +344,9 @@ version_arn
           DataSetReferences:
             - DataSetPlaceholder: "{{ DataSetPlaceholder }}"
               DataSetArn: "{{ DataSetArn }}"
+          TopicReferences:
+            - TopicPlaceholder: "{{ TopicPlaceholder }}"
+              TopicArn: "{{ TopicArn }}"
         SourceTemplate:
           Arn: "{{ Arn }}"
     - name: Tags
@@ -357,6 +360,14 @@ version_arn
         The detailed definition of a template.
       value:
         DataSetConfigurations:
+          - Placeholder: "{{ Placeholder }}"
+            DataSetSchema:
+              ColumnSchemaList:
+                - Name: "{{ Name }}"
+                  DataType: "{{ DataType }}"
+                  GeographicRole: "{{ GeographicRole }}"
+            ColumnGroupSchemaList: "{{ ColumnGroupSchemaList }}"
+        TopicConfigurations:
           - Placeholder: "{{ Placeholder }}"
             DataSetSchema:
               ColumnSchemaList:
@@ -389,6 +400,7 @@ version_arn
             Layouts: "{{ Layouts }}"
         CalculatedFields:
           - DataSetIdentifier: "{{ DataSetIdentifier }}"
+            TopicIdentifier: "{{ TopicIdentifier }}"
             Name: "{{ Name }}"
             Expression: "{{ Expression }}"
         ParameterDeclarations:
@@ -474,6 +486,7 @@ version_arn
         ColumnConfigurations:
           - Column:
               DataSetIdentifier: "{{ DataSetIdentifier }}"
+              TopicIdentifier: "{{ TopicIdentifier }}"
               ColumnName: "{{ ColumnName }}"
             FormatConfiguration:
               StringFormatConfiguration:
@@ -529,6 +542,16 @@ version_arn
           CustomActionDefaults:
             highlightOperation:
               Trigger: "{{ Trigger }}"
+          VisualMessages:
+            NoDataMessage:
+              Enabled: {{ Enabled }}
+              Title: "{{ Title }}"
+              TitleVisibility: "{{ TitleVisibility }}"
+              Description: "{{ Description }}"
+              DescriptionVisibility: "{{ DescriptionVisibility }}"
+              LinkText: "{{ LinkText }}"
+              LinkUrl: "{{ LinkUrl }}"
+              LinkVisibility: "{{ LinkVisibility }}"
         QueryExecutionOptions:
           QueryExecutionMode: "{{ QueryExecutionMode }}"
         StaticFiles:

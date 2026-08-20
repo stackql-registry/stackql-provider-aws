@@ -52,7 +52,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="conversion_configuration" /></td>
     <td><code>string</code></td>
-    <td>The configuration parameters for the schema conversion project.</td>
+    <td>A JSON string that contains the schema conversion settings for the migration project. For the format and available settings, see Specifying schema conversion settings for migration projects.</td>
 </tr>
 <tr>
     <td><CopyableCode code="migration_project_identifier" /></td>
@@ -84,14 +84,14 @@ The following methods are available for this resource:
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>Returns configuration parameters for a schema conversion project.</td>
+    <td>Returns configuration parameters for a schema conversion project. Required permissions: dms:DescribeConversionConfiguration. For more information, see Actions, resources, and condition keys for Database Migration Service.</td>
 </tr>
 <tr>
     <td><a href="#modify_conversion_configuration"><CopyableCode code="modify_conversion_configuration" /></a></td>
     <td><CopyableCode code="update" /></td>
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-MigrationProjectIdentifier"><code>MigrationProjectIdentifier</code></a>, <a href="#parameter-ConversionConfiguration"><code>ConversionConfiguration</code></a></td>
     <td></td>
-    <td>Modifies the specified schema conversion configuration using the provided parameters.</td>
+    <td>Modifies the specified schema conversion configuration using the provided parameters. Required permissions: dms:UpdateConversionConfiguration. For more information, see Actions, resources, and condition keys for Database Migration Service.</td>
 </tr>
 </tbody>
 </table>
@@ -127,7 +127,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 >
 <TabItem value="describe_conversion_configuration">
 
-Returns configuration parameters for a schema conversion project.
+Returns configuration parameters for a schema conversion project. Required permissions: dms:DescribeConversionConfiguration. For more information, see Actions, resources, and condition keys for Database Migration Service.
 
 ```sql
 SELECT
@@ -151,7 +151,7 @@ WHERE region = '{{ region }}' -- required
 >
 <TabItem value="modify_conversion_configuration">
 
-Modifies the specified schema conversion configuration using the provided parameters.
+Modifies the specified schema conversion configuration using the provided parameters. Required permissions: dms:UpdateConversionConfiguration. For more information, see Actions, resources, and condition keys for Database Migration Service.
 
 ```sql
 UPDATE aws.dms.conversion_configurations

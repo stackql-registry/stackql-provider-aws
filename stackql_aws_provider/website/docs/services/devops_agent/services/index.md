@@ -107,7 +107,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="service_type" /></td>
     <td><code>string</code></td>
-    <td>The service type e.g github or dynatrace (github, slack, azure, azuredevops, dynatrace, servicenow, pagerduty, gitlab, eventChannel, mcpservernewrelic, mcpservergrafana, mcpserverdatadog, mcpserver, mcpserversplunk, azureidentity)</td>
+    <td>The service type e.g github or dynatrace (github, slack, azure, azuredevops, dynatrace, servicenow, pagerduty, gitlab, eventChannel, mcpservernewrelic, mcpservergrafana, mcpserverdatadog, mcpserver, mcpserversplunk, azureidentity, mcpserversigv4, remoteagent, remoteagentsigv4)</td>
 </tr>
 </tbody>
 </table>
@@ -295,6 +295,8 @@ INSERT INTO aws.devops_agent.services (
 serviceDetails,
 kmsKeyArn,
 privateConnectionName,
+targetUrlPrivateConnectionName,
+exchangeUrlPrivateConnectionName,
 name,
 tags,
 service,
@@ -304,6 +306,8 @@ SELECT
 '{{ serviceDetails }}' /* required */,
 '{{ kmsKeyArn }}',
 '{{ privateConnectionName }}',
+'{{ targetUrlPrivateConnectionName }}',
+'{{ exchangeUrlPrivateConnectionName }}',
 '{{ name }}',
 '{{ tags }}',
 '{{ service }}',
@@ -490,12 +494,59 @@ tags
           webIdentityRoleArn: "{{ webIdentityRoleArn }}"
           webIdentityTokenAudiences:
             - "{{ webIdentityTokenAudiences }}"
+        mcpserversigv4:
+          name: "{{ name }}"
+          endpoint: "{{ endpoint }}"
+          description: "{{ description }}"
+          authorizationConfig:
+            region: "{{ region }}"
+            service: "{{ service }}"
+            roleArn: "{{ roleArn }}"
+            mcpRoleArn: "{{ mcpRoleArn }}"
+            customHeaders: "{{ customHeaders }}"
+        remoteagent:
+          name: "{{ name }}"
+          endpoint: "{{ endpoint }}"
+          description: "{{ description }}"
+          authorizationConfig:
+            apiKey:
+              apiKeyName: "{{ apiKeyName }}"
+              apiKeyValue: "{{ apiKeyValue }}"
+              apiKeyHeader: "{{ apiKeyHeader }}"
+            oAuthClientCredentials:
+              clientName: "{{ clientName }}"
+              clientId: "{{ clientId }}"
+              exchangeParameters: "{{ exchangeParameters }}"
+              clientSecret: "{{ clientSecret }}"
+              exchangeUrl: "{{ exchangeUrl }}"
+              scopes:
+                - "{{ scopes }}"
+            bearerToken:
+              tokenName: "{{ tokenName }}"
+              tokenValue: "{{ tokenValue }}"
+              authorizationHeader: "{{ authorizationHeader }}"
+        remoteagentsigv4:
+          name: "{{ name }}"
+          endpoint: "{{ endpoint }}"
+          description: "{{ description }}"
+          authorizationConfig:
+            region: "{{ region }}"
+            service: "{{ service }}"
+            roleArn: "{{ roleArn }}"
     - name: kmsKeyArn
       value: "{{ kmsKeyArn }}"
       description: |
         The ARN of the AWS Key Management Service (AWS KMS) customer managed key that's used to encrypt resources.
     - name: privateConnectionName
       value: "{{ privateConnectionName }}"
+      description: |
+        Unique name for a Private Connection within an account.
+    - name: targetUrlPrivateConnectionName
+      value: "{{ targetUrlPrivateConnectionName }}"
+      description: |
+        Unique name for a Private Connection within an account.
+    - name: exchangeUrlPrivateConnectionName
+      value: "{{ exchangeUrlPrivateConnectionName }}"
       description: |
         Unique name for a Private Connection within an account.
     - name: name
@@ -529,7 +580,8 @@ Adds a specific service association to an AgentSpace. It overwrites the existing
 UPDATE aws.devops_agent.services
 SET 
 serviceId = '{{ serviceId }}',
-configuration = '{{ configuration }}'
+configuration = '{{ configuration }}',
+capabilities = '{{ capabilities }}'
 WHERE 
 agent_space_id = '{{ agent_space_id }}' --required
 AND region = '{{ region }}' --required

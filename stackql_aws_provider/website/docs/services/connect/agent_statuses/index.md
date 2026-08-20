@@ -176,7 +176,7 @@ The following methods are available for this resource:
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>Searches AgentStatuses in an Amazon Connect instance, with optional filtering.</td>
+    <td>Searches AgentStatuses in an Connect Customer instance, with optional filtering.</td>
 </tr>
 </tbody>
 </table>
@@ -197,7 +197,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-instance_id">
     <td><CopyableCode code="instance_id" /></td>
     <td><code>string</code></td>
-    <td>The identifier of the Amazon Connect instance. You can find the instance ID in the Amazon Resource Name (ARN) of the instance.</td>
+    <td>The identifier of the Connect Customer instance. You can find the instance ID in the Amazon Resource Name (ARN) of the instance.</td>
 </tr>
 <tr id="parameter-region">
     <td><CopyableCode code="region" /></td>
@@ -254,7 +254,7 @@ AND AgentStatusTypes = '{{ AgentStatusTypes }}'
 </TabItem>
 <TabItem value="search_agent_statuses">
 
-Searches AgentStatuses in an Amazon Connect instance, with optional filtering.
+Searches AgentStatuses in an Connect Customer instance, with optional filtering.
 
 ```sql
 SELECT

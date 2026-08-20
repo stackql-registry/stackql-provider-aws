@@ -72,12 +72,12 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="log_destination_type" /></td>
     <td><code>string</code></td>
-    <td>The log destination type. An enum with possible values of s3 and cloudwatch.</td>
+    <td>The log destination type. An enum with possible values of s3, cloudwatch, and s3table.</td>
 </tr>
 <tr>
     <td><CopyableCode code="log_exports" /></td>
     <td><code>string</code></td>
-    <td>The collection of exported log types. Possible values are connectionlog, useractivitylog, and userlog.</td>
+    <td>The collection of exported log types. When LogDestinationType is s3 or cloudwatch, possible values are connectionlog, useractivitylog, and userlog. When LogDestinationType is s3table, the values are the names of the system tables being published.</td>
 </tr>
 <tr>
     <td><CopyableCode code="logging_enabled" /></td>
@@ -88,6 +88,11 @@ The following fields are returned by `SELECT` queries:
     <td><CopyableCode code="s3_key_prefix" /></td>
     <td><code>string</code></td>
     <td>The prefix applied to the log file names.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="s3_tables" /></td>
+    <td><code>string</code></td>
+    <td>The status of system table publishing to S3 Tables. This field is populated only when system table publishing is active.</td>
 </tr>
 </tbody>
 </table>
@@ -166,7 +171,8 @@ last_successful_delivery_time,
 log_destination_type,
 log_exports,
 logging_enabled,
-s3_key_prefix
+s3_key_prefix,
+s3_tables
 FROM aws.redshift.logging_status
 WHERE ClusterIdentifier = '{{ ClusterIdentifier }}' -- required
 AND region = '{{ region }}' -- required

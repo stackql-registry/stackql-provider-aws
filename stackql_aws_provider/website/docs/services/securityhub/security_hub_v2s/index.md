@@ -50,6 +50,11 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
+    <td><CopyableCode code="features" /></td>
+    <td><code>object</code></td>
+    <td>A map of opt-in features and their current status and metadata for the account in the current Region.</td>
+</tr>
+<tr>
     <td><CopyableCode code="hub_v2_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the service resource. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
@@ -57,7 +62,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="subscribed_at" /></td>
     <td><code>string</code></td>
-    <td>The date and time when the service was enabled in the account. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
+    <td>The date and time when the service was enabled in the account.</td>
 </tr>
 </tbody>
 </table>
@@ -124,6 +129,7 @@ Returns details about the service resource in your account.
 
 ```sql
 SELECT
+features,
 hub_v2_arn,
 subscribed_at
 FROM aws.securityhub.security_hub_v2s

@@ -231,6 +231,7 @@ Rules,
 VisibilityConfig,
 Tags,
 CustomResponseBodies,
+MonetizationConfig,
 region
 )
 SELECT 
@@ -242,6 +243,7 @@ SELECT
 '{{ VisibilityConfig }}' /* required */,
 '{{ Tags }}',
 '{{ CustomResponseBodies }}',
+'{{ MonetizationConfig }}',
 '{{ region }}'
 RETURNING
 summary
@@ -317,6 +319,9 @@ summary
               TextTransformations:
                 - Priority: {{ Priority }}
                   Type: "{{ Type }}"
+              PreParseTextTransformations:
+                - Priority: {{ Priority }}
+                  Type: "{{ Type }}"
               PositionalConstraint: "{{ PositionalConstraint }}"
             SqliMatchStatement:
               FieldToMatch:
@@ -354,6 +359,9 @@ summary
               TextTransformations:
                 - Priority: {{ Priority }}
                   Type: "{{ Type }}"
+              PreParseTextTransformations:
+                - Priority: {{ Priority }}
+                  Type: "{{ Type }}"
               SensitivityLevel: "{{ SensitivityLevel }}"
             XssMatchStatement:
               FieldToMatch:
@@ -389,6 +397,9 @@ summary
                 UriFragment:
                   FallbackBehavior: "{{ FallbackBehavior }}"
               TextTransformations:
+                - Priority: {{ Priority }}
+                  Type: "{{ Type }}"
+              PreParseTextTransformations:
                 - Priority: {{ Priority }}
                   Type: "{{ Type }}"
             SizeConstraintStatement:
@@ -429,6 +440,9 @@ summary
               TextTransformations:
                 - Priority: {{ Priority }}
                   Type: "{{ Type }}"
+              PreParseTextTransformations:
+                - Priority: {{ Priority }}
+                  Type: "{{ Type }}"
             GeoMatchStatement:
               CountryCodes:
                 - "{{ CountryCodes }}"
@@ -447,6 +461,7 @@ summary
                     Count: "{{ Count }}"
                     Captcha: "{{ Captcha }}"
                     Challenge: "{{ Challenge }}"
+                    Monetize: "{{ Monetize }}"
             IPSetReferenceStatement:
               ARN: "{{ ARN }}"
               IPSetForwardedIPConfig:
@@ -490,6 +505,9 @@ summary
               TextTransformations:
                 - Priority: {{ Priority }}
                   Type: "{{ Type }}"
+              PreParseTextTransformations:
+                - Priority: {{ Priority }}
+                  Type: "{{ Type }}"
             RateBasedStatement:
               Limit: {{ Limit }}
               EvaluationWindowSec: {{ EvaluationWindowSec }}
@@ -499,19 +517,23 @@ summary
                   SearchString: "{{ SearchString }}"
                   FieldToMatch: "{{ FieldToMatch }}"
                   TextTransformations: "{{ TextTransformations }}"
+                  PreParseTextTransformations: "{{ PreParseTextTransformations }}"
                   PositionalConstraint: "{{ PositionalConstraint }}"
                 SqliMatchStatement:
                   FieldToMatch: "{{ FieldToMatch }}"
                   TextTransformations: "{{ TextTransformations }}"
+                  PreParseTextTransformations: "{{ PreParseTextTransformations }}"
                   SensitivityLevel: "{{ SensitivityLevel }}"
                 XssMatchStatement:
                   FieldToMatch: "{{ FieldToMatch }}"
                   TextTransformations: "{{ TextTransformations }}"
+                  PreParseTextTransformations: "{{ PreParseTextTransformations }}"
                 SizeConstraintStatement:
                   FieldToMatch: "{{ FieldToMatch }}"
                   ComparisonOperator: "{{ ComparisonOperator }}"
                   Size: {{ Size }}
                   TextTransformations: "{{ TextTransformations }}"
+                  PreParseTextTransformations: "{{ PreParseTextTransformations }}"
                 GeoMatchStatement:
                   CountryCodes: "{{ CountryCodes }}"
                   ForwardedIPConfig: "{{ ForwardedIPConfig }}"
@@ -526,6 +548,7 @@ summary
                   ARN: "{{ ARN }}"
                   FieldToMatch: "{{ FieldToMatch }}"
                   TextTransformations: "{{ TextTransformations }}"
+                  PreParseTextTransformations: "{{ PreParseTextTransformations }}"
                 RateBasedStatement:
                   Limit: {{ Limit }}
                   EvaluationWindowSec: {{ EvaluationWindowSec }}
@@ -554,6 +577,7 @@ summary
                   RegexString: "{{ RegexString }}"
                   FieldToMatch: "{{ FieldToMatch }}"
                   TextTransformations: "{{ TextTransformations }}"
+                  PreParseTextTransformations: "{{ PreParseTextTransformations }}"
                 AsnMatchStatement:
                   AsnList: "{{ AsnList }}"
                   ForwardedIPConfig: "{{ ForwardedIPConfig }}"
@@ -590,19 +614,23 @@ summary
                     SearchString: "{{ SearchString }}"
                     FieldToMatch: "{{ FieldToMatch }}"
                     TextTransformations: "{{ TextTransformations }}"
+                    PreParseTextTransformations: "{{ PreParseTextTransformations }}"
                     PositionalConstraint: "{{ PositionalConstraint }}"
                   SqliMatchStatement:
                     FieldToMatch: "{{ FieldToMatch }}"
                     TextTransformations: "{{ TextTransformations }}"
+                    PreParseTextTransformations: "{{ PreParseTextTransformations }}"
                     SensitivityLevel: "{{ SensitivityLevel }}"
                   XssMatchStatement:
                     FieldToMatch: "{{ FieldToMatch }}"
                     TextTransformations: "{{ TextTransformations }}"
+                    PreParseTextTransformations: "{{ PreParseTextTransformations }}"
                   SizeConstraintStatement:
                     FieldToMatch: "{{ FieldToMatch }}"
                     ComparisonOperator: "{{ ComparisonOperator }}"
                     Size: {{ Size }}
                     TextTransformations: "{{ TextTransformations }}"
+                    PreParseTextTransformations: "{{ PreParseTextTransformations }}"
                   GeoMatchStatement:
                     CountryCodes: "{{ CountryCodes }}"
                     ForwardedIPConfig: "{{ ForwardedIPConfig }}"
@@ -617,6 +645,7 @@ summary
                     ARN: "{{ ARN }}"
                     FieldToMatch: "{{ FieldToMatch }}"
                     TextTransformations: "{{ TextTransformations }}"
+                    PreParseTextTransformations: "{{ PreParseTextTransformations }}"
                   RateBasedStatement:
                     Limit: {{ Limit }}
                     EvaluationWindowSec: {{ EvaluationWindowSec }}
@@ -645,6 +674,7 @@ summary
                     RegexString: "{{ RegexString }}"
                     FieldToMatch: "{{ FieldToMatch }}"
                     TextTransformations: "{{ TextTransformations }}"
+                    PreParseTextTransformations: "{{ PreParseTextTransformations }}"
                   AsnMatchStatement:
                     AsnList: "{{ AsnList }}"
                     ForwardedIPConfig: "{{ ForwardedIPConfig }}"
@@ -654,19 +684,23 @@ summary
                     SearchString: "{{ SearchString }}"
                     FieldToMatch: "{{ FieldToMatch }}"
                     TextTransformations: "{{ TextTransformations }}"
+                    PreParseTextTransformations: "{{ PreParseTextTransformations }}"
                     PositionalConstraint: "{{ PositionalConstraint }}"
                   SqliMatchStatement:
                     FieldToMatch: "{{ FieldToMatch }}"
                     TextTransformations: "{{ TextTransformations }}"
+                    PreParseTextTransformations: "{{ PreParseTextTransformations }}"
                     SensitivityLevel: "{{ SensitivityLevel }}"
                   XssMatchStatement:
                     FieldToMatch: "{{ FieldToMatch }}"
                     TextTransformations: "{{ TextTransformations }}"
+                    PreParseTextTransformations: "{{ PreParseTextTransformations }}"
                   SizeConstraintStatement:
                     FieldToMatch: "{{ FieldToMatch }}"
                     ComparisonOperator: "{{ ComparisonOperator }}"
                     Size: {{ Size }}
                     TextTransformations: "{{ TextTransformations }}"
+                    PreParseTextTransformations: "{{ PreParseTextTransformations }}"
                   GeoMatchStatement:
                     CountryCodes: "{{ CountryCodes }}"
                     ForwardedIPConfig: "{{ ForwardedIPConfig }}"
@@ -681,6 +715,7 @@ summary
                     ARN: "{{ ARN }}"
                     FieldToMatch: "{{ FieldToMatch }}"
                     TextTransformations: "{{ TextTransformations }}"
+                    PreParseTextTransformations: "{{ PreParseTextTransformations }}"
                   RateBasedStatement:
                     Limit: {{ Limit }}
                     EvaluationWindowSec: {{ EvaluationWindowSec }}
@@ -709,6 +744,7 @@ summary
                     RegexString: "{{ RegexString }}"
                     FieldToMatch: "{{ FieldToMatch }}"
                     TextTransformations: "{{ TextTransformations }}"
+                    PreParseTextTransformations: "{{ PreParseTextTransformations }}"
                   AsnMatchStatement:
                     AsnList: "{{ AsnList }}"
                     ForwardedIPConfig: "{{ ForwardedIPConfig }}"
@@ -718,19 +754,23 @@ summary
                   SearchString: "{{ SearchString }}"
                   FieldToMatch: "{{ FieldToMatch }}"
                   TextTransformations: "{{ TextTransformations }}"
+                  PreParseTextTransformations: "{{ PreParseTextTransformations }}"
                   PositionalConstraint: "{{ PositionalConstraint }}"
                 SqliMatchStatement:
                   FieldToMatch: "{{ FieldToMatch }}"
                   TextTransformations: "{{ TextTransformations }}"
+                  PreParseTextTransformations: "{{ PreParseTextTransformations }}"
                   SensitivityLevel: "{{ SensitivityLevel }}"
                 XssMatchStatement:
                   FieldToMatch: "{{ FieldToMatch }}"
                   TextTransformations: "{{ TextTransformations }}"
+                  PreParseTextTransformations: "{{ PreParseTextTransformations }}"
                 SizeConstraintStatement:
                   FieldToMatch: "{{ FieldToMatch }}"
                   ComparisonOperator: "{{ ComparisonOperator }}"
                   Size: {{ Size }}
                   TextTransformations: "{{ TextTransformations }}"
+                  PreParseTextTransformations: "{{ PreParseTextTransformations }}"
                 GeoMatchStatement:
                   CountryCodes: "{{ CountryCodes }}"
                   ForwardedIPConfig: "{{ ForwardedIPConfig }}"
@@ -745,6 +785,7 @@ summary
                   ARN: "{{ ARN }}"
                   FieldToMatch: "{{ FieldToMatch }}"
                   TextTransformations: "{{ TextTransformations }}"
+                  PreParseTextTransformations: "{{ PreParseTextTransformations }}"
                 RateBasedStatement:
                   Limit: {{ Limit }}
                   EvaluationWindowSec: {{ EvaluationWindowSec }}
@@ -773,6 +814,7 @@ summary
                   RegexString: "{{ RegexString }}"
                   FieldToMatch: "{{ FieldToMatch }}"
                   TextTransformations: "{{ TextTransformations }}"
+                  PreParseTextTransformations: "{{ PreParseTextTransformations }}"
                 AsnMatchStatement:
                   AsnList: "{{ AsnList }}"
                   ForwardedIPConfig: "{{ ForwardedIPConfig }}"
@@ -787,19 +829,23 @@ summary
                   SearchString: "{{ SearchString }}"
                   FieldToMatch: "{{ FieldToMatch }}"
                   TextTransformations: "{{ TextTransformations }}"
+                  PreParseTextTransformations: "{{ PreParseTextTransformations }}"
                   PositionalConstraint: "{{ PositionalConstraint }}"
                 SqliMatchStatement:
                   FieldToMatch: "{{ FieldToMatch }}"
                   TextTransformations: "{{ TextTransformations }}"
+                  PreParseTextTransformations: "{{ PreParseTextTransformations }}"
                   SensitivityLevel: "{{ SensitivityLevel }}"
                 XssMatchStatement:
                   FieldToMatch: "{{ FieldToMatch }}"
                   TextTransformations: "{{ TextTransformations }}"
+                  PreParseTextTransformations: "{{ PreParseTextTransformations }}"
                 SizeConstraintStatement:
                   FieldToMatch: "{{ FieldToMatch }}"
                   ComparisonOperator: "{{ ComparisonOperator }}"
                   Size: {{ Size }}
                   TextTransformations: "{{ TextTransformations }}"
+                  PreParseTextTransformations: "{{ PreParseTextTransformations }}"
                 GeoMatchStatement:
                   CountryCodes: "{{ CountryCodes }}"
                   ForwardedIPConfig: "{{ ForwardedIPConfig }}"
@@ -814,6 +860,7 @@ summary
                   ARN: "{{ ARN }}"
                   FieldToMatch: "{{ FieldToMatch }}"
                   TextTransformations: "{{ TextTransformations }}"
+                  PreParseTextTransformations: "{{ PreParseTextTransformations }}"
                 RateBasedStatement:
                   Limit: {{ Limit }}
                   EvaluationWindowSec: {{ EvaluationWindowSec }}
@@ -842,6 +889,7 @@ summary
                   RegexString: "{{ RegexString }}"
                   FieldToMatch: "{{ FieldToMatch }}"
                   TextTransformations: "{{ TextTransformations }}"
+                  PreParseTextTransformations: "{{ PreParseTextTransformations }}"
                 AsnMatchStatement:
                   AsnList: "{{ AsnList }}"
                   ForwardedIPConfig: "{{ ForwardedIPConfig }}"
@@ -877,6 +925,7 @@ summary
                     Count: "{{ Count }}"
                     Captcha: "{{ Captcha }}"
                     Challenge: "{{ Challenge }}"
+                    Monetize: "{{ Monetize }}"
             LabelMatchStatement:
               Scope: "{{ Scope }}"
               Key: "{{ Key }}"
@@ -917,6 +966,9 @@ summary
               TextTransformations:
                 - Priority: {{ Priority }}
                   Type: "{{ Type }}"
+              PreParseTextTransformations:
+                - Priority: {{ Priority }}
+                  Type: "{{ Type }}"
             AsnMatchStatement:
               AsnList:
                 - {{ AsnList }}
@@ -951,6 +1003,8 @@ summary
                 InsertHeaders:
                   - Name: "{{ Name }}"
                     Value: "{{ Value }}"
+            Monetize:
+              PriceMultiplier: "{{ PriceMultiplier }}"
           OverrideAction:
             Count:
               CustomRequestHandling:
@@ -986,6 +1040,16 @@ summary
       value: "{{ CustomResponseBodies }}"
       description: |
         A map of custom response keys and content bodies. When you create a rule with a block action, you can send a custom response to the web request. You define these for the rule group, and then use them in the rules that you define in the rule group. For information about customizing web requests and responses, see Customizing web requests and responses in WAF in the WAF Developer Guide. For information about the limits on count and size for custom request and response settings, see WAF quotas in the WAF Developer Guide.
+    - name: MonetizationConfig
+      description: |
+        The monetization configuration for the rule group. Provide this when any rule in the rule group uses the Monetize action.
+      value:
+        CryptoConfig:
+          PaymentNetworks:
+            - Chain: "{{ Chain }}"
+              WalletAddress: "{{ WalletAddress }}"
+              Prices: "{{ Prices }}"
+        CurrencyMode: "{{ CurrencyMode }}"
 `}</CodeBlock>
 
 </TabItem>
@@ -1014,7 +1078,8 @@ Description = '{{ Description }}',
 Rules = '{{ Rules }}',
 VisibilityConfig = '{{ VisibilityConfig }}',
 LockToken = '{{ LockToken }}',
-CustomResponseBodies = '{{ CustomResponseBodies }}'
+CustomResponseBodies = '{{ CustomResponseBodies }}',
+MonetizationConfig = '{{ MonetizationConfig }}'
 WHERE 
 region = '{{ region }}' --required
 AND Name = '{{ Name }}' --required

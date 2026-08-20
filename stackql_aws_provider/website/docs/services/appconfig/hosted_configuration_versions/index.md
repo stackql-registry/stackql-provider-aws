@@ -231,7 +231,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-Description">
     <td><CopyableCode code="Description" /></td>
     <td><code>string</code></td>
-    <td>A description of the configuration.</td>
+    <td>A description of the configuration. Due to HTTP limitations, this field only supports ASCII characters.</td>
 </tr>
 <tr id="parameter-Latest-Version-Number">
     <td><CopyableCode code="Latest-Version-Number" /></td>
@@ -384,8 +384,8 @@ version_number
       value: "{{ Content }}"
     - name: Description
       value: "{{ Description }}"
-      description: A description of the configuration.
-      description: A description of the configuration.
+      description: A description of the configuration. Due to HTTP limitations, this field only supports ASCII characters.
+      description: A description of the configuration. Due to HTTP limitations, this field only supports ASCII characters.
     - name: Latest-Version-Number
       value: {{ Latest-Version-Number }}
       description: An optional locking token used to prevent race conditions from overwriting configuration updates when creating a new version. To ensure your data is not overwritten when creating multiple hosted configuration versions in rapid succession, specify the version number of the latest hosted configuration version.

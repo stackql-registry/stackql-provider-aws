@@ -79,7 +79,7 @@ The following methods are available for this resource:
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-X-Amz-Bearer"><code>X-Amz-Bearer</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>Retrieves the AuthenticationUrl for the current authentication session for the AuthenticateCustomer flow block. For security recommendations, see Amazon Connect Chat security best practices. This API can only be called within one minute of receiving the authenticationInitiated event. The current supported channel is chat. This API is not supported for Apple Messages for Business, WhatsApp, or SMS chats. ConnectionToken is used for invoking this API instead of ParticipantToken. The Amazon Connect Participant Service APIs do not use Signature Version 4 authentication.</td>
+    <td>Retrieves the AuthenticationUrl for the current authentication session for the AuthenticateCustomer flow block. For security recommendations, see Connect Customer Chat security best practices. This API can only be called within one minute of receiving the authenticationInitiated event. The current supported channel is chat. This API is not supported for Apple Messages for Business, WhatsApp, or SMS chats. ConnectionToken is used for invoking this API instead of ParticipantToken. The Amazon Connect Participant Service APIs do not use Signature Version 4 authentication.</td>
 </tr>
 </tbody>
 </table>
@@ -120,7 +120,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 >
 <TabItem value="get_authentication_url">
 
-Retrieves the AuthenticationUrl for the current authentication session for the AuthenticateCustomer flow block. For security recommendations, see Amazon Connect Chat security best practices. This API can only be called within one minute of receiving the authenticationInitiated event. The current supported channel is chat. This API is not supported for Apple Messages for Business, WhatsApp, or SMS chats. ConnectionToken is used for invoking this API instead of ParticipantToken. The Amazon Connect Participant Service APIs do not use Signature Version 4 authentication.
+Retrieves the AuthenticationUrl for the current authentication session for the AuthenticateCustomer flow block. For security recommendations, see Connect Customer Chat security best practices. This API can only be called within one minute of receiving the authenticationInitiated event. The current supported channel is chat. This API is not supported for Apple Messages for Business, WhatsApp, or SMS chats. ConnectionToken is used for invoking this API instead of ParticipantToken. The Amazon Connect Participant Service APIs do not use Signature Version 4 authentication.
 
 ```sql
 SELECT

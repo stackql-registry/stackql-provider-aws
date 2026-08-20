@@ -62,7 +62,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="look_back_period" /></td>
     <td><code>string</code></td>
-    <td>The number of days the utilization metrics of the Amazon Web Services resource are analyzed. To validate that the preference is applied to your last generated set of recommendations, review the effectiveRecommendationPreferences value in the response of the GetAutoScalingGroupRecommendations or GetEC2InstanceRecommendations actions. (DAYS_14, DAYS_32, DAYS_93)</td>
+    <td>The number of days the utilization metrics of the Amazon Web Services resource are analyzed. To validate that the preference is applied to your last generated set of recommendations, review the effectiveRecommendationPreferences value in the response of the GetAutoScalingGroupRecommendations, GetEC2InstanceRecommendations, GetEBSVolumeRecommendations, GetECSServiceRecommendations, or GetRDSDatabaseRecommendations actions. (DAYS_14, DAYS_32, DAYS_93)</td>
 </tr>
 <tr>
     <td><CopyableCode code="preferred_resources" /></td>

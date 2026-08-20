@@ -99,7 +99,7 @@ The following methods are available for this resource:
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-view_token"><code>view_token</code></a>, <a href="#parameter-X-Amz-Bearer"><code>X-Amz-Bearer</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>Retrieves the view for the specified view token. For security recommendations, see Amazon Connect Chat security best practices.</td>
+    <td>Retrieves the view for the specified view token. For security recommendations, see Connect Customer Chat security best practices.</td>
 </tr>
 </tbody>
 </table>
@@ -145,7 +145,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 >
 <TabItem value="describe_view">
 
-Retrieves the view for the specified view token. For security recommendations, see Amazon Connect Chat security best practices.
+Retrieves the view for the specified view token. For security recommendations, see Connect Customer Chat security best practices.
 
 ```sql
 SELECT

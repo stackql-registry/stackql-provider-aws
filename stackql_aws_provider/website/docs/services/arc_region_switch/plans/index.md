@@ -574,7 +574,8 @@ EXEC aws.arc_region_switch.plans.start_plan_execution
 "mode": "{{ mode }}", 
 "comment": "{{ comment }}", 
 "latestVersion": "{{ latestVersion }}", 
-"recoveryExecutionId": "{{ recoveryExecutionId }}"
+"recoveryExecutionId": "{{ recoveryExecutionId }}", 
+"clientToken": "{{ clientToken }}"
 }'
 ;
 ```

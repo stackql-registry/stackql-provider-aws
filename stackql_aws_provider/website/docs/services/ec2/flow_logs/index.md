@@ -120,6 +120,11 @@ The following fields are returned by `SELECT` queries:
     <td>The ID of the resource being monitored.</td>
 </tr>
 <tr>
+    <td><CopyableCode code="tag_field_specifications" /></td>
+    <td><code>string</code></td>
+    <td>The tag configuration associated with the Flow Logs Amazon EC2 Tags feature fields in your custom log format.</td>
+</tr>
+<tr>
     <td><CopyableCode code="tags" /></td>
     <td><code>string</code></td>
     <td>The tags for the flow log.</td>
@@ -160,7 +165,7 @@ The following methods are available for this resource:
     <td><a href="#create_flow_logs"><CopyableCode code="create_flow_logs" /></a></td>
     <td><CopyableCode code="insert" /></td>
     <td><a href="#parameter-ResourceId"><code>ResourceId</code></a>, <a href="#parameter-ResourceType"><code>ResourceType</code></a>, <a href="#parameter-region"><code>region</code></a></td>
-    <td><a href="#parameter-DryRun"><code>DryRun</code></a>, <a href="#parameter-ClientToken"><code>ClientToken</code></a>, <a href="#parameter-DeliverLogsPermissionArn"><code>DeliverLogsPermissionArn</code></a>, <a href="#parameter-DeliverCrossAccountRole"><code>DeliverCrossAccountRole</code></a>, <a href="#parameter-LogGroupName"><code>LogGroupName</code></a>, <a href="#parameter-TrafficType"><code>TrafficType</code></a>, <a href="#parameter-LogDestinationType"><code>LogDestinationType</code></a>, <a href="#parameter-LogDestination"><code>LogDestination</code></a>, <a href="#parameter-LogFormat"><code>LogFormat</code></a>, <a href="#parameter-TagSpecification"><code>TagSpecification</code></a>, <a href="#parameter-MaxAggregationInterval"><code>MaxAggregationInterval</code></a>, <a href="#parameter-DestinationOptions"><code>DestinationOptions</code></a></td>
+    <td><a href="#parameter-DryRun"><code>DryRun</code></a>, <a href="#parameter-ClientToken"><code>ClientToken</code></a>, <a href="#parameter-DeliverLogsPermissionArn"><code>DeliverLogsPermissionArn</code></a>, <a href="#parameter-DeliverCrossAccountRole"><code>DeliverCrossAccountRole</code></a>, <a href="#parameter-LogGroupName"><code>LogGroupName</code></a>, <a href="#parameter-TrafficType"><code>TrafficType</code></a>, <a href="#parameter-LogDestinationType"><code>LogDestinationType</code></a>, <a href="#parameter-LogDestination"><code>LogDestination</code></a>, <a href="#parameter-LogFormat"><code>LogFormat</code></a>, <a href="#parameter-TagSpecification"><code>TagSpecification</code></a>, <a href="#parameter-MaxAggregationInterval"><code>MaxAggregationInterval</code></a>, <a href="#parameter-DestinationOptions"><code>DestinationOptions</code></a>, <a href="#parameter-TagFieldSpecification"><code>TagFieldSpecification</code></a></td>
     <td>Creates one or more flow logs to capture information about IP traffic for a specific network interface, subnet, or VPC. Flow log data for a monitored network interface is recorded as flow log records, which are log events consisting of fields that describe the traffic flow. For more information, see Flow log records in the Amazon VPC User Guide. When publishing to CloudWatch Logs, flow log records are published to a log group, and each network interface has a unique log stream in the log group. When publishing to Amazon S3, flow log records for all of the monitored network interfaces are published to a single log file object that is stored in the specified bucket. For more information, see VPC Flow Logs in the Amazon VPC User Guide.</td>
 </tr>
 <tr>
@@ -194,7 +199,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-ResourceId">
     <td><CopyableCode code="ResourceId" /></td>
     <td><code>array</code></td>
-    <td>The IDs of the resources to monitor. For example, if the resource type is VPC, specify the IDs of the VPCs. Constraints: Maximum of 25 for transit gateway resource types. Maximum of 1000 for the other resource types.</td>
+    <td>The IDs of the resources to monitor. For example, if the resource type is VPC, specify the IDs of the VPCs. Constraints: Maximum of 25 for transit gateway resource types. Maximum of 300 for the other resource types.</td>
 </tr>
 <tr id="parameter-ResourceType">
     <td><CopyableCode code="ResourceType" /></td>
@@ -276,6 +281,11 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     <td><code>string</code></td>
     <td>The token to request the next page of items. Pagination continues from the end of the items returned by the previous request.</td>
 </tr>
+<tr id="parameter-TagFieldSpecification">
+    <td><CopyableCode code="TagFieldSpecification" /></td>
+    <td><code>array</code></td>
+    <td>The tag configuration associated with the Flow Logs Amazon EC2 Tags feature fields in your custom log format.</td>
+</tr>
 <tr id="parameter-TagSpecification">
     <td><CopyableCode code="TagSpecification" /></td>
     <td><code>array</code></td>
@@ -317,6 +327,7 @@ log_format,
 log_group_name,
 max_aggregation_interval,
 resource_id,
+tag_field_specifications,
 tags,
 traffic_type
 FROM aws.ec2.flow_logs
@@ -361,7 +372,8 @@ LogDestination,
 LogFormat,
 TagSpecification,
 MaxAggregationInterval,
-DestinationOptions
+DestinationOptions,
+TagFieldSpecification
 )
 SELECT 
 '{{ ResourceId }}',
@@ -378,7 +390,8 @@ SELECT
 '{{ LogFormat }}',
 '{{ TagSpecification }}',
 '{{ MaxAggregationInterval }}',
-'{{ DestinationOptions }}'
+'{{ DestinationOptions }}',
+'{{ TagFieldSpecification }}'
 RETURNING
 client_token,
 flow_log_ids,
@@ -448,6 +461,10 @@ unsuccessful
       value: "{{ DestinationOptions }}"
       description: The destination options.
       description: The destination options.
+    - name: TagFieldSpecification
+      value: "{{ TagFieldSpecification }}"
+      description: The tag configuration associated with the Flow Logs Amazon EC2 Tags feature fields in your custom log format.
+      description: The tag configuration associated with the Flow Logs Amazon EC2 Tags feature fields in your custom log format.
 `}</CodeBlock>
 
 </TabItem>

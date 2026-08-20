@@ -101,6 +101,11 @@ The following fields are returned by `SELECT` queries:
     <td>The failure message.</td>
 </tr>
 <tr>
+    <td><CopyableCode code="idle_timeout_seconds" /></td>
+    <td><code>integer</code></td>
+    <td>The amount of time, in seconds, that a connection can remain idle before VPC Lattice closes it.</td>
+</tr>
+<tr>
     <td><CopyableCode code="last_updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time that the service was last updated, in ISO-8601 format.</td>
@@ -283,6 +288,7 @@ custom_domain_name,
 dns_entry,
 failure_code,
 failure_message,
+idle_timeout_seconds,
 last_updated_at,
 status
 FROM aws.vpc_lattice.services
@@ -336,6 +342,7 @@ tags,
 customDomainName,
 certificateArn,
 authType,
+idleTimeoutSeconds,
 region
 )
 SELECT 
@@ -345,6 +352,7 @@ SELECT
 '{{ customDomainName }}',
 '{{ certificateArn }}',
 '{{ authType }}',
+{{ idleTimeoutSeconds }},
 '{{ region }}'
 RETURNING
 id,
@@ -354,6 +362,7 @@ auth_type,
 certificate_arn,
 custom_domain_name,
 dns_entry,
+idle_timeout_seconds,
 status
 ;
 ```
@@ -379,6 +388,8 @@ status
     - name: authType
       value: "{{ authType }}"
       valid_values: ['NONE', 'AWS_IAM']
+    - name: idleTimeoutSeconds
+      value: {{ idleTimeoutSeconds }}
 `}</CodeBlock>
 
 </TabItem>
@@ -401,7 +412,8 @@ Updates the specified service.
 UPDATE aws.vpc_lattice.services
 SET 
 certificateArn = '{{ certificateArn }}',
-authType = '{{ authType }}'
+authType = '{{ authType }}',
+idleTimeoutSeconds = {{ idleTimeoutSeconds }}
 WHERE 
 service_identifier = '{{ service_identifier }}' --required
 AND region = '{{ region }}' --required
@@ -411,7 +423,8 @@ name,
 arn,
 auth_type,
 certificate_arn,
-custom_domain_name;
+custom_domain_name,
+idle_timeout_seconds;
 ```
 </TabItem>
 </Tabs>

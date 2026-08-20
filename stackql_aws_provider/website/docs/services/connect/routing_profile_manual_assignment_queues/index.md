@@ -94,7 +94,7 @@ The following methods are available for this resource:
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-instance_id"><code>instance_id</code></a>, <a href="#parameter-routing_profile_id"><code>routing_profile_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td><a href="#parameter-nextToken"><code>nextToken</code></a>, <a href="#parameter-maxResults"><code>maxResults</code></a></td>
-    <td>Lists the manual assignment queues associated with a routing profile. Use cases Following are common uses cases for this API: This API returns list of queues where contacts can be manually assigned or picked by an agent who has access to the Worklist app. The user can additionally filter on queues, if they have access to those queues (otherwise a invalid request exception will be thrown). For information about how manual contact assignment works in the agent workspace, see the Access the Worklist app in the Amazon Connect agent workspace in the Amazon Connect Administrator Guide. Important things to know This API only returns the manual assignment queues associated with a routing profile. Use the ListRoutingProfileQueues API to list the auto assignment queues for the routing profile. Endpoints: See Amazon Connect endpoints and quotas.</td>
+    <td>Lists the manual assignment queues associated with a routing profile. Use cases Following are common uses cases for this API: This API returns list of queues where contacts can be manually assigned or picked by an agent who has access to the Worklist app. The user can additionally filter on queues, if they have access to those queues (otherwise a invalid request exception will be thrown). For information about how manual contact assignment works in the agent workspace, see the Access the Worklist app in the Connect Customer agent workspace in the Connect Customer Administrator Guide. Important things to know This API only returns the manual assignment queues associated with a routing profile. Use the ListRoutingProfileQueues API to list the auto assignment queues for the routing profile. Endpoints: See Connect Customer endpoints and quotas.</td>
 </tr>
 </tbody>
 </table>
@@ -115,7 +115,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-instance_id">
     <td><CopyableCode code="instance_id" /></td>
     <td><code>string</code></td>
-    <td>The identifier of the Amazon Connect instance. You can find the instance ID in the Amazon Resource Name (ARN) of the instance.</td>
+    <td>The identifier of the Connect Customer instance. You can find the instance ID in the Amazon Resource Name (ARN) of the instance.</td>
 </tr>
 <tr id="parameter-region">
     <td><CopyableCode code="region" /></td>
@@ -150,7 +150,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 >
 <TabItem value="list_routing_profile_manual_assignment_queues">
 
-Lists the manual assignment queues associated with a routing profile. Use cases Following are common uses cases for this API: This API returns list of queues where contacts can be manually assigned or picked by an agent who has access to the Worklist app. The user can additionally filter on queues, if they have access to those queues (otherwise a invalid request exception will be thrown). For information about how manual contact assignment works in the agent workspace, see the Access the Worklist app in the Amazon Connect agent workspace in the Amazon Connect Administrator Guide. Important things to know This API only returns the manual assignment queues associated with a routing profile. Use the ListRoutingProfileQueues API to list the auto assignment queues for the routing profile. Endpoints: See Amazon Connect endpoints and quotas.
+Lists the manual assignment queues associated with a routing profile. Use cases Following are common uses cases for this API: This API returns list of queues where contacts can be manually assigned or picked by an agent who has access to the Worklist app. The user can additionally filter on queues, if they have access to those queues (otherwise a invalid request exception will be thrown). For information about how manual contact assignment works in the agent workspace, see the Access the Worklist app in the Connect Customer agent workspace in the Connect Customer Administrator Guide. Important things to know This API only returns the manual assignment queues associated with a routing profile. Use the ListRoutingProfileQueues API to list the auto assignment queues for the routing profile. Endpoints: See Connect Customer endpoints and quotas.
 
 ```sql
 SELECT

@@ -285,6 +285,7 @@ EXEC aws.redshift_serverless.recovery_points.restore_from_recovery_point
 @region='{{ region }}' --required 
 @@json=
 '{
+"maintainIntegration": {{ maintainIntegration }}, 
 "namespaceName": "{{ namespaceName }}", 
 "recoveryPointId": "{{ recoveryPointId }}", 
 "workgroupName": "{{ workgroupName }}"

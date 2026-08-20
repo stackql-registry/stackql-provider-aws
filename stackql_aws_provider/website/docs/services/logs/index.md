@@ -18,7 +18,7 @@ logs service documentation.
 
 :::info[Service Summary]
 
-total resources: __38__  
+total resources: __40__  
 
 :::
 
@@ -43,10 +43,10 @@ total resources: __38__
 <a href="/services/logs/integrations/">integrations</a><br />
 <a href="/services/logs/kms_keys/">kms_keys</a><br />
 <a href="/services/logs/log_anomaly_detectors/">log_anomaly_detectors</a><br />
-<a href="/services/logs/log_events/">log_events</a>
+<a href="/services/logs/log_events/">log_events</a><br />
+<a href="/services/logs/log_fields/">log_fields</a>
 </div>
 <div class="providerDocColumn">
-<a href="/services/logs/log_fields/">log_fields</a><br />
 <a href="/services/logs/log_group_fields/">log_group_fields</a><br />
 <a href="/services/logs/log_groups/">log_groups</a><br />
 <a href="/services/logs/log_groups_for_queries/">log_groups_for_queries</a><br />
@@ -62,7 +62,9 @@ total resources: __38__
 <a href="/services/logs/scheduled_queries/">scheduled_queries</a><br />
 <a href="/services/logs/scheduled_query_histories/">scheduled_query_histories</a><br />
 <a href="/services/logs/sources_for_s3_table_integrations/">sources_for_s3_table_integrations</a><br />
+<a href="/services/logs/storage_tier_policies/">storage_tier_policies</a><br />
 <a href="/services/logs/subscription_filters/">subscription_filters</a><br />
+<a href="/services/logs/syslog_configurations/">syslog_configurations</a><br />
 <a href="/services/logs/tags/">tags</a><br />
 <a href="/services/logs/transformers/">transformers</a>
 </div>

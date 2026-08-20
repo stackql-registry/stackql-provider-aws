@@ -77,7 +77,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
-    <td>The token to retrieve the next set of results. (pattern: &lt;code&gt;^&#91;-A-Za-z0-9_+\=\/&#93;+$&lt;/code&gt;)</td>
+    <td>The token to retrieve the next set of results. (pattern: &lt;code&gt;&#91;-A-Za-z0-9_+\=\/&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="tax_exemption_details_map" /></td>
@@ -121,7 +121,7 @@ The following methods are available for this resource:
 <tr>
     <td><a href="#put_tax_exemption"><CopyableCode code="put_tax_exemption" /></a></td>
     <td><CopyableCode code="replace" /></td>
-    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-accountIds"><code>accountIds</code></a>, <a href="#parameter-authority"><code>authority</code></a>, <a href="#parameter-exemptionCertificate"><code>exemptionCertificate</code></a>, <a href="#parameter-exemptionType"><code>exemptionType</code></a></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-accountIds"><code>accountIds</code></a>, <a href="#parameter-authority"><code>authority</code></a>, <a href="#parameter-exemptionType"><code>exemptionType</code></a>, <a href="#parameter-exemptionCertificate"><code>exemptionCertificate</code></a></td>
     <td></td>
     <td>Adds the tax exemption for a single account or all accounts listed in a consolidated billing family. The IAM action is tax:UpdateExemptions.</td>
 </tr>
@@ -204,14 +204,14 @@ REPLACE aws.taxsettings.tax_exemptions
 SET 
 accountIds = '{{ accountIds }}',
 authority = '{{ authority }}',
-exemptionCertificate = '{{ exemptionCertificate }}',
-exemptionType = '{{ exemptionType }}'
+exemptionType = '{{ exemptionType }}',
+exemptionCertificate = '{{ exemptionCertificate }}'
 WHERE 
 region = '{{ region }}' --required
 AND accountIds = '{{ accountIds }}' --required
 AND authority = '{{ authority }}' --required
-AND exemptionCertificate = '{{ exemptionCertificate }}' --required
 AND exemptionType = '{{ exemptionType }}' --required
+AND exemptionCertificate = '{{ exemptionCertificate }}' --required
 RETURNING
 case_id;
 ```

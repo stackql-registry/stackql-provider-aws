@@ -196,7 +196,7 @@ The following methods are available for this resource:
     <td><CopyableCode code="exec" /></td>
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-CatalogId"><code>CatalogId</code></a>, <a href="#parameter-DatabaseName"><code>DatabaseName</code></a>, <a href="#parameter-TableName"><code>TableName</code></a></td>
     <td></td>
-    <td>Starts a materialized view refresh task run, for a specified table and columns.</td>
+    <td>Starts a materialized view refresh task run for a specified materialized view.</td>
 </tr>
 <tr>
     <td><a href="#stop_column_statistics_task_run"><CopyableCode code="stop_column_statistics_task_run" /></a></td>
@@ -210,7 +210,7 @@ The following methods are available for this resource:
     <td><CopyableCode code="exec" /></td>
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-CatalogId"><code>CatalogId</code></a>, <a href="#parameter-DatabaseName"><code>DatabaseName</code></a>, <a href="#parameter-TableName"><code>TableName</code></a></td>
     <td></td>
-    <td>Stops a materialized view refresh task run, for a specified table and columns.</td>
+    <td>Stops a materialized view refresh task run for a specified materialized view.</td>
 </tr>
 </tbody>
 </table>
@@ -526,7 +526,7 @@ EXEC aws.glue.databases.start_column_statistics_task_run
 </TabItem>
 <TabItem value="start_materialized_view_refresh_task_run">
 
-Starts a materialized view refresh task run, for a specified table and columns.
+Starts a materialized view refresh task run for a specified materialized view.
 
 ```sql
 EXEC aws.glue.databases.start_materialized_view_refresh_task_run 
@@ -558,7 +558,7 @@ EXEC aws.glue.databases.stop_column_statistics_task_run
 </TabItem>
 <TabItem value="stop_materialized_view_refresh_task_run">
 
-Stops a materialized view refresh task run, for a specified table and columns.
+Stops a materialized view refresh task run for a specified materialized view.
 
 ```sql
 EXEC aws.glue.databases.stop_materialized_view_refresh_task_run 

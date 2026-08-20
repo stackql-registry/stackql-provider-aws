@@ -50,6 +50,11 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
+    <td><CopyableCode code="durable_config" /></td>
+    <td><code>object</code></td>
+    <td>Configuration settings for durable functions, including execution timeout, retention period for execution history, and an optional ARN of the Key Management Service (KMS) customer managed key that is used to encrypt your durable execution's payload data, including input, output, and error payloads.</td>
+</tr>
+<tr>
     <td><CopyableCode code="durable_execution_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the durable execution. (pattern: &lt;code&gt;arn:(&#91;a-zA-Z0-9-&#93;+):lambda:(&#91;a-zA-Z0-9-&#93;+):(\d&#123;12&#125;):function:(&#91;a-zA-Z0-9_-&#93;+):(\$LATEST(?:\.PUBLISHED)?|&#91;0-9&#93;+)/durable-execution/(&#91;a-zA-Z0-9_-&#93;+)/(&#91;a-zA-Z0-9_-&#93;+)&lt;/code&gt;)</td>
@@ -70,9 +75,14 @@ The following fields are returned by `SELECT` queries:
     <td>Error information if the durable execution failed. This field is only present when the execution status is FAILED, TIMED_OUT, or STOPPED. The combined size of all error fields is limited to 256 KB.</td>
 </tr>
 <tr>
+    <td><CopyableCode code="execution_data_included" /></td>
+    <td><code>boolean</code></td>
+    <td>Indicates whether execution data is included in this response. Returns false when IncludeExecutionData is set to false in the request.</td>
+</tr>
+<tr>
     <td><CopyableCode code="function_arn" /></td>
     <td><code>string</code></td>
-    <td>The Amazon Resource Name (ARN) of the Lambda function that was invoked to start this durable execution. (pattern: &lt;code&gt;arn:(aws&#91;a-zA-Z-&#93;*)?:lambda:&#91;a-z&#93;&#123;2&#125;((-gov)|(-iso(&#91;a-z&#93;?)))?-&#91;a-z&#93;+-\d&#123;1&#125;:\d&#123;12&#125;:function:&#91;a-zA-Z0-9-_\.&#93;+(:(\$LATEST(\.PUBLISHED)?|&#91;a-zA-Z0-9-_&#93;+))?&lt;/code&gt;)</td>
+    <td>The Amazon Resource Name (ARN) of the Lambda function that was invoked to start this durable execution. (pattern: &lt;code&gt;arn:(aws&#91;a-zA-Z-&#93;*)?:lambda:(eusc-)?&#91;a-z&#93;&#123;2&#125;((-gov)|(-iso(&#91;a-z&#93;?)))?-&#91;a-z&#93;+-\d&#123;1&#125;:\d&#123;12&#125;:function:&#91;a-zA-Z0-9-_\.&#93;+(:(\$LATEST(\.PUBLISHED)?|&#91;a-zA-Z0-9-_&#93;+))?&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="input_payload" /></td>
@@ -128,7 +138,7 @@ The following methods are available for this resource:
     <td><a href="#get_durable_execution"><CopyableCode code="get_durable_execution" /></a></td>
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-durable_execution_arn"><code>durable_execution_arn</code></a>, <a href="#parameter-region"><code>region</code></a></td>
-    <td></td>
+    <td><a href="#parameter-IncludeExecutionData"><code>IncludeExecutionData</code></a></td>
     <td>Retrieves detailed information about a specific durable execution, including its current status, input payload, result or error information, and execution metadata such as start time and usage statistics.</td>
 </tr>
 <tr>
@@ -197,6 +207,11 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     <td><code>string</code></td>
     <td>AWS region (default: us-east-1)</td>
 </tr>
+<tr id="parameter-IncludeExecutionData">
+    <td><CopyableCode code="IncludeExecutionData" /></td>
+    <td><code>boolean</code></td>
+    <td>Specifies whether to include execution data such as input payload, result, and error information in the response. Set to false for a more compact response that includes only execution metadata. The default value is set to true.</td>
+</tr>
 </tbody>
 </table>
 
@@ -214,10 +229,12 @@ Retrieves detailed information about a specific durable execution, including its
 
 ```sql
 SELECT
+durable_config,
 durable_execution_arn,
 durable_execution_name,
 end_timestamp,
 error,
+execution_data_included,
 function_arn,
 input_payload,
 result,
@@ -228,6 +245,7 @@ version
 FROM aws.lambda.durable_executions
 WHERE durable_execution_arn = '{{ durable_execution_arn }}' -- required
 AND region = '{{ region }}' -- required
+AND IncludeExecutionData = '{{ IncludeExecutionData }}'
 ;
 ```
 </TabItem>

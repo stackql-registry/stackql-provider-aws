@@ -18,7 +18,7 @@ mq service documentation.
 
 :::info[Service Summary]
 
-total resources: __7__  
+total resources: __8__  
 
 :::
 
@@ -32,6 +32,7 @@ total resources: __7__
 </div>
 <div class="providerDocColumn">
 <a href="/services/mq/configurations/">configurations</a><br />
+<a href="/services/mq/shared_resources/">shared_resources</a><br />
 <a href="/services/mq/tags/">tags</a><br />
 <a href="/services/mq/users/">users</a>
 </div>

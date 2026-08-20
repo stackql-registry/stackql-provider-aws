@@ -52,7 +52,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
-    <td>The date and time recorded.</td>
+    <td>The date and time when the profile template was created.</td>
 </tr>
 <tr>
     <td><CopyableCode code="template_name" /></td>
@@ -67,7 +67,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
-    <td>The date and time recorded.</td>
+    <td>The date and time when the profile template was last updated.</td>
 </tr>
 </tbody>
 </table>

@@ -180,7 +180,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-managedByAWSBackupOnly">
     <td><CopyableCode code="managedByAWSBackupOnly" /></td>
     <td><code>boolean</code></td>
-    <td>This attribute filters recovery points based on ownership. If this is set to TRUE, the response will contain recovery points associated with the selected resources that are managed by Backup. If this is set to FALSE, the response will contain all recovery points associated with the selected resource. Type: Boolean</td>
+    <td>This attribute filters recovery points based on ownership. If this is set to TRUE, the response will contain recovery points associated with the selected resources that are managed by Backup. If this is set to FALSE, the response will contain all recovery points associated with the selected resource, except for EBS snapshots copied within the same Region and account. Type: Boolean</td>
 </tr>
 <tr id="parameter-maxResults">
     <td><CopyableCode code="maxResults" /></td>

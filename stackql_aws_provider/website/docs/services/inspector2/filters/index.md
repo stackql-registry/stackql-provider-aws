@@ -417,6 +417,63 @@ arn
         codeRepositoryProviderType:
           - comparison: "{{ comparison }}"
             value: "{{ value }}"
+        cloudProvider:
+          - comparison: "{{ comparison }}"
+            value: "{{ value }}"
+        cloudProviderRegion:
+          - comparison: "{{ comparison }}"
+            value: "{{ value }}"
+        cloudProviderAccountId:
+          - comparison: "{{ comparison }}"
+            value: "{{ value }}"
+        cloudProviderOrgId:
+          - comparison: "{{ comparison }}"
+            value: "{{ value }}"
+        cloudVmImageReference:
+          - comparison: "{{ comparison }}"
+            value: "{{ value }}"
+        cloudVmNetworkId:
+          - comparison: "{{ comparison }}"
+            value: "{{ value }}"
+        cloudVmSubnetIds:
+          - comparison: "{{ comparison }}"
+            value: "{{ value }}"
+        cloudImageRepositoryName:
+          - comparison: "{{ comparison }}"
+            value: "{{ value }}"
+        cloudImageRegistry:
+          - comparison: "{{ comparison }}"
+            value: "{{ value }}"
+        cloudImageDigest:
+          - comparison: "{{ comparison }}"
+            value: "{{ value }}"
+        cloudImageTags:
+          - comparison: "{{ comparison }}"
+            value: "{{ value }}"
+        cloudImagePushedAt:
+          - startInclusive: "{{ startInclusive }}"
+            endInclusive: "{{ endInclusive }}"
+        cloudImageArchitecture:
+          - comparison: "{{ comparison }}"
+            value: "{{ value }}"
+        cloudImageLastInUseAt:
+          - startInclusive: "{{ startInclusive }}"
+            endInclusive: "{{ endInclusive }}"
+        cloudImageInUseCount:
+          - upperInclusive: {{ upperInclusive }}
+            lowerInclusive: {{ lowerInclusive }}
+        cloudServerlessFunctionName:
+          - comparison: "{{ comparison }}"
+            value: "{{ value }}"
+        cloudServerlessFunctionRuntime:
+          - comparison: "{{ comparison }}"
+            value: "{{ value }}"
+        cloudServerlessFunctionLastModifiedAt:
+          - startInclusive: "{{ startInclusive }}"
+            endInclusive: "{{ endInclusive }}"
+        cloudServerlessFunctionExecutionRole:
+          - comparison: "{{ comparison }}"
+            value: "{{ value }}"
     - name: name
       value: "{{ name }}"
     - name: tags

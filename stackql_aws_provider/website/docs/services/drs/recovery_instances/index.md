@@ -92,7 +92,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="origin_availability_zone" /></td>
     <td><code>string</code></td>
-    <td>AWS availability zone associated with the recovery instance. (pattern: &lt;code&gt;(us(-gov)?|ap|ca|cn|eu|eusc|sa|af|me|il)-(&#91;a-z&#93;&#123;2&#125;-)?(central|north|(north(?:east|west))|south|south(?:east|west)|east|west)-&#91;0-9&#93;&#91;a-z&#93;&lt;/code&gt;)</td>
+    <td>AWS availability zone associated with the recovery instance. (pattern: &lt;code&gt;(us(-gov)?|ap|ca|cn|eu|eusc|sa|af|me|mx|il)-(&#91;a-z&#93;&#123;2&#125;-)?(central|north|(north(?:east|west))|south|south(?:east|west)|east|west)-&#91;0-9&#93;&#91;a-z&#93;&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="origin_environment" /></td>

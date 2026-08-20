@@ -294,7 +294,7 @@ location_arn
         A subdirectory in the HDFS cluster. This subdirectory is used to read data from or write data to the HDFS cluster. If the subdirectory isn't specified, it will default to /.
     - name: NameNodes
       description: |
-        The NameNode that manages the HDFS namespace. The NameNode performs operations such as opening, closing, and renaming files and directories. The NameNode contains the information to map blocks of data to the DataNodes. You can use only one NameNode.
+        The NameNode that manages the HDFS namespace. The NameNode performs operations such as opening, closing, and renaming files and directories. The NameNode contains the information to map blocks of data to the DataNodes. The number of NameNodes you can specify depends on the task mode: Enhanced mode – You can specify multiple NameNodes for HDFS High Availability (HA) configurations. Basic mode – You can specify only one NameNode.
       value:
         - Hostname: "{{ Hostname }}"
           Port: {{ Port }}

@@ -117,7 +117,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="image_type" /></td>
     <td><code>string</code></td>
-    <td>The type of the image. Images created through AMI import have type "custom", while WorkSpaces Applications provided images have type "native". Custom images support additional instance types including GeneralPurpose, MemoryOptimized, ComputeOptimized, and Accelerated instance families. (CUSTOM, NATIVE)</td>
+    <td>The type of the image. Images created through AMI import have type "custom", while WorkSpaces Applications provided images have type "native". Custom images support additional instance types including GeneralPurpose, MemoryOptimized, ComputeOptimized, and Accelerated instance families. (CUSTOM, NATIVE, BYOL)</td>
 </tr>
 <tr>
     <td><CopyableCode code="latest_appstream_agent_version" /></td>
@@ -192,18 +192,18 @@ The following methods are available for this resource:
     <td>Retrieves a list that describes one or more specified images, if the image names or image ARNs are provided. Otherwise, all images in the account are described.</td>
 </tr>
 <tr>
-    <td><a href="#create_imported_image"><CopyableCode code="create_imported_image" /></a></td>
-    <td><CopyableCode code="insert" /></td>
-    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-SourceAmiId"><code>SourceAmiId</code></a>, <a href="#parameter-IamRoleArn"><code>IamRoleArn</code></a></td>
-    <td></td>
-    <td>Creates a custom WorkSpaces Applications image by importing an EC2 AMI. This allows you to use your own customized AMI to create WorkSpaces Applications images that support additional instance types beyond the standard stream.* instances.</td>
-</tr>
-<tr>
     <td><a href="#create_updated_image"><CopyableCode code="create_updated_image" /></a></td>
     <td><CopyableCode code="insert" /></td>
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-existingImageName"><code>existingImageName</code></a>, <a href="#parameter-newImageName"><code>newImageName</code></a></td>
     <td></td>
     <td>Creates a new image with the latest Windows operating system updates, driver updates, and WorkSpaces Applications agent software. For more information, see the "Update an Image by Using Managed WorkSpaces Applications Image Updates" section in Administer Your WorkSpaces Applications Images, in the Amazon WorkSpaces Applications Administration Guide.</td>
+</tr>
+<tr>
+    <td><a href="#create_imported_image"><CopyableCode code="create_imported_image" /></a></td>
+    <td><CopyableCode code="insert" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Creates a custom WorkSpaces Applications image by importing an EC2 AMI. This allows you to use your own customized AMI to create WorkSpaces Applications images that support additional instance types beyond the standard stream.* instances.</td>
 </tr>
 <tr>
     <td><a href="#delete_image"><CopyableCode code="delete_image" /></a></td>
@@ -298,48 +298,13 @@ WHERE region = '{{ region }}' -- required
 ## `INSERT` examples
 
 <Tabs
-    defaultValue="create_imported_image"
+    defaultValue="create_updated_image"
     values={[
-        { label: 'create_imported_image', value: 'create_imported_image' },
         { label: 'create_updated_image', value: 'create_updated_image' },
+        { label: 'create_imported_image', value: 'create_imported_image' },
         { label: 'Manifest', value: 'manifest' }
     ]}
 >
-<TabItem value="create_imported_image">
-
-Creates a custom WorkSpaces Applications image by importing an EC2 AMI. This allows you to use your own customized AMI to create WorkSpaces Applications images that support additional instance types beyond the standard stream.* instances.
-
-```sql
-INSERT INTO aws.appstream.images (
-Name,
-SourceAmiId,
-IamRoleArn,
-Description,
-DisplayName,
-Tags,
-RuntimeValidationConfig,
-AgentSoftwareVersion,
-AppCatalogConfig,
-DryRun,
-region
-)
-SELECT 
-'{{ Name }}',
-'{{ SourceAmiId }}' /* required */,
-'{{ IamRoleArn }}' /* required */,
-'{{ Description }}',
-'{{ DisplayName }}',
-'{{ Tags }}',
-'{{ RuntimeValidationConfig }}',
-'{{ AgentSoftwareVersion }}',
-'{{ AppCatalogConfig }}',
-{{ DryRun }},
-'{{ region }}'
-RETURNING
-image
-;
-```
-</TabItem>
 <TabItem value="create_updated_image">
 
 Creates a new image with the latest Windows operating system updates, driver updates, and WorkSpaces Applications agent software. For more information, see the "Update an Image by Using Managed WorkSpaces Applications Image Updates" section in Administer Your WorkSpaces Applications Images, in the Amazon WorkSpaces Applications Administration Guide.
@@ -368,6 +333,43 @@ image
 ;
 ```
 </TabItem>
+<TabItem value="create_imported_image">
+
+Creates a custom WorkSpaces Applications image by importing an EC2 AMI. This allows you to use your own customized AMI to create WorkSpaces Applications images that support additional instance types beyond the standard stream.* instances.
+
+```sql
+INSERT INTO aws.appstream.images (
+Name,
+SourceAmiId,
+WorkspaceImageId,
+IamRoleArn,
+Description,
+DisplayName,
+Tags,
+RuntimeValidationConfig,
+AgentSoftwareVersion,
+AppCatalogConfig,
+DryRun,
+region
+)
+SELECT 
+'{{ Name }}',
+'{{ SourceAmiId }}',
+'{{ WorkspaceImageId }}',
+'{{ IamRoleArn }}',
+'{{ Description }}',
+'{{ DisplayName }}',
+'{{ Tags }}',
+'{{ RuntimeValidationConfig }}',
+'{{ AgentSoftwareVersion }}',
+'{{ AppCatalogConfig }}',
+{{ DryRun }},
+'{{ region }}'
+RETURNING
+image
+;
+```
+</TabItem>
 <TabItem value="manifest">
 
 <CodeBlock language="yaml">{`# Description fields are for documentation purposes
@@ -376,6 +378,30 @@ image
     - name: region
       value: "{{ region }}"
       description: Required parameter for the images resource.
+    - name: existingImageName
+      value: "{{ existingImageName }}"
+      description: |
+        The name of the image to update.
+    - name: newImageName
+      value: "{{ newImageName }}"
+      description: |
+        The name of the new image. The name must be unique within the AWS account and Region.
+    - name: newImageDescription
+      value: "{{ newImageDescription }}"
+      description: |
+        The description to display for the new image.
+    - name: newImageDisplayName
+      value: "{{ newImageDisplayName }}"
+      description: |
+        The name to display for the new image.
+    - name: newImageTags
+      value: "{{ newImageTags }}"
+      description: |
+        The tags to associate with the new image. A tag is a key-value pair, and the value is optional. For example, Environment=Test. If you do not specify a value, Environment=. Generally allowed characters are: letters, numbers, and spaces representable in UTF-8, and the following special characters: _ . : / = + \ - @ If you do not specify a value, the value is set to an empty string. For more information about tags, see Tagging Your Resources in the Amazon WorkSpaces Applications Administration Guide.
+    - name: dryRun
+      value: {{ dryRun }}
+      description: |
+        Indicates whether to display the status of image update availability before WorkSpaces Applications initiates the process of creating a new updated image. If this value is set to true, WorkSpaces Applications displays whether image updates are available. If this value is set to false, WorkSpaces Applications initiates the process of creating a new updated image without displaying whether image updates are available.
     - name: Name
       value: "{{ Name }}"
       description: |
@@ -383,7 +409,11 @@ image
     - name: SourceAmiId
       value: "{{ SourceAmiId }}"
       description: |
-        The ID of the EC2 AMI to import. The AMI must meet specific requirements including Windows Server 2022 Full Base, UEFI boot mode, TPM 2.0 support, and proper drivers.
+        The ID of the EC2 AMI to import.
+    - name: WorkspaceImageId
+      value: "{{ WorkspaceImageId }}"
+      description: |
+        The ID of the Workspaces Image to import.
     - name: IamRoleArn
       value: "{{ IamRoleArn }}"
       description: |
@@ -425,30 +455,6 @@ image
       value: {{ DryRun }}
       description: |
         When set to true, performs validation checks without actually creating the imported image. Use this to verify your configuration before executing the actual import operation.
-    - name: existingImageName
-      value: "{{ existingImageName }}"
-      description: |
-        The name of the image to update.
-    - name: newImageName
-      value: "{{ newImageName }}"
-      description: |
-        The name of the new image. The name must be unique within the AWS account and Region.
-    - name: newImageDescription
-      value: "{{ newImageDescription }}"
-      description: |
-        The description to display for the new image.
-    - name: newImageDisplayName
-      value: "{{ newImageDisplayName }}"
-      description: |
-        The name to display for the new image.
-    - name: newImageTags
-      value: "{{ newImageTags }}"
-      description: |
-        The tags to associate with the new image. A tag is a key-value pair, and the value is optional. For example, Environment=Test. If you do not specify a value, Environment=. Generally allowed characters are: letters, numbers, and spaces representable in UTF-8, and the following special characters: _ . : / = + \ - @ If you do not specify a value, the value is set to an empty string. For more information about tags, see Tagging Your Resources in the Amazon WorkSpaces Applications Administration Guide.
-    - name: dryRun
-      value: {{ dryRun }}
-      description: |
-        Indicates whether to display the status of image update availability before WorkSpaces Applications initiates the process of creating a new updated image. If this value is set to true, WorkSpaces Applications displays whether image updates are available. If this value is set to false, WorkSpaces Applications initiates the process of creating a new updated image without displaying whether image updates are available.
 `}</CodeBlock>
 
 </TabItem>

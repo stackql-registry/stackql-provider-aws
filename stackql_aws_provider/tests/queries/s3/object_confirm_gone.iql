@@ -1,0 +1,6 @@
+-- GetObject on the deleted key must surface NoSuchKey (the raw-body read
+-- path propagates the AWS error verbatim).
+SELECT contents FROM aws.s3.objects
+WHERE region = '{{ global_region }}'
+  AND bucket = '{{ bucket_prefix }}-{{ caller_identity.account }}'
+  AND key = 'smoke/terraform.tfstate'

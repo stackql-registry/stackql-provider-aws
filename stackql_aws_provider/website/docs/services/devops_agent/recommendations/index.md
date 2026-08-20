@@ -86,6 +86,16 @@ The following fields are returned by `SELECT` queries:
     <td>Priority level of the recommendation (HIGH, MEDIUM, LOW)</td>
 </tr>
 <tr>
+    <td><CopyableCode code="rank_position" /></td>
+    <td><code>integer</code></td>
+    <td>Position in ranked list (1 = highest priority)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="ranked_at" /></td>
+    <td><code>string (date-time)</code></td>
+    <td>Timestamp when the recommendation was last ranked</td>
+</tr>
+<tr>
     <td><CopyableCode code="recommendation_id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier for this recommendation</td>
@@ -241,6 +251,8 @@ created_at,
 goal_id,
 goal_version,
 priority,
+rank_position,
+ranked_at,
 recommendation_id,
 status,
 task_id,

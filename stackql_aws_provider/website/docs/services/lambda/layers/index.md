@@ -57,12 +57,12 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="layer_arn" /></td>
     <td><code>string</code></td>
-    <td>The Amazon Resource Name (ARN) of the function layer. (pattern: &lt;code&gt;arn:&#91;a-zA-Z0-9-&#93;+:lambda:&#91;a-zA-Z0-9-&#93;+:\d&#123;12&#125;:layer:&#91;a-zA-Z0-9-_&#93;+&lt;/code&gt;)</td>
+    <td>The Amazon Resource Name (ARN) of the function layer. (pattern: &lt;code&gt;arn:(aws&#91;a-zA-Z-&#93;*)?:lambda:(eusc-)?&#91;a-z&#93;&#123;2&#125;((-gov)|(-iso(&#91;a-z&#93;?)))?-&#91;a-z&#93;+-\d&#123;1&#125;:\d&#123;12&#125;:layer:&#91;a-zA-Z0-9-_&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="layer_name" /></td>
     <td><code>string</code></td>
-    <td>The name of the layer. (pattern: &lt;code&gt;(arn:&#91;a-zA-Z0-9-&#93;+:lambda:&#91;a-zA-Z0-9-&#93;+:\d&#123;12&#125;:layer:&#91;a-zA-Z0-9-_&#93;+)|&#91;a-zA-Z0-9-_&#93;+&lt;/code&gt;)</td>
+    <td>The name of the layer. (pattern: &lt;code&gt;(arn:(aws&#91;a-zA-Z-&#93;*)?:lambda:(eusc-)?&#91;a-z&#93;&#123;2&#125;((-gov)|(-iso(&#91;a-z&#93;?)))?-&#91;a-z&#93;+-\d&#123;1&#125;:\d&#123;12&#125;:layer:&#91;a-zA-Z0-9-_&#93;+)|&#91;a-zA-Z0-9-_&#93;+&lt;/code&gt;)</td>
 </tr>
 </tbody>
 </table>
@@ -88,7 +88,7 @@ The following methods are available for this resource:
     <td><a href="#list_layers"><CopyableCode code="list_layers" /></a></td>
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
-    <td><a href="#parameter-CompatibleRuntime"><code>CompatibleRuntime</code></a>, <a href="#parameter-Marker"><code>Marker</code></a>, <a href="#parameter-MaxItems"><code>MaxItems</code></a>, <a href="#parameter-CompatibleArchitecture"><code>CompatibleArchitecture</code></a></td>
+    <td><a href="#parameter-CompatibleArchitecture"><code>CompatibleArchitecture</code></a>, <a href="#parameter-CompatibleRuntime"><code>CompatibleRuntime</code></a>, <a href="#parameter-Marker"><code>Marker</code></a>, <a href="#parameter-MaxItems"><code>MaxItems</code></a></td>
     <td>Lists Lambda layers and shows information about the latest version of each. Specify a runtime identifier to list only layers that indicate that they're compatible with that runtime. Specify a compatible architecture to include only layers that are compatible with that instruction set architecture.</td>
 </tr>
 <tr>
@@ -166,10 +166,10 @@ layer_arn,
 layer_name
 FROM aws.lambda.layers
 WHERE region = '{{ region }}' -- required
+AND CompatibleArchitecture = '{{ CompatibleArchitecture }}'
 AND CompatibleRuntime = '{{ CompatibleRuntime }}'
 AND Marker = '{{ Marker }}'
 AND MaxItems = '{{ MaxItems }}'
-AND CompatibleArchitecture = '{{ CompatibleArchitecture }}'
 ;
 ```
 </TabItem>
@@ -196,9 +196,9 @@ EXEC aws.lambda.layers.publish_layer_version
 '{
 "Description": "{{ Description }}", 
 "Content": "{{ Content }}", 
+"CompatibleArchitectures": "{{ CompatibleArchitectures }}", 
 "CompatibleRuntimes": "{{ CompatibleRuntimes }}", 
-"LicenseInfo": "{{ LicenseInfo }}", 
-"CompatibleArchitectures": "{{ CompatibleArchitectures }}"
+"LicenseInfo": "{{ LicenseInfo }}"
 }'
 ;
 ```

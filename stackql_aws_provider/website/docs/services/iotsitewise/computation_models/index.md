@@ -93,7 +93,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="computation_model_name" /></td>
     <td><code>string</code></td>
-    <td>The name of the computation model. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9 _\-#$*!@&#93;+$&lt;/code&gt;)</td>
+    <td>The name of the computation model. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9 _\-#$*!@.&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="computation_model_status" /></td>
@@ -127,7 +127,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
-    <td>The name of the computation model. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9 _\-#$*!@&#93;+$&lt;/code&gt;)</td>
+    <td>The name of the computation model. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9 _\-#$*!@.&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="arn" /></td>

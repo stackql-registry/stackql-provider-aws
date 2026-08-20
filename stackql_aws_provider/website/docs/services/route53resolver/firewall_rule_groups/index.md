@@ -195,7 +195,7 @@ The following methods are available for this resource:
     <td><CopyableCode code="update" /></td>
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-CreatorRequestId"><code>CreatorRequestId</code></a>, <a href="#parameter-FirewallRuleGroupId"><code>FirewallRuleGroupId</code></a>, <a href="#parameter-VpcId"><code>VpcId</code></a>, <a href="#parameter-Priority"><code>Priority</code></a></td>
     <td></td>
-    <td>Associates a FirewallRuleGroup with a VPC, to provide DNS filtering for the VPC.</td>
+    <td>Associates a FirewallRuleGroup with a VPC, to provide DNS filtering for the VPC. If the rule group contains any rule configured with the PartnerThreatProtection rule type, the calling account must hold an active AWS Marketplace subscription to the named partner. If the subscription is missing, the association request is rejected.</td>
 </tr>
 <tr>
     <td><a href="#disassociate_firewall_rule_group"><CopyableCode code="disassociate_firewall_rule_group" /></a></td>
@@ -355,7 +355,7 @@ firewall_rule_group
 >
 <TabItem value="associate_firewall_rule_group">
 
-Associates a FirewallRuleGroup with a VPC, to provide DNS filtering for the VPC.
+Associates a FirewallRuleGroup with a VPC, to provide DNS filtering for the VPC. If the rule group contains any rule configured with the PartnerThreatProtection rule type, the calling account must hold an active AWS Marketplace subscription to the named partner. If the subscription is missing, the association request is rejected.
 
 ```sql
 UPDATE aws.route53resolver.firewall_rule_groups

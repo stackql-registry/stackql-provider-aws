@@ -61,6 +61,11 @@ The following fields are returned by `SELECT` queries:
     <td>The ARN of the linked WhatsApp Business Account. (pattern: &lt;code&gt;arn:.*:waba/&#91;0-9a-zA-Z&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
+    <td><CopyableCode code="dataset_id" /></td>
+    <td><code>string</code></td>
+    <td>The Meta Conversions API dataset ID associated with this WhatsApp Business Account. This value is a numeric string of 10 to 20 digits. This field is not present when no dataset has been created for this account. (pattern: &lt;code&gt;&#91;0-9&#93;+&lt;/code&gt;)</td>
+</tr>
+<tr>
     <td><CopyableCode code="event_destinations" /></td>
     <td><code>array</code></td>
     <td>The event destinations for the linked WhatsApp Business Account.</td>
@@ -118,6 +123,11 @@ The following fields are returned by `SELECT` queries:
     <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the linked WhatsApp Business Account. (pattern: &lt;code&gt;arn:.*:waba/&#91;0-9a-zA-Z&#93;+&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="dataset_id" /></td>
+    <td><code>string</code></td>
+    <td>The Meta Conversions API dataset ID associated with this WhatsApp Business Account. This value is a numeric string of 10 to 20 digits. This field is not present when no dataset has been created for this account. (pattern: &lt;code&gt;&#91;0-9&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="event_destinations" /></td>
@@ -239,6 +249,7 @@ Get the details of your linked WhatsApp Business Account.
 SELECT
 id,
 arn,
+dataset_id,
 event_destinations,
 link_date,
 marketing_messages_onboarding_status,
@@ -260,6 +271,7 @@ List all WhatsApp Business Accounts linked to your Amazon Web Services account.
 SELECT
 id,
 arn,
+dataset_id,
 event_destinations,
 link_date,
 marketing_messages_onboarding_status,

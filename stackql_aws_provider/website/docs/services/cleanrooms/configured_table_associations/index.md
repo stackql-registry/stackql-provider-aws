@@ -71,6 +71,11 @@ The following fields are returned by `SELECT` queries:
     <td>The unique ARN for the configured table association. (pattern: &lt;code&gt;arn:aws:&#91;\w&#93;+:&#91;\w&#93;&#123;2&#125;-&#91;\w&#93;&#123;4,9&#125;-&#91;\d&#93;:&#91;\d&#93;&#123;12&#125;:configuredtableassociation/&#91;\d\w-&#93;+/&#91;\d\w-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
+    <td><CopyableCode code="child_resources" /></td>
+    <td><code>array</code></td>
+    <td>The child resources that depend on this configured table association.</td>
+</tr>
+<tr>
     <td><CopyableCode code="configured_table_arn" /></td>
     <td><code>string</code></td>
     <td>The unique ARN for the configured table that the association refers to. (pattern: &lt;code&gt;arn:aws:&#91;\w&#93;+:&#91;\w&#93;&#123;2&#125;-&#91;\w&#93;&#123;4,9&#125;-&#91;\d&#93;:&#91;\d&#93;&#123;12&#125;:configuredtable/&#91;\d\w-&#93;+&lt;/code&gt;)</td>
@@ -287,6 +292,7 @@ id,
 name,
 analysis_rule_types,
 arn,
+child_resources,
 configured_table_arn,
 configured_table_id,
 create_time,

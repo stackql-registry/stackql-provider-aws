@@ -153,7 +153,7 @@ The following methods are available for this resource:
     <td><a href="#get_memory_record"><CopyableCode code="get_memory_record" /></a></td>
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-memory_id"><code>memory_id</code></a>, <a href="#parameter-memory_record_id"><code>memory_record_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
-    <td></td>
+    <td><a href="#parameter-namespace"><code>namespace</code></a></td>
     <td>Retrieves a specific memory record from an AgentCore Memory resource. To use this operation, you must have the bedrock-agentcore:GetMemoryRecord permission.</td>
 </tr>
 <tr>
@@ -167,7 +167,7 @@ The following methods are available for this resource:
     <td><a href="#delete_memory_record"><CopyableCode code="delete_memory_record" /></a></td>
     <td><CopyableCode code="delete" /></td>
     <td><a href="#parameter-memory_id"><code>memory_id</code></a>, <a href="#parameter-memory_record_id"><code>memory_record_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
-    <td></td>
+    <td><a href="#parameter-namespace"><code>namespace</code></a></td>
     <td>Deletes a memory record from an AgentCore Memory resource. When you delete a memory record, it is permanently removed. To use this operation, you must have the bedrock-agentcore:DeleteMemoryRecord permission.</td>
 </tr>
 <tr>
@@ -229,6 +229,11 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     <td><code>string</code></td>
     <td>AWS region (default: us-east-1)</td>
 </tr>
+<tr id="parameter-namespace">
+    <td><CopyableCode code="namespace" /></td>
+    <td><code>string</code></td>
+    <td>The namespace of the memory record to delete. This value is used for IAM condition key authorization.</td>
+</tr>
 </tbody>
 </table>
 
@@ -257,6 +262,7 @@ FROM aws.bedrock_agentcore.memory_records
 WHERE memory_id = '{{ memory_id }}' -- required
 AND memory_record_id = '{{ memory_record_id }}' -- required
 AND region = '{{ region }}' -- required
+AND namespace = '{{ namespace }}'
 ;
 ```
 </TabItem>
@@ -299,6 +305,7 @@ DELETE FROM aws.bedrock_agentcore.memory_records
 WHERE memory_id = '{{ memory_id }}' --required
 AND memory_record_id = '{{ memory_record_id }}' --required
 AND region = '{{ region }}' --required
+AND namespace = '{{ namespace }}'
 ;
 ```
 </TabItem>

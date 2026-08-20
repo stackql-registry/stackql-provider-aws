@@ -18,7 +18,7 @@ acm service documentation.
 
 :::info[Service Summary]
 
-total resources: __3__  
+total resources: __9__  
 
 :::
 
@@ -26,9 +26,15 @@ total resources: __3__
 <div class="row">
 <div class="providerDocColumn">
 <a href="/services/acm/account_configurations/">account_configurations</a><br />
-<a href="/services/acm/certificates/">certificates</a>
+<a href="/services/acm/acme_accounts/">acme_accounts</a><br />
+<a href="/services/acm/acme_domain_validations/">acme_domain_validations</a><br />
+<a href="/services/acm/acme_endpoints/">acme_endpoints</a><br />
+<a href="/services/acm/acme_external_account_binding_credentials/">acme_external_account_binding_credentials</a>
 </div>
 <div class="providerDocColumn">
+<a href="/services/acm/acme_external_account_bindings/">acme_external_account_bindings</a><br />
+<a href="/services/acm/certificate_domain_validations/">certificate_domain_validations</a><br />
+<a href="/services/acm/certificates/">certificates</a><br />
 <a href="/services/acm/tags/">tags</a>
 </div>
 </div>

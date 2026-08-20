@@ -56,6 +56,11 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the function.</td>
 </tr>
 <tr>
+    <td><CopyableCode code="concurrent_executor_configuration" /></td>
+    <td><code>object</code></td>
+    <td>The configuration for a CONCURRENT_EXECUTOR function.</td>
+</tr>
+<tr>
     <td><CopyableCode code="custom_output_configuration" /></td>
     <td><code>object</code></td>
     <td>The configuration for a CUSTOM_OUTPUT function.</td>
@@ -73,7 +78,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="function_type" /></td>
     <td><code>string</code></td>
-    <td>The type of the function. (HTTP_REQUEST, CUSTOM_OUTPUT, SEQUENTIAL_EXECUTOR)</td>
+    <td>The type of the function. (HTTP_REQUEST, CUSTOM_OUTPUT, CONCURRENT_EXECUTOR, SEQUENTIAL_EXECUTOR)</td>
 </tr>
 <tr>
     <td><CopyableCode code="http_request_configuration" /></td>
@@ -110,6 +115,11 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the function.</td>
 </tr>
 <tr>
+    <td><CopyableCode code="concurrent_executor_configuration" /></td>
+    <td><code>object</code></td>
+    <td>The configuration for a CONCURRENT_EXECUTOR function. A CONCURRENT_EXECUTOR runs a set of child functions in parallel, up to a maximum concurrency, and combines their output when all functions complete. For more information about functions, see Working with functions in the MediaTailor User Guide.</td>
+</tr>
+<tr>
     <td><CopyableCode code="custom_output_configuration" /></td>
     <td><code>object</code></td>
     <td>The configuration for a CUSTOM_OUTPUT function. MediaTailor evaluates the output expressions against the current session state and commits the results as output bindings. CUSTOM_OUTPUT functions do not make external calls. For more information, see CUSTOM_OUTPUT in the MediaTailor User Guide.</td>
@@ -127,12 +137,12 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="function_type" /></td>
     <td><code>string</code></td>
-    <td>-- Define Enums (HTTP_REQUEST, CUSTOM_OUTPUT, SEQUENTIAL_EXECUTOR)</td>
+    <td>-- Define Enums (HTTP_REQUEST, CUSTOM_OUTPUT, CONCURRENT_EXECUTOR, SEQUENTIAL_EXECUTOR)</td>
 </tr>
 <tr>
     <td><CopyableCode code="http_request_configuration" /></td>
     <td><code>object</code></td>
-    <td>-- Function Configuration DataStructure</td>
+    <td>The configuration for an HTTP_REQUEST function. Specifies the HTTP method, URL, headers, body, timeout, and output expressions for the request. For more information, see HTTP_REQUEST in the MediaTailor User Guide.</td>
 </tr>
 <tr>
     <td><CopyableCode code="sequential_executor_configuration" /></td>
@@ -247,6 +257,7 @@ Retrieves the configuration and metadata for a function. For more information ab
 ```sql
 SELECT
 arn,
+concurrent_executor_configuration,
 custom_output_configuration,
 description,
 function_id,
@@ -267,6 +278,7 @@ Retrieves all functions associated with your AWS account in the current Region. 
 ```sql
 SELECT
 arn,
+concurrent_executor_configuration,
 custom_output_configuration,
 description,
 function_id,
@@ -303,6 +315,7 @@ FunctionType = '{{ FunctionType }}',
 Description = '{{ Description }}',
 HttpRequestConfiguration = '{{ HttpRequestConfiguration }}',
 CustomOutputConfiguration = '{{ CustomOutputConfiguration }}',
+ConcurrentExecutorConfiguration = '{{ ConcurrentExecutorConfiguration }}',
 SequentialExecutorConfiguration = '{{ SequentialExecutorConfiguration }}',
 Tags = '{{ Tags }}'
 WHERE 
@@ -311,6 +324,7 @@ AND region = '{{ region }}' --required
 AND FunctionType = '{{ FunctionType }}' --required
 RETURNING
 arn,
+concurrent_executor_configuration,
 custom_output_configuration,
 description,
 function_id,

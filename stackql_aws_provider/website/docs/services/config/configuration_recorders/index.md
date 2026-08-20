@@ -89,6 +89,13 @@ The following methods are available for this resource:
     <td>Adds all resource types specified in the ResourceTypes list to the RecordingGroup of specified configuration recorder and includes those resource types when recording. For this operation, the specified configuration recorder must use a RecordingStrategy that is either INCLUSION_BY_RESOURCE_TYPES or EXCLUSION_BY_RESOURCE_TYPES.</td>
 </tr>
 <tr>
+    <td><a href="#put_third_party_service_linked_configuration_recorder"><CopyableCode code="put_third_party_service_linked_configuration_recorder" /></a></td>
+    <td><CopyableCode code="replace" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-ServicePrincipal"><code>ServicePrincipal</code></a>, <a href="#parameter-ConnectorArn"><code>ConnectorArn</code></a>, <a href="#parameter-ScopeConfiguration"><code>ScopeConfiguration</code></a></td>
+    <td></td>
+    <td>Creates or updates a service-linked configuration recorder that is linked to a third-party cloud service provider based on the ConnectorArn you specify. The configuration recorder's name, recordingGroup, recordingMode, and recordingScope is set by the service that is linked to the configuration recorder. If a service-linked configuration recorder already exists for the specified service principal and connector, calling this operation again updates the ScopeConfiguration. This operation can only be called by the Amazon Web Services service linked to the configuration recorder Customers cannot call this operation directly. Only the linked Amazon Web Services service can create or update the service-linked configuration recorder. Tags are added at creation and cannot be updated with this operation Use TagResource and UntagResource to update tags after creation.</td>
+</tr>
+<tr>
     <td><a href="#put_configuration_recorder"><CopyableCode code="put_configuration_recorder" /></a></td>
     <td><CopyableCode code="replace" /></td>
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-ConfigurationRecorder"><code>ConfigurationRecorder</code></a></td>
@@ -222,12 +229,34 @@ configuration_recorder;
 ## `REPLACE` examples
 
 <Tabs
-    defaultValue="put_configuration_recorder"
+    defaultValue="put_third_party_service_linked_configuration_recorder"
     values={[
+        { label: 'put_third_party_service_linked_configuration_recorder', value: 'put_third_party_service_linked_configuration_recorder' },
         { label: 'put_configuration_recorder', value: 'put_configuration_recorder' },
         { label: 'put_service_linked_configuration_recorder', value: 'put_service_linked_configuration_recorder' }
     ]}
 >
+<TabItem value="put_third_party_service_linked_configuration_recorder">
+
+Creates or updates a service-linked configuration recorder that is linked to a third-party cloud service provider based on the ConnectorArn you specify. The configuration recorder's name, recordingGroup, recordingMode, and recordingScope is set by the service that is linked to the configuration recorder. If a service-linked configuration recorder already exists for the specified service principal and connector, calling this operation again updates the ScopeConfiguration. This operation can only be called by the Amazon Web Services service linked to the configuration recorder Customers cannot call this operation directly. Only the linked Amazon Web Services service can create or update the service-linked configuration recorder. Tags are added at creation and cannot be updated with this operation Use TagResource and UntagResource to update tags after creation.
+
+```sql
+REPLACE aws.config.configuration_recorders
+SET 
+ServicePrincipal = '{{ ServicePrincipal }}',
+ConnectorArn = '{{ ConnectorArn }}',
+ScopeConfiguration = '{{ ScopeConfiguration }}',
+Tags = '{{ Tags }}'
+WHERE 
+region = '{{ region }}' --required
+AND ServicePrincipal = '{{ ServicePrincipal }}' --required
+AND ConnectorArn = '{{ ConnectorArn }}' --required
+AND ScopeConfiguration = '{{ ScopeConfiguration }}' --required
+RETURNING
+arn,
+name;
+```
+</TabItem>
 <TabItem value="put_configuration_recorder">
 
 Creates or updates the customer managed configuration recorder. You can use this operation to create a new customer managed configuration recorder or to update the roleARN and the recordingGroup for an existing customer managed configuration recorder. To start the customer managed configuration recorder and begin recording configuration changes for the resource types you specify, use the StartConfigurationRecorder operation. For more information, see Working with the Configuration Recorder in the Config Developer Guide. One customer managed configuration recorder per account per Region You can create only one customer managed configuration recorder for each account for each Amazon Web Services Region. Default is to record all supported resource types, excluding the global IAM resource types If you have not specified values for the recordingGroup field, the default for the customer managed configuration recorder is to record all supported resource types, excluding the global IAM resource types: AWS::IAM::Group, AWS::IAM::Policy, AWS::IAM::Role, and AWS::IAM::User. Tags are added at creation and cannot be updated PutConfigurationRecorder is an idempotent API. Subsequent requests won’t create a duplicate resource if one was already created. If a following request has different tags values, Config will ignore these differences and treat it as an idempotent request of the previous. In this case, tags will not be updated, even if they are different. Use TagResource and UntagResource to update tags after creation.

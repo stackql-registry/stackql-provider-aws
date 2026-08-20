@@ -125,6 +125,11 @@ The following fields are returned by `SELECT` queries:
     <td>Replication Configuration Staging Area tags.</td>
 </tr>
 <tr>
+    <td><CopyableCode code="storage_configuration" /></td>
+    <td><code>object</code></td>
+    <td>Storage configuration for replication.</td>
+</tr>
+<tr>
     <td><CopyableCode code="store_snapshot_on_local_zone" /></td>
     <td><code>boolean</code></td>
     <td>Replication Configuration store snapshot on local zone.</td>
@@ -226,6 +231,7 @@ replication_servers_security_groups_ids,
 source_server_id,
 staging_area_subnet_id,
 staging_area_tags,
+storage_configuration,
 store_snapshot_on_local_zone,
 use_dedicated_replication_server,
 use_fips_endpoint
@@ -270,7 +276,8 @@ stagingAreaTags = '{{ stagingAreaTags }}',
 useFipsEndpoint = {{ useFipsEndpoint }},
 accountID = '{{ accountID }}',
 internetProtocol = '{{ internetProtocol }}',
-storeSnapshotOnLocalZone = {{ storeSnapshotOnLocalZone }}
+storeSnapshotOnLocalZone = {{ storeSnapshotOnLocalZone }},
+storageConfiguration = '{{ storageConfiguration }}'
 WHERE 
 region = '{{ region }}' --required
 AND sourceServerID = '{{ sourceServerID }}' --required
@@ -290,6 +297,7 @@ replication_servers_security_groups_ids,
 source_server_id,
 staging_area_subnet_id,
 staging_area_tags,
+storage_configuration,
 store_snapshot_on_local_zone,
 use_dedicated_replication_server,
 use_fips_endpoint;

@@ -70,9 +70,19 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the address range.</td>
 </tr>
 <tr>
+    <td><CopyableCode code="ipam_pool_id" /></td>
+    <td><code>string</code></td>
+    <td>The ID of the IPAM pool associated with the CIDR.</td>
+</tr>
+<tr>
     <td><CopyableCode code="network_border_group" /></td>
     <td><code>string</code></td>
     <td>If you have Local Zones enabled, you can choose a network border group for Local Zones when you provision and advertise a BYOIPv4 CIDR. Choose the network border group carefully as the EIP and the Amazon Web Services resource it is associated with must reside in the same network border group. You can provision BYOIP address ranges to and advertise them in the following Local Zone network border groups: us-east-1-dfw-2 us-west-2-lax-1 us-west-2-phx-2 You cannot provision or advertise BYOIPv6 address ranges in Local Zones at this time.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="pool_id" /></td>
+    <td><code>string</code></td>
+    <td>The ID of the address pool associated with the CIDR.</td>
 </tr>
 <tr>
     <td><CopyableCode code="state" /></td>
@@ -137,7 +147,7 @@ The following methods are available for this resource:
     <td><CopyableCode code="exec" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td><a href="#parameter-Cidr"><code>Cidr</code></a>, <a href="#parameter-CidrAuthorizationContext"><code>CidrAuthorizationContext</code></a>, <a href="#parameter-PubliclyAdvertisable"><code>PubliclyAdvertisable</code></a>, <a href="#parameter-Description"><code>Description</code></a>, <a href="#parameter-DryRun"><code>DryRun</code></a>, <a href="#parameter-PoolTagSpecification"><code>PoolTagSpecification</code></a>, <a href="#parameter-MultiRegion"><code>MultiRegion</code></a>, <a href="#parameter-NetworkBorderGroup"><code>NetworkBorderGroup</code></a></td>
-    <td>Provisions an IPv4 or IPv6 address range for use with your Amazon Web Services resources through bring your own IP addresses (BYOIP) and creates a corresponding address pool. After the address range is provisioned, it is ready to be advertised. Amazon Web Services verifies that you own the address range and are authorized to advertise it. You must ensure that the address range is registered to you and that you created an RPKI ROA to authorize Amazon ASNs 16509 and 14618 to advertise the address range. For more information, see Bring your own IP addresses (BYOIP) in the Amazon EC2 User Guide. Provisioning an address range is an asynchronous operation, so the call returns immediately, but the address range is not ready to use until its status changes from pending-provision to provisioned. For more information, see Onboard your address range.</td>
+    <td>Provisions an IPv4 or IPv6 address range for use with your Amazon Web Services resources through bring your own IP addresses (BYOIP) and creates a corresponding address pool. After the address range is provisioned, it is ready to be advertised. Amazon Web Services verifies that you own the address range and are authorized to advertise it. You must ensure that the address range is registered to you and that you created an RPKI ROA to authorize Amazon ASNs 16509 and 14618 to advertise the address range. For the Amazon Web Services GovCloud (US) Regions, authorize only ASN 8987. For the Amazon Web Services European Sovereign Cloud, authorize ASNs 16509 and 214101. For more information, see Bring your own IP addresses (BYOIP) in the Amazon EC2 User Guide. Provisioning an address range is an asynchronous operation, so the call returns immediately, but the address range is not ready to use until its status changes from pending-provision to provisioned. For more information, see Onboard your address range.</td>
 </tr>
 <tr>
     <td><a href="#withdraw_byoip_cidr"><CopyableCode code="withdraw_byoip_cidr" /></a></td>
@@ -253,7 +263,9 @@ advertisement_type,
 asn_associations,
 cidr,
 description,
+ipam_pool_id,
 network_border_group,
+pool_id,
 state,
 status_message
 FROM aws.ec2.byoip_cidrs
@@ -294,7 +306,9 @@ advertisement_type,
 asn_associations,
 cidr,
 description,
+ipam_pool_id,
 network_border_group,
+pool_id,
 state,
 status_message;
 ```
@@ -341,7 +355,7 @@ EXEC aws.ec2.byoip_cidrs.move_byoip_cidr_to_ipam
 </TabItem>
 <TabItem value="provision_byoip_cidr">
 
-Provisions an IPv4 or IPv6 address range for use with your Amazon Web Services resources through bring your own IP addresses (BYOIP) and creates a corresponding address pool. After the address range is provisioned, it is ready to be advertised. Amazon Web Services verifies that you own the address range and are authorized to advertise it. You must ensure that the address range is registered to you and that you created an RPKI ROA to authorize Amazon ASNs 16509 and 14618 to advertise the address range. For more information, see Bring your own IP addresses (BYOIP) in the Amazon EC2 User Guide. Provisioning an address range is an asynchronous operation, so the call returns immediately, but the address range is not ready to use until its status changes from pending-provision to provisioned. For more information, see Onboard your address range.
+Provisions an IPv4 or IPv6 address range for use with your Amazon Web Services resources through bring your own IP addresses (BYOIP) and creates a corresponding address pool. After the address range is provisioned, it is ready to be advertised. Amazon Web Services verifies that you own the address range and are authorized to advertise it. You must ensure that the address range is registered to you and that you created an RPKI ROA to authorize Amazon ASNs 16509 and 14618 to advertise the address range. For the Amazon Web Services GovCloud (US) Regions, authorize only ASN 8987. For the Amazon Web Services European Sovereign Cloud, authorize ASNs 16509 and 214101. For more information, see Bring your own IP addresses (BYOIP) in the Amazon EC2 User Guide. Provisioning an address range is an asynchronous operation, so the call returns immediately, but the address range is not ready to use until its status changes from pending-provision to provisioned. For more information, see Onboard your address range.
 
 ```sql
 EXEC aws.ec2.byoip_cidrs.provision_byoip_cidr 

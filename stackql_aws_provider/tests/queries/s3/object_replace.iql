@@ -1,0 +1,7 @@
+-- Rule 19 blob-payload overwrite: PutObject also backs REPLACE
+-- (create-or-overwrite), UPDATE-shaped per stackql statement forms.
+REPLACE aws.s3.objects
+SET contents = '{"version": 4, "terraform_version": "1.9.8", "serial": 2, "lineage": "smoke-3f9c1a2b", "outputs": {"probe": {"value": "stackql-objects-smoke-v2", "type": "string"}}, "resources": []}'
+WHERE region = '{{ global_region }}'
+  AND bucket = '{{ bucket_prefix }}-{{ caller_identity.account }}'
+  AND key = 'smoke/terraform.tfstate'

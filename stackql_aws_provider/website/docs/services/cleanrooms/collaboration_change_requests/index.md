@@ -344,6 +344,18 @@ collaboration_change_request
               accountId: "{{ accountId }}"
               memberAbilities:
                 - "{{ memberAbilities }}"
+              mlMemberAbilities:
+                customMLMemberAbilities:
+                  - "{{ customMLMemberAbilities }}"
+              paymentConfiguration:
+                queryCompute:
+                  isResponsible: {{ isResponsible }}
+                machineLearning:
+                  modelTraining: "{{ modelTraining }}"
+                  modelInference: "{{ modelInference }}"
+                  syntheticDataGeneration: "{{ syntheticDataGeneration }}"
+                jobCompute:
+                  isResponsible: {{ isResponsible }}
               displayName: "{{ displayName }}"
             collaboration:
               autoApprovedChangeTypes:

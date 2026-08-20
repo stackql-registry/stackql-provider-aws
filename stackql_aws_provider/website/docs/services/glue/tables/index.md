@@ -81,6 +81,11 @@ The following fields are returned by `SELECT` queries:
     <td>A FederatedTable structure that references an entity outside the Glue Data Catalog.</td>
 </tr>
 <tr>
+    <td><CopyableCode code="iceberg_table_metadata" /></td>
+    <td><code>object</code></td>
+    <td>The latest Apache Iceberg table metadata for the table, including format version, schemas, partition specifications, and sort orders. This field is populated for Iceberg tables and reflects the current state of the table's Iceberg metadata.</td>
+</tr>
+<tr>
     <td><CopyableCode code="is_materialized_view" /></td>
     <td><code>boolean</code></td>
     <td>Indicates a table is a MaterializedView.</td>
@@ -306,6 +311,7 @@ created_by,
 database_name,
 description,
 federated_table,
+iceberg_table_metadata,
 is_materialized_view,
 is_multi_dialect_view,
 is_registered_with_lake_formation,

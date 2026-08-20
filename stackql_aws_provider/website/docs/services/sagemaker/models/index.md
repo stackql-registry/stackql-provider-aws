@@ -342,6 +342,10 @@ model_arn
         InferenceSpecificationName: "{{ InferenceSpecificationName }}"
         MultiModelConfig:
           ModelCacheSetting: "{{ ModelCacheSetting }}"
+        ContainerMetricsConfig:
+          MetricsEndpoints:
+            - MetricsEndpointPath: "{{ MetricsEndpointPath }}"
+              MetricPublishFrequencyInSeconds: {{ MetricPublishFrequencyInSeconds }}
     - name: Containers
       description: |
         Specifies the containers in the inference pipeline.
@@ -372,6 +376,10 @@ model_arn
           InferenceSpecificationName: "{{ InferenceSpecificationName }}"
           MultiModelConfig:
             ModelCacheSetting: "{{ ModelCacheSetting }}"
+          ContainerMetricsConfig:
+            MetricsEndpoints:
+              - MetricsEndpointPath: "{{ MetricsEndpointPath }}"
+                MetricPublishFrequencyInSeconds: {{ MetricPublishFrequencyInSeconds }}
     - name: InferenceExecutionConfig
       description: |
         Specifies details of how containers in a multi-container endpoint are called.

@@ -89,21 +89,21 @@ The following methods are available for this resource:
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-instance_id"><code>instance_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td><a href="#parameter-nextToken"><code>nextToken</code></a>, <a href="#parameter-maxResults"><code>maxResults</code></a></td>
-    <td>This API is in preview release for Amazon Connect and is subject to change. Returns a paginated list of all security keys associated with the instance.</td>
+    <td>This API is in preview release for Connect Customer and is subject to change. Returns a paginated list of all security keys associated with the instance.</td>
 </tr>
 <tr>
     <td><a href="#disassociate_security_key"><CopyableCode code="disassociate_security_key" /></a></td>
     <td><CopyableCode code="update" /></td>
     <td><a href="#parameter-instance_id"><code>instance_id</code></a>, <a href="#parameter-association_id"><code>association_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td><a href="#parameter-clientToken"><code>clientToken</code></a></td>
-    <td>This API is in preview release for Amazon Connect and is subject to change. Deletes the specified security key.</td>
+    <td>This API is in preview release for Connect Customer and is subject to change. Deletes the specified security key.</td>
 </tr>
 <tr>
     <td><a href="#associate_security_key"><CopyableCode code="associate_security_key" /></a></td>
     <td><CopyableCode code="update" /></td>
     <td><a href="#parameter-instance_id"><code>instance_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>This API is in preview release for Amazon Connect and is subject to change. Associates a security key to the instance.</td>
+    <td>This API is in preview release for Connect Customer and is subject to change. Associates a security key to the instance.</td>
 </tr>
 </tbody>
 </table>
@@ -129,7 +129,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-instance_id">
     <td><CopyableCode code="instance_id" /></td>
     <td><code>string</code></td>
-    <td>The identifier of the Amazon Connect instance. You can find the instance ID in the Amazon Resource Name (ARN) of the instance.</td>
+    <td>The identifier of the Connect Customer instance. You can find the instance ID in the Amazon Resource Name (ARN) of the instance.</td>
 </tr>
 <tr id="parameter-region">
     <td><CopyableCode code="region" /></td>
@@ -164,7 +164,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 >
 <TabItem value="list_security_keys">
 
-This API is in preview release for Amazon Connect and is subject to change. Returns a paginated list of all security keys associated with the instance.
+This API is in preview release for Connect Customer and is subject to change. Returns a paginated list of all security keys associated with the instance.
 
 ```sql
 SELECT
@@ -193,7 +193,7 @@ AND maxResults = '{{ maxResults }}'
 >
 <TabItem value="disassociate_security_key">
 
-This API is in preview release for Amazon Connect and is subject to change. Deletes the specified security key.
+This API is in preview release for Connect Customer and is subject to change. Deletes the specified security key.
 
 ```sql
 UPDATE aws.connect.security_keys
@@ -208,7 +208,7 @@ AND clientToken = '{{ clientToken}}';
 </TabItem>
 <TabItem value="associate_security_key">
 
-This API is in preview release for Amazon Connect and is subject to change. Associates a security key to the instance.
+This API is in preview release for Connect Customer and is subject to change. Associates a security key to the instance.
 
 ```sql
 UPDATE aws.connect.security_keys

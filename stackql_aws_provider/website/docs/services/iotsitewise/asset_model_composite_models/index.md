@@ -379,6 +379,7 @@ SELECT
 RETURNING
 asset_model_composite_model_id,
 asset_model_composite_model_path,
+asset_model_id,
 asset_model_status
 ;
 ```
@@ -499,6 +500,7 @@ AND `If-None-Match` = '{{ If-None-Match}}'
 AND `Match-For-Version-Type` = '{{ Match-For-Version-Type}}'
 RETURNING
 asset_model_composite_model_path,
+asset_model_id,
 asset_model_status;
 ```
 </TabItem>

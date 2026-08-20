@@ -57,7 +57,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="requests" /></td>
     <td><code>array</code></td>
-    <td>A paginated list of metadata model assessments for the specified migration project.</td>
+    <td>A paginated list of metadata model assessment requests. DMS never populates the ExportSqlDetails field for this operation.</td>
 </tr>
 </tbody>
 </table>
@@ -84,7 +84,7 @@ The following methods are available for this resource:
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>Returns a paginated list of metadata model assessments for your account in the current region.</td>
+    <td>Returns a paginated list of metadata model assessment requests for a migration project, initiated by StartMetadataModelAssessment. Required permissions: dms:ListMetadataModelAssessments. For more information, see Actions, resources, and condition keys for Database Migration Service.</td>
 </tr>
 </tbody>
 </table>
@@ -120,7 +120,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 >
 <TabItem value="describe_metadata_model_assessments">
 
-Returns a paginated list of metadata model assessments for your account in the current region.
+Returns a paginated list of metadata model assessment requests for a migration project, initiated by StartMetadataModelAssessment. Required permissions: dms:ListMetadataModelAssessments. For more information, see Actions, resources, and condition keys for Database Migration Service.
 
 ```sql
 SELECT

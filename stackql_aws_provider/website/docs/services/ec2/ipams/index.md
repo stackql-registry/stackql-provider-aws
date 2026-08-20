@@ -202,6 +202,13 @@ The following methods are available for this resource:
     <td>Disables an IPAM policy. An IPAM policy is a set of rules that define how public IPv4 addresses from IPAM pools are allocated to Amazon Web Services resources. Each rule maps an Amazon Web Services service to IPAM pools that the service will use to get IP addresses. A single policy can have multiple rules and be applied to multiple Amazon Web Services Regions. If the IPAM pool run out of addresses then the services fallback to Amazon-provided IP addresses. A policy can be applied to an individual Amazon Web Services account or an entity within Amazon Web Services Organizations.</td>
 </tr>
 <tr>
+    <td><a href="#enable_ipam_internet_registry_association"><CopyableCode code="enable_ipam_internet_registry_association" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-IpamInternetRegistryAssociationId"><code>IpamInternetRegistryAssociationId</code></a>, <a href="#parameter-RpkiVersion"><code>RpkiVersion</code></a>, <a href="#parameter-ServiceUri"><code>ServiceUri</code></a>, <a href="#parameter-ChildHandle"><code>ChildHandle</code></a>, <a href="#parameter-ParentHandle"><code>ParentHandle</code></a>, <a href="#parameter-ParentBpkiTa"><code>ParentBpkiTa</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td><a href="#parameter-DryRun"><code>DryRun</code></a>, <a href="#parameter-ClientToken"><code>ClientToken</code></a></td>
+    <td>Enables Resource Public Key Infrastructure (RPKI) on an existing IPAM internet registry association by providing BGP Public Key Infrastructure (BPKI) certificate details. After enabling, you can create Route Origin Authorizations (ROAs) for prefixes registered with the internet registry.</td>
+</tr>
+<tr>
     <td><a href="#enable_ipam_organization_admin_account"><CopyableCode code="enable_ipam_organization_admin_account" /></a></td>
     <td><CopyableCode code="exec" /></td>
     <td><a href="#parameter-DelegatedAdminAccountId"><code>DelegatedAdminAccountId</code></a>, <a href="#parameter-region"><code>region</code></a></td>
@@ -231,6 +238,11 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     </tr>
 </thead>
 <tbody>
+<tr id="parameter-ChildHandle">
+    <td><CopyableCode code="ChildHandle" /></td>
+    <td><code>string</code></td>
+    <td>The child handle for the BPKI certificate hierarchy from the Parent Response XML.</td>
+</tr>
 <tr id="parameter-DelegatedAdminAccountId">
     <td><CopyableCode code="DelegatedAdminAccountId" /></td>
     <td><code>string</code></td>
@@ -241,10 +253,35 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     <td><code>string</code></td>
     <td>The ID of the IPAM to delete.</td>
 </tr>
+<tr id="parameter-IpamInternetRegistryAssociationId">
+    <td><CopyableCode code="IpamInternetRegistryAssociationId" /></td>
+    <td><code>string</code></td>
+    <td>The ID of the IPAM internet registry association to enable.</td>
+</tr>
 <tr id="parameter-IpamPolicyId">
     <td><CopyableCode code="IpamPolicyId" /></td>
     <td><code>string</code></td>
     <td>The ID of the IPAM policy to enable.</td>
+</tr>
+<tr id="parameter-ParentBpkiTa">
+    <td><CopyableCode code="ParentBpkiTa" /></td>
+    <td><code>string</code></td>
+    <td>The parent BPKI Trust Anchor certificate in PEM format from the Parent Response XML.</td>
+</tr>
+<tr id="parameter-ParentHandle">
+    <td><CopyableCode code="ParentHandle" /></td>
+    <td><code>string</code></td>
+    <td>The parent handle for the BPKI certificate hierarchy from the Parent Response XML.</td>
+</tr>
+<tr id="parameter-RpkiVersion">
+    <td><CopyableCode code="RpkiVersion" /></td>
+    <td><code>string</code></td>
+    <td>The RPKI version to use from the Parent Response XML.</td>
+</tr>
+<tr id="parameter-ServiceUri">
+    <td><CopyableCode code="ServiceUri" /></td>
+    <td><code>string</code></td>
+    <td>The RPKI service URI for the publication point from the Parent Response XML.</td>
 </tr>
 <tr id="parameter-region">
     <td><CopyableCode code="region" /></td>
@@ -264,7 +301,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-ClientToken">
     <td><CopyableCode code="ClientToken" /></td>
     <td><code>string</code></td>
-    <td>A unique, case-sensitive identifier that you provide to ensure the idempotency of the request. For more information, see Ensuring idempotency.</td>
+    <td>A unique, case-sensitive identifier to ensure that the operation completes no more than one time. If this token matches a previous request, the operation ignores the request, but does not return an error.</td>
 </tr>
 <tr id="parameter-Description">
     <td><CopyableCode code="Description" /></td>
@@ -294,7 +331,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-MaxResults">
     <td><CopyableCode code="MaxResults" /></td>
     <td><code>integer</code></td>
-    <td>The maximum number of results to return in the request.</td>
+    <td>The maximum number of items to return for this request. To get the next page of items, make another request with the token returned in the output. For more information, see Pagination.</td>
 </tr>
 <tr id="parameter-MeteredAccount">
     <td><CopyableCode code="MeteredAccount" /></td>
@@ -563,6 +600,7 @@ AND Cascade = '{{ Cascade }}'
     values={[
         { label: 'disable_ipam_organization_admin_account', value: 'disable_ipam_organization_admin_account' },
         { label: 'disable_ipam_policy', value: 'disable_ipam_policy' },
+        { label: 'enable_ipam_internet_registry_association', value: 'enable_ipam_internet_registry_association' },
         { label: 'enable_ipam_organization_admin_account', value: 'enable_ipam_organization_admin_account' },
         { label: 'enable_ipam_policy', value: 'enable_ipam_policy' }
     ]}
@@ -589,6 +627,24 @@ EXEC aws.ec2.ipams.disable_ipam_policy
 @region='{{ region }}' --required, 
 @DryRun={{ DryRun }}, 
 @OrganizationTargetId='{{ OrganizationTargetId }}'
+;
+```
+</TabItem>
+<TabItem value="enable_ipam_internet_registry_association">
+
+Enables Resource Public Key Infrastructure (RPKI) on an existing IPAM internet registry association by providing BGP Public Key Infrastructure (BPKI) certificate details. After enabling, you can create Route Origin Authorizations (ROAs) for prefixes registered with the internet registry.
+
+```sql
+EXEC aws.ec2.ipams.enable_ipam_internet_registry_association 
+@IpamInternetRegistryAssociationId='{{ IpamInternetRegistryAssociationId }}' --required, 
+@RpkiVersion='{{ RpkiVersion }}' --required, 
+@ServiceUri='{{ ServiceUri }}' --required, 
+@ChildHandle='{{ ChildHandle }}' --required, 
+@ParentHandle='{{ ParentHandle }}' --required, 
+@ParentBpkiTa='{{ ParentBpkiTa }}' --required, 
+@region='{{ region }}' --required, 
+@DryRun={{ DryRun }}, 
+@ClientToken='{{ ClientToken }}'
 ;
 ```
 </TabItem>

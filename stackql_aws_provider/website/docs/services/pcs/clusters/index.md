@@ -200,7 +200,7 @@ The following methods are available for this resource:
     <td><CopyableCode code="update" /></td>
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-clusterIdentifier"><code>clusterIdentifier</code></a></td>
     <td></td>
-    <td>Updates a cluster configuration. You can modify Slurm scheduler settings, accounting configuration, and security groups for an existing cluster. You can only update clusters that are in ACTIVE, UPDATE_FAILED, or SUSPENDED state. All associated resources (queues and compute node groups) must be in ACTIVE state before you can update the cluster.</td>
+    <td>Updates a cluster configuration. You can update the scheduler version, modify scheduler settings, and update accounting configuration for an existing cluster. For more information about updating the scheduler version, see Updating the scheduler version on a cluster in the PCS User Guide. You can only update clusters that are in ACTIVE, UPDATE_FAILED, or SUSPENDED state. All associated resources (queues and compute node groups) must be in ACTIVE state before you can update the cluster.</td>
 </tr>
 <tr>
     <td><a href="#delete_cluster"><CopyableCode code="delete_cluster" /></a></td>
@@ -398,14 +398,15 @@ cluster
 >
 <TabItem value="update_cluster">
 
-Updates a cluster configuration. You can modify Slurm scheduler settings, accounting configuration, and security groups for an existing cluster. You can only update clusters that are in ACTIVE, UPDATE_FAILED, or SUSPENDED state. All associated resources (queues and compute node groups) must be in ACTIVE state before you can update the cluster.
+Updates a cluster configuration. You can update the scheduler version, modify scheduler settings, and update accounting configuration for an existing cluster. For more information about updating the scheduler version, see Updating the scheduler version on a cluster in the PCS User Guide. You can only update clusters that are in ACTIVE, UPDATE_FAILED, or SUSPENDED state. All associated resources (queues and compute node groups) must be in ACTIVE state before you can update the cluster.
 
 ```sql
 UPDATE aws.pcs.clusters
 SET 
 clusterIdentifier = '{{ clusterIdentifier }}',
 clientToken = '{{ clientToken }}',
-slurmConfiguration = '{{ slurmConfiguration }}'
+slurmConfiguration = '{{ slurmConfiguration }}',
+scheduler = '{{ scheduler }}'
 WHERE 
 region = '{{ region }}' --required
 AND clusterIdentifier = '{{ clusterIdentifier }}' --required

@@ -378,6 +378,10 @@ inference_component_arn
           Image: "{{ Image }}"
           ArtifactUrl: "{{ ArtifactUrl }}"
           Environment: "{{ Environment }}"
+          ContainerMetricsConfig:
+            MetricsEndpoints:
+              - MetricsEndpointPath: "{{ MetricsEndpointPath }}"
+                MetricPublishFrequencyInSeconds: {{ MetricPublishFrequencyInSeconds }}
         StartupParameters:
           ModelDataDownloadTimeoutInSeconds: {{ ModelDataDownloadTimeoutInSeconds }}
           ContainerStartupHealthCheckTimeoutInSeconds: {{ ContainerStartupHealthCheckTimeoutInSeconds }}
@@ -404,6 +408,10 @@ inference_component_arn
             Image: "{{ Image }}"
             ArtifactUrl: "{{ ArtifactUrl }}"
             Environment: "{{ Environment }}"
+            ContainerMetricsConfig:
+              MetricsEndpoints:
+                - MetricsEndpointPath: "{{ MetricsEndpointPath }}"
+                  MetricPublishFrequencyInSeconds: {{ MetricPublishFrequencyInSeconds }}
           StartupParameters:
             ModelDataDownloadTimeoutInSeconds: {{ ModelDataDownloadTimeoutInSeconds }}
             ContainerStartupHealthCheckTimeoutInSeconds: {{ ContainerStartupHealthCheckTimeoutInSeconds }}

@@ -206,21 +206,21 @@ The following methods are available for this resource:
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-instance_id"><code>instance_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td><a href="#parameter-nextToken"><code>nextToken</code></a>, <a href="#parameter-maxResults"><code>maxResults</code></a></td>
-    <td>Provides information about the prompts for the specified Amazon Connect instance.</td>
+    <td>Provides information about the prompts for the specified Connect Customer instance.</td>
 </tr>
 <tr>
     <td><a href="#search_prompts"><CopyableCode code="search_prompts" /></a></td>
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>Searches prompts in an Amazon Connect instance, with optional filtering.</td>
+    <td>Searches prompts in an Connect Customer instance, with optional filtering.</td>
 </tr>
 <tr>
     <td><a href="#create_prompt"><CopyableCode code="create_prompt" /></a></td>
     <td><CopyableCode code="insert" /></td>
     <td><a href="#parameter-instance_id"><code>instance_id</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-S3Uri"><code>S3Uri</code></a></td>
     <td></td>
-    <td>Creates a prompt. For more information about prompts, such as supported file types and maximum length, see Create prompts in the Amazon Connect Administrator Guide.</td>
+    <td>Creates a prompt. For more information about prompts, such as supported file types and maximum length, see Create prompts in the Connect Customer Administrator Guide.</td>
 </tr>
 <tr>
     <td><a href="#update_prompt"><CopyableCode code="update_prompt" /></a></td>
@@ -255,7 +255,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-instance_id">
     <td><CopyableCode code="instance_id" /></td>
     <td><code>string</code></td>
-    <td>The identifier of the Amazon Connect instance. You can find the instance ID in the Amazon Resource Name (ARN) of the instance.</td>
+    <td>The identifier of the Connect Customer instance. You can find the instance ID in the Amazon Resource Name (ARN) of the instance.</td>
 </tr>
 <tr id="parameter-prompt_id">
     <td><CopyableCode code="prompt_id" /></td>
@@ -312,7 +312,7 @@ AND region = '{{ region }}' -- required
 </TabItem>
 <TabItem value="list_prompts">
 
-Provides information about the prompts for the specified Amazon Connect instance.
+Provides information about the prompts for the specified Connect Customer instance.
 
 ```sql
 SELECT
@@ -331,7 +331,7 @@ AND maxResults = '{{ maxResults }}'
 </TabItem>
 <TabItem value="search_prompts">
 
-Searches prompts in an Amazon Connect instance, with optional filtering.
+Searches prompts in an Connect Customer instance, with optional filtering.
 
 ```sql
 SELECT
@@ -361,7 +361,7 @@ WHERE region = '{{ region }}' -- required
 >
 <TabItem value="create_prompt">
 
-Creates a prompt. For more information about prompts, such as supported file types and maximum length, see Create prompts in the Amazon Connect Administrator Guide.
+Creates a prompt. For more information about prompts, such as supported file types and maximum length, see Create prompts in the Connect Customer Administrator Guide.
 
 ```sql
 INSERT INTO aws.connect.prompts (

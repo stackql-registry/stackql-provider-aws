@@ -289,6 +289,9 @@ status
           DataSetReferences:
             - DataSetPlaceholder: "{{ DataSetPlaceholder }}"
               DataSetArn: "{{ DataSetArn }}"
+          TopicReferences:
+            - TopicPlaceholder: "{{ TopicPlaceholder }}"
+              TopicArn: "{{ TopicArn }}"
           Arn: "{{ Arn }}"
     - name: ThemeArn
       value: "{{ ThemeArn }}"
@@ -303,6 +306,9 @@ status
         DataSetIdentifierDeclarations:
           - Identifier: "{{ Identifier }}"
             DataSetArn: "{{ DataSetArn }}"
+        TopicIdentifierDeclarations:
+          - Identifier: "{{ Identifier }}"
+            TopicArn: "{{ TopicArn }}"
         Sheets:
           - SheetId: "{{ SheetId }}"
             Title: "{{ Title }}"
@@ -328,6 +334,7 @@ status
             Layouts: "{{ Layouts }}"
         CalculatedFields:
           - DataSetIdentifier: "{{ DataSetIdentifier }}"
+            TopicIdentifier: "{{ TopicIdentifier }}"
             Name: "{{ Name }}"
             Expression: "{{ Expression }}"
         ParameterDeclarations:
@@ -413,6 +420,7 @@ status
         ColumnConfigurations:
           - Column:
               DataSetIdentifier: "{{ DataSetIdentifier }}"
+              TopicIdentifier: "{{ TopicIdentifier }}"
               ColumnName: "{{ ColumnName }}"
             FormatConfiguration:
               StringFormatConfiguration:
@@ -468,6 +476,16 @@ status
           CustomActionDefaults:
             highlightOperation:
               Trigger: "{{ Trigger }}"
+          VisualMessages:
+            NoDataMessage:
+              Enabled: {{ Enabled }}
+              Title: "{{ Title }}"
+              TitleVisibility: "{{ TitleVisibility }}"
+              Description: "{{ Description }}"
+              DescriptionVisibility: "{{ DescriptionVisibility }}"
+              LinkText: "{{ LinkText }}"
+              LinkUrl: "{{ LinkUrl }}"
+              LinkVisibility: "{{ LinkVisibility }}"
         QueryExecutionOptions:
           QueryExecutionMode: "{{ QueryExecutionMode }}"
         StaticFiles:

@@ -33,11 +33,61 @@ Creates, updates, deletes, gets or lists an <code>instance_types</code> resource
 The following fields are returned by `SELECT` queries:
 
 <Tabs
-    defaultValue="describe_instance_types"
+    defaultValue="get_instance_types_from_instance_requirements"
     values={[
+        { label: 'get_instance_types_from_instance_requirements', value: 'get_instance_types_from_instance_requirements' },
+        { label: 'describe_instance_type_offerings', value: 'describe_instance_type_offerings' },
         { label: 'describe_instance_types', value: 'describe_instance_types' }
     ]}
 >
+<TabItem value="get_instance_types_from_instance_requirements">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="instance_type" /></td>
+    <td><code>string</code></td>
+    <td>The matching instance type.</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
+<TabItem value="describe_instance_type_offerings">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="instance_type" /></td>
+    <td><code>string</code></td>
+    <td>The instance type. For more information, see Instance types in the Amazon EC2 User Guide.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="location" /></td>
+    <td><code>string</code></td>
+    <td>The identifier for the location. This depends on the location type. For example, if the location type is region, the location is the Region code (for example, us-east-2.)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="location_type" /></td>
+    <td><code>string</code></td>
+    <td>The location type.</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
 <TabItem value="describe_instance_types">
 
 <table>
@@ -230,6 +280,20 @@ The following methods are available for this resource:
 </thead>
 <tbody>
 <tr>
+    <td><a href="#get_instance_types_from_instance_requirements"><CopyableCode code="get_instance_types_from_instance_requirements" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-ArchitectureType"><code>ArchitectureType</code></a>, <a href="#parameter-VirtualizationType"><code>VirtualizationType</code></a>, <a href="#parameter-InstanceRequirements"><code>InstanceRequirements</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td><a href="#parameter-DryRun"><code>DryRun</code></a>, <a href="#parameter-MaxResults"><code>MaxResults</code></a>, <a href="#parameter-NextToken"><code>NextToken</code></a>, <a href="#parameter-Context"><code>Context</code></a></td>
+    <td>Returns a list of instance types with the specified instance attributes. You can use the response to preview the instance types without launching instances. Note that the response does not consider capacity. When you specify multiple parameters, you get instance types that satisfy all of the specified parameters. If you specify multiple values for a parameter, you get instance types that satisfy any of the specified values. For more information, see Preview instance types with specified attributes, Specify attributes for instance type selection for EC2 Fleet or Spot Fleet, and Spot placement score in the Amazon EC2 User Guide, and Creating mixed instance groups using attribute-based instance type selection in the Amazon EC2 Auto Scaling User Guide.</td>
+</tr>
+<tr>
+    <td><a href="#describe_instance_type_offerings"><CopyableCode code="describe_instance_type_offerings" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-LocationType"><code>LocationType</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td><a href="#parameter-DryRun"><code>DryRun</code></a>, <a href="#parameter-Filter"><code>Filter</code></a>, <a href="#parameter-MaxResults"><code>MaxResults</code></a>, <a href="#parameter-NextToken"><code>NextToken</code></a></td>
+    <td>Lists the instance types that are offered for the specified location. If no location is specified, the default is to list the instance types that are offered in the current Region.</td>
+</tr>
+<tr>
     <td><a href="#describe_instance_types"><CopyableCode code="describe_instance_types" /></a></td>
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
@@ -252,10 +316,35 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     </tr>
 </thead>
 <tbody>
+<tr id="parameter-ArchitectureType">
+    <td><CopyableCode code="ArchitectureType" /></td>
+    <td><code>array</code></td>
+    <td>The processor architecture type.</td>
+</tr>
+<tr id="parameter-InstanceRequirements">
+    <td><CopyableCode code="InstanceRequirements" /></td>
+    <td><code>object</code></td>
+    <td>The attributes required for the instance types.</td>
+</tr>
+<tr id="parameter-LocationType">
+    <td><CopyableCode code="LocationType" /></td>
+    <td><code>string</code></td>
+    <td>The location type. availability-zone - The Availability Zone. When you specify a location filter, it must be an Availability Zone for the current Region. availability-zone-id - The AZ ID. When you specify a location filter, it must be an AZ ID for the current Region. outpost - The Outpost ARN. When you specify a location filter, it must be an Outpost ARN for the current Region. region - The current Region. If you specify a location filter, it must match the current Region.</td>
+</tr>
+<tr id="parameter-VirtualizationType">
+    <td><CopyableCode code="VirtualizationType" /></td>
+    <td><code>array</code></td>
+    <td>The virtualization type.</td>
+</tr>
 <tr id="parameter-region">
     <td><CopyableCode code="region" /></td>
     <td><code>string</code></td>
     <td>AWS region (default: us-east-1)</td>
+</tr>
+<tr id="parameter-Context">
+    <td><CopyableCode code="Context" /></td>
+    <td><code>string</code></td>
+    <td>Reserved.</td>
 </tr>
 <tr id="parameter-DryRun">
     <td><CopyableCode code="DryRun" /></td>
@@ -293,11 +382,51 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 ## `SELECT` examples
 
 <Tabs
-    defaultValue="describe_instance_types"
+    defaultValue="get_instance_types_from_instance_requirements"
     values={[
+        { label: 'get_instance_types_from_instance_requirements', value: 'get_instance_types_from_instance_requirements' },
+        { label: 'describe_instance_type_offerings', value: 'describe_instance_type_offerings' },
         { label: 'describe_instance_types', value: 'describe_instance_types' }
     ]}
 >
+<TabItem value="get_instance_types_from_instance_requirements">
+
+Returns a list of instance types with the specified instance attributes. You can use the response to preview the instance types without launching instances. Note that the response does not consider capacity. When you specify multiple parameters, you get instance types that satisfy all of the specified parameters. If you specify multiple values for a parameter, you get instance types that satisfy any of the specified values. For more information, see Preview instance types with specified attributes, Specify attributes for instance type selection for EC2 Fleet or Spot Fleet, and Spot placement score in the Amazon EC2 User Guide, and Creating mixed instance groups using attribute-based instance type selection in the Amazon EC2 Auto Scaling User Guide.
+
+```sql
+SELECT
+instance_type
+FROM aws.ec2.instance_types
+WHERE ArchitectureType = '{{ ArchitectureType }}' -- required
+AND VirtualizationType = '{{ VirtualizationType }}' -- required
+AND InstanceRequirements = '{{ InstanceRequirements }}' -- required
+AND region = '{{ region }}' -- required
+AND DryRun = '{{ DryRun }}'
+AND MaxResults = '{{ MaxResults }}'
+AND NextToken = '{{ NextToken }}'
+AND Context = '{{ Context }}'
+;
+```
+</TabItem>
+<TabItem value="describe_instance_type_offerings">
+
+Lists the instance types that are offered for the specified location. If no location is specified, the default is to list the instance types that are offered in the current Region.
+
+```sql
+SELECT
+instance_type,
+location,
+location_type
+FROM aws.ec2.instance_types
+WHERE LocationType = '{{ LocationType }}' -- required
+AND region = '{{ region }}' -- required
+AND DryRun = '{{ DryRun }}'
+AND Filter = '{{ Filter }}'
+AND MaxResults = '{{ MaxResults }}'
+AND NextToken = '{{ NextToken }}'
+;
+```
+</TabItem>
 <TabItem value="describe_instance_types">
 
 Describes the specified instance types. By default, all instance types for the current Region are described. Alternatively, you can filter the results. To include instance types that are not supported in the current Region, set IncludeUnsupportedInRegion to true.

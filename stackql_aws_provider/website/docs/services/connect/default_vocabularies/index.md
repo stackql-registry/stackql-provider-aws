@@ -52,7 +52,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="instance_id" /></td>
     <td><code>string</code></td>
-    <td>The identifier of the Amazon Connect instance. You can find the instance ID in the Amazon Resource Name (ARN) of the instance.</td>
+    <td>The identifier of the Connect Customer instance. You can find the instance ID in the Amazon Resource Name (ARN) of the instance.</td>
 </tr>
 <tr>
     <td><CopyableCode code="language_code" /></td>
@@ -94,14 +94,14 @@ The following methods are available for this resource:
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-instance_id"><code>instance_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>Lists the default vocabularies for the specified Amazon Connect instance.</td>
+    <td>Lists the default vocabularies for the specified Connect Customer instance.</td>
 </tr>
 <tr>
     <td><a href="#associate_default_vocabulary"><CopyableCode code="associate_default_vocabulary" /></a></td>
     <td><CopyableCode code="update" /></td>
     <td><a href="#parameter-instance_id"><code>instance_id</code></a>, <a href="#parameter-language_code"><code>language_code</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>Associates an existing vocabulary as the default. Contact Lens for Amazon Connect uses the vocabulary in post-call and real-time analysis sessions for the given language.</td>
+    <td>Associates an existing vocabulary as the default. Contact Lens for Connect Customer uses the vocabulary in post-call and real-time analysis sessions for the given language.</td>
 </tr>
 </tbody>
 </table>
@@ -122,7 +122,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-instance_id">
     <td><CopyableCode code="instance_id" /></td>
     <td><code>string</code></td>
-    <td>The identifier of the Amazon Connect instance. You can find the instance ID in the Amazon Resource Name (ARN) of the instance.</td>
+    <td>The identifier of the Connect Customer instance. You can find the instance ID in the Amazon Resource Name (ARN) of the instance.</td>
 </tr>
 <tr id="parameter-language_code">
     <td><CopyableCode code="language_code" /></td>
@@ -147,7 +147,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 >
 <TabItem value="list_default_vocabularies">
 
-Lists the default vocabularies for the specified Amazon Connect instance.
+Lists the default vocabularies for the specified Connect Customer instance.
 
 ```sql
 SELECT
@@ -174,7 +174,7 @@ AND region = '{{ region }}' -- required
 >
 <TabItem value="associate_default_vocabulary">
 
-Associates an existing vocabulary as the default. Contact Lens for Amazon Connect uses the vocabulary in post-call and real-time analysis sessions for the given language.
+Associates an existing vocabulary as the default. Contact Lens for Connect Customer uses the vocabulary in post-call and real-time analysis sessions for the given language.
 
 ```sql
 UPDATE aws.connect.default_vocabularies

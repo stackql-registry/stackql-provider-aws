@@ -51,6 +51,11 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
+    <td><CopyableCode code="active_recommender_version_name" /></td>
+    <td><code>string</code></td>
+    <td>The name of the recommender version currently serving recommendations. Omitted when no active recommender version is set. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_-&#93;+/\d&#123;4&#125;-\d&#123;2&#125;-\d&#123;2&#125;T\d&#123;2&#125;-\d&#123;2&#125;-\d&#123;2&#125;Z&lt;/code&gt;)</td>
+</tr>
+<tr>
     <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the recommender was created.</td>
@@ -312,6 +317,7 @@ Retrieves a recommender.
 
 ```sql
 SELECT
+active_recommender_version_name,
 created_at,
 description,
 failure_reason,
@@ -429,6 +435,12 @@ tags
         InferenceConfig:
           MinProvisionedTPS: {{ MinProvisionedTPS }}
         IncludedColumns: "{{ IncludedColumns }}"
+        ExcludedColumns: "{{ ExcludedColumns }}"
+        DiversityConfig:
+          DiversityColumns:
+            - Name: "{{ Name }}"
+              CapType: "{{ CapType }}"
+              Target: "{{ Target }}"
     - name: Description
       value: "{{ Description }}"
     - name: RecommenderSchemaName
@@ -457,7 +469,8 @@ Updates the properties of an existing recommender, allowing you to modify its co
 UPDATE aws.customer_profiles.recommenders
 SET 
 Description = '{{ Description }}',
-RecommenderConfig = '{{ RecommenderConfig }}'
+RecommenderConfig = '{{ RecommenderConfig }}',
+RecommenderVersionName = '{{ RecommenderVersionName }}'
 WHERE 
 domain_name = '{{ domain_name }}' --required
 AND recommender_name = '{{ recommender_name }}' --required

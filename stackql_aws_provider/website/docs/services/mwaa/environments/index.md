@@ -203,7 +203,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="webserver_access_mode" /></td>
     <td><code>string</code></td>
-    <td>The Apache Airflow web server access mode. For more information, refer to Apache Airflow access modes. (PRIVATE_ONLY, PUBLIC_ONLY, PUBLIC_AND_PRIVATE)</td>
+    <td>The Apache Airflow web server access mode. For more information, refer to Apache Airflow access modes. If set to PUBLIC_AND_PRIVATE, creates both a public network load balancer (NLB) for browser access and a private VPC endpoint (VPCE) for worker-to-webserver communication. This mode is only available for Apache Airflow version 3.2 and later. (PRIVATE_ONLY, PUBLIC_ONLY, PUBLIC_AND_PRIVATE)</td>
 </tr>
 <tr>
     <td><CopyableCode code="webserver_url" /></td>

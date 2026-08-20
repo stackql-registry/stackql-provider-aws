@@ -387,6 +387,7 @@ evaluationConfig,
 roleArn,
 enableOnCreate,
 clientToken,
+tags,
 region
 )
 SELECT 
@@ -399,6 +400,7 @@ SELECT
 '{{ roleArn }}' /* required */,
 {{ enableOnCreate }},
 '{{ clientToken }}',
+'{{ tags }}',
 '{{ region }}'
 RETURNING
 name,
@@ -454,6 +456,8 @@ status
       value: {{ enableOnCreate }}
     - name: clientToken
       value: "{{ clientToken }}"
+    - name: tags
+      value: "{{ tags }}"
 `}</CodeBlock>
 
 </TabItem>

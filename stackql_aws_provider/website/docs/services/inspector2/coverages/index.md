@@ -60,9 +60,34 @@ The following fields are returned by `SELECT` queries:
     <td>The date and time the resource was last checked for vulnerabilities.</td>
 </tr>
 <tr>
+    <td><CopyableCode code="provider" /></td>
+    <td><code>string</code></td>
+    <td>The cloud provider of the covered resource. (AWS, AZURE)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="provider_account_id" /></td>
+    <td><code>string</code></td>
+    <td>The cloud provider account ID of the covered resource. (pattern: &lt;code&gt;(\d&#123;12&#125;|&#91;0-9a-fA-F&#93;&#123;8&#125;-&#91;0-9a-fA-F&#93;&#123;4&#125;-&#91;0-9a-fA-F&#93;&#123;4&#125;-&#91;0-9a-fA-F&#93;&#123;4&#125;-&#91;0-9a-fA-F&#93;&#123;12&#125;)&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="provider_org_id" /></td>
+    <td><code>string</code></td>
+    <td>The cloud provider organization ID of the covered resource. (pattern: &lt;code&gt;(o-&#91;a-z0-9&#93;&#123;10,32&#125;|&#91;0-9a-fA-F&#93;&#123;8&#125;-&#91;0-9a-fA-F&#93;&#123;4&#125;-&#91;0-9a-fA-F&#93;&#123;4&#125;-&#91;0-9a-fA-F&#93;&#123;4&#125;-&#91;0-9a-fA-F&#93;&#123;12&#125;)&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="provider_partition" /></td>
+    <td><code>string</code></td>
+    <td>The cloud provider partition of the covered resource. (pattern: &lt;code&gt;(aws(-&#91;a-z&#93;+)*|Azure&#91;A-Za-z&#93;+)&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="provider_region" /></td>
+    <td><code>string</code></td>
+    <td>The cloud provider region of the covered resource. (pattern: &lt;code&gt;(&#91;a-z&#93;&#123;2&#125;(-&#91;a-z&#93;+)+-\d+|&#91;a-z&#93;&#91;a-z0-9&#93;+)&lt;/code&gt;)</td>
+</tr>
+<tr>
     <td><CopyableCode code="resource_id" /></td>
     <td><code>string</code></td>
-    <td>The ID of the covered resource. (pattern: &lt;code&gt;.*(^arn:.*:ecr:.*:\d&#123;12&#125;:repository\/(?:&#91;a-z0-9&#93;+(?:&#91;._-&#93;&#91;a-z0-9&#93;+)*\/)*&#91;a-z0-9&#93;+(?:&#91;._-&#93;&#91;a-z0-9&#93;+)*(\/sha256:&#91;a-z0-9&#93;&#123;64&#125;)?$)|(^i-(&#91;a-z0-9&#93;&#123;8&#125;|&#91;a-z0-9&#93;&#123;17&#125;|\\*)$|(^arn:(aws&#91;a-zA-Z-&#93;*)?:lambda:&#91;a-z&#93;&#123;2&#125;(-gov)?-&#91;a-z&#93;+-\d&#123;1&#125;:\d&#123;12&#125;:function:&#91;a-zA-Z0-9-_\.&#93;+(:(\$LATEST|&#91;a-zA-Z0-9-_&#93;+))?$)|(^arn:(aws&#91;a-zA-Z-&#93;*)?:inspector2:&#91;a-z&#93;&#123;2&#125;(-gov)?-&#91;a-z&#93;+-\d&#123;1&#125;:\d&#123;12&#125;:codesecurity-integration\/&#91;a-f0-9-&#93;&#123;36&#125;\/project-&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;$)).*&lt;/code&gt;)</td>
+    <td>The ID of the covered resource. (pattern: &lt;code&gt;.*(^arn:.*:ecr:.*:\d&#123;12&#125;:repository\/&#91;a-zA-Z0-9._\/-&#93;+(\/sha256:&#91;a-z0-9&#93;&#123;64&#125;)?$)|(^i-(&#91;a-z0-9&#93;&#123;8&#125;|&#91;a-z0-9&#93;&#123;17&#125;|\\*)$|(^arn:(aws&#91;a-zA-Z-&#93;*)?:lambda:&#91;a-z&#93;&#123;2&#125;(-gov)?-&#91;a-z&#93;+-\d&#123;1&#125;:\d&#123;12&#125;:function:&#91;a-zA-Z0-9-_\.&#93;+(:(\$LATEST|&#91;a-zA-Z0-9-_&#93;+))?$)|(^arn:(aws&#91;a-zA-Z-&#93;*)?:inspector2:&#91;a-z&#93;&#123;2&#125;(-gov)?-&#91;a-z&#93;+-\d&#123;1&#125;:\d&#123;12&#125;:codesecurity-integration\/&#91;a-f0-9-&#93;&#123;36&#125;\/project-&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;$))|(^\/subscriptions\/&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;\/resourcegroups\/&#91;a-z0-9_\-\.()&#93;+\/providers\/(microsoft\.compute\/virtualmachines\/&#91;a-z0-9_\-&#93;+|microsoft\.web\/sites\/&#91;a-z0-9_\-&#93;+|microsoft\.containerregistry\/registries\/&#91;a-z0-9_\-&#93;+(\/repositories\/&#91;a-z0-9_\-\/&#93;+\/images?\/sha256:&#91;a-f0-9&#93;&#123;64&#125;)?)$).*&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="resource_metadata" /></td>
@@ -72,12 +97,12 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="resource_type" /></td>
     <td><code>string</code></td>
-    <td>The type of the covered resource. (AWS_EC2_INSTANCE, AWS_ECR_CONTAINER_IMAGE, AWS_ECR_REPOSITORY, AWS_LAMBDA_FUNCTION, CODE_REPOSITORY)</td>
+    <td>The type of the covered resource. (AWS_EC2_INSTANCE, AWS_ECR_CONTAINER_IMAGE, AWS_ECR_REPOSITORY, AWS_LAMBDA_FUNCTION, CODE_REPOSITORY, Microsoft.Compute/virtualMachines, Microsoft.ContainerRegistry/registry/containerImage, Microsoft.ContainerRegistry/registry/containerRepository, Microsoft.Web/sites, Microsoft.ContainerRegistry/registries)</td>
 </tr>
 <tr>
     <td><CopyableCode code="scan_mode" /></td>
     <td><code>string</code></td>
-    <td>The scan method that is applied to the instance. (EC2_SSM_AGENT_BASED, EC2_AGENTLESS)</td>
+    <td>The scan method that is applied to the instance. (EC2_SSM_AGENT_BASED, EC2_AGENTLESS, EC2_INSPECTOR_AGENT_BASED, VM_INSPECTOR_AGENT_BASED)</td>
 </tr>
 <tr>
     <td><CopyableCode code="scan_status" /></td>
@@ -156,6 +181,11 @@ Lists coverage details for your environment.
 SELECT
 account_id,
 last_scanned_at,
+provider,
+provider_account_id,
+provider_org_id,
+provider_partition,
+provider_region,
 resource_id,
 resource_metadata,
 resource_type,

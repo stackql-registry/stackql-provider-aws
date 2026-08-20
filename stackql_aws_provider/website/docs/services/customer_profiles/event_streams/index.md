@@ -173,7 +173,7 @@ The following methods are available for this resource:
     <td><CopyableCode code="insert" /></td>
     <td><a href="#parameter-domain_name"><code>domain_name</code></a>, <a href="#parameter-event_stream_name"><code>event_stream_name</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-Uri"><code>Uri</code></a></td>
     <td></td>
-    <td>Creates an event stream, which is a subscription to real-time events, such as when profiles are created and updated through Amazon Connect Customer Profiles. Each event stream can be associated with only one Kinesis Data Stream destination in the same region and Amazon Web Services account as the customer profiles domain</td>
+    <td>Creates an event stream, which is a subscription to real-time events, such as when profiles are created and updated through Connect Customer Customer Profiles. Each event stream can be associated with only one Kinesis Data Stream destination in the same region and Amazon Web Services account as the customer profiles domain</td>
 </tr>
 <tr>
     <td><a href="#delete_event_stream"><CopyableCode code="delete_event_stream" /></a></td>
@@ -290,7 +290,7 @@ AND `max-results` = '{{ max-results }}'
 >
 <TabItem value="create_event_stream">
 
-Creates an event stream, which is a subscription to real-time events, such as when profiles are created and updated through Amazon Connect Customer Profiles. Each event stream can be associated with only one Kinesis Data Stream destination in the same region and Amazon Web Services account as the customer profiles domain
+Creates an event stream, which is a subscription to real-time events, such as when profiles are created and updated through Connect Customer Customer Profiles. Each event stream can be associated with only one Kinesis Data Stream destination in the same region and Amazon Web Services account as the customer profiles domain
 
 ```sql
 INSERT INTO aws.customer_profiles.event_streams (

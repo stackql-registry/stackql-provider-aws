@@ -26,8 +26,8 @@ For the AWS Cloud Control provider see the [__`awscc`__](https://awscc-provider.
 
 :::info[Provider Summary] 
 
-total services: __414__  
-total resources: __6402__  
+total services: __419__  
+total resources: __6618__  
 
 :::
 
@@ -51,8 +51,11 @@ Resources are available in all AWS regions. Use the `region` parameter to specif
 <div class="providerDocColumn">
 <a href="/services/accessanalyzer/">accessanalyzer</a><br />
 <a href="/services/account/">account</a><br />
+<a href="/services/account_access/">account_access</a><br />
 <a href="/services/acm/">acm</a><br />
 <a href="/services/acm_pca/">acm_pca</a><br />
+<a href="/services/agent_registry/">agent_registry</a><br />
+<a href="/services/agent_registry_control/">agent_registry_control</a><br />
 <a href="/services/aiops/">aiops</a><br />
 <a href="/services/amp/">amp</a><br />
 <a href="/services/amplify/">amplify</a><br />
@@ -236,8 +239,6 @@ Resources are available in all AWS regions. Use the `region` parameter to specif
 <a href="/services/iot_jobs_data/">iot_jobs_data</a><br />
 <a href="/services/iot_managed_integrations/">iot_managed_integrations</a><br />
 <a href="/services/iotdeviceadvisor/">iotdeviceadvisor</a><br />
-<a href="/services/iotevents/">iotevents</a><br />
-<a href="/services/iotevents_data/">iotevents_data</a><br />
 <a href="/services/iotfleetwise/">iotfleetwise</a><br />
 <a href="/services/iotsecuretunneling/">iotsecuretunneling</a><br />
 <a href="/services/iotsitewise/">iotsitewise</a><br />
@@ -256,15 +257,17 @@ Resources are available in all AWS regions. Use the `region` parameter to specif
 <a href="/services/kinesis/">kinesis</a><br />
 <a href="/services/kinesis_video_archived_media/">kinesis_video_archived_media</a><br />
 <a href="/services/kinesis_video_media/">kinesis_video_media</a><br />
-</div>
-<div class="providerDocColumn">
 <a href="/services/kinesis_video_signaling/">kinesis_video_signaling</a><br />
 <a href="/services/kinesisanalytics/">kinesisanalytics</a><br />
+</div>
+<div class="providerDocColumn">
 <a href="/services/kinesisanalyticsv2/">kinesisanalyticsv2</a><br />
 <a href="/services/kinesisvideo/">kinesisvideo</a><br />
 <a href="/services/kms/">kms</a><br />
 <a href="/services/lakeformation/">lakeformation</a><br />
 <a href="/services/lambda/">lambda</a><br />
+<a href="/services/lambda_core/">lambda_core</a><br />
+<a href="/services/lambda_microvms/">lambda_microvms</a><br />
 <a href="/services/launch_wizard/">launch_wizard</a><br />
 <a href="/services/lex_models/">lex_models</a><br />
 <a href="/services/lex_runtime/">lex_runtime</a><br />
@@ -331,7 +334,6 @@ Resources are available in all AWS regions. Use the `region` parameter to specif
 <a href="/services/organizations/">organizations</a><br />
 <a href="/services/osis/">osis</a><br />
 <a href="/services/outposts/">outposts</a><br />
-<a href="/services/panorama/">panorama</a><br />
 <a href="/services/partnercentral_account/">partnercentral_account</a><br />
 <a href="/services/partnercentral_benefits/">partnercentral_benefits</a><br />
 <a href="/services/partnercentral_channel/">partnercentral_channel</a><br />
@@ -351,6 +353,7 @@ Resources are available in all AWS regions. Use the `region` parameter to specif
 <a href="/services/pipes/">pipes</a><br />
 <a href="/services/polly/">polly</a><br />
 <a href="/services/pricing/">pricing</a><br />
+<a href="/services/pricing_plan_manager/">pricing_plan_manager</a><br />
 <a href="/services/proton/">proton</a><br />
 <a href="/services/qapps/">qapps</a><br />
 <a href="/services/qbusiness/">qbusiness</a><br />
@@ -365,6 +368,7 @@ Resources are available in all AWS regions. Use the `region` parameter to specif
 <a href="/services/rekognition/">rekognition</a><br />
 <a href="/services/repostspace/">repostspace</a><br />
 <a href="/services/resiliencehub/">resiliencehub</a><br />
+<a href="/services/resiliencehubv2/">resiliencehubv2</a><br />
 <a href="/services/resource_explorer_2/">resource_explorer_2</a><br />
 <a href="/services/resource_groups/">resource_groups</a><br />
 <a href="/services/resourcegroupstaggingapi/">resourcegroupstaggingapi</a><br />
@@ -391,6 +395,7 @@ Resources are available in all AWS regions. Use the `region` parameter to specif
 <a href="/services/sagemaker_featurestore_runtime/">sagemaker_featurestore_runtime</a><br />
 <a href="/services/sagemaker_geospatial/">sagemaker_geospatial</a><br />
 <a href="/services/sagemaker_metrics/">sagemaker_metrics</a><br />
+<a href="/services/sagemakerjobruntime/">sagemakerjobruntime</a><br />
 <a href="/services/savingsplans/">savingsplans</a><br />
 <a href="/services/scheduler/">scheduler</a><br />
 <a href="/services/schemas/">schemas</a><br />
@@ -412,7 +417,6 @@ Resources are available in all AWS regions. Use the `region` parameter to specif
 <a href="/services/signer_data/">signer_data</a><br />
 <a href="/services/signin/">signin</a><br />
 <a href="/services/simpledbv2/">simpledbv2</a><br />
-<a href="/services/simspaceweaver/">simspaceweaver</a><br />
 <a href="/services/sms_voice/">sms_voice</a><br />
 <a href="/services/snow_device_management/">snow_device_management</a><br />
 <a href="/services/snowball/">snowball</a><br />
@@ -434,6 +438,7 @@ Resources are available in all AWS regions. Use the `region` parameter to specif
 <a href="/services/supplychain/">supplychain</a><br />
 <a href="/services/support/">support</a><br />
 <a href="/services/support_app/">support_app</a><br />
+<a href="/services/supportauthz/">supportauthz</a><br />
 <a href="/services/sustainability/">sustainability</a><br />
 <a href="/services/swf/">swf</a><br />
 <a href="/services/synthetics/">synthetics</a><br />

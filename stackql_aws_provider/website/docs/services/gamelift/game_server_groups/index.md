@@ -53,7 +53,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="auto_scaling_group_arn" /></td>
     <td><code>string</code></td>
-    <td>A generated unique ID for the Amazon EC2 Auto Scaling group that is associated with this game server group. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t&#93;*&lt;/code&gt;)</td>
+    <td>A generated unique ID for the Amazon EC2 Auto Scaling group that is associated with this game server group. (pattern: &lt;code&gt;^&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t&#93;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="balancing_strategy" /></td>
@@ -68,12 +68,12 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="game_server_group_arn" /></td>
     <td><code>string</code></td>
-    <td>A generated unique ID for the game server group. (pattern: &lt;code&gt;^arn:.*:gameservergroup\/&#91;a-zA-Z0-9-\.&#93;*&lt;/code&gt;)</td>
+    <td>A generated unique ID for the game server group. (pattern: &lt;code&gt;^arn:.*:gameservergroup\/&#91;a-zA-Z0-9-\.&#93;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="game_server_group_name" /></td>
     <td><code>string</code></td>
-    <td>A developer-defined identifier for the game server group. The name is unique for each Region in each Amazon Web Services account. (pattern: &lt;code&gt;&#91;a-zA-Z0-9-\.&#93;+&lt;/code&gt;)</td>
+    <td>A developer-defined identifier for the game server group. The name is unique for each Region in each Amazon Web Services account. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9-\.&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="game_server_protection_policy" /></td>
@@ -127,7 +127,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="auto_scaling_group_arn" /></td>
     <td><code>string</code></td>
-    <td>A generated unique ID for the Amazon EC2 Auto Scaling group that is associated with this game server group. (pattern: &lt;code&gt;&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t&#93;*&lt;/code&gt;)</td>
+    <td>A generated unique ID for the Amazon EC2 Auto Scaling group that is associated with this game server group. (pattern: &lt;code&gt;^&#91;\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t&#93;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="balancing_strategy" /></td>
@@ -142,12 +142,12 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="game_server_group_arn" /></td>
     <td><code>string</code></td>
-    <td>A generated unique ID for the game server group. (pattern: &lt;code&gt;^arn:.*:gameservergroup\/&#91;a-zA-Z0-9-\.&#93;*&lt;/code&gt;)</td>
+    <td>A generated unique ID for the game server group. (pattern: &lt;code&gt;^arn:.*:gameservergroup\/&#91;a-zA-Z0-9-\.&#93;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="game_server_group_name" /></td>
     <td><code>string</code></td>
-    <td>A developer-defined identifier for the game server group. The name is unique for each Region in each Amazon Web Services account. (pattern: &lt;code&gt;&#91;a-zA-Z0-9-\.&#93;+&lt;/code&gt;)</td>
+    <td>A developer-defined identifier for the game server group. The name is unique for each Region in each Amazon Web Services account. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9-\.&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="game_server_protection_policy" /></td>
@@ -230,7 +230,7 @@ The following methods are available for this resource:
     <td><CopyableCode code="update" /></td>
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-GameServerGroupName"><code>GameServerGroupName</code></a></td>
     <td></td>
-    <td>This API works with the following fleet types: EC2 (FleetIQ) Updates Amazon GameLift Servers FleetIQ-specific properties for a game server group. Many Auto Scaling group properties are updated on the Auto Scaling group directly, including the launch template, Auto Scaling policies, and maximum/minimum/desired instance counts. To update the game server group, specify the game server group ID and provide the updated values. Before applying the updates, the new values are validated to ensure that Amazon GameLift Servers FleetIQ can continue to perform instance balancing activity. If successful, a GameServerGroup object is returned. Learn more Amazon GameLift Servers FleetIQ Guide</td>
+    <td>This API works with the following fleet types: EC2 (FleetIQ) Updates Amazon GameLift Servers FleetIQ-specific properties for a game server group. Many Auto Scaling group properties are updated on the Auto Scaling group directly, including the launch template, Auto Scaling policies, and maximum/minimum/desired instance counts. To update the game server group, specify the game server group ID and provide the updated values. Before applying the updates, the new values are validated to ensure that Amazon GameLift Servers FleetIQ can continue to perform instance balancing activity. If successful, a GameServerGroup object is returned. Target tracking Auto Scaling policies on the Auto Scaling group cannot be updated through the Amazon Web Services Management Console. Instead, use the Amazon Elastic Compute Cloud Auto Scaling PutScalingPolicy API action to update these policies. Learn more Amazon GameLift Servers FleetIQ Guide</td>
 </tr>
 <tr>
     <td><a href="#delete_game_server_group"><CopyableCode code="delete_game_server_group" /></a></td>
@@ -462,7 +462,7 @@ game_server_group
 >
 <TabItem value="update_game_server_group">
 
-This API works with the following fleet types: EC2 (FleetIQ) Updates Amazon GameLift Servers FleetIQ-specific properties for a game server group. Many Auto Scaling group properties are updated on the Auto Scaling group directly, including the launch template, Auto Scaling policies, and maximum/minimum/desired instance counts. To update the game server group, specify the game server group ID and provide the updated values. Before applying the updates, the new values are validated to ensure that Amazon GameLift Servers FleetIQ can continue to perform instance balancing activity. If successful, a GameServerGroup object is returned. Learn more Amazon GameLift Servers FleetIQ Guide
+This API works with the following fleet types: EC2 (FleetIQ) Updates Amazon GameLift Servers FleetIQ-specific properties for a game server group. Many Auto Scaling group properties are updated on the Auto Scaling group directly, including the launch template, Auto Scaling policies, and maximum/minimum/desired instance counts. To update the game server group, specify the game server group ID and provide the updated values. Before applying the updates, the new values are validated to ensure that Amazon GameLift Servers FleetIQ can continue to perform instance balancing activity. If successful, a GameServerGroup object is returned. Target tracking Auto Scaling policies on the Auto Scaling group cannot be updated through the Amazon Web Services Management Console. Instead, use the Amazon Elastic Compute Cloud Auto Scaling PutScalingPolicy API action to update these policies. Learn more Amazon GameLift Servers FleetIQ Guide
 
 ```sql
 UPDATE aws.gamelift.game_server_groups

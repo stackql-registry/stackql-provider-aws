@@ -163,14 +163,14 @@ The following methods are available for this resource:
     <td><CopyableCode code="insert" /></td>
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-portalId"><code>portalId</code></a>, <a href="#parameter-projectName"><code>projectName</code></a></td>
     <td></td>
-    <td>Creates a project in the specified portal. Make sure that the project name and description don't contain confidential information.</td>
+    <td>The IoT SiteWise Monitor feature will no longer be open to new customers starting November 7, 2025. If you would like to use the IoT SiteWise Monitor feature, sign up prior to that date. Existing customers can continue to use the service as normal. For more information, see IoT SiteWise Monitor availability change. Creates a project in the specified portal. Make sure that the project name and description don't contain confidential information.</td>
 </tr>
 <tr>
     <td><a href="#update_project"><CopyableCode code="update_project" /></a></td>
     <td><CopyableCode code="update" /></td>
     <td><a href="#parameter-project_id"><code>project_id</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-projectName"><code>projectName</code></a></td>
     <td></td>
-    <td>Updates an IoT SiteWise Monitor project.</td>
+    <td>The IoT SiteWise Monitor feature will no longer be open to new customers starting November 7, 2025. If you would like to use the IoT SiteWise Monitor feature, sign up prior to that date. Existing customers can continue to use the service as normal. For more information, see IoT SiteWise Monitor availability change. Updates an IoT SiteWise Monitor project.</td>
 </tr>
 <tr>
     <td><a href="#delete_project"><CopyableCode code="delete_project" /></a></td>
@@ -289,7 +289,7 @@ AND region = '{{ region }}' -- required
 >
 <TabItem value="create_project">
 
-Creates a project in the specified portal. Make sure that the project name and description don't contain confidential information.
+The IoT SiteWise Monitor feature will no longer be open to new customers starting November 7, 2025. If you would like to use the IoT SiteWise Monitor feature, sign up prior to that date. Existing customers can continue to use the service as normal. For more information, see IoT SiteWise Monitor availability change. Creates a project in the specified portal. Make sure that the project name and description don't contain confidential information.
 
 ```sql
 INSERT INTO aws.iotsitewise.projects (
@@ -347,7 +347,7 @@ project_id
 >
 <TabItem value="update_project">
 
-Updates an IoT SiteWise Monitor project.
+The IoT SiteWise Monitor feature will no longer be open to new customers starting November 7, 2025. If you would like to use the IoT SiteWise Monitor feature, sign up prior to that date. Existing customers can continue to use the service as normal. For more information, see IoT SiteWise Monitor availability change. Updates an IoT SiteWise Monitor project.
 
 ```sql
 UPDATE aws.iotsitewise.projects

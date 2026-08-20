@@ -185,6 +185,11 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the configuration.</td>
 </tr>
 <tr>
+    <td><CopyableCode code="configuration_profile_id" /></td>
+    <td><code>string</code></td>
+    <td>The ID of the configuration profile that was deployed. (pattern: &lt;code&gt;&#91;a-z0-9&#93;&#123;4,7&#125;&lt;/code&gt;)</td>
+</tr>
+<tr>
     <td><CopyableCode code="configuration_version" /></td>
     <td><code>string</code></td>
     <td>The version of the configuration.</td>
@@ -228,6 +233,11 @@ The following fields are returned by `SELECT` queries:
     <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The state of the deployment. (BAKING, VALIDATING, DEPLOYING, COMPLETE, ROLLING_BACK, ROLLED_BACK, REVERTED)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="type" /></td>
+    <td><code>string</code></td>
+    <td>The type of deployment. (USER, MANAGED)</td>
 </tr>
 <tr>
     <td><CopyableCode code="version_label" /></td>
@@ -370,6 +380,7 @@ Lists the deployments for an environment in descending deployment number order.
 SELECT
 completed_at,
 configuration_name,
+configuration_profile_id,
 configuration_version,
 deployment_duration_in_minutes,
 deployment_number,
@@ -379,6 +390,7 @@ growth_type,
 percentage_complete,
 started_at,
 state,
+type,
 version_label
 FROM aws.appconfig.deployments
 WHERE application_id = '{{ application_id }}' -- required

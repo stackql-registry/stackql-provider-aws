@@ -67,7 +67,12 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="function_arn" /></td>
     <td><code>string</code></td>
-    <td>The Amazon Resource Name (ARN) of the Lambda function. (pattern: &lt;code&gt;arn:(aws&#91;a-zA-Z-&#93;*)?:lambda:&#91;a-z&#93;&#123;2&#125;((-gov)|(-iso(&#91;a-z&#93;?)))?-&#91;a-z&#93;+-\d&#123;1&#125;:\d&#123;12&#125;:function:&#91;a-zA-Z0-9-_\.&#93;+(:(\$LATEST(\.PUBLISHED)?|&#91;a-zA-Z0-9-_&#93;+))?&lt;/code&gt;)</td>
+    <td>The Amazon Resource Name (ARN) of the Lambda function. (pattern: &lt;code&gt;arn:(aws&#91;a-zA-Z-&#93;*)?:lambda:(eusc-)?&#91;a-z&#93;&#123;2&#125;((-gov)|(-iso(&#91;a-z&#93;?)))?-&#91;a-z&#93;+-\d&#123;1&#125;:\d&#123;12&#125;:function:&#91;a-zA-Z0-9-_\.&#93;+(:(\$LATEST(\.PUBLISHED)?|&#91;a-zA-Z0-9-_&#93;+))?&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="kms_key_arn" /></td>
+    <td><code>string</code></td>
+    <td>The ARN of the Key Management Service (KMS) customer managed key that is used to encrypt your durable execution's payload data, including input, output, and error payloads. (pattern: &lt;code&gt;(arn:(aws&#91;a-zA-Z-&#93;*)?:&#91;a-z0-9-.&#93;+:.*)|()&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="start_timestamp" /></td>
@@ -155,7 +160,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-ReverseOrder">
     <td><CopyableCode code="ReverseOrder" /></td>
     <td><code>boolean</code></td>
-    <td>Set to true to return results in reverse chronological order (newest first). Default is false.</td>
+    <td>Set to true to return results in chronological order (oldest first). Default is false.</td>
 </tr>
 <tr id="parameter-StartedAfter">
     <td><CopyableCode code="StartedAfter" /></td>
@@ -193,6 +198,7 @@ durable_execution_arn,
 durable_execution_name,
 end_timestamp,
 function_arn,
+kms_key_arn,
 start_timestamp,
 status
 FROM aws.lambda.durable_executions_by_functions

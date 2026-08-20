@@ -18,7 +18,7 @@ kafka service documentation.
 
 :::info[Service Summary]
 
-total resources: __20__  
+total resources: __21__  
 
 :::
 
@@ -26,6 +26,7 @@ total resources: __20__
 <div class="row">
 <div class="providerDocColumn">
 <a href="/services/kafka/bootstrap_brokers/">bootstrap_brokers</a><br />
+<a href="/services/kafka/channels/">channels</a><br />
 <a href="/services/kafka/client_vpc_connections/">client_vpc_connections</a><br />
 <a href="/services/kafka/cluster_operation_v2s/">cluster_operation_v2s</a><br />
 <a href="/services/kafka/cluster_operations/">cluster_operations</a><br />

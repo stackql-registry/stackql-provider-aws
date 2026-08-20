@@ -52,7 +52,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="constraints" /></td>
     <td><code>object</code></td>
-    <td>A list of key-value pairs that must be present in the encryption context of certain subsequent operations that the grant allows.</td>
+    <td>The constraints on the grant, such as encryption context pairs or a SourceArn, that restrict the subsequent operations the grant allows.</td>
 </tr>
 <tr>
     <td><CopyableCode code="creation_date" /></td>
@@ -67,7 +67,12 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="grantee_principal" /></td>
     <td><code>string</code></td>
-    <td>The identity that gets the permissions in the grant. The GranteePrincipal field in the ListGrants response usually contains the user or role designated as the grantee principal in the grant. However, when the grantee principal in the grant is an Amazon Web Services service, the GranteePrincipal field contains the service principal, which might represent several different grantee principals. (pattern: &lt;code&gt;^&#91;\w+=,.@:/-&#93;+$&lt;/code&gt;)</td>
+    <td>The identity that gets the permissions in the grant. When a grant is created with the GranteePrincipal field, the ListGrants response usually contains the user or role designated as the grantee principal in the grant. However, if the grantee principal is an Amazon Web Services service, the GranteePrincipal field contains an Amazon Web Services service principal, which might correspond to several different grantee principals, such as an IAM user, IAM role, or Amazon Web Services account. (pattern: &lt;code&gt;^&#91;\w+=,.@:/-&#93;+$&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="grantee_service_principal" /></td>
+    <td><code>string</code></td>
+    <td>The Amazon Web Services service principal that gets the permissions in the grant. (pattern: &lt;code&gt;^(&#91;A-Za-z0-9\-&#93;+)\.(&#91;A-Za-z0-9\-&#93;+)(\.&#91;A-Za-z0-9\-&#93;+)+$&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="issuing_account" /></td>
@@ -94,6 +99,11 @@ The following fields are returned by `SELECT` queries:
     <td><code>string</code></td>
     <td>The principal that can retire the grant. (pattern: &lt;code&gt;^&#91;\w+=,.@:/-&#93;+$&lt;/code&gt;)</td>
 </tr>
+<tr>
+    <td><CopyableCode code="retiring_service_principal" /></td>
+    <td><code>string</code></td>
+    <td>The Amazon Web Services service principal that can retire the grant. (pattern: &lt;code&gt;^(&#91;A-Za-z0-9\-&#93;+)\.(&#91;A-Za-z0-9\-&#93;+)(\.&#91;A-Za-z0-9\-&#93;+)+$&lt;/code&gt;)</td>
+</tr>
 </tbody>
 </table>
 </TabItem>
@@ -119,7 +129,7 @@ The following methods are available for this resource:
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>Returns information about all grants in the Amazon Web Services account and Region that have the specified retiring principal. You can specify any principal in your Amazon Web Services account. The grants that are returned include grants for KMS keys in your Amazon Web Services account and other Amazon Web Services accounts. You might use this operation to determine which grants you may retire. To retire a grant, use the RetireGrant operation. For detailed information about grants, including grant terminology, see Grants in KMS in the Key Management Service Developer Guide . For examples of creating grants in several programming languages, see Use CreateGrant with an Amazon Web Services SDK or CLI. Cross-account use: You must specify a principal in your Amazon Web Services account. This operation returns a list of grants where the retiring principal specified in the ListRetirableGrants request is the same retiring principal on the grant. This can include grants on KMS keys owned by other Amazon Web Services accounts, but you do not need kms:ListRetirableGrants permission (or any other additional permission) in any Amazon Web Services account other than your own. Required permissions: kms:ListRetirableGrants (IAM policy) in your Amazon Web Services account. KMS authorizes ListRetirableGrants requests by evaluating the caller account's kms:ListRetirableGrants permissions. The authorized resource in ListRetirableGrants calls is the retiring principal specified in the request. KMS does not evaluate the caller's permissions to verify their access to any KMS keys or grants that might be returned by the ListRetirableGrants call. Related operations: CreateGrant ListGrants RetireGrant RevokeGrant Eventual consistency: The KMS API follows an eventual consistency model. For more information, see KMS eventual consistency.</td>
+    <td>Returns information about all grants in the Amazon Web Services account and Region that have the specified retiring principal or retiring service principal. You can specify any principal in your Amazon Web Services account. The grants that are returned include grants for KMS keys in your Amazon Web Services account and other Amazon Web Services accounts. You might use this operation to determine which grants you may retire. To retire a grant, use the RetireGrant operation. For detailed information about grants, including grant terminology, see Grants in KMS in the Key Management Service Developer Guide . For examples of creating grants in several programming languages, see Use CreateGrant with an Amazon Web Services SDK or CLI. Cross-account use: You must specify a principal in your Amazon Web Services account. This operation returns a list of grants where the retiring principal specified in the ListRetirableGrants request is the same retiring principal on the grant. This can include grants on KMS keys owned by other Amazon Web Services accounts, but you do not need kms:ListRetirableGrants permission (or any other additional permission) in any Amazon Web Services account other than your own. Required permissions: kms:ListRetirableGrants (IAM policy) in your Amazon Web Services account. When listing retirable grants by RetiringPrincipal, KMS authorizes ListRetirableGrants requests by evaluating the caller account's kms:ListRetirableGrants permissions. The authorized resource in ListRetirableGrants calls is the retiring principal specified in the request. KMS does not evaluate the caller's permissions to verify their access to any KMS keys or grants that might be returned by the ListRetirableGrants call. The RetiringServicePrincipal filter is only usable by callers in a service principal. Related operations: CreateGrant ListGrants RetireGrant RevokeGrant Eventual consistency: The KMS API follows an eventual consistency model. For more information, see KMS eventual consistency.</td>
 </tr>
 </tbody>
 </table>
@@ -155,7 +165,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 >
 <TabItem value="list_retirable_grants">
 
-Returns information about all grants in the Amazon Web Services account and Region that have the specified retiring principal. You can specify any principal in your Amazon Web Services account. The grants that are returned include grants for KMS keys in your Amazon Web Services account and other Amazon Web Services accounts. You might use this operation to determine which grants you may retire. To retire a grant, use the RetireGrant operation. For detailed information about grants, including grant terminology, see Grants in KMS in the Key Management Service Developer Guide . For examples of creating grants in several programming languages, see Use CreateGrant with an Amazon Web Services SDK or CLI. Cross-account use: You must specify a principal in your Amazon Web Services account. This operation returns a list of grants where the retiring principal specified in the ListRetirableGrants request is the same retiring principal on the grant. This can include grants on KMS keys owned by other Amazon Web Services accounts, but you do not need kms:ListRetirableGrants permission (or any other additional permission) in any Amazon Web Services account other than your own. Required permissions: kms:ListRetirableGrants (IAM policy) in your Amazon Web Services account. KMS authorizes ListRetirableGrants requests by evaluating the caller account's kms:ListRetirableGrants permissions. The authorized resource in ListRetirableGrants calls is the retiring principal specified in the request. KMS does not evaluate the caller's permissions to verify their access to any KMS keys or grants that might be returned by the ListRetirableGrants call. Related operations: CreateGrant ListGrants RetireGrant RevokeGrant Eventual consistency: The KMS API follows an eventual consistency model. For more information, see KMS eventual consistency.
+Returns information about all grants in the Amazon Web Services account and Region that have the specified retiring principal or retiring service principal. You can specify any principal in your Amazon Web Services account. The grants that are returned include grants for KMS keys in your Amazon Web Services account and other Amazon Web Services accounts. You might use this operation to determine which grants you may retire. To retire a grant, use the RetireGrant operation. For detailed information about grants, including grant terminology, see Grants in KMS in the Key Management Service Developer Guide . For examples of creating grants in several programming languages, see Use CreateGrant with an Amazon Web Services SDK or CLI. Cross-account use: You must specify a principal in your Amazon Web Services account. This operation returns a list of grants where the retiring principal specified in the ListRetirableGrants request is the same retiring principal on the grant. This can include grants on KMS keys owned by other Amazon Web Services accounts, but you do not need kms:ListRetirableGrants permission (or any other additional permission) in any Amazon Web Services account other than your own. Required permissions: kms:ListRetirableGrants (IAM policy) in your Amazon Web Services account. When listing retirable grants by RetiringPrincipal, KMS authorizes ListRetirableGrants requests by evaluating the caller account's kms:ListRetirableGrants permissions. The authorized resource in ListRetirableGrants calls is the retiring principal specified in the request. KMS does not evaluate the caller's permissions to verify their access to any KMS keys or grants that might be returned by the ListRetirableGrants call. The RetiringServicePrincipal filter is only usable by callers in a service principal. Related operations: CreateGrant ListGrants RetireGrant RevokeGrant Eventual consistency: The KMS API follows an eventual consistency model. For more information, see KMS eventual consistency.
 
 ```sql
 SELECT
@@ -163,11 +173,13 @@ constraints,
 creation_date,
 grant_id,
 grantee_principal,
+grantee_service_principal,
 issuing_account,
 key_id,
 name,
 operations,
-retiring_principal
+retiring_principal,
+retiring_service_principal
 FROM aws.kms.retirable_grants
 WHERE region = '{{ region }}' -- required
 ;

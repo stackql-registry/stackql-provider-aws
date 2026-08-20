@@ -192,7 +192,7 @@ The following methods are available for this resource:
     <td><CopyableCode code="delete" /></td>
     <td><a href="#parameter-workflow_name"><code>workflow_name</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>Deletes the IdMappingWorkflow with a given name. This operation will succeed even if a workflow with the given name does not exist.</td>
+    <td>Deletes the IdMappingWorkflow with a given name. This operation returns a ResourceNotFoundException if a workflow with the given name does not exist.</td>
 </tr>
 </tbody>
 </table>
@@ -435,7 +435,7 @@ workflow_name;
 >
 <TabItem value="delete_id_mapping_workflow">
 
-Deletes the IdMappingWorkflow with a given name. This operation will succeed even if a workflow with the given name does not exist.
+Deletes the IdMappingWorkflow with a given name. This operation returns a ResourceNotFoundException if a workflow with the given name does not exist.
 
 ```sql
 DELETE FROM aws.entityresolution.id_mapping_workflows

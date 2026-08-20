@@ -225,6 +225,11 @@ The following fields are returned by `SELECT` queries:
     <td><code>object</code></td>
     <td>Variables defined for the automation.</td>
 </tr>
+<tr>
+    <td><CopyableCode code="warning_message" /></td>
+    <td><code>string</code></td>
+    <td>A message that describes a non-critical issue that occurred during the automation execution.</td>
+</tr>
 </tbody>
 </table>
 </TabItem>
@@ -312,7 +317,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="failure_message" /></td>
     <td><code>string</code></td>
-    <td>The list of execution outputs as defined in the Automation runbook.</td>
+    <td>A message that describes a failure that occurred during the automation execution.</td>
 </tr>
 <tr>
     <td><CopyableCode code="log_file" /></td>
@@ -393,6 +398,11 @@ The following fields are returned by `SELECT` queries:
     <td><CopyableCode code="triggered_alarms" /></td>
     <td><code>array</code></td>
     <td>The CloudWatch alarm that was invoked by the automation.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="warning_message" /></td>
+    <td><code>string</code></td>
+    <td>A message that describes a non-critical issue that occurred during the automation execution.</td>
 </tr>
 </tbody>
 </table>
@@ -508,7 +518,8 @@ target_maps,
 target_parameter_name,
 targets,
 triggered_alarms,
-variables
+variables,
+warning_message
 FROM aws.ssm.automation_executions
 WHERE region = '{{ region }}' -- required
 ;
@@ -550,7 +561,8 @@ target_locations_url,
 target_maps,
 target_parameter_name,
 targets,
-triggered_alarms
+triggered_alarms,
+warning_message
 FROM aws.ssm.automation_executions
 WHERE region = '{{ region }}' -- required
 ;

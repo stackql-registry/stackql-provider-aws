@@ -55,6 +55,11 @@ The following fields are returned by `SELECT` queries:
     <td>An array of change data records retrieved from the specified shard. Each record represents a single data modification (insert, update, or delete) to a row in the Amazon Keyspaces table. Records include the primary key columns and information about what data was modified.</td>
 </tr>
 <tr>
+    <td><CopyableCode code="iterator_description" /></td>
+    <td><code>object</code></td>
+    <td>Provides information about the current iterator at the time GetRecords request was processed by Keyspaces.</td>
+</tr>
+<tr>
     <td><CopyableCode code="next_shard_iterator" /></td>
     <td><code>string</code></td>
     <td>The next position in the shard from which to start sequentially reading data records. If null, the shard has been closed and the requested iterator will not return any more data.</td>
@@ -125,6 +130,7 @@ Retrieves data records from a specified shard in an Amazon Keyspaces data stream
 ```sql
 SELECT
 change_records,
+iterator_description,
 next_shard_iterator
 FROM aws.keyspacesstreams.records
 WHERE region = '{{ region }}' -- required

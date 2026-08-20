@@ -361,6 +361,48 @@ tests:
     expect:
       contains: ["arn:aws:s3:::{{ bucket_prefix }}-{{ caller_identity.account }}"]
 
+  # ----- S3 object content CRUD (rule 19 blob-payload; text objects only) -----
+  # Uses the smoke bucket while it exists. INSERT and REPLACE both route to
+  # put_object (create-or-overwrite); SELECT projects the raw body as the
+  # single `contents` column via the golang_template_text transform.
+  - name: object_write
+    description: PutObject INSERT with raw text contents (request transform path)
+    file: s3/object_write.iql
+
+  - name: object_read
+    description: GetObject SELECT returns the contents column verbatim
+    file: s3/object_read.iql
+    expect:
+      min_rows: 1
+      contains: ["stackql-objects-smoke-v1"]
+
+  - name: object_replace
+    description: PutObject REPLACE overwrites the object content
+    file: s3/object_replace.iql
+
+  - name: object_read_after_replace
+    description: contents reflects the replacement and not the original
+    file: s3/object_read.iql
+    expect:
+      min_rows: 1
+      contains: ["stackql-objects-smoke-v2"]
+      not_contains: ["stackql-objects-smoke-v1"]
+
+  - name: object_delete
+    description: DeleteObject DELETE empties the smoke bucket for bucket_delete
+    file: s3/object_delete.iql
+    always_run: true
+    expect:
+      allow_error: true
+
+  - name: object_confirm_gone
+    description: GetObject on the deleted key surfaces NoSuchKey
+    file: s3/object_confirm_gone.iql
+    always_run: true
+    expect:
+      allow_error: true
+      contains: ["NoSuchKey"]
+
   - name: bucket_delete
     description: DELETE by path parameter
     file: s3/bucket_delete.iql

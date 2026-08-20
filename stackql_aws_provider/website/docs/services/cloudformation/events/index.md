@@ -255,7 +255,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-StackName">
     <td><CopyableCode code="StackName" /></td>
     <td><code>string</code></td>
-    <td>The name or unique stack ID for which you want to retrieve events.</td>
+    <td>The name or unique stack ID for which you want to retrieve events. If you specified the name of a change set, specify the stack name or ID (ARN) of the change set you want to describe.</td>
 </tr>
 </tbody>
 </table>

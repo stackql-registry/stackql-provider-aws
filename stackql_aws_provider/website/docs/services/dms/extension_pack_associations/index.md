@@ -57,7 +57,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="requests" /></td>
     <td><code>array</code></td>
-    <td>A paginated list of extension pack associations for the specified migration project.</td>
+    <td>A paginated list of extension pack installation requests. DMS never populates the ExportSqlDetails field for this operation.</td>
 </tr>
 </tbody>
 </table>
@@ -84,7 +84,7 @@ The following methods are available for this resource:
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>Returns a paginated list of extension pack associations for the specified migration project. An extension pack is an add-on module that emulates functions present in a source database that are required when converting objects to the target database.</td>
+    <td>Returns a paginated list of extension pack installation requests for a migration project, initiated by StartExtensionPackAssociation. Required permissions: dms:ListExtensionPacks. For more information, see Actions, resources, and condition keys for Database Migration Service.</td>
 </tr>
 </tbody>
 </table>
@@ -120,7 +120,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 >
 <TabItem value="describe_extension_pack_associations">
 
-Returns a paginated list of extension pack associations for the specified migration project. An extension pack is an add-on module that emulates functions present in a source database that are required when converting objects to the target database.
+Returns a paginated list of extension pack installation requests for a migration project, initiated by StartExtensionPackAssociation. Required permissions: dms:ListExtensionPacks. For more information, see Actions, resources, and condition keys for Database Migration Service.
 
 ```sql
 SELECT

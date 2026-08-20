@@ -700,8 +700,6 @@ job_id
       value: "{{ nameOverride }}"
     - name: descriptionOverride
       value: "{{ descriptionOverride }}"
-      description: |
-        The input description for the job. Passing in an empty string removes any existing description.
     - name: tags
       value: "{{ tags }}"
     - name: X-Amz-Client-Token
@@ -733,7 +731,8 @@ UPDATE aws.deadline.jobs
 SET 
 principalType = '{{ principalType }}',
 identityStoreId = '{{ identityStoreId }}',
-membershipLevel = '{{ membershipLevel }}'
+membershipLevel = '{{ membershipLevel }}',
+identityCenterRegion = '{{ identityCenterRegion }}'
 WHERE 
 farm_id = '{{ farm_id }}' --required
 AND queue_id = '{{ queue_id }}' --required

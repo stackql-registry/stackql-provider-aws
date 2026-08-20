@@ -94,6 +94,11 @@ The following fields are returned by `SELECT` queries:
     <td><code>string</code></td>
     <td>The name of the custom permissions profile. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9+=,.@_-&#93;+$&lt;/code&gt;)</td>
 </tr>
+<tr>
+    <td><CopyableCode code="governance" /></td>
+    <td><code>object</code></td>
+    <td>Contains the governance configuration for a custom permissions profile. When governance controls are defined for a category, any capabilities in that category not explicitly set to ALLOW in Capabilities are denied. Even newly added capabilities in the category are implicitly disabled when Amazon Quick releases them.</td>
+</tr>
 </tbody>
 </table>
 </TabItem>
@@ -250,7 +255,8 @@ Returns a list of all the custom permissions profiles.
 SELECT
 arn,
 capabilities,
-custom_permissions_name
+custom_permissions_name,
+governance
 FROM aws.quicksight.custom_permissions
 WHERE aws_account_id = '{{ aws_account_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -279,6 +285,7 @@ Creates a custom permissions profile.
 INSERT INTO aws.quicksight.custom_permissions (
 CustomPermissionsName,
 Capabilities,
+Governance,
 Tags,
 aws_account_id,
 region
@@ -286,6 +293,7 @@ region
 SELECT 
 '{{ CustomPermissionsName }}' /* required */,
 '{{ Capabilities }}',
+'{{ Governance }}',
 '{{ Tags }}',
 '{{ aws_account_id }}',
 '{{ region }}'
@@ -351,6 +359,48 @@ status
         ApproveFlowShareRequests: "{{ ApproveFlowShareRequests }}"
         UseAgentWebSearch: "{{ UseAgentWebSearch }}"
         KnowledgeBase: "{{ KnowledgeBase }}"
+        CreateAndUpdateKnowledgeBases: "{{ CreateAndUpdateKnowledgeBases }}"
+        ShareKnowledgeBases: "{{ ShareKnowledgeBases }}"
+        SharePointKnowledgeBase: "{{ SharePointKnowledgeBase }}"
+        CreateAndUpdateSharePointKnowledgeBase: "{{ CreateAndUpdateSharePointKnowledgeBase }}"
+        ShareSharePointKnowledgeBase: "{{ ShareSharePointKnowledgeBase }}"
+        UseSharePointKnowledgeBase: "{{ UseSharePointKnowledgeBase }}"
+        GoogleDriveKnowledgeBase: "{{ GoogleDriveKnowledgeBase }}"
+        CreateAndUpdateGoogleDriveKnowledgeBase: "{{ CreateAndUpdateGoogleDriveKnowledgeBase }}"
+        ShareGoogleDriveKnowledgeBase: "{{ ShareGoogleDriveKnowledgeBase }}"
+        UseGoogleDriveKnowledgeBase: "{{ UseGoogleDriveKnowledgeBase }}"
+        WebCrawlerKnowledgeBase: "{{ WebCrawlerKnowledgeBase }}"
+        CreateAndUpdateWebCrawlerKnowledgeBase: "{{ CreateAndUpdateWebCrawlerKnowledgeBase }}"
+        ShareWebCrawlerKnowledgeBase: "{{ ShareWebCrawlerKnowledgeBase }}"
+        UseWebCrawlerKnowledgeBase: "{{ UseWebCrawlerKnowledgeBase }}"
+        S3KnowledgeBase: "{{ S3KnowledgeBase }}"
+        CreateAndUpdateS3KnowledgeBase: "{{ CreateAndUpdateS3KnowledgeBase }}"
+        ShareS3KnowledgeBase: "{{ ShareS3KnowledgeBase }}"
+        UseS3KnowledgeBase: "{{ UseS3KnowledgeBase }}"
+        ConfluenceKnowledgeBase: "{{ ConfluenceKnowledgeBase }}"
+        CreateAndUpdateConfluenceKnowledgeBase: "{{ CreateAndUpdateConfluenceKnowledgeBase }}"
+        ShareConfluenceKnowledgeBase: "{{ ShareConfluenceKnowledgeBase }}"
+        UseConfluenceKnowledgeBase: "{{ UseConfluenceKnowledgeBase }}"
+        OneDriveKnowledgeBase: "{{ OneDriveKnowledgeBase }}"
+        CreateAndUpdateOneDriveKnowledgeBase: "{{ CreateAndUpdateOneDriveKnowledgeBase }}"
+        ShareOneDriveKnowledgeBase: "{{ ShareOneDriveKnowledgeBase }}"
+        UseOneDriveKnowledgeBase: "{{ UseOneDriveKnowledgeBase }}"
+        QBusinessKnowledgeBase: "{{ QBusinessKnowledgeBase }}"
+        CreateAndUpdateQBusinessKnowledgeBase: "{{ CreateAndUpdateQBusinessKnowledgeBase }}"
+        ShareQBusinessKnowledgeBase: "{{ ShareQBusinessKnowledgeBase }}"
+        UseQBusinessKnowledgeBase: "{{ UseQBusinessKnowledgeBase }}"
+        BedrockManagedKnowledgeBase: "{{ BedrockManagedKnowledgeBase }}"
+        CreateAndUpdateBedrockManagedKnowledgeBase: "{{ CreateAndUpdateBedrockManagedKnowledgeBase }}"
+        ShareBedrockManagedKnowledgeBase: "{{ ShareBedrockManagedKnowledgeBase }}"
+        UseBedrockManagedKnowledgeBase: "{{ UseBedrockManagedKnowledgeBase }}"
+        BoxKnowledgeBase: "{{ BoxKnowledgeBase }}"
+        CreateAndUpdateBoxKnowledgeBase: "{{ CreateAndUpdateBoxKnowledgeBase }}"
+        ShareBoxKnowledgeBase: "{{ ShareBoxKnowledgeBase }}"
+        UseBoxKnowledgeBase: "{{ UseBoxKnowledgeBase }}"
+        IDCKnowledgeBase: "{{ IDCKnowledgeBase }}"
+        CreateAndUpdateIDCKnowledgeBase: "{{ CreateAndUpdateIDCKnowledgeBase }}"
+        ShareIDCKnowledgeBase: "{{ ShareIDCKnowledgeBase }}"
+        UseIDCKnowledgeBase: "{{ UseIDCKnowledgeBase }}"
         Action: "{{ Action }}"
         GenericHTTPAction: "{{ GenericHTTPAction }}"
         CreateAndUpdateGenericHTTPAction: "{{ CreateAndUpdateGenericHTTPAction }}"
@@ -537,10 +587,24 @@ status
         Research: "{{ Research }}"
         SelfUpgradeUserRole: "{{ SelfUpgradeUserRole }}"
         Extension: "{{ Extension }}"
+        UseBrowserExtension: "{{ UseBrowserExtension }}"
+        UseWordAddInExtension: "{{ UseWordAddInExtension }}"
+        UseOutlookAddInExtension: "{{ UseOutlookAddInExtension }}"
+        UseExcelAddInExtension: "{{ UseExcelAddInExtension }}"
+        UsePowerpointAddInExtension: "{{ UsePowerpointAddInExtension }}"
         ManageSharedFolders: "{{ ManageSharedFolders }}"
         GenerateAnalyses: "{{ GenerateAnalyses }}"
         Story: "{{ Story }}"
         Scenario: "{{ Scenario }}"
+        Trigger: "{{ Trigger }}"
+        ScheduleTrigger: "{{ ScheduleTrigger }}"
+        InboundEmailTrigger: "{{ InboundEmailTrigger }}"
+        QuickEventTrigger: "{{ QuickEventTrigger }}"
+    - name: Governance
+      description: |
+        Contains the governance configuration for a custom permissions profile. When governance controls are defined for a category, any capabilities in that category not explicitly set to ALLOW in Capabilities are denied. Even newly added capabilities in the category are implicitly disabled when Amazon Quick releases them.
+      value:
+        DefaultCategoryEffects: "{{ DefaultCategoryEffects }}"
     - name: Tags
       value:
         - Key: "{{ Key }}"
@@ -586,7 +650,8 @@ Updates a custom permissions profile.
 ```sql
 UPDATE aws.quicksight.custom_permissions
 SET 
-Capabilities = '{{ Capabilities }}'
+Capabilities = '{{ Capabilities }}',
+Governance = '{{ Governance }}'
 WHERE 
 aws_account_id = '{{ aws_account_id }}' --required
 AND custom_permissions_name = '{{ custom_permissions_name }}' --required

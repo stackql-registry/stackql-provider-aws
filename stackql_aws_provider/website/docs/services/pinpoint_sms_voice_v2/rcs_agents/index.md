@@ -109,6 +109,26 @@ The following fields are returned by `SELECT` queries:
     <td><code>boolean</code></td>
     <td>When set to true you can receive incoming text messages from your end recipients using the TwoWayChannelArn.</td>
 </tr>
+<tr>
+    <td><CopyableCode code="two_way_media_s3_bucket_name" /></td>
+    <td><code>string</code></td>
+    <td>The name of the S3 bucket where inbound RCS media files are stored. (pattern: &lt;code&gt;&#91;a-z0-9&#93;&#91;a-z0-9.-&#93;*&#91;a-z0-9&#93;&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="two_way_media_s3_key_prefix" /></td>
+    <td><code>string</code></td>
+    <td>The key prefix used for inbound RCS media objects in the S3 bucket. (pattern: &lt;code&gt;&#91;\S&#93;+&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="two_way_media_s3_role" /></td>
+    <td><code>string</code></td>
+    <td>The ARN of the IAM role used to write inbound RCS media files to the S3 bucket. (pattern: &lt;code&gt;arn:\S+&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="two_way_rcs_events_enabled" /></td>
+    <td><code>array</code></td>
+    <td>The list of RCS event types enabled for two-way messaging on the agent.</td>
+</tr>
 </tbody>
 </table>
 </TabItem>
@@ -206,7 +226,11 @@ status,
 testing_agent,
 two_way_channel_arn,
 two_way_channel_role,
-two_way_enabled
+two_way_enabled,
+two_way_media_s3_bucket_name,
+two_way_media_s3_key_prefix,
+two_way_media_s3_role,
+two_way_rcs_events_enabled
 FROM aws.pinpoint_sms_voice_v2.rcs_agents
 WHERE region = '{{ region }}' -- required
 ;
@@ -253,7 +277,11 @@ status,
 tags,
 two_way_channel_arn,
 two_way_channel_role,
-two_way_enabled
+two_way_enabled,
+two_way_media_s3_bucket_name,
+two_way_media_s3_key_prefix,
+two_way_media_s3_role,
+two_way_rcs_events_enabled
 ;
 ```
 </TabItem>
@@ -310,7 +338,11 @@ OptOutListName = '{{ OptOutListName }}',
 SelfManagedOptOutsEnabled = {{ SelfManagedOptOutsEnabled }},
 TwoWayChannelArn = '{{ TwoWayChannelArn }}',
 TwoWayChannelRole = '{{ TwoWayChannelRole }}',
-TwoWayEnabled = {{ TwoWayEnabled }}
+TwoWayEnabled = {{ TwoWayEnabled }},
+TwoWayMediaS3BucketName = '{{ TwoWayMediaS3BucketName }}',
+TwoWayMediaS3KeyPrefix = '{{ TwoWayMediaS3KeyPrefix }}',
+TwoWayMediaS3Role = '{{ TwoWayMediaS3Role }}',
+TwoWayRcsEventsEnabled = '{{ TwoWayRcsEventsEnabled }}'
 WHERE 
 region = '{{ region }}' --required
 AND RcsAgentId = '{{ RcsAgentId }}' --required
@@ -324,7 +356,11 @@ self_managed_opt_outs_enabled,
 status,
 two_way_channel_arn,
 two_way_channel_role,
-two_way_enabled;
+two_way_enabled,
+two_way_media_s3_bucket_name,
+two_way_media_s3_key_prefix,
+two_way_media_s3_role,
+two_way_rcs_events_enabled;
 ```
 </TabItem>
 </Tabs>

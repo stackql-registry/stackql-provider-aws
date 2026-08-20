@@ -53,7 +53,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="content" /></td>
     <td><code>string</code></td>
-    <td>The content of the model card. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
+    <td>The content of the model card. Content is provided as a string in the model card JSON schema. When you set IncludedData to MetadataOnly in the request, SageMaker returns a sanitized version of Content that includes only the following JSON paths, when present in the model card: model_overview.model_id model_overview.model_name intended_uses.risk_rating model_package_details.model_package_group_name model_package_details.model_package_arn All other fields are removed from Content when IncludedData is MetadataOnly, including model description, training details, evaluation details, business details, and additional information. To retrieve the complete Content, set IncludedData to AllData or omit the parameter. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="created_by" /></td>
@@ -169,7 +169,7 @@ The following methods are available for this resource:
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>Describes the content, creation time, and security configuration of an Amazon SageMaker Model Card.</td>
+    <td>Describes the content, creation time, and security configuration of an Amazon SageMaker Model Card. To retrieve only metadata about a model card without requiring kms:Decrypt permission on the associated customer-managed Amazon Web Services KMS key, set IncludedData to MetadataOnly. The default is AllData, which returns the full model card Content and requires kms:Decrypt permission when a customer-managed key is configured.</td>
 </tr>
 <tr>
     <td><a href="#list_model_cards"><CopyableCode code="list_model_cards" /></a></td>
@@ -234,7 +234,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 >
 <TabItem value="describe_model_card">
 
-Describes the content, creation time, and security configuration of an Amazon SageMaker Model Card.
+Describes the content, creation time, and security configuration of an Amazon SageMaker Model Card. To retrieve only metadata about a model card without requiring kms:Decrypt permission on the associated customer-managed Amazon Web Services KMS key, set IncludedData to MetadataOnly. The default is AllData, which returns the full model card Content and requires kms:Decrypt permission when a customer-managed key is configured.
 
 ```sql
 SELECT

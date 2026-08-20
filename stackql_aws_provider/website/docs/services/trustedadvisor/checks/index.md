@@ -65,9 +65,19 @@ The following fields are returned by `SELECT` queries:
     <td>The ARN of the AWS Trusted Advisor Check (pattern: &lt;code&gt;arn:&#91;\w-&#93;+:trustedadvisor:::check\/&#91;\w-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
+    <td><CopyableCode code="aws_resource_types" /></td>
+    <td><code>array</code></td>
+    <td>The AWS resource types that this check evaluates (for example, AWS::EC2::Instance).</td>
+</tr>
+<tr>
     <td><CopyableCode code="aws_services" /></td>
     <td><code>array</code></td>
     <td>The AWS Services that the Check applies to</td>
+</tr>
+<tr>
+    <td><CopyableCode code="check_granularity" /></td>
+    <td><code>string</code></td>
+    <td>The granularity level at which the check operates: resource, account, or account_region.</td>
 </tr>
 <tr>
     <td><CopyableCode code="description" /></td>
@@ -83,6 +93,16 @@ The following fields are returned by `SELECT` queries:
     <td><CopyableCode code="pillars" /></td>
     <td><code>array</code></td>
     <td>The Recommendation pillars that the AWS Trusted Advisor Check falls under</td>
+</tr>
+<tr>
+    <td><CopyableCode code="recommendation_id" /></td>
+    <td><code>string</code></td>
+    <td>The recommendation identifier associated with the check.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="resource_arn_queryable" /></td>
+    <td><code>boolean</code></td>
+    <td>Indicates whether this check is supported by the ListRecommendationsForResource API.</td>
 </tr>
 <tr>
     <td><CopyableCode code="source" /></td>
@@ -187,10 +207,14 @@ SELECT
 id,
 name,
 arn,
+aws_resource_types,
 aws_services,
+check_granularity,
 description,
 metadata,
 pillars,
+recommendation_id,
+resource_arn_queryable,
 source
 FROM aws.trustedadvisor.checks
 WHERE region = '{{ region }}' -- required

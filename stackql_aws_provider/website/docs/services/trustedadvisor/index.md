@@ -18,7 +18,7 @@ trustedadvisor service documentation.
 
 :::info[Service Summary]
 
-total resources: __6__  
+total resources: __7__  
 
 :::
 
@@ -27,11 +27,12 @@ total resources: __6__
 <div class="providerDocColumn">
 <a href="/services/trustedadvisor/checks/">checks</a><br />
 <a href="/services/trustedadvisor/organization_recommendation_accounts/">organization_recommendation_accounts</a><br />
-<a href="/services/trustedadvisor/organization_recommendation_resources/">organization_recommendation_resources</a>
+<a href="/services/trustedadvisor/organization_recommendation_resources/">organization_recommendation_resources</a><br />
+<a href="/services/trustedadvisor/organization_recommendations/">organization_recommendations</a>
 </div>
 <div class="providerDocColumn">
-<a href="/services/trustedadvisor/organization_recommendations/">organization_recommendations</a><br />
 <a href="/services/trustedadvisor/recommendation_resources/">recommendation_resources</a><br />
-<a href="/services/trustedadvisor/recommendations/">recommendations</a>
+<a href="/services/trustedadvisor/recommendations/">recommendations</a><br />
+<a href="/services/trustedadvisor/recommendations_for_resources/">recommendations_for_resources</a>
 </div>
 </div>
