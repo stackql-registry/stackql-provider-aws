@@ -1,3 +1,16 @@
+See also:
+[[` SHOW `]](https://stackql.io/docs/language-spec/show) [[` DESCRIBE `]](https://stackql.io/docs/language-spec/describe)  [[` REGISTRY `]](https://stackql.io/docs/language-spec/registry)
+* * *
+
+## Installation
+
+To pull the latest version of the `aws` provider, run the following command:
+
+```bash
+REGISTRY PULL aws;
+```
+> To view previous provider versions or to pull a specific provider version, see [here](https://stackql.io/docs/language-spec/registry).
+
 ## Authentication
 
 This provider uses AWS credentials for authentication. Configure your credentials using one of the following methods:
@@ -12,3 +25,124 @@ For more information on AWS authentication, see the [AWS documentation](https://
 ## Regions
 
 Resources are available in all AWS regions. Use the `region` parameter to specify the target region for your operations.
+
+## Identity check
+
+Confirm which account and principal your credentials resolve to:
+
+```sql
+SELECT account, arn, user_id
+FROM aws.sts.caller_identities
+WHERE region = 'us-east-1';
+```
+
+## Compute inventory
+
+Instance counts by type in a region - a one-line capacity/spend sanity check:
+
+```sql
+SELECT instance_type, COUNT(*) AS num_instances
+FROM aws.ec2.instances
+WHERE region = 'us-east-1'
+GROUP BY instance_type;
+```
+
+VPCs with their state and address space:
+
+```sql
+SELECT vpc_id, state, cidr_block, is_default
+FROM aws.ec2.vpcs
+WHERE region = 'us-east-1';
+```
+
+## Storage estate
+
+Buckets with their ARNs and age:
+
+```sql
+SELECT name, bucket_arn, creation_date
+FROM aws.s3.buckets
+WHERE region = 'us-east-1'
+ORDER BY creation_date DESC;
+```
+
+Objects in a bucket - `bucket` and `region` alone route to the list operation:
+
+```sql
+SELECT key, size, last_modified
+FROM aws.s3.objects
+WHERE region = 'us-east-1' AND bucket = 'my-bucket';
+```
+
+## Read and write S3 object content
+
+Adding `key` to the `WHERE` clause routes to the object read, which projects the raw body as a single `contents` column (text objects only). Reading a Terraform state file straight out of S3:
+
+```sql
+SELECT contents FROM aws.s3.objects
+WHERE region = 'us-east-1'
+AND bucket = 'my-bucket'
+AND key = 'env/terraform.tfstate';
+```
+
+`INSERT` creates an object, and since S3 `PutObject` is create-or-overwrite, `REPLACE` updates it in place:
+
+```sql
+-- create
+INSERT INTO aws.s3.objects(region, bucket, key, contents)
+SELECT 'us-east-1', 'my-bucket', 'app/config.json',
+'{"log_level": "info"}';
+
+-- overwrite
+REPLACE aws.s3.objects
+SET contents = '{"log_level": "warn"}'
+WHERE region = 'us-east-1' AND bucket = 'my-bucket' AND key = 'app/config.json';
+
+-- remove
+DELETE FROM aws.s3.objects
+WHERE region = 'us-east-1' AND bucket = 'my-bucket' AND key = 'app/config.json';
+```
+
+## IAM users
+
+Every user in the account (IAM is a global service - use `us-east-1`):
+
+```sql
+SELECT user_name, arn, create_date
+FROM aws.iam.users
+WHERE region = 'us-east-1';
+```
+
+## Provision, mutate and tear down
+
+Mutations use the same SQL grammar - `INSERT` creates a resource, `UPDATE` changes it and `DELETE` removes it. Structured request values are passed as JSON strings with wire-format (PascalCase) inner keys. A VPC end to end:
+
+```sql
+-- create, projecting the new id back
+INSERT INTO aws.ec2.vpcs(region, CidrBlock)
+SELECT 'us-east-1', '10.99.0.0/16'
+RETURNING vpc_id, state, cidr_block;
+
+-- enable DNS hostnames
+UPDATE aws.ec2.vpc_attributes
+SET EnableDnsHostnames = JSON('{"Value": true}')
+WHERE region = 'us-east-1' AND vpc_id = 'vpc-00112233445566778';
+
+-- remove it
+DELETE FROM aws.ec2.vpcs
+WHERE region = 'us-east-1' AND vpc_id = 'vpc-00112233445566778';
+```
+
+## Lifecycle operations
+
+State transitions (stop, start, reboot and similar) are invoked with `EXEC`, passing wire-cased parameters - one target id per statement:
+
+```sql
+EXEC aws.ec2.instances.stop_instances
+  @region = 'us-east-1',
+  @InstanceId = 'i-0123456789abcdef0';
+
+EXEC aws.ec2.instances.start_instances
+  @region = 'us-east-1',
+  @InstanceId = 'i-0123456789abcdef0';
+```
