@@ -810,8 +810,8 @@ paths:
       operationId: CreateMultiRegionEndpoint
       description: Creates a multi-region endpoint (global-endpoint). The primary region is going to be the AWS-Region where
         the operation is executed. The secondary region has to be provided in request's parameters. From the data flow standpoint
-        there is no difference between primary and secondary regions - sending traffic will be split equally between the two.
-        The primary region is the region where the resource has been created and where it can be managed.
+        there is no difference between primary and secondary regions - sending traffic is divided between the two. The primary
+        region is the region where the resource has been created and where it can be managed.
       parameters: []
       requestBody:
         required: true
@@ -879,7 +879,9 @@ paths:
       description: Create a tenant. Tenants are logical containers that group related SES resources together. Each tenant
         can have its own set of resources like email identities, configuration sets, and templates, along with reputation
         metrics and sending status. This helps isolate and manage email sending for different customers or business units
-        within your Amazon SES API v2 account.
+        within your Amazon SES API v2 account. You can optionally specify SuppressionAttributes to configure tenant-level
+        suppression at creation time. When tenant-level suppression is enabled, Amazon SES maintains a separate suppression
+        list for the tenant instead of using the account-level suppression list.
       parameters: []
       requestBody:
         required: true
@@ -892,6 +894,8 @@ paths:
                   $ref: '#/components/schemas/TenantName'
                 Tags:
                   $ref: '#/components/schemas/TagList'
+                SuppressionAttributes:
+                  $ref: '#/components/schemas/TenantSuppressionAttributes'
               required:
               - TenantName
       responses:
@@ -1416,7 +1420,7 @@ paths:
     get:
       operationId: GetEmailTemplate
       description: Displays the template object (which includes the subject line, HTML part and text part) for the template
-        you specify. You can execute this operation no more than once per second.
+        you specify. You can execute this operation no more than 50 times per second.
       parameters:
       - name: template_name
         in: path
@@ -1513,14 +1517,24 @@ paths:
   /v2/email/suppression/addresses/{email_address}:
     delete:
       operationId: DeleteSuppressedDestination
-      description: Removes an email address from the suppression list for your account.
+      description: Removes an email address from the suppression list for your account or for a specific tenant. To target
+        a tenant's suppression list, specify the TenantName parameter. If you omit TenantName, the address is removed from
+        the account-level suppression list.
       parameters:
       - name: email_address
         in: path
         required: true
         schema:
           $ref: '#/components/schemas/EmailAddress'
-        description: The suppressed email destination to remove from the account suppression list.
+        description: The suppressed email destination to remove from the suppression list for your account or for the specified
+          tenant.
+      - name: TenantName
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/TenantName'
+        description: The name of the tenant whose suppression list you want to remove the address from. If you omit this parameter,
+          the address is removed from the account-level suppression list.
       responses:
         '200':
           description: Success
@@ -1533,14 +1547,23 @@ paths:
       x-stackql-verb: DELETE
     get:
       operationId: GetSuppressedDestination
-      description: Retrieves information about a specific email address that's on the suppression list for your account.
+      description: Retrieves information about a specific email address that's on the suppression list for your account or
+        for a specific tenant. To target a tenant's suppression list, specify the TenantName parameter. If you omit TenantName,
+        the operation targets the account-level suppression list.
       parameters:
       - name: email_address
         in: path
         required: true
         schema:
           $ref: '#/components/schemas/EmailAddress'
-        description: The email address that's on the account suppression list.
+        description: The email address that's on the suppression list for your account or for the specified tenant.
+      - name: TenantName
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/TenantName'
+        description: The name of the tenant whose suppression list you want to query. If you omit this parameter, the operation
+          targets the account-level suppression list.
       responses:
         '200':
           description: Success
@@ -1995,7 +2018,7 @@ paths:
     post:
       operationId: GetTenant
       description: Get information about a specific tenant, including the tenant's name, ID, ARN, creation timestamp, tags,
-        and sending status.
+        sending status, and suppression attributes.
       parameters: []
       requestBody:
         required: true
@@ -2296,14 +2319,24 @@ paths:
   /v2/email/suppression/addresses:
     get:
       operationId: ListSuppressedDestinations
-      description: Retrieves a list of email addresses that are on the suppression list for your account.
+      description: Retrieves a list of email addresses that are on the suppression list for your account or for a specific
+        tenant. To target a tenant's suppression list, specify the TenantName parameter. If you omit TenantName, the operation
+        targets the account-level suppression list.
       parameters:
+      - name: TenantName
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/TenantName'
+        description: The name of the tenant whose suppression list you want to retrieve. If you omit this parameter, the operation
+          targets the account-level suppression list.
       - name: Reason
         in: query
         required: false
         schema:
           $ref: '#/components/schemas/SuppressionListReasons'
-        description: The factors that caused the email address to be added to .
+        description: The factors that caused the email address to be added to the suppression list for your account or for
+          a specific tenant.
       - name: StartDate
         in: query
         required: false
@@ -2345,7 +2378,9 @@ paths:
       x-stackql-verb: SELECT
     put:
       operationId: PutSuppressedDestination
-      description: Adds an email address to the suppression list for your account.
+      description: Adds an email address to the suppression list for your account or for a specific tenant. To target a tenant's
+        suppression list, specify the TenantName parameter. If you omit TenantName, the address is added to the account-level
+        suppression list.
       parameters: []
       requestBody:
         required: true
@@ -2358,6 +2393,8 @@ paths:
                   $ref: '#/components/schemas/EmailAddress'
                 Reason:
                   $ref: '#/components/schemas/SuppressionListReason'
+                TenantName:
+                  $ref: '#/components/schemas/TenantName'
               required:
               - EmailAddress
               - Reason
@@ -2585,6 +2622,33 @@ paths:
       x-stackql-resource: accounts
       x-stackql-method: put_account_details
       x-stackql-verb: REPLACE
+  /v2/email/account/pricing-attributes:
+    put:
+      operationId: PutAccountPricingAttributes
+      description: Set the pricing plan for your Amazon SES account. Use this operation to choose a billing plan that packages
+        multiple Amazon SES features at a single rate.
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                Plan:
+                  $ref: '#/components/schemas/PricingPlan'
+              required:
+              - Plan
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PutAccountPricingAttributesResponse'
+      x-stackql-resource: accounts
+      x-stackql-method: put_account_pricing_attributes
+      x-stackql-verb: REPLACE
   /v2/email/account/sending:
     put:
       operationId: PutAccountSendingAttributes
@@ -2793,7 +2857,9 @@ paths:
   /v2/email/configuration-sets/{configuration_set_name}/suppression-options:
     put:
       operationId: PutConfigurationSetSuppressionOptions
-      description: Specify the account suppression list preferences for a configuration set.
+      description: Specify the suppression list preferences for a configuration set. You can also use this operation to specify
+        a SuppressionScope to override the suppression scope of the tenant or account for emails sent using this configuration
+        set.
       parameters:
       - name: configuration_set_name
         in: path
@@ -2808,6 +2874,8 @@ paths:
             schema:
               type: object
               properties:
+                SuppressionScope:
+                  $ref: '#/components/schemas/SuppressionListScope'
                 SuppressedReasons:
                   $ref: '#/components/schemas/SuppressionListReasons'
                 ValidationOptions:
@@ -3148,6 +3216,39 @@ paths:
                 $ref: '#/components/schemas/PutEmailIdentityMailFromAttributesResponse'
       x-stackql-resource: email_identities
       x-stackql-method: put_email_identity_mail_from_attributes
+      x-stackql-verb: REPLACE
+  /v2/email/tenant/suppression:
+    post:
+      operationId: PutTenantSuppressionAttributes
+      description: Configure the suppression list preferences for a tenant. Use this operation to enable or disable tenant-level
+        suppression, or to change the suppressed reasons for a tenant. When you set the suppression scope to TENANT, Amazon
+        SES maintains a separate suppression list for the tenant. When you set the scope to ACCOUNT, the tenant uses the account-level
+        suppression list.
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                TenantName:
+                  $ref: '#/components/schemas/TenantName'
+                SuppressedReasons:
+                  $ref: '#/components/schemas/SuppressionListReasons'
+                SuppressionScope:
+                  $ref: '#/components/schemas/SuppressionListScope'
+              required:
+              - TenantName
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PutTenantSuppressionAttributesResponse'
+      x-stackql-resource: tenants
+      x-stackql-method: put_tenant_suppression_attributes
       x-stackql-verb: REPLACE
   /v2/email/outbound-bulk-emails:
     post:
@@ -3748,16 +3849,22 @@ components:
     TagValue:
       type: string
     SuppressionOptions:
-      description: An object that contains information about the suppression list preferences for your account.
+      description: An object that contains information about the suppression list preferences for your account or for a specific
+        tenant.
       type: object
       properties:
         SuppressedReasons:
           $ref: '#/components/schemas/SuppressionListReasons'
           description: 'A list that contains the reasons that email addresses are automatically added to the suppression list
-            for your account. This list can contain any or all of the following: COMPLAINT – Amazon SES adds an email address
-            to the suppression list for your account when a message sent to that address results in a complaint. BOUNCE –
-            Amazon SES adds an email address to the suppression list for your account when a message sent to that address
-            results in a hard bounce.'
+            for your account or for a specific tenant. This list can contain any or all of the following: COMPLAINT – Amazon
+            SES adds an email address to the suppression list for your account or for a specific tenant when a message sent
+            to that address results in a complaint. BOUNCE – Amazon SES adds an email address to the suppression list for
+            your account or for a specific tenant when a message sent to that address results in a hard bounce.'
+        SuppressionScope:
+          $ref: '#/components/schemas/SuppressionListScope'
+          description: 'The suppression scope for the configuration set. This overrides the tenant or account suppression
+            scope for emails sent using this configuration set. Can be one of the following: TENANT – Use the tenant''s suppression
+            list. ACCOUNT – Use the account-level suppression list.'
         ValidationOptions:
           $ref: '#/components/schemas/SuppressionValidationOptions'
     SuppressionListReasons:
@@ -3765,14 +3872,22 @@ components:
       items:
         $ref: '#/components/schemas/SuppressionListReason'
     SuppressionListReason:
-      description: 'The reason that the address was added to the suppression list for your account. The value can be one of
-        the following: COMPLAINT – Amazon SES added an email address to the suppression list for your account because a message
-        sent to that address results in a complaint. BOUNCE – Amazon SES added an email address to the suppression list for
-        your account because a message sent to that address results in a hard bounce.'
+      description: 'The reason that the address was added to the suppression list for your account or for a specific tenant.
+        The value can be one of the following: COMPLAINT – Amazon SES added an email address to the suppression list for your
+        account or for a specific tenant because a message sent to that address results in a complaint. BOUNCE – Amazon SES
+        added an email address to the suppression list for your account or for a specific tenant because a message sent to
+        that address results in a hard bounce.'
       type: string
       enum:
       - BOUNCE
       - COMPLAINT
+    SuppressionListScope:
+      description: 'The suppression scope that determines which suppression list Amazon SES uses. Can be one of the following:
+        TENANT – Use the tenant''s own suppression list. ACCOUNT – Use the account-level suppression list.'
+      type: string
+      enum:
+      - ACCOUNT
+      - TENANT
     SuppressionValidationOptions:
       description: Contains validation options for email address suppression.
       type: object
@@ -3965,7 +4080,7 @@ components:
           $ref: '#/components/schemas/DimensionName'
           description: 'The name of an Amazon CloudWatch dimension associated with an email sending metric. The name has to
             meet the following criteria: It can only contain ASCII letters (a–z, A–Z), numbers (0–9), underscores (_), or
-            dashes (-). It can contain no more than 256 characters.'
+            dashes (-). It can contain no more than 255 characters.'
         DimensionValueSource:
           $ref: '#/components/schemas/DimensionValueSource'
           description: The location where the Amazon SES API v2 finds the value of a dimension to publish to Amazon CloudWatch.
@@ -3977,7 +4092,7 @@ components:
           description: 'The default value of the dimension that is published to Amazon CloudWatch if you don''t provide the
             value of the dimension when you send an email. This value has to meet the following criteria: Can only contain
             ASCII letters (a–z, A–Z), numbers (0–9), underscores (_), or dashes (-), at signs (@), and periods (.). It can
-            contain no more than 256 characters.'
+            contain no more than 255 characters.'
       required:
       - DimensionName
       - DimensionValueSource
@@ -3985,7 +4100,7 @@ components:
     DimensionName:
       description: 'The name of an Amazon CloudWatch dimension associated with an email sending metric. The name has to meet
         the following criteria: It can only contain ASCII letters (a-z, A-Z), numbers (0-9), underscores (_), or dashes (-).
-        It can contain no more than 256 characters.'
+        It can contain no more than 255 characters.'
       type: string
     DimensionValueSource:
       description: The location where the Amazon SES API v2 finds the value of a dimension to publish to Amazon CloudWatch.
@@ -3999,7 +4114,7 @@ components:
     DefaultDimensionValue:
       description: 'The default value of the dimension that is published to Amazon CloudWatch if you don''t provide the value
         of the dimension when you send an email. This value has to meet the following criteria: It can only contain ASCII
-        letters (a–z, A–Z), numbers (0–9), underscores (_), or dashes (-). It can contain no more than 256 characters.'
+        letters (a–z, A–Z), numbers (0–9), underscores (_), or dashes (-). It can contain no more than 255 characters.'
       type: string
     SnsDestination:
       description: An object that defines an Amazon SNS destination for email events. You can use Amazon SNS to send notifications
@@ -4481,7 +4596,10 @@ components:
             – Configure DKIM for the identity by replicating from a parent identity in US East (Ohio) region using Deterministic
             Easy-DKIM (DEED). AWS_SES_US_WEST_1 – Configure DKIM for the identity by replicating from a parent identity in
             US West (N. California) region using Deterministic Easy-DKIM (DEED). AWS_SES_US_WEST_2 – Configure DKIM for the
-            identity by replicating from a parent identity in US West (Oregon) region using Deterministic Easy-DKIM (DEED).'
+            identity by replicating from a parent identity in US West (Oregon) region using Deterministic Easy-DKIM (DEED).
+            AWS_SES_US_GOV_EAST_1 – Configure DKIM for the identity by replicating from a parent identity in AWS GovCloud
+            (US-East) region using Deterministic Easy-DKIM (DEED). AWS_SES_US_GOV_WEST_1 – Configure DKIM for the identity
+            by replicating from a parent identity in AWS GovCloud (US-West) region using Deterministic Easy-DKIM (DEED).'
     Selector:
       type: string
       minLength: 1
@@ -4529,6 +4647,8 @@ components:
       - AWS_SES_EU_CENTRAL_2
       - AWS_SES_AP_SOUTHEAST_5
       - AWS_SES_CA_WEST_1
+      - AWS_SES_US_GOV_EAST_1
+      - AWS_SES_US_GOV_WEST_1
     CreateEmailIdentityResponse:
       description: If the email identity is a domain, this object contains information about the DKIM verification status
         for the domain. If the email identity is an email address, this object is empty.
@@ -4638,7 +4758,10 @@ components:
             – Indicates that DKIM was configured for the identity by replicating signing attributes from a parent identity
             in US West (N. California) region using Deterministic Easy-DKIM (DEED). AWS_SES_US_WEST_2 – Indicates that DKIM
             was configured for the identity by replicating signing attributes from a parent identity in US West (Oregon) region
-            using Deterministic Easy-DKIM (DEED).'
+            using Deterministic Easy-DKIM (DEED). AWS_SES_US_GOV_EAST_1 – Indicates that DKIM was configured for the identity
+            by replicating signing attributes from a parent identity in AWS GovCloud (US-East) region using Deterministic
+            Easy-DKIM (DEED). AWS_SES_US_GOV_WEST_1 – Indicates that DKIM was configured for the identity by replicating signing
+            attributes from a parent identity in AWS GovCloud (US-West) region using Deterministic Easy-DKIM (DEED).'
         NextSigningKeyLength:
           $ref: '#/components/schemas/DkimSigningKeyLength'
           description: '[Easy DKIM] The key length of the future DKIM key pair to be generated. This can be changed at most
@@ -5017,6 +5140,21 @@ components:
         hyphens (-) and underscores (_) only.
       type: string
       minLength: 1
+    TenantSuppressionAttributes:
+      description: An object that contains the suppression list preferences for a tenant.
+      type: object
+      properties:
+        SuppressedReasons:
+          $ref: '#/components/schemas/SuppressionListReasons'
+          description: 'A list that contains the reasons that email addresses are automatically added to the suppression list
+            for the tenant. This list can contain any or all of the following: COMPLAINT – Amazon SES adds an email address
+            to the suppression list when a message sent to that address results in a complaint. BOUNCE – Amazon SES adds an
+            email address to the suppression list when a message sent to that address results in a hard bounce.'
+        SuppressionScope:
+          $ref: '#/components/schemas/SuppressionListScope'
+          description: 'The suppression scope for the tenant. Can be one of the following: TENANT – The tenant uses its own
+            suppression list. ACCOUNT – The tenant uses the account-level suppression list. If you don''t specify a suppression
+            scope, the tenant defaults to ACCOUNT scope and uses the account-level suppression list.'
     CreateTenantResponse:
       description: Information about a newly created tenant.
       type: object
@@ -5039,6 +5177,8 @@ components:
         SendingStatus:
           $ref: '#/components/schemas/SendingStatus'
           description: The status of email sending capability for the tenant.
+        SuppressionAttributes:
+          $ref: '#/components/schemas/TenantSuppressionAttributes'
     TenantId:
       type: string
     SendingStatus:
@@ -5138,6 +5278,10 @@ components:
         VdmAttributes:
           $ref: '#/components/schemas/VdmAttributes'
           description: The VDM attributes that apply to your Amazon SES account.
+        PricingAttributes:
+          $ref: '#/components/schemas/PricingAttributes'
+          description: The pricing attributes that apply to your Amazon SES account, including the currently active pricing
+            plan and any scheduled change.
     GeneralEnforcementStatus:
       type: string
     SendQuota:
@@ -5299,6 +5443,27 @@ components:
           description: 'Specifies the status of your VDM optimized shared delivery. Can be one of the following: ENABLED –
             Amazon SES enables optimized shared delivery for your account. DISABLED – Amazon SES disables optimized shared
             delivery for your account.'
+    PricingAttributes:
+      description: The pricing attributes that apply to your Amazon SES account, including the currently active pricing plan
+        and any scheduled change for the next billing cycle.
+      type: object
+      properties:
+        CurrentPlan:
+          $ref: '#/components/schemas/PricingPlan'
+          description: The pricing plan that is currently active on your Amazon SES account.
+        NextPlan:
+          $ref: '#/components/schemas/PricingPlan'
+          description: The pricing plan that will become active at the start of the next billing cycle, if a scheduled change
+            has been requested. This field is empty when no scheduled change is pending.
+    PricingPlan:
+      description: Identifies an Amazon SES pricing plan. See PutAccountPricingAttributesRequest$Plan for the list of supported
+        values and their meanings.
+      type: string
+      enum:
+      - NONE
+      - ESSENTIALS
+      - PRO
+      - ENTERPRISE
     BlacklistItemNames:
       type: array
       items:
@@ -5346,7 +5511,8 @@ components:
             set.
         SuppressionOptions:
           $ref: '#/components/schemas/SuppressionOptions'
-          description: An object that contains information about the suppression list preferences for your account.
+          description: An object that contains information about the suppression list preferences for your account or for
+            a specific tenant.
         VdmOptions:
           $ref: '#/components/schemas/VdmOptions'
           description: An object that contains information about the VDM preferences for your configuration set.
@@ -6586,39 +6752,44 @@ components:
       required:
       - SuppressedDestination
     SuppressedDestination:
-      description: An object that contains information about an email address that is on the suppression list for your account.
+      description: An object that contains information about an email address that is on the suppression list for your account
+        or for a specific tenant.
       type: object
       properties:
         EmailAddress:
           $ref: '#/components/schemas/EmailAddress'
-          description: The email address that is on the suppression list for your account.
+          description: The email address that is on the suppression list for your account or for a specific tenant.
         Reason:
           $ref: '#/components/schemas/SuppressionListReason'
-          description: The reason that the address was added to the suppression list for your account.
+          description: The reason that the address was added to the suppression list for your account or for a specific tenant.
         LastUpdateTime:
           $ref: '#/components/schemas/Timestamp'
           description: The date and time when the suppressed destination was last updated, shown in Unix time format.
         Attributes:
           $ref: '#/components/schemas/SuppressedDestinationAttributes'
           description: An optional value that can contain additional information about the reasons that the address was added
-            to the suppression list for your account.
+            to the suppression list for your account or for a specific tenant.
+        TenantName:
+          $ref: '#/components/schemas/TenantName'
+          description: The name of the tenant that the suppressed destination belongs to. This field is present only when
+            the suppressed destination is on a tenant's suppression list.
       required:
       - EmailAddress
       - Reason
       - LastUpdateTime
     SuppressedDestinationAttributes:
       description: An object that contains additional attributes that are related an email address that is on the suppression
-        list for your account.
+        list for your account or for a specific tenant.
       type: object
       properties:
         MessageId:
           $ref: '#/components/schemas/OutboundMessageId'
           description: The unique identifier of the email message that caused the email address to be added to the suppression
-            list for your account.
+            list for your account or for a specific tenant.
         FeedbackId:
           $ref: '#/components/schemas/FeedbackId'
           description: A unique identifier that's generated when an email address is added to the suppression list for your
-            account.
+            account or for a specific tenant.
     FeedbackId:
       type: string
     GetTenantResponse:
@@ -6650,6 +6821,9 @@ components:
         SendingStatus:
           $ref: '#/components/schemas/SendingStatus'
           description: The status of sending capability for the tenant.
+        SuppressionAttributes:
+          $ref: '#/components/schemas/TenantSuppressionAttributes'
+          description: An object that contains information about the suppression list preferences for the tenant.
     ListConfigurationSetsRowDisplay:
       type: object
       properties:
@@ -7154,9 +7328,9 @@ components:
           description: A list of summaries, each containing a summary for a suppressed email destination.
         NextToken:
           $ref: '#/components/schemas/NextToken'
-          description: A token that indicates that there are additional email addresses on the suppression list for your account.
-            To view additional suppressed addresses, issue another request to ListSuppressedDestinations, and pass this token
-            in the NextToken parameter.
+          description: A token that indicates that there are additional email addresses on the suppression list for your account
+            or for the specified tenant. To view additional suppressed addresses, issue another request to ListSuppressedDestinations,
+            and pass this token in the NextToken parameter.
     SuppressedDestinationSummaries:
       type: array
       items:
@@ -7167,10 +7341,10 @@ components:
       properties:
         EmailAddress:
           $ref: '#/components/schemas/EmailAddress'
-          description: The email address that's on the suppression list for your account.
+          description: The email address that's on the suppression list for your account or for a specific tenant.
         Reason:
           $ref: '#/components/schemas/SuppressionListReason'
-          description: The reason that the address was added to the suppression list for your account.
+          description: The reason that the address was added to the suppression list for your account or for a specific tenant.
         LastUpdateTime:
           $ref: '#/components/schemas/Timestamp'
           description: The date and time when the suppressed destination was last updated, shown in Unix time format.
@@ -7268,6 +7442,9 @@ components:
     PutAccountDetailsResponse:
       description: An HTTP 200 response if the request succeeds, or an error message if the request fails.
       type: object
+    PutAccountPricingAttributesResponse:
+      description: An HTTP 200 response if the request succeeds, or an error response if the request fails.
+      type: object
     PutAccountSendingAttributesResponse:
       description: An HTTP 200 response if the request succeeds, or an error message if the request fails.
       type: object
@@ -7360,6 +7537,9 @@ components:
       type: object
     PutSuppressedDestinationResponse:
       description: An HTTP 200 response if the request succeeds, or an error message if the request fails.
+      type: object
+    PutTenantSuppressionAttributesResponse:
+      description: If the action is successful, the service sends back an HTTP 200 response with an empty HTTP body.
       type: object
     EmailAddressList:
       type: array

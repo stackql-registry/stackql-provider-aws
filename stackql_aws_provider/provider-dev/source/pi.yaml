@@ -61,7 +61,6 @@ paths:
               - ServiceType
               - Identifier
               - StartTime
-              - EndTime
       responses:
         '200':
           description: Success
@@ -600,6 +599,70 @@ paths:
       x-stackql-resource: available_resource_metrics
       x-stackql-method: list_available_resource_metrics
       x-stackql-verb: SELECT
+  /ListPerformanceAnalysisReportRecommendations:
+    post:
+      operationId: ListPerformanceAnalysisReportRecommendations
+      description: Retrieves recommendations for a performance analysis report.
+      parameters:
+      - name: X-Amz-Target
+        in: header
+        description: Action Header
+        required: false
+        schema:
+          type: string
+          enum:
+          - PerformanceInsightsv20180227.ListPerformanceAnalysisReportRecommendations
+          default: PerformanceInsightsv20180227.ListPerformanceAnalysisReportRecommendations
+      requestBody:
+        required: true
+        content:
+          application/x-amz-json-1.1:
+            schema:
+              type: object
+              properties:
+                ServiceType:
+                  $ref: '#/components/schemas/ServiceType'
+                  description: The Amazon Web Services service for which Performance Insights returns metrics. Valid value
+                    is RDS.
+                Identifier:
+                  $ref: '#/components/schemas/IdentifierString'
+                  description: An immutable identifier for a data source that is unique for an Amazon Web Services Region.
+                    Performance Insights gathers metrics from this data source. In the console, the identifier is shown as
+                    ResourceID. When you call DescribeDBInstances, the identifier is returned as DbiResourceId. To use a DB
+                    instance as a data source, specify its DbiResourceId value. For example, specify db-ABCDEFGHIJKLMNOPQRSTU1VW2X.
+                AnalysisReportId:
+                  $ref: '#/components/schemas/AnalysisReportId'
+                  description: A unique identifier of the created analysis report. For example, report-12345678901234567
+                RecommendationIds:
+                  $ref: '#/components/schemas/RecommendationIdList'
+                  description: A list of recommendation identifiers to filter the results.
+                MaxResults:
+                  $ref: '#/components/schemas/MaxResults'
+                  description: The maximum number of items to return in the response. If more items exist than the specified
+                    MaxResults value, a pagination token is included in the response so that the remaining results can be
+                    retrieved.
+                NextToken:
+                  $ref: '#/components/schemas/NextToken'
+                  description: An optional pagination token provided by a previous request. If this parameter is specified,
+                    the response includes only records beyond the token, up to the value specified by MaxResults.
+              required:
+              - ServiceType
+              - Identifier
+              - AnalysisReportId
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListPerformanceAnalysisReportRecommendationsResponse'
+      x-stackql-resource: performance_analysis_report_recommendations
+      x-stackql-method: list_performance_analysis_report_recommendations
+      x-stackql-verb: SELECT
+      x-stackql-objectKey: $.Recommendations
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListPerformanceAnalysisReports:
     post:
       operationId: ListPerformanceAnalysisReports
@@ -1246,6 +1309,9 @@ components:
           $ref: '#/components/schemas/MarkdownString'
           description: 'The recommendation details to help resolve the performance issue. For example, Investigate the following
             SQLs that contributed to 100% of the total DBLoad during that time period: sql-id'
+        RecommendationDetails:
+          $ref: '#/components/schemas/MarkdownString'
+          description: Detailed information about the recommendation, including steps to resolve the performance issue.
     DataList:
       type: array
       items:
@@ -1518,6 +1584,20 @@ components:
       type: string
       minLength: 1
       maxLength: 2048
+    RecommendationIdList:
+      type: array
+      items:
+        $ref: '#/components/schemas/String'
+    ListPerformanceAnalysisReportRecommendationsResponse:
+      type: object
+      properties:
+        Recommendations:
+          $ref: '#/components/schemas/RecommendationList'
+          description: The list of recommendations for the analysis report.
+        NextToken:
+          $ref: '#/components/schemas/NextToken'
+          description: An optional pagination token provided by a previous request. If this parameter is specified, the response
+            includes only records beyond the token, up to the value specified by MaxResults.
     Boolean:
       type: boolean
     ListPerformanceAnalysisReportsResponse:

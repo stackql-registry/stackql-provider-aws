@@ -1572,9 +1572,17 @@ paths:
                   $ref: '#/components/schemas/LookBackPeriodPreference'
                   description: The preference to control the number of days the utilization metrics of the Amazon Web Services
                     resource are analyzed. When this preference isn't specified, we use the default value DAYS_14. You can
-                    only set this preference for the Amazon EC2 instance and Auto Scaling group resource types. Amazon EC2
-                    instance lookback preferences can be set at the organization, account, and resource levels. Auto Scaling
-                    group lookback preferences can only be set at the resource level.
+                    only set this preference for the Amazon EC2 instance, Auto Scaling group, Amazon EBS volume, Amazon ECS
+                    service on Fargate, Amazon RDS DB instance, and Aurora DB cluster storage resource types. Lookback period
+                    preferences for Amazon EC2 instances, Amazon EBS volumes, Amazon ECS services, Amazon RDS DB instances,
+                    and Aurora DB cluster storage resource types can be set at the organization, account, and resource levels.
+                    Auto Scaling group lookback preferences can only be set at the resource level. Amazon EBS volume lookback
+                    preferences can be set at the organization, account, and resource levels. Amazon ECS service on Fargate
+                    lookback preferences can be set at the organization, account, and resource levels. Amazon RDS DB instance
+                    lookback preferences can be set at the organization, account, and resource levels. Aurora DB cluster storage
+                    lookback preferences can be set at the organization, account, and resource levels. Changing the lookback
+                    period for Amazon EBS volumes to 14 days does not affect the 32-day lookback period used to determine
+                    whether an Amazon EBS volume is unattached.
                 utilizationPreferences:
                   $ref: '#/components/schemas/UtilizationPreferences'
                   description: 'The preference to control the resource’s CPU utilization threshold, CPU utilization headroom,
@@ -1587,8 +1595,8 @@ paths:
                   description: The preference to control which resource type values are considered when generating rightsizing
                     recommendations. You can specify this preference as a combination of include and exclude lists. You must
                     specify either an includeList or excludeList. If the preference is an empty set of resource type values,
-                    an error occurs. You can only set this preference for the Amazon EC2 instance and Auto Scaling group resource
-                    types.
+                    an error occurs. You can only set this preference for the Amazon EC2 instance, Auto Scaling group, Amazon
+                    EBS volume, Amazon ECS service, Amazon RDS DB instance, and Aurora DB cluster storage resource types.
                 savingsEstimationMode:
                   $ref: '#/components/schemas/SavingsEstimationMode'
                   description: The status of the savings estimation mode preference to create or update. Specify the AfterDiscounts
@@ -2146,6 +2154,8 @@ components:
       - UtilizationMetricsVolumeWriteOpsPerSecondMaximum
       - UtilizationMetricsVolumeReadBytesPerSecondMaximum
       - UtilizationMetricsVolumeWriteBytesPerSecondMaximum
+      - UtilizationMetricsVolumeIOPSExceededMaximum
+      - UtilizationMetricsVolumeThroughputExceededMaximum
       - LookbackPeriodInDays
       - CurrentConfigurationVolumeType
       - CurrentConfigurationVolumeBaselineIOPS
@@ -2174,6 +2184,7 @@ components:
       - RecommendationOptionsSavingsOpportunityAfterDiscountsPercentage
       - RecommendationOptionsEstimatedMonthlySavingsCurrencyAfterDiscounts
       - RecommendationOptionsEstimatedMonthlySavingsValueAfterDiscounts
+      - EffectiveRecommendationPreferencesLookBackPeriod
     ExportEBSVolumeRecommendationsResponse:
       type: object
       properties:
@@ -2336,6 +2347,7 @@ components:
       - RecommendationOptionsSavingsOpportunityAfterDiscountsPercentage
       - RecommendationOptionsEstimatedMonthlySavingsCurrencyAfterDiscounts
       - RecommendationOptionsEstimatedMonthlySavingsValueAfterDiscounts
+      - EffectiveRecommendationPreferencesLookBackPeriod
     ExportECSServiceRecommendationsResponse:
       type: object
       properties:
@@ -2398,6 +2410,22 @@ components:
       - UtilizationMetricsActiveConnectionCountMaximum
       - UtilizationMetricsPacketsInFromSourceMaximum
       - UtilizationMetricsPacketsInFromDestinationMaximum
+      - UtilizationMetricsConsumedReadCapacityUnitsSum
+      - UtilizationMetricsConsumedWriteCapacityUnitsSum
+      - UtilizationMetricsNewConnectionsSum
+      - UtilizationMetricsEngineCPUUtilizationMaximum
+      - UtilizationMetricsCacheHitsSum
+      - UtilizationMetricsCacheMissesSum
+      - UtilizationMetricsKeyspaceHitsSum
+      - UtilizationMetricsKeyspaceMissesSum
+      - UtilizationMetricsIsIdleMinimum
+      - UtilizationMetricsUserConnectedSum
+      - UtilizationMetricsInvocationsSum
+      - UtilizationMetricsGetTypeCmdsSum
+      - UtilizationMetricsSetTypeCmdsSum
+      - UtilizationMetricsElastiCacheProcessingUnitsSum
+      - UtilizationMetricsCurrConnectionsSum
+      - UtilizationMetricsDatabaseConnectionsSum
       - Finding
       - FindingDescription
       - Tags
@@ -3423,7 +3451,11 @@ components:
             - The completed read operations per second from the volume in a specified period of time. Unit: Count VolumeWriteOpsPerSecond
             - The completed write operations per second to the volume in a specified period of time. Unit: Count VolumeReadBytesPerSecond
             - The bytes read per second from the volume in a specified period of time. Unit: Bytes VolumeWriteBytesPerSecond
-            - The bytes written to the volume in a specified period of time. Unit: Bytes'
+            - The bytes written to the volume in a specified period of time. Unit: Bytes VolumeIOPSExceeded - Indicates whether
+            the volume''s provisioned IOPS performance was exceeded in a specified period of time. A value of 1 means the
+            provisioned IOPS were exceeded; a value of 0 means they were not. Unit: None VolumeThroughputExceeded - Indicates
+            whether the volume''s provisioned throughput performance was exceeded in a specified period of time. A value of
+            1 means the provisioned throughput was exceeded; a value of 0 means it was not. Unit: None'
         statistic:
           $ref: '#/components/schemas/MetricStatistic'
           description: The statistic of the utilization metric. The Compute Optimizer API, Command Line Interface (CLI), and
@@ -3442,6 +3474,8 @@ components:
       - VolumeWriteOpsPerSecond
       - VolumeReadBytesPerSecond
       - VolumeWriteBytesPerSecond
+      - VolumeIOPSExceeded
+      - VolumeThroughputExceeded
     VolumeRecommendationOptions:
       type: array
       items:
@@ -3502,6 +3536,9 @@ components:
           $ref: '#/components/schemas/EBSSavingsEstimationMode'
           description: Describes the savings estimation mode preference applied for calculating savings opportunity for Amazon
             EBS volumes.
+        lookBackPeriod:
+          $ref: '#/components/schemas/LookBackPeriodPreference'
+          description: The number of days for which utilization metrics were analyzed for the volume.
     EBSSavingsEstimationMode:
       description: Describes the savings estimation mode used for calculating savings opportunity for Amazon EBS volumes.
       type: object
@@ -3877,6 +3914,12 @@ components:
       - RdsDBInstanceStorage
       - AuroraDBClusterStorage
       - NatGateway
+      - DynamoDBTable
+      - ElastiCacheCluster
+      - MemoryDBCluster
+      - DocumentDBCluster
+      - WorkSpaces
+      - SageMakerEndpoint
     InstanceState:
       type: string
       enum:
@@ -4369,6 +4412,9 @@ components:
           $ref: '#/components/schemas/ECSSavingsEstimationMode'
           description: Describes the savings estimation mode preference applied for calculating savings opportunity for Amazon
             ECS services.
+        lookBackPeriod:
+          $ref: '#/components/schemas/LookBackPeriodPreference'
+          description: The number of days the Amazon ECS service utilization metrics were analyzed.
     ECSSavingsEstimationMode:
       description: Describes the savings estimation mode used for calculating savings opportunity for Amazon ECS services.
       type: object
@@ -4409,7 +4455,8 @@ components:
           $ref: '#/components/schemas/LookBackPeriodPreference'
           description: The number of days the utilization metrics of the Amazon Web Services resource are analyzed. To validate
             that the preference is applied to your last generated set of recommendations, review the effectiveRecommendationPreferences
-            value in the response of the GetAutoScalingGroupRecommendations or GetEC2InstanceRecommendations actions.
+            value in the response of the GetAutoScalingGroupRecommendations, GetEC2InstanceRecommendations, GetEBSVolumeRecommendations,
+            GetECSServiceRecommendations, or GetRDSDatabaseRecommendations actions.
         utilizationPreferences:
           $ref: '#/components/schemas/UtilizationPreferences'
           description: The resource’s CPU and memory utilization preferences, such as threshold and headroom, that were used
@@ -4604,6 +4651,12 @@ components:
       - ECSService
       - RDSDBInstance
       - NatGateway
+      - DynamoDBTable
+      - ElastiCacheCluster
+      - MemoryDBCluster
+      - DocumentDBCluster
+      - WorkSpaces
+      - SageMakerEndpoint
     IdleFinding:
       type: string
       enum:
@@ -4669,6 +4722,9 @@ components:
         value:
           $ref: '#/components/schemas/MetricValue'
           description: The value of the utilization metric.
+        dimensions:
+          $ref: '#/components/schemas/IdleDimensions'
+          description: The dimensions of the utilization metric.
     IdleMetricName:
       type: string
       enum:
@@ -4684,6 +4740,44 @@ components:
       - ActiveConnectionCount
       - PacketsInFromSource
       - PacketsInFromDestination
+      - ConsumedReadCapacityUnits
+      - ConsumedWriteCapacityUnits
+      - ConsumedChangeDataCaptureUnits
+      - NewConnections
+      - EngineCPUUtilization
+      - CacheHits
+      - CacheMisses
+      - KeyspaceHits
+      - KeyspaceMisses
+      - IsIdle
+      - UserConnected
+      - Invocations
+      - GetTypeCmds
+      - SetTypeCmds
+      - ElastiCacheProcessingUnits
+      - CurrConnections
+    IdleDimensions:
+      type: array
+      items:
+        $ref: '#/components/schemas/IdleDimension'
+    IdleDimension:
+      description: Describes the dimension of an idle resource utilization metric.
+      type: object
+      properties:
+        key:
+          $ref: '#/components/schemas/IdleDimensionKey'
+          description: The name of the dimension key.
+        values:
+          $ref: '#/components/schemas/IdleDimensionValues'
+          description: The value of the dimension.
+    IdleDimensionKey:
+      type: string
+    IdleDimensionValues:
+      type: array
+      items:
+        $ref: '#/components/schemas/IdleDimensionValue'
+    IdleDimensionValue:
+      type: string
     IdleRecommendationErrors:
       type: array
       items:

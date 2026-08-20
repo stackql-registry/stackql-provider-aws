@@ -119,6 +119,15 @@ paths:
           also provide that information in the response to your request. You can get the ID and timestamp from the NewSessionId
           response parameter. For any subsequent request where you specify that session ID, SageMaker AI routes the request
           to the same instance that supports the session.'
+      - name: X-Amzn-SageMaker-Prefix-Aware-Id
+        in: header
+        required: false
+        schema:
+          $ref: '#/components/schemas/PrefixAwareIdHeader'
+        description: An optional, stable identifier that serves as a routing hint for prefix-aware routing. The service routes
+          requests with the same prefix and the same identifier to the same instance. If requests from different applications
+          might have the same prompt prefix, set a different identifier for each application to differentiate their routing
+          decisions. Applies only to endpoints configured with a RoutingStrategy of PREFIX_AWARE.
       requestBody:
         required: true
         content:
@@ -194,7 +203,7 @@ paths:
           none is specified.
       - name: X-Amzn-SageMaker-InputLocation
         in: header
-        required: true
+        required: false
         schema:
           $ref: '#/components/schemas/InputLocationHeader'
         description: The Amazon S3 URI where the inference request payload is stored.
@@ -226,6 +235,15 @@ paths:
           $ref: '#/components/schemas/InvocationTimeoutSecondsHeader'
         description: Maximum amount of time in seconds a request can be processed before it is marked as expired. The default
           is 15 minutes, or 900 seconds.
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                Body:
+                  $ref: '#/components/schemas/AsyncBodyBlob'
       responses:
         '202':
           description: Success
@@ -323,6 +341,15 @@ paths:
           InvokeEndpointWithResponseStream action. Instead, you can create one by using the InvokeEndpoint action. In your
           request, you specify NEW_SESSION for the SessionId request parameter. The response to that request provides the
           session ID for the NewSessionId response parameter.
+      - name: X-Amzn-SageMaker-Prefix-Aware-Id
+        in: header
+        required: false
+        schema:
+          $ref: '#/components/schemas/PrefixAwareIdHeader'
+        description: An optional, stable identifier that serves as a routing hint for prefix-aware routing. The service routes
+          requests with the same prefix and the same identifier to the same instance. If requests from different applications
+          might have the same prompt prefix, set a different identifier for each application to differentiate their routing
+          decisions. Applies only to endpoints configured with a RoutingStrategy of PREFIX_AWARE.
       requestBody:
         required: true
         content:
@@ -432,6 +459,11 @@ components:
       type: string
       maxLength: 256
       pattern: ^(NEW_SESSION)$|^[a-zA-Z0-9](-*[a-zA-Z0-9])*$
+    PrefixAwareIdHeader:
+      type: string
+      minLength: 1
+      maxLength: 64
+      pattern: \A\S[\p{Print}]*\z
     BodyBlob:
       type: string
       format: byte
@@ -503,6 +535,10 @@ components:
       type: integer
       minimum: 1
       maximum: 3600
+    AsyncBodyBlob:
+      type: string
+      format: byte
+      maxLength: 128000
     InvokeEndpointAsyncOutput:
       type: object
       properties:

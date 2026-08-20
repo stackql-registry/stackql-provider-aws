@@ -2170,6 +2170,7 @@ def _service_endpoint_template(metadata: dict, service_name: str) -> list[dict]:
 # request.base stamps off `x-protocol: json`, so the body schema never binds
 # at runtime and required body fields vanish from RequiredParams.
 PROTOCOL_PRIORITY = ["json", "rest-json", "rest-xml", "query", "ec2"]
+SUPPORTED_PROTOCOLS = set(PROTOCOL_PRIORITY)
 
 
 def resolve_protocol(metadata: dict) -> str:
@@ -2178,10 +2179,21 @@ def resolve_protocol(metadata: dict) -> str:
     return next((p for p in PROTOCOL_PRIORITY if p in declared), legacy)
 
 
-def build_service_openapi(service_name: str) -> dict:
+def build_service_openapi(service_name: str) -> dict | None:
+    """Build the per-service OpenAPI doc, or None when the service has no
+    stackql-marshalable wire protocol.
+
+    Newer smithy models can declare `protocols: [smithy-rpc-v2-cbor]` with
+    no json/xml/query variant at all (partnercentral-revenue-measurement is
+    the first). Stackql's runtime (any-sdk marshalBody) speaks JSON and XML
+    only - an emitted spec would ship dead routes and trip stage 2's
+    verifyBodyBinding guard - so such services are skipped outright.
+    """
     model, paginators, version = load_service(service_name)
     metadata = model.get("metadata") or {}
     protocol = resolve_protocol(metadata)
+    if protocol not in SUPPORTED_PROTOCOLS:
+        return None
     shapes = model.get("shapes") or {}
     operations = model.get("operations") or {}
     walker = SchemaWalker(shapes)
@@ -2524,6 +2536,9 @@ def main() -> int:
         except Exception as exc:  # noqa: BLE001
             failures.append((svc, repr(exc)))
             print(f"  fail  {svc}: {exc}", file=sys.stderr)
+            continue
+        if spec is None:
+            print(f"  skip  {svc}: no stackql-marshalable wire protocol (cbor-only)")
             continue
         alias = spec["info"]["x-serviceAlias"]
         out_path = out_dir / f"{alias}.yaml"

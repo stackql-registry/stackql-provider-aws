@@ -332,6 +332,38 @@ paths:
       x-stackql-resource: conformance_packs
       x-stackql-method: delete_conformance_pack
       x-stackql-verb: DELETE
+  /DeleteConnector:
+    post:
+      operationId: DeleteConnector
+      description: Deletes the specified connector.
+      parameters:
+      - name: X-Amz-Target
+        in: header
+        description: Action Header
+        required: false
+        schema:
+          type: string
+          enum:
+          - StarlingDoveService.DeleteConnector
+          default: StarlingDoveService.DeleteConnector
+      requestBody:
+        required: true
+        content:
+          application/x-amz-json-1.1:
+            schema:
+              type: object
+              properties:
+                Arn:
+                  $ref: '#/components/schemas/AmazonResourceName'
+                  description: The Amazon Resource Name (ARN) of the connector that you want to delete.
+              required:
+              - Arn
+      responses:
+        '200':
+          description: Success
+      x-stackql-resource: connectors
+      x-stackql-method: delete_connector
+      x-stackql-verb: DELETE
   /DeleteDeliveryChannel:
     post:
       operationId: DeleteDeliveryChannel
@@ -707,9 +739,13 @@ paths:
                 ServicePrincipal:
                   $ref: '#/components/schemas/ServicePrincipal'
                   description: The service principal of the Amazon Web Services service for the service-linked configuration
-                    recorder that you want to delete.
-              required:
-              - ServicePrincipal
+                    recorder that you want to delete. This field is only supported for Amazon Web Services service principals.
+                    For third-party service-linked configuration recorders, use Arn instead.
+                Arn:
+                  $ref: '#/components/schemas/AmazonResourceName'
+                  description: The Amazon Resource Name (ARN) of the service-linked configuration recorder that you want to
+                    delete. For third-party service-linked configuration recorders, you must use Arn. You must specify exactly
+                    one of Arn or ServicePrincipal.
       responses:
         '200':
           description: Success
@@ -1139,15 +1175,15 @@ paths:
                   $ref: '#/components/schemas/ConfigRuleNames'
                   description: The names of the Config rules for which you want details. If you do not specify any names,
                     Config returns details for all your rules.
-                NextToken:
-                  $ref: '#/components/schemas/String'
-                  description: The nextToken string returned on a previous page that you use to get the next page of results
-                    in a paginated response.
                 Filters:
                   $ref: '#/components/schemas/DescribeConfigRulesFilters'
                   description: Returns a list of Detective or Proactive Config rules. By default, this API returns an unfiltered
                     list. For more information on Detective or Proactive Config rules, see Evaluation Mode in the Config Developer
                     Guide.
+                NextToken:
+                  $ref: '#/components/schemas/String'
+                  description: The nextToken string returned on a previous page that you use to get the next page of results
+                    in a paginated response.
       responses:
         '200':
           description: Success
@@ -1297,7 +1333,8 @@ paths:
                 ServicePrincipal:
                   $ref: '#/components/schemas/ServicePrincipal'
                   description: For service-linked configuration recorders, you can use the service principal of the linked
-                    Amazon Web Services service to specify the configuration recorder.
+                    Amazon Web Services service to specify the configuration recorder. This field is only supported for Amazon
+                    Web Services service principals. For third-party service-linked configuration recorders, use Arn instead.
                 Arn:
                   $ref: '#/components/schemas/AmazonResourceName'
                   description: The Amazon Resource Name (ARN) of the configuration recorder that you want to specify.
@@ -1341,7 +1378,8 @@ paths:
                 ServicePrincipal:
                   $ref: '#/components/schemas/ServicePrincipal'
                   description: For service-linked configuration recorders, you can use the service principal of the linked
-                    Amazon Web Services service to specify the configuration recorder.
+                    Amazon Web Services service to specify the configuration recorder. This field is only supported for Amazon
+                    Web Services service principals. For third-party service-linked configuration recorders, use Arn instead.
                 Arn:
                   $ref: '#/components/schemas/AmazonResourceName'
                   description: The Amazon Resource Name (ARN) of the configuration recorder that you want to specify.
@@ -2595,6 +2633,43 @@ paths:
       x-stackql-pagination-request-token-key: NextToken
       x-stackql-pagination-request-token-location: body
       x-stackql-pagination-response-token-key: $.NextToken
+  /GetConnector:
+    post:
+      operationId: GetConnector
+      description: Returns the details of the specified connector.
+      parameters:
+      - name: X-Amz-Target
+        in: header
+        description: Action Header
+        required: false
+        schema:
+          type: string
+          enum:
+          - StarlingDoveService.GetConnector
+          default: StarlingDoveService.GetConnector
+      requestBody:
+        required: true
+        content:
+          application/x-amz-json-1.1:
+            schema:
+              type: object
+              properties:
+                Arn:
+                  $ref: '#/components/schemas/AmazonResourceName'
+                  description: The Amazon Resource Name (ARN) of the connector.
+              required:
+              - Arn
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetConnectorResponse'
+      x-stackql-resource: connectors
+      x-stackql-method: get_connector
+      x-stackql-verb: SELECT
+      x-stackql-objectKey: $.Connector
   /GetCustomRulePolicy:
     post:
       operationId: GetCustomRulePolicy
@@ -3143,6 +3218,51 @@ paths:
       x-stackql-resource: conformance_pack_compliance_scores
       x-stackql-method: list_conformance_pack_compliance_scores
       x-stackql-verb: SELECT
+  /ListConnectors:
+    post:
+      operationId: ListConnectors
+      description: Returns a list of connectors depending on the filters you specify.
+      parameters:
+      - name: X-Amz-Target
+        in: header
+        description: Action Header
+        required: false
+        schema:
+          type: string
+          enum:
+          - StarlingDoveService.ListConnectors
+          default: StarlingDoveService.ListConnectors
+      requestBody:
+        required: true
+        content:
+          application/x-amz-json-1.1:
+            schema:
+              type: object
+              properties:
+                MaxResults:
+                  $ref: '#/components/schemas/ListConnectorsMaxResults'
+                  description: The maximum number of results to include in the response.
+                NextToken:
+                  $ref: '#/components/schemas/String'
+                  description: The NextToken string returned on a previous page that you use to get the next page of results
+                    in a paginated response.
+                Filters:
+                  $ref: '#/components/schemas/ConnectorFilterList'
+                  description: Filters the results based on a list of ConnectorFilter objects that you specify.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListConnectorsResponse'
+      x-stackql-resource: connectors
+      x-stackql-method: list_connectors
+      x-stackql-verb: SELECT
+      x-stackql-objectKey: $.ConnectorSummaries
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListDiscoveredResources:
     post:
       operationId: ListDiscoveredResources
@@ -3323,7 +3443,7 @@ paths:
                   $ref: '#/components/schemas/AmazonResourceName'
                   description: 'The Amazon Resource Name (ARN) that identifies the resource for which to list the tags. The
                     following resources are supported: ConfigurationRecorder ConfigRule OrganizationConfigRule ConformancePack
-                    OrganizationConformancePack ConfigurationAggregator AggregationAuthorization StoredQuery'
+                    OrganizationConformancePack ConfigurationAggregator AggregationAuthorization StoredQuery Connector'
                 Limit:
                   $ref: '#/components/schemas/Limit'
                   description: The maximum number of tags returned on each page. The limit maximum is 50. You cannot specify
@@ -3642,6 +3762,52 @@ paths:
       x-stackql-resource: conformance_packs
       x-stackql-method: put_conformance_pack
       x-stackql-verb: REPLACE
+  /PutConnector:
+    post:
+      operationId: PutConnector
+      description: Creates a connector that specifies the connection between a third-party cloud service provider and Config.
+        A connector is required to create a service-linked configuration recorder for a third-party cloud service provider
+        using the PutThirdPartyServiceLinkedConfigurationRecorder operation. This API creates a service-linked role AWSServiceRoleForConfigThirdParty
+        in your account. The service-linked role is created only when the role does not exist in your account. Connectors
+        cannot be updated To update the connector configuration, you must delete all associated configuration recorders, delete
+        the connector, and recreate it with the updated configuration. Tags are added at creation and cannot be updated with
+        this operation Use TagResource and UntagResource to update tags after creation.
+      parameters:
+      - name: X-Amz-Target
+        in: header
+        description: Action Header
+        required: false
+        schema:
+          type: string
+          enum:
+          - StarlingDoveService.PutConnector
+          default: StarlingDoveService.PutConnector
+      requestBody:
+        required: true
+        content:
+          application/x-amz-json-1.1:
+            schema:
+              type: object
+              properties:
+                ConnectorConfiguration:
+                  $ref: '#/components/schemas/ConnectorConfiguration'
+                  description: The provider-specific configuration for connecting to the third-party cloud service provider.
+                Tags:
+                  $ref: '#/components/schemas/TagsList'
+                  description: The tags for the connector. Each tag consists of a key and an optional value, both of which
+                    you define.
+              required:
+              - ConnectorConfiguration
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PutConnectorResponse'
+      x-stackql-resource: connectors
+      x-stackql-method: put_connector
+      x-stackql-verb: REPLACE
   /PutDeliveryChannel:
     post:
       operationId: PutDeliveryChannel
@@ -3838,6 +4004,10 @@ paths:
                     logging enabled, and other custom rule metadata, such as resource type, resource ID of Amazon Web Services
                     resource, and organization trigger types that initiate Config to evaluate Amazon Web Services resources
                     against a rule.
+                Tags:
+                  $ref: '#/components/schemas/TagsList'
+                  description: The tags for the organization Config rule. Each tag consists of a key and an optional value,
+                    both of which you define.
               required:
               - OrganizationConfigRuleName
       responses:
@@ -3915,6 +4085,10 @@ paths:
                   $ref: '#/components/schemas/ExcludedAccounts'
                   description: A list of Amazon Web Services accounts to be excluded from an organization conformance pack
                     while deploying a conformance pack.
+                Tags:
+                  $ref: '#/components/schemas/TagsList'
+                  description: The tags for the organization conformance pack. Each tag consists of a key and an optional
+                    value, both of which you define.
               required:
               - OrganizationConformancePackName
       responses:
@@ -4242,6 +4416,63 @@ paths:
                 $ref: '#/components/schemas/PutStoredQueryResponse'
       x-stackql-resource: stored_queries
       x-stackql-method: put_stored_query
+      x-stackql-verb: REPLACE
+  /PutThirdPartyServiceLinkedConfigurationRecorder:
+    post:
+      operationId: PutThirdPartyServiceLinkedConfigurationRecorder
+      description: Creates or updates a service-linked configuration recorder that is linked to a third-party cloud service
+        provider based on the ConnectorArn you specify. The configuration recorder's name, recordingGroup, recordingMode,
+        and recordingScope is set by the service that is linked to the configuration recorder. If a service-linked configuration
+        recorder already exists for the specified service principal and connector, calling this operation again updates the
+        ScopeConfiguration. This operation can only be called by the Amazon Web Services service linked to the configuration
+        recorder Customers cannot call this operation directly. Only the linked Amazon Web Services service can create or
+        update the service-linked configuration recorder. Tags are added at creation and cannot be updated with this operation
+        Use TagResource and UntagResource to update tags after creation.
+      parameters:
+      - name: X-Amz-Target
+        in: header
+        description: Action Header
+        required: false
+        schema:
+          type: string
+          enum:
+          - StarlingDoveService.PutThirdPartyServiceLinkedConfigurationRecorder
+          default: StarlingDoveService.PutThirdPartyServiceLinkedConfigurationRecorder
+      requestBody:
+        required: true
+        content:
+          application/x-amz-json-1.1:
+            schema:
+              type: object
+              properties:
+                ServicePrincipal:
+                  $ref: '#/components/schemas/ServicePrincipal'
+                  description: The service principal of the Amazon Web Services service for the service-linked configuration
+                    recorder that you want to create.
+                ConnectorArn:
+                  $ref: '#/components/schemas/AmazonResourceName'
+                  description: The Amazon Resource Name (ARN) of the connector that specifies the connection between the third-party
+                    cloud service provider and Config. The specified connector must exist.
+                ScopeConfiguration:
+                  $ref: '#/components/schemas/ScopeConfiguration'
+                  description: Specifies the scope of resources to record from the third-party cloud service provider.
+                Tags:
+                  $ref: '#/components/schemas/TagsList'
+                  description: The tags for a service-linked configuration recorder. Each tag consists of a key and an optional
+                    value, both of which you define.
+              required:
+              - ServicePrincipal
+              - ConnectorArn
+              - ScopeConfiguration
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PutThirdPartyServiceLinkedConfigurationRecorderResponse'
+      x-stackql-resource: configuration_recorders
+      x-stackql-method: put_third_party_service_linked_configuration_recorder
       x-stackql-verb: REPLACE
   /SelectAggregateResourceConfig:
     post:
@@ -4598,7 +4829,7 @@ paths:
                   $ref: '#/components/schemas/AmazonResourceName'
                   description: 'The Amazon Resource Name (ARN) that identifies the resource for which to list the tags. The
                     following resources are supported: ConfigurationRecorder ConfigRule OrganizationConfigRule ConformancePack
-                    OrganizationConformancePack ConfigurationAggregator AggregationAuthorization StoredQuery'
+                    OrganizationConformancePack ConfigurationAggregator AggregationAuthorization StoredQuery Connector'
                 Tags:
                   $ref: '#/components/schemas/TagList'
                   description: An array of tag object.
@@ -4636,7 +4867,7 @@ paths:
                   $ref: '#/components/schemas/AmazonResourceName'
                   description: 'The Amazon Resource Name (ARN) that identifies the resource for which to list the tags. The
                     following resources are supported: ConfigurationRecorder ConfigRule OrganizationConfigRule ConformancePack
-                    OrganizationConformancePack ConfigurationAggregator AggregationAuthorization StoredQuery'
+                    OrganizationConformancePack ConfigurationAggregator AggregationAuthorization StoredQuery Connector'
                 TagKeys:
                   $ref: '#/components/schemas/TagKeyList'
                   description: The keys of the tags to be removed.
@@ -5307,6 +5538,14 @@ components:
           $ref: '#/components/schemas/ServicePrincipal'
           description: For service-linked configuration recorders, specifies the linked Amazon Web Services service for the
             configuration recorder.
+        connectorArn:
+          $ref: '#/components/schemas/AmazonResourceName'
+          description: The Amazon Resource Name (ARN) of the connector that specifies the connection between a third-party
+            cloud service provider and Config.
+        scopeConfiguration:
+          $ref: '#/components/schemas/ScopeConfiguration'
+          description: Specifies the scope of resources to record from the third-party cloud service provider connected through
+            the connector.
     RecorderName:
       type: string
       minLength: 1
@@ -5540,6 +5779,50 @@ components:
       minLength: 1
       maxLength: 128
       pattern: '[\w+=,.@-]+'
+    ScopeConfiguration:
+      description: Specifies the scope of resources to record from a third-party cloud service provider.
+      type: object
+      properties:
+        scopeType:
+          $ref: '#/components/schemas/ScopeType'
+          description: The type of scope for the third-party cloud resources. Valid values include tenant and subscription.
+        scopeValues:
+          $ref: '#/components/schemas/ScopeValues'
+          description: The list of specific scope values for the third-party cloud resources. For example, a list of Azure
+            subscriptions or management groups.
+        allRegions:
+          $ref: '#/components/schemas/Boolean'
+          description: Specifies whether to record resources from all supported regions for the third-party cloud service
+            provider.
+        includedRegions:
+          $ref: '#/components/schemas/IncludedRegions'
+          description: The list of regions from the third-party cloud service provider to include when recording resources.
+            Used when allRegions is set to false.
+      required:
+      - scopeType
+      - allRegions
+    ScopeType:
+      type: string
+      minLength: 1
+      maxLength: 256
+    ScopeValues:
+      type: array
+      items:
+        $ref: '#/components/schemas/ScopeValue'
+    ScopeValue:
+      type: string
+      minLength: 1
+      maxLength: 256
+    Boolean:
+      type: boolean
+    IncludedRegions:
+      type: array
+      items:
+        $ref: '#/components/schemas/ThirdPartyCloudRegion'
+    ThirdPartyCloudRegion:
+      type: string
+      minLength: 1
+      maxLength: 128
     ConfigurationAggregatorName:
       type: string
       minLength: 1
@@ -5934,8 +6217,6 @@ components:
           description: Indicates whether the maximum count is reached.
     Integer:
       type: integer
-    Boolean:
-      type: boolean
     AggregateConformancePackComplianceFilters:
       description: Filters the conformance packs based on an account ID, region, compliance type, and the name of the conformance
         pack.
@@ -6202,11 +6483,19 @@ components:
         EvaluationMode:
           $ref: '#/components/schemas/EvaluationMode'
           description: The mode of an evaluation. The valid values are Detective or Proactive.
+        RuleEvaluationVisibility:
+          $ref: '#/components/schemas/RuleEvaluationVisibility'
+          description: Filters the results by RuleEvaluationVisibility.
     EvaluationMode:
       type: string
       enum:
       - DETECTIVE
       - PROACTIVE
+    RuleEvaluationVisibility:
+      type: string
+      enum:
+      - EXTERNAL
+      - INTERNAL
     DescribeConfigRulesResponse:
       type: object
       properties:
@@ -6284,6 +6573,11 @@ components:
           $ref: '#/components/schemas/EvaluationModes'
           description: The modes the Config rule can be evaluated in. The valid values are distinct objects. By default, the
             value is Detective evaluation mode only.
+        RuleEvaluationVisibility:
+          $ref: '#/components/schemas/RuleEvaluationVisibility'
+          description: Indicates whether you can get Evaluations for the Config rule. You can get Evaluations for the Amazon
+            Web Services Config rule if this value is EXTERNAL. You cannot get Evaluations for the Amazon Web Services Config
+            rule if this value is INTERNAL.
       required:
       - Source
     EmptiableStringWithCharLimit256:
@@ -6313,6 +6607,10 @@ components:
           $ref: '#/components/schemas/BaseResourceId'
           description: The ID of the only Amazon Web Services resource that you want to trigger an evaluation for the rule.
             If you specify a resource ID, you must specify one resource type for ComplianceResourceTypes.
+        ServicePrincipals:
+          $ref: '#/components/schemas/ServicePrincipals'
+          description: The service principals of the Amazon Web Services services for the rule. The field is populated only
+            if the service-linked rule is created by a service. The field is empty if you create your own rule.
     ComplianceResourceTypes:
       type: array
       items:
@@ -6321,6 +6619,10 @@ components:
       type: string
       minLength: 1
       maxLength: 128
+    ServicePrincipals:
+      type: array
+      items:
+        $ref: '#/components/schemas/StringWithCharLimit128'
     Source:
       description: Provides the CustomPolicyDetails, the rule owner (Amazon Web Services for managed rules, CUSTOM_POLICY
         for Custom Policy rules, and CUSTOM_LAMBDA for Custom Lambda rules), the rule identifier, and the events that cause
@@ -8359,6 +8661,68 @@ components:
       required:
       - ConformancePackName
       - ConformancePackComplianceStatus
+    GetConnectorResponse:
+      type: object
+      properties:
+        Connector:
+          $ref: '#/components/schemas/Connector'
+          description: The details of the specified connector.
+      required:
+      - Connector
+    Connector:
+      description: The details of the connector, including the connector configuration and connector ARN.
+      type: object
+      properties:
+        name:
+          $ref: '#/components/schemas/ConnectorName'
+          description: The name of the connector.
+        arn:
+          $ref: '#/components/schemas/AmazonResourceName'
+          description: The Amazon Resource Name (ARN) of the connector.
+        connectorConfiguration:
+          $ref: '#/components/schemas/ConnectorConfiguration'
+          description: The provider-specific configuration for connecting to the third-party cloud service provider.
+        createdTime:
+          $ref: '#/components/schemas/Date'
+          description: The date and time that the connector was created.
+      required:
+      - name
+      - arn
+      - connectorConfiguration
+      - createdTime
+    ConnectorName:
+      type: string
+      minLength: 1
+      maxLength: 256
+    ConnectorConfiguration:
+      description: The provider-specific configuration for connecting to the third-party cloud service provider. You must
+        specify exactly one provider configuration.
+      type: object
+      properties:
+        azure:
+          $ref: '#/components/schemas/AzureConnectorConfiguration'
+          description: The configuration for an Azure connector.
+    AzureConnectorConfiguration:
+      description: The configuration details for connecting to Microsoft Azure.
+      type: object
+      properties:
+        tenantIdentifier:
+          $ref: '#/components/schemas/AzureTenantIdentifier'
+          description: The Azure tenant identifier.
+        clientIdentifier:
+          $ref: '#/components/schemas/AzureClientIdentifier'
+          description: The Azure client identifier.
+      required:
+      - tenantIdentifier
+      - clientIdentifier
+    AzureTenantIdentifier:
+      type: string
+      minLength: 1
+      maxLength: 128
+    AzureClientIdentifier:
+      type: string
+      minLength: 1
+      maxLength: 128
     GetCustomRulePolicyResponse:
       type: object
       properties:
@@ -8812,7 +9176,7 @@ components:
       items:
         $ref: '#/components/schemas/ConfigurationRecorderSummary'
     ConfigurationRecorderSummary:
-      description: A summary of a configuration recorder, including the arn, name, servicePrincipal, and recordingScope.
+      description: A summary of a configuration recorder, including the arn, name, servicePrincipal, recordingScope, and provider.
       type: object
       properties:
         arn:
@@ -8829,10 +9193,18 @@ components:
           $ref: '#/components/schemas/RecordingScope'
           description: Indicates whether the ConfigurationItems in scope for the configuration recorder are recorded for free
             (INTERNAL) or if you are charged a service fee for recording (PAID).
+        provider:
+          $ref: '#/components/schemas/Provider'
+          description: For service-linked configuration recorders that record resources from a third-party cloud service provider,
+            indicates the cloud service provider. Currently, AZURE is supported.
       required:
       - arn
       - name
       - recordingScope
+    Provider:
+      type: string
+      enum:
+      - AZURE
     ConformancePackComplianceScoresFilters:
       description: A list of filters to apply to the conformance pack compliance score result set.
       type: object
@@ -8894,6 +9266,73 @@ components:
     LastUpdatedTime:
       type: string
       format: date-time
+    ListConnectorsMaxResults:
+      type: integer
+      minimum: 0
+      maximum: 100
+    ConnectorFilterList:
+      type: array
+      items:
+        $ref: '#/components/schemas/ConnectorFilter'
+    ConnectorFilter:
+      description: Filters connectors based on the connector provider.
+      type: object
+      properties:
+        filterName:
+          $ref: '#/components/schemas/ConnectorFilterName'
+          description: The name of the filter. Currently, only provider is supported.
+        filterValues:
+          $ref: '#/components/schemas/FilterValueList'
+          description: 'The value of the filter. For provider, valid values include: AZURE.'
+    ConnectorFilterName:
+      type: string
+      enum:
+      - provider
+    FilterValueList:
+      type: array
+      items:
+        $ref: '#/components/schemas/String'
+    ListConnectorsResponse:
+      type: object
+      properties:
+        ConnectorSummaries:
+          $ref: '#/components/schemas/ConnectorSummaries'
+          description: A list of ConnectorSummary objects.
+        NextToken:
+          $ref: '#/components/schemas/String'
+          description: The NextToken string returned on a previous page that you use to get the next page of results in a
+            paginated response.
+      required:
+      - ConnectorSummaries
+    ConnectorSummaries:
+      type: array
+      items:
+        $ref: '#/components/schemas/ConnectorSummary'
+    ConnectorSummary:
+      description: A summary of a connector.
+      type: object
+      properties:
+        arn:
+          $ref: '#/components/schemas/AmazonResourceName'
+          description: The Amazon Resource Name (ARN) of the connector.
+        name:
+          $ref: '#/components/schemas/ConnectorName'
+          description: The name of the connector.
+        provider:
+          $ref: '#/components/schemas/Provider'
+          description: The third-party cloud service provider. Currently, AZURE is supported.
+        tenantIdentifier:
+          $ref: '#/components/schemas/AzureTenantIdentifier'
+          description: The Azure tenant identifier for the connector.
+        createdTime:
+          $ref: '#/components/schemas/Date'
+          description: The date and time that the connector was created.
+      required:
+      - arn
+      - name
+      - provider
+      - tenantIdentifier
+      - createdTime
     ResourceIdList:
       type: array
       items:
@@ -9090,6 +9529,14 @@ components:
         ConformancePackArn:
           $ref: '#/components/schemas/ConformancePackArn'
           description: ARN of the conformance pack.
+    PutConnectorResponse:
+      type: object
+      properties:
+        Arn:
+          $ref: '#/components/schemas/AmazonResourceName'
+          description: The Amazon Resource Name (ARN) of the connector.
+      required:
+      - Arn
     Evaluations:
       type: array
       items:
@@ -9301,6 +9748,18 @@ components:
         QueryArn:
           $ref: '#/components/schemas/QueryArn'
           description: Amazon Resource Name (ARN) of the query. For example, arn:partition:service:region:account-id:resource-type/resource-name/resource-id.
+    PutThirdPartyServiceLinkedConfigurationRecorderResponse:
+      type: object
+      properties:
+        Arn:
+          $ref: '#/components/schemas/AmazonResourceName'
+          description: The Amazon Resource Name (ARN) of the specified configuration recorder.
+        Name:
+          $ref: '#/components/schemas/RecorderName'
+          description: The name of the specified configuration recorder.
+      required:
+      - Arn
+      - Name
     Expression:
       type: string
       minLength: 1

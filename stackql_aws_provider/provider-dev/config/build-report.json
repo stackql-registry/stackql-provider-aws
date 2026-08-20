@@ -91,6 +91,14 @@
     {
       "service": "network_firewall",
       "file": "network_firewall.yaml",
+      "resource": "container_associations",
+      "method": "describe_container_association",
+      "param": "ContainerAssociationName",
+      "anchor": "list_container_associations"
+    },
+    {
+      "service": "network_firewall",
+      "file": "network_firewall.yaml",
       "resource": "firewalls",
       "method": "describe_firewall",
       "param": "FirewallName",

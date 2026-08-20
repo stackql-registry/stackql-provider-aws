@@ -137,9 +137,8 @@ paths:
   /ExecuteSql:
     post:
       operationId: ExecuteSql
-      description: Runs one or more SQL statements. This operation isn't supported for Aurora Serverless v2 and provisioned
-        DB clusters. For Aurora Serverless v1 DB clusters, the operation is deprecated. Use the BatchExecuteStatement or ExecuteStatement
-        operation.
+      description: Runs one or more SQL statements. This operation is deprecated. Please use the BatchExecuteStatement or
+        ExecuteStatement operation.
       parameters: []
       requestBody:
         required: true
@@ -302,7 +301,7 @@ components:
     Arn:
       type: string
       minLength: 11
-      maxLength: 100
+      maxLength: 570
     SqlStatement:
       type: string
       minLength: 0
@@ -385,41 +384,41 @@ components:
       properties:
         booleanValues:
           $ref: '#/components/schemas/BooleanArray'
-          description: An array of Boolean values.
+          description: An array of Boolean values. Can contain null values.
         longValues:
           $ref: '#/components/schemas/LongArray'
-          description: An array of integers.
+          description: An array of integers. Can contain null values.
         doubleValues:
           $ref: '#/components/schemas/DoubleArray'
-          description: An array of floating-point numbers.
+          description: An array of floating-point numbers. Can contain null values.
         stringValues:
           $ref: '#/components/schemas/StringArray'
-          description: An array of strings.
+          description: An array of strings. Can contain null values.
         arrayValues:
           $ref: '#/components/schemas/ArrayOfArray'
-          description: An array of arrays.
+          description: An array of arrays. Can contain null values.
     BooleanArray:
-      description: An array of Boolean values. Some array entries can be null.
+      description: An array of Boolean values. Can contain null values.
       type: array
       items:
         $ref: '#/components/schemas/BoxedBoolean'
     LongArray:
-      description: An array of integers. Some array entries can be null.
+      description: An array of integers. Can contain null values.
       type: array
       items:
         $ref: '#/components/schemas/BoxedLong'
     DoubleArray:
-      description: An array of floating-point numbers. Some array entries can be null.
+      description: An array of floating-point numbers. Can contain null values.
       type: array
       items:
         $ref: '#/components/schemas/BoxedDouble'
     StringArray:
-      description: An array of strings. Some array entries can be null.
+      description: An array of strings. Can contain null values.
       type: array
       items:
         $ref: '#/components/schemas/String'
     ArrayOfArray:
-      description: An array of arrays. Some array entries can be null.
+      description: An array of arrays. Can contain null values.
       type: array
       items:
         $ref: '#/components/schemas/ArrayValue'

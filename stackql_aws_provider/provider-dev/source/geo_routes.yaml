@@ -16,7 +16,7 @@ servers:
       description: AWS region
   description: Regional endpoint for geo-routes
 paths:
-  /isolines:
+  /v2/isolines:
     post:
       operationId: CalculateIsolines
       description: 'Calculates areas that can be reached within specified time or distance thresholds from a given point.
@@ -89,7 +89,7 @@ paths:
       x-stackql-resource: calculate_isolines
       x-stackql-method: calculate_isolines
       x-stackql-verb: EXEC
-  /route-matrix:
+  /v2/route-matrix:
     post:
       operationId: CalculateRouteMatrix
       description: Use CalculateRouteMatrix to compute results for all pairs of Origins to Destinations. Each row corresponds
@@ -148,7 +148,7 @@ paths:
       x-stackql-resource: calculate_route_matrix
       x-stackql-method: calculate_route_matrix
       x-stackql-verb: EXEC
-  /routes:
+  /v2/routes:
     post:
       operationId: CalculateRoutes
       description: 'CalculateRoutes computes routes given the following required parameters: Origin and Destination. For more
@@ -229,7 +229,7 @@ paths:
       x-stackql-resource: calculate_routes
       x-stackql-method: calculate_routes
       x-stackql-verb: EXEC
-  /optimize-waypoints:
+  /v2/optimize-waypoints:
     post:
       operationId: OptimizeWaypoints
       description: OptimizeWaypoints calculates the optimal order to travel between a set of waypoints to minimize either
@@ -290,7 +290,7 @@ paths:
       x-stackql-resource: optimize_waypoints
       x-stackql-method: optimize_waypoints
       x-stackql-verb: EXEC
-  /snap-to-roads:
+  /v2/snap-to-roads:
     post:
       operationId: SnapToRoads
       description: SnapToRoads matches GPS trace to roads most likely traveled on. For more information, see Snap to Roads
@@ -1497,29 +1497,48 @@ components:
       properties:
         AutoCircle:
           $ref: '#/components/schemas/RouteMatrixAutoCircle'
-          description: Provides the circle that was used while calculating the route.
+          description: AutoCircle requests the route matrix service to define a Circle boundary that best attempts to include
+            most waypoints (Origins and Destinations) using the AutoCircle settings. Any waypoints outside of the auto-defined
+            Circle boundary will be considered out of the routing boundary, which results in a route matrix entry error. AutoCircle
+            is only used in the request to configure a Circle for the route calculation. The derived Circle will also be provided
+            in the response.
         Circle:
           $ref: '#/components/schemas/Circle'
-          description: Geometry defined as a circle. When request routing boundary was set as AutoCircle, the response routing
-            boundary will return Circle derived from the AutoCircle settings.
+          description: Geometry defined as a circle. The circle defines the routing boundary area. Any waypoints outside the
+            circle will result in a route matrix entry error. You can specify a Circle directly in the request, or it will
+            be auto-derived when AutoCircle is used. When AutoCircle is set in the request, the response routing boundary
+            will return Circle derived from the AutoCircle settings.
         BoundingBox:
           $ref: '#/components/schemas/BoundingBox'
           description: Geometry defined as a bounding box. The first pair represents the X and Y coordinates (longitude and
             latitude,) of the southwest corner of the bounding box; the second pair represents the X and Y coordinates (longitude
-            and latitude) of the northeast corner.
+            and latitude) of the northeast corner. Diagonal distance of the bounding box must be less than or equal to 400,000
+            meters.
         Polygon:
           $ref: '#/components/schemas/RouteMatrixBoundaryGeometryPolygonList'
-          description: Geometry defined as a polygon with only one linear ring.
+          description: Geometry defined as a polygon with only one linear ring. A linear ring is a closed sequence of four
+            or more coordinates. The first and last coordinates are the same, forming a closed boundary. Each coordinate is
+            a position in [longitude, latitude] format. The structure is an array of linear rings (only 1 allowed). Each linear
+            ring is an array of coordinates (minimum 4), and each coordinate is an array of two doubles [longitude, latitude].
+            Maximum distance between any two vertices must be less than or equal to 400,000 meters.
     RouteMatrixAutoCircle:
-      description: Provides the circle that was used while calculating the route.
+      description: AutoCircle requests the route matrix service to define a Circle boundary that best attempts to include
+        most waypoints (Origins and Destinations) using the AutoCircle settings. Any waypoints outside of the auto-defined
+        Circle boundary will be considered out of the routing boundary, which results in a route matrix entry error. AutoCircle
+        is only used in the request to configure a Circle for the route calculation. The derived Circle will also be provided
+        in the response.
       type: object
       properties:
         Margin:
           $ref: '#/components/schemas/RouteMatrixAutoCircleMarginLong'
-          description: The margin provided for the calculation.
+          description: The minimal distance, in meters, between any waypoint and the perimeter of the circle auto-defined
+            for the boundary. Some margin is usually recommended so that the routing has enough leeway to travel from one
+            waypoint to another optimally without conflicting with the routing boundary. The total of MaxRadius and Margin
+            must be less than or equal to 200,000 meters.
         MaxRadius:
           $ref: '#/components/schemas/RouteMatrixAutoCircleMaxRadiusLong'
-          description: The maximum size of the radius provided for the calculation.
+          description: The maximum radius, in meters, that the auto-defined Circle boundary should have, before the Margin
+            distance is added to the circle. The total of MaxRadius and Margin must be less than or equal to 200,000 meters.
     RouteMatrixAutoCircleMarginLong:
       type: integer
       format: int64
@@ -1531,8 +1550,10 @@ components:
       minimum: 0
       maximum: 200000
     Circle:
-      description: Geometry defined as a circle. When request routing boundary was set as AutoCircle, the response routing
-        boundary will return Circle derived from the AutoCircle settings.
+      description: Geometry defined as a circle. The circle defines the routing boundary area. Any waypoints outside the circle
+        will result in a route matrix entry error. You can specify a Circle directly in the request, or it will be auto-derived
+        when AutoCircle is used. When AutoCircle is set in the request, the response routing boundary will return Circle derived
+        from the AutoCircle settings.
       type: object
       properties:
         Center:
@@ -1541,7 +1562,7 @@ components:
             49.2847] represents the position with longitude -123.1174 and latitude 49.2847.'
         Radius:
           $ref: '#/components/schemas/SensitiveDouble'
-          description: 'Radius of the Circle. Unit: meters'
+          description: 'Radius of the Circle. Unit: meters Valid Range: Minimum value of 0. Maximum value of 200000.'
       required:
       - Center
       - Radius
@@ -1777,8 +1798,8 @@ components:
         RoutingBoundary:
           $ref: '#/components/schemas/RouteMatrixBoundary'
           description: Boundary within which the matrix is to be calculated. All data, origins and destinations outside the
-            boundary are considered invalid. When request routing boundary was set as AutoCircle, the response routing boundary
-            will return Circle derived from the AutoCircle settings.
+            boundary are considered invalid. When AutoCircle is set in the request, the response routing boundary will return
+            Circle derived from the AutoCircle settings.
       required:
       - ErrorCount
       - PricingBucket
@@ -2084,6 +2105,9 @@ components:
       - TruckRoadTypes
       - TypicalDuration
       - Zones
+      - Bookings
+      - IntermediateStops
+      - NextDepartures
     CalculateRoutesRequestMaxAlternativesInteger:
       type: integer
       minimum: 0
@@ -2211,6 +2235,8 @@ components:
       - Pedestrian
       - Scooter
       - Truck
+      - Intermodal
+      - Transit
     RouteTravelModeOptions:
       description: Travel mode related options for the provided travel mode.
       type: object
@@ -2228,6 +2254,14 @@ components:
         Truck:
           $ref: '#/components/schemas/RouteTruckOptions'
           description: Travel mode options when the provided travel mode is Truck.
+        Intermodal:
+          $ref: '#/components/schemas/RouteIntermodalOptions'
+          description: Travel mode options when the provided travel mode is Intermodal. Not supported in ap-southeast-1 and
+            ap-southeast-5 regions for GrabMaps customers.
+        Transit:
+          $ref: '#/components/schemas/RouteTransitOptions'
+          description: Travel mode options when the provided travel mode is Transit. Not supported in ap-southeast-1 and ap-southeast-5
+            regions for GrabMaps customers.
     RouteCarOptions:
       description: Travel mode options when the provided travel mode is Car. For GrabMaps customers, ap-southeast-1 and ap-southeast-5
         regions support only LicensePlate options.
@@ -2465,6 +2499,242 @@ components:
       format: int64
       minimum: 0
       maximum: 5000
+    RouteIntermodalOptions:
+      description: Options related to intermodal routing. Not supported in ap-southeast-1 and ap-southeast-5 regions for GrabMaps
+        customers.
+      type: object
+      properties:
+        AccessibilityAttributes:
+          $ref: '#/components/schemas/RouteAccessibilityAttributeList'
+          description: Accessibility attributes to consider when calculating the route.
+        MaxTransfers:
+          $ref: '#/components/schemas/RouteIntermodalOptionsMaxTransfersInteger'
+          description: Maximum number of transfers allowed when calculating the route.
+        Pedestrian:
+          $ref: '#/components/schemas/RouteIntermodalPedestrianOptions'
+          description: Options for the pedestrian leg of the intermodal route.
+        Rental:
+          $ref: '#/components/schemas/RouteIntermodalRentalOptions'
+          description: Options for the rental leg of the intermodal route.
+        Taxi:
+          $ref: '#/components/schemas/RouteIntermodalTaxiOptions'
+          description: Options for the taxi leg of the intermodal route.
+        Transit:
+          $ref: '#/components/schemas/RouteIntermodalTransitOptions'
+          description: Options for the transit leg of the intermodal route.
+        Vehicle:
+          $ref: '#/components/schemas/RouteIntermodalVehicleOptions'
+          description: Options for the vehicle leg of the intermodal route.
+    RouteAccessibilityAttributeList:
+      type: array
+      items:
+        $ref: '#/components/schemas/RouteAccessibilityAttribute'
+    RouteAccessibilityAttribute:
+      type: string
+      enum:
+      - Wheelchair
+    RouteIntermodalOptionsMaxTransfersInteger:
+      type: integer
+      minimum: 0
+      maximum: 6
+    RouteIntermodalPedestrianOptions:
+      description: Options for the pedestrian leg of the intermodal route.
+      type: object
+      properties:
+        MaxDistance:
+          $ref: '#/components/schemas/RouteIntermodalPedestrianOptionsMaxDistanceLong'
+          description: 'Maximum walking distance allowed. Unit: meters'
+        Speed:
+          $ref: '#/components/schemas/RouteIntermodalPedestrianOptionsSpeedDouble'
+          description: 'Walking speed. Unit: kilometers per hour'
+    RouteIntermodalPedestrianOptionsMaxDistanceLong:
+      type: integer
+      format: int64
+      minimum: 0
+      maximum: 6000
+    RouteIntermodalPedestrianOptionsSpeedDouble:
+      type: number
+      format: double
+      minimum: 1.8
+      maximum: 7.2
+    RouteIntermodalRentalOptions:
+      description: Options for the rental leg of the intermodal route.
+      type: object
+      properties:
+        AllowedModes:
+          $ref: '#/components/schemas/RouteRentalModeList'
+          description: Allowed rental transport modes when calculating the route. By default, all transport modes are allowed.
+            Cannot be used together with ExcludedModes.
+        EnabledFor:
+          $ref: '#/components/schemas/RouteIntermodalEnabledLegsList'
+          description: 'Specifies the portion of the route for which this leg type is enabled. By default, the leg type is
+            enabled for all legs. Valid values: FirstLeg - Enable this leg type for the first non-pedestrian leg of the route.
+            LastLeg - Enable this leg type for the last non-pedestrian leg of the route. EntireRoute - Enable this leg type
+            for the entire route. None - Disable this leg type entirely.'
+        ExcludedModes:
+          $ref: '#/components/schemas/RouteRentalModeList'
+          description: Excluded rental transport modes when calculating the route. By default, all transport modes are allowed.
+            Cannot be used together with AllowedModes.
+    RouteRentalModeList:
+      type: array
+      items:
+        $ref: '#/components/schemas/RouteRentalMode'
+    RouteRentalMode:
+      type: string
+      enum:
+      - All
+      - Car
+    RouteIntermodalEnabledLegsList:
+      type: array
+      items:
+        $ref: '#/components/schemas/RouteIntermodalEnabledLegs'
+    RouteIntermodalEnabledLegs:
+      type: string
+      enum:
+      - FirstLeg
+      - LastLeg
+      - EntireRoute
+      - None
+    RouteIntermodalTaxiOptions:
+      description: Options for the taxi leg of the intermodal route.
+      type: object
+      properties:
+        AllowedModes:
+          $ref: '#/components/schemas/RouteTaxiModeList'
+          description: Allowed taxi transport modes when calculating the route. By default, all transport modes are allowed.
+            Cannot be used together with ExcludedModes.
+        EnabledFor:
+          $ref: '#/components/schemas/RouteIntermodalEnabledLegsList'
+          description: 'Specifies the portion of the route for which this leg type is enabled. By default, the leg type is
+            enabled for all legs. Valid values: FirstLeg - Enable this leg type for the first non-pedestrian leg of the route.
+            LastLeg - Enable this leg type for the last non-pedestrian leg of the route. EntireRoute - Enable this leg type
+            for the entire route. None - Disable this leg type entirely.'
+        ExcludedModes:
+          $ref: '#/components/schemas/RouteTaxiModeList'
+          description: Excluded taxi transport modes when calculating the route. By default, all transport modes are allowed.
+            Cannot be used together with AllowedModes.
+    RouteTaxiModeList:
+      type: array
+      items:
+        $ref: '#/components/schemas/RouteTaxiMode'
+    RouteTaxiMode:
+      type: string
+      enum:
+      - All
+      - Car
+    RouteIntermodalTransitOptions:
+      description: Options for the transit leg of the intermodal route.
+      type: object
+      properties:
+        AllowedModes:
+          $ref: '#/components/schemas/RouteTransitModeList'
+          description: Allowed transit transport modes when calculating the route. By default, all transport modes are allowed.
+            Cannot be used together with ExcludedModes.
+        EnabledFor:
+          $ref: '#/components/schemas/RouteIntermodalEnabledLegsList'
+          description: 'Specifies the portion of the route for which this leg type is enabled. By default, the leg type is
+            enabled for all legs. Valid values: FirstLeg - Enable this leg type for the first non-pedestrian leg of the route.
+            LastLeg - Enable this leg type for the last non-pedestrian leg of the route. EntireRoute - Enable this leg type
+            for the entire route. None - Disable this leg type entirely.'
+        ExcludedModes:
+          $ref: '#/components/schemas/RouteTransitModeList'
+          description: Excluded transit transport modes when calculating the route. By default, all transport modes are allowed.
+            Cannot be used together with AllowedModes.
+    RouteTransitModeList:
+      type: array
+      items:
+        $ref: '#/components/schemas/RouteTransitMode'
+    RouteTransitMode:
+      type: string
+      enum:
+      - AerialTramway
+      - Airplane
+      - All
+      - Bus
+      - BusRapidTransit
+      - CityTrain
+      - Ferry
+      - FunicularRailway
+      - HighSpeedTrain
+      - IntercityTrain
+      - InterregionalTrain
+      - LightRail
+      - Monorail
+      - PrivateBus
+      - RegionalTrain
+      - Subway
+    RouteIntermodalVehicleOptions:
+      description: Options for the vehicle leg of the intermodal route.
+      type: object
+      properties:
+        AllowedModes:
+          $ref: '#/components/schemas/RouteVehicleModeList'
+          description: Allowed vehicle transport modes when calculating the route. By default, all transport modes are allowed.
+            Cannot be used together with ExcludedModes.
+        EnabledFor:
+          $ref: '#/components/schemas/RouteIntermodalEnabledLegsList'
+          description: 'Specifies the portion of the route for which this leg type is enabled. By default, the leg type is
+            enabled for all legs. Valid values: FirstLeg - Enable this leg type for the first non-pedestrian leg of the route.
+            LastLeg - Enable this leg type for the last non-pedestrian leg of the route. EntireRoute - Enable this leg type
+            for the entire route. None - Disable this leg type entirely.'
+        ExcludedModes:
+          $ref: '#/components/schemas/RouteVehicleModeList'
+          description: Excluded vehicle transport modes when calculating the route. By default, all transport modes are allowed.
+            Cannot be used together with AllowedModes.
+    RouteVehicleModeList:
+      type: array
+      items:
+        $ref: '#/components/schemas/RouteVehicleMode'
+    RouteVehicleMode:
+      type: string
+      enum:
+      - All
+      - Car
+    RouteTransitOptions:
+      description: Options related to transit routing. Not supported in ap-southeast-1 and ap-southeast-5 regions for GrabMaps
+        customers.
+      type: object
+      properties:
+        AccessibilityAttributes:
+          $ref: '#/components/schemas/RouteAccessibilityAttributeList'
+          description: Accessibility attributes to consider when calculating the route.
+        AllowedModes:
+          $ref: '#/components/schemas/RouteTransitModeList'
+          description: Allowed transit transport modes when calculating the route. By default, all transport modes are allowed.
+            Cannot be used together with ExcludedModes.
+        ExcludedModes:
+          $ref: '#/components/schemas/RouteTransitModeList'
+          description: Excluded transit transport modes when calculating the route. By default, all transport modes are allowed.
+            Cannot be used together with AllowedModes.
+        MaxTransfers:
+          $ref: '#/components/schemas/RouteTransitOptionsMaxTransfersInteger'
+          description: Maximum number of transfers allowed when calculating the route.
+        Pedestrian:
+          $ref: '#/components/schemas/RouteTransitPedestrianOptions'
+          description: Options for the pedestrian leg of the transit route.
+    RouteTransitOptionsMaxTransfersInteger:
+      type: integer
+      minimum: 0
+      maximum: 6
+    RouteTransitPedestrianOptions:
+      description: Options for the pedestrian leg of the transit route.
+      type: object
+      properties:
+        MaxDistance:
+          $ref: '#/components/schemas/RouteTransitPedestrianOptionsMaxDistanceLong'
+          description: 'Maximum walking distance allowed. Unit: meters'
+        Speed:
+          $ref: '#/components/schemas/RouteTransitPedestrianOptionsSpeedDouble'
+          description: 'Walking speed. Unit: kilometers per hour'
+    RouteTransitPedestrianOptionsMaxDistanceLong:
+      type: integer
+      format: int64
+      maximum: 6000
+    RouteTransitPedestrianOptionsSpeedDouble:
+      type: number
+      format: double
+      minimum: 1.8
+      maximum: 7.2
     RouteTravelStepType:
       type: string
       enum:
@@ -2564,6 +2834,9 @@ components:
       - MainLanguageNotFound
       - Other
       - TravelTimeExceedsDriverWorkHours
+      - TransitDataUnavailable
+      - TransitRouteUnavailable
+      - NoTransitStationsFound
     RouteNoticeImpact:
       type: string
       enum:
@@ -2628,6 +2901,17 @@ components:
         VehicleLegDetails:
           $ref: '#/components/schemas/RouteVehicleLegDetails'
           description: Details related to the vehicle leg.
+        RentalLegDetails:
+          $ref: '#/components/schemas/RouteRentalLegDetails'
+          description: Details related to the rental leg. Not supported in ap-southeast-1 and ap-southeast-5 regions for GrabMaps
+            customers.
+        TaxiLegDetails:
+          $ref: '#/components/schemas/RouteTaxiLegDetails'
+          description: Details related to the taxi leg. Not supported in ap-southeast-1 and ap-southeast-5 regions for GrabMaps
+            customers.
+        TransitLegDetails:
+          $ref: '#/components/schemas/RouteTransitLegDetails'
+          description: Details related to the transit leg.
       required:
       - Geometry
       - TravelMode
@@ -2708,10 +2992,10 @@ components:
       properties:
         Place:
           $ref: '#/components/schemas/RouteFerryPlace'
-          description: The place details.
+          description: Place details corresponding to the arrival.
         Time:
           $ref: '#/components/schemas/TimestampWithTimezoneOffset'
-          description: The time.
+          description: The arrival time.
       required:
       - Place
     RouteFerryPlace:
@@ -2770,10 +3054,10 @@ components:
       properties:
         Place:
           $ref: '#/components/schemas/RouteFerryPlace'
-          description: The place details.
+          description: Place details corresponding to the departure.
         Time:
           $ref: '#/components/schemas/TimestampWithTimezoneOffset'
-          description: The time.
+          description: The departure time.
       required:
       - Place
     RouteFerryNoticeList:
@@ -2819,7 +3103,7 @@ components:
           description: Offset in the leg geometry corresponding to the start of this step.
         Place:
           $ref: '#/components/schemas/RoutePassThroughPlace'
-          description: The place details.
+          description: Place details corresponding to the pass-through waypoint.
       required:
       - Place
     RoutePassThroughWaypointGeometryOffsetInteger:
@@ -2867,7 +3151,7 @@ components:
           description: Offset in the leg geometry corresponding to the start of this span.
         Names:
           $ref: '#/components/schemas/LocalizedStringList'
-          description: Provides an array of names of the ferry span in available languages.
+          description: Names of the ferry span in available languages.
         Region:
           $ref: '#/components/schemas/RouteFerrySpanRegionString'
           description: 2-3 letter Region code corresponding to the Span. This is either a province or a state.
@@ -2913,15 +3197,15 @@ components:
           description: Summarized details for the leg including travel steps only. The Distance for the travel only portion
             of the journey is in meters
     RouteFerryOverviewSummary:
-      description: Summarized details of the leg.
+      description: Summary including duration and distance for the entire leg.
       type: object
       properties:
         Distance:
           $ref: '#/components/schemas/DistanceMeters'
-          description: Distance of the step.
+          description: 'Distance of the entire leg. Unit: meters'
         Duration:
           $ref: '#/components/schemas/DurationSeconds'
-          description: 'Duration of the step. Unit: seconds'
+          description: 'Duration of the entire leg. Unit: seconds'
       required:
       - Distance
       - Duration
@@ -2988,6 +3272,9 @@ components:
       description: Details that are specific to a pedestrian leg.
       type: object
       properties:
+        AfterTravelSteps:
+          $ref: '#/components/schemas/RoutePedestrianAfterTravelStepList'
+          description: Steps of a leg that must be performed after the travel portion of the leg.
         Arrival:
           $ref: '#/components/schemas/RoutePedestrianArrival'
           description: Details corresponding to the arrival for the leg.
@@ -3013,12 +3300,38 @@ components:
           $ref: '#/components/schemas/RoutePedestrianTravelStepList'
           description: Steps of a leg that must be performed before the travel portion of the leg.
       required:
+      - AfterTravelSteps
       - Arrival
       - Departure
       - Notices
       - PassThroughWaypoints
       - Spans
       - TravelSteps
+    RoutePedestrianAfterTravelStepList:
+      type: array
+      items:
+        $ref: '#/components/schemas/RoutePedestrianAfterTravelStep'
+    RoutePedestrianAfterTravelStep:
+      description: Steps of a leg that must be performed after the travel portion of the leg.
+      type: object
+      properties:
+        Duration:
+          $ref: '#/components/schemas/DurationSeconds'
+          description: 'Duration of the step. Unit: seconds'
+        Instruction:
+          $ref: '#/components/schemas/SensitiveString'
+          description: Brief description of the step in the requested language. Only available when the TravelStepType is
+            Default.
+        Type:
+          $ref: '#/components/schemas/RoutePedestrianAfterTravelStepType'
+          description: Type of the step.
+      required:
+      - Duration
+      - Type
+    RoutePedestrianAfterTravelStepType:
+      type: string
+      enum:
+      - Wait
     RoutePedestrianArrival:
       description: 'Details corresponding to the arrival for a leg. Time format:YYYY-MM-DDThh:mm:ss.sssZ | YYYY-MM-DDThh:mm:ss.sss+hh:mm
         Examples: 2020-04-22T17:57:24Z 2020-04-22T17:57:24+02:00'
@@ -3026,16 +3339,19 @@ components:
       properties:
         Place:
           $ref: '#/components/schemas/RoutePedestrianPlace'
-          description: The place details.
+          description: Place details corresponding to the arrival.
         Time:
           $ref: '#/components/schemas/TimestampWithTimezoneOffset'
-          description: The time.
+          description: The arrival time.
       required:
       - Place
     RoutePedestrianPlace:
       description: Place details corresponding to the arrival or departure.
       type: object
       properties:
+        AccessPointDetails:
+          $ref: '#/components/schemas/RouteAccessPointDetails'
+          description: Details of the access point.
         Name:
           $ref: '#/components/schemas/SensitiveString'
           description: The name of the place.
@@ -3048,16 +3364,63 @@ components:
         SideOfStreet:
           $ref: '#/components/schemas/RouteSideOfStreet'
           description: Options to configure matching the provided position to a side of the street.
+        StationDetails:
+          $ref: '#/components/schemas/RouteStationDetails'
+          description: Details about the station.
+        Type:
+          $ref: '#/components/schemas/RoutePedestrianPlaceType'
+          description: The type of the place.
         WaypointIndex:
           $ref: '#/components/schemas/RoutePedestrianPlaceWaypointIndexInteger'
           description: Index of the waypoint in the request.
       required:
       - Position
+    RouteAccessPointDetails:
+      description: Details of the access point.
+      type: object
+      properties:
+        Accessibility:
+          $ref: '#/components/schemas/RouteAccessibilityAvailabilityDetails'
+          description: Wheelchair accessibility information for the access point.
+    RouteAccessibilityAvailabilityDetails:
+      description: Details about the availability of accessibility features.
+      type: object
+      properties:
+        Wheelchair:
+          $ref: '#/components/schemas/RouteAccessibilityAvailability'
+          description: Wheelchair accessibility status.
+    RouteAccessibilityAvailability:
+      type: string
+      enum:
+      - Available
+      - Limited
+      - Unavailable
+      - Unknown
     RouteSideOfStreet:
       type: string
       enum:
       - Left
       - Right
+    RouteStationDetails:
+      description: Details about the station.
+      type: object
+      properties:
+        Accessibility:
+          $ref: '#/components/schemas/RouteAccessibilityAvailabilityDetails'
+          description: Wheelchair accessibility information for the station.
+        PlatformName:
+          $ref: '#/components/schemas/SensitiveString'
+          description: Platform name or number.
+        ShortName:
+          $ref: '#/components/schemas/SensitiveString'
+          description: Short text or a number that identifies the station.
+    RoutePedestrianPlaceType:
+      type: string
+      enum:
+      - AccessPoint
+      - DockingStation
+      - ParkingLot
+      - Station
     RoutePedestrianPlaceWaypointIndexInteger:
       type: integer
       minimum: 0
@@ -3068,10 +3431,10 @@ components:
       properties:
         Place:
           $ref: '#/components/schemas/RoutePedestrianPlace'
-          description: The place details.
+          description: Place details corresponding to the departure.
         Time:
           $ref: '#/components/schemas/TimestampWithTimezoneOffset'
-          description: The time.
+          description: The departure time.
       required:
       - Place
     RoutePedestrianNoticeList:
@@ -3274,15 +3637,15 @@ components:
           description: Summarized details for the leg including travel steps only. The Distance for the travel only portion
             of the journey is in meters
     RoutePedestrianOverviewSummary:
-      description: Provides a summary of a pedestrian route step.
+      description: Summary including duration and distance for the entire leg.
       type: object
       properties:
         Distance:
           $ref: '#/components/schemas/DistanceMeters'
-          description: Distance of the step.
+          description: 'Distance of the entire leg. Unit: meters'
         Duration:
           $ref: '#/components/schemas/DurationSeconds'
-          description: Duration of the step.
+          description: 'Duration of the entire leg. Unit: seconds'
       required:
       - Distance
       - Duration
@@ -3551,16 +3914,36 @@ components:
       - Scooter
       - Truck
       - CarShuttleTrain
+      - AerialTramway
+      - Airplane
+      - Bus
+      - BusRapidTransit
+      - CityTrain
+      - FunicularRailway
+      - HighSpeedTrain
+      - IntercityTrain
+      - InterregionalTrain
+      - LightRail
+      - Monorail
+      - PrivateBus
+      - RegionalTrain
+      - Subway
     RouteLegType:
       type: string
       enum:
       - Ferry
       - Pedestrian
       - Vehicle
+      - Rental
+      - Taxi
+      - Transit
     RouteVehicleLegDetails:
       description: Steps of a leg that correspond to the travel portion of the leg.
       type: object
       properties:
+        AfterTravelSteps:
+          $ref: '#/components/schemas/RouteVehicleAfterTravelStepList'
+          description: Steps of a leg that must be performed after the travel portion of the leg.
         Arrival:
           $ref: '#/components/schemas/RouteVehicleArrival'
           description: Details corresponding to the arrival for the leg.
@@ -3606,6 +3989,7 @@ components:
           description: Zones corresponding to this leg of the route. Not supported in ap-southeast-1 and ap-southeast-5 regions
             for GrabMaps customers.
       required:
+      - AfterTravelSteps
       - Arrival
       - Departure
       - Incidents
@@ -3617,16 +4001,65 @@ components:
       - TravelSteps
       - TruckRoadTypes
       - Zones
+    RouteVehicleAfterTravelStepList:
+      type: array
+      items:
+        $ref: '#/components/schemas/RouteVehicleAfterTravelStep'
+    RouteVehicleAfterTravelStep:
+      description: Steps of a leg that must be performed after the travel portion of the leg.
+      type: object
+      properties:
+        ChargeStepDetails:
+          $ref: '#/components/schemas/RouteChargeStepDetails'
+          description: 'Details that are specific to a Charge step. Unit: KwH'
+        Duration:
+          $ref: '#/components/schemas/DurationSeconds'
+          description: 'Duration of the step. Unit: seconds'
+        Instruction:
+          $ref: '#/components/schemas/SensitiveString'
+          description: Brief description of the step in the requested language. Only available when the TravelStepType is
+            Default.
+        Type:
+          $ref: '#/components/schemas/RouteVehicleAfterTravelStepType'
+          description: Type of the step.
+      required:
+      - Duration
+      - Type
+    RouteChargeStepDetails:
+      description: Details about the EV charge at the current step.
+      type: object
+      properties:
+        ArrivalCharge:
+          $ref: '#/components/schemas/EnergyKilowattHours'
+          description: Estimated vehicle battery charge before this step (in kWh).
+        ConsumablePower:
+          $ref: '#/components/schemas/PowerKilowatts'
+          description: 'Maximum charging power available to the vehicle. Unit: KwH'
+        DesiredCharge:
+          $ref: '#/components/schemas/EnergyKilowattHours'
+          description: 'Details that are specific to a Charge step. Unit: KwH'
+    EnergyKilowattHours:
+      type: number
+      format: double
+      minimum: 0.0
+    PowerKilowatts:
+      type: number
+      format: double
+      minimum: 0.0
+    RouteVehicleAfterTravelStepType:
+      type: string
+      enum:
+      - Park
     RouteVehicleArrival:
       description: Details corresponding to the arrival for a leg.
       type: object
       properties:
         Place:
           $ref: '#/components/schemas/RouteVehiclePlace'
-          description: The place details.
+          description: Place details corresponding to the arrival.
         Time:
           $ref: '#/components/schemas/TimestampWithTimezoneOffset'
-          description: The time.
+          description: The arrival time.
       required:
       - Place
     RouteVehiclePlace:
@@ -3648,18 +4081,34 @@ components:
         WaypointIndex:
           $ref: '#/components/schemas/RouteVehiclePlaceWaypointIndexInteger'
           description: Index of the waypoint in the request.
+        AccessPointDetails:
+          $ref: '#/components/schemas/RouteAccessPointDetails'
+          description: Details of the access point.
+        StationDetails:
+          $ref: '#/components/schemas/RouteStationDetails'
+          description: Details about the station.
+        Type:
+          $ref: '#/components/schemas/RouteVehiclePlaceType'
+          description: The type of the place.
       required:
       - Position
     RouteVehiclePlaceWaypointIndexInteger:
       type: integer
       minimum: 0
+    RouteVehiclePlaceType:
+      type: string
+      enum:
+      - AccessPoint
+      - DockingStation
+      - ParkingLot
+      - Station
     RouteVehicleDeparture:
       description: Details corresponding to the departure for the leg.
       type: object
       properties:
         Place:
           $ref: '#/components/schemas/RouteVehiclePlace'
-          description: The place details.
+          description: Place details corresponding to the departure.
         Time:
           $ref: '#/components/schemas/TimestampWithTimezoneOffset'
           description: The departure time.
@@ -4033,7 +4482,7 @@ components:
           description: Summarized details for the leg including travel steps only. The Distance for the travel only portion
             of the journey is in meters
     RouteVehicleOverviewSummary:
-      description: Summarized details of the leg.
+      description: Summary including duration and distance for the entire leg.
       type: object
       properties:
         BestCaseDuration:
@@ -4042,13 +4491,13 @@ components:
             the leg. Unit: seconds'
         Distance:
           $ref: '#/components/schemas/DistanceMeters'
-          description: Distance of the step.
+          description: 'Distance of the entire leg. Unit: meters'
         Duration:
           $ref: '#/components/schemas/DurationSeconds'
-          description: 'Duration of the step. Unit: seconds'
+          description: 'Duration of the entire leg. Unit: seconds'
         TypicalDuration:
           $ref: '#/components/schemas/DurationSeconds'
-          description: 'Duration of the computed span under typical traffic congestion. Unit: seconds'
+          description: 'Duration of the leg under typical traffic congestion. Unit: seconds'
       required:
       - Distance
       - Duration
@@ -4065,7 +4514,7 @@ components:
           description: 'Duration of the step. Unit: seconds'
         TypicalDuration:
           $ref: '#/components/schemas/DurationSeconds'
-          description: 'Duration of the computed span under typical traffic congestion. Unit: seconds'
+          description: 'Duration of the leg under typical traffic congestion. Unit: seconds'
       required:
       - Duration
     RouteTollList:
@@ -4488,6 +4937,1154 @@ components:
         Name:
           $ref: '#/components/schemas/SensitiveString'
           description: The name of the zone.
+    RouteRentalLegDetails:
+      description: Populated when the Leg type is Rental, and provides additional information that is specific to rental vehicle
+        travel.
+      type: object
+      properties:
+        AfterTravelSteps:
+          $ref: '#/components/schemas/RouteRentalAfterTravelStepList'
+          description: Steps of a leg that must be performed after the travel portion of the leg.
+        Agency:
+          $ref: '#/components/schemas/RouteRentalAgency'
+          description: Details about the rental agency.
+        Arrival:
+          $ref: '#/components/schemas/RouteRentalArrival'
+          description: Details corresponding to the arrival for the leg.
+        Attributions:
+          $ref: '#/components/schemas/RouteAttributionList'
+          description: List of required attributions to display.
+        BeforeTravelSteps:
+          $ref: '#/components/schemas/RouteRentalBeforeTravelStepList'
+          description: Steps of a leg that must be performed before the travel portion of the leg.
+        BookingWebLinks:
+          $ref: '#/components/schemas/RouteWebLinkList'
+          description: Web links to external ticket booking services for the rental.
+        Departure:
+          $ref: '#/components/schemas/RouteRentalDeparture'
+          description: Details corresponding to the departure for the leg.
+        Summary:
+          $ref: '#/components/schemas/RouteRentalSummary'
+          description: Summary of the rental leg.
+        Transport:
+          $ref: '#/components/schemas/RouteRentalTransportModeDetails'
+          description: Transport mode details for the rental leg.
+        TravelSteps:
+          $ref: '#/components/schemas/RouteRentalTravelStepList'
+          description: Steps of a leg that must be performed during the travel portion of the leg.
+      required:
+      - AfterTravelSteps
+      - Agency
+      - Arrival
+      - Attributions
+      - BeforeTravelSteps
+      - BookingWebLinks
+      - Departure
+      - Transport
+      - TravelSteps
+    RouteRentalAfterTravelStepList:
+      type: array
+      items:
+        $ref: '#/components/schemas/RouteRentalAfterTravelStep'
+    RouteRentalAfterTravelStep:
+      description: A step that must be performed after the travel portion of the leg.
+      type: object
+      properties:
+        Duration:
+          $ref: '#/components/schemas/DurationSeconds'
+          description: 'Duration of the step. Unit: seconds'
+        Instruction:
+          $ref: '#/components/schemas/SensitiveString'
+          description: Brief description of the step in the requested language.
+        Type:
+          $ref: '#/components/schemas/RouteRentalAfterTravelStepType'
+          description: Type of the step.
+      required:
+      - Duration
+      - Type
+    RouteRentalAfterTravelStepType:
+      type: string
+      enum:
+      - Park
+    RouteRentalAgency:
+      description: Details about the rental agency.
+      type: object
+      properties:
+        Name:
+          $ref: '#/components/schemas/SensitiveString'
+          description: Name of the agency.
+        Url:
+          $ref: '#/components/schemas/SensitiveString'
+          description: URL to the agency's website.
+      required:
+      - Name
+    RouteRentalArrival:
+      description: Details corresponding to the arrival for the leg.
+      type: object
+      properties:
+        Place:
+          $ref: '#/components/schemas/RouteRentalPlace'
+          description: Place details corresponding to the arrival.
+        Time:
+          $ref: '#/components/schemas/TimestampWithTimezoneOffset'
+          description: The arrival time.
+      required:
+      - Place
+    RouteRentalPlace:
+      description: Place details corresponding to the arrival or departure.
+      type: object
+      properties:
+        AccessPointDetails:
+          $ref: '#/components/schemas/RouteAccessPointDetails'
+          description: Details of the access point.
+        Name:
+          $ref: '#/components/schemas/SensitiveString'
+          description: The name of the place.
+        OriginalPosition:
+          $ref: '#/components/schemas/Position23'
+          description: Position provided in the request.
+        Position:
+          $ref: '#/components/schemas/Position23'
+          description: 'Position in World Geodetic System (WGS 84) format: [longitude, latitude].'
+        StationDetails:
+          $ref: '#/components/schemas/RouteStationDetails'
+          description: Details about the station.
+        Type:
+          $ref: '#/components/schemas/RouteRentalPlaceType'
+          description: The type of the place.
+        WaypointIndex:
+          $ref: '#/components/schemas/RouteRentalPlaceWaypointIndexInteger'
+          description: Index of the waypoint in the request.
+      required:
+      - Position
+    RouteRentalPlaceType:
+      type: string
+      enum:
+      - AccessPoint
+      - DockingStation
+      - ParkingLot
+      - Station
+    RouteRentalPlaceWaypointIndexInteger:
+      type: integer
+      minimum: 0
+    RouteAttributionList:
+      type: array
+      items:
+        $ref: '#/components/schemas/RouteAttribution'
+    RouteAttribution:
+      description: Required attribution to display.
+      type: object
+      properties:
+        AttributionType:
+          $ref: '#/components/schemas/RouteAttributionType'
+          description: The type of the attribution link.
+        WebLink:
+          $ref: '#/components/schemas/RouteWebLink'
+          description: The URL to an external resource.
+      required:
+      - WebLink
+    RouteAttributionType:
+      type: string
+      enum:
+      - Disclaimer
+      - Tariff
+    RouteWebLink:
+      description: The URL to an external resource.
+      type: object
+      properties:
+        AnchorText:
+          $ref: '#/components/schemas/SensitiveString'
+          description: The interactive or clickable portion of the text.
+        Description:
+          $ref: '#/components/schemas/SensitiveString'
+          description: Text describing the URL.
+        DeviceType:
+          $ref: '#/components/schemas/RouteWebLinkDeviceType'
+          description: Device type for which the link is intended.
+        Url:
+          $ref: '#/components/schemas/SensitiveString'
+          description: The URL of the link.
+      required:
+      - Description
+    RouteWebLinkDeviceType:
+      type: string
+      enum:
+      - Android
+      - Ios
+      - Web
+    RouteRentalBeforeTravelStepList:
+      type: array
+      items:
+        $ref: '#/components/schemas/RouteRentalBeforeTravelStep'
+    RouteRentalBeforeTravelStep:
+      description: A step that must be performed before the travel portion of the leg.
+      type: object
+      properties:
+        Duration:
+          $ref: '#/components/schemas/DurationSeconds'
+          description: 'Duration of the step. Unit: seconds'
+        Instruction:
+          $ref: '#/components/schemas/SensitiveString'
+          description: Brief description of the step in the requested language.
+        Type:
+          $ref: '#/components/schemas/RouteRentalBeforeTravelStepType'
+          description: Type of the step.
+      required:
+      - Duration
+      - Type
+    RouteRentalBeforeTravelStepType:
+      type: string
+      enum:
+      - Setup
+    RouteWebLinkList:
+      type: array
+      items:
+        $ref: '#/components/schemas/RouteWebLink'
+    RouteRentalDeparture:
+      description: Details corresponding to the departure for the leg.
+      type: object
+      properties:
+        Place:
+          $ref: '#/components/schemas/RouteRentalPlace'
+          description: Place details corresponding to the departure.
+        Time:
+          $ref: '#/components/schemas/TimestampWithTimezoneOffset'
+          description: The departure time.
+      required:
+      - Place
+    RouteRentalSummary:
+      description: Summary of the rental leg.
+      type: object
+      properties:
+        Overview:
+          $ref: '#/components/schemas/RouteRentalOverviewSummary'
+          description: Summary including duration and distance for the entire leg.
+        TravelOnly:
+          $ref: '#/components/schemas/RouteRentalTravelOnlySummary'
+          description: Summary including duration and distance for the travel portion of the leg only.
+    RouteRentalOverviewSummary:
+      description: Summary including duration and distance for the entire leg.
+      type: object
+      properties:
+        Duration:
+          $ref: '#/components/schemas/DurationSeconds'
+          description: 'Duration of the entire leg. Unit: seconds'
+        Distance:
+          $ref: '#/components/schemas/DistanceMeters'
+          description: 'Distance of the entire leg. Unit: meters'
+      required:
+      - Duration
+      - Distance
+    RouteRentalTravelOnlySummary:
+      description: Summary including duration and distance for the travel portion of the leg only.
+      type: object
+      properties:
+        Duration:
+          $ref: '#/components/schemas/DurationSeconds'
+          description: 'Duration of the travel portion of the rental leg. Unit: seconds'
+      required:
+      - Duration
+    RouteRentalTransportModeDetails:
+      description: Transport mode details for the rental leg.
+      type: object
+      properties:
+        AvailableSeats:
+          $ref: '#/components/schemas/RouteRentalTransportModeDetailsAvailableSeatsInteger'
+          description: Number of available seats in the vehicle.
+        Category:
+          $ref: '#/components/schemas/SensitiveString'
+          description: Human readable transport category.
+        Color:
+          $ref: '#/components/schemas/SensitiveString'
+          description: Color of the transport polyline and background for the transport name.
+        Engine:
+          $ref: '#/components/schemas/RouteEngineType'
+          description: Vehicle engine type.
+        LicensePlate:
+          $ref: '#/components/schemas/SensitiveString'
+          description: Vehicle license plate number.
+        Mode:
+          $ref: '#/components/schemas/RouteRentalMode'
+          description: Mode of the rental transport.
+        Model:
+          $ref: '#/components/schemas/SensitiveString'
+          description: Vehicle model.
+        Name:
+          $ref: '#/components/schemas/SensitiveString'
+          description: Vehicle name or mobility provider name.
+        TextColor:
+          $ref: '#/components/schemas/SensitiveString'
+          description: Color of the transport name text.
+      required:
+      - Mode
+    RouteRentalTransportModeDetailsAvailableSeatsInteger:
+      type: integer
+      minimum: 0
+    RouteRentalTravelStepList:
+      type: array
+      items:
+        $ref: '#/components/schemas/RouteRentalTravelStep'
+    RouteRentalTravelStep:
+      description: A step that must be performed during the travel portion of the leg.
+      type: object
+      properties:
+        ContinueStepDetails:
+          $ref: '#/components/schemas/RouteContinueStepDetails'
+        Distance:
+          $ref: '#/components/schemas/DistanceMeters'
+          description: 'Distance of the step. Unit: meters'
+        Duration:
+          $ref: '#/components/schemas/DurationSeconds'
+          description: 'Duration of the step. Unit: seconds'
+        ExitStepDetails:
+          $ref: '#/components/schemas/RouteExitStepDetails'
+        GeometryOffset:
+          $ref: '#/components/schemas/RouteRentalTravelStepGeometryOffsetInteger'
+          description: Offset in the leg geometry corresponding to the start of this step.
+        Instruction:
+          $ref: '#/components/schemas/SensitiveString'
+          description: Brief description of the step in the requested language.
+        KeepStepDetails:
+          $ref: '#/components/schemas/RouteKeepStepDetails'
+        RampStepDetails:
+          $ref: '#/components/schemas/RouteRampStepDetails'
+        RoundaboutEnterStepDetails:
+          $ref: '#/components/schemas/RouteRoundaboutEnterStepDetails'
+        RoundaboutExitStepDetails:
+          $ref: '#/components/schemas/RouteRoundaboutExitStepDetails'
+        RoundaboutPassStepDetails:
+          $ref: '#/components/schemas/RouteRoundaboutPassStepDetails'
+        TurnStepDetails:
+          $ref: '#/components/schemas/RouteTurnStepDetails'
+        Type:
+          $ref: '#/components/schemas/RouteRentalTravelStepType'
+          description: Type of the step.
+        UTurnStepDetails:
+          $ref: '#/components/schemas/RouteUTurnStepDetails'
+      required:
+      - Duration
+      - Type
+    RouteRentalTravelStepGeometryOffsetInteger:
+      type: integer
+      minimum: 0
+    RouteRentalTravelStepType:
+      type: string
+      enum:
+      - Arrive
+      - Continue
+      - Depart
+      - Exit
+      - Keep
+      - Ramp
+      - RoundaboutEnter
+      - RoundaboutExit
+      - RoundaboutPass
+      - Turn
+      - UTurn
+    RouteTaxiLegDetails:
+      description: Populated when the Leg type is Taxi, and provides additional information that is specific to taxi travel.
+      type: object
+      properties:
+        AfterTravelSteps:
+          $ref: '#/components/schemas/RouteTaxiAfterTravelStepList'
+          description: Steps of a leg that must be performed after the travel portion of the leg.
+        Agency:
+          $ref: '#/components/schemas/RouteTaxiAgency'
+          description: Details about the taxi agency.
+        Arrival:
+          $ref: '#/components/schemas/RouteTaxiArrival'
+          description: Details corresponding to the arrival for the leg.
+        Attributions:
+          $ref: '#/components/schemas/RouteAttributionList'
+          description: List of required attributions to display.
+        BeforeTravelSteps:
+          $ref: '#/components/schemas/RouteTaxiBeforeTravelStepList'
+          description: Steps of a leg that must be performed before the travel portion of the leg.
+        BookingWebLinks:
+          $ref: '#/components/schemas/RouteWebLinkList'
+          description: Web links to external ticket booking services for the taxi.
+        Departure:
+          $ref: '#/components/schemas/RouteTaxiDeparture'
+          description: Details corresponding to the departure for the leg.
+        Notices:
+          $ref: '#/components/schemas/RouteTaxiNoticeList'
+          description: List of notices that indicate issues that occurred during route calculation.
+        Summary:
+          $ref: '#/components/schemas/RouteTaxiSummary'
+          description: Summary of the taxi leg.
+        Transport:
+          $ref: '#/components/schemas/RouteTaxiTransportModeDetails'
+          description: Transport mode details for the taxi leg.
+        TravelSteps:
+          $ref: '#/components/schemas/RouteTaxiTravelStepList'
+          description: Steps of a leg that must be performed during the travel portion of the leg.
+      required:
+      - AfterTravelSteps
+      - Agency
+      - Arrival
+      - Attributions
+      - BeforeTravelSteps
+      - BookingWebLinks
+      - Departure
+      - Notices
+      - Transport
+      - TravelSteps
+    RouteTaxiAfterTravelStepList:
+      type: array
+      items:
+        $ref: '#/components/schemas/RouteTaxiAfterTravelStep'
+    RouteTaxiAfterTravelStep:
+      description: A step that must be performed after the travel portion of the leg.
+      type: object
+      properties:
+        Duration:
+          $ref: '#/components/schemas/DurationSeconds'
+          description: 'Duration of the step. Unit: seconds'
+        Instruction:
+          $ref: '#/components/schemas/SensitiveString'
+          description: Brief description of the step in the requested language.
+        Type:
+          $ref: '#/components/schemas/RouteTaxiAfterTravelStepType'
+          description: Type of the step.
+      required:
+      - Duration
+      - Type
+    RouteTaxiAfterTravelStepType:
+      type: string
+      enum:
+      - Park
+    RouteTaxiAgency:
+      description: Details about the taxi agency.
+      type: object
+      properties:
+        Name:
+          $ref: '#/components/schemas/SensitiveString'
+          description: Name of the agency.
+        Url:
+          $ref: '#/components/schemas/SensitiveString'
+          description: URL to the agency's website.
+      required:
+      - Name
+    RouteTaxiArrival:
+      description: Details corresponding to the arrival for the leg.
+      type: object
+      properties:
+        Place:
+          $ref: '#/components/schemas/RouteTaxiPlace'
+          description: Place details corresponding to the arrival.
+        Time:
+          $ref: '#/components/schemas/TimestampWithTimezoneOffset'
+          description: The arrival time.
+      required:
+      - Place
+    RouteTaxiPlace:
+      description: Place details corresponding to the arrival or departure.
+      type: object
+      properties:
+        AccessPointDetails:
+          $ref: '#/components/schemas/RouteAccessPointDetails'
+          description: Details of the access point.
+        Name:
+          $ref: '#/components/schemas/SensitiveString'
+          description: The name of the place.
+        OriginalPosition:
+          $ref: '#/components/schemas/Position23'
+          description: Position provided in the request.
+        Position:
+          $ref: '#/components/schemas/Position23'
+          description: 'Position in World Geodetic System (WGS 84) format: [longitude, latitude].'
+        StationDetails:
+          $ref: '#/components/schemas/RouteStationDetails'
+          description: Details about the station.
+        Type:
+          $ref: '#/components/schemas/RouteTaxiPlaceType'
+          description: The type of the place.
+        WaypointIndex:
+          $ref: '#/components/schemas/RouteTaxiPlaceWaypointIndexInteger'
+          description: Index of the waypoint in the request.
+      required:
+      - Position
+    RouteTaxiPlaceType:
+      type: string
+      enum:
+      - AccessPoint
+      - Station
+    RouteTaxiPlaceWaypointIndexInteger:
+      type: integer
+      minimum: 0
+    RouteTaxiBeforeTravelStepList:
+      type: array
+      items:
+        $ref: '#/components/schemas/RouteTaxiBeforeTravelStep'
+    RouteTaxiBeforeTravelStep:
+      description: A step that must be performed before the travel portion of the leg.
+      type: object
+      properties:
+        Duration:
+          $ref: '#/components/schemas/DurationSeconds'
+          description: 'Duration of the step. Unit: seconds'
+        Instruction:
+          $ref: '#/components/schemas/SensitiveString'
+          description: Brief description of the step in the requested language.
+        Type:
+          $ref: '#/components/schemas/RouteTaxiBeforeTravelStepType'
+          description: Type of the step.
+      required:
+      - Duration
+      - Type
+    RouteTaxiBeforeTravelStepType:
+      type: string
+      enum:
+      - Wait
+    RouteTaxiDeparture:
+      description: Details corresponding to the departure for the leg.
+      type: object
+      properties:
+        Place:
+          $ref: '#/components/schemas/RouteTaxiPlace'
+          description: Place details corresponding to the departure.
+        Time:
+          $ref: '#/components/schemas/TimestampWithTimezoneOffset'
+          description: The departure time.
+      required:
+      - Place
+    RouteTaxiNoticeList:
+      type: array
+      items:
+        $ref: '#/components/schemas/RouteTaxiNotice'
+    RouteTaxiNotice:
+      description: A notice that indicates an issue that occurred during route calculation.
+      type: object
+      properties:
+        Code:
+          $ref: '#/components/schemas/RouteTaxiNoticeCode'
+          description: Code corresponding to the issue.
+        Impact:
+          $ref: '#/components/schemas/RouteNoticeImpact'
+          description: Impact corresponding to the issue. While Low impact notices can be safely ignored, High impact notices
+            must be evaluated further to determine the impact.
+      required:
+      - Code
+    RouteTaxiNoticeCode:
+      type: string
+      enum:
+      - AccuratePolylineUnavailable
+      - Other
+    RouteTaxiSummary:
+      description: Summary of the taxi leg.
+      type: object
+      properties:
+        Overview:
+          $ref: '#/components/schemas/RouteTaxiOverviewSummary'
+          description: Summary including duration and distance for the entire leg.
+        TravelOnly:
+          $ref: '#/components/schemas/RouteTaxiTravelOnlySummary'
+          description: Summary including duration and distance for the travel portion of the leg only.
+    RouteTaxiOverviewSummary:
+      description: Summary including duration and distance for the entire leg.
+      type: object
+      properties:
+        Duration:
+          $ref: '#/components/schemas/DurationSeconds'
+          description: 'Duration of the entire leg. Unit: seconds'
+        Distance:
+          $ref: '#/components/schemas/DistanceMeters'
+          description: 'Distance of the entire leg. Unit: meters'
+      required:
+      - Duration
+      - Distance
+    RouteTaxiTravelOnlySummary:
+      description: Summary including duration and distance for the travel portion of the leg only.
+      type: object
+      properties:
+        Duration:
+          $ref: '#/components/schemas/DurationSeconds'
+          description: 'Duration of the travel portion of the taxi leg. Unit: seconds'
+      required:
+      - Duration
+    RouteTaxiTransportModeDetails:
+      description: Transport mode details for the taxi leg.
+      type: object
+      properties:
+        AvailableSeats:
+          $ref: '#/components/schemas/RouteTaxiTransportModeDetailsAvailableSeatsInteger'
+          description: Number of available seats in the vehicle.
+        Category:
+          $ref: '#/components/schemas/SensitiveString'
+          description: Human readable transport category.
+        Color:
+          $ref: '#/components/schemas/SensitiveString'
+          description: Color of the transport polyline and background for the transport name.
+        Engine:
+          $ref: '#/components/schemas/RouteEngineType'
+          description: Vehicle engine type.
+        LicensePlate:
+          $ref: '#/components/schemas/SensitiveString'
+          description: Vehicle license plate number.
+        Mode:
+          $ref: '#/components/schemas/RouteTaxiMode'
+          description: Mode of the taxi transport.
+        Model:
+          $ref: '#/components/schemas/SensitiveString'
+          description: Vehicle model.
+        Name:
+          $ref: '#/components/schemas/SensitiveString'
+          description: Vehicle name or mobility provider name.
+        TextColor:
+          $ref: '#/components/schemas/SensitiveString'
+          description: Color of the transport name text.
+      required:
+      - Mode
+    RouteTaxiTransportModeDetailsAvailableSeatsInteger:
+      type: integer
+      minimum: 0
+    RouteTaxiTravelStepList:
+      type: array
+      items:
+        $ref: '#/components/schemas/RouteTaxiTravelStep'
+    RouteTaxiTravelStep:
+      description: A step that must be performed during the travel portion of the leg.
+      type: object
+      properties:
+        ContinueStepDetails:
+          $ref: '#/components/schemas/RouteContinueStepDetails'
+        Distance:
+          $ref: '#/components/schemas/DistanceMeters'
+          description: 'Distance of the step. Unit: meters'
+        Duration:
+          $ref: '#/components/schemas/DurationSeconds'
+          description: 'Duration of the step. Unit: seconds'
+        ExitStepDetails:
+          $ref: '#/components/schemas/RouteExitStepDetails'
+        GeometryOffset:
+          $ref: '#/components/schemas/RouteTaxiTravelStepGeometryOffsetInteger'
+          description: Offset in the leg geometry corresponding to the start of this step.
+        Instruction:
+          $ref: '#/components/schemas/SensitiveString'
+          description: Brief description of the step in the requested language.
+        KeepStepDetails:
+          $ref: '#/components/schemas/RouteKeepStepDetails'
+        RampStepDetails:
+          $ref: '#/components/schemas/RouteRampStepDetails'
+        RoundaboutEnterStepDetails:
+          $ref: '#/components/schemas/RouteRoundaboutEnterStepDetails'
+        RoundaboutExitStepDetails:
+          $ref: '#/components/schemas/RouteRoundaboutExitStepDetails'
+        RoundaboutPassStepDetails:
+          $ref: '#/components/schemas/RouteRoundaboutPassStepDetails'
+        TurnStepDetails:
+          $ref: '#/components/schemas/RouteTurnStepDetails'
+        Type:
+          $ref: '#/components/schemas/RouteTaxiTravelStepType'
+          description: Type of the step.
+        UTurnStepDetails:
+          $ref: '#/components/schemas/RouteUTurnStepDetails'
+      required:
+      - Duration
+      - Type
+    RouteTaxiTravelStepGeometryOffsetInteger:
+      type: integer
+      minimum: 0
+    RouteTaxiTravelStepType:
+      type: string
+      enum:
+      - Arrive
+      - Continue
+      - Depart
+      - Exit
+      - Keep
+      - Ramp
+      - RoundaboutEnter
+      - RoundaboutExit
+      - RoundaboutPass
+      - Turn
+      - UTurn
+    RouteTransitLegDetails:
+      description: Populated when the Leg type is Transit, and provides additional information that is specific to public
+        transit travel.
+      type: object
+      properties:
+        AfterTravelSteps:
+          $ref: '#/components/schemas/RouteTransitAfterTravelStepList'
+          description: Steps of a leg that must be performed after the travel portion of the leg.
+        Agency:
+          $ref: '#/components/schemas/RouteTransitAgency'
+          description: Details about the transit agency.
+        Arrival:
+          $ref: '#/components/schemas/RouteTransitArrival'
+          description: Details corresponding to the arrival for the leg.
+        Attributions:
+          $ref: '#/components/schemas/RouteAttributionList'
+          description: List of required attributions to display.
+        BeforeTravelSteps:
+          $ref: '#/components/schemas/RouteTransitBeforeTravelStepList'
+          description: Steps of a leg that must be performed before the travel portion of the leg.
+        BookingWebLinks:
+          $ref: '#/components/schemas/RouteWebLinkList'
+          description: Web links to external ticket booking services for the transit.
+        Departure:
+          $ref: '#/components/schemas/RouteTransitDeparture'
+          description: Details corresponding to the departure for the leg.
+        Incidents:
+          $ref: '#/components/schemas/RouteTransitIncidentList'
+          description: Incidents affecting this leg of the transit route.
+        IntermediateStops:
+          $ref: '#/components/schemas/RouteTransitIntermediateStopList'
+          description: Intermediate stops between departure and destination of the transit route.
+        NextDepartures:
+          $ref: '#/components/schemas/RouteTransitNextDepartureList'
+          description: List of next departures that cover the same section of the route.
+        Notices:
+          $ref: '#/components/schemas/RouteTransitNoticeList'
+          description: List of notices that indicate issues that occurred during route calculation.
+        PassThroughWaypoints:
+          $ref: '#/components/schemas/RoutePassThroughWaypointList'
+          description: Waypoints that were passed through during the leg. This includes the waypoints that were configured
+            with the PassThrough option. Not populated when the TravelMode is Transit or Intermodal.
+        Spans:
+          $ref: '#/components/schemas/RouteTransitSpanList'
+          description: Spans that were computed for the requested SpanAdditionalFeatures. Not populated when the TravelMode
+            is Transit or Intermodal.
+        Summary:
+          $ref: '#/components/schemas/RouteTransitSummary'
+          description: Summary of the transit leg.
+        Transport:
+          $ref: '#/components/schemas/RouteTransitTransportModeDetails'
+          description: Transport mode details for the transit leg.
+        TravelSteps:
+          $ref: '#/components/schemas/RouteTransitTravelStepList'
+          description: Steps of a leg that must be performed during the travel portion of the leg.
+      required:
+      - AfterTravelSteps
+      - Arrival
+      - Attributions
+      - BeforeTravelSteps
+      - BookingWebLinks
+      - Departure
+      - Incidents
+      - IntermediateStops
+      - NextDepartures
+      - Notices
+      - PassThroughWaypoints
+      - Spans
+      - Transport
+      - TravelSteps
+    RouteTransitAfterTravelStepList:
+      type: array
+      items:
+        $ref: '#/components/schemas/RouteTransitAfterTravelStep'
+    RouteTransitAfterTravelStep:
+      description: A step that must be performed after the travel portion of the leg.
+      type: object
+      properties:
+        Duration:
+          $ref: '#/components/schemas/DurationSeconds'
+          description: 'Duration of the step. Unit: seconds'
+        Instruction:
+          $ref: '#/components/schemas/SensitiveString'
+          description: Brief description of the step in the requested language.
+        Type:
+          $ref: '#/components/schemas/RouteTransitAfterTravelStepType'
+          description: Type of the step.
+      required:
+      - Duration
+      - Type
+    RouteTransitAfterTravelStepType:
+      type: string
+      enum:
+      - Deboard
+    RouteTransitAgency:
+      description: Details about the transit agency.
+      type: object
+      properties:
+        Name:
+          $ref: '#/components/schemas/SensitiveString'
+          description: Name of the agency.
+        Url:
+          $ref: '#/components/schemas/SensitiveString'
+          description: URL to the agency's website.
+      required:
+      - Name
+    RouteTransitArrival:
+      description: Details corresponding to the arrival for the leg.
+      type: object
+      properties:
+        Delay:
+          $ref: '#/components/schemas/DurationSeconds'
+          description: 'The delay from the scheduled arrival time. Unit: seconds'
+        Place:
+          $ref: '#/components/schemas/RouteTransitPlace'
+          description: Place details corresponding to the arrival.
+        Status:
+          $ref: '#/components/schemas/RouteTransitTripStatus'
+          description: The status of the arrival.
+        Time:
+          $ref: '#/components/schemas/TimestampWithTimezoneOffset'
+          description: The arrival time.
+      required:
+      - Place
+    RouteTransitPlace:
+      description: Place details corresponding to the arrival or departure.
+      type: object
+      properties:
+        Name:
+          $ref: '#/components/schemas/SensitiveString'
+          description: The name of the place.
+        OriginalPosition:
+          $ref: '#/components/schemas/Position23'
+          description: Position provided in the request.
+        Position:
+          $ref: '#/components/schemas/Position23'
+          description: 'Position in World Geodetic System (WGS 84) format: [longitude, latitude].'
+        StationDetails:
+          $ref: '#/components/schemas/RouteStationDetails'
+          description: Details about the station.
+        Type:
+          $ref: '#/components/schemas/RouteTransitPlaceType'
+          description: The type of the place.
+        WaypointIndex:
+          $ref: '#/components/schemas/RouteTransitPlaceWaypointIndexInteger'
+          description: Index of the waypoint in the request.
+      required:
+      - Position
+    RouteTransitPlaceType:
+      type: string
+      enum:
+      - Station
+    RouteTransitPlaceWaypointIndexInteger:
+      type: integer
+      minimum: 0
+    RouteTransitTripStatus:
+      type: string
+      enum:
+      - Added
+      - Cancelled
+      - Replaced
+      - Scheduled
+    RouteTransitBeforeTravelStepList:
+      type: array
+      items:
+        $ref: '#/components/schemas/RouteTransitBeforeTravelStep'
+    RouteTransitBeforeTravelStep:
+      description: A step that must be performed before the travel portion of the leg.
+      type: object
+      properties:
+        Duration:
+          $ref: '#/components/schemas/DurationSeconds'
+          description: 'Duration of the step. Unit: seconds'
+        Instruction:
+          $ref: '#/components/schemas/SensitiveString'
+          description: Brief description of the step in the requested language.
+        Type:
+          $ref: '#/components/schemas/RouteTransitBeforeTravelStepType'
+          description: Type of the step.
+      required:
+      - Duration
+      - Type
+    RouteTransitBeforeTravelStepType:
+      type: string
+      enum:
+      - Board
+    RouteTransitDeparture:
+      description: Details corresponding to the departure for the leg.
+      type: object
+      properties:
+        Delay:
+          $ref: '#/components/schemas/DurationSeconds'
+          description: 'The delay from the scheduled departure time. Unit: seconds'
+        Place:
+          $ref: '#/components/schemas/RouteTransitPlace'
+          description: Place details corresponding to the departure.
+        Status:
+          $ref: '#/components/schemas/RouteTransitTripStatus'
+          description: The status of the departure.
+        Time:
+          $ref: '#/components/schemas/TimestampWithTimezoneOffset'
+          description: The departure time.
+      required:
+      - Place
+    RouteTransitIncidentList:
+      type: array
+      items:
+        $ref: '#/components/schemas/RouteTransitIncident'
+    RouteTransitIncident:
+      description: An incident describes disruptions on the transit route.
+      type: object
+      properties:
+        Description:
+          $ref: '#/components/schemas/SensitiveString'
+          description: A human readable description of the incident.
+        Effect:
+          $ref: '#/components/schemas/RouteTransitIncidentEffect'
+          description: The effect of the incident on the transit service.
+        EndTime:
+          $ref: '#/components/schemas/TimestampWithTimezoneOffset'
+          description: The end time of the incident.
+        StartTime:
+          $ref: '#/components/schemas/TimestampWithTimezoneOffset'
+          description: The start time of the incident.
+        Type:
+          $ref: '#/components/schemas/RouteTransitIncidentType'
+          description: Type of the incident.
+        Url:
+          $ref: '#/components/schemas/SensitiveString'
+          description: URL to the original incident published at the agency website.
+      required:
+      - Effect
+      - Type
+    RouteTransitIncidentEffect:
+      type: string
+      enum:
+      - Delayed
+      - Detoured
+      - Other
+      - ServiceAdded
+      - ServiceCancelled
+      - ServiceModified
+      - ServiceReduced
+      - StopMoved
+    RouteTransitIncidentType:
+      type: string
+      enum:
+      - Accident
+      - Construction
+      - Demonstration
+      - Holiday
+      - Maintenance
+      - MedicalEmergency
+      - Other
+      - PoliceActivity
+      - Strike
+      - TechnicalProblem
+      - Weather
+    RouteTransitIntermediateStopList:
+      type: array
+      items:
+        $ref: '#/components/schemas/RouteTransitIntermediateStop'
+    RouteTransitIntermediateStop:
+      description: An intermediate stop between departure and destination of the transit route.
+      type: object
+      properties:
+        Attributes:
+          $ref: '#/components/schemas/RouteTransitIntermediateStopAttributeList'
+          description: Attributes of the intermediate stop.
+        Departure:
+          $ref: '#/components/schemas/RouteTransitDeparture'
+          description: Departure details for the intermediate stop.
+        Duration:
+          $ref: '#/components/schemas/DurationSeconds'
+          description: 'Duration of the stop. Unit: seconds'
+        GeometryOffset:
+          $ref: '#/components/schemas/RouteTransitIntermediateStopGeometryOffsetInteger'
+          description: Offset in the leg geometry corresponding to the start of this stop.
+        Transport:
+          $ref: '#/components/schemas/RouteTransitTransportModeDetails'
+          description: Transport mode details at the intermediate stop.
+      required:
+      - Departure
+      - Duration
+    RouteTransitIntermediateStopAttributeList:
+      type: array
+      items:
+        $ref: '#/components/schemas/RouteTransitIntermediateStopAttribute'
+    RouteTransitIntermediateStopAttribute:
+      type: string
+      enum:
+      - NoEntry
+      - NoExit
+    RouteTransitIntermediateStopGeometryOffsetInteger:
+      type: integer
+      minimum: 0
+    RouteTransitTransportModeDetails:
+      description: Transport mode details for the transit leg.
+      type: object
+      properties:
+        Accessibility:
+          $ref: '#/components/schemas/RouteAccessibilityAvailabilityDetails'
+          description: Wheelchair accessibility information for the transit vehicle.
+        Color:
+          $ref: '#/components/schemas/HexColor'
+          description: Color of the transport polyline and background for the transport name.
+        Headsign:
+          $ref: '#/components/schemas/SensitiveString'
+          description: Transit route headsign.
+        LongRouteName:
+          $ref: '#/components/schemas/SensitiveString'
+          description: Long name of the transit route.
+        Mode:
+          $ref: '#/components/schemas/RouteTransitMode'
+          description: Mode of the transit transport.
+        RouteName:
+          $ref: '#/components/schemas/SensitiveString'
+          description: Transit route name.
+        ShortRouteName:
+          $ref: '#/components/schemas/SensitiveString'
+          description: Short name of the transit route.
+        TextColor:
+          $ref: '#/components/schemas/HexColor'
+          description: Color of the transport name text.
+      required:
+      - Mode
+    HexColor:
+      type: string
+      pattern: .*#[0-9A-Fa-f]{6}.*
+    RouteTransitNextDepartureList:
+      type: array
+      items:
+        $ref: '#/components/schemas/RouteTransitNextDeparture'
+    RouteTransitNextDeparture:
+      description: Details about the next available departure for the transit service.
+      type: object
+      properties:
+        Delay:
+          $ref: '#/components/schemas/DurationSeconds'
+          description: 'The delay from the scheduled departure time. Unit: seconds'
+        PlatformName:
+          $ref: '#/components/schemas/SensitiveString'
+          description: Platform name or number for the departure.
+        Status:
+          $ref: '#/components/schemas/RouteTransitTripStatus'
+          description: The status of the departure.
+        Time:
+          $ref: '#/components/schemas/TimestampWithTimezoneOffset'
+          description: The departure time.
+        Transport:
+          $ref: '#/components/schemas/RouteTransitTransportModeDetails'
+          description: Transport mode details for this departure.
+      required:
+      - Time
+    RouteTransitNoticeList:
+      type: array
+      items:
+        $ref: '#/components/schemas/RouteTransitNotice'
+    RouteTransitNotice:
+      description: A notice that indicates an issue that occurred during route calculation.
+      type: object
+      properties:
+        Code:
+          $ref: '#/components/schemas/RouteTransitNoticeCode'
+          description: Code corresponding to the issue.
+        Impact:
+          $ref: '#/components/schemas/RouteNoticeImpact'
+          description: Impact corresponding to the issue. While Low impact notices can be safely ignored, High impact notices
+            must be evaluated further to determine the impact.
+      required:
+      - Code
+    RouteTransitNoticeCode:
+      type: string
+      enum:
+      - AccuratePolylineUnavailable
+      - IntermediateStopsUnavailable
+      - NoSchedule
+      - Other
+      - PotentialViolatedVehicleRestrictionUsage
+      - ScheduledTimes
+      - SeasonalClosure
+      - ViolatedAvoidFerry
+      - ViolatedAvoidRailFerry
+      - ViolatedExcludedTransitMode
+      - ViolatedVehicleRestriction
+      - ViolatedAvoidAreas
+    RouteTransitSpanList:
+      type: array
+      items:
+        $ref: '#/components/schemas/RouteTransitSpan'
+    RouteTransitSpan:
+      description: Span computed for the requested SpanAdditionalFeatures.
+      type: object
+      properties:
+        Country:
+          $ref: '#/components/schemas/CountryCode3'
+          description: 3 letter Country code corresponding to the Span.
+        Distance:
+          $ref: '#/components/schemas/DistanceMeters'
+          description: 'Distance of the computed span. This feature doesn''t split a span, but is always computed on a span
+            split by other properties. Unit: meters'
+        Duration:
+          $ref: '#/components/schemas/DurationSeconds'
+          description: 'Duration of the computed span. This feature doesn''t split a span, but is always computed on a span
+            split by other properties. Unit: seconds'
+        GeometryOffset:
+          $ref: '#/components/schemas/RouteTransitSpanGeometryOffsetInteger'
+          description: Offset in the leg geometry corresponding to the start of this span.
+        Names:
+          $ref: '#/components/schemas/LocalizedStringList'
+          description: Names of the transit span in available languages.
+        Region:
+          $ref: '#/components/schemas/RouteTransitSpanRegionString'
+          description: 2-3 letter Region code corresponding to the Span. This is either a province or a state.
+    RouteTransitSpanGeometryOffsetInteger:
+      type: integer
+      minimum: 0
+    RouteTransitSpanRegionString:
+      type: string
+      minLength: 0
+      maxLength: 3
+    RouteTransitSummary:
+      description: Summary of the transit leg.
+      type: object
+      properties:
+        Overview:
+          $ref: '#/components/schemas/RouteTransitOverviewSummary'
+          description: Summary including duration and distance for the entire leg.
+        TravelOnly:
+          $ref: '#/components/schemas/RouteTransitTravelOnlySummary'
+          description: Summary including duration and distance for the travel portion of the leg only.
+    RouteTransitOverviewSummary:
+      description: Summary including duration and distance for the entire leg.
+      type: object
+      properties:
+        Distance:
+          $ref: '#/components/schemas/DistanceMeters'
+          description: 'Distance of the entire leg. Unit: meters'
+        Duration:
+          $ref: '#/components/schemas/DurationSeconds'
+          description: 'Duration of the entire leg. Unit: seconds'
+      required:
+      - Distance
+      - Duration
+    RouteTransitTravelOnlySummary:
+      description: Summary including duration and distance for the travel portion of the leg only.
+      type: object
+      properties:
+        Duration:
+          $ref: '#/components/schemas/DurationSeconds'
+          description: 'Duration of the travel portion of the transit leg. Unit: seconds'
+      required:
+      - Duration
+    RouteTransitTravelStepList:
+      type: array
+      items:
+        $ref: '#/components/schemas/RouteTransitTravelStep'
+    RouteTransitTravelStep:
+      description: A step that must be performed during the travel portion of the leg.
+      type: object
+      properties:
+        Distance:
+          $ref: '#/components/schemas/DistanceMeters'
+          description: 'Distance of the step. Unit: meters'
+        Duration:
+          $ref: '#/components/schemas/DurationSeconds'
+          description: 'Duration of the step. Unit: seconds'
+        GeometryOffset:
+          $ref: '#/components/schemas/RouteTransitTravelStepGeometryOffsetInteger'
+          description: Offset in the leg geometry corresponding to the start of this step.
+        Instruction:
+          $ref: '#/components/schemas/SensitiveString'
+          description: Brief description of the step in the requested language.
+        Type:
+          $ref: '#/components/schemas/RouteTransitTravelStepType'
+          description: Type of the step.
+      required:
+      - Duration
+      - Type
+    RouteTransitTravelStepGeometryOffsetInteger:
+      type: integer
+      minimum: 0
+    RouteTransitTravelStepType:
+      type: string
+      enum:
+      - Depart
     RouteMajorRoadLabelsList:
       type: array
       items:

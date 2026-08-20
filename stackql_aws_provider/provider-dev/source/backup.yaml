@@ -81,6 +81,44 @@ paths:
       x-stackql-resource: legal_holds
       x-stackql-method: cancel_legal_hold
       x-stackql-verb: EXEC
+  /backup-access-point/create:
+    put:
+      operationId: CreateBackupAccessPoint
+      description: Creates a backup access point for an Amazon S3 recovery point. A backup access point provides on-demand,
+        read-only access to the backup data in a recovery point through an Amazon S3 access point, without initiating a restore.
+        While a backup access point is active for a recovery point, Backup pauses lifecycle transitions and blocks deletion
+        of that recovery point.
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                AccessPointMetadata:
+                  $ref: '#/components/schemas/AccessPointMetadataMap'
+                AccessPointPolicy:
+                  $ref: '#/components/schemas/AccessPointPolicy'
+                Name:
+                  $ref: '#/components/schemas/AccessPointName'
+                RecoveryPointArn:
+                  $ref: '#/components/schemas/RecoveryPointArn'
+                Tags:
+                  $ref: '#/components/schemas/TagMap'
+              required:
+              - Name
+              - RecoveryPointArn
+      responses:
+        '201':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateBackupAccessPointResponse'
+      x-stackql-resource: backup_access_points
+      x-stackql-method: create_backup_access_point
+      x-stackql-verb: INSERT
   /backup/plans/:
     put:
       operationId: CreateBackupPlan
@@ -760,6 +798,25 @@ paths:
       x-stackql-resource: tiering_configurations
       x-stackql-method: create_tiering_configuration
       x-stackql-verb: INSERT
+  /backup-access-point/delete/{access_point_arn}:
+    delete:
+      operationId: DeleteBackupAccessPoint
+      description: Deletes a backup access point. This deletes the underlying Amazon S3 access point and, if no other backup
+        access points remain for the recovery point, resumes lifecycle transitions for that recovery point. Always delete
+        backup access points using this operation rather than deleting the underlying Amazon S3 access point directly.
+      parameters:
+      - name: access_point_arn
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/AccessPointArn'
+        description: The Amazon Resource Name (ARN) of the backup access point to delete.
+      responses:
+        '204':
+          description: Success
+      x-stackql-resource: backup_access_points
+      x-stackql-method: delete_backup_access_point
+      x-stackql-verb: DELETE
   /backup/plans/{backup_plan_id}:
     delete:
       operationId: DeleteBackupPlan
@@ -1545,6 +1602,29 @@ paths:
       x-stackql-resource: tiering_configurations
       x-stackql-method: update_tiering_configuration
       x-stackql-verb: UPDATE
+  /backup-access-point/{access_point_arn}:
+    get:
+      operationId: DescribeBackupAccessPoint
+      description: Returns metadata about a backup access point, including its status and the details of the underlying Amazon
+        S3 access point. After a backup access point reaches the AVAILABLE status, use this operation to retrieve the Amazon
+        S3 access point ARN and alias that you need to read the backup data.
+      parameters:
+      - name: access_point_arn
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/AccessPointArn'
+        description: The Amazon Resource Name (ARN) of the backup access point to describe.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DescribeBackupAccessPointResponse'
+      x-stackql-resource: backup_access_points
+      x-stackql-method: describe_backup_access_point
+      x-stackql-verb: SELECT
   /backup-jobs/{backup_job_id}:
     get:
       operationId: DescribeBackupJob
@@ -1980,6 +2060,47 @@ paths:
       x-stackql-resource: legal_holds
       x-stackql-method: get_legal_hold
       x-stackql-verb: SELECT
+  /scan/pitr-malware-scan-results:
+    get:
+      operationId: GetPITRMalwareScanResults
+      description: Returns the malware scan results for a specified point in time within a continuous (point-in-time recovery)
+        backup.
+      parameters:
+      - name: RecoveryPointArn
+        in: query
+        required: true
+        schema:
+          $ref: '#/components/schemas/String'
+        description: An ARN that uniquely identifies the target recovery point for scanning; for example, arn:aws:backup:us-east-1:123456789012:recovery-point:1EB3B5E7-9EB0-435A-A80B-108B488B0D45.
+      - name: BackupVaultName
+        in: query
+        required: true
+        schema:
+          $ref: '#/components/schemas/String'
+        description: The name of a logical container where backups are stored. Backup vaults are identified by names that
+          are unique to the account used to create them and the Amazon Web Services Region where they are created.
+      - name: ScanEndTime
+        in: query
+        required: true
+        schema:
+          $ref: '#/components/schemas/Timestamp'
+        description: The point in time within the continuous backup to examine for malware scan results.
+      - name: MalwareScanner
+        in: query
+        required: true
+        schema:
+          $ref: '#/components/schemas/MalwareScanner'
+        description: The scanning engine used for the corresponding scan job. Currently only GUARDDUTY is supported.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetPITRMalwareScanResultsOutput'
+      x-stackql-resource: pitr_malware_scan_results
+      x-stackql-method: get_pitr_malware_scan_results
+      x-stackql-verb: SELECT
   /backup-vaults/{backup_vault_name}/recovery-points/{recovery_point_arn}/index:
     get:
       operationId: GetRecoveryPointIndexDetails
@@ -2163,6 +2284,118 @@ paths:
       x-stackql-transform-type: golang_template_json_v0.3.0
       x-stackql-transform-body: '{{- $lst := index . "ResourceTypes" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{-
         range $i, $v := $lst -}}{{- if $i }},{{ end }}{"resource_type": {{ toJson $v }}}{{- end -}}{{- end -}}]}'
+  /backup-access-point:
+    get:
+      operationId: ListBackupAccessPoints
+      description: Returns a list of the backup access points in your account and Region.
+      parameters:
+      - name: MaxResults
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/ListBackupAccessPointsRequestMaxResultsInteger'
+        description: The maximum number of items to be returned.
+      - name: NextToken
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/String'
+        description: The next item following a partial list of returned items. For example, if a request is made to return
+          MaxResults number of items, NextToken allows you to return more items in your list starting at the location pointed
+          to by the next token.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListBackupAccessPointsResponse'
+      x-stackql-resource: backup_access_points
+      x-stackql-method: list_backup_access_points
+      x-stackql-verb: SELECT
+      x-stackql-objectKey: $.BackupAccessPoints
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
+  /backup-access-point/recovery-point/{recovery_point_arn}:
+    post:
+      operationId: ListBackupAccessPointsByRecoveryPoint
+      description: Returns the backup access points associated with the specified recovery point. If you own the recovery
+        point and have shared it with other accounts, the response includes backup access points created by those accounts.
+      parameters:
+      - name: MaxResults
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/ListBackupAccessPointsByRecoveryPointRequestMaxResultsInteger'
+        description: The maximum number of items to be returned.
+      - name: NextToken
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/String'
+        description: The next item following a partial list of returned items. For example, if a request is made to return
+          MaxResults number of items, NextToken allows you to return more items in your list starting at the location pointed
+          to by the next token.
+      - name: recovery_point_arn
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/RecoveryPointArn'
+        description: The Amazon Resource Name (ARN) of the recovery point whose backup access points you want to list.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListBackupAccessPointsByRecoveryPointResponse'
+      x-stackql-resource: backup_access_points_by_recovery_points
+      x-stackql-method: list_backup_access_points_by_recovery_point
+      x-stackql-verb: SELECT
+      x-stackql-objectKey: $.BackupAccessPoints
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
+  /backup-access-point/resource/{resource_arn}:
+    post:
+      operationId: ListBackupAccessPointsByResource
+      description: Returns the backup access points associated with the specified resource, such as an Amazon S3 bucket.
+      parameters:
+      - name: MaxResults
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/ListBackupAccessPointsByResourceRequestMaxResultsInteger'
+        description: The maximum number of items to be returned.
+      - name: NextToken
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/String'
+        description: The next item following a partial list of returned items. For example, if a request is made to return
+          MaxResults number of items, NextToken allows you to return more items in your list starting at the location pointed
+          to by the next token.
+      - name: resource_arn
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/ResourceArn'
+        description: The Amazon Resource Name (ARN) of the resource whose backup access points you want to list.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListBackupAccessPointsByResourceResponse'
+      x-stackql-resource: backup_access_points_by_resources
+      x-stackql-method: list_backup_access_points_by_resource
+      x-stackql-verb: SELECT
+      x-stackql-objectKey: $.BackupAccessPoints
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /audit/backup-job-summaries:
     get:
       operationId: ListBackupJobSummaries
@@ -2739,8 +2972,9 @@ paths:
   /resources/:
     get:
       operationId: ListProtectedResources
-      description: Returns an array of resources successfully backed up by Backup, including the time the resource was saved,
-        an Amazon Resource Name (ARN) of the resource, and a resource type.
+      description: Returns an array of resources with recovery points created by Backup (regardless of the recovery point's
+        status), including the time the resource was saved, an Amazon Resource Name (ARN) of the resource, and a resource
+        type.
       parameters:
       - name: nextToken
         in: query
@@ -2977,7 +3211,8 @@ paths:
           $ref: '#/components/schemas/boolean'
         description: 'This attribute filters recovery points based on ownership. If this is set to TRUE, the response will
           contain recovery points associated with the selected resources that are managed by Backup. If this is set to FALSE,
-          the response will contain all recovery points associated with the selected resource. Type: Boolean'
+          the response will contain all recovery points associated with the selected resource, except for EBS snapshots copied
+          within the same Region and account. Type: Boolean'
       responses:
         '200':
           description: Success
@@ -3790,6 +4025,8 @@ paths:
               properties:
                 BackupVaultName:
                   $ref: '#/components/schemas/String'
+                ContinuousScanEndTime:
+                  $ref: '#/components/schemas/Timestamp'
                 IamRoleArn:
                   $ref: '#/components/schemas/String'
                 IdempotencyToken:
@@ -3941,6 +4178,50 @@ components:
       format: int64
     CancelLegalHoldOutput:
       type: object
+    AccessPointMetadataMap:
+      type: object
+      properties: {}
+    AccessPointPolicy:
+      type: string
+      minLength: 1
+      maxLength: 200000
+    AccessPointName:
+      type: string
+      minLength: 3
+      maxLength: 50
+      pattern: '[\da-z]{1}[\da-z-]{1,48}[\da-z]{1}(?<!-s3alias)(?<!-ext-s3alias)'
+    RecoveryPointArn:
+      type: string
+      pattern: (arn:aws[a-z-]*:[a-z-\d]+:[a-z-\d]+:).+
+    TagMap:
+      type: object
+      properties: {}
+    CreateBackupAccessPointResponse:
+      type: object
+      properties:
+        AccessPointArn:
+          $ref: '#/components/schemas/AccessPointArn'
+          description: The Amazon Resource Name (ARN) that uniquely identifies the created backup access point.
+        Status:
+          $ref: '#/components/schemas/AccessPointStatus'
+          description: The current status of the backup access point. A newly created backup access point begins in the CREATING
+            state and becomes usable when it reaches AVAILABLE.
+      required:
+      - AccessPointArn
+      - Status
+    AccessPointArn:
+      type: string
+      pattern: (arn:aws[a-z-]*:backup:[a-z-\d]+:\d{12}:accesspoint/)[\da-z]{1}[\da-z-]{1,48}[\da-z]{1}(?<!-s3alias)(?<!-ext-s3alias)
+    AccessPointStatus:
+      type: string
+      enum:
+      - AVAILABLE
+      - CREATING
+      - DELETING
+      - DISASSOCIATED
+      - DISASSOCIATING
+      - EXPIRED
+      - FAILED
     BackupPlanInput:
       description: Contains an optional backup plan display name and an array of BackupRule objects, each of which specifies
         a backup rule. Each rule in a backup plan is a separate scheduled task.
@@ -4952,6 +5233,64 @@ components:
             IDs cannot be edited.
     DeleteTieringConfigurationOutput:
       type: object
+    DescribeBackupAccessPointResponse:
+      type: object
+      properties:
+        AccessPointArn:
+          $ref: '#/components/schemas/AccessPointArn'
+          description: The Amazon Resource Name (ARN) that uniquely identifies the backup access point.
+        AccessPointMetadata:
+          type: object
+          properties: {}
+          description: Metadata for the backup access point. After the backup access point reaches the AVAILABLE status, this
+            map contains S3AccessPointArn and S3AccessPointAlias, which you use with standard Amazon S3 read APIs to access
+            the backup data. For continuous recovery points, this map also contains AccessPointInTime (in format 2021-11-27T03:30:27Z).
+            The access point provides access to the content present in the backup at that specific time.
+        BackupVaultArn:
+          $ref: '#/components/schemas/BackupVaultArn'
+          description: The Amazon Resource Name (ARN) of the backup vault that contains the recovery point.
+        BackupVaultName:
+          $ref: '#/components/schemas/BackupVaultName'
+          description: The name of the backup vault that contains the recovery point.
+        CreationTime:
+          $ref: '#/components/schemas/Timestamp'
+          description: The date and time that the backup access point was created, in Unix format and Coordinated Universal
+            Time (UTC). The value of CreationTime is accurate to milliseconds. For example, the value 1516925490.087 represents
+            Friday, January 26, 2018 12:11:30.087 AM.
+        Name:
+          $ref: '#/components/schemas/AccessPointName'
+          description: The name of the backup access point.
+        RecoveryPointArn:
+          $ref: '#/components/schemas/RecoveryPointArn'
+          description: The Amazon Resource Name (ARN) of the recovery point that the backup access point provides access to.
+        ResourceArn:
+          $ref: '#/components/schemas/ResourceArn'
+          description: The Amazon Resource Name (ARN) of the resource that was backed up, such as an Amazon S3 bucket.
+        ResourceType:
+          $ref: '#/components/schemas/String'
+          description: The type of Amazon Web Services resource associated with the recovery point. For example, S3 for Amazon
+            Simple Storage Service.
+        Status:
+          $ref: '#/components/schemas/AccessPointStatus'
+          description: The current status of the backup access point.
+        StatusMessage:
+          $ref: '#/components/schemas/String'
+          description: A message that provides additional detail about the status of the backup access point, such as the
+            reason a creation or deletion attempt failed.
+      required:
+      - AccessPointArn
+      - BackupVaultName
+      - CreationTime
+      - Name
+      - RecoveryPointArn
+      - ResourceArn
+      - ResourceType
+      - Status
+    BackupVaultArn:
+      type: string
+    ResourceArn:
+      type: string
+      pattern: (arn:aws[a-z-]*:[a-z-\d]+:).+
     DescribeBackupJobOutput:
       type: object
       properties:
@@ -5907,6 +6246,12 @@ components:
           description: The date and time that a backup index finished creation, in Unix format and Coordinated Universal Time
             (UTC). The value of CompletionDate is accurate to milliseconds. For example, the value 1516925490.087 represents
             Friday, January 26, 2018 12:11:30.087 AM.
+        ContinuousScanEndTime:
+          $ref: '#/components/schemas/Timestamp'
+          description: The point in time the scan job scanned up to for a continuous backup.
+        ContinuousScanStartTime:
+          $ref: '#/components/schemas/Timestamp'
+          description: The point in time the scan job started scan from for a continuous backup.
         CreatedBy:
           $ref: '#/components/schemas/ScanJobCreator'
         CreationDate:
@@ -6010,7 +6355,7 @@ components:
       properties:
         ScanResultStatus:
           $ref: '#/components/schemas/ScanResultStatus'
-          description: 'The status of the scan results. Valid values: THREATS_FOUND | NO_THREATS_FOUND.'
+          description: 'The status of the scan results. Valid values: THREATS_FOUND | NO_THREATS_FOUND | UNKNOWN.'
       required:
       - ScanResultStatus
     ScanResultStatus:
@@ -6018,6 +6363,7 @@ components:
       enum:
       - NO_THREATS_FOUND
       - THREATS_FOUND
+      - UNKNOWN
     ScanState:
       type: string
       enum:
@@ -6310,6 +6656,12 @@ components:
       - EKS_RESTORE_OBJECT_FAILED
       - EKS_RESTORE_OBJECT_SKIPPED
       - EKS_BACKUP_OBJECT_FAILED
+      - ACCESS_POINT_AVAILABLE
+      - ACCESS_POINT_CREATION_FAILED
+      - ACCESS_POINT_DELETED
+      - ACCESS_POINT_DELETION_FAILED
+      - ACCESS_POINT_EXPIRED
+      - ACCESS_POINT_DISASSOCIATED
     GetLegalHoldOutput:
       type: object
       properties:
@@ -6343,6 +6695,27 @@ components:
         RecoveryPointSelection:
           $ref: '#/components/schemas/RecoveryPointSelection'
           description: The criteria to assign a set of resources, such as resource types or backup vaults.
+    GetPITRMalwareScanResultsOutput:
+      type: object
+      properties:
+        ScanEndTime:
+          $ref: '#/components/schemas/Timestamp'
+          description: The point in time that was queried. This echoes back the time specified in the request.
+        ScanResult:
+          $ref: '#/components/schemas/ScanResultInfo'
+          description: Contains the ScanResultStatus for the scan and returns THREATS_FOUND, NO_THREATS_FOUND, or UNKNOWN.
+        LastScanJobTime:
+          $ref: '#/components/schemas/Timestamp'
+          description: The completion time of the most recent scan job that covered the specified point in time.
+        ScanId:
+          $ref: '#/components/schemas/String'
+          description: The scan ID generated by Amazon GuardDuty for the corresponding Scan Job ID request from Backup.
+        ScanMode:
+          $ref: '#/components/schemas/ScanMode'
+          description: Specifies the scan type used for the scan job.
+      required:
+      - ScanEndTime
+      - ScanResult
     GetRecoveryPointIndexDetailsOutput:
       type: object
       properties:
@@ -6602,6 +6975,119 @@ components:
       - TieringConfigurationName
       - BackupVaultName
       - ResourceSelection
+    ListBackupAccessPointsRequestMaxResultsInteger:
+      type: integer
+      minimum: 1
+      maximum: 100
+    ListBackupAccessPointsResponse:
+      type: object
+      properties:
+        BackupAccessPoints:
+          $ref: '#/components/schemas/BackupAccessPoints'
+          description: A list of backup access points, each containing metadata such as its name, ARN, status, and associated
+            recovery point.
+        NextToken:
+          $ref: '#/components/schemas/String'
+          description: The next item following a partial list of returned items. For example, if a request is made to return
+            MaxResults number of items, NextToken allows you to return more items in your list starting at the location pointed
+            to by the next token.
+      required:
+      - BackupAccessPoints
+    BackupAccessPoints:
+      type: array
+      items:
+        $ref: '#/components/schemas/ListAccessPointsMember'
+    ListAccessPointsMember:
+      description: Contains metadata about a backup access point.
+      type: object
+      properties:
+        AccessPointArn:
+          $ref: '#/components/schemas/AccessPointArn'
+          description: The Amazon Resource Name (ARN) that uniquely identifies the backup access point.
+        AccessPointMetadata:
+          type: object
+          properties: {}
+          description: Metadata for the backup access point. After the backup access point reaches the AVAILABLE status, this
+            map contains S3AccessPointArn and S3AccessPointAlias, which you use with standard Amazon S3 read APIs to access
+            the backup data. For continuous recovery points, this map also contains AccessPointInTime (in format 2021-11-27T03:30:27Z).
+            The access point provides access to the content present in the backup at that specific time.
+        BackupVaultArn:
+          $ref: '#/components/schemas/BackupVaultArn'
+          description: The Amazon Resource Name (ARN) of the backup vault that contains the recovery point.
+        BackupVaultName:
+          $ref: '#/components/schemas/BackupVaultName'
+          description: The name of the backup vault that contains the recovery point.
+        CreationTime:
+          $ref: '#/components/schemas/Timestamp'
+          description: The date and time that the backup access point was created, in Unix format and Coordinated Universal
+            Time (UTC). The value of CreationTime is accurate to milliseconds. For example, the value 1516925490.087 represents
+            Friday, January 26, 2018 12:11:30.087 AM.
+        Name:
+          $ref: '#/components/schemas/AccessPointName'
+          description: The name of the backup access point.
+        RecoveryPointArn:
+          $ref: '#/components/schemas/RecoveryPointArn'
+          description: The Amazon Resource Name (ARN) of the recovery point that the backup access point provides access to.
+        ResourceArn:
+          $ref: '#/components/schemas/ResourceArn'
+          description: The Amazon Resource Name (ARN) of the resource that was backed up, such as an Amazon S3 bucket.
+        ResourceType:
+          $ref: '#/components/schemas/String'
+          description: The type of Amazon Web Services resource associated with the recovery point. For example, S3 for Amazon
+            Simple Storage Service.
+        Status:
+          $ref: '#/components/schemas/AccessPointStatus'
+          description: The current status of the backup access point.
+        StatusMessage:
+          $ref: '#/components/schemas/String'
+          description: A message that provides additional detail about the status of the backup access point, such as the
+            reason a creation or deletion attempt failed.
+      required:
+      - AccessPointArn
+      - AccessPointMetadata
+      - BackupVaultName
+      - CreationTime
+      - Name
+      - RecoveryPointArn
+      - ResourceArn
+      - ResourceType
+      - Status
+    ListBackupAccessPointsByRecoveryPointRequestMaxResultsInteger:
+      type: integer
+      minimum: 1
+      maximum: 100
+    ListBackupAccessPointsByRecoveryPointResponse:
+      type: object
+      properties:
+        BackupAccessPoints:
+          $ref: '#/components/schemas/BackupAccessPoints'
+          description: A list of backup access points, each containing metadata such as its name, ARN, status, and associated
+            recovery point.
+        NextToken:
+          $ref: '#/components/schemas/String'
+          description: The next item following a partial list of returned items. For example, if a request is made to return
+            MaxResults number of items, NextToken allows you to return more items in your list starting at the location pointed
+            to by the next token.
+      required:
+      - BackupAccessPoints
+    ListBackupAccessPointsByResourceRequestMaxResultsInteger:
+      type: integer
+      minimum: 1
+      maximum: 100
+    ListBackupAccessPointsByResourceResponse:
+      type: object
+      properties:
+        BackupAccessPoints:
+          $ref: '#/components/schemas/BackupAccessPoints'
+          description: A list of backup access points, each containing metadata such as its name, ARN, status, and associated
+            recovery point.
+        NextToken:
+          $ref: '#/components/schemas/String'
+          description: The next item following a partial list of returned items. For example, if a request is made to return
+            MaxResults number of items, NextToken allows you to return more items in your list starting at the location pointed
+            to by the next token.
+      required:
+      - BackupAccessPoints
     BackupJobStatus:
       type: string
       enum:
@@ -7024,7 +7510,8 @@ components:
             or '-_.' characters.
         NumberOfRecoveryPoints:
           $ref: '#/components/schemas/long'
-          description: The number of recovery points that are stored in a backup vault.
+          description: The number of recovery points that are stored in a backup vault. Recovery point count value displayed
+            in the console can be an approximation.
         Locked:
           $ref: '#/components/schemas/Boolean'
           description: A Boolean value that indicates whether Backup Vault Lock applies to the selected backup vault. If true,
@@ -8078,6 +8565,12 @@ components:
           description: The date and time that a scan job is completed, in Unix format and Coordinated Universal Time (UTC).
             The value of CompletionDate is accurate to milliseconds. For example, the value 1516925490.087 represents Friday,
             January 26, 2018 12:11:30.087 AM.
+        ContinuousScanEndTime:
+          $ref: '#/components/schemas/Timestamp'
+          description: The point in time the scan job scanned up to for a continuous backup.
+        ContinuousScanStartTime:
+          $ref: '#/components/schemas/Timestamp'
+          description: The point in time the scan job started scan from for a continuous backup.
         CreatedBy:
           $ref: '#/components/schemas/ScanJobCreator'
           description: Contains identifying information about the creation of a scan job.

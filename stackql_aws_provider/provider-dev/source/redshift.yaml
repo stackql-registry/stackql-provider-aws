@@ -897,8 +897,8 @@ paths:
         in: query
         required: true
         description: 'The node type to be provisioned for the cluster. For information about node types, go to Working with
-          Clusters in the Amazon Redshift Cluster Management Guide. Valid Values: dc2.large | dc2.8xlarge| rg.xlarge | rg.4xlarge
-          | ra3.large | ra3.xlplus | ra3.4xlarge | ra3.16xlarge'
+          Clusters in the Amazon Redshift Cluster Management Guide. Valid Values: dc2.large | dc2.8xlarge | rg.large | rg.xlarge
+          | rg.4xlarge | rg.12xlarge | ra3.large | ra3.xlplus | ra3.4xlarge | ra3.16xlarge'
         schema:
           $ref: '#/components/schemas/String'
       - name: MasterUsername
@@ -2065,6 +2065,79 @@ paths:
       x-stackql-method: create_integration
       x-stackql-verb: INSERT
       x-stackql-responseEnvelope: CreateIntegrationOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+  /?Action=CreateQev2IdcApplication&Version=2012-12-01:
+    parameters:
+    - $ref: '#/components/parameters/X-Amz-Content-Sha256'
+    - $ref: '#/components/parameters/X-Amz-Date'
+    - $ref: '#/components/parameters/X-Amz-Algorithm'
+    - $ref: '#/components/parameters/X-Amz-Credential'
+    - $ref: '#/components/parameters/X-Amz-Security-Token'
+    - $ref: '#/components/parameters/X-Amz-Signature'
+    - $ref: '#/components/parameters/X-Amz-SignedHeaders'
+    get:
+      operationId: GET_CreateQev2IdcApplication
+      description: Creates an Amazon Redshift Query Editor (QEV2) IAM Identity Center application.
+      parameters:
+      - name: IdcInstanceArn
+        in: query
+        required: true
+        description: The Amazon Resource Name (ARN) of the IAM Identity Center instance used to create the Amazon Redshift
+          Query Editor (QEV2) managed application.
+        schema:
+          $ref: '#/components/schemas/String'
+      - name: Qev2IdcApplicationName
+        in: query
+        required: true
+        description: The name of the Amazon Redshift Query Editor (QEV2) application in IAM Identity Center.
+        schema:
+          $ref: '#/components/schemas/Qev2IdcApplicationName'
+      - name: IdcDisplayName
+        in: query
+        required: true
+        description: The display name for the Amazon Redshift Query Editor (QEV2) IAM Identity Center application. It appears
+          in the console.
+        schema:
+          $ref: '#/components/schemas/IdcDisplayNameString'
+      - name: Tags
+        in: query
+        required: false
+        description: A list of tags to associate with the application. Tags are key-value pairs that you can use to organize
+          and identify your resources.
+        schema:
+          $ref: '#/components/schemas/TagList'
+      responses:
+        '200':
+          description: Success
+          content:
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/CreateQev2IdcApplicationOutputDisplay'
+      x-stackql-resource: qev2_idc_applications
+      x-stackql-method: create_qev2_idc_application
+      x-stackql-verb: INSERT
+      x-stackql-responseEnvelope: CreateQev2IdcApplicationOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+    post:
+      operationId: POST_CreateQev2IdcApplication
+      description: Creates an Amazon Redshift Query Editor (QEV2) IAM Identity Center application.
+      responses:
+        '200':
+          description: Success
+          content:
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/CreateQev2IdcApplicationOutputDisplay'
+      parameters: []
+      requestBody:
+        content:
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/CreateQev2IdcApplicationMessage'
+      x-stackql-resource: qev2_idc_applications
+      x-stackql-method: create_qev2_idc_application
+      x-stackql-verb: INSERT
+      x-stackql-responseEnvelope: CreateQev2IdcApplicationOutputDisplay
       x-stackql-responseObjectKey: $.line_items
   /?Action=CreateRedshiftIdcApplication&Version=2012-12-01:
     parameters:
@@ -3325,6 +3398,47 @@ paths:
       x-stackql-verb: DELETE
       x-stackql-responseEnvelope: DeletePartnerOutputDisplay
       x-stackql-responseObjectKey: $.line_items
+  /?Action=DeleteQev2IdcApplication&Version=2012-12-01:
+    parameters:
+    - $ref: '#/components/parameters/X-Amz-Content-Sha256'
+    - $ref: '#/components/parameters/X-Amz-Date'
+    - $ref: '#/components/parameters/X-Amz-Algorithm'
+    - $ref: '#/components/parameters/X-Amz-Credential'
+    - $ref: '#/components/parameters/X-Amz-Security-Token'
+    - $ref: '#/components/parameters/X-Amz-Signature'
+    - $ref: '#/components/parameters/X-Amz-SignedHeaders'
+    get:
+      operationId: GET_DeleteQev2IdcApplication
+      description: Deletes an Amazon Redshift Query Editor (QEV2) IAM Identity Center application.
+      parameters:
+      - name: Qev2IdcApplicationArn
+        in: query
+        required: true
+        description: The Amazon Resource Name (ARN) for the Amazon Redshift Query Editor (QEV2) IAM Identity Center application
+          to delete.
+        schema:
+          $ref: '#/components/schemas/String'
+      responses:
+        '200':
+          description: Success
+      x-stackql-resource: qev2_idc_applications
+      x-stackql-method: delete_qev2_idc_application
+      x-stackql-verb: DELETE
+    post:
+      operationId: POST_DeleteQev2IdcApplication
+      description: Deletes an Amazon Redshift Query Editor (QEV2) IAM Identity Center application.
+      responses:
+        '200':
+          description: Success
+      parameters: []
+      requestBody:
+        content:
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/DeleteQev2IdcApplicationMessage'
+      x-stackql-resource: qev2_idc_applications
+      x-stackql-method: delete_qev2_idc_application
+      x-stackql-verb: DELETE
   /?Action=DeleteRedshiftIdcApplication&Version=2012-12-01:
     parameters:
     - $ref: '#/components/parameters/X-Amz-Content-Sha256'
@@ -6130,6 +6244,78 @@ paths:
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: DescribePartnersOutputDisplay
       x-stackql-responseObjectKey: $.line_items
+  /?Action=DescribeQev2IdcApplications&Version=2012-12-01:
+    parameters:
+    - $ref: '#/components/parameters/X-Amz-Content-Sha256'
+    - $ref: '#/components/parameters/X-Amz-Date'
+    - $ref: '#/components/parameters/X-Amz-Algorithm'
+    - $ref: '#/components/parameters/X-Amz-Credential'
+    - $ref: '#/components/parameters/X-Amz-Security-Token'
+    - $ref: '#/components/parameters/X-Amz-Signature'
+    - $ref: '#/components/parameters/X-Amz-SignedHeaders'
+    get:
+      operationId: GET_DescribeQev2IdcApplications
+      description: Lists the Amazon Redshift Query Editor (QEV2) IAM Identity Center applications. To retrieve additional
+        results, use the MaxRecords and Marker parameters.
+      parameters:
+      - name: Qev2IdcApplicationArn
+        in: query
+        required: false
+        description: The Amazon Resource Name (ARN) for the Amazon Redshift Query Editor (QEV2) application that integrates
+          with IAM Identity Center.
+        schema:
+          $ref: '#/components/schemas/String'
+      - name: MaxRecords
+        in: query
+        required: false
+        description: The maximum number of response records to return in each call. If the number of remaining response records
+          exceeds the specified MaxRecords value, a value is returned in a marker field of the response. You can retrieve
+          the next set of records by retrying the command with the returned marker value.
+        schema:
+          $ref: '#/components/schemas/IntegerOptional'
+      - name: Marker
+        in: query
+        required: false
+        description: A value that indicates the starting point for the next set of response records in a subsequent request.
+          If a value is returned in a response, you can retrieve the next set of records by providing this returned marker
+          value in the Marker parameter and retrying the command. If the Marker field is empty, all response records have
+          been retrieved for the request.
+        schema:
+          $ref: '#/components/schemas/String'
+      responses:
+        '200':
+          description: Success
+          content:
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/DescribeQev2IdcApplicationsOutputDisplay'
+      x-stackql-resource: qev2_idc_applications
+      x-stackql-method: describe_qev2_idc_applications
+      x-stackql-verb: SELECT
+      x-stackql-responseEnvelope: DescribeQev2IdcApplicationsOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+    post:
+      operationId: POST_DescribeQev2IdcApplications
+      description: Lists the Amazon Redshift Query Editor (QEV2) IAM Identity Center applications. To retrieve additional
+        results, use the MaxRecords and Marker parameters.
+      responses:
+        '200':
+          description: Success
+          content:
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/DescribeQev2IdcApplicationsOutputDisplay'
+      parameters: []
+      requestBody:
+        content:
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/DescribeQev2IdcApplicationsMessage'
+      x-stackql-resource: qev2_idc_applications
+      x-stackql-method: describe_qev2_idc_applications
+      x-stackql-verb: SELECT
+      x-stackql-responseEnvelope: DescribeQev2IdcApplicationsOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
   /?Action=DescribeRedshiftIdcApplications&Version=2012-12-01:
     parameters:
     - $ref: '#/components/parameters/X-Amz-Content-Sha256'
@@ -7157,6 +7343,21 @@ paths:
         description: 'The identifier of the cluster on which logging is to be stopped. Example: examplecluster'
         schema:
           $ref: '#/components/schemas/String'
+      - name: LogDestinationType
+        in: query
+        required: false
+        description: The log destination type. An enum with possible values of s3, cloudwatch, and s3table. When set to s3table,
+          stops system table publishing. When omitted, the operation disables audit logging.
+        schema:
+          $ref: '#/components/schemas/LogDestinationType'
+      - name: LogExports
+        in: query
+        required: false
+        description: The collection of log types to stop exporting. When LogDestinationType is s3table, the values are the
+          names of the system tables to stop publishing. Omitting this parameter or passing all stops publishing all system
+          tables.
+        schema:
+          $ref: '#/components/schemas/LogTypeList'
       responses:
         '200':
           description: Success
@@ -7357,15 +7558,33 @@ paths:
       - name: LogDestinationType
         in: query
         required: false
-        description: The log destination type. An enum with possible values of s3 and cloudwatch.
+        description: The log destination type. An enum with possible values of s3, cloudwatch, and s3table.
         schema:
           $ref: '#/components/schemas/LogDestinationType'
       - name: LogExports
         in: query
         required: false
-        description: The collection of exported log types. Possible values are connectionlog, useractivitylog, and userlog.
+        description: The collection of exported log types. When LogDestinationType is s3 or cloudwatch, possible values are
+          connectionlog, useractivitylog, and userlog. When LogDestinationType is s3table, the values are the names of the
+          system tables to publish. Omitting this parameter, passing an empty list, or including the value all publishes all
+          current and future system tables.
         schema:
           $ref: '#/components/schemas/LogTypeList'
+      - name: S3TableKmsKeyId
+        in: query
+        required: false
+        description: The identifier of a customer managed KMS key used to encrypt the S3 tables. This parameter is valid only
+          when LogDestinationType is s3table.
+        schema:
+          $ref: '#/components/schemas/String'
+      - name: S3TableGranularity
+        in: query
+        required: false
+        description: The scope of system table publishing. Valid values are cluster and account. A value of cluster scopes
+          publishing to the individual cluster. A value of account scopes publishing to the Amazon Web Services account. This
+          parameter is valid only when LogDestinationType is s3table.
+        schema:
+          $ref: '#/components/schemas/String'
       responses:
         '200':
           description: Success
@@ -8266,8 +8485,8 @@ paths:
         required: false
         description: 'The new node type of the cluster. If you specify a new node type, you must also specify the number of
           nodes parameter. For more information about resizing clusters, go to Resizing Clusters in Amazon Redshift in the
-          Amazon Redshift Cluster Management Guide. Valid Values: dc2.large | dc2.8xlarge| rg.xlarge | rg.4xlarge | ra3.large
-          | ra3.xlplus | ra3.4xlarge | ra3.16xlarge'
+          Amazon Redshift Cluster Management Guide. Valid Values: dc2.large | dc2.8xlarge | rg.large | rg.xlarge | rg.4xlarge
+          | rg.12xlarge | ra3.large | ra3.xlplus | ra3.4xlarge | ra3.16xlarge'
         schema:
           $ref: '#/components/schemas/String'
       - name: NumberOfNodes
@@ -9391,6 +9610,66 @@ paths:
       x-stackql-verb: UPDATE
       x-stackql-responseEnvelope: ModifyLakehouseConfigurationOutputDisplay
       x-stackql-responseObjectKey: $.line_items
+  /?Action=ModifyQev2IdcApplication&Version=2012-12-01:
+    parameters:
+    - $ref: '#/components/parameters/X-Amz-Content-Sha256'
+    - $ref: '#/components/parameters/X-Amz-Date'
+    - $ref: '#/components/parameters/X-Amz-Algorithm'
+    - $ref: '#/components/parameters/X-Amz-Credential'
+    - $ref: '#/components/parameters/X-Amz-Security-Token'
+    - $ref: '#/components/parameters/X-Amz-Signature'
+    - $ref: '#/components/parameters/X-Amz-SignedHeaders'
+    get:
+      operationId: GET_ModifyQev2IdcApplication
+      description: Modifies an Amazon Redshift Query Editor (QEV2) IAM Identity Center application.
+      parameters:
+      - name: Qev2IdcApplicationArn
+        in: query
+        required: true
+        description: The Amazon Resource Name (ARN) for the Amazon Redshift Query Editor (QEV2) application that integrates
+          with IAM Identity Center.
+        schema:
+          $ref: '#/components/schemas/String'
+      - name: IdcDisplayName
+        in: query
+        required: false
+        description: The display name for the Amazon Redshift Query Editor (QEV2) IAM Identity Center application. It appears
+          in the console.
+        schema:
+          $ref: '#/components/schemas/IdcDisplayNameString'
+      responses:
+        '200':
+          description: Success
+          content:
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ModifyQev2IdcApplicationOutputDisplay'
+      x-stackql-resource: qev2_idc_applications
+      x-stackql-method: modify_qev2_idc_application
+      x-stackql-verb: UPDATE
+      x-stackql-responseEnvelope: ModifyQev2IdcApplicationOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+    post:
+      operationId: POST_ModifyQev2IdcApplication
+      description: Modifies an Amazon Redshift Query Editor (QEV2) IAM Identity Center application.
+      responses:
+        '200':
+          description: Success
+          content:
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ModifyQev2IdcApplicationOutputDisplay'
+      parameters: []
+      requestBody:
+        content:
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/ModifyQev2IdcApplicationMessage'
+      x-stackql-resource: qev2_idc_applications
+      x-stackql-method: modify_qev2_idc_application
+      x-stackql-verb: UPDATE
+      x-stackql-responseEnvelope: ModifyQev2IdcApplicationOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
   /?Action=ModifyRedshiftIdcApplication&Version=2012-12-01:
     parameters:
     - $ref: '#/components/parameters/X-Amz-Content-Sha256'
@@ -10207,8 +10486,9 @@ paths:
       description: 'Changes the size of the cluster. You can change the cluster''s type, or change the number or type of nodes.
         The default behavior is to use the elastic resize method. With an elastic resize, your cluster is available for read
         and write operations more quickly than with the classic resize method. Elastic resize operations have the following
-        restrictions: You can only resize clusters of the following types: dc2.large dc2.8xlarge rg.xlarge rg.4xlarge ra3.large
-        ra3.xlplus ra3.4xlarge ra3.16xlarge The type of nodes that you add must match the node type for the cluster.'
+        restrictions: You can only resize clusters of the following types: dc2.large dc2.8xlarge rg.large rg.xlarge rg.4xlarge
+        rg.12xlarge ra3.large ra3.xlplus ra3.4xlarge ra3.16xlarge The type of nodes that you add must match the node type
+        for the cluster.'
       parameters:
       - name: ClusterIdentifier
         in: query
@@ -10271,8 +10551,9 @@ paths:
       description: 'Changes the size of the cluster. You can change the cluster''s type, or change the number or type of nodes.
         The default behavior is to use the elastic resize method. With an elastic resize, your cluster is available for read
         and write operations more quickly than with the classic resize method. Elastic resize operations have the following
-        restrictions: You can only resize clusters of the following types: dc2.large dc2.8xlarge rg.xlarge rg.4xlarge ra3.large
-        ra3.xlplus ra3.4xlarge ra3.16xlarge The type of nodes that you add must match the node type for the cluster.'
+        restrictions: You can only resize clusters of the following types: dc2.large dc2.8xlarge rg.large rg.xlarge rg.4xlarge
+        rg.12xlarge ra3.large ra3.xlplus ra3.4xlarge ra3.16xlarge The type of nodes that you add must match the node type
+        for the cluster.'
       responses:
         '200':
           description: Success
@@ -12170,6 +12451,10 @@ components:
           type: string
           description: 'A boolean value that, if true, indicates that the cluster allocates additional compute resources to
             run automatic optimization operations. Default: false'
+        LoggingPublishStatus:
+          type: string
+          description: The status of system table publishing for the cluster. This field is present only when system table
+            publishing is configured.
     CreateClusterOutputDisplay:
       type: object
       properties:
@@ -12203,8 +12488,8 @@ components:
         NodeType:
           $ref: '#/components/schemas/String'
           description: 'The node type to be provisioned for the cluster. For information about node types, go to Working with
-            Clusters in the Amazon Redshift Cluster Management Guide. Valid Values: dc2.large | dc2.8xlarge| rg.xlarge | rg.4xlarge
-            | ra3.large | ra3.xlplus | ra3.4xlarge | ra3.16xlarge'
+            Clusters in the Amazon Redshift Cluster Management Guide. Valid Values: dc2.large | dc2.8xlarge | rg.large | rg.xlarge
+            | rg.4xlarge | rg.12xlarge | ra3.large | ra3.xlplus | ra3.4xlarge | ra3.16xlarge'
         MasterUsername:
           $ref: '#/components/schemas/String'
           description: 'The user name associated with the admin user account for the cluster that is being created. Constraints:
@@ -12944,6 +13229,74 @@ components:
       - SourceArn
       - TargetArn
       - IntegrationName
+    Qev2IdcApplicationName:
+      type: string
+      minLength: 1
+      maxLength: 63
+      pattern: '[a-z][a-z0-9]*(-[a-z0-9]+)*'
+    IdcDisplayNameString:
+      type: string
+      minLength: 1
+      maxLength: 127
+      pattern: '[\w+=,.@-]+'
+    Qev2IdcApplicationDisplay:
+      type: object
+      properties:
+        IdcInstanceArn:
+          type: string
+          description: The Amazon Resource Name (ARN) for the IAM Identity Center instance that the Amazon Redshift Query
+            Editor (QEV2) application integrates with.
+        Qev2IdcApplicationName:
+          type: string
+          description: The name of the Amazon Redshift Query Editor (QEV2) application in IAM Identity Center.
+        Qev2IdcApplicationArn:
+          type: string
+          description: The Amazon Resource Name (ARN) for the Amazon Redshift Query Editor (QEV2) application that integrates
+            with IAM Identity Center.
+        IdcManagedApplicationArn:
+          type: string
+          description: The Amazon Resource Name (ARN) for the Amazon Redshift Query Editor (QEV2) IAM Identity Center managed
+            application.
+        IdcOnboardStatus:
+          type: string
+          description: The onboarding status for the Amazon Redshift Query Editor (QEV2) IAM Identity Center application.
+        IdcDisplayName:
+          type: string
+          description: The display name for the Amazon Redshift Query Editor (QEV2) IAM Identity Center application. It appears
+            in the console.
+        Tags:
+          type: string
+          description: A list of tags associated with the application. Tags are key-value pairs that you can use to organize
+            and identify your resources.
+    CreateQev2IdcApplicationOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Qev2IdcApplicationDisplay'
+    CreateQev2IdcApplicationMessage:
+      type: object
+      properties:
+        IdcInstanceArn:
+          $ref: '#/components/schemas/String'
+          description: The Amazon Resource Name (ARN) of the IAM Identity Center instance used to create the Amazon Redshift
+            Query Editor (QEV2) managed application.
+        Qev2IdcApplicationName:
+          $ref: '#/components/schemas/Qev2IdcApplicationName'
+          description: The name of the Amazon Redshift Query Editor (QEV2) application in IAM Identity Center.
+        IdcDisplayName:
+          $ref: '#/components/schemas/IdcDisplayNameString'
+          description: The display name for the Amazon Redshift Query Editor (QEV2) IAM Identity Center application. It appears
+            in the console.
+        Tags:
+          $ref: '#/components/schemas/TagList'
+          description: A list of tags to associate with the application. Tags are key-value pairs that you can use to organize
+            and identify your resources.
+      required:
+      - IdcInstanceArn
+      - Qev2IdcApplicationName
+      - IdcDisplayName
     RedshiftIdcApplicationName:
       type: string
       minLength: 1
@@ -12954,11 +13307,6 @@ components:
       minLength: 1
       maxLength: 127
       pattern: ^[a-zA-Z0-9_+.#@$-]+$
-    IdcDisplayNameString:
-      type: string
-      minLength: 1
-      maxLength: 127
-      pattern: '[\w+=,.@-]+'
     AuthorizedTokenIssuerList:
       type: array
       items:
@@ -13706,6 +14054,15 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/PartnerIntegrationOutputMessageDisplay'
+    DeleteQev2IdcApplicationMessage:
+      type: object
+      properties:
+        Qev2IdcApplicationArn:
+          $ref: '#/components/schemas/String'
+          description: The Amazon Resource Name (ARN) for the Amazon Redshift Query Editor (QEV2) IAM Identity Center application
+            to delete.
+      required:
+      - Qev2IdcApplicationArn
     DeleteRedshiftIdcApplicationMessage:
       type: object
       properties:
@@ -14904,10 +15261,16 @@ components:
           description: The message indicating that logs failed to be delivered.
         LogDestinationType:
           type: string
-          description: The log destination type. An enum with possible values of s3 and cloudwatch.
+          description: The log destination type. An enum with possible values of s3, cloudwatch, and s3table.
         LogExports:
           type: string
-          description: The collection of exported log types. Possible values are connectionlog, useractivitylog, and userlog.
+          description: The collection of exported log types. When LogDestinationType is s3 or cloudwatch, possible values
+            are connectionlog, useractivitylog, and userlog. When LogDestinationType is s3table, the values are the names
+            of the system tables being published.
+        S3Tables:
+          type: string
+          description: The status of system table publishing to S3 Tables. This field is populated only when system table
+            publishing is active.
     DescribeLoggingStatusOutputDisplay:
       type: object
       properties:
@@ -15125,6 +15488,31 @@ components:
       required:
       - AccountId
       - ClusterIdentifier
+    DescribeQev2IdcApplicationsOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Qev2IdcApplicationDisplay'
+    DescribeQev2IdcApplicationsMessage:
+      type: object
+      properties:
+        Qev2IdcApplicationArn:
+          $ref: '#/components/schemas/String'
+          description: The Amazon Resource Name (ARN) for the Amazon Redshift Query Editor (QEV2) application that integrates
+            with IAM Identity Center.
+        MaxRecords:
+          $ref: '#/components/schemas/IntegerOptional'
+          description: The maximum number of response records to return in each call. If the number of remaining response
+            records exceeds the specified MaxRecords value, a value is returned in a marker field of the response. You can
+            retrieve the next set of records by retrying the command with the returned marker value.
+        Marker:
+          $ref: '#/components/schemas/String'
+          description: A value that indicates the starting point for the next set of response records in a subsequent request.
+            If a value is returned in a response, you can retrieve the next set of records by providing this returned marker
+            value in the Marker parameter and retrying the command. If the Marker field is empty, all response records have
+            been retrieved for the request.
     DescribeRedshiftIdcApplicationsOutputDisplay:
       type: object
       properties:
@@ -15699,6 +16087,16 @@ components:
             with the specified tag value or values. For example, suppose that you have parameter groups that are tagged with
             values called admin and test. If you specify both of these tag values in the request, Amazon Redshift returns
             a response with the usage limit objects that have either or both of these tag values associated with them.
+    LogDestinationType:
+      type: string
+      enum:
+      - s3
+      - cloudwatch
+      - s3table
+    LogTypeList:
+      type: array
+      items:
+        $ref: '#/components/schemas/String'
     DisableLoggingOutputDisplay:
       type: object
       properties:
@@ -15712,6 +16110,15 @@ components:
         ClusterIdentifier:
           $ref: '#/components/schemas/String'
           description: 'The identifier of the cluster on which logging is to be stopped. Example: examplecluster'
+        LogDestinationType:
+          $ref: '#/components/schemas/LogDestinationType'
+          description: The log destination type. An enum with possible values of s3, cloudwatch, and s3table. When set to
+            s3table, stops system table publishing. When omitted, the operation disables audit logging.
+        LogExports:
+          $ref: '#/components/schemas/LogTypeList'
+          description: The collection of log types to stop exporting. When LogDestinationType is s3table, the values are the
+            names of the system tables to stop publishing. Omitting this parameter or passing all stops publishing all system
+            tables.
       required:
       - ClusterIdentifier
     DisableSnapshotCopyOutputDisplay:
@@ -15760,15 +16167,6 @@ components:
       type: string
       maxLength: 256
       pattern: '[\p{L}\p{Z}\p{N}_.:/=+\-@]*'
-    LogDestinationType:
-      type: string
-      enum:
-      - s3
-      - cloudwatch
-    LogTypeList:
-      type: array
-      items:
-        $ref: '#/components/schemas/String'
     EnableLoggingOutputDisplay:
       type: object
       properties:
@@ -15793,10 +16191,22 @@ components:
             equal (=), plus (+), backslash (\), hyphen (-), at symbol (@).'
         LogDestinationType:
           $ref: '#/components/schemas/LogDestinationType'
-          description: The log destination type. An enum with possible values of s3 and cloudwatch.
+          description: The log destination type. An enum with possible values of s3, cloudwatch, and s3table.
         LogExports:
           $ref: '#/components/schemas/LogTypeList'
-          description: The collection of exported log types. Possible values are connectionlog, useractivitylog, and userlog.
+          description: The collection of exported log types. When LogDestinationType is s3 or cloudwatch, possible values
+            are connectionlog, useractivitylog, and userlog. When LogDestinationType is s3table, the values are the names
+            of the system tables to publish. Omitting this parameter, passing an empty list, or including the value all publishes
+            all current and future system tables.
+        S3TableKmsKeyId:
+          $ref: '#/components/schemas/String'
+          description: The identifier of a customer managed KMS key used to encrypt the S3 tables. This parameter is valid
+            only when LogDestinationType is s3table.
+        S3TableGranularity:
+          $ref: '#/components/schemas/String'
+          description: The scope of system table publishing. Valid values are cluster and account. A value of cluster scopes
+            publishing to the individual cluster. A value of account scopes publishing to the Amazon Web Services account.
+            This parameter is valid only when LogDestinationType is s3table.
       required:
       - ClusterIdentifier
     EnableSnapshotCopyOutputDisplay:
@@ -16250,8 +16660,8 @@ components:
           $ref: '#/components/schemas/String'
           description: 'The new node type of the cluster. If you specify a new node type, you must also specify the number
             of nodes parameter. For more information about resizing clusters, go to Resizing Clusters in Amazon Redshift in
-            the Amazon Redshift Cluster Management Guide. Valid Values: dc2.large | dc2.8xlarge| rg.xlarge | rg.4xlarge |
-            ra3.large | ra3.xlplus | ra3.4xlarge | ra3.16xlarge'
+            the Amazon Redshift Cluster Management Guide. Valid Values: dc2.large | dc2.8xlarge | rg.large | rg.xlarge | rg.4xlarge
+            | rg.12xlarge | ra3.large | ra3.xlplus | ra3.4xlarge | ra3.16xlarge'
         NumberOfNodes:
           $ref: '#/components/schemas/IntegerOptional'
           description: 'The new number of nodes of the cluster. If you specify a new number of nodes, you must also specify
@@ -16794,6 +17204,26 @@ components:
             Use this to check for errors before making changes.
       required:
       - ClusterIdentifier
+    ModifyQev2IdcApplicationOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Qev2IdcApplicationDisplay'
+    ModifyQev2IdcApplicationMessage:
+      type: object
+      properties:
+        Qev2IdcApplicationArn:
+          $ref: '#/components/schemas/String'
+          description: The Amazon Resource Name (ARN) for the Amazon Redshift Query Editor (QEV2) application that integrates
+            with IAM Identity Center.
+        IdcDisplayName:
+          $ref: '#/components/schemas/IdcDisplayNameString'
+          description: The display name for the Amazon Redshift Query Editor (QEV2) IAM Identity Center application. It appears
+            in the console.
+      required:
+      - Qev2IdcApplicationArn
     ModifyRedshiftIdcApplicationOutputDisplay:
       type: object
       properties:

@@ -485,6 +485,8 @@ paths:
                   $ref: '#/components/schemas/KmsKeyArn'
                 tags:
                   $ref: '#/components/schemas/TagMap'
+                payerConfiguration:
+                  $ref: '#/components/schemas/PayerConfiguration'
               required:
               - configuredModelAlgorithmAssociations
               - inputChannel
@@ -579,6 +581,8 @@ paths:
                   $ref: '#/components/schemas/KmsKeyArn'
                 tags:
                   $ref: '#/components/schemas/TagMap'
+                mlModelTrainingPayerAccountId:
+                  $ref: '#/components/schemas/AccountId'
               required:
               - name
               - configuredModelAlgorithmAssociationArn
@@ -1789,6 +1793,8 @@ paths:
                   $ref: '#/components/schemas/KmsKeyArn'
                 tags:
                   $ref: '#/components/schemas/TagMap'
+                mlModelInferencePayerAccountId:
+                  $ref: '#/components/schemas/AccountId'
               required:
               - name
               - trainedModelArn
@@ -2535,6 +2541,7 @@ components:
       enum:
       - CR.1X
       - CR.4X
+      - CR.8X
     WorkerComputeConfigurationNumberInteger:
       type: integer
       minimum: 2
@@ -2561,6 +2568,22 @@ components:
       type: integer
       minimum: 1
       maximum: 30
+    PayerConfiguration:
+      description: Specifies which member accounts are responsible for paying for compute and synthetic data generation costs
+        in a Clean Rooms ML collaboration.
+      type: object
+      properties:
+        computePayerAccountId:
+          $ref: '#/components/schemas/AccountId'
+          description: The account ID of the member that is responsible for paying compute costs.
+        syntheticDataPayerAccountId:
+          $ref: '#/components/schemas/AccountId'
+          description: The account ID of the member that is responsible for paying synthetic data generation costs.
+    AccountId:
+      type: string
+      minLength: 12
+      maxLength: 12
+      pattern: '[0-9]{12}'
     CreateMLInputChannelResponse:
       type: object
       properties:
@@ -2937,11 +2960,6 @@ components:
       minLength: 1
       maxLength: 128
       pattern: '[a-zA-Z0-9_](([a-zA-Z0-9_]+-)*([a-zA-Z0-9_]+))?'
-    AccountId:
-      type: string
-      minLength: 12
-      maxLength: 12
-      pattern: '[0-9]{12}'
     CreateTrainingDatasetResponse:
       type: object
       properties:
@@ -3250,6 +3268,9 @@ components:
           $ref: '#/components/schemas/SyntheticDataConfiguration'
           description: The synthetic data configuration for this ML input channel, including parameters for generating privacy-preserving
             synthetic data and evaluation scores for measuring the privacy of the generated data.
+        payerConfiguration:
+          $ref: '#/components/schemas/PayerConfiguration'
+          description: The payer configuration for the ML input channel.
         createTime:
           $ref: '#/components/schemas/SyntheticTimestamp_date_time'
           description: The time at which the ML input channel was created.
@@ -3574,6 +3595,9 @@ components:
         trainingContainerImageDigest:
           $ref: '#/components/schemas/String'
           description: Information about the training container image.
+        mlModelTrainingPayerAccountId:
+          $ref: '#/components/schemas/AccountId'
+          description: The account ID of the member that is responsible for paying for model training costs.
         createTime:
           $ref: '#/components/schemas/SyntheticTimestamp_date_time'
           description: The time at which the trained model was created.
@@ -3909,6 +3933,9 @@ components:
           $ref: '#/components/schemas/SyntheticDataConfiguration'
           description: The synthetic data configuration for this ML input channel, including parameters for generating privacy-preserving
             synthetic data and evaluation scores for measuring the privacy of the generated data.
+        payerConfiguration:
+          $ref: '#/components/schemas/PayerConfiguration'
+          description: The payer configuration for the ML input channel.
         createTime:
           $ref: '#/components/schemas/SyntheticTimestamp_date_time'
           description: The time at which the ML input channel was created.
@@ -4039,6 +4066,9 @@ components:
         trainingContainerImageDigest:
           $ref: '#/components/schemas/String'
           description: Information about the training image container.
+        mlModelTrainingPayerAccountId:
+          $ref: '#/components/schemas/AccountId'
+          description: The account ID of the member that is responsible for paying for model training costs.
         createTime:
           $ref: '#/components/schemas/SyntheticTimestamp_date_time'
           description: The time at which the trained model was created.
@@ -4173,6 +4203,9 @@ components:
             value has aws as its prefix but the key does not, then Clean Rooms ML considers it to be a user tag and will count
             against the limit of 50 tags. Tags with only the key prefix of aws do not count against your tags per resource
             limit.'
+        mlModelInferencePayerAccountId:
+          $ref: '#/components/schemas/AccountId'
+          description: The account ID of the member that is responsible for paying for model inference costs.
       required:
       - createTime
       - updateTime
@@ -4676,6 +4709,9 @@ components:
         description:
           $ref: '#/components/schemas/ResourceDescription'
           description: The description of the ML input channel.
+        payerConfiguration:
+          $ref: '#/components/schemas/PayerConfiguration'
+          description: The payer configuration for the ML input channel.
       required:
       - createTime
       - updateTime
@@ -4844,6 +4880,9 @@ components:
         logsStatusDetails:
           $ref: '#/components/schemas/String'
           description: Details about the logs status for the trained model inference job.
+        mlModelInferencePayerAccountId:
+          $ref: '#/components/schemas/AccountId'
+          description: The account ID of the member that is responsible for paying for model inference costs.
         createTime:
           $ref: '#/components/schemas/SyntheticTimestamp_date_time'
           description: The time at which the trained model inference job was created.
@@ -4921,6 +4960,9 @@ components:
         creatorAccountId:
           $ref: '#/components/schemas/AccountId'
           description: The account ID of the member that created the trained model.
+        mlModelTrainingPayerAccountId:
+          $ref: '#/components/schemas/AccountId'
+          description: The account ID of the member that is responsible for paying for model training costs.
       required:
       - createTime
       - updateTime
@@ -5122,6 +5164,9 @@ components:
         description:
           $ref: '#/components/schemas/ResourceDescription'
           description: The description of the ML input channel.
+        payerConfiguration:
+          $ref: '#/components/schemas/PayerConfiguration'
+          description: The payer configuration for the ML input channel.
       required:
       - createTime
       - updateTime
@@ -5211,6 +5256,9 @@ components:
         logsStatusDetails:
           $ref: '#/components/schemas/String'
           description: Details about the log status for the trained model inference job.
+        mlModelInferencePayerAccountId:
+          $ref: '#/components/schemas/AccountId'
+          description: The account ID of the member that is responsible for paying for model inference costs.
         createTime:
           $ref: '#/components/schemas/SyntheticTimestamp_date_time'
           description: The time at which the trained model inference job was created.
@@ -5283,6 +5331,9 @@ components:
           $ref: '#/components/schemas/ConfiguredModelAlgorithmAssociationArn'
           description: The Amazon Resource Name (ARN) of the configured model algorithm association that was used to create
             this trained model.
+        mlModelTrainingPayerAccountId:
+          $ref: '#/components/schemas/AccountId'
+          description: The account ID of the member that is responsible for paying for model training costs.
       required:
       - createTime
       - updateTime

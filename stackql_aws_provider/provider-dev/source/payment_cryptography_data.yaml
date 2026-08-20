@@ -37,8 +37,9 @@ paths:
         must be a multiple of 8 bytes. For AES or AES DUKPT, the ciphertext data length must be a multiple of 16 bytes. For
         RSA, it sould be equal to the key size unless padding is enabled. For information about valid keys for this operation,
         see Understanding key attributes and Key types for specific data operations in the Amazon Web Services Payment Cryptography
-        User Guide. Cross-account use: This operation can''t be used across different Amazon Web Services accounts. Related
-        operations: EncryptData GetPublicCertificate ImportKey'
+        User Guide. Cross-account use: This operation supports cross-account use when the key has a resource-based policy
+        that grants access. For more information, see Resource-based policies. Related operations: EncryptData GetPublicCertificate
+        ImportKey'
       parameters:
       - name: key_identifier
         in: path
@@ -97,8 +98,9 @@ paths:
         DUKPT key by calling CreateKey. To encrypt using EMV, you must already have an IMK (Issuer Master Key) key in your
         account with KeyModesOfUse set to DeriveKey. For information about valid keys for this operation, see Understanding
         key attributes and Key types for specific data operations in the Amazon Web Services Payment Cryptography User Guide.
-        Cross-account use: This operation can''t be used across different Amazon Web Services accounts. Related operations:
-        DecryptData GetPublicCertificate ImportKey ReEncryptData'
+        Cross-account use: This operation supports cross-account use when the key has a resource-based policy that grants
+        access. For more information, see Resource-based policies. Related operations: DecryptData GetPublicCertificate ImportKey
+        ReEncryptData'
       parameters:
       - name: key_identifier
         in: path
@@ -137,18 +139,22 @@ paths:
   /as2805kekvalidation/generate:
     post:
       operationId: GenerateAs2805KekValidation
-      description: 'Establishes node-to-node initialization between payment processing nodes such as an acquirer, issuer or
-        payment network using Australian Standard 2805 (AS2805). During node-to-node initialization, both communicating nodes
+      description: 'Generates a KekValidationRequest or a KekValidationResponse for node-to-node initialization between payment
+        processing nodes using Australian Standard 2805 (AS2805). During node-to-node initialization, both communicating nodes
         must validate that they possess the correct Key Encrypting Keys (KEKs) before proceeding with session key exchange.
         In AS2805, the sending KEK (KEKs) of one node corresponds to the receiving KEK (KEKr) of its partner node. Each node
         uses its KEK to encrypt and decrypt session keys exchanged between the nodes. A KEK can be created or imported into
-        Amazon Web Services Payment Cryptography using either the CreateKey or ImportKey operations. The node initiating communication
-        can use GenerateAS2805KekValidation to generate a combined KEK validation request and KEK validation response to send
-        to the partnering node for validation. When invoked, the API internally generates a random sending key encrypted under
-        KEKs and provides a receiving key encrypted under KEKr as response. The initiating node sends the response returned
-        by this API to its partner for validation. For information about valid keys for this operation, see Understanding
-        key attributes and Key types for specific data operations in the Amazon Web Services Payment Cryptography User Guide.
-        Cross-account use: This operation can''t be used across different Amazon Web Services accounts.'
+        Amazon Web Services Payment Cryptography using either the CreateKey or ImportKey operations. To use GenerateAs2805KekValidation
+        to generate a KEK validation request, set KekValidationType to KekValidationRequest. This operation returns both RandomKeySend
+        (KRs) and RandomKeyReceive (KRr) as response values. The partnering node receives the KRs, uses its KEKr to decrypt
+        it, and generates a KRr which is an inverted value of KRs. The node receiving the KRr validates it against its own
+        KRr generated during KEK validation request outside of Amazon Web Services Payment Cryptography. You can also use
+        this operation to generate a KEK validation response, by setting KekValidationType to KekValidationResponse and providing
+        the incoming KRs. This operation then calculates a KRr. To learn more about more about node-to-node initialization,
+        see Validation of KEK in the Amazon Web Services Payment Cryptography User Guide. For information about valid keys
+        for this operation, see Understanding key attributes and Key types for specific data operations in the Amazon Web
+        Services Payment Cryptography User Guide. Cross-account use: This operation supports cross-account use when the key
+        has a resource-based policy that grants access. For more information, see Resource-based policies.'
       parameters: []
       requestBody:
         required: true
@@ -177,6 +183,51 @@ paths:
       x-stackql-resource: as2805_kek_validation
       x-stackql-method: generate_as2805_kek_validation
       x-stackql-verb: EXEC
+  /cryptogram/generate:
+    post:
+      operationId: GenerateAuthRequestCryptogram
+      description: 'Generates an Authorization Request Cryptogram (ARQC) for an EMV chip payment card authorization. For more
+        information, see Generate auth request cryptogram in the Amazon Web Services Payment Cryptography User Guide. ARQC
+        generation uses an Issuer Master Key (IMK) for application cryptograms (TR31_E0_EMV_MKEY_APP_CRYPTOGRAMS) to derive
+        a session key, which is then used to generate the cryptogram from the provided transaction data (when applicable).
+        To use this operation, you must first create or import an IMK-AC key by calling CreateKey or ImportKey. The KeyModesOfUse
+        should be set to DeriveKey for the IMK-AC encryption key. This operation is intended for development and testing scenarios
+        only. It is not recommended to use this operation as a substitute for card-based cryptogram generation in production
+        payment flows. For information about valid keys for this operation, see Understanding key attributes and Key types
+        for specific data operations in the Amazon Web Services Payment Cryptography User Guide. Cross-account use: This operation
+        supports cross-account use when the key has a resource-based policy that grants access. For more information, see
+        Resource-based policies. Related operations: VerifyAuthRequestCryptogram'
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                KeyIdentifier:
+                  $ref: '#/components/schemas/KeyArnOrKeyAliasType'
+                TransactionData:
+                  $ref: '#/components/schemas/TransactionDataType'
+                MajorKeyDerivationMode:
+                  $ref: '#/components/schemas/MajorKeyDerivationMode'
+                SessionKeyDerivationAttributes:
+                  $ref: '#/components/schemas/SessionKeyDerivation'
+              required:
+              - KeyIdentifier
+              - TransactionData
+              - MajorKeyDerivationMode
+              - SessionKeyDerivationAttributes
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenerateAuthRequestCryptogramOutput'
+      x-stackql-resource: auth_request_cryptogram
+      x-stackql-method: generate_auth_request_cryptogram
+      x-stackql-verb: EXEC
   /cardvalidationdata/generate:
     post:
       operationId: GenerateCardValidationData
@@ -188,8 +239,9 @@ paths:
         (Card Verification Key) encryption key is required. You can use CreateKey or ImportKey to establish a CVK within Amazon
         Web Services Payment Cryptography. The KeyModesOfUse should be set to Generate and Verify for a CVK encryption key.
         For information about valid keys for this operation, see Understanding key attributes and Key types for specific data
-        operations in the Amazon Web Services Payment Cryptography User Guide. Cross-account use: This operation can''t be
-        used across different Amazon Web Services accounts. Related operations: ImportKey VerifyCardValidationData'
+        operations in the Amazon Web Services Payment Cryptography User Guide. Cross-account use: This operation supports
+        cross-account use when the key has a resource-based policy that grants access. For more information, see Resource-based
+        policies. Related operations: ImportKey VerifyCardValidationData'
       parameters: []
       requestBody:
         required: true
@@ -232,7 +284,8 @@ paths:
         encryption key must have valid values for KeyUsage such as TR31_M7_HMAC_KEY for HMAC generation, and the key must
         have KeyModesOfUse set to Generate. For information about valid keys for this operation, see Understanding key attributes
         and Key types for specific data operations in the Amazon Web Services Payment Cryptography User Guide. Cross-account
-        use: This operation can''t be used across different Amazon Web Services accounts. Related operations: VerifyMac'
+        use: This operation supports cross-account use when the key has a resource-based policy that grants access. For more
+        information, see Resource-based policies. Related operations: VerifyMac'
       parameters: []
       requestBody:
         required: true
@@ -248,7 +301,7 @@ paths:
                 GenerationAttributes:
                   $ref: '#/components/schemas/MacAttributes'
                 MacLength:
-                  $ref: '#/components/schemas/IntegerRangeBetween4And16'
+                  $ref: '#/components/schemas/IntegerRangeBetween4And32'
               required:
               - KeyIdentifier
               - MessageData
@@ -279,8 +332,8 @@ paths:
         Users must follow the specific derivation method and input parameters defined by the respective payment card scheme.
         Use GenerateMac operation when sending a script update to an EMV card that does not involve PIN change. When assigning
         IAM permissions, it is important to understand that EncryptData using EMV keys and GenerateMac perform similar functions
-        to this command. Cross-account use: This operation can''t be used across different Amazon Web Services accounts. Related
-        operations: EncryptData GenerateMac'
+        to this command. Cross-account use: This operation supports cross-account use when the key has a resource-based policy
+        that grants access. For more information, see Resource-based policies. Related operations: EncryptData GenerateMac'
       parameters: []
       requestBody:
         required: true
@@ -335,8 +388,9 @@ paths:
         Payment Cryptography. For more information on establishing ECDH derived keys, see the Generating keys in the Amazon
         Web Services Payment Cryptography User Guide. For information about valid keys for this operation, see Understanding
         key attributes and Key types for specific data operations in the Amazon Web Services Payment Cryptography User Guide.
-        Cross-account use: This operation can''t be used across different Amazon Web Services accounts. Related operations:
-        GenerateCardValidationData TranslatePinData VerifyPinData'
+        Cross-account use: This operation supports cross-account use when the key has a resource-based policy that grants
+        access. For more information, see Resource-based policies. Related operations: GenerateCardValidationData TranslatePinData
+        VerifyPinData'
       parameters: []
       requestBody:
         required: true
@@ -389,8 +443,9 @@ paths:
         supports TDES and AES algorithms. To encrypt using DUKPT, a DUKPT key must already exist within your account with
         KeyModesOfUse set to DeriveKey or a new DUKPT can be generated by calling CreateKey. For information about valid keys
         for this operation, see Understanding key attributes and Key types for specific data operations in the Amazon Web
-        Services Payment Cryptography User Guide. Cross-account use: This operation can''t be used across different Amazon
-        Web Services accounts. Related operations: DecryptData EncryptData GetPublicCertificate ImportKey'
+        Services Payment Cryptography User Guide. Cross-account use: This operation supports cross-account use when the key
+        has a resource-based policy that grants access. For more information, see Resource-based policies. Related operations:
+        DecryptData EncryptData GetPublicCertificate ImportKey'
       parameters:
       - name: incoming_key_identifier
         in: path
@@ -446,8 +501,9 @@ paths:
         key derivation parameters to generate a derived key. The service uses this derived key to unwrap the incoming transaction
         key received as a TR31WrappedKeyBlock and re-wrap using a user provided KEK to generate an outgoing Tr31WrappedKeyBlock.
         For information about valid keys for this operation, see Understanding key attributes and Key types for specific data
-        operations in the Amazon Web Services Payment Cryptography User Guide. Cross-account use: This operation can''t be
-        used across different Amazon Web Services accounts. Related operations: CreateKey GetPublicCertificate ImportKey'
+        operations in the Amazon Web Services Payment Cryptography User Guide. Cross-account use: This operation supports
+        cross-account use when the key has a resource-based policy that grants access. For more information, see Resource-based
+        policies. Related operations: CreateKey GetPublicCertificate ImportKey'
       parameters: []
       requestBody:
         required: true
@@ -500,8 +556,8 @@ paths:
         see Understanding key attributes and Key types for specific data operations in the Amazon Web Services Payment Cryptography
         User Guide. Amazon Web Services Payment Cryptography currently supports ISO PIN block 4 translation for PIN block
         built using legacy PAN length. That is, PAN is the right most 12 digits excluding the check digits. Cross-account
-        use: This operation can''t be used across different Amazon Web Services accounts. Related operations: GeneratePinData
-        VerifyPinData'
+        use: This operation supports cross-account use when the key has a resource-based policy that grants access. For more
+        information, see Resource-based policies. Related operations: GeneratePinData VerifyPinData'
       parameters: []
       requestBody:
         required: true
@@ -558,8 +614,9 @@ paths:
         result or provide an APRC (Authorization Response Cryptogram) response using Method 1 or Method 2. The ARPC_METHOD_1
         uses AuthResponseCode to generate ARPC and ARPC_METHOD_2 uses CardStatusUpdate to generate ARPC. For information about
         valid keys for this operation, see Understanding key attributes and Key types for specific data operations in the
-        Amazon Web Services Payment Cryptography User Guide. Cross-account use: This operation can''t be used across different
-        Amazon Web Services accounts. Related operations: VerifyCardValidationData VerifyPinData'
+        Amazon Web Services Payment Cryptography User Guide. Cross-account use: This operation supports cross-account use
+        when the key has a resource-based policy that grants access. For more information, see Resource-based policies. Related
+        operations: VerifyCardValidationData VerifyPinData'
       parameters: []
       requestBody:
         required: true
@@ -608,8 +665,9 @@ paths:
         processing. In this operation, the CVK (Card Verification Key) encryption key for use with card data verification
         is same as the one in used for GenerateCardValidationData. For information about valid keys for this operation, see
         Understanding key attributes and Key types for specific data operations in the Amazon Web Services Payment Cryptography
-        User Guide. Cross-account use: This operation can''t be used across different Amazon Web Services accounts. Related
-        operations: GenerateCardValidationData VerifyAuthRequestCryptogram VerifyPinData'
+        User Guide. Cross-account use: This operation supports cross-account use when the key has a resource-based policy
+        that grants access. For more information, see Resource-based policies. Related operations: GenerateCardValidationData
+        VerifyAuthRequestCryptogram VerifyPinData'
       parameters: []
       requestBody:
         required: true
@@ -649,8 +707,8 @@ paths:
         that was used to generate MAC. You can use this operation to verify a DUPKT, CMAC, HMAC or EMV MAC by setting generation
         attributes and algorithm to the associated values. For information about valid keys for this operation, see Understanding
         key attributes and Key types for specific data operations in the Amazon Web Services Payment Cryptography User Guide.
-        Cross-account use: This operation can''t be used across different Amazon Web Services accounts. Related operations:
-        GenerateMac'
+        Cross-account use: This operation supports cross-account use when the key has a resource-based policy that grants
+        access. For more information, see Resource-based policies. Related operations: GenerateMac'
       parameters: []
       requestBody:
         required: true
@@ -668,7 +726,7 @@ paths:
                 VerificationAttributes:
                   $ref: '#/components/schemas/MacAttributes'
                 MacLength:
-                  $ref: '#/components/schemas/IntegerRangeBetween4And16'
+                  $ref: '#/components/schemas/IntegerRangeBetween4And32'
               required:
               - KeyIdentifier
               - MessageData
@@ -694,7 +752,8 @@ paths:
         then encrypts it using PIN Encryption Key (PEK) to create an EncryptedPinBlock for transmission from Amazon Web Services
         Payment Cryptography. For information about valid keys for this operation, see Understanding key attributes and Key
         types for specific data operations in the Amazon Web Services Payment Cryptography User Guide. Cross-account use:
-        This operation can''t be used across different Amazon Web Services accounts. Related operations: GeneratePinData TranslatePinData'
+        This operation supports cross-account use when the key has a resource-based policy that grants access. For more information,
+        see Resource-based policies. Related operations: GeneratePinData TranslatePinData'
       parameters: []
       requestBody:
         required: true
@@ -1134,22 +1193,31 @@ components:
         DeriveKeyAlgorithm:
           $ref: '#/components/schemas/SymmetricKeyAlgorithm'
           description: The key derivation algorithm to use for generating a KEK validation request.
+        RandomKeyMaxLength:
+          $ref: '#/components/schemas/RandomKeyMaxLength'
+          description: The maximum length of the random key to generate for a KEK validation request.
       required:
       - DeriveKeyAlgorithm
+    RandomKeyMaxLength:
+      type: string
+      enum:
+      - BYTES_8
+      - BYTES_16
+      - BYTES_24
     KekValidationResponse:
       description: Parameter information for generating a KEK validation response during node-to-node initialization.
       type: object
       properties:
         RandomKeySend:
           $ref: '#/components/schemas/As2805RandomKeyMaterial'
-          description: The random key for generating a KEK validation response.
+          description: The random key send value received from the initiating node to generate a KEK validation response.
       required:
       - RandomKeySend
     As2805RandomKeyMaterial:
       type: string
-      minLength: 32
+      minLength: 16
       maxLength: 48
-      pattern: (?:[0-9a-fA-F]{32}|[0-9a-fA-F]{48})
+      pattern: (?:[0-9a-fA-F]{16}|[0-9a-fA-F]{32}|[0-9a-fA-F]{48})
     RandomKeySendVariantMask:
       type: string
       enum:
@@ -1178,6 +1246,180 @@ components:
       - KeyCheckValue
       - RandomKeySend
       - RandomKeyReceive
+    TransactionDataType:
+      type: string
+      minLength: 2
+      maxLength: 1024
+      pattern: '[0-9a-fA-F]+'
+    MajorKeyDerivationMode:
+      type: string
+      enum:
+      - EMV_OPTION_A
+      - EMV_OPTION_B
+    SessionKeyDerivation:
+      description: Parameters to derive a session key for Authorization Response Cryptogram (ARQC) verification.
+      type: object
+      properties:
+        EmvCommon:
+          $ref: '#/components/schemas/SessionKeyEmvCommon'
+          description: Parameters to derive session key for an Emv common payment card for ARQC verification.
+        Mastercard:
+          $ref: '#/components/schemas/SessionKeyMastercard'
+          description: Parameters to derive session key for a Mastercard payment card for ARQC verification.
+        Emv2000:
+          $ref: '#/components/schemas/SessionKeyEmv2000'
+          description: Parameters to derive session key for an Emv2000 payment card for ARQC verification.
+        Amex:
+          $ref: '#/components/schemas/SessionKeyAmex'
+          description: Parameters to derive session key for an Amex payment card for ARQC verification.
+        Visa:
+          $ref: '#/components/schemas/SessionKeyVisa'
+          description: Parameters to derive session key for a Visa payment cardfor ARQC verification.
+        UnionPay:
+          $ref: '#/components/schemas/SessionKeyUnionPay'
+          description: Parameters to derive session key for a UnionPay payment card for Authorization Request Cryptogram (ARQC)
+            generation and verification.
+    SessionKeyEmvCommon:
+      description: Parameters to derive session key for an Emv common payment card for ARQC verification.
+      type: object
+      properties:
+        PrimaryAccountNumber:
+          $ref: '#/components/schemas/PrimaryAccountNumberType'
+          description: The Primary Account Number (PAN) of the cardholder. A PAN is a unique identifier for a payment credit
+            or debit card and associates the card to a specific account holder.
+        PanSequenceNumber:
+          $ref: '#/components/schemas/NumberLengthEquals2'
+          description: A number that identifies and differentiates payment cards with the same Primary Account Number (PAN).
+        ApplicationTransactionCounter:
+          $ref: '#/components/schemas/HexLengthEquals4'
+          description: The transaction counter that is provided by the terminal during transaction processing.
+      required:
+      - PrimaryAccountNumber
+      - PanSequenceNumber
+      - ApplicationTransactionCounter
+    HexLengthEquals4:
+      type: string
+      minLength: 4
+      maxLength: 4
+      pattern: '[0-9a-fA-F]+'
+    SessionKeyMastercard:
+      description: Parameters to derive session key for Mastercard payment card for ARQC verification.
+      type: object
+      properties:
+        PrimaryAccountNumber:
+          $ref: '#/components/schemas/PrimaryAccountNumberType'
+          description: The Primary Account Number (PAN) of the cardholder. A PAN is a unique identifier for a payment credit
+            or debit card and associates the card to a specific account holder.
+        PanSequenceNumber:
+          $ref: '#/components/schemas/NumberLengthEquals2'
+          description: A number that identifies and differentiates payment cards with the same Primary Account Number (PAN).
+        ApplicationTransactionCounter:
+          $ref: '#/components/schemas/HexLengthEquals4'
+          description: The transaction counter that is provided by the terminal during transaction processing.
+        UnpredictableNumber:
+          $ref: '#/components/schemas/HexLengthEquals8'
+          description: A random number generated by the issuer.
+      required:
+      - PrimaryAccountNumber
+      - PanSequenceNumber
+      - ApplicationTransactionCounter
+      - UnpredictableNumber
+    HexLengthEquals8:
+      type: string
+      minLength: 8
+      maxLength: 8
+      pattern: '[0-9a-fA-F]+'
+    SessionKeyEmv2000:
+      description: Parameters to derive session key for an Emv2000 payment card for ARQC verification.
+      type: object
+      properties:
+        PrimaryAccountNumber:
+          $ref: '#/components/schemas/PrimaryAccountNumberType'
+          description: The Primary Account Number (PAN) of the cardholder. A PAN is a unique identifier for a payment credit
+            or debit card and associates the card to a specific account holder.
+        PanSequenceNumber:
+          $ref: '#/components/schemas/NumberLengthEquals2'
+          description: A number that identifies and differentiates payment cards with the same Primary Account Number (PAN).
+        ApplicationTransactionCounter:
+          $ref: '#/components/schemas/HexLengthEquals4'
+          description: The transaction counter that is provided by the terminal during transaction processing.
+      required:
+      - PrimaryAccountNumber
+      - PanSequenceNumber
+      - ApplicationTransactionCounter
+    SessionKeyAmex:
+      description: Parameters to derive session key for an Amex payment card.
+      type: object
+      properties:
+        PrimaryAccountNumber:
+          $ref: '#/components/schemas/PrimaryAccountNumberType'
+          description: The Primary Account Number (PAN) of the cardholder. A PAN is a unique identifier for a payment credit
+            or debit card and associates the card to a specific account holder.
+        PanSequenceNumber:
+          $ref: '#/components/schemas/NumberLengthEquals2'
+          description: A number that identifies and differentiates payment cards with the same Primary Account Number (PAN).
+      required:
+      - PrimaryAccountNumber
+      - PanSequenceNumber
+    SessionKeyVisa:
+      description: Parameters to derive session key for Visa payment card for ARQC verification.
+      type: object
+      properties:
+        PrimaryAccountNumber:
+          $ref: '#/components/schemas/PrimaryAccountNumberType'
+          description: The Primary Account Number (PAN) of the cardholder. A PAN is a unique identifier for a payment credit
+            or debit card and associates the card to a specific account holder.
+        PanSequenceNumber:
+          $ref: '#/components/schemas/NumberLengthEquals2'
+          description: A number that identifies and differentiates payment cards with the same Primary Account Number (PAN).
+      required:
+      - PrimaryAccountNumber
+      - PanSequenceNumber
+    SessionKeyUnionPay:
+      description: Parameters to derive session key for a UnionPay payment card for Authorization Request Cryptogram (ARQC)
+        generation and verification.
+      type: object
+      properties:
+        PrimaryAccountNumber:
+          $ref: '#/components/schemas/PrimaryAccountNumberType'
+          description: The Primary Account Number (PAN) of the cardholder. A PAN is a unique identifier for a payment credit
+            or debit card and associates the card to a specific account holder.
+        PanSequenceNumber:
+          $ref: '#/components/schemas/NumberLengthEquals2'
+          description: A number that identifies and differentiates payment cards with the same Primary Account Number (PAN).
+            If not used, enter 00.
+        ApplicationTransactionCounter:
+          $ref: '#/components/schemas/HexLengthEquals4'
+          description: The transaction counter that the terminal provides during transaction processing. This value is in
+            hexadecimal format. For example, enter a decimal counter of 109 as 006D.
+      required:
+      - PrimaryAccountNumber
+      - PanSequenceNumber
+      - ApplicationTransactionCounter
+    GenerateAuthRequestCryptogramOutput:
+      type: object
+      properties:
+        KeyArn:
+          $ref: '#/components/schemas/KeyArn'
+          description: The keyARN of the IMK-AC that Amazon Web Services Payment Cryptography uses for ARQC generation.
+        KeyCheckValue:
+          $ref: '#/components/schemas/KeyCheckValue'
+          description: The key check value (KCV) of the encryption key. The KCV is used to check if all parties holding a
+            given key have the same key or to detect that a key has changed. Amazon Web Services Payment Cryptography computes
+            the KCV according to the CMAC specification.
+        AuthRequestCryptogram:
+          $ref: '#/components/schemas/AuthRequestCryptogramType'
+          description: The Authorization Request Cryptogram (ARQC) generated by Amazon Web Services Payment Cryptography using
+            the specified key and transaction data.
+      required:
+      - KeyArn
+      - KeyCheckValue
+      - AuthRequestCryptogram
+    AuthRequestCryptogramType:
+      type: string
+      minLength: 16
+      maxLength: 16
+      pattern: '[0-9a-fA-F]+'
     CardGenerationAttributes:
       description: Card data parameters that are required to generate Card Verification Values (CVV/CVV2), Dynamic Card Verification
         Values (dCVV/dCVV2), or Card Security Codes (CSC).
@@ -1427,11 +1669,6 @@ components:
       - PanSequenceNumber
       - SessionKeyDerivationMode
       - SessionKeyDerivationValue
-    MajorKeyDerivationMode:
-      type: string
-      enum:
-      - EMV_OPTION_A
-      - EMV_OPTION_B
     SessionKeyDerivationMode:
       type: string
       enum:
@@ -1440,6 +1677,7 @@ components:
       - AMEX
       - MASTERCARD_SESSION_KEY
       - VISA
+      - UNION_PAY
     SessionKeyDerivationValue:
       description: Parameters to derive session key value using a MAC EMV algorithm.
       type: object
@@ -1454,11 +1692,6 @@ components:
       type: string
       minLength: 16
       maxLength: 16
-      pattern: '[0-9a-fA-F]+'
-    HexLengthEquals4:
-      type: string
-      minLength: 4
-      maxLength: 4
       pattern: '[0-9a-fA-F]+'
     MacAlgorithmDukpt:
       description: Parameters required for DUKPT MAC generation and verification.
@@ -1480,10 +1713,10 @@ components:
       required:
       - KeySerialNumber
       - DukptKeyVariant
-    IntegerRangeBetween4And16:
+    IntegerRangeBetween4And32:
       type: integer
       minimum: 4
-      maximum: 16
+      maximum: 32
     GenerateMacOutput:
       type: object
       properties:
@@ -2241,121 +2474,6 @@ components:
       - PinBlock
       - KeyArn
       - KeyCheckValue
-    TransactionDataType:
-      type: string
-      minLength: 2
-      maxLength: 1024
-      pattern: '[0-9a-fA-F]+'
-    AuthRequestCryptogramType:
-      type: string
-      minLength: 16
-      maxLength: 16
-      pattern: '[0-9a-fA-F]+'
-    SessionKeyDerivation:
-      description: Parameters to derive a session key for Authorization Response Cryptogram (ARQC) verification.
-      type: object
-      properties:
-        EmvCommon:
-          $ref: '#/components/schemas/SessionKeyEmvCommon'
-          description: Parameters to derive session key for an Emv common payment card for ARQC verification.
-        Mastercard:
-          $ref: '#/components/schemas/SessionKeyMastercard'
-          description: Parameters to derive session key for a Mastercard payment card for ARQC verification.
-        Emv2000:
-          $ref: '#/components/schemas/SessionKeyEmv2000'
-          description: Parameters to derive session key for an Emv2000 payment card for ARQC verification.
-        Amex:
-          $ref: '#/components/schemas/SessionKeyAmex'
-          description: Parameters to derive session key for an Amex payment card for ARQC verification.
-        Visa:
-          $ref: '#/components/schemas/SessionKeyVisa'
-          description: Parameters to derive session key for a Visa payment cardfor ARQC verification.
-    SessionKeyEmvCommon:
-      description: Parameters to derive session key for an Emv common payment card for ARQC verification.
-      type: object
-      properties:
-        PrimaryAccountNumber:
-          $ref: '#/components/schemas/PrimaryAccountNumberType'
-          description: The Primary Account Number (PAN) of the cardholder. A PAN is a unique identifier for a payment credit
-            or debit card and associates the card to a specific account holder.
-        PanSequenceNumber:
-          $ref: '#/components/schemas/NumberLengthEquals2'
-          description: A number that identifies and differentiates payment cards with the same Primary Account Number (PAN).
-        ApplicationTransactionCounter:
-          $ref: '#/components/schemas/HexLengthEquals4'
-          description: The transaction counter that is provided by the terminal during transaction processing.
-      required:
-      - PrimaryAccountNumber
-      - PanSequenceNumber
-      - ApplicationTransactionCounter
-    SessionKeyMastercard:
-      description: Parameters to derive session key for Mastercard payment card for ARQC verification.
-      type: object
-      properties:
-        PrimaryAccountNumber:
-          $ref: '#/components/schemas/PrimaryAccountNumberType'
-          description: The Primary Account Number (PAN) of the cardholder. A PAN is a unique identifier for a payment credit
-            or debit card and associates the card to a specific account holder.
-        PanSequenceNumber:
-          $ref: '#/components/schemas/NumberLengthEquals2'
-          description: A number that identifies and differentiates payment cards with the same Primary Account Number (PAN).
-        ApplicationTransactionCounter:
-          $ref: '#/components/schemas/HexLengthEquals4'
-          description: The transaction counter that is provided by the terminal during transaction processing.
-        UnpredictableNumber:
-          $ref: '#/components/schemas/HexLengthBetween2And8'
-          description: A random number generated by the issuer.
-      required:
-      - PrimaryAccountNumber
-      - PanSequenceNumber
-      - ApplicationTransactionCounter
-      - UnpredictableNumber
-    SessionKeyEmv2000:
-      description: Parameters to derive session key for an Emv2000 payment card for ARQC verification.
-      type: object
-      properties:
-        PrimaryAccountNumber:
-          $ref: '#/components/schemas/PrimaryAccountNumberType'
-          description: The Primary Account Number (PAN) of the cardholder. A PAN is a unique identifier for a payment credit
-            or debit card and associates the card to a specific account holder.
-        PanSequenceNumber:
-          $ref: '#/components/schemas/NumberLengthEquals2'
-          description: A number that identifies and differentiates payment cards with the same Primary Account Number (PAN).
-        ApplicationTransactionCounter:
-          $ref: '#/components/schemas/HexLengthEquals4'
-          description: The transaction counter that is provided by the terminal during transaction processing.
-      required:
-      - PrimaryAccountNumber
-      - PanSequenceNumber
-      - ApplicationTransactionCounter
-    SessionKeyAmex:
-      description: Parameters to derive session key for an Amex payment card.
-      type: object
-      properties:
-        PrimaryAccountNumber:
-          $ref: '#/components/schemas/PrimaryAccountNumberType'
-          description: The Primary Account Number (PAN) of the cardholder. A PAN is a unique identifier for a payment credit
-            or debit card and associates the card to a specific account holder.
-        PanSequenceNumber:
-          $ref: '#/components/schemas/NumberLengthEquals2'
-          description: A number that identifies and differentiates payment cards with the same Primary Account Number (PAN).
-      required:
-      - PrimaryAccountNumber
-      - PanSequenceNumber
-    SessionKeyVisa:
-      description: Parameters to derive session key for Visa payment card for ARQC verification.
-      type: object
-      properties:
-        PrimaryAccountNumber:
-          $ref: '#/components/schemas/PrimaryAccountNumberType'
-          description: The Primary Account Number (PAN) of the cardholder. A PAN is a unique identifier for a payment credit
-            or debit card and associates the card to a specific account holder.
-        PanSequenceNumber:
-          $ref: '#/components/schemas/NumberLengthEquals2'
-          description: A number that identifies and differentiates payment cards with the same Primary Account Number (PAN).
-      required:
-      - PrimaryAccountNumber
-      - PanSequenceNumber
     CryptogramAuthResponse:
       description: Parameters that are required for Authorization Response Cryptogram (ARPC) generation after Authorization
         Request Cryptogram (ARQC) verification is successful.
@@ -2393,11 +2511,6 @@ components:
             an EMV chip card.
       required:
       - CardStatusUpdate
-    HexLengthEquals8:
-      type: string
-      minLength: 8
-      maxLength: 8
-      pattern: '[0-9a-fA-F]+'
     ProprietaryAuthenticationDataType:
       type: string
       minLength: 1

@@ -3762,6 +3762,11 @@ components:
         LookBackTimePeriod:
           $ref: '#/components/schemas/DateInterval'
           description: The time period associated with the analysis.
+        SavingsPlansTargetCoverage:
+          $ref: '#/components/schemas/SavingsPlansTargetCoverage'
+          description: Specifies the target Savings Plans coverage as a percentage from 10 to 100. This field is required
+            when AnalysisType is TARGET_AVERAGE_COVERAGE. It defines the target average hourly coverage that the recommended
+            Savings Plans commitment should achieve over the lookback period.
       required:
       - AnalysisType
       - SavingsPlansToAdd
@@ -3781,6 +3786,7 @@ components:
       enum:
       - MAX_SAVINGS
       - CUSTOM_COMMITMENT
+      - TARGET_AVERAGE_COVERAGE
     SavingsPlansToAdd:
       type: array
       items:
@@ -3845,6 +3851,10 @@ components:
       minLength: 36
       maxLength: 36
       pattern: ^[\S\s]{8}-[\S\s]{4}-[\S\s]{4}-[\S\s]{4}-[\S\s]{12}$
+    SavingsPlansTargetCoverage:
+      type: integer
+      minimum: 10
+      maximum: 100
     MetricNames:
       type: array
       items:

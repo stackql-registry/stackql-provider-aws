@@ -7489,7 +7489,7 @@ components:
     MinStorageBytesPercentage:
       type: number
       format: double
-      minimum: 0.1
+      minimum: 1
       maximum: 100
     AdvancedCostOptimizationMetrics:
       description: The container element for Amazon S3 Storage Lens advanced cost-optimization metrics. Advanced cost-optimization

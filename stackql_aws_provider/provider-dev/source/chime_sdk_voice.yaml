@@ -25,7 +25,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/NonEmptyString'
+          $ref: '#/components/schemas/VoiceConnectorId'
         description: The Voice Connector ID.
       requestBody:
         required: true
@@ -180,7 +180,7 @@ paths:
         in: query
         required: false
         schema:
-          $ref: '#/components/schemas/String'
+          $ref: '#/components/schemas/NextTokenString'
         description: The token used to retrieve the next page of results.
       - name: max-results
         in: query
@@ -201,14 +201,14 @@ paths:
   /voice-connectors/{voice_connector_id}/proxy-sessions:
     post:
       operationId: CreateProxySession
-      description: Creates a proxy session for the specified Amazon Chime SDK Voice Connector for the specified participant
-        phone numbers.
+      description: 'Creates a proxy session for the specified Amazon Chime SDK Voice Connector for the specified participant
+        phone numbers. End of support notice: On April 7, 2026, AWS will end support for Amazon Chime SDK proxy sessions.'
       parameters:
       - name: voice_connector_id
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/NonEmptyString128'
+          $ref: '#/components/schemas/VoiceConnectorId'
         description: The Voice Connector ID.
       requestBody:
         required: true
@@ -246,13 +246,14 @@ paths:
       x-stackql-verb: INSERT
     get:
       operationId: ListProxySessions
-      description: Lists the proxy sessions for the specified Amazon Chime SDK Voice Connector.
+      description: 'Lists the proxy sessions for the specified Amazon Chime SDK Voice Connector. End of support notice: On
+        April 7, 2026, AWS will end support for Amazon Chime SDK proxy sessions.'
       parameters:
       - name: voice_connector_id
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/NonEmptyString128'
+          $ref: '#/components/schemas/VoiceConnectorId'
         description: The Voice Connector ID.
       - name: status
         in: query
@@ -415,6 +416,7 @@ paths:
               - Name
               - TriggerType
               - TriggerValue
+              - TargetApplications
       responses:
         '201':
           description: Success
@@ -544,6 +546,8 @@ paths:
                   $ref: '#/components/schemas/VoiceConnectorGroupName'
                 VoiceConnectorItems:
                   $ref: '#/components/schemas/VoiceConnectorItemList'
+                CallDistributionType:
+                  $ref: '#/components/schemas/CallDistributionType'
               required:
               - Name
       responses:
@@ -789,13 +793,14 @@ paths:
   /voice-connectors/{voice_connector_id}/proxy-sessions/{proxy_session_id}:
     delete:
       operationId: DeleteProxySession
-      description: Deletes the specified proxy session from the specified Amazon Chime SDK Voice Connector.
+      description: 'Deletes the specified proxy session from the specified Amazon Chime SDK Voice Connector. End of support
+        notice: On April 7, 2026, AWS will end support for Amazon Chime SDK proxy sessions.'
       parameters:
       - name: voice_connector_id
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/NonEmptyString128'
+          $ref: '#/components/schemas/VoiceConnectorId'
         description: The Voice Connector ID.
       - name: proxy_session_id
         in: path
@@ -811,13 +816,14 @@ paths:
       x-stackql-verb: DELETE
     get:
       operationId: GetProxySession
-      description: Retrieves the specified proxy session details for the specified Amazon Chime SDK Voice Connector.
+      description: 'Retrieves the specified proxy session details for the specified Amazon Chime SDK Voice Connector. End
+        of support notice: On April 7, 2026, AWS will end support for Amazon Chime SDK proxy sessions.'
       parameters:
       - name: voice_connector_id
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/NonEmptyString128'
+          $ref: '#/components/schemas/VoiceConnectorId'
         description: The Voice Connector ID.
       - name: proxy_session_id
         in: path
@@ -838,13 +844,14 @@ paths:
       x-stackql-objectKey: $.ProxySession
     post:
       operationId: UpdateProxySession
-      description: Updates the specified proxy session details, such as voice or SMS capabilities.
+      description: 'Updates the specified proxy session details, such as voice or SMS capabilities. End of support notice:
+        On April 7, 2026, AWS will end support for Amazon Chime SDK proxy sessions.'
       parameters:
       - name: voice_connector_id
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/NonEmptyString128'
+          $ref: '#/components/schemas/VoiceConnectorId'
         description: The Voice Connector ID.
       - name: proxy_session_id
         in: path
@@ -1027,7 +1034,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/NonEmptyString'
+          $ref: '#/components/schemas/VoiceConnectorId'
         description: The Voice Connector ID.
       responses:
         '204':
@@ -1044,7 +1051,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/NonEmptyString'
+          $ref: '#/components/schemas/VoiceConnectorId'
         description: The Voice Connector ID.
       responses:
         '200':
@@ -1065,7 +1072,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/NonEmptyString'
+          $ref: '#/components/schemas/VoiceConnectorId'
         description: The Voice Connector ID.
       requestBody:
         required: true
@@ -1100,7 +1107,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/NonEmptyString'
+          $ref: '#/components/schemas/VoiceConnectorId'
         description: The Voice Connector ID.
       responses:
         '204':
@@ -1116,7 +1123,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/NonEmptyString'
+          $ref: '#/components/schemas/VoiceConnectorId'
         description: The Voice Connector ID.
       responses:
         '200':
@@ -1137,7 +1144,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/NonEmptyString'
+          $ref: '#/components/schemas/VoiceConnectorId'
         description: The Voice Connector ID.
       requestBody:
         required: true
@@ -1169,7 +1176,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/NonEmptyString'
+          $ref: '#/components/schemas/VoiceConnectorId'
         description: The ID of the Voice Connector for which to delete the external system configuration.
       responses:
         '204':
@@ -1185,7 +1192,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/NonEmptyString'
+          $ref: '#/components/schemas/VoiceConnectorId'
         description: The ID of the Voice Connector for which to return information about the external system configuration.
       responses:
         '200':
@@ -1206,7 +1213,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/NonEmptyString128'
+          $ref: '#/components/schemas/VoiceConnectorId'
         description: The ID of the Voice Connector for which to add the external system configuration.
       requestBody:
         required: false
@@ -1290,6 +1297,8 @@ paths:
                   $ref: '#/components/schemas/VoiceConnectorGroupName'
                 VoiceConnectorItems:
                   $ref: '#/components/schemas/VoiceConnectorItemList'
+                CallDistributionType:
+                  $ref: '#/components/schemas/CallDistributionType'
               required:
               - Name
               - VoiceConnectorItems
@@ -1313,7 +1322,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/NonEmptyString'
+          $ref: '#/components/schemas/VoiceConnectorId'
         description: The Voice Connector ID.
       responses:
         '204':
@@ -1329,7 +1338,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/NonEmptyString'
+          $ref: '#/components/schemas/VoiceConnectorId'
         description: The Voice Connector ID.
       responses:
         '200':
@@ -1350,7 +1359,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/NonEmptyString'
+          $ref: '#/components/schemas/VoiceConnectorId'
         description: The Voice Connector ID.
       requestBody:
         required: true
@@ -1376,13 +1385,14 @@ paths:
   /voice-connectors/{voice_connector_id}/programmable-numbers/proxy:
     delete:
       operationId: DeleteVoiceConnectorProxy
-      description: Deletes the proxy configuration from the specified Amazon Chime SDK Voice Connector.
+      description: 'Deletes the proxy configuration from the specified Amazon Chime SDK Voice Connector. End of support notice:
+        On April 7, 2026, AWS will end support for Amazon Chime SDK proxy sessions.'
       parameters:
       - name: voice_connector_id
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/NonEmptyString128'
+          $ref: '#/components/schemas/VoiceConnectorId'
         description: The Voice Connector ID.
       responses:
         '204':
@@ -1392,13 +1402,14 @@ paths:
       x-stackql-verb: DELETE
     get:
       operationId: GetVoiceConnectorProxy
-      description: Retrieves the proxy configuration details for the specified Amazon Chime SDK Voice Connector.
+      description: 'Retrieves the proxy configuration details for the specified Amazon Chime SDK Voice Connector. End of support
+        notice: On April 7, 2026, AWS will end support for Amazon Chime SDK proxy sessions.'
       parameters:
       - name: voice_connector_id
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/NonEmptyString128'
+          $ref: '#/components/schemas/VoiceConnectorId'
         description: The Voice Connector ID.
       responses:
         '200':
@@ -1413,13 +1424,14 @@ paths:
       x-stackql-objectKey: $.Proxy
     put:
       operationId: PutVoiceConnectorProxy
-      description: Puts the specified proxy configuration to the specified Amazon Chime SDK Voice Connector.
+      description: 'Puts the specified proxy configuration to the specified Amazon Chime SDK Voice Connector. End of support
+        notice: On April 7, 2026, AWS will end support for Amazon Chime SDK proxy sessions.'
       parameters:
       - name: voice_connector_id
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/NonEmptyString128'
+          $ref: '#/components/schemas/VoiceConnectorId'
         description: The Voice Connector ID.
       requestBody:
         required: true
@@ -1458,7 +1470,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/NonEmptyString'
+          $ref: '#/components/schemas/VoiceConnectorId'
         description: The Voice Connector ID.
       responses:
         '204':
@@ -1476,7 +1488,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/NonEmptyString'
+          $ref: '#/components/schemas/VoiceConnectorId'
         description: The Voice Connector ID.
       responses:
         '200':
@@ -1497,7 +1509,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/NonEmptyString'
+          $ref: '#/components/schemas/VoiceConnectorId'
         description: The Voice Connector ID.
       requestBody:
         required: true
@@ -1530,7 +1542,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/NonEmptyString'
+          $ref: '#/components/schemas/VoiceConnectorId'
         description: The Voice Connector ID.
       responses:
         '204':
@@ -1546,7 +1558,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/NonEmptyString'
+          $ref: '#/components/schemas/VoiceConnectorId'
         description: The Voice Connector ID.
       responses:
         '200':
@@ -1567,7 +1579,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/NonEmptyString'
+          $ref: '#/components/schemas/VoiceConnectorId'
         description: The Voice Connector ID.
       requestBody:
         required: true
@@ -1599,7 +1611,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/NonEmptyString'
+          $ref: '#/components/schemas/VoiceConnectorId'
         description: The Voice Connector ID.
       requestBody:
         required: true
@@ -1771,7 +1783,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/NonEmptyString'
+          $ref: '#/components/schemas/VoiceConnectorId'
         description: The Voice Connector ID.
       requestBody:
         required: true
@@ -1847,7 +1859,7 @@ paths:
       description: Updates global settings for the Amazon Chime SDK Voice Connectors in an AWS account.
       parameters: []
       requestBody:
-        required: false
+        required: true
         content:
           application/json:
             schema:
@@ -1855,6 +1867,8 @@ paths:
               properties:
                 VoiceConnector:
                   $ref: '#/components/schemas/VoiceConnectorSettings'
+              required:
+              - VoiceConnector
       responses:
         '204':
           description: Success
@@ -2037,7 +2051,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/NonEmptyString128'
+          $ref: '#/components/schemas/VoiceConnectorId'
         description: The Voice Connector ID.
       - name: speaker_search_task_id
         in: path
@@ -2066,7 +2080,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/NonEmptyString'
+          $ref: '#/components/schemas/VoiceConnectorId'
         description: The Voice Connector ID.
       responses:
         '200':
@@ -2087,7 +2101,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/NonEmptyString'
+          $ref: '#/components/schemas/VoiceConnectorId'
         description: The Voice Connector ID.
       requestBody:
         required: true
@@ -2120,7 +2134,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/NonEmptyString'
+          $ref: '#/components/schemas/VoiceConnectorId'
         description: The Voice Connector ID.
       responses:
         '200':
@@ -2142,7 +2156,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/NonEmptyString128'
+          $ref: '#/components/schemas/VoiceConnectorId'
         description: The Voice Connector ID.
       - name: voice_tone_analysis_task_id
         in: path
@@ -2291,7 +2305,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/NonEmptyString'
+          $ref: '#/components/schemas/VoiceConnectorId'
         description: The Voice Connector ID.
       responses:
         '200':
@@ -2317,7 +2331,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/NonEmptyString'
+          $ref: '#/components/schemas/VoiceConnectorId'
         description: The Voice Connector ID.
       requestBody:
         required: false
@@ -2435,7 +2449,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/NonEmptyString128'
+          $ref: '#/components/schemas/VoiceConnectorId'
         description: The Voice Connector ID.
       requestBody:
         required: true
@@ -2477,7 +2491,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/NonEmptyString128'
+          $ref: '#/components/schemas/VoiceConnectorId'
         description: The Voice Connector ID.
       requestBody:
         required: true
@@ -2514,7 +2528,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/NonEmptyString128'
+          $ref: '#/components/schemas/VoiceConnectorId'
         description: The Voice Connector ID.
       - name: speaker_search_task_id
         in: path
@@ -2537,7 +2551,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/NonEmptyString128'
+          $ref: '#/components/schemas/VoiceConnectorId'
         description: The Voice Connector ID.
       - name: voice_tone_analysis_task_id
         in: path
@@ -2731,9 +2745,9 @@ components:
       schema:
         type: string
   schemas:
-    NonEmptyString:
+    VoiceConnectorId:
       type: string
-      pattern: .*\S.*
+      pattern: ([a-z0-9]{21,22}|[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})
     E164PhoneNumberList:
       type: array
       items:
@@ -2790,8 +2804,12 @@ components:
       - VoiceConnectorGroupAssociationsExist
       - PhoneNumberAssociationsExist
       - Gone
+      - Validation
     String:
       type: string
+    NonEmptyString:
+      type: string
+      pattern: .*\S.*
     AssociatePhoneNumbersWithVoiceConnectorGroupResponse:
       type: object
       properties:
@@ -2884,7 +2902,7 @@ components:
           $ref: '#/components/schemas/Iso8601Timestamp'
           description: The updated phone number order time stamp, in ISO 8601 format.
         FocDate:
-          $ref: '#/components/schemas/Iso8601Timestamp'
+          $ref: '#/components/schemas/String'
           description: The Firm Order Commitment (FOC) date for phone number porting orders. This field is null if a phone
             number order is not a porting order.
     GuidString:
@@ -2932,11 +2950,6 @@ components:
     Iso8601Timestamp:
       type: string
       format: date-time
-    NonEmptyString128:
-      type: string
-      minLength: 1
-      maxLength: 128
-      pattern: .*\S.*
     ParticipantPhoneNumberList:
       type: array
       items:
@@ -2996,7 +3009,7 @@ components:
       type: object
       properties:
         VoiceConnectorId:
-          $ref: '#/components/schemas/NonEmptyString128'
+          $ref: '#/components/schemas/VoiceConnectorId'
           description: The Voice Connector ID.
         ProxySessionId:
           $ref: '#/components/schemas/NonEmptyString128'
@@ -3035,6 +3048,11 @@ components:
         GeoMatchParams:
           $ref: '#/components/schemas/GeoMatchParams'
           description: The country and area code for the proxy phone number.
+    NonEmptyString128:
+      type: string
+      minLength: 1
+      maxLength: 128
+      pattern: .*\S.*
     String128:
       type: string
       maxLength: 128
@@ -3266,7 +3284,7 @@ components:
       type: object
       properties:
         VoiceConnectorId:
-          $ref: '#/components/schemas/NonEmptyString'
+          $ref: '#/components/schemas/VoiceConnectorId'
           description: The Voice Connector's ID.
         AwsRegion:
           $ref: '#/components/schemas/VoiceConnectorAwsRegion'
@@ -3291,10 +3309,10 @@ components:
           description: The ARN of the Voice Connector.
         IntegrationType:
           $ref: '#/components/schemas/VoiceConnectorIntegrationType'
-          description: The connectors for use with Amazon Connect.
+          description: The connectors for use with Connect Customer.
         NetworkType:
           $ref: '#/components/schemas/NetworkType'
-          description: The type of network of the Voice Connector. Either IPv4 only or dual-stack (IPv4 and IPv6).
+          description: The type of network for the Voice Connector.
     VoiceConnectorGroupName:
       type: string
       minLength: 1
@@ -3310,7 +3328,7 @@ components:
       type: object
       properties:
         VoiceConnectorId:
-          $ref: '#/components/schemas/NonEmptyString'
+          $ref: '#/components/schemas/VoiceConnectorId'
           description: The Voice Connector ID.
         Priority:
           $ref: '#/components/schemas/VoiceConnectorItemPriority'
@@ -3319,11 +3337,15 @@ components:
             relative weight.
       required:
       - VoiceConnectorId
-      - Priority
     VoiceConnectorItemPriority:
       type: integer
       minimum: 1
       maximum: 99
+    CallDistributionType:
+      type: string
+      enum:
+      - PriorityWeightedDistribution
+      - LoadBalancedDistribution
     CreateVoiceConnectorGroupResponse:
       type: object
       properties:
@@ -3354,6 +3376,8 @@ components:
         VoiceConnectorGroupArn:
           $ref: '#/components/schemas/NonEmptyString'
           description: The ARN of the Voice Connector group.
+        CallDistributionType:
+          $ref: '#/components/schemas/CallDistributionType'
     NonEmptyString256:
       type: string
       minLength: 1
@@ -3479,8 +3503,13 @@ components:
       type: object
       properties:
         CdrBucket:
-          $ref: '#/components/schemas/String'
+          $ref: '#/components/schemas/S3BucketName'
           description: The S3 bucket that stores the Voice Connector's call detail records.
+    S3BucketName:
+      type: string
+      minLength: 1
+      maxLength: 64
+      pattern: (?!(^xn--|.+-s3alias$))^[a-z0-9][a-z0-9-]{1,61}[a-z0-9]$
     GetPhoneNumberResponse:
       type: object
       properties:
@@ -3497,6 +3526,8 @@ components:
         E164PhoneNumber:
           $ref: '#/components/schemas/E164PhoneNumber'
           description: The phone number, in E.164 format.
+        PhoneNumberArn:
+          $ref: '#/components/schemas/NonEmptyString'
         Country:
           $ref: '#/components/schemas/Alpha2CountryCode'
           description: 'The phone number''s country. Format: ISO 3166-1 alpha-2.'
@@ -3732,7 +3763,7 @@ components:
       type: object
       properties:
         VoiceConnectorId:
-          $ref: '#/components/schemas/NonEmptyString128'
+          $ref: '#/components/schemas/VoiceConnectorId'
           description: The Voice Connector ID.
         TransactionId:
           $ref: '#/components/schemas/NonEmptyString256'
@@ -4128,6 +4159,9 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/ListAvailableVoiceConnectorRegionsRowDisplay'
+    NextTokenString:
+      type: string
+      maxLength: 65535
     ResultMax:
       type: integer
       minimum: 1
@@ -4158,9 +4192,6 @@ components:
       type: array
       items:
         $ref: '#/components/schemas/PhoneNumber'
-    NextTokenString:
-      type: string
-      maxLength: 65535
     ListProxySessionsResponse:
       type: object
       properties:

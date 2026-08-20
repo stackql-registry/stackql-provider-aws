@@ -8,7 +8,6 @@ info:
   x-protocol: rest-json
   x-apiVersion: '2023-11-26'
   x-endpointPrefix: eks-auth
-  x-jsonVersion: '1.1'
 servers:
 - url: https://eks-auth.{region}.amazonaws.com
   variables:
@@ -39,6 +38,12 @@ paths:
               properties:
                 token:
                   $ref: '#/components/schemas/JwtToken'
+                eksNodeName:
+                  $ref: '#/components/schemas/String'
+                instanceId:
+                  $ref: '#/components/schemas/String'
+                zone:
+                  $ref: '#/components/schemas/String'
               required:
               - token
       responses:
@@ -105,6 +110,8 @@ components:
       type: string
       minLength: 1
       pattern: '[A-Za-z0-9-_=]+\.[A-Za-z0-9-_=]+\.[A-Za-z0-9-_=]+'
+    String:
+      type: string
     AssumeRoleForPodIdentityResponse:
       type: object
       properties:
@@ -148,8 +155,6 @@ components:
       required:
       - namespace
       - serviceAccount
-    String:
-      type: string
     PodIdentityAssociation:
       description: Amazon EKS Pod Identity associations provide the ability to manage credentials for your applications, similar
         to the way that Amazon EC2 instance profiles provide credentials to Amazon EC2 instances.
