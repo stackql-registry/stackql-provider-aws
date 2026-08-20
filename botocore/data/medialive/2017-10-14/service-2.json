@@ -6179,7 +6179,9 @@
       "documentation": "Audio Normalization Algorithm",
       "enum": [
         "ITU_1770_1",
-        "ITU_1770_2"
+        "ITU_1770_2",
+        "ITU_1770_3",
+        "ITU_1770_4"
       ]
     },
     "AudioNormalizationAlgorithmControl": {
@@ -6195,7 +6197,7 @@
         "Algorithm": {
           "shape": "AudioNormalizationAlgorithm",
           "locationName": "algorithm",
-          "documentation": "Audio normalization algorithm to use. itu17701 conforms to the CALM Act specification, itu17702 conforms to the EBU R-128 specification."
+          "documentation": "Choose one of the following audio normalization algorithms:\n\nITU-R BS.1770-1: Ungated loudness. A measurement of ungated average loudness for an entire piece of content,\nsuitable for measurement of short-form content under ATSC recommendation A/85. Supports up to 5.1 audio channels.\n\nITU-R BS.1770-2: Gated loudness. A measurement of gated average loudness compliant with the requirements of\nEBU-R128. Supports up to 5.1 audio channels.\n\nITU-R BS.1770-3: Modified peak. The same loudness measurement algorithm as 1770-2, with an updated true peak\nmeasurement.\n\nITU-R BS.1770-4: Higher channel count. Allows for more audio channels than the other algorithms, including\nconfigurations such as 7.1."
         },
         "AlgorithmControl": {
           "shape": "AudioNormalizationAlgorithmControl",
@@ -6206,6 +6208,16 @@
           "shape": "__doubleMinNegative59Max0",
           "locationName": "targetLkfs",
           "documentation": "Target LKFS(loudness) to adjust volume to. If no value is entered, a default value will be used according to the chosen algorithm.  The CALM Act recommends a target of -24 LKFS. The EBU R-128 specification recommends a target of -23 LKFS."
+        },
+        "PeakCalculation": {
+          "shape": "AudioNormalizationPeakCalculation",
+          "locationName": "peakCalculation",
+          "documentation": "If set to TRUE_PEAK, calculate the TruePeak for each output's audio track loudness."
+        },
+        "PeakLimiterThreshold": {
+          "shape": "__doubleMinNegative8Max0",
+          "locationName": "peakLimiterThreshold",
+          "documentation": "Peak limiter threshold in decibels relative to true peak (dBTP) if TRUE_PEAK is enabled.\nIf TRUE_PEAK is not enabled a full scale (dbFS) value is used.\nThe peak inter-audio sample loudness in your output will be limited to the value that you specify,\nwithout affecting the overall target LKFS. Leave blank to use the default value 0."
         }
       },
       "documentation": "Audio Normalization Settings"
@@ -6261,6 +6273,11 @@
           "shape": "__integerMin0Max8191",
           "locationName": "pid",
           "documentation": "Selects a specific PID from within a source."
+        },
+        "Pids": {
+          "shape": "__listOfAudioPid",
+          "locationName": "pids",
+          "documentation": "Selects one or more unique PIDs from within a source.\nWhen using 'pids', you can specify per-PID audio pre-mixer settings."
         }
       },
       "documentation": "Audio Pid Selection",
@@ -6335,9 +6352,14 @@
           "shape": "__integerMin1",
           "locationName": "track",
           "documentation": "1-based integer value that maps to a specific audio track"
+        },
+        "PremixSettings": {
+          "shape": "AudioPreMixerSettings",
+          "locationName": "premixSettings",
+          "documentation": "Optional audio pre-mixer settings for this track.\nWhen specified, allows per-track audio processing including channel remixing,\ngain adjustment, and loudness normalization before interleaving."
         }
       },
-      "documentation": "Audio Track",
+      "documentation": "Represents a single audio track for selection with optional pre-mixer settings",
       "required": [
         "Track"
       ]
@@ -7319,6 +7341,10 @@
         "TeletextSourceSettings": {
           "shape": "TeletextSourceSettings",
           "locationName": "teletextSourceSettings"
+        },
+        "SmartSubtitleSourceSettings": {
+          "shape": "SmartSubtitleSourceSettings",
+          "locationName": "smartSubtitleSourceSettings"
         }
       },
       "documentation": "Caption Selector Settings"
@@ -14726,7 +14752,8 @@
       "documentation": "M2ts Scte35 Control",
       "enum": [
         "NONE",
-        "PASSTHROUGH"
+        "PASSTHROUGH",
+        "SCTE_35_WITHOUT_IDR"
       ]
     },
     "M2tsSegmentationMarkers": {
@@ -14945,7 +14972,7 @@
         "Scte35Control": {
           "shape": "M2tsScte35Control",
           "locationName": "scte35Control",
-          "documentation": "Optionally pass SCTE-35 signals from the input source to this output."
+          "documentation": "SCTE-35 control. Option \"none\" indicates that a SCTE-35 marker will not be inserted, nor will an IDR be inserted at the SCTE-35 cue point, nor will the segment be segmented. Option \"scte35WithoutIdr\" indicates that a SCTE-35 marker will be inserted to indicate the cue point, but MediaLive will not insert an IDR on that frame nor will it introduce a new segment boundary there if it wasn't already going to be one (this option is required for use with downstream multiview bitstream stitching workflows). Option \"passthrough\" indicates that a SCTE-35 marker will be inserted to indicate the cue point, and an IDR will be inserted on that frame, and MediaLive itself will introduce a new segment boundary there."
         },
         "Scte35Pid": {
           "shape": "__string",
@@ -16319,6 +16346,11 @@
           "shape": "NielsenNaesIiNw",
           "locationName": "nielsenNaesIiNwSettings",
           "documentation": "Complete these fields only if you want to insert watermarks of type Nielsen NAES II (N2) and Nielsen NAES VI (NW)."
+        },
+        "NielsenNwOnlySettings": {
+          "shape": "NielsenNwOnly",
+          "locationName": "nielsenNwOnlySettings",
+          "documentation": "Complete these fields only if you want to insert watermarks of type Nielsen NAES VI (NW) only,\nwithout inserting NAES II (N2) watermarks."
         }
       },
       "documentation": "Nielsen Watermarks Settings"
@@ -16509,6 +16541,11 @@
           "shape": "__string",
           "locationName": "username",
           "documentation": "username for destination"
+        },
+        "VirtualSourceAddress": {
+          "shape": "__string",
+          "locationName": "virtualSourceAddress",
+          "documentation": "Specifies the source IP address for outbound multicast packets."
         }
       },
       "documentation": "Placeholder documentation for OutputDestinationSettings"
@@ -20078,6 +20115,16 @@
           "shape": "__integer",
           "locationName": "width",
           "documentation": "Output video width, in pixels. Must be an even number. For most codecs, you can leave this field and height blank in order to use the height and width (resolution) from the source. Note, however, that leaving blank is not recommended. For the Frame Capture codec, height and width are required."
+        },
+        "CropRectangle": {
+          "shape": "VideoPositionRectangle",
+          "locationName": "cropRectangle",
+          "documentation": "Region of the input video to crop before scaling. If not specified, the entire input\nframe is used.\n\nNote: Unlike {@link outputPositionRectangle}, the bounds of cropRectangle are validated\nat ingest time by the encoder/scaler rather than at the API level, because the input\nresolution is not known until the source is probed. Field-level constraints on (x, y,\nwidth, height) defined on {@link VideoPositionRectangle} still apply."
+        },
+        "OutputPositionRectangle": {
+          "shape": "VideoPositionRectangle",
+          "locationName": "outputPositionRectangle",
+          "documentation": "Position of the encoded video within the output frame. The area outside the rectangle\nis filled with black. If not specified, the video fills the entire output frame.\nWhen used, both {@link width} and {@link height} of the VideoDescription must be\nexplicitly specified so that the rectangle can be validated against the output frame."
         }
       },
       "documentation": "Video settings for this stream.",
@@ -21328,7 +21375,7 @@
         "Scte35Type": {
           "shape": "Scte35Type",
           "locationName": "scte35Type",
-          "documentation": "Type of scte35 track to add. none or scte35WithoutSegmentation"
+          "documentation": "SCTE-35 insertion type. Option \"none\" indicates that a SCTE-35 marker will not be inserted, nor will an IDR be inserted at the SCTE-35 cue point, nor will the segment be segmented. Option \"scte35WithoutIdr\" indicates that a SCTE-35 marker will be inserted to indicate the cue point, but MediaLive will not insert an IDR on that frame nor will it introduce a new segment boundary there if it wasn't already going to be one (this option is required for use with downstream multiview bitstream stitching workflows). Option \"scte35WithoutSegmentation\" indicates that a SCTE-35 marker will be inserted to indicate the cue point, and an IDR will be inserted on that frame so that a downstream re-packager might split the segment there, but MediaLive itself will not introduce a new segment boundary there."
         },
         "SegmentLength": {
           "shape": "__integerMin1",
@@ -21499,7 +21546,8 @@
       "documentation": "Scte35 Type",
       "enum": [
         "NONE",
-        "SCTE_35_WITHOUT_SEGMENTATION"
+        "SCTE_35_WITHOUT_SEGMENTATION",
+        "SCTE_35_WITHOUT_IDR"
       ]
     },
     "BadRequestExceptionResponseContent": {
@@ -29009,7 +29057,7 @@
         "Scte35Control": {
           "shape": "M2tsScte35Control",
           "locationName": "scte35Control",
-          "documentation": "Optionally pass SCTE-35 signals from the input source to this output."
+          "documentation": "SCTE-35 control. Option \"none\" indicates that a SCTE-35 marker will not be inserted, nor will an IDR be inserted at the SCTE-35 cue point, nor will the segment be segmented. Option \"scte35WithoutIdr\" indicates that a SCTE-35 marker will be inserted to indicate the cue point, but MediaLive will not insert an IDR on that frame nor will it introduce a new segment boundary there if it wasn't already going to be one (this option is required for use with downstream multiview bitstream stitching workflows). Option \"passthrough\" indicates that a SCTE-35 marker will be inserted to indicate the cue point, and an IDR will be inserted on that frame, and MediaLive itself will introduce a new segment boundary there."
         },
         "Scte35PrerollPullupMilliseconds": {
           "shape": "__doubleMin0Max5000",
@@ -29715,7 +29763,7 @@
         "Scte35Type": {
           "shape": "Scte35Type",
           "locationName": "scte35Type",
-          "documentation": "Type of scte35 track to add. none or scte35WithoutSegmentation"
+          "documentation": "SCTE-35 insertion type. Option \"none\" indicates that a SCTE-35 marker will not be inserted, nor will an IDR be inserted at the SCTE-35 cue point, nor will the segment be segmented. Option \"scte35WithoutIdr\" indicates that a SCTE-35 marker will be inserted to indicate the cue point, but MediaLive will not insert an IDR on that frame nor will it introduce a new segment boundary there if it wasn't already going to be one (this option is required for use with downstream multiview bitstream stitching workflows). Option \"scte35WithoutSegmentation\" indicates that a SCTE-35 marker will be inserted to indicate the cue point, and an IDR will be inserted on that frame so that a downstream re-packager might split the segment there, but MediaLive itself will not introduce a new segment boundary there."
         },
         "SegmentLength": {
           "shape": "__integerMin1",
@@ -30524,6 +30572,11 @@
           "shape": "__string",
           "locationName": "feedArn",
           "documentation": "The ARN of the feed resource that is associated with this channel. The feed is a resource in the Elemental Inference service."
+        },
+        "AudioFeedInputs": {
+          "shape": "__listOfAudioFeedInput",
+          "locationName": "audioFeedInputs",
+          "documentation": "A list of audio feed inputs that map audio selectors in the channel to feed inputs on the associated Elemental Inference feed."
         }
       },
       "documentation": "Configures Elemental Inference features in a channel."
@@ -30535,6 +30588,11 @@
           "shape": "__string",
           "locationName": "feedArn",
           "documentation": "The ARN of the feed resource that is associated with this channel. The feed is a resource in the Elemental Inference service."
+        },
+        "AudioFeedInputs": {
+          "shape": "__listOfAudioFeedInput",
+          "locationName": "audioFeedInputs",
+          "documentation": "A list of audio feed inputs that map audio selectors in the channel to feed inputs on the associated Elemental Inference feed."
         }
       },
       "documentation": "Configures Elemental Inference features in a channel."
@@ -30631,6 +30689,13 @@
       },
       "documentation": "Placeholder documentation for __listOfMediaConnectRouterOutputDestinationSettings"
     },
+    "__listOfOutputLocationRef": {
+      "type": "list",
+      "member": {
+        "shape": "OutputLocationRef"
+      },
+      "documentation": "Placeholder documentation for __listOfOutputLocationRef"
+    },
     "MediaConnectRouterOutputConnection": {
       "type": "structure",
       "members": {
@@ -30651,6 +30716,195 @@
       "value": {
         "shape": "MediaConnectRouterOutputConnection"
       }
+    },
+    "AudioFeedInput": {
+      "type": "structure",
+      "members": {
+        "AudioSelectorName": {
+          "shape": "__string",
+          "locationName": "audioSelectorName",
+          "documentation": "The name of the audio selector in the channel that will be sent to the Elemental Inference feed input."
+        },
+        "FeedInput": {
+          "shape": "__string",
+          "locationName": "feedInput",
+          "documentation": "The name of the feed input on the Elemental Inference feed that will receive the audio from the specified audio selector."
+        }
+      },
+      "documentation": "Maps an audio selector in the channel to a feed input on the associated Elemental Inference feed."
+    },
+    "CaptionSynchronizationMode": {
+      "type": "string",
+      "documentation": "Controls how MediaLive synchronizes Elemental Inference generated subtitles with video output.\n\nvideo_aligned_captions - MediaLive delays video to ensure captions are synchronized with\n     audio and video.\nno_video_delay - MediaLive does not delay video for caption alignment. Captions output\n     timing is adjusted to align with video as captions become available.",
+      "enum": [
+        "NO_VIDEO_DELAY",
+        "VIDEO_ALIGNED_CAPTIONS"
+      ]
+    },
+    "SmartSubtitleSourceSettings": {
+      "type": "structure",
+      "members": {
+        "CaptionSynchronizationMode": {
+          "shape": "CaptionSynchronizationMode",
+          "locationName": "captionSynchronizationMode",
+          "documentation": "Controls whether MediaLive delays video to synchronize captions with audio and video output."
+        },
+        "InferenceFeedOutput": {
+          "shape": "__string",
+          "locationName": "inferenceFeedOutput",
+          "documentation": "The name of the Elemental Inference feed output that supplies subtitle input into this caption selector."
+        }
+      },
+      "documentation": "Smart Subtitle Source Settings"
+    },
+    "__listOfAudioFeedInput": {
+      "type": "list",
+      "member": {
+        "shape": "AudioFeedInput"
+      },
+      "documentation": "Placeholder documentation for __listOfAudioFeedInput"
+    },
+    "AudioNormalizationPeakCalculation": {
+      "type": "string",
+      "documentation": "Audio Normalization Peak Calculation",
+      "enum": [
+        "NONE",
+        "TRUE_PEAK"
+      ]
+    },
+    "AudioPid": {
+      "type": "structure",
+      "members": {
+        "DolbyEDecode": {
+          "shape": "AudioDolbyEDecode",
+          "locationName": "dolbyEDecode",
+          "documentation": "Configure decoding options for Dolby E streams - these should be Dolby E frames carried in PCM streams tagged with SMPTE-337.\nWhen using the 'pids' array, if this field is not specified and Dolby E content is present,\nthe decoder will extract the specified program. To maintain legacy behavior (allPrograms),\nexplicitly set programSelection to \"allChannels\"."
+        },
+        "Pid": {
+          "shape": "__integerMin0Max8191",
+          "locationName": "pid",
+          "documentation": "PID value from within a source."
+        },
+        "PremixSettings": {
+          "shape": "AudioPreMixerSettings",
+          "locationName": "premixSettings",
+          "documentation": "Optional audio pre-mixer settings for this PID.\nWhen specified, allows per-PID audio processing including channel remixing,\ngain adjustment, and loudness normalization before interleaving."
+        }
+      },
+      "documentation": "Represents a single PID value for audio selection with optional pre-mixer settings",
+      "required": [
+        "Pid"
+      ]
+    },
+    "AudioPreMixerSettings": {
+      "type": "structure",
+      "members": {
+        "AudioNormalizationSettings": {
+          "shape": "AudioNormalizationSettings",
+          "locationName": "audioNormalizationSettings",
+          "documentation": "Audio normalization settings for loudness control.\nWhen specified, audio loudness will be normalized according to the chosen algorithm."
+        },
+        "Channels": {
+          "shape": "__integerMin1Max16",
+          "locationName": "channels",
+          "documentation": "Number of audio channels.\nIf specified, the audio will be remixed to match this channel count.\nIgnored if remixSettings is specified."
+        },
+        "GainDb": {
+          "shape": "__doubleMinNegative60Max60",
+          "locationName": "gainDb",
+          "documentation": "Gain adjustment in dB to apply.\nRange: -60 to +60 dB"
+        },
+        "RemixSettings": {
+          "shape": "RemixSettings",
+          "locationName": "remixSettings",
+          "documentation": "Settings that control how input audio channels are remixed.\nWhen specified, allows fine-grained control over channel mapping and gain levels.\nTakes precedence over the 'channels' setting."
+        }
+      },
+      "documentation": "Audio pre-mixer settings for normalizing audio before interleaving.\nThese settings can be applied to individual PIDs or tracks before they are combined."
+    },
+    "__doubleMinNegative100Max0": {
+      "type": "double",
+      "documentation": "Placeholder documentation for __doubleMinNegative100Max0"
+    },
+    "__doubleMinNegative60Max60": {
+      "type": "double",
+      "documentation": "Placeholder documentation for __doubleMinNegative60Max60"
+    },
+    "__doubleMinNegative8Max0": {
+      "type": "double",
+      "documentation": "Placeholder documentation for __doubleMinNegative8Max0"
+    },
+    "__listOfAudioPid": {
+      "type": "list",
+      "member": {
+        "shape": "AudioPid"
+      },
+      "documentation": "Placeholder documentation for __listOfAudioPid"
+    },
+    "NielsenNwOnly": {
+      "type": "structure",
+      "members": {
+        "CheckDigitString": {
+          "shape": "__stringMin2Max2",
+          "locationName": "checkDigitString",
+          "documentation": "Enter the check digit string for the watermark"
+        },
+        "Sid": {
+          "shape": "__doubleMin1Max65535",
+          "locationName": "sid",
+          "documentation": "Enter the Nielsen Source ID (SID) to include in the watermark"
+        },
+        "Timezone": {
+          "shape": "NielsenWatermarkTimezones",
+          "locationName": "timezone",
+          "documentation": "Choose the timezone for the time stamps in the watermark. If not provided,\nthe timestamps will be in Coordinated Universal Time (UTC)"
+        }
+      },
+      "documentation": "Nielsen Nw Only",
+      "required": [
+        "CheckDigitString",
+        "Sid"
+      ]
+    },
+    "VideoPositionRectangle": {
+      "type": "structure",
+      "members": {
+        "Height": {
+          "shape": "__integerMin2Max8192",
+          "locationName": "height",
+          "documentation": "Height in pixels. Must be an even number."
+        },
+        "Width": {
+          "shape": "__integerMin2Max8192",
+          "locationName": "width",
+          "documentation": "Width in pixels. Must be an even number."
+        },
+        "X": {
+          "shape": "__integerMin0Max8190",
+          "locationName": "x",
+          "documentation": "Left offset in pixels. Must be an even number."
+        },
+        "Y": {
+          "shape": "__integerMin0Max8190",
+          "locationName": "y",
+          "documentation": "Top offset in pixels. Must be an even number."
+        }
+      },
+      "documentation": "A rectangle defined by position (x, y) and dimensions (width, height) in pixels.\nUsed for output positioning and input cropping.",
+      "required": [
+        "X",
+        "Y",
+        "Height",
+        "Width"
+      ]
+    },
+    "__integerMin0Max8190": {
+      "type": "integer",
+      "documentation": "Placeholder documentation for __integerMin0Max8190"
+    },
+    "__integerMin2Max8192": {
+      "type": "integer",
+      "documentation": "Placeholder documentation for __integerMin2Max8192"
     }
   },
   "documentation": "API for AWS Elemental MediaLive"

@@ -644,6 +644,10 @@
         "variablePaymentTerm":{
           "shape":"VariablePaymentTerm",
           "documentation":"<p>Defines a payment model where sellers can submit variable payment requests up to a maximum charge amount, with configurable approval strategies and expiration timelines.</p>"
+        },
+        "netPaymentTerm":{
+          "shape":"NetPaymentTerm",
+          "documentation":"<p>Defines the net payment due period for the agreement, specifying when payment is due after an invoice is issued.</p>"
         }
       },
       "documentation":"<p>A subset of terms proposed by the proposer, which have been accepted by the acceptor as part of agreement creation.</p>",
@@ -964,6 +968,10 @@
         "status":{
           "shape":"AgreementStatus",
           "documentation":"<p>The current status of the agreement. </p>"
+        },
+        "entitlements":{
+          "shape":"EntitlementList",
+          "documentation":"<p>A list of entitlements associated with the agreement.</p>"
         }
       },
       "documentation":"<p>A summary of the agreement, including top-level attributes (for example, the agreement ID, proposer, and acceptor).</p>"
@@ -1717,6 +1725,20 @@
     "DocumentList":{
       "type":"list",
       "member":{"shape":"DocumentItem"}
+    },
+    "Entitlement":{
+      "type":"structure",
+      "members":{
+        "licenseArn":{
+          "shape":"String",
+          "documentation":"<p>The Amazon Resource Name (ARN) of the AWS License Manager license associated with the entitlement.</p>"
+        }
+      },
+      "documentation":"<p>Represents an entitlement associated with an agreement.</p>"
+    },
+    "EntitlementList":{
+      "type":"list",
+      "member":{"shape":"Entitlement"}
     },
     "EntitlementType":{
       "type":"string",
@@ -2545,6 +2567,24 @@
       "box":true,
       "max":50,
       "min":1
+    },
+    "NetPaymentTerm":{
+      "type":"structure",
+      "members":{
+        "type":{
+          "shape":"UnversionedTermType",
+          "documentation":"<p>Type of the term being updated.</p>"
+        },
+        "id":{
+          "shape":"TermId",
+          "documentation":"<p>The unique identifier for the term.</p>"
+        },
+        "paymentDuePeriod":{
+          "shape":"BoundedString",
+          "documentation":"<p>The duration after an invoice is issued within which the payment is due. The duration is represented in the ISO 8601 format (for example, <code>P30D</code> for 30 days or <code>P60D</code> for 60 days).</p>"
+        }
+      },
+      "documentation":"<p>Defines the net payment due period for the agreement, specifying when payment is due after an invoice is issued.</p>"
     },
     "NextToken":{
       "type":"string",
@@ -3675,5 +3715,5 @@
       "min":0
     }
   },
-  "documentation":"<p>AWS Marketplace is a curated digital catalog that customers can use to find, buy, deploy, and manage third-party software, data, and services to build solutions and run their businesses. The AWS Marketplace Agreement Service provides an API interface that helps AWS Marketplace sellers and buyers manage their product-related agreements, including listing, searching, creating, and filtering agreements.</p> <p>To manage agreements in AWS Marketplace, you must ensure that your AWS Identity and Access Management (IAM) policies and roles are set up. The user must have the required policies/permissions that allow them to carry out the actions in AWS:</p> <ul> <li> <p> <code>DescribeAgreement</code> – Grants permission to users to obtain detailed meta data about any of their agreements.</p> </li> <li> <p> <code>GetAgreementTerms</code> – Grants permission to users to obtain details about the terms of an agreement.</p> </li> <li> <p> <code>SearchAgreements</code> – Grants permission to users to search through all their agreements.</p> </li> </ul>"
+  "documentation":"<p>AWS Marketplace is a curated digital catalog that customers can use to find, buy, deploy, and manage third-party software, data, and services to build solutions and run their businesses. The AWS Marketplace Agreement Service provides an API interface that helps AWS Marketplace sellers and buyers manage their product-related agreements, including listing, searching, creating, and filtering agreements.</p>"
 }
