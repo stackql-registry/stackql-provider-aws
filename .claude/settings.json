@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(node website/scripts/snake-case-docs.mjs)",
+      "Bash(node website/scripts/sanitize-docs.mjs)",
+      "Bash(node website/scripts/scrub-docs.mjs)"
+    ]
+  }
+}
