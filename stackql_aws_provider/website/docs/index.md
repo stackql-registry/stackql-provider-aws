@@ -59,7 +59,11 @@ For more information on AWS authentication, see the [AWS documentation](https://
 
 Resources are available in all AWS regions. Use the `region` parameter to specify the target region for your operations.
 
-## Identity check
+## Example Queries
+
+Try the following queries using `stackql shell`, or run them from a script or CI pipeline with `stackql exec`.
+
+### Identity check
 
 Confirm which account and principal your credentials resolve to:
 
@@ -69,7 +73,7 @@ FROM aws.sts.caller_identities
 WHERE region = 'us-east-1';
 ```
 
-## Compute inventory
+### Compute inventory
 
 Instance counts by type in a region - a one-line capacity/spend sanity check:
 
@@ -88,7 +92,7 @@ FROM aws.ec2.vpcs
 WHERE region = 'us-east-1';
 ```
 
-## Storage estate
+### Storage estate
 
 Buckets with their ARNs and age:
 
@@ -107,7 +111,7 @@ FROM aws.s3.objects
 WHERE region = 'us-east-1' AND bucket = 'my-bucket';
 ```
 
-## Read and write S3 object content
+### Read and write S3 object content
 
 Adding `key` to the `WHERE` clause routes to the object read, which projects the raw body as a single `contents` column (text objects only). Reading a Terraform state file straight out of S3:
 
@@ -136,7 +140,7 @@ DELETE FROM aws.s3.objects
 WHERE region = 'us-east-1' AND bucket = 'my-bucket' AND key = 'app/config.json';
 ```
 
-## IAM users
+### IAM users
 
 Every user in the account (IAM is a global service - use `us-east-1`):
 
@@ -146,7 +150,7 @@ FROM aws.iam.users
 WHERE region = 'us-east-1';
 ```
 
-## Provision, mutate and tear down
+### Provision, mutate and tear down
 
 Mutations use the same SQL grammar - `INSERT` creates a resource, `UPDATE` changes it and `DELETE` removes it. Structured request values are passed as JSON strings with wire-format (PascalCase) inner keys. A VPC end to end:
 
@@ -166,7 +170,7 @@ DELETE FROM aws.ec2.vpcs
 WHERE region = 'us-east-1' AND vpc_id = 'vpc-00112233445566778';
 ```
 
-## Lifecycle operations
+### Lifecycle operations
 
 State transitions (stop, start, reboot and similar) are invoked with `EXEC`, passing wire-cased parameters - one target id per statement:
 
