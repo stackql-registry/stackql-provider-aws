@@ -51,11 +51,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CancelTaskExecutionResponse'
-      x-stackql-resource: tasks
+      x-stackql-resource: task_executions
       x-stackql-method: cancel_task_execution
       x-stackql-verb: EXEC
   /CreateAgent:
@@ -813,7 +809,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreateLocationObjectStorageResponse'
-      x-stackql-resource: location_object_storages
+      x-stackql-resource: location_object_storage
       x-stackql-method: create_location_object_storage
       x-stackql-verb: INSERT
   /CreateLocationS3:
@@ -1132,10 +1128,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteAgentResponse'
       x-stackql-resource: agents
       x-stackql-method: delete_agent
       x-stackql-verb: DELETE
@@ -1168,10 +1160,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteLocationResponse'
       x-stackql-resource: locations
       x-stackql-method: delete_location
       x-stackql-verb: DELETE
@@ -1204,10 +1192,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteTaskResponse'
       x-stackql-resource: tasks
       x-stackql-method: delete_task
       x-stackql-verb: DELETE
@@ -1575,7 +1559,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DescribeLocationObjectStorageResponse'
-      x-stackql-resource: location_object_storages
+      x-stackql-resource: location_object_storage
       x-stackql-method: describe_location_object_storage
       x-stackql-verb: SELECT
   /DescribeLocationS3:
@@ -2027,7 +2011,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartTaskExecutionResponse'
-      x-stackql-resource: tasks
+      x-stackql-resource: task_executions
       x-stackql-method: start_task_execution
       x-stackql-verb: EXEC
   /TagResource:
@@ -2064,10 +2048,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -2104,10 +2084,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -2143,10 +2119,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateAgentResponse'
       x-stackql-resource: agents
       x-stackql-method: update_agent
       x-stackql-verb: UPDATE
@@ -2217,10 +2189,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateLocationAzureBlobResponse'
       x-stackql-resource: location_azure_blobs
       x-stackql-method: update_location_azure_blob
       x-stackql-verb: UPDATE
@@ -2274,10 +2242,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateLocationEfsResponse'
       x-stackql-resource: location_efs
       x-stackql-method: update_location_efs
       x-stackql-verb: UPDATE
@@ -2318,10 +2282,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateLocationFsxLustreResponse'
       x-stackql-resource: location_fsx_lustres
       x-stackql-method: update_location_fsx_lustre
       x-stackql-verb: UPDATE
@@ -2366,10 +2326,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateLocationFsxOntapResponse'
       x-stackql-resource: location_fsx_ontaps
       x-stackql-method: update_location_fsx_ontap
       x-stackql-verb: UPDATE
@@ -2411,10 +2367,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateLocationFsxOpenZfsResponse'
       x-stackql-resource: location_fsx_open_zfs
       x-stackql-method: update_location_fsx_open_zfs
       x-stackql-verb: UPDATE
@@ -2476,10 +2428,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateLocationFsxWindowsResponse'
       x-stackql-resource: location_fsx_windows
       x-stackql-method: update_location_fsx_windows
       x-stackql-verb: UPDATE
@@ -2568,10 +2516,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateLocationHdfsResponse'
       x-stackql-resource: location_hdfs
       x-stackql-method: update_location_hdfs
       x-stackql-verb: UPDATE
@@ -2618,10 +2562,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateLocationNfsResponse'
       x-stackql-resource: location_nfs
       x-stackql-method: update_location_nfs
       x-stackql-verb: UPDATE
@@ -2709,11 +2649,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateLocationObjectStorageResponse'
-      x-stackql-resource: location_object_storages
+      x-stackql-resource: location_object_storage
       x-stackql-method: update_location_object_storage
       x-stackql-verb: UPDATE
   /UpdateLocationS3:
@@ -2761,10 +2697,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateLocationS3Response'
       x-stackql-resource: location_s3s
       x-stackql-method: update_location_s3
       x-stackql-verb: UPDATE
@@ -2868,10 +2800,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateLocationSmbResponse'
       x-stackql-resource: location_smbs
       x-stackql-method: update_location_smb
       x-stackql-verb: UPDATE
@@ -2942,10 +2870,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateTaskResponse'
       x-stackql-resource: tasks
       x-stackql-method: update_task
       x-stackql-verb: UPDATE
@@ -2982,10 +2906,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateTaskExecutionResponse'
       x-stackql-resource: task_executions
       x-stackql-method: update_task_execution
       x-stackql-verb: UPDATE
@@ -3038,8 +2958,6 @@ components:
       type: string
       maxLength: 128
       pattern: ^arn:(aws|aws-cn|aws-us-gov|aws-eusc|aws-iso|aws-iso-b):datasync:[a-z\-0-9]+:[0-9]{12}:task/task-[0-9a-f]{17}/execution/exec-[0-9a-f]{17}$
-    CancelTaskExecutionResponse:
-      type: object
     ActivationKey:
       type: string
       maxLength: 29
@@ -4092,12 +4010,6 @@ components:
       type: string
       maxLength: 128
       pattern: ^arn:(aws|aws-cn|aws-us-gov|aws-eusc|aws-iso|aws-iso-b):datasync:[a-z\-0-9]+:[0-9]{12}:task/task-[0-9a-f]{17}$
-    DeleteAgentResponse:
-      type: object
-    DeleteLocationResponse:
-      type: object
-    DeleteTaskResponse:
-      type: object
     DescribeAgentResponse:
       description: DescribeAgentResponse
       type: object
@@ -5219,18 +5131,10 @@ components:
         TaskExecutionArn:
           $ref: '#/components/schemas/TaskExecutionArn'
           description: The ARN of the running task execution.
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
         $ref: '#/components/schemas/TagKey'
-    UntagResourceResponse:
-      type: object
-    UpdateAgentResponse:
-      type: object
-    UpdateLocationAzureBlobResponse:
-      type: object
     UpdatedEfsAccessPointArn:
       type: string
       maxLength: 128
@@ -5239,10 +5143,6 @@ components:
       type: string
       maxLength: 2048
       pattern: (^arn:(aws|aws-cn|aws-us-gov|aws-eusc|aws-iso|aws-iso-b):iam::[0-9]{12}:role/.*$)|(^$)
-    UpdateLocationEfsResponse:
-      type: object
-    UpdateLocationFsxLustreResponse:
-      type: object
     FsxUpdateProtocol:
       description: Specifies the data transfer protocol that DataSync uses to access your Amazon FSx file system. You can't
         update the Network File System (NFS) protocol configuration for FSx for ONTAP locations. DataSync currently only supports
@@ -5288,23 +5188,3 @@ components:
       type: string
       maxLength: 253
       pattern: ^([A-Za-z0-9]((\.|-+)?[A-Za-z0-9]){0,252})?$
-    UpdateLocationFsxOntapResponse:
-      type: object
-    UpdateLocationFsxOpenZfsResponse:
-      type: object
-    UpdateLocationFsxWindowsResponse:
-      type: object
-    UpdateLocationHdfsResponse:
-      type: object
-    UpdateLocationNfsResponse:
-      type: object
-    UpdateLocationObjectStorageResponse:
-      type: object
-    UpdateLocationS3Response:
-      type: object
-    UpdateLocationSmbResponse:
-      type: object
-    UpdateTaskResponse:
-      type: object
-    UpdateTaskExecutionResponse:
-      type: object

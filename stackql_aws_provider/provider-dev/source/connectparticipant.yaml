@@ -45,11 +45,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CancelParticipantAuthenticationResponse'
-      x-stackql-resource: participant_authentication
+      x-stackql-resource: participant_authentications
       x-stackql-method: cancel_participant_authentication
       x-stackql-verb: EXEC
   /participant/complete-attachment-upload:
@@ -83,10 +79,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CompleteAttachmentUploadResponse'
       x-stackql-resource: attachments
       x-stackql-method: complete_attachment_upload
       x-stackql-verb: EXEC
@@ -201,11 +193,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DisconnectParticipantResponse'
-      x-stackql-resource: disconnect_participant
+      x-stackql-resource: participants
       x-stackql-method: disconnect_participant
       x-stackql-verb: EXEC
   /participant/attachment:
@@ -370,7 +358,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SendEventResponse'
-      x-stackql-resource: event
+      x-stackql-resource: events
       x-stackql-method: send_event
       x-stackql-verb: EXEC
   /participant/message:
@@ -409,7 +397,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SendMessageResponse'
-      x-stackql-resource: message
+      x-stackql-resource: messages
       x-stackql-method: send_message
       x-stackql-verb: EXEC
   /participant/start-attachment-upload:
@@ -508,8 +496,6 @@ components:
       type: string
       minLength: 36
       maxLength: 36
-    CancelParticipantAuthenticationResponse:
-      type: object
     AttachmentIdList:
       type: array
       items:
@@ -522,8 +508,6 @@ components:
       type: string
       minLength: 1
       maxLength: 500
-    CompleteAttachmentUploadResponse:
-      type: object
     ConnectionTypeList:
       type: array
       items:
@@ -728,8 +712,6 @@ components:
     ClientToken:
       type: string
       maxLength: 500
-    DisconnectParticipantResponse:
-      type: object
     URLExpiryInSeconds:
       type: integer
       minimum: 5

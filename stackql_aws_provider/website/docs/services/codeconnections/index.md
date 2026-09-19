@@ -29,10 +29,10 @@ total resources: __10__
 <a href="/services/codeconnections/hosts/">hosts</a><br />
 <a href="/services/codeconnections/repository_links/">repository_links</a><br />
 <a href="/services/codeconnections/repository_sync_definitions/">repository_sync_definitions</a><br />
-<a href="/services/codeconnections/repository_sync_status/">repository_sync_status</a>
+<a href="/services/codeconnections/repository_sync_statuses/">repository_sync_statuses</a>
 </div>
 <div class="providerDocColumn">
-<a href="/services/codeconnections/resource_sync_status/">resource_sync_status</a><br />
+<a href="/services/codeconnections/resource_sync_statuses/">resource_sync_statuses</a><br />
 <a href="/services/codeconnections/sync_blocker_summaries/">sync_blocker_summaries</a><br />
 <a href="/services/codeconnections/sync_blockers/">sync_blockers</a><br />
 <a href="/services/codeconnections/sync_configurations/">sync_configurations</a><br />

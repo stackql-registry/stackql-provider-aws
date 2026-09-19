@@ -205,10 +205,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteTemplateResponse"
     post:
       operationId: UpdateTemplate
       description: Updates a migration workflow template.
@@ -332,10 +328,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteWorkflowStepResponse"
     get:
       operationId: GetWorkflowStep
       description: Get a step in the migration workflow.
@@ -434,10 +426,6 @@ paths:
       responses:
         "202":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteWorkflowStepGroupResponse"
     get:
       operationId: GetWorkflowStepGroup
       description: Get the step group of a migration workflow.
@@ -637,10 +625,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TagResourceResponse"
     delete:
       operationId: UntagResource
       description: Deletes the tags for a resource.
@@ -660,10 +644,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UntagResourceResponse"
   /templatestepgroups/{template_id}:
     get:
       operationId: ListTemplateStepGroups
@@ -1299,8 +1279,6 @@ components:
       minLength: 1
       maxLength: 100
       pattern: "[-a-zA-Z0-9_.+]+[-a-zA-Z0-9_.+ ]*"
-    DeleteTemplateResponse:
-      type: object
     DeleteMigrationWorkflowResponse:
       type: object
       properties:
@@ -1318,10 +1296,6 @@ components:
       minLength: 1
       maxLength: 100
       pattern: "[a-zA-Z0-9-]+"
-    DeleteWorkflowStepResponse:
-      type: object
-    DeleteWorkflowStepGroupResponse:
-      type: object
     GetMigrationWorkflowTemplateResponse:
       type: object
       properties:
@@ -2083,8 +2057,6 @@ components:
         lastStopTime:
           $ref: "#/components/schemas/Timestamp"
           description: The time at which the migration workflow was stopped.
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
@@ -2094,8 +2066,6 @@ components:
       minLength: 1
       maxLength: 128
       pattern: (?!aws:)[a-zA-Z+-=._:/]+
-    UntagResourceResponse:
-      type: object
     UpdateTemplateRequestTemplateNameString:
       type: string
       minLength: 1
@@ -2244,7 +2214,6 @@ components:
             $ref: "#/paths/~1template~1{id}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         update_template:
           operation:
             $ref: "#/paths/~1template~1{id}/post"
@@ -2351,6 +2320,18 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+        start_workflow:
+          operation:
+            $ref: "#/paths/~1migrationworkflow~1{id}~1start/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+        stop_workflow:
+          operation:
+            $ref: "#/paths/~1migrationworkflow~1{id}~1stop/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/workflows/methods/get_workflow"
@@ -2382,7 +2363,6 @@ components:
             $ref: "#/paths/~1workflowstep~1{id}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
         get_workflow_step:
@@ -2469,7 +2449,6 @@ components:
             $ref: "#/paths/~1workflowstepgroup~1{id}/delete"
           response:
             openAPIDocKey: "202"
-            mediaType: application/json
           request:
             nativeCasing: pascal
         get_workflow_step_group:
@@ -2617,7 +2596,6 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -2628,7 +2606,6 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
       sqlVerbs:

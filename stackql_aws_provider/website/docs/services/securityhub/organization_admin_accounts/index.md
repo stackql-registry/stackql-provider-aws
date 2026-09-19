@@ -86,6 +86,20 @@ The following methods are available for this resource:
     <td><a href="#parameter-MaxResults"><code>MaxResults</code></a>, <a href="#parameter-NextToken"><code>NextToken</code></a>, <a href="#parameter-Feature"><code>Feature</code></a></td>
     <td>Lists the Security Hub CSPM administrator accounts. Can only be called by the organization management account.</td>
 </tr>
+<tr>
+    <td><a href="#disable_organization_admin_account"><CopyableCode code="disable_organization_admin_account" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-AdminAccountId"><code>AdminAccountId</code></a></td>
+    <td></td>
+    <td>Disables a Security Hub CSPM administrator account. Can only be called by the organization management account.</td>
+</tr>
+<tr>
+    <td><a href="#enable_organization_admin_account"><CopyableCode code="enable_organization_admin_account" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-AdminAccountId"><code>AdminAccountId</code></a></td>
+    <td></td>
+    <td>Designates the Security Hub CSPM administrator account for an organization. Can only be called by the organization management account.</td>
+</tr>
 </tbody>
 </table>
 
@@ -146,6 +160,48 @@ WHERE region = '{{ region }}' -- required
 AND MaxResults = '{{ MaxResults }}'
 AND NextToken = '{{ NextToken }}'
 AND Feature = '{{ Feature }}'
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="disable_organization_admin_account"
+    values={[
+        { label: 'disable_organization_admin_account', value: 'disable_organization_admin_account' },
+        { label: 'enable_organization_admin_account', value: 'enable_organization_admin_account' }
+    ]}
+>
+<TabItem value="disable_organization_admin_account">
+
+Disables a Security Hub CSPM administrator account. Can only be called by the organization management account.
+
+```sql
+EXEC aws.securityhub.organization_admin_accounts.disable_organization_admin_account 
+@region='{{ region }}' --required 
+@@json=
+'{
+"AdminAccountId": "{{ AdminAccountId }}", 
+"Feature": "{{ Feature }}"
+}'
+;
+```
+</TabItem>
+<TabItem value="enable_organization_admin_account">
+
+Designates the Security Hub CSPM administrator account for an organization. Can only be called by the organization management account.
+
+```sql
+EXEC aws.securityhub.organization_admin_accounts.enable_organization_admin_account 
+@region='{{ region }}' --required 
+@@json=
+'{
+"AdminAccountId": "{{ AdminAccountId }}", 
+"Feature": "{{ Feature }}"
+}'
 ;
 ```
 </TabItem>

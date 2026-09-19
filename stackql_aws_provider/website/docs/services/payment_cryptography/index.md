@@ -18,14 +18,13 @@ payment_cryptography service documentation.
 
 :::info[Service Summary]
 
-total resources: __12__  
+total resources: __10__  
 
 :::
 
 ## Resources
 <div class="row">
 <div class="providerDocColumn">
-<a href="/services/payment_cryptography/alias/">alias</a><br />
 <a href="/services/payment_cryptography/aliases/">aliases</a><br />
 <a href="/services/payment_cryptography/certificate_signing_requests/">certificate_signing_requests</a><br />
 <a href="/services/payment_cryptography/default_key_replication_regions/">default_key_replication_regions</a><br />
@@ -34,8 +33,7 @@ total resources: __12__
 </div>
 <div class="providerDocColumn">
 <a href="/services/payment_cryptography/mpa_teams/">mpa_teams</a><br />
-<a href="/services/payment_cryptography/parameters_for_exports/">parameters_for_exports</a><br />
-<a href="/services/payment_cryptography/parameters_for_imports/">parameters_for_imports</a><br />
+<a href="/services/payment_cryptography/parameters/">parameters</a><br />
 <a href="/services/payment_cryptography/public_key_certificates/">public_key_certificates</a><br />
 <a href="/services/payment_cryptography/resource_policies/">resource_policies</a><br />
 <a href="/services/payment_cryptography/tags/">tags</a>

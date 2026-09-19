@@ -55,10 +55,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/AssociateDelegateToResourceResponse"
   /AssociateMemberToGroup:
     post:
       operationId: AssociateMemberToGroup
@@ -96,10 +92,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/AssociateMemberToGroupResponse"
   /AssumeImpersonationRole:
     post:
       operationId: AssumeImpersonationRole
@@ -174,10 +166,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/CancelMailboxExportJobResponse"
   /CreateAlias:
     post:
       operationId: CreateAlias
@@ -214,10 +202,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/CreateAliasResponse"
   /CreateAvailabilityConfiguration:
     post:
       operationId: CreateAvailabilityConfiguration
@@ -260,10 +244,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/CreateAvailabilityConfigurationResponse"
   /CreateGroup:
     post:
       operationId: CreateGroup
@@ -644,10 +624,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteAccessControlRuleResponse"
   /DeleteAlias:
     post:
       operationId: DeleteAlias
@@ -684,10 +660,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteAliasResponse"
   /DeleteAvailabilityConfiguration:
     post:
       operationId: DeleteAvailabilityConfiguration
@@ -721,10 +693,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteAvailabilityConfigurationResponse"
   /DeleteEmailMonitoringConfiguration:
     post:
       operationId: DeleteEmailMonitoringConfiguration
@@ -754,10 +722,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteEmailMonitoringConfigurationResponse"
   /DeleteGroup:
     post:
       operationId: DeleteGroup
@@ -791,10 +755,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteGroupResponse"
   /DeleteIdentityCenterApplication:
     post:
       operationId: DeleteIdentityCenterApplication
@@ -824,10 +784,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteIdentityCenterApplicationResponse"
   /DeleteIdentityProviderConfiguration:
     post:
       operationId: DeleteIdentityProviderConfiguration
@@ -857,10 +813,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteIdentityProviderConfigurationResponse"
   /DeleteImpersonationRole:
     post:
       operationId: DeleteImpersonationRole
@@ -894,10 +846,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteImpersonationRoleResponse"
   /DeleteMailboxPermissions:
     post:
       operationId: DeleteMailboxPermissions
@@ -935,10 +883,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteMailboxPermissionsResponse"
   /DeleteMobileDeviceAccessOverride:
     post:
       operationId: DeleteMobileDeviceAccessOverride
@@ -976,10 +920,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteMobileDeviceAccessOverrideResponse"
   /DeleteMobileDeviceAccessRule:
     post:
       operationId: DeleteMobileDeviceAccessRule
@@ -1013,10 +953,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteMobileDeviceAccessRuleResponse"
   /DeleteOrganization:
     post:
       operationId: DeleteOrganization
@@ -1096,10 +1032,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeletePersonalAccessTokenResponse"
   /DeleteResource:
     post:
       operationId: DeleteResource
@@ -1133,10 +1065,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteResourceResponse"
   /DeleteRetentionPolicy:
     post:
       operationId: DeleteRetentionPolicy
@@ -1170,10 +1098,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteRetentionPolicyResponse"
   /DeleteUser:
     post:
       operationId: DeleteUser
@@ -1207,10 +1131,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteUserResponse"
   /DeregisterFromWorkMail:
     post:
       operationId: DeregisterFromWorkMail
@@ -1244,10 +1164,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeregisterFromWorkMailResponse"
   /DeregisterMailDomain:
     post:
       operationId: DeregisterMailDomain
@@ -1281,10 +1197,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeregisterMailDomainResponse"
   /DescribeEmailMonitoringConfiguration:
     post:
       operationId: DescribeEmailMonitoringConfiguration
@@ -1639,10 +1551,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DisassociateDelegateFromResourceResponse"
   /DisassociateMemberFromGroup:
     post:
       operationId: DisassociateMemberFromGroup
@@ -1680,10 +1588,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DisassociateMemberFromGroupResponse"
   /GetAccessControlEffect:
     post:
       operationId: GetAccessControlEffect
@@ -2824,10 +2728,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/PutAccessControlRuleResponse"
   /PutEmailMonitoringConfiguration:
     post:
       operationId: PutEmailMonitoringConfiguration
@@ -2864,10 +2764,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/PutEmailMonitoringConfigurationResponse"
   /PutIdentityProviderConfiguration:
     post:
       operationId: PutIdentityProviderConfiguration
@@ -2909,10 +2805,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/PutIdentityProviderConfigurationResponse"
   /PutInboundDmarcSettings:
     post:
       operationId: PutInboundDmarcSettings
@@ -2945,10 +2837,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/PutInboundDmarcSettingsResponse"
   /PutMailboxPermissions:
     post:
       operationId: PutMailboxPermissions
@@ -2990,10 +2878,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/PutMailboxPermissionsResponse"
   /PutMobileDeviceAccessOverride:
     post:
       operationId: PutMobileDeviceAccessOverride
@@ -3037,10 +2921,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/PutMobileDeviceAccessOverrideResponse"
   /PutRetentionPolicy:
     post:
       operationId: PutRetentionPolicy
@@ -3084,10 +2964,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/PutRetentionPolicyResponse"
   /RegisterMailDomain:
     post:
       operationId: RegisterMailDomain
@@ -3124,10 +3000,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/RegisterMailDomainResponse"
   /RegisterToWorkMail:
     post:
       operationId: RegisterToWorkMail
@@ -3165,10 +3037,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/RegisterToWorkMailResponse"
   /ResetPassword:
     post:
       operationId: ResetPassword
@@ -3206,10 +3074,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ResetPasswordResponse"
   /StartMailboxExportJob:
     post:
       operationId: StartMailboxExportJob
@@ -3302,10 +3166,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TagResourceResponse"
   /TestAvailabilityConfiguration:
     post:
       operationId: TestAvailabilityConfiguration
@@ -3379,10 +3239,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UntagResourceResponse"
   /UpdateAvailabilityConfiguration:
     post:
       operationId: UpdateAvailabilityConfiguration
@@ -3422,10 +3278,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateAvailabilityConfigurationResponse"
   /UpdateDefaultMailDomain:
     post:
       operationId: UpdateDefaultMailDomain
@@ -3459,10 +3311,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateDefaultMailDomainResponse"
   /UpdateGroup:
     post:
       operationId: UpdateGroup
@@ -3499,10 +3347,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateGroupResponse"
   /UpdateImpersonationRole:
     post:
       operationId: UpdateImpersonationRole
@@ -3548,10 +3392,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateImpersonationRoleResponse"
   /UpdateMailboxQuota:
     post:
       operationId: UpdateMailboxQuota
@@ -3589,10 +3429,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateMailboxQuotaResponse"
   /UpdateMobileDeviceAccessRule:
     post:
       operationId: UpdateMobileDeviceAccessRule
@@ -3661,10 +3497,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateMobileDeviceAccessRuleResponse"
   /UpdatePrimaryEmailAddress:
     post:
       operationId: UpdatePrimaryEmailAddress
@@ -3702,10 +3534,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdatePrimaryEmailAddressResponse"
   /UpdateResource:
     post:
       operationId: UpdateResource
@@ -3754,10 +3582,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateResourceResponse"
   /UpdateUser:
     post:
       operationId: UpdateUser
@@ -3839,10 +3663,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateUserResponse"
 components:
   parameters:
     X-Amz-Content-Sha256:
@@ -3898,10 +3718,6 @@ components:
       minLength: 1
       maxLength: 256
       pattern: "[a-zA-Z0-9._%+@-]+"
-    AssociateDelegateToResourceResponse:
-      type: object
-    AssociateMemberToGroupResponse:
-      type: object
     ImpersonationRoleId:
       type: string
       minLength: 1
@@ -3934,8 +3750,6 @@ components:
       minLength: 1
       maxLength: 63
       pattern: "[A-Za-z0-9-]+"
-    CancelMailboxExportJobResponse:
-      type: object
     WorkMailIdentifier:
       type: string
       minLength: 12
@@ -3945,8 +3759,6 @@ components:
       minLength: 1
       maxLength: 254
       pattern: "[a-zA-Z0-9._%+-]{1,64}@[a-zA-Z0-9.-]+\\.[a-zA-Z-]{2,}"
-    CreateAliasResponse:
-      type: object
     DomainName:
       type: string
       minLength: 3
@@ -3995,8 +3807,6 @@ components:
       minLength: 49
       maxLength: 256
       pattern: arn:aws:lambda:[a-z]{2}-[a-z]+-\d{1}:\d{12}:function:[a-zA-Z0-9\-_\.]+(:(\$LATEST|[a-zA-Z0-9\-_]+))?
-    CreateAvailabilityConfigurationResponse:
-      type: object
     GroupName:
       type: string
       minLength: 1
@@ -4265,33 +4075,11 @@ components:
       minLength: 1
       maxLength: 64
       pattern: "[a-zA-Z0-9_-]+"
-    DeleteAccessControlRuleResponse:
-      type: object
-    DeleteAliasResponse:
-      type: object
-    DeleteAvailabilityConfigurationResponse:
-      type: object
-    DeleteEmailMonitoringConfigurationResponse:
-      type: object
-    DeleteGroupResponse:
-      type: object
-    DeleteIdentityCenterApplicationResponse:
-      type: object
-    DeleteIdentityProviderConfigurationResponse:
-      type: object
-    DeleteImpersonationRoleResponse:
-      type: object
-    DeleteMailboxPermissionsResponse:
-      type: object
     DeviceId:
       type: string
       minLength: 1
       maxLength: 32
       pattern: "[A-Za-z0-9]+"
-    DeleteMobileDeviceAccessOverrideResponse:
-      type: object
-    DeleteMobileDeviceAccessRuleResponse:
-      type: object
     DeleteOrganizationResponse:
       type: object
       properties:
@@ -4309,28 +4097,16 @@ components:
       minLength: 1
       maxLength: 64
       pattern: "[a-zA-Z0-9_-]+"
-    DeletePersonalAccessTokenResponse:
-      type: object
-    DeleteResourceResponse:
-      type: object
     ShortString:
       type: string
       minLength: 1
       maxLength: 64
       pattern: "[a-zA-Z0-9_-]+"
-    DeleteRetentionPolicyResponse:
-      type: object
-    DeleteUserResponse:
-      type: object
-    DeregisterFromWorkMailResponse:
-      type: object
     WorkMailDomainName:
       type: string
       minLength: 3
       maxLength: 209
       pattern: "[a-zA-Z0-9.-]+"
-    DeregisterMailDomainResponse:
-      type: object
     DescribeEmailMonitoringConfigurationResponse:
       type: object
       properties:
@@ -4698,10 +4474,6 @@ components:
       minLength: 1
       maxLength: 36
       pattern: ^d-[0-9a-f]{10}$|^[0-9a-f]{8}\\b-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-\\b[0-9a-f]{12}$
-    DisassociateDelegateFromResourceResponse:
-      type: object
-    DisassociateMemberFromGroupResponse:
-      type: object
     IpAddress:
       type: string
       minLength: 1
@@ -5723,40 +5495,18 @@ components:
         IdentityProviderIdentityStoreId:
           $ref: "#/components/schemas/IdentityProviderIdentityStoreId"
           description: Identity store ID from the IAM Identity Center. If this parameter is empty it will be updated automatically when the user logs in for the first time to the mailbox associated with WorkMail.
-    PutAccessControlRuleResponse:
-      type: object
-    PutEmailMonitoringConfigurationResponse:
-      type: object
-    PutIdentityProviderConfigurationResponse:
-      type: object
     BooleanObject:
       type: boolean
-    PutInboundDmarcSettingsResponse:
-      type: object
-    PutMailboxPermissionsResponse:
-      type: object
-    PutMobileDeviceAccessOverrideResponse:
-      type: object
     PolicyDescription:
       type: string
       maxLength: 256
       pattern: "[\\w\\d\\s\\S\\-!?=,.;:'_]+"
-    PutRetentionPolicyResponse:
-      type: object
-    RegisterMailDomainResponse:
-      type: object
-    RegisterToWorkMailResponse:
-      type: object
-    ResetPasswordResponse:
-      type: object
     StartMailboxExportJobResponse:
       type: object
       properties:
         JobId:
           $ref: "#/components/schemas/MailboxExportJobId"
           description: The job ID.
-    TagResourceResponse:
-      type: object
     TestAvailabilityConfigurationResponse:
       type: object
       properties:
@@ -5770,35 +5520,15 @@ components:
       type: array
       items:
         $ref: "#/components/schemas/TagKey"
-    UntagResourceResponse:
-      type: object
-    UpdateAvailabilityConfigurationResponse:
-      type: object
-    UpdateDefaultMailDomainResponse:
-      type: object
-    UpdateGroupResponse:
-      type: object
-    UpdateImpersonationRoleResponse:
-      type: object
-    UpdateMailboxQuotaResponse:
-      type: object
-    UpdateMobileDeviceAccessRuleResponse:
-      type: object
-    UpdatePrimaryEmailAddressResponse:
-      type: object
     NewResourceDescription:
       type: string
       minLength: 0
       maxLength: 64
-    UpdateResourceResponse:
-      type: object
     IdentityProviderUserIdForUpdate:
       type: string
       minLength: 0
       maxLength: 47
       pattern: ^$|^([0-9a-f]{10}-|)[A-Fa-f0-9]{8}-[A-Fa-f0-9]{4}-[A-Fa-f0-9]{4}-[A-Fa-f0-9]{4}-[A-Fa-f0-9]{12}$
-    UpdateUserResponse:
-      type: object
   x-stackQL-resources:
     resources:
       id: aws.workmail.resources
@@ -5810,7 +5540,6 @@ components:
             $ref: "#/paths/~1AssociateDelegateToResource/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -5836,7 +5565,6 @@ components:
             $ref: "#/paths/~1DeleteResource/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -5862,7 +5590,6 @@ components:
             $ref: "#/paths/~1DisassociateDelegateFromResource/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -5896,7 +5623,6 @@ components:
             $ref: "#/paths/~1UpdateResource/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -5925,7 +5651,6 @@ components:
             $ref: "#/paths/~1AssociateMemberToGroup/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -5951,7 +5676,6 @@ components:
             $ref: "#/paths/~1DeleteGroup/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -5977,7 +5701,6 @@ components:
             $ref: "#/paths/~1DisassociateMemberFromGroup/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -6006,9 +5729,9 @@ components:
                 location: body
             requestBodyTranslate:
               algorithm: naive
-        update_group:
+        list_groups_for_entity:
           operation:
-            $ref: "#/paths/~1UpdateGroup/post"
+            $ref: "#/paths/~1ListGroupsForEntity/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -6019,9 +5742,22 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        update_group:
+          operation:
+            $ref: "#/paths/~1UpdateGroup/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/groups/methods/describe_group"
+          - $ref: "#/components/x-stackQL-resources/groups/methods/list_groups_for_entity"
           - $ref: "#/components/x-stackQL-resources/groups/methods/list_groups"
         insert:
           - $ref: "#/components/x-stackQL-resources/groups/methods/create_group"
@@ -6066,7 +5802,6 @@ components:
             $ref: "#/paths/~1DeleteImpersonationRole/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -6105,7 +5840,6 @@ components:
             $ref: "#/paths/~1UpdateImpersonationRole/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -6133,7 +5867,6 @@ components:
             $ref: "#/paths/~1CancelMailboxExportJob/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -6146,7 +5879,6 @@ components:
             $ref: "#/paths/~1CreateAlias/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -6172,7 +5904,6 @@ components:
             $ref: "#/paths/~1DeleteAlias/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -6198,7 +5929,6 @@ components:
             $ref: "#/paths/~1DeleteRetentionPolicy/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -6211,7 +5941,6 @@ components:
             $ref: "#/paths/~1DeregisterFromWorkMail/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -6258,7 +5987,6 @@ components:
             $ref: "#/paths/~1PutRetentionPolicy/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -6271,7 +5999,6 @@ components:
             $ref: "#/paths/~1RegisterToWorkMail/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -6284,7 +6011,6 @@ components:
             $ref: "#/paths/~1ResetPassword/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -6323,7 +6049,6 @@ components:
             $ref: "#/paths/~1UpdateMailboxQuota/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -6336,7 +6061,6 @@ components:
             $ref: "#/paths/~1UpdatePrimaryEmailAddress/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -6358,8 +6082,8 @@ components:
         replace:
           - $ref: "#/components/x-stackQL-resources/organizations/methods/put_retention_policy"
         delete:
-          - $ref: "#/components/x-stackQL-resources/organizations/methods/delete_alias"
           - $ref: "#/components/x-stackQL-resources/organizations/methods/delete_organization"
+          - $ref: "#/components/x-stackQL-resources/organizations/methods/delete_alias"
           - $ref: "#/components/x-stackQL-resources/organizations/methods/delete_retention_policy"
     availability_configurations:
       id: aws.workmail.availability_configurations
@@ -6371,7 +6095,6 @@ components:
             $ref: "#/paths/~1CreateAvailabilityConfiguration/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -6384,7 +6107,6 @@ components:
             $ref: "#/paths/~1DeleteAvailabilityConfiguration/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -6418,7 +6140,6 @@ components:
             $ref: "#/paths/~1UpdateAvailabilityConfiguration/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -6458,7 +6179,6 @@ components:
             $ref: "#/paths/~1DeleteIdentityCenterApplication/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -6496,7 +6216,6 @@ components:
             $ref: "#/paths/~1DeleteMobileDeviceAccessRule/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -6522,7 +6241,6 @@ components:
             $ref: "#/paths/~1UpdateMobileDeviceAccessRule/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -6562,7 +6280,6 @@ components:
             $ref: "#/paths/~1DeleteUser/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -6609,7 +6326,6 @@ components:
             $ref: "#/paths/~1UpdateUser/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -6637,7 +6353,6 @@ components:
             $ref: "#/paths/~1DeleteAccessControlRule/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -6663,7 +6378,6 @@ components:
             $ref: "#/paths/~1PutAccessControlRule/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -6690,7 +6404,6 @@ components:
             $ref: "#/paths/~1DeleteEmailMonitoringConfiguration/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -6716,7 +6429,6 @@ components:
             $ref: "#/paths/~1PutEmailMonitoringConfiguration/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -6743,7 +6455,6 @@ components:
             $ref: "#/paths/~1DeleteIdentityProviderConfiguration/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -6769,7 +6480,6 @@ components:
             $ref: "#/paths/~1PutIdentityProviderConfiguration/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -6796,7 +6506,6 @@ components:
             $ref: "#/paths/~1DeleteMailboxPermissions/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -6830,7 +6539,6 @@ components:
             $ref: "#/paths/~1PutMailboxPermissions/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -6857,7 +6565,6 @@ components:
             $ref: "#/paths/~1DeleteMobileDeviceAccessOverride/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -6896,7 +6603,6 @@ components:
             $ref: "#/paths/~1PutMobileDeviceAccessOverride/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -6924,7 +6630,6 @@ components:
             $ref: "#/paths/~1DeletePersonalAccessToken/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -6970,7 +6675,6 @@ components:
             $ref: "#/paths/~1DeregisterMailDomain/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -7009,7 +6713,6 @@ components:
             $ref: "#/paths/~1RegisterMailDomain/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -7022,7 +6725,6 @@ components:
             $ref: "#/paths/~1UpdateDefaultMailDomain/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -7087,7 +6789,6 @@ components:
             $ref: "#/paths/~1PutInboundDmarcSettings/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -7261,10 +6962,10 @@ components:
         insert: []
         update: []
         delete: []
-    personal_access_token_metadatas:
-      id: aws.workmail.personal_access_token_metadatas
-      name: personal_access_token_metadatas
-      title: personal_access_token_metadatas
+    personal_access_token_metadata:
+      id: aws.workmail.personal_access_token_metadata
+      name: personal_access_token_metadata
+      title: personal_access_token_metadata
       methods:
         get_personal_access_token_metadata:
           operation:
@@ -7281,7 +6982,7 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/personal_access_token_metadatas/methods/get_personal_access_token_metadata"
+          - $ref: "#/components/x-stackQL-resources/personal_access_token_metadata/methods/get_personal_access_token_metadata"
         insert: []
         update: []
         delete: []
@@ -7355,30 +7056,6 @@ components:
         insert: []
         update: []
         delete: []
-    groups_for_entities:
-      id: aws.workmail.groups_for_entities
-      name: groups_for_entities
-      title: groups_for_entities
-      methods:
-        list_groups_for_entity:
-          operation:
-            $ref: "#/paths/~1ListGroupsForEntity/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/groups_for_entities/methods/list_groups_for_entity"
-        insert: []
-        update: []
-        delete: []
     resource_delegates:
       id: aws.workmail.resource_delegates
       name: resource_delegates
@@ -7434,7 +7111,6 @@ components:
             $ref: "#/paths/~1TagResource/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -7447,7 +7123,6 @@ components:
             $ref: "#/paths/~1UntagResource/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1

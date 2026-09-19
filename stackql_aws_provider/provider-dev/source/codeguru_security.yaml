@@ -347,10 +347,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -373,10 +369,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -1054,8 +1046,6 @@ components:
             parts: A tag key. For example, CostCenter, Environment, or Secret. Tag keys are case sensitive. An optional tag
             value field. For example, 111122223333, Production, or a team name. Omitting the tag value is the same as using
             an empty string. Tag values are case sensitive.'
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
@@ -1064,8 +1054,6 @@ components:
       type: string
       minLength: 1
       maxLength: 128
-    UntagResourceResponse:
-      type: object
     UpdateAccountConfigurationResponse:
       type: object
       properties:

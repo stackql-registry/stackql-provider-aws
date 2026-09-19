@@ -126,18 +126,18 @@ The following methods are available for this resource:
     <td>Creates an Network Firewall ProxyConfiguration A Proxy Configuration defines the monitoring and protection behavior for a Proxy. The details of the behavior are defined in the rule groups that you add to your configuration. To manage a proxy configuration's tags, use the standard Amazon Web Services resource tagging operations, ListTagsForResource, TagResource, and UntagResource. To retrieve information about proxies, use ListProxyConfigurations and DescribeProxyConfiguration.</td>
 </tr>
 <tr>
-    <td><a href="#attach_rule_groups_to_proxy_configuration"><CopyableCode code="attach_rule_groups_to_proxy_configuration" /></a></td>
-    <td><CopyableCode code="update" /></td>
-    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-RuleGroups"><code>RuleGroups</code></a>, <a href="#parameter-UpdateToken"><code>UpdateToken</code></a></td>
-    <td></td>
-    <td>Attaches ProxyRuleGroup resources to a ProxyConfiguration A Proxy Configuration defines the monitoring and protection behavior for a Proxy. The details of the behavior are defined in the rule groups that you add to your configuration.</td>
-</tr>
-<tr>
     <td><a href="#update_proxy_configuration"><CopyableCode code="update_proxy_configuration" /></a></td>
     <td><CopyableCode code="update" /></td>
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-DefaultRulePhaseActions"><code>DefaultRulePhaseActions</code></a>, <a href="#parameter-UpdateToken"><code>UpdateToken</code></a></td>
     <td></td>
     <td>Updates the properties of the specified proxy configuration.</td>
+</tr>
+<tr>
+    <td><a href="#attach_rule_groups_to_proxy_configuration"><CopyableCode code="attach_rule_groups_to_proxy_configuration" /></a></td>
+    <td><CopyableCode code="update" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-RuleGroups"><code>RuleGroups</code></a>, <a href="#parameter-UpdateToken"><code>UpdateToken</code></a></td>
+    <td></td>
+    <td>Attaches ProxyRuleGroup resources to a ProxyConfiguration A Proxy Configuration defines the monitoring and protection behavior for a Proxy. The details of the behavior are defined in the rule groups that you add to your configuration.</td>
 </tr>
 <tr>
     <td><a href="#detach_rule_groups_from_proxy_configuration"><CopyableCode code="detach_rule_groups_from_proxy_configuration" /></a></td>
@@ -300,33 +300,13 @@ update_token
 ## `UPDATE` examples
 
 <Tabs
-    defaultValue="attach_rule_groups_to_proxy_configuration"
+    defaultValue="update_proxy_configuration"
     values={[
-        { label: 'attach_rule_groups_to_proxy_configuration', value: 'attach_rule_groups_to_proxy_configuration' },
         { label: 'update_proxy_configuration', value: 'update_proxy_configuration' },
+        { label: 'attach_rule_groups_to_proxy_configuration', value: 'attach_rule_groups_to_proxy_configuration' },
         { label: 'detach_rule_groups_from_proxy_configuration', value: 'detach_rule_groups_from_proxy_configuration' }
     ]}
 >
-<TabItem value="attach_rule_groups_to_proxy_configuration">
-
-Attaches ProxyRuleGroup resources to a ProxyConfiguration A Proxy Configuration defines the monitoring and protection behavior for a Proxy. The details of the behavior are defined in the rule groups that you add to your configuration.
-
-```sql
-UPDATE aws.network_firewall.proxy_configurations
-SET 
-ProxyConfigurationName = '{{ ProxyConfigurationName }}',
-ProxyConfigurationArn = '{{ ProxyConfigurationArn }}',
-RuleGroups = '{{ RuleGroups }}',
-UpdateToken = '{{ UpdateToken }}'
-WHERE 
-region = '{{ region }}' --required
-AND RuleGroups = '{{ RuleGroups }}' --required
-AND UpdateToken = '{{ UpdateToken }}' --required
-RETURNING
-proxy_configuration,
-update_token;
-```
-</TabItem>
 <TabItem value="update_proxy_configuration">
 
 Updates the properties of the specified proxy configuration.
@@ -341,6 +321,26 @@ UpdateToken = '{{ UpdateToken }}'
 WHERE 
 region = '{{ region }}' --required
 AND DefaultRulePhaseActions = '{{ DefaultRulePhaseActions }}' --required
+AND UpdateToken = '{{ UpdateToken }}' --required
+RETURNING
+proxy_configuration,
+update_token;
+```
+</TabItem>
+<TabItem value="attach_rule_groups_to_proxy_configuration">
+
+Attaches ProxyRuleGroup resources to a ProxyConfiguration A Proxy Configuration defines the monitoring and protection behavior for a Proxy. The details of the behavior are defined in the rule groups that you add to your configuration.
+
+```sql
+UPDATE aws.network_firewall.proxy_configurations
+SET 
+ProxyConfigurationName = '{{ ProxyConfigurationName }}',
+ProxyConfigurationArn = '{{ ProxyConfigurationArn }}',
+RuleGroups = '{{ RuleGroups }}',
+UpdateToken = '{{ UpdateToken }}'
+WHERE 
+region = '{{ region }}' --required
+AND RuleGroups = '{{ RuleGroups }}' --required
 AND UpdateToken = '{{ UpdateToken }}' --required
 RETURNING
 proxy_configuration,

@@ -166,6 +166,13 @@ The following methods are available for this resource:
     <td>Accepts a connection invitation from another partner, establishing a formal partnership connection between the two parties.</td>
 </tr>
 <tr>
+    <td><a href="#cancel_connection"><CopyableCode code="cancel_connection" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-Identifier"><code>Identifier</code></a>, <a href="#parameter-ConnectionType"><code>ConnectionType</code></a>, <a href="#parameter-Reason"><code>Reason</code></a>, <a href="#parameter-ClientToken"><code>ClientToken</code></a></td>
+    <td></td>
+    <td>Cancels an existing connection between partners, terminating the partnership relationship.</td>
+</tr>
+<tr>
     <td><a href="#cancel_connection_invitation"><CopyableCode code="cancel_connection_invitation" /></a></td>
     <td><CopyableCode code="exec" /></td>
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-Identifier"><code>Identifier</code></a>, <a href="#parameter-ClientToken"><code>ClientToken</code></a></td>
@@ -255,6 +262,7 @@ WHERE region = '{{ region }}' -- required
     defaultValue="accept_connection_invitation"
     values={[
         { label: 'accept_connection_invitation', value: 'accept_connection_invitation' },
+        { label: 'cancel_connection', value: 'cancel_connection' },
         { label: 'cancel_connection_invitation', value: 'cancel_connection_invitation' },
         { label: 'reject_connection_invitation', value: 'reject_connection_invitation' }
     ]}
@@ -270,6 +278,24 @@ EXEC aws.partnercentral_account.connections.accept_connection_invitation
 '{
 "Catalog": "{{ Catalog }}", 
 "Identifier": "{{ Identifier }}", 
+"ClientToken": "{{ ClientToken }}"
+}'
+;
+```
+</TabItem>
+<TabItem value="cancel_connection">
+
+Cancels an existing connection between partners, terminating the partnership relationship.
+
+```sql
+EXEC aws.partnercentral_account.connections.cancel_connection 
+@region='{{ region }}' --required 
+@@json=
+'{
+"Catalog": "{{ Catalog }}", 
+"Identifier": "{{ Identifier }}", 
+"ConnectionType": "{{ ConnectionType }}", 
+"Reason": "{{ Reason }}", 
 "ClientToken": "{{ ClientToken }}"
 }'
 ;

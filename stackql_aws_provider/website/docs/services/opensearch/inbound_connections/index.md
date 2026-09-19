@@ -93,6 +93,20 @@ The following methods are available for this resource:
     <td></td>
     <td>Allows the destination Amazon OpenSearch Service domain owner to delete an existing inbound cross-cluster search connection. For more information, see Cross-cluster search for Amazon OpenSearch Service.</td>
 </tr>
+<tr>
+    <td><a href="#accept_inbound_connection"><CopyableCode code="accept_inbound_connection" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-connection_id"><code>connection_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Allows the destination Amazon OpenSearch Service domain owner to accept an inbound cross-cluster search connection request. For more information, see Cross-cluster search for Amazon OpenSearch Service.</td>
+</tr>
+<tr>
+    <td><a href="#reject_inbound_connection"><CopyableCode code="reject_inbound_connection" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-connection_id"><code>connection_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Allows the remote Amazon OpenSearch Service domain owner to reject an inbound cross-cluster connection request.</td>
+</tr>
 </tbody>
 </table>
 
@@ -112,7 +126,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-connection_id">
     <td><CopyableCode code="connection_id" /></td>
     <td><code>string</code></td>
-    <td>The ID of the inbound connection to permanently delete.</td>
+    <td>The unique identifier of the inbound connection to reject.</td>
 </tr>
 <tr id="parameter-region">
     <td><CopyableCode code="region" /></td>
@@ -162,6 +176,40 @@ Allows the destination Amazon OpenSearch Service domain owner to delete an exist
 DELETE FROM aws.opensearch.inbound_connections
 WHERE connection_id = '{{ connection_id }}' --required
 AND region = '{{ region }}' --required
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="accept_inbound_connection"
+    values={[
+        { label: 'accept_inbound_connection', value: 'accept_inbound_connection' },
+        { label: 'reject_inbound_connection', value: 'reject_inbound_connection' }
+    ]}
+>
+<TabItem value="accept_inbound_connection">
+
+Allows the destination Amazon OpenSearch Service domain owner to accept an inbound cross-cluster search connection request. For more information, see Cross-cluster search for Amazon OpenSearch Service.
+
+```sql
+EXEC aws.opensearch.inbound_connections.accept_inbound_connection 
+@connection_id='{{ connection_id }}' --required, 
+@region='{{ region }}' --required
+;
+```
+</TabItem>
+<TabItem value="reject_inbound_connection">
+
+Allows the remote Amazon OpenSearch Service domain owner to reject an inbound cross-cluster connection request.
+
+```sql
+EXEC aws.opensearch.inbound_connections.reject_inbound_connection 
+@connection_id='{{ connection_id }}' --required, 
+@region='{{ region }}' --required
 ;
 ```
 </TabItem>

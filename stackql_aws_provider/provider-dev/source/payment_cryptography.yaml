@@ -165,7 +165,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreateAliasOutput'
-      x-stackql-resource: alias
+      x-stackql-resource: aliases
       x-stackql-method: create_alias
       x-stackql-verb: INSERT
   /CreateKey:
@@ -293,11 +293,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteAliasOutput'
-      x-stackql-resource: alias
+      x-stackql-resource: aliases
       x-stackql-method: delete_alias
       x-stackql-verb: DELETE
   /DeleteKey:
@@ -380,10 +376,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteResourcePolicyOutput'
       x-stackql-resource: resource_policies
       x-stackql-method: delete_resource_policy
       x-stackql-verb: DELETE
@@ -636,7 +628,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ExportKeyOutput'
-      x-stackql-resource: key
+      x-stackql-resource: keys
       x-stackql-method: export_key
       x-stackql-verb: EXEC
   /GetAlias:
@@ -674,7 +666,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetAliasOutput'
-      x-stackql-resource: alias
+      x-stackql-resource: aliases
       x-stackql-method: get_alias
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Alias
@@ -896,7 +888,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetParametersForExportOutput'
-      x-stackql-resource: parameters_for_exports
+      x-stackql-resource: parameters
       x-stackql-method: get_parameters_for_export
       x-stackql-verb: SELECT
   /GetParametersForImport:
@@ -953,7 +945,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetParametersForImportOutput'
-      x-stackql-resource: parameters_for_imports
+      x-stackql-resource: parameters
       x-stackql-method: get_parameters_for_import
       x-stackql-verb: SELECT
   /GetPublicKeyCertificate:
@@ -1171,7 +1163,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ImportKeyOutput'
-      x-stackql-resource: key
+      x-stackql-resource: keys
       x-stackql-method: import_key
       x-stackql-verb: EXEC
   /ListAliases:
@@ -1468,7 +1460,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RestoreKeyOutput'
-      x-stackql-resource: key
+      x-stackql-resource: keys
       x-stackql-method: restore_key
       x-stackql-verb: EXEC
   /StartKeyUsage:
@@ -1596,10 +1588,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceOutput'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -1641,10 +1629,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceOutput'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -1688,7 +1672,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateAliasOutput'
-      x-stackql-resource: alias
+      x-stackql-resource: aliases
       x-stackql-method: update_alias
       x-stackql-verb: UPDATE
 components:
@@ -2184,8 +2168,6 @@ components:
           description: The key material that contains all the key attributes.
       required:
       - Key
-    DeleteAliasOutput:
-      type: object
     DeleteKeyInputDeleteKeyInDaysInteger:
       type: integer
       minimum: 3
@@ -2203,8 +2185,6 @@ components:
       minLength: 70
       maxLength: 150
       pattern: arn:aws:payment-cryptography:[a-z]{2}-[a-z]{1,16}-[0-9]+:[0-9]{12}:key/[0-9a-zA-Z]{16,64}
-    DeleteResourcePolicyOutput:
-      type: object
     DisableDefaultKeyReplicationRegionsOutput:
       description: Output from disabling default key replication regions for the account.
       type: object
@@ -3130,14 +3110,10 @@ components:
           description: The KeyARN of the key.
       required:
       - Key
-    TagResourceOutput:
-      type: object
     TagKeys:
       type: array
       items:
         $ref: '#/components/schemas/TagKey'
-    UntagResourceOutput:
-      type: object
     UpdateAliasOutput:
       type: object
       properties:

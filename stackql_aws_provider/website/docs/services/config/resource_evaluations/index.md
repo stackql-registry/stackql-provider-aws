@@ -91,6 +91,13 @@ The following methods are available for this resource:
     <td></td>
     <td>Returns a list of proactive resource evaluations.</td>
 </tr>
+<tr>
+    <td><a href="#start_resource_evaluation"><CopyableCode code="start_resource_evaluation" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-ResourceDetails"><code>ResourceDetails</code></a>, <a href="#parameter-EvaluationMode"><code>EvaluationMode</code></a></td>
+    <td></td>
+    <td>Runs an on-demand evaluation for the specified resource to determine whether the resource details will comply with configured Config rules. You can also use it for evaluation purposes. Config recommends using an evaluation context. It runs an execution against the resource details with all of the Config rules in your account that match with the specified proactive mode and resource type. Ensure you have the cloudformation:DescribeType role setup to validate the resource type schema. You can find the Resource type schema in "Amazon Web Services public extensions" within the CloudFormation registry or with the following CLI commmand: aws cloudformation describe-type --type-name "AWS::S3::Bucket" --type RESOURCE. For more information, see Managing extensions through the CloudFormation registry and Amazon Web Services resource and property types reference in the CloudFormation User Guide.</td>
+</tr>
 </tbody>
 </table>
 
@@ -134,6 +141,35 @@ evaluation_start_timestamp,
 resource_evaluation_id
 FROM aws.config.resource_evaluations
 WHERE region = '{{ region }}' -- required
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="start_resource_evaluation"
+    values={[
+        { label: 'start_resource_evaluation', value: 'start_resource_evaluation' }
+    ]}
+>
+<TabItem value="start_resource_evaluation">
+
+Runs an on-demand evaluation for the specified resource to determine whether the resource details will comply with configured Config rules. You can also use it for evaluation purposes. Config recommends using an evaluation context. It runs an execution against the resource details with all of the Config rules in your account that match with the specified proactive mode and resource type. Ensure you have the cloudformation:DescribeType role setup to validate the resource type schema. You can find the Resource type schema in "Amazon Web Services public extensions" within the CloudFormation registry or with the following CLI commmand: aws cloudformation describe-type --type-name "AWS::S3::Bucket" --type RESOURCE. For more information, see Managing extensions through the CloudFormation registry and Amazon Web Services resource and property types reference in the CloudFormation User Guide.
+
+```sql
+EXEC aws.config.resource_evaluations.start_resource_evaluation 
+@region='{{ region }}' --required 
+@@json=
+'{
+"ResourceDetails": "{{ ResourceDetails }}", 
+"EvaluationContext": "{{ EvaluationContext }}", 
+"EvaluationMode": "{{ EvaluationMode }}", 
+"EvaluationTimeout": {{ EvaluationTimeout }}, 
+"ClientToken": "{{ ClientToken }}"
+}'
 ;
 ```
 </TabItem>

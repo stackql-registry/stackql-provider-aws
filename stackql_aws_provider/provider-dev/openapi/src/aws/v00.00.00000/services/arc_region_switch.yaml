@@ -62,10 +62,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ApprovePlanExecutionStepResponse"
   /CancelPlanExecution:
     post:
       operationId: CancelPlanExecution
@@ -102,10 +98,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/CancelPlanExecutionResponse"
   /CreatePlan:
     post:
       operationId: CreatePlan
@@ -204,10 +196,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeletePlanResponse"
   /GetPlan:
     post:
       operationId: GetPlan
@@ -724,10 +712,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TagResourceResponse"
   /UntagResource:
     post:
       operationId: UntagResource
@@ -761,10 +745,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UntagResourceResponse"
   /UpdatePlan:
     post:
       operationId: UpdatePlan
@@ -861,10 +841,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdatePlanExecutionResponse"
   /UpdatePlanExecutionStep:
     post:
       operationId: UpdatePlanExecutionStep
@@ -910,10 +886,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdatePlanExecutionStepResponse"
 components:
   parameters:
     X-Amz-Content-Sha256:
@@ -975,10 +947,6 @@ components:
       type: string
       minLength: 0
       maxLength: 1024
-    ApprovePlanExecutionStepResponse:
-      type: object
-    CancelPlanExecutionResponse:
-      type: object
     String:
       type: string
     WorkflowList:
@@ -1081,6 +1049,9 @@ components:
         neptuneGlobalDatabaseConfig:
           $ref: "#/components/schemas/NeptuneGlobalDatabaseConfiguration"
           description: A Neptune global database execution block.
+        rdsSwitchoverReadReplicaConfig:
+          $ref: "#/components/schemas/RdsSwitchoverReadReplicaConfiguration"
+          description: An Amazon RDS switchover read replica execution block.
     CustomActionLambdaConfiguration:
       description: Configuration for Amazon Web Services Lambda functions that perform custom actions during a Region switch.
       type: object
@@ -1809,6 +1780,43 @@ components:
       minLength: 1
       maxLength: 63
       pattern: "[A-Za-z][0-9A-Za-z-]*"
+    RdsSwitchoverReadReplicaConfiguration:
+      description: Configuration for switching over an Amazon RDS read replica to become the new primary database instance during a Region switch.
+      type: object
+      properties:
+        timeoutMinutes:
+          $ref: "#/components/schemas/RdsSwitchoverReadReplicaConfigurationTimeoutMinutesInteger"
+          description: The timeout value specified for the configuration.
+        crossAccountRole:
+          $ref: "#/components/schemas/IamRoleArn"
+          description: The cross-account role for the configuration.
+        externalId:
+          $ref: "#/components/schemas/String"
+          description: The external ID (secret key) for the configuration.
+        dbInstanceArnMap:
+          type: object
+          properties: {}
+          description: A map of database instance ARNs for each Region in the plan.
+        ungraceful:
+          $ref: "#/components/schemas/RdsUngraceful"
+          description: The ungraceful execution settings for the configuration.
+      required:
+        - dbInstanceArnMap
+    RdsSwitchoverReadReplicaConfigurationTimeoutMinutesInteger:
+      type: integer
+      minimum: 1
+    RdsUngraceful:
+      description: The ungraceful execution settings for an Amazon RDS switchover read replica execution block.
+      type: object
+      properties:
+        ungraceful:
+          $ref: "#/components/schemas/RdsUngracefulBehavior"
+          description: The ungraceful behavior to perform if switching to ungraceful execution.
+    RdsUngracefulBehavior:
+      description: The ungraceful behavior for an Amazon RDS switchover read replica, that is, promote the read replica to a standalone primary.
+      type: string
+      enum:
+        - promoteReadReplica
     ExecutionBlockType:
       type: string
       enum:
@@ -1829,6 +1837,7 @@ components:
         - AuroraServerlessScaling
         - AuroraProvisionedScaling
         - NeptuneGlobalDatabase
+        - RdsSwitchoverReadReplica
     WorkflowTargetAction:
       type: string
       enum:
@@ -2016,8 +2025,6 @@ components:
     Timestamp:
       type: string
       format: date-time
-    DeletePlanResponse:
-      type: object
     GetPlanResponse:
       type: object
       properties:
@@ -2615,8 +2622,6 @@ components:
         deactivateRegion:
           $ref: "#/components/schemas/String"
           description: The Amazon Web Services Region to deactivate.
-    TagResourceResponse:
-      type: object
     TagKeys:
       type: array
       items:
@@ -2625,8 +2630,6 @@ components:
       type: string
       minLength: 1
       maxLength: 128
-    UntagResourceResponse:
-      type: object
     UpdatePlanRequestRecoveryTimeObjectiveMinutesInteger:
       type: integer
       minimum: 1
@@ -2644,15 +2647,11 @@ components:
         - switchToUngraceful
         - pause
         - resume
-    UpdatePlanExecutionResponse:
-      type: object
     UpdatePlanExecutionStepAction:
       type: string
       enum:
         - switchToUngraceful
         - skip
-    UpdatePlanExecutionStepResponse:
-      type: object
   x-stackQL-resources:
     plan_executions:
       id: aws.arc_region_switch.plan_executions
@@ -2664,7 +2663,6 @@ components:
             $ref: "#/paths/~1ApprovePlanExecutionStep/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.0
@@ -2719,7 +2717,6 @@ components:
             $ref: "#/paths/~1UpdatePlanExecution/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.0
@@ -2732,7 +2729,6 @@ components:
             $ref: "#/paths/~1UpdatePlanExecutionStep/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.0
@@ -2746,8 +2742,8 @@ components:
           - $ref: "#/components/x-stackQL-resources/plan_executions/methods/list_plan_executions"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/plan_executions/methods/update_plan_execution_step"
           - $ref: "#/components/x-stackQL-resources/plan_executions/methods/update_plan_execution"
+          - $ref: "#/components/x-stackQL-resources/plan_executions/methods/update_plan_execution_step"
         delete: []
     plans:
       id: aws.arc_region_switch.plans
@@ -2759,7 +2755,6 @@ components:
             $ref: "#/paths/~1CancelPlanExecution/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.0
@@ -2785,7 +2780,6 @@ components:
             $ref: "#/paths/~1DeletePlan/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.0
@@ -2864,10 +2858,10 @@ components:
           - $ref: "#/components/x-stackQL-resources/plans/methods/update_plan"
         delete:
           - $ref: "#/components/x-stackQL-resources/plans/methods/delete_plan"
-    plan_evaluation_status:
-      id: aws.arc_region_switch.plan_evaluation_status
-      name: plan_evaluation_status
-      title: plan_evaluation_status
+    plan_evaluation_statuses:
+      id: aws.arc_region_switch.plan_evaluation_statuses
+      name: plan_evaluation_statuses
+      title: plan_evaluation_statuses
       methods:
         get_plan_evaluation_status:
           operation:
@@ -2892,7 +2886,7 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/plan_evaluation_status/methods/get_plan_evaluation_status"
+          - $ref: "#/components/x-stackQL-resources/plan_evaluation_statuses/methods/get_plan_evaluation_status"
         insert: []
         update: []
         delete: []
@@ -3072,7 +3066,6 @@ components:
             $ref: "#/paths/~1TagResource/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.0
@@ -3085,7 +3078,6 @@ components:
             $ref: "#/paths/~1UntagResource/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.0

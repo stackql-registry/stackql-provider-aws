@@ -139,7 +139,7 @@ The following methods are available for this resource:
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-imageRecipeArn"><code>imageRecipeArn</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>Gets an image recipe.</td>
+    <td>Retrieves an image recipe.</td>
 </tr>
 <tr>
     <td><a href="#list_image_recipes"><CopyableCode code="list_image_recipes" /></a></td>
@@ -202,7 +202,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 >
 <TabItem value="get_image_recipe">
 
-Gets an image recipe.
+Retrieves an image recipe.
 
 ```sql
 SELECT
@@ -263,6 +263,7 @@ additionalInstanceConfiguration,
 amiTags,
 amiWatermarks,
 clientToken,
+dryRun,
 region
 )
 SELECT 
@@ -278,6 +279,7 @@ SELECT
 '{{ amiTags }}',
 '{{ amiWatermarks }}',
 '{{ clientToken }}' /* required */,
+{{ dryRun }},
 '{{ region }}'
 RETURNING
 client_token,
@@ -341,6 +343,8 @@ request_id
         A list of AMI watermark names to attach to the output AMI. Names are case-sensitive. The recipe does not allow duplicate names.
     - name: clientToken
       value: "{{ clientToken }}"
+    - name: dryRun
+      value: {{ dryRun }}
 `}</CodeBlock>
 
 </TabItem>

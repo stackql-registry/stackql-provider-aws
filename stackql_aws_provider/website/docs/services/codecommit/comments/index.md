@@ -35,7 +35,9 @@ The following fields are returned by `SELECT` queries:
 <Tabs
     defaultValue="get_comment"
     values={[
-        { label: 'get_comment', value: 'get_comment' }
+        { label: 'get_comment', value: 'get_comment' },
+        { label: 'get_comments_for_compared_commit', value: 'get_comments_for_compared_commit' },
+        { label: 'get_comments_for_pull_request', value: 'get_comments_for_pull_request' }
     ]}
 >
 <TabItem value="get_comment">
@@ -102,6 +104,109 @@ The following fields are returned by `SELECT` queries:
 </tbody>
 </table>
 </TabItem>
+<TabItem value="get_comments_for_compared_commit">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="after_blob_id" /></td>
+    <td><code>string</code></td>
+    <td>The full blob ID of the commit used to establish the after of the comparison.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="after_commit_id" /></td>
+    <td><code>string</code></td>
+    <td>The full commit ID of the commit used to establish the after of the comparison.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="before_blob_id" /></td>
+    <td><code>string</code></td>
+    <td>The full blob ID of the commit used to establish the before of the comparison.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="before_commit_id" /></td>
+    <td><code>string</code></td>
+    <td>The full commit ID of the commit used to establish the before of the comparison.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="comments" /></td>
+    <td><code>array</code></td>
+    <td>An array of comment objects. Each comment object contains information about a comment on the comparison between commits.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="location" /></td>
+    <td><code>object</code></td>
+    <td>Location information about the comment on the comparison, including the file name, line number, and whether the version of the file where the comment was made is BEFORE or AFTER.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="repository_name" /></td>
+    <td><code>string</code></td>
+    <td>The name of the repository that contains the compared commits. (pattern: &lt;code&gt;&#91;\w\.-&#93;+&lt;/code&gt;)</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
+<TabItem value="get_comments_for_pull_request">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="after_blob_id" /></td>
+    <td><code>string</code></td>
+    <td>The full blob ID of the file on which you want to comment on the source commit.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="after_commit_id" /></td>
+    <td><code>string</code></td>
+    <td>The full commit ID of the commit that was the tip of the source branch at the time the comment was made.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="before_blob_id" /></td>
+    <td><code>string</code></td>
+    <td>The full blob ID of the file on which you want to comment on the destination commit.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="before_commit_id" /></td>
+    <td><code>string</code></td>
+    <td>The full commit ID of the commit that was the tip of the destination branch when the pull request was created. This commit is superceded by the after commit in the source branch when and if you merge the source branch into the destination branch.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="comments" /></td>
+    <td><code>array</code></td>
+    <td>An array of comment objects. Each comment object contains information about a comment on the pull request.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="location" /></td>
+    <td><code>object</code></td>
+    <td>Location information about the comment on the pull request, including the file name, line number, and whether the version of the file where the comment was made is BEFORE (destination branch) or AFTER (source branch).</td>
+</tr>
+<tr>
+    <td><CopyableCode code="pull_request_id" /></td>
+    <td><code>string</code></td>
+    <td>The system-generated ID of the pull request.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="repository_name" /></td>
+    <td><code>string</code></td>
+    <td>The name of the repository that contains the pull request. (pattern: &lt;code&gt;&#91;\w\.-&#93;+&lt;/code&gt;)</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
 </Tabs>
 
 ## Methods
@@ -125,6 +230,20 @@ The following methods are available for this resource:
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td></td>
     <td>Returns the content of a comment made on a change, file, or commit in a repository. Reaction counts might include numbers from user identities who were deleted after the reaction was made. For a count of reactions from active identities, use GetCommentReactions.</td>
+</tr>
+<tr>
+    <td><a href="#get_comments_for_compared_commit"><CopyableCode code="get_comments_for_compared_commit" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Returns information about comments made on the comparison between two commits. Reaction counts might include numbers from user identities who were deleted after the reaction was made. For a count of reactions from active identities, use GetCommentReactions.</td>
+</tr>
+<tr>
+    <td><a href="#get_comments_for_pull_request"><CopyableCode code="get_comments_for_pull_request" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Returns comments made on a pull request. Reaction counts might include numbers from user identities who were deleted after the reaction was made. For a count of reactions from active identities, use GetCommentReactions.</td>
 </tr>
 <tr>
     <td><a href="#update_comment"><CopyableCode code="update_comment" /></a></td>
@@ -169,7 +288,9 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <Tabs
     defaultValue="get_comment"
     values={[
-        { label: 'get_comment', value: 'get_comment' }
+        { label: 'get_comment', value: 'get_comment' },
+        { label: 'get_comments_for_compared_commit', value: 'get_comments_for_compared_commit' },
+        { label: 'get_comments_for_pull_request', value: 'get_comments_for_pull_request' }
     ]}
 >
 <TabItem value="get_comment">
@@ -188,6 +309,43 @@ deleted,
 in_reply_to,
 last_modified_date,
 reaction_counts
+FROM aws.codecommit.comments
+WHERE region = '{{ region }}' -- required
+;
+```
+</TabItem>
+<TabItem value="get_comments_for_compared_commit">
+
+Returns information about comments made on the comparison between two commits. Reaction counts might include numbers from user identities who were deleted after the reaction was made. For a count of reactions from active identities, use GetCommentReactions.
+
+```sql
+SELECT
+after_blob_id,
+after_commit_id,
+before_blob_id,
+before_commit_id,
+comments,
+location,
+repository_name
+FROM aws.codecommit.comments
+WHERE region = '{{ region }}' -- required
+;
+```
+</TabItem>
+<TabItem value="get_comments_for_pull_request">
+
+Returns comments made on a pull request. Reaction counts might include numbers from user identities who were deleted after the reaction was made. For a count of reactions from active identities, use GetCommentReactions.
+
+```sql
+SELECT
+after_blob_id,
+after_commit_id,
+before_blob_id,
+before_commit_id,
+comments,
+location,
+pull_request_id,
+repository_name
 FROM aws.codecommit.comments
 WHERE region = '{{ region }}' -- required
 ;

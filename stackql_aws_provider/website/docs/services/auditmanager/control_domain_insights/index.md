@@ -33,11 +33,36 @@ Creates, updates, deletes, gets or lists a <code>control_domain_insights</code> 
 The following fields are returned by `SELECT` queries:
 
 <Tabs
-    defaultValue="list_control_domain_insights"
+    defaultValue="list_control_domain_insights_by_assessment"
     values={[
+        { label: 'list_control_domain_insights_by_assessment', value: 'list_control_domain_insights_by_assessment' },
         { label: 'list_control_domain_insights', value: 'list_control_domain_insights' }
     ]}
 >
+<TabItem value="list_control_domain_insights_by_assessment">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="control_domain_insights" /></td>
+    <td><code>array</code></td>
+    <td>The control domain analytics data that the ListControlDomainInsightsByAssessment API returned.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="next_token" /></td>
+    <td><code>string</code></td>
+    <td>The pagination token that's used to fetch the next set of results. (pattern: &lt;code&gt;^&#91;A-Za-z0-9+\/=&#93;*$&lt;/code&gt;)</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
 <TabItem value="list_control_domain_insights">
 
 <table>
@@ -80,6 +105,13 @@ The following methods are available for this resource:
 </thead>
 <tbody>
 <tr>
+    <td><a href="#list_control_domain_insights_by_assessment"><CopyableCode code="list_control_domain_insights_by_assessment" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-assessmentId"><code>assessmentId</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td><a href="#parameter-nextToken"><code>nextToken</code></a>, <a href="#parameter-maxResults"><code>maxResults</code></a></td>
+    <td>Lists analytics data for control domains within a specified active assessment. Audit Manager supports the control domains that are provided by Amazon Web Services Control Catalog. For information about how to find a list of available control domains, see ListDomains in the Amazon Web Services Control Catalog API Reference. A control domain is listed only if at least one of the controls within that domain collected evidence on the lastUpdated date of controlDomainInsights. If this condition isn’t met, no data is listed for that domain.</td>
+</tr>
+<tr>
     <td><a href="#list_control_domain_insights"><CopyableCode code="list_control_domain_insights" /></a></td>
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
@@ -102,6 +134,11 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     </tr>
 </thead>
 <tbody>
+<tr id="parameter-assessmentId">
+    <td><CopyableCode code="assessmentId" /></td>
+    <td><code>string</code></td>
+    <td>The unique identifier for the active assessment.</td>
+</tr>
 <tr id="parameter-region">
     <td><CopyableCode code="region" /></td>
     <td><code>string</code></td>
@@ -123,11 +160,28 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 ## `SELECT` examples
 
 <Tabs
-    defaultValue="list_control_domain_insights"
+    defaultValue="list_control_domain_insights_by_assessment"
     values={[
+        { label: 'list_control_domain_insights_by_assessment', value: 'list_control_domain_insights_by_assessment' },
         { label: 'list_control_domain_insights', value: 'list_control_domain_insights' }
     ]}
 >
+<TabItem value="list_control_domain_insights_by_assessment">
+
+Lists analytics data for control domains within a specified active assessment. Audit Manager supports the control domains that are provided by Amazon Web Services Control Catalog. For information about how to find a list of available control domains, see ListDomains in the Amazon Web Services Control Catalog API Reference. A control domain is listed only if at least one of the controls within that domain collected evidence on the lastUpdated date of controlDomainInsights. If this condition isn’t met, no data is listed for that domain.
+
+```sql
+SELECT
+control_domain_insights,
+next_token
+FROM aws.auditmanager.control_domain_insights
+WHERE assessmentId = '{{ assessmentId }}' -- required
+AND region = '{{ region }}' -- required
+AND nextToken = '{{ nextToken }}'
+AND maxResults = '{{ maxResults }}'
+;
+```
+</TabItem>
 <TabItem value="list_control_domain_insights">
 
 Lists the latest analytics data for control domains across all of your active assessments. Audit Manager supports the control domains that are provided by Amazon Web Services Control Catalog. For information about how to find a list of available control domains, see ListDomains in the Amazon Web Services Control Catalog API Reference. A control domain is listed only if at least one of the controls within that domain collected evidence on the lastUpdated date of controlDomainInsights. If this condition isn’t met, no data is listed for that control domain.

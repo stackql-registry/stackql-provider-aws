@@ -77,7 +77,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="instance_type" /></td>
     <td><code>string</code></td>
-    <td>The EC2 instance type of the host. EC2 instances created through Amazon EVS do not support associating an IAM instance profile. (i4i.metal, i7i.metal-24xl)</td>
+    <td>The EC2 instance type of the host. EC2 instances created through Amazon EVS do not support associating an IAM instance profile. (i4i.metal, i7i.metal-24xl, i7i.metal-48xl)</td>
 </tr>
 <tr>
     <td><CopyableCode code="ip_address" /></td>

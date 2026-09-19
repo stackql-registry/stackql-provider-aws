@@ -222,6 +222,13 @@ The following methods are available for this resource:
     <td></td>
     <td>Deletes the certificate that's specified in the CertificateId parameter.</td>
 </tr>
+<tr>
+    <td><a href="#import_certificate"><CopyableCode code="import_certificate" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Imports the signing and encryption certificates that you need to create local (AS2) profiles and partner profiles. You can import both the certificate and its chain in the Certificate parameter. After importing a certificate, Transfer Family automatically creates a Amazon CloudWatch metric called DaysUntilExpiry that tracks the number of days until the certificate expires. The metric is based on the InactiveDate parameter and is published daily in the AWS/Transfer namespace. It can take up to a full day after importing a certificate for Transfer Family to emit the DaysUntilExpiry metric to your account. If you use the Certificate parameter to upload both the certificate and its chain, don't use the CertificateChain parameter. CloudWatch monitoring The DaysUntilExpiry metric includes the following specifications: Units: Count (days) Dimensions: CertificateId (always present), Description (if provided during certificate import) Statistics: Minimum, Maximum, Average Frequency: Published daily</td>
+</tr>
 </tbody>
 </table>
 
@@ -346,6 +353,38 @@ Deletes the certificate that's specified in the CertificateId parameter.
 ```sql
 DELETE FROM aws.transfer.certificates
 WHERE region = '{{ region }}' --required
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="import_certificate"
+    values={[
+        { label: 'import_certificate', value: 'import_certificate' }
+    ]}
+>
+<TabItem value="import_certificate">
+
+Imports the signing and encryption certificates that you need to create local (AS2) profiles and partner profiles. You can import both the certificate and its chain in the Certificate parameter. After importing a certificate, Transfer Family automatically creates a Amazon CloudWatch metric called DaysUntilExpiry that tracks the number of days until the certificate expires. The metric is based on the InactiveDate parameter and is published daily in the AWS/Transfer namespace. It can take up to a full day after importing a certificate for Transfer Family to emit the DaysUntilExpiry metric to your account. If you use the Certificate parameter to upload both the certificate and its chain, don't use the CertificateChain parameter. CloudWatch monitoring The DaysUntilExpiry metric includes the following specifications: Units: Count (days) Dimensions: CertificateId (always present), Description (if provided during certificate import) Statistics: Minimum, Maximum, Average Frequency: Published daily
+
+```sql
+EXEC aws.transfer.certificates.import_certificate 
+@region='{{ region }}' --required 
+@@json=
+'{
+"Usage": "{{ Usage }}", 
+"Certificate": "{{ Certificate }}", 
+"CertificateChain": "{{ CertificateChain }}", 
+"PrivateKey": "{{ PrivateKey }}", 
+"ActiveDate": "{{ ActiveDate }}", 
+"InactiveDate": "{{ InactiveDate }}", 
+"Description": "{{ Description }}", 
+"Tags": "{{ Tags }}"
+}'
 ;
 ```
 </TabItem>

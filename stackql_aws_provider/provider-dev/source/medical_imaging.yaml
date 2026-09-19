@@ -66,7 +66,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CopyImageSetResponse'
-      x-stackql-resource: datastores
+      x-stackql-resource: image_sets
       x-stackql-method: copy_image_set
       x-stackql-verb: EXEC
   /datastore:
@@ -342,7 +342,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetImageSetMetadataResponse'
-      x-stackql-resource: image_set_metadatas
+      x-stackql-resource: image_set_metadata
       x-stackql-method: get_image_set_metadata
       x-stackql-verb: SELECT
   /listDICOMImportJobs/datastore/{datastore_id}:
@@ -476,10 +476,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -502,10 +498,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -606,7 +598,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartDICOMImportJobResponse'
-      x-stackql-resource: datastores
+      x-stackql-resource: dicom_import_jobs
       x-stackql-method: start_dicom_import_job
       x-stackql-verb: EXEC
   /datastore/{datastore_id}/imageSet/{image_set_id}/updateImageSetMetadata:
@@ -664,7 +656,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateImageSetMetadataResponse'
-      x-stackql-resource: image_set_metadatas
+      x-stackql-resource: image_set_metadata
       x-stackql-method: update_image_set_metadata
       x-stackql-verb: UPDATE
 components:
@@ -1716,8 +1708,6 @@ components:
       - jobId
       - jobStatus
       - submittedAt
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
@@ -1727,8 +1717,6 @@ components:
       minLength: 1
       maxLength: 128
       pattern: (?!aws:)[a-zA-Z+-=._:/]+
-    UntagResourceResponse:
-      type: object
     MetadataUpdates:
       description: Contains DICOMUpdates.
       type: object

@@ -33,37 +33,13 @@ Creates, updates, deletes, gets or lists a <code>partitions</code> resource.
 The following fields are returned by `SELECT` queries:
 
 <Tabs
-    defaultValue="batch_get_partition"
+    defaultValue="get_partition"
     values={[
-        { label: 'batch_get_partition', value: 'batch_get_partition' },
         { label: 'get_partition', value: 'get_partition' },
+        { label: 'batch_get_partition', value: 'batch_get_partition' },
         { label: 'get_partitions', value: 'get_partitions' }
     ]}
 >
-<TabItem value="batch_get_partition">
-
-<table>
-<thead>
-    <tr>
-    <th>Name</th>
-    <th>Datatype</th>
-    <th>Description</th>
-    </tr>
-</thead>
-<tbody>
-<tr>
-    <td><CopyableCode code="partitions" /></td>
-    <td><code>array</code></td>
-    <td>A list of the requested partitions.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="unprocessed_keys" /></td>
-    <td><code>array</code></td>
-    <td>A list of the partition values in the request for which partitions were not returned.</td>
-</tr>
-</tbody>
-</table>
-</TabItem>
 <TabItem value="get_partition">
 
 <table>
@@ -119,6 +95,30 @@ The following fields are returned by `SELECT` queries:
     <td><CopyableCode code="values" /></td>
     <td><code>array</code></td>
     <td>The values of the partition.</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
+<TabItem value="batch_get_partition">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="partitions" /></td>
+    <td><code>array</code></td>
+    <td>A list of the requested partitions.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="unprocessed_keys" /></td>
+    <td><code>array</code></td>
+    <td>A list of the partition values in the request for which partitions were not returned.</td>
 </tr>
 </tbody>
 </table>
@@ -200,18 +200,18 @@ The following methods are available for this resource:
 </thead>
 <tbody>
 <tr>
-    <td><a href="#batch_get_partition"><CopyableCode code="batch_get_partition" /></a></td>
-    <td><CopyableCode code="select" /></td>
-    <td><a href="#parameter-region"><code>region</code></a></td>
-    <td></td>
-    <td>Retrieves partitions in a batch request.</td>
-</tr>
-<tr>
     <td><a href="#get_partition"><CopyableCode code="get_partition" /></a></td>
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td></td>
     <td>Retrieves information about a specified partition.</td>
+</tr>
+<tr>
+    <td><a href="#batch_get_partition"><CopyableCode code="batch_get_partition" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Retrieves partitions in a batch request.</td>
 </tr>
 <tr>
     <td><a href="#get_partitions"><CopyableCode code="get_partitions" /></a></td>
@@ -268,26 +268,13 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 ## `SELECT` examples
 
 <Tabs
-    defaultValue="batch_get_partition"
+    defaultValue="get_partition"
     values={[
-        { label: 'batch_get_partition', value: 'batch_get_partition' },
         { label: 'get_partition', value: 'get_partition' },
+        { label: 'batch_get_partition', value: 'batch_get_partition' },
         { label: 'get_partitions', value: 'get_partitions' }
     ]}
 >
-<TabItem value="batch_get_partition">
-
-Retrieves partitions in a batch request.
-
-```sql
-SELECT
-partitions,
-unprocessed_keys
-FROM aws.glue.partitions
-WHERE region = '{{ region }}' -- required
-;
-```
-</TabItem>
 <TabItem value="get_partition">
 
 Retrieves information about a specified partition.
@@ -303,6 +290,19 @@ parameters,
 storage_descriptor,
 table_name,
 values
+FROM aws.glue.partitions
+WHERE region = '{{ region }}' -- required
+;
+```
+</TabItem>
+<TabItem value="batch_get_partition">
+
+Retrieves partitions in a batch request.
+
+```sql
+SELECT
+partitions,
+unprocessed_keys
 FROM aws.glue.partitions
 WHERE region = '{{ region }}' -- required
 ;

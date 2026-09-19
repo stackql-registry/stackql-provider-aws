@@ -124,7 +124,7 @@ The following methods are available for this resource:
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>Given a user pool domain name, returns information about the domain configuration. Amazon Cognito evaluates Identity and Access Management (IAM) policies in requests for this API operation. For this operation, you must use IAM credentials to authorize requests, and you must grant yourself the corresponding IAM permission in a policy. Learn more Signing Amazon Web Services API Requests Using the Amazon Cognito user pools API and user pool endpoints</td>
+    <td>Given a user pool domain name, returns information about the domain configuration. This operation doesn't return results when you query a prefix domain in a secondary Region. Prefix domains are Region-specific and can only be described in the Region where they were created. To describe a prefix domain for a replica user pool, make the request to the primary Region's endpoint. Amazon Cognito evaluates Identity and Access Management (IAM) policies in requests for this API operation. For this operation, you must use IAM credentials to authorize requests, and you must grant yourself the corresponding IAM permission in a policy. Learn more Signing Amazon Web Services API Requests Using the Amazon Cognito user pools API and user pool endpoints</td>
 </tr>
 <tr>
     <td><a href="#create_user_pool_domain"><CopyableCode code="create_user_pool_domain" /></a></td>
@@ -181,7 +181,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 >
 <TabItem value="describe_user_pool_domain">
 
-Given a user pool domain name, returns information about the domain configuration. Amazon Cognito evaluates Identity and Access Management (IAM) policies in requests for this API operation. For this operation, you must use IAM credentials to authorize requests, and you must grant yourself the corresponding IAM permission in a policy. Learn more Signing Amazon Web Services API Requests Using the Amazon Cognito user pools API and user pool endpoints
+Given a user pool domain name, returns information about the domain configuration. This operation doesn't return results when you query a prefix domain in a secondary Region. Prefix domains are Region-specific and can only be described in the Region where they were created. To describe a prefix domain for a replica user pool, make the request to the primary Region's endpoint. Amazon Cognito evaluates Identity and Access Management (IAM) policies in requests for this API operation. For this operation, you must use IAM credentials to authorize requests, and you must grant yourself the corresponding IAM permission in a policy. Learn more Signing Amazon Web Services API Requests Using the Amazon Cognito user pools API and user pool endpoints
 
 ```sql
 SELECT

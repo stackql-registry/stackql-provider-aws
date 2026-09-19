@@ -36,10 +36,60 @@ The following fields are returned by `SELECT` queries:
     defaultValue="get_instance_profile"
     values={[
         { label: 'get_instance_profile', value: 'get_instance_profile' },
+        { label: 'list_instance_profiles_for_role', value: 'list_instance_profiles_for_role' },
         { label: 'list_instance_profiles', value: 'list_instance_profiles' }
     ]}
 >
 <TabItem value="get_instance_profile">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="arn" /></td>
+    <td><code>string</code></td>
+    <td>The Amazon Resource Name (ARN) specifying the instance profile. For more information about ARNs and how to use them in policies, see IAM identifiers in the IAM User Guide.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="create_date" /></td>
+    <td><code>string</code></td>
+    <td>The date when the instance profile was created.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="instance_profile_id" /></td>
+    <td><code>string</code></td>
+    <td>The stable and unique string identifying the instance profile. For more information about IDs, see IAM identifiers in the IAM User Guide.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="instance_profile_name" /></td>
+    <td><code>string</code></td>
+    <td>The name identifying the instance profile.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="path" /></td>
+    <td><code>string</code></td>
+    <td>The path to the instance profile. For more information about paths, see IAM identifiers in the IAM User Guide.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="roles" /></td>
+    <td><code>string</code></td>
+    <td>The role associated with the instance profile.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="tags" /></td>
+    <td><code>string</code></td>
+    <td>A list of tags that are attached to the instance profile. For more information about tagging, see Tagging IAM resources in the IAM User Guide.</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
+<TabItem value="list_instance_profiles_for_role">
 
 <table>
 <thead>
@@ -162,6 +212,13 @@ The following methods are available for this resource:
     <td>Retrieves information about the specified instance profile, including the instance profile's path, GUID, ARN, and role. For more information about instance profiles, see Using instance profiles in the IAM User Guide.</td>
 </tr>
 <tr>
+    <td><a href="#list_instance_profiles_for_role"><CopyableCode code="list_instance_profiles_for_role" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-RoleName"><code>RoleName</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td><a href="#parameter-Marker"><code>Marker</code></a>, <a href="#parameter-MaxItems"><code>MaxItems</code></a></td>
+    <td>Lists the instance profiles that have the specified associated IAM role. If there are none, the operation returns an empty list. For more information about instance profiles, go to Using instance profiles in the IAM User Guide. You can paginate the results using the MaxItems and Marker parameters.</td>
+</tr>
+<tr>
     <td><a href="#list_instance_profiles"><CopyableCode code="list_instance_profiles" /></a></td>
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
@@ -261,6 +318,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     defaultValue="get_instance_profile"
     values={[
         { label: 'get_instance_profile', value: 'get_instance_profile' },
+        { label: 'list_instance_profiles_for_role', value: 'list_instance_profiles_for_role' },
         { label: 'list_instance_profiles', value: 'list_instance_profiles' }
     ]}
 >
@@ -280,6 +338,27 @@ tags
 FROM aws.iam.instance_profiles
 WHERE InstanceProfileName = '{{ InstanceProfileName }}' -- required
 AND region = '{{ region }}' -- required
+;
+```
+</TabItem>
+<TabItem value="list_instance_profiles_for_role">
+
+Lists the instance profiles that have the specified associated IAM role. If there are none, the operation returns an empty list. For more information about instance profiles, go to Using instance profiles in the IAM User Guide. You can paginate the results using the MaxItems and Marker parameters.
+
+```sql
+SELECT
+arn,
+create_date,
+instance_profile_id,
+instance_profile_name,
+path,
+roles,
+tags
+FROM aws.iam.instance_profiles
+WHERE RoleName = '{{ RoleName }}' -- required
+AND region = '{{ region }}' -- required
+AND Marker = '{{ Marker }}'
+AND MaxItems = '{{ MaxItems }}'
 ;
 ```
 </TabItem>

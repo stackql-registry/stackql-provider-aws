@@ -18,7 +18,7 @@ appstream service documentation.
 
 :::info[Service Summary]
 
-total resources: __24__  
+total resources: __25__  
 
 :::
 
@@ -36,10 +36,10 @@ total resources: __24__
 <a href="/services/appstream/directory_configs/">directory_configs</a><br />
 <a href="/services/appstream/entitled_applications/">entitled_applications</a><br />
 <a href="/services/appstream/entitlements/">entitlements</a><br />
-<a href="/services/appstream/export_image_tasks/">export_image_tasks</a>
+<a href="/services/appstream/export_image_tasks/">export_image_tasks</a><br />
+<a href="/services/appstream/fleets/">fleets</a>
 </div>
 <div class="providerDocColumn">
-<a href="/services/appstream/fleets/">fleets</a><br />
 <a href="/services/appstream/image_builders/">image_builders</a><br />
 <a href="/services/appstream/image_permissions/">image_permissions</a><br />
 <a href="/services/appstream/images/">images</a><br />
@@ -47,9 +47,10 @@ total resources: __24__
 <a href="/services/appstream/software_associations/">software_associations</a><br />
 <a href="/services/appstream/stacks/">stacks</a><br />
 <a href="/services/appstream/tags/">tags</a><br />
-<a href="/services/appstream/theme_for_stacks/">theme_for_stacks</a><br />
+<a href="/services/appstream/themes/">themes</a><br />
 <a href="/services/appstream/usage_report_subscriptions/">usage_report_subscriptions</a><br />
 <a href="/services/appstream/user_stack_associations/">user_stack_associations</a><br />
+<a href="/services/appstream/user_stacks/">user_stacks</a><br />
 <a href="/services/appstream/users/">users</a>
 </div>
 </div>

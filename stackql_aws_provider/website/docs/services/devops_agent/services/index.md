@@ -90,6 +90,11 @@ The following fields are returned by `SELECT` queries:
     <td>Additional details specific to the service type.</td>
 </tr>
 <tr>
+    <td><CopyableCode code="created_at" /></td>
+    <td><code>string (date-time)</code></td>
+    <td>The timestamp when the service was registered.</td>
+</tr>
+<tr>
     <td><CopyableCode code="kms_key_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the AWS Key Management Service (AWS KMS) customer managed key that's used to encrypt resources. (pattern: &lt;code&gt;arn:aws&#91;a-zA-Z-&#93;*:kms:&#91;a-z0-9-&#93;+:&#91;0-9&#93;&#123;12&#125;:key/&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
@@ -108,6 +113,11 @@ The following fields are returned by `SELECT` queries:
     <td><CopyableCode code="service_type" /></td>
     <td><code>string</code></td>
     <td>The service type e.g github or dynatrace (github, slack, azure, azuredevops, dynatrace, servicenow, pagerduty, gitlab, eventChannel, mcpservernewrelic, mcpservergrafana, mcpserverdatadog, mcpserver, mcpserversplunk, azureidentity, mcpserversigv4, remoteagent, remoteagentsigv4)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="updated_at" /></td>
+    <td><code>string (date-time)</code></td>
+    <td>The timestamp when the service was last updated.</td>
 </tr>
 </tbody>
 </table>
@@ -262,10 +272,12 @@ SELECT
 name,
 accessible_resources,
 additional_service_details,
+created_at,
 kms_key_arn,
 private_connection_name,
 service_id,
-service_type
+service_type,
+updated_at
 FROM aws.devops_agent.services
 WHERE region = '{{ region }}' -- required
 AND maxResults = '{{ maxResults }}'

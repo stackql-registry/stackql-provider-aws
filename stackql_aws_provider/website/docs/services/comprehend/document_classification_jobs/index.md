@@ -238,6 +238,13 @@ The following methods are available for this resource:
     <td></td>
     <td>Gets a list of the documentation classification jobs that you have submitted.</td>
 </tr>
+<tr>
+    <td><a href="#start_document_classification_job"><CopyableCode code="start_document_classification_job" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-InputDataConfig"><code>InputDataConfig</code></a>, <a href="#parameter-OutputDataConfig"><code>OutputDataConfig</code></a>, <a href="#parameter-DataAccessRoleArn"><code>DataAccessRoleArn</code></a></td>
+    <td></td>
+    <td>Starts an asynchronous document classification job using a custom classification model. Use the DescribeDocumentClassificationJob operation to track the progress of the job.</td>
+</tr>
 </tbody>
 </table>
 
@@ -318,6 +325,40 @@ volume_kms_key_id,
 vpc_config
 FROM aws.comprehend.document_classification_jobs
 WHERE region = '{{ region }}' -- required
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="start_document_classification_job"
+    values={[
+        { label: 'start_document_classification_job', value: 'start_document_classification_job' }
+    ]}
+>
+<TabItem value="start_document_classification_job">
+
+Starts an asynchronous document classification job using a custom classification model. Use the DescribeDocumentClassificationJob operation to track the progress of the job.
+
+```sql
+EXEC aws.comprehend.document_classification_jobs.start_document_classification_job 
+@region='{{ region }}' --required 
+@@json=
+'{
+"JobName": "{{ JobName }}", 
+"DocumentClassifierArn": "{{ DocumentClassifierArn }}", 
+"InputDataConfig": "{{ InputDataConfig }}", 
+"OutputDataConfig": "{{ OutputDataConfig }}", 
+"DataAccessRoleArn": "{{ DataAccessRoleArn }}", 
+"ClientRequestToken": "{{ ClientRequestToken }}", 
+"VolumeKmsKeyId": "{{ VolumeKmsKeyId }}", 
+"VpcConfig": "{{ VpcConfig }}", 
+"Tags": "{{ Tags }}", 
+"FlywheelArn": "{{ FlywheelArn }}"
+}'
 ;
 ```
 </TabItem>

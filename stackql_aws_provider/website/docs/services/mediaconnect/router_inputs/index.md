@@ -33,37 +33,13 @@ Creates, updates, deletes, gets or lists a <code>router_inputs</code> resource.
 The following fields are returned by `SELECT` queries:
 
 <Tabs
-    defaultValue="batch_get_router_input"
+    defaultValue="get_router_input"
     values={[
-        { label: 'batch_get_router_input', value: 'batch_get_router_input' },
         { label: 'get_router_input', value: 'get_router_input' },
+        { label: 'batch_get_router_input', value: 'batch_get_router_input' },
         { label: 'list_router_inputs', value: 'list_router_inputs' }
     ]}
 >
-<TabItem value="batch_get_router_input">
-
-<table>
-<thead>
-    <tr>
-    <th>Name</th>
-    <th>Datatype</th>
-    <th>Description</th>
-    </tr>
-</thead>
-<tbody>
-<tr>
-    <td><CopyableCode code="errors" /></td>
-    <td><code>array</code></td>
-    <td>An array of errors that occurred when retrieving the requested router inputs.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="router_inputs" /></td>
-    <td><code>array</code></td>
-    <td>An array of router inputs that were successfully retrieved.</td>
-</tr>
-</tbody>
-</table>
-</TabItem>
 <TabItem value="get_router_input">
 
 <table>
@@ -208,6 +184,30 @@ The following fields are returned by `SELECT` queries:
 </tbody>
 </table>
 </TabItem>
+<TabItem value="batch_get_router_input">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="errors" /></td>
+    <td><code>array</code></td>
+    <td>An array of errors that occurred when retrieving the requested router inputs.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="router_inputs" /></td>
+    <td><code>array</code></td>
+    <td>An array of router inputs that were successfully retrieved.</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
 <TabItem value="list_router_inputs">
 
 <table>
@@ -320,18 +320,18 @@ The following methods are available for this resource:
 </thead>
 <tbody>
 <tr>
-    <td><a href="#batch_get_router_input"><CopyableCode code="batch_get_router_input" /></a></td>
-    <td><CopyableCode code="select" /></td>
-    <td><a href="#parameter-arns"><code>arns</code></a>, <a href="#parameter-region"><code>region</code></a></td>
-    <td></td>
-    <td>Retrieves information about multiple router inputs in AWS Elemental MediaConnect.</td>
-</tr>
-<tr>
     <td><a href="#get_router_input"><CopyableCode code="get_router_input" /></a></td>
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-arn"><code>arn</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td></td>
     <td>Retrieves information about a specific router input in AWS Elemental MediaConnect.</td>
+</tr>
+<tr>
+    <td><a href="#batch_get_router_input"><CopyableCode code="batch_get_router_input" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-arns"><code>arns</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Retrieves information about multiple router inputs in AWS Elemental MediaConnect.</td>
 </tr>
 <tr>
     <td><a href="#list_router_inputs"><CopyableCode code="list_router_inputs" /></a></td>
@@ -361,6 +361,27 @@ The following methods are available for this resource:
     <td></td>
     <td>Deletes a router input from AWS Elemental MediaConnect.</td>
 </tr>
+<tr>
+    <td><a href="#restart_router_input"><CopyableCode code="restart_router_input" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-arn"><code>arn</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Restarts a router input. This operation can be used to recover from errors or refresh the input state.</td>
+</tr>
+<tr>
+    <td><a href="#start_router_input"><CopyableCode code="start_router_input" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-arn"><code>arn</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Starts a router input in AWS Elemental MediaConnect.</td>
+</tr>
+<tr>
+    <td><a href="#stop_router_input"><CopyableCode code="stop_router_input" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-arn"><code>arn</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Stops a router input in AWS Elemental MediaConnect.</td>
+</tr>
 </tbody>
 </table>
 
@@ -380,7 +401,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-arn">
     <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
-    <td>The Amazon Resource Name (ARN) of the router input that you want to delete.</td>
+    <td>The Amazon Resource Name (ARN) of the router input that you want to stop.</td>
 </tr>
 <tr id="parameter-arns">
     <td><CopyableCode code="arns" /></td>
@@ -408,27 +429,13 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 ## `SELECT` examples
 
 <Tabs
-    defaultValue="batch_get_router_input"
+    defaultValue="get_router_input"
     values={[
-        { label: 'batch_get_router_input', value: 'batch_get_router_input' },
         { label: 'get_router_input', value: 'get_router_input' },
+        { label: 'batch_get_router_input', value: 'batch_get_router_input' },
         { label: 'list_router_inputs', value: 'list_router_inputs' }
     ]}
 >
-<TabItem value="batch_get_router_input">
-
-Retrieves information about multiple router inputs in AWS Elemental MediaConnect.
-
-```sql
-SELECT
-errors,
-router_inputs
-FROM aws.mediaconnect.router_inputs
-WHERE arns = '{{ arns }}' -- required
-AND region = '{{ region }}' -- required
-;
-```
-</TabItem>
 <TabItem value="get_router_input">
 
 Retrieves information about a specific router input in AWS Elemental MediaConnect.
@@ -463,6 +470,20 @@ transit_encryption,
 updated_at
 FROM aws.mediaconnect.router_inputs
 WHERE arn = '{{ arn }}' -- required
+AND region = '{{ region }}' -- required
+;
+```
+</TabItem>
+<TabItem value="batch_get_router_input">
+
+Retrieves information about multiple router inputs in AWS Elemental MediaConnect.
+
+```sql
+SELECT
+errors,
+router_inputs
+FROM aws.mediaconnect.router_inputs
+WHERE arns = '{{ arns }}' -- required
 AND region = '{{ region }}' -- required
 ;
 ```
@@ -740,6 +761,52 @@ Deletes a router input from AWS Elemental MediaConnect.
 DELETE FROM aws.mediaconnect.router_inputs
 WHERE arn = '{{ arn }}' --required
 AND region = '{{ region }}' --required
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="restart_router_input"
+    values={[
+        { label: 'restart_router_input', value: 'restart_router_input' },
+        { label: 'start_router_input', value: 'start_router_input' },
+        { label: 'stop_router_input', value: 'stop_router_input' }
+    ]}
+>
+<TabItem value="restart_router_input">
+
+Restarts a router input. This operation can be used to recover from errors or refresh the input state.
+
+```sql
+EXEC aws.mediaconnect.router_inputs.restart_router_input 
+@arn='{{ arn }}' --required, 
+@region='{{ region }}' --required
+;
+```
+</TabItem>
+<TabItem value="start_router_input">
+
+Starts a router input in AWS Elemental MediaConnect.
+
+```sql
+EXEC aws.mediaconnect.router_inputs.start_router_input 
+@arn='{{ arn }}' --required, 
+@region='{{ region }}' --required
+;
+```
+</TabItem>
+<TabItem value="stop_router_input">
+
+Stops a router input in AWS Elemental MediaConnect.
+
+```sql
+EXEC aws.mediaconnect.router_inputs.stop_router_input 
+@arn='{{ arn }}' --required, 
+@region='{{ region }}' --required
 ;
 ```
 </TabItem>

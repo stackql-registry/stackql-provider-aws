@@ -74,10 +74,6 @@ paths:
       responses:
         '201':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CancelLegalHoldOutput'
       x-stackql-resource: legal_holds
       x-stackql-method: cancel_legal_hold
       x-stackql-verb: EXEC
@@ -1541,10 +1537,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteTieringConfigurationOutput'
       x-stackql-resource: tiering_configurations
       x-stackql-method: delete_tiering_configuration
       x-stackql-verb: DELETE
@@ -1662,7 +1654,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: backup_job
+      x-stackql-resource: backup_jobs
       x-stackql-method: stop_backup_job
       x-stackql-verb: EXEC
   /copy-jobs/{copy_job_id}:
@@ -1950,7 +1942,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ExportBackupPlanTemplateOutput'
-      x-stackql-resource: backup_plans
+      x-stackql-resource: backup_plan_templates
       x-stackql-method: export_backup_plan_template
       x-stackql-verb: EXEC
   /backup/plans/{backup_plan_id}/:
@@ -2204,7 +2196,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetRecoveryPointRestoreMetadataOutput'
-      x-stackql-resource: recovery_point_restore_metadatas
+      x-stackql-resource: recovery_point_restore_metadata
       x-stackql-method: get_recovery_point_restore_metadata
       x-stackql-verb: SELECT
   /restore-jobs/{restore_job_id}/metadata:
@@ -2225,7 +2217,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetRestoreJobMetadataOutput'
-      x-stackql-resource: restore_job_metadatas
+      x-stackql-resource: restore_job_metadata
       x-stackql-method: get_restore_job_metadata
       x-stackql-verb: SELECT
   /restore-testing/inferred-metadata:
@@ -2261,7 +2253,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetRestoreTestingInferredMetadataOutput'
-      x-stackql-resource: restore_testing_inferred_metadatas
+      x-stackql-resource: restore_testing_inferred_metadata
       x-stackql-method: get_restore_testing_inferred_metadata
       x-stackql-verb: SELECT
   /supported-resource-types:
@@ -2350,7 +2342,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListBackupAccessPointsByRecoveryPointResponse'
-      x-stackql-resource: backup_access_points_by_recovery_points
+      x-stackql-resource: backup_access_points
       x-stackql-method: list_backup_access_points_by_recovery_point
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.BackupAccessPoints
@@ -2389,7 +2381,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListBackupAccessPointsByResourceResponse'
-      x-stackql-resource: backup_access_points_by_resources
+      x-stackql-resource: backup_access_points
       x-stackql-method: list_backup_access_points_by_resource
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.BackupAccessPoints
@@ -2399,7 +2391,7 @@ paths:
   /audit/backup-job-summaries:
     get:
       operationId: ListBackupJobSummaries
-      description: This is a request for a summary of backup jobs created or running within the most recent 30 days. You can
+      description: This is a request for a summary of backup jobs created or running within the most recent 14 days. You can
         include parameters AccountID, State, ResourceType, MessageCategory, AggregationPeriod, MaxResults, or NextToken to
         filter results. This request returns a summary that contains Region, Account, State, ResourceType, MessageCategory,
         StartTime, EndTime, and Count of included jobs.
@@ -2713,7 +2705,7 @@ paths:
   /audit/copy-job-summaries:
     get:
       operationId: ListCopyJobSummaries
-      description: This request obtains a list of copy jobs created or running within the the most recent 30 days. You can
+      description: This request obtains a list of copy jobs created or running within the the most recent 14 days. You can
         include parameters AccountID, State, ResourceType, MessageCategory, AggregationPeriod, MaxResults, or NextToken to
         filter results. This request returns a summary that contains Region, Account, State, RestourceType, MessageCategory,
         StartTime, EndTime, and Count of included jobs.
@@ -3042,7 +3034,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListProtectedResourcesByBackupVaultOutput'
-      x-stackql-resource: protected_resources_by_backup_vaults
+      x-stackql-resource: protected_resources
       x-stackql-method: list_protected_resources_by_backup_vault
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Results
@@ -3132,7 +3124,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListRecoveryPointsByBackupVaultOutput'
-      x-stackql-resource: recovery_points_by_backup_vaults
+      x-stackql-resource: recovery_points
       x-stackql-method: list_recovery_points_by_backup_vault
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.RecoveryPoints
@@ -3171,7 +3163,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListRecoveryPointsByLegalHoldOutput'
-      x-stackql-resource: recovery_points_by_legal_holds
+      x-stackql-resource: recovery_points
       x-stackql-method: list_recovery_points_by_legal_hold
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.RecoveryPoints
@@ -3220,7 +3212,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListRecoveryPointsByResourceOutput'
-      x-stackql-resource: recovery_points_by_resources
+      x-stackql-resource: recovery_points
       x-stackql-method: list_recovery_points_by_resource
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.RecoveryPoints
@@ -3324,7 +3316,7 @@ paths:
   /audit/restore-job-summaries:
     get:
       operationId: ListRestoreJobSummaries
-      description: This request obtains a summary of restore jobs created or running within the the most recent 30 days. You
+      description: This request obtains a summary of restore jobs created or running within the the most recent 14 days. You
         can include parameters AccountID, State, ResourceType, AggregationPeriod, MaxResults, or NextToken to filter results.
         This request returns a summary that contains Region, Account, State, RestourceType, MessageCategory, StartTime, EndTime,
         and Count of included jobs.
@@ -3535,7 +3527,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListRestoreJobsByProtectedResourceOutput'
-      x-stackql-resource: restore_jobs_by_protected_resources
+      x-stackql-resource: restore_jobs
       x-stackql-method: list_restore_jobs_by_protected_resource
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.RestoreJobs
@@ -3545,7 +3537,7 @@ paths:
   /audit/scan-job-summaries:
     get:
       operationId: ListScanJobSummaries
-      description: This is a request for a summary of scan jobs created or running within the most recent 30 days.
+      description: This is a request for a summary of scan jobs created or running within the most recent 14 days.
       parameters:
       - name: AccountId
         in: query
@@ -3901,7 +3893,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartBackupJobOutput'
-      x-stackql-resource: backup_job
+      x-stackql-resource: backup_jobs
       x-stackql-method: start_backup_job
       x-stackql-verb: EXEC
   /copy-jobs:
@@ -3941,7 +3933,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartCopyJobOutput'
-      x-stackql-resource: recovery_points
+      x-stackql-resource: copy_jobs
       x-stackql-method: start_copy_job
       x-stackql-verb: EXEC
   /audit/report-jobs/{report_plan_name}:
@@ -3971,7 +3963,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartReportJobOutput'
-      x-stackql-resource: report_plans
+      x-stackql-resource: report_jobs
       x-stackql-method: start_report_job
       x-stackql-verb: EXEC
   /restore-jobs:
@@ -4008,7 +4000,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartRestoreJobOutput'
-      x-stackql-resource: recovery_points
+      x-stackql-resource: restore_jobs
       x-stackql-method: start_restore_job
       x-stackql-verb: EXEC
   /scan/job:
@@ -4055,7 +4047,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartScanJobOutput'
-      x-stackql-resource: recovery_points
+      x-stackql-resource: scan_jobs
       x-stackql-method: start_scan_job
       x-stackql-verb: EXEC
   /tags/{resource_arn}:
@@ -4176,8 +4168,6 @@ components:
     Long:
       type: integer
       format: int64
-    CancelLegalHoldOutput:
-      type: object
     AccessPointMetadataMap:
       type: object
       properties: {}
@@ -5000,7 +4990,8 @@ components:
             a snapshot or a continuous recovery point. The recovery point will be determined by the value for Algorithm.
         SelectionWindowDays:
           $ref: '#/components/schemas/integer'
-          description: Accepted values are integers from 1 to 365.
+          description: Accepted values are integers from 1 to 365. If not included, the value defaults to 30. The selection
+            window is calculated from the actual job execution time, not the plan's scheduled start time.
     RestoreTestingRecoveryPointSelectionAlgorithm:
       type: string
       enum:
@@ -5231,8 +5222,6 @@ components:
           $ref: '#/components/schemas/string'
           description: Unique, randomly generated, Unicode, UTF-8 encoded strings that are at most 1,024 bytes long. Version
             IDs cannot be edited.
-    DeleteTieringConfigurationOutput:
-      type: object
     DescribeBackupAccessPointResponse:
       type: object
       properties:
@@ -7134,7 +7123,7 @@ components:
       items:
         $ref: '#/components/schemas/BackupJobSummary'
     BackupJobSummary:
-      description: 'This is a summary of jobs created or running within the most recent 30 days. The returned summary may
+      description: 'This is a summary of jobs created or running within the most recent 14 days. The returned summary may
         contain the following: Region, Account, State, RestourceType, MessageCategory, StartTime, EndTime, and Count of included
         jobs.'
       type: object
@@ -7579,7 +7568,7 @@ components:
       items:
         $ref: '#/components/schemas/CopyJobSummary'
     CopyJobSummary:
-      description: 'This is a summary of copy jobs created or running within the most recent 30 days. The returned summary
+      description: 'This is a summary of copy jobs created or running within the most recent 14 days. The returned summary
         may contain the following: Region, Account, State, RestourceType, MessageCategory, StartTime, EndTime, and Count of
         included jobs.'
       type: object
@@ -8196,7 +8185,7 @@ components:
       items:
         $ref: '#/components/schemas/RestoreJobSummary'
     RestoreJobSummary:
-      description: 'This is a summary of restore jobs created or running within the most recent 30 days. The returned summary
+      description: 'This is a summary of restore jobs created or running within the most recent 14 days. The returned summary
         may contain the following: Region, Account, State, ResourceType, MessageCategory, StartTime, EndTime, and Count of
         included jobs.'
       type: object

@@ -226,18 +226,18 @@ The following methods are available for this resource:
     <td>Creates an Amazon Lex conversational bot or replaces an existing bot. When you create or update a bot you are only required to specify a name, a locale, and whether the bot is directed toward children under age 13. You can use this to add intents later, or to remove intents from an existing bot. When you create a bot with the minimum information, the bot is created or updated but Amazon Lex returns the response FAILED. You can build the bot after you add one or more intents. For more information about Amazon Lex bots, see how-it-works. If you specify the name of an existing bot, the fields in the request replace the existing values in the $LATEST version of the bot. Amazon Lex removes any fields that you don't provide values for in the request, except for the idleTTLInSeconds and privacySettings fields, which are set to their default values. If you don't specify values for required fields, Amazon Lex throws an exception. This operation requires permissions for the lex:PutBot action. For more information, see security-iam.</td>
 </tr>
 <tr>
-    <td><a href="#delete_utterances"><CopyableCode code="delete_utterances" /></a></td>
-    <td><CopyableCode code="delete" /></td>
-    <td><a href="#parameter-bot_name"><code>bot_name</code></a>, <a href="#parameter-user_id"><code>user_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
-    <td></td>
-    <td>Deletes stored utterances. Amazon Lex stores the utterances that users send to your bot. Utterances are stored for 15 days for use with the GetUtterancesView operation, and then stored indefinitely for use in improving the ability of your bot to respond to user input. Use the DeleteUtterances operation to manually delete stored utterances for a specific user. When you use the DeleteUtterances operation, utterances stored for improving your bot's ability to respond to user input are deleted immediately. Utterances stored for use with the GetUtterancesView operation are deleted after 15 days. This operation requires permissions for the lex:DeleteUtterances action.</td>
-</tr>
-<tr>
     <td><a href="#delete_bot"><CopyableCode code="delete_bot" /></a></td>
     <td><CopyableCode code="delete" /></td>
     <td><a href="#parameter-name"><code>name</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td></td>
     <td>Deletes all versions of the bot, including the $LATEST version. To delete a specific version of the bot, use the DeleteBotVersion operation. The DeleteBot operation doesn't immediately remove the bot schema. Instead, it is marked for deletion and removed later. Amazon Lex stores utterances indefinitely for improving the ability of your bot to respond to user inputs. These utterances are not removed when the bot is deleted. To remove the utterances, use the DeleteUtterances operation. If a bot has an alias, you can't delete it. Instead, the DeleteBot operation returns a ResourceInUseException exception that includes a reference to the alias that refers to the bot. To remove the reference to the bot, delete the alias. If you get the same exception again, delete the referring alias until the DeleteBot operation is successful. This operation requires permissions for the lex:DeleteBot action.</td>
+</tr>
+<tr>
+    <td><a href="#delete_utterances"><CopyableCode code="delete_utterances" /></a></td>
+    <td><CopyableCode code="delete" /></td>
+    <td><a href="#parameter-bot_name"><code>bot_name</code></a>, <a href="#parameter-user_id"><code>user_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Deletes stored utterances. Amazon Lex stores the utterances that users send to your bot. Utterances are stored for 15 days for use with the GetUtterancesView operation, and then stored indefinitely for use in improving the ability of your bot to respond to user input. Use the DeleteUtterances operation to manually delete stored utterances for a specific user. When you use the DeleteUtterances operation, utterances stored for improving your bot's ability to respond to user input are deleted immediately. Utterances stored for use with the GetUtterancesView operation are deleted after 15 days. This operation requires permissions for the lex:DeleteUtterances action.</td>
 </tr>
 </tbody>
 </table>
@@ -425,12 +425,23 @@ voice_id;
 ## `DELETE` examples
 
 <Tabs
-    defaultValue="delete_utterances"
+    defaultValue="delete_bot"
     values={[
-        { label: 'delete_utterances', value: 'delete_utterances' },
-        { label: 'delete_bot', value: 'delete_bot' }
+        { label: 'delete_bot', value: 'delete_bot' },
+        { label: 'delete_utterances', value: 'delete_utterances' }
     ]}
 >
+<TabItem value="delete_bot">
+
+Deletes all versions of the bot, including the $LATEST version. To delete a specific version of the bot, use the DeleteBotVersion operation. The DeleteBot operation doesn't immediately remove the bot schema. Instead, it is marked for deletion and removed later. Amazon Lex stores utterances indefinitely for improving the ability of your bot to respond to user inputs. These utterances are not removed when the bot is deleted. To remove the utterances, use the DeleteUtterances operation. If a bot has an alias, you can't delete it. Instead, the DeleteBot operation returns a ResourceInUseException exception that includes a reference to the alias that refers to the bot. To remove the reference to the bot, delete the alias. If you get the same exception again, delete the referring alias until the DeleteBot operation is successful. This operation requires permissions for the lex:DeleteBot action.
+
+```sql
+DELETE FROM aws.lex_models.bots
+WHERE name = '{{ name }}' --required
+AND region = '{{ region }}' --required
+;
+```
+</TabItem>
 <TabItem value="delete_utterances">
 
 Deletes stored utterances. Amazon Lex stores the utterances that users send to your bot. Utterances are stored for 15 days for use with the GetUtterancesView operation, and then stored indefinitely for use in improving the ability of your bot to respond to user input. Use the DeleteUtterances operation to manually delete stored utterances for a specific user. When you use the DeleteUtterances operation, utterances stored for improving your bot's ability to respond to user input are deleted immediately. Utterances stored for use with the GetUtterancesView operation are deleted after 15 days. This operation requires permissions for the lex:DeleteUtterances action.
@@ -439,17 +450,6 @@ Deletes stored utterances. Amazon Lex stores the utterances that users send to y
 DELETE FROM aws.lex_models.bots
 WHERE bot_name = '{{ bot_name }}' --required
 AND user_id = '{{ user_id }}' --required
-AND region = '{{ region }}' --required
-;
-```
-</TabItem>
-<TabItem value="delete_bot">
-
-Deletes all versions of the bot, including the $LATEST version. To delete a specific version of the bot, use the DeleteBotVersion operation. The DeleteBot operation doesn't immediately remove the bot schema. Instead, it is marked for deletion and removed later. Amazon Lex stores utterances indefinitely for improving the ability of your bot to respond to user inputs. These utterances are not removed when the bot is deleted. To remove the utterances, use the DeleteUtterances operation. If a bot has an alias, you can't delete it. Instead, the DeleteBot operation returns a ResourceInUseException exception that includes a reference to the alias that refers to the bot. To remove the reference to the bot, delete the alias. If you get the same exception again, delete the referring alias until the DeleteBot operation is successful. This operation requires permissions for the lex:DeleteBot action.
-
-```sql
-DELETE FROM aws.lex_models.bots
-WHERE name = '{{ name }}' --required
 AND region = '{{ region }}' --required
 ;
 ```

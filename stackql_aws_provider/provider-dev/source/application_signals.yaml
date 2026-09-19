@@ -105,7 +105,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchUpdateExclusionWindowsOutput'
-      x-stackql-resource: batch_update_exclusion_windows
+      x-stackql-resource: exclusion_windows
       x-stackql-method: batch_update_exclusion_windows
       x-stackql-verb: EXEC
   /create-instrumentation-configuration:
@@ -242,10 +242,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteGroupingConfigurationOutput'
       x-stackql-resource: grouping_configurations
       x-stackql-method: delete_grouping_configuration
       x-stackql-verb: DELETE
@@ -330,10 +326,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteServiceLevelObjectiveOutput'
       x-stackql-resource: service_level_objectives
       x-stackql-method: delete_service_level_objective
       x-stackql-verb: DELETE
@@ -487,7 +479,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetInstrumentationConfigurationStatusResponse'
-      x-stackql-resource: instrumentation_configuration_status
+      x-stackql-resource: instrumentation_configuration_statuses
       x-stackql-method: get_instrumentation_configuration_status
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Events
@@ -1165,7 +1157,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ReportInstrumentationConfigurationStatusResponse'
-      x-stackql-resource: instrumentation_configuration_status
+      x-stackql-resource: instrumentation_configuration_statuses
       x-stackql-method: report_instrumentation_configuration_status
       x-stackql-verb: EXEC
   /start-discovery:
@@ -1182,11 +1174,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/StartDiscoveryOutput'
-      x-stackql-resource: discovery
+      x-stackql-resource: discoveries
       x-stackql-method: start_discovery
       x-stackql-verb: EXEC
   /tag-resource:
@@ -1218,10 +1206,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -1247,10 +1231,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -2740,8 +2720,6 @@ components:
       - AppMonitor
       - Canary
       - Service
-    DeleteGroupingConfigurationOutput:
-      type: object
     DeleteInstrumentationConfigurationRequestServiceString:
       type: string
       minLength: 1
@@ -2779,8 +2757,6 @@ components:
       type: string
       enum:
       - DELETED
-    DeleteServiceLevelObjectiveOutput:
-      type: object
     GetInstrumentationConfigurationRequestServiceString:
       type: string
       minLength: 1
@@ -4204,16 +4180,10 @@ components:
       - THROTTLED
       - INTERNAL_ERROR
       - VALIDATION_ERROR
-    StartDiscoveryOutput:
-      type: object
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
         $ref: '#/components/schemas/TagKey'
-    UntagResourceResponse:
-      type: object
     UpdateServiceLevelObjectiveOutput:
       type: object
       properties:

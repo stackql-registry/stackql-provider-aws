@@ -373,10 +373,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteCaseResponse"
     post:
       operationId: GetCase
       description: Returns information about a specific case if it exists.
@@ -445,10 +441,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateCaseResponse"
   /domains/{domain_id}/case-rules/{case_rule_id}:
     delete:
       operationId: DeleteCaseRule
@@ -469,10 +461,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteCaseRuleResponse"
     put:
       operationId: UpdateCaseRule
       description: Updates a case rule. In the Amazon Connect admin website, case rules are known as case field conditions. For more information about case field conditions, see Add case field conditions to a case template.
@@ -505,10 +493,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateCaseRuleResponse"
   /domains/{domain_id}:
     delete:
       operationId: DeleteDomain
@@ -523,10 +507,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteDomainResponse"
     post:
       operationId: GetDomain
       description: Returns information about a specific domain if it exists.
@@ -564,10 +544,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteFieldResponse"
     put:
       operationId: UpdateField
       description: Updates the properties of an existing field.
@@ -600,10 +576,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateFieldResponse"
   /domains/{domain_id}/layouts/{layout_id}:
     delete:
       operationId: DeleteLayout
@@ -624,10 +596,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteLayoutResponse"
     post:
       operationId: GetLayout
       description: Returns the details for the requested layout.
@@ -681,10 +649,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateLayoutResponse"
   /domains/{domain_id}/cases/{case_id}/related-items/{related_item_id}:
     delete:
       operationId: DeleteRelatedItem
@@ -711,10 +675,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteRelatedItemResponse"
     put:
       operationId: UpdateRelatedItem
       description: "Updates the content of a related item associated with a case. The following related item types are supported: Comment - Update the text content of an existing comment Custom - Update the fields of a custom related item. You can add, modify, and remove fields from a custom related item. There's a quota for the number of fields allowed in a Custom type related item. See Amazon Connect Cases quotas. Important things to know When updating a Custom related item, all existing and new fields, and their associated values should be included in the request. Fields not included as part of this request will be removed. If you provide a value for performedBy.userArn you must also have DescribeUser permission on the ARN of the user that you provide. System case fields cannot be used in a custom related item. Endpoints: See Amazon Connect endpoints and quotas."
@@ -777,10 +737,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteTemplateResponse"
     post:
       operationId: GetTemplate
       description: "Returns the details for the requested template. Other template APIs are: CreateTemplate DeleteTemplate ListTemplates UpdateTemplate"
@@ -844,10 +800,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateTemplateResponse"
   /domains/{domain_id}/cases/{case_id}/audit-history:
     post:
       operationId: GetCaseAuditEvents
@@ -925,10 +877,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/PutCaseEventConfigurationResponse"
   /domains/{domain_id}/rules-list/:
     post:
       operationId: ListCaseRules
@@ -2344,20 +2292,6 @@ components:
       type: string
       minLength: 1
       maxLength: 500
-    DeleteCaseResponse:
-      type: object
-    DeleteCaseRuleResponse:
-      type: object
-    DeleteDomainResponse:
-      type: object
-    DeleteFieldResponse:
-      type: object
-    DeleteLayoutResponse:
-      type: object
-    DeleteRelatedItemResponse:
-      type: object
-    DeleteTemplateResponse:
-      type: object
     GetCaseRequestFieldsList:
       type: array
       items:
@@ -2941,8 +2875,6 @@ components:
         - templateArn
         - name
         - status
-    PutCaseEventConfigurationResponse:
-      type: object
     SearchAllRelatedItemsRequestMaxResultsInteger:
       type: integer
       minimum: 1
@@ -3457,14 +3389,6 @@ components:
       type: array
       items:
         $ref: "#/components/schemas/FieldValue"
-    UpdateCaseResponse:
-      type: object
-    UpdateCaseRuleResponse:
-      type: object
-    UpdateFieldResponse:
-      type: object
-    UpdateLayoutResponse:
-      type: object
     RelatedItemUpdateContent:
       description: Represents the content of a related item to be updated. This is a union type that can contain either comment content or custom content.
       type: object
@@ -3533,8 +3457,6 @@ components:
         - type_
         - content
         - associationTime
-    UpdateTemplateResponse:
-      type: object
   x-stackQL-resources:
     case_rules:
       id: aws.connectcases.case_rules
@@ -3568,13 +3490,11 @@ components:
             $ref: "#/paths/~1domains~1{domain_id}~1case-rules~1{case_rule_id}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         update_case_rule:
           operation:
             $ref: "#/paths/~1domains~1{domain_id}~1case-rules~1{case_rule_id}/put"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -3639,13 +3559,11 @@ components:
             $ref: "#/paths/~1domains~1{domain_id}~1fields~1{field_id}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         update_field:
           operation:
             $ref: "#/paths/~1domains~1{domain_id}~1fields~1{field_id}/put"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -3720,7 +3638,6 @@ components:
             $ref: "#/paths/~1domains~1{domain_id}~1cases~1{case_id}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         get_case:
           operation:
             $ref: "#/paths/~1domains~1{domain_id}~1cases~1{case_id}/post"
@@ -3735,6 +3652,16 @@ components:
         update_case:
           operation:
             $ref: "#/paths/~1domains~1{domain_id}~1cases~1{case_id}/put"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        list_cases_for_contact:
+          operation:
+            $ref: "#/paths/~1domains~1{domain_id}~1list-cases-for-contact/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -3765,6 +3692,7 @@ components:
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/cases/methods/get_case"
+          - $ref: "#/components/x-stackQL-resources/cases/methods/list_cases_for_contact"
           - $ref: "#/components/x-stackQL-resources/cases/methods/search_cases"
         insert:
           - $ref: "#/components/x-stackQL-resources/cases/methods/create_case"
@@ -3793,7 +3721,6 @@ components:
             $ref: "#/paths/~1domains~1{domain_id}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         get_domain:
           operation:
             $ref: "#/paths/~1domains~1{domain_id}/post"
@@ -3838,7 +3765,6 @@ components:
             $ref: "#/paths/~1domains~1{domain_id}~1layouts~1{layout_id}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         get_layout:
           operation:
             $ref: "#/paths/~1domains~1{domain_id}~1layouts~1{layout_id}/post"
@@ -3850,7 +3776,6 @@ components:
             $ref: "#/paths/~1domains~1{domain_id}~1layouts~1{layout_id}/put"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -3895,7 +3820,6 @@ components:
             $ref: "#/paths/~1domains~1{domain_id}~1cases~1{case_id}~1related-items~1{related_item_id}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         update_related_item:
           operation:
             $ref: "#/paths/~1domains~1{domain_id}~1cases~1{case_id}~1related-items~1{related_item_id}/put"
@@ -3956,7 +3880,6 @@ components:
             $ref: "#/paths/~1domains~1{domain_id}~1templates~1{template_id}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         get_template:
           operation:
             $ref: "#/paths/~1domains~1{domain_id}~1templates~1{template_id}/post"
@@ -3968,7 +3891,6 @@ components:
             $ref: "#/paths/~1domains~1{domain_id}~1templates~1{template_id}/put"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -4031,7 +3953,6 @@ components:
             $ref: "#/paths/~1domains~1{domain_id}~1case-event-configuration/put"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -4044,28 +3965,6 @@ components:
         update: []
         replace:
           - $ref: "#/components/x-stackQL-resources/case_event_configurations/methods/put_case_event_configuration"
-        delete: []
-    cases_for_contacts:
-      id: aws.connectcases.cases_for_contacts
-      name: cases_for_contacts
-      title: cases_for_contacts
-      methods:
-        list_cases_for_contact:
-          operation:
-            $ref: "#/paths/~1domains~1{domain_id}~1list-cases-for-contact/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/cases_for_contacts/methods/list_cases_for_contact"
-        insert: []
-        update: []
         delete: []
     tags:
       id: aws.connectcases.tags

@@ -28,7 +28,7 @@ total resources: __11__
 <a href="/services/chime_sdk_media_pipelines/media_capture_pipelines/">media_capture_pipelines</a><br />
 <a href="/services/chime_sdk_media_pipelines/media_concatenation_pipelines/">media_concatenation_pipelines</a><br />
 <a href="/services/chime_sdk_media_pipelines/media_insights_pipeline_configurations/">media_insights_pipeline_configurations</a><br />
-<a href="/services/chime_sdk_media_pipelines/media_insights_pipeline_status/">media_insights_pipeline_status</a><br />
+<a href="/services/chime_sdk_media_pipelines/media_insights_pipeline_statuses/">media_insights_pipeline_statuses</a><br />
 <a href="/services/chime_sdk_media_pipelines/media_live_connector_pipelines/">media_live_connector_pipelines</a><br />
 <a href="/services/chime_sdk_media_pipelines/media_pipeline_kinesis_video_stream_pools/">media_pipeline_kinesis_video_stream_pools</a>
 </div>

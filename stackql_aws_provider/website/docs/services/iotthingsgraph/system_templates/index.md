@@ -154,6 +154,13 @@ The following methods are available for this resource:
     <td></td>
     <td>Deletes a system. New deployments can't contain the system after its deletion. Existing deployments that contain the system will continue to work because they use a snapshot of the system that is taken when it is deployed.</td>
 </tr>
+<tr>
+    <td><a href="#deprecate_system_template"><CopyableCode code="deprecate_system_template" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-id"><code>id</code></a></td>
+    <td></td>
+    <td>Deprecates the specified system.</td>
+</tr>
 </tbody>
 </table>
 
@@ -315,6 +322,31 @@ Deletes a system. New deployments can't contain the system after its deletion. E
 ```sql
 DELETE FROM aws.iotthingsgraph.system_templates
 WHERE region = '{{ region }}' --required
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="deprecate_system_template"
+    values={[
+        { label: 'deprecate_system_template', value: 'deprecate_system_template' }
+    ]}
+>
+<TabItem value="deprecate_system_template">
+
+Deprecates the specified system.
+
+```sql
+EXEC aws.iotthingsgraph.system_templates.deprecate_system_template 
+@region='{{ region }}' --required 
+@@json=
+'{
+"id": "{{ id }}"
+}'
 ;
 ```
 </TabItem>

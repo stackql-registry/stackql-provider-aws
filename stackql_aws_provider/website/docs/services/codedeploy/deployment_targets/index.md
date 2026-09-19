@@ -33,32 +33,13 @@ Creates, updates, deletes, gets or lists a <code>deployment_targets</code> resou
 The following fields are returned by `SELECT` queries:
 
 <Tabs
-    defaultValue="batch_get_deployment_targets"
+    defaultValue="get_deployment_target"
     values={[
-        { label: 'batch_get_deployment_targets', value: 'batch_get_deployment_targets' },
         { label: 'get_deployment_target', value: 'get_deployment_target' },
+        { label: 'batch_get_deployment_targets', value: 'batch_get_deployment_targets' },
         { label: 'list_deployment_targets', value: 'list_deployment_targets' }
     ]}
 >
-<TabItem value="batch_get_deployment_targets">
-
-<table>
-<thead>
-    <tr>
-    <th>Name</th>
-    <th>Datatype</th>
-    <th>Description</th>
-    </tr>
-</thead>
-<tbody>
-<tr>
-    <td><CopyableCode code="deployment_targets" /></td>
-    <td><code>array</code></td>
-    <td>A list of target objects for a deployment. Each target object contains details about the target, such as its status and lifecycle events. The type of the target objects depends on the deployment' compute platform. EC2/On-premises: Each target object is an Amazon EC2 or on-premises instance. Lambda: The target object is a specific version of an Lambda function. Amazon ECS: The target object is an Amazon ECS service. CloudFormation: The target object is an CloudFormation blue/green deployment.</td>
-</tr>
-</tbody>
-</table>
-</TabItem>
 <TabItem value="get_deployment_target">
 
 <table>
@@ -94,6 +75,25 @@ The following fields are returned by `SELECT` queries:
     <td><CopyableCode code="lambda_target" /></td>
     <td><code>object</code></td>
     <td>Information about the target for a deployment that uses the Lambda compute platform.</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
+<TabItem value="batch_get_deployment_targets">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="deployment_targets" /></td>
+    <td><code>array</code></td>
+    <td>A list of target objects for a deployment. Each target object contains details about the target, such as its status and lifecycle events. The type of the target objects depends on the deployment' compute platform. EC2/On-premises: Each target object is an Amazon EC2 or on-premises instance. Lambda: The target object is a specific version of an Lambda function. Amazon ECS: The target object is an Amazon ECS service. CloudFormation: The target object is an CloudFormation blue/green deployment.</td>
 </tr>
 </tbody>
 </table>
@@ -135,18 +135,18 @@ The following methods are available for this resource:
 </thead>
 <tbody>
 <tr>
-    <td><a href="#batch_get_deployment_targets"><CopyableCode code="batch_get_deployment_targets" /></a></td>
-    <td><CopyableCode code="select" /></td>
-    <td><a href="#parameter-region"><code>region</code></a></td>
-    <td></td>
-    <td>Returns an array of one or more targets associated with a deployment. This method works with all compute types and should be used instead of the deprecated BatchGetDeploymentInstances. The maximum number of targets that can be returned is 25. The type of targets returned depends on the deployment's compute platform or deployment method: EC2/On-premises: Information about Amazon EC2 instance targets. Lambda: Information about Lambda functions targets. Amazon ECS: Information about Amazon ECS service targets. CloudFormation: Information about targets of blue/green deployments initiated by a CloudFormation stack update.</td>
-</tr>
-<tr>
     <td><a href="#get_deployment_target"><CopyableCode code="get_deployment_target" /></a></td>
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td></td>
     <td>Returns information about a deployment target.</td>
+</tr>
+<tr>
+    <td><a href="#batch_get_deployment_targets"><CopyableCode code="batch_get_deployment_targets" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Returns an array of one or more targets associated with a deployment. This method works with all compute types and should be used instead of the deprecated BatchGetDeploymentInstances. The maximum number of targets that can be returned is 25. The type of targets returned depends on the deployment's compute platform or deployment method: EC2/On-premises: Information about Amazon EC2 instance targets. Lambda: Information about Lambda functions targets. Amazon ECS: Information about Amazon ECS service targets. CloudFormation: Information about targets of blue/green deployments initiated by a CloudFormation stack update.</td>
 </tr>
 <tr>
     <td><a href="#list_deployment_targets"><CopyableCode code="list_deployment_targets" /></a></td>
@@ -182,25 +182,13 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 ## `SELECT` examples
 
 <Tabs
-    defaultValue="batch_get_deployment_targets"
+    defaultValue="get_deployment_target"
     values={[
-        { label: 'batch_get_deployment_targets', value: 'batch_get_deployment_targets' },
         { label: 'get_deployment_target', value: 'get_deployment_target' },
+        { label: 'batch_get_deployment_targets', value: 'batch_get_deployment_targets' },
         { label: 'list_deployment_targets', value: 'list_deployment_targets' }
     ]}
 >
-<TabItem value="batch_get_deployment_targets">
-
-Returns an array of one or more targets associated with a deployment. This method works with all compute types and should be used instead of the deprecated BatchGetDeploymentInstances. The maximum number of targets that can be returned is 25. The type of targets returned depends on the deployment's compute platform or deployment method: EC2/On-premises: Information about Amazon EC2 instance targets. Lambda: Information about Lambda functions targets. Amazon ECS: Information about Amazon ECS service targets. CloudFormation: Information about targets of blue/green deployments initiated by a CloudFormation stack update.
-
-```sql
-SELECT
-deployment_targets
-FROM aws.codedeploy.deployment_targets
-WHERE region = '{{ region }}' -- required
-;
-```
-</TabItem>
 <TabItem value="get_deployment_target">
 
 Returns information about a deployment target.
@@ -212,6 +200,18 @@ deployment_target_type,
 ecs_target,
 instance_target,
 lambda_target
+FROM aws.codedeploy.deployment_targets
+WHERE region = '{{ region }}' -- required
+;
+```
+</TabItem>
+<TabItem value="batch_get_deployment_targets">
+
+Returns an array of one or more targets associated with a deployment. This method works with all compute types and should be used instead of the deprecated BatchGetDeploymentInstances. The maximum number of targets that can be returned is 25. The type of targets returned depends on the deployment's compute platform or deployment method: EC2/On-premises: Information about Amazon EC2 instance targets. Lambda: Information about Lambda functions targets. Amazon ECS: Information about Amazon ECS service targets. CloudFormation: Information about targets of blue/green deployments initiated by a CloudFormation stack update.
+
+```sql
+SELECT
+deployment_targets
 FROM aws.codedeploy.deployment_targets
 WHERE region = '{{ region }}' -- required
 ;

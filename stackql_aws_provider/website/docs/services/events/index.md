@@ -31,19 +31,19 @@ total resources: __18__
 <a href="/services/events/endpoints/">endpoints</a><br />
 <a href="/services/events/event_bus/">event_bus</a><br />
 <a href="/services/events/event_buses/">event_buses</a><br />
+<a href="/services/events/event_patterns/">event_patterns</a><br />
 <a href="/services/events/event_sources/">event_sources</a><br />
-<a href="/services/events/events/">events</a><br />
-<a href="/services/events/partner_event_source_accounts/">partner_event_source_accounts</a>
+<a href="/services/events/events/">events</a>
 </div>
 <div class="providerDocColumn">
+<a href="/services/events/partner_event_source_accounts/">partner_event_source_accounts</a><br />
 <a href="/services/events/partner_event_sources/">partner_event_sources</a><br />
 <a href="/services/events/partner_events/">partner_events</a><br />
 <a href="/services/events/permissions/">permissions</a><br />
 <a href="/services/events/replays/">replays</a><br />
-<a href="/services/events/rule_names_by_targets/">rule_names_by_targets</a><br />
+<a href="/services/events/rule_names/">rule_names</a><br />
 <a href="/services/events/rules/">rules</a><br />
 <a href="/services/events/tags/">tags</a><br />
-<a href="/services/events/targets/">targets</a><br />
-<a href="/services/events/targets_by_rules/">targets_by_rules</a>
+<a href="/services/events/targets/">targets</a>
 </div>
 </div>

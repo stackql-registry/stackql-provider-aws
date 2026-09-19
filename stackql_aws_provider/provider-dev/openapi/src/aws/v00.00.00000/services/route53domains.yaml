@@ -262,10 +262,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteTagsForDomainResponse"
   /DisableDomainAutoRenew:
     post:
       operationId: DisableDomainAutoRenew
@@ -295,10 +291,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DisableDomainAutoRenewResponse"
   /DisableDomainTransferLock:
     post:
       operationId: DisableDomainTransferLock
@@ -398,10 +390,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/EnableDomainAutoRenewResponse"
   /EnableDomainTransferLock:
     post:
       operationId: EnableDomainTransferLock
@@ -1278,10 +1266,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateTagsForDomainResponse"
   /ViewBilling:
     post:
       operationId: ViewBilling
@@ -1481,10 +1465,6 @@ components:
       type: string
       minLength: 1
       maxLength: 128
-    DeleteTagsForDomainResponse:
-      type: object
-    DisableDomainAutoRenewResponse:
-      type: object
     DisableDomainTransferLockResponse:
       description: The DisableDomainTransferLock response includes the following element.
       type: object
@@ -1500,8 +1480,6 @@ components:
         OperationId:
           $ref: "#/components/schemas/OperationId"
           description: Identifier for tracking the progress of the request. To query the operation status, use GetOperationDetail.
-    EnableDomainAutoRenewResponse:
-      type: object
     EnableDomainTransferLockResponse:
       description: The EnableDomainTransferLock response includes the following elements.
       type: object
@@ -2506,8 +2484,6 @@ components:
         OperationId:
           $ref: "#/components/schemas/OperationId"
           description: Identifier for tracking the progress of the request. To query the operation status, use GetOperationDetail.
-    UpdateTagsForDomainResponse:
-      type: object
     ViewBillingResponse:
       description: The ViewBilling response includes the following elements.
       type: object
@@ -2632,7 +2608,6 @@ components:
             $ref: "#/paths/~1DeleteTagsForDomain/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -2645,7 +2620,6 @@ components:
             $ref: "#/paths/~1DisableDomainAutoRenew/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -2684,7 +2658,6 @@ components:
             $ref: "#/paths/~1EnableDomainAutoRenew/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -2860,7 +2833,6 @@ components:
             $ref: "#/paths/~1UpdateTagsForDomain/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -2881,10 +2853,10 @@ components:
         delete:
           - $ref: "#/components/x-stackQL-resources/domains/methods/delete_tags_for_domain"
           - $ref: "#/components/x-stackQL-resources/domains/methods/delete_domain"
-    contact_reachability_status:
-      id: aws.route53domains.contact_reachability_status
-      name: contact_reachability_status
-      title: contact_reachability_status
+    contact_reachability_statuses:
+      id: aws.route53domains.contact_reachability_statuses
+      name: contact_reachability_statuses
+      title: contact_reachability_statuses
       methods:
         get_contact_reachability_status:
           operation:
@@ -2901,7 +2873,7 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/contact_reachability_status/methods/get_contact_reachability_status"
+          - $ref: "#/components/x-stackQL-resources/contact_reachability_statuses/methods/get_contact_reachability_status"
         insert: []
         update: []
         delete: []
@@ -3074,6 +3046,59 @@ components:
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_domain"
+        insert: []
+        update: []
+        delete: []
+    contact_reachability_emails:
+      id: aws.route53domains.contact_reachability_emails
+      name: contact_reachability_emails
+      title: contact_reachability_emails
+      methods:
+        resend_contact_reachability_email:
+          operation:
+            $ref: "#/paths/~1ResendContactReachabilityEmail/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
+    billings:
+      id: aws.route53domains.billings
+      name: billings
+      title: billings
+      methods:
+        view_billing:
+          operation:
+            $ref: "#/paths/~1ViewBilling/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: Marker
+                location: body
+              responseToken:
+                key: $.NextPageMarker
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
         insert: []
         update: []
         delete: []

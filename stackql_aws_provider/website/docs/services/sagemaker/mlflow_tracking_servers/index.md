@@ -244,6 +244,20 @@ The following methods are available for this resource:
     <td></td>
     <td>Deletes an MLflow Tracking Server. For more information, see Clean up MLflow resources.</td>
 </tr>
+<tr>
+    <td><a href="#start_mlflow_tracking_server"><CopyableCode code="start_mlflow_tracking_server" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-TrackingServerName"><code>TrackingServerName</code></a></td>
+    <td></td>
+    <td>Programmatically start an MLflow Tracking Server.</td>
+</tr>
+<tr>
+    <td><a href="#stop_mlflow_tracking_server"><CopyableCode code="stop_mlflow_tracking_server" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-TrackingServerName"><code>TrackingServerName</code></a></td>
+    <td></td>
+    <td>Programmatically stop an MLflow Tracking Server.</td>
+</tr>
 </tbody>
 </table>
 
@@ -475,6 +489,46 @@ Deletes an MLflow Tracking Server. For more information, see Clean up MLflow res
 ```sql
 DELETE FROM aws.sagemaker.mlflow_tracking_servers
 WHERE region = '{{ region }}' --required
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="start_mlflow_tracking_server"
+    values={[
+        { label: 'start_mlflow_tracking_server', value: 'start_mlflow_tracking_server' },
+        { label: 'stop_mlflow_tracking_server', value: 'stop_mlflow_tracking_server' }
+    ]}
+>
+<TabItem value="start_mlflow_tracking_server">
+
+Programmatically start an MLflow Tracking Server.
+
+```sql
+EXEC aws.sagemaker.mlflow_tracking_servers.start_mlflow_tracking_server 
+@region='{{ region }}' --required 
+@@json=
+'{
+"TrackingServerName": "{{ TrackingServerName }}"
+}'
+;
+```
+</TabItem>
+<TabItem value="stop_mlflow_tracking_server">
+
+Programmatically stop an MLflow Tracking Server.
+
+```sql
+EXEC aws.sagemaker.mlflow_tracking_servers.stop_mlflow_tracking_server 
+@region='{{ region }}' --required 
+@@json=
+'{
+"TrackingServerName": "{{ TrackingServerName }}"
+}'
 ;
 ```
 </TabItem>

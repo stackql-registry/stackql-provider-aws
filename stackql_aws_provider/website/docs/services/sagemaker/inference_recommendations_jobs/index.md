@@ -240,6 +240,13 @@ The following methods are available for this resource:
     <td></td>
     <td>Starts a recommendation job. You can create either an instance recommendation or load test job.</td>
 </tr>
+<tr>
+    <td><a href="#stop_inference_recommendations_job"><CopyableCode code="stop_inference_recommendations_job" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-JobName"><code>JobName</code></a></td>
+    <td></td>
+    <td>Stops an Inference Recommender job.</td>
+</tr>
 </tbody>
 </table>
 
@@ -469,5 +476,30 @@ job_arn
           Value: "{{ Value }}"
 `}</CodeBlock>
 
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="stop_inference_recommendations_job"
+    values={[
+        { label: 'stop_inference_recommendations_job', value: 'stop_inference_recommendations_job' }
+    ]}
+>
+<TabItem value="stop_inference_recommendations_job">
+
+Stops an Inference Recommender job.
+
+```sql
+EXEC aws.sagemaker.inference_recommendations_jobs.stop_inference_recommendations_job 
+@region='{{ region }}' --required 
+@@json=
+'{
+"JobName": "{{ JobName }}"
+}'
+;
+```
 </TabItem>
 </Tabs>

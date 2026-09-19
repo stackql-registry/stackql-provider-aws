@@ -28,10 +28,10 @@ total resources: __7__
 <a href="/services/redshift_data/databases/">databases</a><br />
 <a href="/services/redshift_data/schemas/">schemas</a><br />
 <a href="/services/redshift_data/sessions/">sessions</a><br />
-<a href="/services/redshift_data/statement_result_v2s/">statement_result_v2s</a>
+<a href="/services/redshift_data/statement_results/">statement_results</a>
 </div>
 <div class="providerDocColumn">
-<a href="/services/redshift_data/statement_results/">statement_results</a><br />
+<a href="/services/redshift_data/statement_results_v2/">statement_results_v2</a><br />
 <a href="/services/redshift_data/statements/">statements</a><br />
 <a href="/services/redshift_data/tables/">tables</a>
 </div>

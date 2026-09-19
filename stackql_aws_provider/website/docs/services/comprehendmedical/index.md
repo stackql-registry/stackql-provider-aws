@@ -18,19 +18,25 @@ comprehendmedical service documentation.
 
 :::info[Service Summary]
 
-total resources: __5__  
+total resources: __11__  
 
 :::
 
 ## Resources
 <div class="row">
 <div class="providerDocColumn">
+<a href="/services/comprehendmedical/entities/">entities</a><br />
 <a href="/services/comprehendmedical/entities_detection_v2_jobs/">entities_detection_v2_jobs</a><br />
+<a href="/services/comprehendmedical/entities_v2/">entities_v2</a><br />
 <a href="/services/comprehendmedical/icd10_cm_inference_jobs/">icd10_cm_inference_jobs</a><br />
+<a href="/services/comprehendmedical/icd10_cms/">icd10_cms</a><br />
 <a href="/services/comprehendmedical/phi_detection_jobs/">phi_detection_jobs</a>
 </div>
 <div class="providerDocColumn">
+<a href="/services/comprehendmedical/phis/">phis</a><br />
 <a href="/services/comprehendmedical/rx_norm_inference_jobs/">rx_norm_inference_jobs</a><br />
-<a href="/services/comprehendmedical/snomedct_inference_jobs/">snomedct_inference_jobs</a>
+<a href="/services/comprehendmedical/rx_norms/">rx_norms</a><br />
+<a href="/services/comprehendmedical/snomedct_inference_jobs/">snomedct_inference_jobs</a><br />
+<a href="/services/comprehendmedical/snomedcts/">snomedcts</a>
 </div>
 </div>

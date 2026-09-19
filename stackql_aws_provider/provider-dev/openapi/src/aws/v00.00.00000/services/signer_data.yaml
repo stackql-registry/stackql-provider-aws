@@ -135,10 +135,10 @@ components:
           items:
             $ref: "#/components/schemas/GetRevocationStatusRowDisplay"
   x-stackQL-resources:
-    revocation_status:
-      id: aws.signer_data.revocation_status
-      name: revocation_status
-      title: revocation_status
+    revocation_statuses:
+      id: aws.signer_data.revocation_statuses
+      name: revocation_statuses
+      title: revocation_statuses
       methods:
         get_revocation_status:
           operation:
@@ -157,7 +157,7 @@ components:
             nativeCasing: pascal
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/revocation_status/methods/get_revocation_status"
+          - $ref: "#/components/x-stackQL-resources/revocation_statuses/methods/get_revocation_status"
         insert: []
         update: []
         delete: []

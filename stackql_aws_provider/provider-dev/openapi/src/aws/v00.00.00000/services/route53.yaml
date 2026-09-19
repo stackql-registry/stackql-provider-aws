@@ -113,10 +113,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteCidrCollectionOutputDisplay"
     get:
       operationId: ListCidrLocations
       description: Returns a paginated list of CIDR locations for the given collection (metadata only, does not include CIDR blocks).
@@ -206,10 +202,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ChangeTagsForResourceOutputDisplay"
     get:
       operationId: ListTagsForResource
       description: Lists tags for one health check or hosted zone. For information about using tags for cost allocation, see Using Cost Allocation Tags in the Billing and Cost Management User Guide.
@@ -713,10 +705,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteHealthCheckOutputDisplay"
     get:
       operationId: GetHealthCheck
       description: Gets information about a specified health check.
@@ -889,10 +877,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteQueryLoggingConfigOutputDisplay"
     get:
       operationId: GetQueryLoggingConfig
       description: Gets information about a specified configuration for DNS query logging. For more information about DNS query logs, see CreateQueryLoggingConfig and Logging DNS Queries.
@@ -924,10 +908,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteReusableDelegationSetOutputDisplay"
     get:
       operationId: GetReusableDelegationSet
       description: Retrieves information about a specified reusable delegation set, including the four name servers that are assigned to the delegation set.
@@ -965,10 +945,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteTrafficPolicyOutputDisplay"
     get:
       operationId: GetTrafficPolicy
       description: Gets information about a specific traffic policy version. For information about how of deleting a traffic policy affects the response from GetTrafficPolicy, see DeleteTrafficPolicy.
@@ -1038,10 +1014,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteTrafficPolicyInstanceOutputDisplay"
     get:
       operationId: GetTrafficPolicyInstance
       description: Gets information about a specified traffic policy instance. Use GetTrafficPolicyInstance with the id of new traffic policy instance to confirm that the CreateTrafficPolicyInstance or an UpdateTrafficPolicyInstance request completed successfully. For more information, see the State response element. In the Route 53 console, traffic policy instances are known as policy records.
@@ -1115,10 +1087,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteVPCAssociationAuthorizationOutputDisplay"
   /2013-04-01/hostedzone/{id}/disable-dnssec:
     post:
       operationId: DisableHostedZoneDNSSEC
@@ -1854,10 +1822,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateHostedZoneFeaturesOutputDisplay"
 components:
   parameters:
     X-Amz-Content-Sha256:
@@ -2417,16 +2381,6 @@ components:
       type: array
       items:
         $ref: "#/components/schemas/TagKey"
-    ChangeTagsForResourceResponseDisplay:
-      type: object
-      properties: {}
-    ChangeTagsForResourceOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: "#/components/schemas/ChangeTagsForResourceResponseDisplay"
     CollectionName:
       type: string
       minLength: 1
@@ -2961,26 +2915,6 @@ components:
           type: array
           items:
             $ref: "#/components/schemas/ChangeInfoDisplay"
-    DeleteCidrCollectionResponseDisplay:
-      type: object
-      properties: {}
-    DeleteCidrCollectionOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: "#/components/schemas/DeleteCidrCollectionResponseDisplay"
-    DeleteHealthCheckResponseDisplay:
-      type: object
-      properties: {}
-    DeleteHealthCheckOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: "#/components/schemas/DeleteHealthCheckResponseDisplay"
     DeleteHostedZoneOutputDisplay:
       type: object
       properties:
@@ -2999,56 +2933,6 @@ components:
       type: string
       minLength: 1
       maxLength: 36
-    DeleteQueryLoggingConfigResponseDisplay:
-      type: object
-      properties: {}
-    DeleteQueryLoggingConfigOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: "#/components/schemas/DeleteQueryLoggingConfigResponseDisplay"
-    DeleteReusableDelegationSetResponseDisplay:
-      type: object
-      properties: {}
-    DeleteReusableDelegationSetOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: "#/components/schemas/DeleteReusableDelegationSetResponseDisplay"
-    DeleteTrafficPolicyResponseDisplay:
-      type: object
-      properties: {}
-    DeleteTrafficPolicyOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: "#/components/schemas/DeleteTrafficPolicyResponseDisplay"
-    DeleteTrafficPolicyInstanceResponseDisplay:
-      type: object
-      properties: {}
-    DeleteTrafficPolicyInstanceOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: "#/components/schemas/DeleteTrafficPolicyInstanceResponseDisplay"
-    DeleteVPCAssociationAuthorizationResponseDisplay:
-      type: object
-      properties: {}
-    DeleteVPCAssociationAuthorizationOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: "#/components/schemas/DeleteVPCAssociationAuthorizationResponseDisplay"
     DisableHostedZoneDNSSECOutputDisplay:
       type: object
       properties:
@@ -3672,16 +3556,6 @@ components:
             $ref: "#/components/schemas/HostedZoneDisplay"
     AcceleratedRecoveryEnabled:
       type: boolean
-    UpdateHostedZoneFeaturesResponseDisplay:
-      type: object
-      properties: {}
-    UpdateHostedZoneFeaturesOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: "#/components/schemas/UpdateHostedZoneFeaturesResponseDisplay"
     UpdateTrafficPolicyCommentOutputDisplay:
       type: object
       properties:
@@ -3890,18 +3764,25 @@ components:
             transform:
               type: schema_driven_xml_v0.1.0
             objectKey: $.line_items
-        update_hosted_zone_features:
+        list_hosted_zones_by_vpc:
           operation:
-            $ref: "#/paths/~12013-04-01~1hostedzone~1{id}~1features/post"
+            $ref: "#/paths/~12013-04-01~1hostedzonesbyvpc/get"
           response:
             openAPIDocKey: "200"
             mediaType: application/xml
             overrideMediaType: application/json
             schema_override:
-              $ref: "#/components/schemas/UpdateHostedZoneFeaturesOutputDisplay"
+              $ref: "#/components/schemas/ListHostedZonesByVPCOutputDisplay"
             transform:
               type: schema_driven_xml_v0.1.0
             objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+        update_hosted_zone_features:
+          operation:
+            $ref: "#/paths/~12013-04-01~1hostedzone~1{id}~1features/post"
+          response:
+            openAPIDocKey: "200"
           request:
             nativeCasing: pascal
             mediaType: application/xml
@@ -3911,6 +3792,7 @@ components:
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/hosted_zones/methods/get_hosted_zone"
+          - $ref: "#/components/x-stackQL-resources/hosted_zones/methods/list_hosted_zones_by_vpc"
           - $ref: "#/components/x-stackQL-resources/hosted_zones/methods/list_hosted_zones"
         insert:
           - $ref: "#/components/x-stackQL-resources/hosted_zones/methods/create_key_signing_key"
@@ -3918,8 +3800,8 @@ components:
         update:
           - $ref: "#/components/x-stackQL-resources/hosted_zones/methods/associate_vpc_with_hosted_zone"
         delete:
-          - $ref: "#/components/x-stackQL-resources/hosted_zones/methods/delete_key_signing_key"
           - $ref: "#/components/x-stackQL-resources/hosted_zones/methods/delete_hosted_zone"
+          - $ref: "#/components/x-stackQL-resources/hosted_zones/methods/delete_key_signing_key"
     changes:
       id: aws.route53.changes
       name: changes
@@ -3948,13 +3830,6 @@ components:
             $ref: "#/paths/~12013-04-01~1tags~1{resource_type}~1{resource_id}/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/ChangeTagsForResourceOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
           request:
             nativeCasing: pascal
             mediaType: application/xml
@@ -3989,13 +3864,6 @@ components:
             $ref: "#/paths/~12013-04-01~1cidrcollection~1{cidr_collection_id}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/DeleteCidrCollectionOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
         create_cidr_collection:
           operation:
             $ref: "#/paths/~12013-04-01~1cidrcollection/post"
@@ -4188,13 +4056,6 @@ components:
             $ref: "#/paths/~12013-04-01~1healthcheck~1{health_check_id}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/DeleteHealthCheckOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
         get_health_check:
           operation:
             $ref: "#/paths/~12013-04-01~1healthcheck~1{health_check_id}/get"
@@ -4277,13 +4138,6 @@ components:
             $ref: "#/paths/~12013-04-01~1queryloggingconfig~1{id}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/DeleteQueryLoggingConfigOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
         get_query_logging_config:
           operation:
             $ref: "#/paths/~12013-04-01~1queryloggingconfig~1{id}/get"
@@ -4347,13 +4201,6 @@ components:
             $ref: "#/paths/~12013-04-01~1delegationset~1{id}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/DeleteReusableDelegationSetOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
         get_reusable_delegation_set:
           operation:
             $ref: "#/paths/~12013-04-01~1delegationset~1{id}/get"
@@ -4403,13 +4250,6 @@ components:
             $ref: "#/paths/~12013-04-01~1trafficpolicy~1{id}~1{version}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/DeleteTrafficPolicyOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
         get_traffic_policy:
           operation:
             $ref: "#/paths/~12013-04-01~1trafficpolicy~1{id}~1{version}/get"
@@ -4492,13 +4332,6 @@ components:
             $ref: "#/paths/~12013-04-01~1trafficpolicyinstance~1{id}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/DeleteTrafficPolicyInstanceOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
         get_traffic_policy_instance:
           operation:
             $ref: "#/paths/~12013-04-01~1trafficpolicyinstance~1{id}/get"
@@ -4543,8 +4376,23 @@ components:
             objectKey: $.line_items
           request:
             nativeCasing: pascal
+        list_traffic_policy_instances_by_policy:
+          operation:
+            $ref: "#/paths/~12013-04-01~1trafficpolicyinstances~1trafficpolicy/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListTrafficPolicyInstancesByPolicyOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
+          - $ref: "#/components/x-stackQL-resources/traffic_policy_instances/methods/list_traffic_policy_instances_by_policy"
           - $ref: "#/components/x-stackQL-resources/traffic_policy_instances/methods/get_traffic_policy_instance"
           - $ref: "#/components/x-stackQL-resources/traffic_policy_instances/methods/list_traffic_policy_instances"
         insert:
@@ -4639,13 +4487,6 @@ components:
             $ref: "#/paths/~12013-04-01~1hostedzone~1{id}~1deauthorizevpcassociation/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/DeleteVPCAssociationAuthorizationOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
           request:
             nativeCasing: pascal
             mediaType: application/xml
@@ -4812,10 +4653,10 @@ components:
         insert: []
         update: []
         delete: []
-    health_check_status:
-      id: aws.route53.health_check_status
-      name: health_check_status
-      title: health_check_status
+    health_check_statuses:
+      id: aws.route53.health_check_statuses
+      name: health_check_statuses
+      title: health_check_statuses
       methods:
         get_health_check_status:
           operation:
@@ -4831,7 +4672,7 @@ components:
             objectKey: $.line_items
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/health_check_status/methods/get_health_check_status"
+          - $ref: "#/components/x-stackQL-resources/health_check_statuses/methods/get_health_check_status"
         insert: []
         update: []
         delete: []
@@ -4977,31 +4818,6 @@ components:
         insert: []
         update: []
         delete: []
-    hosted_zones_by_vpcs:
-      id: aws.route53.hosted_zones_by_vpcs
-      name: hosted_zones_by_vpcs
-      title: hosted_zones_by_vpcs
-      methods:
-        list_hosted_zones_by_vpc:
-          operation:
-            $ref: "#/paths/~12013-04-01~1hostedzonesbyvpc/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/ListHostedZonesByVPCOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/hosted_zones_by_vpcs/methods/list_hosted_zones_by_vpc"
-        insert: []
-        update: []
-        delete: []
     traffic_policy_instances_by_hosted_zones:
       id: aws.route53.traffic_policy_instances_by_hosted_zones
       name: traffic_policy_instances_by_hosted_zones
@@ -5027,28 +4843,25 @@ components:
         insert: []
         update: []
         delete: []
-    traffic_policy_instances_by_policies:
-      id: aws.route53.traffic_policy_instances_by_policies
-      name: traffic_policy_instances_by_policies
-      title: traffic_policy_instances_by_policies
+    dns_answers:
+      id: aws.route53.dns_answers
+      name: dns_answers
+      title: dns_answers
       methods:
-        list_traffic_policy_instances_by_policy:
+        test_dns_answer:
           operation:
-            $ref: "#/paths/~12013-04-01~1trafficpolicyinstances~1trafficpolicy/get"
+            $ref: "#/paths/~12013-04-01~1testdnsanswer/get"
           response:
             openAPIDocKey: "200"
             mediaType: application/xml
             overrideMediaType: application/json
             schema_override:
-              $ref: "#/components/schemas/ListTrafficPolicyInstancesByPolicyOutputDisplay"
+              $ref: "#/components/schemas/TestDNSAnswerOutputDisplay"
             transform:
               type: schema_driven_xml_v0.1.0
             objectKey: $.line_items
-          request:
-            nativeCasing: pascal
       sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/traffic_policy_instances_by_policies/methods/list_traffic_policy_instances_by_policy"
+        select: []
         insert: []
         update: []
         delete: []

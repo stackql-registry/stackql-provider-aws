@@ -126,18 +126,18 @@ The following methods are available for this resource:
     <td>Creates an assessment in Audit Manager.</td>
 </tr>
 <tr>
-    <td><a href="#update_assessment_control_set_status"><CopyableCode code="update_assessment_control_set_status" /></a></td>
-    <td><CopyableCode code="update" /></td>
-    <td><a href="#parameter-assessment_id"><code>assessment_id</code></a>, <a href="#parameter-control_set_id"><code>control_set_id</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-status"><code>status</code></a>, <a href="#parameter-comment"><code>comment</code></a></td>
-    <td></td>
-    <td>Updates the status of a control set in an Audit Manager assessment.</td>
-</tr>
-<tr>
     <td><a href="#update_assessment"><CopyableCode code="update_assessment" /></a></td>
     <td><CopyableCode code="update" /></td>
     <td><a href="#parameter-assessment_id"><code>assessment_id</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-scope"><code>scope</code></a></td>
     <td></td>
     <td>Edits an Audit Manager assessment.</td>
+</tr>
+<tr>
+    <td><a href="#update_assessment_control_set_status"><CopyableCode code="update_assessment_control_set_status" /></a></td>
+    <td><CopyableCode code="update" /></td>
+    <td><a href="#parameter-assessment_id"><code>assessment_id</code></a>, <a href="#parameter-control_set_id"><code>control_set_id</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-status"><code>status</code></a>, <a href="#parameter-comment"><code>comment</code></a></td>
+    <td></td>
+    <td>Updates the status of a control set in an Audit Manager assessment.</td>
 </tr>
 <tr>
     <td><a href="#update_assessment_status"><CopyableCode code="update_assessment_status" /></a></td>
@@ -353,32 +353,13 @@ assessment
 ## `UPDATE` examples
 
 <Tabs
-    defaultValue="update_assessment_control_set_status"
+    defaultValue="update_assessment"
     values={[
-        { label: 'update_assessment_control_set_status', value: 'update_assessment_control_set_status' },
         { label: 'update_assessment', value: 'update_assessment' },
+        { label: 'update_assessment_control_set_status', value: 'update_assessment_control_set_status' },
         { label: 'update_assessment_status', value: 'update_assessment_status' }
     ]}
 >
-<TabItem value="update_assessment_control_set_status">
-
-Updates the status of a control set in an Audit Manager assessment.
-
-```sql
-UPDATE aws.auditmanager.assessments
-SET 
-status = '{{ status }}',
-comment = '{{ comment }}'
-WHERE 
-assessment_id = '{{ assessment_id }}' --required
-AND control_set_id = '{{ control_set_id }}' --required
-AND region = '{{ region }}' --required
-AND status = '{{ status }}' --required
-AND comment = '{{ comment }}' --required
-RETURNING
-control_set;
-```
-</TabItem>
 <TabItem value="update_assessment">
 
 Edits an Audit Manager assessment.
@@ -397,6 +378,25 @@ AND region = '{{ region }}' --required
 AND scope = '{{ scope }}' --required
 RETURNING
 assessment;
+```
+</TabItem>
+<TabItem value="update_assessment_control_set_status">
+
+Updates the status of a control set in an Audit Manager assessment.
+
+```sql
+UPDATE aws.auditmanager.assessments
+SET 
+status = '{{ status }}',
+comment = '{{ comment }}'
+WHERE 
+assessment_id = '{{ assessment_id }}' --required
+AND control_set_id = '{{ control_set_id }}' --required
+AND region = '{{ region }}' --required
+AND status = '{{ status }}' --required
+AND comment = '{{ comment }}' --required
+RETURNING
+control_set;
 ```
 </TabItem>
 <TabItem value="update_assessment_status">

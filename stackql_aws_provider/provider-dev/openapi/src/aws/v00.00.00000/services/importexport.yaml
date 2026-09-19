@@ -756,10 +756,10 @@ components:
         insert: []
         update: []
         delete: []
-    status:
-      id: aws.importexport.status
-      name: status
-      title: status
+    statuses:
+      id: aws.importexport.statuses
+      name: statuses
+      title: statuses
       methods:
         get_status:
           operation:
@@ -782,7 +782,7 @@ components:
               algorithm: get_query_to_post_form_utf_8
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/status/methods/get_status"
+          - $ref: "#/components/x-stackQL-resources/statuses/methods/get_status"
         insert: []
         update: []
         delete: []

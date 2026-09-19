@@ -33,37 +33,13 @@ Creates, updates, deletes, gets or lists a <code>prepared_statements</code> reso
 The following fields are returned by `SELECT` queries:
 
 <Tabs
-    defaultValue="batch_get_prepared_statement"
+    defaultValue="get_prepared_statement"
     values={[
-        { label: 'batch_get_prepared_statement', value: 'batch_get_prepared_statement' },
         { label: 'get_prepared_statement', value: 'get_prepared_statement' },
+        { label: 'batch_get_prepared_statement', value: 'batch_get_prepared_statement' },
         { label: 'list_prepared_statements', value: 'list_prepared_statements' }
     ]}
 >
-<TabItem value="batch_get_prepared_statement">
-
-<table>
-<thead>
-    <tr>
-    <th>Name</th>
-    <th>Datatype</th>
-    <th>Description</th>
-    </tr>
-</thead>
-<tbody>
-<tr>
-    <td><CopyableCode code="prepared_statements" /></td>
-    <td><code>array</code></td>
-    <td>The list of prepared statements returned.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="unprocessed_prepared_statement_names" /></td>
-    <td><code>array</code></td>
-    <td>A list of one or more prepared statements that were requested but could not be returned.</td>
-</tr>
-</tbody>
-</table>
-</TabItem>
 <TabItem value="get_prepared_statement">
 
 <table>
@@ -99,6 +75,30 @@ The following fields are returned by `SELECT` queries:
     <td><CopyableCode code="work_group_name" /></td>
     <td><code>string</code></td>
     <td>The name of the workgroup to which the prepared statement belongs. (pattern: &lt;code&gt;&#91;a-zA-Z0-9._-&#93;&#123;1,128&#125;&lt;/code&gt;)</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
+<TabItem value="batch_get_prepared_statement">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="prepared_statements" /></td>
+    <td><code>array</code></td>
+    <td>The list of prepared statements returned.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="unprocessed_prepared_statement_names" /></td>
+    <td><code>array</code></td>
+    <td>A list of one or more prepared statements that were requested but could not be returned.</td>
 </tr>
 </tbody>
 </table>
@@ -145,18 +145,18 @@ The following methods are available for this resource:
 </thead>
 <tbody>
 <tr>
-    <td><a href="#batch_get_prepared_statement"><CopyableCode code="batch_get_prepared_statement" /></a></td>
-    <td><CopyableCode code="select" /></td>
-    <td><a href="#parameter-region"><code>region</code></a></td>
-    <td></td>
-    <td>Returns the details of a single prepared statement or a list of up to 256 prepared statements for the array of prepared statement names that you provide. Requires you to have access to the workgroup to which the prepared statements belong. If a prepared statement cannot be retrieved for the name specified, the statement is listed in UnprocessedPreparedStatementNames.</td>
-</tr>
-<tr>
     <td><a href="#get_prepared_statement"><CopyableCode code="get_prepared_statement" /></a></td>
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td></td>
     <td>Retrieves the prepared statement with the specified name from the specified workgroup.</td>
+</tr>
+<tr>
+    <td><a href="#batch_get_prepared_statement"><CopyableCode code="batch_get_prepared_statement" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Returns the details of a single prepared statement or a list of up to 256 prepared statements for the array of prepared statement names that you provide. Requires you to have access to the workgroup to which the prepared statements belong. If a prepared statement cannot be retrieved for the name specified, the statement is listed in UnprocessedPreparedStatementNames.</td>
 </tr>
 <tr>
     <td><a href="#list_prepared_statements"><CopyableCode code="list_prepared_statements" /></a></td>
@@ -213,26 +213,13 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 ## `SELECT` examples
 
 <Tabs
-    defaultValue="batch_get_prepared_statement"
+    defaultValue="get_prepared_statement"
     values={[
-        { label: 'batch_get_prepared_statement', value: 'batch_get_prepared_statement' },
         { label: 'get_prepared_statement', value: 'get_prepared_statement' },
+        { label: 'batch_get_prepared_statement', value: 'batch_get_prepared_statement' },
         { label: 'list_prepared_statements', value: 'list_prepared_statements' }
     ]}
 >
-<TabItem value="batch_get_prepared_statement">
-
-Returns the details of a single prepared statement or a list of up to 256 prepared statements for the array of prepared statement names that you provide. Requires you to have access to the workgroup to which the prepared statements belong. If a prepared statement cannot be retrieved for the name specified, the statement is listed in UnprocessedPreparedStatementNames.
-
-```sql
-SELECT
-prepared_statements,
-unprocessed_prepared_statement_names
-FROM aws.athena.prepared_statements
-WHERE region = '{{ region }}' -- required
-;
-```
-</TabItem>
 <TabItem value="get_prepared_statement">
 
 Retrieves the prepared statement with the specified name from the specified workgroup.
@@ -244,6 +231,19 @@ last_modified_time,
 query_statement,
 statement_name,
 work_group_name
+FROM aws.athena.prepared_statements
+WHERE region = '{{ region }}' -- required
+;
+```
+</TabItem>
+<TabItem value="batch_get_prepared_statement">
+
+Returns the details of a single prepared statement or a list of up to 256 prepared statements for the array of prepared statement names that you provide. Requires you to have access to the workgroup to which the prepared statements belong. If a prepared statement cannot be retrieved for the name specified, the statement is listed in UnprocessedPreparedStatementNames.
+
+```sql
+SELECT
+prepared_statements,
+unprocessed_prepared_statement_names
 FROM aws.athena.prepared_statements
 WHERE region = '{{ region }}' -- required
 ;

@@ -342,10 +342,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/CreateCustomMetadataResponse"
     delete:
       operationId: DeleteCustomMetadata
       description: Deletes custom metadata from the specified resource.
@@ -383,10 +379,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteCustomMetadataResponse"
   /api/v1/folders:
     post:
       operationId: CreateFolder
@@ -449,10 +441,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/CreateLabelsResponse"
     delete:
       operationId: DeleteLabels
       description: Deletes the specified list of labels from a resource.
@@ -484,10 +472,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteLabelsResponse"
   /api/v1/organizations/{organization_id}/subscriptions:
     post:
       operationId: CreateNotificationSubscription
@@ -1916,8 +1900,6 @@ components:
     CustomMetadataMap:
       type: object
       properties: {}
-    CreateCustomMetadataResponse:
-      type: object
     ResourceNameType:
       type: string
       minLength: 1
@@ -1987,8 +1969,6 @@ components:
       minLength: 1
       maxLength: 32
       pattern: "[a-zA-Z0-9._+-/=][a-zA-Z0-9 ._+-/=]*"
-    CreateLabelsResponse:
-      type: object
     SubscriptionEndPointType:
       type: string
       minLength: 1
@@ -2041,10 +2021,6 @@ components:
       minLength: 1
       maxLength: 56
       pattern: "[a-zA-Z0-9._+-/=][a-zA-Z0-9 ._+-/=]*"
-    DeleteCustomMetadataResponse:
-      type: object
-    DeleteLabelsResponse:
-      type: object
     ActivityNamesFilterType:
       type: string
       minLength: 1
@@ -3196,7 +3172,6 @@ components:
             $ref: "#/paths/~1api~1v1~1resources~1{resource_id}~1customMetadata/put"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -3207,7 +3182,6 @@ components:
             $ref: "#/paths/~1api~1v1~1resources~1{resource_id}~1customMetadata/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
         create_labels:
@@ -3215,7 +3189,6 @@ components:
             $ref: "#/paths/~1api~1v1~1resources~1{resource_id}~1labels/put"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -3226,7 +3199,6 @@ components:
             $ref: "#/paths/~1api~1v1~1resources~1{resource_id}~1labels/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         get_resources:
           operation:
             $ref: "#/paths/~1api~1v1~1resources/get"
@@ -3357,10 +3329,10 @@ components:
         update: []
         delete:
           - $ref: "#/components/x-stackQL-resources/notification_subscriptions/methods/delete_notification_subscription"
-    folder_contents:
-      id: aws.workdocs.folder_contents
-      name: folder_contents
-      title: folder_contents
+    folder_content:
+      id: aws.workdocs.folder_content
+      name: folder_content
+      title: folder_content
       methods:
         delete_folder_contents:
           operation:
@@ -3386,11 +3358,11 @@ components:
                 location: body
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/folder_contents/methods/describe_folder_contents"
+          - $ref: "#/components/x-stackQL-resources/folder_content/methods/describe_folder_contents"
         insert: []
         update: []
         delete:
-          - $ref: "#/components/x-stackQL-resources/folder_contents/methods/delete_folder_contents"
+          - $ref: "#/components/x-stackQL-resources/folder_content/methods/delete_folder_contents"
     activities:
       id: aws.workdocs.activities
       name: activities
@@ -3530,6 +3502,27 @@ components:
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/folder_paths/methods/get_folder_path"
+        insert: []
+        update: []
+        delete: []
+    document_version_uploads:
+      id: aws.workdocs.document_version_uploads
+      name: document_version_uploads
+      title: document_version_uploads
+      methods:
+        initiate_document_version_upload:
+          operation:
+            $ref: "#/paths/~1api~1v1~1documents/post"
+          response:
+            openAPIDocKey: "201"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
         insert: []
         update: []
         delete: []

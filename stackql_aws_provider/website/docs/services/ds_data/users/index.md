@@ -266,6 +266,13 @@ The following methods are available for this resource:
     <td></td>
     <td>Deletes a user.</td>
 </tr>
+<tr>
+    <td><a href="#disable_user"><CopyableCode code="disable_user" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-DirectoryId"><code>DirectoryId</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-SAMAccountName"><code>SAMAccountName</code></a></td>
+    <td></td>
+    <td>Deactivates an active user account. For information about how to enable an inactive user account, see ResetUserPassword in the Directory Service API Reference.</td>
+</tr>
 </tbody>
 </table>
 
@@ -485,6 +492,33 @@ Deletes a user.
 DELETE FROM aws.ds_data.users
 WHERE DirectoryId = '{{ DirectoryId }}' --required
 AND region = '{{ region }}' --required
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="disable_user"
+    values={[
+        { label: 'disable_user', value: 'disable_user' }
+    ]}
+>
+<TabItem value="disable_user">
+
+Deactivates an active user account. For information about how to enable an inactive user account, see ResetUserPassword in the Directory Service API Reference.
+
+```sql
+EXEC aws.ds_data.users.disable_user 
+@DirectoryId='{{ DirectoryId }}' --required, 
+@region='{{ region }}' --required 
+@@json=
+'{
+"ClientToken": "{{ ClientToken }}", 
+"SAMAccountName": "{{ SAMAccountName }}"
+}'
 ;
 ```
 </TabItem>

@@ -38,10 +38,6 @@ paths:
       responses:
         "201":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/AssociateToConfigurationResult"
   /create-chime-webhook-configuration:
     post:
       operationId: CreateChimeWebhookConfiguration
@@ -227,10 +223,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteChimeWebhookConfigurationResult"
   /delete-custom-action:
     post:
       operationId: DeleteCustomAction
@@ -250,10 +242,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteCustomActionResult"
   /delete-ms-teams-channel-configuration:
     post:
       operationId: DeleteMicrosoftTeamsChannelConfiguration
@@ -273,10 +261,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteTeamsChannelConfigurationResult"
   /delete-ms-teams-configured-teams:
     post:
       operationId: DeleteMicrosoftTeamsConfiguredTeam
@@ -296,10 +280,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteTeamsConfiguredTeamResult"
   /delete-ms-teams-user-identity:
     post:
       operationId: DeleteMicrosoftTeamsUserIdentity
@@ -322,10 +302,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteMicrosoftTeamsUserIdentityResult"
   /delete-slack-channel-configuration:
     post:
       operationId: DeleteSlackChannelConfiguration
@@ -345,10 +321,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteSlackChannelConfigurationResult"
   /delete-slack-user-identity:
     post:
       operationId: DeleteSlackUserIdentity
@@ -374,10 +346,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteSlackUserIdentityResult"
   /delete-slack-workspace-authorization:
     post:
       operationId: DeleteSlackWorkspaceAuthorization
@@ -397,10 +365,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteSlackWorkspaceAuthorizationResult"
   /describe-chime-webhook-configurations:
     post:
       operationId: DescribeChimeWebhookConfigurations
@@ -521,10 +485,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DisassociateFromConfigurationResult"
   /get-account-preferences:
     post:
       operationId: GetAccountPreferences
@@ -750,10 +710,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TagResourceResponse"
   /untag-resource:
     post:
       operationId: UntagResource
@@ -776,10 +732,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UntagResourceResponse"
   /update-account-preferences:
     post:
       operationId: UpdateAccountPreferences
@@ -997,8 +949,6 @@ components:
       minLength: 19
       maxLength: 1169
       pattern: arn:aws:(wheatley|chatbot):[A-Za-z0-9_/.-]{0,63}:[A-Za-z0-9_/.-]{0,63}:[A-Za-z0-9][A-Za-z0-9:_/+=,@.-]{0,1023}
-    AssociateToConfigurationResult:
-      type: object
     ChimeWebhookDescription:
       type: string
       minLength: 1
@@ -1382,27 +1332,11 @@ components:
       type: string
       minLength: 1
       maxLength: 255
-    DeleteChimeWebhookConfigurationResult:
-      type: object
-    DeleteCustomActionResult:
-      type: object
-    DeleteTeamsChannelConfigurationResult:
-      type: object
-    DeleteTeamsConfiguredTeamResult:
-      type: object
-    DeleteMicrosoftTeamsUserIdentityResult:
-      type: object
-    DeleteSlackChannelConfigurationResult:
-      type: object
     SlackUserId:
       type: string
       minLength: 1
       maxLength: 255
       pattern: (.*)
-    DeleteSlackUserIdentityResult:
-      type: object
-    DeleteSlackWorkspaceAuthorizationResult:
-      type: object
     MaxResults:
       type: integer
       minimum: 1
@@ -1512,8 +1446,6 @@ components:
       required:
         - SlackTeamId
         - SlackTeamName
-    DisassociateFromConfigurationResult:
-      type: object
     GetAccountPreferencesResult:
       type: object
       properties:
@@ -1725,14 +1657,10 @@ components:
         Tags:
           $ref: "#/components/schemas/TagList"
           description: Key-value pairs that are assigned to a resource, usually for the purpose of grouping and searching for items. Tags are metadata that you define.
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
         $ref: "#/components/schemas/TagKey"
-    UntagResourceResponse:
-      type: object
     UpdateAccountPreferencesResult:
       type: object
       properties:
@@ -1776,7 +1704,6 @@ components:
             $ref: "#/paths/~1associate-to-configuration/post"
           response:
             openAPIDocKey: "201"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -1809,7 +1736,6 @@ components:
             $ref: "#/paths/~1delete-chime-webhook-configuration/post"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -1875,7 +1801,6 @@ components:
             $ref: "#/paths/~1delete-custom-action/post"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -1960,7 +1885,6 @@ components:
             $ref: "#/paths/~1delete-ms-teams-channel-configuration/post"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -2039,7 +1963,6 @@ components:
             $ref: "#/paths/~1delete-slack-channel-configuration/post"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -2094,7 +2017,6 @@ components:
             $ref: "#/paths/~1delete-ms-teams-configured-teams/post"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -2136,7 +2058,6 @@ components:
             $ref: "#/paths/~1delete-ms-teams-user-identity/post"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -2178,7 +2099,6 @@ components:
             $ref: "#/paths/~1delete-slack-user-identity/post"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -2220,7 +2140,6 @@ components:
             $ref: "#/paths/~1delete-slack-workspace-authorization/post"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -2262,7 +2181,6 @@ components:
             $ref: "#/paths/~1disassociate-from-configuration/post"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -2355,7 +2273,6 @@ components:
             $ref: "#/paths/~1tag-resource/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -2366,7 +2283,6 @@ components:
             $ref: "#/paths/~1untag-resource/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:

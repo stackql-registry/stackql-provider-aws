@@ -596,11 +596,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ResumeBatchLoadTaskResponse'
-      x-stackql-resource: batch_load_task
+      x-stackql-resource: batch_load_tasks
       x-stackql-method: resume_batch_load_task
       x-stackql-verb: EXEC
   /TagResource:
@@ -638,10 +634,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -680,10 +672,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -1553,16 +1541,10 @@ components:
         Tags:
           $ref: '#/components/schemas/TagList'
           description: The tags currently associated with the Timestream resource.
-    ResumeBatchLoadTaskResponse:
-      type: object
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
         $ref: '#/components/schemas/TagKey'
-    UntagResourceResponse:
-      type: object
     UpdateDatabaseResponse:
       type: object
       properties:

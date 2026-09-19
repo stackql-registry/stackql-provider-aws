@@ -71,6 +71,42 @@ config:
 
 This is the same pattern used by `ref/ec2.yaml`'s `volumes_presented` resource - the GET form gives stackql the typed parameter surface, the request translation keeps long parameter sets (filter lists, tag specs, ID arrays) out of URL length limits.
 
+## 2a. Routing source of truth: `provider-dev/config/all_services.csv`
+
+The CSV is the complete operation catalog for the provider (one row per
+botocore operation, keyed `filename::operationId`) and the only place
+routing decisions live. Stage 2 resolves it onto the stage 1 breadcrumbs
+before anything else runs, so the SQL surface changes only through an edit
+to this file:
+
+- **Rename a resource / move an operation / rename a method / change the
+  SQL verb**: edit `stackql_resource_name`, `stackql_method_name`,
+  `stackql_verb` on the affected rows and rebuild. Query/ec2 services have a
+  `GET_` and a `POST_` row per operation; edit both (the lint rejects twins
+  that disagree).
+- **Exclude an operation**: set `stackql_verb` to `skip`. The row stays (the
+  catalog is complete); no method is emitted. Blanking a row is a lint error.
+- **New operations** (after a botocore sync) are derived from the breadcrumbs,
+  follow the CSV resource their non-EXEC siblings were pinned to, and are
+  appended.
+  Operations stage 1 cannot emit (cbor-only services) are appended as `skip`
+  with the reason in `op_description`. Review the appended rows, then commit.
+- **Guards** (all hard build failures): lint on load (duplicate keys, unknown
+  verbs, disagreeing twins, two operations claiming one method), and a
+  CSV -> output equivalence check per service - every pinned row must come
+  out as exactly that resource.method with that effective verb. A clash the
+  build cannot honour is resolved in the CSV or in
+  `provider-dev/config/param_promotions.json`, never by tolerating drift.
+- **CI**: `bash bin/generate-provider.sh --strict` fails if any operation has
+  no row instead of appending.
+- **Conscious surface reductions** (collapsing resources) lower the counts
+  in `provider-dev/config/benchmarks.json`; re-baseline with
+  `bash bin/generate-provider.sh --update-benchmarks` in the same change.
+
+Exec-only resources (no SELECT/INSERT/UPDATE/DELETE, only EXEC methods) are
+emitted like any other resource: `SHOW METHODS` lists them and `EXEC`
+routes; `DESCRIBE` reports that SELECT is not supported.
+
 ## 3. Validate the provider with stackql exec
 
 The fastest sanity check is `stackql exec` against the local registry - no wire server needed:

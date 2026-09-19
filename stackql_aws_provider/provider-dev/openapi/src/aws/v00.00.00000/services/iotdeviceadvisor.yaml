@@ -81,10 +81,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteSuiteDefinitionResponse"
     get:
       operationId: GetSuiteDefinition
       description: Gets information about a Device Advisor test suite. Requires permission to access the GetSuiteDefinition action.
@@ -298,10 +294,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TagResourceResponse"
     delete:
       operationId: UntagResource
       description: Removes tags from an IoT Device Advisor resource. Requires permission to access the UntagResource action.
@@ -321,10 +313,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UntagResourceResponse"
   /suiteDefinitions/{suite_definition_id}/suiteRuns:
     post:
       operationId: StartSuiteRun
@@ -378,10 +366,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/StopSuiteRunResponse"
 components:
   parameters:
     X-Amz-Content-Sha256:
@@ -526,8 +510,6 @@ components:
     Timestamp:
       type: string
       format: date-time
-    DeleteSuiteDefinitionResponse:
-      type: object
     AuthenticationMethod:
       type: string
       enum:
@@ -903,10 +885,6 @@ components:
         endpoint:
           $ref: "#/components/schemas/Endpoint"
           description: The response of an Device Advisor test endpoint.
-    StopSuiteRunResponse:
-      type: object
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
@@ -915,8 +893,6 @@ components:
       type: string
       minLength: 1
       maxLength: 128
-    UntagResourceResponse:
-      type: object
     UpdateSuiteDefinitionResponse:
       type: object
       properties:
@@ -968,7 +944,6 @@ components:
             $ref: "#/paths/~1suiteDefinitions~1{suite_definition_id}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         get_suite_definition:
           operation:
             $ref: "#/paths/~1suiteDefinitions~1{suite_definition_id}/get"
@@ -1004,7 +979,6 @@ components:
             $ref: "#/paths/~1suiteDefinitions~1{suite_definition_id}~1suiteRuns~1{suite_run_id}~1stop/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/suite_definitions/methods/get_suite_definition"
@@ -1093,7 +1067,6 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -1104,7 +1077,6 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
       sqlVerbs:

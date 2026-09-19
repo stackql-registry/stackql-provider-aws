@@ -164,6 +164,13 @@ The following methods are available for this resource:
     <td></td>
     <td>Deletes a cancelled capacity reservation. A reservation must be cancelled before it can be deleted. A deleted reservation is immediately removed from your account and can no longer be referenced, including by its ARN. A deleted reservation cannot be called by GetCapacityReservation, and deleted reservations do not appear in the output of ListCapacityReservations.</td>
 </tr>
+<tr>
+    <td><a href="#cancel_capacity_reservation"><CopyableCode code="cancel_capacity_reservation" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-Name"><code>Name</code></a></td>
+    <td></td>
+    <td>Cancels the capacity reservation with the specified name. Cancelled reservations remain in your account and will be deleted 45 days after cancellation. During the 45 days, you cannot re-purpose or reuse a reservation that has been cancelled, but you can refer to its tags and view it for historical reference.</td>
+</tr>
 </tbody>
 </table>
 
@@ -328,6 +335,31 @@ Deletes a cancelled capacity reservation. A reservation must be cancelled before
 ```sql
 DELETE FROM aws.athena.capacity_reservations
 WHERE region = '{{ region }}' --required
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="cancel_capacity_reservation"
+    values={[
+        { label: 'cancel_capacity_reservation', value: 'cancel_capacity_reservation' }
+    ]}
+>
+<TabItem value="cancel_capacity_reservation">
+
+Cancels the capacity reservation with the specified name. Cancelled reservations remain in your account and will be deleted 45 days after cancellation. During the 45 days, you cannot re-purpose or reuse a reservation that has been cancelled, but you can refer to its tags and view it for historical reference.
+
+```sql
+EXEC aws.athena.capacity_reservations.cancel_capacity_reservation 
+@region='{{ region }}' --required 
+@@json=
+'{
+"Name": "{{ Name }}"
+}'
 ;
 ```
 </TabItem>

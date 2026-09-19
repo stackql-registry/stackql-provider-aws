@@ -44,10 +44,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/AssociateTrackerConsumerResponse'
       x-stackql-resource: tracker_consumers
       x-stackql-method: associate_tracker_consumer
       x-stackql-verb: UPDATE
@@ -80,7 +76,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchDeleteDevicePositionHistoryResponse'
-      x-stackql-resource: trackers
+      x-stackql-resource: device_position_histories
       x-stackql-method: batch_delete_device_position_history
       x-stackql-verb: EXEC
   /geofencing/v0/collections/{collection_name}/delete-geofences:
@@ -216,7 +212,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchPutGeofenceResponse'
-      x-stackql-resource: batch_put_geofence
+      x-stackql-resource: geofences
       x-stackql-method: batch_put_geofence
       x-stackql-verb: EXEC
   /tracking/v0/trackers/{tracker_name}/positions:
@@ -259,7 +255,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchUpdateDevicePositionResponse'
-      x-stackql-resource: trackers
+      x-stackql-resource: device_positions
       x-stackql-method: batch_update_device_position
       x-stackql-verb: EXEC
   /routes/v0/calculators/{calculator_name}/calculate/route:
@@ -335,7 +331,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CalculateRouteResponse'
-      x-stackql-resource: calculate_route
+      x-stackql-resource: routes
       x-stackql-method: calculate_route
       x-stackql-verb: EXEC
   /routes/v0/calculators/{calculator_name}/calculate/route-matrix:
@@ -407,7 +403,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CalculateRouteMatrixResponse'
-      x-stackql-resource: calculate_route_matrix
+      x-stackql-resource: route_matrixes
       x-stackql-method: calculate_route_matrix
       x-stackql-verb: EXEC
   /metadata/v0/jobs/cancel-job:
@@ -435,7 +431,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CancelJobResponse'
-      x-stackql-resource: job
+      x-stackql-resource: jobs
       x-stackql-method: cancel_job
       x-stackql-verb: EXEC
   /geofencing/v0/collections:
@@ -710,10 +706,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteGeofenceCollectionResponse'
       x-stackql-resource: geofence_collections
       x-stackql-method: delete_geofence_collection
       x-stackql-verb: DELETE
@@ -793,10 +785,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteKeyResponse'
       x-stackql-resource: keys
       x-stackql-method: delete_key
       x-stackql-verb: DELETE
@@ -880,10 +868,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteMapResponse'
       x-stackql-resource: maps
       x-stackql-method: delete_map
       x-stackql-verb: DELETE
@@ -975,10 +959,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeletePlaceIndexResponse'
       x-stackql-resource: place_indexes
       x-stackql-method: delete_place_index
       x-stackql-verb: DELETE
@@ -1071,10 +1051,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteRouteCalculatorResponse'
       x-stackql-resource: route_calculators
       x-stackql-method: delete_route_calculator
       x-stackql-verb: DELETE
@@ -1159,10 +1135,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteTrackerResponse'
       x-stackql-resource: trackers
       x-stackql-method: delete_tracker
       x-stackql-verb: DELETE
@@ -1247,10 +1219,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DisassociateTrackerConsumerResponse'
       x-stackql-resource: tracker_consumers
       x-stackql-method: disassociate_tracker_consumer
       x-stackql-verb: UPDATE
@@ -1301,7 +1269,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ForecastGeofenceEventsResponse'
-      x-stackql-resource: forecast_geofence_events
+      x-stackql-resource: geofences
       x-stackql-method: forecast_geofence_events
       x-stackql-verb: EXEC
       x-stackql-pagination-request-token-key: NextToken
@@ -2060,10 +2028,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -2086,10 +2050,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -2211,7 +2171,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SearchPlaceIndexForPositionResponse'
-      x-stackql-resource: place_index_for_positions
+      x-stackql-resource: place_indexes
       x-stackql-method: search_place_index_for_position
       x-stackql-verb: SELECT
   /places/v0/indexes/{index_name}/search/suggestions:
@@ -2273,7 +2233,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SearchPlaceIndexForSuggestionsResponse'
-      x-stackql-resource: place_index_for_suggestions
+      x-stackql-resource: place_indexes
       x-stackql-method: search_place_index_for_suggestions
       x-stackql-verb: SELECT
   /places/v0/indexes/{index_name}/search/text:
@@ -2334,7 +2294,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SearchPlaceIndexForTextResponse'
-      x-stackql-resource: place_index_for_texts
+      x-stackql-resource: place_indexes
       x-stackql-method: search_place_index_for_text
       x-stackql-verb: SELECT
   /metadata/v0/jobs:
@@ -2379,7 +2339,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartJobResponse'
-      x-stackql-resource: job
+      x-stackql-resource: jobs
       x-stackql-method: start_job
       x-stackql-verb: EXEC
   /tracking/v0/trackers/{tracker_name}/positions/verify:
@@ -2416,7 +2376,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/VerifyDevicePositionResponse'
-      x-stackql-resource: trackers
+      x-stackql-resource: device_positions
       x-stackql-method: verify_device_position
       x-stackql-verb: EXEC
 components:
@@ -2474,8 +2434,6 @@ components:
       minLength: 0
       maxLength: 1600
       pattern: arn(:[a-z0-9]+([.-][a-z0-9]+)*){2}(:([a-z0-9]+([.-][a-z0-9]+)*)?){2}:([^/].*)?
-    AssociateTrackerConsumerResponse:
-      type: object
     BatchDeleteDevicePositionHistoryRequestDeviceIdsList:
       type: array
       items:
@@ -3719,18 +3677,6 @@ components:
       - TrackerName
       - TrackerArn
       - CreateTime
-    DeleteGeofenceCollectionResponse:
-      type: object
-    DeleteKeyResponse:
-      type: object
-    DeleteMapResponse:
-      type: object
-    DeletePlaceIndexResponse:
-      type: object
-    DeleteRouteCalculatorResponse:
-      type: object
-    DeleteTrackerResponse:
-      type: object
     DescribeGeofenceCollectionResponse:
       type: object
       properties:
@@ -3990,8 +3936,6 @@ components:
       - Description
       - CreateTime
       - UpdateTime
-    DisassociateTrackerConsumerResponse:
-      type: object
     ForecastGeofenceEventsDeviceState:
       description: The device's position and speed.
       type: object
@@ -5353,14 +5297,10 @@ components:
       - JobArn
       - JobId
       - Status
-    TagResourceResponse:
-      type: object
     TagKeys:
       type: array
       items:
         $ref: '#/components/schemas/String'
-    UntagResourceResponse:
-      type: object
     UpdateGeofenceCollectionResponse:
       type: object
       properties:

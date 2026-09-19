@@ -54,10 +54,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteRecommendationPreferencesResponse"
   /DescribeRecommendationExportJobs:
     post:
       operationId: DescribeRecommendationExportJobs
@@ -1220,10 +1216,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/PutRecommendationPreferencesResponse"
   /UpdateEnrollmentStatus:
     post:
       operationId: UpdateEnrollmentStatus
@@ -1349,8 +1341,6 @@ components:
         - LookBackPeriodPreference
         - PreferredResources
         - UtilizationPreferences
-    DeleteRecommendationPreferencesResponse:
-      type: object
     JobIds:
       type: array
       items:
@@ -4800,8 +4790,6 @@ components:
         excludeList:
           $ref: "#/components/schemas/PreferredResourceValues"
           description: The preferred resource type values to exclude from the recommendation candidates. If this isn’t specified, all supported resources are included by default. You can specify up to 1000 values in this list.
-    PutRecommendationPreferencesResponse:
-      type: object
     UpdateEnrollmentStatusResponse:
       type: object
       properties:
@@ -4822,7 +4810,6 @@ components:
             $ref: "#/paths/~1DeleteRecommendationPreferences/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.0
@@ -4856,7 +4843,6 @@ components:
             $ref: "#/paths/~1PutRecommendationPreferences/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.0
@@ -5319,10 +5305,10 @@ components:
         update:
           - $ref: "#/components/x-stackQL-resources/enrollment_status/methods/update_enrollment_status"
         delete: []
-    enrollment_statuses_for_organizations:
-      id: aws.compute_optimizer.enrollment_statuses_for_organizations
-      name: enrollment_statuses_for_organizations
-      title: enrollment_statuses_for_organizations
+    enrollment_statuses:
+      id: aws.compute_optimizer.enrollment_statuses
+      name: enrollment_statuses
+      title: enrollment_statuses
       methods:
         get_enrollment_statuses_for_organization:
           operation:
@@ -5347,7 +5333,7 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/enrollment_statuses_for_organizations/methods/get_enrollment_statuses_for_organization"
+          - $ref: "#/components/x-stackQL-resources/enrollment_statuses/methods/get_enrollment_statuses_for_organization"
         insert: []
         update: []
         delete: []

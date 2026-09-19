@@ -101,7 +101,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: batch_create_category
+      x-stackql-resource: categories
       x-stackql-method: batch_create_category
       x-stackql-verb: EXEC
   /catalog.deleteCategories:
@@ -130,7 +130,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: batch_delete_category
+      x-stackql-resource: categories
       x-stackql-method: batch_delete_category
       x-stackql-verb: EXEC
   /catalog.updateCategories:
@@ -159,7 +159,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: batch_update_category
+      x-stackql-resource: categories
       x-stackql-method: batch_update_category
       x-stackql-verb: EXEC
   /catalog.createItem:
@@ -462,7 +462,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ExportQAppSessionDataOutput'
-      x-stackql-resource: q_app_sessions
+      x-stackql-resource: q_app_session_data
       x-stackql-method: export_q_app_session_data
       x-stackql-verb: EXEC
   /catalog.getItem:
@@ -583,7 +583,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetQAppSessionMetadataOutput'
-      x-stackql-resource: q_app_session_metadatas
+      x-stackql-resource: q_app_session_metadata
       x-stackql-method: get_q_app_session_metadata
       x-stackql-verb: SELECT
   /apps.importDocument:
@@ -631,7 +631,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ImportDocumentOutput'
-      x-stackql-resource: document
+      x-stackql-resource: documents
       x-stackql-method: import_document
       x-stackql-verb: EXEC
   /catalog.listCategories:
@@ -724,7 +724,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListQAppSessionDataOutput'
-      x-stackql-resource: q_app_session_datas
+      x-stackql-resource: q_app_session_data
       x-stackql-method: list_q_app_session_data
       x-stackql-verb: SELECT
   /apps.list:
@@ -811,10 +811,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -837,10 +833,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -872,7 +864,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PredictQAppOutput'
-      x-stackql-resource: predict_q_app
+      x-stackql-resource: q_apps
       x-stackql-method: predict_q_app
       x-stackql-verb: EXEC
   /runtime.startQAppSession:
@@ -914,7 +906,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartQAppSessionOutput'
-      x-stackql-resource: q_apps
+      x-stackql-resource: q_app_sessions
       x-stackql-method: start_q_app_session
       x-stackql-verb: EXEC
   /runtime.deleteMiniAppRun:
@@ -943,7 +935,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: q_apps
+      x-stackql-resource: q_app_sessions
       x-stackql-method: stop_q_app_session
       x-stackql-verb: EXEC
   /catalog.updateItem:
@@ -1156,7 +1148,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateQAppSessionMetadataOutput'
-      x-stackql-resource: q_app_session_metadatas
+      x-stackql-resource: q_app_session_metadata
       x-stackql-method: update_q_app_session_metadata
       x-stackql-verb: UPDATE
 components:
@@ -2609,8 +2601,6 @@ components:
     Tags:
       type: object
       properties: {}
-    TagResourceResponse:
-      type: object
     TagKeys:
       type: array
       items:
@@ -2619,8 +2609,6 @@ components:
       type: string
       minLength: 1
       maxLength: 128
-    UntagResourceResponse:
-      type: object
     LibraryItemStatus:
       type: string
       enum:

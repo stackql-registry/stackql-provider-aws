@@ -18,7 +18,7 @@ timestream_query service documentation.
 
 :::info[Service Summary]
 
-total resources: __4__  
+total resources: __5__  
 
 :::
 
@@ -26,7 +26,8 @@ total resources: __4__
 <div class="row">
 <div class="providerDocColumn">
 <a href="/services/timestream_query/account_settings/">account_settings</a><br />
-<a href="/services/timestream_query/endpoints/">endpoints</a>
+<a href="/services/timestream_query/endpoints/">endpoints</a><br />
+<a href="/services/timestream_query/queries/">queries</a>
 </div>
 <div class="providerDocColumn">
 <a href="/services/timestream_query/scheduled_queries/">scheduled_queries</a><br />

@@ -33,11 +33,31 @@ Creates, updates, deletes, gets or lists an <code>alarms</code> resource.
 The following fields are returned by `SELECT` queries:
 
 <Tabs
-    defaultValue="describe_alarms"
+    defaultValue="describe_alarms_for_metric"
     values={[
+        { label: 'describe_alarms_for_metric', value: 'describe_alarms_for_metric' },
         { label: 'describe_alarms', value: 'describe_alarms' }
     ]}
 >
+<TabItem value="describe_alarms_for_metric">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="metric_alarms" /></td>
+    <td><code>array</code></td>
+    <td>The information for each alarm with the specified metric.</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
 <TabItem value="describe_alarms">
 
 <table>
@@ -209,6 +229,11 @@ The following fields are returned by `SELECT` queries:
     <td><code>string</code></td>
     <td>The unit of the metric associated with the alarm. (Seconds, Microseconds, Milliseconds, Bytes, Kilobytes, Megabytes, Gigabytes, Terabytes, Bits, Kilobits, Megabits, Gigabits, Terabits, Percent, Count, Bytes/Second, Kilobytes/Second, Megabytes/Second, Gigabytes/Second, Terabytes/Second, Bits/Second, Kilobits/Second, Megabits/Second, Gigabits/Second, Terabits/Second, Count/Second, None)</td>
 </tr>
+<tr>
+    <td><CopyableCode code="warm_up_configuration" /></td>
+    <td><code>object</code></td>
+    <td>The warm-up configuration for the alarm. A warm-up period delays alarm evaluation after you create or update the alarm. During the warm-up period, the alarm stays in INSUFFICIENT_DATA and does not perform alarm actions. For more information, see Alarm warm-up periods in the Amazon CloudWatch User Guide.</td>
+</tr>
 </tbody>
 </table>
 </TabItem>
@@ -229,6 +254,13 @@ The following methods are available for this resource:
     </tr>
 </thead>
 <tbody>
+<tr>
+    <td><a href="#describe_alarms_for_metric"><CopyableCode code="describe_alarms_for_metric" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Retrieves the alarms for the specified metric. To filter the results, specify a statistic, period, or unit. This operation retrieves only standard alarms that are based on the specified metric. It does not return alarms based on math expressions that use the specified metric, or composite alarms that use the specified metric.</td>
+</tr>
 <tr>
     <td><a href="#describe_alarms"><CopyableCode code="describe_alarms" /></a></td>
     <td><CopyableCode code="select" /></td>
@@ -312,11 +344,24 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 ## `SELECT` examples
 
 <Tabs
-    defaultValue="describe_alarms"
+    defaultValue="describe_alarms_for_metric"
     values={[
+        { label: 'describe_alarms_for_metric', value: 'describe_alarms_for_metric' },
         { label: 'describe_alarms', value: 'describe_alarms' }
     ]}
 >
+<TabItem value="describe_alarms_for_metric">
+
+Retrieves the alarms for the specified metric. To filter the results, specify a statistic, period, or unit. This operation retrieves only standard alarms that are based on the specified metric. It does not return alarms based on math expressions that use the specified metric, or composite alarms that use the specified metric.
+
+```sql
+SELECT
+metric_alarms
+FROM aws.cloudwatch.alarms
+WHERE region = '{{ region }}' -- required
+;
+```
+</TabItem>
 <TabItem value="describe_alarms">
 
 Retrieves the specified alarms. You can filter the results by specifying a prefix for the alarm name, the alarm state, or a prefix for any action. To use this operation and return information about composite alarms, you must be signed on with the cloudwatch:DescribeAlarms permission that is scoped to *. You can't return information about composite alarms if your cloudwatch:DescribeAlarms permission has a narrower scope.
@@ -354,7 +399,8 @@ statistic,
 threshold,
 threshold_metric_id,
 treat_missing_data,
-unit
+unit,
+warm_up_configuration
 FROM aws.cloudwatch.alarms
 WHERE region = '{{ region }}' -- required
 ;
@@ -423,7 +469,8 @@ QueryResultsToAlarm = {{ QueryResultsToAlarm }},
 Threshold = {{ Threshold }},
 ComparisonOperator = '{{ ComparisonOperator }}',
 TreatMissingData = '{{ TreatMissingData }}',
-Tags = '{{ Tags }}'
+Tags = '{{ Tags }}',
+WarmUpConfiguration = '{{ WarmUpConfiguration }}'
 WHERE 
 region = '{{ region }}' --required
 AND AlarmName = '{{ AlarmName }}' --required
@@ -487,6 +534,7 @@ Metrics = '{{ Metrics }}',
 Tags = '{{ Tags }}',
 ThresholdMetricId = '{{ ThresholdMetricId }}',
 EvaluationWindow = '{{ EvaluationWindow }}',
+WarmUpConfiguration = '{{ WarmUpConfiguration }}',
 EvaluationCriteria = '{{ EvaluationCriteria }}',
 EvaluationInterval = {{ EvaluationInterval }}
 WHERE 

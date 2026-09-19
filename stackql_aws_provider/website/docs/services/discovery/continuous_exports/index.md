@@ -116,6 +116,20 @@ The following methods are available for this resource:
     <td></td>
     <td>Lists exports as specified by ID. All continuous exports associated with your user can be listed if you call DescribeContinuousExports as is without passing any parameters.</td>
 </tr>
+<tr>
+    <td><a href="#start_continuous_export"><CopyableCode code="start_continuous_export" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Start the continuous flow of agent's discovered data into Amazon Athena.</td>
+</tr>
+<tr>
+    <td><a href="#stop_continuous_export"><CopyableCode code="stop_continuous_export" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-exportId"><code>exportId</code></a></td>
+    <td></td>
+    <td>Stop the continuous flow of agent's discovered data into Amazon Athena.</td>
+</tr>
 </tbody>
 </table>
 
@@ -164,6 +178,42 @@ status_detail,
 stop_time
 FROM aws.discovery.continuous_exports
 WHERE region = '{{ region }}' -- required
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="start_continuous_export"
+    values={[
+        { label: 'start_continuous_export', value: 'start_continuous_export' },
+        { label: 'stop_continuous_export', value: 'stop_continuous_export' }
+    ]}
+>
+<TabItem value="start_continuous_export">
+
+Start the continuous flow of agent's discovered data into Amazon Athena.
+
+```sql
+EXEC aws.discovery.continuous_exports.start_continuous_export 
+@region='{{ region }}' --required 
+;
+```
+</TabItem>
+<TabItem value="stop_continuous_export">
+
+Stop the continuous flow of agent's discovered data into Amazon Athena.
+
+```sql
+EXEC aws.discovery.continuous_exports.stop_continuous_export 
+@region='{{ region }}' --required 
+@@json=
+'{
+"exportId": "{{ exportId }}"
+}'
 ;
 ```
 </TabItem>

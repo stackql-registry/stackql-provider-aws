@@ -62,10 +62,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DisassociateApiResponse'
       x-stackql-resource: apis
       x-stackql-method: disassociate_api
       x-stackql-verb: UPDATE
@@ -289,10 +285,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteApiCacheResponse'
       x-stackql-resource: api_caches
       x-stackql-method: delete_api_cache
       x-stackql-verb: DELETE
@@ -1011,10 +1003,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteApiResponse'
       x-stackql-resource: apis
       x-stackql-method: delete_api
       x-stackql-verb: DELETE
@@ -1095,10 +1083,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteApiKeyResponse'
       x-stackql-resource: api_keys
       x-stackql-method: delete_api_key
       x-stackql-verb: DELETE
@@ -1159,10 +1143,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteChannelNamespaceResponse'
       x-stackql-resource: channel_namespaces
       x-stackql-method: delete_channel_namespace
       x-stackql-verb: DELETE
@@ -1254,10 +1234,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteDataSourceResponse'
       x-stackql-resource: data_sources
       x-stackql-method: delete_data_source
       x-stackql-verb: DELETE
@@ -1359,10 +1335,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteDomainNameResponse'
       x-stackql-resource: domain_names
       x-stackql-method: delete_domain_name
       x-stackql-verb: DELETE
@@ -1436,10 +1408,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteFunctionResponse'
       x-stackql-resource: functions
       x-stackql-method: delete_function
       x-stackql-verb: DELETE
@@ -1540,10 +1508,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteGraphqlApiResponse'
       x-stackql-resource: graphql_apis
       x-stackql-method: delete_graphql_api
       x-stackql-verb: DELETE
@@ -1652,10 +1616,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteResolverResponse'
       x-stackql-resource: resolvers
       x-stackql-method: delete_resolver
       x-stackql-verb: DELETE
@@ -1773,10 +1733,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteTypeResponse'
       x-stackql-resource: types
       x-stackql-method: delete_type
       x-stackql-verb: DELETE
@@ -2015,7 +1971,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/EvaluateCodeResponse'
-      x-stackql-resource: evaluate_code
+      x-stackql-resource: codes
       x-stackql-method: evaluate_code
       x-stackql-verb: EXEC
   /v1/dataplane-evaluatetemplate:
@@ -2048,7 +2004,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/EvaluateMappingTemplateResponse'
-      x-stackql-resource: evaluate_mapping_template
+      x-stackql-resource: mapping_templates
       x-stackql-method: evaluate_mapping_template
       x-stackql-verb: EXEC
   /v1/apis/{api_id}/FlushCache:
@@ -2065,11 +2021,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/FlushApiCacheResponse'
-      x-stackql-resource: apis
+      x-stackql-resource: api_caches
       x-stackql-method: flush_api_cache
       x-stackql-verb: EXEC
   /v1/datasources/introspections/{introspection_id}:
@@ -2230,7 +2182,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetSchemaCreationStatusResponse'
-      x-stackql-resource: schema_creation_status
+      x-stackql-resource: schema_creation_statuses
       x-stackql-method: get_schema_creation_status
       x-stackql-verb: SELECT
     post:
@@ -2301,7 +2253,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListResolversByFunctionResponse'
-      x-stackql-resource: resolvers_by_functions
+      x-stackql-resource: resolvers
       x-stackql-method: list_resolvers_by_function
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.resolvers
@@ -2391,10 +2343,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -2417,10 +2365,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -2469,7 +2413,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTypesByAssociationResponse'
-      x-stackql-resource: types_by_associations
+      x-stackql-resource: types
       x-stackql-method: list_types_by_association
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.types
@@ -2497,7 +2441,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartDataSourceIntrospectionResponse'
-      x-stackql-resource: data_sources
+      x-stackql-resource: data_source_introspections
       x-stackql-method: start_data_source_introspection
       x-stackql-verb: EXEC
   /v1/mergedApis/{merged_api_identifier}/sourceApiAssociations/{association_id}/merge:
@@ -2526,7 +2470,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartSchemaMergeResponse'
-      x-stackql-resource: schema_merge
+      x-stackql-resource: schema_merges
       x-stackql-method: start_schema_merge
       x-stackql-verb: EXEC
   /v1/apis/{api_id}/ApiCaches/update:
@@ -3977,29 +3921,6 @@ components:
         format_:
           $ref: '#/components/schemas/TypeDefinitionFormat'
           description: 'The type format: SDL or JSON.'
-    DeleteApiResponse:
-      type: object
-    DeleteApiCacheResponse:
-      description: Represents the output of a DeleteApiCache operation.
-      type: object
-    DeleteApiKeyResponse:
-      type: object
-    DeleteChannelNamespaceResponse:
-      type: object
-    DeleteDataSourceResponse:
-      type: object
-    DeleteDomainNameResponse:
-      type: object
-    DeleteFunctionResponse:
-      type: object
-    DeleteGraphqlApiResponse:
-      type: object
-    DeleteResolverResponse:
-      type: object
-    DeleteTypeResponse:
-      type: object
-    DisassociateApiResponse:
-      type: object
     DisassociateMergedGraphqlApiResponse:
       type: object
       properties:
@@ -4134,9 +4055,6 @@ components:
         message:
           $ref: '#/components/schemas/ErrorMessage'
           description: The error payload.
-    FlushApiCacheResponse:
-      description: Represents the output of a FlushApiCache operation.
-      type: object
     GetApiResponse:
       type: object
       properties:
@@ -4654,8 +4572,6 @@ components:
         sourceApiAssociationStatus:
           $ref: '#/components/schemas/SourceApiAssociationStatus'
           description: The state of the source API association.
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
@@ -4666,8 +4582,6 @@ components:
       minLength: 1
       maxLength: 128
       pattern: ^(?!aws:)[ a-zA-Z+-=._:/]+$
-    UntagResourceResponse:
-      type: object
     UpdateApiResponse:
       type: object
       properties:

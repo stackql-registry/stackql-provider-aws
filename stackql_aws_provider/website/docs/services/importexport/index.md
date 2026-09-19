@@ -29,6 +29,6 @@ total resources: __3__
 <a href="/services/importexport/shipping_labels/">shipping_labels</a>
 </div>
 <div class="providerDocColumn">
-<a href="/services/importexport/status/">status</a>
+<a href="/services/importexport/statuses/">statuses</a>
 </div>
 </div>

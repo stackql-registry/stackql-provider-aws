@@ -25,7 +25,7 @@ total resources: __7__
 ## Resources
 <div class="row">
 <div class="providerDocColumn">
-<a href="/services/bedrock_data_automation/blueprint_optimization_status/">blueprint_optimization_status</a><br />
+<a href="/services/bedrock_data_automation/blueprint_optimization_statuses/">blueprint_optimization_statuses</a><br />
 <a href="/services/bedrock_data_automation/blueprints/">blueprints</a><br />
 <a href="/services/bedrock_data_automation/data_automation_libraries/">data_automation_libraries</a><br />
 <a href="/services/bedrock_data_automation/data_automation_library_entities/">data_automation_library_entities</a>

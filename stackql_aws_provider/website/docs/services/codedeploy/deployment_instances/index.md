@@ -33,37 +33,13 @@ Creates, updates, deletes, gets or lists a <code>deployment_instances</code> res
 The following fields are returned by `SELECT` queries:
 
 <Tabs
-    defaultValue="batch_get_deployment_instances"
+    defaultValue="get_deployment_instance"
     values={[
-        { label: 'batch_get_deployment_instances', value: 'batch_get_deployment_instances' },
         { label: 'get_deployment_instance', value: 'get_deployment_instance' },
+        { label: 'batch_get_deployment_instances', value: 'batch_get_deployment_instances' },
         { label: 'list_deployment_instances', value: 'list_deployment_instances' }
     ]}
 >
-<TabItem value="batch_get_deployment_instances">
-
-<table>
-<thead>
-    <tr>
-    <th>Name</th>
-    <th>Datatype</th>
-    <th>Description</th>
-    </tr>
-</thead>
-<tbody>
-<tr>
-    <td><CopyableCode code="error_message" /></td>
-    <td><code>string</code></td>
-    <td>Information about errors that might have occurred during the API call.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="instances_summary" /></td>
-    <td><code>array</code></td>
-    <td>Information about the instance.</td>
-</tr>
-</tbody>
-</table>
-</TabItem>
 <TabItem value="get_deployment_instance">
 
 <table>
@@ -108,6 +84,30 @@ The following fields are returned by `SELECT` queries:
 </tbody>
 </table>
 </TabItem>
+<TabItem value="batch_get_deployment_instances">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="error_message" /></td>
+    <td><code>string</code></td>
+    <td>Information about errors that might have occurred during the API call.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="instances_summary" /></td>
+    <td><code>array</code></td>
+    <td>Information about the instance.</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
 <TabItem value="list_deployment_instances">
 
 <table>
@@ -145,18 +145,18 @@ The following methods are available for this resource:
 </thead>
 <tbody>
 <tr>
-    <td><a href="#batch_get_deployment_instances"><CopyableCode code="batch_get_deployment_instances" /></a></td>
-    <td><CopyableCode code="select" /></td>
-    <td><a href="#parameter-region"><code>region</code></a></td>
-    <td></td>
-    <td>This method works, but is deprecated. Use BatchGetDeploymentTargets instead. Returns an array of one or more instances associated with a deployment. This method works with EC2/On-premises and Lambda compute platforms. The newer BatchGetDeploymentTargets works with all compute platforms. The maximum number of instances that can be returned is 25.</td>
-</tr>
-<tr>
     <td><a href="#get_deployment_instance"><CopyableCode code="get_deployment_instance" /></a></td>
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td></td>
     <td>Gets information about an instance as part of a deployment.</td>
+</tr>
+<tr>
+    <td><a href="#batch_get_deployment_instances"><CopyableCode code="batch_get_deployment_instances" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>This method works, but is deprecated. Use BatchGetDeploymentTargets instead. Returns an array of one or more instances associated with a deployment. This method works with EC2/On-premises and Lambda compute platforms. The newer BatchGetDeploymentTargets works with all compute platforms. The maximum number of instances that can be returned is 25.</td>
 </tr>
 <tr>
     <td><a href="#list_deployment_instances"><CopyableCode code="list_deployment_instances" /></a></td>
@@ -192,26 +192,13 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 ## `SELECT` examples
 
 <Tabs
-    defaultValue="batch_get_deployment_instances"
+    defaultValue="get_deployment_instance"
     values={[
-        { label: 'batch_get_deployment_instances', value: 'batch_get_deployment_instances' },
         { label: 'get_deployment_instance', value: 'get_deployment_instance' },
+        { label: 'batch_get_deployment_instances', value: 'batch_get_deployment_instances' },
         { label: 'list_deployment_instances', value: 'list_deployment_instances' }
     ]}
 >
-<TabItem value="batch_get_deployment_instances">
-
-This method works, but is deprecated. Use BatchGetDeploymentTargets instead. Returns an array of one or more instances associated with a deployment. This method works with EC2/On-premises and Lambda compute platforms. The newer BatchGetDeploymentTargets works with all compute platforms. The maximum number of instances that can be returned is 25.
-
-```sql
-SELECT
-error_message,
-instances_summary
-FROM aws.codedeploy.deployment_instances
-WHERE region = '{{ region }}' -- required
-;
-```
-</TabItem>
 <TabItem value="get_deployment_instance">
 
 Gets information about an instance as part of a deployment.
@@ -224,6 +211,19 @@ instance_type,
 last_updated_at,
 lifecycle_events,
 status
+FROM aws.codedeploy.deployment_instances
+WHERE region = '{{ region }}' -- required
+;
+```
+</TabItem>
+<TabItem value="batch_get_deployment_instances">
+
+This method works, but is deprecated. Use BatchGetDeploymentTargets instead. Returns an array of one or more instances associated with a deployment. This method works with EC2/On-premises and Lambda compute platforms. The newer BatchGetDeploymentTargets works with all compute platforms. The maximum number of instances that can be returned is 25.
+
+```sql
+SELECT
+error_message,
+instances_summary
 FROM aws.codedeploy.deployment_instances
 WHERE region = '{{ region }}' -- required
 ;

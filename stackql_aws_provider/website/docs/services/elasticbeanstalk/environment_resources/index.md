@@ -55,6 +55,11 @@ The following fields are returned by `SELECT` queries:
     <td>The AutoScalingGroups used by this environment.</td>
 </tr>
 <tr>
+    <td><CopyableCode code="cluster" /></td>
+    <td><code>string</code></td>
+    <td>The Amazon EKS cluster that this environment runs on. This member is present only for environments in the Cluster tier.</td>
+</tr>
+<tr>
     <td><CopyableCode code="environment_name" /></td>
     <td><code>string</code></td>
     <td>The name of the environment.</td>
@@ -114,7 +119,7 @@ The following methods are available for this resource:
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td><a href="#parameter-EnvironmentId"><code>EnvironmentId</code></a>, <a href="#parameter-EnvironmentName"><code>EnvironmentName</code></a></td>
-    <td>Returns AWS resources for this environment.</td>
+    <td>Returns Amazon Web Services resources for this environment.</td>
 </tr>
 </tbody>
 </table>
@@ -140,12 +145,12 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-EnvironmentId">
     <td><CopyableCode code="EnvironmentId" /></td>
     <td><code>string</code></td>
-    <td>The ID of the environment to retrieve AWS resource usage data. Condition: You must specify either this or an EnvironmentName, or both. If you do not specify either, AWS Elastic Beanstalk returns MissingRequiredParameter error.</td>
+    <td>The ID of the environment to retrieve Amazon Web Services resource usage data. Condition: You must specify either this or an EnvironmentName, or both. If you do not specify either, Elastic Beanstalk returns MissingRequiredParameter error.</td>
 </tr>
 <tr id="parameter-EnvironmentName">
     <td><CopyableCode code="EnvironmentName" /></td>
     <td><code>string</code></td>
-    <td>The name of the environment to retrieve AWS resource usage data. Condition: You must specify either this or an EnvironmentId, or both. If you do not specify either, AWS Elastic Beanstalk returns MissingRequiredParameter error.</td>
+    <td>The name of the environment to retrieve Amazon Web Services resource usage data. Condition: You must specify either this or an EnvironmentId, or both. If you do not specify either, Elastic Beanstalk returns MissingRequiredParameter error.</td>
 </tr>
 </tbody>
 </table>
@@ -160,11 +165,12 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 >
 <TabItem value="describe_environment_resources">
 
-Returns AWS resources for this environment.
+Returns Amazon Web Services resources for this environment.
 
 ```sql
 SELECT
 auto_scaling_groups,
+cluster,
 environment_name,
 instances,
 launch_configurations,

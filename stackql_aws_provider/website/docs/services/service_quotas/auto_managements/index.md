@@ -57,6 +57,20 @@ The following methods are available for this resource:
     <td></td>
     <td>Updates your Service Quotas Automatic Management configuration, including notification preferences and excluded quotas. Automatic Management monitors your Service Quotas utilization and notifies you before you run out of your allocated quotas.</td>
 </tr>
+<tr>
+    <td><a href="#start_auto_management"><CopyableCode code="start_auto_management" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-OptInLevel"><code>OptInLevel</code></a>, <a href="#parameter-OptInType"><code>OptInType</code></a></td>
+    <td></td>
+    <td>Starts Service Quotas Automatic Management for an Amazon Web Services account, including notification preferences and excluded quotas configurations. Automatic Management monitors your Service Quotas utilization and notifies you before you run out of your allocated quotas.</td>
+</tr>
+<tr>
+    <td><a href="#stop_auto_management"><CopyableCode code="stop_auto_management" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Stops Service Quotas Automatic Management for an Amazon Web Services account and removes all associated configurations. Automatic Management monitors your Service Quotas utilization and notifies you before you run out of your allocated quotas.</td>
+</tr>
 </tbody>
 </table>
 
@@ -101,6 +115,45 @@ NotificationArn = '{{ NotificationArn }}',
 ExclusionList = '{{ ExclusionList }}'
 WHERE 
 region = '{{ region }}' --required;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="start_auto_management"
+    values={[
+        { label: 'start_auto_management', value: 'start_auto_management' },
+        { label: 'stop_auto_management', value: 'stop_auto_management' }
+    ]}
+>
+<TabItem value="start_auto_management">
+
+Starts Service Quotas Automatic Management for an Amazon Web Services account, including notification preferences and excluded quotas configurations. Automatic Management monitors your Service Quotas utilization and notifies you before you run out of your allocated quotas.
+
+```sql
+EXEC aws.service_quotas.auto_managements.start_auto_management 
+@region='{{ region }}' --required 
+@@json=
+'{
+"OptInLevel": "{{ OptInLevel }}", 
+"OptInType": "{{ OptInType }}", 
+"NotificationArn": "{{ NotificationArn }}", 
+"ExclusionList": "{{ ExclusionList }}"
+}'
+;
+```
+</TabItem>
+<TabItem value="stop_auto_management">
+
+Stops Service Quotas Automatic Management for an Amazon Web Services account and removes all associated configurations. Automatic Management monitors your Service Quotas utilization and notifies you before you run out of your allocated quotas.
+
+```sql
+EXEC aws.service_quotas.auto_managements.stop_auto_management 
+@region='{{ region }}' --required 
+;
 ```
 </TabItem>
 </Tabs>

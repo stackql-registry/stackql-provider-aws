@@ -631,7 +631,7 @@ components:
       type: string
       minLength: 1
       maxLength: 2048
-      pattern: arn:aws[a-zA-Z\-]*:kinesis:[a-zA-Z0-9\-]*:\d{12}:stream/[a-zA-Z0-9+=,.@_/\-]+
+      pattern: arn:aws[a-zA-Z-]*:kinesis:[a-z0-9-]*:[0-9]{12}:stream/[a-zA-Z0-9+=,.@_/\-]+
     RoleArn:
       description: The Amazon Resource Name (ARN) of an IAM role.
       type: string
@@ -895,7 +895,7 @@ components:
       type: string
       minLength: 1
       maxLength: 128
-      pattern: com\.amazonaws\.[a-z0-9-]+\.dsql-[a-f0-9]{6}
+      pattern: com\.amazonaws\.[a-z0-9-]+\.dsql[a-z0-9-]*
     ClusterVpcEndpoint:
       type: string
       pattern: "[a-zA-Z0-9.-]+"

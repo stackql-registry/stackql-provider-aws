@@ -98,7 +98,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
-    <td>The current status of this task (PENDING_TRIAGE, LINKED, PENDING_START, IN_PROGRESS, PENDING_CUSTOMER_APPROVAL, COMPLETED, FAILED, TIMED_OUT, CANCELED, SKIPPED)</td>
+    <td>The current status of this task (PENDING_TRIAGE, LINKED, PENDING_START, IN_PROGRESS, PENDING_CUSTOMER_APPROVAL, COMPLETED, FAILED, TIMED_OUT, CANCELED, SKIPPED, WAITING)</td>
 </tr>
 <tr>
     <td><CopyableCode code="status_reason" /></td>
@@ -197,7 +197,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
-    <td>The current status of this task (PENDING_TRIAGE, LINKED, PENDING_START, IN_PROGRESS, PENDING_CUSTOMER_APPROVAL, COMPLETED, FAILED, TIMED_OUT, CANCELED, SKIPPED)</td>
+    <td>The current status of this task (PENDING_TRIAGE, LINKED, PENDING_START, IN_PROGRESS, PENDING_CUSTOMER_APPROVAL, COMPLETED, FAILED, TIMED_OUT, CANCELED, SKIPPED, WAITING)</td>
 </tr>
 <tr>
     <td><CopyableCode code="status_reason" /></td>

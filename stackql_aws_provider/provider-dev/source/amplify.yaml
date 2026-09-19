@@ -1213,7 +1213,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartJobResult'
-      x-stackql-resource: branches
+      x-stackql-resource: jobs
       x-stackql-method: start_job
       x-stackql-verb: EXEC
   /tags/{resource_arn}:
@@ -1261,10 +1261,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -1287,10 +1283,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -1366,7 +1358,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StopJobResult'
-      x-stackql-resource: branches
+      x-stackql-resource: jobs
       x-stackql-method: stop_job
       x-stackql-verb: EXEC
 components:
@@ -1450,7 +1442,7 @@ components:
     AccessToken:
       type: string
       minLength: 1
-      maxLength: 255
+      maxLength: 4096
       pattern: (?s).+
     EnvironmentVariables:
       type: object
@@ -2878,9 +2870,6 @@ components:
           description: The summary for the job.
       required:
       - jobSummary
-    TagResourceResponse:
-      description: The response for the tag resource request.
-      type: object
     TagKeyList:
       type: array
       items:
@@ -2890,9 +2879,6 @@ components:
       minLength: 1
       maxLength: 128
       pattern: ^(?!aws:)[a-zA-Z+-=._:/]+$
-    UntagResourceResponse:
-      description: The response for the untag resource request.
-      type: object
     UpdateAppResult:
       description: The result structure for an Amplify app update request.
       type: object

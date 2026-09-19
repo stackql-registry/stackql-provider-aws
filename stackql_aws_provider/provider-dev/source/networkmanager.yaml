@@ -1731,10 +1731,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteResourcePolicyResponse'
       x-stackql-resource: resource_policies
       x-stackql-method: delete_resource_policy
       x-stackql-verb: DELETE
@@ -1782,10 +1778,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PutResourcePolicyResponse'
       x-stackql-resource: resource_policies
       x-stackql-method: put_resource_policy
       x-stackql-verb: REPLACE
@@ -1983,11 +1975,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ExecuteCoreNetworkChangeSetResponse'
-      x-stackql-resource: core_networks
+      x-stackql-resource: core_network_change_sets
       x-stackql-method: execute_core_network_change_set
       x-stackql-verb: EXEC
   /connect-attachments/{attachment_id}:
@@ -2567,7 +2555,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetRouteAnalysisResponse'
-      x-stackql-resource: route_analysis
+      x-stackql-resource: route_analyses
       x-stackql-method: get_route_analysis
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.RouteAnalysis
@@ -3002,7 +2990,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListCoreNetworkRoutingInformationResponse'
-      x-stackql-resource: core_network_routing_informations
+      x-stackql-resource: core_network_routing_information
       x-stackql-method: list_core_network_routing_information
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.CoreNetworkRoutingInformation
@@ -3034,7 +3022,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListOrganizationServiceAccessStatusResponse'
-      x-stackql-resource: organization_service_access_status
+      x-stackql-resource: organization_service_access_statuses
       x-stackql-method: list_organization_service_access_status
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.OrganizationStatus
@@ -3061,7 +3049,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartOrganizationServiceAccessUpdateResponse'
-      x-stackql-resource: organization_service_access_update
+      x-stackql-resource: organization_service_access_updates
       x-stackql-method: start_organization_service_access_update
       x-stackql-verb: EXEC
   /peerings:
@@ -3164,10 +3152,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -3190,10 +3174,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -3304,7 +3284,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RestoreCoreNetworkPolicyVersionResponse'
-      x-stackql-resource: core_network_policies
+      x-stackql-resource: core_network_policy_versions
       x-stackql-method: restore_core_network_policy_version
       x-stackql-verb: EXEC
   /global-networks/{global_network_id}/route-analyses:
@@ -3344,7 +3324,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartRouteAnalysisResponse'
-      x-stackql-resource: route_analysis
+      x-stackql-resource: route_analyses
       x-stackql-method: start_route_analysis
       x-stackql-verb: EXEC
   /global-networks/{global_network_id}/network-resources/{resource_arn}/metadata:
@@ -4779,8 +4759,6 @@ components:
         Peering:
           $ref: '#/components/schemas/Peering'
           description: Information about a deleted peering connection.
-    DeleteResourcePolicyResponse:
-      type: object
     DeleteSiteResponse:
       type: object
       properties:
@@ -4874,8 +4852,6 @@ components:
         TransitGatewayConnectPeerAssociation:
           $ref: '#/components/schemas/TransitGatewayConnectPeerAssociation'
           description: The transit gateway Connect peer association.
-    ExecuteCoreNetworkChangeSetResponse:
-      type: object
     GetConnectAttachmentResponse:
       type: object
       properties:
@@ -6188,8 +6164,6 @@ components:
         CoreNetworkPolicy:
           $ref: '#/components/schemas/CoreNetworkPolicy'
           description: Describes the changed core network policy.
-    PutResourcePolicyResponse:
-      type: object
     RegisterTransitGatewayResponse:
       type: object
       properties:
@@ -6246,14 +6220,10 @@ components:
         RouteAnalysis:
           $ref: '#/components/schemas/RouteAnalysis'
           description: The route analysis.
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
         $ref: '#/components/schemas/TagKey'
-    UntagResourceResponse:
-      type: object
     UpdateConnectionResponse:
       type: object
       properties:

@@ -35,7 +35,9 @@ The following fields are returned by `SELECT` queries:
 <Tabs
     defaultValue="describe_job_execution"
     values={[
-        { label: 'describe_job_execution', value: 'describe_job_execution' }
+        { label: 'describe_job_execution', value: 'describe_job_execution' },
+        { label: 'list_job_executions_for_job', value: 'list_job_executions_for_job' },
+        { label: 'list_job_executions_for_thing', value: 'list_job_executions_for_thing' }
     ]}
 >
 <TabItem value="describe_job_execution">
@@ -107,6 +109,54 @@ The following fields are returned by `SELECT` queries:
 </tbody>
 </table>
 </TabItem>
+<TabItem value="list_job_executions_for_job">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="job_execution_summary" /></td>
+    <td><code>object</code></td>
+    <td>Contains a subset of information about a job execution.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="thing_arn" /></td>
+    <td><code>string</code></td>
+    <td>The ARN of the thing on which the job execution is running.</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
+<TabItem value="list_job_executions_for_thing">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="job_execution_summary" /></td>
+    <td><code>object</code></td>
+    <td>Contains a subset of information about a job execution.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="job_id" /></td>
+    <td><code>string</code></td>
+    <td>The unique identifier you assigned to this job when it was created. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_-&#93;+&lt;/code&gt;)</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
 </Tabs>
 
 ## Methods
@@ -130,6 +180,20 @@ The following methods are available for this resource:
     <td><a href="#parameter-job_id"><code>job_id</code></a>, <a href="#parameter-thing_name"><code>thing_name</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td><a href="#parameter-executionNumber"><code>executionNumber</code></a></td>
     <td>Describes a job execution. Requires permission to access the DescribeJobExecution action.</td>
+</tr>
+<tr>
+    <td><a href="#list_job_executions_for_job"><CopyableCode code="list_job_executions_for_job" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-job_id"><code>job_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td><a href="#parameter-status"><code>status</code></a>, <a href="#parameter-maxResults"><code>maxResults</code></a>, <a href="#parameter-nextToken"><code>nextToken</code></a></td>
+    <td>Lists the job executions for a job. Requires permission to access the ListJobExecutionsForJob action.</td>
+</tr>
+<tr>
+    <td><a href="#list_job_executions_for_thing"><CopyableCode code="list_job_executions_for_thing" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-thing_name"><code>thing_name</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td><a href="#parameter-status"><code>status</code></a>, <a href="#parameter-namespaceId"><code>namespaceId</code></a>, <a href="#parameter-maxResults"><code>maxResults</code></a>, <a href="#parameter-nextToken"><code>nextToken</code></a>, <a href="#parameter-jobId"><code>jobId</code></a></td>
+    <td>Lists the job executions for the specified thing. Requires permission to access the ListJobExecutionsForThing action.</td>
 </tr>
 <tr>
     <td><a href="#delete_job_execution"><CopyableCode code="delete_job_execution" /></a></td>
@@ -184,10 +248,30 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     <td><code>boolean</code></td>
     <td>(Optional) When true, you can delete a job execution which is "IN_PROGRESS". Otherwise, you can only delete a job execution which is in a terminal state ("SUCCEEDED", "FAILED", "REJECTED", "REMOVED" or "CANCELED") or an exception will occur. The default is false. Deleting a job execution which is "IN_PROGRESS", will cause the device to be unable to access job information or update the job execution status. Use caution and ensure that the device is able to recover to a valid state.</td>
 </tr>
+<tr id="parameter-jobId">
+    <td><CopyableCode code="jobId" /></td>
+    <td><code>string</code></td>
+    <td>The unique identifier you assigned to this job when it was created.</td>
+</tr>
+<tr id="parameter-maxResults">
+    <td><CopyableCode code="maxResults" /></td>
+    <td><code>integer</code></td>
+    <td>The maximum number of results to be returned per request.</td>
+</tr>
 <tr id="parameter-namespaceId">
     <td><CopyableCode code="namespaceId" /></td>
     <td><code>string</code></td>
     <td>The namespace used to indicate that a job is a customer-managed job. When you specify a value for this parameter, Amazon Web Services IoT Core sends jobs notifications to MQTT topics that contain the value in the following format. $aws/things/THING_NAME/jobs/JOB_ID/notify-namespace-NAMESPACE_ID/ The namespaceId feature is only supported by IoT Greengrass at this time. For more information, see Setting up IoT Greengrass core devices.</td>
+</tr>
+<tr id="parameter-nextToken">
+    <td><CopyableCode code="nextToken" /></td>
+    <td><code>string</code></td>
+    <td>The token to retrieve the next set of results.</td>
+</tr>
+<tr id="parameter-status">
+    <td><CopyableCode code="status" /></td>
+    <td><code>string</code></td>
+    <td>An optional filter that lets you search for jobs that have the specified status.</td>
 </tr>
 </tbody>
 </table>
@@ -197,7 +281,9 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <Tabs
     defaultValue="describe_job_execution"
     values={[
-        { label: 'describe_job_execution', value: 'describe_job_execution' }
+        { label: 'describe_job_execution', value: 'describe_job_execution' },
+        { label: 'list_job_executions_for_job', value: 'list_job_executions_for_job' },
+        { label: 'list_job_executions_for_thing', value: 'list_job_executions_for_thing' }
     ]}
 >
 <TabItem value="describe_job_execution">
@@ -222,6 +308,42 @@ WHERE job_id = '{{ job_id }}' -- required
 AND thing_name = '{{ thing_name }}' -- required
 AND region = '{{ region }}' -- required
 AND executionNumber = '{{ executionNumber }}'
+;
+```
+</TabItem>
+<TabItem value="list_job_executions_for_job">
+
+Lists the job executions for a job. Requires permission to access the ListJobExecutionsForJob action.
+
+```sql
+SELECT
+job_execution_summary,
+thing_arn
+FROM aws.iot.job_executions
+WHERE job_id = '{{ job_id }}' -- required
+AND region = '{{ region }}' -- required
+AND status = '{{ status }}'
+AND maxResults = '{{ maxResults }}'
+AND nextToken = '{{ nextToken }}'
+;
+```
+</TabItem>
+<TabItem value="list_job_executions_for_thing">
+
+Lists the job executions for the specified thing. Requires permission to access the ListJobExecutionsForThing action.
+
+```sql
+SELECT
+job_execution_summary,
+job_id
+FROM aws.iot.job_executions
+WHERE thing_name = '{{ thing_name }}' -- required
+AND region = '{{ region }}' -- required
+AND status = '{{ status }}'
+AND namespaceId = '{{ namespaceId }}'
+AND maxResults = '{{ maxResults }}'
+AND nextToken = '{{ nextToken }}'
+AND jobId = '{{ jobId }}'
 ;
 ```
 </TabItem>

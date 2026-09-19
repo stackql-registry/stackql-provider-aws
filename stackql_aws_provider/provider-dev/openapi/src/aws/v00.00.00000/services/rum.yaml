@@ -156,10 +156,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateRumMetricDefinitionResponse"
   /appmonitor:
     post:
       operationId: CreateAppMonitor
@@ -211,10 +207,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteAppMonitorResponse"
     get:
       operationId: GetAppMonitor
       description: Retrieves the complete configuration information for one app monitor.
@@ -264,10 +256,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateAppMonitorResponse"
   /appmonitor/{name}/policy:
     delete:
       operationId: DeleteResourcePolicy
@@ -365,10 +353,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteRumMetricsDestinationResponse"
     get:
       operationId: ListRumMetricsDestinations
       description: Returns a list of destinations that you have created to receive RUM extended metrics, for the specified app monitor. For more information about extended metrics, see AddRumMetrics.
@@ -424,10 +408,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/PutRumMetricsDestinationResponse"
   /appmonitor/{name}/data:
     post:
       operationId: GetAppMonitorData
@@ -527,10 +507,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TagResourceResponse"
     delete:
       operationId: UntagResource
       description: Removes one or more tags from the specified resource.
@@ -550,10 +526,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UntagResourceResponse"
   /appmonitors/{id}/:
     post:
       operationId: PutRumEvents
@@ -590,10 +562,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/PutRumEventsResponse"
 components:
   parameters:
     X-Amz-Content-Sha256:
@@ -963,8 +931,6 @@ components:
       minLength: 36
       maxLength: 36
       pattern: "[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}"
-    DeleteAppMonitorResponse:
-      type: object
     PolicyRevisionId:
       type: string
       minLength: 1
@@ -975,8 +941,6 @@ components:
         PolicyRevisionId:
           $ref: "#/components/schemas/PolicyRevisionId"
           description: The revision ID of the policy that was removed, if it had one.
-    DeleteRumMetricsDestinationResponse:
-      type: object
     GetAppMonitorResponse:
       type: object
       properties:
@@ -1290,12 +1254,6 @@ components:
       type: string
       minLength: 1
       maxLength: 255
-    PutRumEventsResponse:
-      type: object
-    PutRumMetricsDestinationResponse:
-      type: object
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
@@ -1305,12 +1263,6 @@ components:
       minLength: 1
       maxLength: 128
       pattern: (?!aws:)[a-zA-Z+-=._:/]+
-    UntagResourceResponse:
-      type: object
-    UpdateAppMonitorResponse:
-      type: object
-    UpdateRumMetricDefinitionResponse:
-      type: object
   x-stackQL-resources:
     rum_metric_definitions:
       id: aws.rum.rum_metric_definitions
@@ -1356,7 +1308,6 @@ components:
             $ref: "#/paths/~1rummetrics~1{app_monitor_name}~1metrics/patch"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -1390,7 +1341,6 @@ components:
             $ref: "#/paths/~1appmonitor~1{name}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         get_app_monitor:
           operation:
             $ref: "#/paths/~1appmonitor~1{name}/get"
@@ -1403,7 +1353,6 @@ components:
             $ref: "#/paths/~1appmonitor~1{name}/patch"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -1485,7 +1434,6 @@ components:
             $ref: "#/paths/~1rummetrics~1{app_monitor_name}~1metricsdestination/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
         list_rum_metrics_destinations:
@@ -1510,7 +1458,6 @@ components:
             $ref: "#/paths/~1rummetrics~1{app_monitor_name}~1metricsdestination/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -1525,10 +1472,10 @@ components:
           - $ref: "#/components/x-stackQL-resources/rum_metrics_destinations/methods/put_rum_metrics_destination"
         delete:
           - $ref: "#/components/x-stackQL-resources/rum_metrics_destinations/methods/delete_rum_metrics_destination"
-    app_monitor_datas:
-      id: aws.rum.app_monitor_datas
-      name: app_monitor_datas
-      title: app_monitor_datas
+    app_monitor_data:
+      id: aws.rum.app_monitor_data
+      name: app_monitor_data
+      title: app_monitor_data
       methods:
         get_app_monitor_data:
           operation:
@@ -1557,7 +1504,7 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/app_monitor_datas/methods/get_app_monitor_data"
+          - $ref: "#/components/x-stackQL-resources/app_monitor_data/methods/get_app_monitor_data"
         insert: []
         update: []
         delete: []
@@ -1577,7 +1524,6 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -1588,7 +1534,6 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
       sqlVerbs:
@@ -1609,7 +1554,6 @@ components:
             $ref: "#/paths/~1appmonitors~1{id}~1/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:

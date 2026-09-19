@@ -178,10 +178,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteMonitorOutput'
       x-stackql-resource: monitors
       x-stackql-method: delete_monitor
       x-stackql-verb: DELETE
@@ -259,10 +255,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteScopeOutput'
       x-stackql-resource: scopes
       x-stackql-method: delete_scope
       x-stackql-verb: DELETE
@@ -469,7 +461,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetQueryResultsWorkloadInsightsTopContributorsDataOutput'
-      x-stackql-resource: query_results_workload_insights_top_contributors_datas
+      x-stackql-resource: query_results_workload_insights_top_contributors_data
       x-stackql-method: get_query_results_workload_insights_top_contributors_data
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.datapoints
@@ -578,7 +570,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetQueryStatusWorkloadInsightsTopContributorsDataOutput'
-      x-stackql-resource: query_status_workload_insights_top_contributors_datas
+      x-stackql-resource: query_status_workload_insights_top_contributors_data
       x-stackql-method: get_query_status_workload_insights_top_contributors_data
       x-stackql-verb: SELECT
   /tags/{resource_arn}:
@@ -626,10 +618,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceOutput'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -652,10 +640,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceOutput'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -828,10 +812,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/StopQueryMonitorTopContributorsOutput'
       x-stackql-resource: monitors
       x-stackql-method: stop_query_monitor_top_contributors
       x-stackql-verb: EXEC
@@ -860,10 +840,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/StopQueryWorkloadInsightsTopContributorsOutput'
       x-stackql-resource: scopes
       x-stackql-method: stop_query_workload_insights_top_contributors
       x-stackql-verb: EXEC
@@ -892,10 +868,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/StopQueryWorkloadInsightsTopContributorsDataOutput'
       x-stackql-resource: scopes
       x-stackql-method: stop_query_workload_insights_top_contributors_data
       x-stackql-verb: EXEC
@@ -1175,10 +1147,6 @@ components:
       - FAILED
       - DEACTIVATING
       - DEACTIVATED
-    DeleteMonitorOutput:
-      type: object
-    DeleteScopeOutput:
-      type: object
     GetMonitorOutput:
       type: object
       properties:
@@ -1727,14 +1695,6 @@ components:
             returned from an API call to start a query.
       required:
       - queryId
-    StopQueryMonitorTopContributorsOutput:
-      type: object
-    StopQueryWorkloadInsightsTopContributorsOutput:
-      type: object
-    StopQueryWorkloadInsightsTopContributorsDataOutput:
-      type: object
-    TagResourceOutput:
-      type: object
     TagKeyList:
       type: array
       items:
@@ -1743,8 +1703,6 @@ components:
       type: string
       minLength: 1
       maxLength: 128
-    UntagResourceOutput:
-      type: object
     UpdateMonitorOutput:
       type: object
       properties:

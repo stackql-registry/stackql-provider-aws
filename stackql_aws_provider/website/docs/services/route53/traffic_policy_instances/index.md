@@ -33,12 +33,72 @@ Creates, updates, deletes, gets or lists a <code>traffic_policy_instances</code>
 The following fields are returned by `SELECT` queries:
 
 <Tabs
-    defaultValue="get_traffic_policy_instance"
+    defaultValue="list_traffic_policy_instances_by_policy"
     values={[
+        { label: 'list_traffic_policy_instances_by_policy', value: 'list_traffic_policy_instances_by_policy' },
         { label: 'get_traffic_policy_instance', value: 'get_traffic_policy_instance' },
         { label: 'list_traffic_policy_instances', value: 'list_traffic_policy_instances' }
     ]}
 >
+<TabItem value="list_traffic_policy_instances_by_policy">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="hosted_zone_id" /></td>
+    <td><code>string</code></td>
+    <td>The ID of the hosted zone that Amazon Route 53 created resource record sets in.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="id" /></td>
+    <td><code>string</code></td>
+    <td>The ID that Amazon Route 53 assigned to the new traffic policy instance.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="message" /></td>
+    <td><code>string</code></td>
+    <td>If State is Failed, an explanation of the reason for the failure. If State is another value, Message is empty.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="name" /></td>
+    <td><code>string</code></td>
+    <td>The DNS name, such as www.example.com, for which Amazon Route 53 responds to queries by using the resource record sets that are associated with this traffic policy instance.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="state" /></td>
+    <td><code>string</code></td>
+    <td>The value of State is one of the following values: Applied Amazon Route 53 has finished creating resource record sets, and changes have propagated to all Route 53 edge locations. Creating Route 53 is creating the resource record sets. Use GetTrafficPolicyInstance to confirm that the CreateTrafficPolicyInstance request completed successfully. Failed Route 53 wasn't able to create or update the resource record sets. When the value of State is Failed, see Message for an explanation of what caused the request to fail.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="ttl" /></td>
+    <td><code>integer</code></td>
+    <td>The TTL that Amazon Route 53 assigned to all of the resource record sets that it created in the specified hosted zone.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="traffic_policy_id" /></td>
+    <td><code>string</code></td>
+    <td>The ID of the traffic policy that Amazon Route 53 used to create resource record sets in the specified hosted zone.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="traffic_policy_type" /></td>
+    <td><code>string</code></td>
+    <td>The DNS type that Amazon Route 53 assigned to all of the resource record sets that it created for this traffic policy instance.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="traffic_policy_version" /></td>
+    <td><code>integer</code></td>
+    <td>The version of the traffic policy that Amazon Route 53 used to create resource record sets in the specified hosted zone.</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
 <TabItem value="get_traffic_policy_instance">
 
 <table>
@@ -175,6 +235,13 @@ The following methods are available for this resource:
 </thead>
 <tbody>
 <tr>
+    <td><a href="#list_traffic_policy_instances_by_policy"><CopyableCode code="list_traffic_policy_instances_by_policy" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-id"><code>id</code></a>, <a href="#parameter-version"><code>version</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td><a href="#parameter-hostedzoneid"><code>hostedzoneid</code></a>, <a href="#parameter-trafficpolicyinstancename"><code>trafficpolicyinstancename</code></a>, <a href="#parameter-trafficpolicyinstancetype"><code>trafficpolicyinstancetype</code></a>, <a href="#parameter-maxitems"><code>maxitems</code></a></td>
+    <td>Gets information about the traffic policy instances that you created by using a specify traffic policy version. After you submit a CreateTrafficPolicyInstance or an UpdateTrafficPolicyInstance request, there's a brief delay while Amazon Route 53 creates the resource record sets that are specified in the traffic policy definition. For more information, see the State response element. Route 53 returns a maximum of 100 items in each response. If you have a lot of traffic policy instances, you can use the MaxItems parameter to list them in groups of up to 100.</td>
+</tr>
+<tr>
     <td><a href="#get_traffic_policy_instance"><CopyableCode code="get_traffic_policy_instance" /></a></td>
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-id"><code>id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
@@ -235,6 +302,11 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     <td><code>string</code></td>
     <td>AWS region (default: us-east-1)</td>
 </tr>
+<tr id="parameter-version">
+    <td><CopyableCode code="version" /></td>
+    <td><code>integer</code></td>
+    <td>The version of the traffic policy for which you want to list traffic policy instances. The version must be associated with the traffic policy that is specified by TrafficPolicyId.</td>
+</tr>
 <tr id="parameter-hostedzoneid">
     <td><CopyableCode code="hostedzoneid" /></td>
     <td><code>string</code></td>
@@ -261,12 +333,39 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 ## `SELECT` examples
 
 <Tabs
-    defaultValue="get_traffic_policy_instance"
+    defaultValue="list_traffic_policy_instances_by_policy"
     values={[
+        { label: 'list_traffic_policy_instances_by_policy', value: 'list_traffic_policy_instances_by_policy' },
         { label: 'get_traffic_policy_instance', value: 'get_traffic_policy_instance' },
         { label: 'list_traffic_policy_instances', value: 'list_traffic_policy_instances' }
     ]}
 >
+<TabItem value="list_traffic_policy_instances_by_policy">
+
+Gets information about the traffic policy instances that you created by using a specify traffic policy version. After you submit a CreateTrafficPolicyInstance or an UpdateTrafficPolicyInstance request, there's a brief delay while Amazon Route 53 creates the resource record sets that are specified in the traffic policy definition. For more information, see the State response element. Route 53 returns a maximum of 100 items in each response. If you have a lot of traffic policy instances, you can use the MaxItems parameter to list them in groups of up to 100.
+
+```sql
+SELECT
+hosted_zone_id,
+id,
+message,
+name,
+state,
+ttl,
+traffic_policy_id,
+traffic_policy_type,
+traffic_policy_version
+FROM aws.route53.traffic_policy_instances
+WHERE id = '{{ id }}' -- required
+AND version = '{{ version }}' -- required
+AND region = '{{ region }}' -- required
+AND hostedzoneid = '{{ hostedzoneid }}'
+AND trafficpolicyinstancename = '{{ trafficpolicyinstancename }}'
+AND trafficpolicyinstancetype = '{{ trafficpolicyinstancetype }}'
+AND maxitems = '{{ maxitems }}'
+;
+```
+</TabItem>
 <TabItem value="get_traffic_policy_instance">
 
 Gets information about a specified traffic policy instance. Use GetTrafficPolicyInstance with the id of new traffic policy instance to confirm that the CreateTrafficPolicyInstance or an UpdateTrafficPolicyInstance request completed successfully. For more information, see the State response element. In the Route 53 console, traffic policy instances are known as policy records.

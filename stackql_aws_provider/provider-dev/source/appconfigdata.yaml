@@ -81,7 +81,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartConfigurationSessionResponse'
-      x-stackql-resource: configuration_session
+      x-stackql-resource: configuration_sessions
       x-stackql-method: start_configuration_session
       x-stackql-verb: EXEC
 components:

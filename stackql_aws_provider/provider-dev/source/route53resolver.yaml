@@ -127,7 +127,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AssociateResolverEndpointIpAddressResponse'
-      x-stackql-resource: resolver_endpoints
+      x-stackql-resource: resolver_endpoint_ip_addresses
       x-stackql-method: associate_resolver_endpoint_ip_address
       x-stackql-verb: UPDATE
   /AssociateResolverQueryLogConfig:
@@ -256,7 +256,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchCreateFirewallRuleResponse'
-      x-stackql-resource: batch_create_firewall_rule
+      x-stackql-resource: firewall_rules
       x-stackql-method: batch_create_firewall_rule
       x-stackql-verb: EXEC
   /BatchDeleteFirewallRule:
@@ -292,7 +292,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchDeleteFirewallRuleResponse'
-      x-stackql-resource: batch_delete_firewall_rule
+      x-stackql-resource: firewall_rules
       x-stackql-method: batch_delete_firewall_rule
       x-stackql-verb: EXEC
   /BatchUpdateFirewallRule:
@@ -328,7 +328,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchUpdateFirewallRuleResponse'
-      x-stackql-resource: batch_update_firewall_rule
+      x-stackql-resource: firewall_rules
       x-stackql-method: batch_update_firewall_rule
       x-stackql-verb: EXEC
   /CreateFirewallDomainList:
@@ -1233,7 +1233,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DisassociateResolverEndpointIpAddressResponse'
-      x-stackql-resource: resolver_endpoints
+      x-stackql-resource: resolver_endpoint_ip_addresses
       x-stackql-method: disassociate_resolver_endpoint_ip_address
       x-stackql-verb: UPDATE
   /DisassociateResolverQueryLogConfig:
@@ -3044,10 +3044,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -3086,10 +3082,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -5946,14 +5938,10 @@ components:
         ReturnValue:
           $ref: '#/components/schemas/Boolean'
           description: Whether the PutResolverRulePolicy request was successful.
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
         $ref: '#/components/schemas/TagKey'
-    UntagResourceResponse:
-      type: object
     UpdateFirewallConfigResponse:
       type: object
       properties:

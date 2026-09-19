@@ -211,6 +211,13 @@ The following methods are available for this resource:
     <td>Create an Proton service. An Proton service is an instantiation of a service template and often includes several service instances and pipeline. For more information, see Services in the Proton User Guide.</td>
 </tr>
 <tr>
+    <td><a href="#update_service"><CopyableCode code="update_service" /></a></td>
+    <td><CopyableCode code="update" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-name"><code>name</code></a></td>
+    <td></td>
+    <td>Edit a service description or use a spec to add and delete service instances. Existing service instances and the service pipeline can't be edited using this API. They can only be deleted. Use the description parameter to modify the description. Edit the spec parameter to add or delete instances. You can't delete a service instance (remove it from the spec) if it has an attached component. For more information about components, see Proton components in the Proton User Guide.</td>
+</tr>
+<tr>
     <td><a href="#update_service_pipeline"><CopyableCode code="update_service_pipeline" /></a></td>
     <td><CopyableCode code="update" /></td>
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-deploymentType"><code>deploymentType</code></a>, <a href="#parameter-serviceName"><code>serviceName</code></a>, <a href="#parameter-spec"><code>spec</code></a></td>
@@ -223,13 +230,6 @@ The following methods are available for this resource:
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-id"><code>id</code></a>, <a href="#parameter-resolvedReason"><code>resolvedReason</code></a></td>
     <td></td>
     <td>Update the service sync blocker by resolving it.</td>
-</tr>
-<tr>
-    <td><a href="#update_service"><CopyableCode code="update_service" /></a></td>
-    <td><CopyableCode code="update" /></td>
-    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-name"><code>name</code></a></td>
-    <td></td>
-    <td>Edit a service description or use a spec to add and delete service instances. Existing service instances and the service pipeline can't be edited using this API. They can only be deleted. Use the description parameter to modify the description. Edit the spec parameter to add or delete instances. You can't delete a service instance (remove it from the spec) if it has an attached component. For more information about components, see Proton components in the Proton User Guide.</td>
 </tr>
 <tr>
     <td><a href="#delete_service"><CopyableCode code="delete_service" /></a></td>
@@ -427,13 +427,30 @@ service
 ## `UPDATE` examples
 
 <Tabs
-    defaultValue="update_service_pipeline"
+    defaultValue="update_service"
     values={[
+        { label: 'update_service', value: 'update_service' },
         { label: 'update_service_pipeline', value: 'update_service_pipeline' },
-        { label: 'update_service_sync_blocker', value: 'update_service_sync_blocker' },
-        { label: 'update_service', value: 'update_service' }
+        { label: 'update_service_sync_blocker', value: 'update_service_sync_blocker' }
     ]}
 >
+<TabItem value="update_service">
+
+Edit a service description or use a spec to add and delete service instances. Existing service instances and the service pipeline can't be edited using this API. They can only be deleted. Use the description parameter to modify the description. Edit the spec parameter to add or delete instances. You can't delete a service instance (remove it from the spec) if it has an attached component. For more information about components, see Proton components in the Proton User Guide.
+
+```sql
+UPDATE aws.proton.services
+SET 
+description = '{{ description }}',
+name = '{{ name }}',
+spec = '{{ spec }}'
+WHERE 
+region = '{{ region }}' --required
+AND name = '{{ name }}' --required
+RETURNING
+service;
+```
+</TabItem>
 <TabItem value="update_service_pipeline">
 
 Update the service pipeline. There are four modes for updating a service pipeline. The deploymentType field defines the mode. NONE In this mode, a deployment doesn't occur. Only the requested metadata parameters are updated. CURRENT_VERSION In this mode, the service pipeline is deployed and updated with the new spec that you provide. Only requested parameters are updated. Don’t include major or minor version parameters when you use this deployment-type. MINOR_VERSION In this mode, the service pipeline is deployed and updated with the published, recommended (latest) minor version of the current major version in use, by default. You can specify a different minor version of the current major version in use. MAJOR_VERSION In this mode, the service pipeline is deployed and updated with the published, recommended (latest) major and minor version of the current template by default. You can specify a different major version that's higher than the major version in use and a minor version.
@@ -472,23 +489,6 @@ RETURNING
 service_instance_name,
 service_name,
 service_sync_blocker;
-```
-</TabItem>
-<TabItem value="update_service">
-
-Edit a service description or use a spec to add and delete service instances. Existing service instances and the service pipeline can't be edited using this API. They can only be deleted. Use the description parameter to modify the description. Edit the spec parameter to add or delete instances. You can't delete a service instance (remove it from the spec) if it has an attached component. For more information about components, see Proton components in the Proton User Guide.
-
-```sql
-UPDATE aws.proton.services
-SET 
-description = '{{ description }}',
-name = '{{ name }}',
-spec = '{{ spec }}'
-WHERE 
-region = '{{ region }}' --required
-AND name = '{{ name }}' --required
-RETURNING
-service;
 ```
 </TabItem>
 </Tabs>

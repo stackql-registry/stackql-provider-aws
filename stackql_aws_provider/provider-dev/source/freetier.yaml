@@ -215,7 +215,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpgradeAccountPlanResponse'
-      x-stackql-resource: upgrade_account_plan
+      x-stackql-resource: account_plans
       x-stackql-method: upgrade_account_plan
       x-stackql-verb: EXEC
 components:

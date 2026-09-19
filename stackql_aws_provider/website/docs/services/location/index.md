@@ -18,7 +18,7 @@ location service documentation.
 
 :::info[Service Summary]
 
-total resources: __20__  
+total resources: __21__  
 
 :::
 
@@ -28,6 +28,7 @@ total resources: __20__
 <a href="/services/location/device_position_histories/">device_position_histories</a><br />
 <a href="/services/location/device_positions/">device_positions</a><br />
 <a href="/services/location/geofence_collections/">geofence_collections</a><br />
+<a href="/services/location/geofence_events/">geofence_events</a><br />
 <a href="/services/location/geofences/">geofences</a><br />
 <a href="/services/location/jobs/">jobs</a><br />
 <a href="/services/location/keys/">keys</a><br />
@@ -38,12 +39,12 @@ total resources: __20__
 </div>
 <div class="providerDocColumn">
 <a href="/services/location/maps/">maps</a><br />
-<a href="/services/location/place_index_for_positions/">place_index_for_positions</a><br />
-<a href="/services/location/place_index_for_suggestions/">place_index_for_suggestions</a><br />
 <a href="/services/location/place_index_for_texts/">place_index_for_texts</a><br />
 <a href="/services/location/place_indexes/">place_indexes</a><br />
 <a href="/services/location/places/">places</a><br />
 <a href="/services/location/route_calculators/">route_calculators</a><br />
+<a href="/services/location/route_matrixes/">route_matrixes</a><br />
+<a href="/services/location/routes/">routes</a><br />
 <a href="/services/location/tags/">tags</a><br />
 <a href="/services/location/tracker_consumers/">tracker_consumers</a><br />
 <a href="/services/location/trackers/">trackers</a>

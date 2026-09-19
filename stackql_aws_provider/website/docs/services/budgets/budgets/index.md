@@ -270,6 +270,13 @@ The following methods are available for this resource:
     <td>Creates a budget and, if included, notifications and subscribers. Only one of BudgetLimit or PlannedBudgetLimits can be present in the syntax at one time. Use the syntax that matches your use case. The Request Syntax section shows the BudgetLimit syntax. For PlannedBudgetLimits, see the Examples section. Similarly, only one set of filter and metric selections can be present in the syntax at one time. Either FilterExpression and Metrics or CostFilters and CostTypes, not both or a different combination. We recommend using FilterExpression and Metrics as they provide more flexible and powerful filtering capabilities. The Request Syntax section shows the FilterExpression/Metrics syntax.</td>
 </tr>
 <tr>
+    <td><a href="#update_budget"><CopyableCode code="update_budget" /></a></td>
+    <td><CopyableCode code="update" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-AccountId"><code>AccountId</code></a>, <a href="#parameter-NewBudget"><code>NewBudget</code></a></td>
+    <td></td>
+    <td>Updates a budget. You can change every part of a budget except for the budgetName and the calculatedSpend. When you modify a budget, the calculatedSpend drops to zero until Amazon Web Services has new usage data to use for forecasting. Only one of BudgetLimit or PlannedBudgetLimits can be present in the syntax at one time. Use the syntax that matches your case. The Request Syntax section shows the BudgetLimit syntax. For PlannedBudgetLimits, see the Examples section. Similarly, only one set of filter and metric selections can be present in the syntax at one time. Either FilterExpression and Metrics or CostFilters and CostTypes, not both or a different combination. We recommend using FilterExpression and Metrics as they provide more flexible and powerful filtering capabilities. The Request Syntax section shows the FilterExpression/Metrics syntax.</td>
+</tr>
+<tr>
     <td><a href="#update_subscriber"><CopyableCode code="update_subscriber" /></a></td>
     <td><CopyableCode code="update" /></td>
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-AccountId"><code>AccountId</code></a>, <a href="#parameter-BudgetName"><code>BudgetName</code></a>, <a href="#parameter-Notification"><code>Notification</code></a>, <a href="#parameter-OldSubscriber"><code>OldSubscriber</code></a>, <a href="#parameter-NewSubscriber"><code>NewSubscriber</code></a></td>
@@ -282,13 +289,6 @@ The following methods are available for this resource:
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-AccountId"><code>AccountId</code></a>, <a href="#parameter-BudgetName"><code>BudgetName</code></a>, <a href="#parameter-OldNotification"><code>OldNotification</code></a>, <a href="#parameter-NewNotification"><code>NewNotification</code></a></td>
     <td></td>
     <td>Updates a notification.</td>
-</tr>
-<tr>
-    <td><a href="#update_budget"><CopyableCode code="update_budget" /></a></td>
-    <td><CopyableCode code="update" /></td>
-    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-AccountId"><code>AccountId</code></a>, <a href="#parameter-NewBudget"><code>NewBudget</code></a></td>
-    <td></td>
-    <td>Updates a budget. You can change every part of a budget except for the budgetName and the calculatedSpend. When you modify a budget, the calculatedSpend drops to zero until Amazon Web Services has new usage data to use for forecasting. Only one of BudgetLimit or PlannedBudgetLimits can be present in the syntax at one time. Use the syntax that matches your case. The Request Syntax section shows the BudgetLimit syntax. For PlannedBudgetLimits, see the Examples section. Similarly, only one set of filter and metric selections can be present in the syntax at one time. Either FilterExpression and Metrics or CostFilters and CostTypes, not both or a different combination. We recommend using FilterExpression and Metrics as they provide more flexible and powerful filtering capabilities. The Request Syntax section shows the FilterExpression/Metrics syntax.</td>
 </tr>
 <tr>
     <td><a href="#delete_subscriber"><CopyableCode code="delete_subscriber" /></a></td>
@@ -907,13 +907,28 @@ SELECT
 ## `UPDATE` examples
 
 <Tabs
-    defaultValue="update_subscriber"
+    defaultValue="update_budget"
     values={[
+        { label: 'update_budget', value: 'update_budget' },
         { label: 'update_subscriber', value: 'update_subscriber' },
-        { label: 'update_notification', value: 'update_notification' },
-        { label: 'update_budget', value: 'update_budget' }
+        { label: 'update_notification', value: 'update_notification' }
     ]}
 >
+<TabItem value="update_budget">
+
+Updates a budget. You can change every part of a budget except for the budgetName and the calculatedSpend. When you modify a budget, the calculatedSpend drops to zero until Amazon Web Services has new usage data to use for forecasting. Only one of BudgetLimit or PlannedBudgetLimits can be present in the syntax at one time. Use the syntax that matches your case. The Request Syntax section shows the BudgetLimit syntax. For PlannedBudgetLimits, see the Examples section. Similarly, only one set of filter and metric selections can be present in the syntax at one time. Either FilterExpression and Metrics or CostFilters and CostTypes, not both or a different combination. We recommend using FilterExpression and Metrics as they provide more flexible and powerful filtering capabilities. The Request Syntax section shows the FilterExpression/Metrics syntax.
+
+```sql
+UPDATE aws.budgets.budgets
+SET 
+AccountId = '{{ AccountId }}',
+NewBudget = '{{ NewBudget }}'
+WHERE 
+region = '{{ region }}' --required
+AND AccountId = '{{ AccountId }}' --required
+AND NewBudget = '{{ NewBudget }}' --required;
+```
+</TabItem>
 <TabItem value="update_subscriber">
 
 Updates a subscriber.
@@ -952,21 +967,6 @@ AND AccountId = '{{ AccountId }}' --required
 AND BudgetName = '{{ BudgetName }}' --required
 AND OldNotification = '{{ OldNotification }}' --required
 AND NewNotification = '{{ NewNotification }}' --required;
-```
-</TabItem>
-<TabItem value="update_budget">
-
-Updates a budget. You can change every part of a budget except for the budgetName and the calculatedSpend. When you modify a budget, the calculatedSpend drops to zero until Amazon Web Services has new usage data to use for forecasting. Only one of BudgetLimit or PlannedBudgetLimits can be present in the syntax at one time. Use the syntax that matches your case. The Request Syntax section shows the BudgetLimit syntax. For PlannedBudgetLimits, see the Examples section. Similarly, only one set of filter and metric selections can be present in the syntax at one time. Either FilterExpression and Metrics or CostFilters and CostTypes, not both or a different combination. We recommend using FilterExpression and Metrics as they provide more flexible and powerful filtering capabilities. The Request Syntax section shows the FilterExpression/Metrics syntax.
-
-```sql
-UPDATE aws.budgets.budgets
-SET 
-AccountId = '{{ AccountId }}',
-NewBudget = '{{ NewBudget }}'
-WHERE 
-region = '{{ region }}' --required
-AND AccountId = '{{ AccountId }}' --required
-AND NewBudget = '{{ NewBudget }}' --required;
 ```
 </TabItem>
 </Tabs>

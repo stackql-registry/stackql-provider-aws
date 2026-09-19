@@ -58,10 +58,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/AssociateCreatedArtifactResult"
   /AssociateDiscoveredResource:
     post:
       operationId: AssociateDiscoveredResource
@@ -102,10 +98,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/AssociateDiscoveredResourceResult"
   /AssociateSourceResource:
     post:
       operationId: AssociateSourceResource
@@ -146,10 +138,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/AssociateSourceResourceResult"
   /CreateProgressUpdateStream:
     post:
       operationId: CreateProgressUpdateStream
@@ -182,10 +170,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/CreateProgressUpdateStreamResult"
   /DeleteProgressUpdateStream:
     post:
       operationId: DeleteProgressUpdateStream
@@ -218,10 +202,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteProgressUpdateStreamResult"
   /DescribeApplicationState:
     post:
       operationId: DescribeApplicationState
@@ -332,10 +312,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DisassociateCreatedArtifactResult"
   /DisassociateDiscoveredResource:
     post:
       operationId: DisassociateDiscoveredResource
@@ -376,10 +352,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DisassociateDiscoveredResourceResult"
   /DisassociateSourceResource:
     post:
       operationId: DisassociateSourceResource
@@ -420,10 +392,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DisassociateSourceResourceResult"
   /ImportMigrationTask:
     post:
       operationId: ImportMigrationTask
@@ -460,10 +428,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ImportMigrationTaskResult"
   /ListApplicationStates:
     post:
       operationId: ListApplicationStates
@@ -783,10 +747,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/NotifyApplicationStateResult"
   /NotifyMigrationTaskState:
     post:
       operationId: NotifyMigrationTaskState
@@ -835,10 +795,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/NotifyMigrationTaskStateResult"
   /PutResourceAttributes:
     post:
       operationId: PutResourceAttributes
@@ -879,10 +835,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/PutResourceAttributesResult"
 components:
   parameters:
     X-Amz-Content-Sha256:
@@ -962,8 +914,6 @@ components:
       pattern: ^.{0,500}$
     DryRun:
       type: boolean
-    AssociateCreatedArtifactResult:
-      type: object
     DiscoveredResource:
       description: Object representing the on-premises resource being migrated.
       type: object
@@ -986,8 +936,6 @@ components:
       minLength: 0
       maxLength: 500
       pattern: ^.{0,500}$
-    AssociateDiscoveredResourceResult:
-      type: object
     SourceResource:
       description: A source resource can be a source server, a migration wave, an application, or any other resource that you track.
       type: object
@@ -1017,12 +965,6 @@ components:
       minLength: 0
       maxLength: 2500
       pattern: ^.{0,2500}$
-    AssociateSourceResourceResult:
-      type: object
-    CreateProgressUpdateStreamResult:
-      type: object
-    DeleteProgressUpdateStreamResult:
-      type: object
     ApplicationId:
       type: string
       minLength: 1
@@ -1132,14 +1074,6 @@ components:
       minLength: 1
       maxLength: 256
       pattern: ^.{1,256}$
-    DisassociateCreatedArtifactResult:
-      type: object
-    DisassociateDiscoveredResourceResult:
-      type: object
-    DisassociateSourceResourceResult:
-      type: object
-    ImportMigrationTaskResult:
-      type: object
     ApplicationIds:
       type: array
       items:
@@ -1319,19 +1253,13 @@ components:
       type: array
       items:
         $ref: "#/components/schemas/SourceResource"
-    NotifyApplicationStateResult:
-      type: object
     NextUpdateSeconds:
       type: integer
       minimum: 0
-    NotifyMigrationTaskStateResult:
-      type: object
     ResourceAttributeList:
       type: array
       items:
         $ref: "#/components/schemas/ResourceAttribute"
-    PutResourceAttributesResult:
-      type: object
   x-stackQL-resources:
     created_artifacts:
       id: aws.mgh.created_artifacts
@@ -1343,7 +1271,6 @@ components:
             $ref: "#/paths/~1AssociateCreatedArtifact/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -1356,7 +1283,6 @@ components:
             $ref: "#/paths/~1DisassociateCreatedArtifact/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -1403,7 +1329,6 @@ components:
             $ref: "#/paths/~1AssociateDiscoveredResource/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -1416,7 +1341,6 @@ components:
             $ref: "#/paths/~1DisassociateDiscoveredResource/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -1463,7 +1387,6 @@ components:
             $ref: "#/paths/~1AssociateSourceResource/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -1476,7 +1399,6 @@ components:
             $ref: "#/paths/~1DisassociateSourceResource/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -1523,7 +1445,6 @@ components:
             $ref: "#/paths/~1CreateProgressUpdateStream/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -1536,7 +1457,6 @@ components:
             $ref: "#/paths/~1DeleteProgressUpdateStream/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -1612,6 +1532,18 @@ components:
                 location: body
             requestBodyTranslate:
               algorithm: naive
+        notify_application_state:
+          operation:
+            $ref: "#/paths/~1NotifyApplicationState/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/application_states/methods/describe_application_state"
@@ -1643,7 +1575,6 @@ components:
             $ref: "#/paths/~1ImportMigrationTask/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -1677,7 +1608,6 @@ components:
             $ref: "#/paths/~1NotifyMigrationTaskState/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -1690,7 +1620,6 @@ components:
             $ref: "#/paths/~1PutResourceAttributes/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1

@@ -109,7 +109,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CopySnapshotResponse'
-      x-stackql-resource: snapshot
+      x-stackql-resource: snapshots
       x-stackql-method: copy_snapshot
       x-stackql-verb: EXEC
   /CreateACL:
@@ -1862,7 +1862,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ResetParameterGroupResponse'
-      x-stackql-resource: parameters
+      x-stackql-resource: parameter_groups
       x-stackql-method: reset_parameter_group
       x-stackql-verb: EXEC
   /TagResource:

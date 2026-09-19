@@ -18,7 +18,7 @@ odb service documentation.
 
 :::info[Service Summary]
 
-total resources: __26__  
+total resources: __29__  
 
 :::
 
@@ -37,20 +37,23 @@ total resources: __26__
 <a href="/services/odb/cloud_exadata_infrastructure_unallocated_resources/">cloud_exadata_infrastructure_unallocated_resources</a><br />
 <a href="/services/odb/cloud_exadata_infrastructures/">cloud_exadata_infrastructures</a><br />
 <a href="/services/odb/cloud_vm_clusters/">cloud_vm_clusters</a><br />
-<a href="/services/odb/db_nodes/">db_nodes</a>
+<a href="/services/odb/db_nodes/">db_nodes</a><br />
+<a href="/services/odb/db_servers/">db_servers</a><br />
+<a href="/services/odb/db_system_shapes/">db_system_shapes</a>
 </div>
 <div class="providerDocColumn">
-<a href="/services/odb/db_servers/">db_servers</a><br />
-<a href="/services/odb/db_system_shapes/">db_system_shapes</a><br />
 <a href="/services/odb/exadb_vm_clusters/">exadb_vm_clusters</a><br />
 <a href="/services/odb/exascale_db_storage_vaults/">exascale_db_storage_vaults</a><br />
+<a href="/services/odb/flex_components/">flex_components</a><br />
 <a href="/services/odb/gi_minor_versions/">gi_minor_versions</a><br />
 <a href="/services/odb/gi_versions/">gi_versions</a><br />
 <a href="/services/odb/iam_role_from_resources/">iam_role_from_resources</a><br />
 <a href="/services/odb/iam_role_to_resources/">iam_role_to_resources</a><br />
-<a href="/services/odb/oci_onboarding_status/">oci_onboarding_status</a><br />
+<a href="/services/odb/marketplace_registrations/">marketplace_registrations</a><br />
+<a href="/services/odb/oci_onboarding_statuses/">oci_onboarding_statuses</a><br />
 <a href="/services/odb/odb_networks/">odb_networks</a><br />
 <a href="/services/odb/odb_peering_connections/">odb_peering_connections</a><br />
+<a href="/services/odb/services/">services</a><br />
 <a href="/services/odb/system_versions/">system_versions</a><br />
 <a href="/services/odb/tags/">tags</a>
 </div>

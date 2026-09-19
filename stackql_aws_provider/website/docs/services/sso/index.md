@@ -18,7 +18,7 @@ sso service documentation.
 
 :::info[Service Summary]
 
-total resources: __3__  
+total resources: __4__  
 
 :::
 
@@ -29,6 +29,7 @@ total resources: __3__
 <a href="/services/sso/accounts/">accounts</a>
 </div>
 <div class="providerDocColumn">
+<a href="/services/sso/logouts/">logouts</a><br />
 <a href="/services/sso/role_credentials/">role_credentials</a>
 </div>
 </div>

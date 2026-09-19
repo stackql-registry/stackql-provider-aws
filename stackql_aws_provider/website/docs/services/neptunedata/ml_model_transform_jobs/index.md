@@ -128,6 +128,20 @@ The following methods are available for this resource:
     <td><a href="#parameter-maxItems"><code>maxItems</code></a>, <a href="#parameter-neptuneIamRoleArn"><code>neptuneIamRoleArn</code></a></td>
     <td>Returns a list of model transform job IDs. See Use a trained model to generate new model artifacts. When invoking this operation in a Neptune cluster that has IAM authentication enabled, the IAM user or role making the request must have a policy attached that allows the neptune-db:ListMLModelTransformJobs IAM action in that cluster.</td>
 </tr>
+<tr>
+    <td><a href="#cancel_ml_model_transform_job"><CopyableCode code="cancel_ml_model_transform_job" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-id"><code>id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td><a href="#parameter-neptuneIamRoleArn"><code>neptuneIamRoleArn</code></a>, <a href="#parameter-clean"><code>clean</code></a></td>
+    <td>Cancels a specified model transform job. See Use a trained model to generate new model artifacts. When invoking this operation in a Neptune cluster that has IAM authentication enabled, the IAM user or role making the request must have a policy attached that allows the neptune-db:CancelMLModelTransformJob IAM action in that cluster.</td>
+</tr>
+<tr>
+    <td><a href="#start_ml_model_transform_job"><CopyableCode code="start_ml_model_transform_job" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-modelTransformOutputS3Location"><code>modelTransformOutputS3Location</code></a></td>
+    <td></td>
+    <td>Creates a new model transform job. See Use a trained model to generate new model artifacts. When invoking this operation in a Neptune cluster that has IAM authentication enabled, the IAM user or role making the request must have a policy attached that allows the neptune-db:StartMLModelTransformJob IAM action in that cluster.</td>
+</tr>
 </tbody>
 </table>
 
@@ -147,12 +161,17 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-id">
     <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
-    <td>The unique identifier of the model-transform job to be reetrieved.</td>
+    <td>The unique ID of the model transform job to be canceled.</td>
 </tr>
 <tr id="parameter-region">
     <td><CopyableCode code="region" /></td>
     <td><code>string</code></td>
     <td>AWS region (default: us-east-1)</td>
+</tr>
+<tr id="parameter-clean">
+    <td><CopyableCode code="clean" /></td>
+    <td><code>boolean</code></td>
+    <td>If this flag is set to TRUE, all Neptune ML S3 artifacts should be deleted when the job is stopped. The default is FALSE.</td>
 </tr>
 <tr id="parameter-maxItems">
     <td><CopyableCode code="maxItems" /></td>
@@ -205,6 +224,58 @@ FROM aws.neptunedata.ml_model_transform_jobs
 WHERE region = '{{ region }}' -- required
 AND maxItems = '{{ maxItems }}'
 AND neptuneIamRoleArn = '{{ neptuneIamRoleArn }}'
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="cancel_ml_model_transform_job"
+    values={[
+        { label: 'cancel_ml_model_transform_job', value: 'cancel_ml_model_transform_job' },
+        { label: 'start_ml_model_transform_job', value: 'start_ml_model_transform_job' }
+    ]}
+>
+<TabItem value="cancel_ml_model_transform_job">
+
+Cancels a specified model transform job. See Use a trained model to generate new model artifacts. When invoking this operation in a Neptune cluster that has IAM authentication enabled, the IAM user or role making the request must have a policy attached that allows the neptune-db:CancelMLModelTransformJob IAM action in that cluster.
+
+```sql
+EXEC aws.neptunedata.ml_model_transform_jobs.cancel_ml_model_transform_job 
+@id='{{ id }}' --required, 
+@region='{{ region }}' --required, 
+@neptuneIamRoleArn='{{ neptuneIamRoleArn }}', 
+@clean={{ clean }}
+;
+```
+</TabItem>
+<TabItem value="start_ml_model_transform_job">
+
+Creates a new model transform job. See Use a trained model to generate new model artifacts. When invoking this operation in a Neptune cluster that has IAM authentication enabled, the IAM user or role making the request must have a policy attached that allows the neptune-db:StartMLModelTransformJob IAM action in that cluster.
+
+```sql
+EXEC aws.neptunedata.ml_model_transform_jobs.start_ml_model_transform_job 
+@region='{{ region }}' --required 
+@@json=
+'{
+"id": "{{ id }}", 
+"dataProcessingJobId": "{{ dataProcessingJobId }}", 
+"mlModelTrainingJobId": "{{ mlModelTrainingJobId }}", 
+"trainingJobName": "{{ trainingJobName }}", 
+"modelTransformOutputS3Location": "{{ modelTransformOutputS3Location }}", 
+"sagemakerIamRoleArn": "{{ sagemakerIamRoleArn }}", 
+"neptuneIamRoleArn": "{{ neptuneIamRoleArn }}", 
+"customModelTransformParameters": "{{ customModelTransformParameters }}", 
+"baseProcessingInstanceType": "{{ baseProcessingInstanceType }}", 
+"baseProcessingInstanceVolumeSizeInGB": {{ baseProcessingInstanceVolumeSizeInGB }}, 
+"subnets": "{{ subnets }}", 
+"securityGroupIds": "{{ securityGroupIds }}", 
+"volumeEncryptionKMSKey": "{{ volumeEncryptionKMSKey }}", 
+"s3OutputEncryptionKMSKey": "{{ s3OutputEncryptionKMSKey }}"
+}'
 ;
 ```
 </TabItem>

@@ -194,6 +194,20 @@ The following methods are available for this resource:
     <td></td>
     <td>Deletes a vehicle and removes it from any campaigns.</td>
 </tr>
+<tr>
+    <td><a href="#batch_create_vehicle"><CopyableCode code="batch_create_vehicle" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-vehicles"><code>vehicles</code></a></td>
+    <td></td>
+    <td>Creates a group, or batch, of vehicles. You must specify a decoder manifest and a vehicle model (model manifest) for each vehicle. For more information, see Create multiple vehicles (AWS CLI) in the Amazon Web Services IoT FleetWise Developer Guide.</td>
+</tr>
+<tr>
+    <td><a href="#batch_update_vehicle"><CopyableCode code="batch_update_vehicle" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-vehicles"><code>vehicles</code></a></td>
+    <td></td>
+    <td>Updates a group, or batch, of vehicles. You must specify a decoder manifest and a vehicle model (model manifest) for each vehicle. For more information, see Update multiple vehicles (AWS CLI) in the Amazon Web Services IoT FleetWise Developer Guide.</td>
+</tr>
 </tbody>
 </table>
 
@@ -408,6 +422,46 @@ Deletes a vehicle and removes it from any campaigns.
 ```sql
 DELETE FROM aws.iotfleetwise.vehicles
 WHERE region = '{{ region }}' --required
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="batch_create_vehicle"
+    values={[
+        { label: 'batch_create_vehicle', value: 'batch_create_vehicle' },
+        { label: 'batch_update_vehicle', value: 'batch_update_vehicle' }
+    ]}
+>
+<TabItem value="batch_create_vehicle">
+
+Creates a group, or batch, of vehicles. You must specify a decoder manifest and a vehicle model (model manifest) for each vehicle. For more information, see Create multiple vehicles (AWS CLI) in the Amazon Web Services IoT FleetWise Developer Guide.
+
+```sql
+EXEC aws.iotfleetwise.vehicles.batch_create_vehicle 
+@region='{{ region }}' --required 
+@@json=
+'{
+"vehicles": "{{ vehicles }}"
+}'
+;
+```
+</TabItem>
+<TabItem value="batch_update_vehicle">
+
+Updates a group, or batch, of vehicles. You must specify a decoder manifest and a vehicle model (model manifest) for each vehicle. For more information, see Update multiple vehicles (AWS CLI) in the Amazon Web Services IoT FleetWise Developer Guide.
+
+```sql
+EXEC aws.iotfleetwise.vehicles.batch_update_vehicle 
+@region='{{ region }}' --required 
+@@json=
+'{
+"vehicles": "{{ vehicles }}"
+}'
 ;
 ```
 </TabItem>

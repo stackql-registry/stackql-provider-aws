@@ -18,7 +18,7 @@ pinpoint service documentation.
 
 :::info[Service Summary]
 
-total resources: __46__  
+total resources: __50__  
 
 :::
 
@@ -47,11 +47,11 @@ total resources: __46__
 <a href="/services/pinpoint/events/">events</a><br />
 <a href="/services/pinpoint/export_jobs/">export_jobs</a><br />
 <a href="/services/pinpoint/gcm_channels/">gcm_channels</a><br />
-<a href="/services/pinpoint/import_jobs/">import_jobs</a>
+<a href="/services/pinpoint/import_jobs/">import_jobs</a><br />
+<a href="/services/pinpoint/in_app_messages/">in_app_messages</a><br />
+<a href="/services/pinpoint/in_app_templates/">in_app_templates</a>
 </div>
 <div class="providerDocColumn">
-<a href="/services/pinpoint/in_app_messages/">in_app_messages</a><br />
-<a href="/services/pinpoint/in_app_templates/">in_app_templates</a><br />
 <a href="/services/pinpoint/journey_date_range_kpis/">journey_date_range_kpis</a><br />
 <a href="/services/pinpoint/journey_execution_activity_metrics/">journey_execution_activity_metrics</a><br />
 <a href="/services/pinpoint/journey_execution_metrics/">journey_execution_metrics</a><br />
@@ -59,6 +59,9 @@ total resources: __46__
 <a href="/services/pinpoint/journey_run_execution_metrics/">journey_run_execution_metrics</a><br />
 <a href="/services/pinpoint/journey_runs/">journey_runs</a><br />
 <a href="/services/pinpoint/journeys/">journeys</a><br />
+<a href="/services/pinpoint/messages/">messages</a><br />
+<a href="/services/pinpoint/number_validates/">number_validates</a><br />
+<a href="/services/pinpoint/otp_messages/">otp_messages</a><br />
 <a href="/services/pinpoint/push_templates/">push_templates</a><br />
 <a href="/services/pinpoint/recommender_configurations/">recommender_configurations</a><br />
 <a href="/services/pinpoint/segment_export_jobs/">segment_export_jobs</a><br />
@@ -71,6 +74,7 @@ total resources: __46__
 <a href="/services/pinpoint/template_versions/">template_versions</a><br />
 <a href="/services/pinpoint/templates/">templates</a><br />
 <a href="/services/pinpoint/user_endpoints/">user_endpoints</a><br />
+<a href="/services/pinpoint/users_messages/">users_messages</a><br />
 <a href="/services/pinpoint/voice_channels/">voice_channels</a><br />
 <a href="/services/pinpoint/voice_templates/">voice_templates</a>
 </div>

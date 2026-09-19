@@ -334,6 +334,13 @@ The following methods are available for this resource:
     <td></td>
     <td>Deletes a broker. Note: This API is asynchronous.</td>
 </tr>
+<tr>
+    <td><a href="#reboot_broker"><CopyableCode code="reboot_broker" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-broker-id"><code>broker-id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Reboots a broker. Note: This API is asynchronous.</td>
+</tr>
 </tbody>
 </table>
 
@@ -701,6 +708,28 @@ Deletes a broker. Note: This API is asynchronous.
 DELETE FROM aws.mq.brokers
 WHERE `broker-id` = '{{ broker-id }}' --required
 AND region = '{{ region }}' --required
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="reboot_broker"
+    values={[
+        { label: 'reboot_broker', value: 'reboot_broker' }
+    ]}
+>
+<TabItem value="reboot_broker">
+
+Reboots a broker. Note: This API is asynchronous.
+
+```sql
+EXEC aws.mq.brokers.reboot_broker 
+@broker-id='{{ broker-id }}' --required, 
+@region='{{ region }}' --required
 ;
 ```
 </TabItem>

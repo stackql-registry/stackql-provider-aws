@@ -91,7 +91,7 @@ The following methods are available for this resource:
     <td><CopyableCode code="replace" /></td>
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-containerRecipeArn"><code>containerRecipeArn</code></a>, <a href="#parameter-policy"><code>policy</code></a></td>
     <td></td>
-    <td>Applies a policy to a container image. We recommend that you call the RAM API CreateResourceShare (https:​//docs.aws.amazon.com//ram/latest/APIReference/API_CreateResourceShare.html) to share resources. If you call the Image Builder API PutContainerImagePolicy, you must also call the RAM API PromoteResourceShareCreatedFromPolicy (https:​//docs.aws.amazon.com//ram/latest/APIReference/API_PromoteResourceShareCreatedFromPolicy.html) in order for the resource to be visible to all principals with whom the resource is shared.</td>
+    <td>Applies a policy to a container image. To share resources, call the RAM API CreateResourceShare. If you call this API, you must also call the RAM API PromoteResourceShareCreatedFromPolicy so that the resource is visible to all principals with whom the resource is shared.</td>
 </tr>
 </tbody>
 </table>
@@ -157,7 +157,7 @@ AND region = '{{ region }}' -- required
 >
 <TabItem value="put_container_recipe_policy">
 
-Applies a policy to a container image. We recommend that you call the RAM API CreateResourceShare (https://docs.aws.amazon.com//ram/latest/APIReference/API_CreateResourceShare.html) to share resources. If you call the Image Builder API PutContainerImagePolicy, you must also call the RAM API PromoteResourceShareCreatedFromPolicy (https://docs.aws.amazon.com//ram/latest/APIReference/API_PromoteResourceShareCreatedFromPolicy.html) in order for the resource to be visible to all principals with whom the resource is shared.
+Applies a policy to a container image. To share resources, call the RAM API CreateResourceShare. If you call this API, you must also call the RAM API PromoteResourceShareCreatedFromPolicy so that the resource is visible to all principals with whom the resource is shared.
 
 ```sql
 REPLACE aws.imagebuilder.container_recipe_policies

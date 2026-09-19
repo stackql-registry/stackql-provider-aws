@@ -1321,10 +1321,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TagResourceOutput"
   /v20190125/untag:
     put:
       operationId: UntagResource
@@ -1350,10 +1346,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UntagResourceOutput"
 components:
   parameters:
     X-Amz-Content-Sha256:
@@ -4118,14 +4110,10 @@ components:
         - resourceOwner
         - version
         - virtualServiceName
-    TagResourceOutput:
-      type: object
     TagKeyList:
       type: array
       items:
         $ref: "#/components/schemas/TagKey"
-    UntagResourceOutput:
-      type: object
     UpdateGatewayRouteOutput:
       type: object
       properties:
@@ -4704,7 +4692,6 @@ components:
             $ref: "#/paths/~1v20190125~1tag/put"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -4715,7 +4702,6 @@ components:
             $ref: "#/paths/~1v20190125~1untag/put"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:

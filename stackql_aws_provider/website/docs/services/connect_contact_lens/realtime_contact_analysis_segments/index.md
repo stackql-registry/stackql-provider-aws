@@ -84,7 +84,7 @@ The following methods are available for this resource:
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>Provides a list of analysis segments for a real-time analysis session.</td>
+    <td>Provides a list of analysis segments for a real-time analysis session for voice. Voice data is retained for 24 hours. You must invoke this API during that time.</td>
 </tr>
 </tbody>
 </table>
@@ -120,7 +120,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 >
 <TabItem value="list_realtime_contact_analysis_segments">
 
-Provides a list of analysis segments for a real-time analysis session.
+Provides a list of analysis segments for a real-time analysis session for voice. Voice data is retained for 24 hours. You must invoke this API during that time.
 
 ```sql
 SELECT

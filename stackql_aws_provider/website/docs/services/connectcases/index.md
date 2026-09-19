@@ -18,7 +18,7 @@ connectcases service documentation.
 
 :::info[Service Summary]
 
-total resources: __13__  
+total resources: __12__  
 
 :::
 
@@ -30,7 +30,6 @@ total resources: __13__
 <a href="/services/connectcases/case_event_configurations/">case_event_configurations</a><br />
 <a href="/services/connectcases/case_rules/">case_rules</a><br />
 <a href="/services/connectcases/cases/">cases</a><br />
-<a href="/services/connectcases/cases_for_contacts/">cases_for_contacts</a><br />
 <a href="/services/connectcases/domains/">domains</a>
 </div>
 <div class="providerDocColumn">

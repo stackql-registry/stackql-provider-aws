@@ -69,11 +69,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/AcceptMatchOutput'
-      x-stackql-resource: match
+      x-stackql-resource: matches
       x-stackql-method: accept_match
       x-stackql-verb: EXEC
   /ClaimGameServer:
@@ -138,7 +134,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ClaimGameServerOutput'
-      x-stackql-resource: game_server_groups
+      x-stackql-resource: game_servers
       x-stackql-method: claim_game_server
       x-stackql-verb: EXEC
   /CreateAlias:
@@ -196,7 +192,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreateAliasOutput'
-      x-stackql-resource: alias
+      x-stackql-resource: aliases
       x-stackql-method: create_alias
       x-stackql-verb: INSERT
   /CreateBuild:
@@ -1728,10 +1724,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CreateVpcPeeringConnectionOutput'
       x-stackql-resource: vpc_peering_connections
       x-stackql-method: create_vpc_peering_connection
       x-stackql-verb: INSERT
@@ -1767,7 +1759,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: alias
+      x-stackql-resource: aliases
       x-stackql-method: delete_alias
       x-stackql-verb: DELETE
   /DeleteBuild:
@@ -1838,10 +1830,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteContainerFleetOutput'
       x-stackql-resource: container_fleets
       x-stackql-method: delete_container_fleet
       x-stackql-verb: DELETE
@@ -1890,10 +1878,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteContainerGroupDefinitionOutput'
       x-stackql-resource: container_group_definitions
       x-stackql-method: delete_container_group_definition
       x-stackql-verb: DELETE
@@ -2067,10 +2051,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteGameSessionQueueOutput'
       x-stackql-resource: game_session_queues
       x-stackql-method: delete_game_session_queue
       x-stackql-verb: DELETE
@@ -2105,10 +2085,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteLocationOutput'
       x-stackql-resource: locations
       x-stackql-method: delete_location
       x-stackql-verb: DELETE
@@ -2144,10 +2120,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteMatchmakingConfigurationOutput'
       x-stackql-resource: matchmaking_configurations
       x-stackql-method: delete_matchmaking_configuration
       x-stackql-verb: DELETE
@@ -2184,10 +2156,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteMatchmakingRuleSetOutput'
       x-stackql-resource: matchmaking_rule_sets
       x-stackql-method: delete_matchmaking_rule_set
       x-stackql-verb: DELETE
@@ -2309,10 +2277,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteVpcPeeringAuthorizationOutput'
       x-stackql-resource: vpc_peering_authorizations
       x-stackql-method: delete_vpc_peering_authorization
       x-stackql-verb: DELETE
@@ -2354,10 +2318,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteVpcPeeringConnectionOutput'
       x-stackql-resource: vpc_peering_connections
       x-stackql-method: delete_vpc_peering_connection
       x-stackql-verb: DELETE
@@ -2399,10 +2359,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeregisterComputeOutput'
       x-stackql-resource: computes
       x-stackql-method: deregister_compute
       x-stackql-verb: DELETE
@@ -2483,7 +2439,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DescribeAliasOutput'
-      x-stackql-resource: alias
+      x-stackql-resource: aliases
       x-stackql-method: describe_alias
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Alias
@@ -4248,7 +4204,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetComputeAccessOutput'
-      x-stackql-resource: compute_access
+      x-stackql-resource: compute_accesses
       x-stackql-method: get_compute_access
       x-stackql-verb: SELECT
   /GetComputeAuthToken:
@@ -4396,7 +4352,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetInstanceAccessOutput'
-      x-stackql-resource: instance_access
+      x-stackql-resource: instance_accesses
       x-stackql-method: get_instance_access
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.InstanceAccess
@@ -5488,7 +5444,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ResolveAliasOutput'
-      x-stackql-resource: alias
+      x-stackql-resource: aliases
       x-stackql-method: resolve_alias
       x-stackql-verb: EXEC
   /ResumeGameServerGroup:
@@ -5534,7 +5490,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ResumeGameServerGroupOutput'
-      x-stackql-resource: game_servers
+      x-stackql-resource: game_server_groups
       x-stackql-method: resume_game_server_group
       x-stackql-verb: EXEC
   /SearchGameSessions:
@@ -5813,7 +5769,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartGameSessionPlacementOutput'
-      x-stackql-resource: game_sessions
+      x-stackql-resource: game_session_placements
       x-stackql-method: start_game_session_placement
       x-stackql-verb: EXEC
   /StartMatchBackfill:
@@ -5892,7 +5848,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartMatchBackfillOutput'
-      x-stackql-resource: match_backfill
+      x-stackql-resource: match_backfills
       x-stackql-method: start_match_backfill
       x-stackql-verb: EXEC
   /StartMatchmaking:
@@ -5952,7 +5908,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartMatchmakingOutput'
-      x-stackql-resource: matchmaking
+      x-stackql-resource: matchmakings
       x-stackql-method: start_matchmaking
       x-stackql-verb: EXEC
   /StopFleetActions:
@@ -6046,7 +6002,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StopGameSessionPlacementOutput'
-      x-stackql-resource: game_sessions
+      x-stackql-resource: game_session_placements
       x-stackql-method: stop_game_session_placement
       x-stackql-verb: EXEC
   /StopMatchmaking:
@@ -6084,11 +6040,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/StopMatchmakingOutput'
-      x-stackql-resource: matchmaking
+      x-stackql-resource: matchmakings
       x-stackql-method: stop_matchmaking
       x-stackql-verb: EXEC
   /SuspendGameServerGroup:
@@ -6183,10 +6135,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -6301,10 +6249,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -6354,7 +6298,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateAliasOutput'
-      x-stackql-resource: alias
+      x-stackql-resource: aliases
       x-stackql-method: update_alias
       x-stackql-verb: UPDATE
   /UpdateBuild:
@@ -7350,7 +7294,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ValidateMatchmakingRuleSetOutput'
-      x-stackql-resource: matchmakings
+      x-stackql-resource: matchmaking_rule_sets
       x-stackql-method: validate_matchmaking_rule_set
       x-stackql-verb: EXEC
 components:
@@ -7415,8 +7359,6 @@ components:
       enum:
       - ACCEPT
       - REJECT
-    AcceptMatchOutput:
-      type: object
     GameServerGroupNameOrArn:
       type: string
       minLength: 1
@@ -10772,12 +10714,6 @@ components:
           $ref: '#/components/schemas/Timestamp'
           description: Time stamp indicating when this authorization expires (24 hours after issuance). Format is a number
             expressed in Unix time as milliseconds (for example "1469498468.057").
-    CreateVpcPeeringConnectionOutput:
-      type: object
-    DeleteContainerFleetOutput:
-      type: object
-    DeleteContainerGroupDefinitionOutput:
-      type: object
     DeleteFleetLocationsOutput:
       type: object
       properties:
@@ -10808,34 +10744,20 @@ components:
       minLength: 1
       maxLength: 256
       pattern: ^([a-zA-Z0-9-]+|arn:.*:gamesessionqueue\/[a-zA-Z0-9-]+)$
-    DeleteGameSessionQueueOutput:
-      type: object
     CustomLocationNameOrArnModel:
       type: string
       minLength: 1
       maxLength: 128
       pattern: ^(custom-[A-Za-z0-9\-]+|arn:.*:location\/custom-\S+)$
-    DeleteLocationOutput:
-      type: object
     MatchmakingConfigurationName:
       type: string
       minLength: 1
       maxLength: 256
       pattern: ^([a-zA-Z0-9-\.]*|arn:.*:matchmakingconfiguration\/[a-zA-Z0-9-\.]*)$
-    DeleteMatchmakingConfigurationOutput:
-      type: object
-    DeleteMatchmakingRuleSetOutput:
-      type: object
-    DeleteVpcPeeringAuthorizationOutput:
-      type: object
-    DeleteVpcPeeringConnectionOutput:
-      type: object
     ComputeNameOrArn:
       type: string
       maxLength: 1024
       pattern: ^([a-zA-Z0-9\-]+(\/[a-zA-Z0-9\-]+)?|arn:.*:compute\/[a-zA-Z0-9\-]+(\/[a-zA-Z0-9\-]+)?)$
-    DeregisterComputeOutput:
-      type: object
     DescribeAliasOutput:
       type: object
       properties:
@@ -12984,8 +12906,6 @@ components:
         GameSessionPlacement:
           $ref: '#/components/schemas/GameSessionPlacement'
           description: Object that describes the canceled game session placement, with CANCELLED status and an end time stamp.
-    StopMatchmakingOutput:
-      type: object
     SuspendGameServerGroupOutput:
       type: object
       properties:
@@ -12993,8 +12913,6 @@ components:
           $ref: '#/components/schemas/GameServerGroup'
           description: An object that describes the game server group resource, with the SuspendedActions property updated
             to reflect the suspended activity.
-    TagResourceResponse:
-      type: object
     TerminationMode:
       type: string
       enum:
@@ -13009,8 +12927,6 @@ components:
       type: array
       items:
         $ref: '#/components/schemas/TagKey'
-    UntagResourceResponse:
-      type: object
     UpdateAliasOutput:
       type: object
       properties:

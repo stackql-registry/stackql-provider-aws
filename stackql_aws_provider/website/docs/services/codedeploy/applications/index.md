@@ -33,32 +33,13 @@ Creates, updates, deletes, gets or lists an <code>applications</code> resource.
 The following fields are returned by `SELECT` queries:
 
 <Tabs
-    defaultValue="batch_get_applications"
+    defaultValue="get_application"
     values={[
-        { label: 'batch_get_applications', value: 'batch_get_applications' },
         { label: 'get_application', value: 'get_application' },
+        { label: 'batch_get_applications', value: 'batch_get_applications' },
         { label: 'list_applications', value: 'list_applications' }
     ]}
 >
-<TabItem value="batch_get_applications">
-
-<table>
-<thead>
-    <tr>
-    <th>Name</th>
-    <th>Datatype</th>
-    <th>Description</th>
-    </tr>
-</thead>
-<tbody>
-<tr>
-    <td><CopyableCode code="applications_info" /></td>
-    <td><code>array</code></td>
-    <td>Information about the applications.</td>
-</tr>
-</tbody>
-</table>
-</TabItem>
 <TabItem value="get_application">
 
 <table>
@@ -78,7 +59,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="application_name" /></td>
     <td><code>string</code></td>
-    <td>The application name.</td>
+    <td>The application name. (pattern: &lt;code&gt;&#91;A-Za-z0-9+=,.@_-&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="compute_platform" /></td>
@@ -99,6 +80,25 @@ The following fields are returned by `SELECT` queries:
     <td><CopyableCode code="linked_to_git_hub" /></td>
     <td><code>boolean</code></td>
     <td>True if the user has authenticated with GitHub for the specified application. Otherwise, false.</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
+<TabItem value="batch_get_applications">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="applications_info" /></td>
+    <td><code>array</code></td>
+    <td>Information about the applications.</td>
 </tr>
 </tbody>
 </table>
@@ -140,18 +140,18 @@ The following methods are available for this resource:
 </thead>
 <tbody>
 <tr>
-    <td><a href="#batch_get_applications"><CopyableCode code="batch_get_applications" /></a></td>
-    <td><CopyableCode code="select" /></td>
-    <td><a href="#parameter-region"><code>region</code></a></td>
-    <td></td>
-    <td>Gets information about one or more applications. The maximum number of applications that can be returned is 100.</td>
-</tr>
-<tr>
     <td><a href="#get_application"><CopyableCode code="get_application" /></a></td>
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td></td>
     <td>Gets information about an application.</td>
+</tr>
+<tr>
+    <td><a href="#batch_get_applications"><CopyableCode code="batch_get_applications" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Gets information about one or more applications. The maximum number of applications that can be returned is 100.</td>
 </tr>
 <tr>
     <td><a href="#list_applications"><CopyableCode code="list_applications" /></a></td>
@@ -208,25 +208,13 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 ## `SELECT` examples
 
 <Tabs
-    defaultValue="batch_get_applications"
+    defaultValue="get_application"
     values={[
-        { label: 'batch_get_applications', value: 'batch_get_applications' },
         { label: 'get_application', value: 'get_application' },
+        { label: 'batch_get_applications', value: 'batch_get_applications' },
         { label: 'list_applications', value: 'list_applications' }
     ]}
 >
-<TabItem value="batch_get_applications">
-
-Gets information about one or more applications. The maximum number of applications that can be returned is 100.
-
-```sql
-SELECT
-applications_info
-FROM aws.codedeploy.applications
-WHERE region = '{{ region }}' -- required
-;
-```
-</TabItem>
 <TabItem value="get_application">
 
 Gets information about an application.
@@ -239,6 +227,18 @@ compute_platform,
 create_time,
 git_hub_account_name,
 linked_to_git_hub
+FROM aws.codedeploy.applications
+WHERE region = '{{ region }}' -- required
+;
+```
+</TabItem>
+<TabItem value="batch_get_applications">
+
+Gets information about one or more applications. The maximum number of applications that can be returned is 100.
+
+```sql
+SELECT
+applications_info
 FROM aws.codedeploy.applications
 WHERE region = '{{ region }}' -- required
 ;

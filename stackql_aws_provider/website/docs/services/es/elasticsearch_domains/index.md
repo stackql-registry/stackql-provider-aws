@@ -272,6 +272,13 @@ The following methods are available for this resource:
     <td></td>
     <td>Permanently deletes the specified Elasticsearch domain and all of its data. Once a domain is deleted, it cannot be recovered.</td>
 </tr>
+<tr>
+    <td><a href="#upgrade_elasticsearch_domain"><CopyableCode code="upgrade_elasticsearch_domain" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-DomainName"><code>DomainName</code></a>, <a href="#parameter-TargetVersion"><code>TargetVersion</code></a></td>
+    <td></td>
+    <td>Allows you to either upgrade your domain or perform an Upgrade eligibility check to a compatible Elasticsearch version.</td>
+</tr>
 </tbody>
 </table>
 
@@ -605,6 +612,33 @@ Permanently deletes the specified Elasticsearch domain and all of its data. Once
 DELETE FROM aws.es.elasticsearch_domains
 WHERE domain_name = '{{ domain_name }}' --required
 AND region = '{{ region }}' --required
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="upgrade_elasticsearch_domain"
+    values={[
+        { label: 'upgrade_elasticsearch_domain', value: 'upgrade_elasticsearch_domain' }
+    ]}
+>
+<TabItem value="upgrade_elasticsearch_domain">
+
+Allows you to either upgrade your domain or perform an Upgrade eligibility check to a compatible Elasticsearch version.
+
+```sql
+EXEC aws.es.elasticsearch_domains.upgrade_elasticsearch_domain 
+@region='{{ region }}' --required 
+@@json=
+'{
+"DomainName": "{{ DomainName }}", 
+"TargetVersion": "{{ TargetVersion }}", 
+"PerformCheckOnly": {{ PerformCheckOnly }}
+}'
 ;
 ```
 </TabItem>

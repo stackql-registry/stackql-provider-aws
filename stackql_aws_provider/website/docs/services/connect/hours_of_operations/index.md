@@ -36,8 +36,7 @@ The following fields are returned by `SELECT` queries:
     defaultValue="describe_hours_of_operation"
     values={[
         { label: 'describe_hours_of_operation', value: 'describe_hours_of_operation' },
-        { label: 'list_hours_of_operations', value: 'list_hours_of_operations' },
-        { label: 'search_hours_of_operations', value: 'search_hours_of_operations' }
+        { label: 'list_hours_of_operations', value: 'list_hours_of_operations' }
     ]}
 >
 <TabItem value="describe_hours_of_operation">
@@ -143,70 +142,6 @@ The following fields are returned by `SELECT` queries:
 </tbody>
 </table>
 </TabItem>
-<TabItem value="search_hours_of_operations">
-
-<table>
-<thead>
-    <tr>
-    <th>Name</th>
-    <th>Datatype</th>
-    <th>Description</th>
-    </tr>
-</thead>
-<tbody>
-<tr>
-    <td><CopyableCode code="config" /></td>
-    <td><code>array</code></td>
-    <td>Configuration information for the hours of operation.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="description" /></td>
-    <td><code>string</code></td>
-    <td>The description for the hours of operation.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="hours_of_operation_arn" /></td>
-    <td><code>string</code></td>
-    <td>The Amazon Resource Name (ARN) for the hours of operation.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="hours_of_operation_id" /></td>
-    <td><code>string</code></td>
-    <td>The identifier for the hours of operation.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="last_modified_region" /></td>
-    <td><code>string</code></td>
-    <td>The Amazon Web Services Region where this resource was last modified. (pattern: &lt;code&gt;&#91;a-z&#93;&#123;2&#125;(-&#91;a-z&#93;+)&#123;1,2&#125;(-&#91;0-9&#93;)?&lt;/code&gt;)</td>
-</tr>
-<tr>
-    <td><CopyableCode code="last_modified_time" /></td>
-    <td><code>string (date-time)</code></td>
-    <td>The timestamp when this resource was last modified.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="name" /></td>
-    <td><code>string</code></td>
-    <td>The name for the hours of operation.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="parent_hours_of_operations" /></td>
-    <td><code>array</code></td>
-    <td>Information about parent hours of operations.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="tags" /></td>
-    <td><code>object</code></td>
-    <td>The tags used to organize, track, or control access for this resource. For example, &#123; "Tags": &#123;"key1":"value1", "key2":"value2"&#125; &#125;.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="time_zone" /></td>
-    <td><code>string</code></td>
-    <td>The time zone for the hours of operation.</td>
-</tr>
-</tbody>
-</table>
-</TabItem>
 </Tabs>
 
 ## Methods
@@ -237,13 +172,6 @@ The following methods are available for this resource:
     <td><a href="#parameter-instance_id"><code>instance_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td><a href="#parameter-nextToken"><code>nextToken</code></a>, <a href="#parameter-maxResults"><code>maxResults</code></a></td>
     <td>Provides information about the hours of operation for the specified Connect Customer instance. For more information about hours of operation, see Set the Hours of Operation for a Queue in the Connect Customer Administrator Guide.</td>
-</tr>
-<tr>
-    <td><a href="#search_hours_of_operations"><CopyableCode code="search_hours_of_operations" /></a></td>
-    <td><CopyableCode code="select" /></td>
-    <td><a href="#parameter-region"><code>region</code></a></td>
-    <td></td>
-    <td>Searches the hours of operation in an Connect Customer instance, with optional filtering.</td>
 </tr>
 <tr>
     <td><a href="#create_hours_of_operation"><CopyableCode code="create_hours_of_operation" /></a></td>
@@ -286,6 +214,13 @@ The following methods are available for this resource:
     <td><a href="#parameter-instance_id"><code>instance_id</code></a>, <a href="#parameter-hours_of_operation_id"><code>hours_of_operation_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td></td>
     <td>Deletes an hours of operation.</td>
+</tr>
+<tr>
+    <td><a href="#search_hours_of_operations"><CopyableCode code="search_hours_of_operations" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-InstanceId"><code>InstanceId</code></a></td>
+    <td></td>
+    <td>Searches the hours of operation in an Connect Customer instance, with optional filtering.</td>
 </tr>
 </tbody>
 </table>
@@ -342,8 +277,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     defaultValue="describe_hours_of_operation"
     values={[
         { label: 'describe_hours_of_operation', value: 'describe_hours_of_operation' },
-        { label: 'list_hours_of_operations', value: 'list_hours_of_operations' },
-        { label: 'search_hours_of_operations', value: 'search_hours_of_operations' }
+        { label: 'list_hours_of_operations', value: 'list_hours_of_operations' }
     ]}
 >
 <TabItem value="describe_hours_of_operation">
@@ -385,27 +319,6 @@ WHERE instance_id = '{{ instance_id }}' -- required
 AND region = '{{ region }}' -- required
 AND nextToken = '{{ nextToken }}'
 AND maxResults = '{{ maxResults }}'
-;
-```
-</TabItem>
-<TabItem value="search_hours_of_operations">
-
-Searches the hours of operation in an Connect Customer instance, with optional filtering.
-
-```sql
-SELECT
-config,
-description,
-hours_of_operation_arn,
-hours_of_operation_id,
-last_modified_region,
-last_modified_time,
-name,
-parent_hours_of_operations,
-tags,
-time_zone
-FROM aws.connect.hours_of_operations
-WHERE region = '{{ region }}' -- required
 ;
 ```
 </TabItem>
@@ -581,6 +494,35 @@ DELETE FROM aws.connect.hours_of_operations
 WHERE instance_id = '{{ instance_id }}' --required
 AND hours_of_operation_id = '{{ hours_of_operation_id }}' --required
 AND region = '{{ region }}' --required
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="search_hours_of_operations"
+    values={[
+        { label: 'search_hours_of_operations', value: 'search_hours_of_operations' }
+    ]}
+>
+<TabItem value="search_hours_of_operations">
+
+Searches the hours of operation in an Connect Customer instance, with optional filtering.
+
+```sql
+EXEC aws.connect.hours_of_operations.search_hours_of_operations 
+@region='{{ region }}' --required 
+@@json=
+'{
+"InstanceId": "{{ InstanceId }}", 
+"NextToken": "{{ NextToken }}", 
+"MaxResults": {{ MaxResults }}, 
+"SearchFilter": "{{ SearchFilter }}", 
+"SearchCriteria": "{{ SearchCriteria }}"
+}'
 ;
 ```
 </TabItem>

@@ -172,6 +172,13 @@ The following methods are available for this resource:
     <td></td>
     <td>Deletes the ClientCertificate resource.</td>
 </tr>
+<tr>
+    <td><a href="#generate_client_certificate"><CopyableCode code="generate_client_certificate" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Generates a ClientCertificate resource.</td>
+</tr>
 </tbody>
 </table>
 
@@ -307,6 +314,32 @@ Deletes the ClientCertificate resource.
 DELETE FROM aws.apigateway.client_certificates
 WHERE clientcertificate_id = '{{ clientcertificate_id }}' --required
 AND region = '{{ region }}' --required
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="generate_client_certificate"
+    values={[
+        { label: 'generate_client_certificate', value: 'generate_client_certificate' }
+    ]}
+>
+<TabItem value="generate_client_certificate">
+
+Generates a ClientCertificate resource.
+
+```sql
+EXEC aws.apigateway.client_certificates.generate_client_certificate 
+@region='{{ region }}' --required 
+@@json=
+'{
+"description": "{{ description }}", 
+"tags": "{{ tags }}"
+}'
 ;
 ```
 </TabItem>

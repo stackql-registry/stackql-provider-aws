@@ -1339,10 +1339,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -1366,10 +1362,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -2934,8 +2926,6 @@ components:
       - name
       - arn
       - status
-    TagResourceResponse:
-      type: object
     TagKeys:
       type: array
       items:
@@ -2945,8 +2935,6 @@ components:
       minLength: 1
       maxLength: 128
       pattern: ([\p{L}\p{Z}\p{N}_.:/=+\-@]*)
-    UntagResourceResponse:
-      type: object
     UpdateLoggingConfigurationResponse:
       description: Represents the output of an UpdateLoggingConfiguration operation.
       type: object

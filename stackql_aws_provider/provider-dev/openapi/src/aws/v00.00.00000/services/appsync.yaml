@@ -59,10 +59,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DisassociateApiResponse"
     get:
       operationId: GetApiAssociation
       description: Retrieves an ApiAssociation object.
@@ -253,10 +249,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteApiCacheResponse"
     get:
       operationId: GetApiCache
       description: Retrieves an ApiCache object.
@@ -875,10 +867,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteApiResponse"
     get:
       operationId: GetApi
       description: Retrieves an Api object.
@@ -949,10 +937,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteApiKeyResponse"
     post:
       operationId: UpdateApiKey
       description: Updates an API key. You can update the key as long as it's not deleted.
@@ -1007,10 +991,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteChannelNamespaceResponse"
     get:
       operationId: GetChannelNamespace
       description: Retrieves the channel namespace for a specified Api.
@@ -1092,10 +1072,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteDataSourceResponse"
     get:
       operationId: GetDataSource
       description: Retrieves a DataSource object.
@@ -1187,10 +1163,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteDomainNameResponse"
     get:
       operationId: GetDomainName
       description: Retrieves a custom DomainName object.
@@ -1254,10 +1226,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteFunctionResponse"
     get:
       operationId: GetFunction
       description: Get a Function.
@@ -1348,10 +1316,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteGraphqlApiResponse"
     get:
       operationId: GetGraphqlApi
       description: Retrieves a GraphqlApi object.
@@ -1450,10 +1414,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteResolverResponse"
     get:
       operationId: GetResolver
       description: Retrieves a Resolver object.
@@ -1561,10 +1521,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteTypeResponse"
     get:
       operationId: GetType
       description: Retrieves a Type object.
@@ -1806,10 +1762,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/FlushApiCacheResponse"
   /v1/datasources/introspections/{introspection_id}:
     get:
       operationId: GetDataSourceIntrospection
@@ -2076,10 +2028,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TagResourceResponse"
     delete:
       operationId: UntagResource
       description: Untags a resource.
@@ -2099,10 +2047,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UntagResourceResponse"
   /v1/mergedApis/{merged_api_identifier}/sourceApiAssociations/{association_id}/types:
     get:
       operationId: ListTypesByAssociation
@@ -3478,29 +3422,6 @@ components:
         format_:
           $ref: "#/components/schemas/TypeDefinitionFormat"
           description: "The type format: SDL or JSON."
-    DeleteApiResponse:
-      type: object
-    DeleteApiCacheResponse:
-      description: Represents the output of a DeleteApiCache operation.
-      type: object
-    DeleteApiKeyResponse:
-      type: object
-    DeleteChannelNamespaceResponse:
-      type: object
-    DeleteDataSourceResponse:
-      type: object
-    DeleteDomainNameResponse:
-      type: object
-    DeleteFunctionResponse:
-      type: object
-    DeleteGraphqlApiResponse:
-      type: object
-    DeleteResolverResponse:
-      type: object
-    DeleteTypeResponse:
-      type: object
-    DisassociateApiResponse:
-      type: object
     DisassociateMergedGraphqlApiResponse:
       type: object
       properties:
@@ -3629,9 +3550,6 @@ components:
         message:
           $ref: "#/components/schemas/ErrorMessage"
           description: The error payload.
-    FlushApiCacheResponse:
-      description: Represents the output of a FlushApiCache operation.
-      type: object
     GetApiResponse:
       type: object
       properties:
@@ -4113,8 +4031,6 @@ components:
         sourceApiAssociationStatus:
           $ref: "#/components/schemas/SourceApiAssociationStatus"
           description: The state of the source API association.
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
@@ -4125,8 +4041,6 @@ components:
       minLength: 1
       maxLength: 128
       pattern: ^(?!aws:)[ a-zA-Z+-=._:/]+$
-    UntagResourceResponse:
-      type: object
     UpdateApiResponse:
       type: object
       properties:
@@ -4216,7 +4130,6 @@ components:
             $ref: "#/paths/~1v1~1domainnames~1{domain_name}~1apiassociation/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         create_api:
           operation:
             $ref: "#/paths/~1v2~1apis/post"
@@ -4250,7 +4163,6 @@ components:
             $ref: "#/paths/~1v2~1apis~1{api_id}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         get_api:
           operation:
             $ref: "#/paths/~1v2~1apis~1{api_id}/get"
@@ -4274,7 +4186,6 @@ components:
             $ref: "#/paths/~1v1~1apis~1{api_id}~1FlushCache/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         start_schema_creation:
           operation:
             $ref: "#/paths/~1v1~1apis~1{api_id}~1schemacreation/post"
@@ -4376,7 +4287,6 @@ components:
             $ref: "#/paths/~1v1~1apis~1{api_id}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         get_graphql_api:
           operation:
             $ref: "#/paths/~1v1~1apis~1{api_id}/get"
@@ -4416,7 +4326,6 @@ components:
         update:
           - $ref: "#/components/x-stackQL-resources/graphql_apis/methods/update_graphql_api"
           - $ref: "#/components/x-stackQL-resources/graphql_apis/methods/associate_merged_graphql_api"
-          - $ref: "#/components/x-stackQL-resources/graphql_apis/methods/associate_source_graphql_api"
           - $ref: "#/components/x-stackQL-resources/graphql_apis/methods/disassociate_merged_graphql_api"
           - $ref: "#/components/x-stackQL-resources/graphql_apis/methods/disassociate_source_graphql_api"
         delete:
@@ -4442,7 +4351,6 @@ components:
             $ref: "#/paths/~1v1~1apis~1{api_id}~1ApiCaches/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         get_api_cache:
           operation:
             $ref: "#/paths/~1v1~1apis~1{api_id}~1ApiCaches/get"
@@ -4508,7 +4416,6 @@ components:
             $ref: "#/paths/~1v1~1apis~1{api_id}~1apikeys~1{id}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         update_api_key:
           operation:
             $ref: "#/paths/~1v1~1apis~1{api_id}~1apikeys~1{id}/post"
@@ -4567,7 +4474,6 @@ components:
             $ref: "#/paths/~1v2~1apis~1{api_id}~1channelNamespaces~1{name}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         get_channel_namespace:
           operation:
             $ref: "#/paths/~1v2~1apis~1{api_id}~1channelNamespaces~1{name}/get"
@@ -4634,7 +4540,6 @@ components:
             $ref: "#/paths/~1v1~1apis~1{api_id}~1datasources~1{name}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         get_data_source:
           operation:
             $ref: "#/paths/~1v1~1apis~1{api_id}~1datasources~1{name}/get"
@@ -4712,7 +4617,6 @@ components:
             $ref: "#/paths/~1v1~1domainnames~1{domain_name}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         get_domain_name:
           operation:
             $ref: "#/paths/~1v1~1domainnames~1{domain_name}/get"
@@ -4779,7 +4683,6 @@ components:
             $ref: "#/paths/~1v1~1apis~1{api_id}~1functions~1{function_id}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         get_function:
           operation:
             $ref: "#/paths/~1v1~1apis~1{api_id}~1functions~1{function_id}/get"
@@ -4846,7 +4749,6 @@ components:
             $ref: "#/paths/~1v1~1apis~1{api_id}~1types~1{type_name}~1resolvers~1{field_name}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         get_resolver:
           operation:
             $ref: "#/paths/~1v1~1apis~1{api_id}~1types~1{type_name}~1resolvers~1{field_name}/get"
@@ -4865,10 +4767,28 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        list_resolvers_by_function:
+          operation:
+            $ref: "#/paths/~1v1~1apis~1{api_id}~1functions~1{function_id}~1resolvers/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.resolvers
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/resolvers/methods/get_resolver"
           - $ref: "#/components/x-stackQL-resources/resolvers/methods/list_resolvers"
+          - $ref: "#/components/x-stackQL-resources/resolvers/methods/list_resolvers_by_function"
         insert:
           - $ref: "#/components/x-stackQL-resources/resolvers/methods/create_resolver"
         update:
@@ -4913,7 +4833,6 @@ components:
             $ref: "#/paths/~1v1~1apis~1{api_id}~1types~1{type_name}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         get_type:
           operation:
             $ref: "#/paths/~1v1~1apis~1{api_id}~1types~1{type_name}/get"
@@ -4932,9 +4851,27 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        list_types_by_association:
+          operation:
+            $ref: "#/paths/~1v1~1mergedApis~1{merged_api_identifier}~1sourceApiAssociations~1{association_id}~1types/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.types
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/types/methods/list_types"
+          - $ref: "#/components/x-stackQL-resources/types/methods/list_types_by_association"
         insert:
           - $ref: "#/components/x-stackQL-resources/types/methods/create_type"
         update:
@@ -4988,6 +4925,48 @@ components:
         insert: []
         update:
           - $ref: "#/components/x-stackQL-resources/source_api_associations/methods/update_source_api_association"
+        delete: []
+    codes:
+      id: aws.appsync.codes
+      name: codes
+      title: codes
+      methods:
+        evaluate_code:
+          operation:
+            $ref: "#/paths/~1v1~1dataplane-evaluatecode/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
+    mapping_templates:
+      id: aws.appsync.mapping_templates
+      name: mapping_templates
+      title: mapping_templates
+      methods:
+        evaluate_mapping_template:
+          operation:
+            $ref: "#/paths/~1v1~1dataplane-evaluatetemplate/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
         delete: []
     data_source_introspections:
       id: aws.appsync.data_source_introspections
@@ -5057,10 +5036,10 @@ components:
         insert: []
         update: []
         delete: []
-    schema_creation_status:
-      id: aws.appsync.schema_creation_status
-      name: schema_creation_status
-      title: schema_creation_status
+    schema_creation_statuses:
+      id: aws.appsync.schema_creation_statuses
+      name: schema_creation_statuses
+      title: schema_creation_statuses
       methods:
         get_schema_creation_status:
           operation:
@@ -5070,35 +5049,7 @@ components:
             mediaType: application/json
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/schema_creation_status/methods/get_schema_creation_status"
-        insert: []
-        update: []
-        delete: []
-    resolvers_by_functions:
-      id: aws.appsync.resolvers_by_functions
-      name: resolvers_by_functions
-      title: resolvers_by_functions
-      methods:
-        list_resolvers_by_function:
-          operation:
-            $ref: "#/paths/~1v1~1apis~1{api_id}~1functions~1{function_id}~1resolvers/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.resolvers
-          request:
-            nativeCasing: pascal
-          config:
-            pagination:
-              requestToken:
-                key: nextToken
-                location: query
-              responseToken:
-                key: $.nextToken
-                location: body
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/resolvers_by_functions/methods/list_resolvers_by_function"
+          - $ref: "#/components/x-stackQL-resources/schema_creation_statuses/methods/get_schema_creation_status"
         insert: []
         update: []
         delete: []
@@ -5118,7 +5069,6 @@ components:
             $ref: "#/paths/~1v1~1tags~1{resource_arn}/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -5129,7 +5079,6 @@ components:
             $ref: "#/paths/~1v1~1tags~1{resource_arn}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
       sqlVerbs:
@@ -5140,31 +5089,19 @@ components:
           - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
           - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
         delete: []
-    types_by_associations:
-      id: aws.appsync.types_by_associations
-      name: types_by_associations
-      title: types_by_associations
+    schema_merges:
+      id: aws.appsync.schema_merges
+      name: schema_merges
+      title: schema_merges
       methods:
-        list_types_by_association:
+        start_schema_merge:
           operation:
-            $ref: "#/paths/~1v1~1mergedApis~1{merged_api_identifier}~1sourceApiAssociations~1{association_id}~1types/get"
+            $ref: "#/paths/~1v1~1mergedApis~1{merged_api_identifier}~1sourceApiAssociations~1{association_id}~1merge/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-            objectKey: $.types
-          request:
-            nativeCasing: pascal
-          config:
-            pagination:
-              requestToken:
-                key: nextToken
-                location: query
-              responseToken:
-                key: $.nextToken
-                location: body
       sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/types_by_associations/methods/list_types_by_association"
+        select: []
         insert: []
         update: []
         delete: []

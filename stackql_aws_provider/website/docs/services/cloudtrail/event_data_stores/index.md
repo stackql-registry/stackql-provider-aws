@@ -174,49 +174,49 @@ The following methods are available for this resource:
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>Returns information about an event data store specified as either an ARN or the ID portion of the ARN.</td>
+    <td>CloudTrail Lake will no longer be open to new customers starting May 31, 2026. If you would like to use CloudTrail Lake, sign up prior to that date. Existing customers can continue to use the service as normal. For more information, see CloudTrail Lake availability change. Returns information about an event data store specified as either an ARN or the ID portion of the ARN.</td>
 </tr>
 <tr>
     <td><a href="#list_event_data_stores"><CopyableCode code="list_event_data_stores" /></a></td>
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>Returns information about all event data stores in the account, in the current Region.</td>
+    <td>CloudTrail Lake will no longer be open to new customers starting May 31, 2026. If you would like to use CloudTrail Lake, sign up prior to that date. Existing customers can continue to use the service as normal. For more information, see CloudTrail Lake availability change. Returns information about all event data stores in the account, in the current Region.</td>
 </tr>
 <tr>
     <td><a href="#create_event_data_store"><CopyableCode code="create_event_data_store" /></a></td>
     <td><CopyableCode code="insert" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>Creates a new event data store.</td>
+    <td>CloudTrail Lake will no longer be open to new customers starting May 31, 2026. If you would like to use CloudTrail Lake, sign up prior to that date. Existing customers can continue to use the service as normal. For more information, see CloudTrail Lake availability change. Creates a new event data store.</td>
 </tr>
 <tr>
     <td><a href="#update_event_data_store"><CopyableCode code="update_event_data_store" /></a></td>
     <td><CopyableCode code="update" /></td>
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-EventDataStore"><code>EventDataStore</code></a></td>
     <td></td>
-    <td>Updates an event data store. The required EventDataStore value is an ARN or the ID portion of the ARN. Other parameters are optional, but at least one optional parameter must be specified, or CloudTrail throws an error. RetentionPeriod is in days, and valid values are integers between 7 and 3653 if the BillingMode is set to EXTENDABLE_RETENTION_PRICING, or between 7 and 2557 if BillingMode is set to FIXED_RETENTION_PRICING. By default, TerminationProtection is enabled. For event data stores for CloudTrail events, AdvancedEventSelectors includes or excludes management, data, or network activity events in your event data store. For more information about AdvancedEventSelectors, see AdvancedEventSelectors. For event data stores for CloudTrail Insights events, Config configuration items, Audit Manager evidence, or non-Amazon Web Services events, AdvancedEventSelectors includes events of that type in your event data store.</td>
+    <td>CloudTrail Lake will no longer be open to new customers starting May 31, 2026. If you would like to use CloudTrail Lake, sign up prior to that date. Existing customers can continue to use the service as normal. For more information, see CloudTrail Lake availability change. Updates an event data store. The required EventDataStore value is an ARN or the ID portion of the ARN. Other parameters are optional, but at least one optional parameter must be specified, or CloudTrail throws an error. RetentionPeriod is in days, and valid values are integers between 7 and 3653 if the BillingMode is set to EXTENDABLE_RETENTION_PRICING, or between 7 and 2557 if BillingMode is set to FIXED_RETENTION_PRICING. By default, TerminationProtection is enabled. For event data stores for CloudTrail events, AdvancedEventSelectors includes or excludes management, data, or network activity events in your event data store. For more information about AdvancedEventSelectors, see AdvancedEventSelectors. For event data stores for CloudTrail Insights events, Config configuration items, Audit Manager evidence, or non-Amazon Web Services events, AdvancedEventSelectors includes events of that type in your event data store.</td>
 </tr>
 <tr>
     <td><a href="#delete_event_data_store"><CopyableCode code="delete_event_data_store" /></a></td>
     <td><CopyableCode code="delete" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>Disables the event data store specified by EventDataStore, which accepts an event data store ARN. After you run DeleteEventDataStore, the event data store enters a PENDING_DELETION state, and is automatically deleted after a wait period of seven days. TerminationProtectionEnabled must be set to False on the event data store and the FederationStatus must be DISABLED. You cannot delete an event data store if TerminationProtectionEnabled is True or the FederationStatus is ENABLED. After you run DeleteEventDataStore on an event data store, you cannot run ListQueries, DescribeQuery, or GetQueryResults on queries that are using an event data store in a PENDING_DELETION state. An event data store in the PENDING_DELETION state does not incur costs.</td>
+    <td>CloudTrail Lake will no longer be open to new customers starting May 31, 2026. If you would like to use CloudTrail Lake, sign up prior to that date. Existing customers can continue to use the service as normal. For more information, see CloudTrail Lake availability change. Disables the event data store specified by EventDataStore, which accepts an event data store ARN. After you run DeleteEventDataStore, the event data store enters a PENDING_DELETION state, and is automatically deleted after a wait period of seven days. TerminationProtectionEnabled must be set to False on the event data store and the FederationStatus must be DISABLED. You cannot delete an event data store if TerminationProtectionEnabled is True or the FederationStatus is ENABLED. After you run DeleteEventDataStore on an event data store, you cannot run ListQueries, DescribeQuery, or GetQueryResults on queries that are using an event data store in a PENDING_DELETION state. An event data store in the PENDING_DELETION state does not incur costs.</td>
 </tr>
 <tr>
     <td><a href="#start_event_data_store_ingestion"><CopyableCode code="start_event_data_store_ingestion" /></a></td>
     <td><CopyableCode code="exec" /></td>
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-EventDataStore"><code>EventDataStore</code></a></td>
     <td></td>
-    <td>Starts the ingestion of live events on an event data store specified as either an ARN or the ID portion of the ARN. To start ingestion, the event data store Status must be STOPPED_INGESTION and the eventCategory must be Management, Data, NetworkActivity, or ConfigurationItem.</td>
+    <td>CloudTrail Lake will no longer be open to new customers starting May 31, 2026. If you would like to use CloudTrail Lake, sign up prior to that date. Existing customers can continue to use the service as normal. For more information, see CloudTrail Lake availability change. Starts the ingestion of live events on an event data store specified as either an ARN or the ID portion of the ARN. To start ingestion, the event data store Status must be STOPPED_INGESTION and the eventCategory must be Management, Data, NetworkActivity, or ConfigurationItem.</td>
 </tr>
 <tr>
     <td><a href="#stop_event_data_store_ingestion"><CopyableCode code="stop_event_data_store_ingestion" /></a></td>
     <td><CopyableCode code="exec" /></td>
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-EventDataStore"><code>EventDataStore</code></a></td>
     <td></td>
-    <td>Stops the ingestion of live events on an event data store specified as either an ARN or the ID portion of the ARN. To stop ingestion, the event data store Status must be ENABLED and the eventCategory must be Management, Data, NetworkActivity, or ConfigurationItem.</td>
+    <td>CloudTrail Lake will no longer be open to new customers starting May 31, 2026. If you would like to use CloudTrail Lake, sign up prior to that date. Existing customers can continue to use the service as normal. For more information, see CloudTrail Lake availability change. Stops the ingestion of live events on an event data store specified as either an ARN or the ID portion of the ARN. To stop ingestion, the event data store Status must be ENABLED and the eventCategory must be Management, Data, NetworkActivity, or ConfigurationItem.</td>
 </tr>
 </tbody>
 </table>
@@ -253,7 +253,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 >
 <TabItem value="get_event_data_store">
 
-Returns information about an event data store specified as either an ARN or the ID portion of the ARN.
+CloudTrail Lake will no longer be open to new customers starting May 31, 2026. If you would like to use CloudTrail Lake, sign up prior to that date. Existing customers can continue to use the service as normal. For more information, see CloudTrail Lake availability change. Returns information about an event data store specified as either an ARN or the ID portion of the ARN.
 
 ```sql
 SELECT
@@ -279,7 +279,7 @@ WHERE region = '{{ region }}' -- required
 </TabItem>
 <TabItem value="list_event_data_stores">
 
-Returns information about all event data stores in the account, in the current Region.
+CloudTrail Lake will no longer be open to new customers starting May 31, 2026. If you would like to use CloudTrail Lake, sign up prior to that date. Existing customers can continue to use the service as normal. For more information, see CloudTrail Lake availability change. Returns information about all event data stores in the account, in the current Region.
 
 ```sql
 SELECT
@@ -304,7 +304,7 @@ WHERE region = '{{ region }}' -- required
 >
 <TabItem value="create_event_data_store">
 
-Creates a new event data store.
+CloudTrail Lake will no longer be open to new customers starting May 31, 2026. If you would like to use CloudTrail Lake, sign up prior to that date. Existing customers can continue to use the service as normal. For more information, see CloudTrail Lake availability change. Creates a new event data store.
 
 ```sql
 INSERT INTO aws.cloudtrail.event_data_stores (
@@ -418,7 +418,7 @@ updated_timestamp
 >
 <TabItem value="update_event_data_store">
 
-Updates an event data store. The required EventDataStore value is an ARN or the ID portion of the ARN. Other parameters are optional, but at least one optional parameter must be specified, or CloudTrail throws an error. RetentionPeriod is in days, and valid values are integers between 7 and 3653 if the BillingMode is set to EXTENDABLE_RETENTION_PRICING, or between 7 and 2557 if BillingMode is set to FIXED_RETENTION_PRICING. By default, TerminationProtection is enabled. For event data stores for CloudTrail events, AdvancedEventSelectors includes or excludes management, data, or network activity events in your event data store. For more information about AdvancedEventSelectors, see AdvancedEventSelectors. For event data stores for CloudTrail Insights events, Config configuration items, Audit Manager evidence, or non-Amazon Web Services events, AdvancedEventSelectors includes events of that type in your event data store.
+CloudTrail Lake will no longer be open to new customers starting May 31, 2026. If you would like to use CloudTrail Lake, sign up prior to that date. Existing customers can continue to use the service as normal. For more information, see CloudTrail Lake availability change. Updates an event data store. The required EventDataStore value is an ARN or the ID portion of the ARN. Other parameters are optional, but at least one optional parameter must be specified, or CloudTrail throws an error. RetentionPeriod is in days, and valid values are integers between 7 and 3653 if the BillingMode is set to EXTENDABLE_RETENTION_PRICING, or between 7 and 2557 if BillingMode is set to FIXED_RETENTION_PRICING. By default, TerminationProtection is enabled. For event data stores for CloudTrail events, AdvancedEventSelectors includes or excludes management, data, or network activity events in your event data store. For more information about AdvancedEventSelectors, see AdvancedEventSelectors. For event data stores for CloudTrail Insights events, Config configuration items, Audit Manager evidence, or non-Amazon Web Services events, AdvancedEventSelectors includes events of that type in your event data store.
 
 ```sql
 UPDATE aws.cloudtrail.event_data_stores
@@ -465,7 +465,7 @@ updated_timestamp;
 >
 <TabItem value="delete_event_data_store">
 
-Disables the event data store specified by EventDataStore, which accepts an event data store ARN. After you run DeleteEventDataStore, the event data store enters a PENDING_DELETION state, and is automatically deleted after a wait period of seven days. TerminationProtectionEnabled must be set to False on the event data store and the FederationStatus must be DISABLED. You cannot delete an event data store if TerminationProtectionEnabled is True or the FederationStatus is ENABLED. After you run DeleteEventDataStore on an event data store, you cannot run ListQueries, DescribeQuery, or GetQueryResults on queries that are using an event data store in a PENDING_DELETION state. An event data store in the PENDING_DELETION state does not incur costs.
+CloudTrail Lake will no longer be open to new customers starting May 31, 2026. If you would like to use CloudTrail Lake, sign up prior to that date. Existing customers can continue to use the service as normal. For more information, see CloudTrail Lake availability change. Disables the event data store specified by EventDataStore, which accepts an event data store ARN. After you run DeleteEventDataStore, the event data store enters a PENDING_DELETION state, and is automatically deleted after a wait period of seven days. TerminationProtectionEnabled must be set to False on the event data store and the FederationStatus must be DISABLED. You cannot delete an event data store if TerminationProtectionEnabled is True or the FederationStatus is ENABLED. After you run DeleteEventDataStore on an event data store, you cannot run ListQueries, DescribeQuery, or GetQueryResults on queries that are using an event data store in a PENDING_DELETION state. An event data store in the PENDING_DELETION state does not incur costs.
 
 ```sql
 DELETE FROM aws.cloudtrail.event_data_stores
@@ -487,7 +487,7 @@ WHERE region = '{{ region }}' --required
 >
 <TabItem value="start_event_data_store_ingestion">
 
-Starts the ingestion of live events on an event data store specified as either an ARN or the ID portion of the ARN. To start ingestion, the event data store Status must be STOPPED_INGESTION and the eventCategory must be Management, Data, NetworkActivity, or ConfigurationItem.
+CloudTrail Lake will no longer be open to new customers starting May 31, 2026. If you would like to use CloudTrail Lake, sign up prior to that date. Existing customers can continue to use the service as normal. For more information, see CloudTrail Lake availability change. Starts the ingestion of live events on an event data store specified as either an ARN or the ID portion of the ARN. To start ingestion, the event data store Status must be STOPPED_INGESTION and the eventCategory must be Management, Data, NetworkActivity, or ConfigurationItem.
 
 ```sql
 EXEC aws.cloudtrail.event_data_stores.start_event_data_store_ingestion 
@@ -501,7 +501,7 @@ EXEC aws.cloudtrail.event_data_stores.start_event_data_store_ingestion
 </TabItem>
 <TabItem value="stop_event_data_store_ingestion">
 
-Stops the ingestion of live events on an event data store specified as either an ARN or the ID portion of the ARN. To stop ingestion, the event data store Status must be ENABLED and the eventCategory must be Management, Data, NetworkActivity, or ConfigurationItem.
+CloudTrail Lake will no longer be open to new customers starting May 31, 2026. If you would like to use CloudTrail Lake, sign up prior to that date. Existing customers can continue to use the service as normal. For more information, see CloudTrail Lake availability change. Stops the ingestion of live events on an event data store specified as either an ARN or the ID portion of the ARN. To stop ingestion, the event data store Status must be ENABLED and the eventCategory must be Management, Data, NetworkActivity, or ConfigurationItem.
 
 ```sql
 EXEC aws.cloudtrail.event_data_stores.stop_event_data_store_ingestion 

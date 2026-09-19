@@ -50,6 +50,11 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
+    <td><CopyableCode code="conditional_behavior" /></td>
+    <td><code>object</code></td>
+    <td>The conditional behavior rules for this field. Only present when FieldRequirement is CONDITIONAL. Rules are evaluated in order and the first matching rule determines the field's resolved requirement. If no rule matches, the DefaultBehavior applies.</td>
+</tr>
+<tr>
     <td><CopyableCode code="display_hints" /></td>
     <td><code>object</code></td>
     <td>An array of RegistrationFieldDisplayHints objects for the field.</td>
@@ -149,6 +154,7 @@ Retrieves the specified registration type field definitions. You can use Describ
 
 ```sql
 SELECT
+conditional_behavior,
 display_hints,
 field_path,
 field_requirement,

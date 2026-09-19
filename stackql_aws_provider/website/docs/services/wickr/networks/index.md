@@ -189,6 +189,13 @@ The following methods are available for this resource:
     <td>Retrieves a paginated list of all Wickr networks associated with your Amazon Web Services account. You can sort the results by network ID or name.</td>
 </tr>
 <tr>
+    <td><a href="#create_network"><CopyableCode code="create_network" /></a></td>
+    <td><CopyableCode code="insert" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-networkName"><code>networkName</code></a>, <a href="#parameter-accessLevel"><code>accessLevel</code></a></td>
+    <td></td>
+    <td>Creates a new Wickr network with specified access level and configuration. This operation provisions a new communication network for your organization.</td>
+</tr>
+<tr>
     <td><a href="#register_oidc_config"><CopyableCode code="register_oidc_config" /></a></td>
     <td><CopyableCode code="insert" /></td>
     <td><a href="#parameter-network_id"><code>network_id</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-companyId"><code>companyId</code></a>, <a href="#parameter-issuer"><code>issuer</code></a>, <a href="#parameter-scopes"><code>scopes</code></a></td>
@@ -203,11 +210,11 @@ The following methods are available for this resource:
     <td>Tests an OpenID Connect (OIDC) configuration for a Wickr network by validating the connection to the identity provider and retrieving its supported capabilities.</td>
 </tr>
 <tr>
-    <td><a href="#create_network"><CopyableCode code="create_network" /></a></td>
-    <td><CopyableCode code="insert" /></td>
-    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-networkName"><code>networkName</code></a>, <a href="#parameter-accessLevel"><code>accessLevel</code></a></td>
-    <td></td>
-    <td>Creates a new Wickr network with specified access level and configuration. This operation provisions a new communication network for your organization.</td>
+    <td><a href="#update_network"><CopyableCode code="update_network" /></a></td>
+    <td><CopyableCode code="update" /></td>
+    <td><a href="#parameter-network_id"><code>network_id</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-networkName"><code>networkName</code></a></td>
+    <td><a href="#parameter-X-Client-Token"><code>X-Client-Token</code></a></td>
+    <td>Updates the properties of an existing Wickr network, such as its name or encryption key configuration.</td>
 </tr>
 <tr>
     <td><a href="#update_data_retention"><CopyableCode code="update_data_retention" /></a></td>
@@ -215,13 +222,6 @@ The following methods are available for this resource:
     <td><a href="#parameter-network_id"><code>network_id</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-actionType"><code>actionType</code></a></td>
     <td></td>
     <td>Updates the data retention bot settings, allowing you to enable or disable the data retention service, or acknowledge the public key message.</td>
-</tr>
-<tr>
-    <td><a href="#update_network"><CopyableCode code="update_network" /></a></td>
-    <td><CopyableCode code="update" /></td>
-    <td><a href="#parameter-network_id"><code>network_id</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-networkName"><code>networkName</code></a></td>
-    <td><a href="#parameter-X-Client-Token"><code>X-Client-Token</code></a></td>
-    <td>Updates the properties of an existing Wickr network, such as its name or encryption key configuration.</td>
 </tr>
 <tr>
     <td><a href="#delete_network"><CopyableCode code="delete_network" /></a></td>
@@ -396,14 +396,39 @@ AND nextToken = '{{ nextToken }}'
 ## `INSERT` examples
 
 <Tabs
-    defaultValue="register_oidc_config"
+    defaultValue="create_network"
     values={[
+        { label: 'create_network', value: 'create_network' },
         { label: 'register_oidc_config', value: 'register_oidc_config' },
         { label: 'register_oidc_config_test', value: 'register_oidc_config_test' },
-        { label: 'create_network', value: 'create_network' },
         { label: 'Manifest', value: 'manifest' }
     ]}
 >
+<TabItem value="create_network">
+
+Creates a new Wickr network with specified access level and configuration. This operation provisions a new communication network for your organization.
+
+```sql
+INSERT INTO aws.wickr.networks (
+networkName,
+accessLevel,
+enablePremiumFreeTrial,
+encryptionKeyArn,
+region
+)
+SELECT 
+'{{ networkName }}' /* required */,
+'{{ accessLevel }}' /* required */,
+{{ enablePremiumFreeTrial }},
+'{{ encryptionKeyArn }}',
+'{{ region }}'
+RETURNING
+encryption_key_arn,
+network_id,
+network_name
+;
+```
+</TabItem>
 <TabItem value="register_oidc_config">
 
 Registers and saves an OpenID Connect (OIDC) configuration for a Wickr network, enabling Single Sign-On (SSO) authentication through an identity provider.
@@ -486,42 +511,26 @@ userinfo_endpoint
 ;
 ```
 </TabItem>
-<TabItem value="create_network">
-
-Creates a new Wickr network with specified access level and configuration. This operation provisions a new communication network for your organization.
-
-```sql
-INSERT INTO aws.wickr.networks (
-networkName,
-accessLevel,
-enablePremiumFreeTrial,
-encryptionKeyArn,
-region
-)
-SELECT 
-'{{ networkName }}' /* required */,
-'{{ accessLevel }}' /* required */,
-{{ enablePremiumFreeTrial }},
-'{{ encryptionKeyArn }}',
-'{{ region }}'
-RETURNING
-encryption_key_arn,
-network_id,
-network_name
-;
-```
-</TabItem>
 <TabItem value="manifest">
 
 <CodeBlock language="yaml">{`# Description fields are for documentation purposes
 - name: networks
   props:
-    - name: network_id
-      value: "{{ network_id }}"
-      description: Required parameter for the networks resource.
     - name: region
       value: "{{ region }}"
       description: Required parameter for the networks resource.
+    - name: network_id
+      value: "{{ network_id }}"
+      description: Required parameter for the networks resource.
+    - name: networkName
+      value: "{{ networkName }}"
+    - name: accessLevel
+      value: "{{ accessLevel }}"
+      valid_values: ['STANDARD', 'PREMIUM']
+    - name: enablePremiumFreeTrial
+      value: {{ enablePremiumFreeTrial }}
+    - name: encryptionKeyArn
+      value: "{{ encryptionKeyArn }}"
     - name: companyId
       value: "{{ companyId }}"
     - name: customUsername
@@ -540,15 +549,6 @@ network_name
       value: "{{ userId }}"
     - name: certificate
       value: "{{ certificate }}"
-    - name: networkName
-      value: "{{ networkName }}"
-    - name: accessLevel
-      value: "{{ accessLevel }}"
-      valid_values: ['STANDARD', 'PREMIUM']
-    - name: enablePremiumFreeTrial
-      value: {{ enablePremiumFreeTrial }}
-    - name: encryptionKeyArn
-      value: "{{ encryptionKeyArn }}"
 `}</CodeBlock>
 
 </TabItem>
@@ -558,28 +558,12 @@ network_name
 ## `UPDATE` examples
 
 <Tabs
-    defaultValue="update_data_retention"
+    defaultValue="update_network"
     values={[
-        { label: 'update_data_retention', value: 'update_data_retention' },
-        { label: 'update_network', value: 'update_network' }
+        { label: 'update_network', value: 'update_network' },
+        { label: 'update_data_retention', value: 'update_data_retention' }
     ]}
 >
-<TabItem value="update_data_retention">
-
-Updates the data retention bot settings, allowing you to enable or disable the data retention service, or acknowledge the public key message.
-
-```sql
-UPDATE aws.wickr.networks
-SET 
-actionType = '{{ actionType }}'
-WHERE 
-network_id = '{{ network_id }}' --required
-AND region = '{{ region }}' --required
-AND actionType = '{{ actionType }}' --required
-RETURNING
-message;
-```
-</TabItem>
 <TabItem value="update_network">
 
 Updates the properties of an existing Wickr network, such as its name or encryption key configuration.
@@ -594,6 +578,22 @@ network_id = '{{ network_id }}' --required
 AND region = '{{ region }}' --required
 AND networkName = '{{ networkName }}' --required
 AND `X-Client-Token` = '{{ X-Client-Token}}'
+RETURNING
+message;
+```
+</TabItem>
+<TabItem value="update_data_retention">
+
+Updates the data retention bot settings, allowing you to enable or disable the data retention service, or acknowledge the public key message.
+
+```sql
+UPDATE aws.wickr.networks
+SET 
+actionType = '{{ actionType }}'
+WHERE 
+network_id = '{{ network_id }}' --required
+AND region = '{{ region }}' --required
+AND actionType = '{{ actionType }}' --required
 RETURNING
 message;
 ```

@@ -1116,10 +1116,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TagResourceResponse"
     delete:
       operationId: UntagResource
       description: Untags a resource with a specified Amazon Resource Name (ARN).
@@ -1139,10 +1135,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UntagResourceResponse"
   /apps/{app_id}/branches/{branch_name}/deployments/start:
     post:
       operationId: StartDeployment
@@ -1291,7 +1283,7 @@ components:
     AccessToken:
       type: string
       minLength: 1
-      maxLength: 255
+      maxLength: 4096
       pattern: (?s).+
     EnvironmentVariables:
       type: object
@@ -2633,9 +2625,6 @@ components:
           description: The summary for the job.
       required:
         - jobSummary
-    TagResourceResponse:
-      description: The response for the tag resource request.
-      type: object
     TagKeyList:
       type: array
       items:
@@ -2645,9 +2634,6 @@ components:
       minLength: 1
       maxLength: 128
       pattern: ^(?!aws:)[a-zA-Z+-=._:/]+$
-    UntagResourceResponse:
-      description: The response for the untag resource request.
-      type: object
     UpdateAppResult:
       description: The result structure for an Amplify app update request.
       type: object
@@ -2911,7 +2897,6 @@ components:
           - $ref: "#/components/x-stackQL-resources/branches/methods/list_branches"
         insert:
           - $ref: "#/components/x-stackQL-resources/branches/methods/create_branch"
-          - $ref: "#/components/x-stackQL-resources/branches/methods/create_deployment"
         update:
           - $ref: "#/components/x-stackQL-resources/branches/methods/update_branch"
         delete:
@@ -3136,7 +3121,6 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -3147,7 +3131,6 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
       sqlVerbs:

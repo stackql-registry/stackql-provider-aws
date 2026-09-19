@@ -18,7 +18,7 @@ kinesisanalyticsv2 service documentation.
 
 :::info[Service Summary]
 
-total resources: __5__  
+total resources: __6__  
 
 :::
 
@@ -31,6 +31,7 @@ total resources: __5__
 </div>
 <div class="providerDocColumn">
 <a href="/services/kinesisanalyticsv2/applications/">applications</a><br />
+<a href="/services/kinesisanalyticsv2/input_schemas/">input_schemas</a><br />
 <a href="/services/kinesisanalyticsv2/tags/">tags</a>
 </div>
 </div>

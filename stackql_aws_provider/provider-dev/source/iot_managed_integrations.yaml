@@ -1739,7 +1739,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetManagedThingConnectivityDataResponse'
-      x-stackql-resource: managed_thing_connectivity_datas
+      x-stackql-resource: managed_thing_connectivity_data
       x-stackql-method: get_managed_thing_connectivity_data
       x-stackql-verb: SELECT
   /managed-things-metadata/{identifier}:
@@ -1762,7 +1762,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetManagedThingMetaDataResponse'
-      x-stackql-resource: managed_thing_meta_datas
+      x-stackql-resource: managed_thing_meta_data
       x-stackql-method: get_managed_thing_meta_data
       x-stackql-verb: SELECT
   /managed-thing-states/{managed_thing_id}:
@@ -1847,7 +1847,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: managed_things
+      x-stackql-resource: runtime_log_configurations
       x-stackql-method: reset_runtime_log_configuration
       x-stackql-verb: EXEC
   /schema-versions/{type}/{schema_versioned_id}:
@@ -1971,7 +1971,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartDeviceDiscoveryResponse'
-      x-stackql-resource: device_discovery
+      x-stackql-resource: device_discoveries
       x-stackql-method: start_device_discovery
       x-stackql-verb: EXEC
   /device-discoveries/{identifier}/devices:
@@ -2247,10 +2247,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -2273,10 +2269,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -2360,7 +2352,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SendConnectorEventResponse'
-      x-stackql-resource: connector_event
+      x-stackql-resource: connector_events
       x-stackql-method: send_connector_event
       x-stackql-verb: EXEC
   /managed-things-command/{managed_thing_id}:
@@ -5469,8 +5461,6 @@ components:
         StartedAt:
           $ref: '#/components/schemas/DiscoveryStartedAt'
           description: The timestamp value for the start time of the device discovery.
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
@@ -5479,8 +5469,6 @@ components:
       type: string
       minLength: 1
       maxLength: 128
-    UntagResourceResponse:
-      type: object
     AuthConfigUpdate:
       description: The updated authentication configuration details for a connector destination.
       type: object

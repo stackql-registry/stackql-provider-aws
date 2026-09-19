@@ -145,6 +145,13 @@ The following methods are available for this resource:
     <td></td>
     <td>Deletes the specified grant. You revoke a grant to terminate the permissions that the grant allows. For more information, see Retiring and revoking grants in the Key Management Service Developer Guide . When you create, retire, or revoke a grant, there might be a brief delay, usually less than five minutes, until the grant is available throughout KMS. This state is known as eventual consistency. For details, see Eventual consistency in the Key Management Service Developer Guide . For detailed information about grants, including grant terminology, see Grants in KMS in the Key Management Service Developer Guide . For examples of creating grants in several programming languages, see Use CreateGrant with an Amazon Web Services SDK or CLI. Cross-account use: Yes. To perform this operation on a KMS key in a different Amazon Web Services account, specify the key ARN in the value of the KeyId parameter. Required permissions: kms:RevokeGrant (key policy). Related operations: CreateGrant ListGrants ListRetirableGrants RetireGrant Eventual consistency: The KMS API follows an eventual consistency model. For more information, see KMS eventual consistency.</td>
 </tr>
+<tr>
+    <td><a href="#retire_grant"><CopyableCode code="retire_grant" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Deletes a grant. Typically, you retire a grant when you no longer need its permissions. To identify the grant to retire, use a grant token, or both the grant ID and a key identifier (key ID or key ARN) of the KMS key. The CreateGrant operation returns both values. This operation can be called by the retiring principal for a grant, by the grantee principal if the grant allows the RetireGrant operation, and by the Amazon Web Services account in which the grant is created. It can also be called by principals to whom permission for retiring a grant is delegated. For detailed information about grants, including grant terminology, see Grants in KMS in the Key Management Service Developer Guide . For examples of creating grants in several programming languages, see Use CreateGrant with an Amazon Web Services SDK or CLI. Cross-account use: Yes. You can retire a grant on a KMS key in a different Amazon Web Services account. Required permissions: Permission to retire a grant is determined primarily by the grant. For details, see Retiring and revoking grants in the Key Management Service Developer Guide. Related operations: CreateGrant ListGrants ListRetirableGrants RevokeGrant Eventual consistency: The KMS API follows an eventual consistency model. For more information, see KMS eventual consistency.</td>
+</tr>
 </tbody>
 </table>
 
@@ -328,6 +335,34 @@ WHERE
 region = '{{ region }}' --required
 AND KeyId = '{{ KeyId }}' --required
 AND GrantId = '{{ GrantId }}' --required;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="retire_grant"
+    values={[
+        { label: 'retire_grant', value: 'retire_grant' }
+    ]}
+>
+<TabItem value="retire_grant">
+
+Deletes a grant. Typically, you retire a grant when you no longer need its permissions. To identify the grant to retire, use a grant token, or both the grant ID and a key identifier (key ID or key ARN) of the KMS key. The CreateGrant operation returns both values. This operation can be called by the retiring principal for a grant, by the grantee principal if the grant allows the RetireGrant operation, and by the Amazon Web Services account in which the grant is created. It can also be called by principals to whom permission for retiring a grant is delegated. For detailed information about grants, including grant terminology, see Grants in KMS in the Key Management Service Developer Guide . For examples of creating grants in several programming languages, see Use CreateGrant with an Amazon Web Services SDK or CLI. Cross-account use: Yes. You can retire a grant on a KMS key in a different Amazon Web Services account. Required permissions: Permission to retire a grant is determined primarily by the grant. For details, see Retiring and revoking grants in the Key Management Service Developer Guide. Related operations: CreateGrant ListGrants ListRetirableGrants RevokeGrant Eventual consistency: The KMS API follows an eventual consistency model. For more information, see KMS eventual consistency.
+
+```sql
+EXEC aws.kms.grants.retire_grant 
+@region='{{ region }}' --required 
+@@json=
+'{
+"GrantToken": "{{ GrantToken }}", 
+"KeyId": "{{ KeyId }}", 
+"GrantId": "{{ GrantId }}", 
+"DryRun": {{ DryRun }}
+}'
+;
 ```
 </TabItem>
 </Tabs>

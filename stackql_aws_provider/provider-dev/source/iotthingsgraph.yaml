@@ -56,10 +56,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/AssociateEntityToThingResponse'
       x-stackql-resource: things
       x-stackql-method: associate_entity_to_thing
       x-stackql-verb: UPDATE
@@ -244,10 +240,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteFlowTemplateResponse'
       x-stackql-resource: flow_templates
       x-stackql-method: delete_flow_template
       x-stackql-verb: DELETE
@@ -310,10 +302,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteSystemInstanceResponse'
       x-stackql-resource: system_instances
       x-stackql-method: delete_system_instance
       x-stackql-verb: DELETE
@@ -348,10 +336,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteSystemTemplateResponse'
       x-stackql-resource: system_templates
       x-stackql-method: delete_system_template
       x-stackql-verb: DELETE
@@ -392,7 +376,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DeploySystemInstanceResponse'
-      x-stackql-resource: deploy_system_instance
+      x-stackql-resource: system_instances
       x-stackql-method: deploy_system_instance
       x-stackql-verb: EXEC
   /DeprecateFlowTemplate:
@@ -426,11 +410,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeprecateFlowTemplateResponse'
-      x-stackql-resource: deprecate_flow_template
+      x-stackql-resource: flow_templates
       x-stackql-method: deprecate_flow_template
       x-stackql-verb: EXEC
   /DeprecateSystemTemplate:
@@ -463,11 +443,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeprecateSystemTemplateResponse'
-      x-stackql-resource: deprecate_system_template
+      x-stackql-resource: system_templates
       x-stackql-method: deprecate_system_template
       x-stackql-verb: EXEC
   /DescribeNamespace:
@@ -538,10 +514,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DissociateEntityFromThingResponse'
       x-stackql-resource: things
       x-stackql-method: dissociate_entity_from_thing
       x-stackql-verb: EXEC
@@ -701,7 +673,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetNamespaceDeletionStatusResponse'
-      x-stackql-resource: namespace_deletion_status
+      x-stackql-resource: namespace_deletion_statuses
       x-stackql-method: get_namespace_deletion_status
       x-stackql-verb: SELECT
   /GetSystemInstance:
@@ -865,7 +837,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetUploadStatusResponse'
-      x-stackql-resource: upload_status
+      x-stackql-resource: upload_statuses
       x-stackql-method: get_upload_status
       x-stackql-verb: SELECT
   /ListFlowExecutionMessages:
@@ -1292,10 +1264,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -1330,7 +1298,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UndeploySystemInstanceResponse'
-      x-stackql-resource: undeploy_system_instance
+      x-stackql-resource: system_instances
       x-stackql-method: undeploy_system_instance
       x-stackql-verb: EXEC
   /UntagResource:
@@ -1369,10 +1337,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -1518,7 +1482,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UploadEntityDefinitionsResponse'
-      x-stackql-resource: upload_entity_definitions
+      x-stackql-resource: entities
       x-stackql-method: upload_entity_definitions
       x-stackql-verb: EXEC
 components:
@@ -1578,8 +1542,6 @@ components:
     Version:
       type: integer
       format: int64
-    AssociateEntityToThingResponse:
-      type: object
     DefinitionDocument:
       description: A document that defines an entity.
       type: object
@@ -1753,8 +1715,6 @@ components:
         createdAt:
           $ref: '#/components/schemas/Timestamp'
           description: The date when the system was created.
-    DeleteFlowTemplateResponse:
-      type: object
     DeleteNamespaceResponse:
       type: object
       properties:
@@ -1767,10 +1727,6 @@ components:
     NamespaceName:
       type: string
       maxLength: 128
-    DeleteSystemInstanceResponse:
-      type: object
-    DeleteSystemTemplateResponse:
-      type: object
     DeploySystemInstanceResponse:
       type: object
       properties:
@@ -1784,10 +1740,6 @@ components:
       - summary
     GreengrassDeploymentId:
       type: string
-    DeprecateFlowTemplateResponse:
-      type: object
-    DeprecateSystemTemplateResponse:
-      type: object
     DescribeNamespaceResponse:
       type: object
       properties:
@@ -1819,8 +1771,6 @@ components:
       - PROPERTY
       - MAPPING
       - ENUM
-    DissociateEntityFromThingResponse:
-      type: object
     Urns:
       type: array
       items:
@@ -2341,8 +2291,6 @@ components:
           description: The name of the thing.
     ThingArn:
       type: string
-    TagResourceResponse:
-      type: object
     UndeploySystemInstanceResponse:
       type: object
       properties:
@@ -2353,8 +2301,6 @@ components:
       type: array
       items:
         $ref: '#/components/schemas/TagKey'
-    UntagResourceResponse:
-      type: object
     UpdateFlowTemplateResponse:
       type: object
       properties:

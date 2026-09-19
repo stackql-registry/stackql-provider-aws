@@ -130,6 +130,13 @@ The following methods are available for this resource:
     <td></td>
     <td>Deletes the specified metric filter.</td>
 </tr>
+<tr>
+    <td><a href="#test_metric_filter"><CopyableCode code="test_metric_filter" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-filterPattern"><code>filterPattern</code></a>, <a href="#parameter-logEventMessages"><code>logEventMessages</code></a></td>
+    <td></td>
+    <td>Tests the filter pattern of a metric filter against a sample of log event messages. You can use this operation to validate the correctness of a metric filter pattern.</td>
+</tr>
 </tbody>
 </table>
 
@@ -232,6 +239,32 @@ Deletes the specified metric filter.
 ```sql
 DELETE FROM aws.logs.metric_filters
 WHERE region = '{{ region }}' --required
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="test_metric_filter"
+    values={[
+        { label: 'test_metric_filter', value: 'test_metric_filter' }
+    ]}
+>
+<TabItem value="test_metric_filter">
+
+Tests the filter pattern of a metric filter against a sample of log event messages. You can use this operation to validate the correctness of a metric filter pattern.
+
+```sql
+EXEC aws.logs.metric_filters.test_metric_filter 
+@region='{{ region }}' --required 
+@@json=
+'{
+"filterPattern": "{{ filterPattern }}", 
+"logEventMessages": "{{ logEventMessages }}"
+}'
 ;
 ```
 </TabItem>

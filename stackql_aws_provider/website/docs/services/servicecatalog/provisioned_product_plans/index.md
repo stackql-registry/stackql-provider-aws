@@ -157,6 +157,13 @@ The following methods are available for this resource:
     <td></td>
     <td>Deletes the specified plan.</td>
 </tr>
+<tr>
+    <td><a href="#execute_provisioned_product_plan"><CopyableCode code="execute_provisioned_product_plan" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-PlanId"><code>PlanId</code></a>, <a href="#parameter-IdempotencyToken"><code>IdempotencyToken</code></a></td>
+    <td></td>
+    <td>Provisions or modifies a product based on the resource changes for the specified plan.</td>
+</tr>
 </tbody>
 </table>
 
@@ -354,6 +361,33 @@ Deletes the specified plan.
 ```sql
 DELETE FROM aws.servicecatalog.provisioned_product_plans
 WHERE region = '{{ region }}' --required
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="execute_provisioned_product_plan"
+    values={[
+        { label: 'execute_provisioned_product_plan', value: 'execute_provisioned_product_plan' }
+    ]}
+>
+<TabItem value="execute_provisioned_product_plan">
+
+Provisions or modifies a product based on the resource changes for the specified plan.
+
+```sql
+EXEC aws.servicecatalog.provisioned_product_plans.execute_provisioned_product_plan 
+@region='{{ region }}' --required 
+@@json=
+'{
+"AcceptLanguage": "{{ AcceptLanguage }}", 
+"PlanId": "{{ PlanId }}", 
+"IdempotencyToken": "{{ IdempotencyToken }}"
+}'
 ;
 ```
 </TabItem>

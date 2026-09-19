@@ -116,6 +116,13 @@ The following methods are available for this resource:
     <td></td>
     <td>Retrieves the quota utilization report for your Amazon Web Services account. This operation returns paginated results showing your quota usage across all Amazon Web Services services, sorted by utilization percentage in descending order (highest utilization first). You must first initiate a report using the StartQuotaUtilizationReport operation. The report generation process is asynchronous and may take several seconds to complete. Poll this operation periodically to check the status and retrieve results when the report is ready. Each report contains up to 1,000 quota records per page. Use the NextToken parameter to retrieve additional pages of results. Reports are automatically deleted after 15 minutes.</td>
 </tr>
+<tr>
+    <td><a href="#start_quota_utilization_report"><CopyableCode code="start_quota_utilization_report" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Initiates the generation of a quota utilization report for your Amazon Web Services account. This asynchronous operation analyzes your quota usage across all Amazon Web Services services and returns a unique report identifier that you can use to retrieve the results. The report generation process may take several seconds to complete, depending on the number of quotas in your account. Use the GetQuotaUtilizationReport operation to check the status and retrieve the results when the report is ready.</td>
+</tr>
 </tbody>
 </table>
 
@@ -164,6 +171,27 @@ status,
 total_count
 FROM aws.service_quotas.quota_utilization_reports
 WHERE region = '{{ region }}' -- required
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="start_quota_utilization_report"
+    values={[
+        { label: 'start_quota_utilization_report', value: 'start_quota_utilization_report' }
+    ]}
+>
+<TabItem value="start_quota_utilization_report">
+
+Initiates the generation of a quota utilization report for your Amazon Web Services account. This asynchronous operation analyzes your quota usage across all Amazon Web Services services and returns a unique report identifier that you can use to retrieve the results. The report generation process may take several seconds to complete, depending on the number of quotas in your account. Use the GetQuotaUtilizationReport operation to check the status and retrieve the results when the report is ready.
+
+```sql
+EXEC aws.service_quotas.quota_utilization_reports.start_quota_utilization_report 
+@region='{{ region }}' --required 
 ;
 ```
 </TabItem>

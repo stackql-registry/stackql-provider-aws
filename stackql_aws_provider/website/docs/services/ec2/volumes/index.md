@@ -105,6 +105,11 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the Outpost.</td>
 </tr>
 <tr>
+    <td><CopyableCode code="owner_id" /></td>
+    <td><code>string</code></td>
+    <td>The ID of the Amazon Web Services account that owns the volume.</td>
+</tr>
+<tr>
     <td><CopyableCode code="size" /></td>
     <td><code>integer</code></td>
     <td>The size of the volume, in GiBs.</td>
@@ -138,6 +143,11 @@ The following fields are returned by `SELECT` queries:
     <td><CopyableCode code="throughput" /></td>
     <td><code>integer</code></td>
     <td>The throughput that the volume supports, in MiB/s.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="volume_arn" /></td>
+    <td><code>string</code></td>
+    <td>The Amazon Resource Name (ARN) of the volume.</td>
 </tr>
 <tr>
     <td><CopyableCode code="volume_id" /></td>
@@ -213,7 +223,7 @@ The following methods are available for this resource:
     <td><a href="#copy_volumes"><CopyableCode code="copy_volumes" /></a></td>
     <td><CopyableCode code="exec" /></td>
     <td><a href="#parameter-SourceVolumeId"><code>SourceVolumeId</code></a>, <a href="#parameter-region"><code>region</code></a></td>
-    <td><a href="#parameter-Iops"><code>Iops</code></a>, <a href="#parameter-Size"><code>Size</code></a>, <a href="#parameter-VolumeType"><code>VolumeType</code></a>, <a href="#parameter-DryRun"><code>DryRun</code></a>, <a href="#parameter-TagSpecification"><code>TagSpecification</code></a>, <a href="#parameter-MultiAttachEnabled"><code>MultiAttachEnabled</code></a>, <a href="#parameter-Throughput"><code>Throughput</code></a>, <a href="#parameter-ClientToken"><code>ClientToken</code></a></td>
+    <td><a href="#parameter-Iops"><code>Iops</code></a>, <a href="#parameter-Size"><code>Size</code></a>, <a href="#parameter-VolumeType"><code>VolumeType</code></a>, <a href="#parameter-DryRun"><code>DryRun</code></a>, <a href="#parameter-TagSpecification"><code>TagSpecification</code></a>, <a href="#parameter-MultiAttachEnabled"><code>MultiAttachEnabled</code></a>, <a href="#parameter-Throughput"><code>Throughput</code></a>, <a href="#parameter-ClientToken"><code>ClientToken</code></a>, <a href="#parameter-Encrypted"><code>Encrypted</code></a>, <a href="#parameter-KmsKeyId"><code>KmsKeyId</code></a></td>
     <td>Creates a crash-consistent, point-in-time copy of an existing Amazon EBS volume within the same Availability Zone. The volume copy can be attached to an Amazon EC2 instance once it reaches the available state. For more information, see Copy an Amazon EBS volume.</td>
 </tr>
 <tr>
@@ -222,6 +232,13 @@ The following methods are available for this resource:
     <td><a href="#parameter-VolumeId"><code>VolumeId</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td><a href="#parameter-DryRun"><code>DryRun</code></a></td>
     <td>Enables I/O operations for a volume that had I/O operations disabled because the data on the volume was potentially inconsistent.</td>
+</tr>
+<tr>
+    <td><a href="#import_volume"><CopyableCode code="import_volume" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-Image"><code>Image</code></a>, <a href="#parameter-Volume"><code>Volume</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td><a href="#parameter-AvailabilityZoneId"><code>AvailabilityZoneId</code></a>, <a href="#parameter-DryRun"><code>DryRun</code></a>, <a href="#parameter-AvailabilityZone"><code>AvailabilityZone</code></a>, <a href="#parameter-Description"><code>Description</code></a></td>
+    <td>This API action supports only single-volume VMs. To import multi-volume VMs, use ImportImage instead. To import a disk to a snapshot, use ImportSnapshot instead. Creates an import volume task using metadata from the specified disk image. For information about the import manifest referenced by this API action, see VM Import Manifest. This API action is not supported by the Command Line Interface (CLI).</td>
 </tr>
 <tr>
     <td><a href="#modify_volume"><CopyableCode code="modify_volume" /></a></td>
@@ -253,6 +270,11 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     </tr>
 </thead>
 <tbody>
+<tr id="parameter-Image">
+    <td><CopyableCode code="Image" /></td>
+    <td><code>object</code></td>
+    <td>The disk image.</td>
+</tr>
 <tr id="parameter-InstanceId">
     <td><CopyableCode code="InstanceId" /></td>
     <td><code>string</code></td>
@@ -262,6 +284,11 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     <td><CopyableCode code="SourceVolumeId" /></td>
     <td><code>string</code></td>
     <td>The ID of the source EBS volume to copy.</td>
+</tr>
+<tr id="parameter-Volume">
+    <td><CopyableCode code="Volume" /></td>
+    <td><code>object</code></td>
+    <td>The volume size.</td>
 </tr>
 <tr id="parameter-VolumeId">
     <td><CopyableCode code="VolumeId" /></td>
@@ -276,17 +303,22 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-AvailabilityZone">
     <td><CopyableCode code="AvailabilityZone" /></td>
     <td><code>string</code></td>
-    <td>The ID of the Availability Zone in which to create the volume. For example, us-east-1a. Either AvailabilityZone or AvailabilityZoneId must be specified, but not both.</td>
+    <td>The Availability Zone for the resulting EBS volume. Either AvailabilityZone or AvailabilityZoneId must be specified, but not both.</td>
 </tr>
 <tr id="parameter-AvailabilityZoneId">
     <td><CopyableCode code="AvailabilityZoneId" /></td>
     <td><code>string</code></td>
-    <td>The ID of the Availability Zone in which to create the volume. For example, use1-az1. Either AvailabilityZone or AvailabilityZoneId must be specified, but not both.</td>
+    <td>The ID of the Availability Zone for the resulting EBS volume. Either AvailabilityZone or AvailabilityZoneId must be specified, but not both.</td>
 </tr>
 <tr id="parameter-ClientToken">
     <td><CopyableCode code="ClientToken" /></td>
     <td><code>string</code></td>
     <td>Unique, case-sensitive identifier that you provide to ensure the idempotency of the request. For more information, see Ensure Idempotency.</td>
+</tr>
+<tr id="parameter-Description">
+    <td><CopyableCode code="Description" /></td>
+    <td><code>string</code></td>
+    <td>A description of the volume.</td>
 </tr>
 <tr id="parameter-Device">
     <td><CopyableCode code="Device" /></td>
@@ -306,7 +338,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-Encrypted">
     <td><CopyableCode code="Encrypted" /></td>
     <td><code>boolean</code></td>
-    <td>Indicates whether the volume should be encrypted. The effect of setting the encryption state to true depends on the volume origin (new or from a snapshot), starting encryption state, ownership, and whether encryption by default is enabled. For more information, see Encryption by default in the Amazon EBS User Guide. Encrypted Amazon EBS volumes must be attached to instances that support Amazon EBS encryption. For more information, see Supported instance types.</td>
+    <td>Indicates whether to encrypt the volume copy. If the source volume is encrypted, the service always encrypts the copy regardless of this value. Set to true to encrypt a copy of an unencrypted source volume during the copy operation. If you set Encrypted to true but do not specify KmsKeyId, the service uses the default KMS key for EBS encryption in your account.</td>
 </tr>
 <tr id="parameter-Filter">
     <td><CopyableCode code="Filter" /></td>
@@ -336,7 +368,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-KmsKeyId">
     <td><CopyableCode code="KmsKeyId" /></td>
     <td><code>string</code></td>
-    <td>The identifier of the KMS key to use for Amazon EBS encryption. If this parameter is not specified, your KMS key for Amazon EBS is used. If KmsKeyId is specified, the encrypted state must be true. You can specify the KMS key using any of the following: Key ID. For example, 1234abcd-12ab-34cd-56ef-1234567890ab. Key alias. For example, alias/ExampleAlias. Key ARN. For example, arn:aws:kms:us-east-1:012345678910:key/1234abcd-12ab-34cd-56ef-1234567890ab. Alias ARN. For example, arn:aws:kms:us-east-1:012345678910:alias/ExampleAlias. Amazon Web Services authenticates the KMS key asynchronously. Therefore, if you specify an ID, alias, or ARN that is not valid, the action can appear to complete, but eventually fails.</td>
+    <td>The identifier of the KMS key to use for encryption of the volume copy. Specify a symmetric encryption KMS key. You can specify a KMS key using the key ID, key ARN, alias name, or alias ARN. If you set Encrypted to true but do not specify this parameter, the service uses the default KMS key for EBS encryption in your account. For cross-account volume copies, this must be a KMS key in the calling account.</td>
 </tr>
 <tr id="parameter-MaxResults">
     <td><CopyableCode code="MaxResults" /></td>
@@ -426,6 +458,7 @@ kms_key_id,
 multi_attach_enabled,
 operator,
 outpost_arn,
+owner_id,
 size,
 snapshot_id,
 source_volume_id,
@@ -433,6 +466,7 @@ sse_type,
 state,
 tags,
 throughput,
+volume_arn,
 volume_id,
 volume_initialization_rate,
 volume_type
@@ -513,6 +547,7 @@ kms_key_id,
 multi_attach_enabled,
 operator,
 outpost_arn,
+owner_id,
 size,
 snapshot_id,
 source_volume_id,
@@ -520,6 +555,7 @@ sse_type,
 state,
 tags,
 throughput,
+volume_arn,
 volume_id,
 volume_initialization_rate,
 volume_type
@@ -700,6 +736,7 @@ AND DryRun = '{{ DryRun }}'
     values={[
         { label: 'copy_volumes', value: 'copy_volumes' },
         { label: 'enable_volume_io', value: 'enable_volume_io' },
+        { label: 'import_volume', value: 'import_volume' },
         { label: 'modify_volume', value: 'modify_volume' },
         { label: 'restore_volume_from_recycle_bin', value: 'restore_volume_from_recycle_bin' }
     ]}
@@ -719,7 +756,9 @@ EXEC aws.ec2.volumes.copy_volumes
 @TagSpecification='{{ TagSpecification }}', 
 @MultiAttachEnabled={{ MultiAttachEnabled }}, 
 @Throughput='{{ Throughput }}', 
-@ClientToken='{{ ClientToken }}'
+@ClientToken='{{ ClientToken }}', 
+@Encrypted={{ Encrypted }}, 
+@KmsKeyId='{{ KmsKeyId }}'
 ;
 ```
 </TabItem>
@@ -732,6 +771,22 @@ EXEC aws.ec2.volumes.enable_volume_io
 @VolumeId='{{ VolumeId }}' --required, 
 @region='{{ region }}' --required, 
 @DryRun={{ DryRun }}
+;
+```
+</TabItem>
+<TabItem value="import_volume">
+
+This API action supports only single-volume VMs. To import multi-volume VMs, use ImportImage instead. To import a disk to a snapshot, use ImportSnapshot instead. Creates an import volume task using metadata from the specified disk image. For information about the import manifest referenced by this API action, see VM Import Manifest. This API action is not supported by the Command Line Interface (CLI).
+
+```sql
+EXEC aws.ec2.volumes.import_volume 
+@Image='{{ Image }}' --required, 
+@Volume='{{ Volume }}' --required, 
+@region='{{ region }}' --required, 
+@AvailabilityZoneId='{{ AvailabilityZoneId }}', 
+@DryRun={{ DryRun }}, 
+@AvailabilityZone='{{ AvailabilityZone }}', 
+@Description='{{ Description }}'
 ;
 ```
 </TabItem>

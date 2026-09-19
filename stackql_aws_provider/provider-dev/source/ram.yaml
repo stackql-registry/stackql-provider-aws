@@ -44,7 +44,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AcceptResourceShareInvitationResponse'
-      x-stackql-resource: resource_shares
+      x-stackql-resource: resource_share_invitations
       x-stackql-method: accept_resource_share_invitation
       x-stackql-verb: EXEC
   /associateresourceshare:
@@ -436,7 +436,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/EnableSharingWithAwsOrganizationResponse'
-      x-stackql-resource: sharing_with_aws_organization
+      x-stackql-resource: sharing_with_aws_organizations
       x-stackql-method: enable_sharing_with_aws_organization
       x-stackql-verb: EXEC
   /getpermission:
@@ -1111,7 +1111,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RejectResourceShareInvitationResponse'
-      x-stackql-resource: resource_shares
+      x-stackql-resource: resource_share_invitations
       x-stackql-method: reject_resource_share_invitation
       x-stackql-verb: EXEC
   /replacepermissionassociations:
@@ -1212,10 +1212,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -1242,10 +1238,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -2325,14 +2317,10 @@ components:
           description: The idempotency identifier associated with this request. If you want to repeat the same operation in
             an idempotent manner then you must include this value in the clientToken request parameter of that later call.
             All other parameters must also have the same values that you used in the first call.
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
         $ref: '#/components/schemas/TagKey'
-    UntagResourceResponse:
-      type: object
     UpdateResourceShareResponse:
       type: object
       properties:

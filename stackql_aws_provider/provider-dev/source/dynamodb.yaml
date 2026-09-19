@@ -59,7 +59,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchExecuteStatementOutput'
-      x-stackql-resource: batch_execute_statement
+      x-stackql-resource: statements
       x-stackql-method: batch_execute_statement
       x-stackql-verb: EXEC
   /BatchGetItem:
@@ -238,7 +238,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchWriteItemOutput'
-      x-stackql-resource: batch_write_item
+      x-stackql-resource: items
       x-stackql-method: batch_write_item
       x-stackql-verb: EXEC
   /CreateBackup:
@@ -1319,7 +1319,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/KinesisStreamingDestinationOutput'
-      x-stackql-resource: tables
+      x-stackql-resource: kinesis_streaming_destinations
       x-stackql-method: disable_kinesis_streaming_destination
       x-stackql-verb: EXEC
   /EnableKinesisStreamingDestination:
@@ -1365,7 +1365,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/KinesisStreamingDestinationOutput'
-      x-stackql-resource: tables
+      x-stackql-resource: kinesis_streaming_destinations
       x-stackql-method: enable_kinesis_streaming_destination
       x-stackql-verb: EXEC
   /ExecuteStatement:
@@ -1434,7 +1434,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ExecuteStatementOutput'
-      x-stackql-resource: execute_statement
+      x-stackql-resource: statements
       x-stackql-method: execute_statement
       x-stackql-verb: EXEC
   /ExecuteTransaction:
@@ -1480,7 +1480,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ExecuteTransactionOutput'
-      x-stackql-resource: execute_transaction
+      x-stackql-resource: transactions
       x-stackql-method: execute_transaction
       x-stackql-verb: EXEC
   /ExportTableToPointInTime:
@@ -1747,7 +1747,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ImportTableOutput'
-      x-stackql-resource: table
+      x-stackql-resource: tables
       x-stackql-method: import_table
       x-stackql-verb: EXEC
   /ListBackups:
@@ -2546,7 +2546,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RestoreTableFromBackupOutput'
-      x-stackql-resource: tables
+      x-stackql-resource: backups
       x-stackql-method: restore_table_from_backup
       x-stackql-verb: EXEC
   /RestoreTableToPointInTime:

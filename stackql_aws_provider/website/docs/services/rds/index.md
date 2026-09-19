@@ -18,7 +18,7 @@ rds service documentation.
 
 :::info[Service Summary]
 
-total resources: __51__  
+total resources: __52__  
 
 :::
 
@@ -64,6 +64,7 @@ total resources: __51__
 <a href="/services/rds/events/">events</a><br />
 <a href="/services/rds/export_tasks/">export_tasks</a><br />
 <a href="/services/rds/global_clusters/">global_clusters</a><br />
+<a href="/services/rds/http_endpoints/">http_endpoints</a><br />
 <a href="/services/rds/integrations/">integrations</a><br />
 <a href="/services/rds/option_group_options/">option_group_options</a><br />
 <a href="/services/rds/option_groups/">option_groups</a><br />

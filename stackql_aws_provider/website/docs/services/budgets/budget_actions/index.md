@@ -35,7 +35,9 @@ The following fields are returned by `SELECT` queries:
 <Tabs
     defaultValue="describe_budget_action"
     values={[
-        { label: 'describe_budget_action', value: 'describe_budget_action' }
+        { label: 'describe_budget_action', value: 'describe_budget_action' },
+        { label: 'describe_budget_actions_for_budget', value: 'describe_budget_actions_for_budget' },
+        { label: 'describe_budget_actions_for_account', value: 'describe_budget_actions_for_account' }
     ]}
 >
 <TabItem value="describe_budget_action">
@@ -67,6 +69,134 @@ The following fields are returned by `SELECT` queries:
 </tbody>
 </table>
 </TabItem>
+<TabItem value="describe_budget_actions_for_budget">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="action_id" /></td>
+    <td><code>string</code></td>
+    <td>A system-generated universally unique identifier (UUID) for the action. (pattern: &lt;code&gt;^&#91;a-fA-F0-9&#93;&#123;8&#125;-&#91;a-fA-F0-9&#93;&#123;4&#125;-&#91;a-fA-F0-9&#93;&#123;4&#125;-&#91;a-fA-F0-9&#93;&#123;4&#125;-&#91;a-fA-F0-9&#93;&#123;12&#125;$&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="action_threshold" /></td>
+    <td><code>object</code></td>
+    <td>The trigger threshold of the action.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="action_type" /></td>
+    <td><code>string</code></td>
+    <td>The type of action. This defines the type of tasks that can be carried out by this action. This field also determines the format for definition. (APPLY_IAM_POLICY, APPLY_SCP_POLICY, RUN_SSM_DOCUMENTS)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="approval_model" /></td>
+    <td><code>string</code></td>
+    <td>This specifies if the action needs manual or automatic approval. (AUTOMATIC, MANUAL)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="budget_name" /></td>
+    <td><code>string</code></td>
+    <td>A string that represents the budget name. The ":" and "\" characters, and the "/action/" substring, aren't allowed. Budget names are validated for content. Names that contain phone numbers, URLs, or email addresses combined with certain terms may be rejected. (pattern: &lt;code&gt;^(?!&#91;^:\\&#93;*/action/|(?i).*&lt;script&gt;.*&lt;/script&gt;.*)&#91;^:\\&#93;+$&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="definition" /></td>
+    <td><code>object</code></td>
+    <td>Specifies all of the type-specific parameters.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="execution_role_arn" /></td>
+    <td><code>string</code></td>
+    <td>The role passed for action execution and reversion. Roles and actions must be in the same account. (pattern: &lt;code&gt;^arn:aws(-eusc|-cn|-us-gov|-iso|-iso-&#91;a-z&#93;&#123;1&#125;)?:iam::\d&#123;12&#125;:role(\u002F&#91;\u0021-\u007F&#93;+\u002F|\u002F)&#91;\w+=,.@-&#93;+$&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="notification_type" /></td>
+    <td><code>string</code></td>
+    <td>The type of a notification. It must be ACTUAL or FORECASTED. (ACTUAL, FORECASTED)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="status" /></td>
+    <td><code>string</code></td>
+    <td>The status of the action. (STANDBY, PENDING, EXECUTION_IN_PROGRESS, EXECUTION_SUCCESS, EXECUTION_FAILURE, REVERSE_IN_PROGRESS, REVERSE_SUCCESS, REVERSE_FAILURE, RESET_IN_PROGRESS, RESET_FAILURE)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="subscribers" /></td>
+    <td><code>array</code></td>
+    <td>A list of subscribers.</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
+<TabItem value="describe_budget_actions_for_account">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="action_id" /></td>
+    <td><code>string</code></td>
+    <td>A system-generated universally unique identifier (UUID) for the action. (pattern: &lt;code&gt;^&#91;a-fA-F0-9&#93;&#123;8&#125;-&#91;a-fA-F0-9&#93;&#123;4&#125;-&#91;a-fA-F0-9&#93;&#123;4&#125;-&#91;a-fA-F0-9&#93;&#123;4&#125;-&#91;a-fA-F0-9&#93;&#123;12&#125;$&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="action_threshold" /></td>
+    <td><code>object</code></td>
+    <td>The trigger threshold of the action.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="action_type" /></td>
+    <td><code>string</code></td>
+    <td>The type of action. This defines the type of tasks that can be carried out by this action. This field also determines the format for definition. (APPLY_IAM_POLICY, APPLY_SCP_POLICY, RUN_SSM_DOCUMENTS)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="approval_model" /></td>
+    <td><code>string</code></td>
+    <td>This specifies if the action needs manual or automatic approval. (AUTOMATIC, MANUAL)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="budget_name" /></td>
+    <td><code>string</code></td>
+    <td>A string that represents the budget name. The ":" and "\" characters, and the "/action/" substring, aren't allowed. Budget names are validated for content. Names that contain phone numbers, URLs, or email addresses combined with certain terms may be rejected. (pattern: &lt;code&gt;^(?!&#91;^:\\&#93;*/action/|(?i).*&lt;script&gt;.*&lt;/script&gt;.*)&#91;^:\\&#93;+$&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="definition" /></td>
+    <td><code>object</code></td>
+    <td>Specifies all of the type-specific parameters.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="execution_role_arn" /></td>
+    <td><code>string</code></td>
+    <td>The role passed for action execution and reversion. Roles and actions must be in the same account. (pattern: &lt;code&gt;^arn:aws(-eusc|-cn|-us-gov|-iso|-iso-&#91;a-z&#93;&#123;1&#125;)?:iam::\d&#123;12&#125;:role(\u002F&#91;\u0021-\u007F&#93;+\u002F|\u002F)&#91;\w+=,.@-&#93;+$&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="notification_type" /></td>
+    <td><code>string</code></td>
+    <td>The type of a notification. It must be ACTUAL or FORECASTED. (ACTUAL, FORECASTED)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="status" /></td>
+    <td><code>string</code></td>
+    <td>The status of the action. (STANDBY, PENDING, EXECUTION_IN_PROGRESS, EXECUTION_SUCCESS, EXECUTION_FAILURE, REVERSE_IN_PROGRESS, REVERSE_SUCCESS, REVERSE_FAILURE, RESET_IN_PROGRESS, RESET_FAILURE)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="subscribers" /></td>
+    <td><code>array</code></td>
+    <td>A list of subscribers.</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
 </Tabs>
 
 ## Methods
@@ -92,9 +222,23 @@ The following methods are available for this resource:
     <td>Describes a budget action detail.</td>
 </tr>
 <tr>
+    <td><a href="#describe_budget_actions_for_budget"><CopyableCode code="describe_budget_actions_for_budget" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Describes all of the budget actions for a budget.</td>
+</tr>
+<tr>
+    <td><a href="#describe_budget_actions_for_account"><CopyableCode code="describe_budget_actions_for_account" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Describes all of the budget actions for an account.</td>
+</tr>
+<tr>
     <td><a href="#create_budget_action"><CopyableCode code="create_budget_action" /></a></td>
     <td><CopyableCode code="insert" /></td>
-    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-AccountId"><code>AccountId</code></a>, <a href="#parameter-BudgetName"><code>BudgetName</code></a>, <a href="#parameter-NotificationType"><code>NotificationType</code></a>, <a href="#parameter-ActionType"><code>ActionType</code></a>, <a href="#parameter-ActionThreshold"><code>ActionThreshold</code></a>, <a href="#parameter-Definition"><code>Definition</code></a>, <a href="#parameter-ExecutionRoleArn"><code>ExecutionRoleArn</code></a>, <a href="#parameter-ApprovalModel"><code>ApprovalModel</code></a>, <a href="#parameter-Subscribers"><code>Subscribers</code></a></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-AccountId"><code>AccountId</code></a>, <a href="#parameter-BudgetName"><code>BudgetName</code></a>, <a href="#parameter-NotificationType"><code>NotificationType</code></a>, <a href="#parameter-ActionType"><code>ActionType</code></a>, <a href="#parameter-ActionThreshold"><code>ActionThreshold</code></a>, <a href="#parameter-ExecutionRoleArn"><code>ExecutionRoleArn</code></a>, <a href="#parameter-ApprovalModel"><code>ApprovalModel</code></a></td>
     <td></td>
     <td>Creates a budget action.</td>
 </tr>
@@ -141,7 +285,9 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <Tabs
     defaultValue="describe_budget_action"
     values={[
-        { label: 'describe_budget_action', value: 'describe_budget_action' }
+        { label: 'describe_budget_action', value: 'describe_budget_action' },
+        { label: 'describe_budget_actions_for_budget', value: 'describe_budget_actions_for_budget' },
+        { label: 'describe_budget_actions_for_account', value: 'describe_budget_actions_for_account' }
     ]}
 >
 <TabItem value="describe_budget_action">
@@ -153,6 +299,48 @@ SELECT
 account_id,
 action,
 budget_name
+FROM aws.budgets.budget_actions
+WHERE region = '{{ region }}' -- required
+;
+```
+</TabItem>
+<TabItem value="describe_budget_actions_for_budget">
+
+Describes all of the budget actions for a budget.
+
+```sql
+SELECT
+action_id,
+action_threshold,
+action_type,
+approval_model,
+budget_name,
+definition,
+execution_role_arn,
+notification_type,
+status,
+subscribers
+FROM aws.budgets.budget_actions
+WHERE region = '{{ region }}' -- required
+;
+```
+</TabItem>
+<TabItem value="describe_budget_actions_for_account">
+
+Describes all of the budget actions for an account.
+
+```sql
+SELECT
+action_id,
+action_threshold,
+action_type,
+approval_model,
+budget_name,
+definition,
+execution_role_arn,
+notification_type,
+status,
+subscribers
 FROM aws.budgets.budget_actions
 WHERE region = '{{ region }}' -- required
 ;
@@ -194,10 +382,10 @@ SELECT
 '{{ NotificationType }}' /* required */,
 '{{ ActionType }}' /* required */,
 '{{ ActionThreshold }}' /* required */,
-'{{ Definition }}' /* required */,
+'{{ Definition }}',
 '{{ ExecutionRoleArn }}' /* required */,
 '{{ ApprovalModel }}' /* required */,
-'{{ Subscribers }}' /* required */,
+'{{ Subscribers }}',
 '{{ ResourceTags }}',
 '{{ region }}'
 RETURNING

@@ -198,6 +198,20 @@ The following methods are available for this resource:
     <td><a href="#parameter-maxResults"><code>maxResults</code></a>, <a href="#parameter-nextToken"><code>nextToken</code></a></td>
     <td>Amazon Web Services HealthOmics variant stores and annotation stores are no longer open to new customers. Existing customers can continue to use the service as normal. For more information, see Amazon Web Services HealthOmics variant store and annotation store availability change. Retrieves a list of variant import jobs.</td>
 </tr>
+<tr>
+    <td><a href="#cancel_variant_import_job"><CopyableCode code="cancel_variant_import_job" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-job_id"><code>job_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Amazon Web Services HealthOmics variant stores and annotation stores are no longer open to new customers. Existing customers can continue to use the service as normal. For more information, see Amazon Web Services HealthOmics variant store and annotation store availability change. Cancels a variant import job.</td>
+</tr>
+<tr>
+    <td><a href="#start_variant_import_job"><CopyableCode code="start_variant_import_job" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-destinationName"><code>destinationName</code></a>, <a href="#parameter-roleArn"><code>roleArn</code></a>, <a href="#parameter-items"><code>items</code></a></td>
+    <td></td>
+    <td>Amazon Web Services HealthOmics variant stores and annotation stores are no longer open to new customers. Existing customers can continue to use the service as normal. For more information, see Amazon Web Services HealthOmics variant store and annotation store availability change. Starts a variant import job.</td>
+</tr>
 </tbody>
 </table>
 
@@ -288,6 +302,47 @@ FROM aws.omics.variant_import_jobs
 WHERE region = '{{ region }}' -- required
 AND maxResults = '{{ maxResults }}'
 AND nextToken = '{{ nextToken }}'
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="cancel_variant_import_job"
+    values={[
+        { label: 'cancel_variant_import_job', value: 'cancel_variant_import_job' },
+        { label: 'start_variant_import_job', value: 'start_variant_import_job' }
+    ]}
+>
+<TabItem value="cancel_variant_import_job">
+
+Amazon Web Services HealthOmics variant stores and annotation stores are no longer open to new customers. Existing customers can continue to use the service as normal. For more information, see Amazon Web Services HealthOmics variant store and annotation store availability change. Cancels a variant import job.
+
+```sql
+EXEC aws.omics.variant_import_jobs.cancel_variant_import_job 
+@job_id='{{ job_id }}' --required, 
+@region='{{ region }}' --required
+;
+```
+</TabItem>
+<TabItem value="start_variant_import_job">
+
+Amazon Web Services HealthOmics variant stores and annotation stores are no longer open to new customers. Existing customers can continue to use the service as normal. For more information, see Amazon Web Services HealthOmics variant store and annotation store availability change. Starts a variant import job.
+
+```sql
+EXEC aws.omics.variant_import_jobs.start_variant_import_job 
+@region='{{ region }}' --required 
+@@json=
+'{
+"destinationName": "{{ destinationName }}", 
+"roleArn": "{{ roleArn }}", 
+"items": "{{ items }}", 
+"runLeftNormalization": {{ runLeftNormalization }}, 
+"annotationFields": "{{ annotationFields }}"
+}'
 ;
 ```
 </TabItem>

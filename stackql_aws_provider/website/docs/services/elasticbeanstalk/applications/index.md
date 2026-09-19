@@ -114,14 +114,14 @@ The following methods are available for this resource:
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td><a href="#parameter-ApplicationNames"><code>ApplicationNames</code></a></td>
-    <td>Returns the descriptions of existing applications.</td>
+    <td>Returns the descriptions of existing applications. This action only returns information about applications that the calling principle has IAM permissions to access. For example, consider a case where a user only has permission to access two of three applications. When the user calls the DescribeApplications action, the response will only include the two applications that the user has permission to access instead of all three applications. If the user doesn’t have access to any of the applications an empty result is returned. The AWSElasticBeanstalkReadOnly managed policy allows operators to view information about resources related to Elastic Beanstalk environments. For more information, see Managing Elastic Beanstalk user policies in the Elastic Beanstalk Developer Guide. For detailed instructions to attach a policy to a user or group, see the section Controlling access with managed policies in the same topic.</td>
 </tr>
 <tr>
     <td><a href="#create_configuration_template"><CopyableCode code="create_configuration_template" /></a></td>
     <td><CopyableCode code="insert" /></td>
     <td><a href="#parameter-ApplicationName"><code>ApplicationName</code></a>, <a href="#parameter-TemplateName"><code>TemplateName</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td><a href="#parameter-SolutionStackName"><code>SolutionStackName</code></a>, <a href="#parameter-PlatformArn"><code>PlatformArn</code></a>, <a href="#parameter-SourceConfiguration"><code>SourceConfiguration</code></a>, <a href="#parameter-EnvironmentId"><code>EnvironmentId</code></a>, <a href="#parameter-Description"><code>Description</code></a>, <a href="#parameter-OptionSettings"><code>OptionSettings</code></a>, <a href="#parameter-Tags"><code>Tags</code></a></td>
-    <td>Creates an AWS Elastic Beanstalk configuration template, associated with a specific Elastic Beanstalk application. You define application configuration settings in a configuration template. You can then use the configuration template to deploy different versions of the application with the same configuration settings. Templates aren't associated with any environment. The EnvironmentName response element is always null. Related Topics DescribeConfigurationOptions DescribeConfigurationSettings ListAvailableSolutionStacks</td>
+    <td>Creates an Elastic Beanstalk configuration template, associated with a specific Elastic Beanstalk application. You define application configuration settings in a configuration template. You can then use the configuration template to deploy different versions of the application with the same configuration settings. Templates aren't associated with any environment. The EnvironmentName response element is always null. Related Topics DescribeConfigurationOptions DescribeConfigurationSettings ListAvailableSolutionStacks</td>
 </tr>
 <tr>
     <td><a href="#create_application"><CopyableCode code="create_application" /></a></td>
@@ -204,12 +204,12 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-ApplicationNames">
     <td><CopyableCode code="ApplicationNames" /></td>
     <td><code>array</code></td>
-    <td>If specified, AWS Elastic Beanstalk restricts the returned descriptions to only include those with the specified names.</td>
+    <td>If specified, Elastic Beanstalk restricts the returned descriptions to only include those with the specified names.</td>
 </tr>
 <tr id="parameter-Description">
     <td><CopyableCode code="Description" /></td>
     <td><code>string</code></td>
-    <td>A new description for the application. Default: If not specified, AWS Elastic Beanstalk does not update the description.</td>
+    <td>A new description for the application. Default: If not specified, Elastic Beanstalk does not update the description.</td>
 </tr>
 <tr id="parameter-EnvironmentId">
     <td><CopyableCode code="EnvironmentId" /></td>
@@ -229,7 +229,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-PlatformArn">
     <td><CopyableCode code="PlatformArn" /></td>
     <td><code>string</code></td>
-    <td>The Amazon Resource Name (ARN) of the custom platform. For more information, see Custom Platforms in the AWS Elastic Beanstalk Developer Guide. If you specify PlatformArn, then don't specify SolutionStackName.</td>
+    <td>The Amazon Resource Name (ARN) of the custom platform. For more information, see Custom Platforms in the Elastic Beanstalk Developer Guide. If you specify PlatformArn, then don't specify SolutionStackName.</td>
 </tr>
 <tr id="parameter-ResourceLifecycleConfig">
     <td><CopyableCode code="ResourceLifecycleConfig" /></td>
@@ -239,7 +239,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-SolutionStackName">
     <td><CopyableCode code="SolutionStackName" /></td>
     <td><code>string</code></td>
-    <td>The name of an Elastic Beanstalk solution stack (platform version) that this configuration uses. For example, 64bit Amazon Linux 2013.09 running Tomcat 7 Java 7. A solution stack specifies the operating system, runtime, and application server for a configuration template. It also determines the set of configuration options as well as the possible and default values. For more information, see Supported Platforms in the AWS Elastic Beanstalk Developer Guide. You must specify SolutionStackName if you don't specify PlatformArn, EnvironmentId, or SourceConfiguration. Use the ListAvailableSolutionStacks API to obtain a list of available solution stacks.</td>
+    <td>The name of an Elastic Beanstalk solution stack (platform version) that this configuration uses. For example, 64bit Amazon Linux 2013.09 running Tomcat 7 Java 7. A solution stack specifies the operating system, runtime, and application server for a configuration template. It also determines the set of configuration options as well as the possible and default values. For more information, see Supported Platforms in the Elastic Beanstalk Developer Guide. You must specify SolutionStackName if you don't specify PlatformArn, EnvironmentId, or SourceConfiguration. Use the ListAvailableSolutionStacks API to obtain a list of available solution stacks.</td>
 </tr>
 <tr id="parameter-SourceConfiguration">
     <td><CopyableCode code="SourceConfiguration" /></td>
@@ -269,7 +269,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 >
 <TabItem value="describe_applications">
 
-Returns the descriptions of existing applications.
+Returns the descriptions of existing applications. This action only returns information about applications that the calling principle has IAM permissions to access. For example, consider a case where a user only has permission to access two of three applications. When the user calls the DescribeApplications action, the response will only include the two applications that the user has permission to access instead of all three applications. If the user doesn’t have access to any of the applications an empty result is returned. The AWSElasticBeanstalkReadOnly managed policy allows operators to view information about resources related to Elastic Beanstalk environments. For more information, see Managing Elastic Beanstalk user policies in the Elastic Beanstalk Developer Guide. For detailed instructions to attach a policy to a user or group, see the section Controlling access with managed policies in the same topic.
 
 ```sql
 SELECT
@@ -302,7 +302,7 @@ AND ApplicationNames = '{{ ApplicationNames }}'
 >
 <TabItem value="create_configuration_template">
 
-Creates an AWS Elastic Beanstalk configuration template, associated with a specific Elastic Beanstalk application. You define application configuration settings in a configuration template. You can then use the configuration template to deploy different versions of the application with the same configuration settings. Templates aren't associated with any environment. The EnvironmentName response element is always null. Related Topics DescribeConfigurationOptions DescribeConfigurationSettings ListAvailableSolutionStacks
+Creates an Elastic Beanstalk configuration template, associated with a specific Elastic Beanstalk application. You define application configuration settings in a configuration template. You can then use the configuration template to deploy different versions of the application with the same configuration settings. Templates aren't associated with any environment. The EnvironmentName response element is always null. Related Topics DescribeConfigurationOptions DescribeConfigurationSettings ListAvailableSolutionStacks
 
 ```sql
 INSERT INTO aws.elasticbeanstalk.applications (
@@ -388,12 +388,12 @@ versions
       description: Required parameter for the applications resource.
     - name: SolutionStackName
       value: "{{ SolutionStackName }}"
-      description: The name of an Elastic Beanstalk solution stack (platform version) that this configuration uses. For example, 64bit Amazon Linux 2013.09 running Tomcat 7 Java 7. A solution stack specifies the operating system, runtime, and application server for a configuration template. It also determines the set of configuration options as well as the possible and default values. For more information, see Supported Platforms in the AWS Elastic Beanstalk Developer Guide. You must specify SolutionStackName if you don't specify PlatformArn, EnvironmentId, or SourceConfiguration. Use the ListAvailableSolutionStacks API to obtain a list of available solution stacks.
-      description: The name of an Elastic Beanstalk solution stack (platform version) that this configuration uses. For example, 64bit Amazon Linux 2013.09 running Tomcat 7 Java 7. A solution stack specifies the operating system, runtime, and application server for a configuration template. It also determines the set of configuration options as well as the possible and default values. For more information, see Supported Platforms in the AWS Elastic Beanstalk Developer Guide. You must specify SolutionStackName if you don't specify PlatformArn, EnvironmentId, or SourceConfiguration. Use the ListAvailableSolutionStacks API to obtain a list of available solution stacks.
+      description: The name of an Elastic Beanstalk solution stack (platform version) that this configuration uses. For example, 64bit Amazon Linux 2013.09 running Tomcat 7 Java 7. A solution stack specifies the operating system, runtime, and application server for a configuration template. It also determines the set of configuration options as well as the possible and default values. For more information, see Supported Platforms in the Elastic Beanstalk Developer Guide. You must specify SolutionStackName if you don't specify PlatformArn, EnvironmentId, or SourceConfiguration. Use the ListAvailableSolutionStacks API to obtain a list of available solution stacks.
+      description: The name of an Elastic Beanstalk solution stack (platform version) that this configuration uses. For example, 64bit Amazon Linux 2013.09 running Tomcat 7 Java 7. A solution stack specifies the operating system, runtime, and application server for a configuration template. It also determines the set of configuration options as well as the possible and default values. For more information, see Supported Platforms in the Elastic Beanstalk Developer Guide. You must specify SolutionStackName if you don't specify PlatformArn, EnvironmentId, or SourceConfiguration. Use the ListAvailableSolutionStacks API to obtain a list of available solution stacks.
     - name: PlatformArn
       value: "{{ PlatformArn }}"
-      description: The Amazon Resource Name (ARN) of the custom platform. For more information, see Custom Platforms in the AWS Elastic Beanstalk Developer Guide. If you specify PlatformArn, then don't specify SolutionStackName.
-      description: The Amazon Resource Name (ARN) of the custom platform. For more information, see Custom Platforms in the AWS Elastic Beanstalk Developer Guide. If you specify PlatformArn, then don't specify SolutionStackName.
+      description: The Amazon Resource Name (ARN) of the custom platform. For more information, see Custom Platforms in the Elastic Beanstalk Developer Guide. If you specify PlatformArn, then don't specify SolutionStackName.
+      description: The Amazon Resource Name (ARN) of the custom platform. For more information, see Custom Platforms in the Elastic Beanstalk Developer Guide. If you specify PlatformArn, then don't specify SolutionStackName.
     - name: SourceConfiguration
       value: "{{ SourceConfiguration }}"
       description: An Elastic Beanstalk configuration template to base this one on. If specified, Elastic Beanstalk uses the configuration values from the specified configuration template to create a new configuration. Values specified in OptionSettings override any values obtained from the SourceConfiguration. You must specify SourceConfiguration if you don't specify PlatformArn, EnvironmentId, or SolutionStackName. Constraint: If both solution stack name and source configuration are specified, the solution stack of the source configuration template must match the specified solution stack name.
@@ -408,8 +408,8 @@ versions
       description: An optional description for this configuration.
     - name: OptionSettings
       value: "{{ OptionSettings }}"
-      description: Option values for the Elastic Beanstalk configuration, such as the instance type. If specified, these values override the values obtained from the solution stack or the source configuration template. For a complete list of Elastic Beanstalk configuration options, see Option Values in the AWS Elastic Beanstalk Developer Guide.
-      description: Option values for the Elastic Beanstalk configuration, such as the instance type. If specified, these values override the values obtained from the solution stack or the source configuration template. For a complete list of Elastic Beanstalk configuration options, see Option Values in the AWS Elastic Beanstalk Developer Guide.
+      description: Option values for the Elastic Beanstalk configuration, such as the instance type. If specified, these values override the values obtained from the solution stack or the source configuration template. For a complete list of Elastic Beanstalk configuration options, see Option Values in the Elastic Beanstalk Developer Guide.
+      description: Option values for the Elastic Beanstalk configuration, such as the instance type. If specified, these values override the values obtained from the solution stack or the source configuration template. For a complete list of Elastic Beanstalk configuration options, see Option Values in the Elastic Beanstalk Developer Guide.
     - name: Tags
       value: "{{ Tags }}"
       description: Specifies the tags applied to the configuration template.

@@ -255,10 +255,6 @@ paths:
       responses:
         "202":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteChannelResponse"
     get:
       operationId: DescribeChannel
       description: Gets details about a Channel.
@@ -316,10 +312,6 @@ paths:
       responses:
         "202":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteOriginEndpointResponse"
     get:
       operationId: DescribeOriginEndpoint
       description: Gets details about an existing OriginEndpoint.
@@ -1186,10 +1178,6 @@ components:
           $ref: "#/components/schemas/AdsOnDeliveryRestrictions"
       required:
         - Id
-    DeleteChannelResponse:
-      type: object
-    DeleteOriginEndpointResponse:
-      type: object
     DescribeChannelResponse:
       type: object
       properties:
@@ -1571,6 +1559,27 @@ components:
           $ref: "#/components/schemas/__listOf__string"
           description: A list of source IP CIDR blocks that will be allowed to access the OriginEndpoint.
   x-stackQL-resources:
+    logs:
+      id: aws.mediapackage.logs
+      name: logs
+      title: logs
+      methods:
+        configure_logs:
+          operation:
+            $ref: "#/paths/~1channels~1{id}~1configure_logs/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
     channels:
       id: aws.mediapackage.channels
       name: channels
@@ -1609,7 +1618,6 @@ components:
             $ref: "#/paths/~1channels~1{id}/delete"
           response:
             openAPIDocKey: "202"
-            mediaType: application/json
         describe_channel:
           operation:
             $ref: "#/paths/~1channels~1{id}/get"
@@ -1722,7 +1730,6 @@ components:
             $ref: "#/paths/~1origin_endpoints~1{id}/delete"
           response:
             openAPIDocKey: "202"
-            mediaType: application/json
         describe_origin_endpoint:
           operation:
             $ref: "#/paths/~1origin_endpoints~1{id}/get"
@@ -1785,4 +1792,36 @@ components:
         update:
           - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
           - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
+        delete: []
+    channel_credentials:
+      id: aws.mediapackage.channel_credentials
+      name: channel_credentials
+      title: channel_credentials
+      methods:
+        rotate_channel_credentials:
+          operation:
+            $ref: "#/paths/~1channels~1{id}~1credentials/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
+    ingest_endpoint_credentials:
+      id: aws.mediapackage.ingest_endpoint_credentials
+      name: ingest_endpoint_credentials
+      title: ingest_endpoint_credentials
+      methods:
+        rotate_ingest_endpoint_credentials:
+          operation:
+            $ref: "#/paths/~1channels~1{id}~1ingest_endpoints~1{ingest_endpoint_id}~1credentials/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
         delete: []

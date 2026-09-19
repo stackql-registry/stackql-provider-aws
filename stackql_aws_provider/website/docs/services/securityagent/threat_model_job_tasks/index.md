@@ -33,36 +33,12 @@ Creates, updates, deletes, gets or lists a <code>threat_model_job_tasks</code> r
 The following fields are returned by `SELECT` queries:
 
 <Tabs
-    defaultValue="batch_get_threat_model_job_tasks"
+    defaultValue="list_threat_model_job_tasks"
     values={[
-        { label: 'batch_get_threat_model_job_tasks', value: 'batch_get_threat_model_job_tasks' },
-        { label: 'list_threat_model_job_tasks', value: 'list_threat_model_job_tasks' }
+        { label: 'list_threat_model_job_tasks', value: 'list_threat_model_job_tasks' },
+        { label: 'batch_get_threat_model_job_tasks', value: 'batch_get_threat_model_job_tasks' }
     ]}
 >
-<TabItem value="batch_get_threat_model_job_tasks">
-
-<table>
-<thead>
-    <tr>
-    <th>Name</th>
-    <th>Datatype</th>
-    <th>Description</th>
-    </tr>
-</thead>
-<tbody>
-<tr>
-    <td><CopyableCode code="not_found" /></td>
-    <td><code>array</code></td>
-    <td>The list of task identifiers that were not found.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="threat_model_job_tasks" /></td>
-    <td><code>array</code></td>
-    <td>The list of threat model job tasks that were found.</td>
-</tr>
-</tbody>
-</table>
-</TabItem>
 <TabItem value="list_threat_model_job_tasks">
 
 <table>
@@ -117,6 +93,30 @@ The following fields are returned by `SELECT` queries:
 </tbody>
 </table>
 </TabItem>
+<TabItem value="batch_get_threat_model_job_tasks">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="not_found" /></td>
+    <td><code>array</code></td>
+    <td>The list of task identifiers that were not found.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="threat_model_job_tasks" /></td>
+    <td><code>array</code></td>
+    <td>The list of threat model job tasks that were found.</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
 </Tabs>
 
 ## Methods
@@ -135,18 +135,18 @@ The following methods are available for this resource:
 </thead>
 <tbody>
 <tr>
-    <td><a href="#batch_get_threat_model_job_tasks"><CopyableCode code="batch_get_threat_model_job_tasks" /></a></td>
-    <td><CopyableCode code="select" /></td>
-    <td><a href="#parameter-region"><code>region</code></a></td>
-    <td></td>
-    <td>Retrieves information about one or more tasks within a threat model job.</td>
-</tr>
-<tr>
     <td><a href="#list_threat_model_job_tasks"><CopyableCode code="list_threat_model_job_tasks" /></a></td>
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td></td>
     <td>Returns a paginated list of task summaries for the specified threat model job.</td>
+</tr>
+<tr>
+    <td><a href="#batch_get_threat_model_job_tasks"><CopyableCode code="batch_get_threat_model_job_tasks" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Retrieves information about one or more tasks within a threat model job.</td>
 </tr>
 </tbody>
 </table>
@@ -175,25 +175,12 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 ## `SELECT` examples
 
 <Tabs
-    defaultValue="batch_get_threat_model_job_tasks"
+    defaultValue="list_threat_model_job_tasks"
     values={[
-        { label: 'batch_get_threat_model_job_tasks', value: 'batch_get_threat_model_job_tasks' },
-        { label: 'list_threat_model_job_tasks', value: 'list_threat_model_job_tasks' }
+        { label: 'list_threat_model_job_tasks', value: 'list_threat_model_job_tasks' },
+        { label: 'batch_get_threat_model_job_tasks', value: 'batch_get_threat_model_job_tasks' }
     ]}
 >
-<TabItem value="batch_get_threat_model_job_tasks">
-
-Retrieves information about one or more tasks within a threat model job.
-
-```sql
-SELECT
-not_found,
-threat_model_job_tasks
-FROM aws.securityagent.threat_model_job_tasks
-WHERE region = '{{ region }}' -- required
-;
-```
-</TabItem>
 <TabItem value="list_threat_model_job_tasks">
 
 Returns a paginated list of task summaries for the specified threat model job.
@@ -208,6 +195,19 @@ threat_model_id,
 threat_model_job_id,
 title_,
 updated_at
+FROM aws.securityagent.threat_model_job_tasks
+WHERE region = '{{ region }}' -- required
+;
+```
+</TabItem>
+<TabItem value="batch_get_threat_model_job_tasks">
+
+Retrieves information about one or more tasks within a threat model job.
+
+```sql
+SELECT
+not_found,
+threat_model_job_tasks
 FROM aws.securityagent.threat_model_job_tasks
 WHERE region = '{{ region }}' -- required
 ;

@@ -47,15 +47,9 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/AddTagsOutputDisplay'
       x-stackql-resource: tags
       x-stackql-method: add_tags
       x-stackql-verb: UPDATE
-      x-stackql-responseEnvelope: AddTagsOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
     post:
       operationId: POST_AddTags
       description: Adds the specified tags to the specified load balancer. Each load balancer can have a maximum of 10 tags.
@@ -65,10 +59,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/AddTagsOutputDisplay'
       parameters: []
       requestBody:
         content:
@@ -78,8 +68,6 @@ paths:
       x-stackql-resource: tags
       x-stackql-method: add_tags
       x-stackql-verb: UPDATE
-      x-stackql-responseEnvelope: AddTagsOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
   /?Action=ApplySecurityGroupsToLoadBalancer&Version=2012-06-01:
     parameters:
     - $ref: '#/components/parameters/X-Amz-Content-Sha256'
@@ -306,15 +294,9 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/CreateAppCookieStickinessPolicyOutputDisplay'
       x-stackql-resource: load_balancers
       x-stackql-method: create_app_cookie_stickiness_policy
       x-stackql-verb: INSERT
-      x-stackql-responseEnvelope: CreateAppCookieStickinessPolicyOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
     post:
       operationId: POST_CreateAppCookieStickinessPolicy
       description: Generates a stickiness policy with sticky session lifetimes that follow that of an application-generated
@@ -327,10 +309,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/CreateAppCookieStickinessPolicyOutputDisplay'
       parameters: []
       requestBody:
         content:
@@ -340,8 +318,6 @@ paths:
       x-stackql-resource: load_balancers
       x-stackql-method: create_app_cookie_stickiness_policy
       x-stackql-verb: INSERT
-      x-stackql-responseEnvelope: CreateAppCookieStickinessPolicyOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
   /?Action=CreateLBCookieStickinessPolicy&Version=2012-06-01:
     parameters:
     - $ref: '#/components/parameters/X-Amz-Content-Sha256'
@@ -387,15 +363,9 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/CreateLBCookieStickinessPolicyOutputDisplay'
       x-stackql-resource: load_balancers
       x-stackql-method: create_lb_cookie_stickiness_policy
       x-stackql-verb: INSERT
-      x-stackql-responseEnvelope: CreateLBCookieStickinessPolicyOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
     post:
       operationId: POST_CreateLBCookieStickinessPolicy
       description: Generates a stickiness policy with sticky session lifetimes controlled by the lifetime of the browser (user-agent)
@@ -410,10 +380,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/CreateLBCookieStickinessPolicyOutputDisplay'
       parameters: []
       requestBody:
         content:
@@ -423,8 +389,6 @@ paths:
       x-stackql-resource: load_balancers
       x-stackql-method: create_lb_cookie_stickiness_policy
       x-stackql-verb: INSERT
-      x-stackql-responseEnvelope: CreateLBCookieStickinessPolicyOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
   /?Action=CreateLoadBalancer&Version=2012-06-01:
     parameters:
     - $ref: '#/components/parameters/X-Amz-Content-Sha256'
@@ -562,15 +526,9 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/CreateLoadBalancerListenersOutputDisplay'
       x-stackql-resource: load_balancers
       x-stackql-method: create_load_balancer_listeners
       x-stackql-verb: INSERT
-      x-stackql-responseEnvelope: CreateLoadBalancerListenersOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
     post:
       operationId: POST_CreateLoadBalancerListeners
       description: Creates one or more listeners for the specified load balancer. If a listener with the specified port does
@@ -579,10 +537,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/CreateLoadBalancerListenersOutputDisplay'
       parameters: []
       requestBody:
         content:
@@ -592,8 +546,6 @@ paths:
       x-stackql-resource: load_balancers
       x-stackql-method: create_load_balancer_listeners
       x-stackql-verb: INSERT
-      x-stackql-responseEnvelope: CreateLoadBalancerListenersOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
   /?Action=CreateLoadBalancerPolicy&Version=2012-06-01:
     parameters:
     - $ref: '#/components/parameters/X-Amz-Content-Sha256'
@@ -637,15 +589,9 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/CreateLoadBalancerPolicyOutputDisplay'
       x-stackql-resource: load_balancer_policies
       x-stackql-method: create_load_balancer_policy
       x-stackql-verb: INSERT
-      x-stackql-responseEnvelope: CreateLoadBalancerPolicyOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
     post:
       operationId: POST_CreateLoadBalancerPolicy
       description: Creates a policy with the specified attributes for the specified load balancer. Policies are settings that
@@ -654,10 +600,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/CreateLoadBalancerPolicyOutputDisplay'
       parameters: []
       requestBody:
         content:
@@ -667,8 +609,6 @@ paths:
       x-stackql-resource: load_balancer_policies
       x-stackql-method: create_load_balancer_policy
       x-stackql-verb: INSERT
-      x-stackql-responseEnvelope: CreateLoadBalancerPolicyOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
   /?Action=DeleteLoadBalancer&Version=2012-06-01:
     parameters:
     - $ref: '#/components/parameters/X-Amz-Content-Sha256'
@@ -695,15 +635,9 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/DeleteLoadBalancerOutputDisplay'
       x-stackql-resource: load_balancers
       x-stackql-method: delete_load_balancer
       x-stackql-verb: DELETE
-      x-stackql-responseEnvelope: DeleteLoadBalancerOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
     post:
       operationId: POST_DeleteLoadBalancer
       description: Deletes the specified load balancer. If you are attempting to recreate a load balancer, you must reconfigure
@@ -714,10 +648,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/DeleteLoadBalancerOutputDisplay'
       parameters: []
       requestBody:
         content:
@@ -727,8 +657,6 @@ paths:
       x-stackql-resource: load_balancers
       x-stackql-method: delete_load_balancer
       x-stackql-verb: DELETE
-      x-stackql-responseEnvelope: DeleteLoadBalancerOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
   /?Action=DeleteLoadBalancerListeners&Version=2012-06-01:
     parameters:
     - $ref: '#/components/parameters/X-Amz-Content-Sha256'
@@ -757,25 +685,15 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/DeleteLoadBalancerListenersOutputDisplay'
       x-stackql-resource: load_balancers
       x-stackql-method: delete_load_balancer_listeners
       x-stackql-verb: DELETE
-      x-stackql-responseEnvelope: DeleteLoadBalancerListenersOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
     post:
       operationId: POST_DeleteLoadBalancerListeners
       description: Deletes the specified listeners from the specified load balancer.
       responses:
         '200':
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/DeleteLoadBalancerListenersOutputDisplay'
       parameters: []
       requestBody:
         content:
@@ -785,8 +703,6 @@ paths:
       x-stackql-resource: load_balancers
       x-stackql-method: delete_load_balancer_listeners
       x-stackql-verb: DELETE
-      x-stackql-responseEnvelope: DeleteLoadBalancerListenersOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
   /?Action=DeleteLoadBalancerPolicy&Version=2012-06-01:
     parameters:
     - $ref: '#/components/parameters/X-Amz-Content-Sha256'
@@ -816,15 +732,9 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/DeleteLoadBalancerPolicyOutputDisplay'
       x-stackql-resource: load_balancer_policies
       x-stackql-method: delete_load_balancer_policy
       x-stackql-verb: DELETE
-      x-stackql-responseEnvelope: DeleteLoadBalancerPolicyOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
     post:
       operationId: POST_DeleteLoadBalancerPolicy
       description: Deletes the specified policy from the specified load balancer. This policy must not be enabled for any
@@ -832,10 +742,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/DeleteLoadBalancerPolicyOutputDisplay'
       parameters: []
       requestBody:
         content:
@@ -845,8 +751,6 @@ paths:
       x-stackql-resource: load_balancer_policies
       x-stackql-method: delete_load_balancer_policy
       x-stackql-verb: DELETE
-      x-stackql-responseEnvelope: DeleteLoadBalancerPolicyOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
   /?Action=DeregisterInstancesFromLoadBalancer&Version=2012-06-01:
     parameters:
     - $ref: '#/components/parameters/X-Amz-Content-Sha256'
@@ -1698,25 +1602,15 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/RemoveTagsOutputDisplay'
       x-stackql-resource: tags
       x-stackql-method: remove_tags
       x-stackql-verb: UPDATE
-      x-stackql-responseEnvelope: RemoveTagsOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
     post:
       operationId: POST_RemoveTags
       description: Removes one or more tags from the specified load balancer.
       responses:
         '200':
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/RemoveTagsOutputDisplay'
       parameters: []
       requestBody:
         content:
@@ -1726,8 +1620,6 @@ paths:
       x-stackql-resource: tags
       x-stackql-method: remove_tags
       x-stackql-verb: UPDATE
-      x-stackql-responseEnvelope: RemoveTagsOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
   /?Action=SetLoadBalancerListenerSSLCertificate&Version=2012-06-01:
     parameters:
     - $ref: '#/components/parameters/X-Amz-Content-Sha256'
@@ -1764,15 +1656,9 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/SetLoadBalancerListenerSSLCertificateOutputDisplay'
       x-stackql-resource: load_balancers
       x-stackql-method: set_load_balancer_listener_ssl_certificate
       x-stackql-verb: UPDATE
-      x-stackql-responseEnvelope: SetLoadBalancerListenerSSLCertificateOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
     post:
       operationId: POST_SetLoadBalancerListenerSSLCertificate
       description: Sets the certificate that terminates the specified listener's SSL connections. The specified certificate
@@ -1781,10 +1667,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/SetLoadBalancerListenerSSLCertificateOutputDisplay'
       parameters: []
       requestBody:
         content:
@@ -1794,8 +1676,6 @@ paths:
       x-stackql-resource: load_balancers
       x-stackql-method: set_load_balancer_listener_ssl_certificate
       x-stackql-verb: UPDATE
-      x-stackql-responseEnvelope: SetLoadBalancerListenerSSLCertificateOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
   /?Action=SetLoadBalancerPoliciesForBackendServer&Version=2012-06-01:
     parameters:
     - $ref: '#/components/parameters/X-Amz-Content-Sha256'
@@ -1837,15 +1717,9 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/SetLoadBalancerPoliciesForBackendServerOutputDisplay'
       x-stackql-resource: load_balancer_policies
       x-stackql-method: set_load_balancer_policies_for_backend_server
       x-stackql-verb: UPDATE
-      x-stackql-responseEnvelope: SetLoadBalancerPoliciesForBackendServerOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
     post:
       operationId: POST_SetLoadBalancerPoliciesForBackendServer
       description: Replaces the set of policies associated with the specified port on which the EC2 instance is listening
@@ -1859,10 +1733,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/SetLoadBalancerPoliciesForBackendServerOutputDisplay'
       parameters: []
       requestBody:
         content:
@@ -1872,8 +1742,6 @@ paths:
       x-stackql-resource: load_balancer_policies
       x-stackql-method: set_load_balancer_policies_for_backend_server
       x-stackql-verb: UPDATE
-      x-stackql-responseEnvelope: SetLoadBalancerPoliciesForBackendServerOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
   /?Action=SetLoadBalancerPoliciesOfListener&Version=2012-06-01:
     parameters:
     - $ref: '#/components/parameters/X-Amz-Content-Sha256'
@@ -1912,15 +1780,9 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/SetLoadBalancerPoliciesOfListenerOutputDisplay'
       x-stackql-resource: load_balancer_policies
       x-stackql-method: set_load_balancer_policies_of_listener
       x-stackql-verb: UPDATE
-      x-stackql-responseEnvelope: SetLoadBalancerPoliciesOfListenerOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
     post:
       operationId: POST_SetLoadBalancerPoliciesOfListener
       description: Replaces the current set of policies for the specified load balancer port with the specified set of policies.
@@ -1930,10 +1792,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/SetLoadBalancerPoliciesOfListenerOutputDisplay'
       parameters: []
       requestBody:
         content:
@@ -1943,8 +1801,6 @@ paths:
       x-stackql-resource: load_balancer_policies
       x-stackql-method: set_load_balancer_policies_of_listener
       x-stackql-verb: UPDATE
-      x-stackql-responseEnvelope: SetLoadBalancerPoliciesOfListenerOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
 components:
   parameters:
     X-Amz-Content-Sha256:
@@ -2022,13 +1878,6 @@ components:
       minLength: 0
       maxLength: 256
       pattern: ^([\p{L}\p{Z}\p{N}_.:/=+\-@]*)$
-    AddTagsOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: '#/components/schemas/AddTagsOutputDisplay'
     AddTagsInput:
       description: Contains the parameters for AddTags.
       type: object
@@ -2200,13 +2049,6 @@ components:
       type: string
     CookieName:
       type: string
-    CreateAppCookieStickinessPolicyOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: '#/components/schemas/CreateAppCookieStickinessPolicyOutputDisplay'
     CreateAppCookieStickinessPolicyInput:
       description: Contains the parameters for CreateAppCookieStickinessPolicy.
       type: object
@@ -2228,13 +2070,6 @@ components:
     CookieExpirationPeriod:
       type: integer
       format: int64
-    CreateLBCookieStickinessPolicyOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: '#/components/schemas/CreateLBCookieStickinessPolicyOutputDisplay'
     CreateLBCookieStickinessPolicyInput:
       description: Contains the parameters for CreateLBCookieStickinessPolicy.
       type: object
@@ -2356,16 +2191,6 @@ components:
       required:
       - LoadBalancerName
       - Listeners
-    CreateLoadBalancerListenerOutputDisplay:
-      type: object
-      properties: {}
-    CreateLoadBalancerListenersOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: '#/components/schemas/CreateLoadBalancerListenerOutputDisplay'
     CreateLoadBalancerListenerInput:
       description: Contains the parameters for CreateLoadBalancerListeners.
       type: object
@@ -2399,13 +2224,6 @@ components:
       type: string
     AttributeValue:
       type: string
-    CreateLoadBalancerPolicyOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: '#/components/schemas/CreateLoadBalancerPolicyOutputDisplay'
     CreateLoadBalancerPolicyInput:
       description: Contains the parameters for CreateLoadBalancerPolicy.
       type: object
@@ -2427,16 +2245,6 @@ components:
       - LoadBalancerName
       - PolicyName
       - PolicyTypeName
-    DeleteAccessPointOutputDisplay:
-      type: object
-      properties: {}
-    DeleteLoadBalancerOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: '#/components/schemas/DeleteAccessPointOutputDisplay'
     DeleteAccessPointInput:
       description: Contains the parameters for DeleteLoadBalancer.
       type: object
@@ -2450,16 +2258,6 @@ components:
       type: array
       items:
         $ref: '#/components/schemas/AccessPointPort'
-    DeleteLoadBalancerListenerOutputDisplay:
-      type: object
-      properties: {}
-    DeleteLoadBalancerListenersOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: '#/components/schemas/DeleteLoadBalancerListenerOutputDisplay'
     DeleteLoadBalancerListenerInput:
       description: Contains the parameters for DeleteLoadBalancerListeners.
       type: object
@@ -2473,13 +2271,6 @@ components:
       required:
       - LoadBalancerName
       - LoadBalancerPorts
-    DeleteLoadBalancerPolicyOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: '#/components/schemas/DeleteLoadBalancerPolicyOutputDisplay'
     DeleteLoadBalancerPolicyInput:
       description: Contains the parameters for DeleteLoadBalancerPolicy.
       type: object
@@ -3066,13 +2857,6 @@ components:
         Key:
           $ref: '#/components/schemas/TagKey'
           description: The name of the key.
-    RemoveTagsOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: '#/components/schemas/RemoveTagsOutputDisplay'
     RemoveTagsInput:
       description: Contains the parameters for RemoveTags.
       type: object
@@ -3086,13 +2870,6 @@ components:
       required:
       - LoadBalancerNames
       - Tags
-    SetLoadBalancerListenerSSLCertificateOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: '#/components/schemas/SetLoadBalancerListenerSSLCertificateOutputDisplay'
     SetLoadBalancerListenerSSLCertificateInput:
       description: Contains the parameters for SetLoadBalancerListenerSSLCertificate.
       type: object
@@ -3112,13 +2889,6 @@ components:
       - SSLCertificateId
     EndPointPort:
       type: integer
-    SetLoadBalancerPoliciesForBackendServerOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: '#/components/schemas/SetLoadBalancerPoliciesForBackendServerOutputDisplay'
     SetLoadBalancerPoliciesForBackendServerInput:
       description: Contains the parameters for SetLoadBalancerPoliciesForBackendServer.
       type: object
@@ -3137,13 +2907,6 @@ components:
       - LoadBalancerName
       - InstancePort
       - PolicyNames
-    SetLoadBalancerPoliciesOfListenerOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: '#/components/schemas/SetLoadBalancerPoliciesOfListenerOutputDisplay'
     SetLoadBalancerPoliciesOfListenerInput:
       description: Contains the parameters for SetLoadBalancePoliciesOfListener.
       type: object

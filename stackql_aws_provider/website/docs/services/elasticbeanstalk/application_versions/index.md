@@ -62,7 +62,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="build_arn" /></td>
     <td><code>string</code></td>
-    <td>Reference to the artifact from the AWS CodeBuild build.</td>
+    <td>Reference to the artifact from the CodeBuild build.</td>
 </tr>
 <tr>
     <td><CopyableCode code="date_created" /></td>
@@ -80,9 +80,24 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the application version.</td>
 </tr>
 <tr>
+    <td><CopyableCode code="image_build_configuration" /></td>
+    <td><code>string</code></td>
+    <td>The settings that Elastic Beanstalk uses to build a container image from the source bundle of the application version. Not present for an application version created from an image you provide.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="image_source" /></td>
+    <td><code>string</code></td>
+    <td>The location of the container image for the application version. For an application version created from an image you provide, this is that image. For one that Elastic Beanstalk builds from your source bundle, Elastic Beanstalk fills this in with the image it pushed after the build succeeds.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="process" /></td>
+    <td><code>boolean</code></td>
+    <td>Indicates whether Elastic Beanstalk pre-processed and validated the environment manifest (env.yaml) and configuration files (*.config files in the .ebextensions folder) in the source bundle of the application version.</td>
+</tr>
+<tr>
     <td><CopyableCode code="source_build_information" /></td>
     <td><code>string</code></td>
-    <td>If the version's source code was retrieved from AWS CodeCommit, the location of the source code for the application version.</td>
+    <td>If the version's source code was retrieved from CodeCommit, the location of the source code for the application version.</td>
 </tr>
 <tr>
     <td><CopyableCode code="source_bundle" /></td>
@@ -92,7 +107,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
-    <td>The processing status of the application version. Reflects the state of the application version during its creation. Many of the values are only applicable if you specified True for the Process parameter of the CreateApplicationVersion action. The following list describes the possible values. Unprocessed – Application version wasn't pre-processed or validated. Elastic Beanstalk will validate configuration files during deployment of the application version to an environment. Processing – Elastic Beanstalk is currently processing the application version. Building – Application version is currently undergoing an AWS CodeBuild build. Processed – Elastic Beanstalk was successfully pre-processed and validated. Failed – Either the AWS CodeBuild build failed or configuration files didn't pass validation. This application version isn't usable.</td>
+    <td>The processing status of the application version. Reflects the state of the application version during its creation. Many of the values are only applicable if you specified True for the Process parameter of the CreateApplicationVersion action. The following list describes the possible values. Unprocessed – Application version wasn't pre-processed or validated. Elastic Beanstalk will validate configuration files during deployment of the application version to an environment. Processing – Elastic Beanstalk is currently processing the application version. Building – Application version is currently undergoing an CodeBuild build. Processed – Elastic Beanstalk was successfully pre-processed and validated. Failed – Either the CodeBuild build failed or configuration files didn't pass validation. This application version isn't usable.</td>
 </tr>
 <tr>
     <td><CopyableCode code="version_label" /></td>
@@ -124,14 +139,14 @@ The following methods are available for this resource:
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td><a href="#parameter-ApplicationName"><code>ApplicationName</code></a>, <a href="#parameter-VersionLabels"><code>VersionLabels</code></a>, <a href="#parameter-MaxRecords"><code>MaxRecords</code></a>, <a href="#parameter-NextToken"><code>NextToken</code></a></td>
-    <td>Retrieve a list of application versions.</td>
+    <td>Retrieve a list of application versions. This action only returns information about resources that the calling principle has IAM permissions to access. For example, consider a case where a user only has permission to access one of three resources. When the user calls the this action, the response will only include the one resource that the user has permission to access instead of all three resources. If the user doesn’t have access to any of the resources an empty result is returned. The AWSElasticBeanstalkReadOnly managed policy allows operators to view information about resources related to Elastic Beanstalk. For more information, see Managing Elastic Beanstalk user policies in the Elastic Beanstalk Developer Guide. For detailed instructions to attach a policy to a user or group, see the section Controlling access with managed policies in the same topic.</td>
 </tr>
 <tr>
     <td><a href="#create_application_version"><CopyableCode code="create_application_version" /></a></td>
     <td><CopyableCode code="insert" /></td>
     <td><a href="#parameter-ApplicationName"><code>ApplicationName</code></a>, <a href="#parameter-VersionLabel"><code>VersionLabel</code></a>, <a href="#parameter-region"><code>region</code></a></td>
-    <td><a href="#parameter-Description"><code>Description</code></a>, <a href="#parameter-SourceBuildInformation"><code>SourceBuildInformation</code></a>, <a href="#parameter-SourceBundle"><code>SourceBundle</code></a>, <a href="#parameter-BuildConfiguration"><code>BuildConfiguration</code></a>, <a href="#parameter-AutoCreateApplication"><code>AutoCreateApplication</code></a>, <a href="#parameter-Process"><code>Process</code></a>, <a href="#parameter-Tags"><code>Tags</code></a></td>
-    <td>Creates an application version for the specified application. You can create an application version from a source bundle in Amazon S3, a commit in AWS CodeCommit, or the output of an AWS CodeBuild build as follows: Specify a commit in an AWS CodeCommit repository with SourceBuildInformation. Specify a build in an AWS CodeBuild with SourceBuildInformation and BuildConfiguration. Specify a source bundle in S3 with SourceBundle Omit both SourceBuildInformation and SourceBundle to use the default sample application. After you create an application version with a specified Amazon S3 bucket and key location, you can't change that Amazon S3 location. If you change the Amazon S3 location, you receive an exception when you attempt to launch an environment from the application version.</td>
+    <td><a href="#parameter-Description"><code>Description</code></a>, <a href="#parameter-SourceBuildInformation"><code>SourceBuildInformation</code></a>, <a href="#parameter-SourceBundle"><code>SourceBundle</code></a>, <a href="#parameter-BuildConfiguration"><code>BuildConfiguration</code></a>, <a href="#parameter-AutoCreateApplication"><code>AutoCreateApplication</code></a>, <a href="#parameter-Process"><code>Process</code></a>, <a href="#parameter-Tags"><code>Tags</code></a>, <a href="#parameter-ImageConfiguration"><code>ImageConfiguration</code></a></td>
+    <td>Creates an application version for the specified application. You can create an application version from a source bundle in Amazon S3, a commit in CodeCommit, or the output of an CodeBuild build as follows: Specify a commit in an CodeCommit repository with SourceBuildInformation. Specify a build in an CodeBuild with SourceBuildInformation and BuildConfiguration. Specify a source bundle in Amazon S3 with SourceBundle Omit both SourceBuildInformation and SourceBundle to use the default sample application. After you create an application version with a specified Amazon S3 bucket and key location, you can't change that Amazon S3 location. If you change the Amazon S3 location, you receive an exception when you attempt to launch an environment from the application version.</td>
 </tr>
 <tr>
     <td><a href="#update_application_version"><CopyableCode code="update_application_version" /></a></td>
@@ -191,7 +206,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-BuildConfiguration">
     <td><CopyableCode code="BuildConfiguration" /></td>
     <td><code>object</code></td>
-    <td>Settings for an AWS CodeBuild build.</td>
+    <td>Settings for an CodeBuild build. Don't specify BuildConfiguration together with ImageConfiguration, which configures a container image build instead.</td>
 </tr>
 <tr id="parameter-DeleteSourceBundle">
     <td><CopyableCode code="DeleteSourceBundle" /></td>
@@ -202,6 +217,11 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     <td><CopyableCode code="Description" /></td>
     <td><code>string</code></td>
     <td>A new description for this version.</td>
+</tr>
+<tr id="parameter-ImageConfiguration">
+    <td><CopyableCode code="ImageConfiguration" /></td>
+    <td><code>object</code></td>
+    <td>The source of the container image for this application version. You can specify an image that you built and pushed to a container registry yourself, or settings for Elastic Beanstalk to build one from your source bundle. Specify exactly one of the Source and Build members. Don't specify ImageConfiguration together with BuildConfiguration, which configures an CodeBuild build instead.</td>
 </tr>
 <tr id="parameter-MaxRecords">
     <td><CopyableCode code="MaxRecords" /></td>
@@ -216,17 +236,17 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-Process">
     <td><CopyableCode code="Process" /></td>
     <td><code>boolean</code></td>
-    <td>Pre-processes and validates the environment manifest (env.yaml) and configuration files (*.config files in the .ebextensions folder) in the source bundle. Validating configuration files can identify issues prior to deploying the application version to an environment. You must turn processing on for application versions that you create using AWS CodeBuild or AWS CodeCommit. For application versions built from a source bundle in Amazon S3, processing is optional. The Process option validates Elastic Beanstalk configuration files. It doesn't validate your application's configuration files, like proxy server or Docker configuration.</td>
+    <td>Pre-processes and validates the environment manifest (env.yaml) and configuration files (*.config files in the .ebextensions folder) in the source bundle. Validating configuration files can identify issues prior to deploying the application version to an environment. You must turn processing on for application versions that you create using CodeBuild or CodeCommit. For application versions built from a source bundle in Amazon S3, processing is optional. The Process option validates Elastic Beanstalk configuration files. It doesn't validate your application's configuration files, like proxy server or Docker configuration.</td>
 </tr>
 <tr id="parameter-SourceBuildInformation">
     <td><CopyableCode code="SourceBuildInformation" /></td>
     <td><code>object</code></td>
-    <td>Specify a commit in an AWS CodeCommit Git repository to use as the source code for the application version.</td>
+    <td>Specify a commit in an CodeCommit Git repository to use as the source code for the application version.</td>
 </tr>
 <tr id="parameter-SourceBundle">
     <td><CopyableCode code="SourceBundle" /></td>
     <td><code>object</code></td>
-    <td>The Amazon S3 bucket and key that identify the location of the source bundle for this version. The Amazon S3 bucket must be in the same region as the environment. Specify a source bundle in S3 or a commit in an AWS CodeCommit repository (with SourceBuildInformation), but not both. If neither SourceBundle nor SourceBuildInformation are provided, Elastic Beanstalk uses a sample application.</td>
+    <td>The Amazon S3 bucket and key that identify the location of the source bundle for this version. The Amazon S3 bucket must be in the same region as the environment. Unless you're specifying a source bundle in the bucket that Elastic Beanstalk manages in your account, you must assign a custom policy to your user, and grant Allow permission to the s3:Get* actions on your S3 object resource, for example, arn:aws:s3:::your-bucket/your-source-bundle-object. Specify a source bundle in Amazon S3 or a commit in an CodeCommit repository (with SourceBuildInformation), but not both. If neither SourceBundle nor SourceBuildInformation are provided, Elastic Beanstalk uses a sample application.</td>
 </tr>
 <tr id="parameter-Tags">
     <td><CopyableCode code="Tags" /></td>
@@ -251,7 +271,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 >
 <TabItem value="describe_application_versions">
 
-Retrieve a list of application versions.
+Retrieve a list of application versions. This action only returns information about resources that the calling principle has IAM permissions to access. For example, consider a case where a user only has permission to access one of three resources. When the user calls the this action, the response will only include the one resource that the user has permission to access instead of all three resources. If the user doesn’t have access to any of the resources an empty result is returned. The AWSElasticBeanstalkReadOnly managed policy allows operators to view information about resources related to Elastic Beanstalk. For more information, see Managing Elastic Beanstalk user policies in the Elastic Beanstalk Developer Guide. For detailed instructions to attach a policy to a user or group, see the section Controlling access with managed policies in the same topic.
 
 ```sql
 SELECT
@@ -261,6 +281,9 @@ build_arn,
 date_created,
 date_updated,
 description,
+image_build_configuration,
+image_source,
+process,
 source_build_information,
 source_bundle,
 status,
@@ -288,7 +311,7 @@ AND NextToken = '{{ NextToken }}'
 >
 <TabItem value="create_application_version">
 
-Creates an application version for the specified application. You can create an application version from a source bundle in Amazon S3, a commit in AWS CodeCommit, or the output of an AWS CodeBuild build as follows: Specify a commit in an AWS CodeCommit repository with SourceBuildInformation. Specify a build in an AWS CodeBuild with SourceBuildInformation and BuildConfiguration. Specify a source bundle in S3 with SourceBundle Omit both SourceBuildInformation and SourceBundle to use the default sample application. After you create an application version with a specified Amazon S3 bucket and key location, you can't change that Amazon S3 location. If you change the Amazon S3 location, you receive an exception when you attempt to launch an environment from the application version.
+Creates an application version for the specified application. You can create an application version from a source bundle in Amazon S3, a commit in CodeCommit, or the output of an CodeBuild build as follows: Specify a commit in an CodeCommit repository with SourceBuildInformation. Specify a build in an CodeBuild with SourceBuildInformation and BuildConfiguration. Specify a source bundle in Amazon S3 with SourceBundle Omit both SourceBuildInformation and SourceBundle to use the default sample application. After you create an application version with a specified Amazon S3 bucket and key location, you can't change that Amazon S3 location. If you change the Amazon S3 location, you receive an exception when you attempt to launch an environment from the application version.
 
 ```sql
 INSERT INTO aws.elasticbeanstalk.application_versions (
@@ -301,7 +324,8 @@ SourceBundle,
 BuildConfiguration,
 AutoCreateApplication,
 Process,
-Tags
+Tags,
+ImageConfiguration
 )
 SELECT 
 '{{ ApplicationName }}',
@@ -313,7 +337,8 @@ SELECT
 '{{ BuildConfiguration }}',
 '{{ AutoCreateApplication }}',
 '{{ Process }}',
-'{{ Tags }}'
+'{{ Tags }}',
+'{{ ImageConfiguration }}'
 RETURNING
 application_name,
 application_version_arn,
@@ -321,6 +346,9 @@ build_arn,
 date_created,
 date_updated,
 description,
+image_build_configuration,
+image_source,
+process,
 source_build_information,
 source_bundle,
 status,
@@ -348,28 +376,32 @@ version_label
       description: A description of this application version.
     - name: SourceBuildInformation
       value: "{{ SourceBuildInformation }}"
-      description: Specify a commit in an AWS CodeCommit Git repository to use as the source code for the application version.
-      description: Specify a commit in an AWS CodeCommit Git repository to use as the source code for the application version.
+      description: Specify a commit in an CodeCommit Git repository to use as the source code for the application version.
+      description: Specify a commit in an CodeCommit Git repository to use as the source code for the application version.
     - name: SourceBundle
       value: "{{ SourceBundle }}"
-      description: The Amazon S3 bucket and key that identify the location of the source bundle for this version. The Amazon S3 bucket must be in the same region as the environment. Specify a source bundle in S3 or a commit in an AWS CodeCommit repository (with SourceBuildInformation), but not both. If neither SourceBundle nor SourceBuildInformation are provided, Elastic Beanstalk uses a sample application.
-      description: The Amazon S3 bucket and key that identify the location of the source bundle for this version. The Amazon S3 bucket must be in the same region as the environment. Specify a source bundle in S3 or a commit in an AWS CodeCommit repository (with SourceBuildInformation), but not both. If neither SourceBundle nor SourceBuildInformation are provided, Elastic Beanstalk uses a sample application.
+      description: The Amazon S3 bucket and key that identify the location of the source bundle for this version. The Amazon S3 bucket must be in the same region as the environment. Unless you're specifying a source bundle in the bucket that Elastic Beanstalk manages in your account, you must assign a custom policy to your user, and grant Allow permission to the s3:Get* actions on your S3 object resource, for example, arn:aws:s3:::your-bucket/your-source-bundle-object. Specify a source bundle in Amazon S3 or a commit in an CodeCommit repository (with SourceBuildInformation), but not both. If neither SourceBundle nor SourceBuildInformation are provided, Elastic Beanstalk uses a sample application.
+      description: The Amazon S3 bucket and key that identify the location of the source bundle for this version. The Amazon S3 bucket must be in the same region as the environment. Unless you're specifying a source bundle in the bucket that Elastic Beanstalk manages in your account, you must assign a custom policy to your user, and grant Allow permission to the s3:Get* actions on your S3 object resource, for example, arn:aws:s3:::your-bucket/your-source-bundle-object. Specify a source bundle in Amazon S3 or a commit in an CodeCommit repository (with SourceBuildInformation), but not both. If neither SourceBundle nor SourceBuildInformation are provided, Elastic Beanstalk uses a sample application.
     - name: BuildConfiguration
       value: "{{ BuildConfiguration }}"
-      description: Settings for an AWS CodeBuild build.
-      description: Settings for an AWS CodeBuild build.
+      description: Settings for an CodeBuild build. Don't specify BuildConfiguration together with ImageConfiguration, which configures a container image build instead.
+      description: Settings for an CodeBuild build. Don't specify BuildConfiguration together with ImageConfiguration, which configures a container image build instead.
     - name: AutoCreateApplication
       value: {{ AutoCreateApplication }}
       description: Set to true to create an application with the specified name if it doesn't already exist.
       description: Set to true to create an application with the specified name if it doesn't already exist.
     - name: Process
       value: {{ Process }}
-      description: Pre-processes and validates the environment manifest (env.yaml) and configuration files (*.config files in the .ebextensions folder) in the source bundle. Validating configuration files can identify issues prior to deploying the application version to an environment. You must turn processing on for application versions that you create using AWS CodeBuild or AWS CodeCommit. For application versions built from a source bundle in Amazon S3, processing is optional. The Process option validates Elastic Beanstalk configuration files. It doesn't validate your application's configuration files, like proxy server or Docker configuration.
-      description: Pre-processes and validates the environment manifest (env.yaml) and configuration files (*.config files in the .ebextensions folder) in the source bundle. Validating configuration files can identify issues prior to deploying the application version to an environment. You must turn processing on for application versions that you create using AWS CodeBuild or AWS CodeCommit. For application versions built from a source bundle in Amazon S3, processing is optional. The Process option validates Elastic Beanstalk configuration files. It doesn't validate your application's configuration files, like proxy server or Docker configuration.
+      description: Pre-processes and validates the environment manifest (env.yaml) and configuration files (*.config files in the .ebextensions folder) in the source bundle. Validating configuration files can identify issues prior to deploying the application version to an environment. You must turn processing on for application versions that you create using CodeBuild or CodeCommit. For application versions built from a source bundle in Amazon S3, processing is optional. The Process option validates Elastic Beanstalk configuration files. It doesn't validate your application's configuration files, like proxy server or Docker configuration.
+      description: Pre-processes and validates the environment manifest (env.yaml) and configuration files (*.config files in the .ebextensions folder) in the source bundle. Validating configuration files can identify issues prior to deploying the application version to an environment. You must turn processing on for application versions that you create using CodeBuild or CodeCommit. For application versions built from a source bundle in Amazon S3, processing is optional. The Process option validates Elastic Beanstalk configuration files. It doesn't validate your application's configuration files, like proxy server or Docker configuration.
     - name: Tags
       value: "{{ Tags }}"
       description: Specifies the tags applied to the application version. Elastic Beanstalk applies these tags only to the application version. Environments that use the application version don't inherit the tags.
       description: Specifies the tags applied to the application version. Elastic Beanstalk applies these tags only to the application version. Environments that use the application version don't inherit the tags.
+    - name: ImageConfiguration
+      value: "{{ ImageConfiguration }}"
+      description: The source of the container image for this application version. You can specify an image that you built and pushed to a container registry yourself, or settings for Elastic Beanstalk to build one from your source bundle. Specify exactly one of the Source and Build members. Don't specify ImageConfiguration together with BuildConfiguration, which configures an CodeBuild build instead.
+      description: The source of the container image for this application version. You can specify an image that you built and pushed to a container registry yourself, or settings for Elastic Beanstalk to build one from your source bundle. Specify exactly one of the Source and Build members. Don't specify ImageConfiguration together with BuildConfiguration, which configures an CodeBuild build instead.
 `}</CodeBlock>
 
 </TabItem>
@@ -404,6 +436,9 @@ build_arn,
 date_created,
 date_updated,
 description,
+image_build_configuration,
+image_source,
+process,
 source_build_information,
 source_bundle,
 status,

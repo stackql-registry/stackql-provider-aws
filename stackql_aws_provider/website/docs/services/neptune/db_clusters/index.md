@@ -342,6 +342,13 @@ The following methods are available for this resource:
     <td>Copies a snapshot of a DB cluster. To copy a DB cluster snapshot from a shared manual DB cluster snapshot, SourceDBClusterSnapshotIdentifier must be the Amazon Resource Name (ARN) of the shared DB cluster snapshot.</td>
 </tr>
 <tr>
+    <td><a href="#failover_db_cluster"><CopyableCode code="failover_db_cluster" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td><a href="#parameter-DBClusterIdentifier"><code>DBClusterIdentifier</code></a>, <a href="#parameter-TargetDBInstanceIdentifier"><code>TargetDBInstanceIdentifier</code></a></td>
+    <td>Forces a failover for a DB cluster. A failover for a DB cluster promotes one of the Read Replicas (read-only instances) in the DB cluster to be the primary instance (the cluster writer). Amazon Neptune will automatically fail over to a Read Replica, if one exists, when the primary instance fails. You can force a failover when you want to simulate a failure of a primary instance for testing. Because each instance in a DB cluster has its own endpoint address, you will need to clean up and re-establish any existing connections that use those endpoint addresses when the failover is complete.</td>
+</tr>
+<tr>
     <td><a href="#promote_read_replica_db_cluster"><CopyableCode code="promote_read_replica_db_cluster" /></a></td>
     <td><CopyableCode code="exec" /></td>
     <td><a href="#parameter-DBClusterIdentifier"><code>DBClusterIdentifier</code></a>, <a href="#parameter-region"><code>region</code></a></td>
@@ -477,7 +484,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-DBClusterIdentifier">
     <td><CopyableCode code="DBClusterIdentifier" /></td>
     <td><code>string</code></td>
-    <td>The user-supplied DB cluster identifier. If this parameter is specified, information from only the specific DB cluster is returned. This parameter isn't case-sensitive. Constraints: If supplied, must match an existing DBClusterIdentifier.</td>
+    <td>A DB cluster identifier to force a failover for. This parameter is not case-sensitive. Constraints: Must match the identifier of an existing DBCluster.</td>
 </tr>
 <tr id="parameter-DBClusterParameterGroupName">
     <td><CopyableCode code="DBClusterParameterGroupName" /></td>
@@ -643,6 +650,11 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     <td><CopyableCode code="Tags" /></td>
     <td><code>array</code></td>
     <td>The tags to be applied to the restored DB cluster.</td>
+</tr>
+<tr id="parameter-TargetDBInstanceIdentifier">
+    <td><CopyableCode code="TargetDBInstanceIdentifier" /></td>
+    <td><code>string</code></td>
+    <td>The name of the instance to promote to the primary instance. You must specify the instance identifier for an Read Replica in the DB cluster. For example, mydbcluster-replica1.</td>
 </tr>
 <tr id="parameter-UseLatestRestorableTime">
     <td><CopyableCode code="UseLatestRestorableTime" /></td>
@@ -1122,6 +1134,7 @@ AND FinalDBSnapshotIdentifier = '{{ FinalDBSnapshotIdentifier }}'
     defaultValue="copy_db_cluster_snapshot"
     values={[
         { label: 'copy_db_cluster_snapshot', value: 'copy_db_cluster_snapshot' },
+        { label: 'failover_db_cluster', value: 'failover_db_cluster' },
         { label: 'promote_read_replica_db_cluster', value: 'promote_read_replica_db_cluster' },
         { label: 'remove_role_from_db_cluster', value: 'remove_role_from_db_cluster' },
         { label: 'restore_db_cluster_from_snapshot', value: 'restore_db_cluster_from_snapshot' },
@@ -1143,6 +1156,18 @@ EXEC aws.neptune.db_clusters.copy_db_cluster_snapshot
 @PreSignedUrl='{{ PreSignedUrl }}', 
 @CopyTags={{ CopyTags }}, 
 @Tags='{{ Tags }}'
+;
+```
+</TabItem>
+<TabItem value="failover_db_cluster">
+
+Forces a failover for a DB cluster. A failover for a DB cluster promotes one of the Read Replicas (read-only instances) in the DB cluster to be the primary instance (the cluster writer). Amazon Neptune will automatically fail over to a Read Replica, if one exists, when the primary instance fails. You can force a failover when you want to simulate a failure of a primary instance for testing. Because each instance in a DB cluster has its own endpoint address, you will need to clean up and re-establish any existing connections that use those endpoint addresses when the failover is complete.
+
+```sql
+EXEC aws.neptune.db_clusters.failover_db_cluster 
+@region='{{ region }}' --required, 
+@DBClusterIdentifier='{{ DBClusterIdentifier }}', 
+@TargetDBInstanceIdentifier='{{ TargetDBInstanceIdentifier }}'
 ;
 ```
 </TabItem>

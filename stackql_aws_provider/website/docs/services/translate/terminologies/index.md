@@ -99,6 +99,13 @@ The following methods are available for this resource:
     <td>A synchronous action that deletes a custom terminology.</td>
 </tr>
 <tr>
+    <td><a href="#import_terminology"><CopyableCode code="import_terminology" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-MergeStrategy"><code>MergeStrategy</code></a>, <a href="#parameter-TerminologyData"><code>TerminologyData</code></a></td>
+    <td></td>
+    <td>Creates or updates a custom terminology, depending on whether one already exists for the given terminology name. Importing a terminology with the same name as an existing one will merge the terminologies based on the chosen merge strategy. The only supported merge strategy is OVERWRITE, where the imported terminology overwrites the existing terminology of the same name. If you import a terminology that overwrites an existing one, the new terminology takes up to 10 minutes to fully propagate. After that, translations have access to the new terminology.</td>
+</tr>
+<tr>
     <td><a href="#list_terminologies"><CopyableCode code="list_terminologies" /></a></td>
     <td><CopyableCode code="exec" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
@@ -178,11 +185,31 @@ WHERE region = '{{ region }}' --required
 ## Lifecycle Methods
 
 <Tabs
-    defaultValue="list_terminologies"
+    defaultValue="import_terminology"
     values={[
+        { label: 'import_terminology', value: 'import_terminology' },
         { label: 'list_terminologies', value: 'list_terminologies' }
     ]}
 >
+<TabItem value="import_terminology">
+
+Creates or updates a custom terminology, depending on whether one already exists for the given terminology name. Importing a terminology with the same name as an existing one will merge the terminologies based on the chosen merge strategy. The only supported merge strategy is OVERWRITE, where the imported terminology overwrites the existing terminology of the same name. If you import a terminology that overwrites an existing one, the new terminology takes up to 10 minutes to fully propagate. After that, translations have access to the new terminology.
+
+```sql
+EXEC aws.translate.terminologies.import_terminology 
+@region='{{ region }}' --required 
+@@json=
+'{
+"Name": "{{ Name }}", 
+"MergeStrategy": "{{ MergeStrategy }}", 
+"Description": "{{ Description }}", 
+"TerminologyData": "{{ TerminologyData }}", 
+"EncryptionKey": "{{ EncryptionKey }}", 
+"Tags": "{{ Tags }}"
+}'
+;
+```
+</TabItem>
 <TabItem value="list_terminologies">
 
 Provides a list of custom terminologies associated with your account.

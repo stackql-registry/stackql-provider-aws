@@ -62,7 +62,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ConvertRecoveryPointToSnapshotResponse'
-      x-stackql-resource: recovery_points
+      x-stackql-resource: snapshots
       x-stackql-method: convert_recovery_point_to_snapshot
       x-stackql-verb: EXEC
   /CreateCustomDomainAssociation:
@@ -160,7 +160,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreateEndpointAccessResponse'
-      x-stackql-resource: endpoint_access
+      x-stackql-resource: endpoint_accesses
       x-stackql-method: create_endpoint_access
       x-stackql-verb: INSERT
   /CreateNamespace:
@@ -637,10 +637,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteCustomDomainAssociationResponse'
       x-stackql-resource: custom_domain_associations
       x-stackql-method: delete_custom_domain_association
       x-stackql-verb: DELETE
@@ -677,7 +673,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DeleteEndpointAccessResponse'
-      x-stackql-resource: endpoint_access
+      x-stackql-resource: endpoint_accesses
       x-stackql-method: delete_endpoint_access
       x-stackql-verb: DELETE
   /DeleteNamespace:
@@ -752,10 +748,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteResourcePolicyResponse'
       x-stackql-resource: resource_policies
       x-stackql-method: delete_resource_policy
       x-stackql-verb: DELETE
@@ -1066,7 +1058,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetEndpointAccessResponse'
-      x-stackql-resource: endpoint_access
+      x-stackql-resource: endpoint_accesses
       x-stackql-method: get_endpoint_access
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.endpoint
@@ -1410,7 +1402,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetTableRestoreStatusResponse'
-      x-stackql-resource: table_restore_status
+      x-stackql-resource: table_restore_statuses
       x-stackql-method: get_table_restore_status
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.tableRestoreStatus
@@ -1619,7 +1611,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListEndpointAccessResponse'
-      x-stackql-resource: endpoint_access
+      x-stackql-resource: endpoint_accesses
       x-stackql-method: list_endpoint_access
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.endpoints
@@ -2047,7 +2039,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTableRestoreStatusResponse'
-      x-stackql-resource: table_restore_status
+      x-stackql-resource: table_restore_statuses
       x-stackql-method: list_table_restore_status
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.tableRestoreStatuses
@@ -2385,7 +2377,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RestoreFromSnapshotResponse'
-      x-stackql-resource: namespaces
+      x-stackql-resource: snapshots
       x-stackql-method: restore_from_snapshot
       x-stackql-verb: EXEC
   /RestoreTableFromRecoveryPoint:
@@ -2525,7 +2517,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RestoreTableFromSnapshotResponse'
-      x-stackql-resource: namespaces
+      x-stackql-resource: snapshots
       x-stackql-method: restore_table_from_snapshot
       x-stackql-verb: EXEC
   /TagResource:
@@ -2561,10 +2553,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -2601,10 +2589,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -2688,7 +2672,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateEndpointAccessResponse'
-      x-stackql-resource: endpoint_access
+      x-stackql-resource: endpoint_accesses
       x-stackql-method: update_endpoint_access
       x-stackql-verb: UPDATE
   /UpdateLakehouseConfiguration:
@@ -4061,8 +4045,6 @@ components:
       - AVAILABLE
       - MODIFYING
       - DELETING
-    DeleteCustomDomainAssociationResponse:
-      type: object
     DeleteEndpointAccessResponse:
       type: object
       properties:
@@ -4077,8 +4059,6 @@ components:
           description: The deleted namespace object.
       required:
       - namespace
-    DeleteResourcePolicyResponse:
-      type: object
     DeleteScheduledActionResponse:
       type: object
       properties:
@@ -4742,14 +4722,10 @@ components:
         tableRestoreStatus:
           $ref: '#/components/schemas/TableRestoreStatus'
           description: The TableRestoreStatus object that contains the status of the restore operation.
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
         $ref: '#/components/schemas/TagKey'
-    UntagResourceResponse:
-      type: object
     UpdateCustomDomainAssociationResponse:
       type: object
       properties:

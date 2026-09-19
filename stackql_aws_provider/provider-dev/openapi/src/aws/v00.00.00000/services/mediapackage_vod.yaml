@@ -236,10 +236,6 @@ paths:
       responses:
         "202":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteAssetResponse"
     get:
       operationId: DescribeAsset
       description: Returns a description of a MediaPackage VOD Asset resource.
@@ -271,10 +267,6 @@ paths:
       responses:
         "202":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeletePackagingConfigurationResponse"
     get:
       operationId: DescribePackagingConfiguration
       description: Returns a description of a MediaPackage VOD PackagingConfiguration resource.
@@ -306,10 +298,6 @@ paths:
       responses:
         "202":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeletePackagingGroupResponse"
     get:
       operationId: DescribePackagingGroup
       description: Returns a description of a MediaPackage VOD PackagingGroup resource.
@@ -901,12 +889,6 @@ components:
         Tags:
           type: object
           properties: {}
-    DeleteAssetResponse:
-      type: object
-    DeletePackagingConfigurationResponse:
-      type: object
-    DeletePackagingGroupResponse:
-      type: object
     DescribeAssetResponse:
       type: object
       properties:
@@ -1148,6 +1130,27 @@ components:
           type: object
           properties: {}
   x-stackQL-resources:
+    logs:
+      id: aws.mediapackage_vod.logs
+      name: logs
+      title: logs
+      methods:
+        configure_logs:
+          operation:
+            $ref: "#/paths/~1packaging_groups~1{id}~1configure_logs/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
     assets:
       id: aws.mediapackage_vod.assets
       name: assets
@@ -1186,7 +1189,6 @@ components:
             $ref: "#/paths/~1assets~1{id}/delete"
           response:
             openAPIDocKey: "202"
-            mediaType: application/json
         describe_asset:
           operation:
             $ref: "#/paths/~1assets~1{id}/get"
@@ -1240,7 +1242,6 @@ components:
             $ref: "#/paths/~1packaging_configurations~1{id}/delete"
           response:
             openAPIDocKey: "202"
-            mediaType: application/json
         describe_packaging_configuration:
           operation:
             $ref: "#/paths/~1packaging_configurations~1{id}/get"
@@ -1294,7 +1295,6 @@ components:
             $ref: "#/paths/~1packaging_groups~1{id}/delete"
           response:
             openAPIDocKey: "202"
-            mediaType: application/json
         describe_packaging_group:
           operation:
             $ref: "#/paths/~1packaging_groups~1{id}/get"

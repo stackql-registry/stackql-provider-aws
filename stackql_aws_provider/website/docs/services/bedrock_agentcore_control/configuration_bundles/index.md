@@ -183,7 +183,7 @@ The following methods are available for this resource:
 <tr>
     <td><a href="#update_configuration_bundle"><CopyableCode code="update_configuration_bundle" /></a></td>
     <td><CopyableCode code="update" /></td>
-    <td><a href="#parameter-bundle_id"><code>bundle_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td><a href="#parameter-bundle_id"><code>bundle_id</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-parentVersionIds"><code>parentVersionIds</code></a></td>
     <td></td>
     <td>Updates a configuration bundle by creating a new version with the specified changes. Each update creates a new version in the version history.</td>
 </tr>
@@ -399,6 +399,7 @@ kmsKeyArn = '{{ kmsKeyArn }}'
 WHERE 
 bundle_id = '{{ bundle_id }}' --required
 AND region = '{{ region }}' --required
+AND parentVersionIds = '{{ parentVersionIds }}' --required
 RETURNING
 bundle_arn,
 bundle_id,

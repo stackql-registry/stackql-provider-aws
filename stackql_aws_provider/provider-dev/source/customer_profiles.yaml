@@ -57,6 +57,81 @@ paths:
       x-stackql-resource: profiles
       x-stackql-method: add_profile_key
       x-stackql-verb: UPDATE
+  /domains/{domain_name}/segment-streams:
+    post:
+      operationId: AssociateStreamForSegments
+      description: Associates an Amazon Kinesis data stream to receive segment membership events for a given domain. This
+        is a domain-level configuration that applies to all segment subscriptions within the domain. A domain can have only
+        one associated stream at a time.
+      parameters:
+      - name: domain_name
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/name'
+        description: The unique name of the domain.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                DestinationArn:
+                  $ref: '#/components/schemas/DestinationArnString'
+                DestinationRoleArn:
+                  $ref: '#/components/schemas/DestinationRoleArn'
+              required:
+              - DestinationArn
+              - DestinationRoleArn
+      responses:
+        '200':
+          description: Success
+      x-stackql-resource: streams
+      x-stackql-method: associate_stream_for_segments
+      x-stackql-verb: UPDATE
+    delete:
+      operationId: DisassociateStreamForSegments
+      description: Disassociates the Amazon Kinesis data stream configured for segment membership events. All active segment
+        subscriptions delivering events to this stream are eventually stopped.
+      parameters:
+      - name: domain_name
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/name'
+        description: The unique name of the domain.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DisassociateStreamForSegmentsResponse'
+      x-stackql-resource: streams
+      x-stackql-method: disassociate_stream_for_segments
+      x-stackql-verb: UPDATE
+    get:
+      operationId: GetStreamForSegments
+      description: Returns information about the segment membership event stream configured for a specific domain, including
+        the stream state and associated segments.
+      parameters:
+      - name: domain_name
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/name'
+        description: The unique name of the domain.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetStreamForSegmentsResponse'
+      x-stackql-resource: streams
+      x-stackql-method: get_stream_for_segments
+      x-stackql-verb: SELECT
   /domains/{domain_name}/calculated-attributes/{calculated_attribute_name}/batch-get-for-profiles:
     post:
       operationId: BatchGetCalculatedAttributeForProfile
@@ -94,7 +169,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchGetCalculatedAttributeForProfileResponse'
-      x-stackql-resource: calculated_attribute_for_profiles
+      x-stackql-resource: calculated_attributes
       x-stackql-method: batch_get_calculated_attribute_for_profile
       x-stackql-verb: SELECT
   /domains/{domain_name}/batch-get-profiles:
@@ -166,7 +241,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchPutProfileObjectResponse'
-      x-stackql-resource: domains
+      x-stackql-resource: profile_objects
       x-stackql-method: batch_put_profile_object
       x-stackql-verb: EXEC
   /domains/{domain_name}/calculated-attributes/{calculated_attribute_name}:
@@ -246,10 +321,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteCalculatedAttributeDefinitionResponse'
       x-stackql-resource: calculated_attribute_definitions
       x-stackql-method: delete_calculated_attribute_definition
       x-stackql-verb: DELETE
@@ -668,10 +739,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteEventStreamResponse'
       x-stackql-resource: event_streams
       x-stackql-method: delete_event_stream
       x-stackql-verb: DELETE
@@ -1119,10 +1186,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteRecommenderResponse'
       x-stackql-resource: recommenders
       x-stackql-method: delete_recommender
       x-stackql-verb: DELETE
@@ -1353,10 +1416,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteRecommenderSchemaResponse'
       x-stackql-resource: recommender_schemas
       x-stackql-method: delete_recommender_schema
       x-stackql-verb: DELETE
@@ -1659,10 +1718,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteDomainObjectTypeResponse'
       x-stackql-resource: domain_object_types
       x-stackql-method: delete_domain_object_type
       x-stackql-verb: DELETE
@@ -1988,6 +2043,102 @@ paths:
       x-stackql-resource: profile_object_types
       x-stackql-method: put_profile_object_type
       x-stackql-verb: REPLACE
+  /domains/{domain_name}/segment-definitions/{segment_definition_name}/subscriptions:
+    delete:
+      operationId: DeleteSegmentSubscription
+      description: Deletes a segment subscription for membership events. All active event notifications for this segment are
+        stopped.
+      parameters:
+      - name: domain_name
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/name'
+        description: The unique name of the domain.
+      - name: segment_definition_name
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/name'
+        description: The unique name of the segment definition.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeleteSegmentSubscriptionResponse'
+      x-stackql-resource: segment_subscriptions
+      x-stackql-method: delete_segment_subscription
+      x-stackql-verb: DELETE
+    get:
+      operationId: GetSegmentSubscription
+      description: Returns the current subscription configuration, execution schedule, and status for segment membership events.
+      parameters:
+      - name: domain_name
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/name'
+        description: The unique name of the domain.
+      - name: segment_definition_name
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/name'
+        description: The unique name of the segment definition.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetSegmentSubscriptionResponse'
+      x-stackql-resource: segment_subscriptions
+      x-stackql-method: get_segment_subscription
+      x-stackql-verb: SELECT
+    put:
+      operationId: PutSegmentSubscription
+      description: Creates or updates a segment subscription for membership events. When a subscription is created, an initial
+        snapshot is taken and the system begins monitoring for membership changes. You can optionally set a schedule configuration
+        interval to control how often membership snapshots are run. The interval can be from 1 to 24 hours. If not set, the
+        interval defaults to 24 hours. Scheduled snapshots run on a best-effort basis. If a scheduled snapshot takes longer
+        than the configured interval, the next scheduled run does not start until the in-progress snapshot completes, so a
+        run might be delayed or skipped and is not guaranteed to occur at exactly the requested time. For Classic segments,
+        membership events are generated from these scheduled snapshots and also in near real-time as profile attribute changes
+        occur. For SQL segments, membership events are generated only from the scheduled snapshots.
+      parameters:
+      - name: domain_name
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/name'
+        description: The unique name of the domain.
+      - name: segment_definition_name
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/name'
+        description: The unique name of the segment definition.
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                ScheduleConfiguration:
+                  $ref: '#/components/schemas/ScheduleConfiguration'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PutSegmentSubscriptionResponse'
+      x-stackql-resource: segment_subscriptions
+      x-stackql-method: put_segment_subscription
+      x-stackql-verb: REPLACE
   /domains/{domain_name}/workflows/{workflow_id}:
     delete:
       operationId: DeleteWorkflow
@@ -2008,10 +2159,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteWorkflowResponse'
       x-stackql-resource: workflows
       x-stackql-method: delete_workflow
       x-stackql-verb: DELETE
@@ -2070,7 +2217,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DetectProfileObjectTypeResponse'
-      x-stackql-resource: domains
+      x-stackql-resource: profile_object_types
       x-stackql-method: detect_profile_object_type
       x-stackql-verb: EXEC
   /domains/{domain_name}/identity-resolution-jobs/auto-merging-preview:
@@ -2147,7 +2294,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetCalculatedAttributeForProfileResponse'
-      x-stackql-resource: calculated_attribute_for_profiles
+      x-stackql-resource: calculated_attributes
       x-stackql-method: get_calculated_attribute_for_profile
       x-stackql-verb: SELECT
   /domains/{domain_name}/identity-resolution-jobs/{job_id}:
@@ -2689,11 +2836,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/StartUploadJobResponse'
-      x-stackql-resource: domains
+      x-stackql-resource: upload_jobs
       x-stackql-method: start_upload_job
       x-stackql-verb: EXEC
   /domains/{domain_name}/upload-jobs/{job_id}/path:
@@ -2878,7 +3021,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListCalculatedAttributesForProfileResponse'
-      x-stackql-resource: calculated_attributes_for_profiles
+      x-stackql-resource: calculated_attributes
       x-stackql-method: list_calculated_attributes_for_profile
       x-stackql-verb: SELECT
   /domains/{domain_name}/layouts:
@@ -3630,6 +3773,50 @@ paths:
       x-stackql-pagination-request-token-key: next-token
       x-stackql-pagination-request-token-location: query
       x-stackql-pagination-response-token-key: $.NextToken
+  /domains/{domain_name}/segment-definitions/{segment_definition_name}/subscription-events:
+    get:
+      operationId: ListSegmentSubscriptionEvents
+      description: Returns the most recent membership events for a segment. Each event represents a profile that entered or
+        exited the segment. This operation is paginated.
+      parameters:
+      - name: domain_name
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/name'
+        description: The unique name of the domain.
+      - name: segment_definition_name
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/name'
+        description: The unique name of the segment definition.
+      - name: max-results
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/maxSize100'
+        description: The maximum number of events to return per page.
+      - name: next-token
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/token'
+        description: The pagination token from the previous call to retrieve the next page of results.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListSegmentSubscriptionEventsResponse'
+      x-stackql-resource: segment_subscription_events
+      x-stackql-method: list_segment_subscription_events
+      x-stackql-verb: SELECT
+      x-stackql-objectKey: $.Events
+      x-stackql-pagination-request-token-key: next-token
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /tags/{resource_arn}:
     get:
       operationId: ListTagsForResource
@@ -3683,10 +3870,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -3710,10 +3893,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -3865,6 +4044,58 @@ paths:
       x-stackql-resource: profiles
       x-stackql-method: search_profiles
       x-stackql-verb: SELECT
+  /domains/{domain_name}/recommendations:
+    post:
+      operationId: SearchRecommendations
+      description: Retrieves recommendations for a profile in a specific domain. The profile is identified using a search
+        key, which consists of a KeyName and a KeyValues list. The KeyName can be a predefined key (for example, _profileId,
+        _phone, _email) or a custom-defined key. The search key must match exactly one profile. If no profile matches the
+        search key, the operation returns a ResourceNotFoundException. If more than one profile matches the search key, the
+        operation returns a BadRequestException. You can use the SearchProfiles API to review the matching profiles.
+      parameters:
+      - name: domain_name
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/name'
+        description: The unique name of the domain.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                KeyName:
+                  $ref: '#/components/schemas/name'
+                KeyValues:
+                  $ref: '#/components/schemas/KeyValuesList'
+                Recommender:
+                  $ref: '#/components/schemas/Recommender'
+                CandidateIds:
+                  $ref: '#/components/schemas/CandidateIdList'
+                Context:
+                  $ref: '#/components/schemas/RecommenderContext'
+                Diversity:
+                  $ref: '#/components/schemas/RecommendationDiversityConfig'
+                Metadata:
+                  $ref: '#/components/schemas/RecommendationMetadata'
+                MaxRecommendations:
+                  $ref: '#/components/schemas/maxSize500'
+              required:
+              - KeyName
+              - KeyValues
+              - Recommender
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchRecommendationsResponse'
+      x-stackql-resource: recommendations
+      x-stackql-method: search_recommendations
+      x-stackql-verb: SELECT
   /domains/{domain_name}/recommenders/{recommender_name}/start:
     put:
       operationId: StartRecommender
@@ -3886,10 +4117,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/StartRecommenderResponse'
       x-stackql-resource: recommenders
       x-stackql-method: start_recommender
       x-stackql-verb: EXEC
@@ -3914,10 +4141,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/StopRecommenderResponse'
       x-stackql-resource: recommenders
       x-stackql-method: stop_recommender
       x-stackql-verb: EXEC
@@ -3941,11 +4164,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/StopUploadJobResponse'
-      x-stackql-resource: domains
+      x-stackql-resource: upload_jobs
       x-stackql-method: stop_upload_job
       x-stackql-verb: EXEC
 components:
@@ -4018,6 +4237,15 @@ components:
         Values:
           $ref: '#/components/schemas/requestValueList'
           description: A list of key values.
+    DestinationArnString:
+      type: string
+      minLength: 1
+      maxLength: 2048
+    DestinationRoleArn:
+      type: string
+      minLength: 1
+      maxLength: 512
+      pattern: .*arn:aws:iam:.*:[0-9]+:.*
     typeName:
       type: string
       minLength: 1
@@ -4652,6 +4880,7 @@ components:
       - MAXIMUM
       - AVERAGE
       - MAX_OCCURRENCE
+      - RECENT_OCCURRENCES
     optionalBoolean:
       type: boolean
     TagMap:
@@ -6188,7 +6417,8 @@ components:
           description: The action to segment on.
         Values:
           $ref: '#/components/schemas/Values'
-          description: The values to apply the DimensionType on.
+          description: 'The values to apply the DimensionType on. To reference a calculated attribute or profile attribute
+            as a dynamic value, use handlebar notation: {{_profile.ProfileAttributeName}} or {{_calculated_attribute.CalculatedAttributeName}}.'
       required:
       - DimensionType
       - Values
@@ -6213,7 +6443,8 @@ components:
           description: The action to segment with.
         Values:
           $ref: '#/components/schemas/ExtraLengthValues'
-          description: The values to apply the DimensionType on.
+          description: 'The values to apply the DimensionType on. To reference a calculated attribute or profile attribute
+            as a dynamic value, use handlebar notation: {{_profile.ProfileAttributeName}} or {{_calculated_attribute.CalculatedAttributeName}}.'
       required:
       - DimensionType
       - Values
@@ -6230,7 +6461,8 @@ components:
           description: The action to segment with.
         Values:
           $ref: '#/components/schemas/DateValues'
-          description: The values to apply the DimensionType on.
+          description: 'The values to apply the DimensionType on. To reference a calculated attribute or profile attribute
+            as a dynamic value, use handlebar notation: {{_profile.ProfileAttributeName}} or {{_calculated_attribute.CalculatedAttributeName}}.'
       required:
       - DimensionType
       - Values
@@ -6439,8 +6671,6 @@ components:
           description: The unique identifier for the created upload job.
       required:
       - JobId
-    DeleteCalculatedAttributeDefinitionResponse:
-      type: object
     DeleteDomainResponse:
       type: object
       properties:
@@ -6459,10 +6689,6 @@ components:
           description: A message that indicates the delete request is done.
       required:
       - Message
-    DeleteDomainObjectTypeResponse:
-      type: object
-    DeleteEventStreamResponse:
-      type: object
     DeleteEventTriggerResponse:
       type: object
       properties:
@@ -6505,8 +6731,6 @@ components:
           description: A message that indicates the delete request is done.
       required:
       - Message
-    DeleteRecommenderResponse:
-      type: object
     DeleteRecommenderFilterResponse:
       type: object
       properties:
@@ -6515,16 +6739,18 @@ components:
           description: A message that indicates the delete request is done.
       required:
       - Message
-    DeleteRecommenderSchemaResponse:
-      type: object
     DeleteSegmentDefinitionResponse:
       type: object
       properties:
         Message:
           $ref: '#/components/schemas/string1To1000'
           description: A message that indicates the delete request is done.
-    DeleteWorkflowResponse:
+    DeleteSegmentSubscriptionResponse:
       type: object
+      properties:
+        Message:
+          $ref: '#/components/schemas/string1To1000'
+          description: A confirmation message indicating the subscription was deleted successfully.
     Objects:
       type: array
       items:
@@ -6554,6 +6780,12 @@ components:
           type: object
           properties: {}
           description: A list of unique keys that can be used to map data to a profile.
+    DisassociateStreamForSegmentsResponse:
+      type: object
+      properties:
+        Message:
+          $ref: '#/components/schemas/string1To1000'
+          description: A confirmation message indicating the stream was disassociated successfully.
     GetAutoMergingPreviewResponse:
       type: object
       properties:
@@ -7771,6 +8003,66 @@ components:
       - COMPLETED
       - IN_PROGRESS
       - FAILED
+    GetSegmentSubscriptionResponse:
+      type: object
+      properties:
+        Status:
+          $ref: '#/components/schemas/SegmentSubscriptionStatus'
+          description: 'The current lifecycle status of the subscription. The following are valid values: STARTING: Initial
+            snapshot is in progress. RUNNING: Notifications are active and running. STOPPED: Notifications have been stopped.
+            FAILED: Notifications failed (for example, the Amazon Kinesis data stream became inaccessible).'
+        Message:
+          $ref: '#/components/schemas/string1To1000'
+          description: A status message providing additional context, such as a failure reason.
+        ScheduleConfiguration:
+          $ref: '#/components/schemas/ScheduleConfiguration'
+          description: The schedule configuration for periodic membership event notifications.
+        ScheduledExecutions:
+          $ref: '#/components/schemas/ScheduledExecutions'
+          description: Information about scheduled execution timestamps.
+        StartedAt:
+          $ref: '#/components/schemas/timestamp'
+          description: The timestamp of when the subscription was first started.
+        LastUpdatedAt:
+          $ref: '#/components/schemas/timestamp'
+          description: The timestamp of the most recent configuration change.
+    SegmentSubscriptionStatus:
+      type: string
+      enum:
+      - STARTING
+      - RUNNING
+      - STOPPED
+      - FAILED
+    ScheduleConfiguration:
+      description: Configuration for scheduled segment membership event notifications.
+      type: object
+      properties:
+        Interval:
+          $ref: '#/components/schemas/IntervalValue'
+          description: The interval between scheduled executions.
+        Unit:
+          $ref: '#/components/schemas/ScheduleConfigurationUnit'
+          description: 'The unit for the interval. The following are valid values: HOURLY: The interval is measured in hours.'
+      required:
+      - Interval
+    IntervalValue:
+      type: integer
+      minimum: 1
+      maximum: 24
+    ScheduleConfigurationUnit:
+      type: string
+      enum:
+      - HOURLY
+    ScheduledExecutions:
+      description: Information about scheduled execution timestamps.
+      type: object
+      properties:
+        NextExecutedAt:
+          $ref: '#/components/schemas/timestamp'
+          description: The timestamp of the next scheduled execution.
+        LastExecutedAt:
+          $ref: '#/components/schemas/timestamp'
+          description: The timestamp of the last successful scheduled execution.
     MatchType:
       type: string
       enum:
@@ -7789,6 +8081,70 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/GetSimilarProfilesRowDisplay'
+    GetStreamForSegmentsResponse:
+      type: object
+      properties:
+        AssociatedAt:
+          $ref: '#/components/schemas/timestamp'
+          description: The timestamp of when the stream was associated.
+        AssociatedSegments:
+          $ref: '#/components/schemas/AssociatedSegmentsList'
+          description: A list of segments currently associated with the stream and their subscription status.
+        DomainName:
+          $ref: '#/components/schemas/name'
+          description: The unique name of the domain.
+        DestinationArn:
+          $ref: '#/components/schemas/DestinationArnString'
+          description: The Amazon Resource Name (ARN) of the Amazon Kinesis data stream receiving segment membership events.
+        DestinationRoleArn:
+          $ref: '#/components/schemas/DestinationRoleArn'
+          description: The Amazon Resource Name (ARN) of the IAM role used for Amazon Kinesis and AWS Key Management Service
+            (KMS) operations.
+        State:
+          $ref: '#/components/schemas/EventSubscriptionState'
+          description: 'The operational state of the destination stream. The following are valid values: RUNNING: The stream
+            is associated and healthy. Segment membership events are being published. UNHEALTHY: The stream is associated
+            but events cannot currently be published. See FailureReason for details. STOPPED: The stream is no longer publishing
+            segment membership events.'
+        DisassociatedAt:
+          $ref: '#/components/schemas/timestamp'
+          description: The timestamp of when the stream was disassociated.
+        FailureReason:
+          $ref: '#/components/schemas/string1To255'
+          description: The reason why the stream is in an unhealthy state, if applicable.
+    AssociatedSegmentsList:
+      type: array
+      items:
+        $ref: '#/components/schemas/AssociatedSegment'
+    AssociatedSegment:
+      description: Represents a segment associated with a membership event stream.
+      type: object
+      properties:
+        SegmentName:
+          $ref: '#/components/schemas/name'
+          description: The unique name of the segment definition.
+        Status:
+          $ref: '#/components/schemas/EventSubscriptionSegmentStatus'
+          description: 'The subscription status of the segment. The following are valid values: STARTING: The segment is being
+            prepared to publish membership events. RUNNING: The segment is actively publishing membership events to the stream.
+            STOPPED: The segment has stopped publishing membership events. FAILED: The segment failed to publish membership
+            events.'
+        Message:
+          $ref: '#/components/schemas/string1To1000'
+          description: An optional message providing context, such as a failure reason.
+    EventSubscriptionSegmentStatus:
+      type: string
+      enum:
+      - STARTING
+      - RUNNING
+      - STOPPED
+      - FAILED
+    EventSubscriptionState:
+      type: string
+      enum:
+      - RUNNING
+      - UNHEALTHY
+      - STOPPED
     GetUploadJobResponse:
       type: object
       properties:
@@ -8890,6 +9246,48 @@ components:
           $ref: '#/components/schemas/SegmentType'
           description: 'The segment type. Classic : Segments created using traditional SegmentGroup structure Enhanced : Segments
             created using SQL queries'
+    ListSegmentSubscriptionEventsResponse:
+      type: object
+      properties:
+        Events:
+          $ref: '#/components/schemas/SubscriptionEventsList'
+          description: A list of segment membership events.
+        NextToken:
+          $ref: '#/components/schemas/token'
+          description: The pagination token to use to retrieve the next page of results.
+    SubscriptionEventsList:
+      type: array
+      items:
+        $ref: '#/components/schemas/SubscriptionEventItem'
+    SubscriptionEventItem:
+      description: Represents a single segment membership event.
+      type: object
+      properties:
+        ProfileId:
+          $ref: '#/components/schemas/uuid'
+          description: The unique identifier of a customer profile.
+        UpdatedAt:
+          $ref: '#/components/schemas/timestamp'
+          description: The timestamp of when the membership change was detected.
+        EventType:
+          $ref: '#/components/schemas/SubscriptionEventType'
+          description: 'The type of event that triggered the membership change. The following are valid values: LIVE: Real-time
+            event triggered by a profile or calculated attribute change (Classic segments only). SCHEDULE: Event generated
+            during a scheduled execution.'
+        Event:
+          $ref: '#/components/schemas/SubscriptionEvent'
+          description: 'Whether the profile joined or left the segment. The following are valid values: JOINED: The profile
+            joined the segment. LEFT: The profile left the segment.'
+    SubscriptionEventType:
+      type: string
+      enum:
+      - LIVE
+      - SCHEDULE
+    SubscriptionEvent:
+      type: string
+      enum:
+      - JOINED
+      - LEFT
     TagArn:
       type: string
       maxLength: 256
@@ -9219,6 +9617,20 @@ components:
       required:
       - ObjectTypeName
       - Description
+    PutSegmentSubscriptionResponse:
+      type: object
+      properties:
+        Status:
+          $ref: '#/components/schemas/SegmentSubscriptionStatus'
+          description: 'The current lifecycle status of the subscription. The following are valid values: STARTING: Initial
+            snapshot is in progress. RUNNING: Notifications are active and running. STOPPED: Notifications have been stopped.
+            FAILED: Notifications failed (for example, the Amazon Kinesis data stream became inaccessible).'
+        ScheduleConfiguration:
+          $ref: '#/components/schemas/ScheduleConfiguration'
+          description: The schedule configuration for the subscription, if configured.
+        StartedAt:
+          $ref: '#/components/schemas/timestamp'
+          description: The timestamp of when the subscription was started.
     additionalSearchKeysList:
       type: array
       items:
@@ -9251,16 +9663,43 @@ components:
         NextToken:
           $ref: '#/components/schemas/token'
           description: The pagination token from the previous SearchProfiles API call.
-    StartRecommenderResponse:
+    KeyValuesList:
+      type: array
+      items:
+        $ref: '#/components/schemas/string1To255'
+    Recommender:
+      description: The recommender used to generate the recommendations.
       type: object
-    StartUploadJobResponse:
+      properties:
+        Name:
+          $ref: '#/components/schemas/name'
+          description: The unique name of the recommender.
+        Filters:
+          $ref: '#/components/schemas/RecommenderFilters'
+          description: A list of filters to apply to the returned recommendations. Filters define criteria for including or
+            excluding items from the recommendation results.
+        PromotionalFilters:
+          $ref: '#/components/schemas/RecommenderPromotionalFilters'
+          description: A list of promotional filters to apply to the recommendations. Promotional filters allow you to promote
+            specific items within a configurable subset of recommendation results.
+      required:
+      - Name
+    RecommendationMetadata:
+      description: Configuration for metadata to include in recommendation responses.
       type: object
-    StopRecommenderResponse:
+      properties:
+        Columns:
+          $ref: '#/components/schemas/MetadataColumnsList'
+          description: A list of metadata column names from your Items dataset to include in the recommendation response.
+    SearchRecommendationsResponse:
       type: object
-    StopUploadJobResponse:
-      type: object
-    TagResourceResponse:
-      type: object
+      properties:
+        ProfileId:
+          $ref: '#/components/schemas/uuid'
+          description: The unique identifier of the profile for which to retrieve recommendations.
+        Recommendations:
+          $ref: '#/components/schemas/Recommendations'
+          description: List of recommendations generated by the recommender.
     TagKeyList:
       type: array
       items:
@@ -9270,8 +9709,6 @@ components:
       minLength: 1
       maxLength: 128
       pattern: ^(?!aws:)[a-zA-Z+-=._:/]+$
-    UntagResourceResponse:
-      type: object
     UpdateCalculatedAttributeDefinitionResponse:
       type: object
       properties:

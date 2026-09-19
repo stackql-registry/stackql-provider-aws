@@ -62,10 +62,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeregisterApplicationOutput"
   /get-application:
     post:
       operationId: GetApplication
@@ -504,10 +500,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TagResourceResponse"
     delete:
       operationId: UntagResource
       description: Delete the tags for a resource.
@@ -527,10 +519,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UntagResourceResponse"
   /put-resource-permission:
     post:
       operationId: PutResourcePermission
@@ -795,8 +783,6 @@ components:
       minLength: 1
       maxLength: 60
       pattern: "[\\w\\d\\.-]+"
-    DeregisterApplicationOutput:
-      type: object
     SsmSapArn:
       type: string
       pattern: arn:(.+:){2,4}.+$|^arn:(.+:){1,3}.+\/.+
@@ -1792,8 +1778,6 @@ components:
         OperationId:
           $ref: "#/components/schemas/OperationId"
           description: The ID of the operation.
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
@@ -1801,8 +1785,6 @@ components:
     TagKey:
       type: string
       pattern: (?!aws:)[a-zA-Z+-=._:/]+
-    UntagResourceResponse:
-      type: object
     BackintConfig:
       description: Configuration parameters for AWS Backint Agent for SAP HANA. You can backup your SAP HANA database with AWS Backup or Amazon S3.
       type: object
@@ -1890,7 +1872,6 @@ components:
             $ref: "#/paths/~1deregister-application/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -2308,7 +2289,6 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -2319,7 +2299,6 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
       sqlVerbs:

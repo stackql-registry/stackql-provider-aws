@@ -219,6 +219,13 @@ The following methods are available for this resource:
     <td></td>
     <td>The DeleteTable operation deletes a table and all of its data. After a DeleteTable request is received, the specified table is in the DELETING state until Amazon Keyspaces completes the deletion. If the table is in the ACTIVE state, you can delete it. If a table is either in the CREATING or UPDATING states, then Amazon Keyspaces returns a ResourceInUseException. If the specified table does not exist, Amazon Keyspaces returns a ResourceNotFoundException. If the table is already in the DELETING state, no error is returned.</td>
 </tr>
+<tr>
+    <td><a href="#restore_table"><CopyableCode code="restore_table" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-sourceKeyspaceName"><code>sourceKeyspaceName</code></a>, <a href="#parameter-sourceTableName"><code>sourceTableName</code></a>, <a href="#parameter-targetKeyspaceName"><code>targetKeyspaceName</code></a>, <a href="#parameter-targetTableName"><code>targetTableName</code></a></td>
+    <td></td>
+    <td>Restores the table to the specified point in time within the earliest_restorable_timestamp and the current time. For more information about restore points, see Time window for PITR continuous backups in the Amazon Keyspaces Developer Guide. Any number of users can execute up to 4 concurrent restores (any type of restore) in a given account. When you restore using point in time recovery, Amazon Keyspaces restores your source table's schema and data to the state based on the selected timestamp (day:hour:minute:second) to a new table. The Time to Live (TTL) settings are also restored to the state based on the selected timestamp. In addition to the table's schema, data, and TTL settings, RestoreTable restores the capacity mode, auto scaling settings, encryption settings, and point-in-time recovery settings from the source table. Unlike the table's schema data and TTL settings, which are restored based on the selected timestamp, these settings are always restored based on the table's settings as of the current time or when the table was deleted. You can also overwrite these settings during restore: Read/write capacity mode Provisioned throughput capacity units Auto scaling settings Point-in-time (PITR) settings Tags For more information, see PITR restore settings in the Amazon Keyspaces Developer Guide. Note that the following settings are not restored, and you must configure them manually for the new table: Identity and Access Management (IAM) policies Amazon CloudWatch metrics and alarms</td>
+</tr>
 </tbody>
 </table>
 
@@ -540,6 +547,41 @@ The DeleteTable operation deletes a table and all of its data. After a DeleteTab
 ```sql
 DELETE FROM aws.keyspaces.tables
 WHERE region = '{{ region }}' --required
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="restore_table"
+    values={[
+        { label: 'restore_table', value: 'restore_table' }
+    ]}
+>
+<TabItem value="restore_table">
+
+Restores the table to the specified point in time within the earliest_restorable_timestamp and the current time. For more information about restore points, see Time window for PITR continuous backups in the Amazon Keyspaces Developer Guide. Any number of users can execute up to 4 concurrent restores (any type of restore) in a given account. When you restore using point in time recovery, Amazon Keyspaces restores your source table's schema and data to the state based on the selected timestamp (day:hour:minute:second) to a new table. The Time to Live (TTL) settings are also restored to the state based on the selected timestamp. In addition to the table's schema, data, and TTL settings, RestoreTable restores the capacity mode, auto scaling settings, encryption settings, and point-in-time recovery settings from the source table. Unlike the table's schema data and TTL settings, which are restored based on the selected timestamp, these settings are always restored based on the table's settings as of the current time or when the table was deleted. You can also overwrite these settings during restore: Read/write capacity mode Provisioned throughput capacity units Auto scaling settings Point-in-time (PITR) settings Tags For more information, see PITR restore settings in the Amazon Keyspaces Developer Guide. Note that the following settings are not restored, and you must configure them manually for the new table: Identity and Access Management (IAM) policies Amazon CloudWatch metrics and alarms
+
+```sql
+EXEC aws.keyspaces.tables.restore_table 
+@region='{{ region }}' --required 
+@@json=
+'{
+"sourceKeyspaceName": "{{ sourceKeyspaceName }}", 
+"sourceTableName": "{{ sourceTableName }}", 
+"targetKeyspaceName": "{{ targetKeyspaceName }}", 
+"targetTableName": "{{ targetTableName }}", 
+"restoreTimestamp": "{{ restoreTimestamp }}", 
+"capacitySpecificationOverride": "{{ capacitySpecificationOverride }}", 
+"encryptionSpecificationOverride": "{{ encryptionSpecificationOverride }}", 
+"pointInTimeRecoveryOverride": "{{ pointInTimeRecoveryOverride }}", 
+"tagsOverride": "{{ tagsOverride }}", 
+"autoScalingSpecification": "{{ autoScalingSpecification }}", 
+"replicaSpecifications": "{{ replicaSpecifications }}"
+}'
 ;
 ```
 </TabItem>

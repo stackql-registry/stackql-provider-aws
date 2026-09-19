@@ -18,7 +18,7 @@ budgets service documentation.
 
 :::info[Service Summary]
 
-total resources: __10__  
+total resources: __8__  
 
 :::
 
@@ -27,15 +27,13 @@ total resources: __10__
 <div class="providerDocColumn">
 <a href="/services/budgets/budget_action_histories/">budget_action_histories</a><br />
 <a href="/services/budgets/budget_actions/">budget_actions</a><br />
-<a href="/services/budgets/budget_actions_for_accounts/">budget_actions_for_accounts</a><br />
-<a href="/services/budgets/budget_actions_for_budgets/">budget_actions_for_budgets</a><br />
-<a href="/services/budgets/budget_notifications_for_accounts/">budget_notifications_for_accounts</a>
+<a href="/services/budgets/budget_notifications/">budget_notifications</a><br />
+<a href="/services/budgets/budget_performance_histories/">budget_performance_histories</a>
 </div>
 <div class="providerDocColumn">
-<a href="/services/budgets/budget_performance_histories/">budget_performance_histories</a><br />
 <a href="/services/budgets/budgets/">budgets</a><br />
-<a href="/services/budgets/notifications_for_budgets/">notifications_for_budgets</a><br />
-<a href="/services/budgets/subscribers_for_notifications/">subscribers_for_notifications</a><br />
+<a href="/services/budgets/notifications/">notifications</a><br />
+<a href="/services/budgets/subscribers/">subscribers</a><br />
 <a href="/services/budgets/tags/">tags</a>
 </div>
 </div>

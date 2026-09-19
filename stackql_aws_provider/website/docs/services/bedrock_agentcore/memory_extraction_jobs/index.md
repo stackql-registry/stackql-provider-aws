@@ -111,6 +111,13 @@ The following methods are available for this resource:
     <td></td>
     <td>Lists all long-term memory extraction jobs that are eligible to be started with optional filtering. To use this operation, you must have the bedrock-agentcore:ListMemoryExtractionJobs permission.</td>
 </tr>
+<tr>
+    <td><a href="#start_memory_extraction_job"><CopyableCode code="start_memory_extraction_job" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-memory_id"><code>memory_id</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-extractionJob"><code>extractionJob</code></a></td>
+    <td></td>
+    <td>Starts a memory extraction job that processes events that failed extraction previously in an AgentCore Memory resource and produces structured memory records. When earlier extraction attempts have left events unprocessed, this job will pick up and extract those as well. To use this operation, you must have the bedrock-agentcore:StartMemoryExtractionJob permission.</td>
+</tr>
 </tbody>
 </table>
 
@@ -130,7 +137,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-memory_id">
     <td><CopyableCode code="memory_id" /></td>
     <td><code>string</code></td>
-    <td>The unique identifier of the memory to list extraction jobs for.</td>
+    <td>The unique identifier of the memory for which to start extraction jobs.</td>
 </tr>
 <tr id="parameter-region">
     <td><CopyableCode code="region" /></td>
@@ -164,6 +171,33 @@ strategy_id
 FROM aws.bedrock_agentcore.memory_extraction_jobs
 WHERE memory_id = '{{ memory_id }}' -- required
 AND region = '{{ region }}' -- required
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="start_memory_extraction_job"
+    values={[
+        { label: 'start_memory_extraction_job', value: 'start_memory_extraction_job' }
+    ]}
+>
+<TabItem value="start_memory_extraction_job">
+
+Starts a memory extraction job that processes events that failed extraction previously in an AgentCore Memory resource and produces structured memory records. When earlier extraction attempts have left events unprocessed, this job will pick up and extract those as well. To use this operation, you must have the bedrock-agentcore:StartMemoryExtractionJob permission.
+
+```sql
+EXEC aws.bedrock_agentcore.memory_extraction_jobs.start_memory_extraction_job 
+@memory_id='{{ memory_id }}' --required, 
+@region='{{ region }}' --required 
+@@json=
+'{
+"extractionJob": "{{ extractionJob }}", 
+"clientToken": "{{ clientToken }}"
+}'
 ;
 ```
 </TabItem>

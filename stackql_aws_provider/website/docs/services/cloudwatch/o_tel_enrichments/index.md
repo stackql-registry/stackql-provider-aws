@@ -81,6 +81,20 @@ The following methods are available for this resource:
     <td></td>
     <td>Returns the current status of vended metric enrichment for the account, including whether CloudWatch vended metrics are enriched with resource ARN and resource tag labels and queryable using PromQL. For the list of supported resources, see Supported Amazon Web Services infrastructure metrics.</td>
 </tr>
+<tr>
+    <td><a href="#start_o_tel_enrichment"><CopyableCode code="start_o_tel_enrichment" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Enables enrichment and PromQL access for CloudWatch vended metrics for supported Amazon Web Services resources in the account. Once enabled, metrics that contain a resource identifier dimension (for example, EC2 CPUUtilization with an InstanceId dimension) are enriched with resource ARN and resource tag labels and become queryable using PromQL. Before calling this operation, you must enable resource tags on telemetry for your account. For more information, see Enable resource tags on telemetry.</td>
+</tr>
+<tr>
+    <td><a href="#stop_o_tel_enrichment"><CopyableCode code="stop_o_tel_enrichment" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Disables enrichment and PromQL access for CloudWatch vended metrics for supported Amazon Web Services resources in the account. After disabling, these metrics are no longer enriched with resource ARN and resource tag labels, and cannot be queried using PromQL.</td>
+</tr>
 </tbody>
 </table>
 
@@ -122,6 +136,38 @@ SELECT
 status
 FROM aws.cloudwatch.o_tel_enrichments
 WHERE region = '{{ region }}' -- required
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="start_o_tel_enrichment"
+    values={[
+        { label: 'start_o_tel_enrichment', value: 'start_o_tel_enrichment' },
+        { label: 'stop_o_tel_enrichment', value: 'stop_o_tel_enrichment' }
+    ]}
+>
+<TabItem value="start_o_tel_enrichment">
+
+Enables enrichment and PromQL access for CloudWatch vended metrics for supported Amazon Web Services resources in the account. Once enabled, metrics that contain a resource identifier dimension (for example, EC2 CPUUtilization with an InstanceId dimension) are enriched with resource ARN and resource tag labels and become queryable using PromQL. Before calling this operation, you must enable resource tags on telemetry for your account. For more information, see Enable resource tags on telemetry.
+
+```sql
+EXEC aws.cloudwatch.o_tel_enrichments.start_o_tel_enrichment 
+@region='{{ region }}' --required 
+;
+```
+</TabItem>
+<TabItem value="stop_o_tel_enrichment">
+
+Disables enrichment and PromQL access for CloudWatch vended metrics for supported Amazon Web Services resources in the account. After disabling, these metrics are no longer enriched with resource ARN and resource tag labels, and cannot be queried using PromQL.
+
+```sql
+EXEC aws.cloudwatch.o_tel_enrichments.stop_o_tel_enrichment 
+@region='{{ region }}' --required 
 ;
 ```
 </TabItem>

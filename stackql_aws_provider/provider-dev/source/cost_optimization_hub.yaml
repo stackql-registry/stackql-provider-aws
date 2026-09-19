@@ -349,7 +349,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateEnrollmentStatusResponse'
-      x-stackql-resource: enrollment_status
+      x-stackql-resource: enrollment_statuses
       x-stackql-method: update_enrollment_status
       x-stackql-verb: UPDATE
   /UpdatePreferences:

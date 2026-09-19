@@ -54,6 +54,62 @@ paths:
       responses:
         "200":
           description: Success
+  /CreateChannel:
+    post:
+      operationId: CreateChannel
+      description: Creates a channel that delivers records from a Kinesis data stream to a destination. A channel reads records from the specified stream and writes them to streaming tables on Apache Iceberg (Amazon S3 Tables) or to a general purpose Amazon S3 bucket. You must specify either S3DestinationConfiguration or S3TablesDestinationConfiguration, but not both. To use this operation, you must have permission to pass the specified service execution IAM role to Amazon Kinesis Data Streams (the iam:PassRole permission on that role). Creating a channel is an asynchronous operation. Upon receiving the request, Amazon Kinesis Data Streams returns immediately with the channel in the CREATING state. After provisioning is complete, Amazon Kinesis Data Streams sets the state to ACTIVE. You can use DescribeChannel to check the current state. This operation is only supported for data streams with the on-demand capacity mode. This operation has a call limit of 5 transactions per second (TPS) for each Amazon Web Services account. Exceeding 5 TPS results in a LimitExceededException.
+      parameters:
+        - name: X-Amz-Target
+          in: header
+          description: Action Header
+          required: false
+          schema:
+            type: string
+            enum:
+              - Kinesis_20131202.CreateChannel
+            default: Kinesis_20131202.CreateChannel
+      requestBody:
+        required: true
+        content:
+          application/x-amz-json-1.1:
+            schema:
+              type: object
+              properties:
+                ChannelName:
+                  $ref: "#/components/schemas/ChannelName"
+                  description: The name of the channel. The name is unique within your Amazon Web Services account and Amazon Web Services Region.
+                ServiceExecutionRoleARN:
+                  $ref: "#/components/schemas/RoleARN"
+                  description: The Amazon Resource Name (ARN) of the IAM role that Amazon Kinesis Data Streams assumes to write records to the destination.
+                StreamConfigurationList:
+                  $ref: "#/components/schemas/ChannelStreamConfigurationList"
+                  description: The source stream configuration for the channel. Currently, one stream is supported per channel.
+                S3DestinationConfiguration:
+                  $ref: "#/components/schemas/S3DestinationConfiguration"
+                  description: The configuration for delivery to a general purpose Amazon S3 bucket. You must specify either S3DestinationConfiguration or S3TablesDestinationConfiguration, but not both.
+                S3TablesDestinationConfiguration:
+                  $ref: "#/components/schemas/S3TablesDestinationConfiguration"
+                  description: The configuration for delivery to streaming tables on Apache Iceberg in Amazon S3 Tables. You must specify either S3DestinationConfiguration or S3TablesDestinationConfiguration, but not both.
+                EncryptionConfiguration:
+                  $ref: "#/components/schemas/ChannelEncryptionConfiguration"
+                  description: The server-side encryption configuration that uses an Amazon Web Services KMS key to encrypt data delivered to the destination.
+                Tags:
+                  $ref: "#/components/schemas/TagMap"
+                  description: A set of key-value pairs to assign to the channel. A tag consists of a required key and an optional value.
+                LoggingConfiguration:
+                  $ref: "#/components/schemas/ChannelLoggingConfiguration"
+                  description: The Amazon CloudWatch Logs configuration for the channel.
+              required:
+                - ChannelName
+                - ServiceExecutionRoleARN
+                - StreamConfigurationList
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CreateChannelOutput"
   /CreateStream:
     post:
       operationId: CreateStream
@@ -133,6 +189,35 @@ paths:
                   description: Not Implemented. Reserved for future use.
               required:
                 - RetentionPeriodHours
+      responses:
+        "200":
+          description: Success
+  /DeleteChannel:
+    post:
+      operationId: DeleteChannel
+      description: Deletes the specified channel. Deleting a channel stops delivery from the source stream to the destination. Data already delivered to the destination is not deleted. A stream cannot be deleted while it has active channels. To delete the stream, first delete all channels attached to it. To find them, use ListChannels with a stream filter. This operation has a call limit of 5 transactions per second (TPS) for each Amazon Web Services account. Exceeding 5 TPS results in a LimitExceededException.
+      parameters:
+        - name: X-Amz-Target
+          in: header
+          description: Action Header
+          required: false
+          schema:
+            type: string
+            enum:
+              - Kinesis_20131202.DeleteChannel
+            default: Kinesis_20131202.DeleteChannel
+      requestBody:
+        required: true
+        content:
+          application/x-amz-json-1.1:
+            schema:
+              type: object
+              properties:
+                ChannelARN:
+                  $ref: "#/components/schemas/ChannelARN"
+                  description: The Amazon Resource Name (ARN) of the channel to delete.
+              required:
+                - ChannelARN
       responses:
         "200":
           description: Success
@@ -267,6 +352,39 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/DescribeAccountSettingsOutput"
+  /DescribeChannel:
+    post:
+      operationId: DescribeChannel
+      description: Describes the specified channel, including its configuration and current status. Use this operation to verify that a channel reached the ACTIVE state after creation, or to diagnose a channel in the FAILED state by reading the ChannelStatusReason. This operation has a call limit of 5 transactions per second (TPS) for each Amazon Web Services account. Exceeding 5 TPS results in a LimitExceededException.
+      parameters:
+        - name: X-Amz-Target
+          in: header
+          description: Action Header
+          required: false
+          schema:
+            type: string
+            enum:
+              - Kinesis_20131202.DescribeChannel
+            default: Kinesis_20131202.DescribeChannel
+      requestBody:
+        required: true
+        content:
+          application/x-amz-json-1.1:
+            schema:
+              type: object
+              properties:
+                ChannelARN:
+                  $ref: "#/components/schemas/ChannelARN"
+                  description: The Amazon Resource Name (ARN) of the channel to describe.
+              required:
+                - ChannelARN
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DescribeChannelOutput"
   /DescribeLimits:
     post:
       operationId: DescribeLimits
@@ -503,7 +621,7 @@ paths:
   /GetRecords:
     post:
       operationId: GetRecords
-      description: Gets data records from a Kinesis data stream's shard. When invoking this API, you must use either the StreamARN or the StreamName parameter, or both. It is recommended that you use the StreamARN input parameter when you invoke this API. Specify a shard iterator using the ShardIterator parameter. The shard iterator specifies the position in the shard from which you want to start reading data records sequentially. If there are no records available in the portion of the shard that the iterator points to, GetRecords returns an empty list. It might take multiple calls to get to a portion of the shard that contains records. You can scale by provisioning multiple shards per stream while considering service limits (for more information, see Amazon Kinesis Data Streams Limits in the Amazon Kinesis Data Streams Developer Guide). Your application should have one thread per shard, each reading continuously from its stream. To read from a stream continually, call GetRecords in a loop. Use GetShardIterator to get the shard iterator to specify in the first GetRecords call. GetRecords returns a new shard iterator in NextShardIterator. Specify the shard iterator returned in NextShardIterator in subsequent calls to GetRecords. If the shard has been closed, the shard iterator can't return more data and GetRecords returns null in NextShardIterator. You can terminate the loop when the shard is closed, or when the shard iterator reaches the record with the sequence number or other attribute that marks it as the last record to process. Each data record can be up to 1 MiB in size, and each shard can read up to 2 MiB per second. You can ensure that your calls don't exceed the maximum supported size or throughput by using the Limit parameter to specify the maximum number of records that GetRecords can return. Consider your average record size when determining this limit. The maximum number of records that can be returned per call is 10,000. The size of the data returned by GetRecords varies depending on the utilization of the shard. It is recommended that consumer applications retrieve records via the GetRecords command using the 5 TPS limit to remain caught up. Retrieving records less frequently can lead to consumer applications falling behind. The maximum size of data that GetRecords can return is 10 MiB. If a call returns this amount of data, subsequent calls made within the next 5 seconds throw ProvisionedThroughputExceededException. If there is insufficient provisioned throughput on the stream, subsequent calls made within the next 1 second throw ProvisionedThroughputExceededException. GetRecords doesn't return any data when it throws an exception. For this reason, we recommend that you wait 1 second between calls to GetRecords. However, it's possible that the application will get exceptions for longer than 1 second. To detect whether the application is falling behind in processing, you can use the MillisBehindLatest response attribute. You can also monitor the stream using CloudWatch metrics and other mechanisms (see Monitoring in the Amazon Kinesis Data Streams Developer Guide). Each Amazon Kinesis record includes a value, ApproximateArrivalTimestamp, that is set when a stream successfully receives and stores a record. This is commonly referred to as a server-side time stamp, whereas a client-side time stamp is set when a data producer creates or sends the record to a stream (a data producer is any data source putting data records into a stream, for example with PutRecords). The time stamp has millisecond precision. There are no guarantees about the time stamp accuracy, or that the time stamp is always increasing. For example, records in a shard or across a stream might have time stamps that are out of order. This operation has a limit of five transactions per second per shard.
+      description: Gets data records from a Kinesis data stream's shard. When invoking this API, you must use either the StreamARN or the StreamName parameter, or both. It is recommended that you use the StreamARN input parameter when you invoke this API. Specify a shard iterator using the ShardIterator parameter. The shard iterator specifies the position in the shard from which you want to start reading data records sequentially. If there are no records available in the portion of the shard that the iterator points to, GetRecords returns an empty list. It might take multiple calls to get to a portion of the shard that contains records. You can scale by provisioning multiple shards per stream while considering service limits (for more information, see Amazon Kinesis Data Streams Limits in the Amazon Kinesis Data Streams Developer Guide). Your application should have one thread per shard, each reading continuously from its stream. To read from a stream continually, call GetRecords in a loop. Use GetShardIterator to get the shard iterator to specify in the first GetRecords call. GetRecords returns a new shard iterator in NextShardIterator. Specify the shard iterator returned in NextShardIterator in subsequent calls to GetRecords. If the shard has been closed, the shard iterator can't return more data and GetRecords returns null in NextShardIterator. You can terminate the loop when the shard is closed, or when the shard iterator reaches the record with the sequence number or other attribute that marks it as the last record to process. Each data record can be up to 1 MiB in size by default. Amazon Kinesis Data Streams supports large records up to 10 MiB in size, but the average throughput for your stream cannot exceed 1 MiB per second. For more information about how large records are handled, see Large records. Each shard can read up to 2 MiB per second. You can ensure that your calls don't exceed the maximum supported size or throughput by using the Limit parameter to specify the maximum number of records that GetRecords can return. Consider your average record size when determining this limit. The maximum number of records that can be returned per call is 10,000. The size of the data returned by GetRecords varies depending on the utilization of the shard. It is recommended that consumer applications retrieve records via the GetRecords command using the 5 TPS limit to remain caught up. Retrieving records less frequently can lead to consumer applications falling behind. The maximum size of data that GetRecords can return is 10 MiB. If a call returns this amount of data, subsequent calls made within the next 5 seconds throw ProvisionedThroughputExceededException. If there is insufficient provisioned throughput on the stream, subsequent calls made within the next 1 second throw ProvisionedThroughputExceededException. GetRecords doesn't return any data when it throws an exception. For this reason, we recommend that you wait 1 second between calls to GetRecords. However, it's possible that the application will get exceptions for longer than 1 second. To detect whether the application is falling behind in processing, you can use the MillisBehindLatest response attribute. You can also monitor the stream using CloudWatch metrics and other mechanisms (see Monitoring in the Amazon Kinesis Data Streams Developer Guide). Each Amazon Kinesis record includes a value, ApproximateArrivalTimestamp, that is set when a stream successfully receives and stores a record. This is commonly referred to as a server-side time stamp, whereas a client-side time stamp is set when a data producer creates or sends the record to a stream (a data producer is any data source putting data records into a stream, for example with PutRecords). The time stamp has millisecond precision. There are no guarantees about the time stamp accuracy, or that the time stamp is always increasing. For example, records in a shard or across a stream might have time stamps that are out of order. This operation has a limit of five transactions per second per shard.
       parameters:
         - name: X-Amz-Target
           in: header
@@ -533,6 +651,9 @@ paths:
                 StreamId:
                   $ref: "#/components/schemas/StreamId"
                   description: Not Implemented. Reserved for future use.
+                DryRun:
+                  $ref: "#/components/schemas/BooleanObject"
+                  description: Checks if your request will succeed. DryRun is an optional parameter.
               required:
                 - ShardIterator
       responses:
@@ -620,6 +741,9 @@ paths:
                 StreamId:
                   $ref: "#/components/schemas/StreamId"
                   description: Not Implemented. Reserved for future use.
+                DryRun:
+                  $ref: "#/components/schemas/BooleanObject"
+                  description: Checks if your request will succeed. DryRun is an optional parameter.
               required:
                 - ShardId
                 - ShardIteratorType
@@ -668,6 +792,43 @@ paths:
       responses:
         "200":
           description: Success
+  /ListChannels:
+    post:
+      operationId: ListChannels
+      description: Lists the channels in your account. You can filter the results by source stream. The results are paginated. Use the NextToken value returned in the response to retrieve additional results. Use this operation to find channels before deleting a stream, or to audit the channels configured in an Amazon Web Services Region. This operation has a call limit of 5 transactions per second (TPS) for each Amazon Web Services account. Exceeding 5 TPS results in a LimitExceededException.
+      parameters:
+        - name: X-Amz-Target
+          in: header
+          description: Action Header
+          required: false
+          schema:
+            type: string
+            enum:
+              - Kinesis_20131202.ListChannels
+            default: Kinesis_20131202.ListChannels
+      requestBody:
+        required: true
+        content:
+          application/x-amz-json-1.1:
+            schema:
+              type: object
+              properties:
+                StreamFilter:
+                  $ref: "#/components/schemas/StreamFilterList"
+                  description: Filters the results to channels associated with the specified streams.
+                MaxResults:
+                  $ref: "#/components/schemas/ListChannelsInputLimit"
+                  description: The maximum number of channels to return in a single call. The default value is 100. If you specify a value greater than 100, at most 100 results are returned.
+                NextToken:
+                  $ref: "#/components/schemas/NextToken"
+                  description: The pagination token returned by a previous call. Specify this token to retrieve the next page of results. This value is null when there are no more results to return.
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ListChannelsOutput"
   /ListShards:
     post:
       operationId: ListShards
@@ -964,6 +1125,9 @@ paths:
                 StreamId:
                   $ref: "#/components/schemas/StreamId"
                   description: Not Implemented. Reserved for future use.
+                DryRun:
+                  $ref: "#/components/schemas/BooleanObject"
+                  description: Checks if your request will succeed. DryRun is an optional parameter.
               required:
                 - Data
                 - PartitionKey
@@ -1007,6 +1171,9 @@ paths:
                 StreamId:
                   $ref: "#/components/schemas/StreamId"
                   description: Not Implemented. Reserved for future use.
+                DryRun:
+                  $ref: "#/components/schemas/BooleanObject"
+                  description: Checks if your request will succeed. DryRun is an optional parameter.
       responses:
         "200":
           description: Success
@@ -1289,6 +1456,9 @@ paths:
                 StartingPosition:
                   $ref: "#/components/schemas/StartingPosition"
                   description: The starting position in the data stream from which to start streaming.
+                DryRun:
+                  $ref: "#/components/schemas/BooleanObject"
+                  description: Checks if your request will succeed. DryRun is an optional parameter.
               required:
                 - ConsumerARN
                 - ShardId
@@ -1404,6 +1574,48 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/UpdateAccountSettingsOutput"
+  /UpdateChannel:
+    post:
+      operationId: UpdateChannel
+      description: Updates the data freshness interval or the Amazon CloudWatch Logs configuration of an existing channel. You cannot change the destination, source stream, record format, schema, encryption configuration, or service execution role of an existing channel. To change any other setting, delete the channel and create a new one. Updating a channel is an asynchronous operation. Upon receiving the request, Amazon Kinesis Data Streams sets the channel to the UPDATING state and returns immediately. After the change is applied, Amazon Kinesis Data Streams sets the channel back to the ACTIVE state. This operation has a call limit of 5 transactions per second (TPS) for each Amazon Web Services account. Exceeding 5 TPS results in a LimitExceededException.
+      parameters:
+        - name: X-Amz-Target
+          in: header
+          description: Action Header
+          required: false
+          schema:
+            type: string
+            enum:
+              - Kinesis_20131202.UpdateChannel
+            default: Kinesis_20131202.UpdateChannel
+      requestBody:
+        required: true
+        content:
+          application/x-amz-json-1.1:
+            schema:
+              type: object
+              properties:
+                ChannelARN:
+                  $ref: "#/components/schemas/ChannelARN"
+                  description: The Amazon Resource Name (ARN) of the channel to update.
+                S3DestinationConfiguration:
+                  $ref: "#/components/schemas/S3DestinationUpdateInput"
+                  description: The updated configuration for a general purpose Amazon S3 destination. Only DataFreshnessInSeconds can be updated.
+                S3TablesDestinationConfiguration:
+                  $ref: "#/components/schemas/S3TablesDestinationUpdateInput"
+                  description: The updated configuration for a streaming table destination. Only DataFreshnessInSeconds can be updated.
+                LoggingConfiguration:
+                  $ref: "#/components/schemas/ChannelLoggingUpdateInput"
+                  description: The updated Amazon CloudWatch Logs configuration for the channel.
+              required:
+                - ChannelARN
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UpdateChannelOutput"
   /UpdateMaxRecordSize:
     post:
       operationId: UpdateMaxRecordSize
@@ -1527,7 +1739,7 @@ paths:
   /UpdateStreamWarmThroughput:
     post:
       operationId: UpdateStreamWarmThroughput
-      description: "Updates the warm throughput configuration for the specified Amazon Kinesis Data Streams on-demand data stream. This operation allows you to proactively scale your on-demand data stream to a specified throughput level, enabling better performance for sudden traffic spikes. When invoking this API, you must use either the StreamARN or the StreamName parameter, or both. It is recommended that you use the StreamARN input parameter when you invoke this API. Updating the warm throughput is an asynchronous operation. Upon receiving the request, Kinesis Data Streams returns immediately and sets the status of the stream to UPDATING. After the update is complete, Kinesis Data Streams sets the status of the stream back to ACTIVE. Depending on the size of the stream, the scaling action could take a few minutes to complete. You can continue to read and write data to your stream while its status is UPDATING. This operation is only supported for data streams with the on-demand capacity mode in accounts that have MinimumThroughputBillingCommitment enabled. Provisioned capacity mode streams do not support warm throughput configuration. This operation has the following default limits. By default, you cannot do the following: Scale to more than 10 GiBps for an on-demand stream. This API has a call limit of 5 transactions per second (TPS) for each Amazon Web Services account. TPS over 5 will initiate the LimitExceededException. For the default limits for an Amazon Web Services account, see Streams Limits in the Amazon Kinesis Data Streams Developer Guide. To request an increase in the call rate limit, the shard limit for this API, or your overall shard limit, use the limits form."
+      description: "Updates the warm throughput configuration for the specified Amazon Kinesis Data Streams on-demand data stream. Updates the warm throughput configuration for the specified on-demand data stream. Use this operation to scale your stream to a specified throughput level before anticipated traffic spikes, or to release excess capacity after traffic has decreased. When invoking this API, you must use either the StreamARN or the StreamName parameter, or both. It is recommended that you use the StreamARN input parameter when you invoke this API. Updating the warm throughput is an asynchronous operation. Upon receiving the request, Kinesis Data Streams returns immediately and sets the status of the stream to UPDATING. After the update is complete, Kinesis Data Streams sets the status of the stream back to ACTIVE. Depending on the size of the stream, the scaling action could take a few minutes to complete. You can continue to read and write data to your stream while its status is UPDATING. This operation is only supported for data streams with the on-demand capacity mode in accounts that have MinimumThroughputBillingCommitment enabled. Provisioned capacity mode streams do not support warm throughput configuration. To release excess capacity, call the API again and set the warm throughput to the same or a lower value. This operation has the following default limits. By default, you cannot do the following: Scale to more than 10 GiBps for an on-demand stream. This API has a call limit of 5 transactions per second (TPS) for each Amazon Web Services account. TPS over 5 will initiate the LimitExceededException. For the default limits for an Amazon Web Services account, see Streams Limits in the Amazon Kinesis Data Streams Developer Guide. To request an increase in the call rate limit, the shard limit for this API, or your overall shard limit, use the limits form."
       parameters:
         - name: X-Amz-Target
           in: header
@@ -1629,6 +1841,438 @@ components:
       minLength: 1
       maxLength: 24
       pattern: "[a-z0-9]{20}-[a-z0-9]{3}"
+    ChannelName:
+      type: string
+      minLength: 1
+      maxLength: 128
+      pattern: "[a-zA-Z0-9_.-]+"
+    RoleARN:
+      type: string
+      minLength: 1
+      maxLength: 512
+      pattern: arn:aws[-a-z0-9]*:iam::\d{12}:role/[a-zA-Z_0-9+=,.@\-_/]+
+    ChannelStreamConfigurationList:
+      type: array
+      items:
+        $ref: "#/components/schemas/ChannelStreamConfiguration"
+    ChannelStreamConfiguration:
+      description: Specifies the source stream and record configuration when creating a channel.
+      type: object
+      properties:
+        StreamARN:
+          $ref: "#/components/schemas/StreamARN"
+          description: The Amazon Resource Name (ARN) of the source Kinesis data stream.
+        RecordConfiguration:
+          $ref: "#/components/schemas/RecordConfiguration"
+          description: The record format configuration for the source stream.
+      required:
+        - StreamARN
+        - RecordConfiguration
+    RecordConfiguration:
+      description: Specifies the format of records read from the source stream.
+      type: object
+      properties:
+        RecordFormatType:
+          $ref: "#/components/schemas/RecordFormatType"
+          description: "The format of records on the source stream. Valid values: GSR_JSON - Supported only for streaming table (Amazon S3 Tables) destinations. JSON - Supported for both general purpose Amazon S3 and streaming table destinations. STRING - Supported only for general purpose Amazon S3 destinations. BYTE_ARRAY - Supported only for general purpose Amazon S3 destinations."
+        GSRSchemaARN:
+          $ref: "#/components/schemas/GSRSchemaARN"
+          description: The Amazon Resource Name (ARN) of the Amazon Web Services Glue Schema Registry schema used to validate records. Required when the channel destination is a streaming table (Amazon S3 Tables), for both the JSON and GSR_JSON record formats.
+      required:
+        - RecordFormatType
+    RecordFormatType:
+      type: string
+      enum:
+        - GSR_JSON
+        - JSON
+        - STRING
+        - BYTE_ARRAY
+    GSRSchemaARN:
+      type: string
+      minLength: 1
+      maxLength: 512
+      pattern: arn:aws[-a-z0-9]*:glue:[-a-z0-9]+:\d{12}:schema/[-a-zA-Z0-9_$#.]+/[-a-zA-Z0-9_$#.]+
+    S3DestinationConfiguration:
+      description: The configuration for delivery to a general purpose Amazon S3 bucket. Used in CreateChannel.
+      type: object
+      properties:
+        DataFreshnessInSeconds:
+          $ref: "#/components/schemas/DataFreshnessInSeconds"
+          description: The maximum age, in seconds, of undelivered data. Valid range is 300 to 900 seconds (5 to 15 minutes). The default value is 300 seconds.
+        DeadLetterQueueS3Configuration:
+          $ref: "#/components/schemas/DeadLetterQueueS3Configuration"
+          description: The dead-letter queue configuration for records that cannot be delivered. Optional for general purpose Amazon S3 destinations. If not specified, it defaults to the destination bucket with an error prefix.
+        StorageConfiguration:
+          $ref: "#/components/schemas/S3StorageConfiguration"
+          description: The Amazon S3 storage configuration for the channel.
+      required:
+        - StorageConfiguration
+    DataFreshnessInSeconds:
+      type: integer
+    DeadLetterQueueS3Configuration:
+      description: The Amazon S3 dead-letter queue configuration for records that cannot be delivered.
+      type: object
+      properties:
+        BucketARN:
+          $ref: "#/components/schemas/BucketARN"
+          description: The Amazon Resource Name (ARN) of the dead-letter queue Amazon S3 bucket.
+        ExpectedBucketOwner:
+          $ref: "#/components/schemas/ExpectedBucketOwner"
+          description: The Amazon Web Services account ID of the expected owner of the dead-letter queue bucket.
+        ErrorOutputPrefix:
+          $ref: "#/components/schemas/S3ErrorOutputPrefix"
+          description: The Amazon S3 key prefix for error records.
+      required:
+        - BucketARN
+        - ExpectedBucketOwner
+    BucketARN:
+      type: string
+      minLength: 1
+      maxLength: 2048
+      pattern: arn:aws[-a-z0-9]*:s3:::[a-z0-9._-]{3,63}
+    ExpectedBucketOwner:
+      type: string
+      minLength: 12
+      maxLength: 12
+      pattern: \d{12}
+    S3ErrorOutputPrefix:
+      type: string
+      minLength: 1
+      maxLength: 512
+      pattern: "[0-9A-Za-z!\\-_'.*()\\/]+"
+    S3StorageConfiguration:
+      description: The Amazon S3 storage settings for a general purpose Amazon S3 destination.
+      type: object
+      properties:
+        BucketARN:
+          $ref: "#/components/schemas/BucketARN"
+          description: The Amazon Resource Name (ARN) of the destination Amazon S3 bucket.
+        ExpectedBucketOwner:
+          $ref: "#/components/schemas/ExpectedBucketOwner"
+          description: The Amazon Web Services account ID of the expected owner of the destination bucket. This value helps prevent delivery to an unintended bucket if ownership changes.
+        OutputKeyTemplate:
+          $ref: "#/components/schemas/S3OutputKeyTemplate"
+          description: The template used to construct the Amazon S3 object key for delivered objects. If not specified, a default template is used.
+        StorageClass:
+          $ref: "#/components/schemas/S3StorageClass"
+          description: "The Amazon S3 storage class for delivered objects. Valid values: STANDARD - Default storage class for frequently accessed data. (default) INTELLIGENT_TIERING - Automatically moves objects to the most cost-effective access tier based on usage patterns. GLACIER_IR - Low-cost storage for rarely accessed data that requires millisecond retrieval."
+        CompressionType:
+          $ref: "#/components/schemas/S3CompressionType"
+          description: "The compression applied to delivered objects. Valid values: NONE - No compression. GZIP - gzip compression. ZSTD - Zstandard compression."
+      required:
+        - BucketARN
+        - ExpectedBucketOwner
+        - CompressionType
+    S3OutputKeyTemplate:
+      type: string
+      minLength: 1
+      maxLength: 1024
+      pattern: "[0-9A-Za-z!\\-_'.*()\\/=:{}]+"
+    S3StorageClass:
+      type: string
+      enum:
+        - STANDARD
+        - INTELLIGENT_TIERING
+        - GLACIER_IR
+    S3CompressionType:
+      type: string
+      enum:
+        - NONE
+        - GZIP
+        - ZSTD
+    S3TablesDestinationConfiguration:
+      description: The configuration for delivery to streaming tables on Apache Iceberg. Used in CreateChannel.
+      type: object
+      properties:
+        DataFreshnessInSeconds:
+          $ref: "#/components/schemas/DataFreshnessInSeconds"
+          description: The maximum age, in seconds, of undelivered data. Valid range is 300 to 900 seconds (5 to 15 minutes). The default value is 300 seconds.
+        DeadLetterQueueS3Configuration:
+          $ref: "#/components/schemas/DeadLetterQueueS3Configuration"
+          description: The dead-letter queue configuration for records that cannot be delivered. Required for streaming table destinations.
+        S3TablesConfigurationList:
+          $ref: "#/components/schemas/S3TablesConfigurationList"
+          description: The list of streaming table configurations. Currently, one table is supported per channel.
+      required:
+        - DeadLetterQueueS3Configuration
+        - S3TablesConfigurationList
+    S3TablesConfigurationList:
+      type: array
+      items:
+        $ref: "#/components/schemas/S3TablesConfiguration"
+    S3TablesConfiguration:
+      description: Specifies a destination streaming table on Apache Iceberg.
+      type: object
+      properties:
+        TableBucketARN:
+          $ref: "#/components/schemas/TableBucketARN"
+          description: The Amazon Resource Name (ARN) of the Amazon S3 table bucket.
+        Namespace:
+          $ref: "#/components/schemas/S3TablesNamespace"
+          description: The namespace (database) of the destination table.
+        TableName:
+          $ref: "#/components/schemas/S3TablesTableName"
+          description: The name of the destination table. Amazon Kinesis Data Streams creates this table in the specified table bucket.
+        CompressionType:
+          $ref: "#/components/schemas/S3TablesCompressionType"
+          description: "The compression applied to Parquet data files. Valid values: NONE - No compression. ZSTD - Zstandard compression. SNAPPY - Snappy compression."
+        PartitionSpec:
+          $ref: "#/components/schemas/PartitionSpec"
+          description: The partitioning specification for the destination table.
+      required:
+        - TableBucketARN
+        - Namespace
+        - TableName
+        - CompressionType
+    TableBucketARN:
+      type: string
+      minLength: 1
+      maxLength: 2048
+      pattern: arn:aws[-a-z0-9]*:s3tables:[-a-z0-9]+:\d{12}:bucket/[a-z0-9_-]{3,63}
+    S3TablesNamespace:
+      type: string
+      minLength: 1
+      maxLength: 255
+      pattern: "[0-9a-z_]+"
+    S3TablesTableName:
+      type: string
+      minLength: 1
+      maxLength: 255
+      pattern: "[0-9a-z_]+"
+    S3TablesCompressionType:
+      type: string
+      enum:
+        - NONE
+        - ZSTD
+        - SNAPPY
+    PartitionSpec:
+      description: Specifies how the destination table is partitioned.
+      type: object
+      properties:
+        PartitionFields:
+          $ref: "#/components/schemas/PartitionFieldList"
+          description: The list of partition fields.
+      required:
+        - PartitionFields
+    PartitionFieldList:
+      type: array
+      items:
+        $ref: "#/components/schemas/PartitionField"
+    PartitionField:
+      description: Specifies a single partition field.
+      type: object
+      properties:
+        Transform:
+          $ref: "#/components/schemas/PartitionTransform"
+          description: The partition transform to apply. The only valid value is TIME_HOUR.
+        SourceName:
+          $ref: "#/components/schemas/PartitionSourceName"
+          description: The name of the source column used for partitioning. This column must be of the timestamptz type.
+      required:
+        - Transform
+        - SourceName
+    PartitionTransform:
+      type: string
+      enum:
+        - TIME_HOUR
+    PartitionSourceName:
+      type: string
+      minLength: 1
+      maxLength: 255
+      pattern: "[a-zA-Z0-9\\.\\_]+"
+    ChannelEncryptionConfiguration:
+      description: Specifies the Amazon Web Services KMS key that Amazon Kinesis Data Streams uses to encrypt data delivered to the channel's destination.
+      type: object
+      properties:
+        EncryptionType:
+          $ref: "#/components/schemas/ChannelEncryptionType"
+          description: The encryption type. The only valid value is KMS.
+        KeyId:
+          $ref: "#/components/schemas/KeyId"
+          description: The identifier of the customer managed Amazon Web Services KMS key. You cannot use the Amazon Kinesis Data Streams service key (aws/kinesis).
+      required:
+        - EncryptionType
+        - KeyId
+    ChannelEncryptionType:
+      type: string
+      enum:
+        - KMS
+    KeyId:
+      type: string
+      minLength: 1
+      maxLength: 2048
+    ChannelLoggingConfiguration:
+      description: The Amazon CloudWatch Logs configuration for a channel.
+      type: object
+      properties:
+        CloudWatchLogs:
+          $ref: "#/components/schemas/CloudWatchLogs"
+          description: The Amazon CloudWatch Logs settings for the channel.
+      required:
+        - CloudWatchLogs
+    CloudWatchLogs:
+      description: The Amazon CloudWatch Logs settings for channel logging.
+      type: object
+      properties:
+        Enabled:
+          $ref: "#/components/schemas/BooleanObject"
+          description: Specifies whether logging to Amazon CloudWatch Logs is enabled.
+        LogGroupName:
+          $ref: "#/components/schemas/CloudWatchLogGroupName"
+          description: The name of the Amazon CloudWatch Logs log group. Defaults to /aws/kinesis/{channelName}/{channelId}.
+        LogStreamName:
+          $ref: "#/components/schemas/CloudWatchLogStreamName"
+          description: The name of the Amazon CloudWatch Logs log stream. Defaults to DestinationDelivery.
+      required:
+        - Enabled
+    BooleanObject:
+      type: boolean
+    CloudWatchLogGroupName:
+      type: string
+      minLength: 1
+      maxLength: 512
+      pattern: "[\\.\\-_/#A-Za-z0-9]+"
+    CloudWatchLogStreamName:
+      type: string
+      minLength: 1
+      maxLength: 512
+      pattern: "[^:*]*"
+    CreateChannelOutput:
+      type: object
+      properties:
+        ChannelDescription:
+          $ref: "#/components/schemas/ChannelDescription"
+          description: The configuration and current status of the channel.
+      required:
+        - ChannelDescription
+    ChannelDescription:
+      description: Describes the configuration and current status of a channel.
+      type: object
+      properties:
+        ChannelName:
+          $ref: "#/components/schemas/ChannelName"
+          description: The name of the channel.
+        ChannelARN:
+          $ref: "#/components/schemas/ChannelARN"
+          description: The Amazon Resource Name (ARN) of the channel.
+        ChannelId:
+          $ref: "#/components/schemas/ChannelId"
+          description: The unique identifier of the channel.
+        ChannelStatus:
+          $ref: "#/components/schemas/ChannelStatus"
+          description: "The current status of the channel. Valid values: CREATING - The channel is being created. ACTIVE - The channel is ready to deliver records. UPDATING - The channel configuration is being updated. DELETING - The channel is being deleted. FAILED - See ChannelStatusReason for the failure cause."
+        ChannelStatusReason:
+          $ref: "#/components/schemas/ChannelStatusReason"
+          description: A message describing the reason for a FAILED status.
+        ChannelCreationTimestamp:
+          $ref: "#/components/schemas/Timestamp"
+          description: The time at which the channel was created.
+        ServiceExecutionRoleARN:
+          $ref: "#/components/schemas/RoleARN"
+          description: The Amazon Resource Name (ARN) of the IAM role that Amazon Kinesis Data Streams assumes to write records to the destination.
+        StreamConfigurationList:
+          $ref: "#/components/schemas/ChannelStreamDescriptionList"
+          description: The source stream configuration for the channel.
+        S3DestinationConfiguration:
+          $ref: "#/components/schemas/S3DestinationDescription"
+          description: The configuration for delivery to a general purpose Amazon S3 bucket. Present only when the channel destination is a general purpose Amazon S3 bucket.
+        S3TablesDestinationConfiguration:
+          $ref: "#/components/schemas/S3TablesDestinationDescription"
+          description: The configuration for delivery to streaming tables on Apache Iceberg in Amazon S3 Tables. Present only when the channel destination is a streaming table.
+        EncryptionConfiguration:
+          $ref: "#/components/schemas/ChannelEncryptionConfiguration"
+          description: The server-side encryption configuration for the channel.
+        LoggingConfiguration:
+          $ref: "#/components/schemas/ChannelLoggingConfiguration"
+          description: The Amazon CloudWatch Logs configuration for the channel.
+      required:
+        - ChannelName
+        - ChannelARN
+        - ChannelId
+        - ChannelStatus
+        - ChannelCreationTimestamp
+        - ServiceExecutionRoleARN
+        - StreamConfigurationList
+        - LoggingConfiguration
+    ChannelARN:
+      type: string
+      minLength: 1
+      maxLength: 2048
+      pattern: arn:aws.*:kinesis:.*:\d{12}:channel/\S+
+    ChannelId:
+      type: string
+      minLength: 1
+      maxLength: 64
+    ChannelStatus:
+      type: string
+      enum:
+        - CREATING
+        - ACTIVE
+        - UPDATING
+        - DELETING
+        - FAILED
+    ChannelStatusReason:
+      type: string
+      minLength: 1
+      maxLength: 2048
+    Timestamp:
+      type: string
+      format: date-time
+    ChannelStreamDescriptionList:
+      type: array
+      items:
+        $ref: "#/components/schemas/ChannelStreamDescription"
+    ChannelStreamDescription:
+      description: Describes the source stream of a channel.
+      type: object
+      properties:
+        StreamARN:
+          $ref: "#/components/schemas/StreamARN"
+          description: The Amazon Resource Name (ARN) of the source Kinesis data stream.
+        StreamCreationTimestamp:
+          $ref: "#/components/schemas/Timestamp"
+          description: The time at which the source stream was created.
+        RecordConfiguration:
+          $ref: "#/components/schemas/RecordConfiguration"
+          description: The record format configuration for the source stream.
+      required:
+        - StreamARN
+        - StreamCreationTimestamp
+        - RecordConfiguration
+    S3DestinationDescription:
+      description: The configuration for delivery to a general purpose Amazon S3 bucket. Returned in ChannelDescription.
+      type: object
+      properties:
+        DataFreshnessInSeconds:
+          $ref: "#/components/schemas/DataFreshnessInSeconds"
+          description: The maximum age, in seconds, of undelivered data.
+        DeadLetterQueueS3Configuration:
+          $ref: "#/components/schemas/DeadLetterQueueS3Configuration"
+          description: The dead-letter queue configuration for records that cannot be delivered.
+        StorageConfiguration:
+          $ref: "#/components/schemas/S3StorageConfiguration"
+          description: The Amazon S3 storage configuration for the channel.
+      required:
+        - DataFreshnessInSeconds
+        - DeadLetterQueueS3Configuration
+        - StorageConfiguration
+    S3TablesDestinationDescription:
+      description: The configuration for delivery to streaming tables on Apache Iceberg. Returned in ChannelDescription.
+      type: object
+      properties:
+        DataFreshnessInSeconds:
+          $ref: "#/components/schemas/DataFreshnessInSeconds"
+          description: The maximum age, in seconds, of undelivered data.
+        DeadLetterQueueS3Configuration:
+          $ref: "#/components/schemas/DeadLetterQueueS3Configuration"
+          description: The dead-letter queue configuration for records that cannot be delivered.
+        S3TablesConfigurationList:
+          $ref: "#/components/schemas/S3TablesConfigurationList"
+          description: The list of streaming table configurations.
+      required:
+        - DataFreshnessInSeconds
+        - DeadLetterQueueS3Configuration
+        - S3TablesConfigurationList
     PositiveIntegerObject:
       type: integer
       minimum: 1
@@ -1659,9 +2303,7 @@ components:
       type: string
       minLength: 1
       maxLength: 2048
-      pattern: arn:aws.*:kinesis:.*:\d{12}:.*stream/\S+
-    BooleanObject:
-      type: boolean
+      pattern: arn:aws.*:kinesis:.*:\d{12}:.*(stream|channel)/\S+
     ConsumerName:
       type: string
       minLength: 1
@@ -1702,9 +2344,14 @@ components:
         - ENABLED
         - DISABLED
         - ENABLED_UNTIL_EARLIEST_ALLOWED_END
-    Timestamp:
-      type: string
-      format: date-time
+    DescribeChannelOutput:
+      type: object
+      properties:
+        ChannelDescription:
+          $ref: "#/components/schemas/ChannelDescription"
+          description: The configuration and current status of the channel.
+      required:
+        - ChannelDescription
     DescribeLimitsOutput:
       type: object
       properties:
@@ -1720,6 +2367,12 @@ components:
         OnDemandStreamCountLimit:
           $ref: "#/components/schemas/OnDemandStreamCountLimitObject"
           description: The maximum number of data streams with the on-demand capacity mode.
+        ChannelCount:
+          $ref: "#/components/schemas/ChannelCountObject"
+          description: The number of channels in the account.
+        ChannelCountLimit:
+          $ref: "#/components/schemas/ChannelCountObject"
+          description: The maximum number of channels allowed in the account.
       required:
         - ShardLimit
         - OpenShardCount
@@ -1734,6 +2387,10 @@ components:
       minimum: 0
       maximum: 1000000
     OnDemandStreamCountLimitObject:
+      type: integer
+      minimum: 0
+      maximum: 1000000
+    ChannelCountObject:
       type: integer
       minimum: 0
       maximum: 1000000
@@ -1850,7 +2507,7 @@ components:
         - EndingHashKey
     HashKey:
       type: string
-      pattern: 0|([1-9]\d{0,38})
+      pattern: ^(0|([1-9]\d{0,38}))$
     SequenceNumberRange:
       description: The range of possible sequence numbers for the shard.
       type: object
@@ -1865,7 +2522,7 @@ components:
         - StartingSequenceNumber
     SequenceNumber:
       type: string
-      pattern: 0|([1-9]\d{0,128})
+      pattern: ^(0|([1-9]\d{0,128}))$
     EnhancedMonitoringList:
       type: array
       items:
@@ -1897,10 +2554,6 @@ components:
       enum:
         - NONE
         - KMS
-    KeyId:
-      type: string
-      minLength: 1
-      maxLength: 2048
     DescribeStreamConsumerOutput:
       type: object
       properties:
@@ -1993,6 +2646,9 @@ components:
         MaxRecordSizeInKiB:
           $ref: "#/components/schemas/MaxRecordSizeInKiB"
           description: The maximum record size of a single record in kibibyte (KiB) that you can write to, and read from a stream.
+        ChannelCount:
+          $ref: "#/components/schemas/ChannelCountObject"
+          description: The number of channels associated with the stream.
       required:
         - StreamName
         - StreamARN
@@ -2073,7 +2729,7 @@ components:
           description: The approximate time that the record was inserted into the stream.
         Data:
           $ref: "#/components/schemas/Data"
-          description: The data blob. The data in the blob is both opaque and immutable to Kinesis Data Streams, which does not inspect, interpret, or change the data in the blob in any way. When the data blob (the payload before base64-encoding) is added to the partition key size, the total size must not exceed the maximum record size (1 MiB).
+          description: The data blob. The data in the blob is both opaque and immutable to Kinesis Data Streams, which does not inspect, interpret, or change the data in the blob in any way. When the data blob (the payload before base64-encoding) is added to the partition key size, the total size must not exceed the maximum record size (10 MiB).
         PartitionKey:
           $ref: "#/components/schemas/PartitionKey"
           description: Identifies which shard in the stream the data record is assigned to.
@@ -2146,10 +2802,103 @@ components:
         ShardIterator:
           $ref: "#/components/schemas/ShardIterator"
           description: The position in the shard from which to start reading data records sequentially. A shard iterator specifies this position using the sequence number of a data record in a shard.
+    StreamFilterList:
+      type: array
+      items:
+        $ref: "#/components/schemas/StreamFilter"
+    StreamFilter:
+      description: Filters ListChannels results by source stream.
+      type: object
+      properties:
+        StreamARN:
+          $ref: "#/components/schemas/StreamARN"
+          description: The Amazon Resource Name (ARN) of the source stream to filter by.
+        StreamCreationTimestamp:
+          $ref: "#/components/schemas/Timestamp"
+          description: The creation timestamp of the source stream.
+      required:
+        - StreamARN
+    ListChannelsInputLimit:
+      type: integer
+      minimum: 1
+      maximum: 10000
     NextToken:
       type: string
       minLength: 1
       maxLength: 1048576
+    ListChannelsOutput:
+      type: object
+      properties:
+        ChannelSummaries:
+          $ref: "#/components/schemas/ChannelSummaryList"
+          description: A list of channel summaries.
+        NextToken:
+          $ref: "#/components/schemas/NextToken"
+          description: The pagination token to use in a subsequent call to retrieve the next page of results. This value is null when there are no more results to return.
+      required:
+        - ChannelSummaries
+    ChannelSummaryList:
+      type: array
+      items:
+        $ref: "#/components/schemas/ChannelSummary"
+    ChannelSummary:
+      description: A summary of a channel, returned by ListChannels.
+      type: object
+      properties:
+        ChannelName:
+          $ref: "#/components/schemas/ChannelName"
+          description: The name of the channel.
+        ChannelARN:
+          $ref: "#/components/schemas/ChannelARN"
+          description: The Amazon Resource Name (ARN) of the channel.
+        ChannelId:
+          $ref: "#/components/schemas/ChannelId"
+          description: The unique identifier of the channel.
+        ChannelStatus:
+          $ref: "#/components/schemas/ChannelStatus"
+          description: "The current status of the channel. Valid values: CREATING - The channel is being created. ACTIVE - The channel is ready to deliver records. UPDATING - The channel configuration is being updated. DELETING - The channel is being deleted. FAILED - See ChannelStatusReason for the failure cause."
+        ChannelStatusReason:
+          $ref: "#/components/schemas/ChannelStatusReason"
+          description: A message describing the reason for a FAILED status.
+        ChannelCreationTimestamp:
+          $ref: "#/components/schemas/Timestamp"
+          description: The time at which the channel was created.
+        ChannelDestinationType:
+          $ref: "#/components/schemas/ChannelDestinationType"
+          description: "The destination type of the channel. Valid values: S3 - Delivery to a general purpose Amazon S3 bucket. S3_TABLES - Delivery to streaming tables on Apache Iceberg."
+        Streams:
+          $ref: "#/components/schemas/ChannelStreamIdentifierList"
+          description: The source streams associated with the channel.
+      required:
+        - ChannelName
+        - ChannelARN
+        - ChannelId
+        - ChannelStatus
+        - ChannelCreationTimestamp
+        - ChannelDestinationType
+        - Streams
+    ChannelDestinationType:
+      type: string
+      enum:
+        - S3
+        - S3_TABLES
+    ChannelStreamIdentifierList:
+      type: array
+      items:
+        $ref: "#/components/schemas/ChannelStreamIdentifier"
+    ChannelStreamIdentifier:
+      description: Identifies a source stream associated with a channel.
+      type: object
+      properties:
+        StreamARN:
+          $ref: "#/components/schemas/StreamARN"
+          description: The Amazon Resource Name (ARN) of the source Kinesis data stream.
+        StreamCreationTimestamp:
+          $ref: "#/components/schemas/Timestamp"
+          description: The time at which the source stream was created.
+      required:
+        - StreamARN
+        - StreamCreationTimestamp
     ListShardsInputLimit:
       type: integer
       minimum: 1
@@ -2527,6 +3276,56 @@ components:
         MinimumThroughputBillingCommitment:
           $ref: "#/components/schemas/MinimumThroughputBillingCommitmentOutput"
           description: The updated configuration of the minimum throughput billing commitment for your account.
+    S3DestinationUpdateInput:
+      description: The updated configuration for a general purpose Amazon S3 destination. Used in UpdateChannel. Only DataFreshnessInSeconds can be updated.
+      type: object
+      properties:
+        DataFreshnessInSeconds:
+          $ref: "#/components/schemas/DataFreshnessInSeconds"
+          description: The maximum age, in seconds, of undelivered data. Valid range is 300 to 900 seconds (5 to 15 minutes).
+      required:
+        - DataFreshnessInSeconds
+    S3TablesDestinationUpdateInput:
+      description: The updated configuration for a streaming table destination. Used in UpdateChannel. Only DataFreshnessInSeconds can be updated.
+      type: object
+      properties:
+        DataFreshnessInSeconds:
+          $ref: "#/components/schemas/DataFreshnessInSeconds"
+          description: The maximum age, in seconds, of undelivered data. Valid range is 300 to 900 seconds (5 to 15 minutes).
+      required:
+        - DataFreshnessInSeconds
+    ChannelLoggingUpdateInput:
+      description: The updated Amazon CloudWatch Logs configuration for a channel. Used in UpdateChannel.
+      type: object
+      properties:
+        CloudWatchLogs:
+          $ref: "#/components/schemas/CloudWatchLogsUpdateInput"
+          description: The updated Amazon CloudWatch Logs settings for the channel.
+      required:
+        - CloudWatchLogs
+    CloudWatchLogsUpdateInput:
+      description: The updated Amazon CloudWatch Logs settings for a channel.
+      type: object
+      properties:
+        Enabled:
+          $ref: "#/components/schemas/BooleanObject"
+          description: Specifies whether logging to Amazon CloudWatch Logs is enabled.
+        LogGroupName:
+          $ref: "#/components/schemas/CloudWatchLogGroupName"
+          description: The name of the Amazon CloudWatch Logs log group.
+        LogStreamName:
+          $ref: "#/components/schemas/CloudWatchLogStreamName"
+          description: The name of the Amazon CloudWatch Logs log stream.
+      required:
+        - Enabled
+    UpdateChannelOutput:
+      type: object
+      properties:
+        ChannelDescription:
+          $ref: "#/components/schemas/ChannelDescription"
+          description: The configuration and current status of the updated channel.
+      required:
+        - ChannelDescription
     ScalingType:
       type: string
       enum:
@@ -2649,6 +3448,94 @@ components:
           - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
           - $ref: "#/components/x-stackQL-resources/tags/methods/add_tags_to_stream"
         delete: []
+    channels:
+      id: aws.kinesis.channels
+      name: channels
+      title: channels
+      methods:
+        create_channel:
+          operation:
+            $ref: "#/paths/~1CreateChannel/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        delete_channel:
+          operation:
+            $ref: "#/paths/~1DeleteChannel/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        describe_channel:
+          operation:
+            $ref: "#/paths/~1DescribeChannel/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.ChannelDescription
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        list_channels:
+          operation:
+            $ref: "#/paths/~1ListChannels/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.ChannelSummaries
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        update_channel:
+          operation:
+            $ref: "#/paths/~1UpdateChannel/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/channels/methods/describe_channel"
+          - $ref: "#/components/x-stackQL-resources/channels/methods/list_channels"
+        insert:
+          - $ref: "#/components/x-stackQL-resources/channels/methods/create_channel"
+        update:
+          - $ref: "#/components/x-stackQL-resources/channels/methods/update_channel"
+        delete:
+          - $ref: "#/components/x-stackQL-resources/channels/methods/delete_channel"
     streams:
       id: aws.kinesis.streams
       name: streams
@@ -2779,6 +3666,40 @@ components:
           - $ref: "#/components/x-stackQL-resources/streams/methods/update_stream_warm_throughput"
         delete:
           - $ref: "#/components/x-stackQL-resources/streams/methods/delete_stream"
+    stream_retention_periods:
+      id: aws.kinesis.stream_retention_periods
+      name: stream_retention_periods
+      title: stream_retention_periods
+      methods:
+        decrease_stream_retention_period:
+          operation:
+            $ref: "#/paths/~1DecreaseStreamRetentionPeriod/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        increase_stream_retention_period:
+          operation:
+            $ref: "#/paths/~1IncreaseStreamRetentionPeriod/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
     resource_policies:
       id: aws.kinesis.resource_policies
       name: resource_policies
@@ -2992,6 +3913,42 @@ components:
         insert: []
         update: []
         delete: []
+    enhanced_monitorings:
+      id: aws.kinesis.enhanced_monitorings
+      name: enhanced_monitorings
+      title: enhanced_monitorings
+      methods:
+        disable_enhanced_monitoring:
+          operation:
+            $ref: "#/paths/~1DisableEnhancedMonitoring/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        enable_enhanced_monitoring:
+          operation:
+            $ref: "#/paths/~1EnableEnhancedMonitoring/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
     records:
       id: aws.kinesis.records
       name: records
@@ -3098,6 +4055,18 @@ components:
         merge_shards:
           operation:
             $ref: "#/paths/~1MergeShards/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        split_shard:
+          operation:
+            $ref: "#/paths/~1SplitShard/post"
           response:
             openAPIDocKey: "200"
           request:

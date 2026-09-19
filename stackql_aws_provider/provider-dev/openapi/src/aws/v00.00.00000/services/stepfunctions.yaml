@@ -41,7 +41,7 @@ paths:
               properties:
                 name:
                   $ref: "#/components/schemas/Name"
-                  description: 'The name of the activity to create. This name must be unique for your Amazon Web Services account and region for 90 days. For more information, see Limits Related to State Machine Executions in the Step Functions Developer Guide. A name must not contain: white space brackets < > { } [ ] wildcard characters ? * special characters " # % \ ^ | ~ ` $ & , ; : / control characters (U+0000-001F, U+007F-009F, U+FFFE-FFFF) surrogates (U+D800-DFFF) invalid characters ( U+10FFFF) To enable logging with CloudWatch Logs, the name should only contain 0-9, A-Z, a-z, - and _.'
+                  description: 'The name of the activity to create. This name must be unique for your Amazon Web Services account and region. A name must not contain: white space brackets < > { } [ ] wildcard characters ? * special characters " # % \ ^ | ~ ` $ & , ; : / control characters (U+0000-001F, U+007F-009F, U+FFFE-FFFF) surrogates (U+D800-DFFF) invalid characters ( U+10FFFF) To enable logging with CloudWatch Logs, the name should only contain 0-9, A-Z, a-z, - and _.'
                 tags:
                   $ref: "#/components/schemas/TagList"
                   description: "The list of tags to add to a resource. An array of key-value pairs. For more information, see Using Cost Allocation Tags in the Amazon Web Services Billing and Cost Management User Guide, and Controlling Access Using IAM Tags. Tags may only contain Unicode letters, digits, white space, or these symbols: _ . : / = + - @."
@@ -188,10 +188,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteActivityOutput"
   /DeleteStateMachine:
     post:
       operationId: DeleteStateMachine
@@ -221,10 +217,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteStateMachineOutput"
   /DeleteStateMachineAlias:
     post:
       operationId: DeleteStateMachineAlias
@@ -254,10 +246,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteStateMachineAliasOutput"
   /DeleteStateMachineVersion:
     post:
       operationId: DeleteStateMachineVersion
@@ -287,10 +275,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteStateMachineVersionOutput"
   /DescribeActivity:
     post:
       operationId: DescribeActivity
@@ -501,7 +485,7 @@ paths:
   /GetActivityTask:
     post:
       operationId: GetActivityTask
-      description: Used by workers to retrieve a task (with the specified activity ARN) which has been scheduled for execution by a running state machine. This initiates a long poll, where the service holds the HTTP connection open and responds as soon as a task becomes available (i.e. an execution of a task of this type is needed.) The maximum time the service holds on to the request before responding is 60 seconds. If no task is available within 60 seconds, the poll returns a taskToken with a null string. This API action isn't logged in CloudTrail. Workers should set their client side socket timeout to at least 65 seconds (5 seconds higher than the maximum time the service may hold the poll request). Polling with GetActivityTask can cause latency in some implementations. See Avoid Latency When Polling for Activity Tasks in the Step Functions Developer Guide.
+      description: Used by workers to retrieve a task (with the specified activity ARN) which has been scheduled for execution by a running state machine. This initiates a long poll, where the service holds the HTTP connection open and responds as soon as a task becomes available (i.e. an execution of a task of this type is needed.) The maximum time the service holds on to the request before responding is 60 seconds. If no task is available within 60 seconds, the poll returns a taskToken with a null string. Workers should set their client side socket timeout to at least 65 seconds (5 seconds higher than the maximum time the service may hold the poll request). Polling with GetActivityTask can cause latency in some implementations. See Avoid Latency When Polling for Activity Tasks in the Step Functions Developer Guide.
       parameters:
         - name: X-Amz-Target
           in: header
@@ -616,7 +600,7 @@ paths:
   /ListExecutions:
     post:
       operationId: ListExecutions
-      description: Lists all executions of a state machine or a Map Run. You can list all executions related to a state machine by specifying a state machine Amazon Resource Name (ARN), or those related to a Map Run by specifying a Map Run ARN. Using this API action, you can also list all redriven executions. You can also provide a state machine alias ARN or version ARN to list the executions associated with a specific alias or version. Results are sorted by time, with the most recent execution first. If nextToken is returned, there are more results available. The value of nextToken is a unique pagination token for each page. Make the call again using the returned token to retrieve the next page. Keep all other arguments unchanged. Each pagination token expires after 24 hours. Using an expired pagination token will return an HTTP 400 InvalidToken error. This operation is eventually consistent. The results are best effort and may not reflect very recent updates and changes. This API action is not supported by EXPRESS state machines.
+      description: Lists all executions of a state machine or a Map Run. You can list all executions related to a state machine by specifying a state machine Amazon Resource Name (ARN), or those related to a Map Run by specifying a Map Run ARN. Using this API action, you can also list all redriven executions. You can also provide a state machine alias ARN or version ARN to list the executions associated with a specific alias or version. Results are sorted by time, with the most recent execution first. Running executions are sorted by their startDate or redriveDate, and other executions are sorted by their stopDate. If nextToken is returned, there are more results available. The value of nextToken is a unique pagination token for each page. Make the call again using the returned token to retrieve the next page. Keep all other arguments unchanged. Each pagination token expires after 24 hours. Using an expired pagination token will return an HTTP 400 InvalidToken error. This operation is eventually consistent. The results are best effort and may not reflect very recent updates and changes. This API action is not supported by EXPRESS state machines. However, you may list EXPRESS children started by a map run using the mapRunArn parameter.
       parameters:
         - name: X-Amz-Target
           in: header
@@ -953,10 +937,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/SendTaskFailureOutput"
   /SendTaskHeartbeat:
     post:
       operationId: SendTaskHeartbeat
@@ -986,10 +966,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/SendTaskHeartbeatOutput"
   /SendTaskSuccess:
     post:
       operationId: SendTaskSuccess
@@ -1023,14 +999,10 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/SendTaskSuccessOutput"
   /StartExecution:
     post:
       operationId: StartExecution
-      description: "Starts a state machine execution. A qualified state machine ARN can either refer to a Distributed Map state defined within a state machine, a version ARN, or an alias ARN. The following are some examples of qualified and unqualified state machine ARNs: The following qualified state machine ARN refers to a Distributed Map state with a label mapStateLabel in a state machine named myStateMachine. arn:partition:states:region:account-id:stateMachine:myStateMachine/mapStateLabel If you provide a qualified state machine ARN that refers to a Distributed Map state, the request fails with ValidationException. The following qualified state machine ARN refers to an alias named PROD. arn:`<partition>`:states:`<region>`:`<account-id>`:stateMachine:`<myStateMachine:PROD>` If you provide a qualified state machine ARN that refers to a version ARN or an alias ARN, the request starts execution for that version or alias. The following unqualified state machine ARN refers to a state machine named myStateMachine. arn:`<partition>`:states:`<region>`:`<account-id>`:stateMachine:`<myStateMachine>` If you start an execution with an unqualified state machine ARN, Step Functions uses the latest revision of the state machine for the execution. To start executions of a state machine version, call StartExecution and provide the version ARN or the ARN of an alias that points to the version. StartExecution is idempotent for STANDARD workflows. For a STANDARD workflow, if you call StartExecution with the same name and input as a running execution, the call succeeds and return the same response as the original request. If the execution is closed or if the input is different, it returns a 400 ExecutionAlreadyExists error. You can reuse names after 90 days. StartExecution isn't idempotent for EXPRESS workflows."
+      description: "Starts a state machine execution. A qualified state machine ARN can either refer to a Distributed Map state defined within a state machine, a version ARN, or an alias ARN. The following are some examples of qualified and unqualified state machine ARNs: The following qualified state machine ARN refers to a Distributed Map state with a label mapStateLabel in a state machine named myStateMachine. arn:partition:states:region:account-id:stateMachine:myStateMachine/mapStateLabel If you provide a qualified state machine ARN that refers to a Distributed Map state, the request fails with ValidationException. The following qualified state machine ARN refers to an alias named PROD. arn:`<partition>`:states:`<region>`:`<account-id>`:stateMachine:`<myStateMachine:PROD>` If you provide a qualified state machine ARN that refers to a version ARN or an alias ARN, the request starts execution for that version or alias. The following unqualified state machine ARN refers to a state machine named myStateMachine. arn:`<partition>`:states:`<region>`:`<account-id>`:stateMachine:`<myStateMachine>` If you start an execution with an unqualified state machine ARN, Step Functions uses the latest revision of the state machine for the execution. To start executions of a state machine version, call StartExecution and provide the version ARN or the ARN of an alias that points to the version. StartExecution is idempotent for STANDARD workflows. For a STANDARD workflow, if you call StartExecution with the same name and input as a running execution, the call succeeds and return the same response as the original request. If the execution is closed or if the input is different, it returns a 400 ExecutionAlreadyExists error. You can reuse the name 90 days after it closes. StartExecution isn't idempotent for EXPRESS workflows."
       parameters:
         - name: X-Amz-Target
           in: header
@@ -1053,7 +1025,7 @@ paths:
                   description: "The Amazon Resource Name (ARN) of the state machine to execute. The stateMachineArn parameter accepts one of the following inputs: An unqualified state machine ARN – Refers to a state machine ARN that isn't qualified with a version or alias ARN. The following is an example of an unqualified state machine ARN. arn:`<partition>`:states:`<region>`:`<account-id>`:stateMachine:`<myStateMachine>` Step Functions doesn't associate state machine executions that you start with an unqualified ARN with a version. This is true even if that version uses the same revision that the execution used. A state machine version ARN – Refers to a version ARN, which is a combination of state machine ARN and the version number separated by a colon (:). The following is an example of the ARN for version 10. arn:`<partition>`:states:`<region>`:`<account-id>`:stateMachine:`<myStateMachine>`:10 Step Functions doesn't associate executions that you start with a version ARN with any aliases that point to that version. A state machine alias ARN – Refers to an alias ARN, which is a combination of state machine ARN and the alias name separated by a colon (:). The following is an example of the ARN for an alias named PROD. arn:`<partition>`:states:`<region>`:`<account-id>`:stateMachine:`<myStateMachine:PROD>` Step Functions associates executions that you start with an alias ARN with that alias and the state machine version used for that execution."
                 name:
                   $ref: "#/components/schemas/Name"
-                  description: "Optional name of the execution. This name must be unique for your Amazon Web Services account, Region, and state machine for 90 days. For more information, see Limits Related to State Machine Executions in the Step Functions Developer Guide. If you don't provide a name for the execution, Step Functions automatically generates a universally unique identifier (UUID) as the execution name. A name must not contain: white space brackets < > { } [ ] wildcard characters ? * special characters \" # % \\ ^ | ~ ` $ & , ; : / control characters (U+0000-001F, U+007F-009F, U+FFFE-FFFF) surrogates (U+D800-DFFF) invalid characters ( U+10FFFF) To enable logging with CloudWatch Logs, the name should only contain 0-9, A-Z, a-z, - and _."
+                  description: "Optional name of the execution. For STANDARD workflows, this name must be unique for your Amazon Web Services account, region, and state machine. If a previous execution with the same name exists, you can reuse the name 90 days after it closes. For EXPRESS workflows, execution names can be reused immediately. For more information, see Limits Related to State Machine Executions in the Step Functions Developer Guide. If you don't provide a name for the execution, Step Functions automatically generates a universally unique identifier (UUID) as the execution name. A name must not contain: white space brackets < > { } [ ] wildcard characters ? * special characters \" # % \\ ^ | ~ ` $ & , ; : / control characters (U+0000-001F, U+007F-009F, U+FFFE-FFFF) surrogates (U+D800-DFFF) invalid characters ( U+10FFFF) To enable logging with CloudWatch Logs, the name should only contain 0-9, A-Z, a-z, - and _."
                 input:
                   $ref: "#/components/schemas/SensitiveData"
                   description: "The string that contains the JSON input data for the execution, for example: \"{\\\"first_name\\\" : \\\"Alejandro\\\"}\" If you don't include any JSON input data, you still must include the two braces, for example: \"{}\" Length constraints apply to the payload size, and are expressed as bytes in UTF-8 encoding."
@@ -1072,7 +1044,7 @@ paths:
   /StartSyncExecution:
     post:
       operationId: StartSyncExecution
-      description: Starts a Synchronous Express state machine execution. StartSyncExecution is not available for STANDARD workflows. StartSyncExecution will return a 200 OK response, even if your execution fails, because the status code in the API response doesn't reflect function errors. Error codes are reserved for errors that prevent your execution from running, such as permissions errors, limit errors, or issues with your state machine code and configuration. This API action isn't logged in CloudTrail.
+      description: Starts a Synchronous Express state machine execution. StartSyncExecution is not available for STANDARD workflows. StartSyncExecution will return a 200 OK response, even if your execution fails, because the status code in the API response doesn't reflect function errors. Error codes are reserved for errors that prevent your execution from running, such as permissions errors, limit errors, or issues with your state machine code and configuration.
       parameters:
         - name: X-Amz-Target
           in: header
@@ -1186,10 +1158,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TagResourceOutput"
   /TestState:
     post:
       operationId: TestState
@@ -1283,10 +1251,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UntagResourceOutput"
   /UpdateMapRun:
     post:
       operationId: UpdateMapRun
@@ -1325,10 +1289,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateMapRunOutput"
   /UpdateStateMachine:
     post:
       operationId: UpdateStateMachine
@@ -1699,18 +1659,10 @@ components:
       required:
         - stateMachineAliasArn
         - creationDate
-    DeleteActivityOutput:
-      type: object
-    DeleteStateMachineOutput:
-      type: object
-    DeleteStateMachineAliasOutput:
-      type: object
     LongArn:
       type: string
       minLength: 1
       maxLength: 2000
-    DeleteStateMachineVersionOutput:
-      type: object
     DescribeActivityOutput:
       type: object
       properties:
@@ -3125,12 +3077,6 @@ components:
           description: The date the execution was last redriven.
       required:
         - redriveDate
-    SendTaskFailureOutput:
-      type: object
-    SendTaskHeartbeatOutput:
-      type: object
-    SendTaskSuccessOutput:
-      type: object
     StartExecutionOutput:
       type: object
       properties:
@@ -3223,8 +3169,6 @@ components:
           description: The date the execution is stopped.
       required:
         - stopDate
-    TagResourceOutput:
-      type: object
     InspectionLevel:
       type: string
       enum:
@@ -3460,10 +3404,6 @@ components:
       type: array
       items:
         $ref: "#/components/schemas/TagKey"
-    UntagResourceOutput:
-      type: object
-    UpdateMapRunOutput:
-      type: object
     UpdateStateMachineOutput:
       type: object
       properties:
@@ -3571,7 +3511,6 @@ components:
             $ref: "#/paths/~1DeleteActivity/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.0
@@ -3645,7 +3584,6 @@ components:
             $ref: "#/paths/~1DeleteStateMachine/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.0
@@ -3656,6 +3594,19 @@ components:
         describe_state_machine:
           operation:
             $ref: "#/paths/~1DescribeStateMachine/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        describe_state_machine_for_execution:
+          operation:
+            $ref: "#/paths/~1DescribeStateMachineForExecution/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -3742,6 +3693,7 @@ components:
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/state_machines/methods/describe_state_machine"
+          - $ref: "#/components/x-stackQL-resources/state_machines/methods/describe_state_machine_for_execution"
           - $ref: "#/components/x-stackQL-resources/state_machines/methods/list_state_machines"
         insert:
           - $ref: "#/components/x-stackQL-resources/state_machines/methods/create_state_machine"
@@ -3749,10 +3701,10 @@ components:
           - $ref: "#/components/x-stackQL-resources/state_machines/methods/update_state_machine"
         delete:
           - $ref: "#/components/x-stackQL-resources/state_machines/methods/delete_state_machine"
-    state_machine_alias:
-      id: aws.stepfunctions.state_machine_alias
-      name: state_machine_alias
-      title: state_machine_alias
+    state_machine_aliases:
+      id: aws.stepfunctions.state_machine_aliases
+      name: state_machine_aliases
+      title: state_machine_aliases
       methods:
         create_state_machine_alias:
           operation:
@@ -3772,7 +3724,6 @@ components:
             $ref: "#/paths/~1DeleteStateMachineAlias/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.0
@@ -3783,6 +3734,19 @@ components:
         describe_state_machine_alias:
           operation:
             $ref: "#/paths/~1DescribeStateMachineAlias/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        list_state_machine_aliases:
+          operation:
+            $ref: "#/paths/~1ListStateMachineAliases/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -3808,13 +3772,14 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/state_machine_alias/methods/describe_state_machine_alias"
+          - $ref: "#/components/x-stackQL-resources/state_machine_aliases/methods/describe_state_machine_alias"
+          - $ref: "#/components/x-stackQL-resources/state_machine_aliases/methods/list_state_machine_aliases"
         insert:
-          - $ref: "#/components/x-stackQL-resources/state_machine_alias/methods/create_state_machine_alias"
+          - $ref: "#/components/x-stackQL-resources/state_machine_aliases/methods/create_state_machine_alias"
         update:
-          - $ref: "#/components/x-stackQL-resources/state_machine_alias/methods/update_state_machine_alias"
+          - $ref: "#/components/x-stackQL-resources/state_machine_aliases/methods/update_state_machine_alias"
         delete:
-          - $ref: "#/components/x-stackQL-resources/state_machine_alias/methods/delete_state_machine_alias"
+          - $ref: "#/components/x-stackQL-resources/state_machine_aliases/methods/delete_state_machine_alias"
     state_machine_versions:
       id: aws.stepfunctions.state_machine_versions
       name: state_machine_versions
@@ -3825,7 +3790,6 @@ components:
             $ref: "#/paths/~1DeleteStateMachineVersion/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.0
@@ -3905,6 +3869,32 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        start_execution:
+          operation:
+            $ref: "#/paths/~1StartExecution/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        stop_execution:
+          operation:
+            $ref: "#/paths/~1StopExecution/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/executions/methods/describe_execution"
@@ -3956,7 +3946,6 @@ components:
             $ref: "#/paths/~1UpdateMapRun/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.0
@@ -3971,30 +3960,6 @@ components:
         insert: []
         update:
           - $ref: "#/components/x-stackQL-resources/map_runs/methods/update_map_run"
-        delete: []
-    state_machine_for_executions:
-      id: aws.stepfunctions.state_machine_for_executions
-      name: state_machine_for_executions
-      title: state_machine_for_executions
-      methods:
-        describe_state_machine_for_execution:
-          operation:
-            $ref: "#/paths/~1DescribeStateMachineForExecution/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.0
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/state_machine_for_executions/methods/describe_state_machine_for_execution"
-        insert: []
-        update: []
         delete: []
     activity_tasks:
       id: aws.stepfunctions.activity_tasks
@@ -4052,30 +4017,6 @@ components:
         insert: []
         update: []
         delete: []
-    state_machine_aliases:
-      id: aws.stepfunctions.state_machine_aliases
-      name: state_machine_aliases
-      title: state_machine_aliases
-      methods:
-        list_state_machine_aliases:
-          operation:
-            $ref: "#/paths/~1ListStateMachineAliases/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.0
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/state_machine_aliases/methods/list_state_machine_aliases"
-        insert: []
-        update: []
-        delete: []
     tags:
       id: aws.stepfunctions.tags
       name: tags
@@ -4099,7 +4040,6 @@ components:
             $ref: "#/paths/~1TagResource/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.0
@@ -4112,7 +4052,6 @@ components:
             $ref: "#/paths/~1UntagResource/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.0
@@ -4127,4 +4066,93 @@ components:
         update:
           - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
           - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
+        delete: []
+    task_failures:
+      id: aws.stepfunctions.task_failures
+      name: task_failures
+      title: task_failures
+      methods:
+        send_task_failure:
+          operation:
+            $ref: "#/paths/~1SendTaskFailure/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
+    task_heartbeats:
+      id: aws.stepfunctions.task_heartbeats
+      name: task_heartbeats
+      title: task_heartbeats
+      methods:
+        send_task_heartbeat:
+          operation:
+            $ref: "#/paths/~1SendTaskHeartbeat/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
+    task_successes:
+      id: aws.stepfunctions.task_successes
+      name: task_successes
+      title: task_successes
+      methods:
+        send_task_success:
+          operation:
+            $ref: "#/paths/~1SendTaskSuccess/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
+    states:
+      id: aws.stepfunctions.states
+      name: states
+      title: states
+      methods:
+        test_state:
+          operation:
+            $ref: "#/paths/~1TestState/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
         delete: []

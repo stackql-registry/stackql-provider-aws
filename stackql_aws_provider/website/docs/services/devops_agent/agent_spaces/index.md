@@ -105,6 +105,11 @@ The following fields are returned by `SELECT` queries:
     <td>A BCP 47 locale identifier for configuring the language used in agent responses. (pattern: &lt;code&gt;&#91;a-zA-Z&#93;&#123;2,3&#125;(-&#91;a-zA-Z0-9&#93;&#123;2,8&#125;)*&lt;/code&gt;)</td>
 </tr>
 <tr>
+    <td><CopyableCode code="preferences" /></td>
+    <td><code>object</code></td>
+    <td>The preferences configured on the agent space. Preferences that are not set take their default values.</td>
+</tr>
+<tr>
     <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the resource was last updated.</td>
@@ -149,6 +154,13 @@ The following methods are available for this resource:
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-name"><code>name</code></a></td>
     <td></td>
     <td>Creates a new AgentSpace with the specified name and description. Duplicate space names are allowed.</td>
+</tr>
+<tr>
+    <td><a href="#update_approval_action"><CopyableCode code="update_approval_action" /></a></td>
+    <td><CopyableCode code="update" /></td>
+    <td><a href="#parameter-agent_space_id"><code>agent_space_id</code></a>, <a href="#parameter-approval_id"><code>approval_id</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-action"><code>action</code></a></td>
+    <td></td>
+    <td>Updates an approval request with the terminal decision (APPROVED or REJECTED). A single operation handles both verbs via the action enum.</td>
 </tr>
 <tr>
     <td><a href="#update_agent_space"><CopyableCode code="update_agent_space" /></a></td>
@@ -205,6 +217,11 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     <td><CopyableCode code="agent_space_id" /></td>
     <td><code>string</code></td>
     <td>The agent space identifier</td>
+</tr>
+<tr id="parameter-approval_id">
+    <td><CopyableCode code="approval_id" /></td>
+    <td><code>string</code></td>
+    <td>Identifier of the approval request being resolved. A UUID. Bound from the request URI.</td>
 </tr>
 <tr id="parameter-region">
     <td><CopyableCode code="region" /></td>
@@ -264,6 +281,7 @@ created_at,
 description,
 kms_key_arn,
 locale,
+preferences,
 updated_at
 FROM aws.devops_agent.agent_spaces
 WHERE region = '{{ region }}' -- required
@@ -296,6 +314,7 @@ locale,
 kmsKeyArn,
 clientToken,
 tags,
+preferences,
 region
 )
 SELECT 
@@ -305,6 +324,7 @@ SELECT
 '{{ kmsKeyArn }}',
 '{{ clientToken }}',
 '{{ tags }}',
+'{{ preferences }}',
 '{{ region }}'
 RETURNING
 agent_space,
@@ -342,6 +362,10 @@ tags
       value: "{{ tags }}"
       description: |
         Map of tag keys to values.
+    - name: preferences
+      value: "{{ preferences }}"
+      description: |
+        The preferences configured on an agent space, keyed by preference key. Each key must be a recognized preference key; unrecognized keys are rejected.
 `}</CodeBlock>
 
 </TabItem>
@@ -351,11 +375,35 @@ tags
 ## `UPDATE` examples
 
 <Tabs
-    defaultValue="update_agent_space"
+    defaultValue="update_approval_action"
     values={[
+        { label: 'update_approval_action', value: 'update_approval_action' },
         { label: 'update_agent_space', value: 'update_agent_space' }
     ]}
 >
+<TabItem value="update_approval_action">
+
+Updates an approval request with the terminal decision (APPROVED or REJECTED). A single operation handles both verbs via the action enum.
+
+```sql
+UPDATE aws.devops_agent.agent_spaces
+SET 
+action = '{{ action }}',
+finalPattern = '{{ finalPattern }}',
+reason = '{{ reason }}',
+ttlSeconds = {{ ttlSeconds }},
+singleUse = {{ singleUse }}
+WHERE 
+agent_space_id = '{{ agent_space_id }}' --required
+AND approval_id = '{{ approval_id }}' --required
+AND region = '{{ region }}' --required
+AND action = '{{ action }}' --required
+RETURNING
+approval_id,
+expires_at,
+status;
+```
+</TabItem>
 <TabItem value="update_agent_space">
 
 Updates the information of an existing AgentSpace.
@@ -365,7 +413,8 @@ UPDATE aws.devops_agent.agent_spaces
 SET 
 name = '{{ name }}',
 description = '{{ description }}',
-locale = '{{ locale }}'
+locale = '{{ locale }}',
+preferences = '{{ preferences }}'
 WHERE 
 agent_space_id = '{{ agent_space_id }}' --required
 AND region = '{{ region }}' --required
@@ -455,7 +504,8 @@ EXEC aws.devops_agent.agent_spaces.send_message
 "content": "{{ content }}", 
 "context": "{{ context }}", 
 "userId": "{{ userId }}", 
-"assetIds": "{{ assetIds }}"
+"assetIds": "{{ assetIds }}", 
+"modelTier": "{{ modelTier }}"
 }'
 ;
 ```

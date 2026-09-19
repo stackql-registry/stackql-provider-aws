@@ -92,10 +92,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteLinkOutput"
   /DeleteSink:
     post:
       operationId: DeleteSink
@@ -115,10 +111,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteSinkOutput"
   /GetLink:
     post:
       operationId: GetLink
@@ -305,10 +297,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TagResourceOutput"
     delete:
       operationId: UntagResource
       description: Removes one or more tags from the specified resource. Unlike tagging permissions in other Amazon Web Services services, to tag or untag links and sinks you must have the oam:ResourceTag permission. The iam:TagResource permission does not allow you to tag and untag links and sinks.
@@ -328,10 +316,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UntagResourceOutput"
   /PutSinkPolicy:
     post:
       operationId: PutSinkPolicy
@@ -545,10 +529,6 @@ components:
           type: object
           properties: {}
           description: The tags assigned to the sink.
-    DeleteLinkOutput:
-      type: object
-    DeleteSinkOutput:
-      type: object
     IncludeTags:
       type: boolean
     GetLinkOutput:
@@ -735,8 +715,6 @@ components:
         SinkId:
           $ref: "#/components/schemas/String"
           description: The random ID string that Amazon Web Services generated as part of the sink ARN.
-    TagResourceOutput:
-      type: object
     TagKeys:
       type: array
       items:
@@ -745,8 +723,6 @@ components:
       type: string
       minLength: 1
       maxLength: 128
-    UntagResourceOutput:
-      type: object
     UpdateLinkOutput:
       type: object
       properties:
@@ -797,7 +773,6 @@ components:
             $ref: "#/paths/~1DeleteLink/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -875,7 +850,6 @@ components:
             $ref: "#/paths/~1DeleteSink/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -1001,7 +975,6 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/put"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -1012,7 +985,6 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
       sqlVerbs:

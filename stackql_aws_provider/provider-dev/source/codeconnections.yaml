@@ -276,10 +276,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteConnectionOutput'
       x-stackql-resource: connections
       x-stackql-method: delete_connection
       x-stackql-verb: DELETE
@@ -313,10 +309,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteHostOutput'
       x-stackql-resource: hosts
       x-stackql-method: delete_host
       x-stackql-verb: DELETE
@@ -349,10 +341,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteRepositoryLinkOutput'
       x-stackql-resource: repository_links
       x-stackql-method: delete_repository_link
       x-stackql-verb: DELETE
@@ -389,10 +377,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteSyncConfigurationOutput'
       x-stackql-resource: sync_configurations
       x-stackql-method: delete_sync_configuration
       x-stackql-verb: DELETE
@@ -549,7 +533,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetRepositorySyncStatusOutput'
-      x-stackql-resource: repository_sync_status
+      x-stackql-resource: repository_sync_statuses
       x-stackql-method: get_repository_sync_status
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.LatestSync
@@ -590,7 +574,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetResourceSyncStatusOutput'
-      x-stackql-resource: resource_sync_status
+      x-stackql-resource: resource_sync_statuses
       x-stackql-method: get_resource_sync_status
       x-stackql-verb: SELECT
   /GetSyncBlockerSummary:
@@ -957,10 +941,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceOutput'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -997,10 +977,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceOutput'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -1040,10 +1016,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateHostOutput'
       x-stackql-resource: hosts
       x-stackql-method: update_host
       x-stackql-verb: UPDATE
@@ -1542,14 +1514,6 @@ components:
       - ResourceName
       - RoleArn
       - SyncType
-    DeleteConnectionOutput:
-      type: object
-    DeleteHostOutput:
-      type: object
-    DeleteRepositoryLinkOutput:
-      type: object
-    DeleteSyncConfigurationOutput:
-      type: object
     GetConnectionOutput:
       type: object
       properties:
@@ -2073,16 +2037,10 @@ components:
         Tags:
           $ref: '#/components/schemas/TagList'
           description: A list of tag key and value pairs associated with the specified resource.
-    TagResourceOutput:
-      type: object
     TagKeyList:
       type: array
       items:
         $ref: '#/components/schemas/TagKey'
-    UntagResourceOutput:
-      type: object
-    UpdateHostOutput:
-      type: object
     UpdateRepositoryLinkOutput:
       type: object
       properties:

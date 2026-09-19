@@ -686,10 +686,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteClusterPolicyResponse"
     get:
       operationId: GetClusterPolicy
       description: Get the MSK cluster policy specified by the Amazon Resource Name (ARN) in the request.
@@ -1418,10 +1414,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/RejectClientVpcConnectionResponse"
   /v1/clusters/{cluster_arn}/nodes/count:
     put:
       operationId: UpdateBrokerCount
@@ -2784,6 +2776,9 @@ components:
         MTLS:
           $ref: "#/components/schemas/KafkaClusterMTLSAuthentication"
           description: Details for mTLS client authentication.
+        SaslOAuthBearer:
+          $ref: "#/components/schemas/KafkaClusterSaslOAuthBearerAuthentication"
+          description: Details for SASL/OAUTHBEARER client authentication.
     KafkaClusterSaslScramAuthentication:
       description: Details for SASL/SCRAM client authentication.
       type: object
@@ -2812,6 +2807,88 @@ components:
           description: The Amazon Resource Name (ARN) of the Secrets Manager secret.
       required:
         - SecretArn
+    KafkaClusterSaslOAuthBearerAuthentication:
+      description: Details for SASL/OAUTHBEARER client authentication.
+      type: object
+      properties:
+        TokenEndpointUrl:
+          $ref: "#/components/schemas/__string"
+          description: The HTTPS URL of the OAuth token endpoint that vends OAuth Bearer tokens per RFC 6749.
+        ClientCredentials:
+          $ref: "#/components/schemas/KafkaClusterOAuthClientCredentials"
+          description: Details for SASL/OAUTHBEARER using standard client_credentials grant.
+        IamJwtBearer:
+          $ref: "#/components/schemas/KafkaClusterOAuthIamJwtBearer"
+          description: Details for SASL/OAUTHBEARER using JWT Bearer assertion grant (RFC 7523).
+        ClientCredentialsAssertion:
+          $ref: "#/components/schemas/KafkaClusterOAuthClientCredentialsAssertion"
+          description: Details for SASL/OAUTHBEARER using client credentials grant with JWT client assertion.
+        TokenEndpointAuthenticationMethod:
+          $ref: "#/components/schemas/TokenEndpointAuthenticationMethod"
+          description: How client credentials are sent to the identity provider. Valid values are POST, BASIC, or NONE.
+        Scope:
+          $ref: "#/components/schemas/__string"
+          description: OAuth scope to request.
+        TokenEndpointTlsCertificateArn:
+          $ref: "#/components/schemas/__string"
+          description: Secrets Manager ARN containing a custom CA certificate for the identity provider.
+      required:
+        - TokenEndpointUrl
+        - TokenEndpointAuthenticationMethod
+    KafkaClusterOAuthClientCredentials:
+      description: Details for SASL/OAUTHBEARER using standard client_credentials grant.
+      type: object
+      properties:
+        TokenRequestSecretArn:
+          $ref: "#/components/schemas/__string"
+          description: The Amazon Resource Name (ARN) of the Secrets Manager secret containing the OAuth client credentials.
+      required:
+        - TokenRequestSecretArn
+    KafkaClusterOAuthIamJwtBearer:
+      description: Details for SASL/OAUTHBEARER using JWT Bearer assertion grant.
+      type: object
+      properties:
+        Audience:
+          $ref: "#/components/schemas/__string"
+          description: The audience for the JWT Bearer assertion.
+        SigningAlgorithm:
+          $ref: "#/components/schemas/JwtSigningAlgorithm"
+          description: The signing algorithm for the JWT Bearer assertion.
+        TokenRequestSecretArn:
+          $ref: "#/components/schemas/__string"
+          description: The Amazon Resource Name (ARN) of the Secrets Manager secret containing the signing key.
+      required:
+        - Audience
+        - SigningAlgorithm
+    JwtSigningAlgorithm:
+      description: The algorithm used to sign the STS JWT assertion.
+      type: string
+      enum:
+        - RS256
+        - ES384
+    KafkaClusterOAuthClientCredentialsAssertion:
+      description: Details for SASL/OAUTHBEARER using client credentials grant with JWT client assertion.
+      type: object
+      properties:
+        Audience:
+          $ref: "#/components/schemas/__string"
+          description: The audience for the JWT client assertion.
+        SigningAlgorithm:
+          $ref: "#/components/schemas/JwtSigningAlgorithm"
+          description: The signing algorithm for the JWT client assertion.
+        TokenRequestSecretArn:
+          $ref: "#/components/schemas/__string"
+          description: The Amazon Resource Name (ARN) of the Secrets Manager secret containing the signing key.
+      required:
+        - Audience
+        - SigningAlgorithm
+    TokenEndpointAuthenticationMethod:
+      description: How client credentials are sent to the identity provider's token endpoint.
+      type: string
+      enum:
+        - POST
+        - BASIC
+        - NONE
     KafkaClusterEncryptionInTransit:
       description: Details of encryption in transit to the Apache Kafka cluster.
       type: object
@@ -3134,8 +3211,6 @@ components:
         State:
           $ref: "#/components/schemas/ClusterState"
           description: The state of the cluster. The possible states are ACTIVE, CREATING, DELETING, FAILED, HEALING, MAINTENANCE, REBOOTING_BROKER, and UPDATING.
-    DeleteClusterPolicyResponse:
-      type: object
     DeleteConfigurationResponse:
       type: object
       properties:
@@ -4603,8 +4678,6 @@ components:
         ClusterOperationArn:
           $ref: "#/components/schemas/__string"
           description: The Amazon Resource Name (ARN) of the cluster operation.
-    RejectClientVpcConnectionResponse:
-      type: object
     UpdateBrokerCountResponse:
       type: object
       properties:
@@ -5075,10 +5148,10 @@ components:
           - $ref: "#/components/x-stackQL-resources/channels/methods/update_channel"
         delete:
           - $ref: "#/components/x-stackQL-resources/channels/methods/delete_channel"
-    cluster_v2s:
-      id: aws.kafka.cluster_v2s
-      name: cluster_v2s
-      title: cluster_v2s
+    clusters_v2:
+      id: aws.kafka.clusters_v2
+      name: clusters_v2
+      title: clusters_v2
       methods:
         create_cluster_v2:
           operation:
@@ -5091,25 +5164,6 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
-        describe_cluster_v2:
-          operation:
-            $ref: "#/paths/~1api~1v2~1clusters~1{cluster_arn}/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.ClusterInfo
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/cluster_v2s/methods/describe_cluster_v2"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/cluster_v2s/methods/create_cluster_v2"
-        update: []
-        delete: []
-    clusters_v2s:
-      id: aws.kafka.clusters_v2s
-      name: clusters_v2s
-      title: clusters_v2s
-      methods:
         list_clusters_v2:
           operation:
             $ref: "#/paths/~1api~1v2~1clusters/get"
@@ -5127,10 +5181,19 @@ components:
               responseToken:
                 key: $.NextToken
                 location: body
+        describe_cluster_v2:
+          operation:
+            $ref: "#/paths/~1api~1v2~1clusters~1{cluster_arn}/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.ClusterInfo
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/clusters_v2s/methods/list_clusters_v2"
-        insert: []
+          - $ref: "#/components/x-stackQL-resources/clusters_v2/methods/describe_cluster_v2"
+          - $ref: "#/components/x-stackQL-resources/clusters_v2/methods/list_clusters_v2"
+        insert:
+          - $ref: "#/components/x-stackQL-resources/clusters_v2/methods/create_cluster_v2"
         update: []
         delete: []
     configurations:
@@ -5207,8 +5270,8 @@ components:
         insert:
           - $ref: "#/components/x-stackQL-resources/configurations/methods/create_configuration"
         update:
-          - $ref: "#/components/x-stackQL-resources/configurations/methods/update_cluster_configuration"
           - $ref: "#/components/x-stackQL-resources/configurations/methods/update_configuration"
+          - $ref: "#/components/x-stackQL-resources/configurations/methods/update_cluster_configuration"
         delete:
           - $ref: "#/components/x-stackQL-resources/configurations/methods/delete_configuration"
     replicators:
@@ -5395,7 +5458,6 @@ components:
             $ref: "#/paths/~1v1~1clusters~1{cluster_arn}~1client-vpc-connection/put"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -5420,7 +5482,6 @@ components:
             $ref: "#/paths/~1v1~1clusters~1{cluster_arn}~1policy/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         get_cluster_policy:
           operation:
             $ref: "#/paths/~1v1~1clusters~1{cluster_arn}~1policy/get"
@@ -5483,10 +5544,10 @@ components:
         insert: []
         update: []
         delete: []
-    cluster_operation_v2s:
-      id: aws.kafka.cluster_operation_v2s
-      name: cluster_operation_v2s
-      title: cluster_operation_v2s
+    cluster_operations_v2:
+      id: aws.kafka.cluster_operations_v2
+      name: cluster_operations_v2
+      title: cluster_operations_v2
       methods:
         describe_cluster_operation_v2:
           operation:
@@ -5495,9 +5556,27 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.ClusterOperationInfo
+        list_cluster_operations_v2:
+          operation:
+            $ref: "#/paths/~1api~1v2~1clusters~1{cluster_arn}~1operations/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.ClusterOperationInfoList
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/cluster_operation_v2s/methods/describe_cluster_operation_v2"
+          - $ref: "#/components/x-stackQL-resources/cluster_operations_v2/methods/describe_cluster_operation_v2"
+          - $ref: "#/components/x-stackQL-resources/cluster_operations_v2/methods/list_cluster_operations_v2"
         insert: []
         update: []
         delete: []
@@ -5625,34 +5704,6 @@ components:
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/client_vpc_connections/methods/list_client_vpc_connections"
-        insert: []
-        update: []
-        delete: []
-    cluster_operations_v2s:
-      id: aws.kafka.cluster_operations_v2s
-      name: cluster_operations_v2s
-      title: cluster_operations_v2s
-      methods:
-        list_cluster_operations_v2:
-          operation:
-            $ref: "#/paths/~1api~1v2~1clusters~1{cluster_arn}~1operations/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.ClusterOperationInfoList
-          request:
-            nativeCasing: pascal
-          config:
-            pagination:
-              requestToken:
-                key: nextToken
-                location: query
-              responseToken:
-                key: $.NextToken
-                location: body
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/cluster_operations_v2s/methods/list_cluster_operations_v2"
         insert: []
         update: []
         delete: []

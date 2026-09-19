@@ -457,10 +457,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TagResourceResponse"
     delete:
       operationId: UntagResource
       description: Removes one or more tags from a signing profile. To remove the tags, specify a list of tag keys.
@@ -480,10 +476,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UntagResourceResponse"
   /signing-profiles/{profile_name}/permissions/{statement_id}:
     delete:
       operationId: RemoveProfilePermission
@@ -1355,8 +1347,6 @@ components:
         jobOwner:
           $ref: "#/components/schemas/AccountId"
           description: The AWS account ID of the signing job owner.
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
@@ -1366,8 +1356,6 @@ components:
       minLength: 1
       maxLength: 128
       pattern: ^(?!aws:)[a-zA-Z+-=._:/]+$
-    UntagResourceResponse:
-      type: object
   x-stackQL-resources:
     profile_permissions:
       id: aws.signer.profile_permissions
@@ -1414,6 +1402,11 @@ components:
       name: signing_profiles
       title: signing_profiles
       methods:
+        cancel_signing_profile:
+          operation:
+            $ref: "#/paths/~1signing-profiles~1{profile_name}/delete"
+          response:
+            openAPIDocKey: "200"
         get_signing_profile:
           operation:
             $ref: "#/paths/~1signing-profiles~1{profile_name}/get"
@@ -1498,6 +1491,17 @@ components:
               responseToken:
                 key: $.nextToken
                 location: body
+        start_signing_job:
+          operation:
+            $ref: "#/paths/~1signing-jobs/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/signing_jobs/methods/describe_signing_job"
@@ -1505,10 +1509,10 @@ components:
         insert: []
         update: []
         delete: []
-    revocation_status:
-      id: aws.signer.revocation_status
-      name: revocation_status
-      title: revocation_status
+    revocation_statuses:
+      id: aws.signer.revocation_statuses
+      name: revocation_statuses
+      title: revocation_statuses
       methods:
         get_revocation_status:
           operation:
@@ -1527,7 +1531,7 @@ components:
             nativeCasing: pascal
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/revocation_status/methods/get_revocation_status"
+          - $ref: "#/components/x-stackQL-resources/revocation_statuses/methods/get_revocation_status"
         insert: []
         update: []
         delete: []
@@ -1582,7 +1586,6 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -1593,7 +1596,6 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
       sqlVerbs:
@@ -1624,4 +1626,25 @@ components:
         insert: []
         update:
           - $ref: "#/components/x-stackQL-resources/signatures/methods/revoke_signature"
+        delete: []
+    payloads:
+      id: aws.signer.payloads
+      name: payloads
+      title: payloads
+      methods:
+        sign_payload:
+          operation:
+            $ref: "#/paths/~1signing-jobs~1with-payload/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
         delete: []

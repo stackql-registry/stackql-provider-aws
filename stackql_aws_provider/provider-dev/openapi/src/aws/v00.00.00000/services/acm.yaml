@@ -3660,9 +3660,35 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        export_certificate:
+          operation:
+            $ref: "#/paths/~1ExportCertificate/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         get_certificate:
           operation:
             $ref: "#/paths/~1GetCertificate/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        import_certificate:
+          operation:
+            $ref: "#/paths/~1ImportCertificate/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -3692,6 +3718,31 @@ components:
               responseToken:
                 key: $.NextToken
                 location: body
+            requestBodyTranslate:
+              algorithm: naive
+        renew_certificate:
+          operation:
+            $ref: "#/paths/~1RenewCertificate/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        request_certificate:
+          operation:
+            $ref: "#/paths/~1RequestCertificate/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
             requestBodyTranslate:
               algorithm: naive
         resend_validation_email:

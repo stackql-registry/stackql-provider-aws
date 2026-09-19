@@ -514,10 +514,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteResourcePolicyResponse'
       x-stackql-resource: resource_policies
       x-stackql-method: delete_resource_policy
       x-stackql-verb: DELETE
@@ -804,10 +800,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -832,10 +824,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -863,10 +851,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PutResourcePolicyResponse'
       x-stackql-resource: resource_policies
       x-stackql-method: put_resource_policy
       x-stackql-verb: REPLACE
@@ -1374,8 +1358,6 @@ components:
       minLength: 20
       maxLength: 2048
       pattern: ^arn:aws:refactor-spaces:[a-zA-Z0-9\-]+:\w{12}:[a-zA-Z_0-9+=,.@\-_/]+$
-    DeleteResourcePolicyResponse:
-      type: object
     DeleteRouteResponse:
       type: object
       properties:
@@ -2156,16 +2138,10 @@ components:
           type: object
           properties: {}
           description: The list of tags assigned to the resource.
-    PutResourcePolicyResponse:
-      type: object
-    TagResourceResponse:
-      type: object
     TagKeys:
       type: array
       items:
         $ref: '#/components/schemas/String'
-    UntagResourceResponse:
-      type: object
     UpdateRouteResponse:
       type: object
       properties:

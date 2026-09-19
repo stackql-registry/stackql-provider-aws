@@ -41,10 +41,6 @@ paths:
       responses:
         "201":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/AssociateChannelResponse"
   /contacts/associate-managed-notification/{contact_identifier}:
     put:
       operationId: AssociateManagedNotificationAccountContact
@@ -65,15 +61,13 @@ paths:
               properties:
                 managedNotificationConfigurationArn:
                   $ref: "#/components/schemas/ManagedNotificationConfigurationOsArn"
+                isSensitiveEventsSubscribed:
+                  $ref: "#/components/schemas/Boolean"
               required:
                 - managedNotificationConfigurationArn
       responses:
         "201":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/AssociateManagedNotificationAccountContactResponse"
   /channels/associate-managed-notification/{channel_arn}:
     put:
       operationId: AssociateManagedNotificationAdditionalChannel
@@ -94,15 +88,13 @@ paths:
               properties:
                 managedNotificationConfigurationArn:
                   $ref: "#/components/schemas/ManagedNotificationConfigurationOsArn"
+                isSensitiveEventsSubscribed:
+                  $ref: "#/components/schemas/Boolean"
               required:
                 - managedNotificationConfigurationArn
       responses:
         "201":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/AssociateManagedNotificationAdditionalChannelResponse"
   /organizational-units/associate/{organizational_unit_id}:
     post:
       operationId: AssociateOrganizationalUnit
@@ -128,10 +120,6 @@ paths:
       responses:
         "201":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/AssociateOrganizationalUnitResponse"
   /event-rules:
     post:
       operationId: CreateEventRule
@@ -286,10 +274,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteEventRuleResponse"
     get:
       operationId: GetEventRule
       description: Returns a specified EventRule.
@@ -349,10 +333,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteNotificationConfigurationResponse"
     get:
       operationId: GetNotificationConfiguration
       description: Returns a specified NotificationConfiguration.
@@ -403,14 +383,14 @@ paths:
   /notification-hubs/{notification_hub_region}:
     delete:
       operationId: DeregisterNotificationHub
-      description: Deregisters a NotificationConfiguration in the specified Region. You can't deregister the last NotificationHub in the account. NotificationEvents stored in the deregistered NotificationConfiguration are no longer be visible. Recreating a new NotificationConfiguration in the same Region restores access to those NotificationEvents.
+      description: Deregisters a NotificationHub in the specified Region. You can't deregister the last NotificationHub in the account. NotificationEvents stored in the deregistered NotificationHub are no longer visible. Recreating a new NotificationHub in the same Region restores access to those NotificationEvents.
       parameters:
         - name: notification_hub_region
           in: path
           required: true
           schema:
             $ref: "#/components/schemas/Region"
-          description: The NotificationConfiguration Region.
+          description: The NotificationHub Region.
       responses:
         "200":
           description: Success
@@ -426,10 +406,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DisableNotificationsAccessForOrganizationResponse"
     post:
       operationId: EnableNotificationsAccessForOrganization
       description: Enables service trust between User Notifications and Amazon Web Services Organizations.
@@ -437,10 +413,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/EnableNotificationsAccessForOrganizationResponse"
     get:
       operationId: GetNotificationsAccessForOrganization
       description: Returns the AccessStatus of Service Trust Enablement for User Notifications and Amazon Web Services Organizations.
@@ -477,10 +449,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DisassociateChannelResponse"
   /contacts/disassociate-managed-notification/{contact_identifier}:
     put:
       operationId: DisassociateManagedNotificationAccountContact
@@ -506,10 +474,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DisassociateManagedNotificationAccountContactResponse"
   /channels/disassociate-managed-notification/{channel_arn}:
     put:
       operationId: DisassociateManagedNotificationAdditionalChannel
@@ -535,10 +499,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DisassociateManagedNotificationAdditionalChannelResponse"
   /organizational-units/disassociate/{organizational_unit_id}:
     post:
       operationId: DisassociateOrganizationalUnit
@@ -564,10 +524,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DisassociateOrganizationalUnitResponse"
   /managed-notification-child-events/{arn}:
     get:
       operationId: GetManagedNotificationChildEvent
@@ -861,6 +817,12 @@ paths:
           schema:
             $ref: "#/components/schemas/AccountId"
           description: The Amazon Web Services account ID associated with the Managed Notification Events.
+        - name: includeSensitiveEvents
+          in: query
+          required: false
+          schema:
+            $ref: "#/components/schemas/Boolean"
+          description: Specifies whether to include sensitive events in the result. By default, only non-sensitive events are returned. The notifications:AccessSensitiveEvents permission controls access to sensitive events.
       responses:
         "200":
           description: Success
@@ -1008,7 +970,7 @@ paths:
                 $ref: "#/components/schemas/ListNotificationHubsResponse"
     post:
       operationId: RegisterNotificationHub
-      description: Registers a NotificationConfiguration in the specified Region. There is a maximum of one NotificationConfiguration per Region. You can have a maximum of 3 NotificationHub resources at a time.
+      description: Registers a NotificationHub in the specified Region. There is a maximum of one NotificationHub per Region. You can have a maximum of 3 NotificationHub resources at a time.
       parameters: []
       requestBody:
         required: true
@@ -1100,10 +1062,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TagResourceResponse"
     delete:
       operationId: UntagResource
       description: Untags a resource with a specified Amazon Resource Name (ARN). For more information, see Tagging your Amazon Web Services resources in the Tagging Amazon Web Services Resources User Guide.
@@ -1123,10 +1081,30 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UntagResourceResponse"
+  /channels/update-managed-notification-channel-association:
+    put:
+      operationId: UpdateManagedNotificationChannelAssociation
+      description: Updates the isSensitiveEventsSubscribed property of a particular ManagedNotification channel association.
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                managedNotificationConfigurationArn:
+                  $ref: "#/components/schemas/ManagedNotificationConfigurationOsArn"
+                channelIdentifier:
+                  $ref: "#/components/schemas/ManagedNotificationChannelIdentifier"
+                isSensitiveEventsSubscribed:
+                  $ref: "#/components/schemas/Boolean"
+              required:
+                - managedNotificationConfigurationArn
+                - channelIdentifier
+      responses:
+        "200":
+          description: Success
 components:
   parameters:
     X-Amz-Content-Sha256:
@@ -1174,12 +1152,10 @@ components:
   schemas:
     ChannelArn:
       type: string
-      pattern: arn:aws:(chatbot|consoleapp|notifications-contacts):[a-zA-Z0-9-]*:[0-9]{12}:[a-zA-Z0-9-_.@]+/[a-zA-Z0-9/_.@:-]+
+      pattern: arn:[a-z-]{3,10}:(chatbot|consoleapp|notifications-contacts):[a-zA-Z0-9-]*:[0-9]{12}:[a-zA-Z0-9-_.@]+/[a-zA-Z0-9/_.@:-]+
     NotificationConfigurationArn:
       type: string
-      pattern: arn:aws:notifications::[0-9]{12}:configuration/[a-z0-9]{27}
-    AssociateChannelResponse:
-      type: object
+      pattern: arn:[a-z-]{3,10}:notifications::[0-9]{12}:configuration/[a-z0-9]{27}
     AccountContactType:
       type: string
       enum:
@@ -1189,16 +1165,12 @@ components:
         - ACCOUNT_ALTERNATE_SECURITY
     ManagedNotificationConfigurationOsArn:
       type: string
-      pattern: arn:[-.a-z0-9]{1,63}:notifications::[0-9]{12}:managed-notification-configuration/category/[a-zA-Z0-9\-]{3,64}/sub-category/[a-zA-Z0-9\-]{3,64}
-    AssociateManagedNotificationAccountContactResponse:
-      type: object
-    AssociateManagedNotificationAdditionalChannelResponse:
-      type: object
+      pattern: arn:[a-z-]{3,10}:notifications::[0-9]{12}:managed-notification-configuration/category/[a-zA-Z0-9\-]{3,64}/sub-category/[a-zA-Z0-9\-]{3,64}
+    Boolean:
+      type: boolean
     OrganizationalUnitId:
       type: string
       pattern: (Root|r-[0-9a-z]{4,32}|ou-[0-9a-z]{4,32}-[a-z0-9]{8,32})
-    AssociateOrganizationalUnitResponse:
-      type: object
     Source:
       type: string
       minLength: 1
@@ -1221,7 +1193,7 @@ components:
       type: string
       minLength: 2
       maxLength: 25
-      pattern: ([a-z]{1,2})-([a-z]{1,15}-)+([0-9])
+      pattern: ([a-z]{1,4})-([a-z]{1,15}-)+([0-9])
     CreateEventRuleResponse:
       type: object
       properties:
@@ -1241,7 +1213,7 @@ components:
         - statusSummaryByRegion
     EventRuleArn:
       type: string
-      pattern: arn:aws:notifications::[0-9]{12}:configuration/[a-z0-9]{27}/rule/[a-z0-9]{27}
+      pattern: arn:[a-z-]{3,10}:notifications::[0-9]{12}:configuration/[a-z0-9]{27}/rule/[a-z0-9]{27}
     NotificationConfigurationName:
       type: string
       minLength: 1
@@ -1280,19 +1252,15 @@ components:
         - PARTIALLY_ACTIVE
         - INACTIVE
         - DELETING
-    DeleteEventRuleResponse:
-      type: object
-    DeleteNotificationConfigurationResponse:
-      type: object
     DeregisterNotificationHubResponse:
       type: object
       properties:
         notificationHubRegion:
           $ref: "#/components/schemas/Region"
-          description: The NotificationConfiguration Region.
+          description: The NotificationHub Region.
         statusSummary:
           $ref: "#/components/schemas/NotificationHubStatusSummary"
-          description: NotificationConfiguration status information.
+          description: NotificationHub status information.
       required:
         - notificationHubRegion
         - statusSummary
@@ -1318,18 +1286,6 @@ components:
         - INACTIVE
     NotificationHubStatusReason:
       type: string
-    DisableNotificationsAccessForOrganizationResponse:
-      type: object
-    DisassociateChannelResponse:
-      type: object
-    DisassociateManagedNotificationAccountContactResponse:
-      type: object
-    DisassociateManagedNotificationAdditionalChannelResponse:
-      type: object
-    DisassociateOrganizationalUnitResponse:
-      type: object
-    EnableNotificationsAccessForOrganizationResponse:
-      type: object
     GetEventRuleResponse:
       type: object
       properties:
@@ -1380,10 +1336,10 @@ components:
         $ref: "#/components/schemas/ManagedRuleArn"
     ManagedRuleArn:
       type: string
-      pattern: arn:aws:events:[a-z-\d]{2,25}:\d{12}:rule\/[a-zA-Z-\d]{1,1024}
+      pattern: arn:[a-z-]{3,10}:events:[a-z-\d]{2,25}:\d{12}:rule\/[a-zA-Z-\d]{1,1024}
     ManagedNotificationChildEventArn:
       type: string
-      pattern: arn:[-.a-z0-9]{1,63}:notifications::[0-9]{12}:managed-notification-configuration/category/[a-zA-Z0-9\-]{3,64}/sub-category/[a-zA-Z0-9\-]{3,64}/event/[a-z0-9]{27}/child-event/[a-z0-9]{27}
+      pattern: arn:[a-z-]{3,10}:notifications::[0-9]{12}:managed-notification-configuration/category/[a-zA-Z0-9\-]{3,64}/sub-category/[a-zA-Z0-9\-]{3,64}/event/[a-z0-9]{27}/child-event/[a-z0-9]{27}
     LocaleCode:
       type: string
       enum:
@@ -1423,7 +1379,7 @@ components:
         - creationTime
         - content
     ManagedNotificationChildEvent:
-      description: A ManagedNotificationChildEvent is a notification-focused representation of an event. They contain semantic information used to create aggregated or non-aggregated end-user notifications.
+      description: A notification-focused representation of an event. They contain semantic information used to create aggregated or non-aggregated end-user notifications.
       type: object
       properties:
         schemaVersion:
@@ -1492,6 +1448,9 @@ components:
         completeDescription:
           $ref: "#/components/schemas/TextPartReference"
           description: A complete summary with all possible relevant information.
+        markupDescription:
+          $ref: "#/components/schemas/TextPartReference"
+          description: A rich description in Portable Text format, which you can convert to markup formats such as HTML, Markdown, or plain text. Channels that don't support rich rendering ignore this field and use the plain text components instead.
         dimensions:
           $ref: "#/components/schemas/Dimensions"
           description: A list of properties in key-value pairs. Pairs are shown in order of importance from most important to least important. Channels may limit the number of dimensions shown to the notification viewer. Included dimensions, keys, and values are subject to change.
@@ -1518,7 +1477,6 @@ components:
       type: string
       minLength: 0
       maxLength: 2000
-      pattern: (https?)://.*
     String:
       type: string
     NotificationType:
@@ -1535,7 +1493,7 @@ components:
         - UNHEALTHY
     ManagedNotificationEventArn:
       type: string
-      pattern: arn:[-.a-z0-9]{1,63}:notifications::[0-9]{12}:managed-notification-configuration/category/[a-zA-Z0-9\-]{3,64}/sub-category/[a-zA-Z0-9\-]{3,64}/event/[a-z0-9]{27}
+      pattern: arn:[a-z-]{3,10}:notifications::[0-9]{12}:managed-notification-configuration/category/[a-zA-Z0-9\-]{3,64}/sub-category/[a-zA-Z0-9\-]{3,64}/event/[a-z0-9]{27}
     SyntheticTimestamp_date_time:
       type: string
       format: date-time
@@ -1659,6 +1617,9 @@ components:
         organizationalUnitId:
           $ref: "#/components/schemas/OrganizationalUnitId"
           description: The Organizational Unit Id that an Amazon Web Services account belongs to.
+        attachments:
+          $ref: "#/components/schemas/NotificationEventAttachmentList"
+          description: A list of files attached to the notification event.
       required:
         - schemaVersion
         - id
@@ -1745,6 +1706,38 @@ components:
       type: array
       items:
         $ref: "#/components/schemas/SummarizationDimensionOverview"
+    NotificationEventAttachmentList:
+      type: array
+      items:
+        $ref: "#/components/schemas/NotificationEventAttachment"
+    NotificationEventAttachment:
+      description: A file attached to a notification event.
+      type: object
+      properties:
+        displayName:
+          $ref: "#/components/schemas/AttachmentDisplayName"
+          description: The name of the attachment that recipients see.
+        attachmentDownloadUrl:
+          $ref: "#/components/schemas/SensitiveUrl"
+          description: A temporary URL for downloading the attachment. The URL expires shortly after it's issued.
+        contentType:
+          $ref: "#/components/schemas/AttachmentContentType"
+          description: The MIME content type of the attachment, for example application/pdf.
+      required:
+        - displayName
+        - contentType
+    AttachmentDisplayName:
+      type: string
+      minLength: 1
+      maxLength: 255
+    SensitiveUrl:
+      type: string
+      minLength: 0
+      maxLength: 4096
+      pattern: (https?):\/\/.*
+    AttachmentContentType:
+      type: string
+      pattern: "[a-zA-Z0-9]+/[a-zA-Z0-9][a-zA-Z0-9!#$&\\-^_.+]*"
     GetNotificationConfigurationResponse:
       type: object
       properties:
@@ -1782,7 +1775,7 @@ components:
         - ADMIN_MANAGED
     NotificationEventArn:
       type: string
-      pattern: arn:[-.a-z0-9]{1,63}:notifications:[-.a-z0-9]{1,63}:[0-9]{12}:configuration/[a-z0-9]{27}/event/[a-z0-9]{27}
+      pattern: arn:[a-z-]{3,10}:notifications:[-.a-z0-9]{1,63}:[0-9]{12}:configuration/[a-z0-9]{27}/event/[a-z0-9]{27}
     GetNotificationEventResponse:
       type: object
       properties:
@@ -1908,7 +1901,7 @@ components:
       type: string
       minLength: 0
       maxLength: 32
-      pattern: ([a-z]{1,2})-([a-z]{1,15}-)+([0-9])
+      pattern: ([a-z]{1,4})-([a-z]{1,15}-)+([0-9])
     SourceEventMetadataRelatedAccountString:
       type: string
       pattern: "[0-9]{12}"
@@ -2119,6 +2112,9 @@ components:
         overrideOption:
           $ref: "#/components/schemas/ChannelAssociationOverrideOption"
           description: "Controls whether users can modify channel associations for a notification configuration. Values: ENABLED Users can associate or disassociate channels with the notification configuration. DISABLED Users cannot associate or disassociate channels with the notification configuration."
+        isSensitiveEventsSubscribed:
+          $ref: "#/components/schemas/Boolean"
+          description: Specifies whether this channel association is subscribed to sensitive events. Defaults to false for associations created without the flag.
       required:
         - channelIdentifier
         - channelType
@@ -2236,7 +2232,7 @@ components:
       type: string
       minLength: 0
       maxLength: 32
-      pattern: ([a-z]{1,2})-([a-z]{1,15}-)+([0-9])
+      pattern: ([a-z]{1,4})-([a-z]{1,15}-)+([0-9])
     ManagedSourceEventMetadataSummaryEventTypeString:
       type: string
       minLength: 1
@@ -2257,7 +2253,7 @@ components:
       maxLength: 256
     ChannelIdentifier:
       type: string
-      pattern: ACCOUNT_PRIMARY|ACCOUNT_ALTERNATE_BILLING|ACCOUNT_ALTERNATE_OPERATIONS|ACCOUNT_ALTERNATE_SECURITY|arn:aws:(chatbot|consoleapp|notifications-contacts):[a-zA-Z0-9-]*:[0-9]{12}:[a-zA-Z0-9-_.@]+/[a-zA-Z0-9/_.@:-]+
+      pattern: (ACCOUNT_PRIMARY|ACCOUNT_ALTERNATE_BILLING|ACCOUNT_ALTERNATE_OPERATIONS|ACCOUNT_ALTERNATE_SECURITY|arn:[a-z-]{3,10}:(chatbot|consoleapp|notifications-contacts):[a-zA-Z0-9-]*:[0-9]{12}:[a-zA-Z0-9-_.@]+/[a-zA-Z0-9/_.@:-]+)
     ListManagedNotificationConfigurationsRequestMaxResultsInteger:
       type: integer
       minimum: 1
@@ -2477,8 +2473,6 @@ components:
         - description
         - status
         - creationTime
-    Boolean:
-      type: boolean
     ListNotificationEventsRequestMaxResultsInteger:
       type: integer
       minimum: 1
@@ -2658,7 +2652,7 @@ components:
           description: The Region of the NotificationHub.
         statusSummary:
           $ref: "#/components/schemas/NotificationHubStatusSummary"
-          description: Provides additional information about the current NotificationConfiguration status information.
+          description: Provides additional information about the current NotificationHub status information.
         creationTime:
           $ref: "#/components/schemas/CreationTime"
           description: The date the resource was created.
@@ -2669,8 +2663,6 @@ components:
         - notificationHubRegion
         - statusSummary
         - creationTime
-    TagResourceResponse:
-      type: object
     TagKeys:
       type: array
       items:
@@ -2678,8 +2670,6 @@ components:
     TagKey:
       type: string
       pattern: (?!aws:).{1,128}
-    UntagResourceResponse:
-      type: object
     UpdateEventRuleResponse:
       type: object
       properties:
@@ -2697,6 +2687,9 @@ components:
         - arn
         - notificationConfigurationArn
         - statusSummaryByRegion
+    ManagedNotificationChannelIdentifier:
+      type: string
+      pattern: (ACCOUNT_PRIMARY|ACCOUNT_ALTERNATE_BILLING|ACCOUNT_ALTERNATE_OPERATIONS|ACCOUNT_ALTERNATE_SECURITY|arn:[a-z-]{3,10}:(chatbot|consoleapp|notifications-contacts):[a-zA-Z0-9-]*:[0-9]{12}:[a-zA-Z0-9-_.@]+/[a-zA-Z0-9/_.@:-]+)
     UpdateNotificationConfigurationResponse:
       type: object
       properties:
@@ -2716,7 +2709,6 @@ components:
             $ref: "#/paths/~1channels~1associate~1{arn}/post"
           response:
             openAPIDocKey: "201"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -2727,7 +2719,6 @@ components:
             $ref: "#/paths/~1channels~1associate-managed-notification~1{channel_arn}/put"
           response:
             openAPIDocKey: "201"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -2738,7 +2729,6 @@ components:
             $ref: "#/paths/~1channels~1disassociate~1{arn}/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -2749,7 +2739,6 @@ components:
             $ref: "#/paths/~1channels~1disassociate-managed-notification~1{channel_arn}/put"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -2796,7 +2785,6 @@ components:
             $ref: "#/paths/~1contacts~1associate-managed-notification~1{contact_identifier}/put"
           response:
             openAPIDocKey: "201"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -2807,7 +2795,6 @@ components:
             $ref: "#/paths/~1contacts~1disassociate-managed-notification~1{contact_identifier}/put"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -2854,7 +2841,6 @@ components:
             $ref: "#/paths/~1organizational-units~1associate~1{organizational_unit_id}/post"
           response:
             openAPIDocKey: "201"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -2865,7 +2851,6 @@ components:
             $ref: "#/paths/~1organizational-units~1disassociate~1{organizational_unit_id}/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -2939,7 +2924,6 @@ components:
             $ref: "#/paths/~1event-rules~1{arn}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         get_event_rule:
           operation:
             $ref: "#/paths/~1event-rules~1{arn}/get"
@@ -3005,7 +2989,6 @@ components:
             $ref: "#/paths/~1notification-configurations~1{arn}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         get_notification_configuration:
           operation:
             $ref: "#/paths/~1notification-configurations~1{arn}/get"
@@ -3080,11 +3063,21 @@ components:
         update: []
         delete:
           - $ref: "#/components/x-stackQL-resources/notification_hubs/methods/deregister_notification_hub"
-    notifications_access_for_organizations:
-      id: aws.notifications.notifications_access_for_organizations
-      name: notifications_access_for_organizations
-      title: notifications_access_for_organizations
+    notifications_accesses:
+      id: aws.notifications.notifications_accesses
+      name: notifications_accesses
+      title: notifications_accesses
       methods:
+        disable_notifications_access_for_organization:
+          operation:
+            $ref: "#/paths/~1organization~1access/delete"
+          response:
+            openAPIDocKey: "200"
+        enable_notifications_access_for_organization:
+          operation:
+            $ref: "#/paths/~1organization~1access/post"
+          response:
+            openAPIDocKey: "200"
         get_notifications_access_for_organization:
           operation:
             $ref: "#/paths/~1organization~1access/get"
@@ -3094,7 +3087,7 @@ components:
             objectKey: $.notificationsAccessForOrganization
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/notifications_access_for_organizations/methods/get_notifications_access_for_organization"
+          - $ref: "#/components/x-stackQL-resources/notifications_accesses/methods/get_notifications_access_for_organization"
         insert: []
         update: []
         delete: []
@@ -3231,11 +3224,22 @@ components:
               responseToken:
                 key: $.nextToken
                 location: body
+        update_managed_notification_channel_association:
+          operation:
+            $ref: "#/paths/~1channels~1update-managed-notification-channel-association/put"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/managed_notification_channel_associations/methods/list_managed_notification_channel_associations"
         insert: []
-        update: []
+        update:
+          - $ref: "#/components/x-stackQL-resources/managed_notification_channel_associations/methods/update_managed_notification_channel_association"
         delete: []
     member_accounts:
       id: aws.notifications.member_accounts
@@ -3281,7 +3285,6 @@ components:
             $ref: "#/paths/~1tags~1{arn}/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -3292,7 +3295,6 @@ components:
             $ref: "#/paths/~1tags~1{arn}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
       sqlVerbs:

@@ -100,6 +100,13 @@ The following methods are available for this resource:
     <td></td>
     <td>Records the configuration state for a custom resource that has been deleted. This API records a new ConfigurationItem with a ResourceDeleted status. You can retrieve the ConfigurationItems recorded for this resource in your Config History.</td>
 </tr>
+<tr>
+    <td><a href="#select_resource_config"><CopyableCode code="select_resource_config" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-Expression"><code>Expression</code></a></td>
+    <td></td>
+    <td>Accepts a structured query language (SQL) SELECT command, performs the corresponding search, and returns resource configurations matching the properties. For more information about query components, see the Query Components section in the Config Developer Guide.</td>
+</tr>
 </tbody>
 </table>
 
@@ -195,6 +202,33 @@ Records the configuration state for a custom resource that has been deleted. Thi
 ```sql
 DELETE FROM aws.config.resource_configs
 WHERE region = '{{ region }}' --required
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="select_resource_config"
+    values={[
+        { label: 'select_resource_config', value: 'select_resource_config' }
+    ]}
+>
+<TabItem value="select_resource_config">
+
+Accepts a structured query language (SQL) SELECT command, performs the corresponding search, and returns resource configurations matching the properties. For more information about query components, see the Query Components section in the Config Developer Guide.
+
+```sql
+EXEC aws.config.resource_configs.select_resource_config 
+@region='{{ region }}' --required 
+@@json=
+'{
+"Expression": "{{ Expression }}", 
+"Limit": {{ Limit }}, 
+"NextToken": "{{ NextToken }}"
+}'
 ;
 ```
 </TabItem>

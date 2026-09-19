@@ -136,11 +136,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CompleteResourceTokenAuthResponse'
-      x-stackql-resource: complete_resource_token_auth
+      x-stackql-resource: resource_token_auths
       x-stackql-method: complete_resource_token_auth
       x-stackql-verb: EXEC
   /ab-tests:
@@ -793,7 +789,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/EvaluateResponse'
-      x-stackql-resource: evaluate
+      x-stackql-resource: es
       x-stackql-method: evaluate
       x-stackql-verb: EXEC
   /runtimes/{agent_runtime_arn}/invocations/.well-known/agent-card.json:
@@ -1226,7 +1222,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetWorkloadAccessTokenForJWTResponse'
-      x-stackql-resource: workload_access_token_for_jwts
+      x-stackql-resource: workload_access_tokens
       x-stackql-method: get_workload_access_token_for_jwt
       x-stackql-verb: SELECT
   /identities/GetWorkloadAccessTokenForUserId:
@@ -1255,9 +1251,56 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetWorkloadAccessTokenForUserIdResponse'
-      x-stackql-resource: workload_access_token_for_user_ids
+      x-stackql-resource: workload_access_tokens
       x-stackql-method: get_workload_access_token_for_user_id
       x-stackql-verb: SELECT
+  /memories/{memory_id}/ingest:
+    post:
+      operationId: IngestData
+      description: Submits content directly for ingestion to generate long-term memory records in a AgentCore Memory resource.
+        To use this operation, you must have the bedrock-agentcore:IngestData permission.
+      parameters:
+      - name: memory_id
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/MemoryId'
+        description: The identifier of the AgentCore Memory resource to ingest content into.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                source:
+                  $ref: '#/components/schemas/ContentSource'
+                contentTimestamp:
+                  $ref: '#/components/schemas/Timestamp'
+                actorId:
+                  $ref: '#/components/schemas/ActorId'
+                sessionId:
+                  $ref: '#/components/schemas/SessionId'
+                extractionConfig:
+                  $ref: '#/components/schemas/ExtractionConfig'
+                metadata:
+                  $ref: '#/components/schemas/MetadataMap'
+                clientToken:
+                  $ref: '#/components/schemas/String'
+              required:
+              - source
+              - contentTimestamp
+              - actorId
+      responses:
+        '202':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IngestDataOutput'
+      x-stackql-resource: actors
+      x-stackql-method: ingest_data
+      x-stackql-verb: EXEC
   /runtimes/{agent_runtime_arn}/invocations:
     post:
       operationId: InvokeAgentRuntime
@@ -1387,7 +1430,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/InvokeAgentRuntimeResponse'
-      x-stackql-resource: agent_runtime
+      x-stackql-resource: agent_runtimes
       x-stackql-method: invoke_agent_runtime
       x-stackql-verb: EXEC
   /runtimes/{agent_runtime_arn}/commands:
@@ -1484,7 +1527,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/InvokeAgentRuntimeCommandResponse'
-      x-stackql-resource: agent_runtime_command
+      x-stackql-resource: agent_runtime_commands
       x-stackql-method: invoke_agent_runtime_command
       x-stackql-verb: EXEC
   /browsers/{browser_identifier}/sessions/invoke:
@@ -1529,7 +1572,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/InvokeBrowserResponse'
-      x-stackql-resource: browser
+      x-stackql-resource: browsers
       x-stackql-method: invoke_browser
       x-stackql-verb: EXEC
   /code-interpreters/{code_interpreter_identifier}/tools/invoke:
@@ -1589,7 +1632,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/InvokeCodeInterpreterResponse'
-      x-stackql-resource: code_interpreter
+      x-stackql-resource: code_interpreters
       x-stackql-method: invoke_code_interpreter
       x-stackql-verb: EXEC
   /harnesses/invoke:
@@ -1681,7 +1724,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/InvokeHarnessResponse'
-      x-stackql-resource: harness
+      x-stackql-resource: harnesses
       x-stackql-method: invoke_harness
       x-stackql-verb: EXEC
   /memories/{memory_id}/actors:
@@ -1787,6 +1830,8 @@ paths:
                   $ref: '#/components/schemas/KmsKeyArn'
                 description:
                   $ref: '#/components/schemas/BatchEvaluationDescription'
+                outputConfig:
+                  $ref: '#/components/schemas/OutputConfig'
               required:
               - batchEvaluationName
               - dataSourceConfig
@@ -2189,7 +2234,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartRecommendationResponse'
-      x-stackql-resource: recommendation
+      x-stackql-resource: recommendations
       x-stackql-method: start_recommendation
       x-stackql-verb: EXEC
   /memories/{memory_id}/actor/{actor_id}/sessions:
@@ -2390,7 +2435,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SaveBrowserSessionProfileResponse'
-      x-stackql-resource: sessions
+      x-stackql-resource: browser_sessions
       x-stackql-method: save_browser_session_profile
       x-stackql-verb: EXEC
   /registry-records/search:
@@ -2490,7 +2535,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartBrowserSessionResponse'
-      x-stackql-resource: browser_session
+      x-stackql-resource: browser_sessions
       x-stackql-method: start_browser_session
       x-stackql-verb: EXEC
   /code-interpreters/{code_interpreter_identifier}/sessions/start:
@@ -2546,7 +2591,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartCodeInterpreterSessionResponse'
-      x-stackql-resource: code_interpreter_session
+      x-stackql-resource: code_interpreter_sessions
       x-stackql-method: start_code_interpreter_session
       x-stackql-verb: EXEC
   /memories/{memory_id}/extractionJobs/start:
@@ -2583,7 +2628,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartMemoryExtractionJobOutput'
-      x-stackql-resource: memory_extraction_job
+      x-stackql-resource: memory_extraction_jobs
       x-stackql-method: start_memory_extraction_job
       x-stackql-verb: EXEC
   /evaluations/batch-evaluate/{batch_evaluation_id}/stop:
@@ -2656,7 +2701,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StopBrowserSessionResponse'
-      x-stackql-resource: browser_session
+      x-stackql-resource: browser_sessions
       x-stackql-method: stop_browser_session
       x-stackql-verb: EXEC
   /code-interpreters/{code_interpreter_identifier}/sessions/stop:
@@ -2708,7 +2753,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StopCodeInterpreterSessionResponse'
-      x-stackql-resource: code_interpreter_session
+      x-stackql-resource: code_interpreter_sessions
       x-stackql-method: stop_code_interpreter_session
       x-stackql-verb: EXEC
   /runtimes/{agent_runtime_arn}/stopruntimesession:
@@ -2751,7 +2796,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StopRuntimeSessionResponse'
-      x-stackql-resource: runtime_session
+      x-stackql-resource: sessions
       x-stackql-method: stop_runtime_session
       x-stackql-verb: EXEC
   /browsers/{browser_identifier}/sessions/streams/update:
@@ -3061,8 +3106,6 @@ components:
       minLength: 1
       maxLength: 1024
       pattern: urn:ietf:params:oauth:request_uri:[a-zA-Z0-9-._~]+
-    CompleteResourceTokenAuthResponse:
-      type: object
     ABTestName:
       type: string
       pattern: '[a-zA-Z][a-zA-Z0-9_]{0,47}'
@@ -3908,7 +3951,9 @@ components:
       - DELETING
     EvaluatorId:
       type: string
-      pattern: (Builtin.[a-zA-Z0-9_-]+|[a-zA-Z][a-zA-Z0-9-_]{0,99}-[a-zA-Z0-9]{10})
+      minLength: 1
+      maxLength: 111
+      pattern: (Builtin\.[a-zA-Z0-9._-]+|ThirdParty\.[a-zA-Z0-9_-]+\.[a-zA-Z0-9_-]+|[a-zA-Z][a-zA-Z0-9-_]{0,99}-[a-zA-Z0-9]{10})
     EvaluationInput:
       description: The input data structure containing agent session spans in OpenTelemetry format. Supports traces from frameworks
         like Strands (AgentCore Runtime) and LangGraph with OpenInference instrumentation for comprehensive evaluation.
@@ -4116,10 +4161,12 @@ components:
       - context
     EvaluatorArn:
       type: string
-      pattern: arn:aws[a-zA-Z-]*:bedrock-agentcore:[a-z0-9-]+:[0-9]{12}:evaluator\/[a-zA-Z][a-zA-Z0-9-_]{0,99}-[a-zA-Z0-9]{10}$|^arn:aws[a-zA-Z-]*:bedrock-agentcore:::evaluator/Builtin.[a-zA-Z0-9_-]+
+      pattern: arn:aws[a-zA-Z-]*:bedrock-agentcore:[a-z0-9-]+:[0-9]{12}:evaluator\/[a-zA-Z][a-zA-Z0-9-_]{0,99}-[a-zA-Z0-9]{10}$|^arn:aws[a-zA-Z-]*:bedrock-agentcore:::evaluator/(Builtin|ThirdParty)\.[a-zA-Z0-9._-]+
     EvaluatorName:
       type: string
-      pattern: (Builtin.[a-zA-Z0-9_-]+|[a-zA-Z][a-zA-Z0-9_]{0,47})
+      minLength: 1
+      maxLength: 48
+      pattern: (Builtin\.[a-zA-Z0-9._-]+|ThirdParty\.[a-zA-Z0-9_-]+\.[a-zA-Z0-9_-]+|[a-zA-Z][a-zA-Z0-9_]{0,47})
     EvaluationExplanation:
       type: string
       minLength: 0
@@ -4480,21 +4527,40 @@ components:
           description: The list of agent service names to filter traces within the specified log groups.
         logGroupNames:
           $ref: '#/components/schemas/CloudWatchLogsSourceLogGroupNamesList'
-          description: The list of CloudWatch log group names to read agent traces from. Maximum of 5 log groups.
+          description: The list of CloudWatch log group names to read agent traces from. Maximum of 10 log groups.
+        logGroupNamePrefixes:
+          $ref: '#/components/schemas/CloudWatchLogsSourceLogGroupNamePrefixesList'
+          description: The list of CloudWatch log group name prefixes to read agent traces from. Specify this instead of logGroupNames
+            to match log groups by prefix. Maximum of 5 prefixes. Specify either logGroupNames or logGroupNamePrefixes, not
+            both. One of the two is required.
         filterConfig:
           $ref: '#/components/schemas/CloudWatchFilterConfig'
           description: Optional filter configuration to narrow down which sessions to evaluate.
       required:
       - serviceNames
-      - logGroupNames
     CloudWatchLogsSourceServiceNamesList:
       type: array
       items:
         $ref: '#/components/schemas/String'
     CloudWatchLogsSourceLogGroupNamesList:
+      description: Length is constrained per member, because members relaxed from @required carry @default([]).
       type: array
       items:
-        $ref: '#/components/schemas/String'
+        $ref: '#/components/schemas/LogGroupName'
+    LogGroupName:
+      type: string
+      pattern: '[.\-_/#A-Za-z0-9]+'
+    CloudWatchLogsSourceLogGroupNamePrefixesList:
+      description: List of CloudWatch Logs log group name prefixes to source trace data from.
+      type: array
+      items:
+        $ref: '#/components/schemas/LogGroupNamePrefix'
+    LogGroupNamePrefix:
+      description: Prefix of a CloudWatch Logs log group name.
+      type: string
+      minLength: 1
+      maxLength: 512
+      pattern: '[.\-_/#A-Za-z0-9]+'
     CloudWatchFilterConfig:
       description: Filter configuration for narrowing down CloudWatch Logs sessions for evaluation.
       type: object
@@ -4505,6 +4571,10 @@ components:
         timeRange:
           $ref: '#/components/schemas/SessionFilterConfig'
           description: The time range filter for selecting sessions to evaluate.
+        sessionTraceIds:
+          $ref: '#/components/schemas/SessionTraceIdsList'
+          description: A list of session and trace ID pairs that restrict evaluation to specific traces within a session.
+            If specified, only the listed traces are evaluated instead of the entire session.
     CloudWatchFilterConfigSessionIdsList:
       type: array
       items:
@@ -4520,6 +4590,28 @@ components:
         endTime:
           $ref: '#/components/schemas/SyntheticTimestamp_date_time'
           description: The end time of the time range. Only sessions with activity before this timestamp are included.
+    SessionTraceIdsList:
+      type: array
+      items:
+        $ref: '#/components/schemas/SessionTraceIds'
+    SessionTraceIds:
+      description: A pairing of a session with the specific trace IDs to evaluate within that session. Use this to evaluate
+        individual traces rather than an entire session.
+      type: object
+      properties:
+        sessionId:
+          $ref: '#/components/schemas/String'
+          description: The unique identifier of the session that contains the traces to evaluate.
+        traceIds:
+          $ref: '#/components/schemas/TraceIdList'
+          description: The list of trace IDs within the session to evaluate.
+      required:
+      - sessionId
+      - traceIds
+    TraceIdList:
+      type: array
+      items:
+        $ref: '#/components/schemas/TraceId'
     OnlineEvaluationConfigSource:
       description: A reference to an existing online evaluation configuration to use as the data source for batch evaluation.
       type: object
@@ -4545,14 +4637,46 @@ components:
       type: object
       properties:
         logGroupName:
-          $ref: '#/components/schemas/String'
-          description: The name of the CloudWatch log group where evaluation results will be written.
+          $ref: '#/components/schemas/OptionalLogGroupName'
+          description: The name of the CloudWatch log group where evaluation results will be written. This value doesn't apply
+            when resultDestination is SOURCE_LOG_GROUP, because results are written back to the trace source log group. The
+            name can't be under the service-reserved /aws/bedrock-agentcore/evaluations/ namespace, apart from the service-managed
+            default group.
         logStreamName:
-          $ref: '#/components/schemas/String'
+          $ref: '#/components/schemas/LogStreamName'
           description: The name of the CloudWatch log stream where evaluation results will be written.
-      required:
-      - logGroupName
-      - logStreamName
+        metricsNamespace:
+          $ref: '#/components/schemas/MetricsNamespace'
+          description: The CloudWatch metrics namespace where evaluation result metrics are published. If you omit this value,
+            the service publishes metrics to Bedrock-AgentCore/Evaluations. This value can't begin with AWS/.
+        resultDestination:
+          $ref: '#/components/schemas/ResultDestination'
+          description: 'The destination where evaluation results are written. Valid values: DEDICATED_LOG_GROUP (default)
+            – Writes results to a dedicated result log group. SOURCE_LOG_GROUP – Writes results back to the log group that
+            the agent traces were read from. If you use this value, don''t specify logGroupName.'
+    OptionalLogGroupName:
+      description: A log group name that may also be empty. The empty string is the @default of members that were relaxed
+        from @required, and carries the meaning "no log group" for that member.
+      type: string
+      pattern: $|^[.\-_/#A-Za-z0-9]+
+    LogStreamName:
+      description: A log stream name. The pattern is CloudWatch Logs' own log stream name pattern, which already admits the
+        empty string; empty is the @default of members relaxed from @required and means "no log stream". No @length is applied,
+        because CloudWatch's min of 1 would reject that default.
+      type: string
+      pattern: '[^:*]*'
+    MetricsNamespace:
+      description: CloudWatch metrics namespace for evaluation result metrics.
+      type: string
+      minLength: 1
+      maxLength: 255
+      pattern: '[a-zA-Z0-9._#/:-]+'
+    ResultDestination:
+      description: 'Where evaluation results are written: dedicated results log group (default) or the source log group.'
+      type: string
+      enum:
+      - DEDICATED_LOG_GROUP
+      - SOURCE_LOG_GROUP
     EvaluationJobResults:
       description: Aggregated results from a batch evaluation, including session completion counts and evaluator score summaries.
       type: object
@@ -6327,6 +6451,45 @@ components:
           description: The access token for the specified workload.
       required:
       - workloadAccessToken
+    ContentSource:
+      description: The source of the content to ingest. Only inline content is supported.
+      type: object
+      properties:
+        inline:
+          $ref: '#/components/schemas/InlineMemoryContent'
+          description: The content included directly in the request.
+    InlineMemoryContent:
+      description: The content included directly in the request as one or more payload items.
+      type: object
+      properties:
+        payload:
+          $ref: '#/components/schemas/IngestPayloadList'
+          description: The list of content payload items to ingest.
+      required:
+      - payload
+    IngestPayloadList:
+      type: array
+      items:
+        $ref: '#/components/schemas/IngestPayloadType'
+    IngestPayloadType:
+      description: A single content payload item to ingest. A payload item contains either conversational or JSON content.
+      type: object
+      properties:
+        conversational:
+          $ref: '#/components/schemas/Conversational'
+          description: The conversational content for this payload item.
+        json:
+          $ref: '#/components/schemas/MemoryJsonData'
+          description: The JSON content for this payload item.
+    IngestDataOutput:
+      type: object
+      properties:
+        sessionId:
+          $ref: '#/components/schemas/SessionId'
+          description: The identifier of the session that the service ingested the content into. This value echoes the session
+            identifier from the request, or the identifier that the service generated when you did not provide one.
+      required:
+      - sessionId
     MimeType:
       type: string
       minLength: 1

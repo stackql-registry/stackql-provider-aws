@@ -18,7 +18,7 @@ proton service documentation.
 
 :::info[Service Summary]
 
-total resources: __29__  
+total resources: __30__  
 
 :::
 
@@ -38,13 +38,14 @@ total resources: __29__
 <a href="/services/proton/environments/">environments</a><br />
 <a href="/services/proton/repositories/">repositories</a><br />
 <a href="/services/proton/repository_sync_definitions/">repository_sync_definitions</a><br />
-<a href="/services/proton/repository_sync_status/">repository_sync_status</a><br />
-<a href="/services/proton/resources_summaries/">resources_summaries</a>
+<a href="/services/proton/repository_sync_statuses/">repository_sync_statuses</a><br />
+<a href="/services/proton/resource_deployment_status_changes/">resource_deployment_status_changes</a>
 </div>
 <div class="providerDocColumn">
+<a href="/services/proton/resources_summaries/">resources_summaries</a><br />
 <a href="/services/proton/service_instance_outputs/">service_instance_outputs</a><br />
 <a href="/services/proton/service_instance_provisioned_resources/">service_instance_provisioned_resources</a><br />
-<a href="/services/proton/service_instance_sync_status/">service_instance_sync_status</a><br />
+<a href="/services/proton/service_instance_sync_statuses/">service_instance_sync_statuses</a><br />
 <a href="/services/proton/service_instances/">service_instances</a><br />
 <a href="/services/proton/service_pipeline_outputs/">service_pipeline_outputs</a><br />
 <a href="/services/proton/service_pipeline_provisioned_resources/">service_pipeline_provisioned_resources</a><br />
@@ -55,6 +56,6 @@ total resources: __29__
 <a href="/services/proton/services/">services</a><br />
 <a href="/services/proton/tags/">tags</a><br />
 <a href="/services/proton/template_sync_configs/">template_sync_configs</a><br />
-<a href="/services/proton/template_sync_status/">template_sync_status</a>
+<a href="/services/proton/template_sync_statuses/">template_sync_statuses</a>
 </div>
 </div>

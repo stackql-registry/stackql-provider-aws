@@ -630,6 +630,37 @@ paths:
       x-stackql-resource: environments
       x-stackql-method: disassociate_eip_from_vlan
       x-stackql-verb: UPDATE
+  /GetAccountSettings:
+    post:
+      operationId: GetAccountSettings
+      description: Returns the configured EVS settings for your Amazon Web Services account in the specified Amazon Web Services
+        Region. If no settings have been set, an empty list is returned.
+      parameters:
+      - name: X-Amz-Target
+        in: header
+        description: Action Header
+        required: false
+        schema:
+          type: string
+          enum:
+          - AmazonElasticVMwareService.GetAccountSettings
+          default: AmazonElasticVMwareService.GetAccountSettings
+      requestBody:
+        required: true
+        content:
+          application/x-amz-json-1.0:
+            schema:
+              type: object
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetAccountSettingsResponse'
+      x-stackql-resource: account_settings
+      x-stackql-method: get_account_settings
+      x-stackql-verb: SELECT
   /GetDepotUrl:
     post:
       operationId: GetDepotUrl
@@ -1036,6 +1067,45 @@ paths:
       x-stackql-pagination-request-token-key: nextToken
       x-stackql-pagination-request-token-location: body
       x-stackql-pagination-response-token-key: $.nextToken
+  /PutAccountSettings:
+    post:
+      operationId: PutAccountSettings
+      description: Creates or updates account-level EVS settings for your Amazon Web Services account in the specified Amazon
+        Web Services Region. EVS settings included in the request are created or overwritten. Settings omitted from the request
+        retain their current values.
+      parameters:
+      - name: X-Amz-Target
+        in: header
+        description: Action Header
+        required: false
+        schema:
+          type: string
+          enum:
+          - AmazonElasticVMwareService.PutAccountSettings
+          default: AmazonElasticVMwareService.PutAccountSettings
+      requestBody:
+        required: true
+        content:
+          application/x-amz-json-1.0:
+            schema:
+              type: object
+              properties:
+                settings:
+                  $ref: '#/components/schemas/AccountSettingList'
+                  description: A list of regional account-level EVS settings to create or update. Only the settings included
+                    in this list are modified.
+              required:
+              - settings
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PutAccountSettingsResponse'
+      x-stackql-resource: account_settings
+      x-stackql-method: put_account_settings
+      x-stackql-verb: REPLACE
   /TagResource:
     post:
       operationId: TagResource
@@ -1075,10 +1145,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -1115,10 +1181,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -1634,6 +1696,7 @@ components:
       enum:
       - i4i.metal
       - i7i.metal-24xl
+      - i7i.metal-48xl
     PlacementGroupId:
       type: string
       minLength: 1
@@ -2101,6 +2164,46 @@ components:
       properties:
         vlan:
           $ref: '#/components/schemas/Vlan'
+    GetAccountSettingsResponse:
+      description: The response for the GetAccountSettings operation.
+      type: object
+      properties:
+        settings:
+          $ref: '#/components/schemas/AccountSettingList'
+          description: A list of regional account-level EVS settings for the account. EVS settings that have never been explicitly
+            set are omitted from the response.
+    AccountSettingList:
+      description: A list of regional account-level EVS settings.
+      type: array
+      items:
+        $ref: '#/components/schemas/AccountSetting'
+    AccountSetting:
+      description: A regional account-level EVS setting, represented as a name and value pair.
+      type: object
+      properties:
+        name:
+          $ref: '#/components/schemas/SettingName'
+          description: 'The name of the EVS setting. Valid values are: vcfPortedCoreCount (type: numeric string) - The total
+            number of VCF license cores ported to Amazon EVS for the account in that Region. The maximum value is 1,000,000
+            cores. This setting value is shared with Broadcom for record-keeping.'
+        value:
+          $ref: '#/components/schemas/SettingValue'
+          description: The value of the EVS setting.
+      required:
+      - name
+      - value
+    SettingName:
+      description: The name of a regional account-level EVS setting, such as vcfPortedCoreCount.
+      type: string
+      minLength: 1
+      maxLength: 128
+      pattern: '[a-zA-Z0-9]+'
+    SettingValue:
+      description: The value of a regional account-level EVS setting, represented as a string.
+      type: string
+      minLength: 1
+      maxLength: 128
+      pattern: '[a-zA-Z0-9]+'
     GetDepotUrlResponse:
       type: object
       properties:
@@ -2269,8 +2372,13 @@ components:
         entitlements:
           $ref: '#/components/schemas/VmEntitlementList'
           description: A list of entitlements for virtual machines in the environment.
-    TagResourceResponse:
+    PutAccountSettingsResponse:
+      description: The response for the PutAccountSettings operation.
       type: object
+      properties:
+        settings:
+          $ref: '#/components/schemas/AccountSettingList'
+          description: A list of regional account-level EVS settings, and their values, that were modified in this request.
     TagKeys:
       type: array
       items:
@@ -2280,8 +2388,6 @@ components:
       minLength: 1
       maxLength: 128
       pattern: '[\w.:/=+-@]+'
-    UntagResourceResponse:
-      type: object
     UpdateEnvironmentConnectorResponse:
       type: object
       properties:

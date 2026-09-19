@@ -299,10 +299,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteJobResponse"
   /DeleteLaunchAction:
     post:
       operationId: DeleteLaunchAction
@@ -325,10 +321,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteLaunchActionResponse"
   /DeleteLaunchConfigurationTemplate:
     post:
       operationId: DeleteLaunchConfigurationTemplate
@@ -348,10 +340,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteLaunchConfigurationTemplateResponse"
   /DeleteRecoveryInstance:
     post:
       operationId: DeleteRecoveryInstance
@@ -459,10 +447,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteReplicationConfigurationTemplateResponse"
   /DeleteSourceNetwork:
     post:
       operationId: DeleteSourceNetwork
@@ -482,10 +466,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteSourceNetworkResponse"
   /DeleteSourceServer:
     post:
       operationId: DeleteSourceServer
@@ -505,10 +485,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteSourceServerResponse"
   /DescribeJobLogItems:
     post:
       operationId: DescribeJobLogItems
@@ -951,10 +927,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/InitializeServiceResponse"
   /ListExtensibleSourceServers:
     post:
       operationId: ListExtensibleSourceServers
@@ -2623,6 +2595,9 @@ components:
         supportsNitroInstances:
           $ref: "#/components/schemas/Boolean"
           description: Are EC2 nitro instance types supported when recovering the Source Server.
+        architecture:
+          $ref: "#/components/schemas/SourceServerArchitecture"
+          description: The architecture of the Source Server.
     EC2InstanceType:
       type: string
       minLength: 0
@@ -2704,6 +2679,11 @@ components:
         fullString:
           $ref: "#/components/schemas/BoundedString"
           description: The long name of the Operating System.
+    SourceServerArchitecture:
+      type: string
+      enum:
+        - x86_64
+        - arm64
     StagingArea:
       description: Staging information related to source server.
       type: object
@@ -3143,16 +3123,10 @@ components:
         sourceNetworkID:
           $ref: "#/components/schemas/SourceNetworkID"
           description: ID of the created Source Network.
-    DeleteJobResponse:
-      type: object
     LaunchActionResourceId:
       description: Launch configuration template Id or Source Server Id
       type: string
       pattern: (s-[0-9a-zA-Z]{17}$|lct-[0-9a-zA-Z]{17})
-    DeleteLaunchActionResponse:
-      type: object
-    DeleteLaunchConfigurationTemplateResponse:
-      type: object
     DeleteRecoveryPlanResponse:
       type: object
       properties:
@@ -3177,12 +3151,6 @@ components:
           description: The ARN of the deleted Recovery Plan step.
       required:
         - recoveryPlanStepArn
-    DeleteReplicationConfigurationTemplateResponse:
-      type: object
-    DeleteSourceNetworkResponse:
-      type: object
-    DeleteSourceServerResponse:
-      type: object
     PaginationToken:
       type: string
       minLength: 0
@@ -4224,8 +4192,6 @@ components:
         - SC1
         - ST1
         - STANDARD
-    InitializeServiceResponse:
-      type: object
     MaxResultsReplicatingSourceServers:
       type: integer
       minimum: 1
@@ -4698,7 +4664,6 @@ components:
             $ref: "#/paths/~1DeleteSourceNetwork/post"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -4898,7 +4863,6 @@ components:
             $ref: "#/paths/~1DeleteSourceServer/post"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -4996,7 +4960,6 @@ components:
             $ref: "#/paths/~1DeleteLaunchConfigurationTemplate/post"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -5152,7 +5115,6 @@ components:
             $ref: "#/paths/~1DeleteReplicationConfigurationTemplate/post"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -5207,7 +5169,6 @@ components:
             $ref: "#/paths/~1DeleteJob/post"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -5249,7 +5210,6 @@ components:
             $ref: "#/paths/~1DeleteLaunchAction/post"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -5660,6 +5620,21 @@ components:
         update:
           - $ref: "#/components/x-stackQL-resources/replication_configurations/methods/update_replication_configuration"
         delete: []
+    services:
+      id: aws.drs.services
+      name: services
+      title: services
+      methods:
+        initialize_service:
+          operation:
+            $ref: "#/paths/~1InitializeService/post"
+          response:
+            openAPIDocKey: "204"
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
     extensible_source_servers:
       id: aws.drs.extensible_source_servers
       name: extensible_source_servers
@@ -5753,4 +5728,46 @@ components:
         update:
           - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
           - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
+        delete: []
+    failback_launches:
+      id: aws.drs.failback_launches
+      name: failback_launches
+      title: failback_launches
+      methods:
+        start_failback_launch:
+          operation:
+            $ref: "#/paths/~1StartFailbackLaunch/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
+    recoveries:
+      id: aws.drs.recoveries
+      name: recoveries
+      title: recoveries
+      methods:
+        start_recovery:
+          operation:
+            $ref: "#/paths/~1StartRecovery/post"
+          response:
+            openAPIDocKey: "202"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
         delete: []

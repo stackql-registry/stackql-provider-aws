@@ -36,6 +36,7 @@ The following fields are returned by `SELECT` queries:
     defaultValue="describe_state_machine"
     values={[
         { label: 'describe_state_machine', value: 'describe_state_machine' },
+        { label: 'describe_state_machine_for_execution', value: 'describe_state_machine_for_execution' },
         { label: 'list_state_machines', value: 'list_state_machines' }
     ]}
 >
@@ -123,6 +124,80 @@ The following fields are returned by `SELECT` queries:
 </tbody>
 </table>
 </TabItem>
+<TabItem value="describe_state_machine_for_execution">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="name" /></td>
+    <td><code>string</code></td>
+    <td>The name of the state machine associated with the execution.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="definition" /></td>
+    <td><code>string</code></td>
+    <td>The Amazon States Language definition of the state machine. See Amazon States Language.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="encryption_configuration" /></td>
+    <td><code>object</code></td>
+    <td>Settings to configure server-side encryption.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="label" /></td>
+    <td><code>string</code></td>
+    <td>A user-defined or an auto-generated string that identifies a Map state. This field is returned only if the executionArn is a child workflow execution that was started by a Distributed Map state.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="logging_configuration" /></td>
+    <td><code>object</code></td>
+    <td>The LoggingConfiguration data type is used to set CloudWatch Logs options.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="map_run_arn" /></td>
+    <td><code>string</code></td>
+    <td>The Amazon Resource Name (ARN) of the Map Run that started the child workflow execution. This field is returned only if the executionArn is a child workflow execution that was started by a Distributed Map state.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="revision_id" /></td>
+    <td><code>string</code></td>
+    <td>The revision identifier for the state machine. The first revision ID when you create the state machine is null. Use the state machine revisionId parameter to compare the revision of a state machine with the configuration of the state machine used for executions without performing a diff of the properties, such as definition and roleArn.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="role_arn" /></td>
+    <td><code>string</code></td>
+    <td>The Amazon Resource Name (ARN) of the IAM role of the State Machine for the execution.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="state_machine_arn" /></td>
+    <td><code>string</code></td>
+    <td>The Amazon Resource Name (ARN) of the state machine associated with the execution.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="tracing_configuration" /></td>
+    <td><code>object</code></td>
+    <td>Selects whether X-Ray tracing is enabled.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="update_date" /></td>
+    <td><code>string (date-time)</code></td>
+    <td>The date and time the state machine associated with an execution was updated. For a newly created state machine, this is the creation date.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="variable_references" /></td>
+    <td><code>object</code></td>
+    <td>A map of state name to a list of variables referenced by that state. States that do not use variable references will not be shown in the response.</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
 <TabItem value="list_state_machines">
 
 <table>
@@ -182,6 +257,13 @@ The following methods are available for this resource:
     <td>Provides information about a state machine's definition, its IAM role Amazon Resource Name (ARN), and configuration. A qualified state machine ARN can either refer to a Distributed Map state defined within a state machine, a version ARN, or an alias ARN. The following are some examples of qualified and unqualified state machine ARNs: The following qualified state machine ARN refers to a Distributed Map state with a label mapStateLabel in a state machine named myStateMachine. arn:partition:states:region:account-id:stateMachine:myStateMachine/mapStateLabel If you provide a qualified state machine ARN that refers to a Distributed Map state, the request fails with ValidationException. The following qualified state machine ARN refers to an alias named PROD. arn:<code>&lt;partition&gt;</code>:states:<code>&lt;region&gt;</code>:<code>&lt;account-id&gt;</code>:stateMachine:<code>&lt;myStateMachine:PROD&gt;</code> If you provide a qualified state machine ARN that refers to a version ARN or an alias ARN, the request starts execution for that version or alias. The following unqualified state machine ARN refers to a state machine named myStateMachine. arn:<code>&lt;partition&gt;</code>:states:<code>&lt;region&gt;</code>:<code>&lt;account-id&gt;</code>:stateMachine:<code>&lt;myStateMachine&gt;</code> This API action returns the details for a state machine version if the stateMachineArn you specify is a state machine version ARN. This operation is eventually consistent. The results are best effort and may not reflect very recent updates and changes.</td>
 </tr>
 <tr>
+    <td><a href="#describe_state_machine_for_execution"><CopyableCode code="describe_state_machine_for_execution" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Provides information about a state machine's definition, its execution role ARN, and configuration. If a Map Run dispatched the execution, this action returns the Map Run Amazon Resource Name (ARN) in the response. The state machine returned is the state machine associated with the Map Run. This operation is eventually consistent. The results are best effort and may not reflect very recent updates and changes. This API action is not supported by EXPRESS state machines.</td>
+</tr>
+<tr>
     <td><a href="#list_state_machines"><CopyableCode code="list_state_machines" /></a></td>
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
@@ -221,7 +303,7 @@ The following methods are available for this resource:
     <td><CopyableCode code="exec" /></td>
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-stateMachineArn"><code>stateMachineArn</code></a></td>
     <td></td>
-    <td>Starts a Synchronous Express state machine execution. StartSyncExecution is not available for STANDARD workflows. StartSyncExecution will return a 200 OK response, even if your execution fails, because the status code in the API response doesn't reflect function errors. Error codes are reserved for errors that prevent your execution from running, such as permissions errors, limit errors, or issues with your state machine code and configuration. This API action isn't logged in CloudTrail.</td>
+    <td>Starts a Synchronous Express state machine execution. StartSyncExecution is not available for STANDARD workflows. StartSyncExecution will return a 200 OK response, even if your execution fails, because the status code in the API response doesn't reflect function errors. Error codes are reserved for errors that prevent your execution from running, such as permissions errors, limit errors, or issues with your state machine code and configuration.</td>
 </tr>
 <tr>
     <td><a href="#validate_state_machine_definition"><CopyableCode code="validate_state_machine_definition" /></a></td>
@@ -260,6 +342,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     defaultValue="describe_state_machine"
     values={[
         { label: 'describe_state_machine', value: 'describe_state_machine' },
+        { label: 'describe_state_machine_for_execution', value: 'describe_state_machine_for_execution' },
         { label: 'list_state_machines', value: 'list_state_machines' }
     ]}
 >
@@ -282,6 +365,29 @@ state_machine_arn,
 status,
 tracing_configuration,
 type_,
+variable_references
+FROM aws.stepfunctions.state_machines
+WHERE region = '{{ region }}' -- required
+;
+```
+</TabItem>
+<TabItem value="describe_state_machine_for_execution">
+
+Provides information about a state machine's definition, its execution role ARN, and configuration. If a Map Run dispatched the execution, this action returns the Map Run Amazon Resource Name (ARN) in the response. The state machine returned is the state machine associated with the Map Run. This operation is eventually consistent. The results are best effort and may not reflect very recent updates and changes. This API action is not supported by EXPRESS state machines.
+
+```sql
+SELECT
+name,
+definition,
+encryption_configuration,
+label,
+logging_configuration,
+map_run_arn,
+revision_id,
+role_arn,
+state_machine_arn,
+tracing_configuration,
+update_date,
 variable_references
 FROM aws.stepfunctions.state_machines
 WHERE region = '{{ region }}' -- required
@@ -502,7 +608,7 @@ EXEC aws.stepfunctions.state_machines.publish_state_machine_version
 </TabItem>
 <TabItem value="start_sync_execution">
 
-Starts a Synchronous Express state machine execution. StartSyncExecution is not available for STANDARD workflows. StartSyncExecution will return a 200 OK response, even if your execution fails, because the status code in the API response doesn't reflect function errors. Error codes are reserved for errors that prevent your execution from running, such as permissions errors, limit errors, or issues with your state machine code and configuration. This API action isn't logged in CloudTrail.
+Starts a Synchronous Express state machine execution. StartSyncExecution is not available for STANDARD workflows. StartSyncExecution will return a 200 OK response, even if your execution fails, because the status code in the API response doesn't reflect function errors. Error codes are reserved for errors that prevent your execution from running, such as permissions errors, limit errors, or issues with your state machine code and configuration.
 
 ```sql
 EXEC aws.stepfunctions.state_machines.start_sync_execution 

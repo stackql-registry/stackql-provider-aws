@@ -239,6 +239,13 @@ The following methods are available for this resource:
     <td>Disassociates a Q App from a user removing the user's access to run the Q App.</td>
 </tr>
 <tr>
+    <td><a href="#predict_q_app"><CopyableCode code="predict_q_app" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-instance-id"><code>instance-id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Generates an Amazon Q App definition based on either a conversation or a problem statement provided as input.The resulting app definition can be used to call CreateQApp. This API doesn't create Amazon Q Apps directly.</td>
+</tr>
+<tr>
     <td><a href="#start_q_app_session"><CopyableCode code="start_q_app_session" /></a></td>
     <td><CopyableCode code="exec" /></td>
     <td><a href="#parameter-instance-id"><code>instance-id</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-appId"><code>appId</code></a>, <a href="#parameter-appVersion"><code>appVersion</code></a></td>
@@ -642,6 +649,7 @@ AND region = '{{ region }}' --required
     values={[
         { label: 'associate_q_app_with_user', value: 'associate_q_app_with_user' },
         { label: 'disassociate_q_app_from_user', value: 'disassociate_q_app_from_user' },
+        { label: 'predict_q_app', value: 'predict_q_app' },
         { label: 'start_q_app_session', value: 'start_q_app_session' },
         { label: 'stop_q_app_session', value: 'stop_q_app_session' }
     ]}
@@ -672,6 +680,21 @@ EXEC aws.qapps.q_apps.disassociate_q_app_from_user
 @@json=
 '{
 "appId": "{{ appId }}"
+}'
+;
+```
+</TabItem>
+<TabItem value="predict_q_app">
+
+Generates an Amazon Q App definition based on either a conversation or a problem statement provided as input.The resulting app definition can be used to call CreateQApp. This API doesn't create Amazon Q Apps directly.
+
+```sql
+EXEC aws.qapps.q_apps.predict_q_app 
+@instance-id='{{ instance-id }}' --required, 
+@region='{{ region }}' --required 
+@@json=
+'{
+"options": "{{ options }}"
 }'
 ;
 ```

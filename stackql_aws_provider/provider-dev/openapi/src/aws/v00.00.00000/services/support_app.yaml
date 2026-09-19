@@ -53,10 +53,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/CreateSlackChannelConfigurationResult"
   /control/delete-account-alias:
     post:
       operationId: DeleteAccountAlias
@@ -65,10 +61,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteAccountAliasResult"
   /control/delete-slack-channel-configuration:
     post:
       operationId: DeleteSlackChannelConfiguration
@@ -91,10 +83,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteSlackChannelConfigurationResult"
   /control/delete-slack-workspace-configuration:
     post:
       operationId: DeleteSlackWorkspaceConfiguration
@@ -114,10 +102,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteSlackWorkspaceConfigurationResult"
   /control/get-account-alias:
     post:
       operationId: GetAccountAlias
@@ -191,10 +175,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/PutAccountAliasResult"
   /control/register-slack-workspace-for-organization:
     post:
       operationId: RegisterSlackWorkspaceForOrganization
@@ -329,14 +309,6 @@ components:
       minLength: 1
       maxLength: 256
       pattern: ^\S+$
-    CreateSlackChannelConfigurationResult:
-      type: object
-    DeleteAccountAliasResult:
-      type: object
-    DeleteSlackChannelConfigurationResult:
-      type: object
-    DeleteSlackWorkspaceConfigurationResult:
-      type: object
     GetAccountAliasResult:
       type: object
       properties:
@@ -432,8 +404,6 @@ components:
       minLength: 1
       maxLength: 256
       pattern: ^.+$
-    PutAccountAliasResult:
-      type: object
     RegisterSlackWorkspaceForOrganizationResult:
       type: object
       properties:
@@ -489,7 +459,6 @@ components:
             $ref: "#/paths/~1control~1create-slack-channel-configuration/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -500,7 +469,6 @@ components:
             $ref: "#/paths/~1control~1delete-slack-channel-configuration/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -537,17 +505,16 @@ components:
           - $ref: "#/components/x-stackQL-resources/slack_channel_configurations/methods/update_slack_channel_configuration"
         delete:
           - $ref: "#/components/x-stackQL-resources/slack_channel_configurations/methods/delete_slack_channel_configuration"
-    account_alias:
-      id: aws.support_app.account_alias
-      name: account_alias
-      title: account_alias
+    account_aliases:
+      id: aws.support_app.account_aliases
+      name: account_aliases
+      title: account_aliases
       methods:
         delete_account_alias:
           operation:
             $ref: "#/paths/~1control~1delete-account-alias/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         get_account_alias:
           operation:
             $ref: "#/paths/~1control~1get-account-alias/post"
@@ -559,7 +526,6 @@ components:
             $ref: "#/paths/~1control~1put-account-alias/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -567,13 +533,13 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/account_alias/methods/get_account_alias"
+          - $ref: "#/components/x-stackQL-resources/account_aliases/methods/get_account_alias"
         insert: []
         update: []
         replace:
-          - $ref: "#/components/x-stackQL-resources/account_alias/methods/put_account_alias"
+          - $ref: "#/components/x-stackQL-resources/account_aliases/methods/put_account_alias"
         delete:
-          - $ref: "#/components/x-stackQL-resources/account_alias/methods/delete_account_alias"
+          - $ref: "#/components/x-stackQL-resources/account_aliases/methods/delete_account_alias"
     slack_workspace_configurations:
       id: aws.support_app.slack_workspace_configurations
       name: slack_workspace_configurations
@@ -584,7 +550,6 @@ components:
             $ref: "#/paths/~1control~1delete-slack-workspace-configuration/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -608,10 +573,10 @@ components:
         update: []
         delete:
           - $ref: "#/components/x-stackQL-resources/slack_workspace_configurations/methods/delete_slack_workspace_configuration"
-    slack_workspace_for_organizations:
-      id: aws.support_app.slack_workspace_for_organizations
-      name: slack_workspace_for_organizations
-      title: slack_workspace_for_organizations
+    slack_workspaces:
+      id: aws.support_app.slack_workspaces
+      name: slack_workspaces
+      title: slack_workspaces
       methods:
         register_slack_workspace_for_organization:
           operation:
@@ -627,6 +592,6 @@ components:
       sqlVerbs:
         select: []
         insert:
-          - $ref: "#/components/x-stackQL-resources/slack_workspace_for_organizations/methods/register_slack_workspace_for_organization"
+          - $ref: "#/components/x-stackQL-resources/slack_workspaces/methods/register_slack_workspace_for_organization"
         update: []
         delete: []

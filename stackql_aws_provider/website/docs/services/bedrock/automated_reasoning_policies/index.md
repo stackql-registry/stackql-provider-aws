@@ -179,18 +179,18 @@ The following methods are available for this resource:
     <td>Lists all Automated Reasoning policies in your account, with optional filtering by policy ARN. This helps you manage and discover existing policies.</td>
 </tr>
 <tr>
-    <td><a href="#create_automated_reasoning_policy_version"><CopyableCode code="create_automated_reasoning_policy_version" /></a></td>
-    <td><CopyableCode code="insert" /></td>
-    <td><a href="#parameter-policy_arn"><code>policy_arn</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-lastUpdatedDefinitionHash"><code>lastUpdatedDefinitionHash</code></a></td>
-    <td></td>
-    <td>Creates a new version of an existing Automated Reasoning policy. This allows you to iterate on your policy rules while maintaining previous versions for rollback or comparison purposes.</td>
-</tr>
-<tr>
     <td><a href="#create_automated_reasoning_policy"><CopyableCode code="create_automated_reasoning_policy" /></a></td>
     <td><CopyableCode code="insert" /></td>
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-name"><code>name</code></a></td>
     <td></td>
     <td>Creates an Automated Reasoning policy for Amazon Bedrock Guardrails. Automated Reasoning policies use mathematical techniques to detect hallucinations, suggest corrections, and highlight unstated assumptions in the responses of your GenAI application. To create a policy, you upload a source document that describes the rules that you're encoding. Automated Reasoning extracts important concepts from the source document that will become variables in the policy and infers policy rules.</td>
+</tr>
+<tr>
+    <td><a href="#create_automated_reasoning_policy_version"><CopyableCode code="create_automated_reasoning_policy_version" /></a></td>
+    <td><CopyableCode code="insert" /></td>
+    <td><a href="#parameter-policy_arn"><code>policy_arn</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-lastUpdatedDefinitionHash"><code>lastUpdatedDefinitionHash</code></a></td>
+    <td></td>
+    <td>Creates a new version of an existing Automated Reasoning policy. This allows you to iterate on your policy rules while maintaining previous versions for rollback or comparison purposes.</td>
 </tr>
 <tr>
     <td><a href="#update_automated_reasoning_policy"><CopyableCode code="update_automated_reasoning_policy" /></a></td>
@@ -355,41 +355,13 @@ AND maxResults = '{{ maxResults }}'
 ## `INSERT` examples
 
 <Tabs
-    defaultValue="create_automated_reasoning_policy_version"
+    defaultValue="create_automated_reasoning_policy"
     values={[
-        { label: 'create_automated_reasoning_policy_version', value: 'create_automated_reasoning_policy_version' },
         { label: 'create_automated_reasoning_policy', value: 'create_automated_reasoning_policy' },
+        { label: 'create_automated_reasoning_policy_version', value: 'create_automated_reasoning_policy_version' },
         { label: 'Manifest', value: 'manifest' }
     ]}
 >
-<TabItem value="create_automated_reasoning_policy_version">
-
-Creates a new version of an existing Automated Reasoning policy. This allows you to iterate on your policy rules while maintaining previous versions for rollback or comparison purposes.
-
-```sql
-INSERT INTO aws.bedrock.automated_reasoning_policies (
-clientRequestToken,
-lastUpdatedDefinitionHash,
-tags,
-policy_arn,
-region
-)
-SELECT 
-'{{ clientRequestToken }}',
-'{{ lastUpdatedDefinitionHash }}' /* required */,
-'{{ tags }}',
-'{{ policy_arn }}',
-'{{ region }}'
-RETURNING
-name,
-created_at,
-definition_hash,
-description,
-policy_arn,
-version
-;
-```
-</TabItem>
 <TabItem value="create_automated_reasoning_policy">
 
 Creates an Automated Reasoning policy for Amazon Bedrock Guardrails. Automated Reasoning policies use mathematical techniques to detect hallucinations, suggest corrections, and highlight unstated assumptions in the responses of your GenAI application. To create a policy, you upload a source document that describes the rules that you're encoding. Automated Reasoning extracts important concepts from the source document that will become variables in the policy and infers policy rules.
@@ -423,29 +395,51 @@ version
 ;
 ```
 </TabItem>
+<TabItem value="create_automated_reasoning_policy_version">
+
+Creates a new version of an existing Automated Reasoning policy. This allows you to iterate on your policy rules while maintaining previous versions for rollback or comparison purposes.
+
+```sql
+INSERT INTO aws.bedrock.automated_reasoning_policies (
+clientRequestToken,
+lastUpdatedDefinitionHash,
+tags,
+policy_arn,
+region
+)
+SELECT 
+'{{ clientRequestToken }}',
+'{{ lastUpdatedDefinitionHash }}' /* required */,
+'{{ tags }}',
+'{{ policy_arn }}',
+'{{ region }}'
+RETURNING
+name,
+created_at,
+definition_hash,
+description,
+policy_arn,
+version
+;
+```
+</TabItem>
 <TabItem value="manifest">
 
 <CodeBlock language="yaml">{`# Description fields are for documentation purposes
 - name: automated_reasoning_policies
   props:
-    - name: policy_arn
-      value: "{{ policy_arn }}"
-      description: Required parameter for the automated_reasoning_policies resource.
     - name: region
       value: "{{ region }}"
       description: Required parameter for the automated_reasoning_policies resource.
-    - name: clientRequestToken
-      value: "{{ clientRequestToken }}"
-    - name: lastUpdatedDefinitionHash
-      value: "{{ lastUpdatedDefinitionHash }}"
-    - name: tags
-      value:
-        - key: "{{ key }}"
-          value: "{{ value }}"
+    - name: policy_arn
+      value: "{{ policy_arn }}"
+      description: Required parameter for the automated_reasoning_policies resource.
     - name: name
       value: "{{ name }}"
     - name: description
       value: "{{ description }}"
+    - name: clientRequestToken
+      value: "{{ clientRequestToken }}"
     - name: policyDefinition
       description: |
         Contains the formal logic rules, variables, and custom variable types that define an Automated Reasoning policy. The policy definition specifies the constraints used to validate foundation model responses for accuracy and logical consistency.
@@ -465,6 +459,12 @@ version
             description: "{{ description }}"
     - name: kmsKeyId
       value: "{{ kmsKeyId }}"
+    - name: tags
+      value:
+        - key: "{{ key }}"
+          value: "{{ value }}"
+    - name: lastUpdatedDefinitionHash
+      value: "{{ lastUpdatedDefinitionHash }}"
 `}</CodeBlock>
 
 </TabItem>

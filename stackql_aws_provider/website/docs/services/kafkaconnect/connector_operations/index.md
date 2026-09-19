@@ -63,12 +63,12 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="connector_operation_state" /></td>
     <td><code>string</code></td>
-    <td>The state of the connector operation. (PENDING, UPDATE_IN_PROGRESS, UPDATE_COMPLETE, UPDATE_FAILED, ROLLBACK_IN_PROGRESS, ROLLBACK_FAILED, ROLLBACK_COMPLETE)</td>
+    <td>The state of the connector operation. (PENDING, UPDATE_IN_PROGRESS, UPDATE_COMPLETE, UPDATE_FAILED, ROLLBACK_IN_PROGRESS, ROLLBACK_FAILED, ROLLBACK_COMPLETE, RESTART_IN_PROGRESS, RESTART_COMPLETE, RESTART_FAILED)</td>
 </tr>
 <tr>
     <td><CopyableCode code="connector_operation_type" /></td>
     <td><code>string</code></td>
-    <td>The type of connector operation performed. (UPDATE_WORKER_SETTING, UPDATE_CONNECTOR_CONFIGURATION, ISOLATE_CONNECTOR, RESTORE_CONNECTOR)</td>
+    <td>The type of connector operation performed. (UPDATE_WORKER_SETTING, UPDATE_CONNECTOR_CONFIGURATION, ISOLATE_CONNECTOR, RESTORE_CONNECTOR, RESTART_CONNECTOR)</td>
 </tr>
 <tr>
     <td><CopyableCode code="creation_time" /></td>
@@ -132,12 +132,12 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="connector_operation_state" /></td>
     <td><code>string</code></td>
-    <td>The state of the connector operation. (PENDING, UPDATE_IN_PROGRESS, UPDATE_COMPLETE, UPDATE_FAILED, ROLLBACK_IN_PROGRESS, ROLLBACK_FAILED, ROLLBACK_COMPLETE)</td>
+    <td>The state of the connector operation. (PENDING, UPDATE_IN_PROGRESS, UPDATE_COMPLETE, UPDATE_FAILED, ROLLBACK_IN_PROGRESS, ROLLBACK_FAILED, ROLLBACK_COMPLETE, RESTART_IN_PROGRESS, RESTART_COMPLETE, RESTART_FAILED)</td>
 </tr>
 <tr>
     <td><CopyableCode code="connector_operation_type" /></td>
     <td><code>string</code></td>
-    <td>The type of connector operation performed. (UPDATE_WORKER_SETTING, UPDATE_CONNECTOR_CONFIGURATION, ISOLATE_CONNECTOR, RESTORE_CONNECTOR)</td>
+    <td>The type of connector operation performed. (UPDATE_WORKER_SETTING, UPDATE_CONNECTOR_CONFIGURATION, ISOLATE_CONNECTOR, RESTORE_CONNECTOR, RESTART_CONNECTOR)</td>
 </tr>
 <tr>
     <td><CopyableCode code="creation_time" /></td>

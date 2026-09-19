@@ -86,6 +86,13 @@ The following methods are available for this resource:
     <td></td>
     <td>Returns the corresponding Match ID of a customer record if the record has been processed in a rule-based matching workflow. You can call this API as a dry run of an incremental load on the rule-based matching workflow.</td>
 </tr>
+<tr>
+    <td><a href="#generate_match_id"><CopyableCode code="generate_match_id" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-workflow_name"><code>workflow_name</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-records"><code>records</code></a></td>
+    <td></td>
+    <td>Generates or retrieves Match IDs for records using a rule-based matching workflow. When you call this operation, it processes your records against the workflow's matching rules to identify potential matches. For existing records, it retrieves their Match IDs and associated rules. For records without matches, it generates new Match IDs. The operation saves results to Amazon S3. The processing type (processingType) you choose affects both the accuracy and response time of the operation. Additional charges apply for each API call, whether made through the Entity Resolution console or directly via the API. The rule-based matching workflow must exist and be active before calling this operation.</td>
+</tr>
 </tbody>
 </table>
 
@@ -110,7 +117,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-workflow_name">
     <td><CopyableCode code="workflow_name" /></td>
     <td><code>string</code></td>
-    <td>The name of the workflow.</td>
+    <td>The name of the rule-based matching workflow.</td>
 </tr>
 </tbody>
 </table>
@@ -134,6 +141,33 @@ match_rule
 FROM aws.entityresolution.match_ids
 WHERE workflow_name = '{{ workflow_name }}' -- required
 AND region = '{{ region }}' -- required
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="generate_match_id"
+    values={[
+        { label: 'generate_match_id', value: 'generate_match_id' }
+    ]}
+>
+<TabItem value="generate_match_id">
+
+Generates or retrieves Match IDs for records using a rule-based matching workflow. When you call this operation, it processes your records against the workflow's matching rules to identify potential matches. For existing records, it retrieves their Match IDs and associated rules. For records without matches, it generates new Match IDs. The operation saves results to Amazon S3. The processing type (processingType) you choose affects both the accuracy and response time of the operation. Additional charges apply for each API call, whether made through the Entity Resolution console or directly via the API. The rule-based matching workflow must exist and be active before calling this operation.
+
+```sql
+EXEC aws.entityresolution.match_ids.generate_match_id 
+@workflow_name='{{ workflow_name }}' --required, 
+@region='{{ region }}' --required 
+@@json=
+'{
+"records": "{{ records }}", 
+"processingType": "{{ processingType }}"
+}'
 ;
 ```
 </TabItem>

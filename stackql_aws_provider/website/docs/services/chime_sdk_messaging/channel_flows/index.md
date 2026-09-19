@@ -155,13 +155,6 @@ The following methods are available for this resource:
     <td>Updates channel flow attributes. This is a developer API.</td>
 </tr>
 <tr>
-    <td><a href="#disassociate_channel_flow"><CopyableCode code="disassociate_channel_flow" /></a></td>
-    <td><CopyableCode code="update" /></td>
-    <td><a href="#parameter-channel_arn"><code>channel_arn</code></a>, <a href="#parameter-channel_flow_arn"><code>channel_flow_arn</code></a>, <a href="#parameter-x-amz-chime-bearer"><code>x-amz-chime-bearer</code></a>, <a href="#parameter-region"><code>region</code></a></td>
-    <td></td>
-    <td>Disassociates a channel flow from all its channels. Once disassociated, all messages to that channel stop going through the channel flow processor. Only administrators or channel moderators can disassociate a channel flow. The x-amz-chime-bearer request header is mandatory. Use the ARN of the AppInstanceUser or AppInstanceBot that makes the API call as the value in the header.</td>
-</tr>
-<tr>
     <td><a href="#delete_channel_flow"><CopyableCode code="delete_channel_flow" /></a></td>
     <td><CopyableCode code="delete" /></td>
     <td><a href="#parameter-channel_flow_arn"><code>channel_flow_arn</code></a>, <a href="#parameter-region"><code>region</code></a></td>
@@ -174,6 +167,13 @@ The following methods are available for this resource:
     <td><a href="#parameter-channel_arn"><code>channel_arn</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-CallbackId"><code>CallbackId</code></a>, <a href="#parameter-ChannelMessage"><code>ChannelMessage</code></a></td>
     <td></td>
     <td>Calls back Amazon Chime SDK messaging with a processing response message. This should be invoked from the processor Lambda. This is a developer API. You can return one of the following processing responses: Update message content or metadata Deny a message Make no changes to the message</td>
+</tr>
+<tr>
+    <td><a href="#disassociate_channel_flow"><CopyableCode code="disassociate_channel_flow" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-channel_arn"><code>channel_arn</code></a>, <a href="#parameter-channel_flow_arn"><code>channel_flow_arn</code></a>, <a href="#parameter-x-amz-chime-bearer"><code>x-amz-chime-bearer</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Disassociates a channel flow from all its channels. Once disassociated, all messages to that channel stop going through the channel flow processor. Only administrators or channel moderators can disassociate a channel flow. The x-amz-chime-bearer request header is mandatory. Use the ARN of the AppInstanceUser or AppInstanceBot that makes the API call as the value in the header.</td>
 </tr>
 </tbody>
 </table>
@@ -347,8 +347,7 @@ channel_flow_arn
     defaultValue="associate_channel_flow"
     values={[
         { label: 'associate_channel_flow', value: 'associate_channel_flow' },
-        { label: 'update_channel_flow', value: 'update_channel_flow' },
-        { label: 'disassociate_channel_flow', value: 'disassociate_channel_flow' }
+        { label: 'update_channel_flow', value: 'update_channel_flow' }
     ]}
 >
 <TabItem value="associate_channel_flow">
@@ -384,21 +383,6 @@ RETURNING
 channel_flow_arn;
 ```
 </TabItem>
-<TabItem value="disassociate_channel_flow">
-
-Disassociates a channel flow from all its channels. Once disassociated, all messages to that channel stop going through the channel flow processor. Only administrators or channel moderators can disassociate a channel flow. The x-amz-chime-bearer request header is mandatory. Use the ARN of the AppInstanceUser or AppInstanceBot that makes the API call as the value in the header.
-
-```sql
-UPDATE aws.chime_sdk_messaging.channel_flows
-SET 
--- No updatable properties
-WHERE 
-channel_arn = '{{ channel_arn }}' --required
-AND channel_flow_arn = '{{ channel_flow_arn }}' --required
-AND `x-amz-chime-bearer` = '{{ x-amz-chime-bearer }}' --required
-AND region = '{{ region }}' --required;
-```
-</TabItem>
 </Tabs>
 
 
@@ -429,7 +413,8 @@ AND region = '{{ region }}' --required
 <Tabs
     defaultValue="channel_flow_callback"
     values={[
-        { label: 'channel_flow_callback', value: 'channel_flow_callback' }
+        { label: 'channel_flow_callback', value: 'channel_flow_callback' },
+        { label: 'disassociate_channel_flow', value: 'disassociate_channel_flow' }
     ]}
 >
 <TabItem value="channel_flow_callback">
@@ -446,6 +431,19 @@ EXEC aws.chime_sdk_messaging.channel_flows.channel_flow_callback
 "DeleteResource": {{ DeleteResource }}, 
 "ChannelMessage": "{{ ChannelMessage }}"
 }'
+;
+```
+</TabItem>
+<TabItem value="disassociate_channel_flow">
+
+Disassociates a channel flow from all its channels. Once disassociated, all messages to that channel stop going through the channel flow processor. Only administrators or channel moderators can disassociate a channel flow. The x-amz-chime-bearer request header is mandatory. Use the ARN of the AppInstanceUser or AppInstanceBot that makes the API call as the value in the header.
+
+```sql
+EXEC aws.chime_sdk_messaging.channel_flows.disassociate_channel_flow 
+@channel_arn='{{ channel_arn }}' --required, 
+@channel_flow_arn='{{ channel_flow_arn }}' --required, 
+@x-amz-chime-bearer='{{ x-amz-chime-bearer }}' --required, 
+@region='{{ region }}' --required
 ;
 ```
 </TabItem>

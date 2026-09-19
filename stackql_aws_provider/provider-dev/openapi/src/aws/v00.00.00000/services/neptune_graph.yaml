@@ -771,10 +771,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TagResourceOutput"
     delete:
       operationId: UntagResource
       description: Removes the specified tags from the specified resource.
@@ -794,10 +790,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UntagResourceOutput"
   /snapshots/{snapshot_identifier}/restore:
     post:
       operationId: RestoreGraphFromSnapshot
@@ -2470,8 +2462,6 @@ components:
         - id
         - name
         - arn
-    TagResourceOutput:
-      type: object
     TagKeyList:
       type: array
       items:
@@ -2481,8 +2471,6 @@ components:
       minLength: 1
       maxLength: 128
       pattern: "[a-zA-Z+-=._:/]+"
-    UntagResourceOutput:
-      type: object
     UpdateGraphOutput:
       type: object
       properties:
@@ -2540,6 +2528,12 @@ components:
       name: export_tasks
       title: export_tasks
       methods:
+        cancel_export_task:
+          operation:
+            $ref: "#/paths/~1exporttasks~1{task_identifier}/delete"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
         get_export_task:
           operation:
             $ref: "#/paths/~1exporttasks~1{task_identifier}/get"
@@ -2563,6 +2557,17 @@ components:
               responseToken:
                 key: $.nextToken
                 location: body
+        start_export_task:
+          operation:
+            $ref: "#/paths/~1exporttasks/post"
+          response:
+            openAPIDocKey: "201"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/export_tasks/methods/get_export_task"
@@ -2575,6 +2580,12 @@ components:
       name: import_tasks
       title: import_tasks
       methods:
+        cancel_import_task:
+          operation:
+            $ref: "#/paths/~1importtasks~1{task_identifier}/delete"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
         get_import_task:
           operation:
             $ref: "#/paths/~1importtasks~1{task_identifier}/get"
@@ -2609,6 +2620,17 @@ components:
               responseToken:
                 key: $.nextToken
                 location: body
+        start_import_task:
+          operation:
+            $ref: "#/paths/~1graphs~1{graph_identifier}~1importtasks/post"
+          response:
+            openAPIDocKey: "201"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/import_tasks/methods/get_import_task"
@@ -2904,7 +2926,6 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -2915,7 +2936,6 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
       sqlVerbs:

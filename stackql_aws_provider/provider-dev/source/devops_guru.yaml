@@ -92,10 +92,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteInsightResponse'
       x-stackql-resource: insights
       x-stackql-method: delete_insight
       x-stackql-verb: DELETE
@@ -234,10 +230,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateEventSourcesConfigResponse'
       x-stackql-resource: event_sources_configs
       x-stackql-method: update_event_sources_config
       x-stackql-verb: UPDATE
@@ -262,7 +254,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DescribeFeedbackResponse'
-      x-stackql-resource: feedbacks
+      x-stackql-resource: feedback
       x-stackql-method: describe_feedback
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.InsightFeedback
@@ -282,11 +274,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PutFeedbackResponse'
-      x-stackql-resource: feedbacks
+      x-stackql-resource: feedback
       x-stackql-method: put_feedback
       x-stackql-verb: REPLACE
   /organization/health:
@@ -466,10 +454,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateServiceIntegrationResponse'
       x-stackql-resource: service_integrations
       x-stackql-method: update_service_integration
       x-stackql-verb: UPDATE
@@ -520,11 +504,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/StartCostEstimationResponse'
-      x-stackql-resource: cost_estimation
+      x-stackql-resource: cost_estimations
       x-stackql-method: start_cost_estimation
       x-stackql-verb: EXEC
   /resource-collections/{resource_collection_type}:
@@ -599,7 +579,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListAnomaliesForInsightResponse'
-      x-stackql-resource: anomalies_for_insights
+      x-stackql-resource: anomalies
       x-stackql-method: list_anomalies_for_insight
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ReactiveAnomalies
@@ -833,10 +813,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RemoveNotificationChannelResponse'
       x-stackql-resource: notification_channels
       x-stackql-method: remove_notification_channel
       x-stackql-verb: UPDATE
@@ -953,10 +929,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateResourceCollectionResponse'
       x-stackql-resource: resource_collections
       x-stackql-method: update_resource_collection
       x-stackql-verb: UPDATE
@@ -1099,8 +1071,6 @@ components:
       minLength: 1
       maxLength: 100
       pattern: ^[\w-]*$
-    DeleteInsightResponse:
-      type: object
     DescribeAccountHealthResponse:
       type: object
       properties:
@@ -3479,10 +3449,6 @@ components:
       type: string
     RecommendationCategory:
       type: string
-    PutFeedbackResponse:
-      type: object
-    RemoveNotificationChannelResponse:
-      type: object
     SearchInsightsFilters:
       description: Specifies values used to filter responses when searching for insights. You can use a ResourceCollection,
         ServiceCollection, array of severities, and an array of status values. Each filter type contains one or more values
@@ -3562,10 +3528,6 @@ components:
       minLength: 1
       maxLength: 100
       pattern: ^[a-zA-Z0-9]+[a-zA-Z0-9-]*$
-    StartCostEstimationResponse:
-      type: object
-    UpdateEventSourcesConfigResponse:
-      type: object
     UpdateResourceCollectionAction:
       type: string
       enum:
@@ -3640,8 +3602,6 @@ components:
       type: array
       items:
         $ref: '#/components/schemas/TagValue'
-    UpdateResourceCollectionResponse:
-      type: object
     UpdateServiceIntegrationConfig:
       description: Information about updating the integration status of an Amazon Web Services service, such as Amazon Web
         Services Systems Manager, with DevOps Guru.
@@ -3693,5 +3653,3 @@ components:
           $ref: '#/components/schemas/ServerSideEncryptionType'
           description: The type of KMS key used. Customer managed keys are the KMS keys that you create. Amazon Web Services
             owned keys are keys that are owned and managed by DevOps Guru.
-    UpdateServiceIntegrationResponse:
-      type: object

@@ -81,6 +81,13 @@ The following methods are available for this resource:
     <td><a href="#parameter-StackName"><code>StackName</code></a>, <a href="#parameter-ChangeSetName"><code>ChangeSetName</code></a>, <a href="#parameter-TemplateStage"><code>TemplateStage</code></a></td>
     <td>Returns the template body for a specified stack. You can get the template for running or deleted stacks. For deleted stacks, GetTemplate returns the template for up to 90 days after the stack has been deleted. If the template doesn't exist, a ValidationError is returned.</td>
 </tr>
+<tr>
+    <td><a href="#validate_template"><CopyableCode code="validate_template" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td><a href="#parameter-TemplateBody"><code>TemplateBody</code></a>, <a href="#parameter-TemplateURL"><code>TemplateURL</code></a></td>
+    <td>Validates a specified template. CloudFormation first checks if the template is valid JSON. If it isn't, CloudFormation checks if the template is valid YAML. If both these checks fail, CloudFormation returns a template validation error.</td>
+</tr>
 </tbody>
 </table>
 
@@ -112,10 +119,20 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     <td><code>string</code></td>
     <td>The name or the unique stack ID that's associated with the stack, which aren't always interchangeable: Running stacks: You can specify either the stack's name or its unique stack ID. Deleted stacks: You must specify the unique stack ID.</td>
 </tr>
+<tr id="parameter-TemplateBody">
+    <td><CopyableCode code="TemplateBody" /></td>
+    <td><code>string</code></td>
+    <td>Structure that contains the template body with a minimum length of 1 byte and a maximum length of 51,200 bytes. Conditional: You must pass TemplateURL or TemplateBody. If both are passed, only TemplateBody is used.</td>
+</tr>
 <tr id="parameter-TemplateStage">
     <td><CopyableCode code="TemplateStage" /></td>
     <td><code>string</code></td>
     <td>For templates that include transforms, the stage of the template that CloudFormation returns. To get the user-submitted template, specify Original. To get the template after CloudFormation has processed all transforms, specify Processed. If the template doesn't include transforms, Original and Processed return the same template. By default, CloudFormation specifies Processed.</td>
+</tr>
+<tr id="parameter-TemplateURL">
+    <td><CopyableCode code="TemplateURL" /></td>
+    <td><code>string</code></td>
+    <td>The URL of a file that contains the template body. The URL must point to a template (max size: 1 MB) that is located in an Amazon S3 bucket or a Systems Manager document. The location for an Amazon S3 bucket must start with https:​//. Conditional: You must pass TemplateURL or TemplateBody. If both are passed, only TemplateBody is used.</td>
 </tr>
 </tbody>
 </table>
@@ -140,6 +157,29 @@ WHERE region = '{{ region }}' -- required
 AND StackName = '{{ StackName }}'
 AND ChangeSetName = '{{ ChangeSetName }}'
 AND TemplateStage = '{{ TemplateStage }}'
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="validate_template"
+    values={[
+        { label: 'validate_template', value: 'validate_template' }
+    ]}
+>
+<TabItem value="validate_template">
+
+Validates a specified template. CloudFormation first checks if the template is valid JSON. If it isn't, CloudFormation checks if the template is valid YAML. If both these checks fail, CloudFormation returns a template validation error.
+
+```sql
+EXEC aws.cloudformation.templates.validate_template 
+@region='{{ region }}' --required, 
+@TemplateBody='{{ TemplateBody }}', 
+@TemplateURL='{{ TemplateURL }}'
 ;
 ```
 </TabItem>

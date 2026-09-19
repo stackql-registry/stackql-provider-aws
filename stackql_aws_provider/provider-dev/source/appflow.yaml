@@ -170,10 +170,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteConnectorProfileResponse'
       x-stackql-resource: connector_profiles
       x-stackql-method: delete_connector_profile
       x-stackql-verb: DELETE
@@ -199,10 +195,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteFlowResponse'
       x-stackql-resource: flows
       x-stackql-method: delete_flow
       x-stackql-verb: DELETE
@@ -523,10 +515,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -549,10 +537,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -619,10 +603,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ResetConnectorMetadataCacheResponse'
       x-stackql-resource: connectors
       x-stackql-method: reset_connector_metadata_cache
       x-stackql-verb: EXEC
@@ -704,11 +684,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UnregisterConnectorResponse'
-      x-stackql-resource: unregister_connector
+      x-stackql-resource: connectors
       x-stackql-method: unregister_connector
       x-stackql-verb: EXEC
   /update-connector-profile:
@@ -1550,6 +1526,9 @@ components:
         redirectUri:
           $ref: '#/components/schemas/RedirectUri'
           description: The URL to which the authentication server redirects the browser after authorization has been granted.
+        codeVerifier:
+          $ref: '#/components/schemas/CodeVerifier'
+          description: The code verifier used in the PKCE (Proof Key for Code Exchange) OAuth flow.
     AuthCode:
       type: string
       maxLength: 4096
@@ -1558,6 +1537,11 @@ components:
       type: string
       maxLength: 512
       pattern: \S+
+    CodeVerifier:
+      type: string
+      minLength: 43
+      maxLength: 128
+      pattern: ^[A-Za-z0-9\-._~]+$
     HoneycodeConnectorProfileCredentials:
       description: The connector-specific credentials required when using Amazon Honeycode.
       type: object
@@ -1749,9 +1733,17 @@ components:
         password:
           $ref: '#/components/schemas/Password'
           description: The password that corresponds to the user name.
+        privateKey:
+          $ref: '#/components/schemas/PrivateKey'
+          description: The RSA private key used for key pair authentication with Snowflake. Provide this instead of a password
+            when your Snowflake account uses key pair authentication.
       required:
       - username
-      - password
+    PrivateKey:
+      type: string
+      minLength: 1
+      maxLength: 8192
+      pattern: .*
     TrendmicroConnectorProfileCredentials:
       description: The connector-specific profile credentials required when using Trend Micro.
       type: object
@@ -3355,10 +3347,6 @@ components:
       - Draft
       - Errored
       - Suspended
-    DeleteConnectorProfileResponse:
-      type: object
-    DeleteFlowResponse:
-      type: object
     DescribeConnectorResponse:
       type: object
       properties:
@@ -4613,8 +4601,6 @@ components:
         connectorArn:
           $ref: '#/components/schemas/ARN'
           description: The ARN of the connector being registered.
-    ResetConnectorMetadataCacheResponse:
-      type: object
     StartFlowResponse:
       type: object
       properties:
@@ -4637,10 +4623,6 @@ components:
         flowStatus:
           $ref: '#/components/schemas/FlowStatus'
           description: Indicates the current status of the flow.
-    TagResourceResponse:
-      type: object
-    UnregisterConnectorResponse:
-      type: object
     TagKeyList:
       type: array
       items:
@@ -4650,8 +4632,6 @@ components:
       minLength: 1
       maxLength: 128
       pattern: ^(?!aws:)[a-zA-Z+-=._:/]+$
-    UntagResourceResponse:
-      type: object
     UpdateConnectorProfileResponse:
       type: object
       properties:

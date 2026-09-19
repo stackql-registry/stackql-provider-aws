@@ -59,10 +59,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/AssociateDelegateToResourceResponse'
       x-stackql-resource: resources
       x-stackql-method: associate_delegate_to_resource
       x-stackql-verb: UPDATE
@@ -107,10 +103,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/AssociateMemberToGroupResponse'
       x-stackql-resource: groups
       x-stackql-method: associate_member_to_group
       x-stackql-verb: UPDATE
@@ -193,11 +185,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CancelMailboxExportJobResponse'
-      x-stackql-resource: organizations
+      x-stackql-resource: mailbox_export_jobs
       x-stackql-method: cancel_mailbox_export_job
       x-stackql-verb: EXEC
   /CreateAlias:
@@ -237,11 +225,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CreateAliasResponse'
-      x-stackql-resource: organizations
+      x-stackql-resource: aliases
       x-stackql-method: create_alias
       x-stackql-verb: INSERT
   /CreateAvailabilityConfiguration:
@@ -288,10 +272,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CreateAvailabilityConfigurationResponse'
       x-stackql-resource: availability_configurations
       x-stackql-method: create_availability_configuration
       x-stackql-verb: INSERT
@@ -723,10 +703,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteAccessControlRuleResponse'
       x-stackql-resource: access_control_rules
       x-stackql-method: delete_access_control_rule
       x-stackql-verb: DELETE
@@ -768,11 +744,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteAliasResponse'
-      x-stackql-resource: organizations
+      x-stackql-resource: aliases
       x-stackql-method: delete_alias
       x-stackql-verb: DELETE
   /DeleteAvailabilityConfiguration:
@@ -808,10 +780,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteAvailabilityConfigurationResponse'
       x-stackql-resource: availability_configurations
       x-stackql-method: delete_availability_configuration
       x-stackql-verb: DELETE
@@ -844,10 +812,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteEmailMonitoringConfigurationResponse'
       x-stackql-resource: email_monitoring_configurations
       x-stackql-method: delete_email_monitoring_configuration
       x-stackql-verb: DELETE
@@ -886,10 +850,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteGroupResponse'
       x-stackql-resource: groups
       x-stackql-method: delete_group
       x-stackql-verb: DELETE
@@ -923,10 +883,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteIdentityCenterApplicationResponse'
       x-stackql-resource: identity_center_applications
       x-stackql-method: delete_identity_center_application
       x-stackql-verb: DELETE
@@ -961,10 +917,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteIdentityProviderConfigurationResponse'
       x-stackql-resource: identity_provider_configurations
       x-stackql-method: delete_identity_provider_configuration
       x-stackql-verb: DELETE
@@ -1001,10 +953,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteImpersonationRoleResponse'
       x-stackql-resource: impersonation_roles
       x-stackql-method: delete_impersonation_role
       x-stackql-verb: DELETE
@@ -1049,10 +997,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteMailboxPermissionsResponse'
       x-stackql-resource: mailbox_permissions
       x-stackql-method: delete_mailbox_permissions
       x-stackql-verb: DELETE
@@ -1097,10 +1041,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteMobileDeviceAccessOverrideResponse'
       x-stackql-resource: mobile_device_access_overrides
       x-stackql-method: delete_mobile_device_access_override
       x-stackql-verb: DELETE
@@ -1139,10 +1079,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteMobileDeviceAccessRuleResponse'
       x-stackql-resource: mobile_device_access_rules
       x-stackql-method: delete_mobile_device_access_rule
       x-stackql-verb: DELETE
@@ -1231,10 +1167,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeletePersonalAccessTokenResponse'
       x-stackql-resource: personal_access_tokens
       x-stackql-method: delete_personal_access_token
       x-stackql-verb: DELETE
@@ -1273,10 +1205,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteResourceResponse'
       x-stackql-resource: resources
       x-stackql-method: delete_resource
       x-stackql-verb: DELETE
@@ -1313,10 +1241,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteRetentionPolicyResponse'
       x-stackql-resource: organizations
       x-stackql-method: delete_retention_policy
       x-stackql-verb: DELETE
@@ -1357,10 +1281,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteUserResponse'
       x-stackql-resource: users
       x-stackql-method: delete_user
       x-stackql-verb: DELETE
@@ -1402,10 +1322,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeregisterFromWorkMailResponse'
       x-stackql-resource: organizations
       x-stackql-method: deregister_from_work_mail
       x-stackql-verb: DELETE
@@ -1444,10 +1360,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeregisterMailDomainResponse'
       x-stackql-resource: mail_domains
       x-stackql-method: deregister_mail_domain
       x-stackql-verb: DELETE
@@ -1842,10 +1754,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DisassociateDelegateFromResourceResponse'
       x-stackql-resource: resources
       x-stackql-method: disassociate_delegate_from_resource
       x-stackql-verb: UPDATE
@@ -1890,10 +1798,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DisassociateMemberFromGroupResponse'
       x-stackql-resource: groups
       x-stackql-method: disassociate_member_from_group
       x-stackql-verb: UPDATE
@@ -2289,7 +2193,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetPersonalAccessTokenMetadataResponse'
-      x-stackql-resource: personal_access_token_metadatas
+      x-stackql-resource: personal_access_token_metadata
       x-stackql-method: get_personal_access_token_metadata
       x-stackql-verb: SELECT
   /ListAccessControlRules:
@@ -2582,7 +2486,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListGroupsForEntityResponse'
-      x-stackql-resource: groups_for_entities
+      x-stackql-resource: groups
       x-stackql-method: list_groups_for_entity
       x-stackql-verb: SELECT
   /ListImpersonationRoles:
@@ -3202,10 +3106,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PutAccessControlRuleResponse'
       x-stackql-resource: access_control_rules
       x-stackql-method: put_access_control_rule
       x-stackql-verb: REPLACE
@@ -3247,10 +3147,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PutEmailMonitoringConfigurationResponse'
       x-stackql-resource: email_monitoring_configurations
       x-stackql-method: put_email_monitoring_configuration
       x-stackql-verb: REPLACE
@@ -3298,10 +3194,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PutIdentityProviderConfigurationResponse'
       x-stackql-resource: identity_provider_configurations
       x-stackql-method: put_identity_provider_configuration
       x-stackql-verb: REPLACE
@@ -3338,10 +3230,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PutInboundDmarcSettingsResponse'
       x-stackql-resource: inbound_dmarc_settings
       x-stackql-method: put_inbound_dmarc_settings
       x-stackql-verb: REPLACE
@@ -3396,10 +3284,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PutMailboxPermissionsResponse'
       x-stackql-resource: mailbox_permissions
       x-stackql-method: put_mailbox_permissions
       x-stackql-verb: REPLACE
@@ -3449,10 +3333,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PutMobileDeviceAccessOverrideResponse'
       x-stackql-resource: mobile_device_access_overrides
       x-stackql-method: put_mobile_device_access_override
       x-stackql-verb: REPLACE
@@ -3499,10 +3379,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PutRetentionPolicyResponse'
       x-stackql-resource: organizations
       x-stackql-method: put_retention_policy
       x-stackql-verb: REPLACE
@@ -3544,10 +3420,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RegisterMailDomainResponse'
       x-stackql-resource: mail_domains
       x-stackql-method: register_mail_domain
       x-stackql-verb: INSERT
@@ -3595,10 +3467,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RegisterToWorkMailResponse'
       x-stackql-resource: organizations
       x-stackql-method: register_to_work_mail
       x-stackql-verb: INSERT
@@ -3639,10 +3507,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ResetPasswordResponse'
       x-stackql-resource: organizations
       x-stackql-method: reset_password
       x-stackql-verb: EXEC
@@ -3713,7 +3577,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartMailboxExportJobResponse'
-      x-stackql-resource: organizations
+      x-stackql-resource: mailbox_export_jobs
       x-stackql-method: start_mailbox_export_job
       x-stackql-verb: EXEC
   /TagResource:
@@ -3749,10 +3613,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -3802,7 +3662,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TestAvailabilityConfigurationResponse'
-      x-stackql-resource: organizations
+      x-stackql-resource: availability_configurations
       x-stackql-method: test_availability_configuration
       x-stackql-verb: EXEC
   /UntagResource:
@@ -3838,10 +3698,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -3887,10 +3743,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateAvailabilityConfigurationResponse'
       x-stackql-resource: availability_configurations
       x-stackql-method: update_availability_configuration
       x-stackql-verb: UPDATE
@@ -3928,10 +3780,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateDefaultMailDomainResponse'
       x-stackql-resource: mail_domains
       x-stackql-method: update_default_mail_domain
       x-stackql-verb: UPDATE
@@ -3973,10 +3821,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateGroupResponse'
       x-stackql-resource: groups
       x-stackql-method: update_group
       x-stackql-verb: UPDATE
@@ -4028,10 +3872,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateImpersonationRoleResponse'
       x-stackql-resource: impersonation_roles
       x-stackql-method: update_impersonation_role
       x-stackql-verb: UPDATE
@@ -4074,10 +3914,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateMailboxQuotaResponse'
       x-stackql-resource: organizations
       x-stackql-method: update_mailbox_quota
       x-stackql-verb: UPDATE
@@ -4150,10 +3986,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateMobileDeviceAccessRuleResponse'
       x-stackql-resource: mobile_device_access_rules
       x-stackql-method: update_mobile_device_access_rule
       x-stackql-verb: UPDATE
@@ -4199,10 +4031,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdatePrimaryEmailAddressResponse'
       x-stackql-resource: organizations
       x-stackql-method: update_primary_email_address
       x-stackql-verb: UPDATE
@@ -4257,10 +4085,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateResourceResponse'
       x-stackql-resource: resources
       x-stackql-method: update_resource
       x-stackql-verb: UPDATE
@@ -4349,10 +4173,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateUserResponse'
       x-stackql-resource: users
       x-stackql-method: update_user
       x-stackql-verb: UPDATE
@@ -4411,10 +4231,6 @@ components:
       minLength: 1
       maxLength: 256
       pattern: '[a-zA-Z0-9._%+@-]+'
-    AssociateDelegateToResourceResponse:
-      type: object
-    AssociateMemberToGroupResponse:
-      type: object
     ImpersonationRoleId:
       type: string
       minLength: 1
@@ -4447,8 +4263,6 @@ components:
       minLength: 1
       maxLength: 63
       pattern: '[A-Za-z0-9-]+'
-    CancelMailboxExportJobResponse:
-      type: object
     WorkMailIdentifier:
       type: string
       minLength: 12
@@ -4458,8 +4272,6 @@ components:
       minLength: 1
       maxLength: 254
       pattern: '[a-zA-Z0-9._%+-]{1,64}@[a-zA-Z0-9.-]+\.[a-zA-Z-]{2,}'
-    CreateAliasResponse:
-      type: object
     DomainName:
       type: string
       minLength: 3
@@ -4508,8 +4320,6 @@ components:
       minLength: 49
       maxLength: 256
       pattern: arn:aws:lambda:[a-z]{2}-[a-z]+-\d{1}:\d{12}:function:[a-zA-Z0-9\-_\.]+(:(\$LATEST|[a-zA-Z0-9\-_]+))?
-    CreateAvailabilityConfigurationResponse:
-      type: object
     GroupName:
       type: string
       minLength: 1
@@ -4781,33 +4591,11 @@ components:
       minLength: 1
       maxLength: 64
       pattern: '[a-zA-Z0-9_-]+'
-    DeleteAccessControlRuleResponse:
-      type: object
-    DeleteAliasResponse:
-      type: object
-    DeleteAvailabilityConfigurationResponse:
-      type: object
-    DeleteEmailMonitoringConfigurationResponse:
-      type: object
-    DeleteGroupResponse:
-      type: object
-    DeleteIdentityCenterApplicationResponse:
-      type: object
-    DeleteIdentityProviderConfigurationResponse:
-      type: object
-    DeleteImpersonationRoleResponse:
-      type: object
-    DeleteMailboxPermissionsResponse:
-      type: object
     DeviceId:
       type: string
       minLength: 1
       maxLength: 32
       pattern: '[A-Za-z0-9]+'
-    DeleteMobileDeviceAccessOverrideResponse:
-      type: object
-    DeleteMobileDeviceAccessRuleResponse:
-      type: object
     DeleteOrganizationResponse:
       type: object
       properties:
@@ -4825,28 +4613,16 @@ components:
       minLength: 1
       maxLength: 64
       pattern: '[a-zA-Z0-9_-]+'
-    DeletePersonalAccessTokenResponse:
-      type: object
-    DeleteResourceResponse:
-      type: object
     ShortString:
       type: string
       minLength: 1
       maxLength: 64
       pattern: '[a-zA-Z0-9_-]+'
-    DeleteRetentionPolicyResponse:
-      type: object
-    DeleteUserResponse:
-      type: object
-    DeregisterFromWorkMailResponse:
-      type: object
     WorkMailDomainName:
       type: string
       minLength: 3
       maxLength: 209
       pattern: '[a-zA-Z0-9.-]+'
-    DeregisterMailDomainResponse:
-      type: object
     DescribeEmailMonitoringConfigurationResponse:
       type: object
       properties:
@@ -5233,10 +5009,6 @@ components:
       minLength: 1
       maxLength: 36
       pattern: ^d-[0-9a-f]{10}$|^[0-9a-f]{8}\\b-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-\\b[0-9a-f]{12}$
-    DisassociateDelegateFromResourceResponse:
-      type: object
-    DisassociateMemberFromGroupResponse:
-      type: object
     IpAddress:
       type: string
       minLength: 1
@@ -6286,40 +6058,18 @@ components:
           $ref: '#/components/schemas/IdentityProviderIdentityStoreId'
           description: Identity store ID from the IAM Identity Center. If this parameter is empty it will be updated automatically
             when the user logs in for the first time to the mailbox associated with WorkMail.
-    PutAccessControlRuleResponse:
-      type: object
-    PutEmailMonitoringConfigurationResponse:
-      type: object
-    PutIdentityProviderConfigurationResponse:
-      type: object
     BooleanObject:
       type: boolean
-    PutInboundDmarcSettingsResponse:
-      type: object
-    PutMailboxPermissionsResponse:
-      type: object
-    PutMobileDeviceAccessOverrideResponse:
-      type: object
     PolicyDescription:
       type: string
       maxLength: 256
       pattern: '[\w\d\s\S\-!?=,.;:''_]+'
-    PutRetentionPolicyResponse:
-      type: object
-    RegisterMailDomainResponse:
-      type: object
-    RegisterToWorkMailResponse:
-      type: object
-    ResetPasswordResponse:
-      type: object
     StartMailboxExportJobResponse:
       type: object
       properties:
         JobId:
           $ref: '#/components/schemas/MailboxExportJobId'
           description: The job ID.
-    TagResourceResponse:
-      type: object
     TestAvailabilityConfigurationResponse:
       type: object
       properties:
@@ -6333,32 +6083,12 @@ components:
       type: array
       items:
         $ref: '#/components/schemas/TagKey'
-    UntagResourceResponse:
-      type: object
-    UpdateAvailabilityConfigurationResponse:
-      type: object
-    UpdateDefaultMailDomainResponse:
-      type: object
-    UpdateGroupResponse:
-      type: object
-    UpdateImpersonationRoleResponse:
-      type: object
-    UpdateMailboxQuotaResponse:
-      type: object
-    UpdateMobileDeviceAccessRuleResponse:
-      type: object
-    UpdatePrimaryEmailAddressResponse:
-      type: object
     NewResourceDescription:
       type: string
       minLength: 0
       maxLength: 64
-    UpdateResourceResponse:
-      type: object
     IdentityProviderUserIdForUpdate:
       type: string
       minLength: 0
       maxLength: 47
       pattern: ^$|^([0-9a-f]{10}-|)[A-Fa-f0-9]{8}-[A-Fa-f0-9]{4}-[A-Fa-f0-9]{4}-[A-Fa-f0-9]{4}-[A-Fa-f0-9]{12}$
-    UpdateUserResponse:
-      type: object

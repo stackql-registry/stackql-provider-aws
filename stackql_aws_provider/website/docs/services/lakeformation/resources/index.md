@@ -156,18 +156,18 @@ The following methods are available for this resource:
     <td>Registers the resource as managed by the Data Catalog. To add or update data, Lake Formation needs read/write access to the chosen data location. Choose a role that you know has permission to do this, or choose the AWSServiceRoleForLakeFormationDataAccess service-linked role. When you register the first Amazon S3 path, the service-linked role and a new inline policy are created on your behalf. Lake Formation adds the first path to the inline policy and attaches it to the service-linked role. When you register subsequent paths, Lake Formation adds the path to the existing policy. The following request registers a new location and gives Lake Formation permission to use the service-linked role to access that location. ResourceArn = arn:aws:s3:::my-bucket/ UseServiceLinkedRole = true If UseServiceLinkedRole is not set to true, you must provide or set the RoleArn: arn:aws:iam::12345:role/my-data-access-role</td>
 </tr>
 <tr>
-    <td><a href="#add_lf_tags_to_resource"><CopyableCode code="add_lf_tags_to_resource" /></a></td>
-    <td><CopyableCode code="update" /></td>
-    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-Resource"><code>Resource</code></a>, <a href="#parameter-LFTags"><code>LFTags</code></a></td>
-    <td></td>
-    <td>Attaches one or more LF-tags to an existing resource.</td>
-</tr>
-<tr>
     <td><a href="#update_resource"><CopyableCode code="update_resource" /></a></td>
     <td><CopyableCode code="update" /></td>
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-RoleArn"><code>RoleArn</code></a>, <a href="#parameter-ResourceArn"><code>ResourceArn</code></a></td>
     <td></td>
     <td>Updates the data access role used for vending access to the given (registered) resource in Lake Formation.</td>
+</tr>
+<tr>
+    <td><a href="#add_lf_tags_to_resource"><CopyableCode code="add_lf_tags_to_resource" /></a></td>
+    <td><CopyableCode code="update" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-Resource"><code>Resource</code></a>, <a href="#parameter-LFTags"><code>LFTags</code></a></td>
+    <td></td>
+    <td>Attaches one or more LF-tags to an existing resource.</td>
 </tr>
 <tr>
     <td><a href="#deregister_resource"><CopyableCode code="deregister_resource" /></a></td>
@@ -318,30 +318,12 @@ SELECT
 ## `UPDATE` examples
 
 <Tabs
-    defaultValue="add_lf_tags_to_resource"
+    defaultValue="update_resource"
     values={[
-        { label: 'add_lf_tags_to_resource', value: 'add_lf_tags_to_resource' },
-        { label: 'update_resource', value: 'update_resource' }
+        { label: 'update_resource', value: 'update_resource' },
+        { label: 'add_lf_tags_to_resource', value: 'add_lf_tags_to_resource' }
     ]}
 >
-<TabItem value="add_lf_tags_to_resource">
-
-Attaches one or more LF-tags to an existing resource.
-
-```sql
-UPDATE aws.lakeformation.resources
-SET 
-CatalogId = '{{ CatalogId }}',
-Resource = '{{ Resource }}',
-LFTags = '{{ LFTags }}'
-WHERE 
-region = '{{ region }}' --required
-AND Resource = '{{ Resource }}' --required
-AND LFTags = '{{ LFTags }}' --required
-RETURNING
-failures;
-```
-</TabItem>
 <TabItem value="update_resource">
 
 Updates the data access role used for vending access to the given (registered) resource in Lake Formation.
@@ -358,6 +340,24 @@ WHERE
 region = '{{ region }}' --required
 AND RoleArn = '{{ RoleArn }}' --required
 AND ResourceArn = '{{ ResourceArn }}' --required;
+```
+</TabItem>
+<TabItem value="add_lf_tags_to_resource">
+
+Attaches one or more LF-tags to an existing resource.
+
+```sql
+UPDATE aws.lakeformation.resources
+SET 
+CatalogId = '{{ CatalogId }}',
+Resource = '{{ Resource }}',
+LFTags = '{{ LFTags }}'
+WHERE 
+region = '{{ region }}' --required
+AND Resource = '{{ Resource }}' --required
+AND LFTags = '{{ LFTags }}' --required
+RETURNING
+failures;
 ```
 </TabItem>
 </Tabs>

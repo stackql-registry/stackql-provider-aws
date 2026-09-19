@@ -160,6 +160,13 @@ The following methods are available for this resource:
     <td></td>
     <td>Creates an export job for a data source and destination. You can execute this operation no more than once per second.</td>
 </tr>
+<tr>
+    <td><a href="#cancel_export_job"><CopyableCode code="cancel_export_job" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-job_id"><code>job_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Cancels an export job.</td>
+</tr>
 </tbody>
 </table>
 
@@ -295,6 +302,8 @@ job_id
               - "{{ Subject }}"
             Isp:
               - "{{ Isp }}"
+            TenantName:
+              - "{{ TenantName }}"
             LastDeliveryEvent:
               - "{{ LastDeliveryEvent }}"
             LastEngagementEvent:
@@ -308,6 +317,8 @@ job_id
               - "{{ Subject }}"
             Isp:
               - "{{ Isp }}"
+            TenantName:
+              - "{{ TenantName }}"
             LastDeliveryEvent:
               - "{{ LastDeliveryEvent }}"
             LastEngagementEvent:
@@ -321,5 +332,27 @@ job_id
         S3Url: "{{ S3Url }}"
 `}</CodeBlock>
 
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="cancel_export_job"
+    values={[
+        { label: 'cancel_export_job', value: 'cancel_export_job' }
+    ]}
+>
+<TabItem value="cancel_export_job">
+
+Cancels an export job.
+
+```sql
+EXEC aws.sesv2.export_jobs.cancel_export_job 
+@job_id='{{ job_id }}' --required, 
+@region='{{ region }}' --required
+;
+```
 </TabItem>
 </Tabs>

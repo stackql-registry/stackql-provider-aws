@@ -694,7 +694,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetProtectionStatusResponse'
-      x-stackql-resource: protection_status
+      x-stackql-resource: protection_statuses
       x-stackql-method: get_protection_status
       x-stackql-verb: SELECT
   /GetProtocolsList:
@@ -805,7 +805,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetThirdPartyFirewallAssociationStatusResponse'
-      x-stackql-resource: third_party_firewall_association_status
+      x-stackql-resource: third_party_firewall_association_statuses
       x-stackql-method: get_third_party_firewall_association_status
       x-stackql-verb: SELECT
   /GetViolationDetails:
@@ -903,7 +903,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListAdminAccountsForOrganizationResponse'
-      x-stackql-resource: admin_accounts_for_organizations
+      x-stackql-resource: admin_accounts
       x-stackql-method: list_admin_accounts_for_organization
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.AdminAccounts
@@ -1061,7 +1061,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListComplianceStatusResponse'
-      x-stackql-resource: compliance_status
+      x-stackql-resource: compliance_statuses
       x-stackql-method: list_compliance_status
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.PolicyComplianceStatusList
@@ -1751,10 +1751,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -1792,10 +1788,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -4756,11 +4748,7 @@ components:
       required:
       - ResourceSet
       - ResourceSetArn
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
         $ref: '#/components/schemas/TagKey'
-    UntagResourceResponse:
-      type: object

@@ -45,7 +45,7 @@ paths:
       responses:
         '204':
           description: Success
-      x-stackql-resource: documents
+      x-stackql-resource: document_versions
       x-stackql-method: abort_document_version_upload
       x-stackql-verb: EXEC
     get:
@@ -389,10 +389,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CreateCustomMetadataResponse'
       x-stackql-resource: resources
       x-stackql-method: create_custom_metadata
       x-stackql-verb: INSERT
@@ -434,10 +430,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteCustomMetadataResponse'
       x-stackql-resource: resources
       x-stackql-method: delete_custom_metadata
       x-stackql-verb: DELETE
@@ -508,10 +500,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CreateLabelsResponse'
       x-stackql-resource: resources
       x-stackql-method: create_labels
       x-stackql-verb: INSERT
@@ -547,10 +535,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteLabelsResponse'
       x-stackql-resource: resources
       x-stackql-method: delete_labels
       x-stackql-verb: DELETE
@@ -1718,7 +1702,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/InitiateDocumentVersionUploadResponse'
-      x-stackql-resource: initiate_document_version_upload
+      x-stackql-resource: document_versions
       x-stackql-method: initiate_document_version_upload
       x-stackql-verb: EXEC
   /api/v1/resources/{resource_id}/permissions/{principal_id}:
@@ -2184,8 +2168,6 @@ components:
     CustomMetadataMap:
       type: object
       properties: {}
-    CreateCustomMetadataResponse:
-      type: object
     ResourceNameType:
       type: string
       minLength: 1
@@ -2255,8 +2237,6 @@ components:
       minLength: 1
       maxLength: 32
       pattern: '[a-zA-Z0-9._+-/=][a-zA-Z0-9 ._+-/=]*'
-    CreateLabelsResponse:
-      type: object
     SubscriptionEndPointType:
       type: string
       minLength: 1
@@ -2309,10 +2289,6 @@ components:
       minLength: 1
       maxLength: 56
       pattern: '[a-zA-Z0-9._+-/=][a-zA-Z0-9 ._+-/=]*'
-    DeleteCustomMetadataResponse:
-      type: object
-    DeleteLabelsResponse:
-      type: object
     ActivityNamesFilterType:
       type: string
       minLength: 1

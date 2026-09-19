@@ -360,10 +360,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteAppAuthorizationResponse"
     get:
       operationId: GetAppAuthorization
       description: Returns information about an app authorization.
@@ -435,10 +431,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteAppBundleResponse"
     get:
       operationId: GetAppBundle
       description: Returns information about an app bundle.
@@ -476,10 +468,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteIngestionResponse"
     get:
       operationId: GetIngestion
       description: Returns information about an ingestion.
@@ -529,10 +517,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteIngestionDestinationResponse"
     get:
       operationId: GetIngestionDestination
       description: Returns information about an ingestion destination.
@@ -644,10 +628,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TagResourceResponse"
     delete:
       operationId: UntagResource
       description: Removes a tag or tags from a resource.
@@ -667,10 +647,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UntagResourceResponse"
   /appbundles/{app_bundle_identifier}/ingestions/{ingestion_identifier}/start:
     post:
       operationId: StartIngestion
@@ -691,10 +667,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/StartIngestionResponse"
   /useraccess/start:
     post:
       operationId: StartUserAccessTasks
@@ -741,10 +713,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/StopIngestionResponse"
 components:
   parameters:
     X-Amz-Content-Sha256:
@@ -1302,14 +1270,6 @@ components:
       enum:
         - Active
         - Failed
-    DeleteAppAuthorizationResponse:
-      type: object
-    DeleteAppBundleResponse:
-      type: object
-    DeleteIngestionResponse:
-      type: object
-    DeleteIngestionDestinationResponse:
-      type: object
     GetAppAuthorizationResponse:
       type: object
       properties:
@@ -1451,8 +1411,6 @@ components:
         tags:
           $ref: "#/components/schemas/TagList"
           description: A map of the key-value pairs for the tag or tags assigned to the specified resource.
-    StartIngestionResponse:
-      type: object
     StartUserAccessTasksResponse:
       type: object
       properties:
@@ -1482,16 +1440,10 @@ components:
       required:
         - app
         - tenantId
-    StopIngestionResponse:
-      type: object
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
         $ref: "#/components/schemas/TagKey"
-    UntagResourceResponse:
-      type: object
     UpdateAppAuthorizationResponse:
       type: object
       properties:
@@ -1591,7 +1543,6 @@ components:
             $ref: "#/paths/~1appbundles~1{app_bundle_identifier}~1appauthorizations~1{app_authorization_identifier}/delete"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
         get_app_authorization:
           operation:
             $ref: "#/paths/~1appbundles~1{app_bundle_identifier}~1appauthorizations~1{app_authorization_identifier}/get"
@@ -1658,7 +1609,6 @@ components:
             $ref: "#/paths/~1appbundles~1{app_bundle_identifier}/delete"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
         get_app_bundle:
           operation:
             $ref: "#/paths/~1appbundles~1{app_bundle_identifier}/get"
@@ -1671,13 +1621,11 @@ components:
             $ref: "#/paths/~1appbundles~1{app_bundle_identifier}~1ingestions~1{ingestion_identifier}~1start/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         stop_ingestion:
           operation:
             $ref: "#/paths/~1appbundles~1{app_bundle_identifier}~1ingestions~1{ingestion_identifier}~1stop/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/app_bundles/methods/get_app_bundle"
@@ -1725,7 +1673,6 @@ components:
             $ref: "#/paths/~1appbundles~1{app_bundle_identifier}~1ingestions~1{ingestion_identifier}/delete"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
         get_ingestion:
           operation:
             $ref: "#/paths/~1appbundles~1{app_bundle_identifier}~1ingestions~1{ingestion_identifier}/get"
@@ -1780,7 +1727,6 @@ components:
             $ref: "#/paths/~1appbundles~1{app_bundle_identifier}~1ingestions~1{ingestion_identifier}~1ingestiondestinations~1{ingestion_destination_identifier}/delete"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
         get_ingestion_destination:
           operation:
             $ref: "#/paths/~1appbundles~1{app_bundle_identifier}~1ingestions~1{ingestion_identifier}~1ingestiondestinations~1{ingestion_destination_identifier}/get"
@@ -1825,7 +1771,6 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -1836,7 +1781,6 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
       sqlVerbs:

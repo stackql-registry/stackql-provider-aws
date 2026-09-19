@@ -43,7 +43,7 @@ total resources: __51__
 <a href="/services/redshift/data_shares_for_consumers/">data_shares_for_consumers</a><br />
 <a href="/services/redshift/data_shares_for_producers/">data_shares_for_producers</a><br />
 <a href="/services/redshift/default_cluster_parameters/">default_cluster_parameters</a><br />
-<a href="/services/redshift/endpoint_access/">endpoint_access</a><br />
+<a href="/services/redshift/endpoint_accesses/">endpoint_accesses</a><br />
 <a href="/services/redshift/endpoint_authorizations/">endpoint_authorizations</a><br />
 <a href="/services/redshift/event_categories/">event_categories</a><br />
 <a href="/services/redshift/event_subscriptions/">event_subscriptions</a><br />
@@ -55,7 +55,7 @@ total resources: __51__
 <div class="providerDocColumn">
 <a href="/services/redshift/inbound_integrations/">inbound_integrations</a><br />
 <a href="/services/redshift/integrations/">integrations</a><br />
-<a href="/services/redshift/logging_status/">logging_status</a><br />
+<a href="/services/redshift/logging_statuses/">logging_statuses</a><br />
 <a href="/services/redshift/namespaces/">namespaces</a><br />
 <a href="/services/redshift/node_configuration_options/">node_configuration_options</a><br />
 <a href="/services/redshift/orderable_cluster_options/">orderable_cluster_options</a><br />
@@ -65,17 +65,17 @@ total resources: __51__
 <a href="/services/redshift/redshift_idc_applications/">redshift_idc_applications</a><br />
 <a href="/services/redshift/reserved_node_exchange_configuration_options/">reserved_node_exchange_configuration_options</a><br />
 <a href="/services/redshift/reserved_node_exchange_offerings/">reserved_node_exchange_offerings</a><br />
-<a href="/services/redshift/reserved_node_exchange_status/">reserved_node_exchange_status</a><br />
+<a href="/services/redshift/reserved_node_exchange_statuses/">reserved_node_exchange_statuses</a><br />
 <a href="/services/redshift/reserved_node_offerings/">reserved_node_offerings</a><br />
 <a href="/services/redshift/reserved_nodes/">reserved_nodes</a><br />
 <a href="/services/redshift/resizes/">resizes</a><br />
 <a href="/services/redshift/resource_policies/">resource_policies</a><br />
 <a href="/services/redshift/scheduled_actions/">scheduled_actions</a><br />
-<a href="/services/redshift/snapshot_access/">snapshot_access</a><br />
+<a href="/services/redshift/snapshot_accesses/">snapshot_accesses</a><br />
 <a href="/services/redshift/snapshot_copy_grants/">snapshot_copy_grants</a><br />
 <a href="/services/redshift/snapshot_schedules/">snapshot_schedules</a><br />
-<a href="/services/redshift/storages/">storages</a><br />
-<a href="/services/redshift/table_restore_status/">table_restore_status</a><br />
+<a href="/services/redshift/storage/">storage</a><br />
+<a href="/services/redshift/table_restore_statuses/">table_restore_statuses</a><br />
 <a href="/services/redshift/tags/">tags</a><br />
 <a href="/services/redshift/usage_limits/">usage_limits</a>
 </div>

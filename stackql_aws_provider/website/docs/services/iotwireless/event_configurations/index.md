@@ -35,7 +35,8 @@ The following fields are returned by `SELECT` queries:
 <Tabs
     defaultValue="list_event_configurations"
     values={[
-        { label: 'list_event_configurations', value: 'list_event_configurations' }
+        { label: 'list_event_configurations', value: 'list_event_configurations' },
+        { label: 'get_event_configuration_by_resource_types', value: 'get_event_configuration_by_resource_types' }
     ]}
 >
 <TabItem value="list_event_configurations">
@@ -58,6 +59,45 @@ The following fields are returned by `SELECT` queries:
     <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>To retrieve the next set of results, the nextToken value from a previous response; otherwise null to receive the first set of results.</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
+<TabItem value="get_event_configuration_by_resource_types">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="connection_status" /></td>
+    <td><code>object</code></td>
+    <td>Resource type event configuration for the connection status event.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="device_registration_state" /></td>
+    <td><code>object</code></td>
+    <td>Resource type event configuration for the device registration state event.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="join" /></td>
+    <td><code>object</code></td>
+    <td>Resource type event configuration for the join event.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="message_delivery_status" /></td>
+    <td><code>object</code></td>
+    <td>Resource type event configuration object for the message delivery status event.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="proximity" /></td>
+    <td><code>object</code></td>
+    <td>Resource type event configuration for the proximity event.</td>
 </tr>
 </tbody>
 </table>
@@ -85,6 +125,20 @@ The following methods are available for this resource:
     <td><a href="#parameter-resourceType"><code>resourceType</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td><a href="#parameter-maxResults"><code>maxResults</code></a>, <a href="#parameter-nextToken"><code>nextToken</code></a></td>
     <td>List event configurations where at least one event topic has been enabled.</td>
+</tr>
+<tr>
+    <td><a href="#get_event_configuration_by_resource_types"><CopyableCode code="get_event_configuration_by_resource_types" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Get the event configuration based on resource types.</td>
+</tr>
+<tr>
+    <td><a href="#update_event_configuration_by_resource_types"><CopyableCode code="update_event_configuration_by_resource_types" /></a></td>
+    <td><CopyableCode code="update" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Update the event configuration based on resource types.</td>
 </tr>
 </tbody>
 </table>
@@ -130,7 +184,8 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <Tabs
     defaultValue="list_event_configurations"
     values={[
-        { label: 'list_event_configurations', value: 'list_event_configurations' }
+        { label: 'list_event_configurations', value: 'list_event_configurations' },
+        { label: 'get_event_configuration_by_resource_types', value: 'get_event_configuration_by_resource_types' }
     ]}
 >
 <TabItem value="list_event_configurations">
@@ -147,6 +202,49 @@ AND region = '{{ region }}' -- required
 AND maxResults = '{{ maxResults }}'
 AND nextToken = '{{ nextToken }}'
 ;
+```
+</TabItem>
+<TabItem value="get_event_configuration_by_resource_types">
+
+Get the event configuration based on resource types.
+
+```sql
+SELECT
+connection_status,
+device_registration_state,
+join,
+message_delivery_status,
+proximity
+FROM aws.iotwireless.event_configurations
+WHERE region = '{{ region }}' -- required
+;
+```
+</TabItem>
+</Tabs>
+
+
+## `UPDATE` examples
+
+<Tabs
+    defaultValue="update_event_configuration_by_resource_types"
+    values={[
+        { label: 'update_event_configuration_by_resource_types', value: 'update_event_configuration_by_resource_types' }
+    ]}
+>
+<TabItem value="update_event_configuration_by_resource_types">
+
+Update the event configuration based on resource types.
+
+```sql
+UPDATE aws.iotwireless.event_configurations
+SET 
+DeviceRegistrationState = '{{ DeviceRegistrationState }}',
+Proximity = '{{ Proximity }}',
+Join = '{{ Join }}',
+ConnectionStatus = '{{ ConnectionStatus }}',
+MessageDeliveryStatus = '{{ MessageDeliveryStatus }}'
+WHERE 
+region = '{{ region }}' --required;
 ```
 </TabItem>
 </Tabs>

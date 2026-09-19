@@ -42,7 +42,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchUpdateRecommendationResourceExclusionResponse'
-      x-stackql-resource: batch_update_recommendation_resource_exclusion
+      x-stackql-resource: recommendation_resources
       x-stackql-method: batch_update_recommendation_resource_exclusion
       x-stackql-verb: EXEC
   /v1/organization-recommendations/{organization_recommendation_identifier}:
@@ -549,7 +549,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListRecommendationsForResourceResponse'
-      x-stackql-resource: recommendations_for_resources
+      x-stackql-resource: recommendations
       x-stackql-method: list_recommendations_for_resource
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.recommendationForResourceSummaries

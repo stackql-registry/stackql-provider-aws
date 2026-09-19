@@ -157,6 +157,13 @@ The following methods are available for this resource:
     <td>Describes the specified the load balancers. If no load balancers are specified, the call describes all of your load balancers.</td>
 </tr>
 <tr>
+    <td><a href="#create_load_balancer"><CopyableCode code="create_load_balancer" /></a></td>
+    <td><CopyableCode code="insert" /></td>
+    <td><a href="#parameter-LoadBalancerName"><code>LoadBalancerName</code></a>, <a href="#parameter-Listeners"><code>Listeners</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td><a href="#parameter-AvailabilityZones"><code>AvailabilityZones</code></a>, <a href="#parameter-Subnets"><code>Subnets</code></a>, <a href="#parameter-SecurityGroups"><code>SecurityGroups</code></a>, <a href="#parameter-Scheme"><code>Scheme</code></a>, <a href="#parameter-Tags"><code>Tags</code></a></td>
+    <td>Creates a Classic Load Balancer. You can add listeners, security groups, subnets, and tags when you create your load balancer, or you can add them later using CreateLoadBalancerListeners, ApplySecurityGroupsToLoadBalancer, AttachLoadBalancerToSubnets, and AddTags. To describe your current load balancers, see DescribeLoadBalancers. When you are finished with a load balancer, you can delete it using DeleteLoadBalancer. You can create up to 20 load balancers per region per account. You can request an increase for the number of load balancers for your account. For more information, see Limits for Your Classic Load Balancer in the Classic Load Balancers Guide.</td>
+</tr>
+<tr>
     <td><a href="#create_app_cookie_stickiness_policy"><CopyableCode code="create_app_cookie_stickiness_policy" /></a></td>
     <td><CopyableCode code="insert" /></td>
     <td><a href="#parameter-LoadBalancerName"><code>LoadBalancerName</code></a>, <a href="#parameter-PolicyName"><code>PolicyName</code></a>, <a href="#parameter-CookieName"><code>CookieName</code></a>, <a href="#parameter-region"><code>region</code></a></td>
@@ -169,13 +176,6 @@ The following methods are available for this resource:
     <td><a href="#parameter-LoadBalancerName"><code>LoadBalancerName</code></a>, <a href="#parameter-PolicyName"><code>PolicyName</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td><a href="#parameter-CookieExpirationPeriod"><code>CookieExpirationPeriod</code></a></td>
     <td>Generates a stickiness policy with sticky session lifetimes controlled by the lifetime of the browser (user-agent) or a specified expiration period. This policy can be associated only with HTTP/HTTPS listeners. When a load balancer implements this policy, the load balancer uses a special cookie to track the instance for each request. When the load balancer receives a request, it first checks to see if this cookie is present in the request. If so, the load balancer sends the request to the application server specified in the cookie. If not, the load balancer sends the request to a server that is chosen based on the existing load-balancing algorithm. A cookie is inserted into the response for binding subsequent requests from the same user to that server. The validity of the cookie is based on the cookie expiration time, which is specified in the policy configuration. For more information, see Duration-Based Session Stickiness in the Classic Load Balancers Guide.</td>
-</tr>
-<tr>
-    <td><a href="#create_load_balancer"><CopyableCode code="create_load_balancer" /></a></td>
-    <td><CopyableCode code="insert" /></td>
-    <td><a href="#parameter-LoadBalancerName"><code>LoadBalancerName</code></a>, <a href="#parameter-Listeners"><code>Listeners</code></a>, <a href="#parameter-region"><code>region</code></a></td>
-    <td><a href="#parameter-AvailabilityZones"><code>AvailabilityZones</code></a>, <a href="#parameter-Subnets"><code>Subnets</code></a>, <a href="#parameter-SecurityGroups"><code>SecurityGroups</code></a>, <a href="#parameter-Scheme"><code>Scheme</code></a>, <a href="#parameter-Tags"><code>Tags</code></a></td>
-    <td>Creates a Classic Load Balancer. You can add listeners, security groups, subnets, and tags when you create your load balancer, or you can add them later using CreateLoadBalancerListeners, ApplySecurityGroupsToLoadBalancer, AttachLoadBalancerToSubnets, and AddTags. To describe your current load balancers, see DescribeLoadBalancers. When you are finished with a load balancer, you can delete it using DeleteLoadBalancer. You can create up to 20 load balancers per region per account. You can request an increase for the number of load balancers for your account. For more information, see Limits for Your Classic Load Balancer in the Classic Load Balancers Guide.</td>
 </tr>
 <tr>
     <td><a href="#register_instances_with_load_balancer"><CopyableCode code="register_instances_with_load_balancer" /></a></td>
@@ -429,57 +429,15 @@ AND PageSize = '{{ PageSize }}'
 ## `INSERT` examples
 
 <Tabs
-    defaultValue="create_app_cookie_stickiness_policy"
+    defaultValue="create_load_balancer"
     values={[
+        { label: 'create_load_balancer', value: 'create_load_balancer' },
         { label: 'create_app_cookie_stickiness_policy', value: 'create_app_cookie_stickiness_policy' },
         { label: 'create_lb_cookie_stickiness_policy', value: 'create_lb_cookie_stickiness_policy' },
-        { label: 'create_load_balancer', value: 'create_load_balancer' },
         { label: 'register_instances_with_load_balancer', value: 'register_instances_with_load_balancer' },
         { label: 'Manifest', value: 'manifest' }
     ]}
 >
-<TabItem value="create_app_cookie_stickiness_policy">
-
-Generates a stickiness policy with sticky session lifetimes that follow that of an application-generated cookie. This policy can be associated only with HTTP/HTTPS listeners. This policy is similar to the policy created by CreateLBCookieStickinessPolicy, except that the lifetime of the special Elastic Load Balancing cookie, AWSELB, follows the lifetime of the application-generated cookie specified in the policy configuration. The load balancer only inserts a new stickiness cookie when the application response includes a new application cookie. If the application cookie is explicitly removed or expires, the session stops being sticky until a new application cookie is issued. For more information, see Application-Controlled Session Stickiness in the Classic Load Balancers Guide.
-
-```sql
-INSERT INTO aws.elb.load_balancers (
-LoadBalancerName,
-PolicyName,
-CookieName,
-region
-)
-SELECT 
-'{{ LoadBalancerName }}',
-'{{ PolicyName }}',
-'{{ CookieName }}',
-'{{ region }}'
-RETURNING
-line_items
-;
-```
-</TabItem>
-<TabItem value="create_lb_cookie_stickiness_policy">
-
-Generates a stickiness policy with sticky session lifetimes controlled by the lifetime of the browser (user-agent) or a specified expiration period. This policy can be associated only with HTTP/HTTPS listeners. When a load balancer implements this policy, the load balancer uses a special cookie to track the instance for each request. When the load balancer receives a request, it first checks to see if this cookie is present in the request. If so, the load balancer sends the request to the application server specified in the cookie. If not, the load balancer sends the request to a server that is chosen based on the existing load-balancing algorithm. A cookie is inserted into the response for binding subsequent requests from the same user to that server. The validity of the cookie is based on the cookie expiration time, which is specified in the policy configuration. For more information, see Duration-Based Session Stickiness in the Classic Load Balancers Guide.
-
-```sql
-INSERT INTO aws.elb.load_balancers (
-LoadBalancerName,
-PolicyName,
-region,
-CookieExpirationPeriod
-)
-SELECT 
-'{{ LoadBalancerName }}',
-'{{ PolicyName }}',
-'{{ region }}',
-'{{ CookieExpirationPeriod }}'
-RETURNING
-line_items
-;
-```
-</TabItem>
 <TabItem value="create_load_balancer">
 
 Creates a Classic Load Balancer. You can add listeners, security groups, subnets, and tags when you create your load balancer, or you can add them later using CreateLoadBalancerListeners, ApplySecurityGroupsToLoadBalancer, AttachLoadBalancerToSubnets, and AddTags. To describe your current load balancers, see DescribeLoadBalancers. When you are finished with a load balancer, you can delete it using DeleteLoadBalancer. You can create up to 20 load balancers per region per account. You can request an increase for the number of load balancers for your account. For more information, see Limits for Your Classic Load Balancer in the Classic Load Balancers Guide.
@@ -506,6 +464,44 @@ SELECT
 '{{ Tags }}'
 RETURNING
 dns_name
+;
+```
+</TabItem>
+<TabItem value="create_app_cookie_stickiness_policy">
+
+Generates a stickiness policy with sticky session lifetimes that follow that of an application-generated cookie. This policy can be associated only with HTTP/HTTPS listeners. This policy is similar to the policy created by CreateLBCookieStickinessPolicy, except that the lifetime of the special Elastic Load Balancing cookie, AWSELB, follows the lifetime of the application-generated cookie specified in the policy configuration. The load balancer only inserts a new stickiness cookie when the application response includes a new application cookie. If the application cookie is explicitly removed or expires, the session stops being sticky until a new application cookie is issued. For more information, see Application-Controlled Session Stickiness in the Classic Load Balancers Guide.
+
+```sql
+INSERT INTO aws.elb.load_balancers (
+LoadBalancerName,
+PolicyName,
+CookieName,
+region
+)
+SELECT 
+'{{ LoadBalancerName }}',
+'{{ PolicyName }}',
+'{{ CookieName }}',
+'{{ region }}'
+;
+```
+</TabItem>
+<TabItem value="create_lb_cookie_stickiness_policy">
+
+Generates a stickiness policy with sticky session lifetimes controlled by the lifetime of the browser (user-agent) or a specified expiration period. This policy can be associated only with HTTP/HTTPS listeners. When a load balancer implements this policy, the load balancer uses a special cookie to track the instance for each request. When the load balancer receives a request, it first checks to see if this cookie is present in the request. If so, the load balancer sends the request to the application server specified in the cookie. If not, the load balancer sends the request to a server that is chosen based on the existing load-balancing algorithm. A cookie is inserted into the response for binding subsequent requests from the same user to that server. The validity of the cookie is based on the cookie expiration time, which is specified in the policy configuration. For more information, see Duration-Based Session Stickiness in the Classic Load Balancers Guide.
+
+```sql
+INSERT INTO aws.elb.load_balancers (
+LoadBalancerName,
+PolicyName,
+region,
+CookieExpirationPeriod
+)
+SELECT 
+'{{ LoadBalancerName }}',
+'{{ PolicyName }}',
+'{{ region }}',
+'{{ CookieExpirationPeriod }}'
 ;
 ```
 </TabItem>
@@ -536,22 +532,18 @@ instances
     - name: LoadBalancerName
       value: "{{ LoadBalancerName }}"
       description: Required parameter for the load_balancers resource.
+    - name: Listeners
+      value: "{{ Listeners }}"
+      description: Required parameter for the load_balancers resource.
+    - name: region
+      value: "{{ region }}"
+      description: Required parameter for the load_balancers resource.
     - name: PolicyName
       value: "{{ PolicyName }}"
       description: Required parameter for the load_balancers resource.
     - name: CookieName
       value: "{{ CookieName }}"
       description: Required parameter for the load_balancers resource.
-    - name: region
-      value: "{{ region }}"
-      description: Required parameter for the load_balancers resource.
-    - name: Listeners
-      value: "{{ Listeners }}"
-      description: Required parameter for the load_balancers resource.
-    - name: CookieExpirationPeriod
-      value: "{{ CookieExpirationPeriod }}"
-      description: The time period, in seconds, after which the cookie should be considered stale. If you do not specify this parameter, the default value is 0, which indicates that the sticky session should last for the duration of the browser session.
-      description: The time period, in seconds, after which the cookie should be considered stale. If you do not specify this parameter, the default value is 0, which indicates that the sticky session should last for the duration of the browser session.
     - name: AvailabilityZones
       value: "{{ AvailabilityZones }}"
       description: One or more Availability Zones from the same region as the load balancer. You must specify at least one Availability Zone. You can add more Availability Zones after you create the load balancer using EnableAvailabilityZonesForLoadBalancer.
@@ -572,6 +564,10 @@ instances
       value: "{{ Tags }}"
       description: A list of tags to assign to the load balancer. For more information about tagging your load balancer, see Tag Your Classic Load Balancer in the Classic Load Balancers Guide.
       description: A list of tags to assign to the load balancer. For more information about tagging your load balancer, see Tag Your Classic Load Balancer in the Classic Load Balancers Guide.
+    - name: CookieExpirationPeriod
+      value: "{{ CookieExpirationPeriod }}"
+      description: The time period, in seconds, after which the cookie should be considered stale. If you do not specify this parameter, the default value is 0, which indicates that the sticky session should last for the duration of the browser session.
+      description: The time period, in seconds, after which the cookie should be considered stale. If you do not specify this parameter, the default value is 0, which indicates that the sticky session should last for the duration of the browser session.
     - name: Instances
       value: "{{ Instances }}"
       description: The IDs of the instances.
@@ -603,9 +599,7 @@ WHERE
 LoadBalancerName = '{{ LoadBalancerName }}' --required
 AND LoadBalancerPort = '{{ LoadBalancerPort }}' --required
 AND SSLCertificateId = '{{ SSLCertificateId }}' --required
-AND region = '{{ region }}' --required
-RETURNING
-line_items;
+AND region = '{{ region }}' --required;
 ```
 </TabItem>
 <TabItem value="attach_load_balancer_to_subnets">

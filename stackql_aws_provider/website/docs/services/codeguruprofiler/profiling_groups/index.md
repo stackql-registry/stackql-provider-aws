@@ -161,6 +161,13 @@ The following methods are available for this resource:
     <td>Creates a profiling group.</td>
 </tr>
 <tr>
+    <td><a href="#update_profiling_group"><CopyableCode code="update_profiling_group" /></a></td>
+    <td><CopyableCode code="update" /></td>
+    <td><a href="#parameter-profiling_group_name"><code>profiling_group_name</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-agentOrchestrationConfig"><code>agentOrchestrationConfig</code></a></td>
+    <td></td>
+    <td>Updates a profiling group.</td>
+</tr>
+<tr>
     <td><a href="#remove_permission"><CopyableCode code="remove_permission" /></a></td>
     <td><CopyableCode code="update" /></td>
     <td><a href="#parameter-action_group"><code>action_group</code></a>, <a href="#parameter-profiling_group_name"><code>profiling_group_name</code></a>, <a href="#parameter-revisionId"><code>revisionId</code></a>, <a href="#parameter-region"><code>region</code></a></td>
@@ -173,13 +180,6 @@ The following methods are available for this resource:
     <td><a href="#parameter-profiling_group_name"><code>profiling_group_name</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-channels"><code>channels</code></a></td>
     <td></td>
     <td>Add up to 2 anomaly notifications channels for a profiling group.</td>
-</tr>
-<tr>
-    <td><a href="#update_profiling_group"><CopyableCode code="update_profiling_group" /></a></td>
-    <td><CopyableCode code="update" /></td>
-    <td><a href="#parameter-profiling_group_name"><code>profiling_group_name</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-agentOrchestrationConfig"><code>agentOrchestrationConfig</code></a></td>
-    <td></td>
-    <td>Updates a profiling group.</td>
 </tr>
 <tr>
     <td><a href="#remove_notification_channel"><CopyableCode code="remove_notification_channel" /></a></td>
@@ -417,14 +417,30 @@ profiling_group
 ## `UPDATE` examples
 
 <Tabs
-    defaultValue="remove_permission"
+    defaultValue="update_profiling_group"
     values={[
+        { label: 'update_profiling_group', value: 'update_profiling_group' },
         { label: 'remove_permission', value: 'remove_permission' },
         { label: 'add_notification_channels', value: 'add_notification_channels' },
-        { label: 'update_profiling_group', value: 'update_profiling_group' },
         { label: 'remove_notification_channel', value: 'remove_notification_channel' }
     ]}
 >
+<TabItem value="update_profiling_group">
+
+Updates a profiling group.
+
+```sql
+UPDATE aws.codeguruprofiler.profiling_groups
+SET 
+agentOrchestrationConfig = '{{ agentOrchestrationConfig }}'
+WHERE 
+profiling_group_name = '{{ profiling_group_name }}' --required
+AND region = '{{ region }}' --required
+AND agentOrchestrationConfig = '{{ agentOrchestrationConfig }}' --required
+RETURNING
+profiling_group;
+```
+</TabItem>
 <TabItem value="remove_permission">
 
 Removes permissions from a profiling group's resource-based policy that are provided using an action group. The one supported action group that can be removed is agentPermission which grants ConfigureAgent and PostAgent permissions. For more information, see Resource-based policies in CodeGuru Profiler in the Amazon CodeGuru Profiler User Guide, ConfigureAgent , and PostAgentProfile .
@@ -457,22 +473,6 @@ AND region = '{{ region }}' --required
 AND channels = '{{ channels }}' --required
 RETURNING
 notification_configuration;
-```
-</TabItem>
-<TabItem value="update_profiling_group">
-
-Updates a profiling group.
-
-```sql
-UPDATE aws.codeguruprofiler.profiling_groups
-SET 
-agentOrchestrationConfig = '{{ agentOrchestrationConfig }}'
-WHERE 
-profiling_group_name = '{{ profiling_group_name }}' --required
-AND region = '{{ region }}' --required
-AND agentOrchestrationConfig = '{{ agentOrchestrationConfig }}' --required
-RETURNING
-profiling_group;
 ```
 </TabItem>
 <TabItem value="remove_notification_channel">

@@ -84,7 +84,7 @@ The following methods are available for this resource:
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>List the Packages that are associated with an Image Build Version, as determined by Amazon Web Services Systems Manager Inventory at build time.</td>
+    <td>Lists the packages that are associated with an image build version, as determined by Amazon Web Services Systems Manager Inventory at build time.</td>
 </tr>
 </tbody>
 </table>
@@ -120,7 +120,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 >
 <TabItem value="list_image_packages">
 
-List the Packages that are associated with an Image Build Version, as determined by Amazon Web Services Systems Manager Inventory at build time.
+Lists the packages that are associated with an image build version, as determined by Amazon Web Services Systems Manager Inventory at build time.
 
 ```sql
 SELECT

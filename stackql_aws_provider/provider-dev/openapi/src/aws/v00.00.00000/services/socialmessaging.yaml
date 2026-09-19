@@ -86,6 +86,8 @@ paths:
                   $ref: "#/components/schemas/Boolean"
                 cloneFlowId:
                   $ref: "#/components/schemas/MetaFlowId"
+                endpointUri:
+                  $ref: "#/components/schemas/MetaFlowEndpointUri"
               required:
                 - id
                 - flowName
@@ -194,10 +196,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteWhatsAppFlowOutput"
     get:
       operationId: GetWhatsAppFlow
       description: Retrieves the metadata and status of a WhatsApp Flow, including validation errors, preview information, and health status.
@@ -303,10 +301,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteWhatsAppMessageTemplateOutput"
     get:
       operationId: GetWhatsAppMessageTemplate
       description: Retrieves a specific WhatsApp message template.
@@ -374,10 +368,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateWhatsAppMessageTemplateOutput"
   /v1/whatsapp/flow/deprecate:
     post:
       operationId: DeprecateWhatsAppFlow
@@ -400,10 +390,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeprecateWhatsAppFlowOutput"
   /v1/whatsapp/waba/disassociate:
     delete:
       operationId: DisassociateWhatsAppBusinessAccount
@@ -418,10 +404,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DisassociateWhatsAppBusinessAccountOutput"
   /v1/whatsapp/waba/details:
     get:
       operationId: GetLinkedWhatsAppBusinessAccount
@@ -458,6 +440,73 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/GetLinkedWhatsAppBusinessAccountPhoneNumberOutput"
+  /v1/whatsapp/business-public-key:
+    get:
+      operationId: GetWhatsAppBusinessPublicKey
+      description: Retrieves the business public key for a phone number and its signature status.
+      parameters:
+        - name: originationPhoneNumberId
+          in: query
+          required: true
+          schema:
+            $ref: "#/components/schemas/WhatsAppPhoneNumberId"
+          description: The unique identifier of the phone number whose business public key to retrieve.
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GetWhatsAppBusinessPublicKeyOutput"
+    put:
+      operationId: PutWhatsAppBusinessPublicKey
+      description: Sets the business public key used to encrypt the data exchanged with the endpoint of a data exchange Flow.
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                originationPhoneNumberId:
+                  $ref: "#/components/schemas/WhatsAppPhoneNumberId"
+                businessPublicKey:
+                  $ref: "#/components/schemas/BusinessPublicKeyPem"
+                kmsKeyArn:
+                  $ref: "#/components/schemas/KmsKeyArn"
+              required:
+                - originationPhoneNumberId
+      responses:
+        "200":
+          description: Success
+  /v1/whatsapp/call/permission/get:
+    post:
+      operationId: GetWhatsAppCallPermission
+      description: Retrieves the current calling permission for a WhatsApp end user, along with the calling actions the business is allowed to take with that user. Provide the destination phone number or the business-scoped user ID to identify the end user.
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                originationPhoneNumberId:
+                  $ref: "#/components/schemas/WhatsAppPhoneNumberId"
+                destinationPhoneNumber:
+                  $ref: "#/components/schemas/WhatsAppDestinationPhoneNumber"
+                endUserBsuid:
+                  $ref: "#/components/schemas/WhatsAppBusinessScopedUserId"
+              required:
+                - originationPhoneNumberId
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GetWhatsAppCallPermissionOutput"
   /v1/whatsapp/flow/preview:
     get:
       operationId: GetWhatsAppFlowPreview
@@ -711,10 +760,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/PublishWhatsAppFlowOutput"
   /v1/whatsapp/waba/eventdestinations:
     put:
       operationId: PutWhatsAppBusinessAccountEventDestinations
@@ -737,10 +782,35 @@ paths:
       responses:
         "200":
           description: Success
+  /v1/whatsapp/call/event:
+    post:
+      operationId: SendWhatsAppCallEvent
+      description: Sends a WhatsApp calling event, such as connecting or terminating a call, for a business phone number. This operation passes the event through to Meta. To use this operation, the origination phone number must belong to a WhatsApp Business Account that is linked to your Amazon Web Services account.
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                originationPhoneNumberId:
+                  $ref: "#/components/schemas/WhatsAppPhoneNumberId"
+                metaApiVersion:
+                  $ref: "#/components/schemas/String"
+                callEvent:
+                  $ref: "#/components/schemas/WhatsAppCallEventBlob"
+              required:
+                - originationPhoneNumberId
+                - metaApiVersion
+                - callEvent
+      responses:
+        "200":
+          description: Success
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/PutWhatsAppBusinessAccountEventDestinationsOutput"
+                $ref: "#/components/schemas/SendWhatsAppCallEventOutput"
   /v1/whatsapp/waba/dataset/events:
     post:
       operationId: SendWhatsAppConversionEvent
@@ -851,6 +921,35 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/UntagResourceOutput"
+  /v1/whatsapp/waba/phone:
+    put:
+      operationId: UpdateLinkedWhatsAppBusinessAccountPhoneNumber
+      description: Updates the calling settings for a linked WhatsApp business phone number, such as whether calling is enabled and the hours during which the business accepts calls.
+      parameters:
+        - name: id
+          in: query
+          required: true
+          schema:
+            $ref: "#/components/schemas/WhatsAppPhoneNumberId"
+          description: The unique identifier of the phone number to update. The phone number identifiers are formatted as phone-number-id-01234567890123456789012345678901.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                callSettings:
+                  $ref: "#/components/schemas/WhatsAppCallSettings"
+              required:
+                - callSettings
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UpdateLinkedWhatsAppBusinessAccountPhoneNumberOutput"
   /v1/whatsapp/flow/update:
     post:
       operationId: UpdateWhatsAppFlow
@@ -871,16 +970,16 @@ paths:
                   $ref: "#/components/schemas/MetaFlowName"
                 categories:
                   $ref: "#/components/schemas/MetaFlowCategoryList"
+                endpointUri:
+                  $ref: "#/components/schemas/MetaFlowEndpointUri"
+                metaAppId:
+                  $ref: "#/components/schemas/MetaFlowApplicationId"
               required:
                 - id
                 - flowId
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateWhatsAppFlowOutput"
   /v1/whatsapp/flow/assets/update:
     post:
       operationId: UpdateWhatsAppFlowAssets
@@ -1173,6 +1272,10 @@ components:
       minLength: 1
       maxLength: 100
       pattern: "[0-9]+"
+    MetaFlowEndpointUri:
+      type: string
+      minLength: 1
+      maxLength: 2048
     CreateWhatsAppFlowOutput:
       type: object
       properties:
@@ -1370,8 +1473,6 @@ components:
         metaHeaderHandle:
           $ref: "#/components/schemas/String"
           description: The handle assigned to the uploaded media by Meta, used to reference the media in templates.
-    DeleteWhatsAppFlowOutput:
-      type: object
     WhatsAppMediaId:
       type: string
       minLength: 1
@@ -1390,12 +1491,6 @@ components:
           description: Success indicator for deleting the media file.
     DeleteAllLanguages:
       type: boolean
-    DeleteWhatsAppMessageTemplateOutput:
-      type: object
-    DeprecateWhatsAppFlowOutput:
-      type: object
-    DisassociateWhatsAppBusinessAccountOutput:
-      type: object
     GetLinkedWhatsAppBusinessAccountOutput:
       type: object
       properties:
@@ -1531,6 +1626,9 @@ components:
         linkedWhatsAppBusinessAccountId:
           $ref: "#/components/schemas/LinkedWhatsAppBusinessAccountId"
           description: The WABA identifier linked to the phone number, formatted as waba-01234567890123456789012345678901.
+        callSettings:
+          $ref: "#/components/schemas/WhatsAppCallSettings"
+          description: The calling settings configured for the phone number. This value is absent when calling is not configured.
     WhatsAppPhoneNumberDetail:
       description: The details of your WhatsApp phone number.
       type: object
@@ -1567,6 +1665,244 @@ components:
         - displayPhoneNumberName
         - displayPhoneNumber
         - qualityRating
+    WhatsAppCallSettings:
+      description: The calling configuration for a WhatsApp business phone number.
+      type: object
+      properties:
+        callEnabled:
+          $ref: "#/components/schemas/Boolean"
+          description: Specifies whether calling is enabled for the phone number.
+        callHours:
+          $ref: "#/components/schemas/WhatsAppCallHours"
+          description: The hours during which the business accepts calls on the phone number.
+        callIconVisibility:
+          $ref: "#/components/schemas/WhatsAppCallIconVisibility"
+          description: The visibility setting for the call icon shown to end users in WhatsApp.
+        callbackPermissionStatus:
+          $ref: "#/components/schemas/WhatsAppCallbackPermissionStatus"
+          description: The callback permission status for the phone number.
+      required:
+        - callEnabled
+    WhatsAppCallHours:
+      description: The operating hours during which a business phone number accepts WhatsApp calls, including the time zone, weekly schedule, and any holiday overrides.
+      type: object
+      properties:
+        enabled:
+          $ref: "#/components/schemas/Boolean"
+          description: Specifies whether call hours are enforced. When disabled, the business accepts calls at any time.
+        timezone:
+          $ref: "#/components/schemas/IanaTimezone"
+          description: The IANA time zone in which the operating hours are interpreted, such as America/New_York.
+        weeklyOperatingHours:
+          $ref: "#/components/schemas/WhatsAppWeeklyOperatingHoursList"
+          description: The weekly schedule of hours during which the business accepts calls.
+        holidaySchedule:
+          $ref: "#/components/schemas/WhatsAppHolidayScheduleList"
+          description: Date-specific overrides to the weekly operating hours, such as holidays.
+      required:
+        - enabled
+        - timezone
+        - weeklyOperatingHours
+    IanaTimezone:
+      type: string
+      minLength: 1
+      maxLength: 100
+    WhatsAppWeeklyOperatingHoursList:
+      type: array
+      items:
+        $ref: "#/components/schemas/WhatsAppWeeklyOperatingHoursEntry"
+    WhatsAppWeeklyOperatingHoursEntry:
+      description: A single entry in a weekly calling schedule, defining the open and close times for one day of the week.
+      type: object
+      properties:
+        dayOfWeek:
+          $ref: "#/components/schemas/WhatsAppDayOfWeek"
+          description: The day of the week that the entry applies to.
+        openTime:
+          $ref: "#/components/schemas/WhatsAppTimeOfDay"
+          description: The time of day when the business begins accepting calls.
+        closeTime:
+          $ref: "#/components/schemas/WhatsAppTimeOfDay"
+          description: The time of day when the business stops accepting calls.
+      required:
+        - dayOfWeek
+        - openTime
+        - closeTime
+    WhatsAppDayOfWeek:
+      type: string
+      enum:
+        - MONDAY
+        - TUESDAY
+        - WEDNESDAY
+        - THURSDAY
+        - FRIDAY
+        - SATURDAY
+        - SUNDAY
+    WhatsAppTimeOfDay:
+      description: A time of day, expressed as an hour and minute.
+      type: object
+      properties:
+        hours:
+          $ref: "#/components/schemas/WhatsAppTimeOfDayHoursInteger"
+          description: The hour of the day, from 0 to 23.
+        minutes:
+          $ref: "#/components/schemas/WhatsAppTimeOfDayMinutesInteger"
+          description: The minute of the hour, from 0 to 59.
+      required:
+        - hours
+        - minutes
+    WhatsAppTimeOfDayHoursInteger:
+      type: integer
+      minimum: 0
+      maximum: 23
+    WhatsAppTimeOfDayMinutesInteger:
+      type: integer
+      minimum: 0
+      maximum: 59
+    WhatsAppHolidayScheduleList:
+      type: array
+      items:
+        $ref: "#/components/schemas/WhatsAppHolidayScheduleEntry"
+    WhatsAppHolidayScheduleEntry:
+      description: A date-specific override to the weekly operating hours, such as a holiday.
+      type: object
+      properties:
+        date:
+          $ref: "#/components/schemas/WhatsAppDate"
+          description: The date that the override applies to, in ISO 8601 format (YYYY-MM-DD).
+        startTime:
+          $ref: "#/components/schemas/WhatsAppTimeOfDay"
+          description: The time of day when the business begins accepting calls on the override date.
+        endTime:
+          $ref: "#/components/schemas/WhatsAppTimeOfDay"
+          description: The time of day when the business stops accepting calls on the override date.
+      required:
+        - date
+        - startTime
+        - endTime
+    WhatsAppDate:
+      type: string
+      minLength: 10
+      maxLength: 10
+      pattern: "[0-9]{4}-[0-9]{2}-[0-9]{2}"
+    WhatsAppCallIconVisibility:
+      type: string
+      minLength: 1
+      maxLength: 50
+    WhatsAppCallbackPermissionStatus:
+      type: string
+      minLength: 1
+      maxLength: 50
+    GetWhatsAppBusinessPublicKeyOutput:
+      type: object
+      properties:
+        businessPublicKey:
+          $ref: "#/components/schemas/BusinessPublicKeyPem"
+          description: The stored PEM-encoded 2048-bit RSA public key.
+        businessPublicKeySignatureStatus:
+          $ref: "#/components/schemas/BusinessPublicKeySignatureStatus"
+          description: The signature status of the stored business public key. Valid values are VALID and MISMATCH.
+    BusinessPublicKeyPem:
+      type: string
+      minLength: 1
+      maxLength: 8192
+    BusinessPublicKeySignatureStatus:
+      type: string
+      minLength: 1
+      maxLength: 20
+    WhatsAppDestinationPhoneNumber:
+      type: string
+      minLength: 1
+      maxLength: 20
+      pattern: \+[1-9]\d{1,14}
+    WhatsAppBusinessScopedUserId:
+      type: string
+      minLength: 1
+      maxLength: 100
+    GetWhatsAppCallPermissionOutput:
+      type: object
+      properties:
+        permission:
+          $ref: "#/components/schemas/WhatsAppCallPermission"
+          description: The current calling permission state for the end user.
+        actions:
+          $ref: "#/components/schemas/WhatsAppCallPermissionActionList"
+          description: The calling actions the business can take with the end user, and any limits that apply to each action.
+      required:
+        - permission
+        - actions
+    WhatsAppCallPermission:
+      description: The current calling permission state for a business phone number and a specific WhatsApp end user.
+      type: object
+      properties:
+        status:
+          $ref: "#/components/schemas/WhatsAppCallPermissionStatus"
+          description: The permission status for the end user.
+        expirationTime:
+          $ref: "#/components/schemas/Timestamp"
+          description: The time when a temporary permission expires. This value is absent for permanent permissions and when there is no permission.
+      required:
+        - status
+    WhatsAppCallPermissionStatus:
+      type: string
+      minLength: 1
+      maxLength: 50
+    Timestamp:
+      type: string
+      format: date-time
+    WhatsAppCallPermissionActionList:
+      type: array
+      items:
+        $ref: "#/components/schemas/WhatsAppCallPermissionAction"
+    WhatsAppCallPermissionAction:
+      description: Describes a single calling action the business can take with an end user, including whether the action is currently allowed and any limits that apply to it. Returned as an item in the actions list from GetWhatsAppCallPermission.
+      type: object
+      properties:
+        actionName:
+          $ref: "#/components/schemas/WhatsAppCallPermissionActionName"
+          description: The name of the calling action.
+        canPerformAction:
+          $ref: "#/components/schemas/Boolean"
+          description: Specifies whether the business can currently perform the action.
+        limits:
+          $ref: "#/components/schemas/WhatsAppCallPermissionLimitList"
+          description: The time-bound limits that apply to the action.
+      required:
+        - actionName
+        - canPerformAction
+        - limits
+    WhatsAppCallPermissionActionName:
+      type: string
+      minLength: 1
+      maxLength: 50
+    WhatsAppCallPermissionLimitList:
+      type: array
+      items:
+        $ref: "#/components/schemas/WhatsAppCallPermissionLimit"
+    WhatsAppCallPermissionLimit:
+      description: A time-bound restriction on a calling action, such as the number of calls allowed within a time period.
+      type: object
+      properties:
+        timePeriod:
+          $ref: "#/components/schemas/Iso8601Duration"
+          description: The time period over which the limit applies, as an ISO 8601 duration.
+        maxAllowed:
+          $ref: "#/components/schemas/Integer"
+          description: The maximum number of times the action is allowed within the time period.
+        currentUsage:
+          $ref: "#/components/schemas/Integer"
+          description: The number of times the action has been used within the current time period.
+        limitExpirationTime:
+          $ref: "#/components/schemas/Timestamp"
+          description: The time when the limit resets. This value is present only when the current usage has reached the maximum allowed.
+      required:
+        - timePeriod
+        - maxAllowed
+        - currentUsage
+    Iso8601Duration:
+      type: string
+      minLength: 1
+      maxLength: 20
     GetWhatsAppFlowOutput:
       type: object
       properties:
@@ -1593,7 +1929,7 @@ components:
           description: The data API version for data exchange endpoint Flows.
         endpointUri:
           $ref: "#/components/schemas/MetaFlowEndpointUri"
-          description: The endpoint URI for data exchange Flows, if configured.
+          description: The HTTPS endpoint that Meta calls for a data exchange Flow.
         preview:
           $ref: "#/components/schemas/MetaFlowPreviewInfo"
           description: The preview URL and its expiration timestamp for testing the Flow.
@@ -1622,10 +1958,6 @@ components:
       type: string
       minLength: 1
       maxLength: 10
-    MetaFlowEndpointUri:
-      type: string
-      minLength: 1
-      maxLength: 2048
     MetaFlowPreviewInfo:
       description: Contains the preview URL for testing a WhatsApp Flow and its expiration timestamp.
       type: object
@@ -2128,10 +2460,24 @@ components:
         mediaId:
           $ref: "#/components/schemas/WhatsAppMediaId"
           description: The unique identifier of the posted WhatsApp message.
-    PublishWhatsAppFlowOutput:
+    KmsKeyArn:
+      type: string
+      minLength: 1
+      maxLength: 256
+      pattern: arn:aws[a-z-]*:kms:[a-z0-9-]+:[0-9]{12}:(key/.+|alias/.+)
+    WhatsAppCallEventBlob:
+      type: string
+      format: byte
+      minLength: 1
+      maxLength: 2048000
+    SendWhatsAppCallEventOutput:
       type: object
-    PutWhatsAppBusinessAccountEventDestinationsOutput:
-      type: object
+      properties:
+        callId:
+          $ref: "#/components/schemas/String"
+          description: The unique identifier that Meta assigns to the call.
+      required:
+        - callId
     WhatsAppConversionEventBlob:
       type: string
       format: byte
@@ -2172,8 +2518,14 @@ components:
         statusCode:
           $ref: "#/components/schemas/Integer"
           description: The status code of the untag resource operation.
-    UpdateWhatsAppFlowOutput:
+    UpdateLinkedWhatsAppBusinessAccountPhoneNumberOutput:
       type: object
+      properties:
+        phoneNumberId:
+          $ref: "#/components/schemas/WhatsAppPhoneNumberId"
+          description: The unique identifier of the phone number that was updated.
+      required:
+        - phoneNumberId
     UpdateWhatsAppFlowAssetsOutput:
       type: object
       properties:
@@ -2191,8 +2543,6 @@ components:
       maxLength: 3000
     MetaTemplateCtaLinkTrackingOptedOut:
       type: boolean
-    UpdateWhatsAppMessageTemplateOutput:
-      type: object
   x-stackQL-resources:
     whats_app_business_accounts:
       id: aws.socialmessaging.whats_app_business_accounts
@@ -2215,7 +2565,6 @@ components:
             $ref: "#/paths/~1v1~1whatsapp~1waba~1disassociate/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
       sqlVerbs:
@@ -2268,7 +2617,6 @@ components:
             $ref: "#/paths/~1v1~1whatsapp~1flow/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
         get_whats_app_flow:
@@ -2279,6 +2627,16 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
+        deprecate_whats_app_flow:
+          operation:
+            $ref: "#/paths/~1v1~1whatsapp~1flow~1deprecate/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         list_whats_app_flows:
           operation:
             $ref: "#/paths/~1v1~1whatsapp~1flow~1list/get"
@@ -2296,12 +2654,21 @@ components:
               responseToken:
                 key: $.nextToken
                 location: body
+        publish_whats_app_flow:
+          operation:
+            $ref: "#/paths/~1v1~1whatsapp~1flow~1publish/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         update_whats_app_flow:
           operation:
             $ref: "#/paths/~1v1~1whatsapp~1flow~1update/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -2360,7 +2727,6 @@ components:
             $ref: "#/paths/~1v1~1whatsapp~1template/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
         get_whats_app_message_template:
@@ -2376,7 +2742,6 @@ components:
             $ref: "#/paths/~1v1~1whatsapp~1template/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -2421,6 +2786,17 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
+        post_whats_app_message_media:
+          operation:
+            $ref: "#/paths/~1v1~1whatsapp~1media/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         get_whats_app_message_media:
           operation:
             $ref: "#/paths/~1v1~1whatsapp~1media~1get/post"
@@ -2490,9 +2866,74 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
+        update_linked_whats_app_business_account_phone_number:
+          operation:
+            $ref: "#/paths/~1v1~1whatsapp~1waba~1phone/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/linked_whats_app_business_account_phone_numbers/methods/get_linked_whats_app_business_account_phone_number"
+        insert: []
+        update:
+          - $ref: "#/components/x-stackQL-resources/linked_whats_app_business_account_phone_numbers/methods/update_linked_whats_app_business_account_phone_number"
+        delete: []
+    whats_app_business_public_keys:
+      id: aws.socialmessaging.whats_app_business_public_keys
+      name: whats_app_business_public_keys
+      title: whats_app_business_public_keys
+      methods:
+        get_whats_app_business_public_key:
+          operation:
+            $ref: "#/paths/~1v1~1whatsapp~1business-public-key/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+        put_whats_app_business_public_key:
+          operation:
+            $ref: "#/paths/~1v1~1whatsapp~1business-public-key/put"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/whats_app_business_public_keys/methods/get_whats_app_business_public_key"
+        insert: []
+        update: []
+        replace:
+          - $ref: "#/components/x-stackQL-resources/whats_app_business_public_keys/methods/put_whats_app_business_public_key"
+        delete: []
+    whats_app_call_permissions:
+      id: aws.socialmessaging.whats_app_call_permissions
+      name: whats_app_call_permissions
+      title: whats_app_call_permissions
+      methods:
+        get_whats_app_call_permission:
+          operation:
+            $ref: "#/paths/~1v1~1whatsapp~1call~1permission~1get/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/whats_app_call_permissions/methods/get_whats_app_call_permission"
         insert: []
         update: []
         delete: []
@@ -2638,7 +3079,6 @@ components:
             $ref: "#/paths/~1v1~1whatsapp~1waba~1eventdestinations/put"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -2650,4 +3090,67 @@ components:
         update: []
         replace:
           - $ref: "#/components/x-stackQL-resources/whats_app_business_account_event_destinations/methods/put_whats_app_business_account_event_destinations"
+        delete: []
+    whats_app_call_events:
+      id: aws.socialmessaging.whats_app_call_events
+      name: whats_app_call_events
+      title: whats_app_call_events
+      methods:
+        send_whats_app_call_event:
+          operation:
+            $ref: "#/paths/~1v1~1whatsapp~1call~1event/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
+    whats_app_conversion_events:
+      id: aws.socialmessaging.whats_app_conversion_events
+      name: whats_app_conversion_events
+      title: whats_app_conversion_events
+      methods:
+        send_whats_app_conversion_event:
+          operation:
+            $ref: "#/paths/~1v1~1whatsapp~1waba~1dataset~1events/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
+    whats_app_messages:
+      id: aws.socialmessaging.whats_app_messages
+      name: whats_app_messages
+      title: whats_app_messages
+      methods:
+        send_whats_app_message:
+          operation:
+            $ref: "#/paths/~1v1~1whatsapp~1send/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
         delete: []

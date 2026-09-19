@@ -291,7 +291,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/GetStatusOutputDisplay'
-      x-stackql-resource: status
+      x-stackql-resource: statuses
       x-stackql-method: get_status
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: GetStatusOutputDisplay
@@ -314,7 +314,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/GetStatusInput'
-      x-stackql-resource: status
+      x-stackql-resource: statuses
       x-stackql-method: get_status
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: GetStatusOutputDisplay

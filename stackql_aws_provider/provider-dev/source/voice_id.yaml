@@ -1079,7 +1079,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartFraudsterRegistrationJobResponse'
-      x-stackql-resource: fraudsters
+      x-stackql-resource: fraudster_registration_jobs
       x-stackql-method: start_fraudster_registration_job
       x-stackql-verb: EXEC
   /StartSpeakerEnrollmentJob:
@@ -1144,7 +1144,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartSpeakerEnrollmentJobResponse'
-      x-stackql-resource: speakers
+      x-stackql-resource: speaker_enrollment_jobs
       x-stackql-method: start_speaker_enrollment_job
       x-stackql-verb: EXEC
   /TagResource:
@@ -1180,10 +1180,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -1220,10 +1216,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -2441,14 +2433,10 @@ components:
         Job:
           $ref: '#/components/schemas/SpeakerEnrollmentJob'
           description: Details about the started speaker enrollment job.
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
         $ref: '#/components/schemas/TagKey'
-    UntagResourceResponse:
-      type: object
     UpdateDomainResponse:
       type: object
       properties:

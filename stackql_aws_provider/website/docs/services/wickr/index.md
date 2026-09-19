@@ -29,14 +29,14 @@ total resources: __15__
 <a href="/services/wickr/bots/">bots</a><br />
 <a href="/services/wickr/bots_counts/">bots_counts</a><br />
 <a href="/services/wickr/data_retention_bots/">data_retention_bots</a><br />
-<a href="/services/wickr/devices_for_users/">devices_for_users</a><br />
+<a href="/services/wickr/devices/">devices</a><br />
 <a href="/services/wickr/guest_user_history_counts/">guest_user_history_counts</a><br />
 <a href="/services/wickr/guest_users/">guest_users</a><br />
 <a href="/services/wickr/network_settings/">network_settings</a>
 </div>
 <div class="providerDocColumn">
 <a href="/services/wickr/networks/">networks</a><br />
-<a href="/services/wickr/oidc_infos/">oidc_infos</a><br />
+<a href="/services/wickr/oidc_info/">oidc_info</a><br />
 <a href="/services/wickr/opentdf_configs/">opentdf_configs</a><br />
 <a href="/services/wickr/security_group_users/">security_group_users</a><br />
 <a href="/services/wickr/security_groups/">security_groups</a><br />

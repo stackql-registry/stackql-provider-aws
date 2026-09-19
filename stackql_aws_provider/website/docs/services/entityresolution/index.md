@@ -18,7 +18,7 @@ entityresolution service documentation.
 
 :::info[Service Summary]
 
-total resources: __10__  
+total resources: __11__  
 
 :::
 
@@ -29,13 +29,14 @@ total resources: __10__
 <a href="/services/entityresolution/id_mapping_workflows/">id_mapping_workflows</a><br />
 <a href="/services/entityresolution/id_namespaces/">id_namespaces</a><br />
 <a href="/services/entityresolution/match_ids/">match_ids</a><br />
-<a href="/services/entityresolution/matching_jobs/">matching_jobs</a>
+<a href="/services/entityresolution/matching_jobs/">matching_jobs</a><br />
+<a href="/services/entityresolution/matching_workflows/">matching_workflows</a>
 </div>
 <div class="providerDocColumn">
-<a href="/services/entityresolution/matching_workflows/">matching_workflows</a><br />
 <a href="/services/entityresolution/policies/">policies</a><br />
 <a href="/services/entityresolution/provider_services/">provider_services</a><br />
 <a href="/services/entityresolution/schema_mappings/">schema_mappings</a><br />
-<a href="/services/entityresolution/tags/">tags</a>
+<a href="/services/entityresolution/tags/">tags</a><br />
+<a href="/services/entityresolution/unique_ids/">unique_ids</a>
 </div>
 </div>

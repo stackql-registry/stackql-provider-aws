@@ -209,10 +209,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteTelemetryPipelineOutput"
   /DeleteTelemetryRule:
     post:
       operationId: DeleteTelemetryRule
@@ -811,10 +807,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateTelemetryPipelineOutput"
   /UpdateTelemetryRule:
     post:
       operationId: UpdateTelemetryRule
@@ -1638,8 +1630,6 @@ components:
       type: string
       minLength: 1
       maxLength: 512
-    DeleteTelemetryPipelineOutput:
-      type: object
     GetCentralizationRuleForOrganizationOutput:
       type: object
       properties:
@@ -2328,8 +2318,6 @@ components:
         RuleArn:
           $ref: "#/components/schemas/ResourceArn"
           description: The Amazon Resource Name (ARN) of the updated organization centralization rule.
-    UpdateTelemetryPipelineOutput:
-      type: object
     UpdateTelemetryRuleOutput:
       type: object
       properties:
@@ -2367,10 +2355,10 @@ components:
           properties: {}
           description: A mapping of field names to specific validation issues within the configuration.
   x-stackQL-resources:
-    centralization_rule_for_organizations:
-      id: aws.observabilityadmin.centralization_rule_for_organizations
-      name: centralization_rule_for_organizations
-      title: centralization_rule_for_organizations
+    centralization_rules:
+      id: aws.observabilityadmin.centralization_rules
+      name: centralization_rules
+      title: centralization_rules
       methods:
         create_centralization_rule_for_organization:
           operation:
@@ -2404,6 +2392,25 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        list_centralization_rules_for_organization:
+          operation:
+            $ref: "#/paths/~1ListCentralizationRulesForOrganization/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.CentralizationRuleSummaries
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
         update_centralization_rule_for_organization:
           operation:
             $ref: "#/paths/~1UpdateCentralizationRuleForOrganization/post"
@@ -2417,13 +2424,14 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/centralization_rule_for_organizations/methods/get_centralization_rule_for_organization"
+          - $ref: "#/components/x-stackQL-resources/centralization_rules/methods/get_centralization_rule_for_organization"
+          - $ref: "#/components/x-stackQL-resources/centralization_rules/methods/list_centralization_rules_for_organization"
         insert:
-          - $ref: "#/components/x-stackQL-resources/centralization_rule_for_organizations/methods/create_centralization_rule_for_organization"
+          - $ref: "#/components/x-stackQL-resources/centralization_rules/methods/create_centralization_rule_for_organization"
         update:
-          - $ref: "#/components/x-stackQL-resources/centralization_rule_for_organizations/methods/update_centralization_rule_for_organization"
+          - $ref: "#/components/x-stackQL-resources/centralization_rules/methods/update_centralization_rule_for_organization"
         delete:
-          - $ref: "#/components/x-stackQL-resources/centralization_rule_for_organizations/methods/delete_centralization_rule_for_organization"
+          - $ref: "#/components/x-stackQL-resources/centralization_rules/methods/delete_centralization_rule_for_organization"
     s3_table_integrations:
       id: aws.observabilityadmin.s3_table_integrations
       name: s3_table_integrations
@@ -2509,7 +2517,6 @@ components:
             $ref: "#/paths/~1DeleteTelemetryPipeline/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -2546,12 +2553,22 @@ components:
                 location: body
             requestBodyTranslate:
               algorithm: naive
+        test_telemetry_pipeline:
+          operation:
+            $ref: "#/paths/~1TestTelemetryPipeline/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         update_telemetry_pipeline:
           operation:
             $ref: "#/paths/~1UpdateTelemetryPipeline/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -2712,10 +2729,10 @@ components:
           - $ref: "#/components/x-stackQL-resources/telemetry_rule_for_organizations/methods/update_telemetry_rule_for_organization"
         delete:
           - $ref: "#/components/x-stackQL-resources/telemetry_rule_for_organizations/methods/delete_telemetry_rule_for_organization"
-    telemetry_enrichment_status:
-      id: aws.observabilityadmin.telemetry_enrichment_status
-      name: telemetry_enrichment_status
-      title: telemetry_enrichment_status
+    telemetry_enrichment_statuses:
+      id: aws.observabilityadmin.telemetry_enrichment_statuses
+      name: telemetry_enrichment_statuses
+      title: telemetry_enrichment_statuses
       methods:
         get_telemetry_enrichment_status:
           operation:
@@ -2725,7 +2742,7 @@ components:
             mediaType: application/json
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/telemetry_enrichment_status/methods/get_telemetry_enrichment_status"
+          - $ref: "#/components/x-stackQL-resources/telemetry_enrichment_statuses/methods/get_telemetry_enrichment_status"
         insert: []
         update: []
         delete: []
@@ -2746,10 +2763,10 @@ components:
         insert: []
         update: []
         delete: []
-    telemetry_evaluation_status_for_organizations:
-      id: aws.observabilityadmin.telemetry_evaluation_status_for_organizations
-      name: telemetry_evaluation_status_for_organizations
-      title: telemetry_evaluation_status_for_organizations
+    telemetry_evaluation_statuses:
+      id: aws.observabilityadmin.telemetry_evaluation_statuses
+      name: telemetry_evaluation_statuses
+      title: telemetry_evaluation_statuses
       methods:
         get_telemetry_evaluation_status_for_organization:
           operation:
@@ -2759,37 +2776,7 @@ components:
             mediaType: application/json
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/telemetry_evaluation_status_for_organizations/methods/get_telemetry_evaluation_status_for_organization"
-        insert: []
-        update: []
-        delete: []
-    centralization_rules_for_organizations:
-      id: aws.observabilityadmin.centralization_rules_for_organizations
-      name: centralization_rules_for_organizations
-      title: centralization_rules_for_organizations
-      methods:
-        list_centralization_rules_for_organization:
-          operation:
-            $ref: "#/paths/~1ListCentralizationRulesForOrganization/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.CentralizationRuleSummaries
-          request:
-            nativeCasing: pascal
-          config:
-            pagination:
-              requestToken:
-                key: NextToken
-                location: body
-              responseToken:
-                key: $.NextToken
-                location: body
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/centralization_rules_for_organizations/methods/list_centralization_rules_for_organization"
+          - $ref: "#/components/x-stackQL-resources/telemetry_evaluation_statuses/methods/get_telemetry_evaluation_status_for_organization"
         insert: []
         update: []
         delete: []
@@ -2924,6 +2911,68 @@ components:
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/telemetry_rules_for_organizations/methods/list_telemetry_rules_for_organization"
+        insert: []
+        update: []
+        delete: []
+    telemetry_enrichments:
+      id: aws.observabilityadmin.telemetry_enrichments
+      name: telemetry_enrichments
+      title: telemetry_enrichments
+      methods:
+        start_telemetry_enrichment:
+          operation:
+            $ref: "#/paths/~1StartTelemetryEnrichment/post"
+          response:
+            openAPIDocKey: "202"
+            mediaType: application/json
+        stop_telemetry_enrichment:
+          operation:
+            $ref: "#/paths/~1StopTelemetryEnrichment/post"
+          response:
+            openAPIDocKey: "202"
+            mediaType: application/json
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
+    telemetry_evaluations:
+      id: aws.observabilityadmin.telemetry_evaluations
+      name: telemetry_evaluations
+      title: telemetry_evaluations
+      methods:
+        start_telemetry_evaluation:
+          operation:
+            $ref: "#/paths/~1StartTelemetryEvaluation/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        start_telemetry_evaluation_for_organization:
+          operation:
+            $ref: "#/paths/~1StartTelemetryEvaluationForOrganization/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        stop_telemetry_evaluation:
+          operation:
+            $ref: "#/paths/~1StopTelemetryEvaluation/post"
+          response:
+            openAPIDocKey: "200"
+        stop_telemetry_evaluation_for_organization:
+          operation:
+            $ref: "#/paths/~1StopTelemetryEvaluationForOrganization/post"
+          response:
+            openAPIDocKey: "200"
+      sqlVerbs:
+        select: []
         insert: []
         update: []
         delete: []

@@ -344,10 +344,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteServiceResponse'
       x-stackql-resource: services
       x-stackql-method: delete_service
       x-stackql-verb: DELETE
@@ -387,10 +383,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteServiceAttributesResponse'
       x-stackql-resource: service_attributes
       x-stackql-method: delete_service_attributes
       x-stackql-verb: DELETE
@@ -553,7 +545,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DiscoverInstancesRevisionResponse'
-      x-stackql-resource: namespaces
+      x-stackql-resource: instances
       x-stackql-method: discover_instances_revision
       x-stackql-verb: EXEC
   /GetInstance:
@@ -650,7 +642,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetInstancesHealthStatusResponse'
-      x-stackql-resource: instances_health_status
+      x-stackql-resource: instances_health_statuses
       x-stackql-method: get_instances_health_status
       x-stackql-verb: SELECT
   /GetNamespace:
@@ -1199,10 +1191,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -1239,10 +1227,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -1514,10 +1498,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateServiceAttributesResponse'
       x-stackql-resource: service_attributes
       x-stackql-method: update_service_attributes
       x-stackql-verb: UPDATE
@@ -1965,8 +1945,6 @@ components:
           $ref: '#/components/schemas/OperationId'
           description: A value that you can use to determine whether the request completed successfully. To get the status
             of the operation, see GetOperation.
-    DeleteServiceResponse:
-      type: object
     ServiceAttributeKeyList:
       type: array
       items:
@@ -1974,8 +1952,6 @@ components:
     ServiceAttributeKey:
       type: string
       maxLength: 255
-    DeleteServiceAttributesResponse:
-      type: object
     DeregisterInstanceResponse:
       type: object
       properties:
@@ -2689,14 +2665,10 @@ components:
           $ref: '#/components/schemas/OperationId'
           description: A value that you can use to determine whether the request completed successfully. To get the status
             of the operation, see GetOperation.
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
         $ref: '#/components/schemas/TagKey'
-    UntagResourceResponse:
-      type: object
     HttpNamespaceChange:
       description: Updated properties for the HTTP namespace.
       type: object
@@ -2832,5 +2804,3 @@ components:
     ServiceAttributesMap:
       type: object
       properties: {}
-    UpdateServiceAttributesResponse:
-      type: object

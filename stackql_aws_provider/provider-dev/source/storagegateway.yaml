@@ -282,7 +282,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AddWorkingStorageOutput'
-      x-stackql-resource: working_storages
+      x-stackql-resource: working_storage
       x-stackql-method: add_working_storage
       x-stackql-verb: UPDATE
   /AssignTapePool:
@@ -542,7 +542,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CancelCacheReportOutput'
-      x-stackql-resource: caches
+      x-stackql-resource: cache_reports
       x-stackql-method: cancel_cache_report
       x-stackql-verb: EXEC
   /CancelRetrieval:
@@ -2242,7 +2242,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DescribeGatewayInformationOutput'
-      x-stackql-resource: gateway_informations
+      x-stackql-resource: gateway_information
       x-stackql-method: describe_gateway_information
       x-stackql-verb: SELECT
   /DescribeMaintenanceStartTime:
@@ -2749,7 +2749,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DescribeWorkingStorageOutput'
-      x-stackql-resource: working_storages
+      x-stackql-resource: working_storage
       x-stackql-method: describe_working_storage
       x-stackql-verb: SELECT
   /DetachVolume:
@@ -3638,7 +3638,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RefreshCacheOutput'
-      x-stackql-resource: cache
+      x-stackql-resource: caches
       x-stackql-method: refresh_cache
       x-stackql-verb: EXEC
   /RemoveTagsFromResource:
@@ -3722,7 +3722,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ResetCacheOutput'
-      x-stackql-resource: cache
+      x-stackql-resource: caches
       x-stackql-method: reset_cache
       x-stackql-verb: EXEC
   /RetrieveTapeArchive:
@@ -3770,7 +3770,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RetrieveTapeArchiveOutput'
-      x-stackql-resource: gateways
+      x-stackql-resource: tape_archives
       x-stackql-method: retrieve_tape_archive
       x-stackql-verb: EXEC
   /RetrieveTapeRecoveryPoint:
@@ -3814,7 +3814,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RetrieveTapeRecoveryPointOutput'
-      x-stackql-resource: gateways
+      x-stackql-resource: tape_recovery_points
       x-stackql-method: retrieve_tape_recovery_point
       x-stackql-verb: EXEC
   /SetLocalConsolePassword:
@@ -3979,7 +3979,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartAvailabilityMonitorTestOutput'
-      x-stackql-resource: gateways
+      x-stackql-resource: availability_monitor_tests
       x-stackql-method: start_availability_monitor_test
       x-stackql-verb: EXEC
   /StartCacheReport:
@@ -4060,7 +4060,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartCacheReportOutput'
-      x-stackql-resource: caches
+      x-stackql-resource: cache_reports
       x-stackql-method: start_cache_report
       x-stackql-verb: EXEC
   /StartGateway:
@@ -4386,7 +4386,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateGatewayInformationOutput'
-      x-stackql-resource: gateway_informations
+      x-stackql-resource: gateway_information
       x-stackql-method: update_gateway_information
       x-stackql-verb: UPDATE
   /UpdateGatewaySoftwareNow:

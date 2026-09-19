@@ -32,7 +32,7 @@ total resources: __8__
 </div>
 <div class="providerDocColumn">
 <a href="/services/connectcampaigns/dial_request_batches/">dial_request_batches</a><br />
-<a href="/services/connectcampaigns/instance_onboarding_job_status/">instance_onboarding_job_status</a><br />
+<a href="/services/connectcampaigns/instance_onboarding_job_statuses/">instance_onboarding_job_statuses</a><br />
 <a href="/services/connectcampaigns/instance_onboarding_jobs/">instance_onboarding_jobs</a><br />
 <a href="/services/connectcampaigns/tags/">tags</a>
 </div>

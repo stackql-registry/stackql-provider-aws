@@ -6069,6 +6069,17 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        import_rest_api:
+          operation:
+            $ref: "#/paths/~1restapis?mode=import/post"
+          response:
+            openAPIDocKey: "201"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/rest_apis/methods/get_rest_api"
@@ -6351,6 +6362,17 @@ components:
             $ref: "#/paths/~1clientcertificates~1{clientcertificate_id}/patch"
           response:
             openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        generate_client_certificate:
+          operation:
+            $ref: "#/paths/~1clientcertificates/post"
+          response:
+            openAPIDocKey: "201"
             mediaType: application/json
           request:
             nativeCasing: pascal

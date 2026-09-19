@@ -281,6 +281,13 @@ The following methods are available for this resource:
     <td></td>
     <td>Resets metadata about your connector entities that Amazon AppFlow stored in its cache. Use this action when you want Amazon AppFlow to return the latest information about the data that you have in a source application. Amazon AppFlow returns metadata about your entities when you use the ListConnectorEntities or DescribeConnectorEntities actions. Following these actions, Amazon AppFlow caches the metadata to reduce the number of API requests that it must send to the source application. Amazon AppFlow automatically resets the cache once every hour, but you can use this action when you want to get the latest metadata right away.</td>
 </tr>
+<tr>
+    <td><a href="#unregister_connector"><CopyableCode code="unregister_connector" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-connectorLabel"><code>connectorLabel</code></a></td>
+    <td></td>
+    <td>Unregisters the custom connector registered in your account that matches the connector label provided in the request.</td>
+</tr>
 </tbody>
 </table>
 
@@ -470,7 +477,8 @@ connector_arn;
     defaultValue="list_connectors"
     values={[
         { label: 'list_connectors', value: 'list_connectors' },
-        { label: 'reset_connector_metadata_cache', value: 'reset_connector_metadata_cache' }
+        { label: 'reset_connector_metadata_cache', value: 'reset_connector_metadata_cache' },
+        { label: 'unregister_connector', value: 'unregister_connector' }
     ]}
 >
 <TabItem value="list_connectors">
@@ -502,6 +510,21 @@ EXEC aws.appflow.connectors.reset_connector_metadata_cache
 "connectorEntityName": "{{ connectorEntityName }}", 
 "entitiesPath": "{{ entitiesPath }}", 
 "apiVersion": "{{ apiVersion }}"
+}'
+;
+```
+</TabItem>
+<TabItem value="unregister_connector">
+
+Unregisters the custom connector registered in your account that matches the connector label provided in the request.
+
+```sql
+EXEC aws.appflow.connectors.unregister_connector 
+@region='{{ region }}' --required 
+@@json=
+'{
+"connectorLabel": "{{ connectorLabel }}", 
+"forceDelete": {{ forceDelete }}
 }'
 ;
 ```

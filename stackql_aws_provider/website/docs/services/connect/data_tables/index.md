@@ -36,8 +36,7 @@ The following fields are returned by `SELECT` queries:
     defaultValue="describe_data_table"
     values={[
         { label: 'describe_data_table', value: 'describe_data_table' },
-        { label: 'list_data_tables', value: 'list_data_tables' },
-        { label: 'search_data_tables', value: 'search_data_tables' }
+        { label: 'list_data_tables', value: 'list_data_tables' }
     ]}
 >
 <TabItem value="describe_data_table">
@@ -163,90 +162,6 @@ The following fields are returned by `SELECT` queries:
 </tbody>
 </table>
 </TabItem>
-<TabItem value="search_data_tables">
-
-<table>
-<thead>
-    <tr>
-    <th>Name</th>
-    <th>Datatype</th>
-    <th>Description</th>
-    </tr>
-</thead>
-<tbody>
-<tr>
-    <td><CopyableCode code="arn" /></td>
-    <td><code>string</code></td>
-    <td>The Amazon Resource Name (ARN) for the data table. Does not include version aliases.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="created_time" /></td>
-    <td><code>string (date-time)</code></td>
-    <td>The timestamp when the data table was created.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="description" /></td>
-    <td><code>string</code></td>
-    <td>An optional description of the data table's purpose and contents. (pattern: &lt;code&gt;^&#91;\\P&#123;C&#125;\r\n\t&#93;+$&lt;/code&gt;)</td>
-</tr>
-<tr>
-    <td><CopyableCode code="id" /></td>
-    <td><code>string</code></td>
-    <td>The unique identifier for the data table. Does not include version aliases.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="last_modified_region" /></td>
-    <td><code>string</code></td>
-    <td>The Amazon Web Services Region where the data table was last modified, used for region replication. (pattern: &lt;code&gt;&#91;a-z&#93;&#123;2&#125;(-&#91;a-z&#93;+)&#123;1,2&#125;(-&#91;0-9&#93;)?&lt;/code&gt;)</td>
-</tr>
-<tr>
-    <td><CopyableCode code="last_modified_time" /></td>
-    <td><code>string (date-time)</code></td>
-    <td>The timestamp when the data table or any of its properties were last modified.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="lock_version" /></td>
-    <td><code>object</code></td>
-    <td>The lock version information used for optimistic locking and table versioning. Changes with each update to prevent concurrent modification conflicts.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="name" /></td>
-    <td><code>string</code></td>
-    <td>The human-readable name of the data table. Must be unique within the instance and conform to Connect naming standards. (pattern: &lt;code&gt;^&#91;\p&#123;L&#125;\p&#123;Z&#125;\p&#123;N&#125;\-_.:=@'|&#93;+$&lt;/code&gt;)</td>
-</tr>
-<tr>
-    <td><CopyableCode code="status" /></td>
-    <td><code>string</code></td>
-    <td>The current status of the data table. One of PUBLISHED or SAVED. (PUBLISHED)</td>
-</tr>
-<tr>
-    <td><CopyableCode code="tags" /></td>
-    <td><code>object</code></td>
-    <td>Key-value pairs for attribute based access control (TBAC or ABAC) and organization.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="time_zone" /></td>
-    <td><code>string</code></td>
-    <td>The IANA timezone identifier used when resolving time based dynamic values. Required even if no time slices are specified.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="value_lock_level" /></td>
-    <td><code>string</code></td>
-    <td>The data level that concurrent value edits are locked on. One of DATA_TABLE, PRIMARY_VALUE, ATTRIBUTE, VALUE, and NONE. Determines how concurrent edits are handled when multiple users attempt to modify values simultaneously. (NONE, DATA_TABLE, PRIMARY_VALUE, ATTRIBUTE, VALUE)</td>
-</tr>
-<tr>
-    <td><CopyableCode code="version" /></td>
-    <td><code>string</code></td>
-    <td>A unique identifier and alias for customer managed versions (not $LATEST or $SAVED).</td>
-</tr>
-<tr>
-    <td><CopyableCode code="version_description" /></td>
-    <td><code>string</code></td>
-    <td>A description of the customer managed version. (pattern: &lt;code&gt;^&#91;\\P&#123;C&#125;\r\n\t&#93;+$&lt;/code&gt;)</td>
-</tr>
-</tbody>
-</table>
-</TabItem>
 </Tabs>
 
 ## Methods
@@ -277,13 +192,6 @@ The following methods are available for this resource:
     <td><a href="#parameter-instance_id"><code>instance_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td><a href="#parameter-nextToken"><code>nextToken</code></a>, <a href="#parameter-maxResults"><code>maxResults</code></a></td>
     <td>Lists all data tables for the specified Amazon Connect instance. Returns summary information for each table including basic metadata and modification details.</td>
-</tr>
-<tr>
-    <td><a href="#search_data_tables"><CopyableCode code="search_data_tables" /></a></td>
-    <td><CopyableCode code="select" /></td>
-    <td><a href="#parameter-region"><code>region</code></a></td>
-    <td></td>
-    <td>Searches for data tables based on the table's ID, name, and description. In the future, this operation can support searching on attribute names and possibly primary values. Follows other search operations closely and supports both search criteria and filters.</td>
 </tr>
 <tr>
     <td><a href="#create_data_table"><CopyableCode code="create_data_table" /></a></td>
@@ -333,6 +241,13 @@ The following methods are available for this resource:
     <td><a href="#parameter-instance_id"><code>instance_id</code></a>, <a href="#parameter-data_table_id"><code>data_table_id</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-Values"><code>Values</code></a></td>
     <td></td>
     <td>Updates multiple data table values using all properties from BatchCreateDataTableValue. System managed values are not modifiable by customers. The operation requires proper lock versions to prevent concurrent modification conflicts.</td>
+</tr>
+<tr>
+    <td><a href="#search_data_tables"><CopyableCode code="search_data_tables" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-InstanceId"><code>InstanceId</code></a></td>
+    <td></td>
+    <td>Searches for data tables based on the table's ID, name, and description. In the future, this operation can support searching on attribute names and possibly primary values. Follows other search operations closely and supports both search criteria and filters.</td>
 </tr>
 </tbody>
 </table>
@@ -384,8 +299,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     defaultValue="describe_data_table"
     values={[
         { label: 'describe_data_table', value: 'describe_data_table' },
-        { label: 'list_data_tables', value: 'list_data_tables' },
-        { label: 'search_data_tables', value: 'search_data_tables' }
+        { label: 'list_data_tables', value: 'list_data_tables' }
     ]}
 >
 <TabItem value="describe_data_table">
@@ -431,31 +345,6 @@ WHERE instance_id = '{{ instance_id }}' -- required
 AND region = '{{ region }}' -- required
 AND nextToken = '{{ nextToken }}'
 AND maxResults = '{{ maxResults }}'
-;
-```
-</TabItem>
-<TabItem value="search_data_tables">
-
-Searches for data tables based on the table's ID, name, and description. In the future, this operation can support searching on attribute names and possibly primary values. Follows other search operations closely and supports both search criteria and filters.
-
-```sql
-SELECT
-arn,
-created_time,
-description,
-id,
-last_modified_region,
-last_modified_time,
-lock_version,
-name,
-status,
-tags,
-time_zone,
-value_lock_level,
-version,
-version_description
-FROM aws.connect.data_tables
-WHERE region = '{{ region }}' -- required
 ;
 ```
 </TabItem>
@@ -596,7 +485,8 @@ AND region = '{{ region }}' --required
         { label: 'batch_create_data_table_value', value: 'batch_create_data_table_value' },
         { label: 'batch_delete_data_table_value', value: 'batch_delete_data_table_value' },
         { label: 'batch_describe_data_table_value', value: 'batch_describe_data_table_value' },
-        { label: 'batch_update_data_table_value', value: 'batch_update_data_table_value' }
+        { label: 'batch_update_data_table_value', value: 'batch_update_data_table_value' },
+        { label: 'search_data_tables', value: 'search_data_tables' }
     ]}
 >
 <TabItem value="batch_create_data_table_value">
@@ -659,6 +549,24 @@ EXEC aws.connect.data_tables.batch_update_data_table_value
 @@json=
 '{
 "Values": "{{ Values }}"
+}'
+;
+```
+</TabItem>
+<TabItem value="search_data_tables">
+
+Searches for data tables based on the table's ID, name, and description. In the future, this operation can support searching on attribute names and possibly primary values. Follows other search operations closely and supports both search criteria and filters.
+
+```sql
+EXEC aws.connect.data_tables.search_data_tables 
+@region='{{ region }}' --required 
+@@json=
+'{
+"InstanceId": "{{ InstanceId }}", 
+"NextToken": "{{ NextToken }}", 
+"MaxResults": {{ MaxResults }}, 
+"SearchFilter": "{{ SearchFilter }}", 
+"SearchCriteria": "{{ SearchCriteria }}"
 }'
 ;
 ```

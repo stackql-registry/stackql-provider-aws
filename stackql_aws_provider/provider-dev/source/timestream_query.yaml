@@ -54,7 +54,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CancelQueryResponse'
-      x-stackql-resource: query
+      x-stackql-resource: queries
       x-stackql-method: cancel_query
       x-stackql-verb: EXEC
   /CreateScheduledQuery:
@@ -454,7 +454,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PrepareQueryResponse'
-      x-stackql-resource: prepare_query
+      x-stackql-resource: queries
       x-stackql-method: prepare_query
       x-stackql-verb: EXEC
   /Query:
@@ -543,7 +543,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/QueryResponse'
-      x-stackql-resource: query
+      x-stackql-resource: ys
       x-stackql-method: query
       x-stackql-verb: EXEC
       x-stackql-pagination-request-token-key: NextToken
@@ -584,10 +584,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -626,10 +622,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -1802,14 +1794,10 @@ components:
         UnloadWrittenBytes:
           $ref: '#/components/schemas/Long'
           description: Indicates the size, in bytes, written by the Unload operation.
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
         $ref: '#/components/schemas/TagKey'
-    UntagResourceResponse:
-      type: object
     QueryComputeRequest:
       description: A request to retrieve or update the compute capacity settings for querying data.
       type: object

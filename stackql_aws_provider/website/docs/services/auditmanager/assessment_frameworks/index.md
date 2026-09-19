@@ -200,18 +200,18 @@ The following methods are available for this resource:
     <td>Updates a share request for a custom framework in Audit Manager.</td>
 </tr>
 <tr>
-    <td><a href="#delete_assessment_framework_share"><CopyableCode code="delete_assessment_framework_share" /></a></td>
-    <td><CopyableCode code="delete" /></td>
-    <td><a href="#parameter-request_id"><code>request_id</code></a>, <a href="#parameter-requestType"><code>requestType</code></a>, <a href="#parameter-region"><code>region</code></a></td>
-    <td></td>
-    <td>Deletes a share request for a custom framework in Audit Manager.</td>
-</tr>
-<tr>
     <td><a href="#delete_assessment_framework"><CopyableCode code="delete_assessment_framework" /></a></td>
     <td><CopyableCode code="delete" /></td>
     <td><a href="#parameter-framework_id"><code>framework_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td></td>
     <td>Deletes a custom framework in Audit Manager.</td>
+</tr>
+<tr>
+    <td><a href="#delete_assessment_framework_share"><CopyableCode code="delete_assessment_framework_share" /></a></td>
+    <td><CopyableCode code="delete" /></td>
+    <td><a href="#parameter-request_id"><code>request_id</code></a>, <a href="#parameter-requestType"><code>requestType</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Deletes a share request for a custom framework in Audit Manager.</td>
 </tr>
 <tr>
     <td><a href="#start_assessment_framework_share"><CopyableCode code="start_assessment_framework_share" /></a></td>
@@ -441,12 +441,23 @@ assessment_framework_share_request;
 ## `DELETE` examples
 
 <Tabs
-    defaultValue="delete_assessment_framework_share"
+    defaultValue="delete_assessment_framework"
     values={[
-        { label: 'delete_assessment_framework_share', value: 'delete_assessment_framework_share' },
-        { label: 'delete_assessment_framework', value: 'delete_assessment_framework' }
+        { label: 'delete_assessment_framework', value: 'delete_assessment_framework' },
+        { label: 'delete_assessment_framework_share', value: 'delete_assessment_framework_share' }
     ]}
 >
+<TabItem value="delete_assessment_framework">
+
+Deletes a custom framework in Audit Manager.
+
+```sql
+DELETE FROM aws.auditmanager.assessment_frameworks
+WHERE framework_id = '{{ framework_id }}' --required
+AND region = '{{ region }}' --required
+;
+```
+</TabItem>
 <TabItem value="delete_assessment_framework_share">
 
 Deletes a share request for a custom framework in Audit Manager.
@@ -455,17 +466,6 @@ Deletes a share request for a custom framework in Audit Manager.
 DELETE FROM aws.auditmanager.assessment_frameworks
 WHERE request_id = '{{ request_id }}' --required
 AND requestType = '{{ requestType }}' --required
-AND region = '{{ region }}' --required
-;
-```
-</TabItem>
-<TabItem value="delete_assessment_framework">
-
-Deletes a custom framework in Audit Manager.
-
-```sql
-DELETE FROM aws.auditmanager.assessment_frameworks
-WHERE framework_id = '{{ framework_id }}' --required
 AND region = '{{ region }}' --required
 ;
 ```

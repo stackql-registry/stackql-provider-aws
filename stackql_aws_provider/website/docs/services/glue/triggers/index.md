@@ -193,6 +193,20 @@ The following methods are available for this resource:
     <td></td>
     <td>Retrieves the names of all trigger resources in this Amazon Web Services account, or the resources with the specified tag. This operation allows you to see which resources are available in your account, and their names. This operation takes the optional Tags field, which you can use as a filter on the response so that tagged resources can be retrieved as a group. If you choose to use tags filtering, only resources with the tag are retrieved.</td>
 </tr>
+<tr>
+    <td><a href="#start_trigger"><CopyableCode code="start_trigger" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Starts an existing trigger. See Triggering Jobs for information about how different types of trigger are started.</td>
+</tr>
+<tr>
+    <td><a href="#stop_trigger"><CopyableCode code="stop_trigger" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Stops a specified trigger.</td>
+</tr>
 </tbody>
 </table>
 
@@ -432,7 +446,9 @@ WHERE region = '{{ region }}' --required
     defaultValue="get_triggers"
     values={[
         { label: 'get_triggers', value: 'get_triggers' },
-        { label: 'list_triggers', value: 'list_triggers' }
+        { label: 'list_triggers', value: 'list_triggers' },
+        { label: 'start_trigger', value: 'start_trigger' },
+        { label: 'stop_trigger', value: 'stop_trigger' }
     ]}
 >
 <TabItem value="get_triggers">
@@ -464,6 +480,34 @@ EXEC aws.glue.triggers.list_triggers
 "DependentJobName": "{{ DependentJobName }}", 
 "MaxResults": {{ MaxResults }}, 
 "Tags": "{{ Tags }}"
+}'
+;
+```
+</TabItem>
+<TabItem value="start_trigger">
+
+Starts an existing trigger. See Triggering Jobs for information about how different types of trigger are started.
+
+```sql
+EXEC aws.glue.triggers.start_trigger 
+@region='{{ region }}' --required 
+@@json=
+'{
+"Name": "{{ Name }}"
+}'
+;
+```
+</TabItem>
+<TabItem value="stop_trigger">
+
+Stops a specified trigger.
+
+```sql
+EXEC aws.glue.triggers.stop_trigger 
+@region='{{ region }}' --required 
+@@json=
+'{
+"Name": "{{ Name }}"
 }'
 ;
 ```

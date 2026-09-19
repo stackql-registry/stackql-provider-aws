@@ -78,10 +78,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteResourcePolicyResponse"
   /DescribeAssessment:
     post:
       operationId: DescribeAssessment
@@ -323,10 +319,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/PutResourcePolicyResponse"
   /StartChangeSet:
     post:
       operationId: StartChangeSet
@@ -381,10 +373,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TagResourceResponse"
   /UntagResource:
     post:
       operationId: UntagResource
@@ -407,10 +395,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UntagResourceResponse"
 components:
   parameters:
     X-Amz-Content-Sha256:
@@ -518,8 +502,6 @@ components:
       minLength: 1
       maxLength: 255
       pattern: ^arn:[\w+=/,.@-]+:aws-marketplace:[\w+=/,.@-]*:[0-9]+:[\w+=,.@-]+(/[\w+=,.@-]+)*$
-    DeleteResourcePolicyResponse:
-      type: object
     AssessmentIdentifier:
       type: string
       minLength: 1
@@ -1746,6 +1728,12 @@ components:
         ResellerRole:
           $ref: "#/components/schemas/ResaleAuthorizationResellerRoleFilter"
           description: Allows filtering on the ResellerRole of a ResaleAuthorization.
+        SourceAuthorization:
+          $ref: "#/components/schemas/ResaleAuthorizationSourceAuthorizationFilter"
+          description: Allows filtering on the SourceAuthorization of a ResaleAuthorization.
+        IssuerAccountId:
+          $ref: "#/components/schemas/ResaleAuthorizationIssuerAccountIdFilter"
+          description: Allows filtering on the IssuerAccountId of a ResaleAuthorization.
     ResaleAuthorizationEntityIdFilter:
       description: Allows filtering on EntityId of a ResaleAuthorization.
       type: object
@@ -2044,6 +2032,38 @@ components:
       enum:
         - ChannelPartner
         - Distributor
+    ResaleAuthorizationSourceAuthorizationFilter:
+      description: Allows filtering on the SourceAuthorization of a ResaleAuthorization.
+      type: object
+      properties:
+        ValueList:
+          $ref: "#/components/schemas/ResaleAuthorizationSourceAuthorizationFilterValueList"
+          description: Allows filtering on the SourceAuthorization of a ResaleAuthorization with list input.
+    ResaleAuthorizationSourceAuthorizationFilterValueList:
+      type: array
+      items:
+        $ref: "#/components/schemas/ResaleAuthorizationSourceAuthorizationString"
+    ResaleAuthorizationSourceAuthorizationString:
+      type: string
+      minLength: 1
+      maxLength: 255
+      pattern: ^(.)+$
+    ResaleAuthorizationIssuerAccountIdFilter:
+      description: Allows filtering on the IssuerAccountId of a ResaleAuthorization.
+      type: object
+      properties:
+        ValueList:
+          $ref: "#/components/schemas/ResaleAuthorizationIssuerAccountIdFilterValueList"
+          description: Allows filtering on the IssuerAccountId of a ResaleAuthorization with list input.
+    ResaleAuthorizationIssuerAccountIdFilterValueList:
+      type: array
+      items:
+        $ref: "#/components/schemas/ResaleAuthorizationIssuerAccountIdString"
+    ResaleAuthorizationIssuerAccountIdString:
+      type: string
+      minLength: 12
+      maxLength: 12
+      pattern: ^\d{12}$
     MachineLearningProductFilters:
       description: The filters that you can use with the ListEntities operation to filter machine learning products. You can filter by EntityId, astModifiedDate, ProductTitle, and Visibility.
       type: object
@@ -2425,6 +2445,9 @@ components:
         - CreatedDate
         - AvailabilityEndDate
         - LastModifiedDate
+        - ResellerRole
+        - SourceAuthorization
+        - IssuerAccountId
     MachineLearningProductSort:
       description: The sort options for machine learning products.
       type: object
@@ -2663,6 +2686,12 @@ components:
         ResellerRole:
           $ref: "#/components/schemas/ResaleAuthorizationResellerRoleString"
           description: The reseller role of the ResaleAuthorization.
+        SourceAuthorization:
+          $ref: "#/components/schemas/ResaleAuthorizationSourceAuthorizationString"
+          description: The source authorization of the ResaleAuthorization.
+        IssuerAccountId:
+          $ref: "#/components/schemas/ResaleAuthorizationIssuerAccountIdString"
+          description: The issuer account ID of the ResaleAuthorization.
     MachineLearningProductSummary:
       description: A summary of a machine learning product.
       type: object
@@ -2732,8 +2761,6 @@ components:
       minLength: 0
       maxLength: 256
       pattern: ^([\p{L}\p{Z}\p{N}_.:/=+\-@]*)$
-    PutResourcePolicyResponse:
-      type: object
     RequestedChangeList:
       type: array
       items:
@@ -2777,14 +2804,10 @@ components:
         ChangeSetArn:
           $ref: "#/components/schemas/ARN"
           description: The ARN associated to the unique identifier generated for the request.
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
         $ref: "#/components/schemas/TagKey"
-    UntagResourceResponse:
-      type: object
   x-stackQL-resources:
     entities:
       id: aws.marketplace_catalog.entities
@@ -2836,6 +2859,62 @@ components:
         insert: []
         update: []
         delete: []
+    change_sets:
+      id: aws.marketplace_catalog.change_sets
+      name: change_sets
+      title: change_sets
+      methods:
+        cancel_change_set:
+          operation:
+            $ref: "#/paths/~1CancelChangeSet/patch"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+        describe_change_set:
+          operation:
+            $ref: "#/paths/~1DescribeChangeSet/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+        list_change_sets:
+          operation:
+            $ref: "#/paths/~1ListChangeSets/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.ChangeSetSummaryList
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        start_change_set:
+          operation:
+            $ref: "#/paths/~1StartChangeSet/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/change_sets/methods/describe_change_set"
+          - $ref: "#/components/x-stackQL-resources/change_sets/methods/list_change_sets"
+        insert: []
+        update: []
+        delete: []
     resource_policies:
       id: aws.marketplace_catalog.resource_policies
       name: resource_policies
@@ -2846,7 +2925,6 @@ components:
             $ref: "#/paths/~1DeleteResourcePolicy/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
         get_resource_policy:
@@ -2862,7 +2940,6 @@ components:
             $ref: "#/paths/~1PutResourcePolicy/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -2927,45 +3004,6 @@ components:
         insert: []
         update: []
         delete: []
-    change_sets:
-      id: aws.marketplace_catalog.change_sets
-      name: change_sets
-      title: change_sets
-      methods:
-        describe_change_set:
-          operation:
-            $ref: "#/paths/~1DescribeChangeSet/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-        list_change_sets:
-          operation:
-            $ref: "#/paths/~1ListChangeSets/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.ChangeSetSummaryList
-          request:
-            nativeCasing: pascal
-          config:
-            pagination:
-              requestToken:
-                key: NextToken
-                location: body
-              responseToken:
-                key: $.NextToken
-                location: body
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/change_sets/methods/describe_change_set"
-          - $ref: "#/components/x-stackQL-resources/change_sets/methods/list_change_sets"
-        insert: []
-        update: []
-        delete: []
     tags:
       id: aws.marketplace_catalog.tags
       name: tags
@@ -2987,7 +3025,6 @@ components:
             $ref: "#/paths/~1TagResource/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -2998,7 +3035,6 @@ components:
             $ref: "#/paths/~1UntagResource/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:

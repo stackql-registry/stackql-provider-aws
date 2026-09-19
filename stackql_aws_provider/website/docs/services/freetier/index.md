@@ -18,7 +18,7 @@ freetier service documentation.
 
 :::info[Service Summary]
 
-total resources: __3__  
+total resources: __4__  
 
 :::
 
@@ -29,6 +29,7 @@ total resources: __3__
 <a href="/services/freetier/account_plan_states/">account_plan_states</a>
 </div>
 <div class="providerDocColumn">
+<a href="/services/freetier/account_plans/">account_plans</a><br />
 <a href="/services/freetier/free_tier_usages/">free_tier_usages</a>
 </div>
 </div>

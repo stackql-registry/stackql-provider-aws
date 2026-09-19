@@ -102,7 +102,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="resource_arns" /></td>
     <td><code>array</code></td>
-    <td>A list of 1 to 10 AWS resource ARNs to include in the subscription.</td>
+    <td>A list of 1 to 10 resource ARNs to include in the subscription.</td>
 </tr>
 <tr>
     <td><CopyableCode code="scheduled_change" /></td>
@@ -171,18 +171,25 @@ The following methods are available for this resource:
     <td>Creates a flat-rate pricing subscription for the specified resources. When approvalMode is set to MANUAL, paid-tier subscriptions are created in PENDING_APPROVAL status and require a separate ApprovePaidSubscription call before billing starts. Free-tier subscriptions are always activated immediately regardless of approval mode. When approvalMode is set to IMMEDIATE or is not specified, the subscription is activated immediately.</td>
 </tr>
 <tr>
-    <td><a href="#associate_resources_to_subscription"><CopyableCode code="associate_resources_to_subscription" /></a></td>
-    <td><CopyableCode code="update" /></td>
-    <td><a href="#parameter-If-Match"><code>If-Match</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-arn"><code>arn</code></a>, <a href="#parameter-resourceArns"><code>resourceArns</code></a></td>
-    <td></td>
-    <td>Adds one or more resources to an existing subscription. The subscription must be in an active state that is not pending other changes. For subscriptions in the CloudFront plan family, the associated resources must include exactly one Amazon CloudFront distribution and one AWS WAF web ACL. You can also include other supported resources, such as Amazon Route 53 hosted zones, and CloudFront KeyValueStores.</td>
-</tr>
-<tr>
     <td><a href="#update_subscription"><CopyableCode code="update_subscription" /></a></td>
     <td><CopyableCode code="update" /></td>
     <td><a href="#parameter-If-Match"><code>If-Match</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-arn"><code>arn</code></a>, <a href="#parameter-planTier"><code>planTier</code></a></td>
     <td></td>
     <td>Changes the plan tier of an existing subscription. Upgrades take effect immediately. Downgrades are scheduled and the current tier remains unchanged until the end of the billing cycle (calendar month). You cannot update a subscription while a scheduled change is pending. To make a new change, first cancel the pending change using CancelSubscriptionChange. This operation replaces the plan tier value. If you omit the optional usageLevel field, it is reset to the default.</td>
+</tr>
+<tr>
+    <td><a href="#associate_resources_to_subscription"><CopyableCode code="associate_resources_to_subscription" /></a></td>
+    <td><CopyableCode code="update" /></td>
+    <td><a href="#parameter-If-Match"><code>If-Match</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-arn"><code>arn</code></a>, <a href="#parameter-resourceArns"><code>resourceArns</code></a></td>
+    <td></td>
+    <td>Adds one or more resources to an existing subscription. The subscription must be in an active state that is not pending other changes. For subscriptions in the CloudFront plan family, the associated resources must include exactly one Amazon CloudFront distribution and one WAF web ACL. You can also include other supported resources, such as Amazon Route 53 hosted zones, and CloudFront KeyValueStores.</td>
+</tr>
+<tr>
+    <td><a href="#cancel_subscription"><CopyableCode code="cancel_subscription" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-If-Match"><code>If-Match</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-arn"><code>arn</code></a></td>
+    <td></td>
+    <td>Cancels a flat-rate pricing subscription. For active subscriptions, the cancellation is scheduled to take effect at the end of the current billing period. The subscription remains active until that date. To revert a pending cancellation, use CancelSubscriptionChange. For subscriptions in PENDING_APPROVAL status, the subscription is deleted immediately without scheduling.</td>
 </tr>
 <tr>
     <td><a href="#cancel_subscription_change"><CopyableCode code="cancel_subscription_change" /></a></td>
@@ -196,7 +203,7 @@ The following methods are available for this resource:
     <td><CopyableCode code="exec" /></td>
     <td><a href="#parameter-If-Match"><code>If-Match</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-arn"><code>arn</code></a>, <a href="#parameter-resourceArns"><code>resourceArns</code></a></td>
     <td></td>
-    <td>Removes one or more resources from an existing subscription. For subscriptions in the CloudFront plan family, the associated resources must always include exactly one Amazon CloudFront distribution and exactly one AWS WAF web ACL. You cannot remove these required resources.</td>
+    <td>Removes one or more resources from an existing subscription. For subscriptions in the CloudFront plan family, the associated resources must always include exactly one Amazon CloudFront distribution and exactly one WAF web ACL. You cannot remove these required resources.</td>
 </tr>
 </tbody>
 </table>
@@ -329,7 +336,7 @@ subscription
       value:
         - "{{ resourceArns }}"
       description: |
-        A list of 1 to 10 AWS resource ARNs to include in the subscription.
+        A list of 1 to 10 resource ARNs to include in the subscription.
     - name: approvalMode
       value: "{{ approvalMode }}"
       description: |
@@ -348,32 +355,12 @@ subscription
 ## `UPDATE` examples
 
 <Tabs
-    defaultValue="associate_resources_to_subscription"
+    defaultValue="update_subscription"
     values={[
-        { label: 'associate_resources_to_subscription', value: 'associate_resources_to_subscription' },
-        { label: 'update_subscription', value: 'update_subscription' }
+        { label: 'update_subscription', value: 'update_subscription' },
+        { label: 'associate_resources_to_subscription', value: 'associate_resources_to_subscription' }
     ]}
 >
-<TabItem value="associate_resources_to_subscription">
-
-Adds one or more resources to an existing subscription. The subscription must be in an active state that is not pending other changes. For subscriptions in the CloudFront plan family, the associated resources must include exactly one Amazon CloudFront distribution and one AWS WAF web ACL. You can also include other supported resources, such as Amazon Route 53 hosted zones, and CloudFront KeyValueStores.
-
-```sql
-UPDATE aws.pricing_plan_manager.subscriptions
-SET 
-arn = '{{ arn }}',
-resourceArns = '{{ resourceArns }}',
-clientToken = '{{ clientToken }}'
-WHERE 
-`If-Match` = '{{ If-Match }}' --required
-AND region = '{{ region }}' --required
-AND arn = '{{ arn }}' --required
-AND resourceArns = '{{ resourceArns }}' --required
-RETURNING
-e_tag,
-subscription;
-```
-</TabItem>
 <TabItem value="update_subscription">
 
 Changes the plan tier of an existing subscription. Upgrades take effect immediately. Downgrades are scheduled and the current tier remains unchanged until the end of the billing cycle (calendar month). You cannot update a subscription while a scheduled change is pending. To make a new change, first cancel the pending change using CancelSubscriptionChange. This operation replaces the plan tier value. If you omit the optional usageLevel field, it is reset to the default.
@@ -395,18 +382,55 @@ e_tag,
 subscription;
 ```
 </TabItem>
+<TabItem value="associate_resources_to_subscription">
+
+Adds one or more resources to an existing subscription. The subscription must be in an active state that is not pending other changes. For subscriptions in the CloudFront plan family, the associated resources must include exactly one Amazon CloudFront distribution and one WAF web ACL. You can also include other supported resources, such as Amazon Route 53 hosted zones, and CloudFront KeyValueStores.
+
+```sql
+UPDATE aws.pricing_plan_manager.subscriptions
+SET 
+arn = '{{ arn }}',
+resourceArns = '{{ resourceArns }}',
+clientToken = '{{ clientToken }}'
+WHERE 
+`If-Match` = '{{ If-Match }}' --required
+AND region = '{{ region }}' --required
+AND arn = '{{ arn }}' --required
+AND resourceArns = '{{ resourceArns }}' --required
+RETURNING
+e_tag,
+subscription;
+```
+</TabItem>
 </Tabs>
 
 
 ## Lifecycle Methods
 
 <Tabs
-    defaultValue="cancel_subscription_change"
+    defaultValue="cancel_subscription"
     values={[
+        { label: 'cancel_subscription', value: 'cancel_subscription' },
         { label: 'cancel_subscription_change', value: 'cancel_subscription_change' },
         { label: 'disassociate_resources_from_subscription', value: 'disassociate_resources_from_subscription' }
     ]}
 >
+<TabItem value="cancel_subscription">
+
+Cancels a flat-rate pricing subscription. For active subscriptions, the cancellation is scheduled to take effect at the end of the current billing period. The subscription remains active until that date. To revert a pending cancellation, use CancelSubscriptionChange. For subscriptions in PENDING_APPROVAL status, the subscription is deleted immediately without scheduling.
+
+```sql
+EXEC aws.pricing_plan_manager.subscriptions.cancel_subscription 
+@If-Match='{{ If-Match }}' --required, 
+@region='{{ region }}' --required 
+@@json=
+'{
+"arn": "{{ arn }}", 
+"clientToken": "{{ clientToken }}"
+}'
+;
+```
+</TabItem>
 <TabItem value="cancel_subscription_change">
 
 Cancels a pending scheduled change on a subscription, such as a pending downgrade or cancellation. The subscription returns to its state before the change was scheduled. You cannot cancel a scheduled change close to its effective date. If the change is within the processing window, this operation returns an error.
@@ -425,7 +449,7 @@ EXEC aws.pricing_plan_manager.subscriptions.cancel_subscription_change
 </TabItem>
 <TabItem value="disassociate_resources_from_subscription">
 
-Removes one or more resources from an existing subscription. For subscriptions in the CloudFront plan family, the associated resources must always include exactly one Amazon CloudFront distribution and exactly one AWS WAF web ACL. You cannot remove these required resources.
+Removes one or more resources from an existing subscription. For subscriptions in the CloudFront plan family, the associated resources must always include exactly one Amazon CloudFront distribution and exactly one WAF web ACL. You cannot remove these required resources.
 
 ```sql
 EXEC aws.pricing_plan_manager.subscriptions.disassociate_resources_from_subscription 

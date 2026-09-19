@@ -149,18 +149,18 @@ The following methods are available for this resource:
     <td>Lists address lists for this account.</td>
 </tr>
 <tr>
-    <td><a href="#register_member_to_address_list"><CopyableCode code="register_member_to_address_list" /></a></td>
-    <td><CopyableCode code="insert" /></td>
-    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-AddressListId"><code>AddressListId</code></a>, <a href="#parameter-Address"><code>Address</code></a></td>
-    <td></td>
-    <td>Adds a member to an address list.</td>
-</tr>
-<tr>
     <td><a href="#create_address_list"><CopyableCode code="create_address_list" /></a></td>
     <td><CopyableCode code="insert" /></td>
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-AddressListName"><code>AddressListName</code></a></td>
     <td></td>
     <td>Creates a new address list.</td>
+</tr>
+<tr>
+    <td><a href="#register_member_to_address_list"><CopyableCode code="register_member_to_address_list" /></a></td>
+    <td><CopyableCode code="insert" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-AddressListId"><code>AddressListId</code></a>, <a href="#parameter-Address"><code>Address</code></a></td>
+    <td></td>
+    <td>Adds a member to an address list.</td>
 </tr>
 <tr>
     <td><a href="#deregister_member_from_address_list"><CopyableCode code="deregister_member_from_address_list" /></a></td>
@@ -261,30 +261,13 @@ WHERE region = '{{ region }}' -- required
 ## `INSERT` examples
 
 <Tabs
-    defaultValue="register_member_to_address_list"
+    defaultValue="create_address_list"
     values={[
-        { label: 'register_member_to_address_list', value: 'register_member_to_address_list' },
         { label: 'create_address_list', value: 'create_address_list' },
+        { label: 'register_member_to_address_list', value: 'register_member_to_address_list' },
         { label: 'Manifest', value: 'manifest' }
     ]}
 >
-<TabItem value="register_member_to_address_list">
-
-Adds a member to an address list.
-
-```sql
-INSERT INTO aws.mailmanager.address_lists (
-AddressListId,
-Address,
-region
-)
-SELECT 
-'{{ AddressListId }}' /* required */,
-'{{ Address }}' /* required */,
-'{{ region }}'
-;
-```
-</TabItem>
 <TabItem value="create_address_list">
 
 Creates a new address list.
@@ -306,6 +289,23 @@ address_list_id
 ;
 ```
 </TabItem>
+<TabItem value="register_member_to_address_list">
+
+Adds a member to an address list.
+
+```sql
+INSERT INTO aws.mailmanager.address_lists (
+AddressListId,
+Address,
+region
+)
+SELECT 
+'{{ AddressListId }}' /* required */,
+'{{ Address }}' /* required */,
+'{{ region }}'
+;
+```
+</TabItem>
 <TabItem value="manifest">
 
 <CodeBlock language="yaml">{`# Description fields are for documentation purposes
@@ -314,14 +314,6 @@ address_list_id
     - name: region
       value: "{{ region }}"
       description: Required parameter for the address_lists resource.
-    - name: AddressListId
-      value: "{{ AddressListId }}"
-      description: |
-        The unique identifier of the address list where the address should be added.
-    - name: Address
-      value: "{{ Address }}"
-      description: |
-        The address to be added to the address list.
     - name: ClientToken
       value: "{{ ClientToken }}"
       description: |
@@ -336,6 +328,14 @@ address_list_id
       value:
         - Key: "{{ Key }}"
           Value: "{{ Value }}"
+    - name: AddressListId
+      value: "{{ AddressListId }}"
+      description: |
+        The unique identifier of the address list where the address should be added.
+    - name: Address
+      value: "{{ Address }}"
+      description: |
+        The address to be added to the address list.
 `}</CodeBlock>
 
 </TabItem>

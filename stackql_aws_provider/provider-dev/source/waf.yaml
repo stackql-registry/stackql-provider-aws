@@ -931,10 +931,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteLoggingConfigurationResponse'
       x-stackql-resource: logging_configurations
       x-stackql-method: delete_logging_configuration
       x-stackql-verb: DELETE
@@ -971,10 +967,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeletePermissionPolicyResponse'
       x-stackql-resource: permission_policies
       x-stackql-method: delete_permission_policy
       x-stackql-verb: DELETE
@@ -1522,7 +1514,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetChangeTokenStatusResponse'
-      x-stackql-resource: change_token_status
+      x-stackql-resource: change_token_statuses
       x-stackql-method: get_change_token_status
       x-stackql-verb: SELECT
   /GetGeoMatchSet:
@@ -3026,10 +3018,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PutPermissionPolicyResponse'
       x-stackql-resource: permission_policies
       x-stackql-method: put_permission_policy
       x-stackql-verb: REPLACE
@@ -3071,10 +3059,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -3111,10 +3095,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -5335,10 +5315,6 @@ components:
           $ref: '#/components/schemas/ChangeToken'
           description: The ChangeToken that you used to submit the DeleteIPSet request. You can also use this value to query
             the status of the request. For more information, see GetChangeTokenStatus.
-    DeleteLoggingConfigurationResponse:
-      type: object
-    DeletePermissionPolicyResponse:
-      type: object
     DeleteRateBasedRuleResponse:
       type: object
       properties:
@@ -6216,16 +6192,10 @@ components:
         LoggingConfiguration:
           $ref: '#/components/schemas/LoggingConfiguration'
           description: The LoggingConfiguration that you submitted in the request.
-    PutPermissionPolicyResponse:
-      type: object
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
         $ref: '#/components/schemas/TagKey'
-    UntagResourceResponse:
-      type: object
     ByteMatchSetUpdates:
       type: array
       items:

@@ -264,6 +264,12 @@ service_arn
           clusterArn: "{{ clusterArn }}"
           namespaces:
             - "{{ namespaces }}"
+          labelSelector:
+            matchLabels: "{{ matchLabels }}"
+            matchExpressions:
+              - key: "{{ key }}"
+                operator: "{{ operator }}"
+                values: "{{ values }}"
         designFileS3Url: "{{ designFileS3Url }}"
     - name: clientToken
       value: "{{ clientToken }}"

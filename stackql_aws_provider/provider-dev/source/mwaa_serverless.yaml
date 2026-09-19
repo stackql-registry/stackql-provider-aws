@@ -579,7 +579,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartWorkflowRunResponse'
-      x-stackql-resource: workflows
+      x-stackql-resource: workflow_runs
       x-stackql-method: start_workflow_run
       x-stackql-verb: EXEC
   /StopWorkflowRun:
@@ -623,7 +623,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StopWorkflowRunResponse'
-      x-stackql-resource: workflows
+      x-stackql-resource: workflow_runs
       x-stackql-method: stop_workflow_run
       x-stackql-verb: EXEC
   /TagResource:
@@ -660,10 +660,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -702,10 +698,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -1533,8 +1525,6 @@ components:
         Status:
           $ref: '#/components/schemas/WorkflowRunStatus'
           description: The status of the workflow run after the stop operation. This is typically STOPPING or STOPPED.
-    TagResourceResponse:
-      type: object
     TagKeys:
       type: array
       items:
@@ -1544,8 +1534,6 @@ components:
       minLength: 1
       maxLength: 128
       pattern: .*
-    UntagResourceResponse:
-      type: object
     UpdateWorkflowResponse:
       type: object
       properties:

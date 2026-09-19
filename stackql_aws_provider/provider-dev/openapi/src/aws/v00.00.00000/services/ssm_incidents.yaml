@@ -165,10 +165,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteIncidentRecordOutput"
   /deleteReplicationSet:
     post:
       operationId: DeleteReplicationSet
@@ -183,10 +179,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteReplicationSetOutput"
   /deleteResourcePolicy:
     post:
       operationId: DeleteResourcePolicy
@@ -209,10 +201,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteResourcePolicyOutput"
   /deleteResponsePlan:
     post:
       operationId: DeleteResponsePlan
@@ -232,10 +220,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteResponsePlanOutput"
   /deleteTimelineEvent:
     post:
       operationId: DeleteTimelineEvent
@@ -258,10 +242,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteTimelineEventOutput"
   /getIncidentRecord:
     get:
       operationId: GetIncidentRecord
@@ -536,10 +516,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TagResourceResponse"
     delete:
       operationId: UntagResource
       description: Removes a tag from a resource.
@@ -559,10 +535,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UntagResourceResponse"
   /listTimelineEvents:
     post:
       operationId: ListTimelineEvents
@@ -679,10 +651,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateDeletionProtectionOutput"
   /updateIncidentRecord:
     post:
       operationId: UpdateIncidentRecord
@@ -716,10 +684,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateIncidentRecordOutput"
   /updateRelatedItems:
     post:
       operationId: UpdateRelatedItems
@@ -744,10 +708,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateRelatedItemsOutput"
   /updateReplicationSet:
     post:
       operationId: UpdateReplicationSet
@@ -772,10 +732,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateReplicationSetOutput"
   /updateResponsePlan:
     post:
       operationId: UpdateResponsePlan
@@ -819,10 +775,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateResponsePlanOutput"
   /updateTimelineEvent:
     post:
       operationId: UpdateTimelineEvent
@@ -855,10 +807,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateTimelineEventOutput"
 components:
   parameters:
     X-Amz-Content-Sha256:
@@ -1294,20 +1242,10 @@ components:
       type: string
       minLength: 0
       maxLength: 50
-    DeleteIncidentRecordOutput:
-      type: object
-    DeleteReplicationSetOutput:
-      type: object
     PolicyId:
       type: string
       minLength: 0
       maxLength: 256
-    DeleteResourcePolicyOutput:
-      type: object
-    DeleteResponsePlanOutput:
-      type: object
-    DeleteTimelineEventOutput:
-      type: object
     GetIncidentRecordOutput:
       type: object
       properties:
@@ -1972,8 +1910,6 @@ components:
           description: The ARN of the newly created incident record.
       required:
         - incidentRecordArn
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
@@ -1983,12 +1919,6 @@ components:
       minLength: 1
       maxLength: 128
       pattern: ^(?!aws:)[A-Za-z0-9 _=@:.+-/]+$
-    UntagResourceResponse:
-      type: object
-    UpdateDeletionProtectionOutput:
-      type: object
-    UpdateIncidentRecordOutput:
-      type: object
     RelatedItemsUpdate:
       description: Details about the related item you're adding.
       type: object
@@ -1999,8 +1929,6 @@ components:
         itemToRemove:
           $ref: "#/components/schemas/ItemIdentifier"
           description: Details about the related item you're deleting.
-    UpdateRelatedItemsOutput:
-      type: object
     UpdateReplicationSetInputActionsList:
       type: array
       items:
@@ -2044,15 +1972,9 @@ components:
           description: The name of the Amazon Web Services Region you're deleting from the replication set.
       required:
         - regionName
-    UpdateReplicationSetOutput:
-      type: object
     TagMapUpdate:
       type: object
       properties: {}
-    UpdateResponsePlanOutput:
-      type: object
-    UpdateTimelineEventOutput:
-      type: object
   x-stackQL-resources:
     incident_findings:
       id: aws.ssm_incidents.incident_findings
@@ -2117,7 +2039,6 @@ components:
             $ref: "#/paths/~1deleteReplicationSet/post"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
           request:
             nativeCasing: pascal
         get_replication_set:
@@ -2159,7 +2080,6 @@ components:
             $ref: "#/paths/~1updateReplicationSet/post"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -2196,7 +2116,6 @@ components:
             $ref: "#/paths/~1deleteResponsePlan/post"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -2245,7 +2164,6 @@ components:
             $ref: "#/paths/~1updateResponsePlan/post"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -2282,7 +2200,6 @@ components:
             $ref: "#/paths/~1deleteTimelineEvent/post"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -2321,7 +2238,6 @@ components:
             $ref: "#/paths/~1updateTimelineEvent/post"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -2347,7 +2263,6 @@ components:
             $ref: "#/paths/~1deleteIncidentRecord/post"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -2386,7 +2301,6 @@ components:
             $ref: "#/paths/~1updateIncidentRecord/post"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -2411,7 +2325,6 @@ components:
             $ref: "#/paths/~1deleteResourcePolicy/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -2485,7 +2398,6 @@ components:
             $ref: "#/paths/~1updateRelatedItems/post"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -2514,7 +2426,6 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/post"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -2525,7 +2436,6 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/delete"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
           request:
             nativeCasing: pascal
       sqlVerbs:
@@ -2546,7 +2456,6 @@ components:
             $ref: "#/paths/~1updateDeletionProtection/post"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:

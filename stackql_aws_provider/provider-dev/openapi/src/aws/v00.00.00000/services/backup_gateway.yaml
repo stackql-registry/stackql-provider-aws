@@ -777,10 +777,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TestHypervisorConfigurationOutput"
   /UntagResource:
     post:
       operationId: UntagResource
@@ -1536,8 +1532,6 @@ components:
         ResourceARN:
           $ref: "#/components/schemas/ResourceArn"
           description: The Amazon Resource Name (ARN) of the resource you tagged.
-    TestHypervisorConfigurationOutput:
-      type: object
     TagKeys:
       type: array
       items:
@@ -1782,7 +1776,6 @@ components:
             $ref: "#/paths/~1TestHypervisorConfiguration/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.0

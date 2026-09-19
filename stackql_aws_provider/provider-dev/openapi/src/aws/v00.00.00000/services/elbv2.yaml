@@ -92,20 +92,12 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/AddTagsOutputDisplay"
     post:
       operationId: POST_AddTags
       description: Adds the specified tags to the specified Elastic Load Balancing resource. You can tag your Application Load Balancers, Network Load Balancers, Gateway Load Balancers, target groups, trust stores, listeners, and rules. Each tag consists of a key and an optional value. If a resource already has a tag with the same key, AddTags updates its value.
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/AddTagsOutputDisplay"
       parameters: []
       requestBody:
         content:
@@ -656,20 +648,12 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/DeleteListenerOutputDisplay"
     post:
       operationId: POST_DeleteListener
       description: Deletes the specified listener. Alternatively, your listener is deleted when you delete the load balancer to which it is attached.
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/DeleteListenerOutputDisplay"
       parameters: []
       requestBody:
         content:
@@ -698,20 +682,12 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/DeleteLoadBalancerOutputDisplay"
     post:
       operationId: POST_DeleteLoadBalancer
       description: Deletes the specified Application Load Balancer, Network Load Balancer, or Gateway Load Balancer. Deleting a load balancer also deletes its listeners. You can't delete a load balancer if deletion protection is enabled. If the load balancer does not exist or has already been deleted, the call succeeds. Deleting a load balancer does not affect its registered targets. For example, your EC2 instances continue to run and are still registered to their target groups. If you no longer need these EC2 instances, you can stop or terminate them.
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/DeleteLoadBalancerOutputDisplay"
       parameters: []
       requestBody:
         content:
@@ -740,20 +716,12 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/DeleteRuleOutputDisplay"
     post:
       operationId: POST_DeleteRule
       description: Deletes the specified rule. You can't delete the default rule.
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/DeleteRuleOutputDisplay"
       parameters: []
       requestBody:
         content:
@@ -788,20 +756,12 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/DeleteSharedTrustStoreAssociationOutputDisplay"
     post:
       operationId: POST_DeleteSharedTrustStoreAssociation
       description: Deletes a shared trust store association.
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/DeleteSharedTrustStoreAssociationOutputDisplay"
       parameters: []
       requestBody:
         content:
@@ -830,20 +790,12 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/DeleteTargetGroupOutputDisplay"
     post:
       operationId: POST_DeleteTargetGroup
       description: Deletes the specified target group. You can delete a target group if it is not referenced by any actions. Deleting a target group also deletes any associated health checks. Deleting a target group does not affect its registered targets. For example, any EC2 instances continue to run until you stop or terminate them.
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/DeleteTargetGroupOutputDisplay"
       parameters: []
       requestBody:
         content:
@@ -872,20 +824,12 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/DeleteTrustStoreOutputDisplay"
     post:
       operationId: POST_DeleteTrustStore
       description: Deletes a trust store.
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/DeleteTrustStoreOutputDisplay"
       parameters: []
       requestBody:
         content:
@@ -920,20 +864,12 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/DeregisterTargetsOutputDisplay"
     post:
       operationId: POST_DeregisterTargets
       description: "Deregisters the specified targets from the specified target group. After the targets are deregistered, they no longer receive traffic from the load balancer. The load balancer stops sending requests to targets that are deregistering, but uses connection draining to ensure that in-flight traffic completes on the existing connections. This deregistration delay is configured by default but can be updated for each target group. For more information, see the following: Deregistration delay in the Application Load Balancers User Guide Deregistration delay in the Network Load Balancers User Guide Deregistration delay in the Gateway Load Balancers User Guide Note: If the specified target does not exist, the action returns successfully."
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/DeregisterTargetsOutputDisplay"
       parameters: []
       requestBody:
         content:
@@ -2504,20 +2440,12 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/RegisterTargetsOutputDisplay"
     post:
       operationId: POST_RegisterTargets
       description: "Registers the specified targets with the specified target group. If the target is an EC2 instance, it must be in the running state when you register it. By default, the load balancer routes requests to registered targets using the protocol and port for the target group. Alternatively, you can override the port for a target when you register it. You can register each EC2 instance or IP address with the same target group multiple times using different ports. For more information, see the following: Register targets for your Application Load Balancer Register targets for your Network Load Balancer Register targets for your Gateway Load Balancer"
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/RegisterTargetsOutputDisplay"
       parameters: []
       requestBody:
         content:
@@ -2552,20 +2480,12 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/RemoveListenerCertificatesOutputDisplay"
     post:
       operationId: POST_RemoveListenerCertificates
       description: Removes the specified certificate from the certificate list for the specified HTTPS or TLS listener.
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/RemoveListenerCertificatesOutputDisplay"
       parameters: []
       requestBody:
         content:
@@ -2600,20 +2520,12 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/RemoveTagsOutputDisplay"
     post:
       operationId: POST_RemoveTags
       description: Removes the specified tags from the specified Elastic Load Balancing resources. You can remove the tags for one or more Application Load Balancers, Network Load Balancers, Gateway Load Balancers, target groups, listeners, or rules.
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/RemoveTagsOutputDisplay"
       parameters: []
       requestBody:
         content:
@@ -2648,20 +2560,12 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/RemoveTrustStoreRevocationsOutputDisplay"
     post:
       operationId: POST_RemoveTrustStoreRevocations
       description: Removes the specified revocation file from the specified trust store.
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/RemoveTrustStoreRevocationsOutputDisplay"
       parameters: []
       requestBody:
         content:
@@ -2994,13 +2898,6 @@ components:
       minLength: 0
       maxLength: 256
       pattern: ^([\p{L}\p{Z}\p{N}_.:/=+\-@]*)$
-    AddTagsOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: "#/components/schemas/AddTagsOutputDisplay"
     AddTagsInput:
       type: object
       properties:
@@ -4019,13 +3916,6 @@ components:
         - Name
         - CaCertificatesBundleS3Bucket
         - CaCertificatesBundleS3Key
-    DeleteListenerOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: "#/components/schemas/DeleteListenerOutputDisplay"
     DeleteListenerInput:
       type: object
       properties:
@@ -4034,13 +3924,6 @@ components:
           description: The Amazon Resource Name (ARN) of the listener.
       required:
         - ListenerArn
-    DeleteLoadBalancerOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: "#/components/schemas/DeleteLoadBalancerOutputDisplay"
     DeleteLoadBalancerInput:
       type: object
       properties:
@@ -4051,13 +3934,6 @@ components:
         - LoadBalancerArn
     RuleArn:
       type: string
-    DeleteRuleOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: "#/components/schemas/DeleteRuleOutputDisplay"
     DeleteRuleInput:
       type: object
       properties:
@@ -4066,13 +3942,6 @@ components:
           description: The Amazon Resource Name (ARN) of the rule.
       required:
         - RuleArn
-    DeleteSharedTrustStoreAssociationOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: "#/components/schemas/DeleteSharedTrustStoreAssociationOutputDisplay"
     DeleteSharedTrustStoreAssociationInput:
       type: object
       properties:
@@ -4085,13 +3954,6 @@ components:
       required:
         - TrustStoreArn
         - ResourceArn
-    DeleteTargetGroupOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: "#/components/schemas/DeleteTargetGroupOutputDisplay"
     DeleteTargetGroupInput:
       type: object
       properties:
@@ -4100,13 +3962,6 @@ components:
           description: The Amazon Resource Name (ARN) of the target group.
       required:
         - TargetGroupArn
-    DeleteTrustStoreOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: "#/components/schemas/DeleteTrustStoreOutputDisplay"
     DeleteTrustStoreInput:
       type: object
       properties:
@@ -4145,13 +4000,6 @@ components:
       type: string
       minLength: 1
       maxLength: 256
-    DeregisterTargetsOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: "#/components/schemas/DeregisterTargetsOutputDisplay"
     DeregisterTargetsInput:
       type: object
       properties:
@@ -4227,7 +4075,7 @@ components:
       properties:
         Key:
           type: string
-          description: The name of the attribute. The following attribute is supported by Network Load Balancers, and Gateway Load Balancers. tcp.idle_timeout.seconds - The tcp idle timeout value, in seconds. The valid range is 60-6000 seconds. The default is 350 seconds. The following attributes are only supported by Application Load Balancers. routing.http.request.x_amzn_mtls_clientcert_serial_number.header_name - Enables you to modify the header name of the X-Amzn-Mtls-Clientcert-Serial-Number HTTP request header. routing.http.request.x_amzn_mtls_clientcert_issuer.header_name - Enables you to modify the header name of the X-Amzn-Mtls-Clientcert-Issuer HTTP request header. routing.http.request.x_amzn_mtls_clientcert_subject.header_name - Enables you to modify the header name of the X-Amzn-Mtls-Clientcert-Subject HTTP request header. routing.http.request.x_amzn_mtls_clientcert_validity.header_name - Enables you to modify the header name of the X-Amzn-Mtls-Clientcert-Validity HTTP request header. routing.http.request.x_amzn_mtls_clientcert_leaf.header_name - Enables you to modify the header name of the X-Amzn-Mtls-Clientcert-Leaf HTTP request header. routing.http.request.x_amzn_mtls_clientcert.header_name - Enables you to modify the header name of the X-Amzn-Mtls-Clientcert HTTP request header. routing.http.request.x_amzn_tls_version.header_name - Enables you to modify the header name of the X-Amzn-Tls-Version HTTP request header. routing.http.request.x_amzn_tls_cipher_suite.header_name - Enables you to modify the header name of the X-Amzn-Tls-Cipher-Suite HTTP request header. routing.http.response.server.enabled - Enables you to allow or remove the HTTP response server header. routing.http.response.strict_transport_security.header_value - Informs browsers that the site should only be accessed using HTTPS, and that any future attempts to access it using HTTP should automatically be converted to HTTPS. routing.http.response.access_control_allow_origin.header_value - Specifies which origins are allowed to access the server. routing.http.response.access_control_allow_methods.header_value - Returns which HTTP methods are allowed when accessing the server from a different origin. routing.http.response.access_control_allow_headers.header_value - Specifies which headers can be used during the request. routing.http.response.access_control_allow_credentials.header_value - Indicates whether the browser should include credentials such as cookies or authentication when making requests. routing.http.response.access_control_expose_headers.header_value - Returns which headers the browser can expose to the requesting client. routing.http.response.access_control_max_age.header_value - Specifies how long the results of a preflight request can be cached, in seconds. routing.http.response.content_security_policy.header_value - Specifies restrictions enforced by the browser to help minimize the risk of certain types of security threats. routing.http.response.x_content_type_options.header_value - Indicates whether the MIME types advertised in the Content-Type headers should be followed and not be changed. routing.http.response.x_frame_options.header_value - Indicates whether the browser is allowed to render a page in a frame, iframe, embed or object.
+          description: "The name of the attribute. The following attribute is supported by Network Load Balancers, and Gateway Load Balancers. tcp.idle_timeout.seconds - The tcp idle timeout value, in seconds. The valid range is 60-6000 seconds. The default is 350 seconds. The following attribute is only supported by Gateway Load Balancers: send_tcp_reset.on_idle_timeout.enabled – Specifies whether the Gateway Load Balancer sends a TCP Reset to the sender of traffic when a TCP flow's idle timeout expires. This attribute also applies to non-SYN TCP packets received for flows that are not in the flow table. The value is true or false. The default is false. The following attributes are only supported by Application Load Balancers. routing.http.request.x_amzn_mtls_clientcert_serial_number.header_name - Enables you to modify the header name of the X-Amzn-Mtls-Clientcert-Serial-Number HTTP request header. routing.http.request.x_amzn_mtls_clientcert_issuer.header_name - Enables you to modify the header name of the X-Amzn-Mtls-Clientcert-Issuer HTTP request header. routing.http.request.x_amzn_mtls_clientcert_subject.header_name - Enables you to modify the header name of the X-Amzn-Mtls-Clientcert-Subject HTTP request header. routing.http.request.x_amzn_mtls_clientcert_validity.header_name - Enables you to modify the header name of the X-Amzn-Mtls-Clientcert-Validity HTTP request header. routing.http.request.x_amzn_mtls_clientcert_leaf.header_name - Enables you to modify the header name of the X-Amzn-Mtls-Clientcert-Leaf HTTP request header. routing.http.request.x_amzn_mtls_clientcert.header_name - Enables you to modify the header name of the X-Amzn-Mtls-Clientcert HTTP request header. routing.http.request.x_amzn_tls_version.header_name - Enables you to modify the header name of the X-Amzn-Tls-Version HTTP request header. routing.http.request.x_amzn_tls_cipher_suite.header_name - Enables you to modify the header name of the X-Amzn-Tls-Cipher-Suite HTTP request header. routing.http.response.server.enabled - Enables you to allow or remove the HTTP response server header. routing.http.response.strict_transport_security.header_value - Informs browsers that the site should only be accessed using HTTPS, and that any future attempts to access it using HTTP should automatically be converted to HTTPS. routing.http.response.access_control_allow_origin.header_value - Specifies which origins are allowed to access the server. routing.http.response.access_control_allow_methods.header_value - Returns which HTTP methods are allowed when accessing the server from a different origin. routing.http.response.access_control_allow_headers.header_value - Specifies which headers can be used during the request. routing.http.response.access_control_allow_credentials.header_value - Indicates whether the browser should include credentials such as cookies or authentication when making requests. routing.http.response.access_control_expose_headers.header_value - Returns which headers the browser can expose to the requesting client. routing.http.response.access_control_max_age.header_value - Specifies how long the results of a preflight request can be cached, in seconds. routing.http.response.content_security_policy.header_value - Specifies restrictions enforced by the browser to help minimize the risk of certain types of security threats. routing.http.response.x_content_type_options.header_value - Indicates whether the MIME types advertised in the Content-Type headers should be followed and not be changed. routing.http.response.x_frame_options.header_value - Indicates whether the browser is allowed to render a page in a frame, iframe, embed or object."
         Value:
           type: string
           description: The value of the attribute.
@@ -4554,7 +4402,7 @@ components:
       properties:
         Key:
           type: string
-          description: "The name of the attribute. The following attributes are supported by all load balancers: deregistration_delay.timeout_seconds - The amount of time, in seconds, for Elastic Load Balancing to wait before changing the state of a deregistering target from draining to unused. The range is 0-3600 seconds. The default value is 300 seconds. If the target is a Lambda function, this attribute is not supported. stickiness.enabled - Indicates whether target stickiness is enabled. The value is true or false. The default is false. stickiness.type - Indicates the type of stickiness. The possible values are: lb_cookie and app_cookie for Application Load Balancers. source_ip for Network Load Balancers. source_ip_dest_ip and source_ip_dest_ip_proto for Gateway Load Balancers. The following attributes are supported by Application Load Balancers and Network Load Balancers: load_balancing.cross_zone.enabled - Indicates whether cross zone load balancing is enabled. The value is true, false or use_load_balancer_configuration. The default is use_load_balancer_configuration. target_group_health.dns_failover.minimum_healthy_targets.count - The minimum number of targets that must be healthy. If the number of healthy targets is below this value, mark the zone as unhealthy in DNS, so that traffic is routed only to healthy zones. The possible values are off or an integer from 1 to the maximum number of targets. The default is 1. target_group_health.dns_failover.minimum_healthy_targets.percentage - The minimum percentage of targets that must be healthy. If the percentage of healthy targets is below this value, mark the zone as unhealthy in DNS, so that traffic is routed only to healthy zones. The possible values are off or an integer from 1 to 100. The default is off. target_group_health.unhealthy_state_routing.minimum_healthy_targets.count - The minimum number of targets that must be healthy. If the number of healthy targets is below this value, send traffic to all targets, including unhealthy targets. The possible values are 1 to the maximum number of targets. The default is 1. target_group_health.unhealthy_state_routing.minimum_healthy_targets.percentage - The minimum percentage of targets that must be healthy. If the percentage of healthy targets is below this value, send traffic to all targets, including unhealthy targets. The possible values are off or an integer from 1 to 100. The default is off. The following attributes are supported only if the load balancer is an Application Load Balancer and the target is an instance or an IP address: load_balancing.algorithm.type - The load balancing algorithm determines how the load balancer selects targets when routing requests. The value is round_robin, least_outstanding_requests, or weighted_random. The default is round_robin. load_balancing.algorithm.anomaly_mitigation - Only available when load_balancing.algorithm.type is weighted_random. Indicates whether anomaly mitigation is enabled. The value is on or off. The default is off. slow_start.duration_seconds - The time period, in seconds, during which a newly registered target receives an increasing share of the traffic to the target group. After this time period ends, the target receives its full share of traffic. The range is 30-900 seconds (15 minutes). The default is 0 seconds (disabled). stickiness.app_cookie.cookie_name - Indicates the name of the application-based cookie. Names that start with the following prefixes are not allowed: AWSALB, AWSALBAPP, and AWSALBTG; they're reserved for use by the load balancer. stickiness.app_cookie.duration_seconds - The time period, in seconds, during which requests from a client should be routed to the same target. After this time period expires, the application-based cookie is considered stale. The range is 1 second to 1 week (604800 seconds). The default value is 1 day (86400 seconds). stickiness.lb_cookie.duration_seconds - The time period, in seconds, during which requests from a client should be routed to the same target. After this time period expires, the load balancer-generated cookie is considered stale. The range is 1 second to 1 week (604800 seconds). The default value is 1 day (86400 seconds). The following attribute is supported only if the load balancer is an Application Load Balancer and the target is a Lambda function: lambda.multi_value_headers.enabled - Indicates whether the request and response headers that are exchanged between the load balancer and the Lambda function include arrays of values or strings. The value is true or false. The default is false. If the value is false and the request contains a duplicate header field name or query parameter key, the load balancer uses the last value sent by the client. The following attributes are supported only by Network Load Balancers: deregistration_delay.connection_termination.enabled - Indicates whether the load balancer terminates connections at the end of the deregistration timeout. The value is true or false. For new UDP/TCP_UDP target groups the default is true. Otherwise, the default is false. preserve_client_ip.enabled - Indicates whether client IP preservation is enabled. The value is true or false. The default is disabled if the target group type is IP address and the target group protocol is TCP or TLS. Otherwise, the default is enabled. Client IP preservation can't be disabled for UDP and TCP_UDP target groups. proxy_protocol_v2.enabled - Indicates whether Proxy Protocol version 2 is enabled. The value is true or false. The default is false. target_health_state.unhealthy.connection_termination.enabled - Indicates whether the load balancer terminates connections to unhealthy targets. The value is true or false. The default is true. This attribute can't be enabled for UDP and TCP_UDP target groups. target_health_state.unhealthy.draining_interval_seconds - The amount of time for Elastic Load Balancing to wait before changing the state of an unhealthy target from unhealthy.draining to unhealthy. The range is 0-360000 seconds. The default value is 0 seconds. Note: This attribute can only be configured when target_health_state.unhealthy.connection_termination.enabled is false. The following attributes are supported only by Gateway Load Balancers: target_failover.on_deregistration - Indicates how the Gateway Load Balancer handles existing flows when a target is deregistered. The possible values are rebalance and no_rebalance. The default is no_rebalance. The two attributes (target_failover.on_deregistration and target_failover.on_unhealthy) can't be set independently. The value you set for both attributes must be the same. target_failover.on_unhealthy - Indicates how the Gateway Load Balancer handles existing flows when a target is unhealthy. The possible values are rebalance and no_rebalance. The default is no_rebalance. The two attributes (target_failover.on_deregistration and target_failover.on_unhealthy) can't be set independently. The value you set for both attributes must be the same."
+          description: "The name of the attribute. The following attributes are supported by all load balancers: deregistration_delay.timeout_seconds - The amount of time, in seconds, for Elastic Load Balancing to wait before changing the state of a deregistering target from draining to unused. The range is 0-3600 seconds. The default value is 300 seconds. If the target is a Lambda function, this attribute is not supported. stickiness.enabled - Indicates whether target stickiness is enabled. The value is true or false. The default is false. stickiness.type - Indicates the type of stickiness. The possible values are: lb_cookie and app_cookie for Application Load Balancers. source_ip for Network Load Balancers. source_ip_dest_ip and source_ip_dest_ip_proto for Gateway Load Balancers. The following attributes are supported by Application Load Balancers and Network Load Balancers: load_balancing.cross_zone.enabled - Indicates whether cross zone load balancing is enabled. The value is true, false or use_load_balancer_configuration. The default is use_load_balancer_configuration. target_group_health.dns_failover.minimum_healthy_targets.count - The minimum number of targets that must be healthy. If the number of healthy targets is below this value, mark the zone as unhealthy in DNS, so that traffic is routed only to healthy zones. The possible values are off or an integer from 1 to the maximum number of targets. The default is 1. target_group_health.dns_failover.minimum_healthy_targets.percentage - The minimum percentage of targets that must be healthy. If the percentage of healthy targets is below this value, mark the zone as unhealthy in DNS, so that traffic is routed only to healthy zones. The possible values are off or an integer from 1 to 100. The default is off. target_group_health.unhealthy_state_routing.minimum_healthy_targets.count - The minimum number of targets that must be healthy. If the number of healthy targets is below this value, send traffic to all targets, including unhealthy targets. The possible values are 1 to the maximum number of targets. The default is 1. target_group_health.unhealthy_state_routing.minimum_healthy_targets.percentage - The minimum percentage of targets that must be healthy. If the percentage of healthy targets is below this value, send traffic to all targets, including unhealthy targets. The possible values are off or an integer from 1 to 100. The default is off. The following attributes are supported only if the load balancer is an Application Load Balancer and the target is an instance or an IP address: load_balancing.algorithm.type - The load balancing algorithm determines how the load balancer selects targets when routing requests. The value is round_robin, least_outstanding_requests, or weighted_random. The default is round_robin. load_balancing.algorithm.anomaly_mitigation - Only available when load_balancing.algorithm.type is weighted_random. Indicates whether anomaly mitigation is enabled. The value is on or off. The default is off. slow_start.duration_seconds - The time period, in seconds, during which a newly registered target receives an increasing share of the traffic to the target group. After this time period ends, the target receives its full share of traffic. The range is 30-900 seconds (15 minutes). The default is 0 seconds (disabled). stickiness.app_cookie.cookie_name - Indicates the name of the application-based cookie. Names that start with the following prefixes are not allowed: AWSALB, AWSALBAPP, and AWSALBTG; they're reserved for use by the load balancer. stickiness.app_cookie.duration_seconds - The time period, in seconds, during which requests from a client should be routed to the same target. After this time period expires, the application-based cookie is considered stale. The range is 1 second to 1 week (604800 seconds). The default value is 1 day (86400 seconds). stickiness.lb_cookie.duration_seconds - The time period, in seconds, during which requests from a client should be routed to the same target. After this time period expires, the load balancer-generated cookie is considered stale. The range is 1 second to 1 week (604800 seconds). The default value is 1 day (86400 seconds). The following attribute is supported only if the load balancer is an Application Load Balancer and the target is a Lambda function: lambda.multi_value_headers.enabled - Indicates whether the request and response headers that are exchanged between the load balancer and the Lambda function include arrays of values or strings. The value is true or false. The default is false. If the value is false and the request contains a duplicate header field name or query parameter key, the load balancer uses the last value sent by the client. The following attributes are supported only by Network Load Balancers: deregistration_delay.connection_termination.enabled - Indicates whether the load balancer terminates connections at the end of the deregistration timeout. The value is true or false. For new UDP/TCP_UDP target groups the default is true. Otherwise, the default is false. preserve_client_ip.enabled - Indicates whether client IP preservation is enabled. The value is true or false. The default is disabled if the target group type is IP address and the target group protocol is TCP or TLS. Otherwise, the default is enabled. Client IP preservation can't be disabled for UDP and TCP_UDP target groups. proxy_protocol_v2.enabled - Indicates whether Proxy Protocol version 2 is enabled. The value is true or false. The default is false. target_health_state.unhealthy.connection_termination.enabled - Indicates whether the load balancer terminates connections to unhealthy targets. The value is true or false. The default is true. This attribute can't be enabled for UDP and TCP_UDP target groups. target_health_state.unhealthy.draining_interval_seconds - The amount of time for Elastic Load Balancing to wait before changing the state of an unhealthy target from unhealthy.draining to unhealthy. The range is 0-360000 seconds. The default value is 0 seconds. Note: This attribute can only be configured when target_health_state.unhealthy.connection_termination.enabled is false. The following attributes are supported only by Gateway Load Balancers: target_failover.on_deregistration - Indicates how the Gateway Load Balancer handles existing flows when a target is deregistered. The possible values are rebalance and no_rebalance. The default is no_rebalance. The two attributes (target_failover.on_deregistration and target_failover.on_unhealthy) can't be set independently. The value you set for both attributes must be the same. target_failover.on_unhealthy - Indicates how the Gateway Load Balancer handles existing flows when a target is unhealthy. The possible values are rebalance and no_rebalance. The default is no_rebalance. The two attributes (target_failover.on_deregistration and target_failover.on_unhealthy) can't be set independently. The value you set for both attributes must be the same. send_tcp_reset.on_unhealthy.enabled – Specifies whether the Gateway Load Balancer sends a TCP Reset to the sender of traffic when a target becomes unhealthy. After sending the reset, the Gateway Load Balancer removes the flow entry from its flow table. The value is true or false. The default is false. This attribute does not apply when target_failover.on_unhealthy is set to rebalance. This feature requires 5-tuple flow stickiness, which the target group uses by default when stickiness.enabled is set to false. send_tcp_reset.on_deregistration.enabled – Specifies whether the Gateway Load Balancer sends a TCP Reset to the sender of traffic when a target is deregistered. The reset occurs after the connection drain time has elapsed. The value is true or false. The default is false. This attribute does not apply when target_failover.on_deregistration is set to rebalance. This feature requires 5-tuple flow stickiness, which the target group uses by default when stickiness.enabled is set to false."
         Value:
           type: string
           description: The value of the attribute.
@@ -4997,7 +4845,7 @@ components:
       properties:
         Key:
           $ref: "#/components/schemas/ListenerAttributeKey"
-          description: The name of the attribute. The following attribute is supported by Network Load Balancers, and Gateway Load Balancers. tcp.idle_timeout.seconds - The tcp idle timeout value, in seconds. The valid range is 60-6000 seconds. The default is 350 seconds. The following attributes are only supported by Application Load Balancers. routing.http.request.x_amzn_mtls_clientcert_serial_number.header_name - Enables you to modify the header name of the X-Amzn-Mtls-Clientcert-Serial-Number HTTP request header. routing.http.request.x_amzn_mtls_clientcert_issuer.header_name - Enables you to modify the header name of the X-Amzn-Mtls-Clientcert-Issuer HTTP request header. routing.http.request.x_amzn_mtls_clientcert_subject.header_name - Enables you to modify the header name of the X-Amzn-Mtls-Clientcert-Subject HTTP request header. routing.http.request.x_amzn_mtls_clientcert_validity.header_name - Enables you to modify the header name of the X-Amzn-Mtls-Clientcert-Validity HTTP request header. routing.http.request.x_amzn_mtls_clientcert_leaf.header_name - Enables you to modify the header name of the X-Amzn-Mtls-Clientcert-Leaf HTTP request header. routing.http.request.x_amzn_mtls_clientcert.header_name - Enables you to modify the header name of the X-Amzn-Mtls-Clientcert HTTP request header. routing.http.request.x_amzn_tls_version.header_name - Enables you to modify the header name of the X-Amzn-Tls-Version HTTP request header. routing.http.request.x_amzn_tls_cipher_suite.header_name - Enables you to modify the header name of the X-Amzn-Tls-Cipher-Suite HTTP request header. routing.http.response.server.enabled - Enables you to allow or remove the HTTP response server header. routing.http.response.strict_transport_security.header_value - Informs browsers that the site should only be accessed using HTTPS, and that any future attempts to access it using HTTP should automatically be converted to HTTPS. routing.http.response.access_control_allow_origin.header_value - Specifies which origins are allowed to access the server. routing.http.response.access_control_allow_methods.header_value - Returns which HTTP methods are allowed when accessing the server from a different origin. routing.http.response.access_control_allow_headers.header_value - Specifies which headers can be used during the request. routing.http.response.access_control_allow_credentials.header_value - Indicates whether the browser should include credentials such as cookies or authentication when making requests. routing.http.response.access_control_expose_headers.header_value - Returns which headers the browser can expose to the requesting client. routing.http.response.access_control_max_age.header_value - Specifies how long the results of a preflight request can be cached, in seconds. routing.http.response.content_security_policy.header_value - Specifies restrictions enforced by the browser to help minimize the risk of certain types of security threats. routing.http.response.x_content_type_options.header_value - Indicates whether the MIME types advertised in the Content-Type headers should be followed and not be changed. routing.http.response.x_frame_options.header_value - Indicates whether the browser is allowed to render a page in a frame, iframe, embed or object.
+          description: "The name of the attribute. The following attribute is supported by Network Load Balancers, and Gateway Load Balancers. tcp.idle_timeout.seconds - The tcp idle timeout value, in seconds. The valid range is 60-6000 seconds. The default is 350 seconds. The following attribute is only supported by Gateway Load Balancers: send_tcp_reset.on_idle_timeout.enabled – Specifies whether the Gateway Load Balancer sends a TCP Reset to the sender of traffic when a TCP flow's idle timeout expires. This attribute also applies to non-SYN TCP packets received for flows that are not in the flow table. The value is true or false. The default is false. The following attributes are only supported by Application Load Balancers. routing.http.request.x_amzn_mtls_clientcert_serial_number.header_name - Enables you to modify the header name of the X-Amzn-Mtls-Clientcert-Serial-Number HTTP request header. routing.http.request.x_amzn_mtls_clientcert_issuer.header_name - Enables you to modify the header name of the X-Amzn-Mtls-Clientcert-Issuer HTTP request header. routing.http.request.x_amzn_mtls_clientcert_subject.header_name - Enables you to modify the header name of the X-Amzn-Mtls-Clientcert-Subject HTTP request header. routing.http.request.x_amzn_mtls_clientcert_validity.header_name - Enables you to modify the header name of the X-Amzn-Mtls-Clientcert-Validity HTTP request header. routing.http.request.x_amzn_mtls_clientcert_leaf.header_name - Enables you to modify the header name of the X-Amzn-Mtls-Clientcert-Leaf HTTP request header. routing.http.request.x_amzn_mtls_clientcert.header_name - Enables you to modify the header name of the X-Amzn-Mtls-Clientcert HTTP request header. routing.http.request.x_amzn_tls_version.header_name - Enables you to modify the header name of the X-Amzn-Tls-Version HTTP request header. routing.http.request.x_amzn_tls_cipher_suite.header_name - Enables you to modify the header name of the X-Amzn-Tls-Cipher-Suite HTTP request header. routing.http.response.server.enabled - Enables you to allow or remove the HTTP response server header. routing.http.response.strict_transport_security.header_value - Informs browsers that the site should only be accessed using HTTPS, and that any future attempts to access it using HTTP should automatically be converted to HTTPS. routing.http.response.access_control_allow_origin.header_value - Specifies which origins are allowed to access the server. routing.http.response.access_control_allow_methods.header_value - Returns which HTTP methods are allowed when accessing the server from a different origin. routing.http.response.access_control_allow_headers.header_value - Specifies which headers can be used during the request. routing.http.response.access_control_allow_credentials.header_value - Indicates whether the browser should include credentials such as cookies or authentication when making requests. routing.http.response.access_control_expose_headers.header_value - Returns which headers the browser can expose to the requesting client. routing.http.response.access_control_max_age.header_value - Specifies how long the results of a preflight request can be cached, in seconds. routing.http.response.content_security_policy.header_value - Specifies restrictions enforced by the browser to help minimize the risk of certain types of security threats. routing.http.response.x_content_type_options.header_value - Indicates whether the MIME types advertised in the Content-Type headers should be followed and not be changed. routing.http.response.x_frame_options.header_value - Indicates whether the browser is allowed to render a page in a frame, iframe, embed or object."
         Value:
           $ref: "#/components/schemas/ListenerAttributeValue"
           description: The value of the attribute.
@@ -5147,7 +4995,7 @@ components:
       properties:
         Key:
           $ref: "#/components/schemas/TargetGroupAttributeKey"
-          description: "The name of the attribute. The following attributes are supported by all load balancers: deregistration_delay.timeout_seconds - The amount of time, in seconds, for Elastic Load Balancing to wait before changing the state of a deregistering target from draining to unused. The range is 0-3600 seconds. The default value is 300 seconds. If the target is a Lambda function, this attribute is not supported. stickiness.enabled - Indicates whether target stickiness is enabled. The value is true or false. The default is false. stickiness.type - Indicates the type of stickiness. The possible values are: lb_cookie and app_cookie for Application Load Balancers. source_ip for Network Load Balancers. source_ip_dest_ip and source_ip_dest_ip_proto for Gateway Load Balancers. The following attributes are supported by Application Load Balancers and Network Load Balancers: load_balancing.cross_zone.enabled - Indicates whether cross zone load balancing is enabled. The value is true, false or use_load_balancer_configuration. The default is use_load_balancer_configuration. target_group_health.dns_failover.minimum_healthy_targets.count - The minimum number of targets that must be healthy. If the number of healthy targets is below this value, mark the zone as unhealthy in DNS, so that traffic is routed only to healthy zones. The possible values are off or an integer from 1 to the maximum number of targets. The default is 1. target_group_health.dns_failover.minimum_healthy_targets.percentage - The minimum percentage of targets that must be healthy. If the percentage of healthy targets is below this value, mark the zone as unhealthy in DNS, so that traffic is routed only to healthy zones. The possible values are off or an integer from 1 to 100. The default is off. target_group_health.unhealthy_state_routing.minimum_healthy_targets.count - The minimum number of targets that must be healthy. If the number of healthy targets is below this value, send traffic to all targets, including unhealthy targets. The possible values are 1 to the maximum number of targets. The default is 1. target_group_health.unhealthy_state_routing.minimum_healthy_targets.percentage - The minimum percentage of targets that must be healthy. If the percentage of healthy targets is below this value, send traffic to all targets, including unhealthy targets. The possible values are off or an integer from 1 to 100. The default is off. The following attributes are supported only if the load balancer is an Application Load Balancer and the target is an instance or an IP address: load_balancing.algorithm.type - The load balancing algorithm determines how the load balancer selects targets when routing requests. The value is round_robin, least_outstanding_requests, or weighted_random. The default is round_robin. load_balancing.algorithm.anomaly_mitigation - Only available when load_balancing.algorithm.type is weighted_random. Indicates whether anomaly mitigation is enabled. The value is on or off. The default is off. slow_start.duration_seconds - The time period, in seconds, during which a newly registered target receives an increasing share of the traffic to the target group. After this time period ends, the target receives its full share of traffic. The range is 30-900 seconds (15 minutes). The default is 0 seconds (disabled). stickiness.app_cookie.cookie_name - Indicates the name of the application-based cookie. Names that start with the following prefixes are not allowed: AWSALB, AWSALBAPP, and AWSALBTG; they're reserved for use by the load balancer. stickiness.app_cookie.duration_seconds - The time period, in seconds, during which requests from a client should be routed to the same target. After this time period expires, the application-based cookie is considered stale. The range is 1 second to 1 week (604800 seconds). The default value is 1 day (86400 seconds). stickiness.lb_cookie.duration_seconds - The time period, in seconds, during which requests from a client should be routed to the same target. After this time period expires, the load balancer-generated cookie is considered stale. The range is 1 second to 1 week (604800 seconds). The default value is 1 day (86400 seconds). The following attribute is supported only if the load balancer is an Application Load Balancer and the target is a Lambda function: lambda.multi_value_headers.enabled - Indicates whether the request and response headers that are exchanged between the load balancer and the Lambda function include arrays of values or strings. The value is true or false. The default is false. If the value is false and the request contains a duplicate header field name or query parameter key, the load balancer uses the last value sent by the client. The following attributes are supported only by Network Load Balancers: deregistration_delay.connection_termination.enabled - Indicates whether the load balancer terminates connections at the end of the deregistration timeout. The value is true or false. For new UDP/TCP_UDP target groups the default is true. Otherwise, the default is false. preserve_client_ip.enabled - Indicates whether client IP preservation is enabled. The value is true or false. The default is disabled if the target group type is IP address and the target group protocol is TCP or TLS. Otherwise, the default is enabled. Client IP preservation can't be disabled for UDP and TCP_UDP target groups. proxy_protocol_v2.enabled - Indicates whether Proxy Protocol version 2 is enabled. The value is true or false. The default is false. target_health_state.unhealthy.connection_termination.enabled - Indicates whether the load balancer terminates connections to unhealthy targets. The value is true or false. The default is true. This attribute can't be enabled for UDP and TCP_UDP target groups. target_health_state.unhealthy.draining_interval_seconds - The amount of time for Elastic Load Balancing to wait before changing the state of an unhealthy target from unhealthy.draining to unhealthy. The range is 0-360000 seconds. The default value is 0 seconds. Note: This attribute can only be configured when target_health_state.unhealthy.connection_termination.enabled is false. The following attributes are supported only by Gateway Load Balancers: target_failover.on_deregistration - Indicates how the Gateway Load Balancer handles existing flows when a target is deregistered. The possible values are rebalance and no_rebalance. The default is no_rebalance. The two attributes (target_failover.on_deregistration and target_failover.on_unhealthy) can't be set independently. The value you set for both attributes must be the same. target_failover.on_unhealthy - Indicates how the Gateway Load Balancer handles existing flows when a target is unhealthy. The possible values are rebalance and no_rebalance. The default is no_rebalance. The two attributes (target_failover.on_deregistration and target_failover.on_unhealthy) can't be set independently. The value you set for both attributes must be the same."
+          description: "The name of the attribute. The following attributes are supported by all load balancers: deregistration_delay.timeout_seconds - The amount of time, in seconds, for Elastic Load Balancing to wait before changing the state of a deregistering target from draining to unused. The range is 0-3600 seconds. The default value is 300 seconds. If the target is a Lambda function, this attribute is not supported. stickiness.enabled - Indicates whether target stickiness is enabled. The value is true or false. The default is false. stickiness.type - Indicates the type of stickiness. The possible values are: lb_cookie and app_cookie for Application Load Balancers. source_ip for Network Load Balancers. source_ip_dest_ip and source_ip_dest_ip_proto for Gateway Load Balancers. The following attributes are supported by Application Load Balancers and Network Load Balancers: load_balancing.cross_zone.enabled - Indicates whether cross zone load balancing is enabled. The value is true, false or use_load_balancer_configuration. The default is use_load_balancer_configuration. target_group_health.dns_failover.minimum_healthy_targets.count - The minimum number of targets that must be healthy. If the number of healthy targets is below this value, mark the zone as unhealthy in DNS, so that traffic is routed only to healthy zones. The possible values are off or an integer from 1 to the maximum number of targets. The default is 1. target_group_health.dns_failover.minimum_healthy_targets.percentage - The minimum percentage of targets that must be healthy. If the percentage of healthy targets is below this value, mark the zone as unhealthy in DNS, so that traffic is routed only to healthy zones. The possible values are off or an integer from 1 to 100. The default is off. target_group_health.unhealthy_state_routing.minimum_healthy_targets.count - The minimum number of targets that must be healthy. If the number of healthy targets is below this value, send traffic to all targets, including unhealthy targets. The possible values are 1 to the maximum number of targets. The default is 1. target_group_health.unhealthy_state_routing.minimum_healthy_targets.percentage - The minimum percentage of targets that must be healthy. If the percentage of healthy targets is below this value, send traffic to all targets, including unhealthy targets. The possible values are off or an integer from 1 to 100. The default is off. The following attributes are supported only if the load balancer is an Application Load Balancer and the target is an instance or an IP address: load_balancing.algorithm.type - The load balancing algorithm determines how the load balancer selects targets when routing requests. The value is round_robin, least_outstanding_requests, or weighted_random. The default is round_robin. load_balancing.algorithm.anomaly_mitigation - Only available when load_balancing.algorithm.type is weighted_random. Indicates whether anomaly mitigation is enabled. The value is on or off. The default is off. slow_start.duration_seconds - The time period, in seconds, during which a newly registered target receives an increasing share of the traffic to the target group. After this time period ends, the target receives its full share of traffic. The range is 30-900 seconds (15 minutes). The default is 0 seconds (disabled). stickiness.app_cookie.cookie_name - Indicates the name of the application-based cookie. Names that start with the following prefixes are not allowed: AWSALB, AWSALBAPP, and AWSALBTG; they're reserved for use by the load balancer. stickiness.app_cookie.duration_seconds - The time period, in seconds, during which requests from a client should be routed to the same target. After this time period expires, the application-based cookie is considered stale. The range is 1 second to 1 week (604800 seconds). The default value is 1 day (86400 seconds). stickiness.lb_cookie.duration_seconds - The time period, in seconds, during which requests from a client should be routed to the same target. After this time period expires, the load balancer-generated cookie is considered stale. The range is 1 second to 1 week (604800 seconds). The default value is 1 day (86400 seconds). The following attribute is supported only if the load balancer is an Application Load Balancer and the target is a Lambda function: lambda.multi_value_headers.enabled - Indicates whether the request and response headers that are exchanged between the load balancer and the Lambda function include arrays of values or strings. The value is true or false. The default is false. If the value is false and the request contains a duplicate header field name or query parameter key, the load balancer uses the last value sent by the client. The following attributes are supported only by Network Load Balancers: deregistration_delay.connection_termination.enabled - Indicates whether the load balancer terminates connections at the end of the deregistration timeout. The value is true or false. For new UDP/TCP_UDP target groups the default is true. Otherwise, the default is false. preserve_client_ip.enabled - Indicates whether client IP preservation is enabled. The value is true or false. The default is disabled if the target group type is IP address and the target group protocol is TCP or TLS. Otherwise, the default is enabled. Client IP preservation can't be disabled for UDP and TCP_UDP target groups. proxy_protocol_v2.enabled - Indicates whether Proxy Protocol version 2 is enabled. The value is true or false. The default is false. target_health_state.unhealthy.connection_termination.enabled - Indicates whether the load balancer terminates connections to unhealthy targets. The value is true or false. The default is true. This attribute can't be enabled for UDP and TCP_UDP target groups. target_health_state.unhealthy.draining_interval_seconds - The amount of time for Elastic Load Balancing to wait before changing the state of an unhealthy target from unhealthy.draining to unhealthy. The range is 0-360000 seconds. The default value is 0 seconds. Note: This attribute can only be configured when target_health_state.unhealthy.connection_termination.enabled is false. The following attributes are supported only by Gateway Load Balancers: target_failover.on_deregistration - Indicates how the Gateway Load Balancer handles existing flows when a target is deregistered. The possible values are rebalance and no_rebalance. The default is no_rebalance. The two attributes (target_failover.on_deregistration and target_failover.on_unhealthy) can't be set independently. The value you set for both attributes must be the same. target_failover.on_unhealthy - Indicates how the Gateway Load Balancer handles existing flows when a target is unhealthy. The possible values are rebalance and no_rebalance. The default is no_rebalance. The two attributes (target_failover.on_deregistration and target_failover.on_unhealthy) can't be set independently. The value you set for both attributes must be the same. send_tcp_reset.on_unhealthy.enabled – Specifies whether the Gateway Load Balancer sends a TCP Reset to the sender of traffic when a target becomes unhealthy. After sending the reset, the Gateway Load Balancer removes the flow entry from its flow table. The value is true or false. The default is false. This attribute does not apply when target_failover.on_unhealthy is set to rebalance. This feature requires 5-tuple flow stickiness, which the target group uses by default when stickiness.enabled is set to false. send_tcp_reset.on_deregistration.enabled – Specifies whether the Gateway Load Balancer sends a TCP Reset to the sender of traffic when a target is deregistered. The reset occurs after the connection drain time has elapsed. The value is true or false. The default is false. This attribute does not apply when target_failover.on_deregistration is set to rebalance. This feature requires 5-tuple flow stickiness, which the target group uses by default when stickiness.enabled is set to false."
         Value:
           $ref: "#/components/schemas/TargetGroupAttributeValue"
           description: The value of the attribute.
@@ -5202,13 +5050,6 @@ components:
         - TrustStoreArn
         - CaCertificatesBundleS3Bucket
         - CaCertificatesBundleS3Key
-    RegisterTargetsOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: "#/components/schemas/RegisterTargetsOutputDisplay"
     RegisterTargetsInput:
       type: object
       properties:
@@ -5221,13 +5062,6 @@ components:
       required:
         - TargetGroupArn
         - Targets
-    RemoveListenerCertificatesOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: "#/components/schemas/RemoveListenerCertificatesOutputDisplay"
     RemoveListenerCertificatesInput:
       type: object
       properties:
@@ -5244,13 +5078,6 @@ components:
       type: array
       items:
         $ref: "#/components/schemas/TagKey"
-    RemoveTagsOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: "#/components/schemas/RemoveTagsOutputDisplay"
     RemoveTagsInput:
       type: object
       properties:
@@ -5263,13 +5090,6 @@ components:
       required:
         - ResourceArns
         - TagKeys
-    RemoveTrustStoreRevocationsOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: "#/components/schemas/RemoveTrustStoreRevocationsOutputDisplay"
     RemoveTrustStoreRevocationsInput:
       type: object
       properties:
@@ -5433,13 +5253,6 @@ components:
             $ref: "#/paths/~1?Action=RemoveListenerCertificates&Version=2015-12-01/get"
           response:
             openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/RemoveListenerCertificatesOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
           config:
             queryParamTranspose:
               algorithm: AWSCanonical
@@ -5462,13 +5275,6 @@ components:
             $ref: "#/paths/~1?Action=AddTags&Version=2015-12-01/get"
           response:
             openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/AddTagsOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
           request:
             nativeCasing: pascal
           config:
@@ -5500,13 +5306,6 @@ components:
             $ref: "#/paths/~1?Action=RemoveTags&Version=2015-12-01/get"
           response:
             openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/RemoveTagsOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
           request:
             nativeCasing: pascal
           config:
@@ -5571,13 +5370,6 @@ components:
             $ref: "#/paths/~1?Action=RemoveTrustStoreRevocations&Version=2015-12-01/get"
           response:
             openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/RemoveTrustStoreRevocationsOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
           request:
             nativeCasing: pascal
           config:
@@ -5622,13 +5414,6 @@ components:
             $ref: "#/paths/~1?Action=DeleteListener&Version=2015-12-01/get"
           response:
             openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/DeleteListenerOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
           request:
             nativeCasing: pascal
           config:
@@ -5712,13 +5497,6 @@ components:
             $ref: "#/paths/~1?Action=DeleteLoadBalancer&Version=2015-12-01/get"
           response:
             openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/DeleteLoadBalancerOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
           request:
             nativeCasing: pascal
           config:
@@ -5859,13 +5637,6 @@ components:
             $ref: "#/paths/~1?Action=DeleteRule&Version=2015-12-01/get"
           response:
             openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/DeleteRuleOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
           request:
             nativeCasing: pascal
           config:
@@ -5969,13 +5740,6 @@ components:
             $ref: "#/paths/~1?Action=DeleteTargetGroup&Version=2015-12-01/get"
           response:
             openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/DeleteTargetGroupOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
           request:
             nativeCasing: pascal
           config:
@@ -5988,13 +5752,6 @@ components:
             $ref: "#/paths/~1?Action=DeregisterTargets&Version=2015-12-01/get"
           response:
             openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/DeregisterTargetsOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
           request:
             nativeCasing: pascal
           config:
@@ -6045,13 +5802,6 @@ components:
             $ref: "#/paths/~1?Action=RegisterTargets&Version=2015-12-01/get"
           response:
             openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/RegisterTargetsOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
           request:
             nativeCasing: pascal
           config:
@@ -6099,13 +5849,6 @@ components:
             $ref: "#/paths/~1?Action=DeleteTrustStore&Version=2015-12-01/get"
           response:
             openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/DeleteTrustStoreOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
           request:
             nativeCasing: pascal
           config:
@@ -6170,13 +5913,6 @@ components:
             $ref: "#/paths/~1?Action=DeleteSharedTrustStoreAssociation&Version=2015-12-01/get"
           response:
             openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/DeleteSharedTrustStoreAssociationOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
           request:
             nativeCasing: pascal
           config:
@@ -6560,10 +6296,10 @@ components:
         insert: []
         update: []
         delete: []
-    trust_store_revocation_contents:
-      id: aws.elbv2.trust_store_revocation_contents
-      name: trust_store_revocation_contents
-      title: trust_store_revocation_contents
+    trust_store_revocation_content:
+      id: aws.elbv2.trust_store_revocation_content
+      name: trust_store_revocation_content
+      title: trust_store_revocation_content
       methods:
         get_trust_store_revocation_content:
           operation:
@@ -6586,7 +6322,7 @@ components:
               algorithm: get_query_to_post_form_utf_8
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/trust_store_revocation_contents/methods/get_trust_store_revocation_content"
+          - $ref: "#/components/x-stackQL-resources/trust_store_revocation_content/methods/get_trust_store_revocation_content"
         insert: []
         update: []
         delete: []

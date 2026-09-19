@@ -187,10 +187,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CreateDataLakeExceptionSubscriptionResponse'
       x-stackql-resource: data_lake_exception_subscriptions
       x-stackql-method: create_data_lake_exception_subscription
       x-stackql-verb: INSERT
@@ -201,10 +197,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteDataLakeExceptionSubscriptionResponse'
       x-stackql-resource: data_lake_exception_subscriptions
       x-stackql-method: delete_data_lake_exception_subscription
       x-stackql-verb: DELETE
@@ -246,10 +238,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateDataLakeExceptionSubscriptionResponse'
       x-stackql-resource: data_lake_exception_subscriptions
       x-stackql-method: update_data_lake_exception_subscription
       x-stackql-verb: UPDATE
@@ -273,10 +261,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CreateDataLakeOrganizationConfigurationResponse'
       x-stackql-resource: data_lake_organization_configurations
       x-stackql-method: create_data_lake_organization_configuration
       x-stackql-verb: INSERT
@@ -412,10 +396,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteSubscriberNotificationResponse'
       x-stackql-resource: subscribers
       x-stackql-method: delete_subscriber_notification
       x-stackql-verb: DELETE
@@ -503,10 +483,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteCustomLogSourceResponse'
       x-stackql-resource: log_sources
       x-stackql-method: delete_custom_log_source
       x-stackql-verb: DELETE
@@ -534,10 +510,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteDataLakeResponse'
       x-stackql-resource: data_lakes
       x-stackql-method: delete_data_lake
       x-stackql-verb: DELETE
@@ -561,10 +533,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteDataLakeOrganizationConfigurationResponse'
       x-stackql-resource: data_lake_organization_configurations
       x-stackql-method: delete_data_lake_organization_configuration
       x-stackql-verb: DELETE
@@ -585,10 +553,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteSubscriberResponse'
       x-stackql-resource: subscribers
       x-stackql-method: delete_subscriber
       x-stackql-verb: DELETE
@@ -660,10 +624,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeregisterDataLakeDelegatedAdministratorResponse'
       x-stackql-resource: data_lakes
       x-stackql-method: deregister_data_lake_delegated_administrator
       x-stackql-verb: DELETE
@@ -687,10 +647,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RegisterDataLakeDelegatedAdministratorResponse'
       x-stackql-resource: data_lakes
       x-stackql-method: register_data_lake_delegated_administrator
       x-stackql-verb: INSERT
@@ -870,10 +826,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -898,10 +850,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -1343,8 +1291,6 @@ components:
     SubscriptionProtocol:
       type: string
       pattern: ^[a-z\-]*$
-    CreateDataLakeExceptionSubscriptionResponse:
-      type: object
     DataLakeAutoEnableNewAccountConfigurationList:
       type: array
       items:
@@ -1377,8 +1323,6 @@ components:
         sourceVersion:
           $ref: '#/components/schemas/AwsLogSourceVersion'
           description: The version for a Amazon Web Services source. This must be a Regionally unique value.
-    CreateDataLakeOrganizationConfigurationResponse:
-      type: object
     AccessTypeList:
       type: array
       items:
@@ -1558,20 +1502,6 @@ components:
         failed:
           $ref: '#/components/schemas/AccountList'
           description: Deletion of the Amazon Web Services sources failed as the account is not a part of the organization.
-    DeleteCustomLogSourceResponse:
-      type: object
-    DeleteDataLakeResponse:
-      type: object
-    DeleteDataLakeExceptionSubscriptionResponse:
-      type: object
-    DeleteDataLakeOrganizationConfigurationResponse:
-      type: object
-    DeleteSubscriberResponse:
-      type: object
-    DeleteSubscriberNotificationResponse:
-      type: object
-    DeregisterDataLakeDelegatedAdministratorResponse:
-      type: object
     GetDataLakeExceptionSubscriptionResponse:
       type: object
       properties:
@@ -1757,16 +1687,10 @@ components:
           $ref: '#/components/schemas/TagList'
           description: An array of objects, one for each tag (key and value) that’s associated with the Amazon Security Lake
             resource.
-    RegisterDataLakeDelegatedAdministratorResponse:
-      type: object
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
         $ref: '#/components/schemas/TagKey'
-    UntagResourceResponse:
-      type: object
     UpdateDataLakeResponse:
       type: object
       properties:
@@ -1777,8 +1701,6 @@ components:
       type: integer
       format: int64
       minimum: 1
-    UpdateDataLakeExceptionSubscriptionResponse:
-      type: object
     UpdateSubscriberRequestSubscriberNameString:
       type: string
       minLength: 0

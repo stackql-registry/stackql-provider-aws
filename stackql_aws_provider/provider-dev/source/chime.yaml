@@ -47,10 +47,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/AssociatePhoneNumberWithUserResponse'
       x-stackql-resource: users
       x-stackql-method: associate_phone_number_with_user
       x-stackql-verb: UPDATE
@@ -79,10 +75,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/AssociateSigninDelegateGroupsWithAccountResponse'
       x-stackql-resource: accounts
       x-stackql-method: associate_signin_delegate_groups_with_account
       x-stackql-verb: UPDATE
@@ -122,7 +114,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchCreateRoomMembershipResponse'
-      x-stackql-resource: accounts
+      x-stackql-resource: room_memberships
       x-stackql-method: batch_create_room_membership
       x-stackql-verb: EXEC
   /phone-numbers?operation=batch-delete:
@@ -188,7 +180,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchSuspendUserResponse'
-      x-stackql-resource: accounts
+      x-stackql-resource: users
       x-stackql-method: batch_suspend_user
       x-stackql-verb: EXEC
   /accounts/{account_id}/users?operation=unsuspend:
@@ -224,7 +216,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchUnsuspendUserResponse'
-      x-stackql-resource: accounts
+      x-stackql-resource: users
       x-stackql-method: batch_unsuspend_user
       x-stackql-verb: EXEC
   /phone-numbers?operation=batch-update:
@@ -254,7 +246,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchUpdatePhoneNumberResponse'
-      x-stackql-resource: batch_update_phone_number
+      x-stackql-resource: phone_numbers
       x-stackql-method: batch_update_phone_number
       x-stackql-verb: EXEC
   /accounts/{account_id}/users:
@@ -287,7 +279,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchUpdateUserResponse'
-      x-stackql-resource: accounts
+      x-stackql-resource: users
       x-stackql-method: batch_update_user
       x-stackql-verb: EXEC
     get:
@@ -782,10 +774,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteAccountResponse'
       x-stackql-resource: accounts
       x-stackql-method: delete_account
       x-stackql-verb: DELETE
@@ -1184,10 +1172,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DisassociatePhoneNumberFromUserResponse'
       x-stackql-resource: users
       x-stackql-method: disassociate_phone_number_from_user
       x-stackql-verb: UPDATE
@@ -1216,10 +1200,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DisassociateSigninDelegateGroupsFromAccountResponse'
       x-stackql-resource: accounts
       x-stackql-method: disassociate_signin_delegate_groups_from_account
       x-stackql-verb: UPDATE
@@ -1273,10 +1253,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateAccountSettingsResponse'
       x-stackql-resource: account_settings
       x-stackql-method: update_account_settings
       x-stackql-verb: UPDATE
@@ -1760,11 +1736,7 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/LogoutUserResponse'
-      x-stackql-resource: accounts
+      x-stackql-resource: users
       x-stackql-method: logout_user
       x-stackql-verb: EXEC
   /accounts/{account_id}/conversations/{conversation_id}/messages/{message_id}?operation=redact:
@@ -1793,10 +1765,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedactConversationMessageResponse'
       x-stackql-resource: accounts
       x-stackql-method: redact_conversation_message
       x-stackql-verb: EXEC
@@ -1826,11 +1794,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedactRoomMessageResponse'
-      x-stackql-resource: accounts
+      x-stackql-resource: rooms
       x-stackql-method: redact_room_message
       x-stackql-verb: EXEC
   /accounts/{account_id}/bots/{bot_id}?operation=regenerate-security-token:
@@ -2029,8 +1993,6 @@ components:
     E164PhoneNumber:
       type: string
       pattern: ^\+?[1-9]\d{1,14}$
-    AssociatePhoneNumberWithUserResponse:
-      type: object
     NonEmptyString:
       type: string
       pattern: .*\S.*
@@ -2045,8 +2007,6 @@ components:
         GroupName:
           $ref: '#/components/schemas/NonEmptyString'
           description: The group name.
-    AssociateSigninDelegateGroupsWithAccountResponse:
-      type: object
     MembershipItemList:
       type: array
       items:
@@ -2597,12 +2557,6 @@ components:
       - Pending
       - Accepted
       - Failed
-    DeleteAccountResponse:
-      type: object
-    DisassociatePhoneNumberFromUserResponse:
-      type: object
-    DisassociateSigninDelegateGroupsFromAccountResponse:
-      type: object
     GetAccountResponse:
       type: object
       properties:
@@ -3064,8 +3018,6 @@ components:
       type: array
       items:
         $ref: '#/components/schemas/User'
-    LogoutUserResponse:
-      type: object
     PutEventsConfigurationResponse:
       type: object
       properties:
@@ -3083,10 +3035,6 @@ components:
           $ref: '#/components/schemas/Iso8601Timestamp'
           description: The timestamp representing the time at which the specified items are permanently deleted, in ISO 8601
             format.
-    RedactConversationMessageResponse:
-      type: object
-    RedactRoomMessageResponse:
-      type: object
     RegenerateSecurityTokenResponse:
       type: object
       properties:
@@ -3134,8 +3082,6 @@ components:
         Account:
           $ref: '#/components/schemas/Account'
           description: The updated Amazon Chime account details.
-    UpdateAccountSettingsResponse:
-      type: object
     UpdateBotResponse:
       type: object
       properties:

@@ -33,37 +33,13 @@ Creates, updates, deletes, gets or lists a <code>schemas</code> resource.
 The following fields are returned by `SELECT` queries:
 
 <Tabs
-    defaultValue="batch_get_schema"
+    defaultValue="get_schema"
     values={[
-        { label: 'batch_get_schema', value: 'batch_get_schema' },
         { label: 'get_schema', value: 'get_schema' },
+        { label: 'batch_get_schema', value: 'batch_get_schema' },
         { label: 'list_schemas', value: 'list_schemas' }
     ]}
 >
-<TabItem value="batch_get_schema">
-
-<table>
-<thead>
-    <tr>
-    <th>Name</th>
-    <th>Datatype</th>
-    <th>Description</th>
-    </tr>
-</thead>
-<tbody>
-<tr>
-    <td><CopyableCode code="errors" /></td>
-    <td><code>array</code></td>
-    <td>Error reasons for schemas that could not be retrieved. One error is returned for every schema that could not be retrieved.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="schemas" /></td>
-    <td><code>array</code></td>
-    <td>The retrieved list of schemas.</td>
-</tr>
-</tbody>
-</table>
-</TabItem>
 <TabItem value="get_schema">
 
 <table>
@@ -158,6 +134,30 @@ The following fields are returned by `SELECT` queries:
 </tbody>
 </table>
 </TabItem>
+<TabItem value="batch_get_schema">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="errors" /></td>
+    <td><code>array</code></td>
+    <td>Error reasons for schemas that could not be retrieved. One error is returned for every schema that could not be retrieved.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="schemas" /></td>
+    <td><code>array</code></td>
+    <td>The retrieved list of schemas.</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
 <TabItem value="list_schemas">
 
 <table>
@@ -245,18 +245,18 @@ The following methods are available for this resource:
 </thead>
 <tbody>
 <tr>
-    <td><a href="#batch_get_schema"><CopyableCode code="batch_get_schema" /></a></td>
-    <td><CopyableCode code="select" /></td>
-    <td><a href="#parameter-collaboration_identifier"><code>collaboration_identifier</code></a>, <a href="#parameter-region"><code>region</code></a></td>
-    <td></td>
-    <td>Retrieves multiple schemas by their identifiers.</td>
-</tr>
-<tr>
     <td><a href="#get_schema"><CopyableCode code="get_schema" /></a></td>
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-collaboration_identifier"><code>collaboration_identifier</code></a>, <a href="#parameter-name"><code>name</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td></td>
     <td>Retrieves the schema for a relation within a collaboration.</td>
+</tr>
+<tr>
+    <td><a href="#batch_get_schema"><CopyableCode code="batch_get_schema" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-collaboration_identifier"><code>collaboration_identifier</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Retrieves multiple schemas by their identifiers.</td>
 </tr>
 <tr>
     <td><a href="#list_schemas"><CopyableCode code="list_schemas" /></a></td>
@@ -317,27 +317,13 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 ## `SELECT` examples
 
 <Tabs
-    defaultValue="batch_get_schema"
+    defaultValue="get_schema"
     values={[
-        { label: 'batch_get_schema', value: 'batch_get_schema' },
         { label: 'get_schema', value: 'get_schema' },
+        { label: 'batch_get_schema', value: 'batch_get_schema' },
         { label: 'list_schemas', value: 'list_schemas' }
     ]}
 >
-<TabItem value="batch_get_schema">
-
-Retrieves multiple schemas by their identifiers.
-
-```sql
-SELECT
-errors,
-schemas
-FROM aws.cleanrooms.schemas
-WHERE collaboration_identifier = '{{ collaboration_identifier }}' -- required
-AND region = '{{ region }}' -- required
-;
-```
-</TabItem>
 <TabItem value="get_schema">
 
 Retrieves the schema for a relation within a collaboration.
@@ -363,6 +349,20 @@ update_time
 FROM aws.cleanrooms.schemas
 WHERE collaboration_identifier = '{{ collaboration_identifier }}' -- required
 AND name = '{{ name }}' -- required
+AND region = '{{ region }}' -- required
+;
+```
+</TabItem>
+<TabItem value="batch_get_schema">
+
+Retrieves multiple schemas by their identifiers.
+
+```sql
+SELECT
+errors,
+schemas
+FROM aws.cleanrooms.schemas
+WHERE collaboration_identifier = '{{ collaboration_identifier }}' -- required
 AND region = '{{ region }}' -- required
 ;
 ```

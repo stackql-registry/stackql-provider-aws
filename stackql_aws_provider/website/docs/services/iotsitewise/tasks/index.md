@@ -369,10 +369,21 @@ version
           taskExecutionRole: "{{ taskExecutionRole }}"
           processingType: "{{ processingType }}"
           processingUnit: "{{ processingUnit }}"
+          ephemeralStorageConfiguration:
+            storageClass: "{{ storageClass }}"
+            storageSizeInGiB: {{ storageSizeInGiB }}
           command:
             - "{{ command }}"
           timeoutSeconds: {{ timeoutSeconds }}
           environmentVariables: "{{ environmentVariables }}"
+          mounts:
+            - name: "{{ name }}"
+              relativePath: "{{ relativePath }}"
+              source:
+                s3AccessPoint:
+                  accessPointArn: "{{ accessPointArn }}"
+                  prefix: "{{ prefix }}"
+              storageType: "{{ storageType }}"
     - name: tags
       value: "{{ tags }}"
     - name: clientToken

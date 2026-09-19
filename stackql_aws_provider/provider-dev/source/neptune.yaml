@@ -224,7 +224,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/ApplyPendingMaintenanceActionOutputDisplay'
-      x-stackql-resource: apply_pending_maintenance_action
+      x-stackql-resource: pending_maintenance_actions
       x-stackql-method: apply_pending_maintenance_action
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: ApplyPendingMaintenanceActionOutputDisplay
@@ -245,7 +245,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/ApplyPendingMaintenanceActionMessage'
-      x-stackql-resource: apply_pending_maintenance_action
+      x-stackql-resource: pending_maintenance_actions
       x-stackql-method: apply_pending_maintenance_action
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: ApplyPendingMaintenanceActionOutputDisplay
@@ -300,7 +300,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/CopyDBClusterParameterGroupOutputDisplay'
-      x-stackql-resource: db_cluster_parameters
+      x-stackql-resource: db_cluster_parameter_groups
       x-stackql-method: copy_db_cluster_parameter_group
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: CopyDBClusterParameterGroupOutputDisplay
@@ -321,7 +321,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/CopyDBClusterParameterGroupMessage'
-      x-stackql-resource: db_cluster_parameters
+      x-stackql-resource: db_cluster_parameter_groups
       x-stackql-method: copy_db_cluster_parameter_group
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: CopyDBClusterParameterGroupOutputDisplay
@@ -397,7 +397,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/CopyDBClusterSnapshotOutputDisplay'
-      x-stackql-resource: db_clusters
+      x-stackql-resource: db_cluster_snapshots
       x-stackql-method: copy_db_cluster_snapshot
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: CopyDBClusterSnapshotOutputDisplay
@@ -419,7 +419,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/CopyDBClusterSnapshotMessage'
-      x-stackql-resource: db_clusters
+      x-stackql-resource: db_cluster_snapshots
       x-stackql-method: copy_db_cluster_snapshot
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: CopyDBClusterSnapshotOutputDisplay
@@ -473,7 +473,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/CopyDBParameterGroupOutputDisplay'
-      x-stackql-resource: db_parameters
+      x-stackql-resource: db_parameter_groups
       x-stackql-method: copy_db_parameter_group
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: CopyDBParameterGroupOutputDisplay
@@ -494,7 +494,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/CopyDBParameterGroupMessage'
-      x-stackql-resource: db_parameters
+      x-stackql-resource: db_parameter_groups
       x-stackql-method: copy_db_parameter_group
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: CopyDBParameterGroupOutputDisplay
@@ -3914,7 +3914,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/FailoverDBClusterOutputDisplay'
-      x-stackql-resource: failover_db_cluster
+      x-stackql-resource: db_clusters
       x-stackql-method: failover_db_cluster
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: FailoverDBClusterOutputDisplay
@@ -3940,7 +3940,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/FailoverDBClusterMessage'
-      x-stackql-resource: failover_db_cluster
+      x-stackql-resource: db_clusters
       x-stackql-method: failover_db_cluster
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: FailoverDBClusterOutputDisplay
@@ -5582,7 +5582,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/ResetDBClusterParameterGroupOutputDisplay'
-      x-stackql-resource: db_cluster_parameters
+      x-stackql-resource: db_cluster_parameter_groups
       x-stackql-method: reset_db_cluster_parameter_group
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: ResetDBClusterParameterGroupOutputDisplay
@@ -5608,7 +5608,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/ResetDBClusterParameterGroupMessage'
-      x-stackql-resource: db_cluster_parameters
+      x-stackql-resource: db_cluster_parameter_groups
       x-stackql-method: reset_db_cluster_parameter_group
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: ResetDBClusterParameterGroupOutputDisplay
@@ -5658,7 +5658,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/ResetDBParameterGroupOutputDisplay'
-      x-stackql-resource: db_parameters
+      x-stackql-resource: db_parameter_groups
       x-stackql-method: reset_db_parameter_group
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: ResetDBParameterGroupOutputDisplay
@@ -5683,7 +5683,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/ResetDBParameterGroupMessage'
-      x-stackql-resource: db_parameters
+      x-stackql-resource: db_parameter_groups
       x-stackql-method: reset_db_parameter_group
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: ResetDBParameterGroupOutputDisplay

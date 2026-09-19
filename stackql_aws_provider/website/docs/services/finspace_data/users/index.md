@@ -33,91 +33,13 @@ Creates, updates, deletes, gets or lists a <code>users</code> resource.
 The following fields are returned by `SELECT` queries:
 
 <Tabs
-    defaultValue="list_users"
+    defaultValue="get_user"
     values={[
-        { label: 'list_users', value: 'list_users' },
-        { label: 'get_user', value: 'get_user' }
+        { label: 'get_user', value: 'get_user' },
+        { label: 'list_users_by_permission_group', value: 'list_users_by_permission_group' },
+        { label: 'list_users', value: 'list_users' }
     ]}
 >
-<TabItem value="list_users">
-
-<table>
-<thead>
-    <tr>
-    <th>Name</th>
-    <th>Datatype</th>
-    <th>Description</th>
-    </tr>
-</thead>
-<tbody>
-<tr>
-    <td><CopyableCode code="api_access" /></td>
-    <td><code>string</code></td>
-    <td>Indicates whether the user can use the GetProgrammaticAccessCredentials API to obtain credentials that can then be used to access other FinSpace Data API operations. ENABLED – The user has permissions to use the APIs. DISABLED – The user does not have permissions to use any APIs. (ENABLED, DISABLED)</td>
-</tr>
-<tr>
-    <td><CopyableCode code="api_access_principal_arn" /></td>
-    <td><code>string</code></td>
-    <td>The ARN identifier of an AWS user or role that is allowed to call the GetProgrammaticAccessCredentials API to obtain a credentials token for a specific FinSpace user. This must be an IAM role within your FinSpace account. (pattern: &lt;code&gt;^arn:aws&#91;a-z\-&#93;*:iam::\d&#123;12&#125;:role/?&#91;a-zA-Z_0-9+=,.@\-_/&#93;+$&lt;/code&gt;)</td>
-</tr>
-<tr>
-    <td><CopyableCode code="create_time" /></td>
-    <td><code>integer (int64)</code></td>
-    <td>Milliseconds since UTC epoch</td>
-</tr>
-<tr>
-    <td><CopyableCode code="email_address" /></td>
-    <td><code>string</code></td>
-    <td>The email address of the user. The email address serves as a uniquer identifier for each user and cannot be changed after it's created. (pattern: &lt;code&gt;&#91;A-Za-z0-9._%+-&#93;+@&#91;A-Za-z0-9.-&#93;+\.&#91;A-Za-z&#93;&#123;2,4&#125;&lt;/code&gt;)</td>
-</tr>
-<tr>
-    <td><CopyableCode code="first_name" /></td>
-    <td><code>string</code></td>
-    <td>The first name of the user. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
-</tr>
-<tr>
-    <td><CopyableCode code="last_disabled_time" /></td>
-    <td><code>integer (int64)</code></td>
-    <td>Milliseconds since UTC epoch</td>
-</tr>
-<tr>
-    <td><CopyableCode code="last_enabled_time" /></td>
-    <td><code>integer (int64)</code></td>
-    <td>Milliseconds since UTC epoch</td>
-</tr>
-<tr>
-    <td><CopyableCode code="last_login_time" /></td>
-    <td><code>integer (int64)</code></td>
-    <td>Milliseconds since UTC epoch</td>
-</tr>
-<tr>
-    <td><CopyableCode code="last_modified_time" /></td>
-    <td><code>integer (int64)</code></td>
-    <td>Milliseconds since UTC epoch</td>
-</tr>
-<tr>
-    <td><CopyableCode code="last_name" /></td>
-    <td><code>string</code></td>
-    <td>The last name of the user. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
-</tr>
-<tr>
-    <td><CopyableCode code="status" /></td>
-    <td><code>string</code></td>
-    <td>The current status of the user. CREATING – The user creation is in progress. ENABLED – The user is created and is currently active. DISABLED – The user is currently inactive. (CREATING, ENABLED, DISABLED)</td>
-</tr>
-<tr>
-    <td><CopyableCode code="type_" /></td>
-    <td><code>string</code></td>
-    <td>Indicates the type of user. SUPER_USER – A user with permission to all the functionality and data in FinSpace. APP_USER – A user with specific permissions in FinSpace. The users are assigned permissions by adding them to a permission group. (SUPER_USER, APP_USER)</td>
-</tr>
-<tr>
-    <td><CopyableCode code="user_id" /></td>
-    <td><code>string</code></td>
-    <td>The unique identifier for the user. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
-</tr>
-</tbody>
-</table>
-</TabItem>
 <TabItem value="get_user">
 
 <table>
@@ -197,6 +119,109 @@ The following fields are returned by `SELECT` queries:
 </tbody>
 </table>
 </TabItem>
+<TabItem value="list_users_by_permission_group">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="next_token" /></td>
+    <td><code>string</code></td>
+    <td>A token that indicates where a results page should begin.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="users" /></td>
+    <td><code>array</code></td>
+    <td>Lists details of all users in a specific permission group.</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
+<TabItem value="list_users">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="api_access" /></td>
+    <td><code>string</code></td>
+    <td>Indicates whether the user can use the GetProgrammaticAccessCredentials API to obtain credentials that can then be used to access other FinSpace Data API operations. ENABLED – The user has permissions to use the APIs. DISABLED – The user does not have permissions to use any APIs. (ENABLED, DISABLED)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="api_access_principal_arn" /></td>
+    <td><code>string</code></td>
+    <td>The ARN identifier of an AWS user or role that is allowed to call the GetProgrammaticAccessCredentials API to obtain a credentials token for a specific FinSpace user. This must be an IAM role within your FinSpace account. (pattern: &lt;code&gt;^arn:aws&#91;a-z\-&#93;*:iam::\d&#123;12&#125;:role/?&#91;a-zA-Z_0-9+=,.@\-_/&#93;+$&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="create_time" /></td>
+    <td><code>integer (int64)</code></td>
+    <td>Milliseconds since UTC epoch</td>
+</tr>
+<tr>
+    <td><CopyableCode code="email_address" /></td>
+    <td><code>string</code></td>
+    <td>The email address of the user. The email address serves as a uniquer identifier for each user and cannot be changed after it's created. (pattern: &lt;code&gt;&#91;A-Za-z0-9._%+-&#93;+@&#91;A-Za-z0-9.-&#93;+\.&#91;A-Za-z&#93;&#123;2,4&#125;&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="first_name" /></td>
+    <td><code>string</code></td>
+    <td>The first name of the user. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="last_disabled_time" /></td>
+    <td><code>integer (int64)</code></td>
+    <td>Milliseconds since UTC epoch</td>
+</tr>
+<tr>
+    <td><CopyableCode code="last_enabled_time" /></td>
+    <td><code>integer (int64)</code></td>
+    <td>Milliseconds since UTC epoch</td>
+</tr>
+<tr>
+    <td><CopyableCode code="last_login_time" /></td>
+    <td><code>integer (int64)</code></td>
+    <td>Milliseconds since UTC epoch</td>
+</tr>
+<tr>
+    <td><CopyableCode code="last_modified_time" /></td>
+    <td><code>integer (int64)</code></td>
+    <td>Milliseconds since UTC epoch</td>
+</tr>
+<tr>
+    <td><CopyableCode code="last_name" /></td>
+    <td><code>string</code></td>
+    <td>The last name of the user. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="status" /></td>
+    <td><code>string</code></td>
+    <td>The current status of the user. CREATING – The user creation is in progress. ENABLED – The user is created and is currently active. DISABLED – The user is currently inactive. (CREATING, ENABLED, DISABLED)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="type_" /></td>
+    <td><code>string</code></td>
+    <td>Indicates the type of user. SUPER_USER – A user with permission to all the functionality and data in FinSpace. APP_USER – A user with specific permissions in FinSpace. The users are assigned permissions by adding them to a permission group. (SUPER_USER, APP_USER)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="user_id" /></td>
+    <td><code>string</code></td>
+    <td>The unique identifier for the user. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
 </Tabs>
 
 ## Methods
@@ -215,18 +240,25 @@ The following methods are available for this resource:
 </thead>
 <tbody>
 <tr>
-    <td><a href="#list_users"><CopyableCode code="list_users" /></a></td>
-    <td><CopyableCode code="select" /></td>
-    <td><a href="#parameter-maxResults"><code>maxResults</code></a>, <a href="#parameter-region"><code>region</code></a></td>
-    <td><a href="#parameter-nextToken"><code>nextToken</code></a></td>
-    <td>Lists all available users in FinSpace.</td>
-</tr>
-<tr>
     <td><a href="#get_user"><CopyableCode code="get_user" /></a></td>
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-user_id"><code>user_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td></td>
     <td>Retrieves details for a specific user.</td>
+</tr>
+<tr>
+    <td><a href="#list_users_by_permission_group"><CopyableCode code="list_users_by_permission_group" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-permission_group_id"><code>permission_group_id</code></a>, <a href="#parameter-maxResults"><code>maxResults</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td><a href="#parameter-nextToken"><code>nextToken</code></a></td>
+    <td>Lists details of all the users in a specific permission group.</td>
+</tr>
+<tr>
+    <td><a href="#list_users"><CopyableCode code="list_users" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-maxResults"><code>maxResults</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td><a href="#parameter-nextToken"><code>nextToken</code></a></td>
+    <td>Lists all available users in FinSpace.</td>
 </tr>
 <tr>
     <td><a href="#create_user"><CopyableCode code="create_user" /></a></td>
@@ -284,6 +316,11 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     <td><code>integer</code></td>
     <td>The maximum number of results per page.</td>
 </tr>
+<tr id="parameter-permission_group_id">
+    <td><CopyableCode code="permission_group_id" /></td>
+    <td><code>string</code></td>
+    <td>The unique identifier for the permission group.</td>
+</tr>
 <tr id="parameter-region">
     <td><CopyableCode code="region" /></td>
     <td><code>string</code></td>
@@ -305,12 +342,54 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 ## `SELECT` examples
 
 <Tabs
-    defaultValue="list_users"
+    defaultValue="get_user"
     values={[
-        { label: 'list_users', value: 'list_users' },
-        { label: 'get_user', value: 'get_user' }
+        { label: 'get_user', value: 'get_user' },
+        { label: 'list_users_by_permission_group', value: 'list_users_by_permission_group' },
+        { label: 'list_users', value: 'list_users' }
     ]}
 >
+<TabItem value="get_user">
+
+Retrieves details for a specific user.
+
+```sql
+SELECT
+api_access,
+api_access_principal_arn,
+create_time,
+email_address,
+first_name,
+last_disabled_time,
+last_enabled_time,
+last_login_time,
+last_modified_time,
+last_name,
+status,
+type_,
+user_id
+FROM aws.finspace_data.users
+WHERE user_id = '{{ user_id }}' -- required
+AND region = '{{ region }}' -- required
+;
+```
+</TabItem>
+<TabItem value="list_users_by_permission_group">
+
+Lists details of all the users in a specific permission group.
+
+```sql
+SELECT
+next_token,
+users
+FROM aws.finspace_data.users
+WHERE permission_group_id = '{{ permission_group_id }}' -- required
+AND maxResults = '{{ maxResults }}' -- required
+AND region = '{{ region }}' -- required
+AND nextToken = '{{ nextToken }}'
+;
+```
+</TabItem>
 <TabItem value="list_users">
 
 Lists all available users in FinSpace.
@@ -334,31 +413,6 @@ FROM aws.finspace_data.users
 WHERE maxResults = '{{ maxResults }}' -- required
 AND region = '{{ region }}' -- required
 AND nextToken = '{{ nextToken }}'
-;
-```
-</TabItem>
-<TabItem value="get_user">
-
-Retrieves details for a specific user.
-
-```sql
-SELECT
-api_access,
-api_access_principal_arn,
-create_time,
-email_address,
-first_name,
-last_disabled_time,
-last_enabled_time,
-last_login_time,
-last_modified_time,
-last_name,
-status,
-type_,
-user_id
-FROM aws.finspace_data.users
-WHERE user_id = '{{ user_id }}' -- required
-AND region = '{{ region }}' -- required
 ;
 ```
 </TabItem>

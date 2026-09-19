@@ -127,7 +127,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="enhanced_image_metadata_enabled" /></td>
     <td><code>boolean</code></td>
-    <td>Collects additional information about the image being created, including the operating system (OS) version and package list. This information is used to enhance the overall experience of using EC2 Image Builder. Enabled by default.</td>
+    <td>Specifies whether to collect additional information about the image being created, including the operating system (OS) version and package list. Defaults to true.</td>
 </tr>
 <tr>
     <td><CopyableCode code="execution_role" /></td>
@@ -219,7 +219,7 @@ The following methods are available for this resource:
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-imagePipelineArn"><code>imagePipelineArn</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>Gets an image pipeline.</td>
+    <td>Retrieves an image pipeline.</td>
 </tr>
 <tr>
     <td><a href="#list_image_pipelines"><CopyableCode code="list_image_pipelines" /></a></td>
@@ -233,14 +233,14 @@ The following methods are available for this resource:
     <td><CopyableCode code="insert" /></td>
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-name"><code>name</code></a>, <a href="#parameter-infrastructureConfigurationArn"><code>infrastructureConfigurationArn</code></a>, <a href="#parameter-clientToken"><code>clientToken</code></a></td>
     <td></td>
-    <td>Creates a new image pipeline. Image pipelines enable you to automate the creation and distribution of images.</td>
+    <td>Creates a new image pipeline. Use image pipelines to automate the creation and distribution of images.</td>
 </tr>
 <tr>
     <td><a href="#update_image_pipeline"><CopyableCode code="update_image_pipeline" /></a></td>
     <td><CopyableCode code="update" /></td>
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-imagePipelineArn"><code>imagePipelineArn</code></a>, <a href="#parameter-infrastructureConfigurationArn"><code>infrastructureConfigurationArn</code></a>, <a href="#parameter-clientToken"><code>clientToken</code></a></td>
     <td></td>
-    <td>Updates an image pipeline. Image pipelines enable you to automate the creation and distribution of images. You must specify exactly one recipe for your image, using either a containerRecipeArn or an imageRecipeArn. UpdateImagePipeline does not support selective updates for the pipeline. You must specify all of the required properties in the update request, not just the properties that have changed.</td>
+    <td>Updates an image pipeline. Use image pipelines to automate the creation and distribution of images. You must specify exactly one recipe for your image, using either a containerRecipeArn or an imageRecipeArn. UpdateImagePipeline does not support selective updates for the pipeline. You must specify all of the required properties in the update request, not just the properties that have changed.</td>
 </tr>
 <tr>
     <td><a href="#delete_image_pipeline"><CopyableCode code="delete_image_pipeline" /></a></td>
@@ -296,7 +296,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 >
 <TabItem value="get_image_pipeline">
 
-Gets an image pipeline.
+Retrieves an image pipeline.
 
 ```sql
 SELECT
@@ -357,7 +357,7 @@ WHERE region = '{{ region }}' -- required
 >
 <TabItem value="create_image_pipeline">
 
-Creates a new image pipeline. Image pipelines enable you to automate the creation and distribution of images.
+Creates a new image pipeline. Use image pipelines to automate the creation and distribution of images.
 
 ```sql
 INSERT INTO aws.imagebuilder.image_pipelines (
@@ -378,6 +378,7 @@ imageScanningConfiguration,
 workflows,
 executionRole,
 loggingConfiguration,
+dryRun,
 region
 )
 SELECT 
@@ -398,6 +399,7 @@ SELECT
 '{{ workflows }}',
 '{{ executionRole }}',
 '{{ loggingConfiguration }}',
+{{ dryRun }},
 '{{ region }}'
 RETURNING
 client_token,
@@ -475,6 +477,8 @@ request_id
       value:
         imageLogGroupName: "{{ imageLogGroupName }}"
         pipelineLogGroupName: "{{ pipelineLogGroupName }}"
+    - name: dryRun
+      value: {{ dryRun }}
 `}</CodeBlock>
 
 </TabItem>
@@ -491,7 +495,7 @@ request_id
 >
 <TabItem value="update_image_pipeline">
 
-Updates an image pipeline. Image pipelines enable you to automate the creation and distribution of images. You must specify exactly one recipe for your image, using either a containerRecipeArn or an imageRecipeArn. UpdateImagePipeline does not support selective updates for the pipeline. You must specify all of the required properties in the update request, not just the properties that have changed.
+Updates an image pipeline. Use image pipelines to automate the creation and distribution of images. You must specify exactly one recipe for your image, using either a containerRecipeArn or an imageRecipeArn. UpdateImagePipeline does not support selective updates for the pipeline. You must specify all of the required properties in the update request, not just the properties that have changed.
 
 ```sql
 UPDATE aws.imagebuilder.image_pipelines

@@ -57,6 +57,6 @@ total resources: __31__
 <a href="/services/bedrock/provisioned_model_throughputs/">provisioned_model_throughputs</a><br />
 <a href="/services/bedrock/resource_policies/">resource_policies</a><br />
 <a href="/services/bedrock/tags/">tags</a><br />
-<a href="/services/bedrock/use_case_for_model_access/">use_case_for_model_access</a>
+<a href="/services/bedrock/use_cases/">use_cases</a>
 </div>
 </div>

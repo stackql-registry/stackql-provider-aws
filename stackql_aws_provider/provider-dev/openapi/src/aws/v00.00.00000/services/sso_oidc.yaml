@@ -432,3 +432,24 @@ components:
           - $ref: "#/components/x-stackQL-resources/clients/methods/register_client"
         update: []
         delete: []
+    device_authorizations:
+      id: aws.sso_oidc.device_authorizations
+      name: device_authorizations
+      title: device_authorizations
+      methods:
+        start_device_authorization:
+          operation:
+            $ref: "#/paths/~1device_authorization/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []

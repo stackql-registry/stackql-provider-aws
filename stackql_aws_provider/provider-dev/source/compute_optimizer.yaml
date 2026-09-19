@@ -60,10 +60,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteRecommendationPreferencesResponse'
       x-stackql-resource: recommendation_preferences
       x-stackql-method: delete_recommendation_preferences
       x-stackql-verb: DELETE
@@ -1070,7 +1066,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetEnrollmentStatusResponse'
-      x-stackql-resource: enrollment_status
+      x-stackql-resource: enrollment_statuses
       x-stackql-method: get_enrollment_status
       x-stackql-verb: SELECT
   /GetEnrollmentStatusesForOrganization:
@@ -1115,7 +1111,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetEnrollmentStatusesForOrganizationResponse'
-      x-stackql-resource: enrollment_statuses_for_organizations
+      x-stackql-resource: enrollment_statuses
       x-stackql-method: get_enrollment_statuses_for_organization
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.accountEnrollmentStatuses
@@ -1608,10 +1604,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PutRecommendationPreferencesResponse'
       x-stackql-resource: recommendation_preferences
       x-stackql-method: put_recommendation_preferences
       x-stackql-verb: REPLACE
@@ -1665,7 +1657,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateEnrollmentStatusResponse'
-      x-stackql-resource: enrollment_status
+      x-stackql-resource: enrollment_statuses
       x-stackql-method: update_enrollment_status
       x-stackql-verb: UPDATE
 components:
@@ -1771,8 +1763,6 @@ components:
       - LookBackPeriodPreference
       - PreferredResources
       - UtilizationPreferences
-    DeleteRecommendationPreferencesResponse:
-      type: object
     JobIds:
       type: array
       items:
@@ -5886,8 +5876,6 @@ components:
           $ref: '#/components/schemas/PreferredResourceValues'
           description: The preferred resource type values to exclude from the recommendation candidates. If this isn’t specified,
             all supported resources are included by default. You can specify up to 1000 values in this list.
-    PutRecommendationPreferencesResponse:
-      type: object
     UpdateEnrollmentStatusResponse:
       type: object
       properties:

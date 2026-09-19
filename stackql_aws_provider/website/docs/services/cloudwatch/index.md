@@ -18,7 +18,7 @@ cloudwatch service documentation.
 
 :::info[Service Summary]
 
-total resources: __18__  
+total resources: __17__  
 
 :::
 
@@ -29,16 +29,15 @@ total resources: __18__
 <a href="/services/cloudwatch/alarm_histories/">alarm_histories</a><br />
 <a href="/services/cloudwatch/alarm_mute_rules/">alarm_mute_rules</a><br />
 <a href="/services/cloudwatch/alarms/">alarms</a><br />
-<a href="/services/cloudwatch/alarms_for_metrics/">alarms_for_metrics</a><br />
 <a href="/services/cloudwatch/anomaly_detectors/">anomaly_detectors</a><br />
 <a href="/services/cloudwatch/dashboards/">dashboards</a><br />
 <a href="/services/cloudwatch/datasets/">datasets</a><br />
-<a href="/services/cloudwatch/insight_rule_reports/">insight_rule_reports</a>
+<a href="/services/cloudwatch/insight_rule_reports/">insight_rule_reports</a><br />
+<a href="/services/cloudwatch/insight_rules/">insight_rules</a>
 </div>
 <div class="providerDocColumn">
-<a href="/services/cloudwatch/insight_rules/">insight_rules</a><br />
 <a href="/services/cloudwatch/managed_insight_rules/">managed_insight_rules</a><br />
-<a href="/services/cloudwatch/metric_datas/">metric_datas</a><br />
+<a href="/services/cloudwatch/metric_data/">metric_data</a><br />
 <a href="/services/cloudwatch/metric_statistics/">metric_statistics</a><br />
 <a href="/services/cloudwatch/metric_streams/">metric_streams</a><br />
 <a href="/services/cloudwatch/metric_widget_images/">metric_widget_images</a><br />

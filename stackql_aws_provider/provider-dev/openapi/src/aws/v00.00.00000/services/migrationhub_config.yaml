@@ -87,10 +87,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteHomeRegionControlResult"
   /DescribeHomeRegionControls:
     post:
       operationId: DescribeHomeRegionControls
@@ -264,8 +260,6 @@ components:
     RequestedTime:
       type: string
       format: date-time
-    DeleteHomeRegionControlResult:
-      type: object
     DescribeHomeRegionControlsMaxResults:
       type: integer
       minimum: 1
@@ -318,7 +312,6 @@ components:
             $ref: "#/paths/~1DeleteHomeRegionControl/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1

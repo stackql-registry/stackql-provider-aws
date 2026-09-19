@@ -306,20 +306,12 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/CreateSMSSandboxPhoneNumberOutputDisplay"
     post:
       operationId: POST_CreateSMSSandboxPhoneNumber
       description: Adds a destination phone number to an Amazon Web Services account in the SMS sandbox and sends a one-time password (OTP) to that phone number. When you start using Amazon SNS to send SMS messages, your Amazon Web Services account is in the SMS sandbox. The SMS sandbox provides a safe environment for you to try Amazon SNS features without risking your reputation as an SMS sender. While your Amazon Web Services account is in the SMS sandbox, you can use all of the features of Amazon SNS. However, you can send SMS messages only to verified destination phone numbers. For more information, including how to move out of the sandbox to send messages without restrictions, see SMS sandbox in the Amazon SNS Developer Guide.
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/CreateSMSSandboxPhoneNumberOutputDisplay"
       parameters: []
       requestBody:
         content:
@@ -348,7 +340,7 @@ paths:
         - name: Attributes
           in: query
           required: false
-          description: "A map of attributes with their corresponding values. The following lists names, descriptions, and values of the special request parameters that the CreateTopic action uses: DeliveryPolicy – The policy that defines how Amazon SNS retries failed deliveries to HTTP/S endpoints. DisplayName – The display name to use for a topic with SMS subscriptions. Policy – The policy that defines who can access your topic. By default, only the topic owner can publish or subscribe to the topic. TracingConfig – Tracing mode of an Amazon SNS topic. By default TracingConfig is set to PassThrough, and the topic passes through the tracing header it receives from an Amazon SNS publisher to its subscriptions. If set to Active, Amazon SNS will vend X-Ray segment data to topic owner account if the sampled flag in the tracing header is true. This is only supported on standard topics. HTTP HTTPSuccessFeedbackRoleArn – Indicates successful message delivery status for an Amazon SNS topic that is subscribed to an HTTP endpoint. HTTPSuccessFeedbackSampleRate – Indicates percentage of successful messages to sample for an Amazon SNS topic that is subscribed to an HTTP endpoint. HTTPFailureFeedbackRoleArn – Indicates failed message delivery status for an Amazon SNS topic that is subscribed to an HTTP endpoint. Amazon Data Firehose FirehoseSuccessFeedbackRoleArn – Indicates successful message delivery status for an Amazon SNS topic that is subscribed to an Amazon Data Firehose endpoint. FirehoseSuccessFeedbackSampleRate – Indicates percentage of successful messages to sample for an Amazon SNS topic that is subscribed to an Amazon Data Firehose endpoint. FirehoseFailureFeedbackRoleArn – Indicates failed message delivery status for an Amazon SNS topic that is subscribed to an Amazon Data Firehose endpoint. Lambda LambdaSuccessFeedbackRoleArn – Indicates successful message delivery status for an Amazon SNS topic that is subscribed to an Lambda endpoint. LambdaSuccessFeedbackSampleRate – Indicates percentage of successful messages to sample for an Amazon SNS topic that is subscribed to an Lambda endpoint. LambdaFailureFeedbackRoleArn – Indicates failed message delivery status for an Amazon SNS topic that is subscribed to an Lambda endpoint. Platform application endpoint ApplicationSuccessFeedbackRoleArn – Indicates successful message delivery status for an Amazon SNS topic that is subscribed to a platform application endpoint. ApplicationSuccessFeedbackSampleRate – Indicates percentage of successful messages to sample for an Amazon SNS topic that is subscribed to an platform application endpoint. ApplicationFailureFeedbackRoleArn – Indicates failed message delivery status for an Amazon SNS topic that is subscribed to an platform application endpoint. In addition to being able to configure topic attributes for message delivery status of notification messages sent to Amazon SNS application endpoints, you can also configure application attributes for the delivery status of push notification messages sent to push notification services. For example, For more information, see Using Amazon SNS Application Attributes for Message Delivery Status. Amazon SQS SQSSuccessFeedbackRoleArn – Indicates successful message delivery status for an Amazon SNS topic that is subscribed to an Amazon SQS endpoint. SQSSuccessFeedbackSampleRate – Indicates percentage of successful messages to sample for an Amazon SNS topic that is subscribed to an Amazon SQS endpoint. SQSFailureFeedbackRoleArn – Indicates failed message delivery status for an Amazon SNS topic that is subscribed to an Amazon SQS endpoint. The `<ENDPOINT>`SuccessFeedbackRoleArn and `<ENDPOINT>`FailureFeedbackRoleArn attributes are used to give Amazon SNS write access to use CloudWatch Logs on your behalf. The `<ENDPOINT>`SuccessFeedbackSampleRate attribute is for specifying the sample rate percentage (0-100) of successfully delivered messages. After you configure the `<ENDPOINT>`FailureFeedbackRoleArn attribute, then all failed message deliveries generate CloudWatch Logs. The following attribute applies only to server-side encryption: KmsMasterKeyId – The ID of an Amazon Web Services managed customer master key (CMK) for Amazon SNS or a custom CMK. For more information, see Key Terms. For more examples, see KeyId in the Key Management Service API Reference. The following attributes apply only to FIFO topics: ArchivePolicy – The policy that sets the retention period for messages stored in the message archive of an Amazon SNS FIFO topic. ContentBasedDeduplication – Enables content-based deduplication for FIFO topics. By default, ContentBasedDeduplication is set to false. If you create a FIFO topic and this attribute is false, you must specify a value for the MessageDeduplicationId parameter for the Publish action. When you set ContentBasedDeduplication to true, Amazon SNS uses a SHA-256 hash to generate the MessageDeduplicationId using the body of the message (but not the attributes of the message). (Optional) To override the generated value, you can specify a value for the MessageDeduplicationId parameter for the Publish action. FifoThroughputScope – Enables higher throughput for your FIFO topic by adjusting the scope of deduplication. This attribute has two possible values: Topic – The scope of message deduplication is across the entire topic. This is the default value and maintains existing behavior, with a maximum throughput of 3000 messages per second or 20MB per second, whichever comes first. MessageGroup – The scope of deduplication is within each individual message group, which enables higher throughput per topic subject to regional quotas. For more information on quotas or to request an increase, see Amazon SNS service quotas in the Amazon Web Services General Reference."
+          description: 'A map of attributes with their corresponding values. The following lists names, descriptions, and values of the special request parameters that the CreateTopic action uses: DeliveryPolicy – The policy that defines how Amazon SNS retries failed deliveries to HTTP/S endpoints. DisplayName – The display name to use for a topic with SMS, email, and email-json subscriptions. For email and email-json subscriptions, the display name is used as the sender name for regular notification messages. Subscription confirmation and unsubscribe confirmation emails always use "Amazon Web Services Notifications" as the sender name. MaximumMessageSize – The maximum size, in bytes, of a message that can be published to the topic. Valid values are 1024 to 1048576 (1 MiB). The default is 262144 (256 KiB). A topic with a MaximumMessageSize above 256 KiB must have 100 or fewer subscriptions, and each subscription must be an Amazon SQS, Amazon Data Firehose, or Lambda subscription. Policy – The policy that defines who can access your topic. By default, only the topic owner can publish or subscribe to the topic. TracingConfig – Tracing mode of an Amazon SNS topic. By default TracingConfig is set to PassThrough, and the topic passes through the tracing header it receives from an Amazon SNS publisher to its subscriptions. If set to Active, Amazon SNS will vend X-Ray segment data to topic owner account if the sampled flag in the tracing header is true. This is only supported on standard topics. HTTP HTTPSuccessFeedbackRoleArn – Indicates successful message delivery status for an Amazon SNS topic that is subscribed to an HTTP endpoint. HTTPSuccessFeedbackSampleRate – Indicates percentage of successful messages to sample for an Amazon SNS topic that is subscribed to an HTTP endpoint. HTTPFailureFeedbackRoleArn – Indicates failed message delivery status for an Amazon SNS topic that is subscribed to an HTTP endpoint. Amazon Data Firehose FirehoseSuccessFeedbackRoleArn – Indicates successful message delivery status for an Amazon SNS topic that is subscribed to an Amazon Data Firehose endpoint. FirehoseSuccessFeedbackSampleRate – Indicates percentage of successful messages to sample for an Amazon SNS topic that is subscribed to an Amazon Data Firehose endpoint. FirehoseFailureFeedbackRoleArn – Indicates failed message delivery status for an Amazon SNS topic that is subscribed to an Amazon Data Firehose endpoint. Lambda LambdaSuccessFeedbackRoleArn – Indicates successful message delivery status for an Amazon SNS topic that is subscribed to an Lambda endpoint. LambdaSuccessFeedbackSampleRate – Indicates percentage of successful messages to sample for an Amazon SNS topic that is subscribed to an Lambda endpoint. LambdaFailureFeedbackRoleArn – Indicates failed message delivery status for an Amazon SNS topic that is subscribed to an Lambda endpoint. Platform application endpoint ApplicationSuccessFeedbackRoleArn – Indicates successful message delivery status for an Amazon SNS topic that is subscribed to a platform application endpoint. ApplicationSuccessFeedbackSampleRate – Indicates percentage of successful messages to sample for an Amazon SNS topic that is subscribed to an platform application endpoint. ApplicationFailureFeedbackRoleArn – Indicates failed message delivery status for an Amazon SNS topic that is subscribed to an platform application endpoint. In addition to being able to configure topic attributes for message delivery status of notification messages sent to Amazon SNS application endpoints, you can also configure application attributes for the delivery status of push notification messages sent to push notification services. For example, For more information, see Using Amazon SNS Application Attributes for Message Delivery Status. Amazon SQS SQSSuccessFeedbackRoleArn – Indicates successful message delivery status for an Amazon SNS topic that is subscribed to an Amazon SQS endpoint. SQSSuccessFeedbackSampleRate – Indicates percentage of successful messages to sample for an Amazon SNS topic that is subscribed to an Amazon SQS endpoint. SQSFailureFeedbackRoleArn – Indicates failed message delivery status for an Amazon SNS topic that is subscribed to an Amazon SQS endpoint. The `<ENDPOINT>`SuccessFeedbackRoleArn and `<ENDPOINT>`FailureFeedbackRoleArn attributes are used to give Amazon SNS write access to use CloudWatch Logs on your behalf. The `<ENDPOINT>`SuccessFeedbackSampleRate attribute is for specifying the sample rate percentage (0-100) of successfully delivered messages. After you configure the `<ENDPOINT>`FailureFeedbackRoleArn attribute, then all failed message deliveries generate CloudWatch Logs. The following attribute applies only to server-side encryption: KmsMasterKeyId – The ID of an Amazon Web Services managed customer master key (CMK) for Amazon SNS or a custom CMK. For more information, see Key Terms. For more examples, see KeyId in the Key Management Service API Reference. The following attributes apply only to FIFO topics: ArchivePolicy – The policy that sets the retention period for messages stored in the message archive of an Amazon SNS FIFO topic. ContentBasedDeduplication – Enables content-based deduplication for FIFO topics. By default, ContentBasedDeduplication is set to false. If you create a FIFO topic and this attribute is false, you must specify a value for the MessageDeduplicationId parameter for the Publish action. When you set ContentBasedDeduplication to true, Amazon SNS uses a SHA-256 hash to generate the MessageDeduplicationId using the body of the message (but not the attributes of the message). (Optional) To override the generated value, you can specify a value for the MessageDeduplicationId parameter for the Publish action. FifoThroughputScope – Enables higher throughput for your FIFO topic by adjusting the scope of deduplication. This attribute has two possible values: Topic – The scope of message deduplication is across the entire topic. This is the default value and maintains existing behavior, with a maximum throughput of 3000 messages per second or 20MB per second, whichever comes first. MessageGroup – The scope of deduplication is within each individual message group, which enables higher throughput per topic subject to regional quotas. For more information on quotas or to request an increase, see Amazon SNS service quotas in the Amazon Web Services General Reference.'
           schema:
             $ref: "#/components/schemas/TopicAttributesMap"
         - name: Tags
@@ -360,7 +352,7 @@ paths:
         - name: DataProtectionPolicy
           in: query
           required: false
-          description: "The body of the policy document you want to use for this topic. You can only add one policy per topic. The policy must be in JSON string format. Length Constraints: Maximum length of 30,720."
+          description: "Amazon SNS message data protection is no longer available to new customers. For more information and guidance on alternatives, see Amazon SNS message data protection availability change. The body of the policy document you want to use for this topic. You can only add one policy per topic. The policy must be in JSON string format. Length Constraints: Maximum length of 30,720."
           schema:
             $ref: "#/components/schemas/attributeValue"
       responses:
@@ -476,20 +468,12 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/DeleteSMSSandboxPhoneNumberOutputDisplay"
     post:
       operationId: POST_DeleteSMSSandboxPhoneNumber
       description: Deletes an Amazon Web Services account's verified or pending phone number from the SMS sandbox. When you start using Amazon SNS to send SMS messages, your Amazon Web Services account is in the SMS sandbox. The SMS sandbox provides a safe environment for you to try Amazon SNS features without risking your reputation as an SMS sender. While your Amazon Web Services account is in the SMS sandbox, you can use all of the features of Amazon SNS. However, you can send SMS messages only to verified destination phone numbers. For more information, including how to move out of the sandbox to send messages without restrictions, see SMS sandbox in the Amazon SNS Developer Guide.
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/DeleteSMSSandboxPhoneNumberOutputDisplay"
       parameters: []
       requestBody:
         content:
@@ -541,7 +525,7 @@ paths:
       - $ref: "#/components/parameters/X-Amz-SignedHeaders"
     get:
       operationId: GET_GetDataProtectionPolicy
-      description: Retrieves the specified inline DataProtectionPolicy document that is stored in the specified Amazon SNS topic.
+      description: Amazon SNS message data protection is no longer available to new customers. For more information and guidance on alternatives, see Amazon SNS message data protection availability change. Retrieves the specified inline DataProtectionPolicy document that is stored in the specified Amazon SNS topic.
       parameters:
         - name: ResourceArn
           in: query
@@ -558,7 +542,7 @@ paths:
                 $ref: "#/components/schemas/GetDataProtectionPolicyOutputDisplay"
     post:
       operationId: POST_GetDataProtectionPolicy
-      description: Retrieves the specified inline DataProtectionPolicy document that is stored in the specified Amazon SNS topic.
+      description: Amazon SNS message data protection is no longer available to new customers. For more information and guidance on alternatives, see Amazon SNS message data protection availability change. Retrieves the specified inline DataProtectionPolicy document that is stored in the specified Amazon SNS topic.
       responses:
         "200":
           description: Success
@@ -1242,20 +1226,12 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/OptInPhoneNumberOutputDisplay"
     post:
       operationId: POST_OptInPhoneNumber
       description: Use this request to opt in a phone number that is opted out, which enables you to resume sending SMS messages to the number. You can opt in a phone number only once every 30 days.
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/OptInPhoneNumberOutputDisplay"
       parameters: []
       requestBody:
         content:
@@ -1296,7 +1272,7 @@ paths:
         - name: Message
           in: query
           required: true
-          description: "The message you want to send. If you are publishing to a topic and you want to send the same message to all transport protocols, include the text of the message as a String value. If you want to send different messages for each transport protocol, set the value of the MessageStructure parameter to json and use a JSON object for the Message parameter. Constraints: With the exception of SMS, messages must be UTF-8 encoded strings and at most 256 KB in size (262,144 bytes, not 262,144 characters). For SMS, each message can contain up to 140 characters. This character limit depends on the encoding schema. For example, an SMS message can contain 160 GSM characters, 140 ASCII characters, or 70 UCS-2 characters. If you publish a message that exceeds this size limit, Amazon SNS sends the message as multiple messages, each fitting within the size limit. Messages aren't truncated mid-word but are cut off at whole-word boundaries. The total size limit for a single SMS Publish action is 1,600 characters. JSON-specific constraints: Keys in the JSON object that correspond to supported transport protocols must have simple JSON string values. The values will be parsed (unescaped) before they are used in outgoing messages. Outbound notifications are JSON encoded (meaning that the characters will be reescaped for sending). Values have a minimum length of 0 (the empty string, \"\", is allowed). Values have a maximum length bounded by the overall message size (so, including multiple protocols may limit message sizes). Non-string values will cause the key to be ignored. Keys that do not correspond to supported transport protocols are ignored. Duplicate keys are not allowed. Failure to parse or validate any key or value in the message will cause the Publish call to return an error (no partial delivery)."
+          description: "The message you want to send. If you are publishing to a topic and you want to send the same message to all transport protocols, include the text of the message as a String value. If you want to send different messages for each transport protocol, set the value of the MessageStructure parameter to json and use a JSON object for the Message parameter. Constraints: With the exception of SMS, messages must be UTF-8 encoded strings. By default, a message can be at most 256 KiB in size (262,144 bytes, not 262,144 characters). When you publish to a topic, the maximum size is determined by the topic's MaximumMessageSize attribute, which supports values up to 1 MiB (1,048,576 bytes). Amazon SNS validates the combined size of the message body and message attributes against this value and returns an InvalidParameter error if the limit is exceeded. For more information, see Large message payloads in the Amazon SNS Developer Guide. For SMS, each message can contain up to 140 characters. This character limit depends on the encoding schema. For example, an SMS message can contain 160 GSM characters, 140 ASCII characters, or 70 UCS-2 characters. If you publish a message that exceeds this size limit, Amazon SNS sends the message as multiple messages, each fitting within the size limit. Messages aren't truncated mid-word but are cut off at whole-word boundaries. The total size limit for a single SMS Publish action is 1,600 characters. JSON-specific constraints: Keys in the JSON object that correspond to supported transport protocols must have simple JSON string values. The values will be parsed (unescaped) before they are used in outgoing messages. Outbound notifications are JSON encoded (meaning that the characters will be reescaped for sending). Values have a minimum length of 0 (the empty string, \"\", is allowed). Values have a maximum length bounded by the overall message size (so, including multiple protocols may limit message sizes). Non-string values will cause the key to be ignored. Keys that do not correspond to supported transport protocols are ignored. Duplicate keys are not allowed. Failure to parse or validate any key or value in the message will cause the Publish call to return an error (no partial delivery)."
           schema:
             $ref: "#/components/schemas/message"
         - name: Subject
@@ -1363,7 +1339,7 @@ paths:
       - $ref: "#/components/parameters/X-Amz-SignedHeaders"
     get:
       operationId: GET_PublishBatch
-      description: "Publishes up to 10 messages to the specified topic in a single batch. This is a batch version of the Publish API. If you try to send more than 10 messages in a single batch request, you will receive a TooManyEntriesInBatchRequest exception. For FIFO topics, multiple messages within a single batch are published in the order they are sent, and messages are deduplicated within the batch and across batches for five minutes. The result of publishing each message is reported individually in the response. Because the batch request can result in a combination of successful and unsuccessful actions, you should check for batch errors even when the call returns an HTTP status code of 200. The maximum allowed individual message size and the maximum total payload size (the sum of the individual lengths of all of the batched messages) are both 256 KB (262,144 bytes). The PublishBatch API can send up to 10 messages at a time. If you attempt to send more than 10 messages in one request, you will encounter a TooManyEntriesInBatchRequest exception. In such cases, split your messages into multiple requests, each containing no more than 10 messages. Some actions take lists of parameters. These lists are specified using the param.n notation. Values of n are integers starting from 1. For example, a parameter list with two elements looks like this: &AttributeName.1=first &AttributeName.2=second If you send a batch message to a topic, Amazon SNS publishes the batch message to each endpoint that is subscribed to the topic. The format of the batch message depends on the notification protocol for each subscribed endpoint. When a messageId is returned, the batch message is saved, and Amazon SNS immediately delivers the message to subscribers."
+      description: "Publishes up to 10 messages to the specified topic in a single batch. This is a batch version of the Publish API. If you try to send more than 10 messages in a single batch request, you will receive a TooManyEntriesInBatchRequest exception. For FIFO topics, multiple messages within a single batch are published in the order they are sent, and messages are deduplicated within the batch and across batches for five minutes. The result of publishing each message is reported individually in the response. Because the batch request can result in a combination of successful and unsuccessful actions, you should check for batch errors even when the call returns an HTTP status code of 200. By default, the maximum allowed individual message size and the maximum total payload size (the sum of the individual lengths of all of the batched messages) are both 256 KiB (262,144 bytes). To publish larger batches, set the topic's MaximumMessageSize attribute, which supports values up to 1 MiB (1,048,576 bytes). The combined size of all messages in the batch, including each message's body and attributes, must not exceed the topic's MaximumMessageSize. For more information, see Large message payloads in the Amazon SNS Developer Guide. The PublishBatch API can send up to 10 messages at a time. If you attempt to send more than 10 messages in one request, you will encounter a TooManyEntriesInBatchRequest exception. In such cases, split your messages into multiple requests, each containing no more than 10 messages. Some actions take lists of parameters. These lists are specified using the param.n notation. Values of n are integers starting from 1. For example, a parameter list with two elements looks like this: &AttributeName.1=first &AttributeName.2=second If you send a batch message to a topic, Amazon SNS publishes the batch message to each endpoint that is subscribed to the topic. The format of the batch message depends on the notification protocol for each subscribed endpoint. When a messageId is returned, the batch message is saved, and Amazon SNS immediately delivers the message to subscribers."
       parameters:
         - name: TopicArn
           in: query
@@ -1386,7 +1362,7 @@ paths:
                 $ref: "#/components/schemas/PublishBatchOutputDisplay"
     post:
       operationId: POST_PublishBatch
-      description: "Publishes up to 10 messages to the specified topic in a single batch. This is a batch version of the Publish API. If you try to send more than 10 messages in a single batch request, you will receive a TooManyEntriesInBatchRequest exception. For FIFO topics, multiple messages within a single batch are published in the order they are sent, and messages are deduplicated within the batch and across batches for five minutes. The result of publishing each message is reported individually in the response. Because the batch request can result in a combination of successful and unsuccessful actions, you should check for batch errors even when the call returns an HTTP status code of 200. The maximum allowed individual message size and the maximum total payload size (the sum of the individual lengths of all of the batched messages) are both 256 KB (262,144 bytes). The PublishBatch API can send up to 10 messages at a time. If you attempt to send more than 10 messages in one request, you will encounter a TooManyEntriesInBatchRequest exception. In such cases, split your messages into multiple requests, each containing no more than 10 messages. Some actions take lists of parameters. These lists are specified using the param.n notation. Values of n are integers starting from 1. For example, a parameter list with two elements looks like this: &AttributeName.1=first &AttributeName.2=second If you send a batch message to a topic, Amazon SNS publishes the batch message to each endpoint that is subscribed to the topic. The format of the batch message depends on the notification protocol for each subscribed endpoint. When a messageId is returned, the batch message is saved, and Amazon SNS immediately delivers the message to subscribers."
+      description: "Publishes up to 10 messages to the specified topic in a single batch. This is a batch version of the Publish API. If you try to send more than 10 messages in a single batch request, you will receive a TooManyEntriesInBatchRequest exception. For FIFO topics, multiple messages within a single batch are published in the order they are sent, and messages are deduplicated within the batch and across batches for five minutes. The result of publishing each message is reported individually in the response. Because the batch request can result in a combination of successful and unsuccessful actions, you should check for batch errors even when the call returns an HTTP status code of 200. By default, the maximum allowed individual message size and the maximum total payload size (the sum of the individual lengths of all of the batched messages) are both 256 KiB (262,144 bytes). To publish larger batches, set the topic's MaximumMessageSize attribute, which supports values up to 1 MiB (1,048,576 bytes). The combined size of all messages in the batch, including each message's body and attributes, must not exceed the topic's MaximumMessageSize. For more information, see Large message payloads in the Amazon SNS Developer Guide. The PublishBatch API can send up to 10 messages at a time. If you attempt to send more than 10 messages in one request, you will encounter a TooManyEntriesInBatchRequest exception. In such cases, split your messages into multiple requests, each containing no more than 10 messages. Some actions take lists of parameters. These lists are specified using the param.n notation. Values of n are integers starting from 1. For example, a parameter list with two elements looks like this: &AttributeName.1=first &AttributeName.2=second If you send a batch message to a topic, Amazon SNS publishes the batch message to each endpoint that is subscribed to the topic. The format of the batch message depends on the notification protocol for each subscribed endpoint. When a messageId is returned, the batch message is saved, and Amazon SNS immediately delivers the message to subscribers."
       responses:
         "200":
           description: Success
@@ -1411,7 +1387,7 @@ paths:
       - $ref: "#/components/parameters/X-Amz-SignedHeaders"
     get:
       operationId: GET_PutDataProtectionPolicy
-      description: Adds or updates an inline policy document that is stored in the specified Amazon SNS topic.
+      description: Amazon SNS message data protection is no longer available to new customers. For more information and guidance on alternatives, see Amazon SNS message data protection availability change. Adds or updates an inline policy document that is stored in the specified Amazon SNS topic.
       parameters:
         - name: ResourceArn
           in: query
@@ -1430,7 +1406,7 @@ paths:
           description: Success
     post:
       operationId: POST_PutDataProtectionPolicy
-      description: Adds or updates an inline policy document that is stored in the specified Amazon SNS topic.
+      description: Amazon SNS message data protection is no longer available to new customers. For more information and guidance on alternatives, see Amazon SNS message data protection availability change. Adds or updates an inline policy document that is stored in the specified Amazon SNS topic.
       responses:
         "200":
           description: Success
@@ -1582,20 +1558,12 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/SetSMSAttributesOutputDisplay"
     post:
       operationId: POST_SetSMSAttributes
       description: Use this request to set the default settings for sending SMS messages and receiving daily SMS usage reports. You can override some of these settings for a single message when you use the Publish action with the MessageAttributes.entry.N parameter. For more information, see Publishing to a mobile phone in the Amazon SNS Developer Guide. To use this operation, you must grant the Amazon SNS service principal (sns.amazonaws.com) permission to perform the s3:ListBucket action.
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/SetSMSAttributesOutputDisplay"
       parameters: []
       requestBody:
         content:
@@ -1670,7 +1638,7 @@ paths:
         - name: AttributeName
           in: query
           required: true
-          description: "A map of attributes with their corresponding values. The following lists the names, descriptions, and values of the special request parameters that the SetTopicAttributes action uses: DeliveryPolicy – The policy that defines how Amazon SNS retries failed deliveries to HTTP/S endpoints. DisplayName – The display name to use for a topic with SMS subscriptions. Policy – The policy that defines who can access your topic. By default, only the topic owner can publish or subscribe to the topic. TracingConfig – Tracing mode of an Amazon SNS topic. By default TracingConfig is set to PassThrough, and the topic passes through the tracing header it receives from an Amazon SNS publisher to its subscriptions. If set to Active, Amazon SNS will vend X-Ray segment data to topic owner account if the sampled flag in the tracing header is true. This is only supported on standard topics. HTTP HTTPSuccessFeedbackRoleArn – Indicates successful message delivery status for an Amazon SNS topic that is subscribed to an HTTP endpoint. HTTPSuccessFeedbackSampleRate – Indicates percentage of successful messages to sample for an Amazon SNS topic that is subscribed to an HTTP endpoint. HTTPFailureFeedbackRoleArn – Indicates failed message delivery status for an Amazon SNS topic that is subscribed to an HTTP endpoint. Amazon Data Firehose FirehoseSuccessFeedbackRoleArn – Indicates successful message delivery status for an Amazon SNS topic that is subscribed to an Amazon Data Firehose endpoint. FirehoseSuccessFeedbackSampleRate – Indicates percentage of successful messages to sample for an Amazon SNS topic that is subscribed to an Amazon Data Firehose endpoint. FirehoseFailureFeedbackRoleArn – Indicates failed message delivery status for an Amazon SNS topic that is subscribed to an Amazon Data Firehose endpoint. Lambda LambdaSuccessFeedbackRoleArn – Indicates successful message delivery status for an Amazon SNS topic that is subscribed to an Lambda endpoint. LambdaSuccessFeedbackSampleRate – Indicates percentage of successful messages to sample for an Amazon SNS topic that is subscribed to an Lambda endpoint. LambdaFailureFeedbackRoleArn – Indicates failed message delivery status for an Amazon SNS topic that is subscribed to an Lambda endpoint. Platform application endpoint ApplicationSuccessFeedbackRoleArn – Indicates successful message delivery status for an Amazon SNS topic that is subscribed to an platform application endpoint. ApplicationSuccessFeedbackSampleRate – Indicates percentage of successful messages to sample for an Amazon SNS topic that is subscribed to an platform application endpoint. ApplicationFailureFeedbackRoleArn – Indicates failed message delivery status for an Amazon SNS topic that is subscribed to an platform application endpoint. In addition to being able to configure topic attributes for message delivery status of notification messages sent to Amazon SNS application endpoints, you can also configure application attributes for the delivery status of push notification messages sent to push notification services. For example, For more information, see Using Amazon SNS Application Attributes for Message Delivery Status. Amazon SQS SQSSuccessFeedbackRoleArn – Indicates successful message delivery status for an Amazon SNS topic that is subscribed to an Amazon SQS endpoint. SQSSuccessFeedbackSampleRate – Indicates percentage of successful messages to sample for an Amazon SNS topic that is subscribed to an Amazon SQS endpoint. SQSFailureFeedbackRoleArn – Indicates failed message delivery status for an Amazon SNS topic that is subscribed to an Amazon SQS endpoint. The `<ENDPOINT>`SuccessFeedbackRoleArn and `<ENDPOINT>`FailureFeedbackRoleArn attributes are used to give Amazon SNS write access to use CloudWatch Logs on your behalf. The `<ENDPOINT>`SuccessFeedbackSampleRate attribute is for specifying the sample rate percentage (0-100) of successfully delivered messages. After you configure the `<ENDPOINT>`FailureFeedbackRoleArn attribute, then all failed message deliveries generate CloudWatch Logs. The following attribute applies only to server-side-encryption: KmsMasterKeyId – The ID of an Amazon Web Services managed customer master key (CMK) for Amazon SNS or a custom CMK. For more information, see Key Terms. For more examples, see KeyId in the Key Management Service API Reference. SignatureVersion – The signature version corresponds to the hashing algorithm used while creating the signature of the notifications, subscription confirmations, or unsubscribe confirmation messages sent by Amazon SNS. By default, SignatureVersion is set to 1. The following attribute applies only to FIFO topics: ArchivePolicy – The policy that sets the retention period for messages stored in the message archive of an Amazon SNS FIFO topic. ContentBasedDeduplication – Enables content-based deduplication for FIFO topics. By default, ContentBasedDeduplication is set to false. If you create a FIFO topic and this attribute is false, you must specify a value for the MessageDeduplicationId parameter for the Publish action. When you set ContentBasedDeduplication to true, Amazon SNS uses a SHA-256 hash to generate the MessageDeduplicationId using the body of the message (but not the attributes of the message). (Optional) To override the generated value, you can specify a value for the MessageDeduplicationId parameter for the Publish action. FifoThroughputScope – Enables higher throughput for your FIFO topic by adjusting the scope of deduplication. This attribute has two possible values: Topic – The scope of message deduplication is across the entire topic. This is the default value and maintains existing behavior, with a maximum throughput of 3000 messages per second or 20MB per second, whichever comes first. MessageGroup – The scope of deduplication is within each individual message group, which enables higher throughput per topic subject to regional quotas. For more information on quotas or to request an increase, see Amazon SNS service quotas in the Amazon Web Services General Reference."
+          description: "A map of attributes with their corresponding values. The following lists the names, descriptions, and values of the special request parameters that the SetTopicAttributes action uses: DeliveryPolicy – The policy that defines how Amazon SNS retries failed deliveries to HTTP/S endpoints. DisplayName – The display name to use for a topic with SMS, email, and email-json subscriptions. For email and email-json subscriptions, the display name is used as the sender name for regular notification messages. Subscription confirmation and unsubscribe confirmation emails always use \"Amazon Web Services Notifications\" as the sender name. MaximumMessageSize – The maximum size, in bytes, of a message that can be published to the topic. Valid values are 1024 to 1048576 (1 MiB). The default is 262144 (256 KiB). A topic with a MaximumMessageSize above 256 KiB must have 100 or fewer subscriptions, and each subscription must be an Amazon SQS, Amazon Data Firehose, or Lambda subscription. You can increase or decrease this value at any time. If the topic doesn't meet these requirements when you set a value above 256 KiB, Amazon SNS returns an InvalidParameter error. For more information, see Large message payloads in the Amazon SNS Developer Guide. Policy – The policy that defines who can access your topic. By default, only the topic owner can publish or subscribe to the topic. TracingConfig – Tracing mode of an Amazon SNS topic. By default TracingConfig is set to PassThrough, and the topic passes through the tracing header it receives from an Amazon SNS publisher to its subscriptions. If set to Active, Amazon SNS will vend X-Ray segment data to topic owner account if the sampled flag in the tracing header is true. This is only supported on standard topics. HTTP HTTPSuccessFeedbackRoleArn – Indicates successful message delivery status for an Amazon SNS topic that is subscribed to an HTTP endpoint. HTTPSuccessFeedbackSampleRate – Indicates percentage of successful messages to sample for an Amazon SNS topic that is subscribed to an HTTP endpoint. HTTPFailureFeedbackRoleArn – Indicates failed message delivery status for an Amazon SNS topic that is subscribed to an HTTP endpoint. Amazon Data Firehose FirehoseSuccessFeedbackRoleArn – Indicates successful message delivery status for an Amazon SNS topic that is subscribed to an Amazon Data Firehose endpoint. FirehoseSuccessFeedbackSampleRate – Indicates percentage of successful messages to sample for an Amazon SNS topic that is subscribed to an Amazon Data Firehose endpoint. FirehoseFailureFeedbackRoleArn – Indicates failed message delivery status for an Amazon SNS topic that is subscribed to an Amazon Data Firehose endpoint. Lambda LambdaSuccessFeedbackRoleArn – Indicates successful message delivery status for an Amazon SNS topic that is subscribed to an Lambda endpoint. LambdaSuccessFeedbackSampleRate – Indicates percentage of successful messages to sample for an Amazon SNS topic that is subscribed to an Lambda endpoint. LambdaFailureFeedbackRoleArn – Indicates failed message delivery status for an Amazon SNS topic that is subscribed to an Lambda endpoint. Platform application endpoint ApplicationSuccessFeedbackRoleArn – Indicates successful message delivery status for an Amazon SNS topic that is subscribed to an platform application endpoint. ApplicationSuccessFeedbackSampleRate – Indicates percentage of successful messages to sample for an Amazon SNS topic that is subscribed to an platform application endpoint. ApplicationFailureFeedbackRoleArn – Indicates failed message delivery status for an Amazon SNS topic that is subscribed to an platform application endpoint. In addition to being able to configure topic attributes for message delivery status of notification messages sent to Amazon SNS application endpoints, you can also configure application attributes for the delivery status of push notification messages sent to push notification services. For example, For more information, see Using Amazon SNS Application Attributes for Message Delivery Status. Amazon SQS SQSSuccessFeedbackRoleArn – Indicates successful message delivery status for an Amazon SNS topic that is subscribed to an Amazon SQS endpoint. SQSSuccessFeedbackSampleRate – Indicates percentage of successful messages to sample for an Amazon SNS topic that is subscribed to an Amazon SQS endpoint. SQSFailureFeedbackRoleArn – Indicates failed message delivery status for an Amazon SNS topic that is subscribed to an Amazon SQS endpoint. The `<ENDPOINT>`SuccessFeedbackRoleArn and `<ENDPOINT>`FailureFeedbackRoleArn attributes are used to give Amazon SNS write access to use CloudWatch Logs on your behalf. The `<ENDPOINT>`SuccessFeedbackSampleRate attribute is for specifying the sample rate percentage (0-100) of successfully delivered messages. After you configure the `<ENDPOINT>`FailureFeedbackRoleArn attribute, then all failed message deliveries generate CloudWatch Logs. The following attribute applies only to server-side-encryption: KmsMasterKeyId – The ID of an Amazon Web Services managed customer master key (CMK) for Amazon SNS or a custom CMK. For more information, see Key Terms. For more examples, see KeyId in the Key Management Service API Reference. SignatureVersion – The signature version corresponds to the hashing algorithm used while creating the signature of the notifications, subscription confirmations, or unsubscribe confirmation messages sent by Amazon SNS. By default, SignatureVersion is set to 1. The following attribute applies only to FIFO topics: ArchivePolicy – The policy that sets the retention period for messages stored in the message archive of an Amazon SNS FIFO topic. ContentBasedDeduplication – Enables content-based deduplication for FIFO topics. By default, ContentBasedDeduplication is set to false. If you create a FIFO topic and this attribute is false, you must specify a value for the MessageDeduplicationId parameter for the Publish action. When you set ContentBasedDeduplication to true, Amazon SNS uses a SHA-256 hash to generate the MessageDeduplicationId using the body of the message (but not the attributes of the message). (Optional) To override the generated value, you can specify a value for the MessageDeduplicationId parameter for the Publish action. FifoThroughputScope – Enables higher throughput for your FIFO topic by adjusting the scope of deduplication. This attribute has two possible values: Topic – The scope of message deduplication is across the entire topic. This is the default value and maintains existing behavior, with a maximum throughput of 3000 messages per second or 20MB per second, whichever comes first. MessageGroup – The scope of deduplication is within each individual message group, which enables higher throughput per topic subject to regional quotas. For more information on quotas or to request an increase, see Amazon SNS service quotas in the Amazon Web Services General Reference."
           schema:
             $ref: "#/components/schemas/attributeName"
         - name: AttributeValue
@@ -1788,20 +1756,12 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/TagResourceOutputDisplay"
     post:
       operationId: POST_TagResource
       description: "Add tags to the specified Amazon SNS topic. For an overview, see Amazon SNS Tags in the Amazon SNS Developer Guide. When you use topic tags, keep the following guidelines in mind: Adding more than 50 tags to a topic isn't recommended. Tags don't have any semantic meaning. Amazon SNS interprets tags as character strings. Tags are case-sensitive. A new tag with a key identical to that of an existing tag overwrites the existing tag. Tagging actions are limited to 10 TPS per Amazon Web Services account, per Amazon Web Services Region. If your application requires a higher throughput, file a technical support request."
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/TagResourceOutputDisplay"
       parameters: []
       requestBody:
         content:
@@ -1870,20 +1830,12 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/UntagResourceOutputDisplay"
     post:
       operationId: POST_UntagResource
       description: Remove tags from the specified Amazon SNS topic. For an overview, see Amazon SNS Tags in the Amazon SNS Developer Guide.
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/UntagResourceOutputDisplay"
       parameters: []
       requestBody:
         content:
@@ -1918,20 +1870,12 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/VerifySMSSandboxPhoneNumberOutputDisplay"
     post:
       operationId: POST_VerifySMSSandboxPhoneNumber
       description: Verifies a destination phone number with a one-time password (OTP) for the calling Amazon Web Services account. When you start using Amazon SNS to send SMS messages, your Amazon Web Services account is in the SMS sandbox. The SMS sandbox provides a safe environment for you to try Amazon SNS features without risking your reputation as an SMS sender. While your Amazon Web Services account is in the SMS sandbox, you can use all of the features of Amazon SNS. However, you can send SMS messages only to verified destination phone numbers. For more information, including how to move out of the sandbox to send messages without restrictions, see SMS sandbox in the Amazon SNS Developer Guide.
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/VerifySMSSandboxPhoneNumberOutputDisplay"
       parameters: []
       requestBody:
         content:
@@ -2166,16 +2110,6 @@ components:
         - kr-KR
         - zh-CN
         - zh-TW
-    CreateSMSSandboxPhoneNumberResultDisplay:
-      type: object
-      properties: {}
-    CreateSMSSandboxPhoneNumberOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: "#/components/schemas/CreateSMSSandboxPhoneNumberResultDisplay"
     CreateSMSSandboxPhoneNumberInput:
       type: object
       properties:
@@ -2242,13 +2176,13 @@ components:
         Attributes:
           type: object
           properties: {}
-          description: "A map of attributes with their corresponding values. The following lists names, descriptions, and values of the special request parameters that the CreateTopic action uses: DeliveryPolicy – The policy that defines how Amazon SNS retries failed deliveries to HTTP/S endpoints. DisplayName – The display name to use for a topic with SMS subscriptions. Policy – The policy that defines who can access your topic. By default, only the topic owner can publish or subscribe to the topic. TracingConfig – Tracing mode of an Amazon SNS topic. By default TracingConfig is set to PassThrough, and the topic passes through the tracing header it receives from an Amazon SNS publisher to its subscriptions. If set to Active, Amazon SNS will vend X-Ray segment data to topic owner account if the sampled flag in the tracing header is true. This is only supported on standard topics. HTTP HTTPSuccessFeedbackRoleArn – Indicates successful message delivery status for an Amazon SNS topic that is subscribed to an HTTP endpoint. HTTPSuccessFeedbackSampleRate – Indicates percentage of successful messages to sample for an Amazon SNS topic that is subscribed to an HTTP endpoint. HTTPFailureFeedbackRoleArn – Indicates failed message delivery status for an Amazon SNS topic that is subscribed to an HTTP endpoint. Amazon Data Firehose FirehoseSuccessFeedbackRoleArn – Indicates successful message delivery status for an Amazon SNS topic that is subscribed to an Amazon Data Firehose endpoint. FirehoseSuccessFeedbackSampleRate – Indicates percentage of successful messages to sample for an Amazon SNS topic that is subscribed to an Amazon Data Firehose endpoint. FirehoseFailureFeedbackRoleArn – Indicates failed message delivery status for an Amazon SNS topic that is subscribed to an Amazon Data Firehose endpoint. Lambda LambdaSuccessFeedbackRoleArn – Indicates successful message delivery status for an Amazon SNS topic that is subscribed to an Lambda endpoint. LambdaSuccessFeedbackSampleRate – Indicates percentage of successful messages to sample for an Amazon SNS topic that is subscribed to an Lambda endpoint. LambdaFailureFeedbackRoleArn – Indicates failed message delivery status for an Amazon SNS topic that is subscribed to an Lambda endpoint. Platform application endpoint ApplicationSuccessFeedbackRoleArn – Indicates successful message delivery status for an Amazon SNS topic that is subscribed to a platform application endpoint. ApplicationSuccessFeedbackSampleRate – Indicates percentage of successful messages to sample for an Amazon SNS topic that is subscribed to an platform application endpoint. ApplicationFailureFeedbackRoleArn – Indicates failed message delivery status for an Amazon SNS topic that is subscribed to an platform application endpoint. In addition to being able to configure topic attributes for message delivery status of notification messages sent to Amazon SNS application endpoints, you can also configure application attributes for the delivery status of push notification messages sent to push notification services. For example, For more information, see Using Amazon SNS Application Attributes for Message Delivery Status. Amazon SQS SQSSuccessFeedbackRoleArn – Indicates successful message delivery status for an Amazon SNS topic that is subscribed to an Amazon SQS endpoint. SQSSuccessFeedbackSampleRate – Indicates percentage of successful messages to sample for an Amazon SNS topic that is subscribed to an Amazon SQS endpoint. SQSFailureFeedbackRoleArn – Indicates failed message delivery status for an Amazon SNS topic that is subscribed to an Amazon SQS endpoint. The `<ENDPOINT>`SuccessFeedbackRoleArn and `<ENDPOINT>`FailureFeedbackRoleArn attributes are used to give Amazon SNS write access to use CloudWatch Logs on your behalf. The `<ENDPOINT>`SuccessFeedbackSampleRate attribute is for specifying the sample rate percentage (0-100) of successfully delivered messages. After you configure the `<ENDPOINT>`FailureFeedbackRoleArn attribute, then all failed message deliveries generate CloudWatch Logs. The following attribute applies only to server-side encryption: KmsMasterKeyId – The ID of an Amazon Web Services managed customer master key (CMK) for Amazon SNS or a custom CMK. For more information, see Key Terms. For more examples, see KeyId in the Key Management Service API Reference. The following attributes apply only to FIFO topics: ArchivePolicy – The policy that sets the retention period for messages stored in the message archive of an Amazon SNS FIFO topic. ContentBasedDeduplication – Enables content-based deduplication for FIFO topics. By default, ContentBasedDeduplication is set to false. If you create a FIFO topic and this attribute is false, you must specify a value for the MessageDeduplicationId parameter for the Publish action. When you set ContentBasedDeduplication to true, Amazon SNS uses a SHA-256 hash to generate the MessageDeduplicationId using the body of the message (but not the attributes of the message). (Optional) To override the generated value, you can specify a value for the MessageDeduplicationId parameter for the Publish action. FifoThroughputScope – Enables higher throughput for your FIFO topic by adjusting the scope of deduplication. This attribute has two possible values: Topic – The scope of message deduplication is across the entire topic. This is the default value and maintains existing behavior, with a maximum throughput of 3000 messages per second or 20MB per second, whichever comes first. MessageGroup – The scope of deduplication is within each individual message group, which enables higher throughput per topic subject to regional quotas. For more information on quotas or to request an increase, see Amazon SNS service quotas in the Amazon Web Services General Reference."
+          description: 'A map of attributes with their corresponding values. The following lists names, descriptions, and values of the special request parameters that the CreateTopic action uses: DeliveryPolicy – The policy that defines how Amazon SNS retries failed deliveries to HTTP/S endpoints. DisplayName – The display name to use for a topic with SMS, email, and email-json subscriptions. For email and email-json subscriptions, the display name is used as the sender name for regular notification messages. Subscription confirmation and unsubscribe confirmation emails always use "Amazon Web Services Notifications" as the sender name. MaximumMessageSize – The maximum size, in bytes, of a message that can be published to the topic. Valid values are 1024 to 1048576 (1 MiB). The default is 262144 (256 KiB). A topic with a MaximumMessageSize above 256 KiB must have 100 or fewer subscriptions, and each subscription must be an Amazon SQS, Amazon Data Firehose, or Lambda subscription. Policy – The policy that defines who can access your topic. By default, only the topic owner can publish or subscribe to the topic. TracingConfig – Tracing mode of an Amazon SNS topic. By default TracingConfig is set to PassThrough, and the topic passes through the tracing header it receives from an Amazon SNS publisher to its subscriptions. If set to Active, Amazon SNS will vend X-Ray segment data to topic owner account if the sampled flag in the tracing header is true. This is only supported on standard topics. HTTP HTTPSuccessFeedbackRoleArn – Indicates successful message delivery status for an Amazon SNS topic that is subscribed to an HTTP endpoint. HTTPSuccessFeedbackSampleRate – Indicates percentage of successful messages to sample for an Amazon SNS topic that is subscribed to an HTTP endpoint. HTTPFailureFeedbackRoleArn – Indicates failed message delivery status for an Amazon SNS topic that is subscribed to an HTTP endpoint. Amazon Data Firehose FirehoseSuccessFeedbackRoleArn – Indicates successful message delivery status for an Amazon SNS topic that is subscribed to an Amazon Data Firehose endpoint. FirehoseSuccessFeedbackSampleRate – Indicates percentage of successful messages to sample for an Amazon SNS topic that is subscribed to an Amazon Data Firehose endpoint. FirehoseFailureFeedbackRoleArn – Indicates failed message delivery status for an Amazon SNS topic that is subscribed to an Amazon Data Firehose endpoint. Lambda LambdaSuccessFeedbackRoleArn – Indicates successful message delivery status for an Amazon SNS topic that is subscribed to an Lambda endpoint. LambdaSuccessFeedbackSampleRate – Indicates percentage of successful messages to sample for an Amazon SNS topic that is subscribed to an Lambda endpoint. LambdaFailureFeedbackRoleArn – Indicates failed message delivery status for an Amazon SNS topic that is subscribed to an Lambda endpoint. Platform application endpoint ApplicationSuccessFeedbackRoleArn – Indicates successful message delivery status for an Amazon SNS topic that is subscribed to a platform application endpoint. ApplicationSuccessFeedbackSampleRate – Indicates percentage of successful messages to sample for an Amazon SNS topic that is subscribed to an platform application endpoint. ApplicationFailureFeedbackRoleArn – Indicates failed message delivery status for an Amazon SNS topic that is subscribed to an platform application endpoint. In addition to being able to configure topic attributes for message delivery status of notification messages sent to Amazon SNS application endpoints, you can also configure application attributes for the delivery status of push notification messages sent to push notification services. For example, For more information, see Using Amazon SNS Application Attributes for Message Delivery Status. Amazon SQS SQSSuccessFeedbackRoleArn – Indicates successful message delivery status for an Amazon SNS topic that is subscribed to an Amazon SQS endpoint. SQSSuccessFeedbackSampleRate – Indicates percentage of successful messages to sample for an Amazon SNS topic that is subscribed to an Amazon SQS endpoint. SQSFailureFeedbackRoleArn – Indicates failed message delivery status for an Amazon SNS topic that is subscribed to an Amazon SQS endpoint. The `<ENDPOINT>`SuccessFeedbackRoleArn and `<ENDPOINT>`FailureFeedbackRoleArn attributes are used to give Amazon SNS write access to use CloudWatch Logs on your behalf. The `<ENDPOINT>`SuccessFeedbackSampleRate attribute is for specifying the sample rate percentage (0-100) of successfully delivered messages. After you configure the `<ENDPOINT>`FailureFeedbackRoleArn attribute, then all failed message deliveries generate CloudWatch Logs. The following attribute applies only to server-side encryption: KmsMasterKeyId – The ID of an Amazon Web Services managed customer master key (CMK) for Amazon SNS or a custom CMK. For more information, see Key Terms. For more examples, see KeyId in the Key Management Service API Reference. The following attributes apply only to FIFO topics: ArchivePolicy – The policy that sets the retention period for messages stored in the message archive of an Amazon SNS FIFO topic. ContentBasedDeduplication – Enables content-based deduplication for FIFO topics. By default, ContentBasedDeduplication is set to false. If you create a FIFO topic and this attribute is false, you must specify a value for the MessageDeduplicationId parameter for the Publish action. When you set ContentBasedDeduplication to true, Amazon SNS uses a SHA-256 hash to generate the MessageDeduplicationId using the body of the message (but not the attributes of the message). (Optional) To override the generated value, you can specify a value for the MessageDeduplicationId parameter for the Publish action. FifoThroughputScope – Enables higher throughput for your FIFO topic by adjusting the scope of deduplication. This attribute has two possible values: Topic – The scope of message deduplication is across the entire topic. This is the default value and maintains existing behavior, with a maximum throughput of 3000 messages per second or 20MB per second, whichever comes first. MessageGroup – The scope of deduplication is within each individual message group, which enables higher throughput per topic subject to regional quotas. For more information on quotas or to request an increase, see Amazon SNS service quotas in the Amazon Web Services General Reference.'
         Tags:
           $ref: "#/components/schemas/TagList"
           description: The list of tags to add to a new topic. To be able to tag a topic on creation, you must have the sns:CreateTopic and sns:TagResource permissions.
         DataProtectionPolicy:
           $ref: "#/components/schemas/attributeValue"
-          description: "The body of the policy document you want to use for this topic. You can only add one policy per topic. The policy must be in JSON string format. Length Constraints: Maximum length of 30,720."
+          description: "Amazon SNS message data protection is no longer available to new customers. For more information and guidance on alternatives, see Amazon SNS message data protection availability change. The body of the policy document you want to use for this topic. You can only add one policy per topic. The policy must be in JSON string format. Length Constraints: Maximum length of 30,720."
       required:
         - Name
     DeleteEndpointInput:
@@ -2269,16 +2203,6 @@ components:
           description: PlatformApplicationArn of platform application object to delete.
       required:
         - PlatformApplicationArn
-    DeleteSMSSandboxPhoneNumberResultDisplay:
-      type: object
-      properties: {}
-    DeleteSMSSandboxPhoneNumberOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: "#/components/schemas/DeleteSMSSandboxPhoneNumberResultDisplay"
     DeleteSMSSandboxPhoneNumberInput:
       type: object
       properties:
@@ -2428,7 +2352,7 @@ components:
       properties:
         Attributes:
           type: string
-          description: "A map of the topic's attributes. Attributes in this map include the following: DeliveryPolicy – The JSON serialization of the topic's delivery policy. DisplayName – The human-readable name used in the From field for notifications to email and email-json endpoints. EffectiveDeliveryPolicy – The JSON serialization of the effective delivery policy, taking system defaults into account. Owner – The Amazon Web Services account ID of the topic's owner. Policy – The JSON serialization of the topic's access control policy. SignatureVersion – The signature version corresponds to the hashing algorithm used while creating the signature of the notifications, subscription confirmations, or unsubscribe confirmation messages sent by Amazon SNS. By default, SignatureVersion is set to 1. The signature is a Base64-encoded SHA1withRSA signature. When you set SignatureVersion to 2. Amazon SNS uses a Base64-encoded SHA256withRSA signature. If the API response does not include the SignatureVersion attribute, it means that the SignatureVersion for the topic has value 1. SubscriptionsConfirmed – The number of confirmed subscriptions for the topic. SubscriptionsDeleted – The number of deleted subscriptions for the topic. SubscriptionsPending – The number of subscriptions pending confirmation for the topic. TopicArn – The topic's ARN. TracingConfig – Tracing mode of an Amazon SNS topic. By default TracingConfig is set to PassThrough, and the topic passes through the tracing header it receives from an Amazon SNS publisher to its subscriptions. If set to Active, Amazon SNS will vend X-Ray segment data to topic owner account if the sampled flag in the tracing header is true. This is only supported on standard topics. The following attribute applies only to server-side-encryption: KmsMasterKeyId - The ID of an Amazon Web Services managed customer master key (CMK) for Amazon SNS or a custom CMK. For more information, see Key Terms. For more examples, see KeyId in the Key Management Service API Reference. The following attributes apply only to FIFO topics: ArchivePolicy – The policy that sets the retention period for messages stored in the message archive of an Amazon SNS FIFO topic. BeginningArchiveTime – The earliest starting point at which a message in the topic’s archive can be replayed from. This point in time is based on the configured message retention period set by the topic’s message archiving policy. ContentBasedDeduplication – Enables content-based deduplication for FIFO topics. By default, ContentBasedDeduplication is set to false. If you create a FIFO topic and this attribute is false, you must specify a value for the MessageDeduplicationId parameter for the Publish action. When you set ContentBasedDeduplication to true, Amazon SNS uses a SHA-256 hash to generate the MessageDeduplicationId using the body of the message (but not the attributes of the message). (Optional) To override the generated value, you can specify a value for the MessageDeduplicationId parameter for the Publish action. FifoTopic – When this is set to true, a FIFO topic is created."
+          description: "A map of the topic's attributes. Attributes in this map include the following: DeliveryPolicy – The JSON serialization of the topic's delivery policy. DisplayName – The human-readable name used in the From field for notifications to email and email-json endpoints. For subscription confirmation and unsubscribe confirmation emails, the sender name is always \"Amazon Web Services Notifications\" regardless of this attribute. EffectiveDeliveryPolicy – The JSON serialization of the effective delivery policy, taking system defaults into account. MaximumMessageSize – The maximum size, in bytes, of a message that can be published to the topic. Amazon SNS returns this attribute only if you explicitly set it. If Amazon SNS doesn't return it, the topic uses the default of 262144 (256 KiB). Owner – The Amazon Web Services account ID of the topic's owner. Policy – The JSON serialization of the topic's access control policy. SignatureVersion – The signature version corresponds to the hashing algorithm used while creating the signature of the notifications, subscription confirmations, or unsubscribe confirmation messages sent by Amazon SNS. By default, SignatureVersion is set to 1. The signature is a Base64-encoded SHA1withRSA signature. When you set SignatureVersion to 2. Amazon SNS uses a Base64-encoded SHA256withRSA signature. If the API response does not include the SignatureVersion attribute, it means that the SignatureVersion for the topic has value 1. SubscriptionsConfirmed – The number of confirmed subscriptions for the topic. SubscriptionsDeleted – The number of deleted subscriptions for the topic. SubscriptionsPending – The number of subscriptions pending confirmation for the topic. TopicArn – The topic's ARN. TracingConfig – Tracing mode of an Amazon SNS topic. By default TracingConfig is set to PassThrough, and the topic passes through the tracing header it receives from an Amazon SNS publisher to its subscriptions. If set to Active, Amazon SNS will vend X-Ray segment data to topic owner account if the sampled flag in the tracing header is true. This is only supported on standard topics. The following attribute applies only to server-side-encryption: KmsMasterKeyId - The ID of an Amazon Web Services managed customer master key (CMK) for Amazon SNS or a custom CMK. For more information, see Key Terms. For more examples, see KeyId in the Key Management Service API Reference. The following attributes apply only to FIFO topics: ArchivePolicy – The policy that sets the retention period for messages stored in the message archive of an Amazon SNS FIFO topic. BeginningArchiveTime – The earliest starting point at which a message in the topic’s archive can be replayed from. This point in time is based on the configured message retention period set by the topic’s message archiving policy. ContentBasedDeduplication – Enables content-based deduplication for FIFO topics. By default, ContentBasedDeduplication is set to false. If you create a FIFO topic and this attribute is false, you must specify a value for the MessageDeduplicationId parameter for the Publish action. When you set ContentBasedDeduplication to true, Amazon SNS uses a SHA-256 hash to generate the MessageDeduplicationId using the body of the message (but not the attributes of the message). (Optional) To override the generated value, you can specify a value for the MessageDeduplicationId parameter for the Publish action. FifoTopic – When this is set to true, a FIFO topic is created."
     GetTopicAttributesOutputDisplay:
       type: object
       properties:
@@ -2691,16 +2615,6 @@ components:
         NextToken:
           $ref: "#/components/schemas/nextToken"
           description: Token returned by the previous ListTopics request.
-    OptInPhoneNumberResponseDisplay:
-      type: object
-      properties: {}
-    OptInPhoneNumberOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: "#/components/schemas/OptInPhoneNumberResponseDisplay"
     OptInPhoneNumberInput:
       description: Input for the OptInPhoneNumber action.
       type: object
@@ -2750,7 +2664,7 @@ components:
           description: The phone number to which you want to deliver an SMS message. Use E.164 format. If you don't specify a value for the PhoneNumber parameter, you must specify a value for the TargetArn or TopicArn parameters.
         Message:
           $ref: "#/components/schemas/message"
-          description: "The message you want to send. If you are publishing to a topic and you want to send the same message to all transport protocols, include the text of the message as a String value. If you want to send different messages for each transport protocol, set the value of the MessageStructure parameter to json and use a JSON object for the Message parameter. Constraints: With the exception of SMS, messages must be UTF-8 encoded strings and at most 256 KB in size (262,144 bytes, not 262,144 characters). For SMS, each message can contain up to 140 characters. This character limit depends on the encoding schema. For example, an SMS message can contain 160 GSM characters, 140 ASCII characters, or 70 UCS-2 characters. If you publish a message that exceeds this size limit, Amazon SNS sends the message as multiple messages, each fitting within the size limit. Messages aren't truncated mid-word but are cut off at whole-word boundaries. The total size limit for a single SMS Publish action is 1,600 characters. JSON-specific constraints: Keys in the JSON object that correspond to supported transport protocols must have simple JSON string values. The values will be parsed (unescaped) before they are used in outgoing messages. Outbound notifications are JSON encoded (meaning that the characters will be reescaped for sending). Values have a minimum length of 0 (the empty string, \"\", is allowed). Values have a maximum length bounded by the overall message size (so, including multiple protocols may limit message sizes). Non-string values will cause the key to be ignored. Keys that do not correspond to supported transport protocols are ignored. Duplicate keys are not allowed. Failure to parse or validate any key or value in the message will cause the Publish call to return an error (no partial delivery)."
+          description: "The message you want to send. If you are publishing to a topic and you want to send the same message to all transport protocols, include the text of the message as a String value. If you want to send different messages for each transport protocol, set the value of the MessageStructure parameter to json and use a JSON object for the Message parameter. Constraints: With the exception of SMS, messages must be UTF-8 encoded strings. By default, a message can be at most 256 KiB in size (262,144 bytes, not 262,144 characters). When you publish to a topic, the maximum size is determined by the topic's MaximumMessageSize attribute, which supports values up to 1 MiB (1,048,576 bytes). Amazon SNS validates the combined size of the message body and message attributes against this value and returns an InvalidParameter error if the limit is exceeded. For more information, see Large message payloads in the Amazon SNS Developer Guide. For SMS, each message can contain up to 140 characters. This character limit depends on the encoding schema. For example, an SMS message can contain 160 GSM characters, 140 ASCII characters, or 70 UCS-2 characters. If you publish a message that exceeds this size limit, Amazon SNS sends the message as multiple messages, each fitting within the size limit. Messages aren't truncated mid-word but are cut off at whole-word boundaries. The total size limit for a single SMS Publish action is 1,600 characters. JSON-specific constraints: Keys in the JSON object that correspond to supported transport protocols must have simple JSON string values. The values will be parsed (unescaped) before they are used in outgoing messages. Outbound notifications are JSON encoded (meaning that the characters will be reescaped for sending). Values have a minimum length of 0 (the empty string, \"\", is allowed). Values have a maximum length bounded by the overall message size (so, including multiple protocols may limit message sizes). Non-string values will cause the key to be ignored. Keys that do not correspond to supported transport protocols are ignored. Duplicate keys are not allowed. Failure to parse or validate any key or value in the message will cause the Publish call to return an error (no partial delivery)."
         Subject:
           $ref: "#/components/schemas/subject"
           description: 'Optional parameter to be used as the "Subject" line when the message is delivered to email endpoints. This field will also be included, if present, in the standard JSON messages delivered to other endpoints. Constraints: Subjects must be UTF-8 text with no line breaks or control characters, and less than 100 characters long.'
@@ -2883,16 +2797,6 @@ components:
       required:
         - PlatformApplicationArn
         - Attributes
-    SetSMSAttributesResponseDisplay:
-      type: object
-      properties: {}
-    SetSMSAttributesOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: "#/components/schemas/SetSMSAttributesResponseDisplay"
     SetSMSAttributesInput:
       description: The input for the SetSMSAttributes action.
       type: object
@@ -2930,7 +2834,7 @@ components:
           description: The ARN of the topic to modify.
         AttributeName:
           $ref: "#/components/schemas/attributeName"
-          description: "A map of attributes with their corresponding values. The following lists the names, descriptions, and values of the special request parameters that the SetTopicAttributes action uses: DeliveryPolicy – The policy that defines how Amazon SNS retries failed deliveries to HTTP/S endpoints. DisplayName – The display name to use for a topic with SMS subscriptions. Policy – The policy that defines who can access your topic. By default, only the topic owner can publish or subscribe to the topic. TracingConfig – Tracing mode of an Amazon SNS topic. By default TracingConfig is set to PassThrough, and the topic passes through the tracing header it receives from an Amazon SNS publisher to its subscriptions. If set to Active, Amazon SNS will vend X-Ray segment data to topic owner account if the sampled flag in the tracing header is true. This is only supported on standard topics. HTTP HTTPSuccessFeedbackRoleArn – Indicates successful message delivery status for an Amazon SNS topic that is subscribed to an HTTP endpoint. HTTPSuccessFeedbackSampleRate – Indicates percentage of successful messages to sample for an Amazon SNS topic that is subscribed to an HTTP endpoint. HTTPFailureFeedbackRoleArn – Indicates failed message delivery status for an Amazon SNS topic that is subscribed to an HTTP endpoint. Amazon Data Firehose FirehoseSuccessFeedbackRoleArn – Indicates successful message delivery status for an Amazon SNS topic that is subscribed to an Amazon Data Firehose endpoint. FirehoseSuccessFeedbackSampleRate – Indicates percentage of successful messages to sample for an Amazon SNS topic that is subscribed to an Amazon Data Firehose endpoint. FirehoseFailureFeedbackRoleArn – Indicates failed message delivery status for an Amazon SNS topic that is subscribed to an Amazon Data Firehose endpoint. Lambda LambdaSuccessFeedbackRoleArn – Indicates successful message delivery status for an Amazon SNS topic that is subscribed to an Lambda endpoint. LambdaSuccessFeedbackSampleRate – Indicates percentage of successful messages to sample for an Amazon SNS topic that is subscribed to an Lambda endpoint. LambdaFailureFeedbackRoleArn – Indicates failed message delivery status for an Amazon SNS topic that is subscribed to an Lambda endpoint. Platform application endpoint ApplicationSuccessFeedbackRoleArn – Indicates successful message delivery status for an Amazon SNS topic that is subscribed to an platform application endpoint. ApplicationSuccessFeedbackSampleRate – Indicates percentage of successful messages to sample for an Amazon SNS topic that is subscribed to an platform application endpoint. ApplicationFailureFeedbackRoleArn – Indicates failed message delivery status for an Amazon SNS topic that is subscribed to an platform application endpoint. In addition to being able to configure topic attributes for message delivery status of notification messages sent to Amazon SNS application endpoints, you can also configure application attributes for the delivery status of push notification messages sent to push notification services. For example, For more information, see Using Amazon SNS Application Attributes for Message Delivery Status. Amazon SQS SQSSuccessFeedbackRoleArn – Indicates successful message delivery status for an Amazon SNS topic that is subscribed to an Amazon SQS endpoint. SQSSuccessFeedbackSampleRate – Indicates percentage of successful messages to sample for an Amazon SNS topic that is subscribed to an Amazon SQS endpoint. SQSFailureFeedbackRoleArn – Indicates failed message delivery status for an Amazon SNS topic that is subscribed to an Amazon SQS endpoint. The `<ENDPOINT>`SuccessFeedbackRoleArn and `<ENDPOINT>`FailureFeedbackRoleArn attributes are used to give Amazon SNS write access to use CloudWatch Logs on your behalf. The `<ENDPOINT>`SuccessFeedbackSampleRate attribute is for specifying the sample rate percentage (0-100) of successfully delivered messages. After you configure the `<ENDPOINT>`FailureFeedbackRoleArn attribute, then all failed message deliveries generate CloudWatch Logs. The following attribute applies only to server-side-encryption: KmsMasterKeyId – The ID of an Amazon Web Services managed customer master key (CMK) for Amazon SNS or a custom CMK. For more information, see Key Terms. For more examples, see KeyId in the Key Management Service API Reference. SignatureVersion – The signature version corresponds to the hashing algorithm used while creating the signature of the notifications, subscription confirmations, or unsubscribe confirmation messages sent by Amazon SNS. By default, SignatureVersion is set to 1. The following attribute applies only to FIFO topics: ArchivePolicy – The policy that sets the retention period for messages stored in the message archive of an Amazon SNS FIFO topic. ContentBasedDeduplication – Enables content-based deduplication for FIFO topics. By default, ContentBasedDeduplication is set to false. If you create a FIFO topic and this attribute is false, you must specify a value for the MessageDeduplicationId parameter for the Publish action. When you set ContentBasedDeduplication to true, Amazon SNS uses a SHA-256 hash to generate the MessageDeduplicationId using the body of the message (but not the attributes of the message). (Optional) To override the generated value, you can specify a value for the MessageDeduplicationId parameter for the Publish action. FifoThroughputScope – Enables higher throughput for your FIFO topic by adjusting the scope of deduplication. This attribute has two possible values: Topic – The scope of message deduplication is across the entire topic. This is the default value and maintains existing behavior, with a maximum throughput of 3000 messages per second or 20MB per second, whichever comes first. MessageGroup – The scope of deduplication is within each individual message group, which enables higher throughput per topic subject to regional quotas. For more information on quotas or to request an increase, see Amazon SNS service quotas in the Amazon Web Services General Reference."
+          description: "A map of attributes with their corresponding values. The following lists the names, descriptions, and values of the special request parameters that the SetTopicAttributes action uses: DeliveryPolicy – The policy that defines how Amazon SNS retries failed deliveries to HTTP/S endpoints. DisplayName – The display name to use for a topic with SMS, email, and email-json subscriptions. For email and email-json subscriptions, the display name is used as the sender name for regular notification messages. Subscription confirmation and unsubscribe confirmation emails always use \"Amazon Web Services Notifications\" as the sender name. MaximumMessageSize – The maximum size, in bytes, of a message that can be published to the topic. Valid values are 1024 to 1048576 (1 MiB). The default is 262144 (256 KiB). A topic with a MaximumMessageSize above 256 KiB must have 100 or fewer subscriptions, and each subscription must be an Amazon SQS, Amazon Data Firehose, or Lambda subscription. You can increase or decrease this value at any time. If the topic doesn't meet these requirements when you set a value above 256 KiB, Amazon SNS returns an InvalidParameter error. For more information, see Large message payloads in the Amazon SNS Developer Guide. Policy – The policy that defines who can access your topic. By default, only the topic owner can publish or subscribe to the topic. TracingConfig – Tracing mode of an Amazon SNS topic. By default TracingConfig is set to PassThrough, and the topic passes through the tracing header it receives from an Amazon SNS publisher to its subscriptions. If set to Active, Amazon SNS will vend X-Ray segment data to topic owner account if the sampled flag in the tracing header is true. This is only supported on standard topics. HTTP HTTPSuccessFeedbackRoleArn – Indicates successful message delivery status for an Amazon SNS topic that is subscribed to an HTTP endpoint. HTTPSuccessFeedbackSampleRate – Indicates percentage of successful messages to sample for an Amazon SNS topic that is subscribed to an HTTP endpoint. HTTPFailureFeedbackRoleArn – Indicates failed message delivery status for an Amazon SNS topic that is subscribed to an HTTP endpoint. Amazon Data Firehose FirehoseSuccessFeedbackRoleArn – Indicates successful message delivery status for an Amazon SNS topic that is subscribed to an Amazon Data Firehose endpoint. FirehoseSuccessFeedbackSampleRate – Indicates percentage of successful messages to sample for an Amazon SNS topic that is subscribed to an Amazon Data Firehose endpoint. FirehoseFailureFeedbackRoleArn – Indicates failed message delivery status for an Amazon SNS topic that is subscribed to an Amazon Data Firehose endpoint. Lambda LambdaSuccessFeedbackRoleArn – Indicates successful message delivery status for an Amazon SNS topic that is subscribed to an Lambda endpoint. LambdaSuccessFeedbackSampleRate – Indicates percentage of successful messages to sample for an Amazon SNS topic that is subscribed to an Lambda endpoint. LambdaFailureFeedbackRoleArn – Indicates failed message delivery status for an Amazon SNS topic that is subscribed to an Lambda endpoint. Platform application endpoint ApplicationSuccessFeedbackRoleArn – Indicates successful message delivery status for an Amazon SNS topic that is subscribed to an platform application endpoint. ApplicationSuccessFeedbackSampleRate – Indicates percentage of successful messages to sample for an Amazon SNS topic that is subscribed to an platform application endpoint. ApplicationFailureFeedbackRoleArn – Indicates failed message delivery status for an Amazon SNS topic that is subscribed to an platform application endpoint. In addition to being able to configure topic attributes for message delivery status of notification messages sent to Amazon SNS application endpoints, you can also configure application attributes for the delivery status of push notification messages sent to push notification services. For example, For more information, see Using Amazon SNS Application Attributes for Message Delivery Status. Amazon SQS SQSSuccessFeedbackRoleArn – Indicates successful message delivery status for an Amazon SNS topic that is subscribed to an Amazon SQS endpoint. SQSSuccessFeedbackSampleRate – Indicates percentage of successful messages to sample for an Amazon SNS topic that is subscribed to an Amazon SQS endpoint. SQSFailureFeedbackRoleArn – Indicates failed message delivery status for an Amazon SNS topic that is subscribed to an Amazon SQS endpoint. The `<ENDPOINT>`SuccessFeedbackRoleArn and `<ENDPOINT>`FailureFeedbackRoleArn attributes are used to give Amazon SNS write access to use CloudWatch Logs on your behalf. The `<ENDPOINT>`SuccessFeedbackSampleRate attribute is for specifying the sample rate percentage (0-100) of successfully delivered messages. After you configure the `<ENDPOINT>`FailureFeedbackRoleArn attribute, then all failed message deliveries generate CloudWatch Logs. The following attribute applies only to server-side-encryption: KmsMasterKeyId – The ID of an Amazon Web Services managed customer master key (CMK) for Amazon SNS or a custom CMK. For more information, see Key Terms. For more examples, see KeyId in the Key Management Service API Reference. SignatureVersion – The signature version corresponds to the hashing algorithm used while creating the signature of the notifications, subscription confirmations, or unsubscribe confirmation messages sent by Amazon SNS. By default, SignatureVersion is set to 1. The following attribute applies only to FIFO topics: ArchivePolicy – The policy that sets the retention period for messages stored in the message archive of an Amazon SNS FIFO topic. ContentBasedDeduplication – Enables content-based deduplication for FIFO topics. By default, ContentBasedDeduplication is set to false. If you create a FIFO topic and this attribute is false, you must specify a value for the MessageDeduplicationId parameter for the Publish action. When you set ContentBasedDeduplication to true, Amazon SNS uses a SHA-256 hash to generate the MessageDeduplicationId using the body of the message (but not the attributes of the message). (Optional) To override the generated value, you can specify a value for the MessageDeduplicationId parameter for the Publish action. FifoThroughputScope – Enables higher throughput for your FIFO topic by adjusting the scope of deduplication. This attribute has two possible values: Topic – The scope of message deduplication is across the entire topic. This is the default value and maintains existing behavior, with a maximum throughput of 3000 messages per second or 20MB per second, whichever comes first. MessageGroup – The scope of deduplication is within each individual message group, which enables higher throughput per topic subject to regional quotas. For more information on quotas or to request an increase, see Amazon SNS service quotas in the Amazon Web Services General Reference."
         AttributeValue:
           $ref: "#/components/schemas/attributeValue"
           description: The new value for the attribute.
@@ -2982,16 +2886,6 @@ components:
       required:
         - TopicArn
         - Protocol
-    TagResourceResponseDisplay:
-      type: object
-      properties: {}
-    TagResourceOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: "#/components/schemas/TagResourceResponseDisplay"
     TagResourceRequest:
       type: object
       properties:
@@ -3017,16 +2911,6 @@ components:
       type: array
       items:
         $ref: "#/components/schemas/TagKey"
-    UntagResourceResponseDisplay:
-      type: object
-      properties: {}
-    UntagResourceOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: "#/components/schemas/UntagResourceResponseDisplay"
     UntagResourceRequest:
       type: object
       properties:
@@ -3045,16 +2929,6 @@ components:
       minLength: 5
       maxLength: 8
       pattern: ^[0-9]+$
-    VerifySMSSandboxPhoneNumberResultDisplay:
-      type: object
-      properties: {}
-    VerifySMSSandboxPhoneNumberOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: "#/components/schemas/VerifySMSSandboxPhoneNumberResultDisplay"
     VerifySMSSandboxPhoneNumberInput:
       type: object
       properties:
@@ -3208,6 +3082,43 @@ components:
           - $ref: "#/components/x-stackQL-resources/topics/methods/remove_permission"
         delete:
           - $ref: "#/components/x-stackQL-resources/topics/methods/delete_topic"
+    phone_numbers:
+      id: aws.sns.phone_numbers
+      name: phone_numbers
+      title: phone_numbers
+      methods:
+        check_if_phone_number_is_opted_out:
+          operation:
+            $ref: "#/paths/~1?Action=CheckIfPhoneNumberIsOptedOut&Version=2010-03-31/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/CheckIfPhoneNumberIsOptedOutOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        opt_in_phone_number:
+          operation:
+            $ref: "#/paths/~1?Action=OptInPhoneNumber&Version=2010-03-31/get"
+          response:
+            openAPIDocKey: "200"
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
     platform_applications:
       id: aws.sns.platform_applications
       name: platform_applications
@@ -3301,13 +3212,6 @@ components:
             $ref: "#/paths/~1?Action=CreateSMSSandboxPhoneNumber&Version=2010-03-31/get"
           response:
             openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/CreateSMSSandboxPhoneNumberOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
           request:
             nativeCasing: pascal
           config:
@@ -3320,13 +3224,6 @@ components:
             $ref: "#/paths/~1?Action=DeleteSMSSandboxPhoneNumber&Version=2010-03-31/get"
           response:
             openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/DeleteSMSSandboxPhoneNumberOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
           request:
             nativeCasing: pascal
           config:
@@ -3348,6 +3245,16 @@ components:
             objectKey: $.line_items
           request:
             nativeCasing: pascal
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        verify_sms_sandbox_phone_number:
+          operation:
+            $ref: "#/paths/~1?Action=VerifySMSSandboxPhoneNumber&Version=2010-03-31/get"
+          response:
+            openAPIDocKey: "200"
           config:
             queryParamTranspose:
               algorithm: AWSCanonical
@@ -3378,8 +3285,28 @@ components:
               algorithm: AWSCanonical
             requestTranslate:
               algorithm: get_query_to_post_form_utf_8
+        list_endpoints_by_platform_application:
+          operation:
+            $ref: "#/paths/~1?Action=ListEndpointsByPlatformApplication&Version=2010-03-31/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListEndpointsByPlatformApplicationOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/endpoints/methods/list_endpoints_by_platform_application"
         insert: []
         update: []
         delete:
@@ -3543,13 +3470,6 @@ components:
             $ref: "#/paths/~1?Action=SetSMSAttributes&Version=2010-03-31/get"
           response:
             openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/SetSMSAttributesOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
           request:
             nativeCasing: pascal
           config:
@@ -3564,10 +3484,10 @@ components:
         update:
           - $ref: "#/components/x-stackQL-resources/sms_attributes/methods/set_sms_attributes"
         delete: []
-    sms_sandbox_account_status:
-      id: aws.sns.sms_sandbox_account_status
-      name: sms_sandbox_account_status
-      title: sms_sandbox_account_status
+    sms_sandbox_account_statuses:
+      id: aws.sns.sms_sandbox_account_statuses
+      name: sms_sandbox_account_statuses
+      title: sms_sandbox_account_statuses
       methods:
         get_sms_sandbox_account_status:
           operation:
@@ -3588,7 +3508,7 @@ components:
               algorithm: get_query_to_post_form_utf_8
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/sms_sandbox_account_status/methods/get_sms_sandbox_account_status"
+          - $ref: "#/components/x-stackQL-resources/sms_sandbox_account_statuses/methods/get_sms_sandbox_account_status"
         insert: []
         update: []
         delete: []
@@ -3678,36 +3598,6 @@ components:
         update:
           - $ref: "#/components/x-stackQL-resources/topic_attributes/methods/set_topic_attributes"
         delete: []
-    endpoints_by_platform_applications:
-      id: aws.sns.endpoints_by_platform_applications
-      name: endpoints_by_platform_applications
-      title: endpoints_by_platform_applications
-      methods:
-        list_endpoints_by_platform_application:
-          operation:
-            $ref: "#/paths/~1?Action=ListEndpointsByPlatformApplication&Version=2010-03-31/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/ListEndpointsByPlatformApplicationOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-          config:
-            queryParamTranspose:
-              algorithm: AWSCanonical
-            requestTranslate:
-              algorithm: get_query_to_post_form_utf_8
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/endpoints_by_platform_applications/methods/list_endpoints_by_platform_application"
-        insert: []
-        update: []
-        delete: []
     origination_numbers:
       id: aws.sns.origination_numbers
       name: origination_numbers
@@ -3793,27 +3683,6 @@ components:
               algorithm: AWSCanonical
             requestTranslate:
               algorithm: get_query_to_post_form_utf_8
-        unsubscribe:
-          operation:
-            $ref: "#/paths/~1?Action=Unsubscribe&Version=2010-03-31/get"
-          response:
-            openAPIDocKey: "200"
-          config:
-            queryParamTranspose:
-              algorithm: AWSCanonical
-            requestTranslate:
-              algorithm: get_query_to_post_form_utf_8
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/subscriptions/methods/list_subscriptions"
-        insert: []
-        update: []
-        delete: []
-    subscriptions_by_topics:
-      id: aws.sns.subscriptions_by_topics
-      name: subscriptions_by_topics
-      title: subscriptions_by_topics
-      methods:
         list_subscriptions_by_topic:
           operation:
             $ref: "#/paths/~1?Action=ListSubscriptionsByTopic&Version=2010-03-31/get"
@@ -3833,9 +3702,20 @@ components:
               algorithm: AWSCanonical
             requestTranslate:
               algorithm: get_query_to_post_form_utf_8
+        unsubscribe:
+          operation:
+            $ref: "#/paths/~1?Action=Unsubscribe&Version=2010-03-31/get"
+          response:
+            openAPIDocKey: "200"
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/subscriptions_by_topics/methods/list_subscriptions_by_topic"
+          - $ref: "#/components/x-stackQL-resources/subscriptions/methods/list_subscriptions_by_topic"
+          - $ref: "#/components/x-stackQL-resources/subscriptions/methods/list_subscriptions"
         insert: []
         update: []
         delete: []
@@ -3868,13 +3748,6 @@ components:
             $ref: "#/paths/~1?Action=TagResource&Version=2010-03-31/get"
           response:
             openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/TagResourceOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
           request:
             nativeCasing: pascal
           config:
@@ -3887,13 +3760,6 @@ components:
             $ref: "#/paths/~1?Action=UntagResource&Version=2010-03-31/get"
           response:
             openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/UntagResourceOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
           request:
             nativeCasing: pascal
           config:
@@ -3908,4 +3774,31 @@ components:
         update:
           - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
           - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
+        delete: []
+    publishes:
+      id: aws.sns.publishes
+      name: publishes
+      title: publishes
+      methods:
+        publish:
+          operation:
+            $ref: "#/paths/~1?Action=Publish&Version=2010-03-31/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/PublishOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
         delete: []

@@ -148,10 +148,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteMonitorOutput'
       x-stackql-resource: monitors
       x-stackql-method: delete_monitor
       x-stackql-verb: DELETE
@@ -230,10 +226,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteProbeOutput'
       x-stackql-resource: probes
       x-stackql-method: delete_probe
       x-stackql-verb: DELETE
@@ -359,10 +351,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceOutput'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -385,10 +373,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceOutput'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -647,10 +631,6 @@ components:
     Iso8601Timestamp:
       type: string
       format: date-time
-    DeleteMonitorOutput:
-      type: object
-    DeleteProbeOutput:
-      type: object
     GetMonitorOutput:
       type: object
       properties:
@@ -846,8 +826,6 @@ components:
           type: object
           properties: {}
           description: Lists the tags assigned to the resource.
-    TagResourceOutput:
-      type: object
     TagKeyList:
       type: array
       items:
@@ -856,8 +834,6 @@ components:
       type: string
       minLength: 1
       maxLength: 128
-    UntagResourceOutput:
-      type: object
     UpdateMonitorOutput:
       type: object
       properties:

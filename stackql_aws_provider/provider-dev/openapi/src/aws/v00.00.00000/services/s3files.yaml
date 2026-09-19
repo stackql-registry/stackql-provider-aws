@@ -333,10 +333,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/PutFileSystemPolicyResponse"
   /mount-targets/{mount_target_id}:
     delete:
       operationId: DeleteMountTarget
@@ -443,10 +439,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/PutSynchronizationConfigurationResponse"
   /resource-tags/{resource_id}:
     get:
       operationId: ListTagsForResource
@@ -1297,8 +1289,6 @@ components:
         nextToken:
           $ref: "#/components/schemas/String"
           description: A pagination token to use in a subsequent request if more results are available.
-    PutFileSystemPolicyResponse:
-      type: object
     PutSynchronizationConfigurationRequestImportDataRulesList:
       type: array
       items:
@@ -1307,8 +1297,6 @@ components:
       type: array
       items:
         $ref: "#/components/schemas/ExpirationDataRule"
-    PutSynchronizationConfigurationResponse:
-      type: object
     TagKeys:
       type: array
       items:
@@ -1551,7 +1539,6 @@ components:
             $ref: "#/paths/~1file-systems~1{file_system_id}~1policy/put"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -1582,7 +1569,6 @@ components:
             $ref: "#/paths/~1file-systems~1{file_system_id}~1synchronization-configuration/put"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:

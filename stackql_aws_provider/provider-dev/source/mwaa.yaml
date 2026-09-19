@@ -131,10 +131,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteEnvironmentOutput'
       x-stackql-resource: environments
       x-stackql-method: delete_environment
       x-stackql-verb: DELETE
@@ -289,7 +285,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/InvokeRestApiResponse'
-      x-stackql-resource: rest_api
+      x-stackql-resource: rest_apis
       x-stackql-method: invoke_rest_api
       x-stackql-verb: EXEC
   /environments:
@@ -374,10 +370,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceOutput'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -401,10 +393,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceOutput'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -433,10 +421,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PublishMetricsOutput'
       x-stackql-resource: environments
       x-stackql-method: publish_metrics
       x-stackql-verb: EXEC
@@ -518,7 +502,7 @@ components:
       pattern: arn:aws(-[a-z]+)?:s3:::[a-z0-9.\-]+
     RelativePath:
       type: string
-      minLength: 1
+      minLength: 0
       maxLength: 1024
       pattern: .*
     NetworkConfiguration:
@@ -552,7 +536,7 @@ components:
       pattern: sg-[a-zA-Z0-9\-._]+
     S3ObjectVersion:
       type: string
-      minLength: 1
+      minLength: 0
       maxLength: 1024
     AirflowConfigurationOptions:
       type: object
@@ -681,8 +665,6 @@ components:
       type: string
       minLength: 1
       maxLength: 64
-    DeleteEnvironmentOutput:
-      type: object
     GetEnvironmentOutput:
       type: object
       properties:
@@ -1148,10 +1130,6 @@ components:
         Maximum:
           $ref: '#/components/schemas/Double'
           description: Internal only. The maximum value of the sample set.
-    PublishMetricsOutput:
-      type: object
-    TagResourceOutput:
-      type: object
     TagKeyList:
       type: array
       items:
@@ -1161,8 +1139,6 @@ components:
       minLength: 1
       maxLength: 128
       pattern: ([\p{L}\p{Z}\p{N}_.:/=+\-@]*)
-    UntagResourceOutput:
-      type: object
     UpdateNetworkConfigurationInput:
       description: Defines the VPC networking components used to secure and enable network traffic between the Amazon Web
         Services resources for your environment. For more information, refer to About networking on Amazon MWAA.

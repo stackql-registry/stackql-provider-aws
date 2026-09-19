@@ -35,13 +35,13 @@ total resources: __26__
 <a href="/services/resiliencehub/app_version_app_components/">app_version_app_components</a><br />
 <a href="/services/resiliencehub/app_version_resource_mappings/">app_version_resource_mappings</a><br />
 <a href="/services/resiliencehub/app_version_resources/">app_version_resources</a><br />
-<a href="/services/resiliencehub/app_version_resources_resolution_status/">app_version_resources_resolution_status</a><br />
+<a href="/services/resiliencehub/app_version_resources_resolution_statuses/">app_version_resources_resolution_statuses</a><br />
 <a href="/services/resiliencehub/app_version_templates/">app_version_templates</a><br />
 <a href="/services/resiliencehub/app_versions/">app_versions</a>
 </div>
 <div class="providerDocColumn">
 <a href="/services/resiliencehub/apps/">apps</a><br />
-<a href="/services/resiliencehub/draft_app_version_resources_import_status/">draft_app_version_resources_import_status</a><br />
+<a href="/services/resiliencehub/draft_app_version_resources_import_statuses/">draft_app_version_resources_import_statuses</a><br />
 <a href="/services/resiliencehub/metrics/">metrics</a><br />
 <a href="/services/resiliencehub/metrics_exports/">metrics_exports</a><br />
 <a href="/services/resiliencehub/recommendation_templates/">recommendation_templates</a><br />

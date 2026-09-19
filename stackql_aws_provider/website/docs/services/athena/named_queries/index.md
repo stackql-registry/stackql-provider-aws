@@ -33,37 +33,13 @@ Creates, updates, deletes, gets or lists a <code>named_queries</code> resource.
 The following fields are returned by `SELECT` queries:
 
 <Tabs
-    defaultValue="batch_get_named_query"
+    defaultValue="get_named_query"
     values={[
-        { label: 'batch_get_named_query', value: 'batch_get_named_query' },
         { label: 'get_named_query', value: 'get_named_query' },
+        { label: 'batch_get_named_query', value: 'batch_get_named_query' },
         { label: 'list_named_queries', value: 'list_named_queries' }
     ]}
 >
-<TabItem value="batch_get_named_query">
-
-<table>
-<thead>
-    <tr>
-    <th>Name</th>
-    <th>Datatype</th>
-    <th>Description</th>
-    </tr>
-</thead>
-<tbody>
-<tr>
-    <td><CopyableCode code="named_queries" /></td>
-    <td><code>array</code></td>
-    <td>Information about the named query IDs submitted.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="unprocessed_named_query_ids" /></td>
-    <td><code>array</code></td>
-    <td>Information about provided query IDs.</td>
-</tr>
-</tbody>
-</table>
-</TabItem>
 <TabItem value="get_named_query">
 
 <table>
@@ -108,6 +84,30 @@ The following fields are returned by `SELECT` queries:
 </tbody>
 </table>
 </TabItem>
+<TabItem value="batch_get_named_query">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="named_queries" /></td>
+    <td><code>array</code></td>
+    <td>Information about the named query IDs submitted.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="unprocessed_named_query_ids" /></td>
+    <td><code>array</code></td>
+    <td>Information about provided query IDs.</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
 <TabItem value="list_named_queries">
 
 <table>
@@ -145,18 +145,18 @@ The following methods are available for this resource:
 </thead>
 <tbody>
 <tr>
-    <td><a href="#batch_get_named_query"><CopyableCode code="batch_get_named_query" /></a></td>
-    <td><CopyableCode code="select" /></td>
-    <td><a href="#parameter-region"><code>region</code></a></td>
-    <td></td>
-    <td>Returns the details of a single named query or a list of up to 50 queries, which you provide as an array of query ID strings. Requires you to have access to the workgroup in which the queries were saved. Use ListNamedQueriesInput to get the list of named query IDs in the specified workgroup. If information could not be retrieved for a submitted query ID, information about the query ID submitted is listed under UnprocessedNamedQueryId. Named queries differ from executed queries. Use BatchGetQueryExecutionInput to get details about each unique query execution, and ListQueryExecutionsInput to get a list of query execution IDs.</td>
-</tr>
-<tr>
     <td><a href="#get_named_query"><CopyableCode code="get_named_query" /></a></td>
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td></td>
     <td>Returns information about a single query. Requires that you have access to the workgroup in which the query was saved.</td>
+</tr>
+<tr>
+    <td><a href="#batch_get_named_query"><CopyableCode code="batch_get_named_query" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Returns the details of a single named query or a list of up to 50 queries, which you provide as an array of query ID strings. Requires you to have access to the workgroup in which the queries were saved. Use ListNamedQueriesInput to get the list of named query IDs in the specified workgroup. If information could not be retrieved for a submitted query ID, information about the query ID submitted is listed under UnprocessedNamedQueryId. Named queries differ from executed queries. Use BatchGetQueryExecutionInput to get details about each unique query execution, and ListQueryExecutionsInput to get a list of query execution IDs.</td>
 </tr>
 <tr>
     <td><a href="#list_named_queries"><CopyableCode code="list_named_queries" /></a></td>
@@ -213,26 +213,13 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 ## `SELECT` examples
 
 <Tabs
-    defaultValue="batch_get_named_query"
+    defaultValue="get_named_query"
     values={[
-        { label: 'batch_get_named_query', value: 'batch_get_named_query' },
         { label: 'get_named_query', value: 'get_named_query' },
+        { label: 'batch_get_named_query', value: 'batch_get_named_query' },
         { label: 'list_named_queries', value: 'list_named_queries' }
     ]}
 >
-<TabItem value="batch_get_named_query">
-
-Returns the details of a single named query or a list of up to 50 queries, which you provide as an array of query ID strings. Requires you to have access to the workgroup in which the queries were saved. Use ListNamedQueriesInput to get the list of named query IDs in the specified workgroup. If information could not be retrieved for a submitted query ID, information about the query ID submitted is listed under UnprocessedNamedQueryId. Named queries differ from executed queries. Use BatchGetQueryExecutionInput to get details about each unique query execution, and ListQueryExecutionsInput to get a list of query execution IDs.
-
-```sql
-SELECT
-named_queries,
-unprocessed_named_query_ids
-FROM aws.athena.named_queries
-WHERE region = '{{ region }}' -- required
-;
-```
-</TabItem>
 <TabItem value="get_named_query">
 
 Returns information about a single query. Requires that you have access to the workgroup in which the query was saved.
@@ -245,6 +232,19 @@ name,
 named_query_id,
 query_string,
 work_group
+FROM aws.athena.named_queries
+WHERE region = '{{ region }}' -- required
+;
+```
+</TabItem>
+<TabItem value="batch_get_named_query">
+
+Returns the details of a single named query or a list of up to 50 queries, which you provide as an array of query ID strings. Requires you to have access to the workgroup in which the queries were saved. Use ListNamedQueriesInput to get the list of named query IDs in the specified workgroup. If information could not be retrieved for a submitted query ID, information about the query ID submitted is listed under UnprocessedNamedQueryId. Named queries differ from executed queries. Use BatchGetQueryExecutionInput to get details about each unique query execution, and ListQueryExecutionsInput to get a list of query execution IDs.
+
+```sql
+SELECT
+named_queries,
+unprocessed_named_query_ids
 FROM aws.athena.named_queries
 WHERE region = '{{ region }}' -- required
 ;

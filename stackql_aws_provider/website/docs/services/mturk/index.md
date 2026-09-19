@@ -27,21 +27,21 @@ total resources: __16__
 <div class="providerDocColumn">
 <a href="/services/mturk/account_balances/">account_balances</a><br />
 <a href="/services/mturk/assignments/">assignments</a><br />
-<a href="/services/mturk/assignments_for_hits/">assignments_for_hits</a><br />
 <a href="/services/mturk/bonus_payments/">bonus_payments</a><br />
 <a href="/services/mturk/file_upload_urls/">file_upload_urls</a><br />
 <a href="/services/mturk/hi_ts/">hi_ts</a><br />
-<a href="/services/mturk/hi_ts_for_qualification_types/">hi_ts_for_qualification_types</a><br />
-<a href="/services/mturk/hits/">hits</a>
+<a href="/services/mturk/hits/">hits</a><br />
+<a href="/services/mturk/notification_settings/">notification_settings</a><br />
+<a href="/services/mturk/qualification_requests/">qualification_requests</a>
 </div>
 <div class="providerDocColumn">
-<a href="/services/mturk/notification_settings/">notification_settings</a><br />
-<a href="/services/mturk/qualification_requests/">qualification_requests</a><br />
 <a href="/services/mturk/qualification_scores/">qualification_scores</a><br />
 <a href="/services/mturk/qualification_types/">qualification_types</a><br />
-<a href="/services/mturk/review_policy_results_for_hits/">review_policy_results_for_hits</a><br />
+<a href="/services/mturk/review_policy_results/">review_policy_results</a><br />
 <a href="/services/mturk/reviewable_hi_ts/">reviewable_hi_ts</a><br />
+<a href="/services/mturk/test_event_notifications/">test_event_notifications</a><br />
 <a href="/services/mturk/worker_blocks/">worker_blocks</a><br />
+<a href="/services/mturk/workers/">workers</a><br />
 <a href="/services/mturk/workers_with_qualification_types/">workers_with_qualification_types</a>
 </div>
 </div>

@@ -27,7 +27,7 @@ total resources: __15__
 <div class="providerDocColumn">
 <a href="/services/mediaconnect/bridges/">bridges</a><br />
 <a href="/services/mediaconnect/entitlements/">entitlements</a><br />
-<a href="/services/mediaconnect/flow_source_metadatas/">flow_source_metadatas</a><br />
+<a href="/services/mediaconnect/flow_source_metadata/">flow_source_metadata</a><br />
 <a href="/services/mediaconnect/flow_source_thumbnails/">flow_source_thumbnails</a><br />
 <a href="/services/mediaconnect/flows/">flows</a><br />
 <a href="/services/mediaconnect/gateway_instances/">gateway_instances</a><br />
@@ -36,7 +36,7 @@ total resources: __15__
 </div>
 <div class="providerDocColumn">
 <a href="/services/mediaconnect/reservations/">reservations</a><br />
-<a href="/services/mediaconnect/router_input_source_metadatas/">router_input_source_metadatas</a><br />
+<a href="/services/mediaconnect/router_input_source_metadata/">router_input_source_metadata</a><br />
 <a href="/services/mediaconnect/router_input_thumbnails/">router_input_thumbnails</a><br />
 <a href="/services/mediaconnect/router_inputs/">router_inputs</a><br />
 <a href="/services/mediaconnect/router_network_interfaces/">router_network_interfaces</a><br />

@@ -1048,10 +1048,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteResourcePolicyResponse"
   /DeleteRuleGroup:
     post:
       operationId: DeleteRuleGroup
@@ -2452,10 +2448,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/PutResourcePolicyResponse"
   /RejectNetworkFirewallTransitGatewayAttachment:
     post:
       operationId: RejectNetworkFirewallTransitGatewayAttachment
@@ -2658,10 +2650,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TagResourceResponse"
   /UntagResource:
     post:
       operationId: UntagResource
@@ -2694,10 +2682,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UntagResourceResponse"
   /UpdateAvailabilityZoneChangeProtection:
     post:
       operationId: UpdateAvailabilityZoneChangeProtection
@@ -4139,6 +4123,7 @@ components:
         - PROVISIONING
         - DELETING
         - READY
+        - FAILED
     ConfigurationSyncState:
       type: string
       enum:
@@ -5513,8 +5498,6 @@ components:
         ProxyRuleGroup:
           $ref: "#/components/schemas/ProxyRuleGroup"
           description: The properties that define the proxy rule group with the newly created proxy rule(s).
-    DeleteResourcePolicyResponse:
-      type: object
     DeleteRuleGroupResponse:
       type: object
       properties:
@@ -6529,8 +6512,6 @@ components:
         VpcEndpointAssociationArn:
           $ref: "#/components/schemas/ResourceArn"
           description: The Amazon Resource Name (ARN) of a VPC endpoint association.
-    PutResourcePolicyResponse:
-      type: object
     RejectNetworkFirewallTransitGatewayAttachmentResponse:
       type: object
       properties:
@@ -6575,14 +6556,10 @@ components:
         FlowOperationStatus:
           $ref: "#/components/schemas/FlowOperationStatus"
           description: Returns the status of the flow operation. This string is returned in the responses to start, list, and describe commands. If the status is COMPLETED_WITH_ERRORS, results may be returned with any number of Flows missing from the response. If the status is FAILED, Flows returned will be empty.
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
         $ref: "#/components/schemas/TagKey"
-    UntagResourceResponse:
-      type: object
     UpdateAvailabilityZoneChangeProtectionResponse:
       type: object
       properties:
@@ -6887,6 +6864,56 @@ components:
         - UpdateToken
         - TLSInspectionConfigurationResponse
   x-stackQL-resources:
+    network_firewall_transit_gateway_attachments:
+      id: aws.network_firewall.network_firewall_transit_gateway_attachments
+      name: network_firewall_transit_gateway_attachments
+      title: network_firewall_transit_gateway_attachments
+      methods:
+        accept_network_firewall_transit_gateway_attachment:
+          operation:
+            $ref: "#/paths/~1AcceptNetworkFirewallTransitGatewayAttachment/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        delete_network_firewall_transit_gateway_attachment:
+          operation:
+            $ref: "#/paths/~1DeleteNetworkFirewallTransitGatewayAttachment/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        reject_network_firewall_transit_gateway_attachment:
+          operation:
+            $ref: "#/paths/~1RejectNetworkFirewallTransitGatewayAttachment/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete:
+          - $ref: "#/components/x-stackQL-resources/network_firewall_transit_gateway_attachments/methods/delete_network_firewall_transit_gateway_attachment"
     availability_zones:
       id: aws.network_firewall.availability_zones
       name: availability_zones
@@ -7189,8 +7216,8 @@ components:
         insert:
           - $ref: "#/components/x-stackQL-resources/proxy_configurations/methods/create_proxy_configuration"
         update:
-          - $ref: "#/components/x-stackQL-resources/proxy_configurations/methods/attach_rule_groups_to_proxy_configuration"
           - $ref: "#/components/x-stackQL-resources/proxy_configurations/methods/update_proxy_configuration"
+          - $ref: "#/components/x-stackQL-resources/proxy_configurations/methods/attach_rule_groups_to_proxy_configuration"
           - $ref: "#/components/x-stackQL-resources/proxy_configurations/methods/detach_rule_groups_from_proxy_configuration"
         delete:
           - $ref: "#/components/x-stackQL-resources/proxy_configurations/methods/delete_proxy_configuration"
@@ -7956,30 +7983,6 @@ components:
         update: []
         delete:
           - $ref: "#/components/x-stackQL-resources/vpc_endpoint_associations/methods/delete_vpc_endpoint_association"
-    network_firewall_transit_gateway_attachments:
-      id: aws.network_firewall.network_firewall_transit_gateway_attachments
-      name: network_firewall_transit_gateway_attachments
-      title: network_firewall_transit_gateway_attachments
-      methods:
-        delete_network_firewall_transit_gateway_attachment:
-          operation:
-            $ref: "#/paths/~1DeleteNetworkFirewallTransitGatewayAttachment/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.0
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update: []
-        delete:
-          - $ref: "#/components/x-stackQL-resources/network_firewall_transit_gateway_attachments/methods/delete_network_firewall_transit_gateway_attachment"
     resource_policies:
       id: aws.network_firewall.resource_policies
       name: resource_policies
@@ -7990,7 +7993,6 @@ components:
             $ref: "#/paths/~1DeleteResourcePolicy/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.0
@@ -8016,7 +8018,6 @@ components:
             $ref: "#/paths/~1PutResourcePolicy/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.0
@@ -8033,10 +8034,10 @@ components:
           - $ref: "#/components/x-stackQL-resources/resource_policies/methods/put_resource_policy"
         delete:
           - $ref: "#/components/x-stackQL-resources/resource_policies/methods/delete_resource_policy"
-    firewall_metadatas:
-      id: aws.network_firewall.firewall_metadatas
-      name: firewall_metadatas
-      title: firewall_metadatas
+    firewall_metadata:
+      id: aws.network_firewall.firewall_metadata
+      name: firewall_metadata
+      title: firewall_metadata
       methods:
         describe_firewall_metadata:
           operation:
@@ -8053,7 +8054,7 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/firewall_metadatas/methods/describe_firewall_metadata"
+          - $ref: "#/components/x-stackQL-resources/firewall_metadata/methods/describe_firewall_metadata"
         insert: []
         update: []
         delete: []
@@ -8141,10 +8142,10 @@ components:
         update:
           - $ref: "#/components/x-stackQL-resources/logging_configurations/methods/update_logging_configuration"
         delete: []
-    rule_group_metadatas:
-      id: aws.network_firewall.rule_group_metadatas
-      name: rule_group_metadatas
-      title: rule_group_metadatas
+    rule_group_metadata:
+      id: aws.network_firewall.rule_group_metadata
+      name: rule_group_metadata
+      title: rule_group_metadata
       methods:
         describe_rule_group_metadata:
           operation:
@@ -8161,7 +8162,7 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/rule_group_metadatas/methods/describe_rule_group_metadata"
+          - $ref: "#/components/x-stackQL-resources/rule_group_metadata/methods/describe_rule_group_metadata"
         insert: []
         update: []
         delete: []
@@ -8247,6 +8248,19 @@ components:
                 location: body
             requestBodyTranslate:
               algorithm: naive
+        start_analysis_report:
+          operation:
+            $ref: "#/paths/~1StartAnalysisReport/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/analysis_reports/methods/list_analysis_reports"
@@ -8316,7 +8330,6 @@ components:
             $ref: "#/paths/~1TagResource/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.0
@@ -8329,7 +8342,6 @@ components:
             $ref: "#/paths/~1UntagResource/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.0

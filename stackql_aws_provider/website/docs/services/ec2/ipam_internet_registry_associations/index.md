@@ -100,6 +100,11 @@ The following fields are returned by `SELECT` queries:
     <td>The state of the internet registry association. Valid values: pending-activation | pending-enable | create-in-progress | create-failed | enable-in-progress | enable-complete | enable-failed | delete-in-progress | delete-complete | delete-failed.</td>
 </tr>
 <tr>
+    <td><CopyableCode code="state_message" /></td>
+    <td><code>string</code></td>
+    <td>A message describing the current state of the internet registry association, including additional details such as the reason for a failure.</td>
+</tr>
+<tr>
     <td><CopyableCode code="tags" /></td>
     <td><code>string</code></td>
     <td>The tags assigned to the internet registry association.</td>
@@ -253,6 +258,7 @@ organization_handle,
 owner_id,
 rir,
 state,
+state_message,
 tags
 FROM aws.ec2.ipam_internet_registry_associations
 WHERE region = '{{ region }}' -- required
@@ -311,6 +317,7 @@ organization_handle,
 owner_id,
 rir,
 state,
+state_message,
 tags
 ;
 ```

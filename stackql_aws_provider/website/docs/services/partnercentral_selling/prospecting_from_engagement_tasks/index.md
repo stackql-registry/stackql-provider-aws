@@ -168,6 +168,13 @@ The following methods are available for this resource:
     <td></td>
     <td>Lists all prospecting tasks initiated by the caller's account. Supports optional filters by task identifier, task name, or start time range. Results can be sorted using configurable options. The response is paginated. Use the NextToken value from each response to retrieve subsequent pages.</td>
 </tr>
+<tr>
+    <td><a href="#start_prospecting_from_engagement_task"><CopyableCode code="start_prospecting_from_engagement_task" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-Catalog"><code>Catalog</code></a>, <a href="#parameter-TaskName"><code>TaskName</code></a>, <a href="#parameter-ClientToken"><code>ClientToken</code></a></td>
+    <td></td>
+    <td>Starts a task to convert one or more engagement contexts into new prospecting leads. The task runs asynchronously. To poll for status, use GetProspectingFromEngagementTask, or use ListProspectingFromEngagementTasks to monitor multiple tasks.</td>
+</tr>
 </tbody>
 </table>
 
@@ -234,6 +241,34 @@ task_name,
 total_engagement_count
 FROM aws.partnercentral_selling.prospecting_from_engagement_tasks
 WHERE region = '{{ region }}' -- required
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="start_prospecting_from_engagement_task"
+    values={[
+        { label: 'start_prospecting_from_engagement_task', value: 'start_prospecting_from_engagement_task' }
+    ]}
+>
+<TabItem value="start_prospecting_from_engagement_task">
+
+Starts a task to convert one or more engagement contexts into new prospecting leads. The task runs asynchronously. To poll for status, use GetProspectingFromEngagementTask, or use ListProspectingFromEngagementTasks to monitor multiple tasks.
+
+```sql
+EXEC aws.partnercentral_selling.prospecting_from_engagement_tasks.start_prospecting_from_engagement_task 
+@region='{{ region }}' --required 
+@@json=
+'{
+"Catalog": "{{ Catalog }}", 
+"Identifiers": "{{ Identifiers }}", 
+"TaskName": "{{ TaskName }}", 
+"ClientToken": "{{ ClientToken }}"
+}'
 ;
 ```
 </TabItem>

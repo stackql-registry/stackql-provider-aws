@@ -687,10 +687,6 @@ paths:
       responses:
         '202':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateWorkspaceConfigurationResponse'
       x-stackql-resource: workspace_configurations
       x-stackql-method: update_workspace_configuration
       x-stackql-verb: UPDATE
@@ -834,10 +830,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -860,10 +852,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -1903,8 +1891,6 @@ components:
       - modified
       - status
       - authentication
-    TagResourceResponse:
-      type: object
     TagKeys:
       type: array
       items:
@@ -1913,8 +1899,6 @@ components:
       type: string
       minLength: 1
       maxLength: 128
-    UntagResourceResponse:
-      type: object
     UpdateInstructionBatch:
       type: array
       items:
@@ -1994,5 +1978,3 @@ components:
           description: A structure that describes the user authentication for this workspace after the update is made.
       required:
       - authentication
-    UpdateWorkspaceConfigurationResponse:
-      type: object

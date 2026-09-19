@@ -78,10 +78,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/AddTagsToResourceResult'
       x-stackql-resource: tags
       x-stackql-method: add_tags_to_resource
       x-stackql-verb: UPDATE
@@ -173,11 +169,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CancelCommandResult'
-      x-stackql-resource: command
+      x-stackql-resource: commands
       x-stackql-method: cancel_command
       x-stackql-verb: EXEC
   /CancelMaintenanceWindowExecution:
@@ -214,7 +206,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CancelMaintenanceWindowExecutionResult'
-      x-stackql-resource: maintenance_windows
+      x-stackql-resource: maintenance_window_executions
       x-stackql-method: cancel_maintenance_window_execution
       x-stackql-verb: EXEC
   /CreateActivation:
@@ -926,7 +918,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreateOpsMetadataResult'
-      x-stackql-resource: ops_metadatas
+      x-stackql-resource: ops_metadata
       x-stackql-method: create_ops_metadata
       x-stackql-verb: INSERT
   /CreatePatchBaseline:
@@ -1094,10 +1086,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CreateResourceDataSyncResult'
       x-stackql-resource: resource_data_syncs
       x-stackql-method: create_resource_data_sync
       x-stackql-verb: INSERT
@@ -1132,10 +1120,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteActivationResult'
       x-stackql-resource: activations
       x-stackql-method: delete_activation
       x-stackql-verb: DELETE
@@ -1180,10 +1164,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteAssociationResult'
       x-stackql-resource: associations
       x-stackql-method: delete_association
       x-stackql-verb: DELETE
@@ -1267,10 +1247,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteDocumentResult'
       x-stackql-resource: documents
       x-stackql-method: delete_document
       x-stackql-verb: DELETE
@@ -1327,7 +1303,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DeleteInventoryResult'
-      x-stackql-resource: inventories
+      x-stackql-resource: inventory
       x-stackql-method: delete_inventory
       x-stackql-verb: DELETE
   /DeleteMaintenanceWindow:
@@ -1404,10 +1380,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteOpsItemResponse'
       x-stackql-resource: ops_items
       x-stackql-method: delete_ops_item
       x-stackql-verb: DELETE
@@ -1440,11 +1412,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteOpsMetadataResult'
-      x-stackql-resource: ops_metadatas
+      x-stackql-resource: ops_metadata
       x-stackql-method: delete_ops_metadata
       x-stackql-verb: DELETE
   /DeleteParameter:
@@ -1478,10 +1446,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteParameterResult'
       x-stackql-resource: parameters
       x-stackql-method: delete_parameter
       x-stackql-verb: DELETE
@@ -1593,10 +1557,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteResourceDataSyncResult'
       x-stackql-resource: resource_data_syncs
       x-stackql-method: delete_resource_data_sync
       x-stackql-verb: DELETE
@@ -1643,10 +1603,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteResourcePolicyResponse'
       x-stackql-resource: resource_policies
       x-stackql-method: delete_resource_policy
       x-stackql-verb: DELETE
@@ -1683,10 +1639,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeregisterManagedInstanceResult'
       x-stackql-resource: managed_instances
       x-stackql-method: deregister_managed_instance
       x-stackql-verb: DELETE
@@ -1727,7 +1679,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DeregisterPatchBaselineForPatchGroupResult'
-      x-stackql-resource: patch_baseline_for_patch_groups
+      x-stackql-resource: patch_baselines
       x-stackql-method: deregister_patch_baseline_for_patch_group
       x-stackql-verb: DELETE
   /DeregisterTargetFromMaintenanceWindow:
@@ -2354,7 +2306,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DescribeEffectivePatchesForPatchBaselineResult'
-      x-stackql-resource: effective_patches_for_patch_baselines
+      x-stackql-resource: effective_patches
       x-stackql-method: describe_effective_patches_for_patch_baseline
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.EffectivePatches
@@ -2401,7 +2353,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DescribeInstanceAssociationsStatusResult'
-      x-stackql-resource: instance_associations_status
+      x-stackql-resource: instance_associations_statuses
       x-stackql-method: describe_instance_associations_status
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.InstanceAssociationStatusInfos
@@ -2459,7 +2411,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DescribeInstanceInformationResult'
-      x-stackql-resource: instance_informations
+      x-stackql-resource: instance_information
       x-stackql-method: describe_instance_information
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.InstanceInformationList
@@ -2555,7 +2507,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DescribeInstancePatchStatesForPatchGroupResult'
-      x-stackql-resource: instance_patch_states_for_patch_groups
+      x-stackql-resource: instance_patch_states
       x-stackql-method: describe_instance_patch_states_for_patch_group
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.InstancePatchStates
@@ -3121,7 +3073,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DescribeMaintenanceWindowsForTargetResult'
-      x-stackql-resource: maintenance_windows_for_targets
+      x-stackql-resource: maintenance_windows
       x-stackql-method: describe_maintenance_windows_for_target
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.WindowIdentities
@@ -3534,10 +3486,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DisassociateOpsItemRelatedItemResponse'
       x-stackql-resource: ops_item_related_items
       x-stackql-method: disassociate_ops_item_related_item
       x-stackql-verb: UPDATE
@@ -3790,7 +3738,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetConnectionStatusResponse'
-      x-stackql-resource: connection_status
+      x-stackql-resource: connection_statuses
       x-stackql-method: get_connection_status
       x-stackql-verb: SELECT
   /GetDefaultPatchBaseline:
@@ -3880,7 +3828,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetDeployablePatchSnapshotForInstanceResult'
-      x-stackql-resource: deployable_patch_snapshot_for_instances
+      x-stackql-resource: deployable_patch_snapshots
       x-stackql-method: get_deployable_patch_snapshot_for_instance
       x-stackql-verb: SELECT
   /GetDocument:
@@ -4013,7 +3961,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetInventoryResult'
-      x-stackql-resource: inventories
+      x-stackql-resource: inventory
       x-stackql-method: get_inventory
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Entities
@@ -4357,7 +4305,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetOpsMetadataResult'
-      x-stackql-resource: ops_metadatas
+      x-stackql-resource: ops_metadata
       x-stackql-method: get_ops_metadata
       x-stackql-verb: SELECT
   /GetOpsSummary:
@@ -4647,7 +4595,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetParametersByPathResult'
-      x-stackql-resource: parameters_by_paths
+      x-stackql-resource: parameters
       x-stackql-method: get_parameters_by_path
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Parameters
@@ -4730,7 +4678,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetPatchBaselineForPatchGroupResult'
-      x-stackql-resource: patch_baseline_for_patch_groups
+      x-stackql-resource: patch_baselines
       x-stackql-method: get_patch_baseline_for_patch_group
       x-stackql-verb: SELECT
   /GetResourcePolicies:
@@ -4883,7 +4831,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/LabelParameterVersionResult'
-      x-stackql-resource: label_parameter_version
+      x-stackql-resource: parameters
       x-stackql-method: label_parameter_version
       x-stackql-verb: EXEC
   /ListAssociationVersions:
@@ -5697,7 +5645,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListOpsMetadataResult'
-      x-stackql-resource: ops_metadatas
+      x-stackql-resource: ops_metadata
       x-stackql-method: list_ops_metadata
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.OpsMetadataList
@@ -5893,10 +5841,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ModifyDocumentPermissionResponse'
       x-stackql-resource: document_permissions
       x-stackql-method: modify_document_permission
       x-stackql-verb: UPDATE
@@ -5976,10 +5920,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PutComplianceItemsResult'
       x-stackql-resource: compliance_items
       x-stackql-method: put_compliance_items
       x-stackql-verb: REPLACE
@@ -6021,7 +5961,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PutInventoryResult'
-      x-stackql-resource: inventories
+      x-stackql-resource: inventory
       x-stackql-method: put_inventory
       x-stackql-verb: REPLACE
   /PutParameter:
@@ -6324,7 +6264,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RegisterPatchBaselineForPatchGroupResult'
-      x-stackql-resource: patch_baseline_for_patch_groups
+      x-stackql-resource: patch_baselines
       x-stackql-method: register_patch_baseline_for_patch_group
       x-stackql-verb: INSERT
   /RegisterTargetWithMaintenanceWindow:
@@ -6564,10 +6504,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RemoveTagsFromResourceResult'
       x-stackql-resource: tags
       x-stackql-method: remove_tags_from_resource
       x-stackql-verb: UPDATE
@@ -6616,7 +6552,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ResetServiceSettingResult'
-      x-stackql-resource: service_setting
+      x-stackql-resource: service_settings
       x-stackql-method: reset_service_setting
       x-stackql-verb: EXEC
   /ResumeSession:
@@ -6654,7 +6590,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ResumeSessionResponse'
-      x-stackql-resource: session
+      x-stackql-resource: sessions
       x-stackql-method: resume_session
       x-stackql-verb: EXEC
   /SendAutomationSignal:
@@ -6698,10 +6634,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/SendAutomationSignalResult'
       x-stackql-resource: automation_executions
       x-stackql-method: send_automation_signal
       x-stackql-verb: EXEC
@@ -6822,7 +6754,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SendCommandResult'
-      x-stackql-resource: command
+      x-stackql-resource: commands
       x-stackql-method: send_command
       x-stackql-verb: EXEC
   /StartAccessRequest:
@@ -6865,7 +6797,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartAccessRequestResponse'
-      x-stackql-resource: access_request
+      x-stackql-resource: access_requests
       x-stackql-method: start_access_request
       x-stackql-verb: EXEC
   /StartAssociationsOnce:
@@ -6897,10 +6829,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/StartAssociationsOnceResult'
       x-stackql-resource: associations
       x-stackql-method: start_associations_once
       x-stackql-verb: EXEC
@@ -7008,7 +6936,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartAutomationExecutionResult'
-      x-stackql-resource: automation_execution
+      x-stackql-resource: automation_executions
       x-stackql-method: start_automation_execution
       x-stackql-verb: EXEC
   /StartChangeRequestExecution:
@@ -7141,7 +7069,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartExecutionPreviewResponse'
-      x-stackql-resource: documents
+      x-stackql-resource: execution_previews
       x-stackql-method: start_execution_preview
       x-stackql-verb: EXEC
   /StartSession:
@@ -7198,7 +7126,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartSessionResponse'
-      x-stackql-resource: session
+      x-stackql-resource: sessions
       x-stackql-method: start_session
       x-stackql-verb: EXEC
   /StopAutomationExecution:
@@ -7234,11 +7162,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/StopAutomationExecutionResult'
-      x-stackql-resource: automation_execution
+      x-stackql-resource: automation_executions
       x-stackql-method: stop_automation_execution
       x-stackql-verb: EXEC
   /TerminateSession:
@@ -7323,7 +7247,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UnlabelParameterVersionResult'
-      x-stackql-resource: unlabel_parameter_version
+      x-stackql-resource: parameters
       x-stackql-method: unlabel_parameter_version
       x-stackql-verb: EXEC
   /UpdateAssociation:
@@ -7741,10 +7665,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateDocumentMetadataResponse'
       x-stackql-resource: documents
       x-stackql-method: update_document_metadata
       x-stackql-verb: UPDATE
@@ -8076,10 +7996,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateManagedInstanceRoleResult'
       x-stackql-resource: managed_instance_roles
       x-stackql-method: update_managed_instance_role
       x-stackql-verb: UPDATE
@@ -8179,10 +8095,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateOpsItemResponse'
       x-stackql-resource: ops_items
       x-stackql-method: update_ops_item
       x-stackql-verb: UPDATE
@@ -8225,7 +8137,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateOpsMetadataResult'
-      x-stackql-resource: ops_metadatas
+      x-stackql-resource: ops_metadata
       x-stackql-method: update_ops_metadata
       x-stackql-verb: UPDATE
   /UpdatePatchBaseline:
@@ -8370,10 +8282,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateResourceDataSyncResult'
       x-stackql-resource: resource_data_syncs
       x-stackql-method: update_resource_data_sync
       x-stackql-verb: UPDATE
@@ -8432,10 +8340,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateServiceSettingResult'
       x-stackql-resource: service_settings
       x-stackql-method: update_service_setting
       x-stackql-verb: UPDATE
@@ -8574,8 +8478,6 @@ components:
       minLength: 0
       maxLength: 256
       pattern: ^([\p{L}\p{Z}\p{N}_.:/=+\-@]*)$
-    AddTagsToResourceResult:
-      type: object
     OpsItemId:
       type: string
       pattern: ^(oi)-[0-9a-f]{12}$
@@ -8604,9 +8506,6 @@ components:
     InstanceId:
       type: string
       pattern: (^i-(\w{8}|\w{17})$)|(^mi-\w{17}$)
-    CancelCommandResult:
-      description: Whether or not the command was successfully canceled. There is no guarantee that a request can be canceled.
-      type: object
     MaintenanceWindowExecutionId:
       type: string
       minLength: 36
@@ -10284,20 +10183,12 @@ components:
       type: boolean
     ResourceDataSyncEnableAllOpsDataSources:
       type: boolean
-    CreateResourceDataSyncResult:
-      type: object
-    DeleteActivationResult:
-      type: object
-    DeleteAssociationResult:
-      type: object
     DeleteCloudConnectorResult:
       type: object
       properties:
         CloudConnectorId:
           $ref: '#/components/schemas/CloudConnectorId'
           description: The ID of the cloud connector that was deleted.
-    DeleteDocumentResult:
-      type: object
     InventoryItemTypeName:
       type: string
       minLength: 1
@@ -10373,16 +10264,10 @@ components:
         WindowId:
           $ref: '#/components/schemas/MaintenanceWindowId'
           description: The ID of the deleted maintenance window.
-    DeleteOpsItemResponse:
-      type: object
-    DeleteOpsMetadataResult:
-      type: object
     PSParameterName:
       type: string
       minLength: 1
       maxLength: 2048
-    DeleteParameterResult:
-      type: object
     ParameterNameList:
       type: array
       items:
@@ -10402,8 +10287,6 @@ components:
         BaselineId:
           $ref: '#/components/schemas/BaselineId'
           description: The ID of the deleted patch baseline.
-    DeleteResourceDataSyncResult:
-      type: object
     ResourceArnString:
       type: string
       minLength: 20
@@ -10412,15 +10295,11 @@ components:
       type: string
     PolicyHash:
       type: string
-    DeleteResourcePolicyResponse:
-      type: object
     ManagedInstanceId:
       type: string
       minLength: 20
       maxLength: 124
       pattern: (^mi-[0-9a-f]{17}$)|(^eks_c:[0-9A-Za-z][A-Za-z0-9\-_]{0,99}_\w{17}$)
-    DeregisterManagedInstanceResult:
-      type: object
     PatchGroup:
       type: string
       minLength: 1
@@ -13530,8 +13409,6 @@ components:
       enum:
       - Standard
       - JustInTime
-    DisassociateOpsItemRelatedItemResponse:
-      type: object
     AccessRequestId:
       type: string
       pattern: ^(oi)-[0-9a-f]{12}$
@@ -17260,8 +17137,6 @@ components:
         TagList:
           $ref: '#/components/schemas/TagList'
           description: A list of tags.
-    ModifyDocumentPermissionResponse:
-      type: object
     ComplianceItemEntryList:
       type: array
       items:
@@ -17301,8 +17176,6 @@ components:
       enum:
       - COMPLETE
       - PARTIAL
-    PutComplianceItemsResult:
-      type: object
     InventoryItemList:
       type: array
       items:
@@ -17406,8 +17279,6 @@ components:
       type: array
       items:
         $ref: '#/components/schemas/TagKey'
-    RemoveTagsFromResourceResult:
-      type: object
     ResetServiceSettingResult:
       description: The result body of the ResetServiceSetting API operation.
       type: object
@@ -17451,8 +17322,6 @@ components:
     AutomationParameterMap:
       type: object
       properties: {}
-    SendAutomationSignalResult:
-      type: object
     SendCommandResult:
       type: object
       properties:
@@ -17474,8 +17343,6 @@ components:
       type: array
       items:
         $ref: '#/components/schemas/AssociationId'
-    StartAssociationsOnceResult:
-      type: object
     IdempotencyToken:
       type: string
       minLength: 36
@@ -17565,8 +17432,6 @@ components:
       enum:
       - Complete
       - Cancel
-    StopAutomationExecutionResult:
-      type: object
     TerminateSessionResponse:
       type: object
       properties:
@@ -17647,8 +17512,6 @@ components:
       - UpdateReview
       - Approve
       - Reject
-    UpdateDocumentMetadataResponse:
-      type: object
     UpdateMaintenanceWindowResult:
       type: object
       properties:
@@ -17777,14 +17640,10 @@ components:
         AlarmConfiguration:
           $ref: '#/components/schemas/AlarmConfiguration'
           description: The details for the CloudWatch alarm you applied to your maintenance window task.
-    UpdateManagedInstanceRoleResult:
-      type: object
     OpsItemOpsDataKeysList:
       type: array
       items:
         $ref: '#/components/schemas/String'
-    UpdateOpsItemResponse:
-      type: object
     MetadataKeysToDeleteList:
       type: array
       items:
@@ -17853,11 +17712,6 @@ components:
           description: Indicates the compliance status of managed nodes for which security-related patches are available but
             were not approved. This preference is specified when the CreatePatchBaseline or UpdatePatchBaseline commands are
             run. Applies to Windows Server managed nodes only.
-    UpdateResourceDataSyncResult:
-      type: object
-    UpdateServiceSettingResult:
-      description: The result body of the UpdateServiceSetting API operation.
-      type: object
     ValidateCloudConnectorMaxResults:
       type: integer
       minimum: 0

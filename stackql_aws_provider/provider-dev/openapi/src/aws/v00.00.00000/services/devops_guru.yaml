@@ -72,10 +72,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteInsightResponse"
     get:
       operationId: DescribeInsight
       description: Returns details about an insight that you specify using its ID.
@@ -188,10 +184,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateEventSourcesConfigResponse"
   /feedback:
     post:
       operationId: DescribeFeedback
@@ -229,10 +221,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/PutFeedbackResponse"
   /organization/health:
     post:
       operationId: DescribeOrganizationHealth
@@ -370,10 +358,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateServiceIntegrationResponse"
   /cost-estimation:
     get:
       operationId: GetCostEstimation
@@ -412,10 +396,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/StartCostEstimationResponse"
   /resource-collections/{resource_collection_type}:
     get:
       operationId: GetResourceCollection
@@ -657,10 +637,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/RemoveNotificationChannelResponse"
   /insights/search:
     post:
       operationId: SearchInsights
@@ -750,10 +726,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateResourceCollectionResponse"
 components:
   parameters:
     X-Amz-Content-Sha256:
@@ -873,8 +845,6 @@ components:
       minLength: 1
       maxLength: 100
       pattern: ^[\w-]*$
-    DeleteInsightResponse:
-      type: object
     DescribeAccountHealthResponse:
       type: object
       properties:
@@ -2913,10 +2883,6 @@ components:
       type: string
     RecommendationCategory:
       type: string
-    PutFeedbackResponse:
-      type: object
-    RemoveNotificationChannelResponse:
-      type: object
     SearchInsightsFilters:
       description: Specifies values used to filter responses when searching for insights. You can use a ResourceCollection, ServiceCollection, array of severities, and an array of status values. Each filter type contains one or more values to search for. If you specify multiple filter types, the filter types are joined with an AND, and the request returns only results that match all of the specified filters.
       type: object
@@ -2991,10 +2957,6 @@ components:
       minLength: 1
       maxLength: 100
       pattern: ^[a-zA-Z0-9]+[a-zA-Z0-9-]*$
-    StartCostEstimationResponse:
-      type: object
-    UpdateEventSourcesConfigResponse:
-      type: object
     UpdateResourceCollectionAction:
       type: string
       enum:
@@ -3042,8 +3004,6 @@ components:
       type: array
       items:
         $ref: "#/components/schemas/TagValue"
-    UpdateResourceCollectionResponse:
-      type: object
     UpdateServiceIntegrationConfig:
       description: Information about updating the integration status of an Amazon Web Services service, such as Amazon Web Services Systems Manager, with DevOps Guru.
       type: object
@@ -3083,8 +3043,6 @@ components:
         Type:
           $ref: "#/components/schemas/ServerSideEncryptionType"
           description: The type of KMS key used. Customer managed keys are the KMS keys that you create. Amazon Web Services owned keys are keys that are owned and managed by DevOps Guru.
-    UpdateServiceIntegrationResponse:
-      type: object
   x-stackQL-resources:
     notification_channels:
       id: aws.devops_guru.notification_channels
@@ -3126,7 +3084,6 @@ components:
             $ref: "#/paths/~1channels~1{id}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/notification_channels/methods/list_notification_channels"
@@ -3145,7 +3102,6 @@ components:
             $ref: "#/paths/~1insights~1{id}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         describe_insight:
           operation:
             $ref: "#/paths/~1insights~1{id}/get"
@@ -3253,9 +3209,29 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
+        list_anomalies_for_insight:
+          operation:
+            $ref: "#/paths/~1anomalies~1insight~1{insight_id}/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.ReactiveAnomalies
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/anomalies/methods/describe_anomaly"
+          - $ref: "#/components/x-stackQL-resources/anomalies/methods/list_anomalies_for_insight"
         insert: []
         update: []
         delete: []
@@ -3276,7 +3252,6 @@ components:
             $ref: "#/paths/~1event-sources/put"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -3289,10 +3264,10 @@ components:
         update:
           - $ref: "#/components/x-stackQL-resources/event_sources_configs/methods/update_event_sources_config"
         delete: []
-    feedbacks:
-      id: aws.devops_guru.feedbacks
-      name: feedbacks
-      title: feedbacks
+    feedback:
+      id: aws.devops_guru.feedback
+      name: feedback
+      title: feedback
       methods:
         describe_feedback:
           operation:
@@ -3311,7 +3286,6 @@ components:
             $ref: "#/paths/~1feedback/put"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -3319,11 +3293,11 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/feedbacks/methods/describe_feedback"
+          - $ref: "#/components/x-stackQL-resources/feedback/methods/describe_feedback"
         insert: []
         update: []
         replace:
-          - $ref: "#/components/x-stackQL-resources/feedbacks/methods/put_feedback"
+          - $ref: "#/components/x-stackQL-resources/feedback/methods/put_feedback"
         delete: []
     organization_healths:
       id: aws.devops_guru.organization_healths
@@ -3444,7 +3418,6 @@ components:
             $ref: "#/paths/~1service-integrations/put"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -3479,6 +3452,16 @@ components:
               responseToken:
                 key: $.NextToken
                 location: body
+        start_cost_estimation:
+          operation:
+            $ref: "#/paths/~1cost-estimation/put"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/cost_estimations/methods/get_cost_estimation"
@@ -3512,7 +3495,6 @@ components:
             $ref: "#/paths/~1resource-collections/put"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -3524,36 +3506,6 @@ components:
         insert: []
         update:
           - $ref: "#/components/x-stackQL-resources/resource_collections/methods/update_resource_collection"
-        delete: []
-    anomalies_for_insights:
-      id: aws.devops_guru.anomalies_for_insights
-      name: anomalies_for_insights
-      title: anomalies_for_insights
-      methods:
-        list_anomalies_for_insight:
-          operation:
-            $ref: "#/paths/~1anomalies~1insight~1{insight_id}/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.ReactiveAnomalies
-          request:
-            nativeCasing: pascal
-          config:
-            pagination:
-              requestToken:
-                key: NextToken
-                location: body
-              responseToken:
-                key: $.NextToken
-                location: body
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/anomalies_for_insights/methods/list_anomalies_for_insight"
-        insert: []
-        update: []
         delete: []
     anomalous_log_groups:
       id: aws.devops_guru.anomalous_log_groups

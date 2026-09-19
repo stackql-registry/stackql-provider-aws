@@ -33,7 +33,7 @@ total resources: __17__
 <a href="/services/compute_optimizer/ecs_service_recommendations/">ecs_service_recommendations</a><br />
 <a href="/services/compute_optimizer/effective_recommendation_preferences/">effective_recommendation_preferences</a><br />
 <a href="/services/compute_optimizer/enrollment_status/">enrollment_status</a><br />
-<a href="/services/compute_optimizer/enrollment_statuses_for_organizations/">enrollment_statuses_for_organizations</a>
+<a href="/services/compute_optimizer/enrollment_statuses/">enrollment_statuses</a>
 </div>
 <div class="providerDocColumn">
 <a href="/services/compute_optimizer/idle_recommendations/">idle_recommendations</a><br />

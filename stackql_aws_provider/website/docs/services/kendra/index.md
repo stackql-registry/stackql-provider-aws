@@ -28,7 +28,7 @@ total resources: __20__
 <a href="/services/kendra/access_control_configurations/">access_control_configurations</a><br />
 <a href="/services/kendra/data_source_sync_jobs/">data_source_sync_jobs</a><br />
 <a href="/services/kendra/data_sources/">data_sources</a><br />
-<a href="/services/kendra/document_status/">document_status</a><br />
+<a href="/services/kendra/document_statuses/">document_statuses</a><br />
 <a href="/services/kendra/entity_personas/">entity_personas</a><br />
 <a href="/services/kendra/experience_entities/">experience_entities</a><br />
 <a href="/services/kendra/experiences/">experiences</a><br />

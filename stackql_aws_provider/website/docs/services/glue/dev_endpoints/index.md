@@ -33,37 +33,13 @@ Creates, updates, deletes, gets or lists a <code>dev_endpoints</code> resource.
 The following fields are returned by `SELECT` queries:
 
 <Tabs
-    defaultValue="batch_get_dev_endpoints"
+    defaultValue="get_dev_endpoint"
     values={[
-        { label: 'batch_get_dev_endpoints', value: 'batch_get_dev_endpoints' },
         { label: 'get_dev_endpoint', value: 'get_dev_endpoint' },
+        { label: 'batch_get_dev_endpoints', value: 'batch_get_dev_endpoints' },
         { label: 'get_dev_endpoints', value: 'get_dev_endpoints' }
     ]}
 >
-<TabItem value="batch_get_dev_endpoints">
-
-<table>
-<thead>
-    <tr>
-    <th>Name</th>
-    <th>Datatype</th>
-    <th>Description</th>
-    </tr>
-</thead>
-<tbody>
-<tr>
-    <td><CopyableCode code="dev_endpoints" /></td>
-    <td><code>array</code></td>
-    <td>A list of DevEndpoint definitions.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="dev_endpoints_not_found" /></td>
-    <td><code>array</code></td>
-    <td>A list of DevEndpoints not found.</td>
-</tr>
-</tbody>
-</table>
-</TabItem>
 <TabItem value="get_dev_endpoint">
 
 <table>
@@ -199,6 +175,30 @@ The following fields are returned by `SELECT` queries:
     <td><CopyableCode code="zeppelin_remote_spark_interpreter_port" /></td>
     <td><code>integer</code></td>
     <td>The Apache Zeppelin port for the remote Apache Spark interpreter.</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
+<TabItem value="batch_get_dev_endpoints">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="dev_endpoints" /></td>
+    <td><code>array</code></td>
+    <td>A list of DevEndpoint definitions.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="dev_endpoints_not_found" /></td>
+    <td><code>array</code></td>
+    <td>A list of DevEndpoints not found.</td>
 </tr>
 </tbody>
 </table>
@@ -360,18 +360,18 @@ The following methods are available for this resource:
 </thead>
 <tbody>
 <tr>
-    <td><a href="#batch_get_dev_endpoints"><CopyableCode code="batch_get_dev_endpoints" /></a></td>
-    <td><CopyableCode code="select" /></td>
-    <td><a href="#parameter-region"><code>region</code></a></td>
-    <td></td>
-    <td>Returns a list of resource metadata for a given list of development endpoint names. After calling the ListDevEndpoints operation, you can call this operation to access the data to which you have been granted permissions. This operation supports all IAM permissions, including permission conditions that uses tags.</td>
-</tr>
-<tr>
     <td><a href="#get_dev_endpoint"><CopyableCode code="get_dev_endpoint" /></a></td>
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td></td>
     <td>Retrieves information about a specified development endpoint. When you create a development endpoint in a virtual private cloud (VPC), Glue returns only a private IP address, and the public IP address field is not populated. When you create a non-VPC development endpoint, Glue returns only a public IP address.</td>
+</tr>
+<tr>
+    <td><a href="#batch_get_dev_endpoints"><CopyableCode code="batch_get_dev_endpoints" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Returns a list of resource metadata for a given list of development endpoint names. After calling the ListDevEndpoints operation, you can call this operation to access the data to which you have been granted permissions. This operation supports all IAM permissions, including permission conditions that uses tags.</td>
 </tr>
 <tr>
     <td><a href="#get_dev_endpoints"><CopyableCode code="get_dev_endpoints" /></a></td>
@@ -435,26 +435,13 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 ## `SELECT` examples
 
 <Tabs
-    defaultValue="batch_get_dev_endpoints"
+    defaultValue="get_dev_endpoint"
     values={[
-        { label: 'batch_get_dev_endpoints', value: 'batch_get_dev_endpoints' },
         { label: 'get_dev_endpoint', value: 'get_dev_endpoint' },
+        { label: 'batch_get_dev_endpoints', value: 'batch_get_dev_endpoints' },
         { label: 'get_dev_endpoints', value: 'get_dev_endpoints' }
     ]}
 >
-<TabItem value="batch_get_dev_endpoints">
-
-Returns a list of resource metadata for a given list of development endpoint names. After calling the ListDevEndpoints operation, you can call this operation to access the data to which you have been granted permissions. This operation supports all IAM permissions, including permission conditions that uses tags.
-
-```sql
-SELECT
-dev_endpoints,
-dev_endpoints_not_found
-FROM aws.glue.dev_endpoints
-WHERE region = '{{ region }}' -- required
-;
-```
-</TabItem>
 <TabItem value="get_dev_endpoint">
 
 Retrieves information about a specified development endpoint. When you create a development endpoint in a virtual private cloud (VPC), Glue returns only a private IP address, and the public IP address field is not populated. When you create a non-VPC development endpoint, Glue returns only a public IP address.
@@ -486,6 +473,19 @@ vpc_id,
 worker_type,
 yarn_endpoint_address,
 zeppelin_remote_spark_interpreter_port
+FROM aws.glue.dev_endpoints
+WHERE region = '{{ region }}' -- required
+;
+```
+</TabItem>
+<TabItem value="batch_get_dev_endpoints">
+
+Returns a list of resource metadata for a given list of development endpoint names. After calling the ListDevEndpoints operation, you can call this operation to access the data to which you have been granted permissions. This operation supports all IAM permissions, including permission conditions that uses tags.
+
+```sql
+SELECT
+dev_endpoints,
+dev_endpoints_not_found
 FROM aws.glue.dev_endpoints
 WHERE region = '{{ region }}' -- required
 ;

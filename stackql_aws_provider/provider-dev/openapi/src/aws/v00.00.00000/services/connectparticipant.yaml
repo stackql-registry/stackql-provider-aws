@@ -42,10 +42,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/CancelParticipantAuthenticationResponse"
   /participant/complete-attachment-upload:
     post:
       operationId: CompleteAttachmentUpload
@@ -74,10 +70,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/CompleteAttachmentUploadResponse"
   /participant/connection:
     post:
       operationId: CreateParticipantConnection
@@ -154,10 +146,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DisconnectParticipantResponse"
   /participant/attachment:
     post:
       operationId: GetAttachment
@@ -416,8 +404,6 @@ components:
       type: string
       minLength: 36
       maxLength: 36
-    CancelParticipantAuthenticationResponse:
-      type: object
     AttachmentIdList:
       type: array
       items:
@@ -430,8 +416,6 @@ components:
       type: string
       minLength: 1
       maxLength: 500
-    CompleteAttachmentUploadResponse:
-      type: object
     ConnectionTypeList:
       type: array
       items:
@@ -631,8 +615,6 @@ components:
     ClientToken:
       type: string
       maxLength: 500
-    DisconnectParticipantResponse:
-      type: object
     URLExpiryInSeconds:
       type: integer
       minimum: 5
@@ -941,6 +923,26 @@ components:
       minLength: 1
       maxLength: 2000
   x-stackQL-resources:
+    participant_authentications:
+      id: aws.connectparticipant.participant_authentications
+      name: participant_authentications
+      title: participant_authentications
+      methods:
+        cancel_participant_authentication:
+          operation:
+            $ref: "#/paths/~1participant~1cancel-authentication/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
     attachments:
       id: aws.connectparticipant.attachments
       name: attachments
@@ -951,7 +953,6 @@ components:
             $ref: "#/paths/~1participant~1complete-attachment-upload/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -1025,6 +1026,26 @@ components:
         insert: []
         update: []
         delete: []
+    participants:
+      id: aws.connectparticipant.participants
+      name: participants
+      title: participants
+      methods:
+        disconnect_participant:
+          operation:
+            $ref: "#/paths/~1participant~1disconnect/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
     authentication_urls:
       id: aws.connectparticipant.authentication_urls
       name: authentication_urls
@@ -1066,6 +1087,48 @@ components:
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/transcripts/methods/get_transcript"
+        insert: []
+        update: []
+        delete: []
+    events:
+      id: aws.connectparticipant.events
+      name: events
+      title: events
+      methods:
+        send_event:
+          operation:
+            $ref: "#/paths/~1participant~1event/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
+    messages:
+      id: aws.connectparticipant.messages
+      name: messages
+      title: messages
+      methods:
+        send_message:
+          operation:
+            $ref: "#/paths/~1participant~1message/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
         insert: []
         update: []
         delete: []

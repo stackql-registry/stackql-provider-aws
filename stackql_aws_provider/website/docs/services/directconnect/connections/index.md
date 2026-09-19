@@ -108,6 +108,13 @@ The following methods are available for this resource:
     <td>Updates the Direct Connect connection configuration. You can update the following parameters for a connection: The connection name The connection's MAC Security (MACsec) encryption mode.</td>
 </tr>
 <tr>
+    <td><a href="#update_connections_billing_mode"><CopyableCode code="update_connections_billing_mode" /></a></td>
+    <td><CopyableCode code="update" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-connectionIds"><code>connectionIds</code></a>, <a href="#parameter-billingMode"><code>billingMode</code></a></td>
+    <td></td>
+    <td>Updates the billing mode for the specified Direct Connect connections. You can update the billing mode for up to 200 connections in a single request.</td>
+</tr>
+<tr>
     <td><a href="#delete_connection"><CopyableCode code="delete_connection" /></a></td>
     <td><CopyableCode code="delete" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
@@ -198,6 +205,7 @@ lagId,
 tags,
 providerName,
 requestMACSec,
+billingMode,
 region
 )
 SELECT 
@@ -208,12 +216,14 @@ SELECT
 '{{ tags }}',
 '{{ providerName }}',
 {{ requestMACSec }},
+'{{ billingMode }}',
 '{{ region }}'
 RETURNING
 aws_device,
 aws_device_v2,
 aws_logical_device_id,
 bandwidth,
+billing_mode,
 connection_id,
 connection_name,
 connection_state,
@@ -229,6 +239,10 @@ owner_account,
 partner_interconnect_mac_sec_capable,
 partner_name,
 port_encryption_status,
+prefix_pool_size_ipv_4,
+prefix_pool_size_ipv_6,
+prefix_pool_unallocated_count_ipv_4,
+prefix_pool_unallocated_count_ipv_6,
 provider_name,
 rate_limiter_status,
 region,
@@ -275,6 +289,11 @@ vlan
       value: {{ requestMACSec }}
       description: |
         Indicates whether you want the connection to support MAC Security (MACsec). MAC Security (MACsec) is unavailable on hosted connections. For information about MAC Security (MACsec) prerequisites, see MAC Security in Direct Connect in the Direct Connect User Guide.
+    - name: billingMode
+      value: "{{ billingMode }}"
+      description: |
+        The billing mode for the connection.
+      valid_values: ['PayAsYouGo', 'FlatRateTier1', 'FlatRateTier2', 'FlatRateTier3', 'FlatRateTier4', 'FlatRateTier5']
 `}</CodeBlock>
 
 </TabItem>
@@ -287,7 +306,8 @@ vlan
     defaultValue="disassociate_mac_sec_key"
     values={[
         { label: 'disassociate_mac_sec_key', value: 'disassociate_mac_sec_key' },
-        { label: 'update_connection', value: 'update_connection' }
+        { label: 'update_connection', value: 'update_connection' },
+        { label: 'update_connections_billing_mode', value: 'update_connections_billing_mode' }
     ]}
 >
 <TabItem value="disassociate_mac_sec_key">
@@ -326,6 +346,7 @@ aws_device,
 aws_device_v2,
 aws_logical_device_id,
 bandwidth,
+billing_mode,
 connection_id,
 connection_name,
 connection_state,
@@ -341,11 +362,33 @@ owner_account,
 partner_interconnect_mac_sec_capable,
 partner_name,
 port_encryption_status,
+prefix_pool_size_ipv_4,
+prefix_pool_size_ipv_6,
+prefix_pool_unallocated_count_ipv_4,
+prefix_pool_unallocated_count_ipv_6,
 provider_name,
 rate_limiter_status,
 region,
 tags,
 vlan;
+```
+</TabItem>
+<TabItem value="update_connections_billing_mode">
+
+Updates the billing mode for the specified Direct Connect connections. You can update the billing mode for up to 200 connections in a single request.
+
+```sql
+UPDATE aws.directconnect.connections
+SET 
+connectionIds = '{{ connectionIds }}',
+billingMode = '{{ billingMode }}'
+WHERE 
+region = '{{ region }}' --required
+AND connectionIds = '{{ connectionIds }}' --required
+AND billingMode = '{{ billingMode }}' --required
+RETURNING
+billing_mode,
+connections;
 ```
 </TabItem>
 </Tabs>

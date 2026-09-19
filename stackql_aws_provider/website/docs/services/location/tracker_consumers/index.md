@@ -90,7 +90,7 @@ The following methods are available for this resource:
 </tr>
 <tr>
     <td><a href="#disassociate_tracker_consumer"><CopyableCode code="disassociate_tracker_consumer" /></a></td>
-    <td><CopyableCode code="update" /></td>
+    <td><CopyableCode code="exec" /></td>
     <td><a href="#parameter-tracker_name"><code>tracker_name</code></a>, <a href="#parameter-consumer_arn"><code>consumer_arn</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td></td>
     <td>Removes the association between a tracker resource and a geofence collection. Once you unlink a tracker resource from a geofence collection, the tracker positions will no longer be automatically evaluated against geofences.</td>
@@ -158,8 +158,7 @@ AND region = '{{ region }}' -- required
 <Tabs
     defaultValue="associate_tracker_consumer"
     values={[
-        { label: 'associate_tracker_consumer', value: 'associate_tracker_consumer' },
-        { label: 'disassociate_tracker_consumer', value: 'disassociate_tracker_consumer' }
+        { label: 'associate_tracker_consumer', value: 'associate_tracker_consumer' }
     ]}
 >
 <TabItem value="associate_tracker_consumer">
@@ -176,18 +175,27 @@ AND region = '{{ region }}' --required
 AND ConsumerArn = '{{ ConsumerArn }}' --required;
 ```
 </TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="disassociate_tracker_consumer"
+    values={[
+        { label: 'disassociate_tracker_consumer', value: 'disassociate_tracker_consumer' }
+    ]}
+>
 <TabItem value="disassociate_tracker_consumer">
 
 Removes the association between a tracker resource and a geofence collection. Once you unlink a tracker resource from a geofence collection, the tracker positions will no longer be automatically evaluated against geofences.
 
 ```sql
-UPDATE aws.location.tracker_consumers
-SET 
--- No updatable properties
-WHERE 
-tracker_name = '{{ tracker_name }}' --required
-AND consumer_arn = '{{ consumer_arn }}' --required
-AND region = '{{ region }}' --required;
+EXEC aws.location.tracker_consumers.disassociate_tracker_consumer 
+@tracker_name='{{ tracker_name }}' --required, 
+@consumer_arn='{{ consumer_arn }}' --required, 
+@region='{{ region }}' --required
+;
 ```
 </TabItem>
 </Tabs>

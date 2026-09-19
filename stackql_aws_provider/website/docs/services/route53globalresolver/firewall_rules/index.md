@@ -289,6 +289,27 @@ The following methods are available for this resource:
     <td></td>
     <td>Deletes a DNS firewall rule. This operation cannot be undone. Route 53 Global Resolver is a global service that supports resolvers in multiple Amazon Web Services Regions but you must specify the US East (Ohio) Region to create, update, or otherwise work with Route 53 Global Resolver resources. That is, for example, specify --region us-east-2 on Amazon Web Services CLI commands.</td>
 </tr>
+<tr>
+    <td><a href="#batch_create_firewall_rule"><CopyableCode code="batch_create_firewall_rule" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-firewallRules"><code>firewallRules</code></a></td>
+    <td></td>
+    <td>Creates multiple DNS firewall rules in a single operation. This is more efficient than creating rules individually when you need to set up multiple rules at once. Route 53 Global Resolver is a global service that supports resolvers in multiple Amazon Web Services Regions but you must specify the US East (Ohio) Region to create, update, or otherwise work with Route 53 Global Resolver resources. That is, for example, specify --region us-east-2 on Amazon Web Services CLI commands.</td>
+</tr>
+<tr>
+    <td><a href="#batch_delete_firewall_rule"><CopyableCode code="batch_delete_firewall_rule" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-firewallRules"><code>firewallRules</code></a></td>
+    <td></td>
+    <td>Deletes multiple DNS firewall rules in a single operation. This is more efficient than deleting rules individually. Route 53 Global Resolver is a global service that supports resolvers in multiple Amazon Web Services Regions but you must specify the US East (Ohio) Region to create, update, or otherwise work with Route 53 Global Resolver resources. That is, for example, specify --region us-east-2 on Amazon Web Services CLI commands.</td>
+</tr>
+<tr>
+    <td><a href="#batch_update_firewall_rule"><CopyableCode code="batch_update_firewall_rule" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-firewallRules"><code>firewallRules</code></a></td>
+    <td></td>
+    <td>Updates multiple DNS firewall rules in a single operation. This is more efficient than updating rules individually. Route 53 Global Resolver is a global service that supports resolvers in multiple Amazon Web Services Regions but you must specify the US East (Ohio) Region to create, update, or otherwise work with Route 53 Global Resolver resources. That is, for example, specify --region us-east-2 on Amazon Web Services CLI commands.</td>
+</tr>
 </tbody>
 </table>
 
@@ -595,6 +616,61 @@ Deletes a DNS firewall rule. This operation cannot be undone. Route 53 Global Re
 DELETE FROM aws.route53globalresolver.firewall_rules
 WHERE firewall_rule_id = '{{ firewall_rule_id }}' --required
 AND region = '{{ region }}' --required
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="batch_create_firewall_rule"
+    values={[
+        { label: 'batch_create_firewall_rule', value: 'batch_create_firewall_rule' },
+        { label: 'batch_delete_firewall_rule', value: 'batch_delete_firewall_rule' },
+        { label: 'batch_update_firewall_rule', value: 'batch_update_firewall_rule' }
+    ]}
+>
+<TabItem value="batch_create_firewall_rule">
+
+Creates multiple DNS firewall rules in a single operation. This is more efficient than creating rules individually when you need to set up multiple rules at once. Route 53 Global Resolver is a global service that supports resolvers in multiple Amazon Web Services Regions but you must specify the US East (Ohio) Region to create, update, or otherwise work with Route 53 Global Resolver resources. That is, for example, specify --region us-east-2 on Amazon Web Services CLI commands.
+
+```sql
+EXEC aws.route53globalresolver.firewall_rules.batch_create_firewall_rule 
+@region='{{ region }}' --required 
+@@json=
+'{
+"firewallRules": "{{ firewallRules }}"
+}'
+;
+```
+</TabItem>
+<TabItem value="batch_delete_firewall_rule">
+
+Deletes multiple DNS firewall rules in a single operation. This is more efficient than deleting rules individually. Route 53 Global Resolver is a global service that supports resolvers in multiple Amazon Web Services Regions but you must specify the US East (Ohio) Region to create, update, or otherwise work with Route 53 Global Resolver resources. That is, for example, specify --region us-east-2 on Amazon Web Services CLI commands.
+
+```sql
+EXEC aws.route53globalresolver.firewall_rules.batch_delete_firewall_rule 
+@region='{{ region }}' --required 
+@@json=
+'{
+"firewallRules": "{{ firewallRules }}"
+}'
+;
+```
+</TabItem>
+<TabItem value="batch_update_firewall_rule">
+
+Updates multiple DNS firewall rules in a single operation. This is more efficient than updating rules individually. Route 53 Global Resolver is a global service that supports resolvers in multiple Amazon Web Services Regions but you must specify the US East (Ohio) Region to create, update, or otherwise work with Route 53 Global Resolver resources. That is, for example, specify --region us-east-2 on Amazon Web Services CLI commands.
+
+```sql
+EXEC aws.route53globalresolver.firewall_rules.batch_update_firewall_rule 
+@region='{{ region }}' --required 
+@@json=
+'{
+"firewallRules": "{{ firewallRules }}"
+}'
 ;
 ```
 </TabItem>

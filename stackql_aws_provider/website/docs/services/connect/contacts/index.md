@@ -463,7 +463,7 @@ The following methods are available for this resource:
     <td><CopyableCode code="exec" /></td>
     <td><a href="#parameter-instance_id"><code>instance_id</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-ContactId"><code>ContactId</code></a>, <a href="#parameter-EvaluationFormId"><code>EvaluationFormId</code></a></td>
     <td></td>
-    <td>Starts an empty evaluation in the specified Connect Customer instance, using the given evaluation form for the particular contact. The evaluation form version used for the contact evaluation corresponds to the currently activated version. If no version is activated for the evaluation form, the contact evaluation cannot be started. Evaluations created through the public API do not contain answer values suggested from automation.</td>
+    <td>Starts an empty evaluation in the specified Connect Customer instance, using the given evaluation form for the particular contact. The evaluation form version used for the contact evaluation corresponds to the currently activated version. If no version is activated for the evaluation form, the contact evaluation cannot be started.</td>
 </tr>
 <tr>
     <td><a href="#resume_contact_recording"><CopyableCode code="resume_contact_recording" /></a></td>
@@ -889,7 +889,7 @@ AND region = '{{ region }}' --required
 >
 <TabItem value="start_contact_evaluation">
 
-Starts an empty evaluation in the specified Connect Customer instance, using the given evaluation form for the particular contact. The evaluation form version used for the contact evaluation corresponds to the currently activated version. If no version is activated for the evaluation form, the contact evaluation cannot be started. Evaluations created through the public API do not contain answer values suggested from automation.
+Starts an empty evaluation in the specified Connect Customer instance, using the given evaluation form for the particular contact. The evaluation form version used for the contact evaluation corresponds to the currently activated version. If no version is activated for the evaluation form, the contact evaluation cannot be started.
 
 ```sql
 EXEC aws.connect.contacts.start_contact_evaluation 

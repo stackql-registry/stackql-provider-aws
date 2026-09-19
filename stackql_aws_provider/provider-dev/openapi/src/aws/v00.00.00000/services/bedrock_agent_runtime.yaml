@@ -232,10 +232,6 @@ paths:
       responses:
         "202":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteAgentMemoryResponse"
     get:
       operationId: GetAgentMemory
       description: Gets the sessions stored in the memory of the agent.
@@ -297,10 +293,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteSessionResponse"
     get:
       operationId: GetSession
       description: Retrieves details about a specific session. For more information about sessions, see Store and retrieve conversation history and context with Amazon Bedrock sessions.
@@ -930,10 +922,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TagResourceResponse"
     delete:
       operationId: UntagResource
       description: Remove tags from a resource.
@@ -953,10 +941,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UntagResourceResponse"
   /optimize-prompt:
     post:
       operationId: OptimizePrompt
@@ -2310,10 +2294,6 @@ components:
       minLength: 2
       maxLength: 100
       pattern: ^[0-9a-zA-Z._:-]+$
-    DeleteAgentMemoryResponse:
-      type: object
-    DeleteSessionResponse:
-      type: object
     EndSessionResponse:
       type: object
       properties:
@@ -7177,8 +7157,6 @@ components:
           description: The updated status of the flow execution after the stop request. This will typically be ABORTED if the execution was successfully stopped.
       required:
         - status
-    TagResourceResponse:
-      type: object
     TagKeyList:
       description: List of Tag Keys
       type: array
@@ -7190,8 +7168,6 @@ components:
       minLength: 1
       maxLength: 128
       pattern: ^[a-zA-Z0-9\s._:/=+@-]*$
-    UntagResourceResponse:
-      type: object
     UpdateSessionResponse:
       type: object
       properties:
@@ -7217,6 +7193,61 @@ components:
         - sessionId
         - sessionStatus
   x-stackQL-resources:
+    retrieve_streams:
+      id: aws.bedrock_agent_runtime.retrieve_streams
+      name: retrieve_streams
+      title: retrieve_streams
+      methods:
+        agentic_retrieve_stream:
+          operation:
+            $ref: "#/paths/~1agenticRetrieveStream/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
+    ingested_document_acls:
+      id: aws.bedrock_agent_runtime.ingested_document_acls
+      name: ingested_document_acls
+      title: ingested_document_acls
+      methods:
+        check_ingested_document_acl:
+          operation:
+            $ref: "#/paths/~1knowledgebases~1{knowledge_base_id}~1datasources~1{data_source_id}~1check-ingested-document-acl/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        get_ingested_document_acl:
+          operation:
+            $ref: "#/paths/~1knowledgebases~1{knowledge_base_id}~1datasources~1{data_source_id}~1get-ingested-document-acl/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.documentAcl
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/ingested_document_acls/methods/get_ingested_document_acl"
+        insert: []
+        update: []
+        delete: []
     invocations:
       id: aws.bedrock_agent_runtime.invocations
       name: invocations
@@ -7295,7 +7326,6 @@ components:
             $ref: "#/paths/~1sessions~1{session_identifier}~1/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         get_session:
           operation:
             $ref: "#/paths/~1sessions~1{session_identifier}~1/get"
@@ -7361,7 +7391,6 @@ components:
             $ref: "#/paths/~1agents~1{agent_id}~1agentAliases~1{agent_alias_id}~1memories/delete"
           response:
             openAPIDocKey: "202"
-            mediaType: application/json
           request:
             nativeCasing: pascal
         get_agent_memory:
@@ -7388,10 +7417,31 @@ components:
         update: []
         delete:
           - $ref: "#/components/x-stackQL-resources/agent_memories/methods/delete_agent_memory"
-    document_contents:
-      id: aws.bedrock_agent_runtime.document_contents
-      name: document_contents
-      title: document_contents
+    queries:
+      id: aws.bedrock_agent_runtime.queries
+      name: queries
+      title: queries
+      methods:
+        generate_query:
+          operation:
+            $ref: "#/paths/~1generateQuery/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
+    document_content:
+      id: aws.bedrock_agent_runtime.document_content
+      name: document_content
+      title: document_content
       methods:
         get_document_content:
           operation:
@@ -7406,7 +7456,7 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/document_contents/methods/get_document_content"
+          - $ref: "#/components/x-stackQL-resources/document_content/methods/get_document_content"
         insert: []
         update: []
         delete: []
@@ -7455,33 +7505,27 @@ components:
               responseToken:
                 key: $.nextToken
                 location: body
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/flow_executions/methods/get_flow_execution"
-          - $ref: "#/components/x-stackQL-resources/flow_executions/methods/list_flow_executions"
-        insert: []
-        update: []
-        delete: []
-    ingested_document_acls:
-      id: aws.bedrock_agent_runtime.ingested_document_acls
-      name: ingested_document_acls
-      title: ingested_document_acls
-      methods:
-        get_ingested_document_acl:
+        start_flow_execution:
           operation:
-            $ref: "#/paths/~1knowledgebases~1{knowledge_base_id}~1datasources~1{data_source_id}~1get-ingested-document-acl/post"
+            $ref: "#/paths/~1flows~1{flow_identifier}~1aliases~1{flow_alias_identifier}~1executions/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-            objectKey: $.documentAcl
           request:
             nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
+        stop_flow_execution:
+          operation:
+            $ref: "#/paths/~1flows~1{flow_identifier}~1aliases~1{flow_alias_identifier}~1executions~1{execution_identifier}~1stop/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/ingested_document_acls/methods/get_ingested_document_acl"
+          - $ref: "#/components/x-stackQL-resources/flow_executions/methods/get_flow_execution"
+          - $ref: "#/components/x-stackQL-resources/flow_executions/methods/list_flow_executions"
         insert: []
         update: []
         delete: []
@@ -7541,6 +7585,27 @@ components:
         replace:
           - $ref: "#/components/x-stackQL-resources/invocation_steps/methods/put_invocation_step"
         delete: []
+    flows:
+      id: aws.bedrock_agent_runtime.flows
+      name: flows
+      title: flows
+      methods:
+        invoke_flow:
+          operation:
+            $ref: "#/paths/~1flows~1{flow_identifier}~1aliases~1{flow_alias_identifier}/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
     flow_execution_events:
       id: aws.bedrock_agent_runtime.flow_execution_events
       name: flow_execution_events
@@ -7585,7 +7650,6 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -7596,7 +7660,6 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
       sqlVerbs:
@@ -7606,4 +7669,123 @@ components:
         update:
           - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
           - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
+        delete: []
+    prompts:
+      id: aws.bedrock_agent_runtime.prompts
+      name: prompts
+      title: prompts
+      methods:
+        optimize_prompt:
+          operation:
+            $ref: "#/paths/~1optimize-prompt/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
+    reranks:
+      id: aws.bedrock_agent_runtime.reranks
+      name: reranks
+      title: reranks
+      methods:
+        rerank:
+          operation:
+            $ref: "#/paths/~1rerank/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
+    retrieves:
+      id: aws.bedrock_agent_runtime.retrieves
+      name: retrieves
+      title: retrieves
+      methods:
+        retrieve:
+          operation:
+            $ref: "#/paths/~1knowledgebases~1{knowledge_base_id}~1retrieve/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
+    and_generates:
+      id: aws.bedrock_agent_runtime.and_generates
+      name: and_generates
+      title: and_generates
+      methods:
+        retrieve_and_generate:
+          operation:
+            $ref: "#/paths/~1retrieveAndGenerate/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
+    and_generate_streams:
+      id: aws.bedrock_agent_runtime.and_generate_streams
+      name: and_generate_streams
+      title: and_generate_streams
+      methods:
+        retrieve_and_generate_stream:
+          operation:
+            $ref: "#/paths/~1retrieveAndGenerateStream/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
         delete: []

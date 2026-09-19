@@ -317,11 +317,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteTagsForDomainResponse'
-      x-stackql-resource: domains
+      x-stackql-resource: tags
       x-stackql-method: delete_tags_for_domain
       x-stackql-verb: DELETE
   /DisableDomainAutoRenew:
@@ -353,10 +349,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DisableDomainAutoRenewResponse'
       x-stackql-resource: domains
       x-stackql-method: disable_domain_auto_renew
       x-stackql-verb: EXEC
@@ -474,10 +466,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/EnableDomainAutoRenewResponse'
       x-stackql-resource: domains
       x-stackql-method: enable_domain_auto_renew
       x-stackql-verb: EXEC
@@ -554,7 +542,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetContactReachabilityStatusResponse'
-      x-stackql-resource: contact_reachability_status
+      x-stackql-resource: contact_reachability_statuses
       x-stackql-method: get_contact_reachability_status
       x-stackql-verb: SELECT
   /GetDomainDetail:
@@ -1165,7 +1153,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ResendContactReachabilityEmailResponse'
-      x-stackql-resource: resend_contact_reachability_email
+      x-stackql-resource: contact_reachability_emails
       x-stackql-method: resend_contact_reachability_email
       x-stackql-verb: EXEC
   /ResendOperationAuthorization:
@@ -1613,11 +1601,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateTagsForDomainResponse'
-      x-stackql-resource: domains
+      x-stackql-resource: tags
       x-stackql-method: update_tags_for_domain
       x-stackql-verb: UPDATE
   /ViewBilling:
@@ -1668,7 +1652,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ViewBillingResponse'
-      x-stackql-resource: view_billing
+      x-stackql-resource: billings
       x-stackql-method: view_billing
       x-stackql-verb: EXEC
       x-stackql-pagination-request-token-key: Marker
@@ -1854,10 +1838,6 @@ components:
       type: string
       minLength: 1
       maxLength: 128
-    DeleteTagsForDomainResponse:
-      type: object
-    DisableDomainAutoRenewResponse:
-      type: object
     DisableDomainTransferLockResponse:
       description: The DisableDomainTransferLock response includes the following element.
       type: object
@@ -1873,8 +1853,6 @@ components:
         OperationId:
           $ref: '#/components/schemas/OperationId'
           description: Identifier for tracking the progress of the request. To query the operation status, use GetOperationDetail.
-    EnableDomainAutoRenewResponse:
-      type: object
     EnableDomainTransferLockResponse:
       description: The EnableDomainTransferLock response includes the following elements.
       type: object
@@ -3016,8 +2994,6 @@ components:
         OperationId:
           $ref: '#/components/schemas/OperationId'
           description: Identifier for tracking the progress of the request. To query the operation status, use GetOperationDetail.
-    UpdateTagsForDomainResponse:
-      type: object
     ViewBillingResponse:
       description: The ViewBilling response includes the following elements.
       type: object

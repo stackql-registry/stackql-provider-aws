@@ -2373,10 +2373,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TagResourceResponse"
   /UntagResource:
     post:
       operationId: UntagResource
@@ -2410,10 +2406,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UntagResourceResponse"
   /UpdateFirewallConfig:
     post:
       operationId: UpdateFirewallConfig
@@ -4721,14 +4713,10 @@ components:
         ReturnValue:
           $ref: "#/components/schemas/Boolean"
           description: Whether the PutResolverRulePolicy request was successful.
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
         $ref: "#/components/schemas/TagKey"
-    UntagResourceResponse:
-      type: object
     UpdateFirewallConfigResponse:
       type: object
       properties:
@@ -5286,6 +5274,119 @@ components:
           - $ref: "#/components/x-stackQL-resources/resolver_rules/methods/update_resolver_rule"
         delete:
           - $ref: "#/components/x-stackQL-resources/resolver_rules/methods/delete_resolver_rule"
+    firewall_rules:
+      id: aws.route53resolver.firewall_rules
+      name: firewall_rules
+      title: firewall_rules
+      methods:
+        batch_create_firewall_rule:
+          operation:
+            $ref: "#/paths/~1BatchCreateFirewallRule/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        batch_delete_firewall_rule:
+          operation:
+            $ref: "#/paths/~1BatchDeleteFirewallRule/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        batch_update_firewall_rule:
+          operation:
+            $ref: "#/paths/~1BatchUpdateFirewallRule/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        create_firewall_rule:
+          operation:
+            $ref: "#/paths/~1CreateFirewallRule/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        delete_firewall_rule:
+          operation:
+            $ref: "#/paths/~1DeleteFirewallRule/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        list_firewall_rules:
+          operation:
+            $ref: "#/paths/~1ListFirewallRules/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.FirewallRules
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        update_firewall_rule:
+          operation:
+            $ref: "#/paths/~1UpdateFirewallRule/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/firewall_rules/methods/list_firewall_rules"
+        insert:
+          - $ref: "#/components/x-stackQL-resources/firewall_rules/methods/create_firewall_rule"
+        update:
+          - $ref: "#/components/x-stackQL-resources/firewall_rules/methods/update_firewall_rule"
+        delete:
+          - $ref: "#/components/x-stackQL-resources/firewall_rules/methods/delete_firewall_rule"
     firewall_domain_lists:
       id: aws.route53resolver.firewall_domain_lists
       name: firewall_domain_lists
@@ -5361,80 +5462,6 @@ components:
         update: []
         delete:
           - $ref: "#/components/x-stackQL-resources/firewall_domain_lists/methods/delete_firewall_domain_list"
-    firewall_rules:
-      id: aws.route53resolver.firewall_rules
-      name: firewall_rules
-      title: firewall_rules
-      methods:
-        create_firewall_rule:
-          operation:
-            $ref: "#/paths/~1CreateFirewallRule/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        delete_firewall_rule:
-          operation:
-            $ref: "#/paths/~1DeleteFirewallRule/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        list_firewall_rules:
-          operation:
-            $ref: "#/paths/~1ListFirewallRules/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.FirewallRules
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            pagination:
-              requestToken:
-                key: NextToken
-                location: body
-              responseToken:
-                key: $.NextToken
-                location: body
-            requestBodyTranslate:
-              algorithm: naive
-        update_firewall_rule:
-          operation:
-            $ref: "#/paths/~1UpdateFirewallRule/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/firewall_rules/methods/list_firewall_rules"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/firewall_rules/methods/create_firewall_rule"
-        update:
-          - $ref: "#/components/x-stackQL-resources/firewall_rules/methods/update_firewall_rule"
-        delete:
-          - $ref: "#/components/x-stackQL-resources/firewall_rules/methods/delete_firewall_rule"
     outpost_resolvers:
       id: aws.route53resolver.outpost_resolvers
       name: outpost_resolvers
@@ -6138,7 +6165,6 @@ components:
             $ref: "#/paths/~1TagResource/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -6151,7 +6177,6 @@ components:
             $ref: "#/paths/~1UntagResource/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1

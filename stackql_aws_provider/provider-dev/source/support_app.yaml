@@ -60,10 +60,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CreateSlackChannelConfigurationResult'
       x-stackql-resource: slack_channel_configurations
       x-stackql-method: create_slack_channel_configuration
       x-stackql-verb: INSERT
@@ -77,11 +73,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteAccountAliasResult'
-      x-stackql-resource: account_alias
+      x-stackql-resource: account_aliases
       x-stackql-method: delete_account_alias
       x-stackql-verb: DELETE
   /control/delete-slack-channel-configuration:
@@ -107,10 +99,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteSlackChannelConfigurationResult'
       x-stackql-resource: slack_channel_configurations
       x-stackql-method: delete_slack_channel_configuration
       x-stackql-verb: DELETE
@@ -134,10 +122,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteSlackWorkspaceConfigurationResult'
       x-stackql-resource: slack_workspace_configurations
       x-stackql-method: delete_slack_workspace_configuration
       x-stackql-verb: DELETE
@@ -155,7 +139,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetAccountAliasResult'
-      x-stackql-resource: account_alias
+      x-stackql-resource: account_aliases
       x-stackql-method: get_account_alias
       x-stackql-verb: SELECT
   /control/list-slack-channel-configurations:
@@ -227,11 +211,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PutAccountAliasResult'
-      x-stackql-resource: account_alias
+      x-stackql-resource: account_aliases
       x-stackql-method: put_account_alias
       x-stackql-verb: REPLACE
   /control/register-slack-workspace-for-organization:
@@ -268,7 +248,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RegisterSlackWorkspaceForOrganizationResult'
-      x-stackql-resource: slack_workspace_for_organizations
+      x-stackql-resource: slack_workspaces
       x-stackql-method: register_slack_workspace_for_organization
       x-stackql-verb: INSERT
   /control/update-slack-channel-configuration:
@@ -385,14 +365,6 @@ components:
       minLength: 1
       maxLength: 256
       pattern: ^\S+$
-    CreateSlackChannelConfigurationResult:
-      type: object
-    DeleteAccountAliasResult:
-      type: object
-    DeleteSlackChannelConfigurationResult:
-      type: object
-    DeleteSlackWorkspaceConfigurationResult:
-      type: object
     GetAccountAliasResult:
       type: object
       properties:
@@ -492,8 +464,6 @@ components:
       minLength: 1
       maxLength: 256
       pattern: ^.+$
-    PutAccountAliasResult:
-      type: object
     RegisterSlackWorkspaceForOrganizationResult:
       type: object
       properties:

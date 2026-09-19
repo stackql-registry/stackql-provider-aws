@@ -31,7 +31,7 @@ total resources: __8__
 <a href="/services/amplifybackend/backend_jobs/">backend_jobs</a>
 </div>
 <div class="providerDocColumn">
-<a href="/services/amplifybackend/backend_storages/">backend_storages</a><br />
+<a href="/services/amplifybackend/backend_storage/">backend_storage</a><br />
 <a href="/services/amplifybackend/backends/">backends</a><br />
 <a href="/services/amplifybackend/s3_buckets/">s3_buckets</a><br />
 <a href="/services/amplifybackend/tokens/">tokens</a>

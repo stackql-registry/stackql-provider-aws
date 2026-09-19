@@ -30,10 +30,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteObjectResponse"
     head:
       operationId: DescribeObject
       description: Gets the headers for an object at the specified path.
@@ -204,8 +200,6 @@ components:
       minLength: 1
       maxLength: 900
       pattern: (?:[A-Za-z0-9_\.\-\~]+/){0,10}[A-Za-z0-9_\.\-\~]+
-    DeleteObjectResponse:
-      type: object
     DescribeObjectResponse:
       type: object
       properties:
@@ -376,7 +370,6 @@ components:
             $ref: "#/paths/~1{path}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         describe_object:
           operation:
             $ref: "#/paths/~1{path}/head"

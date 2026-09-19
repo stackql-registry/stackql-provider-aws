@@ -33,36 +33,12 @@ Creates, updates, deletes, gets or lists a <code>profiles</code> resource.
 The following fields are returned by `SELECT` queries:
 
 <Tabs
-    defaultValue="batch_get_profile"
+    defaultValue="search_profiles"
     values={[
-        { label: 'batch_get_profile', value: 'batch_get_profile' },
-        { label: 'search_profiles', value: 'search_profiles' }
+        { label: 'search_profiles', value: 'search_profiles' },
+        { label: 'batch_get_profile', value: 'batch_get_profile' }
     ]}
 >
-<TabItem value="batch_get_profile">
-
-<table>
-<thead>
-    <tr>
-    <th>Name</th>
-    <th>Datatype</th>
-    <th>Description</th>
-    </tr>
-</thead>
-<tbody>
-<tr>
-    <td><CopyableCode code="errors" /></td>
-    <td><code>array</code></td>
-    <td>For information about the errors that are common to all actions, see Common Errors.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="profiles" /></td>
-    <td><code>array</code></td>
-    <td>Array of Profile Objects.</td>
-</tr>
-</tbody>
-</table>
-</TabItem>
 <TabItem value="search_profiles">
 
 <table>
@@ -87,6 +63,30 @@ The following fields are returned by `SELECT` queries:
 </tbody>
 </table>
 </TabItem>
+<TabItem value="batch_get_profile">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="errors" /></td>
+    <td><code>array</code></td>
+    <td>For information about the errors that are common to all actions, see Common Errors.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="profiles" /></td>
+    <td><code>array</code></td>
+    <td>Array of Profile Objects.</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
 </Tabs>
 
 ## Methods
@@ -105,18 +105,18 @@ The following methods are available for this resource:
 </thead>
 <tbody>
 <tr>
-    <td><a href="#batch_get_profile"><CopyableCode code="batch_get_profile" /></a></td>
-    <td><CopyableCode code="select" /></td>
-    <td><a href="#parameter-domain_name"><code>domain_name</code></a>, <a href="#parameter-region"><code>region</code></a></td>
-    <td></td>
-    <td>Get a batch of profiles.</td>
-</tr>
-<tr>
     <td><a href="#search_profiles"><CopyableCode code="search_profiles" /></a></td>
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-domain_name"><code>domain_name</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td><a href="#parameter-next-token"><code>next-token</code></a>, <a href="#parameter-max-results"><code>max-results</code></a></td>
     <td>Searches for profiles within a specific domain using one or more predefined search keys (e.g., _fullName, _phone, _email, _account, etc.) and/or custom-defined search keys. A search key is a data type pair that consists of a KeyName and Values list. This operation supports searching for profiles with a minimum of 1 key-value(s) pair and up to 5 key-value(s) pairs using either AND or OR logic.</td>
+</tr>
+<tr>
+    <td><a href="#batch_get_profile"><CopyableCode code="batch_get_profile" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-domain_name"><code>domain_name</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Get a batch of profiles.</td>
 </tr>
 <tr>
     <td><a href="#create_profile"><CopyableCode code="create_profile" /></a></td>
@@ -202,26 +202,12 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 ## `SELECT` examples
 
 <Tabs
-    defaultValue="batch_get_profile"
+    defaultValue="search_profiles"
     values={[
-        { label: 'batch_get_profile', value: 'batch_get_profile' },
-        { label: 'search_profiles', value: 'search_profiles' }
+        { label: 'search_profiles', value: 'search_profiles' },
+        { label: 'batch_get_profile', value: 'batch_get_profile' }
     ]}
 >
-<TabItem value="batch_get_profile">
-
-Get a batch of profiles.
-
-```sql
-SELECT
-errors,
-profiles
-FROM aws.customer_profiles.profiles
-WHERE domain_name = '{{ domain_name }}' -- required
-AND region = '{{ region }}' -- required
-;
-```
-</TabItem>
 <TabItem value="search_profiles">
 
 Searches for profiles within a specific domain using one or more predefined search keys (e.g., _fullName, _phone, _email, _account, etc.) and/or custom-defined search keys. A search key is a data type pair that consists of a KeyName and Values list. This operation supports searching for profiles with a minimum of 1 key-value(s) pair and up to 5 key-value(s) pairs using either AND or OR logic.
@@ -235,6 +221,20 @@ WHERE domain_name = '{{ domain_name }}' -- required
 AND region = '{{ region }}' -- required
 AND `next-token` = '{{ next-token }}'
 AND `max-results` = '{{ max-results }}'
+;
+```
+</TabItem>
+<TabItem value="batch_get_profile">
+
+Get a batch of profiles.
+
+```sql
+SELECT
+errors,
+profiles
+FROM aws.customer_profiles.profiles
+WHERE domain_name = '{{ domain_name }}' -- required
+AND region = '{{ region }}' -- required
 ;
 ```
 </TabItem>

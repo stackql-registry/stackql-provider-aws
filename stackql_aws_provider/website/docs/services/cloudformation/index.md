@@ -18,7 +18,7 @@ cloudformation service documentation.
 
 :::info[Service Summary]
 
-total resources: __32__  
+total resources: __35__  
 
 :::
 
@@ -31,19 +31,20 @@ total resources: __32__
 <a href="/services/cloudformation/events/">events</a><br />
 <a href="/services/cloudformation/exports/">exports</a><br />
 <a href="/services/cloudformation/generated_templates/">generated_templates</a><br />
+<a href="/services/cloudformation/handler_progresses/">handler_progresses</a><br />
 <a href="/services/cloudformation/hook_results/">hook_results</a><br />
 <a href="/services/cloudformation/imports/">imports</a><br />
-<a href="/services/cloudformation/organizations_access/">organizations_access</a><br />
+<a href="/services/cloudformation/organizations_accesses/">organizations_accesses</a><br />
 <a href="/services/cloudformation/publishers/">publishers</a><br />
 <a href="/services/cloudformation/resource_scan_related_resources/">resource_scan_related_resources</a><br />
 <a href="/services/cloudformation/resource_scan_resources/">resource_scan_resources</a><br />
 <a href="/services/cloudformation/resource_scans/">resource_scans</a><br />
-<a href="/services/cloudformation/stack_drift_detection_status/">stack_drift_detection_status</a><br />
+<a href="/services/cloudformation/stack_drift_detection_statuses/">stack_drift_detection_statuses</a><br />
 <a href="/services/cloudformation/stack_events/">stack_events</a><br />
-<a href="/services/cloudformation/stack_instance_resource_drifts/">stack_instance_resource_drifts</a>
+<a href="/services/cloudformation/stack_instance_resource_drifts/">stack_instance_resource_drifts</a><br />
+<a href="/services/cloudformation/stack_instances/">stack_instances</a>
 </div>
 <div class="providerDocColumn">
-<a href="/services/cloudformation/stack_instances/">stack_instances</a><br />
 <a href="/services/cloudformation/stack_policies/">stack_policies</a><br />
 <a href="/services/cloudformation/stack_refactor_actions/">stack_refactor_actions</a><br />
 <a href="/services/cloudformation/stack_refactors/">stack_refactors</a><br />
@@ -54,8 +55,10 @@ total resources: __32__
 <a href="/services/cloudformation/stack_set_operations/">stack_set_operations</a><br />
 <a href="/services/cloudformation/stack_sets/">stack_sets</a><br />
 <a href="/services/cloudformation/stacks/">stacks</a><br />
+<a href="/services/cloudformation/template_costs/">template_costs</a><br />
 <a href="/services/cloudformation/template_summaries/">template_summaries</a><br />
 <a href="/services/cloudformation/templates/">templates</a><br />
+<a href="/services/cloudformation/type_configurations/">type_configurations</a><br />
 <a href="/services/cloudformation/type_registrations/">type_registrations</a><br />
 <a href="/services/cloudformation/type_versions/">type_versions</a><br />
 <a href="/services/cloudformation/types/">types</a>

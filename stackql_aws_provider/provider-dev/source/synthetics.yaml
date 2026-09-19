@@ -44,10 +44,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/AssociateResourceResponse'
       x-stackql-resource: groups
       x-stackql-method: associate_resource
       x-stackql-verb: UPDATE
@@ -190,10 +186,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteCanaryResponse'
       x-stackql-resource: canaries
       x-stackql-method: delete_canary
       x-stackql-verb: DELETE
@@ -288,10 +280,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateCanaryResponse'
       x-stackql-resource: canaries
       x-stackql-method: update_canary
       x-stackql-verb: UPDATE
@@ -311,10 +299,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteGroupResponse'
       x-stackql-resource: groups
       x-stackql-method: delete_group
       x-stackql-verb: DELETE
@@ -460,10 +444,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DisassociateResourceResponse'
       x-stackql-resource: groups
       x-stackql-method: disassociate_resource
       x-stackql-verb: UPDATE
@@ -654,10 +634,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -681,10 +657,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -703,11 +675,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/StartCanaryResponse'
-      x-stackql-resource: canary
+      x-stackql-resource: canaries
       x-stackql-method: start_canary
       x-stackql-verb: EXEC
   /canary/{name}/dry-run/start:
@@ -780,11 +748,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/StopCanaryResponse'
-      x-stackql-resource: canary
+      x-stackql-resource: canaries
       x-stackql-method: stop_canary
       x-stackql-verb: EXEC
 components:
@@ -841,8 +805,6 @@ components:
       minLength: 1
       maxLength: 2048
       pattern: arn:(aws[a-zA-Z-]*)?:synthetics:[a-z]{2,4}(-[a-z]{2,4})?-[a-z]+-\d{1}:\d{12}:canary:[0-9a-z_\-]{1,255}
-    AssociateResourceResponse:
-      type: object
     CanaryName:
       type: string
       minLength: 1
@@ -1613,10 +1575,6 @@ components:
       pattern: arn:(aws[a-zA-Z-]*)?:synthetics:[a-z]{2,4}(-[a-z]{2,4})?-[a-z]+-\d{1}:\d{12}:group:[0-9a-z]+
     boolean:
       type: boolean
-    DeleteCanaryResponse:
-      type: object
-    DeleteGroupResponse:
-      type: object
     Token:
       type: string
       minLength: 4
@@ -1804,8 +1762,6 @@ components:
         DeprecationDate:
           $ref: '#/components/schemas/Timestamp'
           description: If this runtime version is deprecated, this value is the date of deprecation.
-    DisassociateResourceResponse:
-      type: object
     GetCanaryResponse:
       type: object
       properties:
@@ -1908,8 +1864,6 @@ components:
           type: object
           properties: {}
           description: The list of tag keys and values associated with the resource that you specified.
-    StartCanaryResponse:
-      type: object
     VisualReferenceInput:
       description: An object that specifies what screenshots to use as a baseline for visual monitoring by this canary. It
         can optionally also specify parts of the screenshots to ignore during the visual monitoring comparison. Visual monitoring
@@ -1943,10 +1897,6 @@ components:
         DryRunConfig:
           $ref: '#/components/schemas/DryRunConfigOutput'
           description: Returns the dry run configurations for a canary.
-    StopCanaryResponse:
-      type: object
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
@@ -1956,11 +1906,7 @@ components:
       minLength: 1
       maxLength: 128
       pattern: ^(?!aws:)[a-zA-Z+-=._:/]+$
-    UntagResourceResponse:
-      type: object
     RemoveReplicaLocations:
       type: array
       items:
         $ref: '#/components/schemas/Location'
-    UpdateCanaryResponse:
-      type: object

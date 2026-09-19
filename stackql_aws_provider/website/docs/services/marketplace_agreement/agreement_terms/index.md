@@ -92,7 +92,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="renewal_term" /></td>
     <td><code>object</code></td>
-    <td>Defines that on graceful expiration of the agreement (when the agreement ends on its pre-defined end date), a new agreement will be created using the accepted terms on the existing agreement. In other words, the agreement will be renewed. Presence of RenewalTerm in the offer document means that auto-renewal is allowed. Buyers will have the option to accept or decline auto-renewal at the offer acceptance/agreement creation. Buyers can also change this flag from True to False or False to True at anytime during the agreement's lifecycle.</td>
+    <td>Defines that on graceful expiration of the agreement (when the agreement ends on its pre-defined end date), a new agreement will be created using the accepted terms on the existing agreement. In other words, the agreement will be renewed. Presence of RenewalTerm in the offer document means that auto-renewal is allowed. The acceptor will have the option to accept or decline auto-renewal at the offer acceptance/agreement creation. The acceptor can also change this flag from True to False or False to True, within the limits set by LockoutPeriod and MaxRenewals. Setting the flag to True doesn't by itself guarantee that the agreement renews, because the proposer can also opt out.</td>
 </tr>
 <tr>
     <td><CopyableCode code="support_term" /></td>

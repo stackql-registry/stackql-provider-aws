@@ -434,10 +434,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteCaseResponse'
       x-stackql-resource: cases
       x-stackql-method: delete_case
       x-stackql-verb: DELETE
@@ -515,10 +511,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateCaseResponse'
       x-stackql-resource: cases
       x-stackql-method: update_case
       x-stackql-verb: UPDATE
@@ -543,10 +535,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteCaseRuleResponse'
       x-stackql-resource: case_rules
       x-stackql-method: delete_case_rule
       x-stackql-verb: DELETE
@@ -583,10 +571,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateCaseRuleResponse'
       x-stackql-resource: case_rules
       x-stackql-method: update_case_rule
       x-stackql-verb: UPDATE
@@ -606,10 +590,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteDomainResponse'
       x-stackql-resource: domains
       x-stackql-method: delete_domain
       x-stackql-verb: DELETE
@@ -664,10 +644,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteFieldResponse'
       x-stackql-resource: fields
       x-stackql-method: delete_field
       x-stackql-verb: DELETE
@@ -703,10 +679,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateFieldResponse'
       x-stackql-resource: fields
       x-stackql-method: update_field
       x-stackql-verb: UPDATE
@@ -732,10 +704,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteLayoutResponse'
       x-stackql-resource: layouts
       x-stackql-method: delete_layout
       x-stackql-verb: DELETE
@@ -797,10 +765,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateLayoutResponse'
       x-stackql-resource: layouts
       x-stackql-method: update_layout
       x-stackql-verb: UPDATE
@@ -831,10 +795,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteRelatedItemResponse'
       x-stackql-resource: related_items
       x-stackql-method: delete_related_item
       x-stackql-verb: DELETE
@@ -912,10 +872,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteTemplateResponse'
       x-stackql-resource: templates
       x-stackql-method: delete_template
       x-stackql-verb: DELETE
@@ -989,10 +945,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateTemplateResponse'
       x-stackql-resource: templates
       x-stackql-method: update_template
       x-stackql-verb: UPDATE
@@ -1081,10 +1033,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PutCaseEventConfigurationResponse'
       x-stackql-resource: case_event_configurations
       x-stackql-method: put_case_event_configuration
       x-stackql-verb: REPLACE
@@ -1160,7 +1108,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListCasesForContactResponse'
-      x-stackql-resource: cases_for_contacts
+      x-stackql-resource: cases
       x-stackql-method: list_cases_for_contact
       x-stackql-verb: SELECT
   /domains-list:
@@ -2615,20 +2563,6 @@ components:
       type: string
       minLength: 1
       maxLength: 500
-    DeleteCaseResponse:
-      type: object
-    DeleteCaseRuleResponse:
-      type: object
-    DeleteDomainResponse:
-      type: object
-    DeleteFieldResponse:
-      type: object
-    DeleteLayoutResponse:
-      type: object
-    DeleteRelatedItemResponse:
-      type: object
-    DeleteTemplateResponse:
-      type: object
     GetCaseRequestFieldsList:
       type: array
       items:
@@ -3222,8 +3156,6 @@ components:
       - templateArn
       - name
       - status
-    PutCaseEventConfigurationResponse:
-      type: object
     SearchAllRelatedItemsRequestMaxResultsInteger:
       type: integer
       minimum: 1
@@ -3743,14 +3675,6 @@ components:
       type: array
       items:
         $ref: '#/components/schemas/FieldValue'
-    UpdateCaseResponse:
-      type: object
-    UpdateCaseRuleResponse:
-      type: object
-    UpdateFieldResponse:
-      type: object
-    UpdateLayoutResponse:
-      type: object
     RelatedItemUpdateContent:
       description: Represents the content of a related item to be updated. This is a union type that can contain either comment
         content or custom content.
@@ -3822,5 +3746,3 @@ components:
       - type_
       - content
       - associationTime
-    UpdateTemplateResponse:
-      type: object

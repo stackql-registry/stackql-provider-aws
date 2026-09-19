@@ -538,10 +538,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceOutput'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -564,10 +560,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceOutput'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -604,10 +596,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/SendFeedbackResponse'
       x-stackql-resource: cases
       x-stackql-method: send_feedback
       x-stackql-verb: EXEC
@@ -664,10 +652,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateCaseResponse'
       x-stackql-resource: cases
       x-stackql-method: update_case
       x-stackql-verb: UPDATE
@@ -777,10 +761,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateMembershipResponse'
       x-stackql-resource: memberships
       x-stackql-method: update_membership
       x-stackql-verb: UPDATE
@@ -1798,10 +1778,6 @@ components:
     ResultId:
       type: string
       pattern: inv-[a-z0-9]{10,32}
-    SendFeedbackResponse:
-      type: object
-    TagResourceOutput:
-      type: object
     TagKeys:
       type: array
       items:
@@ -1810,10 +1786,6 @@ components:
       type: string
       minLength: 1
       maxLength: 128
-    UntagResourceOutput:
-      type: object
-    UpdateCaseResponse:
-      type: object
     UpdateCaseCommentResponse:
       type: object
       properties:
@@ -1871,8 +1843,6 @@ components:
       type: array
       items:
         $ref: '#/components/schemas/OrganizationalUnitId'
-    UpdateMembershipResponse:
-      type: object
     UpdateResolverTypeResponse:
       type: object
       properties:

@@ -53,10 +53,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/AcceptPortfolioShareOutput"
   /AssociateBudgetWithResource:
     post:
       operationId: AssociateBudgetWithResource
@@ -90,10 +86,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/AssociateBudgetWithResourceOutput"
   /AssociatePrincipalWithPortfolio:
     post:
       operationId: AssociatePrincipalWithPortfolio
@@ -134,10 +126,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/AssociatePrincipalWithPortfolioOutput"
   /AssociateProductWithPortfolio:
     post:
       operationId: AssociateProductWithPortfolio
@@ -177,10 +165,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/AssociateProductWithPortfolioOutput"
   /AssociateServiceActionWithProvisioningArtifact:
     post:
       operationId: AssociateServiceActionWithProvisioningArtifact
@@ -224,10 +208,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/AssociateServiceActionWithProvisioningArtifactOutput"
   /AssociateTagOptionWithResource:
     post:
       operationId: AssociateTagOptionWithResource
@@ -261,10 +241,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/AssociateTagOptionWithResourceOutput"
   /BatchAssociateServiceActionWithProvisioningArtifact:
     post:
       operationId: BatchAssociateServiceActionWithProvisioningArtifact
@@ -435,7 +411,6 @@ paths:
                 - PortfolioId
                 - ProductId
                 - Parameters
-                - Type
                 - IdempotencyToken
       responses:
         "200":
@@ -842,10 +817,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteConstraintOutput"
   /DeletePortfolio:
     post:
       operationId: DeletePortfolio
@@ -876,10 +847,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeletePortfolioOutput"
   /DeletePortfolioShare:
     post:
       operationId: DeletePortfolioShare
@@ -954,10 +921,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteProductOutput"
   /DeleteProvisionedProductPlan:
     post:
       operationId: DeleteProvisionedProductPlan
@@ -993,10 +956,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteProvisionedProductPlanOutput"
   /DeleteProvisioningArtifact:
     post:
       operationId: DeleteProvisioningArtifact
@@ -1033,10 +992,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteProvisioningArtifactOutput"
   /DeleteServiceAction:
     post:
       operationId: DeleteServiceAction
@@ -1070,10 +1025,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteServiceActionOutput"
   /DeleteTagOption:
     post:
       operationId: DeleteTagOption
@@ -1101,10 +1052,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteTagOptionOutput"
   /DescribeConstraint:
     post:
       operationId: DescribeConstraint
@@ -1747,10 +1694,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DisableAWSOrganizationsAccessOutput"
   /DisassociateBudgetFromResource:
     post:
       operationId: DisassociateBudgetFromResource
@@ -1784,10 +1727,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DisassociateBudgetFromResourceOutput"
   /DisassociatePrincipalFromPortfolio:
     post:
       operationId: DisassociatePrincipalFromPortfolio
@@ -1827,10 +1766,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DisassociatePrincipalFromPortfolioOutput"
   /DisassociateProductFromPortfolio:
     post:
       operationId: DisassociateProductFromPortfolio
@@ -1867,10 +1802,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DisassociateProductFromPortfolioOutput"
   /DisassociateServiceActionFromProvisioningArtifact:
     post:
       operationId: DisassociateServiceActionFromProvisioningArtifact
@@ -1914,10 +1845,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DisassociateServiceActionFromProvisioningArtifactOutput"
   /DisassociateTagOptionFromResource:
     post:
       operationId: DisassociateTagOptionFromResource
@@ -1951,10 +1878,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DisassociateTagOptionFromResourceOutput"
   /EnableAWSOrganizationsAccess:
     post:
       operationId: EnableAWSOrganizationsAccess
@@ -1978,10 +1901,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/EnableAWSOrganizationsAccessOutput"
   /ExecuteProvisionedProductPlan:
     post:
       operationId: ExecuteProvisionedProductPlan
@@ -2993,10 +2912,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/NotifyProvisionProductEngineWorkflowResultOutput"
   /NotifyTerminateProvisionedProductEngineWorkflowResult:
     post:
       operationId: NotifyTerminateProvisionedProductEngineWorkflowResult
@@ -3041,10 +2956,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/NotifyTerminateProvisionedProductEngineWorkflowResultOutput"
   /NotifyUpdateProvisionedProductEngineWorkflowResult:
     post:
       operationId: NotifyUpdateProvisionedProductEngineWorkflowResult
@@ -3092,10 +3003,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/NotifyUpdateProvisionedProductEngineWorkflowResultOutput"
   /ProvisionProduct:
     post:
       operationId: ProvisionProduct
@@ -3201,10 +3108,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/RejectPortfolioShareOutput"
   /ScanProvisionedProducts:
     post:
       operationId: ScanProvisionedProducts
@@ -3948,14 +3851,10 @@ components:
         - IMPORTED
         - AWS_SERVICECATALOG
         - AWS_ORGANIZATIONS
-    AcceptPortfolioShareOutput:
-      type: object
     BudgetName:
       type: string
       minLength: 1
       maxLength: 100
-    AssociateBudgetWithResourceOutput:
-      type: object
     PrincipalARN:
       type: string
       minLength: 1
@@ -3965,25 +3864,17 @@ components:
       enum:
         - IAM
         - IAM_PATTERN
-    AssociatePrincipalWithPortfolioOutput:
-      type: object
-    AssociateProductWithPortfolioOutput:
-      type: object
     IdempotencyToken:
       type: string
       minLength: 1
       maxLength: 128
       pattern: "[a-zA-Z0-9][a-zA-Z0-9_-]*"
-    AssociateServiceActionWithProvisioningArtifactOutput:
-      type: object
     ResourceId:
       type: string
     TagOptionId:
       type: string
       minLength: 1
       maxLength: 100
-    AssociateTagOptionWithResourceOutput:
-      type: object
     ServiceActionAssociations:
       type: array
       items:
@@ -4686,28 +4577,14 @@ components:
       type: boolean
     Owner:
       type: string
-    DeleteConstraintOutput:
-      type: object
-    DeletePortfolioOutput:
-      type: object
     DeletePortfolioShareOutput:
       type: object
       properties:
         PortfolioShareToken:
           $ref: "#/components/schemas/Id"
           description: The portfolio share unique identifier. This will only be returned if delete is made to an organization node.
-    DeleteProductOutput:
-      type: object
     IgnoreErrors:
       type: boolean
-    DeleteProvisionedProductPlanOutput:
-      type: object
-    DeleteProvisioningArtifactOutput:
-      type: object
-    DeleteServiceActionOutput:
-      type: object
-    DeleteTagOptionOutput:
-      type: object
     DescribeConstraintOutput:
       type: object
       properties:
@@ -5652,20 +5529,6 @@ components:
         TagOptionDetail:
           $ref: "#/components/schemas/TagOptionDetail"
           description: Information about the TagOption.
-    DisableAWSOrganizationsAccessOutput:
-      type: object
-    DisassociateBudgetFromResourceOutput:
-      type: object
-    DisassociatePrincipalFromPortfolioOutput:
-      type: object
-    DisassociateProductFromPortfolioOutput:
-      type: object
-    DisassociateServiceActionFromProvisioningArtifactOutput:
-      type: object
-    DisassociateTagOptionFromResourceOutput:
-      type: object
-    EnableAWSOrganizationsAccessOutput:
-      type: object
     ExecuteProvisionedProductPlanOutput:
       type: object
       properties:
@@ -6123,12 +5986,6 @@ components:
       minLength: 1
       maxLength: 256
       pattern: ^([\p{L}\p{Z}\p{N}_.:\/=+\-@]*)$
-    NotifyProvisionProductEngineWorkflowResultOutput:
-      type: object
-    NotifyTerminateProvisionedProductEngineWorkflowResultOutput:
-      type: object
-    NotifyUpdateProvisionedProductEngineWorkflowResultOutput:
-      type: object
     ProvisioningParameters:
       type: array
       items:
@@ -6185,8 +6042,6 @@ components:
         RecordDetail:
           $ref: "#/components/schemas/RecordDetail"
           description: Information about the result of provisioning the product.
-    RejectPortfolioShareOutput:
-      type: object
     ScanProvisionedProductsOutput:
       type: object
       properties:
@@ -6485,7 +6340,6 @@ components:
             $ref: "#/paths/~1AcceptPortfolioShare/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -6498,7 +6352,6 @@ components:
             $ref: "#/paths/~1AssociatePrincipalWithPortfolio/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -6511,7 +6364,6 @@ components:
             $ref: "#/paths/~1AssociateProductWithPortfolio/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -6537,7 +6389,6 @@ components:
             $ref: "#/paths/~1DeletePortfolio/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -6563,7 +6414,6 @@ components:
             $ref: "#/paths/~1DisassociatePrincipalFromPortfolio/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -6576,7 +6426,6 @@ components:
             $ref: "#/paths/~1DisassociateProductFromPortfolio/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -6605,12 +6454,32 @@ components:
                 location: body
             requestBodyTranslate:
               algorithm: naive
+        list_portfolios_for_product:
+          operation:
+            $ref: "#/paths/~1ListPortfoliosForProduct/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.PortfolioDetails
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: PageToken
+                location: body
+              responseToken:
+                key: $.NextPageToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
         reject_portfolio_share:
           operation:
             $ref: "#/paths/~1RejectPortfolioShare/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -6633,6 +6502,7 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
+          - $ref: "#/components/x-stackQL-resources/portfolios/methods/list_portfolios_for_product"
           - $ref: "#/components/x-stackQL-resources/portfolios/methods/describe_portfolio"
         insert:
           - $ref: "#/components/x-stackQL-resources/portfolios/methods/create_portfolio"
@@ -6653,7 +6523,6 @@ components:
             $ref: "#/paths/~1AssociateBudgetWithResource/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -6675,6 +6544,18 @@ components:
         associate_service_action_with_provisioning_artifact:
           operation:
             $ref: "#/paths/~1AssociateServiceActionWithProvisioningArtifact/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        batch_disassociate_service_action_from_provisioning_artifact:
+          operation:
+            $ref: "#/paths/~1BatchDisassociateServiceActionFromProvisioningArtifact/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -6703,7 +6584,6 @@ components:
             $ref: "#/paths/~1DeleteProvisioningArtifact/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -6729,7 +6609,6 @@ components:
             $ref: "#/paths/~1DisassociateServiceActionFromProvisioningArtifact/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -6763,6 +6642,27 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        list_provisioning_artifacts_for_service_action:
+          operation:
+            $ref: "#/paths/~1ListProvisioningArtifactsForServiceAction/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.ProvisioningArtifactViews
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: PageToken
+                location: body
+              responseToken:
+                key: $.NextPageToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
         update_provisioning_artifact:
           operation:
             $ref: "#/paths/~1UpdateProvisioningArtifact/post"
@@ -6779,6 +6679,7 @@ components:
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/provisioning_artifacts/methods/list_provisioning_artifacts"
+          - $ref: "#/components/x-stackQL-resources/provisioning_artifacts/methods/list_provisioning_artifacts_for_service_action"
           - $ref: "#/components/x-stackQL-resources/provisioning_artifacts/methods/describe_provisioning_artifact"
         insert:
           - $ref: "#/components/x-stackQL-resources/provisioning_artifacts/methods/create_provisioning_artifact"
@@ -6797,7 +6698,6 @@ components:
             $ref: "#/paths/~1AssociateTagOptionWithResource/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -6823,7 +6723,6 @@ components:
             $ref: "#/paths/~1DeleteTagOption/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -6850,7 +6749,6 @@ components:
             $ref: "#/paths/~1DisassociateTagOptionFromResource/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -6902,6 +6800,233 @@ components:
           - $ref: "#/components/x-stackQL-resources/tag_options/methods/update_tag_option"
         delete:
           - $ref: "#/components/x-stackQL-resources/tag_options/methods/delete_tag_option"
+    service_actions:
+      id: aws.servicecatalog.service_actions
+      name: service_actions
+      title: service_actions
+      methods:
+        batch_associate_service_action_with_provisioning_artifact:
+          operation:
+            $ref: "#/paths/~1BatchAssociateServiceActionWithProvisioningArtifact/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        create_service_action:
+          operation:
+            $ref: "#/paths/~1CreateServiceAction/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        delete_service_action:
+          operation:
+            $ref: "#/paths/~1DeleteServiceAction/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        describe_service_action:
+          operation:
+            $ref: "#/paths/~1DescribeServiceAction/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.ServiceActionDetail
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        list_service_actions:
+          operation:
+            $ref: "#/paths/~1ListServiceActions/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.ServiceActionSummaries
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: PageToken
+                location: body
+              responseToken:
+                key: $.NextPageToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        list_service_actions_for_provisioning_artifact:
+          operation:
+            $ref: "#/paths/~1ListServiceActionsForProvisioningArtifact/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.ServiceActionSummaries
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: PageToken
+                location: body
+              responseToken:
+                key: $.NextPageToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        update_service_action:
+          operation:
+            $ref: "#/paths/~1UpdateServiceAction/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/service_actions/methods/list_service_actions_for_provisioning_artifact"
+          - $ref: "#/components/x-stackQL-resources/service_actions/methods/describe_service_action"
+        insert:
+          - $ref: "#/components/x-stackQL-resources/service_actions/methods/create_service_action"
+        update:
+          - $ref: "#/components/x-stackQL-resources/service_actions/methods/update_service_action"
+        delete:
+          - $ref: "#/components/x-stackQL-resources/service_actions/methods/delete_service_action"
+    products:
+      id: aws.servicecatalog.products
+      name: products
+      title: products
+      methods:
+        copy_product:
+          operation:
+            $ref: "#/paths/~1CopyProduct/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        create_product:
+          operation:
+            $ref: "#/paths/~1CreateProduct/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        delete_product:
+          operation:
+            $ref: "#/paths/~1DeleteProduct/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        describe_product:
+          operation:
+            $ref: "#/paths/~1DescribeProduct/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        provision_product:
+          operation:
+            $ref: "#/paths/~1ProvisionProduct/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        search_products:
+          operation:
+            $ref: "#/paths/~1SearchProducts/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        update_product:
+          operation:
+            $ref: "#/paths/~1UpdateProduct/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/products/methods/describe_product"
+        insert:
+          - $ref: "#/components/x-stackQL-resources/products/methods/create_product"
+        update:
+          - $ref: "#/components/x-stackQL-resources/products/methods/provision_product"
+          - $ref: "#/components/x-stackQL-resources/products/methods/update_product"
+        delete:
+          - $ref: "#/components/x-stackQL-resources/products/methods/delete_product"
     constraints:
       id: aws.servicecatalog.constraints
       name: constraints
@@ -6925,7 +7050,6 @@ components:
             $ref: "#/paths/~1DeleteConstraint/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -6946,6 +7070,27 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        list_constraints_for_portfolio:
+          operation:
+            $ref: "#/paths/~1ListConstraintsForPortfolio/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.ConstraintDetails
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: PageToken
+                location: body
+              responseToken:
+                key: $.NextPageToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
         update_constraint:
           operation:
             $ref: "#/paths/~1UpdateConstraint/post"
@@ -6962,6 +7107,7 @@ components:
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/constraints/methods/describe_constraint"
+          - $ref: "#/components/x-stackQL-resources/constraints/methods/list_constraints_for_portfolio"
         insert:
           - $ref: "#/components/x-stackQL-resources/constraints/methods/create_constraint"
         update:
@@ -7034,99 +7180,6 @@ components:
           - $ref: "#/components/x-stackQL-resources/portfolio_shares/methods/update_portfolio_share"
         delete:
           - $ref: "#/components/x-stackQL-resources/portfolio_shares/methods/delete_portfolio_share"
-    products:
-      id: aws.servicecatalog.products
-      name: products
-      title: products
-      methods:
-        create_product:
-          operation:
-            $ref: "#/paths/~1CreateProduct/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        delete_product:
-          operation:
-            $ref: "#/paths/~1DeleteProduct/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        describe_product:
-          operation:
-            $ref: "#/paths/~1DescribeProduct/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        provision_product:
-          operation:
-            $ref: "#/paths/~1ProvisionProduct/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        search_products:
-          operation:
-            $ref: "#/paths/~1SearchProducts/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        update_product:
-          operation:
-            $ref: "#/paths/~1UpdateProduct/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/products/methods/describe_product"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/products/methods/create_product"
-        update:
-          - $ref: "#/components/x-stackQL-resources/products/methods/provision_product"
-          - $ref: "#/components/x-stackQL-resources/products/methods/update_product"
-        delete:
-          - $ref: "#/components/x-stackQL-resources/products/methods/delete_product"
     provisioned_product_plans:
       id: aws.servicecatalog.provisioned_product_plans
       name: provisioned_product_plans
@@ -7150,7 +7203,6 @@ components:
             $ref: "#/paths/~1DeleteProvisionedProductPlan/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -7161,6 +7213,19 @@ components:
         describe_provisioned_product_plan:
           operation:
             $ref: "#/paths/~1DescribeProvisionedProductPlan/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        execute_provisioned_product_plan:
+          operation:
+            $ref: "#/paths/~1ExecuteProvisionedProductPlan/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -7201,98 +7266,10 @@ components:
         update: []
         delete:
           - $ref: "#/components/x-stackQL-resources/provisioned_product_plans/methods/delete_provisioned_product_plan"
-    service_actions:
-      id: aws.servicecatalog.service_actions
-      name: service_actions
-      title: service_actions
-      methods:
-        create_service_action:
-          operation:
-            $ref: "#/paths/~1CreateServiceAction/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        delete_service_action:
-          operation:
-            $ref: "#/paths/~1DeleteServiceAction/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        describe_service_action:
-          operation:
-            $ref: "#/paths/~1DescribeServiceAction/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.ServiceActionDetail
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        list_service_actions:
-          operation:
-            $ref: "#/paths/~1ListServiceActions/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.ServiceActionSummaries
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            pagination:
-              requestToken:
-                key: PageToken
-                location: body
-              responseToken:
-                key: $.NextPageToken
-                location: body
-            requestBodyTranslate:
-              algorithm: naive
-        update_service_action:
-          operation:
-            $ref: "#/paths/~1UpdateServiceAction/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/service_actions/methods/describe_service_action"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/service_actions/methods/create_service_action"
-        update:
-          - $ref: "#/components/x-stackQL-resources/service_actions/methods/update_service_action"
-        delete:
-          - $ref: "#/components/x-stackQL-resources/service_actions/methods/delete_service_action"
-    copy_product_status:
-      id: aws.servicecatalog.copy_product_status
-      name: copy_product_status
-      title: copy_product_status
+    copy_product_statuses:
+      id: aws.servicecatalog.copy_product_statuses
+      name: copy_product_statuses
+      title: copy_product_statuses
       methods:
         describe_copy_product_status:
           operation:
@@ -7309,14 +7286,14 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/copy_product_status/methods/describe_copy_product_status"
+          - $ref: "#/components/x-stackQL-resources/copy_product_statuses/methods/describe_copy_product_status"
         insert: []
         update: []
         delete: []
-    portfolio_share_status:
-      id: aws.servicecatalog.portfolio_share_status
-      name: portfolio_share_status
-      title: portfolio_share_status
+    portfolio_share_statuses:
+      id: aws.servicecatalog.portfolio_share_statuses
+      name: portfolio_share_statuses
+      title: portfolio_share_statuses
       methods:
         describe_portfolio_share_status:
           operation:
@@ -7333,7 +7310,7 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/portfolio_share_status/methods/describe_portfolio_share_status"
+          - $ref: "#/components/x-stackQL-resources/portfolio_share_statuses/methods/describe_portfolio_share_status"
         insert: []
         update: []
         delete: []
@@ -7493,8 +7470,8 @@ components:
           - $ref: "#/components/x-stackQL-resources/provisioned_products/methods/describe_provisioned_product"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/provisioned_products/methods/update_provisioned_product_properties"
           - $ref: "#/components/x-stackQL-resources/provisioned_products/methods/update_provisioned_product"
+          - $ref: "#/components/x-stackQL-resources/provisioned_products/methods/update_provisioned_product_properties"
         delete:
           - $ref: "#/components/x-stackQL-resources/provisioned_products/methods/terminate_provisioned_product"
     provisioning_parameters:
@@ -7544,7 +7521,6 @@ components:
             $ref: "#/paths/~1NotifyProvisionProductEngineWorkflowResult/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -7557,7 +7533,6 @@ components:
             $ref: "#/paths/~1NotifyTerminateProvisionedProductEngineWorkflowResult/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -7570,7 +7545,6 @@ components:
             $ref: "#/paths/~1NotifyUpdateProvisionedProductEngineWorkflowResult/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -7608,6 +7582,40 @@ components:
         insert: []
         update: []
         delete: []
+    aws_organizations_accesses:
+      id: aws.servicecatalog.aws_organizations_accesses
+      name: aws_organizations_accesses
+      title: aws_organizations_accesses
+      methods:
+        disable_aws_organizations_access:
+          operation:
+            $ref: "#/paths/~1DisableAWSOrganizationsAccess/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        enable_aws_organizations_access:
+          operation:
+            $ref: "#/paths/~1EnableAWSOrganizationsAccess/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
     budget_from_resources:
       id: aws.servicecatalog.budget_from_resources
       name: budget_from_resources
@@ -7618,7 +7626,6 @@ components:
             $ref: "#/paths/~1DisassociateBudgetFromResource/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -7632,10 +7639,10 @@ components:
         update:
           - $ref: "#/components/x-stackQL-resources/budget_from_resources/methods/disassociate_budget_from_resource"
         delete: []
-    aws_organizations_access_status:
-      id: aws.servicecatalog.aws_organizations_access_status
-      name: aws_organizations_access_status
-      title: aws_organizations_access_status
+    aws_organizations_access_statuses:
+      id: aws.servicecatalog.aws_organizations_access_statuses
+      name: aws_organizations_access_statuses
+      title: aws_organizations_access_statuses
       methods:
         get_aws_organizations_access_status:
           operation:
@@ -7652,7 +7659,7 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/aws_organizations_access_status/methods/get_aws_organizations_access_status"
+          - $ref: "#/components/x-stackQL-resources/aws_organizations_access_statuses/methods/get_aws_organizations_access_status"
         insert: []
         update: []
         delete: []
@@ -7712,10 +7719,10 @@ components:
         insert: []
         update: []
         delete: []
-    budgets_for_resources:
-      id: aws.servicecatalog.budgets_for_resources
-      name: budgets_for_resources
-      title: budgets_for_resources
+    budgets:
+      id: aws.servicecatalog.budgets
+      name: budgets
+      title: budgets
       methods:
         list_budgets_for_resource:
           operation:
@@ -7732,39 +7739,7 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/budgets_for_resources/methods/list_budgets_for_resource"
-        insert: []
-        update: []
-        delete: []
-    constraints_for_portfolios:
-      id: aws.servicecatalog.constraints_for_portfolios
-      name: constraints_for_portfolios
-      title: constraints_for_portfolios
-      methods:
-        list_constraints_for_portfolio:
-          operation:
-            $ref: "#/paths/~1ListConstraintsForPortfolio/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.ConstraintDetails
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            pagination:
-              requestToken:
-                key: PageToken
-                location: body
-              responseToken:
-                key: $.NextPageToken
-                location: body
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/constraints_for_portfolios/methods/list_constraints_for_portfolio"
+          - $ref: "#/components/x-stackQL-resources/budgets/methods/list_budgets_for_resource"
         insert: []
         update: []
         delete: []
@@ -7800,10 +7775,10 @@ components:
         insert: []
         update: []
         delete: []
-    organization_portfolio_access:
-      id: aws.servicecatalog.organization_portfolio_access
-      name: organization_portfolio_access
-      title: organization_portfolio_access
+    organization_portfolio_accesses:
+      id: aws.servicecatalog.organization_portfolio_accesses
+      name: organization_portfolio_accesses
+      title: organization_portfolio_accesses
       methods:
         list_organization_portfolio_access:
           operation:
@@ -7828,14 +7803,14 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/organization_portfolio_access/methods/list_organization_portfolio_access"
+          - $ref: "#/components/x-stackQL-resources/organization_portfolio_accesses/methods/list_organization_portfolio_access"
         insert: []
         update: []
         delete: []
-    portfolio_access:
-      id: aws.servicecatalog.portfolio_access
-      name: portfolio_access
-      title: portfolio_access
+    portfolio_accesses:
+      id: aws.servicecatalog.portfolio_accesses
+      name: portfolio_accesses
+      title: portfolio_accesses
       methods:
         list_portfolio_access:
           operation:
@@ -7852,46 +7827,14 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/portfolio_access/methods/list_portfolio_access"
+          - $ref: "#/components/x-stackQL-resources/portfolio_accesses/methods/list_portfolio_access"
         insert: []
         update: []
         delete: []
-    portfolios_for_products:
-      id: aws.servicecatalog.portfolios_for_products
-      name: portfolios_for_products
-      title: portfolios_for_products
-      methods:
-        list_portfolios_for_product:
-          operation:
-            $ref: "#/paths/~1ListPortfoliosForProduct/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.PortfolioDetails
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            pagination:
-              requestToken:
-                key: PageToken
-                location: body
-              responseToken:
-                key: $.NextPageToken
-                location: body
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/portfolios_for_products/methods/list_portfolios_for_product"
-        insert: []
-        update: []
-        delete: []
-    principals_for_portfolios:
-      id: aws.servicecatalog.principals_for_portfolios
-      name: principals_for_portfolios
-      title: principals_for_portfolios
+    principals:
+      id: aws.servicecatalog.principals
+      name: principals
+      title: principals
       methods:
         list_principals_for_portfolio:
           operation:
@@ -7916,39 +7859,7 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/principals_for_portfolios/methods/list_principals_for_portfolio"
-        insert: []
-        update: []
-        delete: []
-    provisioning_artifacts_for_service_actions:
-      id: aws.servicecatalog.provisioning_artifacts_for_service_actions
-      name: provisioning_artifacts_for_service_actions
-      title: provisioning_artifacts_for_service_actions
-      methods:
-        list_provisioning_artifacts_for_service_action:
-          operation:
-            $ref: "#/paths/~1ListProvisioningArtifactsForServiceAction/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.ProvisioningArtifactViews
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            pagination:
-              requestToken:
-                key: PageToken
-                location: body
-              responseToken:
-                key: $.NextPageToken
-                location: body
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/provisioning_artifacts_for_service_actions/methods/list_provisioning_artifacts_for_service_action"
+          - $ref: "#/components/x-stackQL-resources/principals/methods/list_principals_for_portfolio"
         insert: []
         update: []
         delete: []
@@ -7984,10 +7895,10 @@ components:
         insert: []
         update: []
         delete: []
-    resources_for_tag_options:
-      id: aws.servicecatalog.resources_for_tag_options
-      name: resources_for_tag_options
-      title: resources_for_tag_options
+    resources:
+      id: aws.servicecatalog.resources
+      name: resources
+      title: resources
       methods:
         list_resources_for_tag_option:
           operation:
@@ -8012,46 +7923,14 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/resources_for_tag_options/methods/list_resources_for_tag_option"
+          - $ref: "#/components/x-stackQL-resources/resources/methods/list_resources_for_tag_option"
         insert: []
         update: []
         delete: []
-    service_actions_for_provisioning_artifacts:
-      id: aws.servicecatalog.service_actions_for_provisioning_artifacts
-      name: service_actions_for_provisioning_artifacts
-      title: service_actions_for_provisioning_artifacts
-      methods:
-        list_service_actions_for_provisioning_artifact:
-          operation:
-            $ref: "#/paths/~1ListServiceActionsForProvisioningArtifact/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.ServiceActionSummaries
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            pagination:
-              requestToken:
-                key: PageToken
-                location: body
-              responseToken:
-                key: $.NextPageToken
-                location: body
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/service_actions_for_provisioning_artifacts/methods/list_service_actions_for_provisioning_artifact"
-        insert: []
-        update: []
-        delete: []
-    stack_instances_for_provisioned_products:
-      id: aws.servicecatalog.stack_instances_for_provisioned_products
-      name: stack_instances_for_provisioned_products
-      title: stack_instances_for_provisioned_products
+    stack_instances:
+      id: aws.servicecatalog.stack_instances
+      name: stack_instances
+      title: stack_instances
       methods:
         list_stack_instances_for_provisioned_product:
           operation:
@@ -8068,7 +7947,7 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/stack_instances_for_provisioned_products/methods/list_stack_instances_for_provisioned_product"
+          - $ref: "#/components/x-stackQL-resources/stack_instances/methods/list_stack_instances_for_provisioned_product"
         insert: []
         update: []
         delete: []

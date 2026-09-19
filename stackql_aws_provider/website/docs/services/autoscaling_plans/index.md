@@ -25,7 +25,7 @@ total resources: __3__
 ## Resources
 <div class="row">
 <div class="providerDocColumn">
-<a href="/services/autoscaling_plans/scaling_plan_resource_forecast_datas/">scaling_plan_resource_forecast_datas</a><br />
+<a href="/services/autoscaling_plans/scaling_plan_resource_forecast_data/">scaling_plan_resource_forecast_data</a><br />
 <a href="/services/autoscaling_plans/scaling_plan_resources/">scaling_plan_resources</a>
 </div>
 <div class="providerDocColumn">

@@ -18,7 +18,7 @@ codebuild service documentation.
 
 :::info[Service Summary]
 
-total resources: __21__  
+total resources: __17__  
 
 :::
 
@@ -28,10 +28,8 @@ total resources: __21__
 <a href="/services/codebuild/build_batches/">build_batches</a><br />
 <a href="/services/codebuild/build_batches_for_projects/">build_batches_for_projects</a><br />
 <a href="/services/codebuild/builds/">builds</a><br />
-<a href="/services/codebuild/builds_for_projects/">builds_for_projects</a><br />
 <a href="/services/codebuild/code_coverages/">code_coverages</a><br />
 <a href="/services/codebuild/command_executions/">command_executions</a><br />
-<a href="/services/codebuild/command_executions_for_sandboxes/">command_executions_for_sandboxes</a><br />
 <a href="/services/codebuild/curated_environment_images/">curated_environment_images</a><br />
 <a href="/services/codebuild/fleets/">fleets</a><br />
 <a href="/services/codebuild/projects/">projects</a><br />
@@ -40,10 +38,8 @@ total resources: __21__
 <div class="providerDocColumn">
 <a href="/services/codebuild/report_groups/">report_groups</a><br />
 <a href="/services/codebuild/reports/">reports</a><br />
-<a href="/services/codebuild/reports_for_report_groups/">reports_for_report_groups</a><br />
 <a href="/services/codebuild/resource_policies/">resource_policies</a><br />
 <a href="/services/codebuild/sandboxes/">sandboxes</a><br />
-<a href="/services/codebuild/sandboxes_for_projects/">sandboxes_for_projects</a><br />
 <a href="/services/codebuild/shared_projects/">shared_projects</a><br />
 <a href="/services/codebuild/shared_report_groups/">shared_report_groups</a><br />
 <a href="/services/codebuild/source_credentials/">source_credentials</a><br />

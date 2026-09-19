@@ -726,7 +726,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-MixedInstancesPolicy">
     <td><CopyableCode code="MixedInstancesPolicy" /></td>
     <td><code>object</code></td>
-    <td>The mixed instances policy. For more information, see Auto Scaling groups with multiple instance types and purchase options in the Amazon EC2 Auto Scaling User Guide.</td>
+    <td>The mixed instances policy. For more information, see Auto Scaling groups with multiple instance types and purchase options in the Amazon EC2 Auto Scaling User Guide. You can remove the Distribution Segments configuration by specifying OnDemandBaseCapacity or OnDemandPercentageAboveBaseCapacity. You can also remove it explicitly by specifying an empty list for DistributionSegments.</td>
 </tr>
 <tr id="parameter-NewInstancesProtectedFromScaleIn">
     <td><CopyableCode code="NewInstancesProtectedFromScaleIn" /></td>
@@ -1026,8 +1026,8 @@ SELECT
       description: Information used to specify the launch template and version to use to launch instances. Conditional: You must specify either a launch template (LaunchTemplate or MixedInstancesPolicy) or a launch configuration (LaunchConfigurationName or InstanceId). The launch template that is specified must be configured for use with an Auto Scaling group. For more information, see Create a launch template for an Auto Scaling group in the Amazon EC2 Auto Scaling User Guide.
     - name: MixedInstancesPolicy
       value: "{{ MixedInstancesPolicy }}"
-      description: The mixed instances policy. For more information, see Auto Scaling groups with multiple instance types and purchase options in the Amazon EC2 Auto Scaling User Guide.
-      description: The mixed instances policy. For more information, see Auto Scaling groups with multiple instance types and purchase options in the Amazon EC2 Auto Scaling User Guide.
+      description: The mixed instances policy. For more information, see Auto Scaling groups with multiple instance types and purchase options in the Amazon EC2 Auto Scaling User Guide. To learn how to prioritize multiple capacity types, see Use Distribution Segments to target multiple capacity types in the Amazon EC2 Auto Scaling User Guide.
+      description: The mixed instances policy. For more information, see Auto Scaling groups with multiple instance types and purchase options in the Amazon EC2 Auto Scaling User Guide. To learn how to prioritize multiple capacity types, see Use Distribution Segments to target multiple capacity types in the Amazon EC2 Auto Scaling User Guide.
     - name: InstanceId
       value: "{{ InstanceId }}"
       description: The ID of the instance used to base the launch configuration on. If specified, Amazon EC2 Auto Scaling uses the configuration values from the specified instance to create a new launch configuration. To get the instance ID, use the Amazon EC2 DescribeInstances API operation. For more information, see Create an Auto Scaling group using parameters from an existing instance in the Amazon EC2 Auto Scaling User Guide.

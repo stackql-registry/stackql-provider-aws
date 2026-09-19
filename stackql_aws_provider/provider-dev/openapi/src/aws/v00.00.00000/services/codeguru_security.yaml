@@ -287,10 +287,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TagResourceResponse"
     delete:
       operationId: UntagResource
       description: Use to remove one or more tags from an existing scan.
@@ -310,10 +306,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UntagResourceResponse"
   /updateAccountConfiguration:
     put:
       operationId: UpdateAccountConfiguration
@@ -962,8 +954,6 @@ components:
           type: object
           properties: {}
           description: "An array of key-value pairs used to tag an existing scan. A tag is a custom attribute label with two parts: A tag key. For example, CostCenter, Environment, or Secret. Tag keys are case sensitive. An optional tag value field. For example, 111122223333, Production, or a team name. Omitting the tag value is the same as using an empty string. Tag values are case sensitive."
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
@@ -972,8 +962,6 @@ components:
       type: string
       minLength: 1
       maxLength: 128
-    UntagResourceResponse:
-      type: object
     UpdateAccountConfigurationResponse:
       type: object
       properties:
@@ -1018,8 +1006,8 @@ components:
                 location: body
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/findings/methods/batch_get_findings"
           - $ref: "#/components/x-stackQL-resources/findings/methods/get_findings"
+          - $ref: "#/components/x-stackQL-resources/findings/methods/batch_get_findings"
         insert: []
         update: []
         delete: []
@@ -1178,7 +1166,6 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/post"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -1189,7 +1176,6 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/delete"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
           request:
             nativeCasing: pascal
       sqlVerbs:

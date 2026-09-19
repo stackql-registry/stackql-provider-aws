@@ -140,10 +140,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteLifecyclePolicyResponse'
       x-stackql-resource: lifecycle_policies
       x-stackql-method: delete_lifecycle_policy
       x-stackql-verb: DELETE
@@ -209,10 +205,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateLifecyclePolicyResponse'
       x-stackql-resource: lifecycle_policies
       x-stackql-method: update_lifecycle_policy
       x-stackql-verb: UPDATE
@@ -261,10 +253,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -287,10 +275,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -1178,8 +1162,6 @@ components:
       minLength: 0
       maxLength: 64
       pattern: policy-[a-f0-9]+
-    DeleteLifecyclePolicyResponse:
-      type: object
     PolicyIdList:
       type: array
       items:
@@ -1313,8 +1295,6 @@ components:
           type: object
           properties: {}
           description: Information about the tags.
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
@@ -1324,7 +1304,3 @@ components:
       minLength: 1
       maxLength: 128
       pattern: ^(?!aws:)[a-zA-Z+-=._:/]+$
-    UntagResourceResponse:
-      type: object
-    UpdateLifecyclePolicyResponse:
-      type: object

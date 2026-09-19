@@ -527,10 +527,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -553,13 +549,40 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
+  /v1/connectors/{connector_arn}/restart:
+    post:
+      operationId: RestartConnector
+      description: Restarts the specified connector. By default, this operation restarts the connector and all of its tasks.
+        This operation is asynchronous and returns a connector operation ARN that you can pass to DescribeConnectorOperation
+        to track the state of the restart.
+      parameters:
+      - name: connector_arn
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/__string'
+        description: The Amazon Resource Name (ARN) of the connector that you want to restart.
+      - name: onlyFailedTasks
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/__boolean'
+        description: Specifies whether to restart only the connector's failed tasks. If true, the operation restarts only
+          the tasks that are currently in a failed state, and healthy tasks continue running. If false or not specified, the
+          operation restarts the connector and all of its tasks.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestartConnectorResponse'
+      x-stackql-resource: connectors
+      x-stackql-method: restart_connector
+      x-stackql-verb: EXEC
 components:
   parameters:
     X-Amz-Content-Sha256:
@@ -903,6 +926,7 @@ components:
       - UPDATING
       - DELETING
       - FAILED
+      - RESTARTING
     CustomPluginContentType:
       type: string
       enum:
@@ -1338,6 +1362,9 @@ components:
       - ROLLBACK_IN_PROGRESS
       - ROLLBACK_FAILED
       - ROLLBACK_COMPLETE
+      - RESTART_IN_PROGRESS
+      - RESTART_COMPLETE
+      - RESTART_FAILED
     ConnectorOperationType:
       type: string
       enum:
@@ -1345,6 +1372,7 @@ components:
       - UPDATE_CONNECTOR_CONFIGURATION
       - ISOLATE_CONNECTOR
       - RESTORE_CONNECTOR
+      - RESTART_CONNECTOR
     __listOfConnectorOperationStep:
       type: array
       items:
@@ -1682,8 +1710,15 @@ components:
         workerConfigurationState:
           $ref: '#/components/schemas/WorkerConfigurationState'
           description: The state of the worker configuration.
-    TagResourceResponse:
+    RestartConnectorResponse:
       type: object
+      properties:
+        connectorArn:
+          $ref: '#/components/schemas/__string'
+          description: The Amazon Resource Name (ARN) of the connector.
+        connectorOperationArn:
+          $ref: '#/components/schemas/__string'
+          description: The Amazon Resource Name (ARN) of the connector operation created to perform the restart.
     TagKeyList:
       type: array
       items:
@@ -1692,8 +1727,6 @@ components:
       type: string
       minLength: 1
       maxLength: 128
-    UntagResourceResponse:
-      type: object
     CapacityUpdate:
       description: The target capacity for the connector. The capacity can be auto scaled or provisioned.
       type: object

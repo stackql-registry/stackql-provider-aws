@@ -301,10 +301,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeletePlaybackKeyPairResponse"
   /DeletePlaybackRestrictionPolicy:
     post:
       operationId: DeletePlaybackRestrictionPolicy
@@ -845,10 +841,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TagResourceResponse"
     delete:
       operationId: UntagResource
       description: Removes tags from the resource with the specified ARN.
@@ -868,10 +860,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UntagResourceResponse"
   /PutMetadata:
     post:
       operationId: PutMetadata
@@ -918,10 +906,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/StartViewerSessionRevocationResponse"
   /StopStream:
     post:
       operationId: StopStream
@@ -941,10 +925,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/StopStreamResponse"
   /UpdateAdConfiguration:
     post:
       operationId: UpdateAdConfiguration
@@ -1749,8 +1729,6 @@ components:
       minLength: 1
       maxLength: 128
       pattern: arn:aws:ivs:[a-z0-9-]+:[0-9]+:playback-key/[a-zA-Z0-9-]+
-    DeletePlaybackKeyPairResponse:
-      type: object
     GetAdConfigurationResponse:
       type: object
       properties:
@@ -2372,12 +2350,6 @@ components:
     StreamMetadata:
       type: string
       minLength: 1
-    StartViewerSessionRevocationResponse:
-      type: object
-    StopStreamResponse:
-      type: object
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
@@ -2387,8 +2359,6 @@ components:
       minLength: 1
       maxLength: 128
       pattern: ([\p{L}\p{Z}\p{N}_.:/=+\-@]+)
-    UntagResourceResponse:
-      type: object
     UpdateAdConfigurationResponse:
       type: object
       properties:
@@ -2504,7 +2474,6 @@ components:
             $ref: "#/paths/~1StartViewerSessionRevocation/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -2515,7 +2484,6 @@ components:
             $ref: "#/paths/~1StopStream/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -2534,8 +2502,8 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/channels/methods/batch_get_channel"
           - $ref: "#/components/x-stackQL-resources/channels/methods/get_channel"
+          - $ref: "#/components/x-stackQL-resources/channels/methods/batch_get_channel"
           - $ref: "#/components/x-stackQL-resources/channels/methods/list_channels"
         insert:
           - $ref: "#/components/x-stackQL-resources/channels/methods/create_channel"
@@ -2615,14 +2583,35 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/stream_keys/methods/batch_get_stream_key"
           - $ref: "#/components/x-stackQL-resources/stream_keys/methods/get_stream_key"
           - $ref: "#/components/x-stackQL-resources/stream_keys/methods/list_stream_keys"
+          - $ref: "#/components/x-stackQL-resources/stream_keys/methods/batch_get_stream_key"
         insert:
           - $ref: "#/components/x-stackQL-resources/stream_keys/methods/create_stream_key"
         update: []
         delete:
           - $ref: "#/components/x-stackQL-resources/stream_keys/methods/delete_stream_key"
+    viewer_session_revocations:
+      id: aws.ivs.viewer_session_revocations
+      name: viewer_session_revocations
+      title: viewer_session_revocations
+      methods:
+        batch_start_viewer_session_revocation:
+          operation:
+            $ref: "#/paths/~1BatchStartViewerSessionRevocation/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
     ad_configurations:
       id: aws.ivs.ad_configurations
       name: ad_configurations
@@ -2847,7 +2836,6 @@ components:
             $ref: "#/paths/~1DeletePlaybackKeyPair/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -2860,6 +2848,17 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.keyPair
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        import_playback_key_pair:
+          operation:
+            $ref: "#/paths/~1ImportPlaybackKeyPair/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -2985,7 +2984,6 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -2996,7 +2994,6 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
       sqlVerbs:

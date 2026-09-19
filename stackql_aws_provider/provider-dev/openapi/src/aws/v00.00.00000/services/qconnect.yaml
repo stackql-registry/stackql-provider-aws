@@ -1224,10 +1224,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteAIAgentResponse"
     get:
       operationId: GetAIAgent
       description: Gets an Amazon Q in Connect AI Agent.
@@ -1317,10 +1313,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteAIAgentVersionResponse"
   /assistants/{assistant_id}/aiguardrails/{ai_guardrail_id}:
     delete:
       operationId: DeleteAIGuardrail
@@ -1341,10 +1333,6 @@ paths:
       responses:
         "202":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteAIGuardrailResponse"
     get:
       operationId: GetAIGuardrail
       description: Gets the Amazon Q in Connect AI Guardrail.
@@ -1448,10 +1436,6 @@ paths:
       responses:
         "202":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteAIGuardrailVersionResponse"
   /assistants/{assistant_id}/aiprompts/{ai_prompt_id}:
     delete:
       operationId: DeleteAIPrompt
@@ -1472,10 +1456,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteAIPromptResponse"
     get:
       operationId: GetAIPrompt
       description: Gets and Amazon Q in Connect AI Prompt.
@@ -1569,10 +1549,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteAIPromptVersionResponse"
   /assistants/{assistant_id}:
     delete:
       operationId: DeleteAssistant
@@ -1587,10 +1563,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteAssistantResponse"
     get:
       operationId: GetAssistant
       description: Retrieves information about an assistant.
@@ -1628,10 +1600,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteAssistantAssociationResponse"
     get:
       operationId: GetAssistantAssociation
       description: Retrieves information about an assistant association.
@@ -1675,10 +1643,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteContentResponse"
     get:
       operationId: GetContent
       description: Retrieves content, including a pre-signed URL to download the content.
@@ -1770,10 +1734,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteContentAssociationResponse"
     get:
       operationId: GetContentAssociation
       description: Returns the content association. For more information about content associations--what they are and when they are used--see Integrate Amazon Q in Connect with step-by-step guides in the Amazon Connect Administrator Guide.
@@ -1823,10 +1783,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteImportJobResponse"
     get:
       operationId: GetImportJob
       description: Retrieves the started import job.
@@ -1864,10 +1820,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteKnowledgeBaseResponse"
     get:
       operationId: GetKnowledgeBase
       description: Retrieves information about the knowledge base.
@@ -1905,10 +1857,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteMessageTemplateResponse"
     get:
       operationId: GetMessageTemplate
       description: Retrieves the Amazon Q in Connect message template. The message template identifier can contain an optional qualifier, for example, `<message-template-id>`:`<qualifier>`, which is either an actual version number or an Amazon Q Connect managed qualifier $ACTIVE_VERSION | $LATEST. If it is not supplied, then $LATEST is assumed implicitly.
@@ -1996,10 +1944,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteMessageTemplateAttachmentResponse"
   /knowledgeBases/{knowledge_base_id}/quickResponses/{quick_response_id}:
     delete:
       operationId: DeleteQuickResponse
@@ -2020,10 +1964,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteQuickResponseResponse"
     get:
       operationId: GetQuickResponse
       description: Retrieves the quick response.
@@ -2496,10 +2436,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TagResourceResponse"
     delete:
       operationId: UntagResource
       description: Removes the specified tags from the specified resource.
@@ -2519,10 +2455,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UntagResourceResponse"
   /assistants/{assistant_id}/sessions/{session_id}/recommendations/notify:
     post:
       operationId: NotifyRecommendationsReceived
@@ -2658,10 +2590,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/RemoveAssistantAIAgentResponse"
     post:
       operationId: UpdateAssistantAIAgent
       description: Updates the AI Agent that is set for use by default on an Amazon Q in Connect Assistant.
@@ -2709,10 +2637,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/RemoveKnowledgeBaseTemplateUriResponse"
     post:
       operationId: UpdateKnowledgeBaseTemplateUri
       description: Updates the template URI of a knowledge base. This is only supported for knowledge bases of type EXTERNAL. Include a single variable in ${variable} format; this interpolated by Amazon Q in Connect using ingested content. For example, if you ingest a Salesforce article, it has an Id value, and you can set the template URI to https://myInstanceName.lightning.force.com/lightning/r/Knowledge__kav/*${Id}*/view.
@@ -6099,36 +6023,6 @@ components:
         - messageTemplateArn
         - messageTemplateId
         - versionNumber
-    DeleteAIAgentResponse:
-      type: object
-    DeleteAIAgentVersionResponse:
-      type: object
-    DeleteAIGuardrailResponse:
-      type: object
-    DeleteAIGuardrailVersionResponse:
-      type: object
-    DeleteAIPromptResponse:
-      type: object
-    DeleteAIPromptVersionResponse:
-      type: object
-    DeleteAssistantResponse:
-      type: object
-    DeleteAssistantAssociationResponse:
-      type: object
-    DeleteContentResponse:
-      type: object
-    DeleteContentAssociationResponse:
-      type: object
-    DeleteImportJobResponse:
-      type: object
-    DeleteKnowledgeBaseResponse:
-      type: object
-    DeleteMessageTemplateResponse:
-      type: object
-    DeleteMessageTemplateAttachmentResponse:
-      type: object
-    DeleteQuickResponseResponse:
-      type: object
     GetAIAgentResponse:
       type: object
       properties:
@@ -8546,10 +8440,6 @@ components:
         - NOTES
         - NOTES_CHUNK
         - BLOCKED_NOTES_CHUNK
-    RemoveAssistantAIAgentResponse:
-      type: object
-    RemoveKnowledgeBaseTemplateUriResponse:
-      type: object
     RenderMessageTemplateResponse:
       type: object
       properties:
@@ -9280,14 +9170,10 @@ components:
         importJob:
           $ref: "#/components/schemas/ImportJobData"
           description: The import job.
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
         $ref: "#/components/schemas/TagKey"
-    UntagResourceResponse:
-      type: object
     UpdateAIAgentResponse:
       type: object
       properties:
@@ -9468,7 +9354,6 @@ components:
             $ref: "#/paths/~1assistants~1{assistant_id}~1aiagents~1{ai_agent_id}/delete"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
         get_ai_agent:
           operation:
             $ref: "#/paths/~1assistants~1{assistant_id}~1aiagents~1{ai_agent_id}/get"
@@ -9491,7 +9376,6 @@ components:
             $ref: "#/paths/~1assistants~1{assistant_id}~1aiagentConfiguration/delete"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
           request:
             nativeCasing: pascal
         update_assistant_ai_agent:
@@ -9555,7 +9439,6 @@ components:
             $ref: "#/paths/~1assistants~1{assistant_id}~1aiagents~1{ai_agent_id}~1versions~1{version_number}/delete"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/ai_agent_versions/methods/list_ai_agent_versions"
@@ -9602,7 +9485,6 @@ components:
             $ref: "#/paths/~1assistants~1{assistant_id}~1aiguardrails~1{ai_guardrail_id}/delete"
           response:
             openAPIDocKey: "202"
-            mediaType: application/json
         get_ai_guardrail:
           operation:
             $ref: "#/paths/~1assistants~1{assistant_id}~1aiguardrails~1{ai_guardrail_id}/get"
@@ -9668,7 +9550,6 @@ components:
             $ref: "#/paths/~1assistants~1{assistant_id}~1aiguardrails~1{ai_guardrail_id}~1versions~1{version_number}/delete"
           response:
             openAPIDocKey: "202"
-            mediaType: application/json
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/ai_guardrail_versions/methods/list_ai_guardrail_versions"
@@ -9715,7 +9596,6 @@ components:
             $ref: "#/paths/~1assistants~1{assistant_id}~1aiprompts~1{ai_prompt_id}/delete"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
         get_ai_prompt:
           operation:
             $ref: "#/paths/~1assistants~1{assistant_id}~1aiprompts~1{ai_prompt_id}/get"
@@ -9781,7 +9661,6 @@ components:
             $ref: "#/paths/~1assistants~1{assistant_id}~1aiprompts~1{ai_prompt_id}~1versions~1{version_number}/delete"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/ai_prompt_versions/methods/list_ai_prompt_versions"
@@ -9828,7 +9707,6 @@ components:
             $ref: "#/paths/~1assistants~1{assistant_id}/delete"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
         get_assistant:
           operation:
             $ref: "#/paths/~1assistants~1{assistant_id}/get"
@@ -9936,7 +9814,6 @@ components:
             $ref: "#/paths/~1assistants~1{assistant_id}~1associations~1{assistant_association_id}/delete"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
         get_assistant_association:
           operation:
             $ref: "#/paths/~1assistants~1{assistant_id}~1associations~1{assistant_association_id}/get"
@@ -9953,10 +9830,10 @@ components:
         update: []
         delete:
           - $ref: "#/components/x-stackQL-resources/assistant_associations/methods/delete_assistant_association"
-    contents:
-      id: aws.qconnect.contents
-      name: contents
-      title: contents
+    content:
+      id: aws.qconnect.content
+      name: content
+      title: content
       methods:
         create_content:
           operation:
@@ -9991,7 +9868,6 @@ components:
             $ref: "#/paths/~1knowledgeBases~1{knowledge_base_id}~1contents~1{content_id}/delete"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
         get_content:
           operation:
             $ref: "#/paths/~1knowledgeBases~1{knowledge_base_id}~1contents~1{content_id}/get"
@@ -10042,15 +9918,15 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/contents/methods/get_content"
-          - $ref: "#/components/x-stackQL-resources/contents/methods/search_content"
-          - $ref: "#/components/x-stackQL-resources/contents/methods/list_contents"
+          - $ref: "#/components/x-stackQL-resources/content/methods/get_content"
+          - $ref: "#/components/x-stackQL-resources/content/methods/search_content"
+          - $ref: "#/components/x-stackQL-resources/content/methods/list_contents"
         insert:
-          - $ref: "#/components/x-stackQL-resources/contents/methods/create_content"
+          - $ref: "#/components/x-stackQL-resources/content/methods/create_content"
         update:
-          - $ref: "#/components/x-stackQL-resources/contents/methods/update_content"
+          - $ref: "#/components/x-stackQL-resources/content/methods/update_content"
         delete:
-          - $ref: "#/components/x-stackQL-resources/contents/methods/delete_content"
+          - $ref: "#/components/x-stackQL-resources/content/methods/delete_content"
     content_associations:
       id: aws.qconnect.content_associations
       name: content_associations
@@ -10089,7 +9965,6 @@ components:
             $ref: "#/paths/~1knowledgeBases~1{knowledge_base_id}~1contents~1{content_id}~1associations~1{content_association_id}/delete"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
         get_content_association:
           operation:
             $ref: "#/paths/~1knowledgeBases~1{knowledge_base_id}~1contents~1{content_id}~1associations~1{content_association_id}/get"
@@ -10144,7 +10019,6 @@ components:
             $ref: "#/paths/~1knowledgeBases~1{knowledge_base_id}/delete"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
         get_knowledge_base:
           operation:
             $ref: "#/paths/~1knowledgeBases~1{knowledge_base_id}/get"
@@ -10168,7 +10042,6 @@ components:
             $ref: "#/paths/~1knowledgeBases~1{knowledge_base_id}~1templateUri/delete"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
         update_knowledge_base_template_uri:
           operation:
             $ref: "#/paths/~1knowledgeBases~1{knowledge_base_id}~1templateUri/post"
@@ -10240,7 +10113,6 @@ components:
             $ref: "#/paths/~1knowledgeBases~1{knowledge_base_id}~1messageTemplates~1{message_template_id}/delete"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
         get_message_template:
           operation:
             $ref: "#/paths/~1knowledgeBases~1{knowledge_base_id}~1messageTemplates~1{message_template_id}/get"
@@ -10264,7 +10136,6 @@ components:
             $ref: "#/paths/~1knowledgeBases~1{knowledge_base_id}~1messageTemplates~1{message_template_id}~1attachments~1{attachment_id}/delete"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
         render_message_template:
           operation:
             $ref: "#/paths/~1knowledgeBases~1{knowledge_base_id}~1messageTemplates~1{message_template_id}~1render/post"
@@ -10312,8 +10183,8 @@ components:
           - $ref: "#/components/x-stackQL-resources/message_templates/methods/search_message_templates"
           - $ref: "#/components/x-stackQL-resources/message_templates/methods/list_message_templates"
         insert:
-          - $ref: "#/components/x-stackQL-resources/message_templates/methods/create_message_template_attachment"
           - $ref: "#/components/x-stackQL-resources/message_templates/methods/create_message_template"
+          - $ref: "#/components/x-stackQL-resources/message_templates/methods/create_message_template_attachment"
         update:
           - $ref: "#/components/x-stackQL-resources/message_templates/methods/update_message_template"
         delete:
@@ -10397,7 +10268,6 @@ components:
             $ref: "#/paths/~1knowledgeBases~1{knowledge_base_id}~1quickResponses~1{quick_response_id}/delete"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
         get_quick_response:
           operation:
             $ref: "#/paths/~1knowledgeBases~1{knowledge_base_id}~1quickResponses~1{quick_response_id}/get"
@@ -10530,7 +10400,6 @@ components:
             $ref: "#/paths/~1knowledgeBases~1{knowledge_base_id}~1importJobs~1{import_job_id}/delete"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
         get_import_job:
           operation:
             $ref: "#/paths/~1knowledgeBases~1{knowledge_base_id}~1importJobs~1{import_job_id}/get"
@@ -10702,7 +10571,6 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -10713,7 +10581,6 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
       sqlVerbs:

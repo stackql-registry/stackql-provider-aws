@@ -50,6 +50,11 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
+    <td><CopyableCode code="channel_count" /></td>
+    <td><code>integer</code></td>
+    <td>The number of channels associated with the stream.</td>
+</tr>
+<tr>
     <td><CopyableCode code="consumer_count" /></td>
     <td><code>integer</code></td>
     <td>The number of enhanced fan-out consumers registered with the stream.</td>
@@ -184,6 +189,7 @@ Provides a summarized description of the specified Kinesis data stream without t
 
 ```sql
 SELECT
+channel_count,
 consumer_count,
 encryption_type,
 enhanced_monitoring,

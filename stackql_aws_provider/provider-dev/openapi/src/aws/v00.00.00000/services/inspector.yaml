@@ -3131,6 +3131,31 @@ components:
                 location: body
             requestBodyTranslate:
               algorithm: naive
+        start_assessment_run:
+          operation:
+            $ref: "#/paths/~1StartAssessmentRun/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        stop_assessment_run:
+          operation:
+            $ref: "#/paths/~1StopAssessmentRun/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/assessment_runs/methods/describe_assessment_runs"
@@ -3300,10 +3325,10 @@ components:
         insert: []
         update: []
         delete: []
-    telemetry_metadatas:
-      id: aws.inspector.telemetry_metadatas
-      name: telemetry_metadatas
-      title: telemetry_metadatas
+    telemetry_metadata:
+      id: aws.inspector.telemetry_metadata
+      name: telemetry_metadata
+      title: telemetry_metadata
       methods:
         get_telemetry_metadata:
           operation:
@@ -3320,7 +3345,7 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/telemetry_metadatas/methods/get_telemetry_metadata"
+          - $ref: "#/components/x-stackQL-resources/telemetry_metadata/methods/get_telemetry_metadata"
         insert: []
         update: []
         delete: []
@@ -3424,4 +3449,78 @@ components:
         insert: []
         update:
           - $ref: "#/components/x-stackQL-resources/tags/methods/set_tags_for_resource"
+        delete: []
+    agents:
+      id: aws.inspector.agents
+      name: agents
+      title: agents
+      methods:
+        preview_agents:
+          operation:
+            $ref: "#/paths/~1PreviewAgents/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
+    to_events:
+      id: aws.inspector.to_events
+      name: to_events
+      title: to_events
+      methods:
+        subscribe_to_event:
+          operation:
+            $ref: "#/paths/~1SubscribeToEvent/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
+    from_events:
+      id: aws.inspector.from_events
+      name: from_events
+      title: from_events
+      methods:
+        unsubscribe_from_event:
+          operation:
+            $ref: "#/paths/~1UnsubscribeFromEvent/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
         delete: []

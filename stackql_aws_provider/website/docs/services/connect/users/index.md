@@ -36,8 +36,7 @@ The following fields are returned by `SELECT` queries:
     defaultValue="describe_user"
     values={[
         { label: 'describe_user', value: 'describe_user' },
-        { label: 'list_users', value: 'list_users' },
-        { label: 'search_users', value: 'search_users' }
+        { label: 'list_users', value: 'list_users' }
     ]}
 >
 <TabItem value="describe_user">
@@ -178,95 +177,6 @@ The following fields are returned by `SELECT` queries:
 </tbody>
 </table>
 </TabItem>
-<TabItem value="search_users">
-
-<table>
-<thead>
-    <tr>
-    <th>Name</th>
-    <th>Datatype</th>
-    <th>Description</th>
-    </tr>
-</thead>
-<tbody>
-<tr>
-    <td><CopyableCode code="after_contact_work_configs" /></td>
-    <td><code>array</code></td>
-    <td>A list of after contact work (ACW) timeout configuration settings for each channel.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="arn" /></td>
-    <td><code>string</code></td>
-    <td>The Amazon Resource Name (ARN) of the user.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="auto_accept_configs" /></td>
-    <td><code>array</code></td>
-    <td>A list of auto-accept configuration settings for each channel.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="directory_user_id" /></td>
-    <td><code>string</code></td>
-    <td>The directory identifier of the user.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="hierarchy_group_id" /></td>
-    <td><code>string</code></td>
-    <td>The identifier of the user's hierarchy group.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="id" /></td>
-    <td><code>string</code></td>
-    <td>The identifier of the user's summary.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="identity_info" /></td>
-    <td><code>object</code></td>
-    <td>The user's first name and last name.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="persistent_connection_configs" /></td>
-    <td><code>array</code></td>
-    <td>The list of persistent connection configuration settings for each channel.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="phone_config" /></td>
-    <td><code>object</code></td>
-    <td>Contains information about the phone configuration settings for a user.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="phone_number_configs" /></td>
-    <td><code>array</code></td>
-    <td>The list of phone number configuration settings for each channel.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="routing_profile_id" /></td>
-    <td><code>string</code></td>
-    <td>The identifier of the user's routing profile.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="security_profile_ids" /></td>
-    <td><code>array</code></td>
-    <td>The identifiers of the user's security profiles.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="tags" /></td>
-    <td><code>object</code></td>
-    <td>The tags used to organize, track, or control access for this resource. For example, &#123; "Tags": &#123;"key1":"value1", "key2":"value2"&#125; &#125;.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="username" /></td>
-    <td><code>string</code></td>
-    <td>The name of the user.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="voice_enhancement_configs" /></td>
-    <td><code>array</code></td>
-    <td>The list of voice enhancement configuration settings for each channel.</td>
-</tr>
-</tbody>
-</table>
-</TabItem>
 </Tabs>
 
 ## Methods
@@ -297,13 +207,6 @@ The following methods are available for this resource:
     <td><a href="#parameter-instance_id"><code>instance_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td><a href="#parameter-nextToken"><code>nextToken</code></a>, <a href="#parameter-maxResults"><code>maxResults</code></a></td>
     <td>Provides summary information about the users for the specified Connect Customer instance.</td>
-</tr>
-<tr>
-    <td><a href="#search_users"><CopyableCode code="search_users" /></a></td>
-    <td><CopyableCode code="select" /></td>
-    <td><a href="#parameter-region"><code>region</code></a></td>
-    <td></td>
-    <td>Searches users in an Connect Customer instance, with optional filtering. AfterContactWorkTimeLimit is returned in milliseconds.</td>
 </tr>
 <tr>
     <td><a href="#create_user"><CopyableCode code="create_user" /></a></td>
@@ -353,6 +256,13 @@ The following methods are available for this resource:
     <td><a href="#parameter-instance_id"><code>instance_id</code></a>, <a href="#parameter-user_id"><code>user_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td></td>
     <td>Deletes a user account from the specified Connect Customer instance. For information about what happens to a user's data when their account is deleted, see Delete Users from Your Connect Customer Instance in the Connect Customer Administrator Guide. After calling DeleteUser, call DeleteQuickConnect to delete any records related to the deleted users. This will help you: Avoid dangling resources that impact your service quotas. Remove deleted users so they don't appear to agents as transfer options. Avoid the disruption of other Connect Customer processes, such as instance replication and syncing if you're using Connect Customer Global Resiliency.</td>
+</tr>
+<tr>
+    <td><a href="#search_users"><CopyableCode code="search_users" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-InstanceId"><code>InstanceId</code></a></td>
+    <td></td>
+    <td>Searches users in an Connect Customer instance, with optional filtering. AfterContactWorkTimeLimit is returned in milliseconds.</td>
 </tr>
 <tr>
     <td><a href="#update_user_hierarchy"><CopyableCode code="update_user_hierarchy" /></a></td>
@@ -416,8 +326,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     defaultValue="describe_user"
     values={[
         { label: 'describe_user', value: 'describe_user' },
-        { label: 'list_users', value: 'list_users' },
-        { label: 'search_users', value: 'search_users' }
+        { label: 'list_users', value: 'list_users' }
     ]}
 >
 <TabItem value="describe_user">
@@ -466,32 +375,6 @@ WHERE instance_id = '{{ instance_id }}' -- required
 AND region = '{{ region }}' -- required
 AND nextToken = '{{ nextToken }}'
 AND maxResults = '{{ maxResults }}'
-;
-```
-</TabItem>
-<TabItem value="search_users">
-
-Searches users in an Connect Customer instance, with optional filtering. AfterContactWorkTimeLimit is returned in milliseconds.
-
-```sql
-SELECT
-after_contact_work_configs,
-arn,
-auto_accept_configs,
-directory_user_id,
-hierarchy_group_id,
-id,
-identity_info,
-persistent_connection_configs,
-phone_config,
-phone_number_configs,
-routing_profile_id,
-security_profile_ids,
-tags,
-username,
-voice_enhancement_configs
-FROM aws.connect.users
-WHERE region = '{{ region }}' -- required
 ;
 ```
 </TabItem>
@@ -767,11 +650,30 @@ AND region = '{{ region }}' --required
 ## Lifecycle Methods
 
 <Tabs
-    defaultValue="update_user_hierarchy"
+    defaultValue="search_users"
     values={[
+        { label: 'search_users', value: 'search_users' },
         { label: 'update_user_hierarchy', value: 'update_user_hierarchy' }
     ]}
 >
+<TabItem value="search_users">
+
+Searches users in an Connect Customer instance, with optional filtering. AfterContactWorkTimeLimit is returned in milliseconds.
+
+```sql
+EXEC aws.connect.users.search_users 
+@region='{{ region }}' --required 
+@@json=
+'{
+"InstanceId": "{{ InstanceId }}", 
+"NextToken": "{{ NextToken }}", 
+"MaxResults": {{ MaxResults }}, 
+"SearchFilter": "{{ SearchFilter }}", 
+"SearchCriteria": "{{ SearchCriteria }}"
+}'
+;
+```
+</TabItem>
 <TabItem value="update_user_hierarchy">
 
 Assigns the specified hierarchy group to the specified user.

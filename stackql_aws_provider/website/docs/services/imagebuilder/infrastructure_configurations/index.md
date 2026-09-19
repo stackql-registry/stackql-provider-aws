@@ -149,7 +149,7 @@ The following methods are available for this resource:
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-infrastructureConfigurationArn"><code>infrastructureConfigurationArn</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>Gets an infrastructure configuration.</td>
+    <td>Retrieves an infrastructure configuration.</td>
 </tr>
 <tr>
     <td><a href="#list_infrastructure_configurations"><CopyableCode code="list_infrastructure_configurations" /></a></td>
@@ -170,7 +170,7 @@ The following methods are available for this resource:
     <td><CopyableCode code="update" /></td>
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-infrastructureConfigurationArn"><code>infrastructureConfigurationArn</code></a>, <a href="#parameter-instanceProfileName"><code>instanceProfileName</code></a>, <a href="#parameter-clientToken"><code>clientToken</code></a></td>
     <td></td>
-    <td>Updates a new infrastructure configuration. An infrastructure configuration defines the environment in which your image will be built and tested.</td>
+    <td>Updates an infrastructure configuration. An infrastructure configuration defines the environment in which Image Builder builds and tests your image.</td>
 </tr>
 <tr>
     <td><a href="#delete_infrastructure_configuration"><CopyableCode code="delete_infrastructure_configuration" /></a></td>
@@ -184,7 +184,7 @@ The following methods are available for this resource:
     <td><CopyableCode code="exec" /></td>
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-name"><code>name</code></a>, <a href="#parameter-semanticVersion"><code>semanticVersion</code></a>, <a href="#parameter-platform"><code>platform</code></a>, <a href="#parameter-osVersion"><code>osVersion</code></a>, <a href="#parameter-infrastructureConfigurationArn"><code>infrastructureConfigurationArn</code></a>, <a href="#parameter-uri"><code>uri</code></a>, <a href="#parameter-clientToken"><code>clientToken</code></a></td>
     <td></td>
-    <td>Import a Windows operating system image from a verified Microsoft ISO disk file. The following disk images are supported: Windows 11 Enterprise</td>
+    <td>Imports a Windows operating system image from a verified Microsoft ISO disk file. The following disk images are supported: Windows 11 Enterprise</td>
 </tr>
 </tbody>
 </table>
@@ -226,7 +226,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 >
 <TabItem value="get_infrastructure_configuration">
 
-Gets an infrastructure configuration.
+Retrieves an infrastructure configuration.
 
 ```sql
 SELECT
@@ -292,6 +292,7 @@ instanceMetadataOptions,
 tags,
 placement,
 clientToken,
+dryRun,
 region
 )
 SELECT 
@@ -310,6 +311,7 @@ SELECT
 '{{ tags }}',
 '{{ placement }}',
 '{{ clientToken }}' /* required */,
+{{ dryRun }},
 '{{ region }}'
 RETURNING
 client_token,
@@ -373,6 +375,8 @@ request_id
         hostResourceGroupArn: "{{ hostResourceGroupArn }}"
     - name: clientToken
       value: "{{ clientToken }}"
+    - name: dryRun
+      value: {{ dryRun }}
 `}</CodeBlock>
 
 </TabItem>
@@ -389,7 +393,7 @@ request_id
 >
 <TabItem value="update_infrastructure_configuration">
 
-Updates a new infrastructure configuration. An infrastructure configuration defines the environment in which your image will be built and tested.
+Updates an infrastructure configuration. An infrastructure configuration defines the environment in which Image Builder builds and tests your image.
 
 ```sql
 UPDATE aws.imagebuilder.infrastructure_configurations
@@ -454,7 +458,7 @@ AND region = '{{ region }}' --required
 >
 <TabItem value="import_disk_image">
 
-Import a Windows operating system image from a verified Microsoft ISO disk file. The following disk images are supported: Windows 11 Enterprise
+Imports a Windows operating system image from a verified Microsoft ISO disk file. The following disk images are supported: Windows 11 Enterprise
 
 ```sql
 EXEC aws.imagebuilder.infrastructure_configurations.import_disk_image 

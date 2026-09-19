@@ -387,10 +387,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TagResourceResponse"
     delete:
       operationId: UntagResource
       description: Removes one or more tags from a specified resource.
@@ -410,10 +406,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UntagResourceResponse"
 components:
   parameters:
     X-Amz-Content-Sha256:
@@ -756,14 +748,10 @@ components:
     TagMap:
       type: object
       properties: {}
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
         $ref: "#/components/schemas/TagKey"
-    UntagResourceResponse:
-      type: object
     UpdateProfileResourceAssociationResponse:
       type: object
       properties:
@@ -860,8 +848,6 @@ components:
         update:
           - $ref: "#/components/x-stackQL-resources/profiles/methods/associate_profile"
           - $ref: "#/components/x-stackQL-resources/profiles/methods/associate_resource_to_profile"
-          - $ref: "#/components/x-stackQL-resources/profiles/methods/disassociate_profile"
-          - $ref: "#/components/x-stackQL-resources/profiles/methods/disassociate_resource_from_profile"
         delete:
           - $ref: "#/components/x-stackQL-resources/profiles/methods/delete_profile"
     profile_associations:
@@ -964,7 +950,6 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/post"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -975,7 +960,6 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/delete"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
           request:
             nativeCasing: pascal
       sqlVerbs:

@@ -18,7 +18,7 @@ amplifyuibuilder service documentation.
 
 :::info[Service Summary]
 
-total resources: __6__  
+total resources: __7__  
 
 :::
 
@@ -27,11 +27,12 @@ total resources: __6__
 <div class="providerDocColumn">
 <a href="/services/amplifyuibuilder/codegen_jobs/">codegen_jobs</a><br />
 <a href="/services/amplifyuibuilder/components/">components</a><br />
-<a href="/services/amplifyuibuilder/forms/">forms</a>
+<a href="/services/amplifyuibuilder/forms/">forms</a><br />
+<a href="/services/amplifyuibuilder/metadata/">metadata</a>
 </div>
 <div class="providerDocColumn">
-<a href="/services/amplifyuibuilder/metadatas/">metadatas</a><br />
 <a href="/services/amplifyuibuilder/tags/">tags</a><br />
-<a href="/services/amplifyuibuilder/themes/">themes</a>
+<a href="/services/amplifyuibuilder/themes/">themes</a><br />
+<a href="/services/amplifyuibuilder/tokens/">tokens</a>
 </div>
 </div>

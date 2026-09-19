@@ -1020,6 +1020,26 @@ components:
                 location: body
             requestBodyTranslate:
               algorithm: naive
+        pause_campaign:
+          operation:
+            $ref: "#/paths/~1campaigns~1{id}~1pause/post"
+          response:
+            openAPIDocKey: "200"
+        resume_campaign:
+          operation:
+            $ref: "#/paths/~1campaigns~1{id}~1resume/post"
+          response:
+            openAPIDocKey: "200"
+        start_campaign:
+          operation:
+            $ref: "#/paths/~1campaigns~1{id}~1start/post"
+          response:
+            openAPIDocKey: "200"
+        stop_campaign:
+          operation:
+            $ref: "#/paths/~1campaigns~1{id}~1stop/post"
+          response:
+            openAPIDocKey: "200"
         update_campaign_dialer_config:
           operation:
             $ref: "#/paths/~1campaigns~1{id}~1dialer-config/post"
@@ -1096,16 +1116,27 @@ components:
             $ref: "#/paths/~1connect-instance~1{connect_instance_id}~1onboarding/delete"
           response:
             openAPIDocKey: "200"
+        start_instance_onboarding_job:
+          operation:
+            $ref: "#/paths/~1connect-instance~1{connect_instance_id}~1onboarding/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select: []
         insert: []
         update: []
         delete:
           - $ref: "#/components/x-stackQL-resources/instance_onboarding_jobs/methods/delete_instance_onboarding_job"
-    instance_onboarding_job_status:
-      id: aws.connectcampaigns.instance_onboarding_job_status
-      name: instance_onboarding_job_status
-      title: instance_onboarding_job_status
+    instance_onboarding_job_statuses:
+      id: aws.connectcampaigns.instance_onboarding_job_statuses
+      name: instance_onboarding_job_statuses
+      title: instance_onboarding_job_statuses
       methods:
         get_instance_onboarding_job_status:
           operation:
@@ -1116,7 +1147,7 @@ components:
             objectKey: $.connectInstanceOnboardingJobStatus
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/instance_onboarding_job_status/methods/get_instance_onboarding_job_status"
+          - $ref: "#/components/x-stackQL-resources/instance_onboarding_job_statuses/methods/get_instance_onboarding_job_status"
         insert: []
         update: []
         delete: []

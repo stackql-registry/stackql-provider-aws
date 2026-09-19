@@ -256,6 +256,7 @@ propagateTags,
 enableECSManagedTags,
 enableExecuteCommand,
 clientToken,
+critical,
 region
 )
 SELECT 
@@ -269,6 +270,7 @@ SELECT
 {{ enableECSManagedTags }},
 {{ enableExecuteCommand }},
 '{{ clientToken }}',
+{{ critical }},
 '{{ region }}'
 RETURNING
 created_at,
@@ -336,6 +338,10 @@ status
       value: "{{ clientToken }}"
       description: |
         An identifier that you provide to ensure the idempotency of the request. It must be unique and is case sensitive. Up to 36 ASCII characters in the range of 33-126 (inclusive) are allowed.
+    - name: critical
+      value: {{ critical }}
+      description: |
+        If the critical parameter of a daemon is true, and the daemon task fails, stops, or becomes unhealthy, Amazon ECS drains the container instance and stops the other tasks running on it. If the critical parameter is false, the daemon task failure doesn't affect the other tasks on the instance. The default value is true. A non-critical daemon doesn't block instance registration. The container instance becomes active and continues to run your other tasks, whether the daemon task fails during scale-out or during a deployment. Amazon ECS emits an EventBridge event when a daemon task fails to start, for both critical and non-critical daemons. Daemon task launch failures during a deployment are still counted by the deployment circuit breaker. The circuit breaker can roll back an unstable target revision.
 `}</CodeBlock>
 
 </TabItem>
@@ -363,7 +369,8 @@ capacityProviderArns = '{{ capacityProviderArns }}',
 deploymentConfiguration = '{{ deploymentConfiguration }}',
 propagateTags = '{{ propagateTags }}',
 enableECSManagedTags = {{ enableECSManagedTags }},
-enableExecuteCommand = {{ enableExecuteCommand }}
+enableExecuteCommand = {{ enableExecuteCommand }},
+critical = {{ critical }}
 WHERE 
 region = '{{ region }}' --required
 AND daemonArn = '{{ daemonArn }}' --required

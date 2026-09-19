@@ -158,13 +158,6 @@ The following methods are available for this resource:
     <td>Associates a wireless device with a multicast group.</td>
 </tr>
 <tr>
-    <td><a href="#disassociate_wireless_device_from_multicast_group"><CopyableCode code="disassociate_wireless_device_from_multicast_group" /></a></td>
-    <td><CopyableCode code="update" /></td>
-    <td><a href="#parameter-id"><code>id</code></a>, <a href="#parameter-wireless_device_id"><code>wireless_device_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
-    <td></td>
-    <td>Disassociates a wireless device from a multicast group.</td>
-</tr>
-<tr>
     <td><a href="#update_multicast_group"><CopyableCode code="update_multicast_group" /></a></td>
     <td><CopyableCode code="update" /></td>
     <td><a href="#parameter-id"><code>id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
@@ -191,6 +184,13 @@ The following methods are available for this resource:
     <td><a href="#parameter-id"><code>id</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-LoRaWAN"><code>LoRaWAN</code></a></td>
     <td></td>
     <td>Starts a multicast group session.</td>
+</tr>
+<tr>
+    <td><a href="#disassociate_wireless_device_from_multicast_group"><CopyableCode code="disassociate_wireless_device_from_multicast_group" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-id"><code>id</code></a>, <a href="#parameter-wireless_device_id"><code>wireless_device_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Disassociates a wireless device from a multicast group.</td>
 </tr>
 </tbody>
 </table>
@@ -368,7 +368,6 @@ id
     defaultValue="associate_wireless_device_with_multicast_group"
     values={[
         { label: 'associate_wireless_device_with_multicast_group', value: 'associate_wireless_device_with_multicast_group' },
-        { label: 'disassociate_wireless_device_from_multicast_group', value: 'disassociate_wireless_device_from_multicast_group' },
         { label: 'update_multicast_group', value: 'update_multicast_group' }
     ]}
 >
@@ -384,20 +383,6 @@ WHERE
 id = '{{ id }}' --required
 AND region = '{{ region }}' --required
 AND WirelessDeviceId = '{{ WirelessDeviceId }}' --required;
-```
-</TabItem>
-<TabItem value="disassociate_wireless_device_from_multicast_group">
-
-Disassociates a wireless device from a multicast group.
-
-```sql
-UPDATE aws.iotwireless.multicast_groups
-SET 
--- No updatable properties
-WHERE 
-id = '{{ id }}' --required
-AND wireless_device_id = '{{ wireless_device_id }}' --required
-AND region = '{{ region }}' --required;
 ```
 </TabItem>
 <TabItem value="update_multicast_group">
@@ -446,7 +431,8 @@ AND region = '{{ region }}' --required
     defaultValue="cancel_multicast_group_session"
     values={[
         { label: 'cancel_multicast_group_session', value: 'cancel_multicast_group_session' },
-        { label: 'start_multicast_group_session', value: 'start_multicast_group_session' }
+        { label: 'start_multicast_group_session', value: 'start_multicast_group_session' },
+        { label: 'disassociate_wireless_device_from_multicast_group', value: 'disassociate_wireless_device_from_multicast_group' }
     ]}
 >
 <TabItem value="cancel_multicast_group_session">
@@ -472,6 +458,18 @@ EXEC aws.iotwireless.multicast_groups.start_multicast_group_session
 '{
 "LoRaWAN": "{{ LoRaWAN }}"
 }'
+;
+```
+</TabItem>
+<TabItem value="disassociate_wireless_device_from_multicast_group">
+
+Disassociates a wireless device from a multicast group.
+
+```sql
+EXEC aws.iotwireless.multicast_groups.disassociate_wireless_device_from_multicast_group 
+@id='{{ id }}' --required, 
+@wireless_device_id='{{ wireless_device_id }}' --required, 
+@region='{{ region }}' --required
 ;
 ```
 </TabItem>

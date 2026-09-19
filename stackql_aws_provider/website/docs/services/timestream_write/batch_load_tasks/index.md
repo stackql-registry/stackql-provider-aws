@@ -180,6 +180,13 @@ The following methods are available for this resource:
     <td></td>
     <td>Creates a new Timestream batch load task. A batch load task processes data from a CSV source in an S3 location and writes to a Timestream table. A mapping from source to target is defined in a batch load task. Errors and events are written to a report at an S3 location. For the report, if the KMS key is not specified, the report will be encrypted with an S3 managed key when SSE_S3 is the option. Otherwise an error is thrown. For more information, see Amazon Web Services managed keys. Service quotas apply. For details, see code sample.</td>
 </tr>
+<tr>
+    <td><a href="#resume_batch_load_task"><CopyableCode code="resume_batch_load_task" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-TaskId"><code>TaskId</code></a></td>
+    <td></td>
+    <td></td>
+</tr>
 </tbody>
 </table>
 
@@ -360,5 +367,30 @@ task_id
       value: {{ RecordVersion }}
 `}</CodeBlock>
 
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="resume_batch_load_task"
+    values={[
+        { label: 'resume_batch_load_task', value: 'resume_batch_load_task' }
+    ]}
+>
+<TabItem value="resume_batch_load_task">
+
+Success
+
+```sql
+EXEC aws.timestream_write.batch_load_tasks.resume_batch_load_task 
+@region='{{ region }}' --required 
+@@json=
+'{
+"TaskId": "{{ TaskId }}"
+}'
+;
+```
 </TabItem>
 </Tabs>

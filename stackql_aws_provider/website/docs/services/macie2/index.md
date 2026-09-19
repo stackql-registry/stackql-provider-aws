@@ -18,7 +18,7 @@ macie2 service documentation.
 
 :::info[Service Summary]
 
-total resources: __33__  
+total resources: __34__  
 
 :::
 
@@ -44,6 +44,7 @@ total resources: __33__
 <a href="/services/macie2/macie_sessions/">macie_sessions</a>
 </div>
 <div class="providerDocColumn">
+<a href="/services/macie2/macies/">macies</a><br />
 <a href="/services/macie2/managed_data_identifiers/">managed_data_identifiers</a><br />
 <a href="/services/macie2/master_accounts/">master_accounts</a><br />
 <a href="/services/macie2/members/">members</a><br />

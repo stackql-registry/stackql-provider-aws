@@ -386,18 +386,18 @@ The following methods are available for this resource:
     <td>Lists all the available Amazon Q in Connect message templates for the specified knowledge base.</td>
 </tr>
 <tr>
-    <td><a href="#create_message_template_attachment"><CopyableCode code="create_message_template_attachment" /></a></td>
-    <td><CopyableCode code="insert" /></td>
-    <td><a href="#parameter-knowledge_base_id"><code>knowledge_base_id</code></a>, <a href="#parameter-message_template_id"><code>message_template_id</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-contentDisposition"><code>contentDisposition</code></a>, <a href="#parameter-name"><code>name</code></a>, <a href="#parameter-body"><code>body</code></a></td>
-    <td></td>
-    <td>Uploads an attachment file to the specified Amazon Q in Connect message template. The name of the message template attachment has to be unique for each message template referenced by the $LATEST qualifier. The body of the attachment file should be encoded using base64 encoding. After the file is uploaded, you can use the pre-signed Amazon S3 URL returned in response to download the uploaded file.</td>
-</tr>
-<tr>
     <td><a href="#create_message_template"><CopyableCode code="create_message_template" /></a></td>
     <td><CopyableCode code="insert" /></td>
     <td><a href="#parameter-knowledge_base_id"><code>knowledge_base_id</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-channelSubtype"><code>channelSubtype</code></a></td>
     <td></td>
     <td>Creates an Amazon Q in Connect message template. The name of the message template has to be unique for each knowledge base. The channel subtype of the message template is immutable and cannot be modified after creation. After the message template is created, you can use the $LATEST qualifier to reference the created message template.</td>
+</tr>
+<tr>
+    <td><a href="#create_message_template_attachment"><CopyableCode code="create_message_template_attachment" /></a></td>
+    <td><CopyableCode code="insert" /></td>
+    <td><a href="#parameter-knowledge_base_id"><code>knowledge_base_id</code></a>, <a href="#parameter-message_template_id"><code>message_template_id</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-contentDisposition"><code>contentDisposition</code></a>, <a href="#parameter-name"><code>name</code></a>, <a href="#parameter-body"><code>body</code></a></td>
+    <td></td>
+    <td>Uploads an attachment file to the specified Amazon Q in Connect message template. The name of the message template attachment has to be unique for each message template referenced by the $LATEST qualifier. The body of the attachment file should be encoded using base64 encoding. After the file is uploaded, you can use the pre-signed Amazon S3 URL returned in response to download the uploaded file.</td>
 </tr>
 <tr>
     <td><a href="#update_message_template"><CopyableCode code="update_message_template" /></a></td>
@@ -593,40 +593,13 @@ AND maxResults = '{{ maxResults }}'
 ## `INSERT` examples
 
 <Tabs
-    defaultValue="create_message_template_attachment"
+    defaultValue="create_message_template"
     values={[
-        { label: 'create_message_template_attachment', value: 'create_message_template_attachment' },
         { label: 'create_message_template', value: 'create_message_template' },
+        { label: 'create_message_template_attachment', value: 'create_message_template_attachment' },
         { label: 'Manifest', value: 'manifest' }
     ]}
 >
-<TabItem value="create_message_template_attachment">
-
-Uploads an attachment file to the specified Amazon Q in Connect message template. The name of the message template attachment has to be unique for each message template referenced by the $LATEST qualifier. The body of the attachment file should be encoded using base64 encoding. After the file is uploaded, you can use the pre-signed Amazon S3 URL returned in response to download the uploaded file.
-
-```sql
-INSERT INTO aws.qconnect.message_templates (
-contentDisposition,
-name,
-body,
-clientToken,
-knowledge_base_id,
-message_template_id,
-region
-)
-SELECT 
-'{{ contentDisposition }}' /* required */,
-'{{ name }}' /* required */,
-'{{ body }}' /* required */,
-'{{ clientToken }}',
-'{{ knowledge_base_id }}',
-'{{ message_template_id }}',
-'{{ region }}'
-RETURNING
-attachment
-;
-```
-</TabItem>
 <TabItem value="create_message_template">
 
 Creates an Amazon Q in Connect message template. The name of the message template has to be unique for each knowledge base. The channel subtype of the message template is immutable and cannot be modified after creation. After the message template is created, you can use the $LATEST qualifier to reference the created message template.
@@ -664,6 +637,33 @@ message_template
 ;
 ```
 </TabItem>
+<TabItem value="create_message_template_attachment">
+
+Uploads an attachment file to the specified Amazon Q in Connect message template. The name of the message template attachment has to be unique for each message template referenced by the $LATEST qualifier. The body of the attachment file should be encoded using base64 encoding. After the file is uploaded, you can use the pre-signed Amazon S3 URL returned in response to download the uploaded file.
+
+```sql
+INSERT INTO aws.qconnect.message_templates (
+contentDisposition,
+name,
+body,
+clientToken,
+knowledge_base_id,
+message_template_id,
+region
+)
+SELECT 
+'{{ contentDisposition }}' /* required */,
+'{{ name }}' /* required */,
+'{{ body }}' /* required */,
+'{{ clientToken }}',
+'{{ knowledge_base_id }}',
+'{{ message_template_id }}',
+'{{ region }}'
+RETURNING
+attachment
+;
+```
+</TabItem>
 <TabItem value="manifest">
 
 <CodeBlock language="yaml">{`# Description fields are for documentation purposes
@@ -672,21 +672,14 @@ message_template
     - name: knowledge_base_id
       value: "{{ knowledge_base_id }}"
       description: Required parameter for the message_templates resource.
-    - name: message_template_id
-      value: "{{ message_template_id }}"
-      description: Required parameter for the message_templates resource.
     - name: region
       value: "{{ region }}"
       description: Required parameter for the message_templates resource.
-    - name: contentDisposition
-      value: "{{ contentDisposition }}"
-      valid_values: ['ATTACHMENT']
+    - name: message_template_id
+      value: "{{ message_template_id }}"
+      description: Required parameter for the message_templates resource.
     - name: name
       value: "{{ name }}"
-    - name: body
-      value: "{{ body }}"
-    - name: clientToken
-      value: "{{ clientToken }}"
     - name: content
       description: |
         The container of message template content.
@@ -850,8 +843,15 @@ message_template
         criteria: "{{ criteria }}"
         values:
           - "{{ values }}"
+    - name: clientToken
+      value: "{{ clientToken }}"
     - name: tags
       value: "{{ tags }}"
+    - name: contentDisposition
+      value: "{{ contentDisposition }}"
+      valid_values: ['ATTACHMENT']
+    - name: body
+      value: "{{ body }}"
 `}</CodeBlock>
 
 </TabItem>

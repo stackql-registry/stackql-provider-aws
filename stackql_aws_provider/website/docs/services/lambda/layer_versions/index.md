@@ -36,7 +36,8 @@ The following fields are returned by `SELECT` queries:
     defaultValue="get_layer_version"
     values={[
         { label: 'get_layer_version', value: 'get_layer_version' },
-        { label: 'list_layer_versions', value: 'list_layer_versions' }
+        { label: 'list_layer_versions', value: 'list_layer_versions' },
+        { label: 'get_layer_version_by_arn', value: 'get_layer_version_by_arn' }
     ]}
 >
 <TabItem value="get_layer_version">
@@ -147,6 +148,65 @@ The following fields are returned by `SELECT` queries:
 </tbody>
 </table>
 </TabItem>
+<TabItem value="get_layer_version_by_arn">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="compatible_architectures" /></td>
+    <td><code>array</code></td>
+    <td>A list of compatible instruction set architectures.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="compatible_runtimes" /></td>
+    <td><code>array</code></td>
+    <td>The layer's compatible runtimes. The following list includes deprecated runtimes. For more information, see Runtime use after deprecation. For a list of all currently supported runtimes, see Supported runtimes.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="content" /></td>
+    <td><code>object</code></td>
+    <td>Details about the layer version.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="created_date" /></td>
+    <td><code>string</code></td>
+    <td>The date that the layer version was created, in ISO-8601 format (YYYY-MM-DDThh:mm:ss.sTZD). (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="description" /></td>
+    <td><code>string</code></td>
+    <td>The description of the version.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="layer_arn" /></td>
+    <td><code>string</code></td>
+    <td>The ARN of the layer. (pattern: &lt;code&gt;arn:(aws&#91;a-zA-Z-&#93;*)?:lambda:(eusc-)?&#91;a-z&#93;&#123;2&#125;((-gov)|(-iso(&#91;a-z&#93;?)))?-&#91;a-z&#93;+-\d&#123;1&#125;:\d&#123;12&#125;:layer:&#91;a-zA-Z0-9-_&#93;+&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="layer_version_arn" /></td>
+    <td><code>string</code></td>
+    <td>The ARN of the layer version. (pattern: &lt;code&gt;((arn:(aws&#91;a-zA-Z-&#93;*)?:lambda:(eusc-)?&#91;a-z&#93;&#123;2&#125;((-gov)|(-iso(&#91;a-z&#93;?)))?-&#91;a-z&#93;+-\d&#123;1&#125;:\d&#123;12&#125;:layer:&#91;a-zA-Z0-9-_&#93;+:&#91;0-9&#93;+)|(arn:&#91;a-zA-Z0-9-&#93;+:lambda:::awslayer:&#91;a-zA-Z0-9-_&#93;+))&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="license_info" /></td>
+    <td><code>string</code></td>
+    <td>The layer's software license. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="version" /></td>
+    <td><code>integer (int64)</code></td>
+    <td>The version number.</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
 </Tabs>
 
 ## Methods
@@ -177,6 +237,13 @@ The following methods are available for this resource:
     <td><a href="#parameter-layer_name"><code>layer_name</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td><a href="#parameter-CompatibleArchitecture"><code>CompatibleArchitecture</code></a>, <a href="#parameter-CompatibleRuntime"><code>CompatibleRuntime</code></a>, <a href="#parameter-Marker"><code>Marker</code></a>, <a href="#parameter-MaxItems"><code>MaxItems</code></a></td>
     <td>Lists the versions of an Lambda layer. Versions that have been deleted aren't listed. Specify a runtime identifier to list only versions that indicate that they're compatible with that runtime. Specify a compatible architecture to include only layer versions that are compatible with that architecture.</td>
+</tr>
+<tr>
+    <td><a href="#get_layer_version_by_arn"><CopyableCode code="get_layer_version_by_arn" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-Arn"><code>Arn</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Returns information about a version of an Lambda layer, with a link to download the layer archive that's valid for 10 minutes.</td>
 </tr>
 <tr>
     <td><a href="#add_layer_version_permission"><CopyableCode code="add_layer_version_permission" /></a></td>
@@ -215,6 +282,11 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     </tr>
 </thead>
 <tbody>
+<tr id="parameter-Arn">
+    <td><CopyableCode code="Arn" /></td>
+    <td><code>string</code></td>
+    <td>The ARN of the layer version.</td>
+</tr>
 <tr id="parameter-layer_name">
     <td><CopyableCode code="layer_name" /></td>
     <td><code>string</code></td>
@@ -269,7 +341,8 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     defaultValue="get_layer_version"
     values={[
         { label: 'get_layer_version', value: 'get_layer_version' },
-        { label: 'list_layer_versions', value: 'list_layer_versions' }
+        { label: 'list_layer_versions', value: 'list_layer_versions' },
+        { label: 'get_layer_version_by_arn', value: 'get_layer_version_by_arn' }
     ]}
 >
 <TabItem value="get_layer_version">
@@ -314,6 +387,27 @@ AND CompatibleArchitecture = '{{ CompatibleArchitecture }}'
 AND CompatibleRuntime = '{{ CompatibleRuntime }}'
 AND Marker = '{{ Marker }}'
 AND MaxItems = '{{ MaxItems }}'
+;
+```
+</TabItem>
+<TabItem value="get_layer_version_by_arn">
+
+Returns information about a version of an Lambda layer, with a link to download the layer archive that's valid for 10 minutes.
+
+```sql
+SELECT
+compatible_architectures,
+compatible_runtimes,
+content,
+created_date,
+description,
+layer_arn,
+layer_version_arn,
+license_info,
+version
+FROM aws.lambda.layer_versions
+WHERE Arn = '{{ Arn }}' -- required
+AND region = '{{ region }}' -- required
 ;
 ```
 </TabItem>

@@ -51,6 +51,11 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
+    <td><CopyableCode code="account_constraints" /></td>
+    <td><code>array</code></td>
+    <td>Optional list of constraints describing what kind of AWS account is allowed to deploy this workload or deployment pattern. Within a single list the semantics are OR: an account satisfies the list if it satisfies any entry. Workload-level and pattern-level lists combine with AND at deployment time. An absent or empty list at this level means no constraint at this level.</td>
+</tr>
+<tr>
     <td><CopyableCode code="deployment_pattern_name" /></td>
     <td><code>string</code></td>
     <td>The name of the deployment pattern. (pattern: &lt;code&gt;&#91;A-Za-z0-9&#93;&#91;a-zA-Z0-9-&#93;*&lt;/code&gt;)</td>
@@ -109,6 +114,11 @@ The following fields are returned by `SELECT` queries:
     </tr>
 </thead>
 <tbody>
+<tr>
+    <td><CopyableCode code="account_constraints" /></td>
+    <td><code>array</code></td>
+    <td>Optional list of constraints describing what kind of AWS account is allowed to deploy this workload or deployment pattern. Within a single list the semantics are OR: an account satisfies the list if it satisfies any entry. Workload-level and pattern-level lists combine with AND at deployment time. An absent or empty list at this level means no constraint at this level.</td>
+</tr>
 <tr>
     <td><CopyableCode code="deployment_pattern_name" /></td>
     <td><code>string</code></td>
@@ -222,6 +232,7 @@ Returns details for a given workload and deployment pattern, including the avail
 
 ```sql
 SELECT
+account_constraints,
 deployment_pattern_name,
 deployment_pattern_version_name,
 description,
@@ -242,6 +253,7 @@ Lists the workload deployment patterns for a given workload name. You can use th
 
 ```sql
 SELECT
+account_constraints,
 deployment_pattern_name,
 deployment_pattern_version_name,
 description,

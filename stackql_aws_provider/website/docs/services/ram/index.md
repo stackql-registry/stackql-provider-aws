@@ -18,7 +18,7 @@ ram service documentation.
 
 :::info[Service Summary]
 
-total resources: __15__  
+total resources: __16__  
 
 :::
 
@@ -40,6 +40,7 @@ total resources: __15__
 <a href="/services/ram/resource_shares/">resource_shares</a><br />
 <a href="/services/ram/resource_types/">resource_types</a><br />
 <a href="/services/ram/resources/">resources</a><br />
+<a href="/services/ram/sharing_with_aws_organizations/">sharing_with_aws_organizations</a><br />
 <a href="/services/ram/source_associations/">source_associations</a><br />
 <a href="/services/ram/tags/">tags</a>
 </div>

@@ -33,36 +33,12 @@ Creates, updates, deletes, gets or lists a <code>standards_control_associations<
 The following fields are returned by `SELECT` queries:
 
 <Tabs
-    defaultValue="batch_get_standards_control_associations"
+    defaultValue="list_standards_control_associations"
     values={[
-        { label: 'batch_get_standards_control_associations', value: 'batch_get_standards_control_associations' },
-        { label: 'list_standards_control_associations', value: 'list_standards_control_associations' }
+        { label: 'list_standards_control_associations', value: 'list_standards_control_associations' },
+        { label: 'batch_get_standards_control_associations', value: 'batch_get_standards_control_associations' }
     ]}
 >
-<TabItem value="batch_get_standards_control_associations">
-
-<table>
-<thead>
-    <tr>
-    <th>Name</th>
-    <th>Datatype</th>
-    <th>Description</th>
-    </tr>
-</thead>
-<tbody>
-<tr>
-    <td><CopyableCode code="standards_control_association_details" /></td>
-    <td><code>array</code></td>
-    <td>Provides the enablement status of a security control in a specified standard and other details for the control in relation to the specified standard.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="unprocessed_associations" /></td>
-    <td><code>array</code></td>
-    <td>A security control (identified with SecurityControlId, SecurityControlArn, or a mix of both parameters) whose enablement status in a specified standard cannot be returned.</td>
-</tr>
-</tbody>
-</table>
-</TabItem>
 <TabItem value="list_standards_control_associations">
 
 <table>
@@ -122,6 +98,30 @@ The following fields are returned by `SELECT` queries:
 </tbody>
 </table>
 </TabItem>
+<TabItem value="batch_get_standards_control_associations">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="standards_control_association_details" /></td>
+    <td><code>array</code></td>
+    <td>Provides the enablement status of a security control in a specified standard and other details for the control in relation to the specified standard.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="unprocessed_associations" /></td>
+    <td><code>array</code></td>
+    <td>A security control (identified with SecurityControlId, SecurityControlArn, or a mix of both parameters) whose enablement status in a specified standard cannot be returned.</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
 </Tabs>
 
 ## Methods
@@ -140,18 +140,18 @@ The following methods are available for this resource:
 </thead>
 <tbody>
 <tr>
-    <td><a href="#batch_get_standards_control_associations"><CopyableCode code="batch_get_standards_control_associations" /></a></td>
-    <td><CopyableCode code="select" /></td>
-    <td><a href="#parameter-region"><code>region</code></a></td>
-    <td></td>
-    <td>For a batch of security controls and standards, identifies whether each control is currently enabled or disabled in a standard. Calls to this operation return a RESOURCE_NOT_FOUND_EXCEPTION error when the standard subscription for the association has a NOT_READY_FOR_UPDATES value for StandardsControlsUpdatable.</td>
-</tr>
-<tr>
     <td><a href="#list_standards_control_associations"><CopyableCode code="list_standards_control_associations" /></a></td>
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-SecurityControlId"><code>SecurityControlId</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td><a href="#parameter-NextToken"><code>NextToken</code></a>, <a href="#parameter-MaxResults"><code>MaxResults</code></a></td>
     <td>Specifies whether a control is currently enabled or disabled in each enabled standard in the calling account. This operation omits standards control associations for standard subscriptions where StandardsControlsUpdatable has value NOT_READY_FOR_UPDATES.</td>
+</tr>
+<tr>
+    <td><a href="#batch_get_standards_control_associations"><CopyableCode code="batch_get_standards_control_associations" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>For a batch of security controls and standards, identifies whether each control is currently enabled or disabled in a standard. Calls to this operation return a RESOURCE_NOT_FOUND_EXCEPTION error when the standard subscription for the association has a NOT_READY_FOR_UPDATES value for StandardsControlsUpdatable.</td>
 </tr>
 <tr>
     <td><a href="#batch_update_standards_control_associations"><CopyableCode code="batch_update_standards_control_associations" /></a></td>
@@ -202,25 +202,12 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 ## `SELECT` examples
 
 <Tabs
-    defaultValue="batch_get_standards_control_associations"
+    defaultValue="list_standards_control_associations"
     values={[
-        { label: 'batch_get_standards_control_associations', value: 'batch_get_standards_control_associations' },
-        { label: 'list_standards_control_associations', value: 'list_standards_control_associations' }
+        { label: 'list_standards_control_associations', value: 'list_standards_control_associations' },
+        { label: 'batch_get_standards_control_associations', value: 'batch_get_standards_control_associations' }
     ]}
 >
-<TabItem value="batch_get_standards_control_associations">
-
-For a batch of security controls and standards, identifies whether each control is currently enabled or disabled in a standard. Calls to this operation return a RESOURCE_NOT_FOUND_EXCEPTION error when the standard subscription for the association has a NOT_READY_FOR_UPDATES value for StandardsControlsUpdatable.
-
-```sql
-SELECT
-standards_control_association_details,
-unprocessed_associations
-FROM aws.securityhub.standards_control_associations
-WHERE region = '{{ region }}' -- required
-;
-```
-</TabItem>
 <TabItem value="list_standards_control_associations">
 
 Specifies whether a control is currently enabled or disabled in each enabled standard in the calling account. This operation omits standards control associations for standard subscriptions where StandardsControlsUpdatable has value NOT_READY_FOR_UPDATES.
@@ -241,6 +228,19 @@ WHERE SecurityControlId = '{{ SecurityControlId }}' -- required
 AND region = '{{ region }}' -- required
 AND NextToken = '{{ NextToken }}'
 AND MaxResults = '{{ MaxResults }}'
+;
+```
+</TabItem>
+<TabItem value="batch_get_standards_control_associations">
+
+For a batch of security controls and standards, identifies whether each control is currently enabled or disabled in a standard. Calls to this operation return a RESOURCE_NOT_FOUND_EXCEPTION error when the standard subscription for the association has a NOT_READY_FOR_UPDATES value for StandardsControlsUpdatable.
+
+```sql
+SELECT
+standards_control_association_details,
+unprocessed_associations
+FROM aws.securityhub.standards_control_associations
+WHERE region = '{{ region }}' -- required
 ;
 ```
 </TabItem>

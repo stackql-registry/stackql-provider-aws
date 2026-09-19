@@ -120,6 +120,13 @@ The following methods are available for this resource:
     <td></td>
     <td>Deletes a batch build.</td>
 </tr>
+<tr>
+    <td><a href="#retry_build_batch"><CopyableCode code="retry_build_batch" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Restarts a failed batch build. Only batch builds that have failed can be retried.</td>
+</tr>
 </tbody>
 </table>
 
@@ -196,6 +203,33 @@ Deletes a batch build.
 ```sql
 DELETE FROM aws.codebuild.build_batches
 WHERE region = '{{ region }}' --required
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="retry_build_batch"
+    values={[
+        { label: 'retry_build_batch', value: 'retry_build_batch' }
+    ]}
+>
+<TabItem value="retry_build_batch">
+
+Restarts a failed batch build. Only batch builds that have failed can be retried.
+
+```sql
+EXEC aws.codebuild.build_batches.retry_build_batch 
+@region='{{ region }}' --required 
+@@json=
+'{
+"id": "{{ id }}", 
+"idempotencyToken": "{{ idempotencyToken }}", 
+"retryType": "{{ retryType }}"
+}'
 ;
 ```
 </TabItem>

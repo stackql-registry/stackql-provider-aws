@@ -115,7 +115,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetComplianceInquiryMetadataResponse'
-      x-stackql-resource: compliance_inquiry_metadatas
+      x-stackql-resource: compliance_inquiry_metadata
       x-stackql-method: get_compliance_inquiry_metadata
       x-stackql-verb: SELECT
   /v1/report/get:
@@ -175,7 +175,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetReportMetadataResponse'
-      x-stackql-resource: report_metadatas
+      x-stackql-resource: report_metadata
       x-stackql-method: get_report_metadata
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.reportDetails
@@ -203,7 +203,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetTermForReportResponse'
-      x-stackql-resource: term_for_reports
+      x-stackql-resource: terms
       x-stackql-method: get_term_for_report
       x-stackql-verb: SELECT
   /v1/compliance-inquiry/list:
@@ -418,10 +418,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -444,10 +440,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -1211,8 +1203,6 @@ components:
           description: The timestamp when the feedback was submitted.
       required:
       - submittedAt
-    TagResourceResponse:
-      type: object
     TagKeys:
       description: A list of tag keys.
       type: array
@@ -1224,5 +1214,3 @@ components:
       minLength: 1
       maxLength: 128
       pattern: '[a-zA-Z0-9\s_.:/=+\-@]*'
-    UntagResourceResponse:
-      type: object

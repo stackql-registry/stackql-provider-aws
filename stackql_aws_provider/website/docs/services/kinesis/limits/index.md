@@ -50,6 +50,16 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
+    <td><CopyableCode code="channel_count" /></td>
+    <td><code>integer</code></td>
+    <td>The number of channels in the account.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="channel_count_limit" /></td>
+    <td><code>integer</code></td>
+    <td>The maximum number of channels allowed in the account.</td>
+</tr>
+<tr>
     <td><CopyableCode code="on_demand_stream_count" /></td>
     <td><code>integer</code></td>
     <td>Indicates the number of data streams with the on-demand capacity mode.</td>
@@ -134,6 +144,8 @@ Describes the shard limits and usage for the account. If you update your account
 
 ```sql
 SELECT
+channel_count,
+channel_count_limit,
 on_demand_stream_count,
 on_demand_stream_count_limit,
 open_shard_count,

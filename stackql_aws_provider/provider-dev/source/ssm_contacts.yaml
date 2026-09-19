@@ -68,10 +68,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/AcceptPageResult'
       x-stackql-resource: pages
       x-stackql-method: accept_page
       x-stackql-verb: EXEC
@@ -109,11 +105,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ActivateContactChannelResult'
-      x-stackql-resource: contacts
+      x-stackql-resource: contact_channels
       x-stackql-method: activate_contact_channel
       x-stackql-verb: EXEC
   /CreateContact:
@@ -379,11 +371,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeactivateContactChannelResult'
-      x-stackql-resource: contacts
+      x-stackql-resource: contact_channels
       x-stackql-method: deactivate_contact_channel
       x-stackql-verb: EXEC
   /DeleteContact:
@@ -418,10 +406,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteContactResult'
       x-stackql-resource: contacts
       x-stackql-method: delete_contact
       x-stackql-verb: DELETE
@@ -457,10 +441,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteContactChannelResult'
       x-stackql-resource: contact_channels
       x-stackql-method: delete_contact_channel
       x-stackql-verb: DELETE
@@ -494,10 +474,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteRotationResult'
       x-stackql-resource: rotations
       x-stackql-method: delete_rotation
       x-stackql-verb: DELETE
@@ -534,10 +510,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteRotationOverrideResult'
       x-stackql-resource: rotation_overrides
       x-stackql-method: delete_rotation_override
       x-stackql-verb: DELETE
@@ -1068,7 +1040,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListPagesByContactResult'
-      x-stackql-resource: pages_by_contacts
+      x-stackql-resource: pages
       x-stackql-method: list_pages_by_contact
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Pages
@@ -1114,7 +1086,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListPagesByEngagementResult'
-      x-stackql-resource: pages_by_engagements
+      x-stackql-resource: pages
       x-stackql-method: list_pages_by_engagement
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Pages
@@ -1419,10 +1391,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PutContactPolicyResult'
       x-stackql-resource: contact_policies
       x-stackql-method: put_contact_policy
       x-stackql-verb: REPLACE
@@ -1457,10 +1425,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/SendActivationCodeResult'
       x-stackql-resource: contact_channels
       x-stackql-method: send_activation_code
       x-stackql-verb: EXEC
@@ -1526,7 +1490,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartEngagementResult'
-      x-stackql-resource: engagement
+      x-stackql-resource: engagements
       x-stackql-method: start_engagement
       x-stackql-verb: EXEC
   /StopEngagement:
@@ -1562,11 +1526,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/StopEngagementResult'
-      x-stackql-resource: engagement
+      x-stackql-resource: engagements
       x-stackql-method: stop_engagement
       x-stackql-verb: EXEC
   /TagResource:
@@ -1603,10 +1563,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceResult'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -1643,10 +1599,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceResult'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -1686,10 +1638,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateContactResult'
       x-stackql-resource: contacts
       x-stackql-method: update_contact
       x-stackql-verb: UPDATE
@@ -1728,10 +1676,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateContactChannelResult'
       x-stackql-resource: contact_channels
       x-stackql-method: update_contact_channel
       x-stackql-verb: UPDATE
@@ -1783,10 +1727,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateRotationResult'
       x-stackql-resource: rotations
       x-stackql-method: update_rotation
       x-stackql-verb: UPDATE
@@ -1860,15 +1800,11 @@ components:
       enum:
       - IGNORE
       - ENFORCE
-    AcceptPageResult:
-      type: object
     ActivationCode:
       type: string
       minLength: 6
       maxLength: 10
       pattern: ^[0-9]*$
-    ActivateContactChannelResult:
-      type: object
     ContactAlias:
       type: string
       minLength: 1
@@ -2186,16 +2122,6 @@ components:
       minLength: 36
       maxLength: 39
       pattern: ([a-fA-Z0-9]{8,11}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}){1}
-    DeactivateContactChannelResult:
-      type: object
-    DeleteContactResult:
-      type: object
-    DeleteContactChannelResult:
-      type: object
-    DeleteRotationResult:
-      type: object
-    DeleteRotationOverrideResult:
-      type: object
     DescribeEngagementResult:
       type: object
       properties:
@@ -2888,10 +2814,6 @@ components:
         Tags:
           $ref: '#/components/schemas/TagsList'
           description: The tags related to the contact or escalation plan.
-    PutContactPolicyResult:
-      type: object
-    SendActivationCodeResult:
-      type: object
     StartEngagementResult:
       type: object
       properties:
@@ -2904,19 +2826,7 @@ components:
       type: string
       maxLength: 255
       pattern: ^[.\s\S]*$
-    StopEngagementResult:
-      type: object
-    TagResourceResult:
-      type: object
     TagKeyList:
       type: array
       items:
         $ref: '#/components/schemas/TagKey'
-    UntagResourceResult:
-      type: object
-    UpdateContactResult:
-      type: object
-    UpdateContactChannelResult:
-      type: object
-    UpdateRotationResult:
-      type: object

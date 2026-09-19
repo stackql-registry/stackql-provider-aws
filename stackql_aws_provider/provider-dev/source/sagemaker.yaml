@@ -165,6 +165,54 @@ paths:
       x-stackql-resource: trial_components
       x-stackql-method: associate_trial_component
       x-stackql-verb: UPDATE
+  /AttachClusterNodeNetworkInterface:
+    post:
+      operationId: AttachClusterNodeNetworkInterface
+      description: Attaches an elastic network interface (ENI) to a node in a HyperPod cluster. To use this operation, you
+        must have the sagemaker:AttachClusterNodeNetworkInterface permission.
+      parameters:
+      - name: X-Amz-Target
+        in: header
+        description: Action Header
+        required: false
+        schema:
+          type: string
+          enum:
+          - SageMaker.AttachClusterNodeNetworkInterface
+          default: SageMaker.AttachClusterNodeNetworkInterface
+      requestBody:
+        required: true
+        content:
+          application/x-amz-json-1.1:
+            schema:
+              type: object
+              properties:
+                ClusterName:
+                  $ref: '#/components/schemas/ClusterNameOrArn'
+                  description: The name or Amazon Resource Name (ARN) of the SageMaker HyperPod cluster that contains the
+                    target node.
+                NodeId:
+                  $ref: '#/components/schemas/ClusterNodeId'
+                  description: The unique identifier of the cluster node to which you want to attach the network interface.
+                    The node must belong to your specified HyperPod cluster and cannot be part of a Restricted Instance Group
+                    (RIG).
+                NetworkInterfaceId:
+                  $ref: '#/components/schemas/ClusterNetworkInterfaceId'
+                  description: The unique identifier of the elastic network interface (ENI) to attach.
+              required:
+              - ClusterName
+              - NodeId
+              - NetworkInterfaceId
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AttachClusterNodeNetworkInterfaceResponse'
+      x-stackql-resource: cluster_nodes
+      x-stackql-method: attach_cluster_node_network_interface
+      x-stackql-verb: UPDATE
   /AttachClusterNodeVolume:
     post:
       operationId: AttachClusterNodeVolume
@@ -345,7 +393,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchDescribeModelPackageOutput'
-      x-stackql-resource: batch_describe_model_package
+      x-stackql-resource: model_packages
       x-stackql-method: batch_describe_model_package
       x-stackql-verb: EXEC
   /BatchRebootClusterNodes:
@@ -1164,7 +1212,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreateAutoMLJobV2Response'
-      x-stackql-resource: auto_ml_job_v2s
+      x-stackql-resource: auto_ml_jobs_v2
       x-stackql-method: create_auto_ml_job_v2
       x-stackql-verb: INSERT
   /CreateCluster:
@@ -2444,7 +2492,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreateHubContentPresignedUrlsResponse'
-      x-stackql-resource: hub_contents
+      x-stackql-resource: hub_content
       x-stackql-method: create_hub_content_presigned_urls
       x-stackql-verb: INSERT
       x-stackql-pagination-request-token-key: NextToken
@@ -2496,7 +2544,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreateHubContentReferenceResponse'
-      x-stackql-resource: hub_contents
+      x-stackql-resource: hub_content
       x-stackql-method: create_hub_content_reference
       x-stackql-verb: INSERT
   /CreateHumanTaskUi:
@@ -3229,6 +3277,11 @@ paths:
                   $ref: '#/components/schemas/RoleArn'
                   description: The Amazon Resource Name (ARN) for an IAM role in your account that the MLflow App uses to
                     access the artifact store in Amazon S3. The role should have the AmazonS3FullAccess permission.
+                KmsKeyId:
+                  $ref: '#/components/schemas/KmsKeyId'
+                  description: The ID of the Amazon Web Services KMS key used to encrypt the data at rest associated with
+                    the MLflow App. If you don't specify a value, the MLflow App is not encrypted with a customer-managed
+                    key.
                 ModelRegistrationMode:
                   $ref: '#/components/schemas/ModelRegistrationMode'
                   description: Whether to enable or disable automatic registration of new MLflow models to the SageMaker Model
@@ -4285,9 +4338,16 @@ paths:
                 ApplicationConfig:
                   $ref: '#/components/schemas/PartnerAppConfig'
                   description: Configuration settings for the SageMaker Partner AI App.
+                IdcConfig:
+                  $ref: '#/components/schemas/IdcConfigInput'
+                  description: Specifies the Amazon Web Services IAM Identity Center configuration for the SageMaker Partner
+                    AI App. Specify this parameter when AuthType is IDC. Apps that use IAM authorization don't use this parameter.
                 AuthType:
                   $ref: '#/components/schemas/PartnerAppAuthType'
-                  description: The authorization type that users use to access the SageMaker Partner AI App.
+                  description: 'The authorization type that users use to access the SageMaker Partner AI App. Valid values:
+                    IAM: Users access the SageMaker Partner AI App with their Amazon Web Services IAM identity. IDC: Users
+                    access the SageMaker Partner AI App with their Amazon Web Services IAM Identity Center identity. Specify
+                    the Identity Center instance to use in IdcConfig.'
                 EnableIamSessionBasedIdentity:
                   $ref: '#/components/schemas/Boolean'
                   description: When set to TRUE, the SageMaker Partner AI App sets the Amazon Web Services IAM session name
@@ -6451,10 +6511,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteFlowDefinitionResponse'
       x-stackql-resource: flow_definitions
       x-stackql-method: delete_flow_definition
       x-stackql-verb: DELETE
@@ -6531,7 +6587,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: hub_contents
+      x-stackql-resource: hub_content
       x-stackql-method: delete_hub_content
       x-stackql-verb: DELETE
   /DeleteHubContentReference:
@@ -6572,7 +6628,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: hub_contents
+      x-stackql-resource: hub_content
       x-stackql-method: delete_hub_content_reference
       x-stackql-verb: DELETE
   /DeleteHumanTaskUi:
@@ -6606,10 +6662,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteHumanTaskUiResponse'
       x-stackql-resource: human_task_uis
       x-stackql-method: delete_human_task_ui
       x-stackql-verb: DELETE
@@ -6676,10 +6728,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteImageResponse'
       x-stackql-resource: images
       x-stackql-method: delete_image
       x-stackql-verb: DELETE
@@ -6718,10 +6766,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteImageVersionResponse'
       x-stackql-resource: image_versions
       x-stackql-method: delete_image_version
       x-stackql-verb: DELETE
@@ -6828,10 +6872,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteJobResponse'
       x-stackql-resource: jobs
       x-stackql-method: delete_job
       x-stackql-verb: DELETE
@@ -7555,10 +7595,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteTagsOutput'
       x-stackql-resource: tags
       x-stackql-method: delete_tags
       x-stackql-verb: DELETE
@@ -7742,10 +7778,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteWorkforceResponse'
       x-stackql-resource: workforces
       x-stackql-method: delete_workforce
       x-stackql-verb: DELETE
@@ -8196,7 +8228,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DescribeAutoMLJobV2Response'
-      x-stackql-resource: auto_ml_job_v2s
+      x-stackql-resource: auto_ml_jobs_v2
       x-stackql-method: describe_auto_ml_job_v2
       x-stackql-verb: SELECT
   /DescribeCluster:
@@ -8928,7 +8960,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DescribeFeatureMetadataResponse'
-      x-stackql-resource: feature_metadatas
+      x-stackql-resource: feature_metadata
       x-stackql-method: describe_feature_metadata
       x-stackql-verb: SELECT
   /DescribeFlowDefinition:
@@ -9047,7 +9079,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DescribeHubContentResponse'
-      x-stackql-resource: hub_contents
+      x-stackql-resource: hub_content
       x-stackql-method: describe_hub_content
       x-stackql-verb: SELECT
   /DescribeHumanTaskUi:
@@ -10122,7 +10154,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DescribePipelineDefinitionForExecutionResponse'
-      x-stackql-resource: pipeline_definition_for_executions
+      x-stackql-resource: pipeline_definitions
       x-stackql-method: describe_pipeline_definition_for_execution
       x-stackql-verb: SELECT
   /DescribePipelineExecution:
@@ -10803,11 +10835,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DisableSagemakerServicecatalogPortfolioOutput'
-      x-stackql-resource: sagemaker_servicecatalog_portfolio
+      x-stackql-resource: sagemaker_servicecatalog_portfolios
       x-stackql-method: disable_sagemaker_servicecatalog_portfolio
       x-stackql-verb: EXEC
   /DisassociateTrialComponent:
@@ -10877,11 +10905,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/EnableSagemakerServicecatalogPortfolioOutput'
-      x-stackql-resource: sagemaker_servicecatalog_portfolio
+      x-stackql-resource: sagemaker_servicecatalog_portfolios
       x-stackql-method: enable_sagemaker_servicecatalog_portfolio
       x-stackql-verb: EXEC
   /ExtendTrainingPlan:
@@ -10921,7 +10945,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ExtendTrainingPlanResponse'
-      x-stackql-resource: extend_training_plan
+      x-stackql-resource: training_plans
       x-stackql-method: extend_training_plan
       x-stackql-verb: EXEC
   /GetDeviceFleetReport:
@@ -11061,7 +11085,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetSagemakerServicecatalogPortfolioStatusOutput'
-      x-stackql-resource: sagemaker_servicecatalog_portfolio_status
+      x-stackql-resource: sagemaker_servicecatalog_portfolio_statuses
       x-stackql-method: get_sagemaker_servicecatalog_portfolio_status
       x-stackql-verb: SELECT
   /GetScalingConfigurationRecommendation:
@@ -11230,7 +11254,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ImportHubContentResponse'
-      x-stackql-resource: hubs
+      x-stackql-resource: hub_content
       x-stackql-method: import_hub_content
       x-stackql-verb: EXEC
   /ListAIBenchmarkJobs:
@@ -11968,7 +11992,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListCandidatesForAutoMLJobResponse'
-      x-stackql-resource: candidates_for_auto_ml_jobs
+      x-stackql-resource: candidates
       x-stackql-method: list_candidates_for_auto_ml_job
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Candidates
@@ -14145,7 +14169,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListLabelingJobsForWorkteamResponse'
-      x-stackql-resource: labeling_jobs_for_workteams
+      x-stackql-resource: labeling_jobs
       x-stackql-method: list_labeling_jobs_for_workteam
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.LabelingJobSummaryList
@@ -14697,7 +14721,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListModelMetadataResponse'
-      x-stackql-resource: model_metadatas
+      x-stackql-resource: model_metadata
       x-stackql-method: list_model_metadata
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ModelMetadataSummaries
@@ -15648,7 +15672,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListPipelineParametersForExecutionResponse'
-      x-stackql-resource: pipeline_parameters_for_executions
+      x-stackql-resource: pipeline_parameters
       x-stackql-method: list_pipeline_parameters_for_execution
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.PipelineParameters
@@ -16353,7 +16377,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTrainingJobsForHyperParameterTuningJobResponse'
-      x-stackql-resource: training_jobs_for_hyper_parameter_tuning_jobs
+      x-stackql-resource: training_jobs
       x-stackql-method: list_training_jobs_for_hyper_parameter_tuning_job
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.TrainingJobSummaries
@@ -16654,7 +16678,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListUltraServersByReservedCapacityResponse'
-      x-stackql-resource: ultra_servers_by_reserved_capacities
+      x-stackql-resource: ultra_servers
       x-stackql-method: list_ultra_servers_by_reserved_capacity
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.UltraServers
@@ -16924,7 +16948,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/QueryLineageResponse'
-      x-stackql-resource: query_lineage
+      x-stackql-resource: lineages
       x-stackql-method: query_lineage
       x-stackql-verb: EXEC
   /RegisterDevices:
@@ -17011,7 +17035,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RenderUiTemplateResponse'
-      x-stackql-resource: render_ui_template
+      x-stackql-resource: ui_templates
       x-stackql-method: render_ui_template
       x-stackql-verb: EXEC
   /RetryPipelineExecution:
@@ -17124,7 +17148,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SearchResponse'
-      x-stackql-resource: search
+      x-stackql-resource: hs
       x-stackql-method: search
       x-stackql-verb: EXEC
       x-stackql-pagination-request-token-key: NextToken
@@ -17407,7 +17431,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartInferenceExperimentResponse'
-      x-stackql-resource: inference_experiment
+      x-stackql-resource: inference_experiments
       x-stackql-method: start_inference_experiment
       x-stackql-verb: EXEC
   /StartMlflowTrackingServer:
@@ -17443,7 +17467,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartMlflowTrackingServerResponse'
-      x-stackql-resource: mlflow_tracking_server
+      x-stackql-resource: mlflow_tracking_servers
       x-stackql-method: start_mlflow_tracking_server
       x-stackql-verb: EXEC
   /StartMonitoringSchedule:
@@ -17573,7 +17597,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartPipelineExecutionResponse'
-      x-stackql-resource: pipelines
+      x-stackql-resource: pipeline_executions
       x-stackql-method: start_pipeline_execution
       x-stackql-verb: EXEC
   /StartSession:
@@ -17612,7 +17636,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartSessionResponse'
-      x-stackql-resource: session
+      x-stackql-resource: sessions
       x-stackql-method: start_session
       x-stackql-verb: EXEC
   /StopAIBenchmarkJob:
@@ -17908,7 +17932,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StopInferenceExperimentResponse'
-      x-stackql-resource: inference_experiment
+      x-stackql-resource: inference_experiments
       x-stackql-method: stop_inference_experiment
       x-stackql-verb: EXEC
   /StopInferenceRecommendationsJob:
@@ -17940,7 +17964,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: jobs
+      x-stackql-resource: inference_recommendations_jobs
       x-stackql-method: stop_inference_recommendations_job
       x-stackql-verb: EXEC
   /StopJob:
@@ -17979,10 +18003,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/StopJobResponse'
       x-stackql-resource: jobs
       x-stackql-method: stop_job
       x-stackql-verb: EXEC
@@ -18052,7 +18072,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StopMlflowTrackingServerResponse'
-      x-stackql-resource: mlflow_tracking_server
+      x-stackql-resource: mlflow_tracking_servers
       x-stackql-method: stop_mlflow_tracking_server
       x-stackql-verb: EXEC
   /StopMonitoringSchedule:
@@ -18202,7 +18222,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StopPipelineExecutionResponse'
-      x-stackql-resource: pipelines
+      x-stackql-resource: pipeline_executions
       x-stackql-method: stop_pipeline_execution
       x-stackql-verb: EXEC
   /StopProcessingJob:
@@ -19173,7 +19193,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: feature_metadatas
+      x-stackql-resource: feature_metadata
       x-stackql-method: update_feature_metadata
       x-stackql-verb: UPDATE
   /UpdateHub:
@@ -19289,7 +19309,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateHubContentResponse'
-      x-stackql-resource: hub_contents
+      x-stackql-resource: hub_content
       x-stackql-method: update_hub_content
       x-stackql-verb: UPDATE
   /UpdateHubContentReference:
@@ -19345,7 +19365,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateHubContentReferenceResponse'
-      x-stackql-resource: hub_contents
+      x-stackql-resource: hub_content
       x-stackql-method: update_hub_content_reference
       x-stackql-verb: UPDATE
   /UpdateImage:
@@ -20066,10 +20086,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateNotebookInstanceOutput'
       x-stackql-resource: notebook_instances
       x-stackql-method: update_notebook_instance
       x-stackql-verb: UPDATE
@@ -20114,10 +20130,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateNotebookInstanceLifecycleConfigOutput'
       x-stackql-resource: notebook_instance_lifecycle_configs
       x-stackql-method: update_notebook_instance_lifecycle_config
       x-stackql-verb: UPDATE
@@ -20154,6 +20166,17 @@ paths:
                 ApplicationConfig:
                   $ref: '#/components/schemas/PartnerAppConfig'
                   description: Configuration settings for the SageMaker Partner AI App.
+                IdcConfig:
+                  $ref: '#/components/schemas/IdcConfigInput'
+                  description: Specifies the Amazon Web Services IAM Identity Center configuration for the SageMaker Partner
+                    AI App. Specify this parameter when AuthType is IDC. Apps that use IAM authorization don't use this parameter.
+                AuthType:
+                  $ref: '#/components/schemas/PartnerAppAuthType'
+                  description: 'The authorization type that users use to access the SageMaker Partner AI App. Use this parameter
+                    to migrate an existing SageMaker Partner AI App from IAM authorization to IDC authorization. Valid values:
+                    IAM: Users access the SageMaker Partner AI App with their Amazon Web Services IAM identity. IDC: Users
+                    access the SageMaker Partner AI App with their Amazon Web Services IAM Identity Center identity. Specify
+                    the Identity Center instance to use in IdcConfig.'
                 EnableIamSessionBasedIdentity:
                   $ref: '#/components/schemas/Boolean'
                   description: When set to TRUE, the SageMaker Partner AI App sets the Amazon Web Services IAM session name
@@ -20906,16 +20929,53 @@ components:
       minLength: 0
       maxLength: 256
       pattern: arn:aws[a-z\-]*:sagemaker:[a-z0-9\-]*:[0-9]{12}:experiment-trial/.*
-    ClusterArn:
+    ClusterNameOrArn:
       type: string
       minLength: 0
       maxLength: 256
-      pattern: arn:aws[a-z\-]*:sagemaker:[a-z0-9\-]*:[0-9]{12}:cluster/[a-z0-9]{12}
+      pattern: (arn:aws[a-z\-]*:sagemaker:[a-z0-9\-]*:[0-9]{12}:cluster/[a-z0-9]{12})|([a-zA-Z0-9](-*[a-zA-Z0-9]){0,62})
     ClusterNodeId:
       type: string
       minLength: 1
       maxLength: 256
       pattern: i-[a-f0-9]{8}(?:[a-f0-9]{9})?
+    ClusterNetworkInterfaceId:
+      type: string
+      minLength: 1
+      maxLength: 21
+      pattern: eni-[0-9a-f]{8}(?:[0-9a-f]{9})?
+    AttachClusterNodeNetworkInterfaceResponse:
+      type: object
+      properties:
+        ClusterArn:
+          $ref: '#/components/schemas/ClusterArn'
+          description: The Amazon Resource Name (ARN) of your SageMaker HyperPod cluster where the network interface attachment
+            operation was performed.
+        NodeId:
+          $ref: '#/components/schemas/ClusterNodeId'
+          description: The unique identifier of the cluster node where your network interface was attached.
+        NetworkInterfaceId:
+          $ref: '#/components/schemas/ClusterNetworkInterfaceId'
+          description: The unique identifier of the elastic network interface (ENI) that was attached.
+        AttachmentId:
+          $ref: '#/components/schemas/ClusterNetworkInterfaceAttachmentId'
+          description: The unique identifier of the network interface attachment. Use this value to reference or detach the
+            network interface later.
+      required:
+      - ClusterArn
+      - NodeId
+      - NetworkInterfaceId
+      - AttachmentId
+    ClusterArn:
+      type: string
+      minLength: 0
+      maxLength: 256
+      pattern: arn:aws[a-z\-]*:sagemaker:[a-z0-9\-]*:[0-9]{12}:cluster/[a-z0-9]{12}
+    ClusterNetworkInterfaceAttachmentId:
+      type: string
+      minLength: 1
+      maxLength: 28
+      pattern: eni-attach-[0-9a-f]{8}(?:[0-9a-f]{9})?
     VolumeId:
       type: string
       minLength: 1
@@ -20966,11 +21026,6 @@ components:
       minLength: 1
       maxLength: 32
       pattern: /dev/(xvd[a-z]|sd[b-z]|sd[f-p][1-6])
-    ClusterNameOrArn:
-      type: string
-      minLength: 0
-      maxLength: 256
-      pattern: (arn:aws[a-z\-]*:sagemaker:[a-z0-9\-]*:[0-9]{12}:cluster/[a-z0-9]{12})|([a-zA-Z0-9](-*[a-zA-Z0-9]){0,62})
     BatchAddClusterNodesRequestClientTokenString:
       type: string
       minLength: 0
@@ -23022,6 +23077,14 @@ components:
       - ml.g6.16xlarge
       - ml.g6.24xlarge
       - ml.g6.48xlarge
+      - ml.g6e.xlarge
+      - ml.g6e.2xlarge
+      - ml.g6e.4xlarge
+      - ml.g6e.8xlarge
+      - ml.g6e.12xlarge
+      - ml.g6e.16xlarge
+      - ml.g6e.24xlarge
+      - ml.g6e.48xlarge
     RealtimeInferenceInstanceTypes:
       type: array
       items:
@@ -23706,6 +23769,23 @@ components:
           $ref: '#/components/schemas/InstancePlacementConfig'
           description: Configuration for how training job instances are placed and allocated within UltraServers. Only applicable
             for UltraServer capacity.
+        InstancePreferences:
+          $ref: '#/components/schemas/InstancePreferenceList'
+          description: An ordered list of ML compute instance types for the training job, in priority order. SageMaker launches
+            the training job on the first instance type in the list that has available capacity. If capacity is insufficient,
+            SageMaker evaluates the next instance type in the preferred list. Exactly one instance type is selected for the
+            job. InstancePreferences is mutually exclusive with InstanceType, InstanceGroups, InstancePlacementConfig, and
+            EnableManagedSpotTraining, and supports only Flexible Training Plans (FTP) and On-Demand capacity.
+        SelectedInstanceType:
+          $ref: '#/components/schemas/TrainingInstanceType'
+          description: The instance type that SageMaker selected for the job from the provided InstancePreferences. The job
+            is billed for this instance type and count. Returned by DescribeTrainingJob after an instance type is selected.
+            This field is read-only and isn't accepted in CreateTrainingJob requests.
+        SelectedInstanceCount:
+          $ref: '#/components/schemas/TrainingInstanceCount'
+          description: The number of instances of SelectedInstanceType that the training job launched with. The job is billed
+            for this instance type and count. Returned by DescribeTrainingJob after an instance type is selected. This field
+            is read-only and isn't accepted in CreateTrainingJob requests.
     TrainingInstanceCount:
       type: integer
       minimum: 0
@@ -23776,6 +23856,41 @@ components:
             value of 1.
       required:
       - InstanceCount
+    InstancePreferenceList:
+      description: Ordered list of candidate instance types, in priority order.
+      type: array
+      items:
+        $ref: '#/components/schemas/InstancePreference'
+    InstancePreference:
+      description: A candidate instance type preference in an InstancePreferences list.
+      type: object
+      properties:
+        InstanceType:
+          $ref: '#/components/schemas/TrainingInstanceType'
+          description: The ML compute instance type. An instance type can appear only once in an InstancePreferences list.
+        InstanceCount:
+          $ref: '#/components/schemas/TrainingInstanceCount'
+          description: 'The number of instances to launch if this instance type is selected. Specify the instance count for
+            the training job in one of the following two ways: Per preference – Set InstanceCount on every preference in the
+            InstancePreferences list and don''t set ResourceConfig$InstanceCount. Use this when each instance type needs a
+            different number of instances to deliver equivalent compute. One count for the job – Set ResourceConfig$InstanceCount
+            and omit it from every preference. SageMaker applies this to all instance types in the list. For example, in a
+            list of five preferences, either all five specify InstanceCount or none of them do. SageMaker rejects requests
+            that set InstanceCount on only some preferences, that set it both per preference and in ResourceConfig, or that
+            omit it in both places.'
+        TrainingPlanArns:
+          $ref: '#/components/schemas/TrainingPlanArnList'
+          description: The Amazon Resource Name (ARN) of a training plan to use if this instance type is selected. The plan's
+            instance type must match InstanceType. A preference with a training plan uses that plan's reserved capacity; a
+            preference without one uses on-demand capacity. Per-preference TrainingPlanArns is mutually exclusive with the
+            job-level TrainingPlanArn in ResourceConfig.
+      required:
+      - InstanceType
+    TrainingPlanArnList:
+      description: Training plan ARNs for a single instance preference.
+      type: array
+      items:
+        $ref: '#/components/schemas/TrainingPlanArn'
     StoppingCondition:
       description: Specifies a limit to how long a job can run. When the job reaches the time limit, SageMaker ends the job.
         Use this API to cap costs. To stop a training job, SageMaker sends the algorithm the SIGTERM signal, which delays
@@ -23812,7 +23927,11 @@ components:
             counter: The plan is in a Scheduled state: Jobs queued (in Pending status) before a plan''s start date (waiting
             for scheduled start time) Between capacity reservations: Jobs temporarily back to Pending status between two capacity
             reservation periods MaxPendingTimeInSeconds only increments when jobs are actively waiting for capacity in an
-            Active plan.'
+            Active plan. MaxPendingTimeInSeconds takes effect only for jobs that request accelerated computing instance types,
+            such as instances in the ml.p, ml.g, and ml.trn families. It has no effect on jobs that request CPU-only instance
+            types. If the job specifies InstancePreferences, MaxPendingTimeInSeconds bounds the total time SageMaker spends
+            working through your list of instance types. It is not applied per instance type preference, and takes effect
+            only when the list includes at least one accelerated computing instance type.'
     MaxRuntimeInSeconds:
       type: integer
       minimum: 1
@@ -23822,7 +23941,7 @@ components:
     MaxPendingTimeInSeconds:
       description: Maximum job scheduler pending time in seconds.
       type: integer
-      minimum: 7200
+      minimum: 1800
       maximum: 2419200
     TransformJobDefinition:
       description: Defines the input needed to run a transform job using the inference specification specified in the algorithm.
@@ -29387,8 +29506,10 @@ components:
         StorageType:
           $ref: '#/components/schemas/StorageType'
           description: 'Option for different tiers of low latency storage for real-time data retrieval. Standard: A managed
-            low latency data store for feature groups. InMemory: A managed data store for feature groups that supports very
-            low latency retrieval.'
+            low latency data store for feature groups. Standard_V2: A managed low latency data store for feature groups that
+            supports partial updates to individual features using the UpdateRecord operation. Choose this storage type at
+            feature group creation time if your use case requires updating specific feature values without rewriting the entire
+            record. InMemory: A managed data store for feature groups that supports very low latency retrieval.'
     OnlineStoreSecurityConfig:
       description: The security configuration for OnlineStore.
       type: object
@@ -29428,6 +29549,7 @@ components:
       type: string
       enum:
       - Standard
+      - Standard_V2
       - InMemory
     OfflineStoreConfig:
       description: The configuration of an OfflineStore. Provide an OfflineStoreConfig in a request to CreateFeatureGroup
@@ -33565,6 +33687,12 @@ components:
       - ml.g7e.12xlarge
       - ml.g7e.24xlarge
       - ml.g7e.48xlarge
+      - ml.g7.2xlarge
+      - ml.g7.4xlarge
+      - ml.g7.8xlarge
+      - ml.g7.12xlarge
+      - ml.g7.24xlarge
+      - ml.g7.48xlarge
     OptimizationJobMaxInstanceCount:
       type: integer
       minimum: 1
@@ -33821,10 +33949,27 @@ components:
       type: array
       items:
         $ref: '#/components/schemas/GroupNamePattern'
+    IdcConfigInput:
+      description: Specifies the Amazon Web Services IAM Identity Center configuration to use for a SageMaker Partner AI App
+        that uses IDC authorization.
+      type: object
+      properties:
+        InstanceArn:
+          $ref: '#/components/schemas/InstanceArn'
+          description: The ARN of the Amazon Web Services IAM Identity Center instance that the SageMaker Partner AI App uses
+            to authenticate users.
+      required:
+      - InstanceArn
+    InstanceArn:
+      type: string
+      minLength: 1
+      maxLength: 128
+      pattern: arn:aws[a-z\-]*:sso:::instance/(sso)?ins-[a-zA-Z0-9.-]{16}
     PartnerAppAuthType:
       type: string
       enum:
       - IAM
+      - IDC
     CreatePartnerAppResponse:
       type: object
       properties:
@@ -34317,8 +34462,48 @@ components:
             encrypted using a hardware module on the instance. You can't request a VolumeKmsKeyId when using an instance type
             with local storage. For a list of instance types that support local instance storage, see Instance Store Volumes.
             For more information about local instance storage encryption, see SSD Instance Store Volumes.
+        InstancePreferences:
+          $ref: '#/components/schemas/ProcessingInstancePreferenceList'
+          description: An ordered list of ML compute instance types for the processing job, in priority order. Amazon SageMaker
+            launches the job on the first instance type in the list that has available capacity. If capacity is insufficient,
+            Amazon SageMaker evaluates the next instance type in the list. Exactly one instance type is selected for the job.
+            InstancePreferences is mutually exclusive with InstanceType.
+        SelectedInstanceType:
+          $ref: '#/components/schemas/ProcessingInstanceType'
+          description: The instance type that Amazon SageMaker selected for the job from InstancePreferences. Returned by
+            DescribeProcessingJob after an instance type is selected. This field is read-only and isn't accepted in CreateProcessingJob
+            requests.
+        SelectedInstanceCount:
+          $ref: '#/components/schemas/ProcessingInstanceCount'
+          description: The number of instances of SelectedInstanceType that the job launched with. The job is billed for this
+            instance type and count. Returned by DescribeProcessingJob after an instance type is selected. This field is read-only
+            and isn't accepted in CreateProcessingJob requests.
       required:
       - VolumeSizeInGB
+    ProcessingInstancePreferenceList:
+      description: Ordered list of candidate instance types, in priority order.
+      type: array
+      items:
+        $ref: '#/components/schemas/ProcessingInstancePreference'
+    ProcessingInstancePreference:
+      description: A candidate instance type preference in a processing InstancePreferences list.
+      type: object
+      properties:
+        InstanceType:
+          $ref: '#/components/schemas/ProcessingInstanceType'
+          description: The ML compute instance type. An instance type can appear only once in an InstancePreferences list.
+        InstanceCount:
+          $ref: '#/components/schemas/ProcessingInstanceCount'
+          description: 'The number of instances to launch if this instance type is selected. Specify the instance count for
+            the processing job in one of the following two ways: Per preference – Set InstanceCount on every preference in
+            the InstancePreferences list and don''t set ProcessingClusterConfig$InstanceCount. Use this when each instance
+            type needs a different number of instances to deliver equivalent compute. One count for the job – Set ProcessingClusterConfig$InstanceCount
+            and omit it from every preference. Amazon SageMaker applies this to all instance types in the list. For example,
+            in a list of five preferences, either all five specify InstanceCount or none of them do. Amazon SageMaker rejects
+            requests that set InstanceCount on only some preferences, that set it both per preference and in ProcessingClusterConfig,
+            or that omit it in both places.'
+      required:
+      - InstanceType
     ProcessingStoppingCondition:
       description: Configures conditions under which the processing job should be stopped, such as how long the processing
         job has been running. After the condition is met, the processing job is stopped.
@@ -35696,14 +35881,6 @@ components:
         ExperimentArn:
           $ref: '#/components/schemas/ExperimentArn'
           description: The Amazon Resource Name (ARN) of the experiment that is being deleted.
-    DeleteFlowDefinitionResponse:
-      type: object
-    DeleteHumanTaskUiResponse:
-      type: object
-    DeleteImageResponse:
-      type: object
-    DeleteImageVersionResponse:
-      type: object
     DeleteInferenceExperimentResponse:
       type: object
       properties:
@@ -35712,8 +35889,6 @@ components:
           description: The ARN of the deleted inference experiment.
       required:
       - InferenceExperimentArn
-    DeleteJobResponse:
-      type: object
     DeleteMlflowAppResponse:
       type: object
       properties:
@@ -35742,8 +35917,6 @@ components:
       type: array
       items:
         $ref: '#/components/schemas/TagKey'
-    DeleteTagsOutput:
-      type: object
     DeleteTrialResponse:
       type: object
       properties:
@@ -35756,8 +35929,6 @@ components:
         TrialComponentArn:
           $ref: '#/components/schemas/TrialComponentArn'
           description: The Amazon Resource Name (ARN) of the component is being deleted.
-    DeleteWorkforceResponse:
-      type: object
     DeleteWorkteamResponse:
       type: object
       properties:
@@ -40802,6 +40973,10 @@ components:
           $ref: '#/components/schemas/RoleArn'
           description: The Amazon Resource Name (ARN) for an IAM role in your account that the MLflow App uses to access the
             artifact store in Amazon S3.
+        KmsKeyId:
+          $ref: '#/components/schemas/KmsKeyId'
+          description: The ID of the Amazon Web Services KMS key used to encrypt the data at rest associated with the MLflow
+            App. This field is absent if the MLflow App is not encrypted with a customer-managed key.
         Status:
           $ref: '#/components/schemas/MlflowAppStatus'
           description: The current creation status of the described MLflow App.
@@ -41860,7 +42035,9 @@ components:
           description: Configuration settings for the SageMaker Partner AI App.
         AuthType:
           $ref: '#/components/schemas/PartnerAppAuthType'
-          description: The authorization type that users use to access the SageMaker Partner AI App.
+          description: 'The authorization type that users use to access the SageMaker Partner AI App. Valid values: IAM: Users
+            access the SageMaker Partner AI App with their Amazon Web Services IAM identity. IDC: Users access the SageMaker
+            Partner AI App with their Amazon Web Services IAM Identity Center identity.'
         EnableIamSessionBasedIdentity:
           $ref: '#/components/schemas/Boolean'
           description: When set to TRUE, the SageMaker Partner AI App sets the Amazon Web Services IAM session name or the
@@ -41880,6 +42057,11 @@ components:
           description: A map of available minor version upgrades for the SageMaker Partner AI App. The key is the semantic
             version number, and the value is a list of release notes for that version. A null value indicates no upgrades
             are available.
+        IdcConfig:
+          $ref: '#/components/schemas/IdcConfigOutput'
+          description: Contains the Amazon Web Services IAM Identity Center configuration for the SageMaker Partner AI App,
+            including the Identity Center instance and the Identity Center application that SageMaker creates for the app.
+            The service returns this field for apps that use IDC authorization.
     PartnerAppStatus:
       type: string
       enum:
@@ -41920,6 +42102,26 @@ components:
       type: array
       items:
         $ref: '#/components/schemas/String1024'
+    IdcConfigOutput:
+      description: Contains the Amazon Web Services IAM Identity Center configuration of a SageMaker Partner AI App that uses
+        IDC authorization.
+      type: object
+      properties:
+        InstanceArn:
+          $ref: '#/components/schemas/InstanceArn'
+          description: The ARN of the Amazon Web Services IAM Identity Center instance that the SageMaker Partner AI App uses
+            to authenticate users.
+        ApplicationArn:
+          $ref: '#/components/schemas/ApplicationArn'
+          description: The ARN of the Amazon Web Services IAM Identity Center application that SageMaker creates for the SageMaker
+            Partner AI App.
+      required:
+      - InstanceArn
+    ApplicationArn:
+      type: string
+      minLength: 1
+      maxLength: 128
+      pattern: arn:aws[a-z\-]*:sso::[0-9]{12}:application/(sso)?ins-[a-zA-Z0-9.-]{16}/apl-[a-zA-Z0-9.-]{16}
     PipelineNameOrArn:
       type: string
       minLength: 1
@@ -43823,8 +44025,6 @@ components:
       - AttachTime
       - Status
       - DeviceName
-    DisableSagemakerServicecatalogPortfolioOutput:
-      type: object
     DisassociateTrialComponentResponse:
       type: object
       properties:
@@ -43834,8 +44034,6 @@ components:
         TrialArn:
           $ref: '#/components/schemas/TrialArn'
           description: The Amazon Resource Name (ARN) of the trial.
-    EnableSagemakerServicecatalogPortfolioOutput:
-      type: object
     ExtendTrainingPlanResponse:
       type: object
       properties:
@@ -51076,8 +51274,6 @@ components:
           description: The ARN of the stopped inference experiment.
       required:
       - InferenceExperimentArn
-    StopJobResponse:
-      type: object
     StopMlflowTrackingServerResponse:
       type: object
       properties:
@@ -51350,6 +51546,11 @@ components:
           description: Time to live duration, where the record is hard deleted after the expiration time is reached; ExpiresAt
             = EventTime + TtlDuration. For information on HardDelete, see the DeleteRecord API in the Amazon SageMaker API
             Reference guide.
+        StorageType:
+          $ref: '#/components/schemas/StorageType'
+          description: The online store storage type to migrate the feature group to. Use this parameter to migrate an existing
+            feature group from Standard to Standard_V2 storage format, enabling support for the UpdateRecord operation. Migration
+            is a one-way operation and cannot be reversed.
     ThroughputConfigUpdate:
       description: The new throughput configuration for the feature group. You can switch between on-demand and provisioned
         modes or update the read / write capacity of provisioned feature groups. You can switch a feature group to on-demand
@@ -51526,10 +51727,6 @@ components:
       type: boolean
     DisassociateAdditionalCodeRepositories:
       type: boolean
-    UpdateNotebookInstanceOutput:
-      type: object
-    UpdateNotebookInstanceLifecycleConfigOutput:
-      type: object
     UpdatePartnerAppResponse:
       type: object
       properties:

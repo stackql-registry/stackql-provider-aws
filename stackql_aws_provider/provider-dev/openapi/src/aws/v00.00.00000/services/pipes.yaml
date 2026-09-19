@@ -243,10 +243,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TagResourceResponse"
     delete:
       operationId: UntagResource
       description: Removes one or more tags from the specified pipes.
@@ -266,10 +262,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UntagResourceResponse"
   /v1/pipes/{name}/start:
     post:
       operationId: StartPipe
@@ -2110,14 +2102,10 @@ components:
         LastModifiedTime:
           $ref: "#/components/schemas/Timestamp"
           description: When the pipe was last updated, in ISO-8601 format (YYYY-MM-DDThh:mm:ss.sTZD).
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
         $ref: "#/components/schemas/TagKey"
-    UntagResourceResponse:
-      type: object
     UpdatePipeSourceParameters:
       description: The parameters required to set up a source for your pipe.
       type: object
@@ -2346,6 +2334,18 @@ components:
               responseToken:
                 key: $.NextToken
                 location: body
+        start_pipe:
+          operation:
+            $ref: "#/paths/~1v1~1pipes~1{name}~1start/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+        stop_pipe:
+          operation:
+            $ref: "#/paths/~1v1~1pipes~1{name}~1stop/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/pipes/methods/describe_pipe"
@@ -2372,7 +2372,6 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -2383,7 +2382,6 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
       sqlVerbs:

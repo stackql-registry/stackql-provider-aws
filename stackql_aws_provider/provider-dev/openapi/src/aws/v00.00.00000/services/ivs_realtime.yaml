@@ -182,10 +182,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteEncoderConfigurationResponse"
   /DeleteIngestConfiguration:
     post:
       operationId: DeleteIngestConfiguration
@@ -207,10 +203,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteIngestConfigurationResponse"
   /DeletePublicKey:
     post:
       operationId: DeletePublicKey
@@ -230,10 +222,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeletePublicKeyResponse"
   /DeleteStage:
     post:
       operationId: DeleteStage
@@ -253,10 +241,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteStageResponse"
   /DeleteStorageConfiguration:
     post:
       operationId: DeleteStorageConfiguration
@@ -276,10 +260,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteStorageConfigurationResponse"
   /DisconnectParticipant:
     post:
       operationId: DisconnectParticipant
@@ -304,10 +284,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DisconnectParticipantResponse"
   /GetComposition:
     post:
       operationId: GetComposition
@@ -844,10 +820,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TagResourceResponse"
     delete:
       operationId: UntagResource
       description: Removes tags from the resource with the specified ARN.
@@ -867,10 +839,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UntagResourceResponse"
   /StartComposition:
     post:
       operationId: StartComposition
@@ -955,10 +923,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/StopCompositionResponse"
   /StopParticipantReplication:
     post:
       operationId: StopParticipantReplication
@@ -1563,29 +1527,17 @@ components:
       minLength: 1
       maxLength: 128
       pattern: arn:aws:ivs:[a-z0-9-]+:[0-9]+:storage-configuration/[a-zA-Z0-9-]+
-    DeleteEncoderConfigurationResponse:
-      type: object
     Boolean:
       type: boolean
-    DeleteIngestConfigurationResponse:
-      type: object
     PublicKeyArn:
       type: string
       minLength: 1
       maxLength: 128
       pattern: arn:aws:ivs:[a-z0-9-]+:[0-9]+:public-key/[a-zA-Z0-9-]+
-    DeletePublicKeyResponse:
-      type: object
-    DeleteStageResponse:
-      type: object
-    DeleteStorageConfigurationResponse:
-      type: object
     DisconnectParticipantReason:
       type: string
       minLength: 0
       maxLength: 128
-    DisconnectParticipantResponse:
-      type: object
     CompositionArn:
       type: string
       minLength: 1
@@ -2704,8 +2656,6 @@ components:
         xFrameOptions:
           $ref: "#/components/schemas/String"
           description: See X-Frame-Options in the MDN Web Docs.
-    StopCompositionResponse:
-      type: object
     StopParticipantReplicationResponse:
       type: object
       properties:
@@ -2730,8 +2680,6 @@ components:
         xFrameOptions:
           $ref: "#/components/schemas/String"
           description: See X-Frame-Options in the MDN Web Docs.
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
@@ -2740,8 +2688,6 @@ components:
       type: string
       minLength: 1
       maxLength: 128
-    UntagResourceResponse:
-      type: object
     UpdateIngestConfigurationResponse:
       type: object
       properties:
@@ -2776,7 +2722,6 @@ components:
             $ref: "#/paths/~1DeleteEncoderConfiguration/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -2835,7 +2780,6 @@ components:
             $ref: "#/paths/~1DeleteIngestConfiguration/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -2914,7 +2858,6 @@ components:
             $ref: "#/paths/~1DisconnectParticipant/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -2994,7 +2937,6 @@ components:
             $ref: "#/paths/~1DeleteStage/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -3065,7 +3007,6 @@ components:
             $ref: "#/paths/~1DeleteStorageConfiguration/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -3113,7 +3054,6 @@ components:
             $ref: "#/paths/~1DeletePublicKey/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -3126,6 +3066,17 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.publicKey
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        import_public_key:
+          operation:
+            $ref: "#/paths/~1ImportPublicKey/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -3181,6 +3132,27 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        start_composition:
+          operation:
+            $ref: "#/paths/~1StartComposition/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        stop_composition:
+          operation:
+            $ref: "#/paths/~1StopComposition/post"
+          response:
+            openAPIDocKey: "200"
           request:
             nativeCasing: pascal
           config:
@@ -3296,7 +3268,6 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -3307,7 +3278,6 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
       sqlVerbs:

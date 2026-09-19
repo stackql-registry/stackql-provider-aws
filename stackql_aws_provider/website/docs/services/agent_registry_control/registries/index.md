@@ -61,6 +61,11 @@ The following fields are returned by `SELECT` queries:
     <td>Configuration for the registry's record approval workflow. Controls whether records submitted for approval require manual review before they become approved and discoverable, or are auto-approved. When no auto-approval rules are configured, submitted records require manual review.</td>
 </tr>
 <tr>
+    <td><CopyableCode code="auto_detection" /></td>
+    <td><code>object</code></td>
+    <td>The registry's auto-detection properties, including the requested configuration and the current detection status. Present only when auto-detection was configured for the registry.</td>
+</tr>
+<tr>
     <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the registry was created</td>
@@ -74,6 +79,11 @@ The following fields are returned by `SELECT` queries:
     <td><CopyableCode code="discovery_configuration" /></td>
     <td><code>object</code></td>
     <td>Discovery configuration for the registry. Controls how consumers are authorized to search the registry and invoke its MCP endpoint.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="encryption_configuration" /></td>
+    <td><code>object</code></td>
+    <td>The server-side encryption configuration for a registry. Specifies a customer-managed Amazon Web Services KMS key used to encrypt the registry's content.</td>
 </tr>
 <tr>
     <td><CopyableCode code="registry_arn" /></td>
@@ -118,6 +128,11 @@ The following fields are returned by `SELECT` queries:
     <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>Registry name with validation pattern (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;&#91;a-zA-Z0-9_\-\.\/&#93;*&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="auto_detection" /></td>
+    <td><code>object</code></td>
+    <td>The registry's auto-detection properties, including the requested configuration and the current detection status. Present only when auto-detection was configured for the registry.</td>
 </tr>
 <tr>
     <td><CopyableCode code="created_at" /></td>
@@ -260,9 +275,11 @@ Gets a registry by identifier (ARN or ID)
 SELECT
 name,
 approval_configuration,
+auto_detection,
 created_at,
 description,
 discovery_configuration,
+encryption_configuration,
 registry_arn,
 registry_id,
 status,
@@ -281,6 +298,7 @@ Lists the registries in the caller's account and Region, with optional filtering
 ```sql
 SELECT
 name,
+auto_detection,
 created_at,
 description,
 discovery_configuration,
@@ -314,19 +332,23 @@ Creates a new registry, a catalog that organizes registry records and defines th
 INSERT INTO aws.agent_registry_control.registries (
 name,
 description,
+encryptionConfiguration,
 discoveryConfiguration,
 clientToken,
 tags,
 approvalConfiguration,
+autoDetectionConfiguration,
 region
 )
 SELECT 
 '{{ name }}' /* required */,
 '{{ description }}',
+'{{ encryptionConfiguration }}',
 '{{ discoveryConfiguration }}',
 '{{ clientToken }}',
 '{{ tags }}',
 '{{ approvalConfiguration }}',
+'{{ autoDetectionConfiguration }}',
 '{{ region }}'
 RETURNING
 registry_arn
@@ -349,6 +371,11 @@ registry_arn
       value: "{{ description }}"
       description: |
         Description of the Resource
+    - name: encryptionConfiguration
+      description: |
+        The server-side encryption configuration for a registry. Specifies a customer-managed Amazon Web Services KMS key used to encrypt the registry's content.
+      value:
+        kmsKeyArn: "{{ kmsKeyArn }}"
     - name: discoveryConfiguration
       description: |
         Discovery configuration for the registry. Controls how consumers are authorized to search the registry and invoke its MCP endpoint.
@@ -398,6 +425,12 @@ registry_arn
       value:
         autoApprovalRules:
           - "{{ autoApprovalRules }}"
+    - name: autoDetectionConfiguration
+      description: |
+        The customer-defined auto-detection settings for a registry.
+      value:
+        scope: "{{ scope }}"
+        enabled: {{ enabled }}
 `}</CodeBlock>
 
 </TabItem>
@@ -422,16 +455,19 @@ SET
 name = '{{ name }}',
 description = '{{ description }}',
 discoveryConfiguration = '{{ discoveryConfiguration }}',
-approvalConfiguration = '{{ approvalConfiguration }}'
+approvalConfiguration = '{{ approvalConfiguration }}',
+autoDetectionConfiguration = '{{ autoDetectionConfiguration }}'
 WHERE 
 registry_id = '{{ registry_id }}' --required
 AND region = '{{ region }}' --required
 RETURNING
 name,
 approval_configuration,
+auto_detection,
 created_at,
 description,
 discovery_configuration,
+encryption_configuration,
 registry_arn,
 registry_id,
 status,

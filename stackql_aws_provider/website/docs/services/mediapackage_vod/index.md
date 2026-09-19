@@ -18,7 +18,7 @@ mediapackage_vod service documentation.
 
 :::info[Service Summary]
 
-total resources: __4__  
+total resources: __5__  
 
 :::
 
@@ -26,6 +26,7 @@ total resources: __4__
 <div class="row">
 <div class="providerDocColumn">
 <a href="/services/mediapackage_vod/assets/">assets</a><br />
+<a href="/services/mediapackage_vod/logs/">logs</a><br />
 <a href="/services/mediapackage_vod/packaging_configurations/">packaging_configurations</a>
 </div>
 <div class="providerDocColumn">

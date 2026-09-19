@@ -25,7 +25,7 @@ total resources: __1__
 ## Resources
 <div class="row">
 <div class="providerDocColumn">
-<a href="/services/signer_data/revocation_status/">revocation_status</a>
+<a href="/services/signer_data/revocation_statuses/">revocation_statuses</a>
 </div>
 <div class="providerDocColumn">
 

@@ -380,10 +380,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteAccessTokenResponse'
       x-stackql-resource: access_tokens
       x-stackql-method: delete_access_token
       x-stackql-verb: DELETE
@@ -1166,7 +1162,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartWorkflowRunResponse'
-      x-stackql-resource: workflows
+      x-stackql-resource: workflow_runs
       x-stackql-method: start_workflow_run
       x-stackql-verb: EXEC
   /v1/spaces/{space_name}/projects/{project_name}/workflows:
@@ -1266,7 +1262,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartDevEnvironmentResponse'
-      x-stackql-resource: projects
+      x-stackql-resource: dev_environments
       x-stackql-method: start_dev_environment
       x-stackql-verb: EXEC
   /v1/spaces/{space_name}/projects/{project_name}/devEnvironments/{id}/session:
@@ -1310,7 +1306,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartDevEnvironmentSessionResponse'
-      x-stackql-resource: dev_environments
+      x-stackql-resource: dev_environment_sessions
       x-stackql-method: start_dev_environment_session
       x-stackql-verb: EXEC
   /v1/spaces/{space_name}/projects/{project_name}/devEnvironments/{id}/stop:
@@ -1344,7 +1340,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StopDevEnvironmentResponse'
-      x-stackql-resource: projects
+      x-stackql-resource: dev_environments
       x-stackql-method: stop_dev_environment
       x-stackql-verb: EXEC
   /v1/spaces/{space_name}/projects/{project_name}/devEnvironments/{id}/session/{session_id}:
@@ -1383,7 +1379,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StopDevEnvironmentSessionResponse'
-      x-stackql-resource: dev_environments
+      x-stackql-resource: dev_environment_sessions
       x-stackql-method: stop_dev_environment_session
       x-stackql-verb: EXEC
   /session:
@@ -1399,7 +1395,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/VerifySessionResponse'
-      x-stackql-resource: session
+      x-stackql-resource: sessions
       x-stackql-method: verify_session
       x-stackql-verb: EXEC
 components:
@@ -1664,8 +1660,6 @@ components:
       type: string
       minLength: 1
       maxLength: 255
-    DeleteAccessTokenResponse:
-      type: object
     DeleteDevEnvironmentResponse:
       type: object
       properties:

@@ -18,7 +18,7 @@ ivs service documentation.
 
 :::info[Service Summary]
 
-total resources: __9__  
+total resources: __10__  
 
 :::
 
@@ -35,6 +35,7 @@ total resources: __9__
 <a href="/services/ivs/stream_keys/">stream_keys</a><br />
 <a href="/services/ivs/stream_sessions/">stream_sessions</a><br />
 <a href="/services/ivs/streams/">streams</a><br />
-<a href="/services/ivs/tags/">tags</a>
+<a href="/services/ivs/tags/">tags</a><br />
+<a href="/services/ivs/viewer_session_revocations/">viewer_session_revocations</a>
 </div>
 </div>

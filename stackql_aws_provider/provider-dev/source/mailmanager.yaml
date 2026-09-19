@@ -502,10 +502,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteAddonInstanceResponse'
       x-stackql-resource: addon_instances
       x-stackql-method: delete_addon_instance
       x-stackql-verb: DELETE
@@ -538,10 +534,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteAddonSubscriptionResponse'
       x-stackql-resource: addon_subscriptions
       x-stackql-method: delete_addon_subscription
       x-stackql-verb: DELETE
@@ -574,10 +566,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteAddressListResponse'
       x-stackql-resource: address_lists
       x-stackql-method: delete_address_list
       x-stackql-verb: DELETE
@@ -613,10 +601,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteArchiveResponse'
       x-stackql-resource: archives
       x-stackql-method: delete_archive
       x-stackql-verb: DELETE
@@ -649,10 +633,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteIngressPointResponse'
       x-stackql-resource: ingress_points
       x-stackql-method: delete_ingress_point
       x-stackql-verb: DELETE
@@ -685,10 +665,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteRelayResponse'
       x-stackql-resource: relays
       x-stackql-method: delete_relay
       x-stackql-verb: DELETE
@@ -721,10 +697,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteRuleSetResponse'
       x-stackql-resource: rule_sets
       x-stackql-method: delete_rule_set
       x-stackql-verb: DELETE
@@ -757,10 +729,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteTrafficPolicyResponse'
       x-stackql-resource: traffic_policies
       x-stackql-method: delete_traffic_policy
       x-stackql-verb: DELETE
@@ -797,10 +765,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeregisterMemberFromAddressListResponse'
       x-stackql-resource: address_lists
       x-stackql-method: deregister_member_from_address_list
       x-stackql-verb: DELETE
@@ -1090,7 +1054,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetArchiveMessageContentResponse'
-      x-stackql-resource: archive_message_contents
+      x-stackql-resource: archive_message_content
       x-stackql-method: get_archive_message_content
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Body
@@ -1961,10 +1925,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RegisterMemberToAddressListResponse'
       x-stackql-resource: address_lists
       x-stackql-method: register_member_to_address_list
       x-stackql-verb: INSERT
@@ -1997,11 +1957,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/StartAddressListImportJobResponse'
-      x-stackql-resource: address_lists
+      x-stackql-resource: address_list_import_jobs
       x-stackql-method: start_address_list_import_job
       x-stackql-verb: EXEC
   /StartArchiveExport:
@@ -2058,7 +2014,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartArchiveExportResponse'
-      x-stackql-resource: archives
+      x-stackql-resource: archive_exports
       x-stackql-method: start_archive_export
       x-stackql-verb: EXEC
   /StartArchiveSearch:
@@ -2109,7 +2065,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartArchiveSearchResponse'
-      x-stackql-resource: archives
+      x-stackql-resource: archive_searches
       x-stackql-method: start_archive_search
       x-stackql-verb: EXEC
   /StopAddressListImportJob:
@@ -2141,11 +2097,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/StopAddressListImportJobResponse'
-      x-stackql-resource: address_lists
+      x-stackql-resource: address_list_import_jobs
       x-stackql-method: stop_address_list_import_job
       x-stackql-verb: EXEC
   /StopArchiveExport:
@@ -2177,11 +2129,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/StopArchiveExportResponse'
-      x-stackql-resource: archives
+      x-stackql-resource: archive_exports
       x-stackql-method: stop_archive_export
       x-stackql-verb: EXEC
   /StopArchiveSearch:
@@ -2213,11 +2161,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/StopArchiveSearchResponse'
-      x-stackql-resource: archives
+      x-stackql-resource: archive_searches
       x-stackql-method: stop_archive_search
       x-stackql-verb: EXEC
   /TagResource:
@@ -2254,10 +2198,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -2294,10 +2234,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -2336,10 +2272,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateArchiveResponse'
       x-stackql-resource: archives
       x-stackql-method: update_archive
       x-stackql-verb: UPDATE
@@ -2392,10 +2324,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateIngressPointResponse'
       x-stackql-resource: ingress_points
       x-stackql-method: update_ingress_point
       x-stackql-verb: UPDATE
@@ -2441,10 +2369,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateRelayResponse'
       x-stackql-resource: relays
       x-stackql-method: update_relay
       x-stackql-verb: UPDATE
@@ -2484,10 +2408,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateRuleSetResponse'
       x-stackql-resource: rule_sets
       x-stackql-method: update_rule_set
       x-stackql-verb: UPDATE
@@ -2534,10 +2454,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateTrafficPolicyResponse'
       x-stackql-resource: traffic_policies
       x-stackql-method: update_traffic_policy
       x-stackql-verb: UPDATE
@@ -4010,30 +3926,10 @@ components:
           description: The identifier of the traffic policy resource.
       required:
       - TrafficPolicyId
-    DeleteAddonInstanceResponse:
-      type: object
-    DeleteAddonSubscriptionResponse:
-      type: object
-    DeleteAddressListResponse:
-      type: object
-    DeleteArchiveResponse:
-      description: The response indicating if the archive deletion was successfully initiated. On success, returns an HTTP
-        200 status code. On failure, returns an error message.
-      type: object
-    DeleteIngressPointResponse:
-      type: object
-    DeleteRelayResponse:
-      type: object
-    DeleteRuleSetResponse:
-      type: object
-    DeleteTrafficPolicyResponse:
-      type: object
     Address:
       type: string
       minLength: 3
       maxLength: 320
-    DeregisterMemberFromAddressListResponse:
-      type: object
     GetAddonInstanceResponse:
       type: object
       properties:
@@ -5252,10 +5148,6 @@ components:
       - TrafficPolicyName
       - TrafficPolicyId
       - DefaultAction
-    RegisterMemberToAddressListResponse:
-      type: object
-    StartAddressListImportJobResponse:
-      type: object
     StartArchiveExportResponse:
       description: The response from initiating an archive export.
       type: object
@@ -5270,38 +5162,12 @@ components:
         SearchId:
           $ref: '#/components/schemas/SearchId'
           description: The unique identifier for the initiated search job.
-    StopAddressListImportJobResponse:
-      type: object
-    StopArchiveExportResponse:
-      description: The response indicating if the request to stop the export job succeeded. On success, returns an HTTP 200
-        status code. On failure, returns an error message.
-      type: object
-    StopArchiveSearchResponse:
-      description: The response indicating if the request to stop the search job succeeded. On success, returns an HTTP 200
-        status code. On failure, returns an error message.
-      type: object
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
         $ref: '#/components/schemas/TagKey'
-    UntagResourceResponse:
-      type: object
-    UpdateArchiveResponse:
-      description: The response indicating if the archive update succeeded or failed. On success, returns an HTTP 200 status
-        code. On failure, returns an error message.
-      type: object
     IngressPointStatusToUpdate:
       type: string
       enum:
       - ACTIVE
       - CLOSED
-    UpdateIngressPointResponse:
-      type: object
-    UpdateRelayResponse:
-      type: object
-    UpdateRuleSetResponse:
-      type: object
-    UpdateTrafficPolicyResponse:
-      type: object

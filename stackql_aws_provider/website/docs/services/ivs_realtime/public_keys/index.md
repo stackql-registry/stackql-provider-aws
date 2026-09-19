@@ -145,6 +145,13 @@ The following methods are available for this resource:
     <td></td>
     <td>Deletes the specified public key used to sign stage participant tokens. This invalidates future participant tokens generated using the key pair’s private key.</td>
 </tr>
+<tr>
+    <td><a href="#import_public_key"><CopyableCode code="import_public_key" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-publicKeyMaterial"><code>publicKeyMaterial</code></a></td>
+    <td></td>
+    <td>Import a public key to be used for signing stage participant tokens.</td>
+</tr>
 </tbody>
 </table>
 
@@ -226,6 +233,33 @@ Deletes the specified public key used to sign stage participant tokens. This inv
 ```sql
 DELETE FROM aws.ivs_realtime.public_keys
 WHERE region = '{{ region }}' --required
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="import_public_key"
+    values={[
+        { label: 'import_public_key', value: 'import_public_key' }
+    ]}
+>
+<TabItem value="import_public_key">
+
+Import a public key to be used for signing stage participant tokens.
+
+```sql
+EXEC aws.ivs_realtime.public_keys.import_public_key 
+@region='{{ region }}' --required 
+@@json=
+'{
+"publicKeyMaterial": "{{ publicKeyMaterial }}", 
+"name": "{{ name }}", 
+"tags": "{{ tags }}"
+}'
 ;
 ```
 </TabItem>

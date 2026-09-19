@@ -2275,10 +2275,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TagResourceResponse"
   /UntagResource:
     post:
       operationId: UntagResource
@@ -2312,10 +2308,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UntagResourceResponse"
   /UpdateDatasetGroup:
     post:
       operationId: UpdateDatasetGroup
@@ -2349,10 +2341,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateDatasetGroupResponse"
 components:
   parameters:
     X-Amz-Content-Sha256:
@@ -4543,16 +4531,10 @@ components:
         LastModificationTime:
           $ref: "#/components/schemas/Timestamp"
           description: "The last time the resource was modified. The timestamp depends on the status of the job: CREATE_PENDING - The CreationTime. CREATE_IN_PROGRESS - The current timestamp. CREATE_STOPPING - The current timestamp. CREATE_STOPPED - When the job stopped. ACTIVE or CREATE_FAILED - When the job finished or failed."
-    TagResourceResponse:
-      type: object
     TagKeys:
       type: array
       items:
         $ref: "#/components/schemas/TagKey"
-    UntagResourceResponse:
-      type: object
-    UpdateDatasetGroupResponse:
-      type: object
   x-stackQL-resources:
     auto_predictors:
       id: aws.forecast.auto_predictors
@@ -4734,7 +4716,6 @@ components:
             $ref: "#/paths/~1UpdateDatasetGroup/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -5336,10 +5317,10 @@ components:
         update: []
         delete:
           - $ref: "#/components/x-stackQL-resources/predictor_backtest_export_jobs/methods/delete_predictor_backtest_export_job"
-    what_if_analysis:
-      id: aws.forecast.what_if_analysis
-      name: what_if_analysis
-      title: what_if_analysis
+    what_if_analyses:
+      id: aws.forecast.what_if_analyses
+      name: what_if_analyses
+      title: what_if_analyses
       methods:
         create_what_if_analysis:
           operation:
@@ -5379,14 +5360,36 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        list_what_if_analyses:
+          operation:
+            $ref: "#/paths/~1ListWhatIfAnalyses/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.WhatIfAnalyses
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/what_if_analysis/methods/describe_what_if_analysis"
+          - $ref: "#/components/x-stackQL-resources/what_if_analyses/methods/describe_what_if_analysis"
+          - $ref: "#/components/x-stackQL-resources/what_if_analyses/methods/list_what_if_analyses"
         insert:
-          - $ref: "#/components/x-stackQL-resources/what_if_analysis/methods/create_what_if_analysis"
+          - $ref: "#/components/x-stackQL-resources/what_if_analyses/methods/create_what_if_analysis"
         update: []
         delete:
-          - $ref: "#/components/x-stackQL-resources/what_if_analysis/methods/delete_what_if_analysis"
+          - $ref: "#/components/x-stackQL-resources/what_if_analyses/methods/delete_what_if_analysis"
     what_if_forecasts:
       id: aws.forecast.what_if_forecasts
       name: what_if_forecasts
@@ -5635,7 +5638,6 @@ components:
             $ref: "#/paths/~1TagResource/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -5648,7 +5650,6 @@ components:
             $ref: "#/paths/~1UntagResource/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -5664,35 +5665,37 @@ components:
           - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
           - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
         delete: []
-    what_if_analyses:
-      id: aws.forecast.what_if_analyses
-      name: what_if_analyses
-      title: what_if_analyses
+    resources:
+      id: aws.forecast.resources
+      name: resources
+      title: resources
       methods:
-        list_what_if_analyses:
+        resume_resource:
           operation:
-            $ref: "#/paths/~1ListWhatIfAnalyses/post"
+            $ref: "#/paths/~1ResumeResource/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.WhatIfAnalyses
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
-            pagination:
-              requestToken:
-                key: NextToken
-                location: body
-              responseToken:
-                key: $.NextToken
-                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        stop_resource:
+          operation:
+            $ref: "#/paths/~1StopResource/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/what_if_analyses/methods/list_what_if_analyses"
+        select: []
         insert: []
         update: []
         delete: []

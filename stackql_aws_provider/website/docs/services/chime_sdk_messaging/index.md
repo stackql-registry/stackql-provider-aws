@@ -18,7 +18,7 @@ chime_sdk_messaging service documentation.
 
 :::info[Service Summary]
 
-total resources: __17__  
+total resources: __13__  
 
 :::
 
@@ -27,19 +27,15 @@ total resources: __17__
 <div class="providerDocColumn">
 <a href="/services/chime_sdk_messaging/channel_bans/">channel_bans</a><br />
 <a href="/services/chime_sdk_messaging/channel_flows/">channel_flows</a><br />
-<a href="/services/chime_sdk_messaging/channel_membership_for_app_instance_users/">channel_membership_for_app_instance_users</a><br />
 <a href="/services/chime_sdk_messaging/channel_membership_preferences/">channel_membership_preferences</a><br />
 <a href="/services/chime_sdk_messaging/channel_memberships/">channel_memberships</a><br />
-<a href="/services/chime_sdk_messaging/channel_memberships_for_app_instance_users/">channel_memberships_for_app_instance_users</a><br />
-<a href="/services/chime_sdk_messaging/channel_message_status/">channel_message_status</a><br />
+<a href="/services/chime_sdk_messaging/channel_message_statuses/">channel_message_statuses</a><br />
 <a href="/services/chime_sdk_messaging/channel_messages/">channel_messages</a><br />
-<a href="/services/chime_sdk_messaging/channel_moderated_by_app_instance_users/">channel_moderated_by_app_instance_users</a>
+<a href="/services/chime_sdk_messaging/channel_moderators/">channel_moderators</a>
 </div>
 <div class="providerDocColumn">
-<a href="/services/chime_sdk_messaging/channel_moderators/">channel_moderators</a><br />
 <a href="/services/chime_sdk_messaging/channels/">channels</a><br />
 <a href="/services/chime_sdk_messaging/channels_associated_with_channel_flows/">channels_associated_with_channel_flows</a><br />
-<a href="/services/chime_sdk_messaging/channels_moderated_by_app_instance_users/">channels_moderated_by_app_instance_users</a><br />
 <a href="/services/chime_sdk_messaging/messaging_session_endpoints/">messaging_session_endpoints</a><br />
 <a href="/services/chime_sdk_messaging/messaging_streaming_configurations/">messaging_streaming_configurations</a><br />
 <a href="/services/chime_sdk_messaging/sub_channels/">sub_channels</a><br />

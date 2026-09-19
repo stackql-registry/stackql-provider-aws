@@ -27,7 +27,7 @@ total resources: __18__
 <div class="providerDocColumn">
 <a href="/services/redshift_serverless/credentials/">credentials</a><br />
 <a href="/services/redshift_serverless/custom_domain_associations/">custom_domain_associations</a><br />
-<a href="/services/redshift_serverless/endpoint_access/">endpoint_access</a><br />
+<a href="/services/redshift_serverless/endpoint_accesses/">endpoint_accesses</a><br />
 <a href="/services/redshift_serverless/identity_center_auth_tokens/">identity_center_auth_tokens</a><br />
 <a href="/services/redshift_serverless/managed_workgroups/">managed_workgroups</a><br />
 <a href="/services/redshift_serverless/namespaces/">namespaces</a><br />
@@ -40,7 +40,7 @@ total resources: __18__
 <a href="/services/redshift_serverless/scheduled_actions/">scheduled_actions</a><br />
 <a href="/services/redshift_serverless/snapshot_copy_configurations/">snapshot_copy_configurations</a><br />
 <a href="/services/redshift_serverless/snapshots/">snapshots</a><br />
-<a href="/services/redshift_serverless/table_restore_status/">table_restore_status</a><br />
+<a href="/services/redshift_serverless/table_restore_statuses/">table_restore_statuses</a><br />
 <a href="/services/redshift_serverless/tags/">tags</a><br />
 <a href="/services/redshift_serverless/tracks/">tracks</a><br />
 <a href="/services/redshift_serverless/usage_limits/">usage_limits</a><br />

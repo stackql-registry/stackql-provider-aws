@@ -210,6 +210,27 @@ The following methods are available for this resource:
     <td></td>
     <td>Use this operation to delete an Earth Observation job.</td>
 </tr>
+<tr>
+    <td><a href="#export_earth_observation_job"><CopyableCode code="export_earth_observation_job" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-ExecutionRoleArn"><code>ExecutionRoleArn</code></a>, <a href="#parameter-OutputConfig"><code>OutputConfig</code></a></td>
+    <td></td>
+    <td>Use this operation to export results of an Earth Observation job and optionally source images used as input to the EOJ to an Amazon S3 location.</td>
+</tr>
+<tr>
+    <td><a href="#start_earth_observation_job"><CopyableCode code="start_earth_observation_job" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-ExecutionRoleArn"><code>ExecutionRoleArn</code></a>, <a href="#parameter-InputConfig"><code>InputConfig</code></a>, <a href="#parameter-JobConfig"><code>JobConfig</code></a></td>
+    <td></td>
+    <td>Use this operation to create an Earth observation job.</td>
+</tr>
+<tr>
+    <td><a href="#stop_earth_observation_job"><CopyableCode code="stop_earth_observation_job" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Use this operation to stop an existing earth observation job.</td>
+</tr>
 </tbody>
 </table>
 
@@ -311,6 +332,71 @@ Use this operation to delete an Earth Observation job.
 DELETE FROM aws.sagemaker_geospatial.earth_observation_jobs
 WHERE arn = '{{ arn }}' --required
 AND region = '{{ region }}' --required
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="export_earth_observation_job"
+    values={[
+        { label: 'export_earth_observation_job', value: 'export_earth_observation_job' },
+        { label: 'start_earth_observation_job', value: 'start_earth_observation_job' },
+        { label: 'stop_earth_observation_job', value: 'stop_earth_observation_job' }
+    ]}
+>
+<TabItem value="export_earth_observation_job">
+
+Use this operation to export results of an Earth Observation job and optionally source images used as input to the EOJ to an Amazon S3 location.
+
+```sql
+EXEC aws.sagemaker_geospatial.earth_observation_jobs.export_earth_observation_job 
+@region='{{ region }}' --required 
+@@json=
+'{
+"Arn": "{{ Arn }}", 
+"ClientToken": "{{ ClientToken }}", 
+"ExecutionRoleArn": "{{ ExecutionRoleArn }}", 
+"ExportSourceImages": {{ ExportSourceImages }}, 
+"OutputConfig": "{{ OutputConfig }}"
+}'
+;
+```
+</TabItem>
+<TabItem value="start_earth_observation_job">
+
+Use this operation to create an Earth observation job.
+
+```sql
+EXEC aws.sagemaker_geospatial.earth_observation_jobs.start_earth_observation_job 
+@region='{{ region }}' --required 
+@@json=
+'{
+"ClientToken": "{{ ClientToken }}", 
+"ExecutionRoleArn": "{{ ExecutionRoleArn }}", 
+"InputConfig": "{{ InputConfig }}", 
+"JobConfig": "{{ JobConfig }}", 
+"KmsKeyId": "{{ KmsKeyId }}", 
+"Name": "{{ Name }}", 
+"Tags": "{{ Tags }}"
+}'
+;
+```
+</TabItem>
+<TabItem value="stop_earth_observation_job">
+
+Use this operation to stop an existing earth observation job.
+
+```sql
+EXEC aws.sagemaker_geospatial.earth_observation_jobs.stop_earth_observation_job 
+@region='{{ region }}' --required 
+@@json=
+'{
+"Arn": "{{ Arn }}"
+}'
 ;
 ```
 </TabItem>

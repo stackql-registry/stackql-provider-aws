@@ -189,14 +189,28 @@ The following methods are available for this resource:
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-startTime"><code>startTime</code></a>, <a href="#parameter-endTime"><code>endTime</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td><a href="#parameter-maxResults"><code>maxResults</code></a>, <a href="#parameter-nextToken"><code>nextToken</code></a></td>
-    <td>List of Device Defender ML Detect mitigation actions tasks. Requires permission to access the ListDetectMitigationActionsTasks action.</td>
+    <td>The IoT Device Defender detect feature will no longer be available to new customers starting August 31, 2026. If you would like to use the detect feature, sign up prior to August 31, 2026. To learn about alternatives to IoT Device Defender detect, see IoT Device Defender detect feature availability change in the IoT Device Defender Developer Guide. There is no change to IoT Device Defender audit availability. List of Device Defender ML Detect mitigation actions tasks. Requires permission to access the ListDetectMitigationActionsTasks action.</td>
 </tr>
 <tr>
     <td><a href="#describe_detect_mitigation_actions_task"><CopyableCode code="describe_detect_mitigation_actions_task" /></a></td>
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-task_id"><code>task_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>Gets information about a Device Defender ML Detect mitigation action. Requires permission to access the DescribeDetectMitigationActionsTask action.</td>
+    <td>The IoT Device Defender detect feature will no longer be available to new customers starting August 31, 2026. If you would like to use the detect feature, sign up prior to August 31, 2026. To learn about alternatives to IoT Device Defender detect, see IoT Device Defender detect feature availability change in the IoT Device Defender Developer Guide. There is no change to IoT Device Defender audit availability. Gets information about a Device Defender ML Detect mitigation action. Requires permission to access the DescribeDetectMitigationActionsTask action.</td>
+</tr>
+<tr>
+    <td><a href="#cancel_detect_mitigation_actions_task"><CopyableCode code="cancel_detect_mitigation_actions_task" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-task_id"><code>task_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>The IoT Device Defender detect feature will no longer be available to new customers starting August 31, 2026. If you would like to use the detect feature, sign up prior to August 31, 2026. To learn about alternatives to IoT Device Defender detect, see IoT Device Defender detect feature availability change in the IoT Device Defender Developer Guide. There is no change to IoT Device Defender audit availability. Cancels a Device Defender ML Detect mitigation action. Requires permission to access the CancelDetectMitigationActionsTask action.</td>
+</tr>
+<tr>
+    <td><a href="#start_detect_mitigation_actions_task"><CopyableCode code="start_detect_mitigation_actions_task" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-task_id"><code>task_id</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-target"><code>target</code></a>, <a href="#parameter-actions"><code>actions</code></a>, <a href="#parameter-clientRequestToken"><code>clientRequestToken</code></a></td>
+    <td></td>
+    <td>The IoT Device Defender detect feature will no longer be available to new customers starting August 31, 2026. If you would like to use the detect feature, sign up prior to August 31, 2026. To learn about alternatives to IoT Device Defender detect, see IoT Device Defender detect feature availability change in the IoT Device Defender Developer Guide. There is no change to IoT Device Defender audit availability. Starts a Device Defender ML Detect mitigation actions task. Requires permission to access the StartDetectMitigationActionsTask action.</td>
 </tr>
 </tbody>
 </table>
@@ -258,7 +272,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 >
 <TabItem value="list_detect_mitigation_actions_tasks">
 
-List of Device Defender ML Detect mitigation actions tasks. Requires permission to access the ListDetectMitigationActionsTasks action.
+The IoT Device Defender detect feature will no longer be available to new customers starting August 31, 2026. If you would like to use the detect feature, sign up prior to August 31, 2026. To learn about alternatives to IoT Device Defender detect, see IoT Device Defender detect feature availability change in the IoT Device Defender Developer Guide. There is no change to IoT Device Defender audit availability. List of Device Defender ML Detect mitigation actions tasks. Requires permission to access the ListDetectMitigationActionsTasks action.
 
 ```sql
 SELECT
@@ -283,7 +297,7 @@ AND nextToken = '{{ nextToken }}'
 </TabItem>
 <TabItem value="describe_detect_mitigation_actions_task">
 
-Gets information about a Device Defender ML Detect mitigation action. Requires permission to access the DescribeDetectMitigationActionsTask action.
+The IoT Device Defender detect feature will no longer be available to new customers starting August 31, 2026. If you would like to use the detect feature, sign up prior to August 31, 2026. To learn about alternatives to IoT Device Defender detect, see IoT Device Defender detect feature availability change in the IoT Device Defender Developer Guide. There is no change to IoT Device Defender audit availability. Gets information about a Device Defender ML Detect mitigation action. Requires permission to access the DescribeDetectMitigationActionsTask action.
 
 ```sql
 SELECT
@@ -300,6 +314,49 @@ violation_event_occurrence_range
 FROM aws.iot.detect_mitigation_actions_tasks
 WHERE task_id = '{{ task_id }}' -- required
 AND region = '{{ region }}' -- required
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="cancel_detect_mitigation_actions_task"
+    values={[
+        { label: 'cancel_detect_mitigation_actions_task', value: 'cancel_detect_mitigation_actions_task' },
+        { label: 'start_detect_mitigation_actions_task', value: 'start_detect_mitigation_actions_task' }
+    ]}
+>
+<TabItem value="cancel_detect_mitigation_actions_task">
+
+The IoT Device Defender detect feature will no longer be available to new customers starting August 31, 2026. If you would like to use the detect feature, sign up prior to August 31, 2026. To learn about alternatives to IoT Device Defender detect, see IoT Device Defender detect feature availability change in the IoT Device Defender Developer Guide. There is no change to IoT Device Defender audit availability. Cancels a Device Defender ML Detect mitigation action. Requires permission to access the CancelDetectMitigationActionsTask action.
+
+```sql
+EXEC aws.iot.detect_mitigation_actions_tasks.cancel_detect_mitigation_actions_task 
+@task_id='{{ task_id }}' --required, 
+@region='{{ region }}' --required
+;
+```
+</TabItem>
+<TabItem value="start_detect_mitigation_actions_task">
+
+The IoT Device Defender detect feature will no longer be available to new customers starting August 31, 2026. If you would like to use the detect feature, sign up prior to August 31, 2026. To learn about alternatives to IoT Device Defender detect, see IoT Device Defender detect feature availability change in the IoT Device Defender Developer Guide. There is no change to IoT Device Defender audit availability. Starts a Device Defender ML Detect mitigation actions task. Requires permission to access the StartDetectMitigationActionsTask action.
+
+```sql
+EXEC aws.iot.detect_mitigation_actions_tasks.start_detect_mitigation_actions_task 
+@task_id='{{ task_id }}' --required, 
+@region='{{ region }}' --required 
+@@json=
+'{
+"target": "{{ target }}", 
+"actions": "{{ actions }}", 
+"violationEventOccurrenceRange": "{{ violationEventOccurrenceRange }}", 
+"includeOnlyActiveViolations": {{ includeOnlyActiveViolations }}, 
+"includeSuppressedAlerts": {{ includeSuppressedAlerts }}, 
+"clientRequestToken": "{{ clientRequestToken }}"
+}'
 ;
 ```
 </TabItem>

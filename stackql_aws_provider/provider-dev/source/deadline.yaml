@@ -55,10 +55,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/AssociateMemberToFarmResponse'
       x-stackql-resource: farms
       x-stackql-method: associate_member_to_farm
       x-stackql-verb: UPDATE
@@ -81,10 +77,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DisassociateMemberFromFarmResponse'
       x-stackql-resource: farms
       x-stackql-method: disassociate_member_from_farm
       x-stackql-verb: UPDATE
@@ -133,10 +125,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/AssociateMemberToFleetResponse'
       x-stackql-resource: fleets
       x-stackql-method: associate_member_to_fleet
       x-stackql-verb: UPDATE
@@ -165,10 +153,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DisassociateMemberFromFleetResponse'
       x-stackql-resource: fleets
       x-stackql-method: disassociate_member_from_fleet
       x-stackql-verb: UPDATE
@@ -223,10 +207,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/AssociateMemberToJobResponse'
       x-stackql-resource: jobs
       x-stackql-method: associate_member_to_job
       x-stackql-verb: UPDATE
@@ -261,10 +241,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DisassociateMemberFromJobResponse'
       x-stackql-resource: jobs
       x-stackql-method: disassociate_member_from_job
       x-stackql-verb: UPDATE
@@ -313,10 +289,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/AssociateMemberToQueueResponse'
       x-stackql-resource: queues
       x-stackql-method: associate_member_to_queue
       x-stackql-verb: UPDATE
@@ -345,10 +317,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DisassociateMemberFromQueueResponse'
       x-stackql-resource: queues
       x-stackql-method: disassociate_member_from_queue
       x-stackql-verb: UPDATE
@@ -377,7 +345,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AssumeFleetRoleForReadResponse'
-      x-stackql-resource: fleets
+      x-stackql-resource: farms
       x-stackql-method: assume_fleet_role_for_read
       x-stackql-verb: EXEC
   /2023-10-12/farms/{farm_id}/fleets/{fleet_id}/workers/{worker_id}/fleet-roles:
@@ -438,7 +406,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AssumeQueueRoleForReadResponse'
-      x-stackql-resource: queues
+      x-stackql-resource: farms
       x-stackql-method: assume_queue_role_for_read
       x-stackql-verb: EXEC
   /2023-10-12/farms/{farm_id}/queues/{queue_id}/user-roles:
@@ -759,7 +727,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchUpdateJobResponse'
-      x-stackql-resource: batch_update_job
+      x-stackql-resource: jobs
       x-stackql-method: batch_update_job
       x-stackql-verb: EXEC
   /2023-10-12/batch-update-task:
@@ -794,7 +762,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchUpdateTaskResponse'
-      x-stackql-resource: batch_update_task
+      x-stackql-resource: tasks
       x-stackql-method: batch_update_task
       x-stackql-verb: EXEC
   /2023-10-12/farms/{farm_id}/queues/{queue_id}/jobs/{job_id}/template:
@@ -1711,10 +1679,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CreateQueueFleetAssociationResponse'
       x-stackql-resource: queue_fleet_associations
       x-stackql-method: create_queue_fleet_association
       x-stackql-verb: INSERT
@@ -1797,10 +1761,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CreateQueueLimitAssociationResponse'
       x-stackql-resource: queue_limit_associations
       x-stackql-method: create_queue_limit_association
       x-stackql-verb: INSERT
@@ -2048,10 +2008,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteBudgetResponse'
       x-stackql-resource: budgets
       x-stackql-method: delete_budget
       x-stackql-verb: DELETE
@@ -2127,10 +2083,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateBudgetResponse'
       x-stackql-resource: budgets
       x-stackql-method: update_budget
       x-stackql-verb: UPDATE
@@ -2148,10 +2100,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteFarmResponse'
       x-stackql-resource: farms
       x-stackql-method: delete_farm
       x-stackql-verb: DELETE
@@ -2201,10 +2149,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateFarmResponse'
       x-stackql-resource: farms
       x-stackql-method: update_farm
       x-stackql-verb: UPDATE
@@ -2234,10 +2178,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteFleetResponse'
       x-stackql-resource: fleets
       x-stackql-method: delete_fleet
       x-stackql-verb: DELETE
@@ -2313,10 +2253,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateFleetResponse'
       x-stackql-resource: fleets
       x-stackql-method: update_fleet
       x-stackql-verb: UPDATE
@@ -2334,10 +2270,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteLicenseEndpointResponse'
       x-stackql-resource: license_endpoints
       x-stackql-method: delete_license_endpoint
       x-stackql-verb: DELETE
@@ -2382,10 +2314,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteLimitResponse'
       x-stackql-resource: limits
       x-stackql-method: delete_limit
       x-stackql-verb: DELETE
@@ -2447,10 +2375,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateLimitResponse'
       x-stackql-resource: limits
       x-stackql-method: update_limit
       x-stackql-verb: UPDATE
@@ -2474,10 +2398,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteMeteredProductResponse'
       x-stackql-resource: metered_products
       x-stackql-method: delete_metered_product
       x-stackql-verb: DELETE
@@ -2500,10 +2420,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PutMeteredProductResponse'
       x-stackql-resource: metered_products
       x-stackql-method: put_metered_product
       x-stackql-verb: REPLACE
@@ -2523,10 +2439,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteMonitorResponse'
       x-stackql-resource: monitors
       x-stackql-method: delete_monitor
       x-stackql-verb: DELETE
@@ -2577,10 +2489,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateMonitorResponse'
       x-stackql-resource: monitors
       x-stackql-method: update_monitor
       x-stackql-verb: UPDATE
@@ -2605,10 +2513,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteQueueResponse'
       x-stackql-resource: queues
       x-stackql-method: delete_queue
       x-stackql-verb: DELETE
@@ -2692,10 +2596,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateQueueResponse'
       x-stackql-resource: queues
       x-stackql-method: update_queue
       x-stackql-verb: UPDATE
@@ -2725,10 +2625,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteQueueEnvironmentResponse'
       x-stackql-resource: queue_environments
       x-stackql-method: delete_queue_environment
       x-stackql-verb: DELETE
@@ -2808,10 +2704,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateQueueEnvironmentResponse'
       x-stackql-resource: queue_environments
       x-stackql-method: update_queue_environment
       x-stackql-verb: UPDATE
@@ -2841,10 +2733,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteQueueFleetAssociationResponse'
       x-stackql-resource: queue_fleet_associations
       x-stackql-method: delete_queue_fleet_association
       x-stackql-verb: DELETE
@@ -2916,10 +2804,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateQueueFleetAssociationResponse'
       x-stackql-resource: queue_fleet_associations
       x-stackql-method: update_queue_fleet_association
       x-stackql-verb: UPDATE
@@ -2952,10 +2836,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteQueueLimitAssociationResponse'
       x-stackql-resource: queue_limit_associations
       x-stackql-method: delete_queue_limit_association
       x-stackql-verb: DELETE
@@ -3028,10 +2908,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateQueueLimitAssociationResponse'
       x-stackql-resource: queue_limit_associations
       x-stackql-method: update_queue_limit_association
       x-stackql-verb: UPDATE
@@ -3055,10 +2931,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteStorageProfileResponse'
       x-stackql-resource: storage_profiles
       x-stackql-method: delete_storage_profile
       x-stackql-verb: DELETE
@@ -3128,10 +3000,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateStorageProfileResponse'
       x-stackql-resource: storage_profiles
       x-stackql-method: update_storage_profile
       x-stackql-verb: UPDATE
@@ -3161,10 +3029,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteVolumeResponse'
       x-stackql-resource: volumes
       x-stackql-method: delete_volume
       x-stackql-verb: DELETE
@@ -3226,10 +3090,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteWorkerResponse'
       x-stackql-resource: workers
       x-stackql-method: delete_worker
       x-stackql-verb: DELETE
@@ -3398,10 +3258,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateJobResponse'
       x-stackql-resource: jobs
       x-stackql-method: update_job
       x-stackql-verb: UPDATE
@@ -3452,10 +3308,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateMonitorSettingsResponse'
       x-stackql-resource: monitor_settings
       x-stackql-method: update_monitor_settings
       x-stackql-verb: UPDATE
@@ -3546,10 +3398,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateSessionResponse'
       x-stackql-resource: sessions
       x-stackql-method: update_session
       x-stackql-verb: UPDATE
@@ -3687,7 +3535,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartSessionsStatisticsAggregationResponse'
-      x-stackql-resource: sessions
+      x-stackql-resource: sessions_statistics_aggregations
       x-stackql-method: start_sessions_statistics_aggregation
       x-stackql-verb: EXEC
   /2023-10-12/farms/{farm_id}/queues/{queue_id}/jobs/{job_id}/steps/{step_id}:
@@ -3777,10 +3625,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateStepResponse'
       x-stackql-resource: steps
       x-stackql-method: update_step
       x-stackql-verb: UPDATE
@@ -3814,7 +3658,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetStorageProfileForQueueResponse'
-      x-stackql-resource: storage_profile_for_queues
+      x-stackql-resource: storage_profiles
       x-stackql-method: get_storage_profile_for_queue
       x-stackql-verb: SELECT
   /2023-10-12/farms/{farm_id}/queues/{queue_id}/jobs/{job_id}/steps/{step_id}/tasks/{task_id}:
@@ -3916,10 +3760,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateTaskResponse'
       x-stackql-resource: tasks
       x-stackql-method: update_task
       x-stackql-verb: UPDATE
@@ -4379,7 +4219,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListSessionsForWorkerResponse'
-      x-stackql-resource: sessions_for_workers
+      x-stackql-resource: sessions
       x-stackql-method: list_sessions_for_worker
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.sessions
@@ -4585,7 +4425,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListStorageProfilesForQueueResponse'
-      x-stackql-resource: storage_profiles_for_queues
+      x-stackql-resource: storage_profiles
       x-stackql-method: list_storage_profiles_for_queue
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.storageProfiles
@@ -4635,10 +4475,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -4661,10 +4497,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -5053,23 +4885,15 @@ components:
       minLength: 1
       maxLength: 25
       pattern: '[a-z0-9-]+'
-    AssociateMemberToFarmResponse:
-      type: object
     FleetId:
       type: string
       pattern: fleet-[0-9a-f]{32}
-    AssociateMemberToFleetResponse:
-      type: object
     QueueId:
       type: string
       pattern: queue-[0-9a-f]{32}
     JobId:
       type: string
       pattern: job-[0-9a-f]{32}
-    AssociateMemberToJobResponse:
-      type: object
-    AssociateMemberToQueueResponse:
-      type: object
     AssumeFleetRoleForReadResponse:
       description: Shared response body for AssumeRole operations where credentials are required. AssumeQueueRoleForWorkerResponse
         is excluded because credentials is optional there because Queue.roleArn is optional, so the mixin's @required trait
@@ -8164,10 +7988,6 @@ components:
     QueueEnvironmentId:
       type: string
       pattern: queueenv-[0-9a-f]{32}
-    CreateQueueFleetAssociationResponse:
-      type: object
-    CreateQueueLimitAssociationResponse:
-      type: object
     StorageProfileOperatingSystemFamily:
       type: string
       enum:
@@ -8232,48 +8052,12 @@ components:
           description: The worker ID.
       required:
       - workerId
-    DeleteBudgetResponse:
-      type: object
-    DeleteFarmResponse:
-      type: object
-    DeleteFleetResponse:
-      type: object
-    DeleteLicenseEndpointResponse:
-      type: object
-    DeleteLimitResponse:
-      type: object
     MeteredProductId:
       type: string
       pattern: '[0-9a-z]{1,32}-[.0-9a-z]{1,32}'
-    DeleteMeteredProductResponse:
-      type: object
-    DeleteMonitorResponse:
-      type: object
-    DeleteQueueResponse:
-      type: object
-    DeleteQueueEnvironmentResponse:
-      type: object
-    DeleteQueueFleetAssociationResponse:
-      type: object
-    DeleteQueueLimitAssociationResponse:
-      type: object
-    DeleteStorageProfileResponse:
-      type: object
     VolumeId:
       type: string
       pattern: volume-[0-9a-f]{32}
-    DeleteVolumeResponse:
-      type: object
-    DeleteWorkerResponse:
-      type: object
-    DisassociateMemberFromFarmResponse:
-      type: object
-    DisassociateMemberFromFleetResponse:
-      type: object
-    DisassociateMemberFromJobResponse:
-      type: object
-    DisassociateMemberFromQueueResponse:
-      type: object
     GetBudgetResponse:
       description: Mixin that adds an optional ARN field to response structures. Apply to SummaryMixins (flows into Get, Summary,
         and BatchGet) and Create outputs.
@@ -11039,8 +10823,6 @@ components:
       - status
       - createdAt
       - createdBy
-    PutMeteredProductResponse:
-      type: object
     SearchGroupedFilterExpressions:
       description: The search terms for a resource.
       type: object
@@ -11665,14 +11447,10 @@ components:
             operation to return the statistics.
       required:
       - aggregationId
-    TagResourceResponse:
-      type: object
     StringList:
       type: array
       items:
         $ref: '#/components/schemas/String'
-    UntagResourceResponse:
-      type: object
     BudgetActionsToRemove:
       type: array
       items:
@@ -11690,51 +11468,21 @@ components:
       required:
       - type_
       - thresholdPercentage
-    UpdateBudgetResponse:
-      type: object
-    UpdateFarmResponse:
-      type: object
-    UpdateFleetResponse:
-      type: object
-    UpdateJobResponse:
-      type: object
-    UpdateLimitResponse:
-      type: object
-    UpdateMonitorResponse:
-      type: object
     SettingsMap:
       type: object
       properties: {}
-    UpdateMonitorSettingsResponse:
-      type: object
-    UpdateQueueResponse:
-      type: object
-    UpdateQueueEnvironmentResponse:
-      type: object
     UpdateQueueFleetAssociationStatus:
       type: string
       enum:
       - ACTIVE
       - STOP_SCHEDULING_AND_COMPLETE_TASKS
       - STOP_SCHEDULING_AND_CANCEL_TASKS
-    UpdateQueueFleetAssociationResponse:
-      type: object
     UpdateQueueLimitAssociationStatus:
       type: string
       enum:
       - ACTIVE
       - STOP_LIMIT_USAGE_AND_COMPLETE_TASKS
       - STOP_LIMIT_USAGE_AND_CANCEL_TASKS
-    UpdateQueueLimitAssociationResponse:
-      type: object
-    UpdateSessionResponse:
-      type: object
-    UpdateStepResponse:
-      type: object
-    UpdateStorageProfileResponse:
-      type: object
-    UpdateTaskResponse:
-      type: object
     UpdatedWorkerStatus:
       type: string
       enum:

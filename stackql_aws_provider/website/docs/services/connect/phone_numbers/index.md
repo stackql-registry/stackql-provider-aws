@@ -186,6 +186,13 @@ The following methods are available for this resource:
     <td>Releases a phone number previously claimed to an Connect Customer instance or traffic distribution group. You can call this API only in the Amazon Web Services Region where the number was claimed. To release phone numbers from a traffic distribution group, use the ReleasePhoneNumber API, not the Connect Customer admin website. After releasing a phone number, the phone number enters into a cooldown period for up to 180 days. It cannot be searched for or claimed again until the period has ended. If you accidentally release a phone number, contact Amazon Web Services Support. If you plan to claim and release numbers frequently, contact us for a service quota exception. Otherwise, it is possible you will be blocked from claiming and releasing any more numbers until up to 180 days past the oldest number released has expired. By default you can claim and release up to 200% of your maximum number of active phone numbers. If you claim and release phone numbers using the UI or API during a rolling 180 day cycle that exceeds 200% of your phone number service level quota, you will be blocked from claiming any more numbers until 180 days past the oldest number released has expired. For example, if you already have 99 claimed numbers and a service level quota of 99 phone numbers, and in any 180 day period you release 99, claim 99, and then release 99, you will have exceeded the 200% limit. At that point you are blocked from claiming any more numbers until you open an Amazon Web Services support ticket.</td>
 </tr>
 <tr>
+    <td><a href="#claim_phone_number"><CopyableCode code="claim_phone_number" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-PhoneNumber"><code>PhoneNumber</code></a></td>
+    <td></td>
+    <td>Claims an available phone number to your Connect Customer instance or traffic distribution group. You can call this API only in the same Amazon Web Services Region where the Connect Customer instance or traffic distribution group was created. For more information about how to use this operation, see Claim a phone number in your country and Claim phone numbers to traffic distribution groups in the Connect Customer Administrator Guide. You can call the SearchAvailablePhoneNumbers API for available phone numbers that you can claim. Call the DescribePhoneNumber API to verify the status of a previous ClaimPhoneNumber operation. If you plan to claim and release numbers frequently, contact us for a service quota exception. Otherwise, it is possible you will be blocked from claiming and releasing any more numbers until up to 180 days past the oldest number released has expired. By default you can claim and release up to 200% of your maximum number of active phone numbers. If you claim and release phone numbers using the UI or API during a rolling 180 day cycle that exceeds 200% of your phone number service level quota, you will be blocked from claiming any more numbers until 180 days past the oldest number released has expired. For example, if you already have 99 claimed numbers and a service level quota of 99 phone numbers, and in any 180 day period you release 99, claim 99, and then release 99, you will have exceeded the 200% limit. At that point you are blocked from claiming any more numbers until you open an Amazon Web Services support ticket.</td>
+</tr>
+<tr>
     <td><a href="#update_phone_number"><CopyableCode code="update_phone_number" /></a></td>
     <td><CopyableCode code="exec" /></td>
     <td><a href="#parameter-phone_number_id"><code>phone_number_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
@@ -342,12 +349,32 @@ AND clientToken = '{{ clientToken}}';
 ## Lifecycle Methods
 
 <Tabs
-    defaultValue="update_phone_number"
+    defaultValue="claim_phone_number"
     values={[
+        { label: 'claim_phone_number', value: 'claim_phone_number' },
         { label: 'update_phone_number', value: 'update_phone_number' },
         { label: 'update_phone_number_metadata', value: 'update_phone_number_metadata' }
     ]}
 >
+<TabItem value="claim_phone_number">
+
+Claims an available phone number to your Connect Customer instance or traffic distribution group. You can call this API only in the same Amazon Web Services Region where the Connect Customer instance or traffic distribution group was created. For more information about how to use this operation, see Claim a phone number in your country and Claim phone numbers to traffic distribution groups in the Connect Customer Administrator Guide. You can call the SearchAvailablePhoneNumbers API for available phone numbers that you can claim. Call the DescribePhoneNumber API to verify the status of a previous ClaimPhoneNumber operation. If you plan to claim and release numbers frequently, contact us for a service quota exception. Otherwise, it is possible you will be blocked from claiming and releasing any more numbers until up to 180 days past the oldest number released has expired. By default you can claim and release up to 200% of your maximum number of active phone numbers. If you claim and release phone numbers using the UI or API during a rolling 180 day cycle that exceeds 200% of your phone number service level quota, you will be blocked from claiming any more numbers until 180 days past the oldest number released has expired. For example, if you already have 99 claimed numbers and a service level quota of 99 phone numbers, and in any 180 day period you release 99, claim 99, and then release 99, you will have exceeded the 200% limit. At that point you are blocked from claiming any more numbers until you open an Amazon Web Services support ticket.
+
+```sql
+EXEC aws.connect.phone_numbers.claim_phone_number 
+@region='{{ region }}' --required 
+@@json=
+'{
+"TargetArn": "{{ TargetArn }}", 
+"InstanceId": "{{ InstanceId }}", 
+"PhoneNumber": "{{ PhoneNumber }}", 
+"PhoneNumberDescription": "{{ PhoneNumberDescription }}", 
+"Tags": "{{ Tags }}", 
+"ClientToken": "{{ ClientToken }}"
+}'
+;
+```
+</TabItem>
 <TabItem value="update_phone_number">
 
 Updates your claimed phone number from its current Connect Customer instance or traffic distribution group to another Connect Customer instance or traffic distribution group in the same Amazon Web Services Region. After using this API, you must verify that the phone number is attached to the correct flow in the target instance or traffic distribution group. You need to do this because the API switches only the phone number to a new instance or traffic distribution group. It doesn't migrate the flow configuration of the phone number, too. You can call DescribePhoneNumber API to verify the status of a previous UpdatePhoneNumber operation.

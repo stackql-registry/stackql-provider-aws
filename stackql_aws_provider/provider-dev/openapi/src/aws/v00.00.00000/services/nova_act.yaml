@@ -385,10 +385,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateWorkflowRunResponse"
   /workflow-definitions/{workflow_definition_name}/workflow-runs/{workflow_run_id}/sessions/{session_id}/acts/{act_id}/invoke-step/:
     put:
       operationId: InvokeActStep
@@ -552,10 +548,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateActResponse"
 components:
   parameters:
     X-Amz-Content-Sha256:
@@ -1213,10 +1205,6 @@ components:
       type: string
       minLength: 1
       maxLength: 100
-    UpdateActResponse:
-      type: object
-    UpdateWorkflowRunResponse:
-      type: object
   x-stackQL-resources:
     acts:
       id: aws.nova_act.acts
@@ -1269,7 +1257,6 @@ components:
             $ref: "#/paths/~1workflow-definitions~1{workflow_definition_name}~1workflow-runs~1{workflow_run_id}~1sessions~1{session_id}~1acts~1{act_id}/put"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -1433,7 +1420,6 @@ components:
             $ref: "#/paths/~1workflow-definitions~1{workflow_definition_name}~1workflow-runs~1{workflow_run_id}/put"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:

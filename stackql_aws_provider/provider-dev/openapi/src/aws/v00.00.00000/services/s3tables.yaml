@@ -1134,10 +1134,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TagResourceResponse"
     delete:
       operationId: UntagResource
       description: Removes the specified user-defined tags from an Amazon S3 Tables resource. You can pass one or more tag keys. For a list of S3 resources that support tagging, see Managing tags for Amazon S3 resources. Permissions For tables and table buckets, you must have the s3tables:UntagResource permission to use this operation.
@@ -1157,10 +1153,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UntagResourceResponse"
   /buckets/{table_bucket_arn}/maintenance/{type}:
     put:
       operationId: PutTableBucketMaintenanceConfiguration
@@ -2431,8 +2423,6 @@ components:
       required:
         - versionToken
         - status
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
@@ -2441,8 +2431,6 @@ components:
       type: string
       minLength: 1
       maxLength: 128
-    UntagResourceResponse:
-      type: object
     UpdateTableMetadataLocationResponse:
       type: object
       properties:
@@ -2886,10 +2874,10 @@ components:
         replace:
           - $ref: "#/components/x-stackQL-resources/table_bucket_maintenance_configurations/methods/put_table_bucket_maintenance_configuration"
         delete: []
-    table_bucket_storage_class:
-      id: aws.s3tables.table_bucket_storage_class
-      name: table_bucket_storage_class
-      title: table_bucket_storage_class
+    table_bucket_storage_classes:
+      id: aws.s3tables.table_bucket_storage_classes
+      name: table_bucket_storage_classes
+      title: table_bucket_storage_classes
       methods:
         get_table_bucket_storage_class:
           operation:
@@ -2910,11 +2898,11 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/table_bucket_storage_class/methods/get_table_bucket_storage_class"
+          - $ref: "#/components/x-stackQL-resources/table_bucket_storage_classes/methods/get_table_bucket_storage_class"
         insert: []
         update: []
         replace:
-          - $ref: "#/components/x-stackQL-resources/table_bucket_storage_class/methods/put_table_bucket_storage_class"
+          - $ref: "#/components/x-stackQL-resources/table_bucket_storage_classes/methods/put_table_bucket_storage_class"
         delete: []
     table_encryptions:
       id: aws.s3tables.table_encryptions
@@ -2963,10 +2951,10 @@ components:
         replace:
           - $ref: "#/components/x-stackQL-resources/table_maintenance_configurations/methods/put_table_maintenance_configuration"
         delete: []
-    table_maintenance_job_status:
-      id: aws.s3tables.table_maintenance_job_status
-      name: table_maintenance_job_status
-      title: table_maintenance_job_status
+    table_maintenance_job_statuses:
+      id: aws.s3tables.table_maintenance_job_statuses
+      name: table_maintenance_job_statuses
+      title: table_maintenance_job_statuses
       methods:
         get_table_maintenance_job_status:
           operation:
@@ -2976,7 +2964,7 @@ components:
             mediaType: application/json
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/table_maintenance_job_status/methods/get_table_maintenance_job_status"
+          - $ref: "#/components/x-stackQL-resources/table_maintenance_job_statuses/methods/get_table_maintenance_job_status"
         insert: []
         update: []
         delete: []
@@ -3041,10 +3029,10 @@ components:
         replace:
           - $ref: "#/components/x-stackQL-resources/table_record_expiration_configurations/methods/put_table_record_expiration_configuration"
         delete: []
-    table_record_expiration_job_status:
-      id: aws.s3tables.table_record_expiration_job_status
-      name: table_record_expiration_job_status
-      title: table_record_expiration_job_status
+    table_record_expiration_job_statuses:
+      id: aws.s3tables.table_record_expiration_job_statuses
+      name: table_record_expiration_job_statuses
+      title: table_record_expiration_job_statuses
       methods:
         get_table_record_expiration_job_status:
           operation:
@@ -3056,14 +3044,14 @@ components:
             nativeCasing: pascal
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/table_record_expiration_job_status/methods/get_table_record_expiration_job_status"
+          - $ref: "#/components/x-stackQL-resources/table_record_expiration_job_statuses/methods/get_table_record_expiration_job_status"
         insert: []
         update: []
         delete: []
-    table_replication_status:
-      id: aws.s3tables.table_replication_status
-      name: table_replication_status
-      title: table_replication_status
+    table_replication_statuses:
+      id: aws.s3tables.table_replication_statuses
+      name: table_replication_statuses
+      title: table_replication_statuses
       methods:
         get_table_replication_status:
           operation:
@@ -3075,14 +3063,14 @@ components:
             nativeCasing: pascal
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/table_replication_status/methods/get_table_replication_status"
+          - $ref: "#/components/x-stackQL-resources/table_replication_statuses/methods/get_table_replication_status"
         insert: []
         update: []
         delete: []
-    table_storage_class:
-      id: aws.s3tables.table_storage_class
-      name: table_storage_class
-      title: table_storage_class
+    table_storage_classes:
+      id: aws.s3tables.table_storage_classes
+      name: table_storage_classes
+      title: table_storage_classes
       methods:
         get_table_storage_class:
           operation:
@@ -3093,7 +3081,7 @@ components:
             objectKey: $.storageClassConfiguration
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/table_storage_class/methods/get_table_storage_class"
+          - $ref: "#/components/x-stackQL-resources/table_storage_classes/methods/get_table_storage_class"
         insert: []
         update: []
         delete: []
@@ -3113,7 +3101,6 @@ components:
             $ref: "#/paths/~1tag~1{resource_arn}/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -3124,7 +3111,6 @@ components:
             $ref: "#/paths/~1tag~1{resource_arn}/delete"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
           request:
             nativeCasing: pascal
       sqlVerbs:

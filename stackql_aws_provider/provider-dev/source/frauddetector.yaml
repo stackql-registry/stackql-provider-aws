@@ -54,7 +54,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchCreateVariableResult'
-      x-stackql-resource: batch_create_variable
+      x-stackql-resource: variables
       x-stackql-method: batch_create_variable
       x-stackql-verb: EXEC
   /BatchGetVariable:
@@ -123,11 +123,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CancelBatchImportJobResult'
-      x-stackql-resource: batch_import_job
+      x-stackql-resource: batch_import_jobs
       x-stackql-method: cancel_batch_import_job
       x-stackql-verb: EXEC
   /CancelBatchPredictionJob:
@@ -159,11 +155,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CancelBatchPredictionJobResult'
-      x-stackql-resource: batch_prediction_job
+      x-stackql-resource: batch_prediction_jobs
       x-stackql-method: cancel_batch_prediction_job
       x-stackql-verb: EXEC
   /CreateBatchImportJob:
@@ -217,10 +209,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CreateBatchImportJobResult'
       x-stackql-resource: batch_import_jobs
       x-stackql-method: create_batch_import_job
       x-stackql-verb: INSERT
@@ -281,10 +269,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CreateBatchPredictionJobResult'
       x-stackql-resource: batch_prediction_jobs
       x-stackql-method: create_batch_prediction_job
       x-stackql-verb: INSERT
@@ -392,10 +376,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CreateListResult'
       x-stackql-resource: lists
       x-stackql-method: create_list
       x-stackql-verb: INSERT
@@ -442,10 +422,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CreateModelResult'
       x-stackql-resource: models
       x-stackql-method: create_model
       x-stackql-verb: INSERT
@@ -621,10 +597,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CreateVariableResult'
       x-stackql-resource: variables
       x-stackql-method: create_variable
       x-stackql-verb: INSERT
@@ -657,10 +629,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteBatchImportJobResult'
       x-stackql-resource: batch_import_jobs
       x-stackql-method: delete_batch_import_job
       x-stackql-verb: DELETE
@@ -693,10 +661,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteBatchPredictionJobResult'
       x-stackql-resource: batch_prediction_jobs
       x-stackql-method: delete_batch_prediction_job
       x-stackql-verb: DELETE
@@ -731,10 +695,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteDetectorResult'
       x-stackql-resource: detectors
       x-stackql-method: delete_detector
       x-stackql-verb: DELETE
@@ -773,10 +733,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteDetectorVersionResult'
       x-stackql-resource: detector_versions
       x-stackql-method: delete_detector_version
       x-stackql-verb: DELETE
@@ -811,10 +767,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteEntityTypeResult'
       x-stackql-resource: entity_types
       x-stackql-method: delete_entity_type
       x-stackql-verb: DELETE
@@ -856,10 +808,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteEventResult'
       x-stackql-resource: events
       x-stackql-method: delete_event
       x-stackql-verb: DELETE
@@ -894,10 +842,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteEventTypeResult'
       x-stackql-resource: event_types
       x-stackql-method: delete_event_type
       x-stackql-verb: DELETE
@@ -934,7 +878,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DeleteEventsByEventTypeResult'
-      x-stackql-resource: event_types
+      x-stackql-resource: events
       x-stackql-method: delete_events_by_event_type
       x-stackql-verb: DELETE
   /DeleteExternalModel:
@@ -968,10 +912,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteExternalModelResult'
       x-stackql-resource: external_models
       x-stackql-method: delete_external_model
       x-stackql-verb: DELETE
@@ -1006,10 +946,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteLabelResult'
       x-stackql-resource: labels
       x-stackql-method: delete_label
       x-stackql-verb: DELETE
@@ -1043,10 +979,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteListResult'
       x-stackql-resource: lists
       x-stackql-method: delete_list
       x-stackql-verb: DELETE
@@ -1085,10 +1017,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteModelResult'
       x-stackql-resource: models
       x-stackql-method: delete_model
       x-stackql-verb: DELETE
@@ -1131,10 +1059,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteModelVersionResult'
       x-stackql-resource: model_versions
       x-stackql-method: delete_model_version
       x-stackql-verb: DELETE
@@ -1168,10 +1092,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteOutcomeResult'
       x-stackql-resource: outcomes
       x-stackql-method: delete_outcome
       x-stackql-verb: DELETE
@@ -1205,10 +1125,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteRuleResult'
       x-stackql-resource: rules
       x-stackql-method: delete_rule
       x-stackql-verb: DELETE
@@ -1244,10 +1160,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteVariableResult'
       x-stackql-resource: variables
       x-stackql-method: delete_variable
       x-stackql-verb: DELETE
@@ -1459,7 +1371,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetDeleteEventsByEventTypeStatusResult'
-      x-stackql-resource: delete_events_by_event_type_status
+      x-stackql-resource: delete_events
       x-stackql-method: get_delete_events_by_event_type_status
       x-stackql-verb: SELECT
   /GetDetectorVersion:
@@ -1756,7 +1668,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetEventPredictionMetadataResult'
-      x-stackql-resource: event_prediction_metadatas
+      x-stackql-resource: event_prediction_metadata
       x-stackql-method: get_event_prediction_metadata
       x-stackql-verb: SELECT
   /GetEventTypes:
@@ -1998,7 +1910,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetListsMetadataResult'
-      x-stackql-resource: lists_metadatas
+      x-stackql-resource: lists_metadata
       x-stackql-method: get_lists_metadata
       x-stackql-verb: SELECT
   /GetModelVersion:
@@ -2372,10 +2284,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PutDetectorResult'
       x-stackql-resource: detectors
       x-stackql-method: put_detector
       x-stackql-verb: REPLACE
@@ -2416,10 +2324,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PutEntityTypeResult'
       x-stackql-resource: entity_types
       x-stackql-method: put_entity_type
       x-stackql-verb: REPLACE
@@ -2480,10 +2384,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PutEventTypeResult'
       x-stackql-resource: event_types
       x-stackql-method: put_event_type
       x-stackql-verb: REPLACE
@@ -2540,10 +2440,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PutExternalModelResult'
       x-stackql-resource: external_models
       x-stackql-method: put_external_model
       x-stackql-verb: REPLACE
@@ -2577,10 +2473,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PutKMSEncryptionKeyResult'
       x-stackql-resource: kms_encryption_keys
       x-stackql-method: put_kms_encryption_key
       x-stackql-verb: REPLACE
@@ -2620,10 +2512,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PutLabelResult'
       x-stackql-resource: labels
       x-stackql-method: put_label
       x-stackql-verb: REPLACE
@@ -2662,10 +2550,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PutOutcomeResult'
       x-stackql-resource: outcomes
       x-stackql-method: put_outcome
       x-stackql-verb: REPLACE
@@ -2723,11 +2607,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/SendEventResult'
-      x-stackql-resource: event_types
+      x-stackql-resource: events
       x-stackql-method: send_event
       x-stackql-verb: EXEC
   /TagResource:
@@ -2763,10 +2643,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceResult'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -2803,10 +2679,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceResult'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -2865,10 +2737,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateDetectorVersionResult'
       x-stackql-resource: detector_versions
       x-stackql-method: update_detector_version
       x-stackql-verb: UPDATE
@@ -2910,10 +2778,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateDetectorVersionMetadataResult'
       x-stackql-resource: detector_versions
       x-stackql-method: update_detector_version_metadata
       x-stackql-verb: UPDATE
@@ -2955,10 +2819,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateDetectorVersionStatusResult'
       x-stackql-resource: detector_versions
       x-stackql-method: update_detector_version_status
       x-stackql-verb: UPDATE
@@ -3004,10 +2864,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateEventLabelResult'
       x-stackql-resource: labels
       x-stackql-method: update_event_label
       x-stackql-verb: UPDATE
@@ -3057,10 +2913,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateListResult'
       x-stackql-resource: lists
       x-stackql-method: update_list
       x-stackql-verb: UPDATE
@@ -3100,10 +2952,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateModelResult'
       x-stackql-resource: models
       x-stackql-method: update_model
       x-stackql-verb: UPDATE
@@ -3207,10 +3055,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateModelVersionStatusResult'
       x-stackql-resource: model_versions
       x-stackql-method: update_model_version_status
       x-stackql-verb: UPDATE
@@ -3247,10 +3091,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateRuleMetadataResult'
       x-stackql-resource: rules
       x-stackql-method: update_rule_metadata
       x-stackql-verb: UPDATE
@@ -3347,10 +3187,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateVariableResult'
       x-stackql-resource: variables
       x-stackql-method: update_variable
       x-stackql-verb: UPDATE
@@ -3580,10 +3416,6 @@ components:
       minLength: 1
       maxLength: 64
       pattern: ^[0-9a-z_-]+$
-    CancelBatchImportJobResult:
-      type: object
-    CancelBatchPredictionJobResult:
-      type: object
     s3BucketLocation:
       type: string
       minLength: 1
@@ -3594,15 +3426,11 @@ components:
       minLength: 1
       maxLength: 256
       pattern: ^arn\:aws[a-z-]{0,15}\:iam\:\:[0-9]{12}\:role\/[^\s]{2,64}$
-    CreateBatchImportJobResult:
-      type: object
     wholeNumberVersionString:
       type: string
       minLength: 1
       maxLength: 5
       pattern: ^([1-9][0-9]*)$
-    CreateBatchPredictionJobResult:
-      type: object
     description:
       type: string
       minLength: 1
@@ -3714,10 +3542,6 @@ components:
       minLength: 1
       maxLength: 64
       pattern: ^[A-Z_]{1,64}$
-    CreateListResult:
-      type: object
-    CreateModelResult:
-      type: object
     TrainingDataSourceEnum:
       type: string
       enum:
@@ -3830,24 +3654,8 @@ components:
         rule:
           $ref: '#/components/schemas/Rule'
           description: The created rule.
-    CreateVariableResult:
-      type: object
-    DeleteBatchImportJobResult:
-      type: object
-    DeleteBatchPredictionJobResult:
-      type: object
-    DeleteDetectorResult:
-      type: object
-    DeleteDetectorVersionResult:
-      type: object
-    DeleteEntityTypeResult:
-      type: object
     DeleteAuditHistory:
       type: boolean
-    DeleteEventResult:
-      type: object
-    DeleteEventTypeResult:
-      type: object
     DeleteEventsByEventTypeResult:
       type: object
       properties:
@@ -3862,22 +3670,6 @@ components:
       minLength: 1
       maxLength: 63
       pattern: ^[0-9A-Za-z_-]+$
-    DeleteExternalModelResult:
-      type: object
-    DeleteLabelResult:
-      type: object
-    DeleteListResult:
-      type: object
-    DeleteModelResult:
-      type: object
-    DeleteModelVersionResult:
-      type: object
-    DeleteOutcomeResult:
-      type: object
-    DeleteRuleResult:
-      type: object
-    DeleteVariableResult:
-      type: object
     DetectorVersionMaxResults:
       type: integer
       minimum: 1000
@@ -5509,48 +5301,16 @@ components:
         nextToken:
           $ref: '#/components/schemas/string'
           description: The next token for subsequent requests.
-    PutDetectorResult:
-      type: object
-    PutEntityTypeResult:
-      type: object
-    PutEventTypeResult:
-      type: object
-    PutExternalModelResult:
-      type: object
-    PutKMSEncryptionKeyResult:
-      type: object
-    PutLabelResult:
-      type: object
-    PutOutcomeResult:
-      type: object
-    SendEventResult:
-      type: object
-    TagResourceResult:
-      type: object
     tagKeyList:
       type: array
       items:
         $ref: '#/components/schemas/tagKey'
-    UntagResourceResult:
-      type: object
-    UpdateDetectorVersionResult:
-      type: object
-    UpdateDetectorVersionMetadataResult:
-      type: object
-    UpdateDetectorVersionStatusResult:
-      type: object
-    UpdateEventLabelResult:
-      type: object
     ListUpdateMode:
       type: string
       enum:
       - REPLACE
       - APPEND
       - REMOVE
-    UpdateListResult:
-      type: object
-    UpdateModelResult:
-      type: object
     UpdateModelVersionResult:
       type: object
       properties:
@@ -5572,15 +5332,9 @@ components:
       - ACTIVE
       - INACTIVE
       - TRAINING_CANCELLED
-    UpdateModelVersionStatusResult:
-      type: object
-    UpdateRuleMetadataResult:
-      type: object
     UpdateRuleVersionResult:
       type: object
       properties:
         rule:
           $ref: '#/components/schemas/Rule'
           description: The new rule version that was created.
-    UpdateVariableResult:
-      type: object

@@ -148,6 +148,20 @@ The following methods are available for this resource:
     <td></td>
     <td>Retrieves a list of code interpreter sessions in Amazon Bedrock AgentCore that match the specified criteria. This operation returns summary information about each session, including identifiers, status, and timestamps. You can filter the results by code interpreter identifier and session status. The operation supports pagination to handle large result sets efficiently. We recommend using pagination to ensure that the operation returns quickly and successfully when retrieving large numbers of sessions. The following operations are related to ListCodeInterpreterSessions: StartCodeInterpreterSession GetCodeInterpreterSession</td>
 </tr>
+<tr>
+    <td><a href="#start_code_interpreter_session"><CopyableCode code="start_code_interpreter_session" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-code_interpreter_identifier"><code>code_interpreter_identifier</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td><a href="#parameter-X-Amzn-Trace-Id"><code>X-Amzn-Trace-Id</code></a>, <a href="#parameter-traceparent"><code>traceparent</code></a></td>
+    <td>Creates and initializes a code interpreter session in Amazon Bedrock AgentCore. The session enables agents to execute code as part of their response generation, supporting programming languages such as Python for data analysis, visualization, and computation tasks. To create a session, you must specify a code interpreter identifier and a name. The session remains active until it times out or you explicitly stop it using the StopCodeInterpreterSession operation. The following operations are related to StartCodeInterpreterSession: InvokeCodeInterpreter GetCodeInterpreterSession StopCodeInterpreterSession</td>
+</tr>
+<tr>
+    <td><a href="#stop_code_interpreter_session"><CopyableCode code="stop_code_interpreter_session" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-code_interpreter_identifier"><code>code_interpreter_identifier</code></a>, <a href="#parameter-sessionId"><code>sessionId</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td><a href="#parameter-X-Amzn-Trace-Id"><code>X-Amzn-Trace-Id</code></a>, <a href="#parameter-traceparent"><code>traceparent</code></a></td>
+    <td>Terminates an active code interpreter session in Amazon Bedrock AgentCore. This operation stops the session, releases associated resources, and makes the session unavailable for further use. To stop a code interpreter session, you must specify both the code interpreter identifier and the session ID. Once stopped, a session cannot be restarted; you must create a new session using StartCodeInterpreterSession. The following operations are related to StopCodeInterpreterSession: StartCodeInterpreterSession GetCodeInterpreterSession</td>
+</tr>
 </tbody>
 </table>
 
@@ -167,7 +181,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-code_interpreter_identifier">
     <td><CopyableCode code="code_interpreter_identifier" /></td>
     <td><code>string</code></td>
-    <td>The unique identifier of the code interpreter to list sessions for. If specified, only sessions for this code interpreter are returned. If not specified, sessions for all code interpreters are returned.</td>
+    <td>The unique identifier of the code interpreter associated with the session.</td>
 </tr>
 <tr id="parameter-region">
     <td><CopyableCode code="region" /></td>
@@ -177,7 +191,17 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-sessionId">
     <td><CopyableCode code="sessionId" /></td>
     <td><code>string</code></td>
-    <td>The unique identifier of the code interpreter session to retrieve.</td>
+    <td>The unique identifier of the code interpreter session to stop.</td>
+</tr>
+<tr id="parameter-X-Amzn-Trace-Id">
+    <td><CopyableCode code="X-Amzn-Trace-Id" /></td>
+    <td><code>string</code></td>
+    <td>The trace identifier for request tracking.</td>
+</tr>
+<tr id="parameter-traceparent">
+    <td><CopyableCode code="traceparent" /></td>
+    <td><code>string</code></td>
+    <td>The parent trace information for distributed tracing.</td>
 </tr>
 </tbody>
 </table>
@@ -223,6 +247,57 @@ next_token
 FROM aws.bedrock_agentcore.code_interpreter_sessions
 WHERE code_interpreter_identifier = '{{ code_interpreter_identifier }}' -- required
 AND region = '{{ region }}' -- required
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="start_code_interpreter_session"
+    values={[
+        { label: 'start_code_interpreter_session', value: 'start_code_interpreter_session' },
+        { label: 'stop_code_interpreter_session', value: 'stop_code_interpreter_session' }
+    ]}
+>
+<TabItem value="start_code_interpreter_session">
+
+Creates and initializes a code interpreter session in Amazon Bedrock AgentCore. The session enables agents to execute code as part of their response generation, supporting programming languages such as Python for data analysis, visualization, and computation tasks. To create a session, you must specify a code interpreter identifier and a name. The session remains active until it times out or you explicitly stop it using the StopCodeInterpreterSession operation. The following operations are related to StartCodeInterpreterSession: InvokeCodeInterpreter GetCodeInterpreterSession StopCodeInterpreterSession
+
+```sql
+EXEC aws.bedrock_agentcore.code_interpreter_sessions.start_code_interpreter_session 
+@code_interpreter_identifier='{{ code_interpreter_identifier }}' --required, 
+@region='{{ region }}' --required, 
+@X-Amzn-Trace-Id='{{ X-Amzn-Trace-Id }}', 
+@traceparent='{{ traceparent }}' 
+@@json=
+'{
+"name": "{{ name }}", 
+"sessionTimeoutSeconds": {{ sessionTimeoutSeconds }}, 
+"certificates": "{{ certificates }}", 
+"filesystemConfigurations": "{{ filesystemConfigurations }}", 
+"clientToken": "{{ clientToken }}"
+}'
+;
+```
+</TabItem>
+<TabItem value="stop_code_interpreter_session">
+
+Terminates an active code interpreter session in Amazon Bedrock AgentCore. This operation stops the session, releases associated resources, and makes the session unavailable for further use. To stop a code interpreter session, you must specify both the code interpreter identifier and the session ID. Once stopped, a session cannot be restarted; you must create a new session using StartCodeInterpreterSession. The following operations are related to StopCodeInterpreterSession: StartCodeInterpreterSession GetCodeInterpreterSession
+
+```sql
+EXEC aws.bedrock_agentcore.code_interpreter_sessions.stop_code_interpreter_session 
+@code_interpreter_identifier='{{ code_interpreter_identifier }}' --required, 
+@sessionId='{{ sessionId }}' --required, 
+@region='{{ region }}' --required, 
+@X-Amzn-Trace-Id='{{ X-Amzn-Trace-Id }}', 
+@traceparent='{{ traceparent }}' 
+@@json=
+'{
+"clientToken": "{{ clientToken }}"
+}'
 ;
 ```
 </TabItem>

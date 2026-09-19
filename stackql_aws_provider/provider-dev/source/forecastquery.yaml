@@ -74,7 +74,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/QueryForecastResponse'
-      x-stackql-resource: query_forecast
+      x-stackql-resource: forecasts
       x-stackql-method: query_forecast
       x-stackql-verb: EXEC
   /QueryWhatIfForecast:
@@ -128,7 +128,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/QueryWhatIfForecastResponse'
-      x-stackql-resource: query_what_if_forecast
+      x-stackql-resource: what_if_forecasts
       x-stackql-method: query_what_if_forecast
       x-stackql-verb: EXEC
 components:

@@ -304,18 +304,18 @@ The following methods are available for this resource:
     <td>Returns a list of Amazon Managed Grafana workspaces in the account, with some information about each workspace. For more complete information about one workspace, use DescribeWorkspace.</td>
 </tr>
 <tr>
-    <td><a href="#create_workspace_api_key"><CopyableCode code="create_workspace_api_key" /></a></td>
-    <td><CopyableCode code="insert" /></td>
-    <td><a href="#parameter-workspace_id"><code>workspace_id</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-keyName"><code>keyName</code></a>, <a href="#parameter-keyRole"><code>keyRole</code></a>, <a href="#parameter-secondsToLive"><code>secondsToLive</code></a></td>
-    <td></td>
-    <td>Creates a Grafana API key for the workspace. This key can be used to authenticate requests sent to the workspace's HTTP API. See https:​//docs.aws.amazon.com/grafana/latest/userguide/Using-Grafana-APIs.html for available APIs and example requests. In workspaces compatible with Grafana version 9 or above, use workspace service accounts instead of API keys. API keys will be removed in a future release.</td>
-</tr>
-<tr>
     <td><a href="#create_workspace"><CopyableCode code="create_workspace" /></a></td>
     <td><CopyableCode code="insert" /></td>
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-accountAccessType"><code>accountAccessType</code></a>, <a href="#parameter-permissionType"><code>permissionType</code></a>, <a href="#parameter-authenticationProviders"><code>authenticationProviders</code></a></td>
     <td></td>
     <td>Creates a workspace. In a workspace, you can create Grafana dashboards and visualizations to analyze your metrics, logs, and traces. You don't have to build, package, or deploy any hardware to run the Grafana server. Don't use CreateWorkspace to modify an existing workspace. Instead, use UpdateWorkspace.</td>
+</tr>
+<tr>
+    <td><a href="#create_workspace_api_key"><CopyableCode code="create_workspace_api_key" /></a></td>
+    <td><CopyableCode code="insert" /></td>
+    <td><a href="#parameter-workspace_id"><code>workspace_id</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-keyName"><code>keyName</code></a>, <a href="#parameter-keyRole"><code>keyRole</code></a>, <a href="#parameter-secondsToLive"><code>secondsToLive</code></a></td>
+    <td></td>
+    <td>Creates a Grafana API key for the workspace. This key can be used to authenticate requests sent to the workspace's HTTP API. See https:​//docs.aws.amazon.com/grafana/latest/userguide/Using-Grafana-APIs.html for available APIs and example requests. In workspaces compatible with Grafana version 9 or above, use workspace service accounts instead of API keys. API keys will be removed in a future release.</td>
 </tr>
 <tr>
     <td><a href="#associate_license"><CopyableCode code="associate_license" /></a></td>
@@ -487,38 +487,13 @@ AND nextToken = '{{ nextToken }}'
 ## `INSERT` examples
 
 <Tabs
-    defaultValue="create_workspace_api_key"
+    defaultValue="create_workspace"
     values={[
-        { label: 'create_workspace_api_key', value: 'create_workspace_api_key' },
         { label: 'create_workspace', value: 'create_workspace' },
+        { label: 'create_workspace_api_key', value: 'create_workspace_api_key' },
         { label: 'Manifest', value: 'manifest' }
     ]}
 >
-<TabItem value="create_workspace_api_key">
-
-Creates a Grafana API key for the workspace. This key can be used to authenticate requests sent to the workspace's HTTP API. See https://docs.aws.amazon.com/grafana/latest/userguide/Using-Grafana-APIs.html for available APIs and example requests. In workspaces compatible with Grafana version 9 or above, use workspace service accounts instead of API keys. API keys will be removed in a future release.
-
-```sql
-INSERT INTO aws.grafana.workspaces (
-keyName,
-keyRole,
-secondsToLive,
-workspace_id,
-region
-)
-SELECT 
-'{{ keyName }}' /* required */,
-'{{ keyRole }}' /* required */,
-{{ secondsToLive }} /* required */,
-'{{ workspace_id }}',
-'{{ region }}'
-RETURNING
-key,
-key_name,
-workspace_id
-;
-```
-</TabItem>
 <TabItem value="create_workspace">
 
 Creates a workspace. In a workspace, you can create Grafana dashboards and visualizations to analyze your metrics, logs, and traces. You don't have to build, package, or deploy any hardware to run the Grafana server. Don't use CreateWorkspace to modify an existing workspace. Instead, use UpdateWorkspace.
@@ -572,23 +547,42 @@ workspace
 ;
 ```
 </TabItem>
+<TabItem value="create_workspace_api_key">
+
+Creates a Grafana API key for the workspace. This key can be used to authenticate requests sent to the workspace's HTTP API. See https://docs.aws.amazon.com/grafana/latest/userguide/Using-Grafana-APIs.html for available APIs and example requests. In workspaces compatible with Grafana version 9 or above, use workspace service accounts instead of API keys. API keys will be removed in a future release.
+
+```sql
+INSERT INTO aws.grafana.workspaces (
+keyName,
+keyRole,
+secondsToLive,
+workspace_id,
+region
+)
+SELECT 
+'{{ keyName }}' /* required */,
+'{{ keyRole }}' /* required */,
+{{ secondsToLive }} /* required */,
+'{{ workspace_id }}',
+'{{ region }}'
+RETURNING
+key,
+key_name,
+workspace_id
+;
+```
+</TabItem>
 <TabItem value="manifest">
 
 <CodeBlock language="yaml">{`# Description fields are for documentation purposes
 - name: workspaces
   props:
-    - name: workspace_id
-      value: "{{ workspace_id }}"
-      description: Required parameter for the workspaces resource.
     - name: region
       value: "{{ region }}"
       description: Required parameter for the workspaces resource.
-    - name: keyName
-      value: "{{ keyName }}"
-    - name: keyRole
-      value: "{{ keyRole }}"
-    - name: secondsToLive
-      value: {{ secondsToLive }}
+    - name: workspace_id
+      value: "{{ workspace_id }}"
+      description: Required parameter for the workspaces resource.
     - name: accountAccessType
       value: "{{ accountAccessType }}"
       valid_values: ['CURRENT_ACCOUNT', 'ORGANIZATION']
@@ -646,6 +640,12 @@ workspace
       valid_values: ['IPv4', 'DualStack']
     - name: kmsKeyId
       value: "{{ kmsKeyId }}"
+    - name: keyName
+      value: "{{ keyName }}"
+    - name: keyRole
+      value: "{{ keyRole }}"
+    - name: secondsToLive
+      value: {{ secondsToLive }}
 `}</CodeBlock>
 
 </TabItem>

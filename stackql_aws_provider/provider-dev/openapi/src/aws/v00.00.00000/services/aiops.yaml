@@ -142,10 +142,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateInvestigationGroupOutput"
   /investigationGroups/{identifier}/policy:
     delete:
       operationId: DeleteInvestigationGroupPolicy
@@ -160,10 +156,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteInvestigationGroupPolicyOutput"
     get:
       operationId: GetInvestigationGroupPolicy
       description: Returns the JSON of the IAM resource policy associated with the specified investigation group in a string. For example, {\"Version\":\"2012-10-17\",\"Statement\":[{\"Effect\":\"Allow\",\"Principal\":{\"Service\":\"aiops.alarms.cloudwatch.amazonaws.com\"},\"Action\":[\"aiops:CreateInvestigation\",\"aiops:CreateInvestigationEvent\"],\"Resource\":\"*\",\"Condition\":{\"StringEquals\":{\"aws:SourceAccount\":\"111122223333\"},\"ArnLike\":{\"aws:SourceArn\":\"arn:aws:cloudwatch:us-east-1:111122223333:alarm:*\"}}}]}.
@@ -251,10 +243,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TagResourceResponse"
     delete:
       operationId: UntagResource
       description: Removes one or more tags from the specified resource.
@@ -274,10 +262,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UntagResourceResponse"
 components:
   parameters:
     X-Amz-Content-Sha256:
@@ -398,8 +382,6 @@ components:
     InvestigationGroupIdentifier:
       type: string
       pattern: (?:[\-_A-Za-z0-9]{1,512}|arn:(aws|aws-us-gov|aws-cn|aws-iso|aws-iso-b):aiops:[a-zA-Z0-9-]*:[0-9]{12}:investigation-group\/[A-Za-z0-9]{16})
-    DeleteInvestigationGroupPolicyOutput:
-      type: object
     GetInvestigationGroupResponse:
       type: object
       properties:
@@ -511,16 +493,10 @@ components:
         investigationGroupArn:
           $ref: "#/components/schemas/InvestigationGroupArn"
           description: The ARN of the investigation group that will use this policy.
-    TagResourceResponse:
-      type: object
     TagKeys:
       type: array
       items:
         $ref: "#/components/schemas/TagKey"
-    UntagResourceResponse:
-      type: object
-    UpdateInvestigationGroupOutput:
-      type: object
   x-stackQL-resources:
     investigation_groups:
       id: aws.aiops.investigation_groups
@@ -571,7 +547,6 @@ components:
             $ref: "#/paths/~1investigationGroups~1{identifier}/patch"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -597,7 +572,6 @@ components:
             $ref: "#/paths/~1investigationGroups~1{identifier}~1policy/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         get_investigation_group_policy:
           operation:
             $ref: "#/paths/~1investigationGroups~1{identifier}~1policy/get"
@@ -640,7 +614,6 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -651,7 +624,6 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
       sqlVerbs:

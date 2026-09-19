@@ -18,16 +18,16 @@ appconfigdata service documentation.
 
 :::info[Service Summary]
 
-total resources: __1__  
+total resources: __2__  
 
 :::
 
 ## Resources
 <div class="row">
 <div class="providerDocColumn">
-<a href="/services/appconfigdata/latest_configurations/">latest_configurations</a>
+<a href="/services/appconfigdata/configuration_sessions/">configuration_sessions</a>
 </div>
 <div class="providerDocColumn">
-
+<a href="/services/appconfigdata/latest_configurations/">latest_configurations</a>
 </div>
 </div>

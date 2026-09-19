@@ -366,6 +366,8 @@ paths:
                   $ref: "#/components/schemas/TagsMap"
                 gatewayType:
                   $ref: "#/components/schemas/GatewayType"
+                clientRoutingPolicy:
+                  $ref: "#/components/schemas/ClientRoutingPolicy"
               required:
                 - vpcId
                 - subnetIds
@@ -913,10 +915,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TagResourceResponse"
     delete:
       operationId: UntagResource
       description: Removes a tag or tags from a resource.
@@ -936,10 +934,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UntagResourceResponse"
   /gateway/{gateway_id}/link/{link_id}/reject:
     post:
       operationId: RejectLink
@@ -1036,7 +1030,7 @@ paths:
   /responder-gateway/{gateway_id}/update:
     post:
       operationId: UpdateResponderGateway
-      description: Updates a responder gateway.
+      description: Updates the description, Auto Scaling group managed endpoint configuration, trust store configuration, and client routing policy of a responder gateway. This operation also updates the protocols list in the listener configuration. You cannot change the domainName, port, and protocol values that you set when you create a responder gateway. To change any of them, delete the gateway and create a new one.
       parameters:
         - name: gateway_id
           in: path
@@ -1067,6 +1061,8 @@ paths:
                   $ref: "#/components/schemas/String"
                 description:
                   $ref: "#/components/schemas/UpdateResponderGatewayRequestDescriptionString"
+                clientRoutingPolicy:
+                  $ref: "#/components/schemas/ClientRoutingPolicy"
               required:
                 - port
                 - protocol
@@ -2008,6 +2004,11 @@ components:
       enum:
         - EXTERNAL
         - INTERNAL
+    ClientRoutingPolicy:
+      type: string
+      enum:
+        - AVAILABILITY_ZONE_AFFINITY
+        - ANY_AVAILABILITY_ZONE
     CreateResponderGatewayResponse:
       type: object
       properties:
@@ -2023,6 +2024,9 @@ components:
         externalInboundEndpoint:
           $ref: "#/components/schemas/DomainName"
           description: The external inbound endpoint for the responder gateway.
+        clientRoutingPolicy:
+          $ref: "#/components/schemas/ClientRoutingPolicy"
+          description: The client routing policy of the gateway. This policy controls which Availability Zones RTB Fabric uses to reach the gateway for the requester gateways that send traffic to it. For more information, see Configuring Availability Zone affinity in the Amazon Web Services RTB Fabric User Guide.
       required:
         - gatewayId
         - status
@@ -2457,6 +2461,9 @@ components:
         externalInboundEndpoint:
           $ref: "#/components/schemas/DomainName"
           description: The external inbound endpoint for the responder gateway.
+        clientRoutingPolicy:
+          $ref: "#/components/schemas/ClientRoutingPolicy"
+          description: The client routing policy of the gateway. This policy controls which Availability Zones RTB Fabric uses to reach the gateway for the requester gateways that send traffic to it. RTB Fabric omits this member if the gateway has never had a client routing policy. An omitted value means that the gateway uses AVAILABILITY_ZONE_AFFINITY. For more information, see Configuring Availability Zone affinity in the Amazon Web Services RTB Fabric User Guide.
       required:
         - vpcId
         - subnetIds
@@ -2721,8 +2728,6 @@ components:
         - createdAt
         - updatedAt
         - linkId
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
@@ -2732,8 +2737,6 @@ components:
       minLength: 1
       maxLength: 128
       pattern: (resourceArn|internalId|[a-zA-Z0-9+\-=._:/@]+)
-    UntagResourceResponse:
-      type: object
     UpdateLinkResponse:
       type: object
       properties:
@@ -2809,6 +2812,9 @@ components:
         status:
           $ref: "#/components/schemas/ResponderGatewayStatus"
           description: The status of the request.
+        clientRoutingPolicy:
+          $ref: "#/components/schemas/ClientRoutingPolicy"
+          description: The client routing policy of the gateway. If the operation changed this policy, the gateway uses the new policy after its status returns to ACTIVE. For more information, see Configuring Availability Zone affinity in the Amazon Web Services RTB Fabric User Guide.
       required:
         - gatewayId
         - status
@@ -3274,7 +3280,6 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/post"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -3285,7 +3290,6 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/delete"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
           request:
             nativeCasing: pascal
       sqlVerbs:

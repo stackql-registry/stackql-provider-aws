@@ -57,6 +57,13 @@ The following methods are available for this resource:
     <td></td>
     <td>CreateOAuth2Token API Path: /v1/token Request Method: POST Content-Type: application/json or application/x-www-form-urlencoded This API implements OAuth 2.0 flows for AWS Sign-In CLI clients, supporting both: Authorization code redemption (grant_type=authorization_code) - NOT idempotent Token refresh (grant_type=refresh_token) - Idempotent within token validity window The operation behavior is determined by the grant_type parameter in the request body: Authorization Code Flow (NOT Idempotent): JSON or form-encoded body with client_id, grant_type=authorization_code, code, redirect_uri, code_verifier Returns access_token, token_type, expires_in, refresh_token, and id_token Each authorization code can only be used ONCE for security (prevents replay attacks) Token Refresh Flow (Idempotent): JSON or form-encoded body with client_id, grant_type=refresh_token, refresh_token Returns access_token, token_type, expires_in, and refresh_token (no id_token) Multiple calls with same refresh_token return consistent results within validity window Authentication and authorization: Confidential clients: sigv4 signing required with signin:ExchangeToken permissions CLI clients (public): authn/authz skipped based on client_id & grant_type Note: This operation cannot be marked as @idempotent because it handles both idempotent (token refresh) and non-idempotent (auth code redemption) flows in a single endpoint.</td>
 </tr>
+<tr>
+    <td><a href="#introspect_o_auth2_token_with_iam"><CopyableCode code="introspect_o_auth2_token_with_iam" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-token"><code>token</code></a></td>
+    <td></td>
+    <td>Grants permission to inspect the metadata and state of an OAuth 2.0 access token or refresh token Implements RFC 7662 OAuth 2.0 Token Introspection over a SigV4-authenticated endpoint. Inspects the metadata of an access_token or refresh_token issued by AWS Sign-In and returns the claims associated with it. Inactive token semantics (RFC 7662 §2.2): when the supplied token is unknown, expired, revoked, malformed, or owned by a different account, the response body is exactly &#123; "active": false &#125; with all other claims omitted.</td>
+</tr>
 </tbody>
 </table>
 
@@ -127,5 +134,31 @@ token_output
         refreshToken: "{{ refreshToken }}"
 `}</CodeBlock>
 
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="introspect_o_auth2_token_with_iam"
+    values={[
+        { label: 'introspect_o_auth2_token_with_iam', value: 'introspect_o_auth2_token_with_iam' }
+    ]}
+>
+<TabItem value="introspect_o_auth2_token_with_iam">
+
+Grants permission to inspect the metadata and state of an OAuth 2.0 access token or refresh token Implements RFC 7662 OAuth 2.0 Token Introspection over a SigV4-authenticated endpoint. Inspects the metadata of an access_token or refresh_token issued by AWS Sign-In and returns the claims associated with it. Inactive token semantics (RFC 7662 §2.2): when the supplied token is unknown, expired, revoked, malformed, or owned by a different account, the response body is exactly &#123; "active": false &#125; with all other claims omitted.
+
+```sql
+EXEC aws.signin.o_auth2_tokens.introspect_o_auth2_token_with_iam 
+@region='{{ region }}' --required 
+@@json=
+'{
+"token": "{{ token }}", 
+"tokenTypeHint": "{{ tokenTypeHint }}"
+}'
+;
+```
 </TabItem>
 </Tabs>

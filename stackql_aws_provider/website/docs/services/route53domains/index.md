@@ -18,19 +18,21 @@ route53domains service documentation.
 
 :::info[Service Summary]
 
-total resources: __8__  
+total resources: __10__  
 
 :::
 
 ## Resources
 <div class="row">
 <div class="providerDocColumn">
-<a href="/services/route53domains/contact_reachability_status/">contact_reachability_status</a><br />
+<a href="/services/route53domains/billings/">billings</a><br />
+<a href="/services/route53domains/contact_reachability_emails/">contact_reachability_emails</a><br />
+<a href="/services/route53domains/contact_reachability_statuses/">contact_reachability_statuses</a><br />
 <a href="/services/route53domains/domain_details/">domain_details</a><br />
-<a href="/services/route53domains/domain_suggestions/">domain_suggestions</a><br />
-<a href="/services/route53domains/domains/">domains</a>
+<a href="/services/route53domains/domain_suggestions/">domain_suggestions</a>
 </div>
 <div class="providerDocColumn">
+<a href="/services/route53domains/domains/">domains</a><br />
 <a href="/services/route53domains/operation_details/">operation_details</a><br />
 <a href="/services/route53domains/operations/">operations</a><br />
 <a href="/services/route53domains/prices/">prices</a><br />

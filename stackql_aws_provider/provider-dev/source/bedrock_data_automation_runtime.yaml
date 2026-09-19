@@ -51,7 +51,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetDataAutomationStatusResponse'
-      x-stackql-resource: data_automation_status
+      x-stackql-resource: data_automation_statuses
       x-stackql-method: get_data_automation_status
       x-stackql-verb: SELECT
   /InvokeDataAutomation:
@@ -103,7 +103,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/InvokeDataAutomationResponse'
-      x-stackql-resource: data_automation
+      x-stackql-resource: data_automations
       x-stackql-method: invoke_data_automation
       x-stackql-verb: EXEC
   /InvokeDataAutomationAsync:
@@ -165,7 +165,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/InvokeDataAutomationAsyncResponse'
-      x-stackql-resource: data_automation_async
+      x-stackql-resource: data_automation_asyncs
       x-stackql-method: invoke_data_automation_async
       x-stackql-verb: EXEC
   /ListTagsForResource:
@@ -234,10 +234,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -272,10 +268,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -660,12 +652,8 @@ components:
       properties:
         tags:
           $ref: '#/components/schemas/TagList'
-    TagResourceResponse:
-      type: object
     TagKeyList:
       description: List of tag keys
       type: array
       items:
         $ref: '#/components/schemas/TagKey'
-    UntagResourceResponse:
-      type: object

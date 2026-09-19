@@ -18,7 +18,7 @@ lexv2_models service documentation.
 
 :::info[Service Summary]
 
-total resources: __41__  
+total resources: __40__  
 
 :::
 
@@ -27,7 +27,6 @@ total resources: __41__
 <div class="providerDocColumn">
 <a href="/services/lexv2_models/aggregated_utterances/">aggregated_utterances</a><br />
 <a href="/services/lexv2_models/associated_transcripts/">associated_transcripts</a><br />
-<a href="/services/lexv2_models/bot_alias/">bot_alias</a><br />
 <a href="/services/lexv2_models/bot_alias_replicas/">bot_alias_replicas</a><br />
 <a href="/services/lexv2_models/bot_aliases/">bot_aliases</a><br />
 <a href="/services/lexv2_models/bot_analyzer_histories/">bot_analyzer_histories</a><br />
@@ -42,7 +41,7 @@ total resources: __41__
 <a href="/services/lexv2_models/built_in_intents/">built_in_intents</a><br />
 <a href="/services/lexv2_models/built_in_slot_types/">built_in_slot_types</a><br />
 <a href="/services/lexv2_models/custom_vocabulary_items/">custom_vocabulary_items</a><br />
-<a href="/services/lexv2_models/custom_vocabulary_metadatas/">custom_vocabulary_metadatas</a><br />
+<a href="/services/lexv2_models/custom_vocabulary_metadata/">custom_vocabulary_metadata</a><br />
 <a href="/services/lexv2_models/exports/">exports</a><br />
 <a href="/services/lexv2_models/imports/">imports</a><br />
 <a href="/services/lexv2_models/intent_metrics/">intent_metrics</a>
@@ -53,7 +52,7 @@ total resources: __41__
 <a href="/services/lexv2_models/intents/">intents</a><br />
 <a href="/services/lexv2_models/recommended_intents/">recommended_intents</a><br />
 <a href="/services/lexv2_models/resource_policies/">resource_policies</a><br />
-<a href="/services/lexv2_models/session_analytics_datas/">session_analytics_datas</a><br />
+<a href="/services/lexv2_models/session_analytics_data/">session_analytics_data</a><br />
 <a href="/services/lexv2_models/session_metrics/">session_metrics</a><br />
 <a href="/services/lexv2_models/slot_types/">slot_types</a><br />
 <a href="/services/lexv2_models/slots/">slots</a><br />
@@ -66,7 +65,7 @@ total resources: __41__
 <a href="/services/lexv2_models/test_set_records/">test_set_records</a><br />
 <a href="/services/lexv2_models/test_sets/">test_sets</a><br />
 <a href="/services/lexv2_models/upload_urls/">upload_urls</a><br />
-<a href="/services/lexv2_models/utterance_analytics_datas/">utterance_analytics_datas</a><br />
+<a href="/services/lexv2_models/utterance_analytics_data/">utterance_analytics_data</a><br />
 <a href="/services/lexv2_models/utterance_metrics/">utterance_metrics</a>
 </div>
 </div>

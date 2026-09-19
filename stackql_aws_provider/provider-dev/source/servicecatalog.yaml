@@ -56,11 +56,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/AcceptPortfolioShareOutput'
-      x-stackql-resource: portfolios
+      x-stackql-resource: portfolio_shares
       x-stackql-method: accept_portfolio_share
       x-stackql-verb: EXEC
   /AssociateBudgetWithResource:
@@ -96,11 +92,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/AssociateBudgetWithResourceOutput'
-      x-stackql-resource: budget_with_resources
+      x-stackql-resource: resources
       x-stackql-method: associate_budget_with_resource
       x-stackql-verb: UPDATE
   /AssociatePrincipalWithPortfolio:
@@ -170,10 +162,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/AssociatePrincipalWithPortfolioOutput'
       x-stackql-resource: portfolios
       x-stackql-method: associate_principal_with_portfolio
       x-stackql-verb: UPDATE
@@ -217,10 +205,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/AssociateProductWithPortfolioOutput'
       x-stackql-resource: portfolios
       x-stackql-method: associate_product_with_portfolio
       x-stackql-verb: UPDATE
@@ -269,10 +253,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/AssociateServiceActionWithProvisioningArtifactOutput'
       x-stackql-resource: provisioning_artifacts
       x-stackql-method: associate_service_action_with_provisioning_artifact
       x-stackql-verb: UPDATE
@@ -309,11 +289,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/AssociateTagOptionWithResourceOutput'
-      x-stackql-resource: tag_options
+      x-stackql-resource: resources
       x-stackql-method: associate_tag_option_with_resource
       x-stackql-verb: UPDATE
   /BatchAssociateServiceActionWithProvisioningArtifact:
@@ -353,7 +329,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchAssociateServiceActionWithProvisioningArtifactOutput'
-      x-stackql-resource: batch_associate_service_action_with_provisioning_artifact
+      x-stackql-resource: service_actions
       x-stackql-method: batch_associate_service_action_with_provisioning_artifact
       x-stackql-verb: EXEC
   /BatchDisassociateServiceActionFromProvisioningArtifact:
@@ -393,7 +369,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchDisassociateServiceActionFromProvisioningArtifactOutput'
-      x-stackql-resource: batch_disassociate_service_action_from_provisioning_artifact
+      x-stackql-resource: provisioning_artifacts
       x-stackql-method: batch_disassociate_service_action_from_provisioning_artifact
       x-stackql-verb: EXEC
   /CopyProduct:
@@ -454,7 +430,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CopyProductOutput'
-      x-stackql-resource: product
+      x-stackql-resource: products
       x-stackql-method: copy_product
       x-stackql-verb: EXEC
   /CreateConstraint:
@@ -1005,10 +981,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteConstraintOutput'
       x-stackql-resource: constraints
       x-stackql-method: delete_constraint
       x-stackql-verb: DELETE
@@ -1045,10 +1017,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeletePortfolioOutput'
       x-stackql-resource: portfolios
       x-stackql-method: delete_portfolio
       x-stackql-verb: DELETE
@@ -1132,10 +1100,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteProductOutput'
       x-stackql-resource: products
       x-stackql-method: delete_product
       x-stackql-verb: DELETE
@@ -1175,10 +1139,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteProvisionedProductPlanOutput'
       x-stackql-resource: provisioned_product_plans
       x-stackql-method: delete_provisioned_product_plan
       x-stackql-verb: DELETE
@@ -1220,10 +1180,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteProvisioningArtifactOutput'
       x-stackql-resource: provisioning_artifacts
       x-stackql-method: delete_provisioning_artifact
       x-stackql-verb: DELETE
@@ -1264,10 +1220,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteServiceActionOutput'
       x-stackql-resource: service_actions
       x-stackql-method: delete_service_action
       x-stackql-verb: DELETE
@@ -1300,10 +1252,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteTagOptionOutput'
       x-stackql-resource: tag_options
       x-stackql-method: delete_tag_option
       x-stackql-verb: DELETE
@@ -1382,7 +1330,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DescribeCopyProductStatusOutput'
-      x-stackql-resource: copy_product_status
+      x-stackql-resource: copy_product_statuses
       x-stackql-method: describe_copy_product_status
       x-stackql-verb: SELECT
   /DescribePortfolio:
@@ -1459,7 +1407,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DescribePortfolioShareStatusOutput'
-      x-stackql-resource: portfolio_share_status
+      x-stackql-resource: portfolio_share_statuses
       x-stackql-method: describe_portfolio_share_status
       x-stackql-verb: SELECT
   /DescribePortfolioShares:
@@ -2042,11 +1990,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DisableAWSOrganizationsAccessOutput'
-      x-stackql-resource: aws_organizations_access
+      x-stackql-resource: aws_organizations_accesses
       x-stackql-method: disable_aws_organizations_access
       x-stackql-verb: EXEC
   /DisassociateBudgetFromResource:
@@ -2082,11 +2026,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DisassociateBudgetFromResourceOutput'
-      x-stackql-resource: budget_from_resources
+      x-stackql-resource: resources
       x-stackql-method: disassociate_budget_from_resource
       x-stackql-verb: UPDATE
   /DisassociatePrincipalFromPortfolio:
@@ -2139,10 +2079,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DisassociatePrincipalFromPortfolioOutput'
       x-stackql-resource: portfolios
       x-stackql-method: disassociate_principal_from_portfolio
       x-stackql-verb: UPDATE
@@ -2183,10 +2119,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DisassociateProductFromPortfolioOutput'
       x-stackql-resource: portfolios
       x-stackql-method: disassociate_product_from_portfolio
       x-stackql-verb: UPDATE
@@ -2235,10 +2167,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DisassociateServiceActionFromProvisioningArtifactOutput'
       x-stackql-resource: provisioning_artifacts
       x-stackql-method: disassociate_service_action_from_provisioning_artifact
       x-stackql-verb: UPDATE
@@ -2275,11 +2203,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DisassociateTagOptionFromResourceOutput'
-      x-stackql-resource: tag_options
+      x-stackql-resource: resources
       x-stackql-method: disassociate_tag_option_from_resource
       x-stackql-verb: UPDATE
   /EnableAWSOrganizationsAccess:
@@ -2315,11 +2239,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/EnableAWSOrganizationsAccessOutput'
-      x-stackql-resource: aws_organizations_access
+      x-stackql-resource: aws_organizations_accesses
       x-stackql-method: enable_aws_organizations_access
       x-stackql-verb: EXEC
   /ExecuteProvisionedProductPlan:
@@ -2363,7 +2283,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ExecuteProvisionedProductPlanOutput'
-      x-stackql-resource: execute_provisioned_product_plan
+      x-stackql-resource: provisioned_product_plans
       x-stackql-method: execute_provisioned_product_plan
       x-stackql-verb: EXEC
   /ExecuteProvisionedProductServiceAction:
@@ -2416,7 +2336,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ExecuteProvisionedProductServiceActionOutput'
-      x-stackql-resource: provisioned_products
+      x-stackql-resource: service_actions
       x-stackql-method: execute_provisioned_product_service_action
       x-stackql-verb: EXEC
   /GetAWSOrganizationsAccessStatus:
@@ -2447,7 +2367,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetAWSOrganizationsAccessStatusOutput'
-      x-stackql-resource: aws_organizations_access_status
+      x-stackql-resource: aws_organizations_access_statuses
       x-stackql-method: get_aws_organizations_access_status
       x-stackql-verb: SELECT
   /GetProvisionedProductOutputs:
@@ -2566,7 +2486,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ImportAsProvisionedProductOutput'
-      x-stackql-resource: provisioning_artifacts
+      x-stackql-resource: provisioned_products
       x-stackql-method: import_as_provisioned_product
       x-stackql-verb: EXEC
   /ListAcceptedPortfolioShares:
@@ -2662,7 +2582,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListBudgetsForResourceOutput'
-      x-stackql-resource: budgets_for_resources
+      x-stackql-resource: budgets
       x-stackql-method: list_budgets_for_resource
       x-stackql-verb: SELECT
   /ListConstraintsForPortfolio:
@@ -2710,7 +2630,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListConstraintsForPortfolioOutput'
-      x-stackql-resource: constraints_for_portfolios
+      x-stackql-resource: constraints
       x-stackql-method: list_constraints_for_portfolio
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ConstraintDetails
@@ -2820,7 +2740,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListOrganizationPortfolioAccessOutput'
-      x-stackql-resource: organization_portfolio_access
+      x-stackql-resource: organization_portfolio_accesses
       x-stackql-method: list_organization_portfolio_access
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.OrganizationNodes
@@ -2875,7 +2795,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListPortfolioAccessOutput'
-      x-stackql-resource: portfolio_access
+      x-stackql-resource: portfolio_accesses
       x-stackql-method: list_portfolio_access
       x-stackql-verb: SELECT
   /ListPortfolios:
@@ -2964,7 +2884,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListPortfoliosForProductOutput'
-      x-stackql-resource: portfolios_for_products
+      x-stackql-resource: portfolios
       x-stackql-method: list_portfolios_for_product
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.PortfolioDetails
@@ -3013,7 +2933,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListPrincipalsForPortfolioOutput'
-      x-stackql-resource: principals_for_portfolios
+      x-stackql-resource: principals
       x-stackql-method: list_principals_for_portfolio
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Principals
@@ -3151,7 +3071,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListProvisioningArtifactsForServiceActionOutput'
-      x-stackql-resource: provisioning_artifacts_for_service_actions
+      x-stackql-resource: provisioning_artifacts
       x-stackql-method: list_provisioning_artifacts_for_service_action
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ProvisioningArtifactViews
@@ -3250,7 +3170,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListResourcesForTagOptionOutput'
-      x-stackql-resource: resources_for_tag_options
+      x-stackql-resource: resources
       x-stackql-method: list_resources_for_tag_option
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ResourceDetails
@@ -3348,7 +3268,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListServiceActionsForProvisioningArtifactOutput'
-      x-stackql-resource: service_actions_for_provisioning_artifacts
+      x-stackql-resource: service_actions
       x-stackql-method: list_service_actions_for_provisioning_artifact
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ServiceActionSummaries
@@ -3399,7 +3319,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListStackInstancesForProvisionedProductOutput'
-      x-stackql-resource: stack_instances_for_provisioned_products
+      x-stackql-resource: stack_instances
       x-stackql-method: list_stack_instances_for_provisioned_product
       x-stackql-verb: SELECT
   /ListTagOptions:
@@ -3497,10 +3417,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/NotifyProvisionProductEngineWorkflowResultOutput'
       x-stackql-resource: records
       x-stackql-method: notify_provision_product_engine_workflow_result
       x-stackql-verb: EXEC
@@ -3549,10 +3465,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/NotifyTerminateProvisionedProductEngineWorkflowResultOutput'
       x-stackql-resource: records
       x-stackql-method: notify_terminate_provisioned_product_engine_workflow_result
       x-stackql-verb: EXEC
@@ -3604,10 +3516,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/NotifyUpdateProvisionedProductEngineWorkflowResultOutput'
       x-stackql-resource: records
       x-stackql-method: notify_update_provisioned_product_engine_workflow_result
       x-stackql-verb: EXEC
@@ -3731,11 +3639,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RejectPortfolioShareOutput'
-      x-stackql-resource: portfolios
+      x-stackql-resource: portfolio_shares
       x-stackql-method: reject_portfolio_share
       x-stackql-verb: EXEC
   /ScanProvisionedProducts:
@@ -4608,14 +4512,10 @@ components:
       - IMPORTED
       - AWS_SERVICECATALOG
       - AWS_ORGANIZATIONS
-    AcceptPortfolioShareOutput:
-      type: object
     BudgetName:
       type: string
       minLength: 1
       maxLength: 100
-    AssociateBudgetWithResourceOutput:
-      type: object
     PrincipalARN:
       type: string
       minLength: 1
@@ -4625,25 +4525,17 @@ components:
       enum:
       - IAM
       - IAM_PATTERN
-    AssociatePrincipalWithPortfolioOutput:
-      type: object
-    AssociateProductWithPortfolioOutput:
-      type: object
     IdempotencyToken:
       type: string
       minLength: 1
       maxLength: 128
       pattern: '[a-zA-Z0-9][a-zA-Z0-9_-]*'
-    AssociateServiceActionWithProvisioningArtifactOutput:
-      type: object
     ResourceId:
       type: string
     TagOptionId:
       type: string
       minLength: 1
       maxLength: 100
-    AssociateTagOptionWithResourceOutput:
-      type: object
     ServiceActionAssociations:
       type: array
       items:
@@ -5383,10 +5275,6 @@ components:
       type: boolean
     Owner:
       type: string
-    DeleteConstraintOutput:
-      type: object
-    DeletePortfolioOutput:
-      type: object
     DeletePortfolioShareOutput:
       type: object
       properties:
@@ -5394,18 +5282,8 @@ components:
           $ref: '#/components/schemas/Id'
           description: The portfolio share unique identifier. This will only be returned if delete is made to an organization
             node.
-    DeleteProductOutput:
-      type: object
     IgnoreErrors:
       type: boolean
-    DeleteProvisionedProductPlanOutput:
-      type: object
-    DeleteProvisioningArtifactOutput:
-      type: object
-    DeleteServiceActionOutput:
-      type: object
-    DeleteTagOptionOutput:
-      type: object
     DescribeConstraintOutput:
       type: object
       properties:
@@ -6398,20 +6276,6 @@ components:
         TagOptionDetail:
           $ref: '#/components/schemas/TagOptionDetail'
           description: Information about the TagOption.
-    DisableAWSOrganizationsAccessOutput:
-      type: object
-    DisassociateBudgetFromResourceOutput:
-      type: object
-    DisassociatePrincipalFromPortfolioOutput:
-      type: object
-    DisassociateProductFromPortfolioOutput:
-      type: object
-    DisassociateServiceActionFromProvisioningArtifactOutput:
-      type: object
-    DisassociateTagOptionFromResourceOutput:
-      type: object
-    EnableAWSOrganizationsAccessOutput:
-      type: object
     ExecuteProvisionedProductPlanOutput:
       type: object
       properties:
@@ -6903,12 +6767,6 @@ components:
       minLength: 1
       maxLength: 256
       pattern: ^([\p{L}\p{Z}\p{N}_.:\/=+\-@]*)$
-    NotifyProvisionProductEngineWorkflowResultOutput:
-      type: object
-    NotifyTerminateProvisionedProductEngineWorkflowResultOutput:
-      type: object
-    NotifyUpdateProvisionedProductEngineWorkflowResultOutput:
-      type: object
     ProvisioningParameters:
       type: array
       items:
@@ -6996,8 +6854,6 @@ components:
         RecordDetail:
           $ref: '#/components/schemas/RecordDetail'
           description: Information about the result of provisioning the product.
-    RejectPortfolioShareOutput:
-      type: object
     ScanProvisionedProductsOutput:
       type: object
       properties:

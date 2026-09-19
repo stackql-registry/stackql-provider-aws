@@ -427,10 +427,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TagResourceResponse"
     delete:
       operationId: UntagResource
       description: Removes metadata tags from an elastic cluster resource
@@ -450,10 +446,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UntagResourceResponse"
   /cluster-snapshot/{snapshot_arn}/restore:
     post:
       operationId: RestoreClusterFromSnapshot
@@ -1022,8 +1014,6 @@ components:
           $ref: "#/components/schemas/Cluster"
       required:
         - cluster
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
@@ -1033,8 +1023,6 @@ components:
       minLength: 1
       maxLength: 128
       pattern: ^(?!aws:)[a-zA-Z+-=._:/]+$
-    UntagResourceResponse:
-      type: object
     UpdateClusterOutput:
       type: object
       properties:
@@ -1044,6 +1032,53 @@ components:
       required:
         - cluster
   x-stackQL-resources:
+    pending_maintenance_actions:
+      id: aws.docdb_elastic.pending_maintenance_actions
+      name: pending_maintenance_actions
+      title: pending_maintenance_actions
+      methods:
+        apply_pending_maintenance_action:
+          operation:
+            $ref: "#/paths/~1pending-action/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        get_pending_maintenance_action:
+          operation:
+            $ref: "#/paths/~1pending-action~1{resource_arn}/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.resourcePendingMaintenanceAction
+        list_pending_maintenance_actions:
+          operation:
+            $ref: "#/paths/~1pending-actions/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.resourcePendingMaintenanceActions
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/pending_maintenance_actions/methods/get_pending_maintenance_action"
+          - $ref: "#/components/x-stackQL-resources/pending_maintenance_actions/methods/list_pending_maintenance_actions"
+        insert: []
+        update: []
+        delete: []
     clusters:
       id: aws.docdb_elastic.clusters
       name: clusters
@@ -1200,42 +1235,6 @@ components:
         update: []
         delete:
           - $ref: "#/components/x-stackQL-resources/cluster_snapshots/methods/delete_cluster_snapshot"
-    pending_maintenance_actions:
-      id: aws.docdb_elastic.pending_maintenance_actions
-      name: pending_maintenance_actions
-      title: pending_maintenance_actions
-      methods:
-        get_pending_maintenance_action:
-          operation:
-            $ref: "#/paths/~1pending-action~1{resource_arn}/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.resourcePendingMaintenanceAction
-        list_pending_maintenance_actions:
-          operation:
-            $ref: "#/paths/~1pending-actions/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.resourcePendingMaintenanceActions
-          request:
-            nativeCasing: pascal
-          config:
-            pagination:
-              requestToken:
-                key: nextToken
-                location: query
-              responseToken:
-                key: $.nextToken
-                location: body
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/pending_maintenance_actions/methods/get_pending_maintenance_action"
-          - $ref: "#/components/x-stackQL-resources/pending_maintenance_actions/methods/list_pending_maintenance_actions"
-        insert: []
-        update: []
-        delete: []
     tags:
       id: aws.docdb_elastic.tags
       name: tags
@@ -1252,7 +1251,6 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -1263,7 +1261,6 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
       sqlVerbs:

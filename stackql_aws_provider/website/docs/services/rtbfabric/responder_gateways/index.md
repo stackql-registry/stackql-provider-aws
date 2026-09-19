@@ -56,6 +56,11 @@ The following fields are returned by `SELECT` queries:
     <td>The count of active links for the responder gateway.</td>
 </tr>
 <tr>
+    <td><CopyableCode code="client_routing_policy" /></td>
+    <td><code>string</code></td>
+    <td>The client routing policy of the gateway. This policy controls which Availability Zones RTB Fabric uses to reach the gateway for the requester gateways that send traffic to it. RTB Fabric omits this member if the gateway has never had a client routing policy. An omitted value means that the gateway uses AVAILABILITY_ZONE_AFFINITY. For more information, see Configuring Availability Zone affinity in the Amazon Web Services RTB Fabric User Guide. (AVAILABILITY_ZONE_AFFINITY, ANY_AVAILABILITY_ZONE)</td>
+</tr>
+<tr>
     <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp of when the responder gateway was created.</td>
@@ -215,7 +220,7 @@ The following methods are available for this resource:
     <td><CopyableCode code="update" /></td>
     <td><a href="#parameter-gateway_id"><code>gateway_id</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-port"><code>port</code></a>, <a href="#parameter-protocol"><code>protocol</code></a>, <a href="#parameter-clientToken"><code>clientToken</code></a></td>
     <td></td>
-    <td>Updates a responder gateway.</td>
+    <td>Updates the description, Auto Scaling group managed endpoint configuration, trust store configuration, and client routing policy of a responder gateway. This operation also updates the protocols list in the listener configuration. You cannot change the domainName, port, and protocol values that you set when you create a responder gateway. To change any of them, delete the gateway and create a new one.</td>
 </tr>
 <tr>
     <td><a href="#delete_responder_gateway"><CopyableCode code="delete_responder_gateway" /></a></td>
@@ -279,6 +284,7 @@ Retrieves information about a responder gateway.
 ```sql
 SELECT
 active_links_count,
+client_routing_policy,
 created_at,
 description,
 domain_name,
@@ -349,6 +355,7 @@ clientToken,
 description,
 tags,
 gatewayType,
+clientRoutingPolicy,
 region
 )
 SELECT 
@@ -365,8 +372,10 @@ SELECT
 '{{ description }}',
 '{{ tags }}',
 '{{ gatewayType }}',
+'{{ clientRoutingPolicy }}',
 '{{ region }}'
 RETURNING
+client_routing_policy,
 external_inbound_endpoint,
 gateway_id,
 listener_config,
@@ -444,6 +453,9 @@ status
       description: |
         The type of gateway.
       valid_values: ['EXTERNAL', 'INTERNAL']
+    - name: clientRoutingPolicy
+      value: "{{ clientRoutingPolicy }}"
+      valid_values: ['AVAILABILITY_ZONE_AFFINITY', 'ANY_AVAILABILITY_ZONE']
 `}</CodeBlock>
 
 </TabItem>
@@ -460,7 +472,7 @@ status
 >
 <TabItem value="update_responder_gateway">
 
-Updates a responder gateway.
+Updates the description, Auto Scaling group managed endpoint configuration, trust store configuration, and client routing policy of a responder gateway. This operation also updates the protocols list in the listener configuration. You cannot change the domainName, port, and protocol values that you set when you create a responder gateway. To change any of them, delete the gateway and create a new one.
 
 ```sql
 UPDATE aws.rtbfabric.responder_gateways
@@ -472,7 +484,8 @@ listenerConfig = '{{ listenerConfig }}',
 trustStoreConfiguration = '{{ trustStoreConfiguration }}',
 managedEndpointConfiguration = '{{ managedEndpointConfiguration }}',
 clientToken = '{{ clientToken }}',
-description = '{{ description }}'
+description = '{{ description }}',
+clientRoutingPolicy = '{{ clientRoutingPolicy }}'
 WHERE 
 gateway_id = '{{ gateway_id }}' --required
 AND region = '{{ region }}' --required
@@ -480,6 +493,7 @@ AND port = '{{ port }}' --required
 AND protocol = '{{ protocol }}' --required
 AND clientToken = '{{ clientToken }}' --required
 RETURNING
+client_routing_policy,
 gateway_id,
 status;
 ```

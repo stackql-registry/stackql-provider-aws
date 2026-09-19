@@ -26,7 +26,7 @@ total resources: __6__
 <div class="row">
 <div class="providerDocColumn">
 <a href="/services/codeguru_reviewer/code_reviews/">code_reviews</a><br />
-<a href="/services/codeguru_reviewer/recommendation_feedbacks/">recommendation_feedbacks</a><br />
+<a href="/services/codeguru_reviewer/recommendation_feedback/">recommendation_feedback</a><br />
 <a href="/services/codeguru_reviewer/recommendations/">recommendations</a>
 </div>
 <div class="providerDocColumn">

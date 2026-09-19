@@ -892,10 +892,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteCodeSigningConfigResponse"
     get:
       operationId: GetCodeSigningConfig
       description: Returns information about the specified code signing configuration.
@@ -1427,6 +1423,71 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/PutProvisionedConcurrencyConfigResponse"
+  /2026-07-09/resource-policy/{resource_arn}:
+    delete:
+      operationId: DeleteResourcePolicy
+      description: Deletes a resource-based policy from a Lambda resource.
+      parameters:
+        - name: resource_arn
+          in: path
+          required: true
+          schema:
+            $ref: "#/components/schemas/PolicyResourceArn"
+          description: The Amazon Resource Name (ARN) of the Lambda resource you want to delete the policy from. You can use a qualified or an unqualified ARN. The value must be a complete ARN, and the operation does not accept wildcard characters.
+        - name: RevisionId
+          in: query
+          required: false
+          schema:
+            $ref: "#/components/schemas/RevisionId"
+          description: The revision ID that the existing policy must match for the deletion to proceed. If the revision ID doesn't match, the operation fails with a PreconditionFailedException error. To retrieve the current revision ID, use the GetResourcePolicy operation.
+      responses:
+        "204":
+          description: Success
+    get:
+      operationId: GetResourcePolicy
+      description: Retrieves the resource-based policy attached to a Lambda resource.
+      parameters:
+        - name: resource_arn
+          in: path
+          required: true
+          schema:
+            $ref: "#/components/schemas/PolicyResourceArn"
+          description: The Amazon Resource Name (ARN) of the Lambda resource you want to retrieve the policy for. You can use a qualified or an unqualified ARN. The value must be a complete ARN, and the operation does not accept wildcard characters.
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GetResourcePolicyResponse"
+    put:
+      operationId: PutResourcePolicy
+      description: Adds a resource-based policy to a Lambda resource. Resource-based policies grant access to other Amazon Web Services accounts, organizations, or services. Resource-based policies apply to a single Lambda resource (for example, a function, function version, or function alias). This operation replaces any existing policy on the Lambda resource. If you previously added permissions using the AddPermission operation, the new policy overwrites those permissions.
+      parameters:
+        - name: resource_arn
+          in: path
+          required: true
+          schema:
+            $ref: "#/components/schemas/PolicyResourceArn"
+          description: The Amazon Resource Name (ARN) of the Lambda resource you want to add the policy to. You can use a qualified or an unqualified ARN. The value must be a complete ARN, and the operation does not accept wildcard characters.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                Policy:
+                  $ref: "#/components/schemas/ResourcePolicy"
+                RevisionId:
+                  $ref: "#/components/schemas/RevisionId"
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PutResourcePolicyResponse"
   /2016-08-19/account-settings:
     get:
       operationId: GetAccountSettings
@@ -2512,10 +2573,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/SendDurableExecutionCallbackFailureResponse"
   /2025-12-01/durable-execution-callbacks/{callback_id}/heartbeat:
     post:
       operationId: SendDurableExecutionCallbackHeartbeat
@@ -2530,10 +2587,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/SendDurableExecutionCallbackHeartbeatResponse"
   /2025-12-01/durable-execution-callbacks/{callback_id}/succeed:
     post:
       operationId: SendDurableExecutionCallbackSuccess
@@ -2557,10 +2610,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/SendDurableExecutionCallbackSuccessResponse"
   /2025-12-01/durable-executions/{durable_execution_arn}/stop:
     post:
       operationId: StopDurableExecution
@@ -2725,7 +2774,7 @@ components:
       type: string
       minLength: 1
       maxLength: 256
-      pattern: (arn:(aws[a-zA-Z-]*)?:lambda:(eusc-)?[a-z]{2}((-gov)|(-iso([a-z]?)))?-[a-z]+-\d{1}:\d{12}:|(((eusc-)?[a-z]{2}((-gov)|(-iso([a-z]?)))?-[a-z]+-\d{1}:)?(\d{12}:)?))(function:)?([a-zA-Z0-9-_\.]+)(:(\$LATEST(\.PUBLISHED)?|[a-zA-Z0-9-_]+))?
+      pattern: (arn:(aws[a-zA-Z-]*)?:lambda:)?((eusc-)?[a-z]{2}((-gov)|(-iso([a-z]?)))?-[a-z]+-\d{1}:)?(\d{12}:)?(function:)?([a-zA-Z0-9-_\.]+)(:(\$LATEST(\.PUBLISHED)?|[a-zA-Z0-9-_]+))?
     NumericLatestPublishedOrAliasQualifier:
       type: string
       minLength: 1
@@ -3825,7 +3874,7 @@ components:
           description: The minimum number of event pollers this event source can scale down to. For Amazon SQS events source mappings, default is 2, and minimum 2 required. For Amazon MSK and self-managed Apache Kafka event source mappings, default is 1.
         MaximumPollers:
           $ref: "#/components/schemas/MaximumNumberOfPollers"
-          description: The maximum number of event pollers this event source can scale up to. For Amazon SQS events source mappings, default is 200, and minimum value allowed is 2. For Amazon MSK and self-managed Apache Kafka event source mappings, default is 200, and minimum value allowed is 1.
+          description: The maximum number of event pollers this event source can scale up to. For Amazon SQS event source mappings, the accepted range is between 2 and 10,000, with a default of 200. For Amazon MSK and self-managed Apache Kafka event source mappings, the accepted range is between 1 and 2,000, with a default of 200.
         PollerGroupName:
           $ref: "#/components/schemas/ProvisionedPollerGroupName"
           description: (Amazon MSK and self-managed Apache Kafka) The name of the provisioned poller group. Use this option to group multiple ESMs within the event source's VPC to share Event Poller Unit (EPU) capacity. You can use this option to optimize Provisioned mode costs for your ESMs. You can group up to 100 ESMs per poller group and aggregate maximum pollers across all ESMs in a group cannot exceed 2000.
@@ -4170,7 +4219,7 @@ components:
       items:
         $ref: "#/components/schemas/FileSystemConfig"
     FileSystemConfig:
-      description: Details about the connection between a Lambda function and an Amazon EFS file system or an Amazon S3 Files file system.
+      description: Details about the connection between a Lambda function and an Amazon EFS file system or an Amazon S3 file system.
       type: object
       properties:
         Arn:
@@ -4179,6 +4228,9 @@ components:
         LocalMountPath:
           $ref: "#/components/schemas/LocalMountPath"
           description: The path where the function can access the file system, starting with /mnt/.
+        S3FilesConfig:
+          $ref: "#/components/schemas/S3FilesConfig"
+          description: The configuration for how your function accesses data on an Amazon S3 file system. Valid only when the file system access point ARN is an Amazon S3 Files access point. If you specify a different access point type (for example, Amazon Elastic File System), the operation returns an InvalidParameterException.
       required:
         - Arn
         - LocalMountPath
@@ -4192,6 +4244,19 @@ components:
       minLength: 0
       maxLength: 160
       pattern: /mnt/[a-zA-Z0-9-_.]+
+    S3FilesConfig:
+      description: Setting controls how your function accesses data from an Amazon S3 file system.
+      type: object
+      properties:
+        DirectS3Read:
+          $ref: "#/components/schemas/DirectS3Read"
+          description: 'Specifies if a function reads from the file system for the lowest latency, or through Amazon S3 Files feature "direct Amazon S3 bucket reads" for the highest throughput. Valid values: AUTO (default) – Direct reads are active for functions you configure with 512 MB or more of memory. ENABLED – Enforces all reads are directly from the Amazon S3 bucket, regardless of available memory (less than 512 MB). DISABLED – Routes all reads through the file system, regardless of memory configuration. To use direct reads, you must grant the execution role the s3:GetObject and s3:GetObjectVersion permissions. If a direct read fails, Lambda automatically falls back to reading through the file system.'
+    DirectS3Read:
+      type: string
+      enum:
+        - ENABLED
+        - DISABLED
+        - AUTO
     ImageConfig:
       description: Configuration values that override the container image Dockerfile settings. For more information, see Container image settings.
       type: object
@@ -4225,7 +4290,7 @@ components:
     EphemeralStorageSize:
       type: integer
       minimum: 512
-      maximum: 10240
+      maximum: 32768
     SnapStart:
       description: The function's Lambda SnapStart setting. Set ApplyOn to PublishedVersions to create a snapshot of the initialized execution environment when you publish a function version.
       type: object
@@ -4419,7 +4484,7 @@ components:
           description: The reason code for the last update that was performed on the function.
         FileSystemConfigs:
           $ref: "#/components/schemas/FileSystemConfigList"
-          description: Connection settings for an Amazon EFS file system or an Amazon S3 Files file system.
+          description: Connection settings for an Amazon EFS file system or an Amazon S3 file system.
         SigningProfileVersionArn:
           $ref: "#/components/schemas/Arn"
           description: The ARN of the signing profile version.
@@ -4806,8 +4871,6 @@ components:
           description: Information about the deleted capacity provider.
       required:
         - CapacityProvider
-    DeleteCodeSigningConfigResponse:
-      type: object
     DeleteFunctionResponse:
       type: object
       properties:
@@ -4821,6 +4884,16 @@ components:
       minLength: 1
       maxLength: 128
       pattern: (|[a-zA-Z0-9$_-]+)
+    PolicyResourceArn:
+      type: string
+      minLength: 0
+      maxLength: 256
+      pattern: arn:(aws[a-zA-Z-]*)?:lambda:(eusc-)?[a-z]{2}((-gov)|(-iso([a-z]?)))?-[a-z]+-\d{1}:\d{12}:function:[a-zA-Z0-9-_]+(:(\$LATEST(\.PUBLISHED)?|[a-zA-Z0-9-_])+)?
+    RevisionId:
+      type: string
+      minLength: 36
+      maxLength: 36
+      pattern: "[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}"
     GetAccountSettingsResponse:
       type: object
       properties:
@@ -5747,6 +5820,20 @@ components:
         - IN_PROGRESS
         - READY
         - FAILED
+    GetResourcePolicyResponse:
+      type: object
+      properties:
+        Policy:
+          $ref: "#/components/schemas/ResourcePolicy"
+          description: The resource-based policy attached to the Lambda resource you specified.
+        RevisionId:
+          $ref: "#/components/schemas/RevisionId"
+          description: The revision ID of the policy. Pass this value as the RevisionId in a PutResourcePolicy or DeleteResourcePolicy request. Doing so ensures the operation acts on the expected version of the policy.
+    ResourcePolicy:
+      type: string
+      minLength: 1
+      maxLength: 20480
+      pattern: "[\\s\\S]+"
     GetRuntimeManagementConfigResponse:
       type: object
       properties:
@@ -6330,6 +6417,15 @@ components:
         LastModified:
           $ref: "#/components/schemas/Timestamp"
           description: The date and time that a user last updated the configuration, in ISO 8601 format.
+    PutResourcePolicyResponse:
+      type: object
+      properties:
+        Policy:
+          $ref: "#/components/schemas/ResourcePolicy"
+          description: The resource-based policy that Lambda adds to the resource.
+        RevisionId:
+          $ref: "#/components/schemas/RevisionId"
+          description: The revision ID of the policy that Lambda adds to your Lambda resource.
     PutRuntimeManagementConfigResponse:
       type: object
       properties:
@@ -6350,17 +6446,11 @@ components:
       minLength: 1
       maxLength: 100
       pattern: ([a-zA-Z0-9-_.]+)
-    SendDurableExecutionCallbackFailureResponse:
-      type: object
-    SendDurableExecutionCallbackHeartbeatResponse:
-      type: object
     BinaryOperationPayload:
       type: string
       format: byte
       minLength: 0
       maxLength: 262144
-    SendDurableExecutionCallbackSuccessResponse:
-      type: object
     StopDurableExecutionResponse:
       type: object
       properties:
@@ -6452,6 +6542,14 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+        get_layer_version_by_arn:
+          operation:
+            $ref: "#/paths/~12018-10-31~1layers?find=LayerVersion/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
         list_layer_versions:
           operation:
             $ref: "#/paths/~12018-10-31~1layers~1{layer_name}~1versions/get"
@@ -6480,6 +6578,7 @@ components:
         select:
           - $ref: "#/components/x-stackQL-resources/layer_versions/methods/get_layer_version"
           - $ref: "#/components/x-stackQL-resources/layer_versions/methods/list_layer_versions"
+          - $ref: "#/components/x-stackQL-resources/layer_versions/methods/get_layer_version_by_arn"
         insert: []
         update:
           - $ref: "#/components/x-stackQL-resources/layer_versions/methods/add_layer_version_permission"
@@ -6596,6 +6695,29 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        list_functions_by_code_signing_config:
+          operation:
+            $ref: "#/paths/~12020-04-22~1code-signing-configs~1{code_signing_config_arn}~1functions/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListFunctionsByCodeSigningConfigOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "FunctionArns" -}}{{- $tok := index . "NextMarker" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"function_arn": {{ toJson $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "NextMarker": {{ toJson $tok }}{{- end }}}'
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: Marker
+                location: query
+              responseToken:
+                key: $.NextMarker
+                location: body
         publish_version:
           operation:
             $ref: "#/paths/~12015-03-31~1functions~1{function_name}~1versions/post"
@@ -6628,6 +6750,7 @@ components:
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/functions/methods/get_function"
+          - $ref: "#/components/x-stackQL-resources/functions/methods/list_functions_by_code_signing_config"
           - $ref: "#/components/x-stackQL-resources/functions/methods/list_functions"
         insert:
           - $ref: "#/components/x-stackQL-resources/functions/methods/create_function"
@@ -6680,12 +6803,28 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
+        list_durable_executions_by_function:
+          operation:
+            $ref: "#/paths/~12025-12-01~1functions~1{function_name}~1durable-executions/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.DurableExecutions
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: Marker
+                location: query
+              responseToken:
+                key: $.NextMarker
+                location: body
         send_durable_execution_callback_failure:
           operation:
             $ref: "#/paths/~12025-12-01~1durable-execution-callbacks~1{callback_id}~1fail/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -6696,13 +6835,11 @@ components:
             $ref: "#/paths/~12025-12-01~1durable-execution-callbacks~1{callback_id}~1heartbeat/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         send_durable_execution_callback_success:
           operation:
             $ref: "#/paths/~12025-12-01~1durable-execution-callbacks~1{callback_id}~1succeed/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -6722,13 +6859,14 @@ components:
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/durable_executions/methods/get_durable_execution"
+          - $ref: "#/components/x-stackQL-resources/durable_executions/methods/list_durable_executions_by_function"
         insert: []
         update: []
         delete: []
-    alias:
-      id: aws.lambda.alias
-      name: alias
-      title: alias
+    aliases:
+      id: aws.lambda.aliases
+      name: aliases
+      title: aliases
       methods:
         create_alias:
           operation:
@@ -6741,6 +6879,23 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        list_aliases:
+          operation:
+            $ref: "#/paths/~12015-03-31~1functions~1{function_name}~1aliases/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.Aliases
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: Marker
+                location: query
+              responseToken:
+                key: $.NextMarker
+                location: body
         delete_alias:
           operation:
             $ref: "#/paths/~12015-03-31~1functions~1{function_name}~1aliases~1{name}/delete"
@@ -6765,41 +6920,14 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/alias/methods/get_alias"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/alias/methods/create_alias"
-        update:
-          - $ref: "#/components/x-stackQL-resources/alias/methods/update_alias"
-        delete:
-          - $ref: "#/components/x-stackQL-resources/alias/methods/delete_alias"
-    aliases:
-      id: aws.lambda.aliases
-      name: aliases
-      title: aliases
-      methods:
-        list_aliases:
-          operation:
-            $ref: "#/paths/~12015-03-31~1functions~1{function_name}~1aliases/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.Aliases
-          request:
-            nativeCasing: pascal
-          config:
-            pagination:
-              requestToken:
-                key: Marker
-                location: query
-              responseToken:
-                key: $.NextMarker
-                location: body
-      sqlVerbs:
-        select:
+          - $ref: "#/components/x-stackQL-resources/aliases/methods/get_alias"
           - $ref: "#/components/x-stackQL-resources/aliases/methods/list_aliases"
-        insert: []
-        update: []
-        delete: []
+        insert:
+          - $ref: "#/components/x-stackQL-resources/aliases/methods/create_alias"
+        update:
+          - $ref: "#/components/x-stackQL-resources/aliases/methods/update_alias"
+        delete:
+          - $ref: "#/components/x-stackQL-resources/aliases/methods/delete_alias"
     capacity_providers:
       id: aws.lambda.capacity_providers
       name: capacity_providers
@@ -6905,7 +7033,6 @@ components:
             $ref: "#/paths/~12020-04-22~1code-signing-configs~1{code_signing_config_arn}/delete"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
         get_code_signing_config:
           operation:
             $ref: "#/paths/~12020-04-22~1code-signing-configs~1{code_signing_config_arn}/get"
@@ -7263,6 +7390,44 @@ components:
           - $ref: "#/components/x-stackQL-resources/provisioned_concurrency_configs/methods/put_provisioned_concurrency_config"
         delete:
           - $ref: "#/components/x-stackQL-resources/provisioned_concurrency_configs/methods/delete_provisioned_concurrency_config"
+    resource_policies:
+      id: aws.lambda.resource_policies
+      name: resource_policies
+      title: resource_policies
+      methods:
+        delete_resource_policy:
+          operation:
+            $ref: "#/paths/~12026-07-09~1resource-policy~1{resource_arn}/delete"
+          response:
+            openAPIDocKey: "204"
+          request:
+            nativeCasing: pascal
+        get_resource_policy:
+          operation:
+            $ref: "#/paths/~12026-07-09~1resource-policy~1{resource_arn}/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+        put_resource_policy:
+          operation:
+            $ref: "#/paths/~12026-07-09~1resource-policy~1{resource_arn}/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/resource_policies/methods/get_resource_policy"
+        insert: []
+        update: []
+        replace:
+          - $ref: "#/components/x-stackQL-resources/resource_policies/methods/put_resource_policy"
+        delete:
+          - $ref: "#/components/x-stackQL-resources/resource_policies/methods/delete_resource_policy"
     account_settings:
       id: aws.lambda.account_settings
       name: account_settings
@@ -7429,25 +7594,6 @@ components:
         replace:
           - $ref: "#/components/x-stackQL-resources/function_scaling_configs/methods/put_function_scaling_config"
         delete: []
-    layer_version_by_arns:
-      id: aws.lambda.layer_version_by_arns
-      name: layer_version_by_arns
-      title: layer_version_by_arns
-      methods:
-        get_layer_version_by_arn:
-          operation:
-            $ref: "#/paths/~12018-10-31~1layers?find=LayerVersion/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/layer_version_by_arns/methods/get_layer_version_by_arn"
-        insert: []
-        update: []
-        delete: []
     runtime_management_configs:
       id: aws.lambda.runtime_management_configs
       name: runtime_management_configs
@@ -7480,38 +7626,10 @@ components:
         replace:
           - $ref: "#/components/x-stackQL-resources/runtime_management_configs/methods/put_runtime_management_config"
         delete: []
-    durable_executions_by_functions:
-      id: aws.lambda.durable_executions_by_functions
-      name: durable_executions_by_functions
-      title: durable_executions_by_functions
-      methods:
-        list_durable_executions_by_function:
-          operation:
-            $ref: "#/paths/~12025-12-01~1functions~1{function_name}~1durable-executions/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.DurableExecutions
-          request:
-            nativeCasing: pascal
-          config:
-            pagination:
-              requestToken:
-                key: Marker
-                location: query
-              responseToken:
-                key: $.NextMarker
-                location: body
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/durable_executions_by_functions/methods/list_durable_executions_by_function"
-        insert: []
-        update: []
-        delete: []
-    function_versions_by_capacity_providers:
-      id: aws.lambda.function_versions_by_capacity_providers
-      name: function_versions_by_capacity_providers
-      title: function_versions_by_capacity_providers
+    function_versions:
+      id: aws.lambda.function_versions
+      name: function_versions
+      title: function_versions
       methods:
         list_function_versions_by_capacity_provider:
           operation:
@@ -7532,41 +7650,7 @@ components:
                 location: body
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/function_versions_by_capacity_providers/methods/list_function_versions_by_capacity_provider"
-        insert: []
-        update: []
-        delete: []
-    functions_by_code_signing_configs:
-      id: aws.lambda.functions_by_code_signing_configs
-      name: functions_by_code_signing_configs
-      title: functions_by_code_signing_configs
-      methods:
-        list_functions_by_code_signing_config:
-          operation:
-            $ref: "#/paths/~12020-04-22~1code-signing-configs~1{code_signing_config_arn}~1functions/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/ListFunctionsByCodeSigningConfigOutputDisplay"
-            transform:
-              type: golang_template_json_v0.3.0
-              body: '{{- $lst := index . "FunctionArns" -}}{{- $tok := index . "NextMarker" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"function_arn": {{ toJson $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "NextMarker": {{ toJson $tok }}{{- end }}}'
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-          config:
-            pagination:
-              requestToken:
-                key: Marker
-                location: query
-              responseToken:
-                key: $.NextMarker
-                location: body
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/functions_by_code_signing_configs/methods/list_functions_by_code_signing_config"
+          - $ref: "#/components/x-stackQL-resources/function_versions/methods/list_function_versions_by_capacity_provider"
         insert: []
         update: []
         delete: []
@@ -7645,10 +7729,10 @@ components:
           - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
           - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
         delete: []
-    versions_by_functions:
-      id: aws.lambda.versions_by_functions
-      name: versions_by_functions
-      title: versions_by_functions
+    versions:
+      id: aws.lambda.versions
+      name: versions
+      title: versions
       methods:
         list_versions_by_function:
           operation:
@@ -7669,7 +7753,7 @@ components:
                 location: body
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/versions_by_functions/methods/list_versions_by_function"
+          - $ref: "#/components/x-stackQL-resources/versions/methods/list_versions_by_function"
         insert: []
         update: []
         delete: []

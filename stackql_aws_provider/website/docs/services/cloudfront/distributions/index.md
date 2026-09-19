@@ -36,6 +36,17 @@ The following fields are returned by `SELECT` queries:
     defaultValue="get_distribution"
     values={[
         { label: 'get_distribution', value: 'get_distribution' },
+        { label: 'list_distributions_by_anycast_ip_list_id', value: 'list_distributions_by_anycast_ip_list_id' },
+        { label: 'list_distributions_by_cache_policy_id', value: 'list_distributions_by_cache_policy_id' },
+        { label: 'list_distributions_by_connection_function', value: 'list_distributions_by_connection_function' },
+        { label: 'list_distributions_by_connection_mode', value: 'list_distributions_by_connection_mode' },
+        { label: 'list_distributions_by_key_group', value: 'list_distributions_by_key_group' },
+        { label: 'list_distributions_by_origin_request_policy_id', value: 'list_distributions_by_origin_request_policy_id' },
+        { label: 'list_distributions_by_owned_resource', value: 'list_distributions_by_owned_resource' },
+        { label: 'list_distributions_by_response_headers_policy_id', value: 'list_distributions_by_response_headers_policy_id' },
+        { label: 'list_distributions_by_trust_store', value: 'list_distributions_by_trust_store' },
+        { label: 'list_distributions_by_vpc_origin_id', value: 'list_distributions_by_vpc_origin_id' },
+        { label: 'list_distributions_by_web_acl_id', value: 'list_distributions_by_web_acl_id' },
         { label: 'list_distributions', value: 'list_distributions' }
     ]}
 >
@@ -99,6 +110,490 @@ The following fields are returned by `SELECT` queries:
     <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The distribution's status. When the status is Deployed, the distribution's information is fully propagated to all CloudFront edge locations.</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
+<TabItem value="list_distributions_by_anycast_ip_list_id">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="is_truncated" /></td>
+    <td><code>boolean</code></td>
+    <td>A flag that indicates whether more distributions remain to be listed. If your results were truncated, you can make a follow-up pagination request using the Marker request parameter to retrieve more distributions in the list.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="items" /></td>
+    <td><code>string</code></td>
+    <td>A complex type that contains one DistributionSummary element for each distribution that was created by the current Amazon Web Services account.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="marker" /></td>
+    <td><code>string</code></td>
+    <td>The value you provided for the Marker request parameter.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="max_items" /></td>
+    <td><code>integer</code></td>
+    <td>The value you provided for the MaxItems request parameter.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="next_marker" /></td>
+    <td><code>string</code></td>
+    <td>If IsTruncated is true, this element is present and contains the value you can use for the Marker request parameter to continue listing your distributions where they left off.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="quantity" /></td>
+    <td><code>integer</code></td>
+    <td>The number of distributions that were created by the current Amazon Web Services account.</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
+<TabItem value="list_distributions_by_cache_policy_id">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="is_truncated" /></td>
+    <td><code>boolean</code></td>
+    <td>A flag that indicates whether more distribution IDs remain to be listed. If your results were truncated, you can make a subsequent request using the Marker request field to retrieve more distribution IDs in the list.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="items" /></td>
+    <td><code>string</code></td>
+    <td>Contains the distribution IDs in the list.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="marker" /></td>
+    <td><code>string</code></td>
+    <td>The value provided in the Marker request field.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="max_items" /></td>
+    <td><code>integer</code></td>
+    <td>The maximum number of distribution IDs requested.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="next_marker" /></td>
+    <td><code>string</code></td>
+    <td>Contains the value that you should use in the Marker field of a subsequent request to continue listing distribution IDs where you left off.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="quantity" /></td>
+    <td><code>integer</code></td>
+    <td>The total number of distribution IDs returned in the response.</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
+<TabItem value="list_distributions_by_connection_function">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="is_truncated" /></td>
+    <td><code>boolean</code></td>
+    <td>A flag that indicates whether more distributions remain to be listed. If your results were truncated, you can make a follow-up pagination request using the Marker request parameter to retrieve more distributions in the list.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="items" /></td>
+    <td><code>string</code></td>
+    <td>A complex type that contains one DistributionSummary element for each distribution that was created by the current Amazon Web Services account.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="marker" /></td>
+    <td><code>string</code></td>
+    <td>The value you provided for the Marker request parameter.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="max_items" /></td>
+    <td><code>integer</code></td>
+    <td>The value you provided for the MaxItems request parameter.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="next_marker" /></td>
+    <td><code>string</code></td>
+    <td>If IsTruncated is true, this element is present and contains the value you can use for the Marker request parameter to continue listing your distributions where they left off.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="quantity" /></td>
+    <td><code>integer</code></td>
+    <td>The number of distributions that were created by the current Amazon Web Services account.</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
+<TabItem value="list_distributions_by_connection_mode">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="is_truncated" /></td>
+    <td><code>boolean</code></td>
+    <td>A flag that indicates whether more distributions remain to be listed. If your results were truncated, you can make a follow-up pagination request using the Marker request parameter to retrieve more distributions in the list.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="items" /></td>
+    <td><code>string</code></td>
+    <td>A complex type that contains one DistributionSummary element for each distribution that was created by the current Amazon Web Services account.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="marker" /></td>
+    <td><code>string</code></td>
+    <td>The value you provided for the Marker request parameter.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="max_items" /></td>
+    <td><code>integer</code></td>
+    <td>The value you provided for the MaxItems request parameter.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="next_marker" /></td>
+    <td><code>string</code></td>
+    <td>If IsTruncated is true, this element is present and contains the value you can use for the Marker request parameter to continue listing your distributions where they left off.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="quantity" /></td>
+    <td><code>integer</code></td>
+    <td>The number of distributions that were created by the current Amazon Web Services account.</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
+<TabItem value="list_distributions_by_key_group">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="is_truncated" /></td>
+    <td><code>boolean</code></td>
+    <td>A flag that indicates whether more distribution IDs remain to be listed. If your results were truncated, you can make a subsequent request using the Marker request field to retrieve more distribution IDs in the list.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="items" /></td>
+    <td><code>string</code></td>
+    <td>Contains the distribution IDs in the list.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="marker" /></td>
+    <td><code>string</code></td>
+    <td>The value provided in the Marker request field.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="max_items" /></td>
+    <td><code>integer</code></td>
+    <td>The maximum number of distribution IDs requested.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="next_marker" /></td>
+    <td><code>string</code></td>
+    <td>Contains the value that you should use in the Marker field of a subsequent request to continue listing distribution IDs where you left off.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="quantity" /></td>
+    <td><code>integer</code></td>
+    <td>The total number of distribution IDs returned in the response.</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
+<TabItem value="list_distributions_by_origin_request_policy_id">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="is_truncated" /></td>
+    <td><code>boolean</code></td>
+    <td>A flag that indicates whether more distribution IDs remain to be listed. If your results were truncated, you can make a subsequent request using the Marker request field to retrieve more distribution IDs in the list.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="items" /></td>
+    <td><code>string</code></td>
+    <td>Contains the distribution IDs in the list.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="marker" /></td>
+    <td><code>string</code></td>
+    <td>The value provided in the Marker request field.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="max_items" /></td>
+    <td><code>integer</code></td>
+    <td>The maximum number of distribution IDs requested.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="next_marker" /></td>
+    <td><code>string</code></td>
+    <td>Contains the value that you should use in the Marker field of a subsequent request to continue listing distribution IDs where you left off.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="quantity" /></td>
+    <td><code>integer</code></td>
+    <td>The total number of distribution IDs returned in the response.</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
+<TabItem value="list_distributions_by_owned_resource">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="is_truncated" /></td>
+    <td><code>boolean</code></td>
+    <td>A flag that indicates whether more DistributionIdOwner objects remain to be listed. If your results were truncated, you can make a follow-up pagination request using the Marker request parameter to retrieve more results in the list.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="items" /></td>
+    <td><code>string</code></td>
+    <td>The number of DistributionIdOwner objects.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="marker" /></td>
+    <td><code>string</code></td>
+    <td>Use this field when paginating results to indicate where to begin in your list of DistributionIdOwner objects. The response includes distributions in the list that occur after the marker. To get the next page of the list, set this field's value to the value of NextMarker from the current page's response.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="max_items" /></td>
+    <td><code>integer</code></td>
+    <td>The maximum number of DistributionIdOwner objects to return.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="next_marker" /></td>
+    <td><code>string</code></td>
+    <td>A token used for pagination of results returned in the response. You can use the token from the previous request to define where the current request should begin.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="quantity" /></td>
+    <td><code>integer</code></td>
+    <td>Specifies the actual number of DistributionIdOwner objects included in the list for the current page.</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
+<TabItem value="list_distributions_by_response_headers_policy_id">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="is_truncated" /></td>
+    <td><code>boolean</code></td>
+    <td>A flag that indicates whether more distribution IDs remain to be listed. If your results were truncated, you can make a subsequent request using the Marker request field to retrieve more distribution IDs in the list.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="items" /></td>
+    <td><code>string</code></td>
+    <td>Contains the distribution IDs in the list.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="marker" /></td>
+    <td><code>string</code></td>
+    <td>The value provided in the Marker request field.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="max_items" /></td>
+    <td><code>integer</code></td>
+    <td>The maximum number of distribution IDs requested.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="next_marker" /></td>
+    <td><code>string</code></td>
+    <td>Contains the value that you should use in the Marker field of a subsequent request to continue listing distribution IDs where you left off.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="quantity" /></td>
+    <td><code>integer</code></td>
+    <td>The total number of distribution IDs returned in the response.</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
+<TabItem value="list_distributions_by_trust_store">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="is_truncated" /></td>
+    <td><code>boolean</code></td>
+    <td>A flag that indicates whether more distributions remain to be listed. If your results were truncated, you can make a follow-up pagination request using the Marker request parameter to retrieve more distributions in the list.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="items" /></td>
+    <td><code>string</code></td>
+    <td>A complex type that contains one DistributionSummary element for each distribution that was created by the current Amazon Web Services account.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="marker" /></td>
+    <td><code>string</code></td>
+    <td>The value you provided for the Marker request parameter.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="max_items" /></td>
+    <td><code>integer</code></td>
+    <td>The value you provided for the MaxItems request parameter.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="next_marker" /></td>
+    <td><code>string</code></td>
+    <td>If IsTruncated is true, this element is present and contains the value you can use for the Marker request parameter to continue listing your distributions where they left off.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="quantity" /></td>
+    <td><code>integer</code></td>
+    <td>The number of distributions that were created by the current Amazon Web Services account.</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
+<TabItem value="list_distributions_by_vpc_origin_id">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="is_truncated" /></td>
+    <td><code>boolean</code></td>
+    <td>A flag that indicates whether more distribution IDs remain to be listed. If your results were truncated, you can make a subsequent request using the Marker request field to retrieve more distribution IDs in the list.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="items" /></td>
+    <td><code>string</code></td>
+    <td>Contains the distribution IDs in the list.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="marker" /></td>
+    <td><code>string</code></td>
+    <td>The value provided in the Marker request field.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="max_items" /></td>
+    <td><code>integer</code></td>
+    <td>The maximum number of distribution IDs requested.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="next_marker" /></td>
+    <td><code>string</code></td>
+    <td>Contains the value that you should use in the Marker field of a subsequent request to continue listing distribution IDs where you left off.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="quantity" /></td>
+    <td><code>integer</code></td>
+    <td>The total number of distribution IDs returned in the response.</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
+<TabItem value="list_distributions_by_web_acl_id">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="is_truncated" /></td>
+    <td><code>boolean</code></td>
+    <td>A flag that indicates whether more distributions remain to be listed. If your results were truncated, you can make a follow-up pagination request using the Marker request parameter to retrieve more distributions in the list.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="items" /></td>
+    <td><code>string</code></td>
+    <td>A complex type that contains one DistributionSummary element for each distribution that was created by the current Amazon Web Services account.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="marker" /></td>
+    <td><code>string</code></td>
+    <td>The value you provided for the Marker request parameter.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="max_items" /></td>
+    <td><code>integer</code></td>
+    <td>The value you provided for the MaxItems request parameter.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="next_marker" /></td>
+    <td><code>string</code></td>
+    <td>If IsTruncated is true, this element is present and contains the value you can use for the Marker request parameter to continue listing your distributions where they left off.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="quantity" /></td>
+    <td><code>integer</code></td>
+    <td>The number of distributions that were created by the current Amazon Web Services account.</td>
 </tr>
 </tbody>
 </table>
@@ -172,6 +667,83 @@ The following methods are available for this resource:
     <td>Get the information about a distribution.</td>
 </tr>
 <tr>
+    <td><a href="#list_distributions_by_anycast_ip_list_id"><CopyableCode code="list_distributions_by_anycast_ip_list_id" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-anycast_ip_list_id"><code>anycast_ip_list_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td><a href="#parameter-Marker"><code>Marker</code></a>, <a href="#parameter-MaxItems"><code>MaxItems</code></a></td>
+    <td>Lists the distributions in your account that are associated with the specified AnycastIpListId.</td>
+</tr>
+<tr>
+    <td><a href="#list_distributions_by_cache_policy_id"><CopyableCode code="list_distributions_by_cache_policy_id" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-cache_policy_id"><code>cache_policy_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td><a href="#parameter-Marker"><code>Marker</code></a>, <a href="#parameter-MaxItems"><code>MaxItems</code></a></td>
+    <td>Gets a list of distribution IDs for distributions that have a cache behavior that's associated with the specified cache policy. You can optionally specify the maximum number of items to receive in the response. If the total number of items in the list exceeds the maximum that you specify, or the default maximum, the response is paginated. To get the next page of items, send a subsequent request that specifies the NextMarker value from the current response as the Marker value in the subsequent request.</td>
+</tr>
+<tr>
+    <td><a href="#list_distributions_by_connection_function"><CopyableCode code="list_distributions_by_connection_function" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-ConnectionFunctionIdentifier"><code>ConnectionFunctionIdentifier</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td><a href="#parameter-Marker"><code>Marker</code></a>, <a href="#parameter-MaxItems"><code>MaxItems</code></a></td>
+    <td>Lists distributions by connection function.</td>
+</tr>
+<tr>
+    <td><a href="#list_distributions_by_connection_mode"><CopyableCode code="list_distributions_by_connection_mode" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-connection_mode"><code>connection_mode</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td><a href="#parameter-Marker"><code>Marker</code></a>, <a href="#parameter-MaxItems"><code>MaxItems</code></a></td>
+    <td>Lists the distributions by the connection mode that you specify.</td>
+</tr>
+<tr>
+    <td><a href="#list_distributions_by_key_group"><CopyableCode code="list_distributions_by_key_group" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-key_group_id"><code>key_group_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td><a href="#parameter-Marker"><code>Marker</code></a>, <a href="#parameter-MaxItems"><code>MaxItems</code></a></td>
+    <td>Gets a list of distribution IDs for distributions that have a cache behavior that references the specified key group. You can optionally specify the maximum number of items to receive in the response. If the total number of items in the list exceeds the maximum that you specify, or the default maximum, the response is paginated. To get the next page of items, send a subsequent request that specifies the NextMarker value from the current response as the Marker value in the subsequent request.</td>
+</tr>
+<tr>
+    <td><a href="#list_distributions_by_origin_request_policy_id"><CopyableCode code="list_distributions_by_origin_request_policy_id" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-origin_request_policy_id"><code>origin_request_policy_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td><a href="#parameter-Marker"><code>Marker</code></a>, <a href="#parameter-MaxItems"><code>MaxItems</code></a></td>
+    <td>Gets a list of distribution IDs for distributions that have a cache behavior that's associated with the specified origin request policy. You can optionally specify the maximum number of items to receive in the response. If the total number of items in the list exceeds the maximum that you specify, or the default maximum, the response is paginated. To get the next page of items, send a subsequent request that specifies the NextMarker value from the current response as the Marker value in the subsequent request.</td>
+</tr>
+<tr>
+    <td><a href="#list_distributions_by_owned_resource"><CopyableCode code="list_distributions_by_owned_resource" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-resource_arn"><code>resource_arn</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td><a href="#parameter-Marker"><code>Marker</code></a>, <a href="#parameter-MaxItems"><code>MaxItems</code></a></td>
+    <td>Lists the CloudFront distributions that are associated with the specified resource that you own.</td>
+</tr>
+<tr>
+    <td><a href="#list_distributions_by_response_headers_policy_id"><CopyableCode code="list_distributions_by_response_headers_policy_id" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-response_headers_policy_id"><code>response_headers_policy_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td><a href="#parameter-Marker"><code>Marker</code></a>, <a href="#parameter-MaxItems"><code>MaxItems</code></a></td>
+    <td>Gets a list of distribution IDs for distributions that have a cache behavior that's associated with the specified response headers policy. You can optionally specify the maximum number of items to receive in the response. If the total number of items in the list exceeds the maximum that you specify, or the default maximum, the response is paginated. To get the next page of items, send a subsequent request that specifies the NextMarker value from the current response as the Marker value in the subsequent request.</td>
+</tr>
+<tr>
+    <td><a href="#list_distributions_by_trust_store"><CopyableCode code="list_distributions_by_trust_store" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-TrustStoreIdentifier"><code>TrustStoreIdentifier</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td><a href="#parameter-Marker"><code>Marker</code></a>, <a href="#parameter-MaxItems"><code>MaxItems</code></a></td>
+    <td>Lists distributions by trust store.</td>
+</tr>
+<tr>
+    <td><a href="#list_distributions_by_vpc_origin_id"><CopyableCode code="list_distributions_by_vpc_origin_id" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-vpc_origin_id"><code>vpc_origin_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td><a href="#parameter-Marker"><code>Marker</code></a>, <a href="#parameter-MaxItems"><code>MaxItems</code></a></td>
+    <td>List CloudFront distributions by their VPC origin ID.</td>
+</tr>
+<tr>
+    <td><a href="#list_distributions_by_web_acl_id"><CopyableCode code="list_distributions_by_web_acl_id" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-web_acl_id"><code>web_acl_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td><a href="#parameter-Marker"><code>Marker</code></a>, <a href="#parameter-MaxItems"><code>MaxItems</code></a></td>
+    <td>List the distributions that are associated with a specified WAF web ACL.</td>
+</tr>
+<tr>
     <td><a href="#list_distributions"><CopyableCode code="list_distributions" /></a></td>
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
@@ -186,18 +758,18 @@ The following methods are available for this resource:
     <td>Creates a CloudFront distribution.</td>
 </tr>
 <tr>
-    <td><a href="#associate_distribution_web_acl"><CopyableCode code="associate_distribution_web_acl" /></a></td>
-    <td><CopyableCode code="update" /></td>
-    <td><a href="#parameter-id"><code>id</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-WebACLArn"><code>WebACLArn</code></a></td>
-    <td><a href="#parameter-If-Match"><code>If-Match</code></a></td>
-    <td>Associates the WAF web ACL with a distribution.</td>
-</tr>
-<tr>
     <td><a href="#update_distribution"><CopyableCode code="update_distribution" /></a></td>
     <td><CopyableCode code="update" /></td>
     <td><a href="#parameter-id"><code>id</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-DistributionConfig"><code>DistributionConfig</code></a></td>
     <td><a href="#parameter-If-Match"><code>If-Match</code></a></td>
     <td>Updates the configuration for a CloudFront distribution. The update process includes getting the current distribution configuration, updating it to make your changes, and then submitting an UpdateDistribution request to make the updates. To update a web distribution using the CloudFront API Use GetDistributionConfig to get the current configuration, including the version identifier (ETag). Update the distribution configuration that was returned in the response. Note the following important requirements and restrictions: You must copy the ETag field value from the response. (You'll use it for the IfMatch parameter in your request.) Then, remove the ETag field from the distribution configuration. You can't change the value of CallerReference. Submit an UpdateDistribution request, providing the updated distribution configuration. The new configuration replaces the existing configuration. The values that you specify in an UpdateDistribution request are not merged into your existing configuration. Make sure to include all fields: the ones that you modified and also the ones that you didn't.</td>
+</tr>
+<tr>
+    <td><a href="#associate_distribution_web_acl"><CopyableCode code="associate_distribution_web_acl" /></a></td>
+    <td><CopyableCode code="update" /></td>
+    <td><a href="#parameter-id"><code>id</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-WebACLArn"><code>WebACLArn</code></a></td>
+    <td><a href="#parameter-If-Match"><code>If-Match</code></a></td>
+    <td>Associates the WAF web ACL with a distribution.</td>
 </tr>
 <tr>
     <td><a href="#disassociate_distribution_web_acl"><CopyableCode code="disassociate_distribution_web_acl" /></a></td>
@@ -212,6 +784,13 @@ The following methods are available for this resource:
     <td><a href="#parameter-id"><code>id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td><a href="#parameter-If-Match"><code>If-Match</code></a></td>
     <td>Delete a distribution. Before you can delete a distribution, you must disable it, which requires permission to update the distribution. Once deleted, a distribution cannot be recovered.</td>
+</tr>
+<tr>
+    <td><a href="#copy_distribution"><CopyableCode code="copy_distribution" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-primary_distribution_id"><code>primary_distribution_id</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-CallerReference"><code>CallerReference</code></a></td>
+    <td><a href="#parameter-Staging"><code>Staging</code></a>, <a href="#parameter-If-Match"><code>If-Match</code></a></td>
+    <td>Creates a staging distribution using the configuration of the provided primary distribution. A staging distribution is a copy of an existing distribution (called the primary distribution) that you can use in a continuous deployment workflow. After you create a staging distribution, you can use UpdateDistribution to modify the staging distribution's configuration. Then you can use CreateContinuousDeploymentPolicy to incrementally move traffic to the staging distribution. This API operation requires the following IAM permissions: GetDistribution CreateDistribution CopyDistribution</td>
 </tr>
 <tr>
     <td><a href="#update_distribution_with_staging_config"><CopyableCode code="update_distribution_with_staging_config" /></a></td>
@@ -236,15 +815,75 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     </tr>
 </thead>
 <tbody>
+<tr id="parameter-ConnectionFunctionIdentifier">
+    <td><CopyableCode code="ConnectionFunctionIdentifier" /></td>
+    <td><code>string</code></td>
+    <td>The distributions by connection function identifier.</td>
+</tr>
+<tr id="parameter-TrustStoreIdentifier">
+    <td><CopyableCode code="TrustStoreIdentifier" /></td>
+    <td><code>string</code></td>
+    <td>The distributions by trust store identifier.</td>
+</tr>
+<tr id="parameter-anycast_ip_list_id">
+    <td><CopyableCode code="anycast_ip_list_id" /></td>
+    <td><code>string</code></td>
+    <td>The ID of the Anycast static IP list.</td>
+</tr>
+<tr id="parameter-cache_policy_id">
+    <td><CopyableCode code="cache_policy_id" /></td>
+    <td><code>string</code></td>
+    <td>The ID of the cache policy whose associated distribution IDs you want to list.</td>
+</tr>
+<tr id="parameter-connection_mode">
+    <td><CopyableCode code="connection_mode" /></td>
+    <td><code>string</code></td>
+    <td>This field specifies whether the connection mode is through a standard distribution (direct) or a multi-tenant distribution with distribution tenants (tenant-only).</td>
+</tr>
 <tr id="parameter-id">
     <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The identifier of the primary distribution to which you are copying a staging distribution's configuration.</td>
 </tr>
+<tr id="parameter-key_group_id">
+    <td><CopyableCode code="key_group_id" /></td>
+    <td><code>string</code></td>
+    <td>The ID of the key group whose associated distribution IDs you are listing.</td>
+</tr>
+<tr id="parameter-origin_request_policy_id">
+    <td><CopyableCode code="origin_request_policy_id" /></td>
+    <td><code>string</code></td>
+    <td>The ID of the origin request policy whose associated distribution IDs you want to list.</td>
+</tr>
+<tr id="parameter-primary_distribution_id">
+    <td><CopyableCode code="primary_distribution_id" /></td>
+    <td><code>string</code></td>
+    <td>The identifier of the primary distribution whose configuration you are copying. To get a distribution ID, use ListDistributions.</td>
+</tr>
 <tr id="parameter-region">
     <td><CopyableCode code="region" /></td>
     <td><code>string</code></td>
     <td>AWS region (default: us-east-1)</td>
+</tr>
+<tr id="parameter-resource_arn">
+    <td><CopyableCode code="resource_arn" /></td>
+    <td><code>string</code></td>
+    <td>The ARN of the CloudFront resource that you've shared with other Amazon Web Services accounts.</td>
+</tr>
+<tr id="parameter-response_headers_policy_id">
+    <td><CopyableCode code="response_headers_policy_id" /></td>
+    <td><code>string</code></td>
+    <td>The ID of the response headers policy whose associated distribution IDs you want to list.</td>
+</tr>
+<tr id="parameter-vpc_origin_id">
+    <td><CopyableCode code="vpc_origin_id" /></td>
+    <td><code>string</code></td>
+    <td>The VPC origin ID.</td>
+</tr>
+<tr id="parameter-web_acl_id">
+    <td><CopyableCode code="web_acl_id" /></td>
+    <td><code>string</code></td>
+    <td>The ID of the WAF web ACL that you want to list the associated distributions. If you specify "null" for the ID, the request returns a list of the distributions that aren't associated with a web ACL. For WAFV2, this is the ARN of the web ACL, such as arn:aws:wafv2:us-east-1:123456789012:global/webacl/ExampleWebACL/a1b2c3d4-5678-90ab-cdef-EXAMPLE11111. For WAF Classic, this is the ID of the web ACL, such as a1b2c3d4-5678-90ab-cdef-EXAMPLE11111.</td>
 </tr>
 <tr id="parameter-If-Match">
     <td><CopyableCode code="If-Match" /></td>
@@ -261,6 +900,11 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     <td><code>string</code></td>
     <td>The maximum number of distributions you want in the response body.</td>
 </tr>
+<tr id="parameter-Staging">
+    <td><CopyableCode code="Staging" /></td>
+    <td><code>boolean</code></td>
+    <td>The type of distribution that your primary distribution will be copied to. The only valid value is True, indicating that you are copying to a staging distribution.</td>
+</tr>
 <tr id="parameter-StagingDistributionId">
     <td><CopyableCode code="StagingDistributionId" /></td>
     <td><code>string</code></td>
@@ -275,6 +919,17 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     defaultValue="get_distribution"
     values={[
         { label: 'get_distribution', value: 'get_distribution' },
+        { label: 'list_distributions_by_anycast_ip_list_id', value: 'list_distributions_by_anycast_ip_list_id' },
+        { label: 'list_distributions_by_cache_policy_id', value: 'list_distributions_by_cache_policy_id' },
+        { label: 'list_distributions_by_connection_function', value: 'list_distributions_by_connection_function' },
+        { label: 'list_distributions_by_connection_mode', value: 'list_distributions_by_connection_mode' },
+        { label: 'list_distributions_by_key_group', value: 'list_distributions_by_key_group' },
+        { label: 'list_distributions_by_origin_request_policy_id', value: 'list_distributions_by_origin_request_policy_id' },
+        { label: 'list_distributions_by_owned_resource', value: 'list_distributions_by_owned_resource' },
+        { label: 'list_distributions_by_response_headers_policy_id', value: 'list_distributions_by_response_headers_policy_id' },
+        { label: 'list_distributions_by_trust_store', value: 'list_distributions_by_trust_store' },
+        { label: 'list_distributions_by_vpc_origin_id', value: 'list_distributions_by_vpc_origin_id' },
+        { label: 'list_distributions_by_web_acl_id', value: 'list_distributions_by_web_acl_id' },
         { label: 'list_distributions', value: 'list_distributions' }
     ]}
 >
@@ -297,6 +952,226 @@ status
 FROM aws.cloudfront.distributions
 WHERE id = '{{ id }}' -- required
 AND region = '{{ region }}' -- required
+;
+```
+</TabItem>
+<TabItem value="list_distributions_by_anycast_ip_list_id">
+
+Lists the distributions in your account that are associated with the specified AnycastIpListId.
+
+```sql
+SELECT
+is_truncated,
+items,
+marker,
+max_items,
+next_marker,
+quantity
+FROM aws.cloudfront.distributions
+WHERE anycast_ip_list_id = '{{ anycast_ip_list_id }}' -- required
+AND region = '{{ region }}' -- required
+AND Marker = '{{ Marker }}'
+AND MaxItems = '{{ MaxItems }}'
+;
+```
+</TabItem>
+<TabItem value="list_distributions_by_cache_policy_id">
+
+Gets a list of distribution IDs for distributions that have a cache behavior that's associated with the specified cache policy. You can optionally specify the maximum number of items to receive in the response. If the total number of items in the list exceeds the maximum that you specify, or the default maximum, the response is paginated. To get the next page of items, send a subsequent request that specifies the NextMarker value from the current response as the Marker value in the subsequent request.
+
+```sql
+SELECT
+is_truncated,
+items,
+marker,
+max_items,
+next_marker,
+quantity
+FROM aws.cloudfront.distributions
+WHERE cache_policy_id = '{{ cache_policy_id }}' -- required
+AND region = '{{ region }}' -- required
+AND Marker = '{{ Marker }}'
+AND MaxItems = '{{ MaxItems }}'
+;
+```
+</TabItem>
+<TabItem value="list_distributions_by_connection_function">
+
+Lists distributions by connection function.
+
+```sql
+SELECT
+is_truncated,
+items,
+marker,
+max_items,
+next_marker,
+quantity
+FROM aws.cloudfront.distributions
+WHERE ConnectionFunctionIdentifier = '{{ ConnectionFunctionIdentifier }}' -- required
+AND region = '{{ region }}' -- required
+AND Marker = '{{ Marker }}'
+AND MaxItems = '{{ MaxItems }}'
+;
+```
+</TabItem>
+<TabItem value="list_distributions_by_connection_mode">
+
+Lists the distributions by the connection mode that you specify.
+
+```sql
+SELECT
+is_truncated,
+items,
+marker,
+max_items,
+next_marker,
+quantity
+FROM aws.cloudfront.distributions
+WHERE connection_mode = '{{ connection_mode }}' -- required
+AND region = '{{ region }}' -- required
+AND Marker = '{{ Marker }}'
+AND MaxItems = '{{ MaxItems }}'
+;
+```
+</TabItem>
+<TabItem value="list_distributions_by_key_group">
+
+Gets a list of distribution IDs for distributions that have a cache behavior that references the specified key group. You can optionally specify the maximum number of items to receive in the response. If the total number of items in the list exceeds the maximum that you specify, or the default maximum, the response is paginated. To get the next page of items, send a subsequent request that specifies the NextMarker value from the current response as the Marker value in the subsequent request.
+
+```sql
+SELECT
+is_truncated,
+items,
+marker,
+max_items,
+next_marker,
+quantity
+FROM aws.cloudfront.distributions
+WHERE key_group_id = '{{ key_group_id }}' -- required
+AND region = '{{ region }}' -- required
+AND Marker = '{{ Marker }}'
+AND MaxItems = '{{ MaxItems }}'
+;
+```
+</TabItem>
+<TabItem value="list_distributions_by_origin_request_policy_id">
+
+Gets a list of distribution IDs for distributions that have a cache behavior that's associated with the specified origin request policy. You can optionally specify the maximum number of items to receive in the response. If the total number of items in the list exceeds the maximum that you specify, or the default maximum, the response is paginated. To get the next page of items, send a subsequent request that specifies the NextMarker value from the current response as the Marker value in the subsequent request.
+
+```sql
+SELECT
+is_truncated,
+items,
+marker,
+max_items,
+next_marker,
+quantity
+FROM aws.cloudfront.distributions
+WHERE origin_request_policy_id = '{{ origin_request_policy_id }}' -- required
+AND region = '{{ region }}' -- required
+AND Marker = '{{ Marker }}'
+AND MaxItems = '{{ MaxItems }}'
+;
+```
+</TabItem>
+<TabItem value="list_distributions_by_owned_resource">
+
+Lists the CloudFront distributions that are associated with the specified resource that you own.
+
+```sql
+SELECT
+is_truncated,
+items,
+marker,
+max_items,
+next_marker,
+quantity
+FROM aws.cloudfront.distributions
+WHERE resource_arn = '{{ resource_arn }}' -- required
+AND region = '{{ region }}' -- required
+AND Marker = '{{ Marker }}'
+AND MaxItems = '{{ MaxItems }}'
+;
+```
+</TabItem>
+<TabItem value="list_distributions_by_response_headers_policy_id">
+
+Gets a list of distribution IDs for distributions that have a cache behavior that's associated with the specified response headers policy. You can optionally specify the maximum number of items to receive in the response. If the total number of items in the list exceeds the maximum that you specify, or the default maximum, the response is paginated. To get the next page of items, send a subsequent request that specifies the NextMarker value from the current response as the Marker value in the subsequent request.
+
+```sql
+SELECT
+is_truncated,
+items,
+marker,
+max_items,
+next_marker,
+quantity
+FROM aws.cloudfront.distributions
+WHERE response_headers_policy_id = '{{ response_headers_policy_id }}' -- required
+AND region = '{{ region }}' -- required
+AND Marker = '{{ Marker }}'
+AND MaxItems = '{{ MaxItems }}'
+;
+```
+</TabItem>
+<TabItem value="list_distributions_by_trust_store">
+
+Lists distributions by trust store.
+
+```sql
+SELECT
+is_truncated,
+items,
+marker,
+max_items,
+next_marker,
+quantity
+FROM aws.cloudfront.distributions
+WHERE TrustStoreIdentifier = '{{ TrustStoreIdentifier }}' -- required
+AND region = '{{ region }}' -- required
+AND Marker = '{{ Marker }}'
+AND MaxItems = '{{ MaxItems }}'
+;
+```
+</TabItem>
+<TabItem value="list_distributions_by_vpc_origin_id">
+
+List CloudFront distributions by their VPC origin ID.
+
+```sql
+SELECT
+is_truncated,
+items,
+marker,
+max_items,
+next_marker,
+quantity
+FROM aws.cloudfront.distributions
+WHERE vpc_origin_id = '{{ vpc_origin_id }}' -- required
+AND region = '{{ region }}' -- required
+AND Marker = '{{ Marker }}'
+AND MaxItems = '{{ MaxItems }}'
+;
+```
+</TabItem>
+<TabItem value="list_distributions_by_web_acl_id">
+
+List the distributions that are associated with a specified WAF web ACL.
+
+```sql
+SELECT
+is_truncated,
+items,
+marker,
+max_items,
+next_marker,
+quantity
+FROM aws.cloudfront.distributions
+WHERE web_acl_id = '{{ web_acl_id }}' -- required
+AND region = '{{ region }}' -- required
+AND Marker = '{{ Marker }}'
+AND MaxItems = '{{ MaxItems }}'
 ;
 ```
 </TabItem>
@@ -605,32 +1480,13 @@ status
 ## `UPDATE` examples
 
 <Tabs
-    defaultValue="associate_distribution_web_acl"
+    defaultValue="update_distribution"
     values={[
-        { label: 'associate_distribution_web_acl', value: 'associate_distribution_web_acl' },
         { label: 'update_distribution', value: 'update_distribution' },
+        { label: 'associate_distribution_web_acl', value: 'associate_distribution_web_acl' },
         { label: 'disassociate_distribution_web_acl', value: 'disassociate_distribution_web_acl' }
     ]}
 >
-<TabItem value="associate_distribution_web_acl">
-
-Associates the WAF web ACL with a distribution.
-
-```sql
-UPDATE aws.cloudfront.distributions
-SET 
-WebACLArn = '{{ WebACLArn }}'
-WHERE 
-id = '{{ id }}' --required
-AND region = '{{ region }}' --required
-AND WebACLArn = '{{ WebACLArn }}' --required
-AND `If-Match` = '{{ If-Match}}'
-RETURNING
-e_tag,
-id,
-web_acl_arn;
-```
-</TabItem>
 <TabItem value="update_distribution">
 
 Updates the configuration for a CloudFront distribution. The update process includes getting the current distribution configuration, updating it to make your changes, and then submitting an UpdateDistribution request to make the updates. To update a web distribution using the CloudFront API Use GetDistributionConfig to get the current configuration, including the version identifier (ETag). Update the distribution configuration that was returned in the response. Note the following important requirements and restrictions: You must copy the ETag field value from the response. (You'll use it for the IfMatch parameter in your request.) Then, remove the ETag field from the distribution configuration. You can't change the value of CallerReference. Submit an UpdateDistribution request, providing the updated distribution configuration. The new configuration replaces the existing configuration. The values that you specify in an UpdateDistribution request are not merged into your existing configuration. Make sure to include all fields: the ones that you modified and also the ones that you didn't.
@@ -655,6 +1511,25 @@ id,
 in_progress_invalidation_batches,
 last_modified_time,
 status;
+```
+</TabItem>
+<TabItem value="associate_distribution_web_acl">
+
+Associates the WAF web ACL with a distribution.
+
+```sql
+UPDATE aws.cloudfront.distributions
+SET 
+WebACLArn = '{{ WebACLArn }}'
+WHERE 
+id = '{{ id }}' --required
+AND region = '{{ region }}' --required
+AND WebACLArn = '{{ WebACLArn }}' --required
+AND `If-Match` = '{{ If-Match}}'
+RETURNING
+e_tag,
+id,
+web_acl_arn;
 ```
 </TabItem>
 <TabItem value="disassociate_distribution_web_acl">
@@ -703,11 +1578,30 @@ AND `If-Match` = '{{ If-Match }}'
 ## Lifecycle Methods
 
 <Tabs
-    defaultValue="update_distribution_with_staging_config"
+    defaultValue="copy_distribution"
     values={[
+        { label: 'copy_distribution', value: 'copy_distribution' },
         { label: 'update_distribution_with_staging_config', value: 'update_distribution_with_staging_config' }
     ]}
 >
+<TabItem value="copy_distribution">
+
+Creates a staging distribution using the configuration of the provided primary distribution. A staging distribution is a copy of an existing distribution (called the primary distribution) that you can use in a continuous deployment workflow. After you create a staging distribution, you can use UpdateDistribution to modify the staging distribution's configuration. Then you can use CreateContinuousDeploymentPolicy to incrementally move traffic to the staging distribution. This API operation requires the following IAM permissions: GetDistribution CreateDistribution CopyDistribution
+
+```sql
+EXEC aws.cloudfront.distributions.copy_distribution 
+@primary_distribution_id='{{ primary_distribution_id }}' --required, 
+@region='{{ region }}' --required, 
+@Staging={{ Staging }}, 
+@If-Match='{{ If-Match }}' 
+@@json=
+'{
+"CallerReference": "{{ CallerReference }}", 
+"Enabled": {{ Enabled }}
+}'
+;
+```
+</TabItem>
 <TabItem value="update_distribution_with_staging_config">
 
 Copies the staging distribution's configuration to its corresponding primary distribution. The primary distribution retains its Aliases (also known as alternate domain names or CNAMEs) and ContinuousDeploymentPolicyId value, but otherwise its configuration is overwritten to match the staging distribution. You can use this operation in a continuous deployment workflow after you have tested configuration changes on the staging distribution. After using a continuous deployment policy to move a portion of your domain name's traffic to the staging distribution and verifying that it works as intended, you can use this operation to copy the staging distribution's configuration to the primary distribution. This action will disable the continuous deployment policy and move your domain's traffic back to the primary distribution. This API operation requires the following IAM permissions: GetDistribution UpdateDistribution

@@ -82,10 +82,6 @@ paths:
       responses:
         "202":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/CancelAutomatedReasoningPolicyBuildWorkflowResponse"
   /advanced-prompt-optimization-jobs:
     post:
       operationId: CreateAdvancedPromptOptimizationJob
@@ -719,10 +715,6 @@ paths:
       responses:
         "202":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteGuardrailResponse"
     get:
       operationId: GetGuardrail
       description: Gets details about a guardrail. If you don't specify a version, the response returns details for the DRAFT version.
@@ -1409,10 +1401,6 @@ paths:
       responses:
         "202":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteAutomatedReasoningPolicyResponse"
     get:
       operationId: GetAutomatedReasoningPolicy
       description: Retrieves details about an Automated Reasoning policy or policy version. Returns information including the policy definition, metadata, and timestamps.
@@ -1488,10 +1476,6 @@ paths:
       responses:
         "202":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteAutomatedReasoningPolicyBuildWorkflowResponse"
     get:
       operationId: GetAutomatedReasoningPolicyBuildWorkflow
       description: Retrieves detailed information about an Automated Reasoning policy build workflow, including its status, configuration, and metadata.
@@ -1541,10 +1525,6 @@ paths:
       responses:
         "202":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteAutomatedReasoningPolicyTestCaseResponse"
     get:
       operationId: GetAutomatedReasoningPolicyTestCase
       description: Retrieves details about a specific Automated Reasoning policy test.
@@ -1628,10 +1608,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteCustomModelResponse"
     get:
       operationId: GetCustomModel
       description: Get the properties associated with a Amazon Bedrock custom model that you have created. For more information, see Custom models in the Amazon Bedrock User Guide.
@@ -1663,10 +1639,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteCustomModelDeploymentResponse"
     get:
       operationId: GetCustomModelDeployment
       description: "Retrieves information about a custom model deployment, including its status, configuration, and metadata. Use this operation to monitor the deployment status and retrieve details needed for inference requests. The following actions are related to the GetCustomModelDeployment operation: CreateCustomModelDeployment ListCustomModelDeployments DeleteCustomModelDeployment"
@@ -1726,10 +1698,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteEnforcedGuardrailConfigurationResponse"
   /delete-foundation-model-agreement:
     post:
       operationId: DeleteFoundationModelAgreement
@@ -1749,10 +1717,6 @@ paths:
       responses:
         "202":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteFoundationModelAgreementResponse"
   /imported-models/{model_identifier}:
     delete:
       operationId: DeleteImportedModel
@@ -1767,10 +1731,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteImportedModelResponse"
     get:
       operationId: GetImportedModel
       description: Gets properties associated with a customized model you imported.
@@ -1802,10 +1762,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteInferenceProfileResponse"
     get:
       operationId: GetInferenceProfile
       description: Gets information about an inference profile. For more information, see Increase throughput and resilience with cross-region inference in Amazon Bedrock. in the Amazon Bedrock User Guide.
@@ -1837,10 +1793,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteMarketplaceModelEndpointResponse"
     get:
       operationId: GetMarketplaceModelEndpoint
       description: Retrieves details about a specific endpoint for a model from Amazon Bedrock Marketplace.
@@ -1896,10 +1848,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteModelInvocationLoggingConfigurationResponse"
     get:
       operationId: GetModelInvocationLoggingConfiguration
       description: Get the current configuration values for model invocation logging.
@@ -1929,10 +1877,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/PutModelInvocationLoggingConfigurationResponse"
   /prompt-routers/{prompt_router_arn}:
     delete:
       operationId: DeletePromptRouter
@@ -1947,10 +1891,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeletePromptRouterResponse"
     get:
       operationId: GetPromptRouter
       description: Retrieves details about a prompt router.
@@ -1982,10 +1922,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteProvisionedModelThroughputResponse"
     get:
       operationId: GetProvisionedModelThroughput
       description: Returns details for a Provisioned Throughput. For more information, see Provisioned Throughput in the Amazon Bedrock User Guide.
@@ -2027,10 +1963,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateProvisionedModelThroughputResponse"
   /resource-policy/{resource_arn}:
     delete:
       operationId: DeleteResourcePolicy
@@ -2045,10 +1977,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteResourcePolicyResponse"
     get:
       operationId: GetResourcePolicy
       description: Gets the resource policy document for a Bedrock resource
@@ -2080,10 +2008,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeregisterMarketplaceModelEndpointResponse"
   /automated-reasoning-policies/{policy_arn}/export:
     get:
       operationId: ExportAutomatedReasoningPolicyVersion
@@ -2461,10 +2385,6 @@ paths:
       responses:
         "201":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/PutUseCaseForModelAccessResponse"
   /automated-reasoning-policies/{policy_arn}/build-workflows:
     get:
       operationId: ListAutomatedReasoningPolicyBuildWorkflows
@@ -3059,10 +2979,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/StopAdvancedPromptOptimizationJobResponse"
   /evaluation-job/{job_identifier}/stop:
     post:
       operationId: StopEvaluationJob
@@ -3077,10 +2993,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/StopEvaluationJobResponse"
   /model-customization-jobs/{job_identifier}/stop:
     post:
       operationId: StopModelCustomizationJob
@@ -3095,10 +3007,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/StopModelCustomizationJobResponse"
   /model-invocation-job/{job_identifier}/stop:
     post:
       operationId: StopModelInvocationJob
@@ -3113,10 +3021,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/StopModelInvocationJobResponse"
   /tagResource:
     post:
       operationId: TagResource
@@ -3139,10 +3043,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TagResourceResponse"
   /untagResource:
     post:
       operationId: UntagResource
@@ -3165,10 +3065,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UntagResourceResponse"
 components:
   parameters:
     X-Amz-Content-Sha256:
@@ -3367,8 +3263,6 @@ components:
       minLength: 0
       maxLength: 36
       pattern: "[a-f0-9]{8}-?[a-f0-9]{4}-?4[a-f0-9]{3}-?[89ab][a-f0-9]{3}-?[a-f0-9]{12}"
-    CancelAutomatedReasoningPolicyBuildWorkflowResponse:
-      type: object
     AdvancedPromptOptimizationJobName:
       description: The name of an advanced prompt optimization job.
       type: string
@@ -3455,8 +3349,8 @@ components:
       type: object
       properties:
         modelId:
-          $ref: "#/components/schemas/BedrockModelId"
-          description: The ID of the model to use for optimization.
+          $ref: "#/components/schemas/AdvancedPromptOptimizationModelIdentifier"
+          description: "The model to use for optimization. The value depends on the resource that you use: If you use a base model, specify the model ID or its ARN. For a list of model IDs, see Models at a glance in the Amazon Bedrock User Guide. If you use a cross-Region (system-defined) inference profile, specify the inference profile ID or its ARN. For a list of inference profile IDs, see Supported Regions and models for inference profiles in the Amazon Bedrock User Guide. If you use an application inference profile, specify its full ARN, including the account ID and Region."
         inferenceConfig:
           $ref: "#/components/schemas/InferenceConfiguration"
           description: The inference configuration for the model, including parameters such as maximum tokens, temperature, and top-p.
@@ -3466,11 +3360,11 @@ components:
           description: Additional model request fields. Use this to pass model-specific parameters that are not included in the standard inference configuration.
       required:
         - modelId
-    BedrockModelId:
+    AdvancedPromptOptimizationModelIdentifier:
       type: string
       minLength: 0
-      maxLength: 140
-      pattern: "[a-z0-9-]{1,63}[.]{1}[a-z0-9-]{1,63}([a-z0-9-]{1,63}[.]){0,2}[a-z0-9-]{1,63}([:][a-z0-9-]{1,63}){0,2}(/[a-z0-9]{12}|)"
+      maxLength: 2048
+      pattern: (([a-z0-9-]{1,63}[.]{1}[a-z0-9-]{1,63}([a-z0-9-]{1,63}[.]){0,2}[a-z0-9-]{1,63}([:][a-z0-9-]{1,63}){0,2}(/[a-z0-9]{12}|))|(arn:aws(|-us-gov|-cn|-iso|-iso-b|-iso-f):bedrock:[a-z0-9-]{1,20}:[0-9]{12}:application-inference-profile/[a-zA-Z0-9-:.]+)|(arn:aws(|-us-gov|-cn|-iso|-iso-b|-iso-f):bedrock:[a-z0-9-]{1,20}:([0-9]{12})?:inference-profile/[a-zA-Z0-9-:.]+)|(arn:aws(-[^:]+)?:bedrock:[a-z0-9-]{1,20}::foundation-model/[a-z0-9-]{1,63}[.]{1}[a-z0-9-]{1,63}([.:]?[a-z0-9-]{1,63})))
     InferenceConfiguration:
       description: Base inference parameters to pass to a model. For more information, see Inference parameters for foundation models.
       type: object
@@ -4366,7 +4260,7 @@ components:
           description: "Knowledge base data sources are returned if they contain a metadata attribute whose name matches the key and whose value starts with the value in this object. This filter is currently only supported for Amazon OpenSearch Serverless vector stores. The following example would return data sources with an animal attribute starts with 'ca' (for example, 'cat' or 'camel'). \"startsWith\": { \"key\": \"animal\", \"value\": \"ca\" }"
         listContains:
           $ref: "#/components/schemas/FilterAttribute"
-          description: 'Knowledge base data sources are returned if they contain a metadata attribute whose name matches the key and whose value is a list that contains the value as one of its members. The following example would return data sources with an animals attribute that is a list containing a cat member (for example, ["dog", "cat"]): "listContains": { "key": "animals", "value": "cat" }'
+          description: 'Knowledge base data sources are returned if they contain a metadata attribute whose name matches the key and whose value is a list that contains the value as one of its members. The following example would return data sources with an animals attribute that is a list containing a cat member (for example, ["dog", "cat"] ): "listContains": { "key": "animals", "value": "cat" }'
         stringContains:
           $ref: "#/components/schemas/FilterAttribute"
           description: "Knowledge base data sources are returned if they contain a metadata attribute whose name matches the key and whose value is one of the following: A string that contains the value as a substring. The following example would return data sources with an animal attribute that contains the substring at (for example, 'cat'): \"stringContains\": { \"key\": \"animal\", \"value\": \"at\" } A list with a member that contains the value as a substring. The following example would return data sources with an animals attribute that is a list containing a member that contains the substring at (for example, [\"dog\", \"cat\"]): \"stringContains\": { \"key\": \"animals\", \"value\": \"at\" }"
@@ -4869,6 +4763,11 @@ components:
       pattern: arn:aws(-[^:]+)?:bedrock:[a-z0-9-]{1,20}:[0-9]{12}:evaluation-job/[a-z0-9]{12}
     OfferToken:
       type: string
+    BedrockModelId:
+      type: string
+      minLength: 0
+      maxLength: 140
+      pattern: "[a-z0-9-]{1,63}[.]{1}[a-z0-9-]{1,63}([a-z0-9-]{1,63}[.]){0,2}[a-z0-9-]{1,63}([:][a-z0-9-]{1,63}){0,2}(/[a-z0-9]{12}|)"
     CreateFoundationModelAgreementResponse:
       type: object
       properties:
@@ -6047,63 +5946,31 @@ components:
     ProvisionedModelArn:
       type: string
       pattern: arn:aws(-[^:]+)?:bedrock:[a-z0-9-]{1,20}:[0-9]{12}:provisioned-model/[a-z0-9]{12}
-    DeleteAutomatedReasoningPolicyResponse:
-      type: object
-    DeleteAutomatedReasoningPolicyBuildWorkflowResponse:
-      type: object
-    DeleteAutomatedReasoningPolicyTestCaseResponse:
-      type: object
-    DeleteCustomModelResponse:
-      type: object
     CustomModelDeploymentIdentifier:
       type: string
       minLength: 1
       maxLength: 93
       pattern: (arn:aws(|-us-gov|-cn|-iso|-iso-b):bedrock:[a-z0-9-]{1,20}:[0-9]{12}:custom-model-deployment/[a-z0-9]{12})|^([0-9a-zA-Z][_-]?){1,63}
-    DeleteCustomModelDeploymentResponse:
-      type: object
     AccountEnforcedGuardrailConfigurationId:
       type: string
       pattern: "[a-z0-9]+"
-    DeleteEnforcedGuardrailConfigurationResponse:
-      type: object
-    DeleteFoundationModelAgreementResponse:
-      type: object
-    DeleteGuardrailResponse:
-      type: object
     ImportedModelIdentifier:
       type: string
       minLength: 1
       maxLength: 1011
       pattern: (arn:aws(-[^:]+)?:bedrock:[a-z0-9-]{1,20}:[0-9]{12}:imported-model/[a-z0-9]{12})|(([0-9a-zA-Z][_-]?)+)
-    DeleteImportedModelResponse:
-      type: object
     InferenceProfileIdentifier:
       type: string
       minLength: 1
       maxLength: 2048
       pattern: (arn:aws(|-us-gov|-cn|-iso|-iso-b):bedrock:(|[0-9a-z-]{0,20}):(|[0-9]{12}):(inference-profile|application-inference-profile)/)?[a-zA-Z0-9-:.]+
-    DeleteInferenceProfileResponse:
-      type: object
-    DeleteMarketplaceModelEndpointResponse:
-      type: object
-    DeleteModelInvocationLoggingConfigurationResponse:
-      type: object
-    DeletePromptRouterResponse:
-      type: object
     ProvisionedModelId:
       type: string
       pattern: ((([0-9a-zA-Z][_-]?)+)|(arn:aws(-[^:]+)?:bedrock:[a-z0-9-]{1,20}:[0-9]{12}:provisioned-model/[a-z0-9]{12}))
-    DeleteProvisionedModelThroughputResponse:
-      type: object
     ResourcePolicyResourceArn:
       type: string
       minLength: 1
       maxLength: 255
-    DeleteResourcePolicyResponse:
-      type: object
-    DeregisterMarketplaceModelEndpointResponse:
-      type: object
     ExportAutomatedReasoningPolicyVersionResponse:
       type: object
       properties:
@@ -6124,11 +5991,12 @@ components:
       required:
         - mode
     DataRetentionMode:
-      description: "The data retention mode for the account. Valid values are: default – The standard data handling for the model applies. none – Zero data retention. provider_data_share – Data may be shared with the model provider. inherit – No data retention mode is set at this scope."
+      description: "The data retention mode for the account. Valid values are: default – The standard data handling for the model applies. none – Zero data retention. aws_review – Amazon Web Services may review the request data. The data is not shared with the model provider. A model must support this mode to be invoked under it. provider_data_share – Data may be shared with the model provider. inherit – No data retention mode is set at this scope."
       type: string
       enum:
         - default
         - none
+        - aws_review
         - provider_data_share
         - inherit
     GetAdvancedPromptOptimizationJobResponse:
@@ -10341,16 +10209,12 @@ components:
         updatedBy:
           $ref: "#/components/schemas/String"
           description: The ARN of the role used to update the configuration.
-    PutModelInvocationLoggingConfigurationResponse:
-      type: object
     PutResourcePolicyResponse:
       type: object
       properties:
         resourceArn:
           $ref: "#/components/schemas/ResourcePolicyResourceArn"
           description: The ARN of the Bedrock resource to which this resource policy applies.
-    PutUseCaseForModelAccessResponse:
-      type: object
     RegisterMarketplaceModelEndpointResponse:
       type: object
       properties:
@@ -10473,23 +10337,10 @@ components:
           description: The Amazon Resource Name (ARN) of the policy for which the test workflow was started.
       required:
         - policyArn
-    StopAdvancedPromptOptimizationJobResponse:
-      description: Stop Advanced Prompt Optimization Job Response
-      type: object
-    StopEvaluationJobResponse:
-      type: object
-    StopModelCustomizationJobResponse:
-      type: object
-    StopModelInvocationJobResponse:
-      type: object
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
         $ref: "#/components/schemas/TagKey"
-    UntagResourceResponse:
-      type: object
     UpdateAutomatedReasoningPolicyResponse:
       type: object
       properties:
@@ -10578,9 +10429,133 @@ components:
           description: Details about the updated endpoint.
       required:
         - marketplaceModelEndpoint
-    UpdateProvisionedModelThroughputResponse:
-      type: object
   x-stackQL-resources:
+    advanced_prompt_optimization_jobs:
+      id: aws.bedrock.advanced_prompt_optimization_jobs
+      name: advanced_prompt_optimization_jobs
+      title: advanced_prompt_optimization_jobs
+      methods:
+        batch_delete_advanced_prompt_optimization_job:
+          operation:
+            $ref: "#/paths/~1advanced-prompt-optimization-job~1batch-delete/post"
+          response:
+            openAPIDocKey: "202"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        create_advanced_prompt_optimization_job:
+          operation:
+            $ref: "#/paths/~1advanced-prompt-optimization-jobs/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        list_advanced_prompt_optimization_jobs:
+          operation:
+            $ref: "#/paths/~1advanced-prompt-optimization-jobs/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.jobSummaries
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
+        get_advanced_prompt_optimization_job:
+          operation:
+            $ref: "#/paths/~1advanced-prompt-optimization-jobs~1{job_identifier}/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+        stop_advanced_prompt_optimization_job:
+          operation:
+            $ref: "#/paths/~1advanced-prompt-optimization-jobs~1{job_identifier}~1stop/post"
+          response:
+            openAPIDocKey: "200"
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/advanced_prompt_optimization_jobs/methods/get_advanced_prompt_optimization_job"
+          - $ref: "#/components/x-stackQL-resources/advanced_prompt_optimization_jobs/methods/list_advanced_prompt_optimization_jobs"
+        insert:
+          - $ref: "#/components/x-stackQL-resources/advanced_prompt_optimization_jobs/methods/create_advanced_prompt_optimization_job"
+        update: []
+        delete: []
+    evaluation_jobs:
+      id: aws.bedrock.evaluation_jobs
+      name: evaluation_jobs
+      title: evaluation_jobs
+      methods:
+        batch_delete_evaluation_job:
+          operation:
+            $ref: "#/paths/~1evaluation-jobs~1batch-delete/post"
+          response:
+            openAPIDocKey: "202"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        create_evaluation_job:
+          operation:
+            $ref: "#/paths/~1evaluation-jobs/post"
+          response:
+            openAPIDocKey: "202"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        list_evaluation_jobs:
+          operation:
+            $ref: "#/paths/~1evaluation-jobs/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.jobSummaries
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
+        get_evaluation_job:
+          operation:
+            $ref: "#/paths/~1evaluation-jobs~1{job_identifier}/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+        stop_evaluation_job:
+          operation:
+            $ref: "#/paths/~1evaluation-job~1{job_identifier}~1stop/post"
+          response:
+            openAPIDocKey: "200"
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/evaluation_jobs/methods/get_evaluation_job"
+          - $ref: "#/components/x-stackQL-resources/evaluation_jobs/methods/list_evaluation_jobs"
+        insert:
+          - $ref: "#/components/x-stackQL-resources/evaluation_jobs/methods/create_evaluation_job"
+        update: []
+        delete: []
     automated_reasoning_policies:
       id: aws.bedrock.automated_reasoning_policies
       name: automated_reasoning_policies
@@ -10591,7 +10566,6 @@ components:
             $ref: "#/paths/~1automated-reasoning-policies~1{policy_arn}~1build-workflows~1{build_workflow_id}~1cancel/post"
           response:
             openAPIDocKey: "202"
-            mediaType: application/json
         create_automated_reasoning_policy:
           operation:
             $ref: "#/paths/~1automated-reasoning-policies/post"
@@ -10636,7 +10610,6 @@ components:
             $ref: "#/paths/~1automated-reasoning-policies~1{policy_arn}/delete"
           response:
             openAPIDocKey: "202"
-            mediaType: application/json
           request:
             nativeCasing: pascal
         get_automated_reasoning_policy:
@@ -10689,59 +10662,12 @@ components:
           - $ref: "#/components/x-stackQL-resources/automated_reasoning_policies/methods/get_automated_reasoning_policy"
           - $ref: "#/components/x-stackQL-resources/automated_reasoning_policies/methods/list_automated_reasoning_policies"
         insert:
-          - $ref: "#/components/x-stackQL-resources/automated_reasoning_policies/methods/create_automated_reasoning_policy_version"
           - $ref: "#/components/x-stackQL-resources/automated_reasoning_policies/methods/create_automated_reasoning_policy"
+          - $ref: "#/components/x-stackQL-resources/automated_reasoning_policies/methods/create_automated_reasoning_policy_version"
         update:
           - $ref: "#/components/x-stackQL-resources/automated_reasoning_policies/methods/update_automated_reasoning_policy"
         delete:
           - $ref: "#/components/x-stackQL-resources/automated_reasoning_policies/methods/delete_automated_reasoning_policy"
-    advanced_prompt_optimization_jobs:
-      id: aws.bedrock.advanced_prompt_optimization_jobs
-      name: advanced_prompt_optimization_jobs
-      title: advanced_prompt_optimization_jobs
-      methods:
-        create_advanced_prompt_optimization_job:
-          operation:
-            $ref: "#/paths/~1advanced-prompt-optimization-jobs/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        list_advanced_prompt_optimization_jobs:
-          operation:
-            $ref: "#/paths/~1advanced-prompt-optimization-jobs/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.jobSummaries
-          request:
-            nativeCasing: pascal
-          config:
-            pagination:
-              requestToken:
-                key: nextToken
-                location: query
-              responseToken:
-                key: $.nextToken
-                location: body
-        get_advanced_prompt_optimization_job:
-          operation:
-            $ref: "#/paths/~1advanced-prompt-optimization-jobs~1{job_identifier}/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/advanced_prompt_optimization_jobs/methods/get_advanced_prompt_optimization_job"
-          - $ref: "#/components/x-stackQL-resources/advanced_prompt_optimization_jobs/methods/list_advanced_prompt_optimization_jobs"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/advanced_prompt_optimization_jobs/methods/create_advanced_prompt_optimization_job"
-        update: []
-        delete: []
     automated_reasoning_policy_test_cases:
       id: aws.bedrock.automated_reasoning_policy_test_cases
       name: automated_reasoning_policy_test_cases
@@ -10780,7 +10706,6 @@ components:
             $ref: "#/paths/~1automated-reasoning-policies~1{policy_arn}~1test-cases~1{test_case_id}/delete"
           response:
             openAPIDocKey: "202"
-            mediaType: application/json
           request:
             nativeCasing: pascal
         get_automated_reasoning_policy_test_case:
@@ -10831,7 +10756,6 @@ components:
             $ref: "#/paths/~1custom-models~1{model_identifier}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         get_custom_model:
           operation:
             $ref: "#/paths/~1custom-models~1{model_identifier}/get"
@@ -10902,7 +10826,6 @@ components:
             $ref: "#/paths/~1model-customization~1custom-model-deployments~1{custom_model_deployment_identifier}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         get_custom_model_deployment:
           operation:
             $ref: "#/paths/~1model-customization~1custom-model-deployments~1{custom_model_deployment_identifier}/get"
@@ -10930,53 +10853,6 @@ components:
           - $ref: "#/components/x-stackQL-resources/custom_model_deployments/methods/update_custom_model_deployment"
         delete:
           - $ref: "#/components/x-stackQL-resources/custom_model_deployments/methods/delete_custom_model_deployment"
-    evaluation_jobs:
-      id: aws.bedrock.evaluation_jobs
-      name: evaluation_jobs
-      title: evaluation_jobs
-      methods:
-        create_evaluation_job:
-          operation:
-            $ref: "#/paths/~1evaluation-jobs/post"
-          response:
-            openAPIDocKey: "202"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        list_evaluation_jobs:
-          operation:
-            $ref: "#/paths/~1evaluation-jobs/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.jobSummaries
-          request:
-            nativeCasing: pascal
-          config:
-            pagination:
-              requestToken:
-                key: nextToken
-                location: query
-              responseToken:
-                key: $.nextToken
-                location: body
-        get_evaluation_job:
-          operation:
-            $ref: "#/paths/~1evaluation-jobs~1{job_identifier}/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/evaluation_jobs/methods/get_evaluation_job"
-          - $ref: "#/components/x-stackQL-resources/evaluation_jobs/methods/list_evaluation_jobs"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/evaluation_jobs/methods/create_evaluation_job"
-        update: []
-        delete: []
     foundation_models:
       id: aws.bedrock.foundation_models
       name: foundation_models
@@ -10998,7 +10874,6 @@ components:
             $ref: "#/paths/~1delete-foundation-model-agreement/post"
           response:
             openAPIDocKey: "202"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -11077,7 +10952,6 @@ components:
             $ref: "#/paths/~1guardrails~1{guardrail_identifier}/delete"
           response:
             openAPIDocKey: "202"
-            mediaType: application/json
           request:
             nativeCasing: pascal
         get_guardrail:
@@ -11148,7 +11022,6 @@ components:
             $ref: "#/paths/~1inference-profiles~1{inference_profile_identifier}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         get_inference_profile:
           operation:
             $ref: "#/paths/~1inference-profiles~1{inference_profile_identifier}/get"
@@ -11202,7 +11075,6 @@ components:
             $ref: "#/paths/~1marketplace-model~1endpoints~1{endpoint_arn}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         get_marketplace_model_endpoint:
           operation:
             $ref: "#/paths/~1marketplace-model~1endpoints~1{endpoint_arn}/get"
@@ -11226,7 +11098,6 @@ components:
             $ref: "#/paths/~1marketplace-model~1endpoints~1{endpoint_arn}~1registration/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         register_marketplace_model_endpoint:
           operation:
             $ref: "#/paths/~1marketplace-model~1endpoints~1{endpoint_identifier}~1registration/post"
@@ -11335,6 +11206,11 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+        stop_model_customization_job:
+          operation:
+            $ref: "#/paths/~1model-customization-jobs~1{job_identifier}~1stop/post"
+          response:
+            openAPIDocKey: "200"
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/model_customization_jobs/methods/get_model_customization_job"
@@ -11429,6 +11305,11 @@ components:
               responseToken:
                 key: $.nextToken
                 location: body
+        stop_model_invocation_job:
+          operation:
+            $ref: "#/paths/~1model-invocation-job~1{job_identifier}~1stop/post"
+          response:
+            openAPIDocKey: "200"
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/model_invocation_jobs/methods/get_model_invocation_job"
@@ -11475,7 +11356,6 @@ components:
             $ref: "#/paths/~1prompt-routers~1{prompt_router_arn}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         get_prompt_router:
           operation:
             $ref: "#/paths/~1prompt-routers~1{prompt_router_arn}/get"
@@ -11512,7 +11392,6 @@ components:
             $ref: "#/paths/~1provisioned-model-throughput~1{provisioned_model_id}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         get_provisioned_model_throughput:
           operation:
             $ref: "#/paths/~1provisioned-model-throughput~1{provisioned_model_id}/get"
@@ -11524,7 +11403,6 @@ components:
             $ref: "#/paths/~1provisioned-model-throughput~1{provisioned_model_id}/patch"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -11567,7 +11445,6 @@ components:
             $ref: "#/paths/~1automated-reasoning-policies~1{policy_arn}~1build-workflows~1{build_workflow_id}/delete"
           response:
             openAPIDocKey: "202"
-            mediaType: application/json
           request:
             nativeCasing: pascal
         get_automated_reasoning_policy_build_workflow:
@@ -11611,7 +11488,6 @@ components:
             $ref: "#/paths/~1enforcedGuardrailsConfiguration~1{config_id}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         put_enforced_guardrail_configuration:
           operation:
             $ref: "#/paths/~1enforcedGuardrailsConfiguration/put"
@@ -11641,7 +11517,6 @@ components:
             $ref: "#/paths/~1imported-models~1{model_identifier}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         get_imported_model:
           operation:
             $ref: "#/paths/~1imported-models~1{model_identifier}/get"
@@ -11683,7 +11558,6 @@ components:
             $ref: "#/paths/~1logging~1modelinvocations/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         get_model_invocation_logging_configuration:
           operation:
             $ref: "#/paths/~1logging~1modelinvocations/get"
@@ -11696,7 +11570,6 @@ components:
             $ref: "#/paths/~1logging~1modelinvocations/put"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -11721,7 +11594,6 @@ components:
             $ref: "#/paths/~1resource-policy~1{resource_arn}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         get_resource_policy:
           operation:
             $ref: "#/paths/~1resource-policy~1{resource_arn}/get"
@@ -11896,10 +11768,10 @@ components:
         insert: []
         update: []
         delete: []
-    use_case_for_model_access:
-      id: aws.bedrock.use_case_for_model_access
-      name: use_case_for_model_access
-      title: use_case_for_model_access
+    use_cases:
+      id: aws.bedrock.use_cases
+      name: use_cases
+      title: use_cases
       methods:
         get_use_case_for_model_access:
           operation:
@@ -11912,7 +11784,6 @@ components:
             $ref: "#/paths/~1use-case-for-model-access/post"
           response:
             openAPIDocKey: "201"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -11920,11 +11791,11 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/use_case_for_model_access/methods/get_use_case_for_model_access"
+          - $ref: "#/components/x-stackQL-resources/use_cases/methods/get_use_case_for_model_access"
         insert: []
         update: []
         replace:
-          - $ref: "#/components/x-stackQL-resources/use_case_for_model_access/methods/put_use_case_for_model_access"
+          - $ref: "#/components/x-stackQL-resources/use_cases/methods/put_use_case_for_model_access"
         delete: []
     enforced_guardrails_configurations:
       id: aws.bedrock.enforced_guardrails_configurations
@@ -11994,7 +11865,6 @@ components:
             $ref: "#/paths/~1tagResource/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -12005,7 +11875,6 @@ components:
             $ref: "#/paths/~1untagResource/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:

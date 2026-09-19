@@ -1376,10 +1376,10 @@ components:
     healthServiceAccessStatusForOrganization:
       type: string
   x-stackQL-resources:
-    affected_accounts_for_organizations:
-      id: aws.health.affected_accounts_for_organizations
-      name: affected_accounts_for_organizations
-      title: affected_accounts_for_organizations
+    affected_accounts:
+      id: aws.health.affected_accounts
+      name: affected_accounts
+      title: affected_accounts
       methods:
         describe_affected_accounts_for_organization:
           operation:
@@ -1410,7 +1410,7 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/affected_accounts_for_organizations/methods/describe_affected_accounts_for_organization"
+          - $ref: "#/components/x-stackQL-resources/affected_accounts/methods/describe_affected_accounts_for_organization"
         insert: []
         update: []
         delete: []
@@ -1440,17 +1440,6 @@ components:
                 location: body
             requestBodyTranslate:
               algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/affected_entities/methods/describe_affected_entities"
-        insert: []
-        update: []
-        delete: []
-    affected_entities_for_organizations:
-      id: aws.health.affected_entities_for_organizations
-      name: affected_entities_for_organizations
-      title: affected_entities_for_organizations
-      methods:
         describe_affected_entities_for_organization:
           operation:
             $ref: "#/paths/~1DescribeAffectedEntitiesForOrganization/post"
@@ -1474,7 +1463,8 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/affected_entities_for_organizations/methods/describe_affected_entities_for_organization"
+          - $ref: "#/components/x-stackQL-resources/affected_entities/methods/describe_affected_entities"
+          - $ref: "#/components/x-stackQL-resources/affected_entities/methods/describe_affected_entities_for_organization"
         insert: []
         update: []
         delete: []
@@ -1496,17 +1486,6 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/entity_aggregates/methods/describe_entity_aggregates"
-        insert: []
-        update: []
-        delete: []
-    entity_aggregates_for_organizations:
-      id: aws.health.entity_aggregates_for_organizations
-      name: entity_aggregates_for_organizations
-      title: entity_aggregates_for_organizations
-      methods:
         describe_entity_aggregates_for_organization:
           operation:
             $ref: "#/paths/~1DescribeEntityAggregatesForOrganization/post"
@@ -1522,7 +1501,8 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/entity_aggregates_for_organizations/methods/describe_entity_aggregates_for_organization"
+          - $ref: "#/components/x-stackQL-resources/entity_aggregates/methods/describe_entity_aggregates_for_organization"
+          - $ref: "#/components/x-stackQL-resources/entity_aggregates/methods/describe_entity_aggregates"
         insert: []
         update: []
         delete: []
@@ -1576,17 +1556,6 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/event_details/methods/describe_event_details"
-        insert: []
-        update: []
-        delete: []
-    event_details_for_organizations:
-      id: aws.health.event_details_for_organizations
-      name: event_details_for_organizations
-      title: event_details_for_organizations
-      methods:
         describe_event_details_for_organization:
           operation:
             $ref: "#/paths/~1DescribeEventDetailsForOrganization/post"
@@ -1602,7 +1571,8 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/event_details_for_organizations/methods/describe_event_details_for_organization"
+          - $ref: "#/components/x-stackQL-resources/event_details/methods/describe_event_details"
+          - $ref: "#/components/x-stackQL-resources/event_details/methods/describe_event_details_for_organization"
         insert: []
         update: []
         delete: []
@@ -1702,10 +1672,10 @@ components:
         insert: []
         update: []
         delete: []
-    health_service_status_for_organizations:
-      id: aws.health.health_service_status_for_organizations
-      name: health_service_status_for_organizations
-      title: health_service_status_for_organizations
+    health_service_statuses:
+      id: aws.health.health_service_statuses
+      name: health_service_statuses
+      title: health_service_statuses
       methods:
         describe_health_service_status_for_organization:
           operation:
@@ -1718,7 +1688,33 @@ components:
             base: "{}"
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/health_service_status_for_organizations/methods/describe_health_service_status_for_organization"
+          - $ref: "#/components/x-stackQL-resources/health_service_statuses/methods/describe_health_service_status_for_organization"
+        insert: []
+        update: []
+        delete: []
+    health_service_accesses:
+      id: aws.health.health_service_accesses
+      name: health_service_accesses
+      title: health_service_accesses
+      methods:
+        disable_health_service_access_for_organization:
+          operation:
+            $ref: "#/paths/~1DisableHealthServiceAccessForOrganization/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+        enable_health_service_access_for_organization:
+          operation:
+            $ref: "#/paths/~1EnableHealthServiceAccessForOrganization/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+      sqlVerbs:
+        select: []
         insert: []
         update: []
         delete: []

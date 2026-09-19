@@ -225,7 +225,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ExecuteScheduledReportResponse'
-      x-stackql-resource: execute_scheduled_report
+      x-stackql-resource: scheduled_reports
       x-stackql-method: execute_scheduled_report
       x-stackql-verb: EXEC
   /GetDashboard:
@@ -489,10 +489,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -529,10 +525,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -1547,14 +1539,10 @@ components:
         resourceTags:
           $ref: '#/components/schemas/ResourceTagList'
           description: The list of tags associated with the specified dashboard resource.
-    TagResourceResponse:
-      type: object
     ResourceTagKeyList:
       type: array
       items:
         $ref: '#/components/schemas/ResourceTagKey'
-    UntagResourceResponse:
-      type: object
     UpdateDashboardResponse:
       type: object
       properties:

@@ -289,6 +289,13 @@ The following methods are available for this resource:
     <td>Updates an existing Managed Service for Apache Flink application. Using this operation, you can update application code, input configuration, and output configuration. Managed Service for Apache Flink updates the ApplicationVersionId each time you update your application.</td>
 </tr>
 <tr>
+    <td><a href="#delete_application"><CopyableCode code="delete_application" /></a></td>
+    <td><CopyableCode code="delete" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Deletes the specified application. Managed Service for Apache Flink halts application execution and deletes the application.</td>
+</tr>
+<tr>
     <td><a href="#delete_application_input_processing_configuration"><CopyableCode code="delete_application_input_processing_configuration" /></a></td>
     <td><CopyableCode code="delete" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
@@ -308,13 +315,6 @@ The following methods are available for this resource:
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td></td>
     <td>Deletes a reference data source configuration from the specified SQL-based Kinesis Data Analytics application's configuration. If the application is running, Kinesis Data Analytics immediately removes the in-application table that you created using the AddApplicationReferenceDataSource operation.</td>
-</tr>
-<tr>
-    <td><a href="#delete_application"><CopyableCode code="delete_application" /></a></td>
-    <td><CopyableCode code="delete" /></td>
-    <td><a href="#parameter-region"><code>region</code></a></td>
-    <td></td>
-    <td>Deletes the specified application. Managed Service for Apache Flink halts application execution and deletes the application.</td>
 </tr>
 <tr>
     <td><a href="#delete_application_cloud_watch_logging_option"><CopyableCode code="delete_application_cloud_watch_logging_option" /></a></td>
@@ -851,16 +851,26 @@ operation_id;
 ## `DELETE` examples
 
 <Tabs
-    defaultValue="delete_application_input_processing_configuration"
+    defaultValue="delete_application"
     values={[
+        { label: 'delete_application', value: 'delete_application' },
         { label: 'delete_application_input_processing_configuration', value: 'delete_application_input_processing_configuration' },
         { label: 'delete_application_output', value: 'delete_application_output' },
         { label: 'delete_application_reference_data_source', value: 'delete_application_reference_data_source' },
-        { label: 'delete_application', value: 'delete_application' },
         { label: 'delete_application_cloud_watch_logging_option', value: 'delete_application_cloud_watch_logging_option' },
         { label: 'delete_application_vpc_configuration', value: 'delete_application_vpc_configuration' }
     ]}
 >
+<TabItem value="delete_application">
+
+Deletes the specified application. Managed Service for Apache Flink halts application execution and deletes the application.
+
+```sql
+DELETE FROM aws.kinesisanalyticsv2.applications
+WHERE region = '{{ region }}' --required
+;
+```
+</TabItem>
 <TabItem value="delete_application_input_processing_configuration">
 
 Deletes an InputProcessingConfiguration from an input.
@@ -884,16 +894,6 @@ WHERE region = '{{ region }}' --required
 <TabItem value="delete_application_reference_data_source">
 
 Deletes a reference data source configuration from the specified SQL-based Kinesis Data Analytics application's configuration. If the application is running, Kinesis Data Analytics immediately removes the in-application table that you created using the AddApplicationReferenceDataSource operation.
-
-```sql
-DELETE FROM aws.kinesisanalyticsv2.applications
-WHERE region = '{{ region }}' --required
-;
-```
-</TabItem>
-<TabItem value="delete_application">
-
-Deletes the specified application. Managed Service for Apache Flink halts application execution and deletes the application.
 
 ```sql
 DELETE FROM aws.kinesisanalyticsv2.applications

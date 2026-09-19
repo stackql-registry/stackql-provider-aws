@@ -86,7 +86,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CalculateIsolinesResponse'
-      x-stackql-resource: calculate_isolines
+      x-stackql-resource: isolines
       x-stackql-method: calculate_isolines
       x-stackql-verb: EXEC
   /v2/route-matrix:
@@ -145,7 +145,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CalculateRouteMatrixResponse'
-      x-stackql-resource: calculate_route_matrix
+      x-stackql-resource: route_matrixes
       x-stackql-method: calculate_route_matrix
       x-stackql-verb: EXEC
   /v2/routes:
@@ -226,7 +226,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CalculateRoutesResponse'
-      x-stackql-resource: calculate_routes
+      x-stackql-resource: routes
       x-stackql-method: calculate_routes
       x-stackql-verb: EXEC
   /v2/optimize-waypoints:
@@ -287,7 +287,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/OptimizeWaypointsResponse'
-      x-stackql-resource: optimize_waypoints
+      x-stackql-resource: waypoints
       x-stackql-method: optimize_waypoints
       x-stackql-verb: EXEC
   /v2/snap-to-roads:
@@ -329,7 +329,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SnapToRoadsResponse'
-      x-stackql-resource: snap_to_roads
+      x-stackql-resource: roads
       x-stackql-method: snap_to_roads
       x-stackql-verb: EXEC
 components:

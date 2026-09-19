@@ -213,6 +213,13 @@ The following methods are available for this resource:
     <td>Deletes the specified image. You cannot delete an image when it is in use. After you delete an image, you cannot provision new capacity using the image.</td>
 </tr>
 <tr>
+    <td><a href="#copy_image"><CopyableCode code="copy_image" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-SourceImageName"><code>SourceImageName</code></a>, <a href="#parameter-DestinationImageName"><code>DestinationImageName</code></a>, <a href="#parameter-DestinationRegion"><code>DestinationRegion</code></a></td>
+    <td></td>
+    <td>Copies the image within the same region or to a new region within the same AWS account. Note that any tags you added to the image will not be copied.</td>
+</tr>
+<tr>
     <td><a href="#start_image_builder"><CopyableCode code="start_image_builder" /></a></td>
     <td><CopyableCode code="exec" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
@@ -485,12 +492,30 @@ WHERE region = '{{ region }}' --required
 ## Lifecycle Methods
 
 <Tabs
-    defaultValue="start_image_builder"
+    defaultValue="copy_image"
     values={[
+        { label: 'copy_image', value: 'copy_image' },
         { label: 'start_image_builder', value: 'start_image_builder' },
         { label: 'stop_image_builder', value: 'stop_image_builder' }
     ]}
 >
+<TabItem value="copy_image">
+
+Copies the image within the same region or to a new region within the same AWS account. Note that any tags you added to the image will not be copied.
+
+```sql
+EXEC aws.appstream.images.copy_image 
+@region='{{ region }}' --required 
+@@json=
+'{
+"SourceImageName": "{{ SourceImageName }}", 
+"DestinationImageName": "{{ DestinationImageName }}", 
+"DestinationRegion": "{{ DestinationRegion }}", 
+"DestinationImageDescription": "{{ DestinationImageDescription }}"
+}'
+;
+```
+</TabItem>
 <TabItem value="start_image_builder">
 
 Starts the specified image builder.

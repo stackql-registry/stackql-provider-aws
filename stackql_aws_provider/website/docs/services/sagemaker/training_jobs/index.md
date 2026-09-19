@@ -36,6 +36,7 @@ The following fields are returned by `SELECT` queries:
     defaultValue="describe_training_job"
     values={[
         { label: 'describe_training_job', value: 'describe_training_job' },
+        { label: 'list_training_jobs_for_hyper_parameter_tuning_job', value: 'list_training_jobs_for_hyper_parameter_tuning_job' },
         { label: 'list_training_jobs', value: 'list_training_jobs' }
     ]}
 >
@@ -303,6 +304,80 @@ The following fields are returned by `SELECT` queries:
 </tbody>
 </table>
 </TabItem>
+<TabItem value="list_training_jobs_for_hyper_parameter_tuning_job">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="creation_time" /></td>
+    <td><code>string (date-time)</code></td>
+    <td>The date and time that the training job was created.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="failure_reason" /></td>
+    <td><code>string</code></td>
+    <td>The reason that the training job failed.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="final_hyper_parameter_tuning_job_objective_metric" /></td>
+    <td><code>object</code></td>
+    <td>The FinalHyperParameterTuningJobObjectiveMetric object that specifies the value of the objective metric of the tuning job that launched this training job.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="objective_status" /></td>
+    <td><code>string</code></td>
+    <td>The status of the objective metric for the training job: Succeeded: The final objective metric for the training job was evaluated by the hyperparameter tuning job and used in the hyperparameter tuning process. Pending: The training job is in progress and evaluation of its final objective metric is pending. Failed: The final objective metric for the training job was not evaluated, and was not used in the hyperparameter tuning process. This typically occurs when the training job failed or did not emit an objective metric. (Succeeded, Pending, Failed)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="training_end_time" /></td>
+    <td><code>string (date-time)</code></td>
+    <td>Specifies the time when the training job ends on training instances. You are billed for the time interval between the value of TrainingStartTime and this time. For successful jobs and stopped jobs, this is the time after model artifacts are uploaded. For failed jobs, this is the time when SageMaker detects a job failure.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="training_job_arn" /></td>
+    <td><code>string</code></td>
+    <td>The Amazon Resource Name (ARN) of the training job. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:sagemaker:&#91;a-z0-9\-&#93;*:&#91;0-9&#93;&#123;12&#125;:training-job/&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,62&#125;&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="training_job_definition_name" /></td>
+    <td><code>string</code></td>
+    <td>The training job definition name. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,63&#125;&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="training_job_name" /></td>
+    <td><code>string</code></td>
+    <td>The name of the training job. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,62&#125;&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="training_job_status" /></td>
+    <td><code>string</code></td>
+    <td>The status of the training job. (InProgress, Completed, Failed, Stopping, Stopped, Deleting)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="training_start_time" /></td>
+    <td><code>string (date-time)</code></td>
+    <td>The date and time that the training job started.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="tuned_hyper_parameters" /></td>
+    <td><code>object</code></td>
+    <td>A list of the hyperparameters for which you specified ranges to search.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="tuning_job_name" /></td>
+    <td><code>string</code></td>
+    <td>The HyperParameter tuning job that launched the training job. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,31&#125;&lt;/code&gt;)</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
 <TabItem value="list_training_jobs">
 
 <table>
@@ -387,6 +462,13 @@ The following methods are available for this resource:
     <td>Returns information about a training job. Some of the attributes below only appear if the training job successfully starts. If the training job fails, TrainingJobStatus is Failed and, depending on the FailureReason, attributes like TrainingStartTime, TrainingTimeInSeconds, TrainingEndTime, and BillableTimeInSeconds may not be present in the response.</td>
 </tr>
 <tr>
+    <td><a href="#list_training_jobs_for_hyper_parameter_tuning_job"><CopyableCode code="list_training_jobs_for_hyper_parameter_tuning_job" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Gets a list of TrainingJobSummary objects that describe the training jobs that a hyperparameter tuning job launched.</td>
+</tr>
+<tr>
     <td><a href="#list_training_jobs"><CopyableCode code="list_training_jobs" /></a></td>
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
@@ -451,6 +533,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     defaultValue="describe_training_job"
     values={[
         { label: 'describe_training_job', value: 'describe_training_job' },
+        { label: 'list_training_jobs_for_hyper_parameter_tuning_job', value: 'list_training_jobs_for_hyper_parameter_tuning_job' },
         { label: 'list_training_jobs', value: 'list_training_jobs' }
     ]}
 >
@@ -510,6 +593,29 @@ training_time_in_seconds,
 tuning_job_arn,
 vpc_config,
 warm_pool_status
+FROM aws.sagemaker.training_jobs
+WHERE region = '{{ region }}' -- required
+;
+```
+</TabItem>
+<TabItem value="list_training_jobs_for_hyper_parameter_tuning_job">
+
+Gets a list of TrainingJobSummary objects that describe the training jobs that a hyperparameter tuning job launched.
+
+```sql
+SELECT
+creation_time,
+failure_reason,
+final_hyper_parameter_tuning_job_objective_metric,
+objective_status,
+training_end_time,
+training_job_arn,
+training_job_definition_name,
+training_job_name,
+training_job_status,
+training_start_time,
+tuned_hyper_parameters,
+tuning_job_name
 FROM aws.sagemaker.training_jobs
 WHERE region = '{{ region }}' -- required
 ;
@@ -714,6 +820,12 @@ training_job_arn
           PlacementSpecifications:
             - UltraServerId: "{{ UltraServerId }}"
               InstanceCount: {{ InstanceCount }}
+        InstancePreferences:
+          - InstanceType: "{{ InstanceType }}"
+            InstanceCount: {{ InstanceCount }}
+            TrainingPlanArns: "{{ TrainingPlanArns }}"
+        SelectedInstanceType: "{{ SelectedInstanceType }}"
+        SelectedInstanceCount: {{ SelectedInstanceCount }}
     - name: VpcConfig
       description: |
         Specifies an Amazon Virtual Private Cloud (VPC) that your SageMaker jobs, hosted models, and compute resources have access to. You can control access to and from your resources by configuring a VPC. For more information, see Give SageMaker Access to Resources in your Amazon VPC.

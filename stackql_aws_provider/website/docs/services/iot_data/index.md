@@ -18,7 +18,7 @@ iot_data service documentation.
 
 :::info[Service Summary]
 
-total resources: __5__  
+total resources: __7__  
 
 :::
 
@@ -26,10 +26,12 @@ total resources: __5__
 <div class="row">
 <div class="providerDocColumn">
 <a href="/services/iot_data/connections/">connections</a><br />
-<a href="/services/iot_data/named_shadows_for_things/">named_shadows_for_things</a><br />
-<a href="/services/iot_data/retained_messages/">retained_messages</a>
+<a href="/services/iot_data/direct_messages/">direct_messages</a><br />
+<a href="/services/iot_data/named_shadows/">named_shadows</a><br />
+<a href="/services/iot_data/publishes/">publishes</a>
 </div>
 <div class="providerDocColumn">
+<a href="/services/iot_data/retained_messages/">retained_messages</a><br />
 <a href="/services/iot_data/subscriptions/">subscriptions</a><br />
 <a href="/services/iot_data/thing_shadows/">thing_shadows</a>
 </div>

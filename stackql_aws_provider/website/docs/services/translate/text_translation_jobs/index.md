@@ -183,6 +183,20 @@ The following methods are available for this resource:
     <td></td>
     <td>Gets a list of the batch translation jobs that you have submitted.</td>
 </tr>
+<tr>
+    <td><a href="#start_text_translation_job"><CopyableCode code="start_text_translation_job" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-InputDataConfig"><code>InputDataConfig</code></a>, <a href="#parameter-OutputDataConfig"><code>OutputDataConfig</code></a>, <a href="#parameter-DataAccessRoleArn"><code>DataAccessRoleArn</code></a>, <a href="#parameter-SourceLanguageCode"><code>SourceLanguageCode</code></a>, <a href="#parameter-TargetLanguageCodes"><code>TargetLanguageCodes</code></a>, <a href="#parameter-ClientToken"><code>ClientToken</code></a></td>
+    <td></td>
+    <td>Starts an asynchronous batch translation job. Use batch translation jobs to translate large volumes of text across multiple documents at once. For batch translation, you can input documents with different source languages (specify auto as the source language). You can specify one or more target languages. Batch translation translates each input document into each of the target languages. For more information, see Asynchronous batch processing. Batch translation jobs can be described with the DescribeTextTranslationJob operation, listed with the ListTextTranslationJobs operation, and stopped with the StopTextTranslationJob operation.</td>
+</tr>
+<tr>
+    <td><a href="#stop_text_translation_job"><CopyableCode code="stop_text_translation_job" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-JobId"><code>JobId</code></a></td>
+    <td></td>
+    <td>Stops an asynchronous batch translation job that is in progress. If the job's state is IN_PROGRESS, the job will be marked for termination and put into the STOP_REQUESTED state. If the job completes before it can be stopped, it is put into the COMPLETED state. Otherwise, the job is put into the STOPPED state. Asynchronous batch translation jobs are started with the StartTextTranslationJob operation. You can use the DescribeTextTranslationJob or ListTextTranslationJobs operations to get a batch translation job's JobId.</td>
+</tr>
 </tbody>
 </table>
 
@@ -252,6 +266,55 @@ next_token,
 text_translation_job_properties_list
 FROM aws.translate.text_translation_jobs
 WHERE region = '{{ region }}' -- required
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="start_text_translation_job"
+    values={[
+        { label: 'start_text_translation_job', value: 'start_text_translation_job' },
+        { label: 'stop_text_translation_job', value: 'stop_text_translation_job' }
+    ]}
+>
+<TabItem value="start_text_translation_job">
+
+Starts an asynchronous batch translation job. Use batch translation jobs to translate large volumes of text across multiple documents at once. For batch translation, you can input documents with different source languages (specify auto as the source language). You can specify one or more target languages. Batch translation translates each input document into each of the target languages. For more information, see Asynchronous batch processing. Batch translation jobs can be described with the DescribeTextTranslationJob operation, listed with the ListTextTranslationJobs operation, and stopped with the StopTextTranslationJob operation.
+
+```sql
+EXEC aws.translate.text_translation_jobs.start_text_translation_job 
+@region='{{ region }}' --required 
+@@json=
+'{
+"JobName": "{{ JobName }}", 
+"InputDataConfig": "{{ InputDataConfig }}", 
+"OutputDataConfig": "{{ OutputDataConfig }}", 
+"DataAccessRoleArn": "{{ DataAccessRoleArn }}", 
+"SourceLanguageCode": "{{ SourceLanguageCode }}", 
+"TargetLanguageCodes": "{{ TargetLanguageCodes }}", 
+"TerminologyNames": "{{ TerminologyNames }}", 
+"ParallelDataNames": "{{ ParallelDataNames }}", 
+"ClientToken": "{{ ClientToken }}", 
+"Settings": "{{ Settings }}"
+}'
+;
+```
+</TabItem>
+<TabItem value="stop_text_translation_job">
+
+Stops an asynchronous batch translation job that is in progress. If the job's state is IN_PROGRESS, the job will be marked for termination and put into the STOP_REQUESTED state. If the job completes before it can be stopped, it is put into the COMPLETED state. Otherwise, the job is put into the STOPPED state. Asynchronous batch translation jobs are started with the StartTextTranslationJob operation. You can use the DescribeTextTranslationJob or ListTextTranslationJobs operations to get a batch translation job's JobId.
+
+```sql
+EXEC aws.translate.text_translation_jobs.stop_text_translation_job 
+@region='{{ region }}' --required 
+@@json=
+'{
+"JobId": "{{ JobId }}"
+}'
 ;
 ```
 </TabItem>

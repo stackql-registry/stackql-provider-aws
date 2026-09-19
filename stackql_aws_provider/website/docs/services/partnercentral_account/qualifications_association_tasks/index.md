@@ -116,6 +116,13 @@ The following methods are available for this resource:
     <td></td>
     <td>Retrieves the status and details of the most recent qualifications association task for your partner account. Use this operation to poll the progress of an association task initiated by StartQualificationsAssociationTask.</td>
 </tr>
+<tr>
+    <td><a href="#start_qualifications_association_task"><CopyableCode code="start_qualifications_association_task" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-Identifier"><code>Identifier</code></a>, <a href="#parameter-PrimaryPartner"><code>PrimaryPartner</code></a></td>
+    <td></td>
+    <td>Initiates an asynchronous task to associate your partner qualifications with a primary account. You must be a subsidiary of the primary account with an active subsidiary connection. Use GetQualificationsAssociationTask to monitor task progress.</td>
+</tr>
 </tbody>
 </table>
 
@@ -164,6 +171,34 @@ status,
 task_id
 FROM aws.partnercentral_account.qualifications_association_tasks
 WHERE region = '{{ region }}' -- required
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="start_qualifications_association_task"
+    values={[
+        { label: 'start_qualifications_association_task', value: 'start_qualifications_association_task' }
+    ]}
+>
+<TabItem value="start_qualifications_association_task">
+
+Initiates an asynchronous task to associate your partner qualifications with a primary account. You must be a subsidiary of the primary account with an active subsidiary connection. Use GetQualificationsAssociationTask to monitor task progress.
+
+```sql
+EXEC aws.partnercentral_account.qualifications_association_tasks.start_qualifications_association_task 
+@region='{{ region }}' --required 
+@@json=
+'{
+"Catalog": "{{ Catalog }}", 
+"Identifier": "{{ Identifier }}", 
+"ClientToken": "{{ ClientToken }}", 
+"PrimaryPartner": "{{ PrimaryPartner }}"
+}'
 ;
 ```
 </TabItem>

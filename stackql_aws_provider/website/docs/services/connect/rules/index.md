@@ -36,8 +36,7 @@ The following fields are returned by `SELECT` queries:
     defaultValue="describe_rule"
     values={[
         { label: 'describe_rule', value: 'describe_rule' },
-        { label: 'list_rules', value: 'list_rules' },
-        { label: 'search_rules', value: 'search_rules' }
+        { label: 'list_rules', value: 'list_rules' }
     ]}
 >
 <TabItem value="describe_rule">
@@ -80,6 +79,11 @@ The following fields are returned by `SELECT` queries:
     <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
     <td>The name of the rule. (pattern: &lt;code&gt;^&#91;0-9a-zA-Z._-&#93;+&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="pre_evaluation_filters" /></td>
+    <td><code>object</code></td>
+    <td>The pre-evaluation filters for a rule, that restrict a rule to be applied to only certain resources based on the resource's attributes, such as tags assigned to a contact. The pre-evaluation filters are applied even before rule conditions are evaluated and are used to enforce tag-based-access-control while applying rules.</td>
 </tr>
 <tr>
     <td><CopyableCode code="publish_status" /></td>
@@ -173,75 +177,6 @@ The following fields are returned by `SELECT` queries:
 </tbody>
 </table>
 </TabItem>
-<TabItem value="search_rules">
-
-<table>
-<thead>
-    <tr>
-    <th>Name</th>
-    <th>Datatype</th>
-    <th>Description</th>
-    </tr>
-</thead>
-<tbody>
-<tr>
-    <td><CopyableCode code="action_summaries" /></td>
-    <td><code>array</code></td>
-    <td>A list of ActionTypes associated with a rule.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="created_time" /></td>
-    <td><code>string (date-time)</code></td>
-    <td>The timestamp for when the rule was created.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="last_updated_by" /></td>
-    <td><code>string</code></td>
-    <td>The Amazon Resource Name (ARN) of the user who last updated the rule.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="last_updated_time" /></td>
-    <td><code>string (date-time)</code></td>
-    <td>The timestamp for when the rule was last updated.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="name" /></td>
-    <td><code>string</code></td>
-    <td>The name of the rule. (pattern: &lt;code&gt;^&#91;0-9a-zA-Z._-&#93;+&lt;/code&gt;)</td>
-</tr>
-<tr>
-    <td><CopyableCode code="publish_status" /></td>
-    <td><code>string</code></td>
-    <td>The publish status of the rule. (DRAFT, PUBLISHED)</td>
-</tr>
-<tr>
-    <td><CopyableCode code="rule_arn" /></td>
-    <td><code>string</code></td>
-    <td>The Amazon Resource Name (ARN) of the rule.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="rule_capability_tiers" /></td>
-    <td><code>array</code></td>
-    <td>The list of capability tiers associated with the rule. Used for categorizing rules by capability (for example, GenerativeAI).</td>
-</tr>
-<tr>
-    <td><CopyableCode code="rule_id" /></td>
-    <td><code>string</code></td>
-    <td>A unique identifier for the rule.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="tags" /></td>
-    <td><code>object</code></td>
-    <td>The tags used to organize, track, or control access for this resource. For example, &#123; "Tags": &#123;"key1":"value1", "key2":"value2"&#125; &#125;.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="trigger_event_source" /></td>
-    <td><code>object</code></td>
-    <td>The name of the event source. This field is required if TriggerEventSource is one of the following values: OnZendeskTicketCreate | OnZendeskTicketStatusUpdate | OnSalesforceCaseCreate | OnContactEvaluationSubmit | OnMetricDataUpdate.</td>
-</tr>
-</tbody>
-</table>
-</TabItem>
 </Tabs>
 
 ## Methods
@@ -274,13 +209,6 @@ The following methods are available for this resource:
     <td>List all rules for the specified Connect Customer instance.</td>
 </tr>
 <tr>
-    <td><a href="#search_rules"><CopyableCode code="search_rules" /></a></td>
-    <td><CopyableCode code="select" /></td>
-    <td><a href="#parameter-region"><code>region</code></a></td>
-    <td></td>
-    <td>Searches rules in an Connect Customer instance, with optional filtering.</td>
-</tr>
-<tr>
     <td><a href="#create_rule"><CopyableCode code="create_rule" /></a></td>
     <td><CopyableCode code="insert" /></td>
     <td><a href="#parameter-instance_id"><code>instance_id</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-TriggerEventSource"><code>TriggerEventSource</code></a>, <a href="#parameter-Function"><code>Function</code></a>, <a href="#parameter-Actions"><code>Actions</code></a>, <a href="#parameter-PublishStatus"><code>PublishStatus</code></a></td>
@@ -300,6 +228,13 @@ The following methods are available for this resource:
     <td><a href="#parameter-instance_id"><code>instance_id</code></a>, <a href="#parameter-rule_id"><code>rule_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td></td>
     <td>Deletes a rule for the specified Connect Customer instance.</td>
+</tr>
+<tr>
+    <td><a href="#search_rules"><CopyableCode code="search_rules" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-InstanceId"><code>InstanceId</code></a></td>
+    <td></td>
+    <td>Searches rules in an Connect Customer instance, with optional filtering.</td>
 </tr>
 </tbody>
 </table>
@@ -361,8 +296,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     defaultValue="describe_rule"
     values={[
         { label: 'describe_rule', value: 'describe_rule' },
-        { label: 'list_rules', value: 'list_rules' },
-        { label: 'search_rules', value: 'search_rules' }
+        { label: 'list_rules', value: 'list_rules' }
     ]}
 >
 <TabItem value="describe_rule">
@@ -377,6 +311,7 @@ function,
 last_updated_by,
 last_updated_time,
 name,
+pre_evaluation_filters,
 publish_status,
 rule_arn,
 rule_capability_tiers,
@@ -415,28 +350,6 @@ AND nextToken = '{{ nextToken }}'
 ;
 ```
 </TabItem>
-<TabItem value="search_rules">
-
-Searches rules in an Connect Customer instance, with optional filtering.
-
-```sql
-SELECT
-action_summaries,
-created_time,
-last_updated_by,
-last_updated_time,
-name,
-publish_status,
-rule_arn,
-rule_capability_tiers,
-rule_id,
-tags,
-trigger_event_source
-FROM aws.connect.rules
-WHERE region = '{{ region }}' -- required
-;
-```
-</TabItem>
 </Tabs>
 
 
@@ -460,7 +373,9 @@ TriggerEventSource,
 Function,
 Actions,
 PublishStatus,
+PreEvaluationFilters,
 ClientToken,
+Tags,
 instance_id,
 region
 )
@@ -470,7 +385,9 @@ SELECT
 '{{ Function }}' /* required */,
 '{{ Actions }}' /* required */,
 '{{ PublishStatus }}' /* required */,
+'{{ PreEvaluationFilters }}',
 '{{ ClientToken }}',
+'{{ Tags }}',
 '{{ instance_id }}',
 '{{ region }}'
 RETURNING
@@ -562,8 +479,20 @@ rule_id
     - name: PublishStatus
       value: "{{ PublishStatus }}"
       valid_values: ['DRAFT', 'PUBLISHED']
+    - name: PreEvaluationFilters
+      description: |
+        The pre-evaluation filters for a rule, that restrict a rule to be applied to only certain resources based on the resource's attributes, such as tags assigned to a contact. The pre-evaluation filters are applied even before rule conditions are evaluated and are used to enforce tag-based-access-control while applying rules.
+      value:
+        AndConditions:
+          - ResourceType: "{{ ResourceType }}"
+            FilterType: "{{ FilterType }}"
+            FilterKey: "{{ FilterKey }}"
+            FilterValue: "{{ FilterValue }}"
+            Operator: "{{ Operator }}"
     - name: ClientToken
       value: "{{ ClientToken }}"
+    - name: Tags
+      value: "{{ Tags }}"
 `}</CodeBlock>
 
 </TabItem>
@@ -588,7 +517,8 @@ SET
 Name = '{{ Name }}',
 Function = '{{ Function }}',
 Actions = '{{ Actions }}',
-PublishStatus = '{{ PublishStatus }}'
+PublishStatus = '{{ PublishStatus }}',
+PreEvaluationFilters = '{{ PreEvaluationFilters }}'
 WHERE 
 rule_id = '{{ rule_id }}' --required
 AND instance_id = '{{ instance_id }}' --required
@@ -618,6 +548,35 @@ DELETE FROM aws.connect.rules
 WHERE instance_id = '{{ instance_id }}' --required
 AND rule_id = '{{ rule_id }}' --required
 AND region = '{{ region }}' --required
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="search_rules"
+    values={[
+        { label: 'search_rules', value: 'search_rules' }
+    ]}
+>
+<TabItem value="search_rules">
+
+Searches rules in an Connect Customer instance, with optional filtering.
+
+```sql
+EXEC aws.connect.rules.search_rules 
+@region='{{ region }}' --required 
+@@json=
+'{
+"InstanceId": "{{ InstanceId }}", 
+"MaxResults": {{ MaxResults }}, 
+"NextToken": "{{ NextToken }}", 
+"SearchCriteria": "{{ SearchCriteria }}", 
+"SearchFilter": "{{ SearchFilter }}"
+}'
 ;
 ```
 </TabItem>

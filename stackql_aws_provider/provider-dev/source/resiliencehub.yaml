@@ -742,7 +742,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DescribeAppVersionResourcesResolutionStatusResponse'
-      x-stackql-resource: app_version_resources_resolution_status
+      x-stackql-resource: app_version_resources_resolution_statuses
       x-stackql-method: describe_app_version_resources_resolution_status
       x-stackql-verb: SELECT
   /describe-app-version-template:
@@ -799,7 +799,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DescribeDraftAppVersionResourcesImportStatusResponse'
-      x-stackql-resource: draft_app_version_resources_import_status
+      x-stackql-resource: draft_app_version_resources_import_statuses
       x-stackql-method: describe_draft_app_version_resources_import_status
       x-stackql-verb: SELECT
   /describe-metrics-export:
@@ -916,7 +916,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ImportResourcesToDraftAppVersionResponse'
-      x-stackql-resource: apps
+      x-stackql-resource: app_versions
       x-stackql-method: import_resources_to_draft_app_version
       x-stackql-verb: EXEC
   /list-alarm-recommendations:
@@ -1657,10 +1657,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -1683,10 +1679,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -1781,7 +1773,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PublishAppVersionResponse'
-      x-stackql-resource: apps
+      x-stackql-resource: app_versions
       x-stackql-method: publish_app_version
       x-stackql-verb: EXEC
   /put-draft-app-version-template:
@@ -1942,7 +1934,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartAppAssessmentResponse'
-      x-stackql-resource: apps
+      x-stackql-resource: app_assessments
       x-stackql-method: start_app_assessment
       x-stackql-verb: EXEC
   /start-metrics-export:
@@ -1968,7 +1960,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartMetricsExportResponse'
-      x-stackql-resource: metrics
+      x-stackql-resource: metrics_exports
       x-stackql-method: start_metrics_export
       x-stackql-verb: EXEC
   /start-resource-grouping-recommendation-task:
@@ -1994,7 +1986,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartResourceGroupingRecommendationTaskResponse'
-      x-stackql-resource: resource_grouping_recommendations
+      x-stackql-resource: resource_grouping_recommendation_tasks
       x-stackql-method: start_resource_grouping_recommendation_task
       x-stackql-verb: EXEC
   /update-app:
@@ -4956,8 +4948,6 @@ components:
       - appArn
       - groupingId
       - status
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
@@ -4967,8 +4957,6 @@ components:
       minLength: 1
       maxLength: 128
       pattern: ^[^\x00-\x1f\x22]+$
-    UntagResourceResponse:
-      type: object
     UpdateAppResponse:
       type: object
       properties:

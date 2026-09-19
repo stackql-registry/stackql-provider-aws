@@ -158,6 +158,13 @@ The following methods are available for this resource:
     <td><a href="#parameter-nextToken"><code>nextToken</code></a>, <a href="#parameter-maxResults"><code>maxResults</code></a></td>
     <td>Lists all ID mapping jobs for a given workflow.</td>
 </tr>
+<tr>
+    <td><a href="#start_id_mapping_job"><CopyableCode code="start_id_mapping_job" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-workflow_name"><code>workflow_name</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Starts the IdMappingJob of a workflow. The workflow must have previously been created using the CreateIdMappingWorkflow endpoint.</td>
+</tr>
 </tbody>
 </table>
 
@@ -187,7 +194,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-workflow_name">
     <td><CopyableCode code="workflow_name" /></td>
     <td><code>string</code></td>
-    <td>The name of the workflow to be retrieved.</td>
+    <td>The name of the ID mapping job to be retrieved.</td>
 </tr>
 <tr id="parameter-maxResults">
     <td><CopyableCode code="maxResults" /></td>
@@ -247,6 +254,33 @@ WHERE workflow_name = '{{ workflow_name }}' -- required
 AND region = '{{ region }}' -- required
 AND nextToken = '{{ nextToken }}'
 AND maxResults = '{{ maxResults }}'
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="start_id_mapping_job"
+    values={[
+        { label: 'start_id_mapping_job', value: 'start_id_mapping_job' }
+    ]}
+>
+<TabItem value="start_id_mapping_job">
+
+Starts the IdMappingJob of a workflow. The workflow must have previously been created using the CreateIdMappingWorkflow endpoint.
+
+```sql
+EXEC aws.entityresolution.id_mapping_jobs.start_id_mapping_job 
+@workflow_name='{{ workflow_name }}' --required, 
+@region='{{ region }}' --required 
+@@json=
+'{
+"outputSourceConfig": "{{ outputSourceConfig }}", 
+"jobType": "{{ jobType }}"
+}'
 ;
 ```
 </TabItem>

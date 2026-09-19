@@ -33,11 +33,36 @@ Creates, updates, deletes, gets or lists a <code>packages</code> resource.
 The following fields are returned by `SELECT` queries:
 
 <Tabs
-    defaultValue="describe_packages"
+    defaultValue="list_packages_for_domain"
     values={[
+        { label: 'list_packages_for_domain', value: 'list_packages_for_domain' },
         { label: 'describe_packages', value: 'describe_packages' }
     ]}
 >
+<TabItem value="list_packages_for_domain">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="domain_package_details_list" /></td>
+    <td><code>array</code></td>
+    <td>List of all packages associated with a domain.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="next_token" /></td>
+    <td><code>string</code></td>
+    <td>When nextToken is returned, there are more results available. The value of nextToken is a unique pagination token for each page. Send the request again using the returned token to retrieve the next page.</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
 <TabItem value="describe_packages">
 
 <table>
@@ -79,6 +104,13 @@ The following methods are available for this resource:
     </tr>
 </thead>
 <tbody>
+<tr>
+    <td><a href="#list_packages_for_domain"><CopyableCode code="list_packages_for_domain" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-domain_name"><code>domain_name</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td><a href="#parameter-maxResults"><code>maxResults</code></a>, <a href="#parameter-nextToken"><code>nextToken</code></a></td>
+    <td>Lists all packages associated with an Amazon OpenSearch Service domain. For more information, see Custom packages for Amazon OpenSearch Service.</td>
+</tr>
 <tr>
     <td><a href="#describe_packages"><CopyableCode code="describe_packages" /></a></td>
     <td><CopyableCode code="select" /></td>
@@ -173,17 +205,44 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     <td><code>string</code></td>
     <td>AWS region (default: us-east-1)</td>
 </tr>
+<tr id="parameter-maxResults">
+    <td><CopyableCode code="maxResults" /></td>
+    <td><code>integer</code></td>
+    <td>An optional parameter that specifies the maximum number of results to return. You can use nextToken to get the next page of results.</td>
+</tr>
+<tr id="parameter-nextToken">
+    <td><CopyableCode code="nextToken" /></td>
+    <td><code>string</code></td>
+    <td>If your initial ListPackagesForDomain operation returns a nextToken, you can include the returned nextToken in subsequent ListPackagesForDomain operations, which returns results in the next page.</td>
+</tr>
 </tbody>
 </table>
 
 ## `SELECT` examples
 
 <Tabs
-    defaultValue="describe_packages"
+    defaultValue="list_packages_for_domain"
     values={[
+        { label: 'list_packages_for_domain', value: 'list_packages_for_domain' },
         { label: 'describe_packages', value: 'describe_packages' }
     ]}
 >
+<TabItem value="list_packages_for_domain">
+
+Lists all packages associated with an Amazon OpenSearch Service domain. For more information, see Custom packages for Amazon OpenSearch Service.
+
+```sql
+SELECT
+domain_package_details_list,
+next_token
+FROM aws.opensearch.packages
+WHERE domain_name = '{{ domain_name }}' -- required
+AND region = '{{ region }}' -- required
+AND maxResults = '{{ maxResults }}'
+AND nextToken = '{{ nextToken }}'
+;
+```
+</TabItem>
 <TabItem value="describe_packages">
 
 Describes all packages available to OpenSearch Service. For more information, see Custom packages for Amazon OpenSearch Service.

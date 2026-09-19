@@ -1,0 +1,263 @@
+openapi: 3.0.0
+info:
+  version: "2018-05-10"
+  title: IAM Toolbox (Preview)
+  description: IAM Toolbox (Preview)
+  x-serviceName: iam
+  x-serviceAlias: iam_toolbox
+  x-protocol: rest-json
+  x-apiVersion: "2018-05-10"
+  x-endpointPrefix: iam-toolbox
+servers:
+  - url: https://iam-toolbox.{region}.amazonaws.com
+    variables:
+      region:
+        default: us-east-1
+        description: AWS region
+    description: Regional endpoint for iam-toolbox
+paths:
+  /authorization-details/{authorization_id}:
+    get:
+      operationId: GetRequestAuthorizationDetails
+      description: Retrieves the authorization details for a specific access denied request. The details include the request context, the evaluations performed, and the policies that were evaluated. Use this operation to understand why a request was denied. Supported services include an authorization ID in the access denied error message. Pass that ID to this operation to retrieve the details. Authorization details are available for at least 24 hours after the denial. To use this operation, you must have the iam:GetRequestAuthorizationDetails permission.
+      parameters:
+        - name: authorization_id
+          in: path
+          required: true
+          schema:
+            $ref: "#/components/schemas/GetRequestAuthorizationDetailsInputAuthorizationIdString"
+          description: The authorization ID received in the access denied error message. This ID identifies the specific request to retrieve details for.
+        - name: nextToken
+          in: query
+          required: false
+          schema:
+            $ref: "#/components/schemas/String"
+          description: The pagination token from a previous call, used to retrieve the next page of evaluations. Omit this value on the first call.
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GetRequestAuthorizationDetailsOutput"
+components:
+  parameters:
+    X-Amz-Content-Sha256:
+      in: header
+      name: X-Amz-Content-Sha256
+      required: false
+      schema:
+        type: string
+    X-Amz-Date:
+      in: header
+      name: X-Amz-Date
+      required: false
+      schema:
+        type: string
+    X-Amz-Algorithm:
+      in: header
+      name: X-Amz-Algorithm
+      required: false
+      schema:
+        type: string
+    X-Amz-Credential:
+      in: header
+      name: X-Amz-Credential
+      required: false
+      schema:
+        type: string
+    X-Amz-Security-Token:
+      in: header
+      name: X-Amz-Security-Token
+      required: false
+      schema:
+        type: string
+    X-Amz-Signature:
+      in: header
+      name: X-Amz-Signature
+      required: false
+      schema:
+        type: string
+    X-Amz-SignedHeaders:
+      in: header
+      name: X-Amz-SignedHeaders
+      required: false
+      schema:
+        type: string
+  schemas:
+    GetRequestAuthorizationDetailsInputAuthorizationIdString:
+      type: string
+      pattern: "[0123456789abcdefghijklmnopqrstuvwxyz]+"
+    String:
+      type: string
+    GetRequestAuthorizationDetailsOutput:
+      type: object
+      properties:
+        requestContext:
+          type: object
+          properties: {}
+          description: The request context is the set of context keys and values that apply to the entire request and are shared by all evaluations.
+        evaluations:
+          $ref: "#/components/schemas/Evaluations"
+          description: The list of evaluations for this request. Each evaluation shows how a single action and resource pair was evaluated. This includes the context, the effect, and any policies that matched.
+        policies:
+          $ref: "#/components/schemas/PolicyInfoList"
+          description: The list of policies that were evaluated.
+        nextToken:
+          $ref: "#/components/schemas/String"
+          description: The pagination token for retrieving the next page of evaluations. This value is absent when there are no more results.
+      required:
+        - requestContext
+        - evaluations
+        - policies
+    Evaluations:
+      description: A list of evaluations.
+      type: array
+      items:
+        $ref: "#/components/schemas/Evaluation"
+    Evaluation:
+      description: Represents an individual evaluation for a single action and resource pair. This includes the context, the resulting effect, and any policies that matched.
+      type: object
+      properties:
+        action:
+          $ref: "#/components/schemas/String"
+          description: The action evaluated for this request (for example, iam:PassRole).
+        resource:
+          $ref: "#/components/schemas/String"
+          description: The resource that the action targeted. This is typically a resource ARN, but can be a wildcard ARN that matches multiple resources, or empty for actions that are not resource-specific.
+        context:
+          type: object
+          properties: {}
+          description: The context keys and values specific to this evaluation. These are applied on top of the request context.
+        evaluatedEffect:
+          $ref: "#/components/schemas/EvaluatedEffect"
+          description: "The result of the evaluation. Valid values: ALLOW - The action was allowed. EXPLICIT_DENY - The action was explicitly denied by a policy. IMPLICIT_DENY - The action was denied because no policy allowed it."
+        matchedPolicies:
+          $ref: "#/components/schemas/MatchedPolicyList"
+          description: The policies that matched during evaluation of this action and resource. An implicit denial produces no matched policies.
+      required:
+        - action
+        - resource
+    EvaluatedEffect:
+      description: The result of a policy evaluation.
+      type: string
+      enum:
+        - ALLOW
+        - EXPLICIT_DENY
+        - IMPLICIT_DENY
+    MatchedPolicyList:
+      description: A list of policies that matched during an evaluation.
+      type: array
+      items:
+        $ref: "#/components/schemas/MatchedPolicy"
+    MatchedPolicy:
+      description: A policy that matched during evaluation, referenced by URI. The URI corresponds to a policy in the top-level policies list.
+      type: object
+      properties:
+        uri:
+          $ref: "#/components/schemas/String"
+          description: "The URI of the policy. This cross-references an entry in the top-level policies list. The value depends on the policy type: For managed policies, this is the policy ARN. For inline policies, this is an opaque identifier."
+        matchedStatements:
+          $ref: "#/components/schemas/MatchedStatementList"
+          description: The statements within the policy that matched during the evaluation.
+      required:
+        - uri
+    MatchedStatementList:
+      description: A list of statements that matched within a policy.
+      type: array
+      items:
+        $ref: "#/components/schemas/MatchedStatement"
+    MatchedStatement:
+      description: A statement that matched during evaluation.
+      type: object
+      properties:
+        sid:
+          $ref: "#/components/schemas/String"
+          description: The statement ID (Sid). If the statement has no Sid, one is generated for reference.
+        evaluatedEffect:
+          $ref: "#/components/schemas/StatementEffect"
+          description: "The evaluated effect of this statement. Valid values: ALLOW - The statement allows the action. DENY - The statement denies the action."
+    StatementEffect:
+      description: The effect of a matched statement.
+      type: string
+      enum:
+        - ALLOW
+        - DENY
+    PolicyInfoList:
+      description: A list of policy details.
+      type: array
+      items:
+        $ref: "#/components/schemas/PolicyInfo"
+    PolicyInfo:
+      description: Contains details about a policy evaluated during authorization. Details include the policy type, whether it is inline or managed, a URI that identifies it, and the entities it is attached to.
+      type: object
+      properties:
+        type_:
+          $ref: "#/components/schemas/PolicyType"
+          description: "The type of policy. Valid values: IDENTITY_BASED_POLICY - An identity-based policy attached to an IAM user, group, or role. PERMISSIONS_BOUNDARY - A permissions boundary for an IAM entity. RESOURCE_BASED_POLICY - A resource-based policy attached to a resource. RESOURCE_CONTROL_POLICY - A resource control policy (RCP) in AWS Organizations. SERVICE_CONTROL_POLICY - A service control policy (SCP) in AWS Organizations. SESSION_POLICY - A session policy passed during role assumption or federation. VPC_ENDPOINT_POLICY - A VPC endpoint policy."
+        inline:
+          $ref: "#/components/schemas/Boolean"
+          description: Specifies whether this is an inline policy (true) or a managed policy (false).
+        uri:
+          $ref: "#/components/schemas/String"
+          description: "A URI that identifies the policy. Use this URI to cross-reference the policy with the matching policies in each evaluation. The value depends on the policy type: For managed policies, this is the policy ARN. For inline policies, which have no ARN, this is an opaque identifier."
+        attachedTo:
+          $ref: "#/components/schemas/AttachedToList"
+          description: The entities that the policy is attached to. For identity, session, and resource-based policies, this is typically a single entity. For organization control policies (SCPs and RCPs), it can be multiple entities at different levels of the organization hierarchy.
+    PolicyType:
+      description: The policy type.
+      type: string
+      enum:
+        - IDENTITY_BASED_POLICY
+        - RESOURCE_BASED_POLICY
+        - PERMISSIONS_BOUNDARY
+        - SESSION_POLICY
+        - SERVICE_CONTROL_POLICY
+        - RESOURCE_CONTROL_POLICY
+        - VPC_ENDPOINT_POLICY
+    Boolean:
+      type: boolean
+    AttachedToList:
+      description: A list of entities that a policy is attached to.
+      type: array
+      items:
+        $ref: "#/components/schemas/AttachedTo"
+    AttachedTo:
+      description: An entity that a policy is attached to, identified by its ARN.
+      type: object
+      properties:
+        arn:
+          $ref: "#/components/schemas/AttachedToArnString"
+          description: "The ARN of the entity that the policy is attached to. The ARN format depends on the policy type: For identity, session, and permissions boundary policies, this is the principal ARN (for example, an IAM role or user ARN). For resource-based policies, this is the resource ARN. For organization control policies (SCPs and RCPs), this is the AWS Organizations ARN of the account, organizational unit, or root."
+    AttachedToArnString:
+      type: string
+      pattern: arn:[^:]*:[^:]*:[^:]*:[^:]*:.*
+  x-stackQL-resources:
+    request_authorization_details:
+      id: aws.iam_toolbox.request_authorization_details
+      name: request_authorization_details
+      title: request_authorization_details
+      methods:
+        get_request_authorization_details:
+          operation:
+            $ref: "#/paths/~1authorization-details~1{authorization_id}/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.evaluations
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/request_authorization_details/methods/get_request_authorization_details"
+        insert: []
+        update: []
+        delete: []

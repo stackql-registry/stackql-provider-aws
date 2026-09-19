@@ -242,8 +242,6 @@ SELECT
 '{{ PolicyTypeName }}',
 '{{ region }}',
 '{{ PolicyAttributes }}'
-RETURNING
-line_items
 ;
 ```
 </TabItem>
@@ -295,9 +293,7 @@ WHERE
 LoadBalancerName = '{{ LoadBalancerName }}' --required
 AND InstancePort = '{{ InstancePort }}' --required
 AND PolicyNames = '{{ PolicyNames }}' --required
-AND region = '{{ region }}' --required
-RETURNING
-line_items;
+AND region = '{{ region }}' --required;
 ```
 </TabItem>
 <TabItem value="set_load_balancer_policies_of_listener">
@@ -312,9 +308,7 @@ WHERE
 LoadBalancerName = '{{ LoadBalancerName }}' --required
 AND LoadBalancerPort = '{{ LoadBalancerPort }}' --required
 AND PolicyNames = '{{ PolicyNames }}' --required
-AND region = '{{ region }}' --required
-RETURNING
-line_items;
+AND region = '{{ region }}' --required;
 ```
 </TabItem>
 </Tabs>

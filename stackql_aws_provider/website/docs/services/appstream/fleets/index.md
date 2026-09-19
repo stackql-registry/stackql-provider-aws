@@ -212,13 +212,6 @@ The following methods are available for this resource:
     <td>Retrieves a list that describes one or more specified fleets, if the fleet names are provided. Otherwise, all fleets in the account are described.</td>
 </tr>
 <tr>
-    <td><a href="#create_streaming_url"><CopyableCode code="create_streaming_url" /></a></td>
-    <td><CopyableCode code="insert" /></td>
-    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-StackName"><code>StackName</code></a>, <a href="#parameter-FleetName"><code>FleetName</code></a>, <a href="#parameter-UserId"><code>UserId</code></a></td>
-    <td></td>
-    <td>Creates a temporary URL to start an WorkSpaces Applications streaming session for the specified user. A streaming URL enables application streaming to be tested without user setup.</td>
-</tr>
-<tr>
     <td><a href="#create_fleet"><CopyableCode code="create_fleet" /></a></td>
     <td><CopyableCode code="insert" /></td>
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-InstanceType"><code>InstanceType</code></a></td>
@@ -226,11 +219,11 @@ The following methods are available for this resource:
     <td>Creates a fleet. A fleet consists of streaming instances that your users access for their applications and desktops.</td>
 </tr>
 <tr>
-    <td><a href="#associate_application_fleet"><CopyableCode code="associate_application_fleet" /></a></td>
-    <td><CopyableCode code="update" /></td>
-    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-FleetName"><code>FleetName</code></a>, <a href="#parameter-ApplicationArn"><code>ApplicationArn</code></a></td>
+    <td><a href="#create_streaming_url"><CopyableCode code="create_streaming_url" /></a></td>
+    <td><CopyableCode code="insert" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-StackName"><code>StackName</code></a>, <a href="#parameter-FleetName"><code>FleetName</code></a>, <a href="#parameter-UserId"><code>UserId</code></a></td>
     <td></td>
-    <td>Associates the specified application with the specified fleet. This is only supported for Elastic fleets.</td>
+    <td>Creates a temporary URL to start an WorkSpaces Applications streaming session for the specified user. A streaming URL enables application streaming to be tested without user setup.</td>
 </tr>
 <tr>
     <td><a href="#associate_fleet"><CopyableCode code="associate_fleet" /></a></td>
@@ -238,6 +231,13 @@ The following methods are available for this resource:
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-FleetName"><code>FleetName</code></a>, <a href="#parameter-StackName"><code>StackName</code></a></td>
     <td></td>
     <td>Associates the specified fleet with the specified stack.</td>
+</tr>
+<tr>
+    <td><a href="#associate_application_fleet"><CopyableCode code="associate_application_fleet" /></a></td>
+    <td><CopyableCode code="update" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-FleetName"><code>FleetName</code></a>, <a href="#parameter-ApplicationArn"><code>ApplicationArn</code></a></td>
+    <td></td>
+    <td>Associates the specified application with the specified fleet. This is only supported for Elastic fleets.</td>
 </tr>
 <tr>
     <td><a href="#update_fleet"><CopyableCode code="update_fleet" /></a></td>
@@ -266,6 +266,20 @@ The following methods are available for this resource:
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-FleetName"><code>FleetName</code></a>, <a href="#parameter-StackName"><code>StackName</code></a></td>
     <td></td>
     <td>Disassociates the specified fleet from the specified stack.</td>
+</tr>
+<tr>
+    <td><a href="#start_fleet"><CopyableCode code="start_fleet" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Starts the specified fleet.</td>
+</tr>
+<tr>
+    <td><a href="#stop_fleet"><CopyableCode code="stop_fleet" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Stops the specified fleet.</td>
 </tr>
 </tbody>
 </table>
@@ -343,41 +357,13 @@ WHERE region = '{{ region }}' -- required
 ## `INSERT` examples
 
 <Tabs
-    defaultValue="create_streaming_url"
+    defaultValue="create_fleet"
     values={[
-        { label: 'create_streaming_url', value: 'create_streaming_url' },
         { label: 'create_fleet', value: 'create_fleet' },
+        { label: 'create_streaming_url', value: 'create_streaming_url' },
         { label: 'Manifest', value: 'manifest' }
     ]}
 >
-<TabItem value="create_streaming_url">
-
-Creates a temporary URL to start an WorkSpaces Applications streaming session for the specified user. A streaming URL enables application streaming to be tested without user setup.
-
-```sql
-INSERT INTO aws.appstream.fleets (
-StackName,
-FleetName,
-UserId,
-ApplicationId,
-Validity,
-SessionContext,
-region
-)
-SELECT 
-'{{ StackName }}' /* required */,
-'{{ FleetName }}' /* required */,
-'{{ UserId }}' /* required */,
-'{{ ApplicationId }}',
-{{ Validity }},
-'{{ SessionContext }}',
-'{{ region }}'
-RETURNING
-expires,
-streaming_url
-;
-```
-</TabItem>
 <TabItem value="create_fleet">
 
 Creates a fleet. A fleet consists of streaming instances that your users access for their applications and desktops.
@@ -441,6 +427,34 @@ fleet
 ;
 ```
 </TabItem>
+<TabItem value="create_streaming_url">
+
+Creates a temporary URL to start an WorkSpaces Applications streaming session for the specified user. A streaming URL enables application streaming to be tested without user setup.
+
+```sql
+INSERT INTO aws.appstream.fleets (
+StackName,
+FleetName,
+UserId,
+ApplicationId,
+Validity,
+SessionContext,
+region
+)
+SELECT 
+'{{ StackName }}' /* required */,
+'{{ FleetName }}' /* required */,
+'{{ UserId }}' /* required */,
+'{{ ApplicationId }}',
+{{ Validity }},
+'{{ SessionContext }}',
+'{{ region }}'
+RETURNING
+expires,
+streaming_url
+;
+```
+</TabItem>
 <TabItem value="manifest">
 
 <CodeBlock language="yaml">{`# Description fields are for documentation purposes
@@ -449,30 +463,6 @@ fleet
     - name: region
       value: "{{ region }}"
       description: Required parameter for the fleets resource.
-    - name: StackName
-      value: "{{ StackName }}"
-      description: |
-        The name of the stack.
-    - name: FleetName
-      value: "{{ FleetName }}"
-      description: |
-        The name of the fleet.
-    - name: UserId
-      value: "{{ UserId }}"
-      description: |
-        The identifier of the user.
-    - name: ApplicationId
-      value: "{{ ApplicationId }}"
-      description: |
-        The name of the application to launch after the session starts. This is the name that you specified as Name in the Image Assistant. If your fleet is enabled for the Desktop stream view, you can also choose to launch directly to the operating system desktop. To do so, specify Desktop.
-    - name: Validity
-      value: {{ Validity }}
-      description: |
-        The time that the streaming URL will be valid, in seconds. Specify a value between 1 and 604800 seconds. The default is 60 seconds.
-    - name: SessionContext
-      value: "{{ SessionContext }}"
-      description: |
-        The session context. For more information, see Session Context in the Amazon WorkSpaces Applications Administration Guide.
     - name: Name
       value: "{{ Name }}"
       description: |
@@ -584,6 +574,30 @@ fleet
       value: {{ DisableIMDSV1 }}
       description: |
         Set to true to disable Instance Metadata Service Version 1 (IMDSv1) and enforce IMDSv2. Set to false to enable both IMDSv1 and IMDSv2. Before disabling IMDSv1, ensure your WorkSpaces Applications images are running the agent version or managed image update released on or after January 16, 2024 to support IMDSv2 enforcement.
+    - name: StackName
+      value: "{{ StackName }}"
+      description: |
+        The name of the stack.
+    - name: FleetName
+      value: "{{ FleetName }}"
+      description: |
+        The name of the fleet.
+    - name: UserId
+      value: "{{ UserId }}"
+      description: |
+        The identifier of the user.
+    - name: ApplicationId
+      value: "{{ ApplicationId }}"
+      description: |
+        The name of the application to launch after the session starts. This is the name that you specified as Name in the Image Assistant. If your fleet is enabled for the Desktop stream view, you can also choose to launch directly to the operating system desktop. To do so, specify Desktop.
+    - name: Validity
+      value: {{ Validity }}
+      description: |
+        The time that the streaming URL will be valid, in seconds. Specify a value between 1 and 604800 seconds. The default is 60 seconds.
+    - name: SessionContext
+      value: "{{ SessionContext }}"
+      description: |
+        The session context. For more information, see Session Context in the Amazon WorkSpaces Applications Administration Guide.
 `}</CodeBlock>
 
 </TabItem>
@@ -593,13 +607,28 @@ fleet
 ## `UPDATE` examples
 
 <Tabs
-    defaultValue="associate_application_fleet"
+    defaultValue="associate_fleet"
     values={[
-        { label: 'associate_application_fleet', value: 'associate_application_fleet' },
         { label: 'associate_fleet', value: 'associate_fleet' },
+        { label: 'associate_application_fleet', value: 'associate_application_fleet' },
         { label: 'update_fleet', value: 'update_fleet' }
     ]}
 >
+<TabItem value="associate_fleet">
+
+Associates the specified fleet with the specified stack.
+
+```sql
+UPDATE aws.appstream.fleets
+SET 
+FleetName = '{{ FleetName }}',
+StackName = '{{ StackName }}'
+WHERE 
+region = '{{ region }}' --required
+AND FleetName = '{{ FleetName }}' --required
+AND StackName = '{{ StackName }}' --required;
+```
+</TabItem>
 <TabItem value="associate_application_fleet">
 
 Associates the specified application with the specified fleet. This is only supported for Elastic fleets.
@@ -615,21 +644,6 @@ AND FleetName = '{{ FleetName }}' --required
 AND ApplicationArn = '{{ ApplicationArn }}' --required
 RETURNING
 application_fleet_association;
-```
-</TabItem>
-<TabItem value="associate_fleet">
-
-Associates the specified fleet with the specified stack.
-
-```sql
-UPDATE aws.appstream.fleets
-SET 
-FleetName = '{{ FleetName }}',
-StackName = '{{ StackName }}'
-WHERE 
-region = '{{ region }}' --required
-AND FleetName = '{{ FleetName }}' --required
-AND StackName = '{{ StackName }}' --required;
 ```
 </TabItem>
 <TabItem value="update_fleet">
@@ -699,7 +713,9 @@ WHERE region = '{{ region }}' --required
     defaultValue="disassociate_application_fleet"
     values={[
         { label: 'disassociate_application_fleet', value: 'disassociate_application_fleet' },
-        { label: 'disassociate_fleet', value: 'disassociate_fleet' }
+        { label: 'disassociate_fleet', value: 'disassociate_fleet' },
+        { label: 'start_fleet', value: 'start_fleet' },
+        { label: 'stop_fleet', value: 'stop_fleet' }
     ]}
 >
 <TabItem value="disassociate_application_fleet">
@@ -728,6 +744,34 @@ EXEC aws.appstream.fleets.disassociate_fleet
 '{
 "FleetName": "{{ FleetName }}", 
 "StackName": "{{ StackName }}"
+}'
+;
+```
+</TabItem>
+<TabItem value="start_fleet">
+
+Starts the specified fleet.
+
+```sql
+EXEC aws.appstream.fleets.start_fleet 
+@region='{{ region }}' --required 
+@@json=
+'{
+"Name": "{{ Name }}"
+}'
+;
+```
+</TabItem>
+<TabItem value="stop_fleet">
+
+Stops the specified fleet.
+
+```sql
+EXEC aws.appstream.fleets.stop_fleet 
+@region='{{ region }}' --required 
+@@json=
+'{
+"Name": "{{ Name }}"
 }'
 ;
 ```

@@ -18,16 +18,16 @@ applicationcostprofiler service documentation.
 
 :::info[Service Summary]
 
-total resources: __1__  
+total resources: __2__  
 
 :::
 
 ## Resources
 <div class="row">
 <div class="providerDocColumn">
-<a href="/services/applicationcostprofiler/report_definitions/">report_definitions</a>
+<a href="/services/applicationcostprofiler/application_usages/">application_usages</a>
 </div>
 <div class="providerDocColumn">
-
+<a href="/services/applicationcostprofiler/report_definitions/">report_definitions</a>
 </div>
 </div>

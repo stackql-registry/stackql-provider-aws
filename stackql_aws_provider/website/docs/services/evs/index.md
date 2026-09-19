@@ -18,13 +18,14 @@ evs service documentation.
 
 :::info[Service Summary]
 
-total resources: __8__  
+total resources: __9__  
 
 :::
 
 ## Resources
 <div class="row">
 <div class="providerDocColumn">
+<a href="/services/evs/account_settings/">account_settings</a><br />
 <a href="/services/evs/depot_urls/">depot_urls</a><br />
 <a href="/services/evs/environment_connectors/">environment_connectors</a><br />
 <a href="/services/evs/environment_hosts/">environment_hosts</a><br />

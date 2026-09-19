@@ -90,10 +90,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/AssociateApplicationsResponse"
   /AssociateSourceServers:
     post:
       operationId: AssociateSourceServers
@@ -118,10 +114,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/AssociateSourceServersResponse"
   /ChangeServerLifeCycleState:
     post:
       operationId: ChangeServerLifeCycleState
@@ -284,6 +276,10 @@ paths:
                   $ref: "#/components/schemas/TargetNetwork"
                 targetDeployment:
                   $ref: "#/components/schemas/TargetDeployment"
+                vpcProvisioningStrategy:
+                  $ref: "#/components/schemas/VpcProvisioningStrategy"
+                cidrMappings:
+                  $ref: "#/components/schemas/CidrMappingsList"
                 tags:
                   $ref: "#/components/schemas/TagsMap"
                 scopeTags:
@@ -414,10 +410,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteApplicationResponse"
   /DeleteConnector:
     post:
       operationId: DeleteConnector
@@ -458,10 +450,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteJobResponse"
   /DeleteLaunchConfigurationTemplate:
     post:
       operationId: DeleteLaunchConfigurationTemplate
@@ -481,10 +469,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteLaunchConfigurationTemplateResponse"
   /network-migration/DeleteNetworkMigrationDefinition:
     post:
       operationId: DeleteNetworkMigrationDefinition
@@ -504,10 +488,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteNetworkMigrationDefinitionResponse"
   /DeleteReplicationConfigurationTemplate:
     post:
       operationId: DeleteReplicationConfigurationTemplate
@@ -527,10 +507,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteReplicationConfigurationTemplateResponse"
   /DeleteSourceServer:
     post:
       operationId: DeleteSourceServer
@@ -552,10 +528,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteSourceServerResponse"
   /DeleteVcenterClient:
     post:
       operationId: DeleteVcenterClient
@@ -596,10 +568,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteWaveResponse"
   /DescribeJobLogItems:
     post:
       operationId: DescribeJobLogItems
@@ -632,7 +600,7 @@ paths:
   /DescribeJobs:
     post:
       operationId: DescribeJobs
-      description: Returns a list of Jobs. Use the JobsID and fromDate and toData filters to limit which jobs are returned. The response is sorted by creationDataTime - latest date first. Jobs are normally created by the StartTest, StartCutover, and TerminateTargetInstances APIs. Jobs are also created by DiagnosticLaunch and TerminateDiagnosticInstances, which are APIs available only to *Support* and only used in response to relevant support tickets.
+      description: Returns a list of Jobs. Use the jobIDs and fromDate and toDate filters to limit which jobs are returned. The response is sorted by creationDateTime - latest date first. Jobs are normally created by the StartTest, StartCutover, and TerminateTargetInstances APIs. Jobs are also created by DiagnosticLaunch and TerminateDiagnosticInstances, which are APIs available only to *Support* and only used in response to relevant support tickets.
       parameters: []
       requestBody:
         required: false
@@ -684,7 +652,7 @@ paths:
   /DescribeReplicationConfigurationTemplates:
     post:
       operationId: DescribeReplicationConfigurationTemplates
-      description: Lists all ReplicationConfigurationTemplates, filtered by Source Server IDs.
+      description: Lists all ReplicationConfigurationTemplates, filtered by replication configuration template IDs.
       parameters: []
       requestBody:
         required: false
@@ -781,10 +749,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DisassociateApplicationsResponse"
   /DisassociateSourceServers:
     post:
       operationId: DisassociateSourceServers
@@ -809,14 +773,10 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DisassociateSourceServersResponse"
   /DisconnectFromService:
     post:
       operationId: DisconnectFromService
-      description: "Disconnects specific Source Servers from Application Migration Service. Data replication is stopped immediately. All AWS resources created by Application Migration Service for enabling the replication of these source servers will be terminated / deleted within 90 minutes. Launched Test or Cutover instances will NOT be terminated. If the agent on the source server has not been prevented from communicating with the Application Migration Service service, then it will receive a command to uninstall itself (within approximately 10 minutes). The following properties of the SourceServer will be changed immediately: dataReplicationInfo.dataReplicationState will be set to DISCONNECTED; The totalStorageBytes property for each of dataReplicationInfo.replicatedDisks will be set to zero; dataReplicationInfo.lagDuration and dataReplicationInfo.lagDuration will be nullified."
+      description: "Disconnects specific Source Servers from Application Migration Service. Data replication is stopped immediately. All AWS resources created by Application Migration Service for enabling the replication of these source servers will be terminated / deleted within 90 minutes. Launched Test or Cutover instances will NOT be terminated. If the agent on the source server has not been prevented from communicating with Application Migration Service, then it will receive a command to uninstall itself (within approximately 10 minutes). The following properties of the SourceServer will be changed immediately: dataReplicationInfo.dataReplicationState will be set to DISCONNECTED; The totalStorageBytes property for each of dataReplicationInfo.replicatedDisks will be set to zero; dataReplicationInfo.lagDuration and dataReplicationInfo.lagDuration will be nullified."
       parameters: []
       requestBody:
         required: true
@@ -841,7 +801,7 @@ paths:
   /FinalizeCutover:
     post:
       operationId: FinalizeCutover
-      description: "Finalizes the cutover immediately for specific Source Servers. All AWS resources created by Application Migration Service for enabling the replication of these source servers will be terminated / deleted within 90 minutes. Launched Test or Cutover instances will NOT be terminated. The AWS Replication Agent will receive a command to uninstall itself (within 10 minutes). The following properties of the SourceServer will be changed immediately: dataReplicationInfo.dataReplicationState will be changed to DISCONNECTED; The SourceServer.lifeCycle.state will be changed to CUTOVER; The totalStorageBytes property fo each of dataReplicationInfo.replicatedDisks will be set to zero; dataReplicationInfo.lagDuration and dataReplicationInfo.lagDuration will be nullified."
+      description: "Finalizes the cutover immediately for specific Source Servers. All AWS resources created by Application Migration Service for enabling the replication of these source servers will be terminated / deleted within 90 minutes. Launched Test or Cutover instances will NOT be terminated. The AWS Replication Agent will receive a command to uninstall itself (within 10 minutes). The following properties of the SourceServer will be changed immediately: dataReplicationInfo.dataReplicationState will be changed to DISCONNECTED; The SourceServer.lifeCycle.state will be changed to CUTOVER; The totalStorageBytes property for each of dataReplicationInfo.replicatedDisks will be set to zero; dataReplicationInfo.lagDuration and dataReplicationInfo.lagDuration will be nullified."
       parameters: []
       requestBody:
         required: true
@@ -976,10 +936,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/InitializeServiceResponse"
   /ListApplications:
     post:
       operationId: ListApplications
@@ -1710,7 +1666,7 @@ paths:
   /MarkAsArchived:
     post:
       operationId: MarkAsArchived
-      description: Archives specific Source Servers by setting the SourceServer.isArchived property to true for specified SourceServers by ID. This command only works for SourceServers with a lifecycle. state which equals DISCONNECTED or CUTOVER.
+      description: Archives specific Source Servers by setting the SourceServer.isArchived property to true for specified SourceServers by ID. This command only works for SourceServers with a lifecycle state that equals DISCONNECTED or CUTOVER.
       parameters: []
       requestBody:
         required: true
@@ -1887,10 +1843,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/RemoveSourceServerActionResponse"
   /RemoveTemplateAction:
     post:
       operationId: RemoveTemplateAction
@@ -1913,10 +1865,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/RemoveTemplateActionResponse"
   /ResumeReplication:
     post:
       operationId: ResumeReplication
@@ -2432,7 +2380,7 @@ paths:
   /UpdateLaunchConfiguration:
     post:
       operationId: UpdateLaunchConfiguration
-      description: Updates multiple LaunchConfigurations by Source Server ID. bootMode valid values are LEGACY_BIOS | UEFI
+      description: Updates multiple LaunchConfigurations by Source Server ID. bootMode valid values are LEGACY_BIOS | UEFI | USE_SOURCE
       parameters: []
       requestBody:
         required: true
@@ -2553,6 +2501,10 @@ paths:
                   $ref: "#/components/schemas/TargetNetworkUpdate"
                 targetDeployment:
                   $ref: "#/components/schemas/TargetDeployment"
+                vpcProvisioningStrategy:
+                  $ref: "#/components/schemas/VpcProvisioningStrategy"
+                cidrMappings:
+                  $ref: "#/components/schemas/CidrMappingsList"
                 scopeTags:
                   $ref: "#/components/schemas/ScopeTagsMap"
               required:
@@ -2659,7 +2611,7 @@ paths:
   /UpdateReplicationConfigurationTemplate:
     post:
       operationId: UpdateReplicationConfigurationTemplate
-      description: Updates multiple ReplicationConfigurationTemplates by ID.
+      description: Updates a ReplicationConfigurationTemplate by ID.
       parameters: []
       requestBody:
         required: true
@@ -3026,8 +2978,6 @@ components:
       type: array
       items:
         $ref: "#/components/schemas/ApplicationID"
-    AssociateApplicationsResponse:
-      type: object
     AssociateSourceServersRequestSourceServerIDs:
       type: array
       items:
@@ -3037,8 +2987,6 @@ components:
       minLength: 19
       maxLength: 19
       pattern: s-[0-9a-zA-Z]{17}
-    AssociateSourceServersResponse:
-      type: object
     ChangeServerLifeCycleStateSourceServerLifecycle:
       description: The request to change the source server migration lifecycle state.
       type: object
@@ -3344,7 +3292,7 @@ components:
       properties:
         addedToServiceDateTime:
           $ref: "#/components/schemas/ISO8601DatetimeString"
-          description: Lifecycle added to service data and time.
+          description: Lifecycle added to service date and time.
         firstByteDateTime:
           $ref: "#/components/schemas/ISO8601DatetimeString"
           description: Lifecycle replication initiation date and time.
@@ -3399,7 +3347,7 @@ components:
       properties:
         apiCallDateTime:
           $ref: "#/components/schemas/ISO8601DatetimeString"
-          description: Lifecycle Test failed API call date and time.
+          description: Lifecycle Test finalized API call date and time.
     LifeCycleLastCutover:
       description: Lifecycle last Cutover .
       type: object
@@ -3659,7 +3607,7 @@ components:
       maxLength: 27
       pattern: connector-[0-9a-zA-Z]{17}
     PostLaunchActions:
-      description: Post Launch Actions to executed on the Test or Cutover instance.
+      description: Post Launch Actions to be executed on the Test or Cutover instance.
       type: object
       properties:
         deployment:
@@ -3766,6 +3714,12 @@ components:
         throughput:
           $ref: "#/components/schemas/Throughput"
           description: Launch template disk throughput configuration.
+        volumeInitializationRate:
+          $ref: "#/components/schemas/VolumeInitializationRate"
+          description: Launch template disk volume initialization rate configuration.
+        deleteOnTermination:
+          $ref: "#/components/schemas/Boolean"
+          description: Launch template disk delete on termination configuration.
     VolumeType:
       type: string
       enum:
@@ -3785,7 +3739,12 @@ components:
       type: integer
       format: int64
       minimum: 125
-      maximum: 1000
+      maximum: 2000
+    VolumeInitializationRate:
+      type: integer
+      format: int64
+      minimum: 100
+      maximum: 300
     KmsKeyArn:
       type: string
       minLength: 0
@@ -3967,6 +3926,28 @@ components:
       enum:
         - SINGLE_ACCOUNT
         - MULTI_ACCOUNT
+    VpcProvisioningStrategy:
+      type: string
+      enum:
+        - CREATE_NEW
+        - USE_EXISTING
+    CidrMappingsList:
+      type: array
+      items:
+        $ref: "#/components/schemas/CidrMapping"
+    CidrMapping:
+      description: Maps a source CIDR range to the corresponding target CIDR range to use in the target network.
+      type: object
+      properties:
+        originalCidr:
+          $ref: "#/components/schemas/Cidr"
+          description: The original CIDR range in the source network.
+        updatedCidr:
+          $ref: "#/components/schemas/Cidr"
+          description: The updated CIDR range to use in the target network.
+      required:
+        - originalCidr
+        - updatedCidr
     ScopeTagsMap:
       type: object
       properties: {}
@@ -3997,6 +3978,12 @@ components:
         targetDeployment:
           $ref: "#/components/schemas/TargetDeployment"
           description: The target deployment configuration for the migrated network.
+        vpcProvisioningStrategy:
+          $ref: "#/components/schemas/VpcProvisioningStrategy"
+          description: Indicates whether the migration creates new target VPCs or uses existing ones. CREATE_NEW provisions new target VPCs; USE_EXISTING migrates into existing VPCs in the target account.
+        cidrMappings:
+          $ref: "#/components/schemas/CidrMappingsList"
+          description: A list of CIDR mappings that map original source CIDR ranges to updated target CIDR ranges. CIDR mappings apply only when vpcProvisioningStrategy is set to USE_EXISTING.
         createdAt:
           $ref: "#/components/schemas/Timestamp"
           description: The timestamp when the network migration definition was created.
@@ -4160,20 +4147,6 @@ components:
       minLength: 21
       maxLength: 21
       pattern: rct-[0-9a-zA-Z]{17}
-    DeleteApplicationResponse:
-      type: object
-    DeleteJobResponse:
-      type: object
-    DeleteLaunchConfigurationTemplateResponse:
-      type: object
-    DeleteNetworkMigrationDefinitionResponse:
-      type: object
-    DeleteReplicationConfigurationTemplateResponse:
-      type: object
-    DeleteSourceServerResponse:
-      type: object
-    DeleteWaveResponse:
-      type: object
     MaxResultsType:
       type: integer
       minimum: 1
@@ -4381,13 +4354,13 @@ components:
       properties:
         ssmDocument:
           $ref: "#/components/schemas/SsmDocument"
-          description: AWS Systems Manager's Document of the of the Job Post Launch Actions.
+          description: AWS Systems Manager's Document of the Job Post Launch Actions.
         ssmDocumentType:
           $ref: "#/components/schemas/SsmDocumentType"
           description: AWS Systems Manager Document type.
         executionID:
           $ref: "#/components/schemas/BoundedString"
-          description: AWS Systems Manager Document's execution ID of the of the Job Post Launch Actions.
+          description: AWS Systems Manager Document's execution ID of the Job Post Launch Actions.
         executionStatus:
           $ref: "#/components/schemas/PostLaunchActionExecutionStatus"
           description: AWS Systems Manager Document's execution status.
@@ -4479,10 +4452,10 @@ components:
       properties:
         items_:
           $ref: "#/components/schemas/SourceServersList"
-          description: Request to filter Source Servers list by item.
+          description: The list of returned Source Servers.
         nextToken:
           $ref: "#/components/schemas/PaginationToken"
-          description: Request to filter Source Servers next token.
+          description: The token of the next Source Server to retrieve.
     SourceServersList:
       type: array
       items:
@@ -4530,14 +4503,10 @@ components:
           type: object
           properties: {}
           description: Tags for vCenter client.
-    DisassociateApplicationsResponse:
-      type: object
     DisassociateSourceServersRequestSourceServerIDs:
       type: array
       items:
         $ref: "#/components/schemas/SourceServerID"
-    DisassociateSourceServersResponse:
-      type: object
     LaunchConfiguration:
       type: object
       properties:
@@ -4749,8 +4718,6 @@ components:
         - GP3
         - IO2
         - FSX_ONTAP
-    InitializeServiceResponse:
-      type: object
     ListApplicationsRequestFilters:
       description: Applications list filters.
       type: object
@@ -5189,15 +5156,15 @@ components:
           $ref: "#/components/schemas/ImportTaskSummaryServers"
           description: Import task summary servers.
     ImportTaskSummaryWaves:
-      description: Import task summery waves.
+      description: Import task summary waves.
       type: object
       properties:
         createdCount:
           $ref: "#/components/schemas/PositiveInteger"
-          description: Import task summery waves created count.
+          description: Import task summary waves created count.
         modifiedCount:
           $ref: "#/components/schemas/PositiveInteger"
-          description: Import task summery waves modified count.
+          description: Import task summary waves modified count.
     ImportTaskSummaryApplications:
       description: Import task summary applications.
       type: object
@@ -5467,7 +5434,7 @@ components:
           description: The unique identifier of the artifact.
         artifactType:
           $ref: "#/components/schemas/NetworkMigrationCodeGenerationArtifactType"
-          description: The type of the artifact, such as CLOUDFORMATION_TEMPLATE or TERRAFORM_MODULE.
+          description: The type of the generated artifact.
         artifactSubType:
           $ref: "#/components/schemas/NetworkMigrationCodeGenerationArtifactSubType"
           description: The sub-type of the artifact for further classification.
@@ -5896,7 +5863,7 @@ components:
           description: The unique identifier of the segment.
         segmentType:
           $ref: "#/components/schemas/NetworkMigrationMapperSegmentType"
-          description: The type of the segment, such as VPC, subnet, or security group.
+          description: "The category of the network migration segment. A segment groups the network constructs (such as VPCs, subnets, and security groups) that are migrated together. Valid values: WORKLOAD, APPLIANCE."
         name:
           $ref: "#/components/schemas/SegmentName"
           description: The name of the segment.
@@ -6245,10 +6212,6 @@ components:
     SsmDocumentExternalParameters:
       type: object
       properties: {}
-    RemoveSourceServerActionResponse:
-      type: object
-    RemoveTemplateActionResponse:
-      type: object
     StartCutoverRequestSourceServerIDs:
       type: array
       items:
@@ -6553,7 +6516,6 @@ components:
             $ref: "#/paths/~1AssociateApplications/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -6575,7 +6537,6 @@ components:
             $ref: "#/paths/~1DeleteApplication/post"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -6586,7 +6547,6 @@ components:
             $ref: "#/paths/~1DisassociateApplications/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -6675,7 +6635,6 @@ components:
             $ref: "#/paths/~1DeleteWave/post"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -6741,7 +6700,6 @@ components:
             $ref: "#/paths/~1AssociateSourceServers/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -6763,7 +6721,6 @@ components:
             $ref: "#/paths/~1DeleteSourceServer/post"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -6793,7 +6750,6 @@ components:
             $ref: "#/paths/~1DisassociateSourceServers/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -7005,7 +6961,6 @@ components:
             $ref: "#/paths/~1DeleteLaunchConfigurationTemplate/post"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -7071,7 +7026,6 @@ components:
             $ref: "#/paths/~1network-migration~1DeleteNetworkMigrationDefinition/post"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -7193,7 +7147,6 @@ components:
             $ref: "#/paths/~1DeleteReplicationConfigurationTemplate/post"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -7248,7 +7201,6 @@ components:
             $ref: "#/paths/~1DeleteJob/post"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -7460,6 +7412,21 @@ components:
         update:
           - $ref: "#/components/x-stackQL-resources/replication_configurations/methods/update_replication_configuration"
         delete: []
+    services:
+      id: aws.mgn.services
+      name: services
+      title: services
+      methods:
+        initialize_service:
+          operation:
+            $ref: "#/paths/~1InitializeService/post"
+          response:
+            openAPIDocKey: "204"
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
     export_errors:
       id: aws.mgn.export_errors
       name: export_errors
@@ -7512,6 +7479,17 @@ components:
               responseToken:
                 key: $.nextToken
                 location: body
+            requestBodyTranslate:
+              algorithm: naive
+        start_export:
+          operation:
+            $ref: "#/paths/~1StartExport/post"
+          response:
+            openAPIDocKey: "202"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -7602,6 +7580,17 @@ components:
               responseToken:
                 key: $.nextToken
                 location: body
+            requestBodyTranslate:
+              algorithm: naive
+        start_import:
+          operation:
+            $ref: "#/paths/~1StartImport/post"
+          response:
+            openAPIDocKey: "202"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
             requestBodyTranslate:
               algorithm: naive
         start_import_file_enrichment:
@@ -8014,7 +8003,6 @@ components:
             $ref: "#/paths/~1RemoveSourceServerAction/post"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -8105,7 +8093,6 @@ components:
             $ref: "#/paths/~1RemoveTemplateAction/post"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -8119,6 +8106,48 @@ components:
           - $ref: "#/components/x-stackQL-resources/template_actions/methods/remove_template_action"
         replace:
           - $ref: "#/components/x-stackQL-resources/template_actions/methods/put_template_action"
+        delete: []
+    cutovers:
+      id: aws.mgn.cutovers
+      name: cutovers
+      title: cutovers
+      methods:
+        start_cutover:
+          operation:
+            $ref: "#/paths/~1StartCutover/post"
+          response:
+            openAPIDocKey: "202"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
+    tests:
+      id: aws.mgn.tests
+      name: tests
+      title: tests
+      methods:
+        start_test:
+          operation:
+            $ref: "#/paths/~1StartTest/post"
+          response:
+            openAPIDocKey: "202"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
         delete: []
     target_instances:
       id: aws.mgn.target_instances

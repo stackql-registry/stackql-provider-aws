@@ -109,6 +109,13 @@ The following methods are available for this resource:
     <td></td>
     <td>TerminateJobFlows shuts a list of clusters (job flows) down. When a job flow is shut down, any step not yet completed is canceled and the Amazon EC2 instances on which the cluster is running are stopped. Any log files not already saved are uploaded to Amazon S3 if a LogUri was specified when the cluster was created. The maximum number of clusters allowed is 10. The call to TerminateJobFlows is asynchronous. Depending on the configuration of the cluster, it may take up to 1-5 minutes for the cluster to completely terminate and release allocated resources, such as Amazon EC2 instances.</td>
 </tr>
+<tr>
+    <td><a href="#run_job_flow"><CopyableCode code="run_job_flow" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-Name"><code>Name</code></a>, <a href="#parameter-Instances"><code>Instances</code></a></td>
+    <td></td>
+    <td>RunJobFlow creates and starts running a new cluster (job flow). The cluster runs the steps specified. After the steps complete, the cluster stops and the HDFS partition is lost. To prevent loss of data, configure the last step of the job flow to store results in Amazon S3. If the JobFlowInstancesConfig KeepJobFlowAliveWhenNoSteps parameter is set to TRUE, the cluster transitions to the WAITING state rather than shutting down after the steps have completed. For additional protection, you can set the JobFlowInstancesConfig TerminationProtected parameter to TRUE to lock the cluster and prevent it from being terminated by API call, user intervention, or in the event of a job flow error. A maximum of 256 steps are allowed in each job flow. If your cluster is long-running (such as a Hive data warehouse) or complex, you may require more than 256 steps to process your data. You can bypass the 256-step limitation in various ways, including using the SSH shell to connect to the master node and submitting queries directly to the software running on the master node, such as Hive and Hadoop. For long-running clusters, we recommend that you periodically store your results. The instance fleets configuration is available only in Amazon EMR releases 4.8.0 and later, excluding 5.0.x versions. The RunJobFlow request can contain InstanceFleets parameters or InstanceGroups parameters, but not both.</td>
+</tr>
 </tbody>
 </table>
 
@@ -229,6 +236,65 @@ TerminateJobFlows shuts a list of clusters (job flows) down. When a job flow is 
 ```sql
 DELETE FROM aws.emr.job_flows
 WHERE region = '{{ region }}' --required
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="run_job_flow"
+    values={[
+        { label: 'run_job_flow', value: 'run_job_flow' }
+    ]}
+>
+<TabItem value="run_job_flow">
+
+RunJobFlow creates and starts running a new cluster (job flow). The cluster runs the steps specified. After the steps complete, the cluster stops and the HDFS partition is lost. To prevent loss of data, configure the last step of the job flow to store results in Amazon S3. If the JobFlowInstancesConfig KeepJobFlowAliveWhenNoSteps parameter is set to TRUE, the cluster transitions to the WAITING state rather than shutting down after the steps have completed. For additional protection, you can set the JobFlowInstancesConfig TerminationProtected parameter to TRUE to lock the cluster and prevent it from being terminated by API call, user intervention, or in the event of a job flow error. A maximum of 256 steps are allowed in each job flow. If your cluster is long-running (such as a Hive data warehouse) or complex, you may require more than 256 steps to process your data. You can bypass the 256-step limitation in various ways, including using the SSH shell to connect to the master node and submitting queries directly to the software running on the master node, such as Hive and Hadoop. For long-running clusters, we recommend that you periodically store your results. The instance fleets configuration is available only in Amazon EMR releases 4.8.0 and later, excluding 5.0.x versions. The RunJobFlow request can contain InstanceFleets parameters or InstanceGroups parameters, but not both.
+
+```sql
+EXEC aws.emr.job_flows.run_job_flow 
+@region='{{ region }}' --required 
+@@json=
+'{
+"Name": "{{ Name }}", 
+"LogUri": "{{ LogUri }}", 
+"LogEncryptionKmsKeyId": "{{ LogEncryptionKmsKeyId }}", 
+"AdditionalInfo": "{{ AdditionalInfo }}", 
+"AmiVersion": "{{ AmiVersion }}", 
+"ReleaseLabel": "{{ ReleaseLabel }}", 
+"Instances": "{{ Instances }}", 
+"Steps": "{{ Steps }}", 
+"StepExecutionRoleArn": "{{ StepExecutionRoleArn }}", 
+"BootstrapActions": "{{ BootstrapActions }}", 
+"SupportedProducts": "{{ SupportedProducts }}", 
+"NewSupportedProducts": "{{ NewSupportedProducts }}", 
+"Applications": "{{ Applications }}", 
+"Configurations": "{{ Configurations }}", 
+"VisibleToAllUsers": {{ VisibleToAllUsers }}, 
+"JobFlowRole": "{{ JobFlowRole }}", 
+"ServiceRole": "{{ ServiceRole }}", 
+"Tags": "{{ Tags }}", 
+"SecurityConfiguration": "{{ SecurityConfiguration }}", 
+"AutoScalingRole": "{{ AutoScalingRole }}", 
+"ScaleDownBehavior": "{{ ScaleDownBehavior }}", 
+"CustomAmiId": "{{ CustomAmiId }}", 
+"EbsRootVolumeSize": {{ EbsRootVolumeSize }}, 
+"RepoUpgradeOnBoot": "{{ RepoUpgradeOnBoot }}", 
+"KerberosAttributes": "{{ KerberosAttributes }}", 
+"StepConcurrencyLevel": {{ StepConcurrencyLevel }}, 
+"ManagedScalingPolicy": "{{ ManagedScalingPolicy }}", 
+"PlacementGroupConfigs": "{{ PlacementGroupConfigs }}", 
+"AutoTerminationPolicy": "{{ AutoTerminationPolicy }}", 
+"OSReleaseLabel": "{{ OSReleaseLabel }}", 
+"EbsRootVolumeIops": {{ EbsRootVolumeIops }}, 
+"EbsRootVolumeThroughput": {{ EbsRootVolumeThroughput }}, 
+"ExtendedSupport": {{ ExtendedSupport }}, 
+"MonitoringConfiguration": "{{ MonitoringConfiguration }}", 
+"SessionEnabled": {{ SessionEnabled }}
+}'
 ;
 ```
 </TabItem>

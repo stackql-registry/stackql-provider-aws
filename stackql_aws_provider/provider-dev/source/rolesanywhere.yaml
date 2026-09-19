@@ -482,7 +482,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CrlDetailResponse'
-      x-stackql-resource: crl
+      x-stackql-resource: crls
       x-stackql-method: disable_crl
       x-stackql-verb: EXEC
   /profile/{profile_id}/disable:
@@ -548,7 +548,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CrlDetailResponse'
-      x-stackql-resource: crl
+      x-stackql-resource: crls
       x-stackql-method: enable_crl
       x-stackql-verb: EXEC
   /profile/{profile_id}/enable:
@@ -653,7 +653,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CrlDetailResponse'
-      x-stackql-resource: crl
+      x-stackql-resource: crls
       x-stackql-method: import_crl
       x-stackql-verb: EXEC
     get:
@@ -824,10 +824,6 @@ paths:
       responses:
         '201':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -853,10 +849,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -1490,14 +1482,10 @@ components:
           $ref: '#/components/schemas/TrustAnchorDetail'
       required:
       - trustAnchor
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
         $ref: '#/components/schemas/TagKey'
-    UntagResourceResponse:
-      type: object
     UpdateCrlRequestCrlDataBlob:
       type: string
       format: byte

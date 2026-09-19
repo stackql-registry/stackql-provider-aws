@@ -31,10 +31,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteEarthObservationJobOutput'
       x-stackql-resource: earth_observation_jobs
       x-stackql-method: delete_earth_observation_job
       x-stackql-verb: DELETE
@@ -72,10 +68,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteVectorEnrichmentJobOutput'
       x-stackql-resource: vector_enrichment_jobs
       x-stackql-method: delete_vector_enrichment_job
       x-stackql-verb: DELETE
@@ -133,7 +125,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ExportEarthObservationJobOutput'
-      x-stackql-resource: earth_observation_job
+      x-stackql-resource: earth_observation_jobs
       x-stackql-method: export_earth_observation_job
       x-stackql-verb: EXEC
   /export-vector-enrichment-jobs:
@@ -167,7 +159,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ExportVectorEnrichmentJobOutput'
-      x-stackql-resource: vector_enrichment_job
+      x-stackql-resource: vector_enrichment_jobs
       x-stackql-method: export_vector_enrichment_job
       x-stackql-verb: EXEC
   /raster-data-collection/{arn}:
@@ -392,10 +384,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -418,10 +406,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -531,7 +515,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartEarthObservationJobOutput'
-      x-stackql-resource: earth_observation_job
+      x-stackql-resource: earth_observation_jobs
       x-stackql-method: start_earth_observation_job
       x-stackql-verb: EXEC
   /vector-enrichment-jobs:
@@ -573,7 +557,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartVectorEnrichmentJobOutput'
-      x-stackql-resource: vector_enrichment_job
+      x-stackql-resource: vector_enrichment_jobs
       x-stackql-method: start_vector_enrichment_job
       x-stackql-verb: EXEC
   /earth-observation-jobs/stop:
@@ -595,11 +579,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/StopEarthObservationJobOutput'
-      x-stackql-resource: earth_observation_job
+      x-stackql-resource: earth_observation_jobs
       x-stackql-method: stop_earth_observation_job
       x-stackql-verb: EXEC
   /vector-enrichment-jobs/stop:
@@ -621,11 +601,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/StopVectorEnrichmentJobOutput'
-      x-stackql-resource: vector_enrichment_job
+      x-stackql-resource: vector_enrichment_jobs
       x-stackql-method: stop_vector_enrichment_job
       x-stackql-verb: EXEC
 components:
@@ -676,13 +652,9 @@ components:
     EarthObservationJobArn:
       type: string
       pattern: ^arn:aws[a-z-]{0,12}:sagemaker-geospatial:[a-z0-9-]{1,25}:[0-9]{12}:earth-observation-job/[a-z0-9]{12,}$
-    DeleteEarthObservationJobOutput:
-      type: object
     VectorEnrichmentJobArn:
       type: string
       pattern: ^arn:aws[a-z-]{0,12}:sagemaker-geospatial:[a-z0-9-]{1,25}:[0-9]{12}:vector-enrichment-job/[a-z0-9]{12,}$
-    DeleteVectorEnrichmentJobOutput:
-      type: object
     ExportEarthObservationJobInputClientTokenString:
       type: string
       minLength: 36
@@ -2168,15 +2140,7 @@ components:
       - Name
       - Status
       - Type
-    StopEarthObservationJobOutput:
-      type: object
-    StopVectorEnrichmentJobOutput:
-      type: object
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
         $ref: '#/components/schemas/String'
-    UntagResourceResponse:
-      type: object

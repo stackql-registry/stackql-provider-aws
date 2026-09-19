@@ -36,6 +36,7 @@ The following fields are returned by `SELECT` queries:
     defaultValue="list_provisioning_artifacts"
     values={[
         { label: 'list_provisioning_artifacts', value: 'list_provisioning_artifacts' },
+        { label: 'list_provisioning_artifacts_for_service_action', value: 'list_provisioning_artifacts_for_service_action' },
         { label: 'describe_provisioning_artifact', value: 'describe_provisioning_artifact' }
     ]}
 >
@@ -59,6 +60,30 @@ The following fields are returned by `SELECT` queries:
     <td><CopyableCode code="provisioning_artifact_details" /></td>
     <td><code>array</code></td>
     <td>Information about the provisioning artifacts.</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
+<TabItem value="list_provisioning_artifacts_for_service_action">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="product_view_summary" /></td>
+    <td><code>object</code></td>
+    <td>Summary information about a product view.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="provisioning_artifact" /></td>
+    <td><code>object</code></td>
+    <td>Information about a provisioning artifact. A provisioning artifact is also known as a product version.</td>
 </tr>
 </tbody>
 </table>
@@ -122,6 +147,13 @@ The following methods are available for this resource:
     <td>Lists all provisioning artifacts (also known as versions) for the specified product.</td>
 </tr>
 <tr>
+    <td><a href="#list_provisioning_artifacts_for_service_action"><CopyableCode code="list_provisioning_artifacts_for_service_action" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Lists all provisioning artifacts (also known as versions) for the specified self-service action.</td>
+</tr>
+<tr>
     <td><a href="#describe_provisioning_artifact"><CopyableCode code="describe_provisioning_artifact" /></a></td>
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
@@ -155,6 +187,13 @@ The following methods are available for this resource:
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td></td>
     <td>Deletes the specified provisioning artifact (also known as a version) for the specified product. You cannot delete a provisioning artifact associated with a product that was shared with you. You cannot delete the last provisioning artifact for a product, because a product must have at least one provisioning artifact.</td>
+</tr>
+<tr>
+    <td><a href="#batch_disassociate_service_action_from_provisioning_artifact"><CopyableCode code="batch_disassociate_service_action_from_provisioning_artifact" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-ServiceActionAssociations"><code>ServiceActionAssociations</code></a></td>
+    <td></td>
+    <td>Disassociates a batch of self-service actions from the specified provisioning artifact.</td>
 </tr>
 <tr>
     <td><a href="#disassociate_service_action_from_provisioning_artifact"><CopyableCode code="disassociate_service_action_from_provisioning_artifact" /></a></td>
@@ -200,6 +239,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     defaultValue="list_provisioning_artifacts"
     values={[
         { label: 'list_provisioning_artifacts', value: 'list_provisioning_artifacts' },
+        { label: 'list_provisioning_artifacts_for_service_action', value: 'list_provisioning_artifacts_for_service_action' },
         { label: 'describe_provisioning_artifact', value: 'describe_provisioning_artifact' }
     ]}
 >
@@ -211,6 +251,19 @@ Lists all provisioning artifacts (also known as versions) for the specified prod
 SELECT
 next_page_token,
 provisioning_artifact_details
+FROM aws.servicecatalog.provisioning_artifacts
+WHERE region = '{{ region }}' -- required
+;
+```
+</TabItem>
+<TabItem value="list_provisioning_artifacts_for_service_action">
+
+Lists all provisioning artifacts (also known as versions) for the specified self-service action.
+
+```sql
+SELECT
+product_view_summary,
+provisioning_artifact
 FROM aws.servicecatalog.provisioning_artifacts
 WHERE region = '{{ region }}' -- required
 ;
@@ -382,12 +435,28 @@ WHERE region = '{{ region }}' --required
 ## Lifecycle Methods
 
 <Tabs
-    defaultValue="disassociate_service_action_from_provisioning_artifact"
+    defaultValue="batch_disassociate_service_action_from_provisioning_artifact"
     values={[
+        { label: 'batch_disassociate_service_action_from_provisioning_artifact', value: 'batch_disassociate_service_action_from_provisioning_artifact' },
         { label: 'disassociate_service_action_from_provisioning_artifact', value: 'disassociate_service_action_from_provisioning_artifact' },
         { label: 'import_as_provisioned_product', value: 'import_as_provisioned_product' }
     ]}
 >
+<TabItem value="batch_disassociate_service_action_from_provisioning_artifact">
+
+Disassociates a batch of self-service actions from the specified provisioning artifact.
+
+```sql
+EXEC aws.servicecatalog.provisioning_artifacts.batch_disassociate_service_action_from_provisioning_artifact 
+@region='{{ region }}' --required 
+@@json=
+'{
+"ServiceActionAssociations": "{{ ServiceActionAssociations }}", 
+"AcceptLanguage": "{{ AcceptLanguage }}"
+}'
+;
+```
+</TabItem>
 <TabItem value="disassociate_service_action_from_provisioning_artifact">
 
 Disassociates the specified self-service action association from the specified provisioning artifact.

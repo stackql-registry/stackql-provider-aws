@@ -30,7 +30,7 @@ total resources: __25__
 <a href="/services/network_firewall/availability_zone_change_protections/">availability_zone_change_protections</a><br />
 <a href="/services/network_firewall/availability_zones/">availability_zones</a><br />
 <a href="/services/network_firewall/container_associations/">container_associations</a><br />
-<a href="/services/network_firewall/firewall_metadatas/">firewall_metadatas</a><br />
+<a href="/services/network_firewall/firewall_metadata/">firewall_metadata</a><br />
 <a href="/services/network_firewall/firewall_policies/">firewall_policies</a><br />
 <a href="/services/network_firewall/firewalls/">firewalls</a><br />
 <a href="/services/network_firewall/flow_operation_results/">flow_operation_results</a><br />
@@ -44,7 +44,7 @@ total resources: __25__
 <a href="/services/network_firewall/proxy_rule_groups/">proxy_rule_groups</a><br />
 <a href="/services/network_firewall/proxy_rules/">proxy_rules</a><br />
 <a href="/services/network_firewall/resource_policies/">resource_policies</a><br />
-<a href="/services/network_firewall/rule_group_metadatas/">rule_group_metadatas</a><br />
+<a href="/services/network_firewall/rule_group_metadata/">rule_group_metadata</a><br />
 <a href="/services/network_firewall/rule_group_summaries/">rule_group_summaries</a><br />
 <a href="/services/network_firewall/rule_groups/">rule_groups</a><br />
 <a href="/services/network_firewall/subnet_change_protections/">subnet_change_protections</a><br />

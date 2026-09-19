@@ -149,21 +149,21 @@ The following methods are available for this resource:
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-lifecycleExecutionId"><code>lifecycleExecutionId</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>Get the runtime information that was logged for a specific runtime instance of the lifecycle policy.</td>
+    <td>Retrieves the runtime information for a specific runtime instance of the lifecycle policy.</td>
 </tr>
 <tr>
     <td><a href="#list_lifecycle_executions"><CopyableCode code="list_lifecycle_executions" /></a></td>
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>Get the lifecycle runtime history for the specified resource.</td>
+    <td>Retrieves the lifecycle runtime history for the specified resource.</td>
 </tr>
 <tr>
     <td><a href="#cancel_lifecycle_execution"><CopyableCode code="cancel_lifecycle_execution" /></a></td>
     <td><CopyableCode code="exec" /></td>
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-lifecycleExecutionId"><code>lifecycleExecutionId</code></a>, <a href="#parameter-clientToken"><code>clientToken</code></a></td>
     <td></td>
-    <td>Cancel a specific image lifecycle policy runtime instance.</td>
+    <td>Cancels a specific image lifecycle policy runtime instance.</td>
 </tr>
 </tbody>
 </table>
@@ -184,7 +184,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-lifecycleExecutionId">
     <td><CopyableCode code="lifecycleExecutionId" /></td>
     <td><code>string</code></td>
-    <td>Use the unique identifier for a runtime instance of the lifecycle policy to get runtime details.</td>
+    <td>The unique identifier for a runtime instance of the lifecycle policy.</td>
 </tr>
 <tr id="parameter-region">
     <td><CopyableCode code="region" /></td>
@@ -205,7 +205,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 >
 <TabItem value="get_lifecycle_execution">
 
-Get the runtime information that was logged for a specific runtime instance of the lifecycle policy.
+Retrieves the runtime information for a specific runtime instance of the lifecycle policy.
 
 ```sql
 SELECT
@@ -223,7 +223,7 @@ AND region = '{{ region }}' -- required
 </TabItem>
 <TabItem value="list_lifecycle_executions">
 
-Get the lifecycle runtime history for the specified resource.
+Retrieves the lifecycle runtime history for the specified resource.
 
 ```sql
 SELECT
@@ -251,7 +251,7 @@ WHERE region = '{{ region }}' -- required
 >
 <TabItem value="cancel_lifecycle_execution">
 
-Cancel a specific image lifecycle policy runtime instance.
+Cancels a specific image lifecycle policy runtime instance.
 
 ```sql
 EXEC aws.imagebuilder.lifecycle_executions.cancel_lifecycle_execution 

@@ -438,14 +438,64 @@ def _to_snake(s: str) -> str:
     return s.lower()
 
 
+# Uncountables never take an `s` (metric_data, account_information).
+_UNCOUNTABLE_SUFFIXES = (
+    "data", "metadata", "information", "info", "feedback", "storage", "traffic",
+    "software", "equipment", "analytics", "content", "guidance", "inventory",
+)
+# `s`-ending singulars that pluralise with `es` (status -> statuses); every
+# other `s`-ending token is assumed plural already (settings, apis, schemas).
+_ES_WORDS = {
+    "status", "bus", "campus", "virus", "bonus", "radius", "focus", "corpus", "census",
+    "nexus", "alias", "canvas", "atlas", "bias", "gas", "lens",
+}
+_IS_WORDS = {"analysis", "axis", "basis", "diagnosis", "hypothesis", "synopsis", "thesis", "crisis"}
+
+
+def _pluralise_word(w: str) -> str:
+    if not w or w.endswith(_UNCOUNTABLE_SUFFIXES):
+        return w
+    if w in _ES_WORDS or w.endswith("ss"):
+        return w + "es"
+    if w in _IS_WORDS:
+        return w[:-2] + "es"
+    if w.endswith("s"):
+        return w
+    if w.endswith("y") and len(w) > 1 and w[-2] not in "aeiou":
+        return w[:-1] + "ies"
+    if w.endswith(("ch", "sh", "x", "z")):
+        return w + "es"
+    return w + "s"
+
+
 def _pluralise(noun: str) -> str:
-    if noun.endswith("s"):
-        return noun
-    if noun.endswith("y") and len(noun) > 1 and noun[-2] not in "aeiou":
-        return noun[:-1] + "ies"
-    if noun.endswith(("ch", "sh", "x", "z")):
-        return noun + "es"
-    return noun + "s"
+    """Pluralise a snake_case name: last token only, version suffix aware
+    (`finding_v2` -> `findings_v2`, never `finding_v2s`)."""
+    m = re.match(r"^(.*?)(_v\d+)$", noun)
+    head, suffix = (m.group(1), m.group(2)) if m else (noun, "")
+    toks = head.split("_")
+    toks[-1] = _pluralise_word(toks[-1])
+    return "_".join(toks) + suffix
+
+
+def _effective_output(op_def: dict, shapes: dict) -> dict | None:
+    """The op's output ref, or None when the output structure has no members.
+
+    An empty output structure (CancelPolicyGenerationResponse) is emitted
+    exactly like a no-output op: a 200 with no content. A bare
+    `type: object` response schema makes stackql's EXEC analyzer fail with
+    `analyzeUnarySelection(): schema unsuitable for select query`, and an
+    explicit `properties: {}` does not help (verified on v0.11.669); no
+    content routes cleanly (verified on ApplyArchiveRule, which botocore
+    declares without output).
+    """
+    ref = op_def.get("output")
+    if not ref:
+        return None
+    shape = shapes.get(ref.get("shape")) or {}
+    if shape.get("type") == "structure" and not shape.get("members"):
+        return None
+    return ref
 
 
 def _singularise(noun: str) -> str:
@@ -473,21 +523,64 @@ def infer_stackql_tags(
     """Pick (resource, method, verb, objectKey) from the operation name."""
     verb = "EXEC"
     noun = op_name
+    matched_prefix = False
+    # Batch* is EXEC on the noun's entity (no SQL batch mutations); BatchGet
+    # stays SELECT via the table.
+    probe = op_name
+    batch = bool(re.match(r"^Batch[A-Z]", op_name)) and not op_name.startswith("BatchGet")
+    if batch:
+        probe = op_name[len("Batch"):]
     for prefix, sql_verb in VERB_PREFIXES:
-        if op_name.startswith(prefix) and len(op_name) > len(prefix):
-            verb = sql_verb
-            noun = op_name[len(prefix):]
+        if probe.startswith(prefix) and len(probe) > len(prefix) and probe[len(prefix)].isupper():
+            verb = "EXEC" if batch else sql_verb
+            noun = probe[len(prefix):]
+            matched_prefix = True
             break
+    if not matched_prefix:
+        # Generic fallback: the leading CamelCase token is the verb
+        # (CheckNoPublicAccess, DetectEntities, RequestCertificate). A
+        # resource must be a noun, never an action name.
+        m = re.match(r"^[A-Z][a-z0-9]*(.+)$", probe)
+        if m:
+            noun = m.group(1)
+    # Connectors. Known-verb ops name their entity BEFORE By/For
+    # (ListFunctionsByCodeSigningConfig -> Functions, ListTagsForResource ->
+    # Tags). Generic-verb and Batch ops drop leading connectors
+    # (RespondToAuthChallenge -> AuthChallenge, PollForTask -> Task), keep
+    # the part BEFORE By/With (AssumeRoleWithSaml -> Role) and AFTER
+    # For/To/Into/From (ExchangeCodeForToken -> Token,
+    # BatchDisassociateResourcesFromCustomLineItem -> CustomLineItem). The
+    # qualifier is a filter parameter, never part of the resource name.
+    if matched_prefix and not batch:
+        parts = re.split(r"(?<=[a-z])(?:By|For)(?=[A-Z])", noun)
+        if len(parts) > 1:
+            noun = parts[0]
+    else:
+        for _ in range(3):
+            m2 = re.match(r"^(?:To|For|With|In|Into|If|Of|From)(?=[A-Z])(.*)$", noun)
+            if not m2:
+                break
+            noun = m2.group(1)
+        parts = re.split(r"(?<=[a-z])(?:By|With)(?=[A-Z])", noun)
+        if len(parts) > 1:
+            noun = parts[0]
+        parts = re.split(r"(?<=[a-z])(?:For|To|Into|From)(?=[A-Z])", noun)
+        if len(parts) > 1:
+            noun = parts[-1]
 
     resource_snake = _to_snake(noun) if noun else "service"
     # All CRUD verbs target the same resource (always pluralised), so
     # CreateVolume/DeleteVolume/DescribeVolumes co-locate under `volumes`.
     # This matches the convention in ref/iam.yaml where access_keys carries
     # Create, Delete, and List together.
-    if verb in {"SELECT", "INSERT", "UPDATE", "REPLACE", "DELETE"}:
-        resource = _pluralise(resource_snake)
-    else:
-        resource = resource_snake
+    # EXEC ops whose verb prefix matched (StartPolicyGeneration ->
+    # policy_generation) pluralise too, so lifecycle ops land on the same
+    # resource as the entity's CRUD (policy_generations) instead of a
+    # singular exec-only twin. Prefix-less ops (CheckNoPublicAccess) keep
+    # the raw name - pluralising a verb phrase is noise.
+    # Every resource name is a pluralised noun (prefix-less op names are
+    # now split by the generic fallback above).
+    resource = _pluralise(resource_snake) if noun else resource_snake
 
     method = _to_snake(op_name)
 
@@ -929,7 +1022,7 @@ def _build_rest_op_block(
     # ----- responses -----
     response_code = str(http.get("responseCode") or 200)
     response_block: dict = {"description": "Success"}
-    output_ref = op_def.get("output")
+    output_ref = _effective_output(op_def, walker.shapes)
     # For rest-xml, synthesise the Display schemas like query/ec2 (rule
     # 14). Point the path-level response schema at the Display wrapper too
     # (rule 16 column convergence) so column inference converges on a
@@ -1099,7 +1192,7 @@ def _build_awsjson_op_block(
             },
         }
 
-    output_ref = op_def.get("output")
+    output_ref = _effective_output(op_def, walker.shapes)
     output_shape = walker.shapes[output_ref["shape"]] if output_ref else None
     stack_tags = infer_stackql_tags(op_name, output_shape, paginator, walker.shapes, "json")
 
@@ -2102,7 +2195,7 @@ def _build_query_op_block(
     """
     description = clean_description(op_def.get("documentation"))
     input_ref = op_def.get("input")
-    output_ref = op_def.get("output")
+    output_ref = _effective_output(op_def, walker.shapes)
     input_shape = walker.shapes[input_ref["shape"]] if input_ref else None
 
     # Path key like /?Action=DescribeVolumes&Version=2016-11-15
@@ -2468,6 +2561,12 @@ def build_service_openapi(service_name: str) -> dict | None:
             if r != s and r.endswith("_" + s):
                 target = s
                 break
+        if target is None:
+            # Rule 2b: the pluralised whole name is a selectable sibling
+            # (`policy_generation` -> `policy_generations`).
+            cand = _pluralise(r)
+            if cand != r and cand in selectable:
+                target = cand
         if target is None:
             toks = r.split("_")
             for i in range(len(toks) - 1, 0, -1):

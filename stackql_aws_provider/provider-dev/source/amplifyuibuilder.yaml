@@ -637,7 +637,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ExchangeCodeForTokenResponse'
-      x-stackql-resource: exchange_code_for_token
+      x-stackql-resource: tokens
       x-stackql-method: exchange_code_for_token
       x-stackql-verb: EXEC
   /export/app/{app_id}/environment/{environment_name}/components:
@@ -807,7 +807,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetMetadataResponse'
-      x-stackql-resource: metadatas
+      x-stackql-resource: metadata
       x-stackql-method: get_metadata
       x-stackql-verb: SELECT
   /app/{app_id}/environment/{environment_name}/codegen-jobs:
@@ -893,7 +893,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartCodegenJobResponse'
-      x-stackql-resource: codegen_job
+      x-stackql-resource: codegen_jobs
       x-stackql-method: start_codegen_job
       x-stackql-verb: EXEC
   /tags/{resource_arn}:
@@ -941,10 +941,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -967,10 +963,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -1011,7 +1003,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: metadatas
+      x-stackql-resource: metadata
       x-stackql-method: put_metadata_flag
       x-stackql-verb: REPLACE
   /tokens/{provider}/refresh:
@@ -1044,7 +1036,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RefreshTokenResponse'
-      x-stackql-resource: token
+      x-stackql-resource: tokens
       x-stackql-method: refresh_token
       x-stackql-verb: EXEC
 components:
@@ -2187,8 +2179,6 @@ components:
     Tags:
       type: object
       properties: {}
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
@@ -2198,8 +2188,6 @@ components:
       minLength: 1
       maxLength: 128
       pattern: (?!aws:)[a-zA-Z+-=._:/]+
-    UntagResourceResponse:
-      type: object
     UpdateComponentData:
       description: Updates and saves all of the information about a component, based on component ID.
       type: object

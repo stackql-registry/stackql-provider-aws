@@ -421,10 +421,10 @@ components:
           $ref: "#/components/schemas/String"
           description: The description for a warning returned by the document service.
   x-stackQL-resources:
-    search:
-      id: aws.cloudsearchdomain.search
-      name: search
-      title: search
+    searches:
+      id: aws.cloudsearchdomain.searches
+      name: searches
+      title: searches
       methods:
         search:
           operation:
@@ -436,7 +436,44 @@ components:
             nativeCasing: pascal
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/search/methods/search"
+          - $ref: "#/components/x-stackQL-resources/searches/methods/search"
+        insert: []
+        update: []
+        delete: []
+    suggests:
+      id: aws.cloudsearchdomain.suggests
+      name: suggests
+      title: suggests
+      methods:
+        suggest:
+          operation:
+            $ref: "#/paths/~12013-01-01~1suggest?format=sdk&pretty=true/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
+    documents:
+      id: aws.cloudsearchdomain.documents
+      name: documents
+      title: documents
+      methods:
+        upload_documents:
+          operation:
+            $ref: "#/paths/~12013-01-01~1documents~1batch?format=sdk/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
         insert: []
         update: []
         delete: []

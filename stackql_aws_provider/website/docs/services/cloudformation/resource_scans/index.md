@@ -138,6 +138,13 @@ The following methods are available for this resource:
     <td><a href="#parameter-NextToken"><code>NextToken</code></a>, <a href="#parameter-MaxResults"><code>MaxResults</code></a>, <a href="#parameter-ScanTypeFilter"><code>ScanTypeFilter</code></a></td>
     <td>List the resource scans from newest to oldest. By default it will return up to 10 resource scans.</td>
 </tr>
+<tr>
+    <td><a href="#start_resource_scan"><CopyableCode code="start_resource_scan" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td><a href="#parameter-ClientRequestToken"><code>ClientRequestToken</code></a>, <a href="#parameter-ScanFilters"><code>ScanFilters</code></a></td>
+    <td>Starts a scan of the resources in this account in this Region. You can the status of a scan using the ListResourceScans API action.</td>
+</tr>
 </tbody>
 </table>
 
@@ -164,6 +171,11 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     <td><code>string</code></td>
     <td>AWS region (default: us-east-1)</td>
 </tr>
+<tr id="parameter-ClientRequestToken">
+    <td><CopyableCode code="ClientRequestToken" /></td>
+    <td><code>string</code></td>
+    <td>A unique identifier for this StartResourceScan request. Specify this token if you plan to retry requests so that CloudFormation knows that you're not attempting to start a new resource scan.</td>
+</tr>
 <tr id="parameter-MaxResults">
     <td><CopyableCode code="MaxResults" /></td>
     <td><code>integer</code></td>
@@ -173,6 +185,11 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     <td><CopyableCode code="NextToken" /></td>
     <td><code>string</code></td>
     <td>The token for the next set of items to return. (You received this token from a previous call.)</td>
+</tr>
+<tr id="parameter-ScanFilters">
+    <td><CopyableCode code="ScanFilters" /></td>
+    <td><code>array</code></td>
+    <td>The scan filters to use.</td>
 </tr>
 <tr id="parameter-ScanTypeFilter">
     <td><CopyableCode code="ScanTypeFilter" /></td>
@@ -222,6 +239,29 @@ WHERE region = '{{ region }}' -- required
 AND NextToken = '{{ NextToken }}'
 AND MaxResults = '{{ MaxResults }}'
 AND ScanTypeFilter = '{{ ScanTypeFilter }}'
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="start_resource_scan"
+    values={[
+        { label: 'start_resource_scan', value: 'start_resource_scan' }
+    ]}
+>
+<TabItem value="start_resource_scan">
+
+Starts a scan of the resources in this account in this Region. You can the status of a scan using the ListResourceScans API action.
+
+```sql
+EXEC aws.cloudformation.resource_scans.start_resource_scan 
+@region='{{ region }}' --required, 
+@ClientRequestToken='{{ ClientRequestToken }}', 
+@ScanFilters='{{ ScanFilters }}'
 ;
 ```
 </TabItem>

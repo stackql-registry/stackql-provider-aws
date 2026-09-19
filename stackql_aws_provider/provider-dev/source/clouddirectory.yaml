@@ -47,10 +47,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/AddFacetToObjectResponse'
       x-stackql-resource: facets
       x-stackql-method: add_facet_to_object
       x-stackql-verb: UPDATE
@@ -85,7 +81,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ApplySchemaResponse'
-      x-stackql-resource: apply_schema
+      x-stackql-resource: schemas
       x-stackql-method: apply_schema
       x-stackql-verb: EXEC
   /amazonclouddirectory/2017-01-11/object/attach:
@@ -157,10 +153,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/AttachPolicyResponse'
       x-stackql-resource: policies
       x-stackql-method: attach_policy
       x-stackql-verb: UPDATE
@@ -276,7 +268,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchReadResponse'
-      x-stackql-resource: batch_read
+      x-stackql-resource: ds
       x-stackql-method: batch_read
       x-stackql-verb: EXEC
   /amazonclouddirectory/2017-01-11/batchwrite:
@@ -308,7 +300,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchWriteResponse'
-      x-stackql-resource: batch_write
+      x-stackql-resource: es
       x-stackql-method: batch_write
       x-stackql-verb: EXEC
   /amazonclouddirectory/2017-01-11/directory/create:
@@ -377,10 +369,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CreateFacetResponse'
       x-stackql-resource: facets
       x-stackql-method: create_facet
       x-stackql-verb: INSERT
@@ -519,10 +507,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CreateTypedLinkFacetResponse'
       x-stackql-resource: facets
       x-stackql-method: create_typed_link_facet
       x-stackql-verb: INSERT
@@ -574,10 +558,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteFacetResponse'
       x-stackql-resource: facets
       x-stackql-method: delete_facet
       x-stackql-verb: DELETE
@@ -609,10 +589,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteObjectResponse'
       x-stackql-resource: objects
       x-stackql-method: delete_object
       x-stackql-verb: DELETE
@@ -662,10 +638,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteTypedLinkFacetResponse'
       x-stackql-resource: facets
       x-stackql-method: delete_typed_link_facet
       x-stackql-verb: DELETE
@@ -770,10 +742,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DetachPolicyResponse'
       x-stackql-resource: policies
       x-stackql-method: detach_policy
       x-stackql-verb: UPDATE
@@ -824,7 +792,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DisableDirectoryResponse'
-      x-stackql-resource: directory
+      x-stackql-resource: directories
       x-stackql-method: disable_directory
       x-stackql-verb: EXEC
   /amazonclouddirectory/2017-01-11/directory/enable:
@@ -846,7 +814,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/EnableDirectoryResponse'
-      x-stackql-resource: directory
+      x-stackql-resource: directories
       x-stackql-method: enable_directory
       x-stackql-verb: EXEC
   /amazonclouddirectory/2017-01-11/schema/getappliedschema:
@@ -960,10 +928,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateFacetResponse'
       x-stackql-resource: facets
       x-stackql-method: update_facet
       x-stackql-verb: UPDATE
@@ -1084,7 +1048,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetObjectInformationResponse'
-      x-stackql-resource: object_informations
+      x-stackql-resource: object_information
       x-stackql-method: get_object_information
       x-stackql-verb: SELECT
   /amazonclouddirectory/2017-01-11/schema/json:
@@ -1169,7 +1133,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetTypedLinkFacetInformationOutputDisplay'
-      x-stackql-resource: typed_link_facet_informations
+      x-stackql-resource: typed_link_facet_information
       x-stackql-method: get_typed_link_facet_information
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: GetTypedLinkFacetInformationOutputDisplay
@@ -2117,7 +2081,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PublishSchemaResponse'
-      x-stackql-resource: schema
+      x-stackql-resource: schemas
       x-stackql-method: publish_schema
       x-stackql-verb: EXEC
   /amazonclouddirectory/2017-01-11/object/facets/delete:
@@ -2148,10 +2112,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RemoveFacetFromObjectResponse'
       x-stackql-resource: facets
       x-stackql-method: remove_facet_from_object
       x-stackql-verb: UPDATE
@@ -2177,10 +2137,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -2206,10 +2162,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -2243,10 +2195,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateLinkAttributesResponse'
       x-stackql-resource: link_attributes
       x-stackql-method: update_link_attributes
       x-stackql-verb: UPDATE
@@ -2349,10 +2297,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateTypedLinkFacetResponse'
       x-stackql-resource: facets
       x-stackql-method: update_typed_link_facet
       x-stackql-verb: UPDATE
@@ -2421,7 +2365,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpgradePublishedSchemaResponse'
-      x-stackql-resource: upgrade_published_schema
+      x-stackql-resource: published_schemas
       x-stackql-method: upgrade_published_schema
       x-stackql-verb: EXEC
 components:
@@ -2574,8 +2518,6 @@ components:
             /some/path - Identifies the object based on path #SomeBatchReference - Identifies the object in a batch call'
     SelectorObjectReference:
       type: string
-    AddFacetToObjectResponse:
-      type: object
     ApplySchemaResponse:
       type: object
       properties:
@@ -2599,8 +2541,6 @@ components:
           description: The attached ObjectIdentifier, which is the child ObjectIdentifier.
     ObjectIdentifier:
       type: string
-    AttachPolicyResponse:
-      type: object
     AttachToIndexResponse:
       type: object
       properties:
@@ -3962,8 +3902,6 @@ components:
       enum:
       - STATIC
       - DYNAMIC
-    CreateFacetResponse:
-      type: object
     CreateIndexResponse:
       type: object
       properties:
@@ -4040,8 +3978,6 @@ components:
       - Name
       - Type
       - RequiredBehavior
-    CreateTypedLinkFacetResponse:
-      type: object
     DeleteDirectoryResponse:
       type: object
       properties:
@@ -4050,18 +3986,12 @@ components:
           description: The ARN of the deleted directory.
       required:
       - DirectoryArn
-    DeleteFacetResponse:
-      type: object
-    DeleteObjectResponse:
-      type: object
     DeleteSchemaResponse:
       type: object
       properties:
         SchemaArn:
           $ref: '#/components/schemas/Arn'
           description: The input ARN that is returned as part of the response. For more information, see arns.
-    DeleteTypedLinkFacetResponse:
-      type: object
     DetachFromIndexResponse:
       type: object
       properties:
@@ -4074,8 +4004,6 @@ components:
         DetachedObjectIdentifier:
           $ref: '#/components/schemas/ObjectIdentifier'
           description: The ObjectIdentifier that was detached from the object.
-    DetachPolicyResponse:
-      type: object
     DisableDirectoryResponse:
       type: object
       properties:
@@ -4476,16 +4404,10 @@ components:
         Arn:
           $ref: '#/components/schemas/Arn'
           description: The ARN of the schema to update.
-    RemoveFacetFromObjectResponse:
-      type: object
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
         $ref: '#/components/schemas/TagKey'
-    UntagResourceResponse:
-      type: object
     FacetAttributeUpdateList:
       type: array
       items:
@@ -4500,10 +4422,6 @@ components:
         Action:
           $ref: '#/components/schemas/UpdateActionType'
           description: The action to perform when updating the attribute.
-    UpdateFacetResponse:
-      type: object
-    UpdateLinkAttributesResponse:
-      type: object
     UpdateObjectAttributesResponse:
       type: object
       properties:
@@ -4533,8 +4451,6 @@ components:
       required:
       - Attribute
       - Action
-    UpdateTypedLinkFacetResponse:
-      type: object
     UpgradeAppliedSchemaResponse:
       type: object
       properties:

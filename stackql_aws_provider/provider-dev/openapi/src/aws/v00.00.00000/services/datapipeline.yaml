@@ -53,10 +53,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ActivatePipelineOutput"
   /AddTags:
     post:
       operationId: AddTags
@@ -90,10 +86,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/AddTagsOutput"
   /CreatePipeline:
     post:
       operationId: CreatePipeline
@@ -169,10 +161,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeactivatePipelineOutput"
   /DeletePipeline:
     post:
       operationId: DeletePipeline
@@ -547,10 +535,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/RemoveTagsOutput"
   /ReportTaskProgress:
     post:
       operationId: ReportTaskProgress
@@ -705,10 +689,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/SetTaskStatusOutput"
   /ValidatePipelineDefinition:
     post:
       operationId: ValidatePipelineDefinition
@@ -832,9 +812,6 @@ components:
     timestamp:
       type: string
       format: date-time
-    ActivatePipelineOutput:
-      description: Contains the output of ActivatePipeline.
-      type: object
     tagList:
       type: array
       items:
@@ -860,9 +837,6 @@ components:
       type: string
       minLength: 0
       maxLength: 256
-    AddTagsOutput:
-      description: Contains the output of AddTags.
-      type: object
     string:
       type: string
       minLength: 0
@@ -879,9 +853,6 @@ components:
         - pipelineId
     cancelActive:
       type: boolean
-    DeactivatePipelineOutput:
-      description: Contains the output of DeactivatePipeline.
-      type: object
     idList:
       type: array
       items:
@@ -1228,9 +1199,6 @@ components:
         hasMoreResults:
           $ref: "#/components/schemas/boolean"
           description: Indicates whether there are more results that can be obtained by a subsequent call.
-    RemoveTagsOutput:
-      description: Contains the output of RemoveTags.
-      type: object
     ReportTaskProgressOutput:
       description: Contains the output of ReportTaskProgress.
       type: object
@@ -1257,9 +1225,6 @@ components:
         - "FALSE"
     errorMessage:
       type: string
-    SetTaskStatusOutput:
-      description: Contains the output of SetTaskStatus.
-      type: object
     ValidatePipelineDefinitionOutput:
       description: Contains the output of ValidatePipelineDefinition.
       type: object
@@ -1286,7 +1251,6 @@ components:
             $ref: "#/paths/~1ActivatePipeline/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -1312,7 +1276,6 @@ components:
             $ref: "#/paths/~1DeactivatePipeline/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -1424,7 +1387,6 @@ components:
             $ref: "#/paths/~1AddTags/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -1437,7 +1399,6 @@ components:
             $ref: "#/paths/~1RemoveTags/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -1543,14 +1504,14 @@ components:
         replace:
           - $ref: "#/components/x-stackQL-resources/pipeline_definitions/methods/put_pipeline_definition"
         delete: []
-    task_status:
-      id: aws.datapipeline.task_status
-      name: task_status
-      title: task_status
+    tasks:
+      id: aws.datapipeline.tasks
+      name: tasks
+      title: tasks
       methods:
-        set_task_status:
+        poll_for_task:
           operation:
-            $ref: "#/paths/~1SetTaskStatus/post"
+            $ref: "#/paths/~1PollForTask/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -1564,6 +1525,74 @@ components:
       sqlVerbs:
         select: []
         insert: []
+        update: []
+        delete: []
+    task_progresses:
+      id: aws.datapipeline.task_progresses
+      name: task_progresses
+      title: task_progresses
+      methods:
+        report_task_progress:
+          operation:
+            $ref: "#/paths/~1ReportTaskProgress/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
+    task_runner_heartbeats:
+      id: aws.datapipeline.task_runner_heartbeats
+      name: task_runner_heartbeats
+      title: task_runner_heartbeats
+      methods:
+        report_task_runner_heartbeat:
+          operation:
+            $ref: "#/paths/~1ReportTaskRunnerHeartbeat/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
+    task_statuses:
+      id: aws.datapipeline.task_statuses
+      name: task_statuses
+      title: task_statuses
+      methods:
+        set_task_status:
+          operation:
+            $ref: "#/paths/~1SetTaskStatus/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/task_status/methods/set_task_status"
+          - $ref: "#/components/x-stackQL-resources/task_statuses/methods/set_task_status"
         delete: []

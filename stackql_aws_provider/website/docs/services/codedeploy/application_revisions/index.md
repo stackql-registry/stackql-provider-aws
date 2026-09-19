@@ -33,42 +33,13 @@ Creates, updates, deletes, gets or lists an <code>application_revisions</code> r
 The following fields are returned by `SELECT` queries:
 
 <Tabs
-    defaultValue="batch_get_application_revisions"
+    defaultValue="get_application_revision"
     values={[
-        { label: 'batch_get_application_revisions', value: 'batch_get_application_revisions' },
         { label: 'get_application_revision', value: 'get_application_revision' },
+        { label: 'batch_get_application_revisions', value: 'batch_get_application_revisions' },
         { label: 'list_application_revisions', value: 'list_application_revisions' }
     ]}
 >
-<TabItem value="batch_get_application_revisions">
-
-<table>
-<thead>
-    <tr>
-    <th>Name</th>
-    <th>Datatype</th>
-    <th>Description</th>
-    </tr>
-</thead>
-<tbody>
-<tr>
-    <td><CopyableCode code="application_name" /></td>
-    <td><code>string</code></td>
-    <td>The name of the application that corresponds to the revisions.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="error_message" /></td>
-    <td><code>string</code></td>
-    <td>Information about errors that might have occurred during the API call.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="revisions" /></td>
-    <td><code>array</code></td>
-    <td>Additional information about the revisions, including the type and location.</td>
-</tr>
-</tbody>
-</table>
-</TabItem>
 <TabItem value="get_application_revision">
 
 <table>
@@ -83,7 +54,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="application_name" /></td>
     <td><code>string</code></td>
-    <td>The name of the application that corresponds to the revision.</td>
+    <td>The name of the application that corresponds to the revision. (pattern: &lt;code&gt;&#91;A-Za-z0-9+=,.@_-&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="revision" /></td>
@@ -94,6 +65,35 @@ The following fields are returned by `SELECT` queries:
     <td><CopyableCode code="revision_info" /></td>
     <td><code>object</code></td>
     <td>General information about the revision.</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
+<TabItem value="batch_get_application_revisions">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="application_name" /></td>
+    <td><code>string</code></td>
+    <td>The name of the application that corresponds to the revisions. (pattern: &lt;code&gt;&#91;A-Za-z0-9+=,.@_-&#93;*&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="error_message" /></td>
+    <td><code>string</code></td>
+    <td>Information about errors that might have occurred during the API call.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="revisions" /></td>
+    <td><code>array</code></td>
+    <td>Additional information about the revisions, including the type and location.</td>
 </tr>
 </tbody>
 </table>
@@ -155,18 +155,18 @@ The following methods are available for this resource:
 </thead>
 <tbody>
 <tr>
-    <td><a href="#batch_get_application_revisions"><CopyableCode code="batch_get_application_revisions" /></a></td>
-    <td><CopyableCode code="select" /></td>
-    <td><a href="#parameter-region"><code>region</code></a></td>
-    <td></td>
-    <td>Gets information about one or more application revisions. The maximum number of application revisions that can be returned is 25.</td>
-</tr>
-<tr>
     <td><a href="#get_application_revision"><CopyableCode code="get_application_revision" /></a></td>
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td></td>
     <td>Gets information about an application revision.</td>
+</tr>
+<tr>
+    <td><a href="#batch_get_application_revisions"><CopyableCode code="batch_get_application_revisions" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Gets information about one or more application revisions. The maximum number of application revisions that can be returned is 25.</td>
 </tr>
 <tr>
     <td><a href="#list_application_revisions"><CopyableCode code="list_application_revisions" /></a></td>
@@ -209,27 +209,13 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 ## `SELECT` examples
 
 <Tabs
-    defaultValue="batch_get_application_revisions"
+    defaultValue="get_application_revision"
     values={[
-        { label: 'batch_get_application_revisions', value: 'batch_get_application_revisions' },
         { label: 'get_application_revision', value: 'get_application_revision' },
+        { label: 'batch_get_application_revisions', value: 'batch_get_application_revisions' },
         { label: 'list_application_revisions', value: 'list_application_revisions' }
     ]}
 >
-<TabItem value="batch_get_application_revisions">
-
-Gets information about one or more application revisions. The maximum number of application revisions that can be returned is 25.
-
-```sql
-SELECT
-application_name,
-error_message,
-revisions
-FROM aws.codedeploy.application_revisions
-WHERE region = '{{ region }}' -- required
-;
-```
-</TabItem>
 <TabItem value="get_application_revision">
 
 Gets information about an application revision.
@@ -239,6 +225,20 @@ SELECT
 application_name,
 revision,
 revision_info
+FROM aws.codedeploy.application_revisions
+WHERE region = '{{ region }}' -- required
+;
+```
+</TabItem>
+<TabItem value="batch_get_application_revisions">
+
+Gets information about one or more application revisions. The maximum number of application revisions that can be returned is 25.
+
+```sql
+SELECT
+application_name,
+error_message,
+revisions
 FROM aws.codedeploy.application_revisions
 WHERE region = '{{ region }}' -- required
 ;

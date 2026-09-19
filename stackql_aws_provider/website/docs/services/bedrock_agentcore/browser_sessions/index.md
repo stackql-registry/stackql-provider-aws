@@ -188,6 +188,20 @@ The following methods are available for this resource:
     <td></td>
     <td>Retrieves a list of browser sessions in Amazon Bedrock AgentCore that match the specified criteria. This operation returns summary information about each session, including identifiers, status, and timestamps. You can filter the results by browser identifier and session status. The operation supports pagination to handle large result sets efficiently. We recommend using pagination to ensure that the operation returns quickly and successfully when retrieving large numbers of sessions. The following operations are related to ListBrowserSessions: StartBrowserSession GetBrowserSession</td>
 </tr>
+<tr>
+    <td><a href="#start_browser_session"><CopyableCode code="start_browser_session" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-browser_identifier"><code>browser_identifier</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td><a href="#parameter-X-Amzn-Trace-Id"><code>X-Amzn-Trace-Id</code></a>, <a href="#parameter-traceparent"><code>traceparent</code></a></td>
+    <td>Creates and initializes a browser session in Amazon Bedrock AgentCore. The session enables agents to navigate and interact with web content, extract information from websites, and perform web-based tasks as part of their response generation. To create a session, you must specify a browser identifier and a name. You can also configure the viewport dimensions to control the visible area of web content. The session remains active until it times out or you explicitly stop it using the StopBrowserSession operation. The following operations are related to StartBrowserSession: GetBrowserSession UpdateBrowserStream SaveBrowserSessionProfile StopBrowserSession InvokeBrowser</td>
+</tr>
+<tr>
+    <td><a href="#stop_browser_session"><CopyableCode code="stop_browser_session" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-browser_identifier"><code>browser_identifier</code></a>, <a href="#parameter-sessionId"><code>sessionId</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td><a href="#parameter-X-Amzn-Trace-Id"><code>X-Amzn-Trace-Id</code></a>, <a href="#parameter-traceparent"><code>traceparent</code></a></td>
+    <td>Terminates an active browser session in Amazon Bedrock AgentCore. This operation stops the session, releases associated resources, and makes the session unavailable for further use. To stop a browser session, you must specify both the browser identifier and the session ID. Once stopped, a session cannot be restarted; you must create a new session using StartBrowserSession. The following operations are related to StopBrowserSession: StartBrowserSession GetBrowserSession</td>
+</tr>
 </tbody>
 </table>
 
@@ -207,7 +221,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-browser_identifier">
     <td><CopyableCode code="browser_identifier" /></td>
     <td><code>string</code></td>
-    <td>The unique identifier of the browser to list sessions for. If specified, only sessions for this browser are returned. If not specified, sessions for all browsers are returned.</td>
+    <td>The unique identifier of the browser associated with the session.</td>
 </tr>
 <tr id="parameter-region">
     <td><CopyableCode code="region" /></td>
@@ -217,7 +231,17 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-sessionId">
     <td><CopyableCode code="sessionId" /></td>
     <td><code>string</code></td>
-    <td>The unique identifier of the browser session to retrieve.</td>
+    <td>The unique identifier of the browser session to stop.</td>
+</tr>
+<tr id="parameter-X-Amzn-Trace-Id">
+    <td><CopyableCode code="X-Amzn-Trace-Id" /></td>
+    <td><code>string</code></td>
+    <td>The trace identifier for request tracking.</td>
+</tr>
+<tr id="parameter-traceparent">
+    <td><CopyableCode code="traceparent" /></td>
+    <td><code>string</code></td>
+    <td>The parent trace information for distributed tracing.</td>
 </tr>
 </tbody>
 </table>
@@ -271,6 +295,62 @@ next_token
 FROM aws.bedrock_agentcore.browser_sessions
 WHERE browser_identifier = '{{ browser_identifier }}' -- required
 AND region = '{{ region }}' -- required
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="start_browser_session"
+    values={[
+        { label: 'start_browser_session', value: 'start_browser_session' },
+        { label: 'stop_browser_session', value: 'stop_browser_session' }
+    ]}
+>
+<TabItem value="start_browser_session">
+
+Creates and initializes a browser session in Amazon Bedrock AgentCore. The session enables agents to navigate and interact with web content, extract information from websites, and perform web-based tasks as part of their response generation. To create a session, you must specify a browser identifier and a name. You can also configure the viewport dimensions to control the visible area of web content. The session remains active until it times out or you explicitly stop it using the StopBrowserSession operation. The following operations are related to StartBrowserSession: GetBrowserSession UpdateBrowserStream SaveBrowserSessionProfile StopBrowserSession InvokeBrowser
+
+```sql
+EXEC aws.bedrock_agentcore.browser_sessions.start_browser_session 
+@browser_identifier='{{ browser_identifier }}' --required, 
+@region='{{ region }}' --required, 
+@X-Amzn-Trace-Id='{{ X-Amzn-Trace-Id }}', 
+@traceparent='{{ traceparent }}' 
+@@json=
+'{
+"name": "{{ name }}", 
+"sessionTimeoutSeconds": {{ sessionTimeoutSeconds }}, 
+"viewPort": "{{ viewPort }}", 
+"extensions": "{{ extensions }}", 
+"profileConfiguration": "{{ profileConfiguration }}", 
+"proxyConfiguration": "{{ proxyConfiguration }}", 
+"enterprisePolicies": "{{ enterprisePolicies }}", 
+"certificates": "{{ certificates }}", 
+"filesystemConfigurations": "{{ filesystemConfigurations }}", 
+"clientToken": "{{ clientToken }}"
+}'
+;
+```
+</TabItem>
+<TabItem value="stop_browser_session">
+
+Terminates an active browser session in Amazon Bedrock AgentCore. This operation stops the session, releases associated resources, and makes the session unavailable for further use. To stop a browser session, you must specify both the browser identifier and the session ID. Once stopped, a session cannot be restarted; you must create a new session using StartBrowserSession. The following operations are related to StopBrowserSession: StartBrowserSession GetBrowserSession
+
+```sql
+EXEC aws.bedrock_agentcore.browser_sessions.stop_browser_session 
+@browser_identifier='{{ browser_identifier }}' --required, 
+@sessionId='{{ sessionId }}' --required, 
+@region='{{ region }}' --required, 
+@X-Amzn-Trace-Id='{{ X-Amzn-Trace-Id }}', 
+@traceparent='{{ traceparent }}' 
+@@json=
+'{
+"clientToken": "{{ clientToken }}"
+}'
 ;
 ```
 </TabItem>

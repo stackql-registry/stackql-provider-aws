@@ -99,10 +99,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteEdgeConfigurationOutput"
   /deleteSignalingChannel:
     post:
       operationId: DeleteSignalingChannel
@@ -124,10 +120,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteSignalingChannelOutput"
   /deleteStream:
     post:
       operationId: DeleteStream
@@ -149,10 +141,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteStreamOutput"
   /describeEdgeConfiguration:
     post:
       operationId: DescribeEdgeConfiguration
@@ -570,10 +558,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TagResourceOutput"
   /tagStream:
     post:
       operationId: TagStream
@@ -595,10 +579,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TagStreamOutput"
   /UntagResource:
     post:
       operationId: UntagResource
@@ -621,10 +601,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UntagResourceOutput"
   /untagStream:
     post:
       operationId: UntagStream
@@ -648,10 +624,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UntagStreamOutput"
   /updateDataRetention:
     post:
       operationId: UpdateDataRetention
@@ -681,10 +653,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateDataRetentionOutput"
   /updateImageGenerationConfiguration:
     post:
       operationId: UpdateImageGenerationConfiguration
@@ -706,10 +674,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateImageGenerationConfigurationOutput"
   /updateMediaStorageConfiguration:
     post:
       operationId: UpdateMediaStorageConfiguration
@@ -732,10 +696,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateMediaStorageConfigurationOutput"
   /updateNotificationConfiguration:
     post:
       operationId: UpdateNotificationConfiguration
@@ -757,10 +717,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateNotificationConfigurationOutput"
   /updateSignalingChannel:
     post:
       operationId: UpdateSignalingChannel
@@ -785,10 +741,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateSignalingChannelOutput"
   /updateStream:
     post:
       operationId: UpdateStream
@@ -816,10 +768,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateStreamOutput"
   /updateStreamStorageConfiguration:
     post:
       operationId: UpdateStreamStorageConfiguration
@@ -846,10 +794,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateStreamStorageConfigurationOutput"
 components:
   parameters:
     X-Amz-Content-Sha256:
@@ -1000,17 +944,11 @@ components:
         StreamARN:
           $ref: "#/components/schemas/ResourceARN"
           description: The Amazon Resource Name (ARN) of the stream.
-    DeleteEdgeConfigurationOutput:
-      type: object
     Version:
       type: string
       minLength: 1
       maxLength: 64
       pattern: "[a-zA-Z0-9]+"
-    DeleteSignalingChannelOutput:
-      type: object
-    DeleteStreamOutput:
-      type: object
     DescribeEdgeConfigurationOutput:
       type: object
       properties:
@@ -1707,18 +1645,10 @@ components:
       type: array
       items:
         $ref: "#/components/schemas/Tag"
-    TagResourceOutput:
-      type: object
-    TagStreamOutput:
-      type: object
     TagKeyList:
       type: array
       items:
         $ref: "#/components/schemas/TagKey"
-    UntagResourceOutput:
-      type: object
-    UntagStreamOutput:
-      type: object
     UpdateDataRetentionOperation:
       type: string
       enum:
@@ -1727,20 +1657,6 @@ components:
     DataRetentionChangeInHours:
       type: integer
       minimum: 1
-    UpdateDataRetentionOutput:
-      type: object
-    UpdateImageGenerationConfigurationOutput:
-      type: object
-    UpdateMediaStorageConfigurationOutput:
-      type: object
-    UpdateNotificationConfigurationOutput:
-      type: object
-    UpdateSignalingChannelOutput:
-      type: object
-    UpdateStreamOutput:
-      type: object
-    UpdateStreamStorageConfigurationOutput:
-      type: object
   x-stackQL-resources:
     signaling_channels:
       id: aws.kinesisvideo.signaling_channels
@@ -1763,7 +1679,6 @@ components:
             $ref: "#/paths/~1deleteSignalingChannel/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -1805,7 +1720,6 @@ components:
             $ref: "#/paths/~1updateSignalingChannel/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -1841,7 +1755,6 @@ components:
             $ref: "#/paths/~1deleteStream/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -1883,7 +1796,6 @@ components:
             $ref: "#/paths/~1updateStream/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -1909,7 +1821,6 @@ components:
             $ref: "#/paths/~1deleteEdgeConfiguration/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -1966,7 +1877,6 @@ components:
             $ref: "#/paths/~1updateImageGenerationConfiguration/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -2031,7 +1941,6 @@ components:
             $ref: "#/paths/~1updateMediaStorageConfiguration/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -2066,7 +1975,6 @@ components:
             $ref: "#/paths/~1updateNotificationConfiguration/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -2100,7 +2008,6 @@ components:
             $ref: "#/paths/~1updateStreamStorageConfiguration/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -2219,7 +2126,6 @@ components:
             $ref: "#/paths/~1TagResource/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -2230,7 +2136,6 @@ components:
             $ref: "#/paths/~1tagStream/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -2241,7 +2146,6 @@ components:
             $ref: "#/paths/~1UntagResource/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -2252,7 +2156,6 @@ components:
             $ref: "#/paths/~1untagStream/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -2279,7 +2182,6 @@ components:
             $ref: "#/paths/~1updateDataRetention/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:

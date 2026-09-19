@@ -224,6 +224,27 @@ The following methods are available for this resource:
     <td></td>
     <td>Deletes an OpenSearch Ingestion pipeline. For more information, see Deleting Amazon OpenSearch Ingestion pipelines.</td>
 </tr>
+<tr>
+    <td><a href="#start_pipeline"><CopyableCode code="start_pipeline" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-pipeline_name"><code>pipeline_name</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Starts an OpenSearch Ingestion pipeline. For more information, see Starting an OpenSearch Ingestion pipeline.</td>
+</tr>
+<tr>
+    <td><a href="#stop_pipeline"><CopyableCode code="stop_pipeline" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-pipeline_name"><code>pipeline_name</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Stops an OpenSearch Ingestion pipeline. For more information, see Stopping an OpenSearch Ingestion pipeline.</td>
+</tr>
+<tr>
+    <td><a href="#validate_pipeline"><CopyableCode code="validate_pipeline" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-PipelineConfigurationBody"><code>PipelineConfigurationBody</code></a></td>
+    <td></td>
+    <td>Checks whether an OpenSearch Ingestion pipeline configuration is valid prior to creation. For more information, see Creating Amazon OpenSearch Ingestion pipelines.</td>
+</tr>
 </tbody>
 </table>
 
@@ -243,7 +264,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-pipeline_name">
     <td><CopyableCode code="pipeline_name" /></td>
     <td><code>string</code></td>
-    <td>The name of the pipeline to delete.</td>
+    <td>The name of the pipeline to stop.</td>
 </tr>
 <tr id="parameter-region">
     <td><CopyableCode code="region" /></td>
@@ -470,6 +491,55 @@ Deletes an OpenSearch Ingestion pipeline. For more information, see Deleting Ama
 DELETE FROM aws.osis.pipelines
 WHERE pipeline_name = '{{ pipeline_name }}' --required
 AND region = '{{ region }}' --required
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="start_pipeline"
+    values={[
+        { label: 'start_pipeline', value: 'start_pipeline' },
+        { label: 'stop_pipeline', value: 'stop_pipeline' },
+        { label: 'validate_pipeline', value: 'validate_pipeline' }
+    ]}
+>
+<TabItem value="start_pipeline">
+
+Starts an OpenSearch Ingestion pipeline. For more information, see Starting an OpenSearch Ingestion pipeline.
+
+```sql
+EXEC aws.osis.pipelines.start_pipeline 
+@pipeline_name='{{ pipeline_name }}' --required, 
+@region='{{ region }}' --required
+;
+```
+</TabItem>
+<TabItem value="stop_pipeline">
+
+Stops an OpenSearch Ingestion pipeline. For more information, see Stopping an OpenSearch Ingestion pipeline.
+
+```sql
+EXEC aws.osis.pipelines.stop_pipeline 
+@pipeline_name='{{ pipeline_name }}' --required, 
+@region='{{ region }}' --required
+;
+```
+</TabItem>
+<TabItem value="validate_pipeline">
+
+Checks whether an OpenSearch Ingestion pipeline configuration is valid prior to creation. For more information, see Creating Amazon OpenSearch Ingestion pipelines.
+
+```sql
+EXEC aws.osis.pipelines.validate_pipeline 
+@region='{{ region }}' --required 
+@@json=
+'{
+"PipelineConfigurationBody": "{{ PipelineConfigurationBody }}"
+}'
 ;
 ```
 </TabItem>

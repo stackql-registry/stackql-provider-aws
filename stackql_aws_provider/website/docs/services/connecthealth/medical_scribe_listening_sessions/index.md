@@ -141,6 +141,13 @@ The following methods are available for this resource:
     <td></td>
     <td>Retrieves details about an existing Medical Scribe listening session</td>
 </tr>
+<tr>
+    <td><a href="#start_medical_scribe_listening_session"><CopyableCode code="start_medical_scribe_listening_session" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-x-amzn-medscribe-session-id"><code>x-amzn-medscribe-session-id</code></a>, <a href="#parameter-x-amzn-medscribe-domain-id"><code>x-amzn-medscribe-domain-id</code></a>, <a href="#parameter-x-amzn-medscribe-subscription-id"><code>x-amzn-medscribe-subscription-id</code></a>, <a href="#parameter-x-amzn-medscribe-language-code"><code>x-amzn-medscribe-language-code</code></a>, <a href="#parameter-x-amzn-medscribe-sample-rate"><code>x-amzn-medscribe-sample-rate</code></a>, <a href="#parameter-x-amzn-medscribe-media-encoding"><code>x-amzn-medscribe-media-encoding</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Starts a new Medical Scribe listening session for real-time audio transcription</td>
+</tr>
 </tbody>
 </table>
 
@@ -174,6 +181,36 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 </tr>
 <tr id="parameter-subscription_id">
     <td><CopyableCode code="subscription_id" /></td>
+    <td><code>string</code></td>
+    <td>The Subscription identifier</td>
+</tr>
+<tr id="parameter-x-amzn-medscribe-domain-id">
+    <td><CopyableCode code="x-amzn-medscribe-domain-id" /></td>
+    <td><code>string</code></td>
+    <td>The Domain identifier</td>
+</tr>
+<tr id="parameter-x-amzn-medscribe-language-code">
+    <td><CopyableCode code="x-amzn-medscribe-language-code" /></td>
+    <td><code>string</code></td>
+    <td>The Language Code for the audio in the session</td>
+</tr>
+<tr id="parameter-x-amzn-medscribe-media-encoding">
+    <td><CopyableCode code="x-amzn-medscribe-media-encoding" /></td>
+    <td><code>string</code></td>
+    <td>The encoding for the input audio</td>
+</tr>
+<tr id="parameter-x-amzn-medscribe-sample-rate">
+    <td><CopyableCode code="x-amzn-medscribe-sample-rate" /></td>
+    <td><code>integer</code></td>
+    <td>The sample rate of the input audio</td>
+</tr>
+<tr id="parameter-x-amzn-medscribe-session-id">
+    <td><CopyableCode code="x-amzn-medscribe-session-id" /></td>
+    <td><code>string</code></td>
+    <td>The Session identifier</td>
+</tr>
+<tr id="parameter-x-amzn-medscribe-subscription-id">
+    <td><CopyableCode code="x-amzn-medscribe-subscription-id" /></td>
     <td><code>string</code></td>
     <td>The Subscription identifier</td>
 </tr>
@@ -212,6 +249,37 @@ WHERE session_id = '{{ session_id }}' -- required
 AND domain_id = '{{ domain_id }}' -- required
 AND subscription_id = '{{ subscription_id }}' -- required
 AND region = '{{ region }}' -- required
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="start_medical_scribe_listening_session"
+    values={[
+        { label: 'start_medical_scribe_listening_session', value: 'start_medical_scribe_listening_session' }
+    ]}
+>
+<TabItem value="start_medical_scribe_listening_session">
+
+Starts a new Medical Scribe listening session for real-time audio transcription
+
+```sql
+EXEC aws.connecthealth.medical_scribe_listening_sessions.start_medical_scribe_listening_session 
+@x-amzn-medscribe-session-id='{{ x-amzn-medscribe-session-id }}' --required, 
+@x-amzn-medscribe-domain-id='{{ x-amzn-medscribe-domain-id }}' --required, 
+@x-amzn-medscribe-subscription-id='{{ x-amzn-medscribe-subscription-id }}' --required, 
+@x-amzn-medscribe-language-code='{{ x-amzn-medscribe-language-code }}' --required, 
+@x-amzn-medscribe-sample-rate='{{ x-amzn-medscribe-sample-rate }}' --required, 
+@x-amzn-medscribe-media-encoding='{{ x-amzn-medscribe-media-encoding }}' --required, 
+@region='{{ region }}' --required 
+@@json=
+'{
+"inputStream": "{{ inputStream }}"
+}'
 ;
 ```
 </TabItem>

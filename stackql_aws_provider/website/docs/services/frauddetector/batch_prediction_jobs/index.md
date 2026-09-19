@@ -100,6 +100,13 @@ The following methods are available for this resource:
     <td></td>
     <td>Deletes a batch prediction job.</td>
 </tr>
+<tr>
+    <td><a href="#cancel_batch_prediction_job"><CopyableCode code="cancel_batch_prediction_job" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-jobId"><code>jobId</code></a></td>
+    <td></td>
+    <td>Cancels the specified batch prediction job.</td>
+</tr>
 </tbody>
 </table>
 
@@ -249,6 +256,31 @@ Deletes a batch prediction job.
 ```sql
 DELETE FROM aws.frauddetector.batch_prediction_jobs
 WHERE region = '{{ region }}' --required
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="cancel_batch_prediction_job"
+    values={[
+        { label: 'cancel_batch_prediction_job', value: 'cancel_batch_prediction_job' }
+    ]}
+>
+<TabItem value="cancel_batch_prediction_job">
+
+Cancels the specified batch prediction job.
+
+```sql
+EXEC aws.frauddetector.batch_prediction_jobs.cancel_batch_prediction_job 
+@region='{{ region }}' --required 
+@@json=
+'{
+"jobId": "{{ jobId }}"
+}'
 ;
 ```
 </TabItem>

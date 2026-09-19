@@ -2984,10 +2984,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -3025,10 +3021,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -5739,14 +5731,10 @@ components:
         recommenderArn:
           $ref: '#/components/schemas/Arn'
           description: The Amazon Resource Name (ARN) of the recommender you stopped.
-    TagResourceResponse:
-      type: object
     TagKeys:
       type: array
       items:
         $ref: '#/components/schemas/TagKey'
-    UntagResourceResponse:
-      type: object
     UpdateCampaignResponse:
       type: object
       properties:

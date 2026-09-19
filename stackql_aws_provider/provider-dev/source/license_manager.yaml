@@ -86,11 +86,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CheckInLicenseResponse'
-      x-stackql-resource: check_in_license
+      x-stackql-resource: licenses
       x-stackql-method: check_in_license
       x-stackql-verb: EXEC
   /CheckoutBorrowLicense:
@@ -204,7 +200,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CheckoutLicenseResponse'
-      x-stackql-resource: checkout_license
+      x-stackql-resource: licenses
       x-stackql-method: checkout_license
       x-stackql-verb: EXEC
   /CreateGrant:
@@ -982,10 +978,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteLicenseAssetRulesetResponse'
       x-stackql-resource: license_asset_rulesets
       x-stackql-method: delete_license_asset_ruleset
       x-stackql-verb: DELETE
@@ -1018,10 +1010,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteLicenseConfigurationResponse'
       x-stackql-resource: license_configurations
       x-stackql-method: delete_license_configuration
       x-stackql-verb: DELETE
@@ -1055,10 +1043,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteLicenseManagerReportGeneratorResponse'
       x-stackql-resource: license_manager_report_generators
       x-stackql-method: delete_license_manager_report_generator
       x-stackql-verb: DELETE
@@ -1091,10 +1075,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteTokenResponse'
       x-stackql-resource: tokens
       x-stackql-method: delete_token
       x-stackql-verb: DELETE
@@ -1135,7 +1115,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ExtendLicenseConsumptionResponse'
-      x-stackql-resource: extend_license_consumption
+      x-stackql-resource: licenses
       x-stackql-method: extend_license_consumption
       x-stackql-verb: EXEC
   /GetAccessToken:
@@ -1550,7 +1530,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListAssetsForLicenseAssetGroupResponse'
-      x-stackql-resource: assets_for_license_asset_groups
+      x-stackql-resource: assets
       x-stackql-method: list_assets_for_license_asset_group
       x-stackql-verb: SELECT
   /ListAssociationsForLicenseConfiguration:
@@ -1594,7 +1574,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListAssociationsForLicenseConfigurationResponse'
-      x-stackql-resource: associations_for_license_configurations
+      x-stackql-resource: associations
       x-stackql-method: list_associations_for_license_configuration
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.LicenseConfigurationAssociations
@@ -1684,7 +1664,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListFailuresForLicenseConfigurationOperationsResponse'
-      x-stackql-resource: failures_for_license_configuration_operations
+      x-stackql-resource: failures
       x-stackql-method: list_failures_for_license_configuration_operations
       x-stackql-verb: SELECT
   /ListLicenseAssetGroups:
@@ -1860,7 +1840,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListLicenseConfigurationsForOrganizationResponse'
-      x-stackql-resource: license_configurations_for_organizations
+      x-stackql-resource: license_configurations
       x-stackql-method: list_license_configurations_for_organization
       x-stackql-verb: SELECT
   /ListLicenseConversionTasks:
@@ -1982,7 +1962,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListLicenseSpecificationsForResourceResponse'
-      x-stackql-resource: license_specifications_for_resources
+      x-stackql-resource: license_specifications
       x-stackql-method: list_license_specifications_for_resource
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.LicenseSpecifications
@@ -2162,7 +2142,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListReceivedGrantsForOrganizationResponse'
-      x-stackql-resource: received_grants_for_organizations
+      x-stackql-resource: received_grants
       x-stackql-method: list_received_grants_for_organization
       x-stackql-verb: SELECT
   /ListReceivedLicenses:
@@ -2246,7 +2226,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListReceivedLicensesForOrganizationResponse'
-      x-stackql-resource: received_licenses_for_organizations
+      x-stackql-resource: received_licenses
       x-stackql-method: list_received_licenses_for_organization
       x-stackql-verb: SELECT
   /ListResourceInventory:
@@ -2293,7 +2273,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListResourceInventoryResponse'
-      x-stackql-resource: resource_inventories
+      x-stackql-resource: resource_inventory
       x-stackql-method: list_resource_inventory
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ResourceInventoryList
@@ -2426,7 +2406,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListUsageForLicenseConfigurationResponse'
-      x-stackql-resource: usage_for_license_configurations
+      x-stackql-resource: usages
       x-stackql-method: list_usage_for_license_configuration
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.LicenseConfigurationUsageList
@@ -2507,10 +2487,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -2547,10 +2523,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -2720,10 +2692,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateLicenseConfigurationResponse'
       x-stackql-resource: license_configurations
       x-stackql-method: update_license_configuration
       x-stackql-verb: UPDATE
@@ -2782,10 +2750,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateLicenseManagerReportGeneratorResponse'
       x-stackql-resource: license_manager_report_generators
       x-stackql-method: update_license_manager_report_generator
       x-stackql-verb: UPDATE
@@ -2827,11 +2791,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateLicenseSpecificationsForResourceResponse'
-      x-stackql-resource: license_specifications_for_resources
+      x-stackql-resource: license_specifications
       x-stackql-method: update_license_specifications_for_resource
       x-stackql-verb: UPDATE
   /UpdateServiceSettings:
@@ -2874,10 +2834,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateServiceSettingsResponse'
       x-stackql-resource: service_settings
       x-stackql-method: update_service_settings
       x-stackql-verb: UPDATE
@@ -2956,8 +2912,6 @@ components:
       - WORKFLOW_COMPLETED
     String:
       type: string
-    CheckInLicenseResponse:
-      type: object
     EntitlementDataList:
       type: array
       items:
@@ -3803,14 +3757,6 @@ components:
       - ACTIVE
       - DISABLED
       - DELETED
-    DeleteLicenseAssetRulesetResponse:
-      type: object
-    DeleteLicenseConfigurationResponse:
-      type: object
-    DeleteLicenseManagerReportGeneratorResponse:
-      type: object
-    DeleteTokenResponse:
-      type: object
     ExtendLicenseConsumptionResponse:
       type: object
       properties:
@@ -4948,14 +4894,10 @@ components:
         Version:
           $ref: '#/components/schemas/String'
           description: Grant version.
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
         $ref: '#/components/schemas/String'
-    UntagResourceResponse:
-      type: object
     UpdateLicenseAssetGroupResponse:
       type: object
       properties:
@@ -4981,11 +4923,3 @@ components:
       enum:
       - AVAILABLE
       - DISABLED
-    UpdateLicenseConfigurationResponse:
-      type: object
-    UpdateLicenseManagerReportGeneratorResponse:
-      type: object
-    UpdateLicenseSpecificationsForResourceResponse:
-      type: object
-    UpdateServiceSettingsResponse:
-      type: object

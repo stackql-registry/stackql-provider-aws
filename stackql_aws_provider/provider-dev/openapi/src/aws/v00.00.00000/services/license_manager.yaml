@@ -83,10 +83,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/CheckInLicenseResponse"
   /CheckoutBorrowLicense:
     post:
       operationId: CheckoutBorrowLicense
@@ -897,10 +893,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteLicenseAssetRulesetResponse"
   /DeleteLicenseConfiguration:
     post:
       operationId: DeleteLicenseConfiguration
@@ -930,10 +922,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteLicenseConfigurationResponse"
   /DeleteLicenseManagerReportGenerator:
     post:
       operationId: DeleteLicenseManagerReportGenerator
@@ -963,10 +951,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteLicenseManagerReportGeneratorResponse"
   /DeleteToken:
     post:
       operationId: DeleteToken
@@ -996,10 +980,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteTokenResponse"
   /ExtendLicenseConsumption:
     post:
       operationId: ExtendLicenseConsumption
@@ -2255,10 +2235,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TagResourceResponse"
   /UntagResource:
     post:
       operationId: UntagResource
@@ -2292,10 +2268,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UntagResourceResponse"
   /UpdateLicenseAssetGroup:
     post:
       operationId: UpdateLicenseAssetGroup
@@ -2455,10 +2427,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateLicenseConfigurationResponse"
   /UpdateLicenseManagerReportGenerator:
     post:
       operationId: UpdateLicenseManagerReportGenerator
@@ -2511,10 +2479,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateLicenseManagerReportGeneratorResponse"
   /UpdateLicenseSpecificationsForResource:
     post:
       operationId: UpdateLicenseSpecificationsForResource
@@ -2550,10 +2514,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateLicenseSpecificationsForResourceResponse"
   /UpdateServiceSettings:
     post:
       operationId: UpdateServiceSettings
@@ -2593,10 +2553,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateServiceSettingsResponse"
 components:
   parameters:
     X-Amz-Content-Sha256:
@@ -2672,8 +2628,6 @@ components:
         - WORKFLOW_COMPLETED
     String:
       type: string
-    CheckInLicenseResponse:
-      type: object
     EntitlementDataList:
       type: array
       items:
@@ -3470,14 +3424,6 @@ components:
         - ACTIVE
         - DISABLED
         - DELETED
-    DeleteLicenseAssetRulesetResponse:
-      type: object
-    DeleteLicenseConfigurationResponse:
-      type: object
-    DeleteLicenseManagerReportGeneratorResponse:
-      type: object
-    DeleteTokenResponse:
-      type: object
     ExtendLicenseConsumptionResponse:
       type: object
       properties:
@@ -4609,14 +4555,10 @@ components:
         Version:
           $ref: "#/components/schemas/String"
           description: Grant version.
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
         $ref: "#/components/schemas/String"
-    UntagResourceResponse:
-      type: object
     UpdateLicenseAssetGroupResponse:
       type: object
       properties:
@@ -4642,14 +4584,6 @@ components:
       enum:
         - AVAILABLE
         - DISABLED
-    UpdateLicenseConfigurationResponse:
-      type: object
-    UpdateLicenseManagerReportGeneratorResponse:
-      type: object
-    UpdateLicenseSpecificationsForResourceResponse:
-      type: object
-    UpdateServiceSettingsResponse:
-      type: object
   x-stackQL-resources:
     grants:
       id: aws.license_manager.grants
@@ -4749,9 +4683,34 @@ components:
       name: licenses
       title: licenses
       methods:
+        check_in_license:
+          operation:
+            $ref: "#/paths/~1CheckInLicense/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         checkout_borrow_license:
           operation:
             $ref: "#/paths/~1CheckoutBorrowLicense/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        checkout_license:
+          operation:
+            $ref: "#/paths/~1CheckoutLicense/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -4928,7 +4887,6 @@ components:
             $ref: "#/paths/~1DeleteLicenseAssetRuleset/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -5009,7 +4967,6 @@ components:
             $ref: "#/paths/~1DeleteLicenseConfiguration/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -5056,7 +5013,6 @@ components:
             $ref: "#/paths/~1UpdateLicenseConfiguration/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -5149,7 +5105,6 @@ components:
             $ref: "#/paths/~1DeleteLicenseManagerReportGenerator/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -5189,7 +5144,6 @@ components:
             $ref: "#/paths/~1UpdateLicenseManagerReportGenerator/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -5268,7 +5222,6 @@ components:
             $ref: "#/paths/~1DeleteToken/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -5297,6 +5250,29 @@ components:
         update: []
         delete:
           - $ref: "#/components/x-stackQL-resources/tokens/methods/delete_token"
+    license_consumptions:
+      id: aws.license_manager.license_consumptions
+      name: license_consumptions
+      title: license_consumptions
+      methods:
+        extend_license_consumption:
+          operation:
+            $ref: "#/paths/~1ExtendLicenseConsumption/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
     access_tokens:
       id: aws.license_manager.access_tokens
       name: access_tokens
@@ -5369,7 +5345,6 @@ components:
             $ref: "#/paths/~1UpdateServiceSettings/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -5384,10 +5359,10 @@ components:
         update:
           - $ref: "#/components/x-stackQL-resources/service_settings/methods/update_service_settings"
         delete: []
-    assets_for_license_asset_groups:
-      id: aws.license_manager.assets_for_license_asset_groups
-      name: assets_for_license_asset_groups
-      title: assets_for_license_asset_groups
+    assets:
+      id: aws.license_manager.assets
+      name: assets
+      title: assets
       methods:
         list_assets_for_license_asset_group:
           operation:
@@ -5404,14 +5379,14 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/assets_for_license_asset_groups/methods/list_assets_for_license_asset_group"
+          - $ref: "#/components/x-stackQL-resources/assets/methods/list_assets_for_license_asset_group"
         insert: []
         update: []
         delete: []
-    associations_for_license_configurations:
-      id: aws.license_manager.associations_for_license_configurations
-      name: associations_for_license_configurations
-      title: associations_for_license_configurations
+    associations:
+      id: aws.license_manager.associations
+      name: associations
+      title: associations
       methods:
         list_associations_for_license_configuration:
           operation:
@@ -5436,7 +5411,7 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/associations_for_license_configurations/methods/list_associations_for_license_configuration"
+          - $ref: "#/components/x-stackQL-resources/associations/methods/list_associations_for_license_configuration"
         insert: []
         update: []
         delete: []
@@ -5464,10 +5439,10 @@ components:
         insert: []
         update: []
         delete: []
-    failures_for_license_configuration_operations:
-      id: aws.license_manager.failures_for_license_configuration_operations
-      name: failures_for_license_configuration_operations
-      title: failures_for_license_configuration_operations
+    failures:
+      id: aws.license_manager.failures
+      name: failures
+      title: failures
       methods:
         list_failures_for_license_configuration_operations:
           operation:
@@ -5484,7 +5459,7 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/failures_for_license_configuration_operations/methods/list_failures_for_license_configuration_operations"
+          - $ref: "#/components/x-stackQL-resources/failures/methods/list_failures_for_license_configuration_operations"
         insert: []
         update: []
         delete: []
@@ -5512,10 +5487,10 @@ components:
         insert: []
         update: []
         delete: []
-    license_specifications_for_resources:
-      id: aws.license_manager.license_specifications_for_resources
-      name: license_specifications_for_resources
-      title: license_specifications_for_resources
+    license_specifications:
+      id: aws.license_manager.license_specifications
+      name: license_specifications
+      title: license_specifications
       methods:
         list_license_specifications_for_resource:
           operation:
@@ -5543,7 +5518,6 @@ components:
             $ref: "#/paths/~1UpdateLicenseSpecificationsForResource/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -5553,10 +5527,10 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/license_specifications_for_resources/methods/list_license_specifications_for_resource"
+          - $ref: "#/components/x-stackQL-resources/license_specifications/methods/list_license_specifications_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/license_specifications_for_resources/methods/update_license_specifications_for_resource"
+          - $ref: "#/components/x-stackQL-resources/license_specifications/methods/update_license_specifications_for_resource"
         delete: []
     received_grants:
       id: aws.license_manager.received_grants
@@ -5576,17 +5550,6 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/received_grants/methods/list_received_grants"
-        insert: []
-        update: []
-        delete: []
-    received_grants_for_organizations:
-      id: aws.license_manager.received_grants_for_organizations
-      name: received_grants_for_organizations
-      title: received_grants_for_organizations
-      methods:
         list_received_grants_for_organization:
           operation:
             $ref: "#/paths/~1ListReceivedGrantsForOrganization/post"
@@ -5602,7 +5565,8 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/received_grants_for_organizations/methods/list_received_grants_for_organization"
+          - $ref: "#/components/x-stackQL-resources/received_grants/methods/list_received_grants_for_organization"
+          - $ref: "#/components/x-stackQL-resources/received_grants/methods/list_received_grants"
         insert: []
         update: []
         delete: []
@@ -5709,7 +5673,6 @@ components:
             $ref: "#/paths/~1TagResource/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -5722,7 +5685,6 @@ components:
             $ref: "#/paths/~1UntagResource/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -5738,10 +5700,10 @@ components:
           - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
           - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
         delete: []
-    usage_for_license_configurations:
-      id: aws.license_manager.usage_for_license_configurations
-      name: usage_for_license_configurations
-      title: usage_for_license_configurations
+    usages:
+      id: aws.license_manager.usages
+      name: usages
+      title: usages
       methods:
         list_usage_for_license_configuration:
           operation:
@@ -5766,7 +5728,7 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/usage_for_license_configurations/methods/list_usage_for_license_configuration"
+          - $ref: "#/components/x-stackQL-resources/usages/methods/list_usage_for_license_configuration"
         insert: []
         update: []
         delete: []

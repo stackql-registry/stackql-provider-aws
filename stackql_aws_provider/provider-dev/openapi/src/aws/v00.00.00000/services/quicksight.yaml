@@ -654,8 +654,6 @@ paths:
                   $ref: "#/components/schemas/ValidationStrategy"
                 FolderArns:
                   $ref: "#/components/schemas/FolderArnList"
-              required:
-                - Name
       responses:
         "200":
           description: Success
@@ -756,8 +754,6 @@ paths:
                   $ref: "#/components/schemas/AnalysisDefinition"
                 ValidationStrategy:
                   $ref: "#/components/schemas/ValidationStrategy"
-              required:
-                - Name
       responses:
         "200":
           description: Success
@@ -1179,7 +1175,7 @@ paths:
   /accounts/{aws_account_id}/data-sets:
     post:
       operationId: CreateDataSet
-      description: Creates a dataset. This operation doesn't support datasets that include uploaded files as a source.
+      description: Creates a dataset.
       parameters:
         - name: aws_account_id
           in: path
@@ -3517,6 +3513,53 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/UpdateAgentResponse"
+  /accounts/{aws_account_id}/apps/{app_id}:
+    delete:
+      operationId: DeleteApp
+      description: Deletes an app.
+      parameters:
+        - name: aws_account_id
+          in: path
+          required: true
+          schema:
+            $ref: "#/components/schemas/AwsAccountId"
+          description: The ID of the Amazon Web Services account that contains the app.
+        - name: app_id
+          in: path
+          required: true
+          schema:
+            $ref: "#/components/schemas/AppId"
+          description: The ID of the app that you want to delete.
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DeleteAppResponse"
+    get:
+      operationId: DescribeApp
+      description: Describes an app.
+      parameters:
+        - name: aws_account_id
+          in: path
+          required: true
+          schema:
+            $ref: "#/components/schemas/AwsAccountId"
+          description: The ID of the Amazon Web Services account that contains the app.
+        - name: app_id
+          in: path
+          required: true
+          schema:
+            $ref: "#/components/schemas/AppId"
+          description: The ID of the app that you want to describe.
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DescribeAppResponse"
   /governance/approvalworkflows/policies/{policy_id}:
     delete:
       operationId: DeleteApprovalPolicy
@@ -3531,10 +3574,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteApprovalPolicyResponse"
     get:
       operationId: DescribeApprovalPolicy
       description: Describes an approval policy in Quick Sight.
@@ -3758,7 +3797,7 @@ paths:
                 $ref: "#/components/schemas/DeleteDataSetResponse"
     get:
       operationId: DescribeDataSet
-      description: Describes a dataset. This operation doesn't support datasets that include uploaded files as a source.
+      description: Describes a dataset.
       parameters:
         - name: aws_account_id
           in: path
@@ -3781,7 +3820,7 @@ paths:
                 $ref: "#/components/schemas/DescribeDataSetResponse"
     put:
       operationId: UpdateDataSet
-      description: Updates a dataset. This operation doesn't support datasets that include uploaded files as a source. Partial updates are not supported by this operation.
+      description: Updates a dataset. Partial updates are not supported by this operation.
       parameters:
         - name: aws_account_id
           in: path
@@ -5732,6 +5771,66 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/UpdateAnalysisPermissionsResponse"
+  /accounts/{aws_account_id}/apps/{app_id}/permissions:
+    get:
+      operationId: DescribeAppPermissions
+      description: Describes the resource permissions for an app.
+      parameters:
+        - name: aws_account_id
+          in: path
+          required: true
+          schema:
+            $ref: "#/components/schemas/AwsAccountId"
+          description: The ID of the Amazon Web Services account that contains the app.
+        - name: app_id
+          in: path
+          required: true
+          schema:
+            $ref: "#/components/schemas/AppId"
+          description: The ID of the app.
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DescribeAppPermissionsResponse"
+    put:
+      operationId: UpdateAppPermissions
+      description: Updates the resource permissions for an app. You can grant or revoke permissions and, optionally, change the app's visibility.
+      parameters:
+        - name: aws_account_id
+          in: path
+          required: true
+          schema:
+            $ref: "#/components/schemas/AwsAccountId"
+          description: The ID of the Amazon Web Services account that contains the app.
+        - name: app_id
+          in: path
+          required: true
+          schema:
+            $ref: "#/components/schemas/AppId"
+          description: The ID of the app.
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                GrantPermissions:
+                  $ref: "#/components/schemas/ResourcePermissionList"
+                RevokePermissions:
+                  $ref: "#/components/schemas/ResourcePermissionList"
+                Visibility:
+                  $ref: "#/components/schemas/AppVisibility"
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UpdateAppPermissionsResponse"
   /accounts/{aws_account_id}/asset-bundle-export-jobs/{asset_bundle_export_job_id}:
     get:
       operationId: DescribeAssetBundleExportJob
@@ -7427,6 +7526,36 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ListAnalysesResponse"
+  /accounts/{aws_account_id}/apps:
+    get:
+      operationId: ListApps
+      description: Lists the apps in an Amazon Web Services account. Results are paginated; use the NextToken parameter to retrieve additional results.
+      parameters:
+        - name: aws_account_id
+          in: path
+          required: true
+          schema:
+            $ref: "#/components/schemas/AwsAccountId"
+          description: The ID of the Amazon Web Services account that contains the apps.
+        - name: max-results
+          in: query
+          required: false
+          schema:
+            $ref: "#/components/schemas/MaxResults"
+          description: The maximum number of results to return in a single request. Valid range is 1 to 100. If you don't specify a value, the default is 20.
+        - name: next-token
+          in: query
+          required: false
+          schema:
+            $ref: "#/components/schemas/NextToken"
+          description: The token for the next set of results, or null if there are no more results.
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ListAppsResponse"
   /accounts/{aws_account_id}/asset-bundle-export-jobs:
     get:
       operationId: ListAssetBundleExportJobs
@@ -8754,6 +8883,39 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/SearchAnalysesResponse"
+  /accounts/{aws_account_id}/search/apps:
+    post:
+      operationId: SearchApps
+      description: Searches for apps in an Amazon Web Services account using the specified filters. This operation is eventually consistent; the results might not reflect very recent updates. Results are paginated; use the NextToken parameter to retrieve additional results.
+      parameters:
+        - name: aws_account_id
+          in: path
+          required: true
+          schema:
+            $ref: "#/components/schemas/AwsAccountId"
+          description: The ID of the Amazon Web Services account that contains the apps to search.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                Filters:
+                  $ref: "#/components/schemas/SearchAppsFilterList"
+                MaxResults:
+                  $ref: "#/components/schemas/MaxResults"
+                NextToken:
+                  $ref: "#/components/schemas/NextToken"
+              required:
+                - Filters
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SearchAppsResponse"
   /accounts/{aws_account_id}/search/dashboards:
     post:
       operationId: SearchDashboards
@@ -24138,7 +24300,7 @@ components:
       type: string
       pattern: ^(arn:aws[-a-z0-9]*:[a-z0-9]+:[-a-z0-9]*:[0-9]{12}:bucket/[a-zA-Z0-9-_]{3,63})$
     S3KnowledgeBaseParameters:
-      description: The parameters that are required to connect to a S3 Knowledge Base data source.
+      description: "The parameters that are required to connect to an S3 knowledge base data source. Prerequisites: Amazon S3 bucket access Before you call CreateKnowledgeBase for an Amazon S3 knowledge base, an administrator must grant Amazon QuickSight access to the source S3 bucket. If access has not been granted for the bucket, knowledge base creation fails. To grant access, an administrator adds the bucket in the Amazon QuickSight admin console, under Permissions, Amazon Web Services resources, Amazon S3, Select S3 buckets. This authorizes the Amazon QuickSight service role to read the bucket. The bucket can be in the same Amazon Web Services account or, when the bucket owner has authorized your account, in a different account. The service role requires at least the following permissions on the bucket: s3:GetObject s3:ListBucket s3:GetBucketLocation s3:GetObjectVersion s3:ListBucketVersions For the full procedure, including cross-account buckets and KMS-encrypted buckets, see the Amazon S3 knowledge base administrator setup guide. To grant access for a specific S3 knowledge base data source without granting account-wide S3 access, provide a custom IAM role on the data source by using RoleArn."
       type: object
       properties:
         RoleArn:
@@ -24149,7 +24311,7 @@ components:
           description: The URL of the S3 bucket that contains the knowledge base data.
         MetadataFilesLocation:
           $ref: "#/components/schemas/MetadataFilesLocation"
-          description: The location of metadata files within the S3 bucket that describe the structure and content of the knowledge base.
+          description: The Amazon S3 location (prefix) of per-document metadata files. Each metadata file describes a single source document and its indexable attributes, such as title, category, and version. This is not the global ACL configuration file. To apply a single global ACL file to the entire knowledge base, use the access control configuration instead.
       required:
         - BucketUrl
     MetadataFilesLocation:
@@ -25154,7 +25316,7 @@ components:
       properties:
         template:
           $ref: "#/components/schemas/KbTemplate"
-          description: "The connector configuration for the knowledge base data source. The structure depends on the connector type of the data source referenced by DataSourceArn. The template must be a JSON object. The required fields vary by connector type: Amazon S3 (S3V2) – Requires connectionConfiguration with bucketName. Supports filterConfiguration for inclusion and exclusion prefixes and patterns. Supports accessControlConfiguration and deletionProtectionConfiguration. Google Drive (GOOGLEDRIVEV3) – Requires connectionConfiguration with authType set to SERVICE_ACCOUNT. Supports dataEntityConfiguration with crawlMyDrive, crawlSharedWithMe, and crawlSharedDrives. OneDrive (ONEDRIVEV3) – Requires authType at the template root level set to TWO_LEGGED_OAUTH. Requires connectionConfiguration with tenantId in UUID format. Supports dataEntityConfiguration with crawlPersonalDrives and crawlSharedWithMe. SharePoint (SHAREPOINTV3) – Requires connectionConfiguration with tenantId in UUID format. Supports dataEntityConfiguration with siteUrls, crawlFiles, and crawlPages. Web Crawler (WEBCRAWLERV3) – Requires connectionConfiguration with seedUrls or siteMapUrls (mutually exclusive) and authType. Supports crawlConfiguration for crawl depth, rate limits, and scope. Supports filterConfiguration for file size limits and URL patterns. Valid values for authType: NO_AUTH, BASIC_AUTH, FORM, SAML. The optional deletionProtectionConfiguration object is supported by all connector types. It contains enableDeletionProtection and deletionProtectionThreshold."
+          description: "The connector configuration for the knowledge base data source. The structure depends on the connector type of the data source referenced by DataSourceArn. The template must be a JSON object. All connector types share the following top-level keys. The value of type and the contents of connectionConfiguration vary by connector type. type – (Required) The connector type of the data source. This value identifies the connector. Valid values: S3V2, WEBCRAWLERV3, GOOGLEDRIVEV3, ONEDRIVEV3, SHAREPOINTV3. For the fields required by each connector, see the connector-specific list that follows. connectionConfiguration – (Required) The connection details for the data source. The keys in this object vary by connector type; see the connector-specific list that follows. filterConfiguration – (Optional) Rules that determine which content is crawled, such as inclusion and exclusion prefixes, patterns, or file-size limits. accessControlConfiguration – (Optional) Document-level access control (ACL) settings. Supported by all connector types except Web Crawler (WEBCRAWLERV3). The available fields depend on the connector type. deletionProtectionConfiguration – (Optional) Deletion-protection settings, supported by all connector types. Contains enableDeletionProtection (Boolean) and deletionProtectionThreshold (String; a value from 1 to 100). The following list describes the valid type value, the connectionConfiguration contents, and any connector-specific fields for each connector type: Amazon S3 (type: S3V2) – The type value must be S3V2. connectionConfiguration is required and contains: bucketName – (Required) The name of the Amazon S3 bucket to crawl. Type: String. Length: 3–63 characters. Pattern: ^[a-z0-9][.\\-a-z0-9]{1,61}[a-z0-9]$. bucketOwnerAccountId – (Required) The ID of the AWS account that owns the bucket. Type: String. Pattern: ^\\d{12}$. Amazon S3 supports the following optional filterConfiguration fields: inclusionPrefixes or exclusionPrefixes – Amazon S3 key prefixes to include or exclude. Type: Array of String. Up to 350 items, each 1–1,024 characters. inclusionPatterns or exclusionPatterns – Patterns to include or exclude objects. Type: Array of String. Up to 350 items, each 1–1,024 characters. maxFileSizeInMegaBytes – The maximum size, in MB, of a file to ingest. Type: String. Pattern: ^\\d+$. For Amazon S3, accessControlConfiguration supports the following fields: crawlAcl – Specifies whether the connector crawls and enforces document access control lists (ACLs). Type: Boolean. When set to true, provide ACLs either in a global ACL configuration file (aclConfigurationFilePath) or in per-document metadata files. aclConfigurationFilePath – The Amazon S3 URI of the global ACL configuration file. Type: String. Length: 1–1,024 characters. Optional. If you don't provide a global ACL configuration file, define ACLs in per-document metadata files. defaultAccessType – The access behavior applied to Amazon S3 prefixes that are not listed in the ACL configuration. Type: String. The only supported value is ALLOW. metadataFilesPrefix – (Optional) The Amazon S3 prefix under which per-document metadata files are stored. Each metadata file describes a single source document and its indexable attributes. This is not the global ACL configuration file. For a single global ACL file, use accessControlConfiguration.aclConfigurationFilePath. Type: String. Length: 1–1,024 characters. Google Drive (type: GOOGLEDRIVEV3) – Requires connectionConfiguration with authType set to SERVICE_ACCOUNT. Supports dataEntityConfiguration with crawlMyDrive, crawlSharedWithMe, and crawlSharedDrives. OneDrive (type: ONEDRIVEV3) – Requires authType at the template root level set to TWO_LEGGED_OAUTH. Requires connectionConfiguration with tenantId in UUID format. Supports dataEntityConfiguration with crawlPersonalDrives and crawlSharedWithMe. SharePoint (type: SHAREPOINTV3) – Requires connectionConfiguration with tenantId in UUID format. Supports dataEntityConfiguration with siteUrls, crawlFiles, and crawlPages. Web Crawler (type: WEBCRAWLERV3) – Requires connectionConfiguration with seedUrls or siteMapUrls (mutually exclusive) and authType. Supports crawlConfiguration for crawl depth, rate limits, and scope. Supports filterConfiguration for file size limits and URL patterns. Valid values for authType: NO_AUTH, BASIC_AUTH, FORM, SAML. Enabling document-level access control for Amazon S3 For an Amazon S3 (S3V2) knowledge base, document-level access control is governed by two settings that must both be enabled: In this template, set accessControlConfiguration.crawlAcl to true. Define ACLs either in a global ACL configuration file, referenced by accessControlConfiguration.aclConfigurationFilePath, or in per-document metadata files. To control access for prefixes that are not listed in the ACL file, you can also set accessControlConfiguration.defaultAccessType. In the CreateKnowledgeBase or UpdateKnowledgeBase request, set the top-level AccessControlConfiguration.isACLEnabled to true."
     KbTemplate:
       type: object
     KnowledgeBaseDescription:
@@ -25231,7 +25393,7 @@ components:
       properties:
         isACLEnabled:
           $ref: "#/components/schemas/Boolean"
-          description: Specifies whether ACLs are enabled for the knowledge base.
+          description: Specifies whether ACLs are enabled for the knowledge base. This setting works together with the data source connector's ACL crawling. To enforce document-level access control end to end, set isACLEnabled to true and enable ACL crawling on the connector. For example, for an Amazon S3 data source, set accessControlConfiguration.crawlAcl to true in the connector template. For more information, see KbTemplateConfiguration. Enabling only one of the two settings does not produce a fully ACL-enforced knowledge base.
     CreateKnowledgeBaseResponse:
       type: object
       properties:
@@ -27026,8 +27188,15 @@ components:
         RequestId:
           $ref: "#/components/schemas/String"
           description: The Amazon Web Services request ID for this operation.
-    DeleteApprovalPolicyResponse:
+    AppId:
+      type: string
+      pattern: "[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}"
+    DeleteAppResponse:
       type: object
+      properties:
+        RequestId:
+          $ref: "#/components/schemas/String"
+          description: The Amazon Web Services request ID for this operation.
     DeleteBrandResponse:
       type: object
       properties:
@@ -28133,6 +28302,65 @@ components:
       type: array
       items:
         $ref: "#/components/schemas/ResourcePermission"
+    DescribeAppResponse:
+      type: object
+      properties:
+        App:
+          $ref: "#/components/schemas/AppSummary"
+          description: The information about the app.
+        RequestId:
+          $ref: "#/components/schemas/String"
+          description: The Amazon Web Services request ID for this operation.
+      required:
+        - App
+    AppSummary:
+      description: A summary of an app, including its identifier, name, and metadata.
+      type: object
+      properties:
+        AppId:
+          $ref: "#/components/schemas/AppId"
+          description: The ID of the app.
+        Arn:
+          $ref: "#/components/schemas/String"
+          description: The Amazon Resource Name (ARN) of the app.
+        Name:
+          $ref: "#/components/schemas/AppName"
+          description: The display name of the app.
+        CreatedTime:
+          $ref: "#/components/schemas/Timestamp"
+          description: The time that the app was created.
+        LastUpdatedTime:
+          $ref: "#/components/schemas/Timestamp"
+          description: The time that the app was last updated.
+        Visibility:
+          $ref: "#/components/schemas/AppVisibility"
+          description: "The sharing status of the app: PUBLIC if the app is shared publicly, or PRIVATE if it is private."
+    AppName:
+      type: string
+      minLength: 1
+      maxLength: 255
+      pattern: "[\\S\\s]+"
+    AppVisibility:
+      description: "The visibility of an app. Valid values are: PRIVATE – The app is reachable only by authorized Amazon QuickSight principals. PUBLIC – The published app is reachable by anyone on the internet without signing in."
+      type: string
+      enum:
+        - PRIVATE
+        - PUBLIC
+    DescribeAppPermissionsResponse:
+      type: object
+      properties:
+        AppId:
+          $ref: "#/components/schemas/AppId"
+          description: The ID of the app.
+        Arn:
+          $ref: "#/components/schemas/String"
+          description: The Amazon Resource Name (ARN) of the app.
+        Permissions:
+          $ref: "#/components/schemas/ResourcePermissionList"
+          description: The resource permissions for the app.
+        RequestId:
+          $ref: "#/components/schemas/String"
+          description: The Amazon Web Services request ID for this operation.
     DescribeApprovalPolicyResponse:
       type: object
       properties:
@@ -32491,6 +32719,28 @@ components:
       type: array
       items:
         $ref: "#/components/schemas/ApprovalPolicy"
+    NextToken:
+      type: string
+      minLength: 1
+      maxLength: 800
+    ListAppsResponse:
+      type: object
+      properties:
+        AppSummaryList:
+          $ref: "#/components/schemas/AppSummaryList"
+          description: A list of app summaries.
+        NextToken:
+          $ref: "#/components/schemas/NextToken"
+          description: The token for the next set of results, or null if there are no more results.
+        RequestId:
+          $ref: "#/components/schemas/String"
+          description: The Amazon Web Services request ID for this operation.
+      required:
+        - AppSummaryList
+    AppSummaryList:
+      type: array
+      items:
+        $ref: "#/components/schemas/AppSummary"
     ListAssetBundleExportJobsResponse:
       type: object
       properties:
@@ -33158,10 +33408,6 @@ components:
       type: array
       items:
         $ref: "#/components/schemas/Ingestion"
-    NextToken:
-      type: string
-      minLength: 1
-      maxLength: 800
     ListKnowledgeBasesResponse:
       type: object
       properties:
@@ -34404,6 +34650,50 @@ components:
         RequestId:
           $ref: "#/components/schemas/String"
           description: The Amazon Web Services request ID for this operation.
+    SearchAppsFilterList:
+      type: array
+      items:
+        $ref: "#/components/schemas/SearchAppsFilter"
+    SearchAppsFilter:
+      description: A filter to apply when searching for apps.
+      type: object
+      properties:
+        Name:
+          $ref: "#/components/schemas/SearchAppsFilterName"
+          description: The name of the filter attribute.
+        Operator:
+          $ref: "#/components/schemas/FilterOperator"
+          description: The comparison operator for the filter.
+        Value:
+          $ref: "#/components/schemas/String"
+          description: The value to filter on.
+      required:
+        - Name
+        - Operator
+        - Value
+    SearchAppsFilterName:
+      description: "The name of a field that you can use to filter app search results. Valid values are: APP_ID – The unique identifier of the app. APP_NAME – The display name of the app. DIRECT_QUICKSIGHT_SOLE_OWNER – An Amazon QuickSight user or group that is the sole direct owner. DIRECT_QUICKSIGHT_OWNER – An Amazon QuickSight user or group with direct owner permissions. DIRECT_QUICKSIGHT_VIEWER_OR_OWNER – An Amazon QuickSight user or group with direct viewer or owner permissions."
+      type: string
+      enum:
+        - APP_ID
+        - APP_NAME
+        - DIRECT_QUICKSIGHT_SOLE_OWNER
+        - DIRECT_QUICKSIGHT_OWNER
+        - DIRECT_QUICKSIGHT_VIEWER_OR_OWNER
+    SearchAppsResponse:
+      type: object
+      properties:
+        AppSummaryList:
+          $ref: "#/components/schemas/AppSummaryList"
+          description: A list of app summaries that match the search criteria.
+        NextToken:
+          $ref: "#/components/schemas/NextToken"
+          description: The token for the next set of results, or null if there are no more results.
+        RequestId:
+          $ref: "#/components/schemas/String"
+          description: The Amazon Web Services request ID for this operation.
+      required:
+        - AppSummaryList
     DashboardSearchFilterList:
       type: array
       items:
@@ -35232,6 +35522,24 @@ components:
         Status:
           $ref: "#/components/schemas/StatusCode"
           description: The HTTP status of the request.
+    UpdateAppPermissionsResponse:
+      type: object
+      properties:
+        Arn:
+          $ref: "#/components/schemas/String"
+          description: The Amazon Resource Name (ARN) of the app.
+        AppId:
+          $ref: "#/components/schemas/AppId"
+          description: The ID of the app.
+        Permissions:
+          $ref: "#/components/schemas/ResourcePermissionList"
+          description: The updated resource permissions for the app.
+        Visibility:
+          $ref: "#/components/schemas/AppVisibility"
+          description: The visibility of the app after the update (PRIVATE or PUBLIC).
+        RequestId:
+          $ref: "#/components/schemas/String"
+          description: The Amazon Web Services request ID for this operation.
     UpdateApplicationWithTokenExchangeGrantResponse:
       type: object
       properties:
@@ -36361,6 +36669,27 @@ components:
           - $ref: "#/components/x-stackQL-resources/knowledge_bases/methods/update_knowledge_base"
         delete:
           - $ref: "#/components/x-stackQL-resources/knowledge_bases/methods/delete_knowledge_base"
+    user_limits:
+      id: aws.quicksight.user_limits
+      name: user_limits
+      title: user_limits
+      methods:
+        batch_describe_user_limits:
+          operation:
+            $ref: "#/paths/~1governance~1limits~1accounts~1{account_id}~1user-limits/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
     ingestions:
       id: aws.quicksight.ingestions
       name: ingestions
@@ -36657,10 +36986,10 @@ components:
           - $ref: "#/components/x-stackQL-resources/agents/methods/update_agent"
         delete:
           - $ref: "#/components/x-stackQL-resources/agents/methods/delete_agent"
-    analysis:
-      id: aws.quicksight.analysis
-      name: analysis
-      title: analysis
+    analyses:
+      id: aws.quicksight.analyses
+      name: analyses
+      title: analyses
       methods:
         create_analysis:
           operation:
@@ -36698,21 +37027,59 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        list_analyses:
+          operation:
+            $ref: "#/paths/~1accounts~1{aws_account_id}~1analyses/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.AnalysisSummaryList
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: next-token
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         restore_analysis:
           operation:
             $ref: "#/paths/~1accounts~1{aws_account_id}~1restore~1analyses~1{analysis_id}/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+        search_analyses:
+          operation:
+            $ref: "#/paths/~1accounts~1{aws_account_id}~1search~1analyses/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.AnalysisSummaryList
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/analysis/methods/describe_analysis"
+          - $ref: "#/components/x-stackQL-resources/analyses/methods/describe_analysis"
+          - $ref: "#/components/x-stackQL-resources/analyses/methods/search_analyses"
+          - $ref: "#/components/x-stackQL-resources/analyses/methods/list_analyses"
         insert:
-          - $ref: "#/components/x-stackQL-resources/analysis/methods/create_analysis"
+          - $ref: "#/components/x-stackQL-resources/analyses/methods/create_analysis"
         update:
-          - $ref: "#/components/x-stackQL-resources/analysis/methods/update_analysis"
+          - $ref: "#/components/x-stackQL-resources/analyses/methods/update_analysis"
         delete:
-          - $ref: "#/components/x-stackQL-resources/analysis/methods/delete_analysis"
+          - $ref: "#/components/x-stackQL-resources/analyses/methods/delete_analysis"
     approval_policies:
       id: aws.quicksight.approval_policies
       name: approval_policies
@@ -36751,7 +37118,6 @@ components:
             $ref: "#/paths/~1governance~1approvalworkflows~1policies~1{policy_id}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         describe_approval_policy:
           operation:
             $ref: "#/paths/~1governance~1approvalworkflows~1policies~1{policy_id}/get"
@@ -36931,8 +37297,8 @@ components:
           - $ref: "#/components/x-stackQL-resources/custom_permissions/methods/update_user_custom_permission"
           - $ref: "#/components/x-stackQL-resources/custom_permissions/methods/update_custom_permissions"
         delete:
-          - $ref: "#/components/x-stackQL-resources/custom_permissions/methods/delete_user_custom_permission"
           - $ref: "#/components/x-stackQL-resources/custom_permissions/methods/delete_custom_permissions"
+          - $ref: "#/components/x-stackQL-resources/custom_permissions/methods/delete_user_custom_permission"
     dashboards:
       id: aws.quicksight.dashboards
       name: dashboards
@@ -37447,6 +37813,29 @@ components:
               responseToken:
                 key: $.NextToken
                 location: body
+        list_folders_for_resource:
+          operation:
+            $ref: "#/paths/~1accounts~1{aws_account_id}~1resource~1{resource_arn}~1folders/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListFoldersForResourceOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "Folders" -}}{{- $tok := index . "NextToken" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"folder": {{ toJson $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "NextToken": {{ toJson $tok }}{{- end }}}'
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: next-token
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         search_folders:
           operation:
             $ref: "#/paths/~1accounts~1{aws_account_id}~1search~1folders/post"
@@ -37470,6 +37859,7 @@ components:
         select:
           - $ref: "#/components/x-stackQL-resources/folders/methods/describe_folder"
           - $ref: "#/components/x-stackQL-resources/folders/methods/search_folders"
+          - $ref: "#/components/x-stackQL-resources/folders/methods/list_folders_for_resource"
           - $ref: "#/components/x-stackQL-resources/folders/methods/list_folders"
         insert:
           - $ref: "#/components/x-stackQL-resources/folders/methods/create_folder_membership"
@@ -37670,9 +38060,27 @@ components:
               responseToken:
                 key: $.NextToken
                 location: body
+        list_iam_policy_assignments_for_user:
+          operation:
+            $ref: "#/paths/~1accounts~1{aws_account_id}~1namespaces~1{namespace}~1users~1{user_name}~1iam-policy-assignments/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.ActiveAssignments
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: next-token
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/iam_policy_assignments/methods/describe_iam_policy_assignment"
+          - $ref: "#/components/x-stackQL-resources/iam_policy_assignments/methods/list_iam_policy_assignments_for_user"
           - $ref: "#/components/x-stackQL-resources/iam_policy_assignments/methods/list_iam_policy_assignments"
         insert:
           - $ref: "#/components/x-stackQL-resources/iam_policy_assignments/methods/create_iam_policy_assignment"
@@ -38111,10 +38519,10 @@ components:
           - $ref: "#/components/x-stackQL-resources/templates/methods/update_template"
         delete:
           - $ref: "#/components/x-stackQL-resources/templates/methods/delete_template"
-    template_alias:
-      id: aws.quicksight.template_alias
-      name: template_alias
-      title: template_alias
+    template_aliases:
+      id: aws.quicksight.template_aliases
+      name: template_aliases
+      title: template_aliases
       methods:
         create_template_alias:
           operation:
@@ -38150,15 +38558,33 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        list_template_aliases:
+          operation:
+            $ref: "#/paths/~1accounts~1{aws_account_id}~1templates~1{template_id}~1aliases/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.TemplateAliasList
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: next-token
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/template_alias/methods/describe_template_alias"
+          - $ref: "#/components/x-stackQL-resources/template_aliases/methods/describe_template_alias"
+          - $ref: "#/components/x-stackQL-resources/template_aliases/methods/list_template_aliases"
         insert:
-          - $ref: "#/components/x-stackQL-resources/template_alias/methods/create_template_alias"
+          - $ref: "#/components/x-stackQL-resources/template_aliases/methods/create_template_alias"
         update:
-          - $ref: "#/components/x-stackQL-resources/template_alias/methods/update_template_alias"
+          - $ref: "#/components/x-stackQL-resources/template_aliases/methods/update_template_alias"
         delete:
-          - $ref: "#/components/x-stackQL-resources/template_alias/methods/delete_template_alias"
+          - $ref: "#/components/x-stackQL-resources/template_aliases/methods/delete_template_alias"
     themes:
       id: aws.quicksight.themes
       name: themes
@@ -38229,10 +38655,10 @@ components:
           - $ref: "#/components/x-stackQL-resources/themes/methods/update_theme"
         delete:
           - $ref: "#/components/x-stackQL-resources/themes/methods/delete_theme"
-    theme_alias:
-      id: aws.quicksight.theme_alias
-      name: theme_alias
-      title: theme_alias
+    theme_aliases:
+      id: aws.quicksight.theme_aliases
+      name: theme_aliases
+      title: theme_aliases
       methods:
         create_theme_alias:
           operation:
@@ -38268,15 +38694,24 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        list_theme_aliases:
+          operation:
+            $ref: "#/paths/~1accounts~1{aws_account_id}~1themes~1{theme_id}~1aliases/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/theme_alias/methods/describe_theme_alias"
+          - $ref: "#/components/x-stackQL-resources/theme_aliases/methods/describe_theme_alias"
+          - $ref: "#/components/x-stackQL-resources/theme_aliases/methods/list_theme_aliases"
         insert:
-          - $ref: "#/components/x-stackQL-resources/theme_alias/methods/create_theme_alias"
+          - $ref: "#/components/x-stackQL-resources/theme_aliases/methods/create_theme_alias"
         update:
-          - $ref: "#/components/x-stackQL-resources/theme_alias/methods/update_theme_alias"
+          - $ref: "#/components/x-stackQL-resources/theme_aliases/methods/update_theme_alias"
         delete:
-          - $ref: "#/components/x-stackQL-resources/theme_alias/methods/delete_theme_alias"
+          - $ref: "#/components/x-stackQL-resources/theme_aliases/methods/delete_theme_alias"
     topic_refresh_schedules:
       id: aws.quicksight.topic_refresh_schedules
       name: topic_refresh_schedules
@@ -38332,10 +38767,10 @@ components:
           - $ref: "#/components/x-stackQL-resources/topic_refresh_schedules/methods/update_topic_refresh_schedule"
         delete:
           - $ref: "#/components/x-stackQL-resources/topic_refresh_schedules/methods/delete_topic_refresh_schedule"
-    topic_v2s:
-      id: aws.quicksight.topic_v2s
-      name: topic_v2s
-      title: topic_v2s
+    topics_v2:
+      id: aws.quicksight.topics_v2
+      name: topics_v2
+      title: topics_v2
       methods:
         create_topic_v2:
           operation:
@@ -38348,6 +38783,23 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        list_topics_v2:
+          operation:
+            $ref: "#/paths/~1accounts~1{aws_account_id}~1topicsV2/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.TopicSummaryList
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: next-token
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         delete_topic_v2:
           operation:
             $ref: "#/paths/~1accounts~1{aws_account_id}~1topicsV2~1{topic_id}/delete"
@@ -38371,37 +38823,6 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/topic_v2s/methods/describe_topic_v2"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/topic_v2s/methods/create_topic_v2"
-        update:
-          - $ref: "#/components/x-stackQL-resources/topic_v2s/methods/update_topic_v2"
-        delete:
-          - $ref: "#/components/x-stackQL-resources/topic_v2s/methods/delete_topic_v2"
-    topics_v2s:
-      id: aws.quicksight.topics_v2s
-      name: topics_v2s
-      title: topics_v2s
-      methods:
-        list_topics_v2:
-          operation:
-            $ref: "#/paths/~1accounts~1{aws_account_id}~1topicsV2/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.TopicSummaryList
-          request:
-            nativeCasing: pascal
-          config:
-            pagination:
-              requestToken:
-                key: next-token
-                location: query
-              responseToken:
-                key: $.NextToken
-                location: body
         search_topics_v2:
           operation:
             $ref: "#/paths/~1accounts~1{aws_account_id}~1search~1topicsV2/post"
@@ -38423,11 +38844,15 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/topics_v2s/methods/search_topics_v2"
-          - $ref: "#/components/x-stackQL-resources/topics_v2s/methods/list_topics_v2"
-        insert: []
-        update: []
-        delete: []
+          - $ref: "#/components/x-stackQL-resources/topics_v2/methods/describe_topic_v2"
+          - $ref: "#/components/x-stackQL-resources/topics_v2/methods/search_topics_v2"
+          - $ref: "#/components/x-stackQL-resources/topics_v2/methods/list_topics_v2"
+        insert:
+          - $ref: "#/components/x-stackQL-resources/topics_v2/methods/create_topic_v2"
+        update:
+          - $ref: "#/components/x-stackQL-resources/topics_v2/methods/update_topic_v2"
+        delete:
+          - $ref: "#/components/x-stackQL-resources/topics_v2/methods/delete_topic_v2"
     vpc_connections:
       id: aws.quicksight.vpc_connections
       name: vpc_connections
@@ -38521,6 +38946,68 @@ components:
           - $ref: "#/components/x-stackQL-resources/account_custom_permissions/methods/update_account_custom_permission"
         delete:
           - $ref: "#/components/x-stackQL-resources/account_custom_permissions/methods/delete_account_custom_permission"
+    apps:
+      id: aws.quicksight.apps
+      name: apps
+      title: apps
+      methods:
+        delete_app:
+          operation:
+            $ref: "#/paths/~1accounts~1{aws_account_id}~1apps~1{app_id}/delete"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+        describe_app:
+          operation:
+            $ref: "#/paths/~1accounts~1{aws_account_id}~1apps~1{app_id}/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+        list_apps:
+          operation:
+            $ref: "#/paths/~1accounts~1{aws_account_id}~1apps/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.AppSummaryList
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: next-token
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
+        search_apps:
+          operation:
+            $ref: "#/paths/~1accounts~1{aws_account_id}~1search~1apps/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.AppSummaryList
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/apps/methods/describe_app"
+          - $ref: "#/components/x-stackQL-resources/apps/methods/search_apps"
+          - $ref: "#/components/x-stackQL-resources/apps/methods/list_apps"
+        insert: []
+        update: []
+        delete:
+          - $ref: "#/components/x-stackQL-resources/apps/methods/delete_app"
     brand_assignments:
       id: aws.quicksight.brand_assignments
       name: brand_assignments
@@ -38925,6 +39412,35 @@ components:
         update:
           - $ref: "#/components/x-stackQL-resources/analysis_permissions/methods/update_analysis_permissions"
         delete: []
+    app_permissions:
+      id: aws.quicksight.app_permissions
+      name: app_permissions
+      title: app_permissions
+      methods:
+        describe_app_permissions:
+          operation:
+            $ref: "#/paths/~1accounts~1{aws_account_id}~1apps~1{app_id}~1permissions/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+        update_app_permissions:
+          operation:
+            $ref: "#/paths/~1accounts~1{aws_account_id}~1apps~1{app_id}~1permissions/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/app_permissions/methods/describe_app_permissions"
+        insert: []
+        update:
+          - $ref: "#/components/x-stackQL-resources/app_permissions/methods/update_app_permissions"
+        delete: []
     asset_bundle_export_jobs:
       id: aws.quicksight.asset_bundle_export_jobs
       name: asset_bundle_export_jobs
@@ -39030,6 +39546,17 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
+        start_automation_job:
+          operation:
+            $ref: "#/paths/~1accounts~1{aws_account_id}~1automation-groups~1{automation_group_id}~1automations~1{automation_id}~1jobs/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/automation_jobs/methods/describe_automation_job"
@@ -39619,10 +40146,10 @@ components:
         update:
           - $ref: "#/components/x-stackQL-resources/topic_permissions/methods/update_topic_permissions"
         delete: []
-    topic_permissions_v2s:
-      id: aws.quicksight.topic_permissions_v2s
-      name: topic_permissions_v2s
-      title: topic_permissions_v2s
+    topic_permissions_v2:
+      id: aws.quicksight.topic_permissions_v2
+      name: topic_permissions_v2
+      title: topic_permissions_v2
       methods:
         describe_topic_permissions_v2:
           operation:
@@ -39643,10 +40170,10 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/topic_permissions_v2s/methods/describe_topic_permissions_v2"
+          - $ref: "#/components/x-stackQL-resources/topic_permissions_v2/methods/describe_topic_permissions_v2"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/topic_permissions_v2s/methods/update_topic_permissions_v2"
+          - $ref: "#/components/x-stackQL-resources/topic_permissions_v2/methods/update_topic_permissions_v2"
         delete: []
     topic_refreshes:
       id: aws.quicksight.topic_refreshes
@@ -39662,6 +40189,38 @@ components:
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/topic_refreshes/methods/describe_topic_refresh"
+        insert: []
+        update: []
+        delete: []
+    embed_urls:
+      id: aws.quicksight.embed_urls
+      name: embed_urls
+      title: embed_urls
+      methods:
+        generate_embed_url_for_anonymous_user:
+          operation:
+            $ref: "#/paths/~1accounts~1{aws_account_id}~1embed-url~1anonymous-user/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        generate_embed_url_for_registered_user_with_identity:
+          operation:
+            $ref: "#/paths/~1accounts~1{aws_account_id}~1embed-url~1registered-user-with-identity/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
         insert: []
         update: []
         delete: []
@@ -39684,10 +40243,10 @@ components:
         insert: []
         update: []
         delete: []
-    flow_metadatas:
-      id: aws.quicksight.flow_metadatas
-      name: flow_metadatas
-      title: flow_metadatas
+    flow_metadata:
+      id: aws.quicksight.flow_metadata
+      name: flow_metadata
+      title: flow_metadata
       methods:
         get_flow_metadata:
           operation:
@@ -39697,7 +40256,7 @@ components:
             mediaType: application/json
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/flow_metadatas/methods/get_flow_metadata"
+          - $ref: "#/components/x-stackQL-resources/flow_metadata/methods/get_flow_metadata"
         insert: []
         update: []
         delete: []
@@ -39771,54 +40330,6 @@ components:
         insert: []
         update: []
         delete: []
-    analyses:
-      id: aws.quicksight.analyses
-      name: analyses
-      title: analyses
-      methods:
-        list_analyses:
-          operation:
-            $ref: "#/paths/~1accounts~1{aws_account_id}~1analyses/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.AnalysisSummaryList
-          request:
-            nativeCasing: pascal
-          config:
-            pagination:
-              requestToken:
-                key: next-token
-                location: query
-              responseToken:
-                key: $.NextToken
-                location: body
-        search_analyses:
-          operation:
-            $ref: "#/paths/~1accounts~1{aws_account_id}~1search~1analyses/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.AnalysisSummaryList
-          request:
-            nativeCasing: pascal
-          config:
-            pagination:
-              requestToken:
-                key: NextToken
-                location: body
-              responseToken:
-                key: $.NextToken
-                location: body
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/analyses/methods/search_analyses"
-          - $ref: "#/components/x-stackQL-resources/analyses/methods/list_analyses"
-        insert: []
-        update: []
-        delete: []
     dashboard_versions:
       id: aws.quicksight.dashboard_versions
       name: dashboard_versions
@@ -39872,68 +40383,6 @@ components:
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/folder_members/methods/list_folder_members"
-        insert: []
-        update: []
-        delete: []
-    folders_for_resources:
-      id: aws.quicksight.folders_for_resources
-      name: folders_for_resources
-      title: folders_for_resources
-      methods:
-        list_folders_for_resource:
-          operation:
-            $ref: "#/paths/~1accounts~1{aws_account_id}~1resource~1{resource_arn}~1folders/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/ListFoldersForResourceOutputDisplay"
-            transform:
-              type: golang_template_json_v0.3.0
-              body: '{{- $lst := index . "Folders" -}}{{- $tok := index . "NextToken" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"folder": {{ toJson $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "NextToken": {{ toJson $tok }}{{- end }}}'
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-          config:
-            pagination:
-              requestToken:
-                key: next-token
-                location: query
-              responseToken:
-                key: $.NextToken
-                location: body
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/folders_for_resources/methods/list_folders_for_resource"
-        insert: []
-        update: []
-        delete: []
-    iam_policy_assignments_for_users:
-      id: aws.quicksight.iam_policy_assignments_for_users
-      name: iam_policy_assignments_for_users
-      title: iam_policy_assignments_for_users
-      methods:
-        list_iam_policy_assignments_for_user:
-          operation:
-            $ref: "#/paths/~1accounts~1{aws_account_id}~1namespaces~1{namespace}~1users~1{user_name}~1iam-policy-assignments/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.ActiveAssignments
-          request:
-            nativeCasing: pascal
-          config:
-            pagination:
-              requestToken:
-                key: next-token
-                location: query
-              responseToken:
-                key: $.NextToken
-                location: body
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/iam_policy_assignments_for_users/methods/list_iam_policy_assignments_for_user"
         insert: []
         update: []
         delete: []
@@ -40035,34 +40484,6 @@ components:
           - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
           - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
         delete: []
-    template_aliases:
-      id: aws.quicksight.template_aliases
-      name: template_aliases
-      title: template_aliases
-      methods:
-        list_template_aliases:
-          operation:
-            $ref: "#/paths/~1accounts~1{aws_account_id}~1templates~1{template_id}~1aliases/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.TemplateAliasList
-          request:
-            nativeCasing: pascal
-          config:
-            pagination:
-              requestToken:
-                key: next-token
-                location: query
-              responseToken:
-                key: $.NextToken
-                location: body
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/template_aliases/methods/list_template_aliases"
-        insert: []
-        update: []
-        delete: []
     template_versions:
       id: aws.quicksight.template_versions
       name: template_versions
@@ -40088,25 +40509,6 @@ components:
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/template_versions/methods/list_template_versions"
-        insert: []
-        update: []
-        delete: []
-    theme_aliases:
-      id: aws.quicksight.theme_aliases
-      name: theme_aliases
-      title: theme_aliases
-      methods:
-        list_theme_aliases:
-          operation:
-            $ref: "#/paths/~1accounts~1{aws_account_id}~1themes~1{theme_id}~1aliases/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/theme_aliases/methods/list_theme_aliases"
         insert: []
         update: []
         delete: []
@@ -40202,6 +40604,27 @@ components:
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/users_index_capacities/methods/list_users_index_capacity"
+        insert: []
+        update: []
+        delete: []
+    qa_results:
+      id: aws.quicksight.qa_results
+      name: qa_results
+      title: qa_results
+      methods:
+        predict_qa_results:
+          operation:
+            $ref: "#/paths/~1accounts~1{aws_account_id}~1qa~1predict/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
         insert: []
         update: []
         delete: []

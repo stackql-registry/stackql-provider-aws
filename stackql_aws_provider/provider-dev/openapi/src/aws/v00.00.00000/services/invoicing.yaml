@@ -473,6 +473,79 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ListProcurementPortalPreferencesResponse"
+  /ListProcurementPortalSuppliers:
+    post:
+      operationId: ListProcurementPortalSuppliers
+      description: Returns the suppliers configured for a specified procurement portal, including supplier identifiers and associated metadata. For faster, more reliable responses, use pagination.
+      parameters:
+        - name: X-Amz-Target
+          in: header
+          description: Action Header
+          required: false
+          schema:
+            type: string
+            enum:
+              - Invoicing.ListProcurementPortalSuppliers
+            default: Invoicing.ListProcurementPortalSuppliers
+      requestBody:
+        required: true
+        content:
+          application/x-amz-json-1.0:
+            schema:
+              type: object
+              properties:
+                PortalIdentifier:
+                  $ref: "#/components/schemas/ProcurementPortalIdString"
+                  description: The unique identifier of the procurement portal for which to list suppliers. Use the PortalIdentifier value returned by ListProcurementPortals.
+                NextToken:
+                  $ref: "#/components/schemas/BasicStringWithoutSpace"
+                  description: The token for the next set of results. You received this token from a previous call.
+                MaxResults:
+                  $ref: "#/components/schemas/MaxResults"
+                  description: The maximum number of results to return in a single call. To retrieve the remaining results, make another call with the returned NextToken value. Default is 100.
+              required:
+                - PortalIdentifier
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ListProcurementPortalSuppliersResponse"
+  /ListProcurementPortals:
+    post:
+      operationId: ListProcurementPortals
+      description: Returns the Amazon Web Services-supported procurement portals for e-invoice delivery and purchase order retrieval. Each entry includes the portal identifier, name, and default feature configurations, which define the supported document and attachment types. For faster, more reliable responses, use pagination.
+      parameters:
+        - name: X-Amz-Target
+          in: header
+          description: Action Header
+          required: false
+          schema:
+            type: string
+            enum:
+              - Invoicing.ListProcurementPortals
+            default: Invoicing.ListProcurementPortals
+      requestBody:
+        required: true
+        content:
+          application/x-amz-json-1.0:
+            schema:
+              type: object
+              properties:
+                NextToken:
+                  $ref: "#/components/schemas/BasicStringWithoutSpace"
+                  description: The token for the next set of results. You received this token from a previous call.
+                MaxResults:
+                  $ref: "#/components/schemas/MaxResults"
+                  description: The maximum number of results to return in a single call. To retrieve the remaining results, make another call with the returned NextToken value. Default is 100.
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ListProcurementPortalsResponse"
   /ListTagsForResource:
     post:
       operationId: ListTagsForResource
@@ -637,10 +710,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TagResourceResponse"
   /UntagResource:
     post:
       operationId: UntagResource
@@ -674,10 +743,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UntagResourceResponse"
   /UpdateInvoiceUnit:
     post:
       operationId: UpdateInvoiceUnit
@@ -1896,6 +1961,107 @@ components:
         - Version
         - CreateDate
         - LastUpdateDate
+    ProcurementPortalIdString:
+      type: string
+      minLength: 1
+    ListProcurementPortalSuppliersResponse:
+      type: object
+      properties:
+        ProcurementPortalSuppliers:
+          $ref: "#/components/schemas/ProcurementPortalSuppliers"
+          description: The list of suppliers configured for the specified procurement portal.
+        NextToken:
+          $ref: "#/components/schemas/BasicStringWithoutSpace"
+          description: The token to use to retrieve the next set of results, or null if there are no more results.
+      required:
+        - ProcurementPortalSuppliers
+    ProcurementPortalSuppliers:
+      type: array
+      items:
+        $ref: "#/components/schemas/ProcurementPortalSupplier"
+    ProcurementPortalSupplier:
+      description: Contains metadata for a supplier configured within a procurement portal.
+      type: object
+      properties:
+        SupplierIdentifier:
+          $ref: "#/components/schemas/SupplierIdString"
+          description: The unique identifier of the supplier within the procurement portal.
+        SellerOfRecord:
+          $ref: "#/components/schemas/BasicStringWithoutSpace"
+          description: The Amazon Web Services seller of record associated with the supplier—the Amazon Web Services legal entity that issues invoices for the account (for example, AWS_INC or AWS_EUROPE).
+        CountryCode:
+          $ref: "#/components/schemas/CountryCode"
+          description: The two-letter ISO 3166-1 alpha-2 country code associated with the supplier.
+        Environment:
+          $ref: "#/components/schemas/ProcurementPortalEnv"
+          description: The environment identifier for the supplier in the procurement portal. PROD for production env, or TEST for sandbox/test env.
+      required:
+        - SupplierIdentifier
+    SupplierIdString:
+      type: string
+      minLength: 1
+    CountryCode:
+      type: string
+      minLength: 2
+      maxLength: 2
+      pattern: "[A-Z]{2}"
+    ProcurementPortalEnv:
+      description: The environment of a procurement portal supplier. PROD indicates the production environment. TEST indicates the sandbox or test environment.
+      type: string
+      enum:
+        - PROD
+        - TEST
+    ListProcurementPortalsResponse:
+      type: object
+      properties:
+        ProcurementPortals:
+          $ref: "#/components/schemas/ProcurementPortals"
+          description: The list of procurement portals available for configuration.
+        NextToken:
+          $ref: "#/components/schemas/BasicStringWithoutSpace"
+          description: The token to use to retrieve the next set of results, or null if there are no more results.
+      required:
+        - ProcurementPortals
+    ProcurementPortals:
+      type: array
+      items:
+        $ref: "#/components/schemas/ProcurementPortal"
+    ProcurementPortal:
+      description: Contains metadata for a procurement portal, including the portal identifier, name, and default feature configurations.
+      type: object
+      properties:
+        PortalIdentifier:
+          $ref: "#/components/schemas/ProcurementPortalIdString"
+          description: The unique identifier of the procurement portal.
+        PortalName:
+          $ref: "#/components/schemas/ProcurementPortalName"
+          description: The name of the procurement portal.
+        PortalDisplayName:
+          $ref: "#/components/schemas/BasicString"
+          description: The display name of the procurement portal.
+        DefaultFeatureConfigurations:
+          $ref: "#/components/schemas/FeatureConfigurations"
+          description: The default feature configurations for the procurement portal.
+      required:
+        - PortalIdentifier
+        - PortalName
+    FeatureConfigurations:
+      description: Contains the default feature configuration settings for a procurement portal.
+      type: object
+      properties:
+        InvoiceConfiguration:
+          $ref: "#/components/schemas/InvoiceConfiguration"
+          description: The invoice configuration settings for the procurement portal.
+    InvoiceConfiguration:
+      description: Specifies the supported document types and attachment types for invoice delivery to a procurement portal.
+      type: object
+      properties:
+        DocumentTypes:
+          $ref: "#/components/schemas/EinvoiceDeliveryDocumentTypes"
+          description: The e-invoice document types supported by the procurement portal.
+        AttachmentTypes:
+          $ref: "#/components/schemas/EinvoiceDeliveryAttachmentTypes"
+          description: The attachment types supported by the procurement portal for e-invoice delivery.
     TagrisArn:
       type: string
       minLength: 20
@@ -1923,14 +2089,10 @@ components:
           description: The Amazon Resource Name (ARN) of the procurement portal preference for which the validation request was sent.
       required:
         - ProcurementPortalPreferenceArn
-    TagResourceResponse:
-      type: object
     ResourceTagKeyList:
       type: array
       items:
         $ref: "#/components/schemas/ResourceTagKey"
-    UntagResourceResponse:
-      type: object
     UpdateInvoiceUnitResponse:
       type: object
       properties:
@@ -2253,6 +2415,70 @@ components:
         insert: []
         update: []
         delete: []
+    procurement_portal_suppliers:
+      id: aws.invoicing.procurement_portal_suppliers
+      name: procurement_portal_suppliers
+      title: procurement_portal_suppliers
+      methods:
+        list_procurement_portal_suppliers:
+          operation:
+            $ref: "#/paths/~1ListProcurementPortalSuppliers/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.ProcurementPortalSuppliers
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/procurement_portal_suppliers/methods/list_procurement_portal_suppliers"
+        insert: []
+        update: []
+        delete: []
+    procurement_portals:
+      id: aws.invoicing.procurement_portals
+      name: procurement_portals
+      title: procurement_portals
+      methods:
+        list_procurement_portals:
+          operation:
+            $ref: "#/paths/~1ListProcurementPortals/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.ProcurementPortals
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/procurement_portals/methods/list_procurement_portals"
+        insert: []
+        update: []
+        delete: []
     tags:
       id: aws.invoicing.tags
       name: tags
@@ -2276,7 +2502,6 @@ components:
             $ref: "#/paths/~1TagResource/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.0
@@ -2289,7 +2514,6 @@ components:
             $ref: "#/paths/~1UntagResource/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.0

@@ -270,7 +270,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PostContentResponse'
-      x-stackql-resource: post_content
+      x-stackql-resource: content
       x-stackql-method: post_content
       x-stackql-verb: EXEC
   /bot/{bot_name}/alias/{bot_alias}/user/{user_id}/text:
@@ -347,7 +347,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PostTextResponse'
-      x-stackql-resource: post_text
+      x-stackql-resource: texts
       x-stackql-method: post_text
       x-stackql-verb: EXEC
 components:

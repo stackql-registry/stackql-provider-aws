@@ -161,6 +161,20 @@ The following methods are available for this resource:
     <td></td>
     <td>Confirms a topic rule destination. When you create a rule requiring a destination, IoT sends a confirmation message to the endpoint or base address you specify. The message includes a token which you pass back when calling ConfirmTopicRuleDestination to confirm that you own or have access to the endpoint. Requires permission to access the ConfirmTopicRuleDestination action.</td>
 </tr>
+<tr>
+    <td><a href="#disable_topic_rule"><CopyableCode code="disable_topic_rule" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-rule_name"><code>rule_name</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Disables the rule. Requires permission to access the DisableTopicRule action.</td>
+</tr>
+<tr>
+    <td><a href="#enable_topic_rule"><CopyableCode code="enable_topic_rule" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-rule_name"><code>rule_name</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Enables the rule. Requires permission to access the EnableTopicRule action.</td>
+</tr>
 </tbody>
 </table>
 
@@ -190,7 +204,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-rule_name">
     <td><CopyableCode code="rule_name" /></td>
     <td><code>string</code></td>
-    <td>The name of the rule.</td>
+    <td>The name of the topic rule to enable.</td>
 </tr>
 <tr id="parameter-maxResults">
     <td><CopyableCode code="maxResults" /></td>
@@ -462,6 +476,19 @@ SELECT
                 unit: "{{ unit }}"
               latitude: "{{ latitude }}"
               longitude: "{{ longitude }}"
+            influxDB:
+              destinationArn: "{{ destinationArn }}"
+              roleArn: "{{ roleArn }}"
+              databaseName: "{{ databaseName }}"
+              tableName: "{{ tableName }}"
+              organization: "{{ organization }}"
+              tags: "{{ tags }}"
+              timestampUnit: "{{ timestampUnit }}"
+              batchConfig:
+                maxBatchSize: {{ maxBatchSize }}
+                maxBatchOpenMs: {{ maxBatchOpenMs }}
+                maxBatchSizeBytes: {{ maxBatchSizeBytes }}
+                batchAcrossTopics: {{ batchAcrossTopics }}
         ruleDisabled: {{ ruleDisabled }}
         awsIotSqlVersion: "{{ awsIotSqlVersion }}"
         errorAction:
@@ -615,6 +642,19 @@ SELECT
               unit: "{{ unit }}"
             latitude: "{{ latitude }}"
             longitude: "{{ longitude }}"
+          influxDB:
+            destinationArn: "{{ destinationArn }}"
+            roleArn: "{{ roleArn }}"
+            databaseName: "{{ databaseName }}"
+            tableName: "{{ tableName }}"
+            organization: "{{ organization }}"
+            tags: "{{ tags }}"
+            timestampUnit: "{{ timestampUnit }}"
+            batchConfig:
+              maxBatchSize: {{ maxBatchSize }}
+              maxBatchOpenMs: {{ maxBatchOpenMs }}
+              maxBatchSizeBytes: {{ maxBatchSizeBytes }}
+              batchAcrossTopics: {{ batchAcrossTopics }}
     - name: x-amz-tagging
       value: "{{ x-amz-tagging }}"
       description: Metadata which can be used to manage the topic rule. For URI Request parameters use format: ...key1=value1&key2=value2... For the CLI command-line parameter use format: --tags "key1=value1&key2=value2..." For the cli-input-json file use format: "tags": "key1=value1&key2=value2..."
@@ -677,7 +717,9 @@ AND region = '{{ region }}' --required
 <Tabs
     defaultValue="confirm_topic_rule_destination"
     values={[
-        { label: 'confirm_topic_rule_destination', value: 'confirm_topic_rule_destination' }
+        { label: 'confirm_topic_rule_destination', value: 'confirm_topic_rule_destination' },
+        { label: 'disable_topic_rule', value: 'disable_topic_rule' },
+        { label: 'enable_topic_rule', value: 'enable_topic_rule' }
     ]}
 >
 <TabItem value="confirm_topic_rule_destination">
@@ -687,6 +729,28 @@ Confirms a topic rule destination. When you create a rule requiring a destinatio
 ```sql
 EXEC aws.iot.topic_rules.confirm_topic_rule_destination 
 @confirmation_token='{{ confirmation_token }}' --required, 
+@region='{{ region }}' --required
+;
+```
+</TabItem>
+<TabItem value="disable_topic_rule">
+
+Disables the rule. Requires permission to access the DisableTopicRule action.
+
+```sql
+EXEC aws.iot.topic_rules.disable_topic_rule 
+@rule_name='{{ rule_name }}' --required, 
+@region='{{ region }}' --required
+;
+```
+</TabItem>
+<TabItem value="enable_topic_rule">
+
+Enables the rule. Requires permission to access the EnableTopicRule action.
+
+```sql
+EXEC aws.iot.topic_rules.enable_topic_rule 
+@rule_name='{{ rule_name }}' --required, 
 @region='{{ region }}' --required
 ;
 ```

@@ -93,6 +93,13 @@ The following methods are available for this resource:
     <td></td>
     <td>Starts an import from a data source to CloudWatch Log and creates a managed log group as the destination for the imported data. Currently, CloudTrail Event Data Store is the only supported data source. The import task must satisfy the following constraints: The specified source must be in an ACTIVE state. The API caller must have permissions to access the data in the provided source and to perform iam:PassRole on the provided import role which has the same permissions, as described below. The provided IAM role must trust the "cloudtrail.amazonaws.com" principal and have the following permissions: cloudtrail:GetEventDataStoreData logs:CreateLogGroup logs:CreateLogStream logs:PutResourcePolicy (If source has an associated Amazon Web Services KMS Key) kms:Decrypt (If source has an associated Amazon Web Services KMS Key) kms:GenerateDataKey Example IAM policy for provided import role: &#91; &#123; "Effect": "Allow", "Action": "iam:PassRole", "Resource": "arn:aws:iam::123456789012:role/apiCallerCredentials", "Condition": &#123; "StringLike": &#123; "iam:AssociatedResourceARN": "arn:aws:logs:us-east-1:123456789012:log-group:aws/cloudtrail/f1d45bff-d0e3-4868-b5d9-2eb678aa32fb:*" &#125; &#125; &#125;, &#123; "Effect": "Allow", "Action": &#91; "cloudtrail:GetEventDataStoreData" &#93;, "Resource": &#91; "arn:aws:cloudtrail:us-east-1:123456789012:eventdatastore/f1d45bff-d0e3-4868-b5d9-2eb678aa32fb" &#93; &#125;, &#123; "Effect": "Allow", "Action": &#91; "logs:CreateImportTask", "logs:CreateLogGroup", "logs:CreateLogStream", "logs:PutResourcePolicy" &#93;, "Resource": &#91; "arn:aws:logs:us-east-1:123456789012:log-group:/aws/cloudtrail/*" &#93; &#125;, &#123; "Effect": "Allow", "Action": &#91; "kms:Decrypt", "kms:GenerateDataKey" &#93;, "Resource": &#91; "arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012" &#93; &#125; &#93; If the import source has a customer managed key, the "cloudtrail.amazonaws.com" principal needs permissions to perform kms:Decrypt and kms:GenerateDataKey. There can be no more than 3 active imports per account at a given time. The startEventTime must be less than or equal to endEventTime. The data being imported must be within the specified source's retention period.</td>
 </tr>
+<tr>
+    <td><a href="#cancel_import_task"><CopyableCode code="cancel_import_task" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-importId"><code>importId</code></a></td>
+    <td></td>
+    <td>Cancels an active import task and stops importing data from the CloudTrail Lake Event Data Store.</td>
+</tr>
 </tbody>
 </table>
 
@@ -197,5 +204,30 @@ import_id
         endEventTime: {{ endEventTime }}
 `}</CodeBlock>
 
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="cancel_import_task"
+    values={[
+        { label: 'cancel_import_task', value: 'cancel_import_task' }
+    ]}
+>
+<TabItem value="cancel_import_task">
+
+Cancels an active import task and stops importing data from the CloudTrail Lake Event Data Store.
+
+```sql
+EXEC aws.logs.import_tasks.cancel_import_task 
+@region='{{ region }}' --required 
+@@json=
+'{
+"importId": "{{ importId }}"
+}'
+;
+```
 </TabItem>
 </Tabs>

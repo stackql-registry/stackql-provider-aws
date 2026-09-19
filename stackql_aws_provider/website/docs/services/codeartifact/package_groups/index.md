@@ -203,18 +203,18 @@ The following methods are available for this resource:
     <td>Updates a package group. This API cannot be used to update a package group's origin configuration or pattern. To update a package group's origin configuration, use UpdatePackageGroupOriginConfiguration.</td>
 </tr>
 <tr>
-    <td><a href="#update_package_group_origin_configuration"><CopyableCode code="update_package_group_origin_configuration" /></a></td>
-    <td><CopyableCode code="update" /></td>
-    <td><a href="#parameter-domain"><code>domain</code></a>, <a href="#parameter-package-group"><code>package-group</code></a>, <a href="#parameter-region"><code>region</code></a></td>
-    <td><a href="#parameter-domain-owner"><code>domain-owner</code></a></td>
-    <td>Updates the package origin configuration for a package group. The package origin configuration determines how new versions of a package can be added to a repository. You can allow or block direct publishing of new package versions, or ingestion and retaining of new package versions from an external connection or upstream source. For more information about package group origin controls and configuration, see Package group origin controls in the CodeArtifact User Guide.</td>
-</tr>
-<tr>
     <td><a href="#delete_package_group"><CopyableCode code="delete_package_group" /></a></td>
     <td><CopyableCode code="delete" /></td>
     <td><a href="#parameter-domain"><code>domain</code></a>, <a href="#parameter-package-group"><code>package-group</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td><a href="#parameter-domain-owner"><code>domain-owner</code></a></td>
     <td>Deletes a package group. Deleting a package group does not delete packages or package versions associated with the package group. When a package group is deleted, the direct child package groups will become children of the package group's direct parent package group. Therefore, if any of the child groups are inheriting any settings from the parent, those settings could change.</td>
+</tr>
+<tr>
+    <td><a href="#update_package_group_origin_configuration"><CopyableCode code="update_package_group_origin_configuration" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-domain"><code>domain</code></a>, <a href="#parameter-package-group"><code>package-group</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td><a href="#parameter-domain-owner"><code>domain-owner</code></a></td>
+    <td>Updates the package origin configuration for a package group. The package origin configuration determines how new versions of a package can be added to a repository. You can allow or block direct publishing of new package versions, or ingestion and retaining of new package versions from an external connection or upstream source. For more information about package group origin controls and configuration, see Package group origin controls in the CodeArtifact User Guide.</td>
 </tr>
 </tbody>
 </table>
@@ -235,12 +235,12 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-domain">
     <td><CopyableCode code="domain" /></td>
     <td><code>string</code></td>
-    <td>The domain that contains the package group to be deleted.</td>
+    <td>The name of the domain which contains the package group for which to update the origin configuration.</td>
 </tr>
 <tr id="parameter-package-group">
     <td><CopyableCode code="package-group" /></td>
     <td><code>string</code></td>
-    <td>The pattern of the package group to be deleted.</td>
+    <td>The pattern of the package group for which to update the origin configuration.</td>
 </tr>
 <tr id="parameter-region">
     <td><CopyableCode code="region" /></td>
@@ -402,8 +402,7 @@ package_group
 <Tabs
     defaultValue="update_package_group"
     values={[
-        { label: 'update_package_group', value: 'update_package_group' },
-        { label: 'update_package_group_origin_configuration', value: 'update_package_group_origin_configuration' }
+        { label: 'update_package_group', value: 'update_package_group' }
     ]}
 >
 <TabItem value="update_package_group">
@@ -422,26 +421,6 @@ AND region = '{{ region }}' --required
 AND packageGroup = '{{ packageGroup }}' --required
 AND `domain-owner` = '{{ domain-owner}}'
 RETURNING
-package_group;
-```
-</TabItem>
-<TabItem value="update_package_group_origin_configuration">
-
-Updates the package origin configuration for a package group. The package origin configuration determines how new versions of a package can be added to a repository. You can allow or block direct publishing of new package versions, or ingestion and retaining of new package versions from an external connection or upstream source. For more information about package group origin controls and configuration, see Package group origin controls in the CodeArtifact User Guide.
-
-```sql
-UPDATE aws.codeartifact.package_groups
-SET 
-restrictions = '{{ restrictions }}',
-addAllowedRepositories = '{{ addAllowedRepositories }}',
-removeAllowedRepositories = '{{ removeAllowedRepositories }}'
-WHERE 
-domain = '{{ domain }}' --required
-AND `package-group` = '{{ package-group }}' --required
-AND region = '{{ region }}' --required
-AND `domain-owner` = '{{ domain-owner}}'
-RETURNING
-allowed_repository_updates,
 package_group;
 ```
 </TabItem>
@@ -466,6 +445,36 @@ WHERE domain = '{{ domain }}' --required
 AND `package-group` = '{{ package-group }}' --required
 AND region = '{{ region }}' --required
 AND `domain-owner` = '{{ domain-owner }}'
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="update_package_group_origin_configuration"
+    values={[
+        { label: 'update_package_group_origin_configuration', value: 'update_package_group_origin_configuration' }
+    ]}
+>
+<TabItem value="update_package_group_origin_configuration">
+
+Updates the package origin configuration for a package group. The package origin configuration determines how new versions of a package can be added to a repository. You can allow or block direct publishing of new package versions, or ingestion and retaining of new package versions from an external connection or upstream source. For more information about package group origin controls and configuration, see Package group origin controls in the CodeArtifact User Guide.
+
+```sql
+EXEC aws.codeartifact.package_groups.update_package_group_origin_configuration 
+@domain='{{ domain }}' --required, 
+@package-group='{{ package-group }}' --required, 
+@region='{{ region }}' --required, 
+@domain-owner='{{ domain-owner }}' 
+@@json=
+'{
+"restrictions": "{{ restrictions }}", 
+"addAllowedRepositories": "{{ addAllowedRepositories }}", 
+"removeAllowedRepositories": "{{ removeAllowedRepositories }}"
+}'
 ;
 ```
 </TabItem>

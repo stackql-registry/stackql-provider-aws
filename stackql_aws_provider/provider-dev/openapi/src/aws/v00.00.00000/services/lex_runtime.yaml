@@ -816,3 +816,45 @@ components:
           - $ref: "#/components/x-stackQL-resources/sessions/methods/put_session"
         delete:
           - $ref: "#/components/x-stackQL-resources/sessions/methods/delete_session"
+    content:
+      id: aws.lex_runtime.content
+      name: content
+      title: content
+      methods:
+        post_content:
+          operation:
+            $ref: "#/paths/~1bot~1{bot_name}~1alias~1{bot_alias}~1user~1{user_id}~1content/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
+    texts:
+      id: aws.lex_runtime.texts
+      name: texts
+      title: texts
+      methods:
+        post_text:
+          operation:
+            $ref: "#/paths/~1bot~1{bot_name}~1alias~1{bot_alias}~1user~1{user_id}~1text/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []

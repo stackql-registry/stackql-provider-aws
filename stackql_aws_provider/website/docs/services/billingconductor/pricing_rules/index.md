@@ -326,6 +326,10 @@ arn
       value:
         FreeTier:
           Activated: {{ Activated }}
+        CustomTiers:
+          - BeginRangeInclusive: {{ BeginRangeInclusive }}
+            EndRangeExclusive: {{ EndRangeExclusive }}
+            RateValue: {{ RateValue }}
     - name: UsageType
       value: "{{ UsageType }}"
     - name: Operation

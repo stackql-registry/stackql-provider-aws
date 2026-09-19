@@ -414,6 +414,8 @@ connector_id
         TrustedHostKeys:
           - "{{ TrustedHostKeys }}"
         MaxConcurrentConnections: {{ MaxConcurrentConnections }}
+        OrderedUserSecretVersionStages:
+          - "{{ OrderedUserSecretVersionStages }}"
     - name: SecurityPolicyName
       value: "{{ SecurityPolicyName }}"
       description: |

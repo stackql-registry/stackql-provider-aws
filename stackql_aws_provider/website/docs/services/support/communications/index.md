@@ -52,7 +52,12 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="attachment_set" /></td>
     <td><code>array</code></td>
-    <td>Information about the attachments to the case communication.</td>
+    <td>Information about the attachments to the case communication that are 5 MB or smaller. This field doesn't include attachments larger than 5 MB. To enumerate every attachment on the communication, including attachments larger than 5 MB, use the attachments field instead.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="attachments" /></td>
+    <td><code>array</code></td>
+    <td>Information about all attachments on the case communication. This includes attachments added through AddAttachmentsToSet and attachments uploaded through GetAttachmentUploadLinks. Use this field to enumerate every attachment on the communication. To download an attachment listed in this field, use GetAttachmentDownloadLink. GetAttachmentDownloadLink returns a presigned URL that works for attachments of any size.</td>
 </tr>
 <tr>
     <td><CopyableCode code="body" /></td>
@@ -62,7 +67,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="case_id" /></td>
     <td><code>string</code></td>
-    <td>The support case ID requested or returned in the call. The case ID is an alphanumeric string formatted as shown in this example: case-12345678910-2013-c4c1d2bf33c5cf47</td>
+    <td>The support case ID requested or returned in the call. The case ID is an alphanumeric string formatted as shown in this example: case-12345678910-exen-2025-c4c1d2bf33c5cf47</td>
 </tr>
 <tr>
     <td><CopyableCode code="submitted_by" /></td>
@@ -99,7 +104,7 @@ The following methods are available for this resource:
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>Returns communications and attachments for one or more support cases. Use the afterTime and beforeTime parameters to filter by date. You can use the caseId parameter to restrict the results to a specific case. Case data is available for 12 months after creation. If a case was created more than 12 months ago, a request for data might cause an error. You can use the maxResults and nextToken parameters to control the pagination of the results. Set maxResults to the number of cases that you want to display on each page, and use nextToken to specify the resumption of pagination. You must have a Business, Enterprise On-Ramp, or Enterprise Support plan to use the Amazon Web Services Support API. If you call the Amazon Web Services Support API from an account that doesn't have a Business, Enterprise On-Ramp, or Enterprise Support plan, the SubscriptionRequiredException error message appears. For information about changing your support plan, see Amazon Web Services Support.</td>
+    <td>Returns communications and attachments for one or more support cases. Use the afterTime and beforeTime parameters to filter by date. You can use the caseId parameter to restrict the results to a specific case. Case data is available for 24 months after creation. If a case was created more than 24 months ago, a request for data might cause an error. You can use the maxResults and nextToken parameters to control the pagination of the results. Set maxResults to the number of cases that you want to display on each page, and use nextToken to specify the resumption of pagination. You must have an Amazon Web Services Business Support+, Amazon Web Services Enterprise Support, or Amazon Web Services Unified Operations plan to use the Amazon Web Services Support API. If you're in an Amazon Web Services Region that doesn't offer one of these Amazon Web Services Support plans, or if you haven't transitioned to one of these plans, you can use the Amazon Web Services Support API with a Business, Enterprise On-Ramp, or Enterprise Support plan. If you call the Amazon Web Services Support API from an account that doesn't have an Amazon Web Services Business Support+, Amazon Web Services Enterprise Support, or Amazon Web Services Unified Operations plan, the SubscriptionRequiredException error message appears. For information about changing your support plan, see Amazon Web Services Support. Each Communication returned by this operation includes attachment information in two fields: attachmentSet: returns only attachments that are 5 MB or smaller. Attachments larger than 5 MB are not included in this field. attachments: returns all attachments regardless of size. Amazon Web Services recommends that you use the attachments field and download each attachment with GetAttachmentDownloadLink, which supports attachments of any size. The attachmentSet field and DescribeAttachment return only attachments that are 5 MB or smaller.</td>
 </tr>
 </tbody>
 </table>
@@ -135,11 +140,12 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 >
 <TabItem value="describe_communications">
 
-Returns communications and attachments for one or more support cases. Use the afterTime and beforeTime parameters to filter by date. You can use the caseId parameter to restrict the results to a specific case. Case data is available for 12 months after creation. If a case was created more than 12 months ago, a request for data might cause an error. You can use the maxResults and nextToken parameters to control the pagination of the results. Set maxResults to the number of cases that you want to display on each page, and use nextToken to specify the resumption of pagination. You must have a Business, Enterprise On-Ramp, or Enterprise Support plan to use the Amazon Web Services Support API. If you call the Amazon Web Services Support API from an account that doesn't have a Business, Enterprise On-Ramp, or Enterprise Support plan, the SubscriptionRequiredException error message appears. For information about changing your support plan, see Amazon Web Services Support.
+Returns communications and attachments for one or more support cases. Use the afterTime and beforeTime parameters to filter by date. You can use the caseId parameter to restrict the results to a specific case. Case data is available for 24 months after creation. If a case was created more than 24 months ago, a request for data might cause an error. You can use the maxResults and nextToken parameters to control the pagination of the results. Set maxResults to the number of cases that you want to display on each page, and use nextToken to specify the resumption of pagination. You must have an Amazon Web Services Business Support+, Amazon Web Services Enterprise Support, or Amazon Web Services Unified Operations plan to use the Amazon Web Services Support API. If you're in an Amazon Web Services Region that doesn't offer one of these Amazon Web Services Support plans, or if you haven't transitioned to one of these plans, you can use the Amazon Web Services Support API with a Business, Enterprise On-Ramp, or Enterprise Support plan. If you call the Amazon Web Services Support API from an account that doesn't have an Amazon Web Services Business Support+, Amazon Web Services Enterprise Support, or Amazon Web Services Unified Operations plan, the SubscriptionRequiredException error message appears. For information about changing your support plan, see Amazon Web Services Support. Each Communication returned by this operation includes attachment information in two fields: attachmentSet: returns only attachments that are 5 MB or smaller. Attachments larger than 5 MB are not included in this field. attachments: returns all attachments regardless of size. Amazon Web Services recommends that you use the attachments field and download each attachment with GetAttachmentDownloadLink, which supports attachments of any size. The attachmentSet field and DescribeAttachment return only attachments that are 5 MB or smaller.
 
 ```sql
 SELECT
 attachment_set,
+attachments,
 body,
 case_id,
 submitted_by,

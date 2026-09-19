@@ -468,3 +468,24 @@ components:
           - $ref: "#/components/x-stackQL-resources/report_definitions/methods/put_report_definition"
         delete:
           - $ref: "#/components/x-stackQL-resources/report_definitions/methods/delete_report_definition"
+    application_usages:
+      id: aws.applicationcostprofiler.application_usages
+      name: application_usages
+      title: application_usages
+      methods:
+        import_application_usage:
+          operation:
+            $ref: "#/paths/~1importApplicationUsage/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []

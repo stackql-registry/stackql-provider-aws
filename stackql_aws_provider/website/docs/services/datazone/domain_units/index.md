@@ -35,7 +35,8 @@ The following fields are returned by `SELECT` queries:
 <Tabs
     defaultValue="get_domain_unit"
     values={[
-        { label: 'get_domain_unit', value: 'get_domain_unit' }
+        { label: 'get_domain_unit', value: 'get_domain_unit' },
+        { label: 'list_domain_units_for_parent', value: 'list_domain_units_for_parent' }
     ]}
 >
 <TabItem value="get_domain_unit">
@@ -102,6 +103,30 @@ The following fields are returned by `SELECT` queries:
 </tbody>
 </table>
 </TabItem>
+<TabItem value="list_domain_units_for_parent">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="id" /></td>
+    <td><code>string</code></td>
+    <td>The ID of the domain unit summary. (pattern: &lt;code&gt;&#91;a-z0-9_\-&#93;+&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="name" /></td>
+    <td><code>string</code></td>
+    <td>The name of the domain unit summary.</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
 </Tabs>
 
 ## Methods
@@ -125,6 +150,13 @@ The following methods are available for this resource:
     <td><a href="#parameter-domain_identifier"><code>domain_identifier</code></a>, <a href="#parameter-identifier"><code>identifier</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td></td>
     <td>Gets the details of the specified domain unit.</td>
+</tr>
+<tr>
+    <td><a href="#list_domain_units_for_parent"><CopyableCode code="list_domain_units_for_parent" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-domain_identifier"><code>domain_identifier</code></a>, <a href="#parameter-parentDomainUnitIdentifier"><code>parentDomainUnitIdentifier</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td><a href="#parameter-maxResults"><code>maxResults</code></a>, <a href="#parameter-nextToken"><code>nextToken</code></a></td>
+    <td>Lists child domain units for the specified parent domain unit.</td>
 </tr>
 <tr>
     <td><a href="#create_domain_unit"><CopyableCode code="create_domain_unit" /></a></td>
@@ -173,10 +205,25 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     <td><code>string</code></td>
     <td>The ID of the domain unit that you want to delete.</td>
 </tr>
+<tr id="parameter-parentDomainUnitIdentifier">
+    <td><CopyableCode code="parentDomainUnitIdentifier" /></td>
+    <td><code>string</code></td>
+    <td>The ID of the parent domain unit.</td>
+</tr>
 <tr id="parameter-region">
     <td><CopyableCode code="region" /></td>
     <td><code>string</code></td>
     <td>AWS region (default: us-east-1)</td>
+</tr>
+<tr id="parameter-maxResults">
+    <td><CopyableCode code="maxResults" /></td>
+    <td><code>integer</code></td>
+    <td>The maximum number of domain units to return in a single call to ListDomainUnitsForParent. When the number of domain units to be listed is greater than the value of MaxResults, the response contains a NextToken value that you can use in a subsequent call to ListDomainUnitsForParent to list the next set of domain units.</td>
+</tr>
+<tr id="parameter-nextToken">
+    <td><CopyableCode code="nextToken" /></td>
+    <td><code>string</code></td>
+    <td>When the number of domain units is greater than the default value for the MaxResults parameter, or if you explicitly specify a value for MaxResults that is less than the number of domain units, the response includes a pagination token named NextToken. You can specify this NextToken value in a subsequent call to ListDomainUnitsForParent to list the next set of domain units.</td>
 </tr>
 </tbody>
 </table>
@@ -186,7 +233,8 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <Tabs
     defaultValue="get_domain_unit"
     values={[
-        { label: 'get_domain_unit', value: 'get_domain_unit' }
+        { label: 'get_domain_unit', value: 'get_domain_unit' },
+        { label: 'list_domain_units_for_parent', value: 'list_domain_units_for_parent' }
     ]}
 >
 <TabItem value="get_domain_unit">
@@ -209,6 +257,23 @@ FROM aws.datazone.domain_units
 WHERE domain_identifier = '{{ domain_identifier }}' -- required
 AND identifier = '{{ identifier }}' -- required
 AND region = '{{ region }}' -- required
+;
+```
+</TabItem>
+<TabItem value="list_domain_units_for_parent">
+
+Lists child domain units for the specified parent domain unit.
+
+```sql
+SELECT
+id,
+name
+FROM aws.datazone.domain_units
+WHERE domain_identifier = '{{ domain_identifier }}' -- required
+AND parentDomainUnitIdentifier = '{{ parentDomainUnitIdentifier }}' -- required
+AND region = '{{ region }}' -- required
+AND maxResults = '{{ maxResults }}'
+AND nextToken = '{{ nextToken }}'
 ;
 ```
 </TabItem>

@@ -139,6 +139,13 @@ The following methods are available for this resource:
     <td></td>
     <td>Deletes a variable. You can't delete variables that are included in an event type in Amazon Fraud Detector. Amazon Fraud Detector automatically deletes model output variables and SageMaker model output variables when you delete the model. You can't delete these variables manually. When you delete a variable, Amazon Fraud Detector permanently deletes that variable and the data is no longer stored in Amazon Fraud Detector.</td>
 </tr>
+<tr>
+    <td><a href="#batch_create_variable"><CopyableCode code="batch_create_variable" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-variableEntries"><code>variableEntries</code></a></td>
+    <td></td>
+    <td>Creates a batch of variables.</td>
+</tr>
 </tbody>
 </table>
 
@@ -325,6 +332,32 @@ Deletes a variable. You can't delete variables that are included in an event typ
 ```sql
 DELETE FROM aws.frauddetector.variables
 WHERE region = '{{ region }}' --required
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="batch_create_variable"
+    values={[
+        { label: 'batch_create_variable', value: 'batch_create_variable' }
+    ]}
+>
+<TabItem value="batch_create_variable">
+
+Creates a batch of variables.
+
+```sql
+EXEC aws.frauddetector.variables.batch_create_variable 
+@region='{{ region }}' --required 
+@@json=
+'{
+"variableEntries": "{{ variableEntries }}", 
+"tags": "{{ tags }}"
+}'
 ;
 ```
 </TabItem>

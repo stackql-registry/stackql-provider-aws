@@ -36,7 +36,8 @@ The following fields are returned by `SELECT` queries:
     defaultValue="describe_group_membership"
     values={[
         { label: 'describe_group_membership', value: 'describe_group_membership' },
-        { label: 'list_group_memberships', value: 'list_group_memberships' }
+        { label: 'list_group_memberships', value: 'list_group_memberships' },
+        { label: 'list_group_memberships_for_member', value: 'list_group_memberships_for_member' }
     ]}
 >
 <TabItem value="describe_group_membership">
@@ -147,6 +148,60 @@ The following fields are returned by `SELECT` queries:
 </tbody>
 </table>
 </TabItem>
+<TabItem value="list_group_memberships_for_member">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="created_at" /></td>
+    <td><code>string (date-time)</code></td>
+    <td>The date and time the group membership was created.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="created_by" /></td>
+    <td><code>string</code></td>
+    <td>The identifier of the user or system that created the group membership.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="group_id" /></td>
+    <td><code>string</code></td>
+    <td>The identifier for a group in the identity store. (pattern: &lt;code&gt;(&#91;0-9a-f&#93;&#123;10&#125;-|)&#91;A-Fa-f0-9&#93;&#123;8&#125;-&#91;A-Fa-f0-9&#93;&#123;4&#125;-&#91;A-Fa-f0-9&#93;&#123;4&#125;-&#91;A-Fa-f0-9&#93;&#123;4&#125;-&#91;A-Fa-f0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="identity_store_id" /></td>
+    <td><code>string</code></td>
+    <td>The globally unique identifier for the identity store. (pattern: &lt;code&gt;d-&#91;0-9a-f&#93;&#123;10&#125;$|^&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="member_id" /></td>
+    <td><code>object</code></td>
+    <td>An object containing the identifier of a group member.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="membership_id" /></td>
+    <td><code>string</code></td>
+    <td>The identifier for a GroupMembership object in an identity store. (pattern: &lt;code&gt;(&#91;0-9a-f&#93;&#123;10&#125;-|)&#91;A-Fa-f0-9&#93;&#123;8&#125;-&#91;A-Fa-f0-9&#93;&#123;4&#125;-&#91;A-Fa-f0-9&#93;&#123;4&#125;-&#91;A-Fa-f0-9&#93;&#123;4&#125;-&#91;A-Fa-f0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="updated_at" /></td>
+    <td><code>string (date-time)</code></td>
+    <td>The date and time the group membership was last updated.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="updated_by" /></td>
+    <td><code>string</code></td>
+    <td>The identifier of the user or system that last updated the group membership.</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
 </Tabs>
 
 ## Methods
@@ -177,6 +232,13 @@ The following methods are available for this resource:
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td></td>
     <td>For the specified group in the specified identity store, returns the list of all GroupMembership objects and returns results in paginated form. If you have access to a member account, you can use this API operation from the member account. For more information, see Limiting access to the identity store from member accounts in the IAM Identity Center User Guide.</td>
+</tr>
+<tr>
+    <td><a href="#list_group_memberships_for_member"><CopyableCode code="list_group_memberships_for_member" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>For the specified member in the specified identity store, returns the list of all GroupMembership objects and returns results in paginated form. If you have access to a member account, you can use this API operation from the member account. For more information, see Limiting access to the identity store from member accounts in the IAM Identity Center User Guide.</td>
 </tr>
 <tr>
     <td><a href="#create_group_membership"><CopyableCode code="create_group_membership" /></a></td>
@@ -222,7 +284,8 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     defaultValue="describe_group_membership"
     values={[
         { label: 'describe_group_membership', value: 'describe_group_membership' },
-        { label: 'list_group_memberships', value: 'list_group_memberships' }
+        { label: 'list_group_memberships', value: 'list_group_memberships' },
+        { label: 'list_group_memberships_for_member', value: 'list_group_memberships_for_member' }
     ]}
 >
 <TabItem value="describe_group_membership">
@@ -247,6 +310,25 @@ WHERE region = '{{ region }}' -- required
 <TabItem value="list_group_memberships">
 
 For the specified group in the specified identity store, returns the list of all GroupMembership objects and returns results in paginated form. If you have access to a member account, you can use this API operation from the member account. For more information, see Limiting access to the identity store from member accounts in the IAM Identity Center User Guide.
+
+```sql
+SELECT
+created_at,
+created_by,
+group_id,
+identity_store_id,
+member_id,
+membership_id,
+updated_at,
+updated_by
+FROM aws.identitystore.group_memberships
+WHERE region = '{{ region }}' -- required
+;
+```
+</TabItem>
+<TabItem value="list_group_memberships_for_member">
+
+For the specified member in the specified identity store, returns the list of all GroupMembership objects and returns results in paginated form. If you have access to a member account, you can use this API operation from the member account. For more information, see Limiting access to the identity store from member accounts in the IAM Identity Center User Guide.
 
 ```sql
 SELECT

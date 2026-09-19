@@ -91,6 +91,20 @@ The following methods are available for this resource:
     <td></td>
     <td>Retrieves the status of an on-going assessment.</td>
 </tr>
+<tr>
+    <td><a href="#start_assessment"><CopyableCode code="start_assessment" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Starts the assessment of an on-premises environment.</td>
+</tr>
+<tr>
+    <td><a href="#stop_assessment"><CopyableCode code="stop_assessment" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-assessmentId"><code>assessmentId</code></a></td>
+    <td></td>
+    <td>Stops the assessment of an on-premises environment.</td>
+</tr>
 </tbody>
 </table>
 
@@ -140,6 +154,49 @@ data_collection_details
 FROM aws.migrationhubstrategy.assessments
 WHERE id = '{{ id }}' -- required
 AND region = '{{ region }}' -- required
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="start_assessment"
+    values={[
+        { label: 'start_assessment', value: 'start_assessment' },
+        { label: 'stop_assessment', value: 'stop_assessment' }
+    ]}
+>
+<TabItem value="start_assessment">
+
+Starts the assessment of an on-premises environment.
+
+```sql
+EXEC aws.migrationhubstrategy.assessments.start_assessment 
+@region='{{ region }}' --required 
+@@json=
+'{
+"assessmentDataSourceType": "{{ assessmentDataSourceType }}", 
+"assessmentTargets": "{{ assessmentTargets }}", 
+"s3bucketForAnalysisData": "{{ s3bucketForAnalysisData }}", 
+"s3bucketForReportData": "{{ s3bucketForReportData }}"
+}'
+;
+```
+</TabItem>
+<TabItem value="stop_assessment">
+
+Stops the assessment of an on-premises environment.
+
+```sql
+EXEC aws.migrationhubstrategy.assessments.stop_assessment 
+@region='{{ region }}' --required 
+@@json=
+'{
+"assessmentId": "{{ assessmentId }}"
+}'
 ;
 ```
 </TabItem>

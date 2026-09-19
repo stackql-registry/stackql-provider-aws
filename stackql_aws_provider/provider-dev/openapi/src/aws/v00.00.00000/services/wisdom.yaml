@@ -399,10 +399,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteAssistantResponse"
     get:
       operationId: GetAssistant
       description: Retrieves information about an assistant.
@@ -440,10 +436,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteAssistantAssociationResponse"
     get:
       operationId: GetAssistantAssociation
       description: Retrieves information about an assistant association.
@@ -487,10 +479,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteContentResponse"
     get:
       operationId: GetContent
       description: Retrieves content, including a pre-signed URL to download the content.
@@ -576,10 +564,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteImportJobResponse"
     get:
       operationId: GetImportJob
       description: Retrieves the started import job.
@@ -617,10 +601,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteKnowledgeBaseResponse"
     get:
       operationId: GetKnowledgeBase
       description: Retrieves information about the knowledge base.
@@ -658,10 +638,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteQuickResponseResponse"
     get:
       operationId: GetQuickResponse
       description: Retrieves the quick response.
@@ -932,10 +908,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TagResourceResponse"
     delete:
       operationId: UntagResource
       description: Removes the specified tags from the specified resource.
@@ -955,10 +927,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UntagResourceResponse"
   /assistants/{assistant_id}/sessions/{session_id}/recommendations/notify:
     post:
       operationId: NotifyRecommendationsReceived
@@ -1041,10 +1009,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/RemoveKnowledgeBaseTemplateUriResponse"
     post:
       operationId: UpdateKnowledgeBaseTemplateUri
       description: Updates the template URI of a knowledge base. This is only supported for knowledge bases of type EXTERNAL. Include a single variable in ${variable} format; this interpolated by Wisdom using ingested content. For example, if you ingest a Salesforce article, it has an Id value, and you can set the template URI to https://myInstanceName.lightning.force.com/lightning/r/Knowledge__kav/*${Id}*/view.
@@ -1847,18 +1811,6 @@ components:
         topicIntegrationArn:
           $ref: "#/components/schemas/GenericArn"
           description: The Amazon Resource Name (ARN) of the integrated Amazon SNS topic used for streaming chat messages.
-    DeleteAssistantResponse:
-      type: object
-    DeleteAssistantAssociationResponse:
-      type: object
-    DeleteContentResponse:
-      type: object
-    DeleteImportJobResponse:
-      type: object
-    DeleteKnowledgeBaseResponse:
-      type: object
-    DeleteQuickResponseResponse:
-      type: object
     GetAssistantResponse:
       type: object
       properties:
@@ -2604,8 +2556,6 @@ components:
       required:
         - document
         - resultId
-    RemoveKnowledgeBaseTemplateUriResponse:
-      type: object
     SearchExpression:
       description: The search expression.
       type: object
@@ -2936,8 +2886,6 @@ components:
         importJob:
           $ref: "#/components/schemas/ImportJobData"
           description: The import job.
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
@@ -2947,8 +2895,6 @@ components:
       minLength: 1
       maxLength: 128
       pattern: ^(?!aws:)[a-zA-Z+-=._:/]+$
-    UntagResourceResponse:
-      type: object
     UpdateContentResponse:
       type: object
       properties:
@@ -3006,7 +2952,6 @@ components:
             $ref: "#/paths/~1assistants~1{assistant_id}/delete"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
         get_assistant:
           operation:
             $ref: "#/paths/~1assistants~1{assistant_id}/get"
@@ -3079,7 +3024,6 @@ components:
             $ref: "#/paths/~1assistants~1{assistant_id}~1associations~1{assistant_association_id}/delete"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
         get_assistant_association:
           operation:
             $ref: "#/paths/~1assistants~1{assistant_id}~1associations~1{assistant_association_id}/get"
@@ -3096,10 +3040,10 @@ components:
         update: []
         delete:
           - $ref: "#/components/x-stackQL-resources/assistant_associations/methods/delete_assistant_association"
-    contents:
-      id: aws.wisdom.contents
-      name: contents
-      title: contents
+    content:
+      id: aws.wisdom.content
+      name: content
+      title: content
       methods:
         create_content:
           operation:
@@ -3134,7 +3078,6 @@ components:
             $ref: "#/paths/~1knowledgeBases~1{knowledge_base_id}~1contents~1{content_id}/delete"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
         get_content:
           operation:
             $ref: "#/paths/~1knowledgeBases~1{knowledge_base_id}~1contents~1{content_id}/get"
@@ -3185,15 +3128,15 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/contents/methods/get_content"
-          - $ref: "#/components/x-stackQL-resources/contents/methods/search_content"
-          - $ref: "#/components/x-stackQL-resources/contents/methods/list_contents"
+          - $ref: "#/components/x-stackQL-resources/content/methods/get_content"
+          - $ref: "#/components/x-stackQL-resources/content/methods/search_content"
+          - $ref: "#/components/x-stackQL-resources/content/methods/list_contents"
         insert:
-          - $ref: "#/components/x-stackQL-resources/contents/methods/create_content"
+          - $ref: "#/components/x-stackQL-resources/content/methods/create_content"
         update:
-          - $ref: "#/components/x-stackQL-resources/contents/methods/update_content"
+          - $ref: "#/components/x-stackQL-resources/content/methods/update_content"
         delete:
-          - $ref: "#/components/x-stackQL-resources/contents/methods/delete_content"
+          - $ref: "#/components/x-stackQL-resources/content/methods/delete_content"
     knowledge_bases:
       id: aws.wisdom.knowledge_bases
       name: knowledge_bases
@@ -3232,7 +3175,6 @@ components:
             $ref: "#/paths/~1knowledgeBases~1{knowledge_base_id}/delete"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
         get_knowledge_base:
           operation:
             $ref: "#/paths/~1knowledgeBases~1{knowledge_base_id}/get"
@@ -3256,7 +3198,6 @@ components:
             $ref: "#/paths/~1knowledgeBases~1{knowledge_base_id}~1templateUri/delete"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
         update_knowledge_base_template_uri:
           operation:
             $ref: "#/paths/~1knowledgeBases~1{knowledge_base_id}~1templateUri/post"
@@ -3317,7 +3258,6 @@ components:
             $ref: "#/paths/~1knowledgeBases~1{knowledge_base_id}~1quickResponses~1{quick_response_id}/delete"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
         get_quick_response:
           operation:
             $ref: "#/paths/~1knowledgeBases~1{knowledge_base_id}~1quickResponses~1{quick_response_id}/get"
@@ -3426,7 +3366,6 @@ components:
             $ref: "#/paths/~1knowledgeBases~1{knowledge_base_id}~1importJobs~1{import_job_id}/delete"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
         get_import_job:
           operation:
             $ref: "#/paths/~1knowledgeBases~1{knowledge_base_id}~1importJobs~1{import_job_id}/get"
@@ -3523,7 +3462,6 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -3534,7 +3472,6 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
       sqlVerbs:

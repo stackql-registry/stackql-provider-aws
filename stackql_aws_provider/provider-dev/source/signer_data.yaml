@@ -59,7 +59,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetRevocationStatusOutputDisplay'
-      x-stackql-resource: revocation_status
+      x-stackql-resource: revocation_statuses
       x-stackql-method: get_revocation_status
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: GetRevocationStatusOutputDisplay

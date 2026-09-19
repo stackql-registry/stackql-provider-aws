@@ -18,21 +18,25 @@ support service documentation.
 
 :::info[Service Summary]
 
-total resources: __11__  
+total resources: __15__  
 
 :::
 
 ## Resources
 <div class="row">
 <div class="providerDocColumn">
+<a href="/services/support/attachment_download_links/">attachment_download_links</a><br />
+<a href="/services/support/attachment_upload_links/">attachment_upload_links</a><br />
+<a href="/services/support/attachment_upload_statuses/">attachment_upload_statuses</a><br />
+<a href="/services/support/attachment_uploads/">attachment_uploads</a><br />
 <a href="/services/support/attachments/">attachments</a><br />
 <a href="/services/support/cases/">cases</a><br />
 <a href="/services/support/communications/">communications</a><br />
-<a href="/services/support/create_case_options/">create_case_options</a><br />
-<a href="/services/support/services/">services</a><br />
-<a href="/services/support/severity_levels/">severity_levels</a>
+<a href="/services/support/create_case_options/">create_case_options</a>
 </div>
 <div class="providerDocColumn">
+<a href="/services/support/services/">services</a><br />
+<a href="/services/support/severity_levels/">severity_levels</a><br />
 <a href="/services/support/supported_languages/">supported_languages</a><br />
 <a href="/services/support/trusted_advisor_check_refresh_statuses/">trusted_advisor_check_refresh_statuses</a><br />
 <a href="/services/support/trusted_advisor_check_results/">trusted_advisor_check_results</a><br />

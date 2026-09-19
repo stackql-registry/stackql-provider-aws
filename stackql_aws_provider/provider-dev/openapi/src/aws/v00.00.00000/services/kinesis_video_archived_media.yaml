@@ -697,10 +697,10 @@ components:
         insert: []
         update: []
         delete: []
-    media_for_fragment_lists:
-      id: aws.kinesis_video_archived_media.media_for_fragment_lists
-      name: media_for_fragment_lists
-      title: media_for_fragment_lists
+    medias:
+      id: aws.kinesis_video_archived_media.medias
+      name: medias
+      title: medias
       methods:
         get_media_for_fragment_list:
           operation:
@@ -715,7 +715,7 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/media_for_fragment_lists/methods/get_media_for_fragment_list"
+          - $ref: "#/components/x-stackQL-resources/medias/methods/get_media_for_fragment_list"
         insert: []
         update: []
         delete: []

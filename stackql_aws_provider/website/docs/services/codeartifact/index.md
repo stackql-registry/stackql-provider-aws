@@ -25,7 +25,7 @@ total resources: __19__
 ## Resources
 <div class="row">
 <div class="providerDocColumn">
-<a href="/services/codeartifact/allowed_repositories_for_groups/">allowed_repositories_for_groups</a><br />
+<a href="/services/codeartifact/allowed_repositories/">allowed_repositories</a><br />
 <a href="/services/codeartifact/associated_package_groups/">associated_package_groups</a><br />
 <a href="/services/codeartifact/associated_packages/">associated_packages</a><br />
 <a href="/services/codeartifact/authorization_tokens/">authorization_tokens</a><br />

@@ -119,7 +119,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GenerateDataSetResult'
-      x-stackql-resource: data_set
+      x-stackql-resource: data_sets
       x-stackql-method: generate_data_set
       x-stackql-verb: EXEC
   /StartSupportDataExport:
@@ -198,7 +198,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartSupportDataExportResult'
-      x-stackql-resource: support_data_export
+      x-stackql-resource: support_data_exports
       x-stackql-method: start_support_data_export
       x-stackql-verb: EXEC
 components:

@@ -2282,6 +2282,17 @@ components:
       name: backends
       title: backends
       methods:
+        clone_backend:
+          operation:
+            $ref: "#/paths/~1backend~1{app_id}~1environments~1{backend_environment_name}~1clone/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         create_backend:
           operation:
             $ref: "#/paths/~1backend/post"
@@ -2497,10 +2508,10 @@ components:
           - $ref: "#/components/x-stackQL-resources/backend_auths/methods/update_backend_auth"
         delete:
           - $ref: "#/components/x-stackQL-resources/backend_auths/methods/delete_backend_auth"
-    backend_storages:
-      id: aws.amplifybackend.backend_storages
-      name: backend_storages
-      title: backend_storages
+    backend_storage:
+      id: aws.amplifybackend.backend_storage
+      name: backend_storage
+      title: backend_storage
       methods:
         create_backend_storage:
           operation:
@@ -2548,13 +2559,13 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/backend_storages/methods/get_backend_storage"
+          - $ref: "#/components/x-stackQL-resources/backend_storage/methods/get_backend_storage"
         insert:
-          - $ref: "#/components/x-stackQL-resources/backend_storages/methods/create_backend_storage"
+          - $ref: "#/components/x-stackQL-resources/backend_storage/methods/create_backend_storage"
         update:
-          - $ref: "#/components/x-stackQL-resources/backend_storages/methods/update_backend_storage"
+          - $ref: "#/components/x-stackQL-resources/backend_storage/methods/update_backend_storage"
         delete:
-          - $ref: "#/components/x-stackQL-resources/backend_storages/methods/delete_backend_storage"
+          - $ref: "#/components/x-stackQL-resources/backend_storage/methods/delete_backend_storage"
     tokens:
       id: aws.amplifybackend.tokens
       name: tokens

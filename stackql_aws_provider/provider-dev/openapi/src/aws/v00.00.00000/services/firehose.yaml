@@ -133,10 +133,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteDeliveryStreamOutput"
   /DescribeDeliveryStream:
     post:
       operationId: DescribeDeliveryStream
@@ -358,10 +354,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/StartDeliveryStreamEncryptionOutput"
   /StopDeliveryStreamEncryption:
     post:
       operationId: StopDeliveryStreamEncryption
@@ -391,10 +383,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/StopDeliveryStreamEncryptionOutput"
   /TagDeliveryStream:
     post:
       operationId: TagDeliveryStream
@@ -427,10 +415,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TagDeliveryStreamOutput"
   /UntagDeliveryStream:
     post:
       operationId: UntagDeliveryStream
@@ -464,10 +448,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UntagDeliveryStreamOutput"
   /UpdateDestination:
     post:
       operationId: UpdateDestination
@@ -535,10 +515,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateDestinationOutput"
 components:
   parameters:
     X-Amz-Content-Sha256:
@@ -2387,8 +2363,6 @@ components:
       minLength: 1
       maxLength: 512
       pattern: arn:.*:firehose:[a-zA-Z0-9\-]+:\d{12}:deliverystream/[a-zA-Z0-9._-]+
-    DeleteDeliveryStreamOutput:
-      type: object
     DescribeDeliveryStreamInputLimit:
       type: integer
       minimum: 1
@@ -3257,18 +3231,10 @@ components:
       type: string
     ErrorMessage:
       type: string
-    StartDeliveryStreamEncryptionOutput:
-      type: object
-    StopDeliveryStreamEncryptionOutput:
-      type: object
-    TagDeliveryStreamOutput:
-      type: object
     TagKeyList:
       type: array
       items:
         $ref: "#/components/schemas/TagKey"
-    UntagDeliveryStreamOutput:
-      type: object
     S3DestinationUpdate:
       description: Describes an update for a destination in Amazon S3.
       type: object
@@ -3649,8 +3615,6 @@ components:
           description: Configuration describing where the destination Iceberg tables are persisted.
         S3Configuration:
           $ref: "#/components/schemas/S3DestinationConfiguration"
-    UpdateDestinationOutput:
-      type: object
   x-stackQL-resources:
     delivery_streams:
       id: aws.firehose.delivery_streams
@@ -3675,7 +3639,6 @@ components:
             $ref: "#/paths/~1DeleteDeliveryStream/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -3741,7 +3704,6 @@ components:
             $ref: "#/paths/~1StartDeliveryStreamEncryption/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -3754,7 +3716,6 @@ components:
             $ref: "#/paths/~1StopDeliveryStreamEncryption/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -3767,7 +3728,6 @@ components:
             $ref: "#/paths/~1UpdateDestination/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -3811,7 +3771,6 @@ components:
             $ref: "#/paths/~1TagDeliveryStream/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -3824,7 +3783,6 @@ components:
             $ref: "#/paths/~1UntagDeliveryStream/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1

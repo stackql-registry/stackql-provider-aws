@@ -323,6 +323,46 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Connection"
+  /AssociateConnectionsToResiliencyGroup:
+    post:
+      operationId: AssociateConnectionsToResiliencyGroup
+      description: "Associates one or more connections with the specified resiliency group. This operation is atomic: either all of the specified connections are associated, or the operation fails and no changes are made."
+      parameters:
+        - name: X-Amz-Target
+          in: header
+          description: Action Header
+          required: false
+          schema:
+            type: string
+            enum:
+              - OvertureService.AssociateConnectionsToResiliencyGroup
+            default: OvertureService.AssociateConnectionsToResiliencyGroup
+      requestBody:
+        required: true
+        content:
+          application/x-amz-json-1.1:
+            schema:
+              type: object
+              properties:
+                connectionIdentifiers:
+                  $ref: "#/components/schemas/ConnectionIdentifierList"
+                  description: The IDs or ARNs of the connections to associate with the resiliency group.
+                resiliencyGroupId:
+                  $ref: "#/components/schemas/ResiliencyGroupId"
+                  description: The ID of the resiliency group.
+                clientToken:
+                  $ref: "#/components/schemas/IdempotencyToken"
+                  description: A unique, case-sensitive identifier that you provide to ensure the idempotency of the request.
+              required:
+                - connectionIdentifiers
+                - resiliencyGroupId
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AssociateConnectionsToResiliencyGroupResult"
   /AssociateHostedConnection:
     post:
       operationId: AssociateHostedConnection
@@ -688,6 +728,9 @@ paths:
                 requestMACSec:
                   $ref: "#/components/schemas/RequestMACSec"
                   description: Indicates whether you want the connection to support MAC Security (MACsec). MAC Security (MACsec) is unavailable on hosted connections. For information about MAC Security (MACsec) prerequisites, see MAC Security in Direct Connect in the Direct Connect User Guide.
+                billingMode:
+                  $ref: "#/components/schemas/RequestBillingMode"
+                  description: The billing mode for the connection.
               required:
                 - location
                 - bandwidth
@@ -928,6 +971,9 @@ paths:
                 requestMACSec:
                   $ref: "#/components/schemas/RequestMACSec"
                   description: Indicates whether the connection will support MAC Security (MACsec). All connections in the LAG must be capable of supporting MAC Security (MACsec). For information about MAC Security (MACsec) prerequisties, see MACsec prerequisties in the Direct Connect User Guide.
+                billingMode:
+                  $ref: "#/components/schemas/RequestBillingMode"
+                  description: The billing mode for the LAG.
               required:
                 - numberOfConnections
                 - location
@@ -1014,6 +1060,49 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/VirtualInterface"
+  /CreateResiliencyGroup:
+    post:
+      operationId: CreateResiliencyGroup
+      description: Creates a resiliency group. A resiliency group lets you group Direct Connect connections together and manage them as a single unit to meet a target resiliency model.
+      parameters:
+        - name: X-Amz-Target
+          in: header
+          description: Action Header
+          required: false
+          schema:
+            type: string
+            enum:
+              - OvertureService.CreateResiliencyGroup
+            default: OvertureService.CreateResiliencyGroup
+      requestBody:
+        required: true
+        content:
+          application/x-amz-json-1.1:
+            schema:
+              type: object
+              properties:
+                resiliencyGroupName:
+                  $ref: "#/components/schemas/ResiliencyGroupName"
+                  description: The name of the resiliency group.
+                intendedResiliencyModel:
+                  $ref: "#/components/schemas/ResiliencyModel"
+                  description: The resiliency model that the resiliency group is intended to meet. The valid values are maximum-resiliency, high-resiliency, and basic-resiliency.
+                clientToken:
+                  $ref: "#/components/schemas/IdempotencyToken"
+                  description: A unique, case-sensitive identifier that you provide to ensure the idempotency of the request.
+                tags:
+                  $ref: "#/components/schemas/TagList"
+                  description: The tags to associate with the resiliency group.
+              required:
+                - resiliencyGroupName
+                - intendedResiliencyModel
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CreateResiliencyGroupResult"
   /CreateTransitVirtualInterface:
     post:
       operationId: CreateTransitVirtualInterface
@@ -1296,6 +1385,39 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Lag"
+  /DeleteResiliencyGroup:
+    post:
+      operationId: DeleteResiliencyGroup
+      description: "Deletes the specified resiliency group. Deletion is asynchronous: the resiliency group transitions through the deleting state before it reaches the deleted state. The response returns the resiliency group so you can observe its current state without a subsequent GetResiliencyGroup call."
+      parameters:
+        - name: X-Amz-Target
+          in: header
+          description: Action Header
+          required: false
+          schema:
+            type: string
+            enum:
+              - OvertureService.DeleteResiliencyGroup
+            default: OvertureService.DeleteResiliencyGroup
+      requestBody:
+        required: true
+        content:
+          application/x-amz-json-1.1:
+            schema:
+              type: object
+              properties:
+                resiliencyGroupId:
+                  $ref: "#/components/schemas/ResiliencyGroupId"
+                  description: The ID of the resiliency group.
+              required:
+                - resiliencyGroupId
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DeleteResiliencyGroupResult"
   /DeleteVirtualInterface:
     post:
       operationId: DeleteVirtualInterface
@@ -2004,6 +2126,46 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Connection"
+  /DisassociateConnectionsFromResiliencyGroup:
+    post:
+      operationId: DisassociateConnectionsFromResiliencyGroup
+      description: "Disassociates one or more connections from the specified resiliency group. This operation is atomic: either all of the specified connections are disassociated, or the operation fails and no changes are made."
+      parameters:
+        - name: X-Amz-Target
+          in: header
+          description: Action Header
+          required: false
+          schema:
+            type: string
+            enum:
+              - OvertureService.DisassociateConnectionsFromResiliencyGroup
+            default: OvertureService.DisassociateConnectionsFromResiliencyGroup
+      requestBody:
+        required: true
+        content:
+          application/x-amz-json-1.1:
+            schema:
+              type: object
+              properties:
+                connectionIdentifiers:
+                  $ref: "#/components/schemas/ConnectionIdentifierList"
+                  description: The IDs or ARNs of the connections to disassociate from the resiliency group.
+                resiliencyGroupId:
+                  $ref: "#/components/schemas/ResiliencyGroupId"
+                  description: The ID of the resiliency group.
+                clientToken:
+                  $ref: "#/components/schemas/IdempotencyToken"
+                  description: A unique, case-sensitive identifier that you provide to ensure the idempotency of the request.
+              required:
+                - connectionIdentifiers
+                - resiliencyGroupId
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DisassociateConnectionsFromResiliencyGroupResult"
   /DisassociateMacSecKey:
     post:
       operationId: DisassociateMacSecKey
@@ -2041,6 +2203,112 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/DisassociateMacSecKeyResponse"
+  /GetResiliencyGroup:
+    post:
+      operationId: GetResiliencyGroup
+      description: Gets information about the specified resiliency group.
+      parameters:
+        - name: X-Amz-Target
+          in: header
+          description: Action Header
+          required: false
+          schema:
+            type: string
+            enum:
+              - OvertureService.GetResiliencyGroup
+            default: OvertureService.GetResiliencyGroup
+      requestBody:
+        required: true
+        content:
+          application/x-amz-json-1.1:
+            schema:
+              type: object
+              properties:
+                resiliencyGroupId:
+                  $ref: "#/components/schemas/ResiliencyGroupId"
+                  description: The ID of the resiliency group.
+              required:
+                - resiliencyGroupId
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GetResiliencyGroupResult"
+  /ListResiliencyGroupAssociations:
+    post:
+      operationId: ListResiliencyGroupAssociations
+      description: Lists the connection associations for the specified resiliency group.
+      parameters:
+        - name: X-Amz-Target
+          in: header
+          description: Action Header
+          required: false
+          schema:
+            type: string
+            enum:
+              - OvertureService.ListResiliencyGroupAssociations
+            default: OvertureService.ListResiliencyGroupAssociations
+      requestBody:
+        required: true
+        content:
+          application/x-amz-json-1.1:
+            schema:
+              type: object
+              properties:
+                resiliencyGroupId:
+                  $ref: "#/components/schemas/ResiliencyGroupId"
+                  description: The ID of the resiliency group.
+                maxResults:
+                  $ref: "#/components/schemas/MaxResultSetSize"
+                  description: The maximum number of results to return with a single call. To retrieve the remaining results, make another call with the returned nextToken value. If MaxResults is given a value larger than 100, only 100 results are returned.
+                nextToken:
+                  $ref: "#/components/schemas/PaginationToken"
+                  description: The token for the next page of results.
+              required:
+                - resiliencyGroupId
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ListResiliencyGroupAssociationsResult"
+  /ListResiliencyGroups:
+    post:
+      operationId: ListResiliencyGroups
+      description: Lists the resiliency groups owned by your Amazon Web Services account in the current Amazon Web Services Region.
+      parameters:
+        - name: X-Amz-Target
+          in: header
+          description: Action Header
+          required: false
+          schema:
+            type: string
+            enum:
+              - OvertureService.ListResiliencyGroups
+            default: OvertureService.ListResiliencyGroups
+      requestBody:
+        required: true
+        content:
+          application/x-amz-json-1.1:
+            schema:
+              type: object
+              properties:
+                maxResults:
+                  $ref: "#/components/schemas/MaxResultSetSize"
+                  description: The maximum number of results to return with a single call. To retrieve the remaining results, make another call with the returned nextToken value. If MaxResults is given a value larger than 100, only 100 results are returned.
+                nextToken:
+                  $ref: "#/components/schemas/PaginationToken"
+                  description: The token for the next page of results.
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ListResiliencyGroupsResult"
   /ListVirtualInterfaceRoutes:
     post:
       operationId: ListVirtualInterfaceRoutes
@@ -2232,10 +2500,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TagResourceResponse"
   /UntagResource:
     post:
       operationId: UntagResource
@@ -2269,10 +2533,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UntagResourceResponse"
   /UpdateConnection:
     post:
       operationId: UpdateConnection
@@ -2312,6 +2572,43 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Connection"
+  /UpdateConnectionsBillingMode:
+    post:
+      operationId: UpdateConnectionsBillingMode
+      description: Updates the billing mode for the specified Direct Connect connections. You can update the billing mode for up to 200 connections in a single request.
+      parameters:
+        - name: X-Amz-Target
+          in: header
+          description: Action Header
+          required: false
+          schema:
+            type: string
+            enum:
+              - OvertureService.UpdateConnectionsBillingMode
+            default: OvertureService.UpdateConnectionsBillingMode
+      requestBody:
+        required: true
+        content:
+          application/x-amz-json-1.1:
+            schema:
+              type: object
+              properties:
+                connectionIds:
+                  $ref: "#/components/schemas/ConnectionIdList"
+                  description: The IDs of the connections to update. You can specify from 1 to 200 connections.
+                billingMode:
+                  $ref: "#/components/schemas/RequestBillingMode"
+                  description: The billing mode to apply to the specified connections. The valid values are PayAsYouGo, FlatRateTier1, FlatRateTier2, FlatRateTier3, FlatRateTier4, and FlatRateTier5.
+              required:
+                - connectionIds
+                - billingMode
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UpdateConnectionsBillingModeResponse"
   /UpdateDirectConnectGateway:
     post:
       operationId: UpdateDirectConnectGateway
@@ -2428,6 +2725,46 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Lag"
+  /UpdateResiliencyGroup:
+    post:
+      operationId: UpdateResiliencyGroup
+      description: Updates the name of the specified resiliency group.
+      parameters:
+        - name: X-Amz-Target
+          in: header
+          description: Action Header
+          required: false
+          schema:
+            type: string
+            enum:
+              - OvertureService.UpdateResiliencyGroup
+            default: OvertureService.UpdateResiliencyGroup
+      requestBody:
+        required: true
+        content:
+          application/x-amz-json-1.1:
+            schema:
+              type: object
+              properties:
+                resiliencyGroupId:
+                  $ref: "#/components/schemas/ResiliencyGroupId"
+                  description: The ID of the resiliency group.
+                resiliencyGroupName:
+                  $ref: "#/components/schemas/ResiliencyGroupName"
+                  description: The new name of the resiliency group.
+                clientToken:
+                  $ref: "#/components/schemas/IdempotencyToken"
+                  description: A unique, case-sensitive identifier that you provide to ensure the idempotency of the request.
+              required:
+                - resiliencyGroupId
+                - resiliencyGroupName
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UpdateResiliencyGroupResult"
   /UpdateVirtualInterfaceAttributes:
     post:
       operationId: UpdateVirtualInterfaceAttributes
@@ -2461,6 +2798,12 @@ paths:
                 virtualInterfaceName:
                   $ref: "#/components/schemas/VirtualInterfaceName"
                   description: The name of the virtual private interface.
+                prefixPoolAllocatedCountIpv4:
+                  $ref: "#/components/schemas/PrefixPoolAllocatedCount"
+                  description: The number of inbound IPv4 route prefixes to allocate to the virtual interface. Not applicable to public virtual interfaces.
+                prefixPoolAllocatedCountIpv6:
+                  $ref: "#/components/schemas/PrefixPoolAllocatedCount"
+                  description: The number of inbound IPv6 route prefixes to allocate to the virtual interface. Not applicable to public virtual interfaces.
                 rateLimit:
                   $ref: "#/components/schemas/RateLimit"
                   description: The rate limit (bandwidth allocation) to apply to the virtual interface. Use this to update the bandwidth allocation on an existing virtual interface.
@@ -2728,6 +3071,21 @@ components:
         partnerInterconnectMacSecCapable:
           $ref: "#/components/schemas/PartnerInterconnectMacSecCapable"
           description: Indicates whether the interconnect hosting this connection supports MAC Security (MACsec).
+        prefixPoolSizeIpv4:
+          $ref: "#/components/schemas/PrefixPoolSize"
+          description: The total number of inbound IPv4 route prefixes you can allocate across the virtual interfaces on the connection. Not applicable to hosted connections or interconnects.
+        prefixPoolSizeIpv6:
+          $ref: "#/components/schemas/PrefixPoolSize"
+          description: The total number of inbound IPv6 route prefixes you can allocate across the virtual interfaces on the connection. Not applicable to hosted connections or interconnects.
+        prefixPoolUnallocatedCountIpv4:
+          $ref: "#/components/schemas/PrefixPoolUnallocatedCount"
+          description: The number of inbound IPv4 route prefixes in the connection prefix pool not yet allocated to a virtual interface. Not applicable to hosted connections or interconnects.
+        prefixPoolUnallocatedCountIpv6:
+          $ref: "#/components/schemas/PrefixPoolUnallocatedCount"
+          description: The number of inbound IPv6 route prefixes in the connection prefix pool not yet allocated to a virtual interface. Not applicable to hosted connections or interconnects.
+        billingMode:
+          $ref: "#/components/schemas/BillingMode"
+          description: The billing mode of the connection.
     ConnectionId:
       type: string
     ConnectionState:
@@ -2847,6 +3205,26 @@ components:
       type: integer
     PartnerInterconnectMacSecCapable:
       type: boolean
+    PrefixPoolSize:
+      type: integer
+      minimum: 0
+    PrefixPoolUnallocatedCount:
+      type: integer
+      minimum: 0
+    BillingMode:
+      type: string
+      enum:
+        - PayAsYouGo
+        - FlatRateTier1
+        - FlatRateTier2
+        - FlatRateTier3
+        - FlatRateTier4
+        - FlatRateTier5
+        - PortPairFlatRateTier1
+        - PortPairFlatRateTier2
+        - PortPairFlatRateTier3
+        - PortPairFlatRateTier4
+        - PortPairFlatRateTier5
     NewPrivateVirtualInterfaceAllocation:
       description: Information about a private virtual interface to be provisioned on a connection.
       type: object
@@ -2994,6 +3372,12 @@ components:
         siteLinkEnabled:
           $ref: "#/components/schemas/SiteLinkEnabled"
           description: Indicates whether SiteLink is enabled.
+        prefixPoolAllocatedCountIpv4:
+          $ref: "#/components/schemas/PrefixPoolAllocatedCount"
+          description: The number of inbound IPv4 route prefixes allocated to the virtual interface. Not applicable to public virtual interfaces.
+        prefixPoolAllocatedCountIpv6:
+          $ref: "#/components/schemas/PrefixPoolAllocatedCount"
+          description: The number of inbound IPv6 route prefixes allocated to the virtual interface. Not applicable to public virtual interfaces.
         rateLimit:
           $ref: "#/components/schemas/RateLimit"
           description: "The rate limit (bandwidth allocation) applied to the virtual interface. The value must be one of the supported bandwidth values and cannot exceed the bandwidth of the parent connection or LAG. Supported values: 50Mbps, 100Mbps, 200Mbps, 300Mbps, 400Mbps, 500Mbps, 600Mbps, 700Mbps, 800Mbps, 900Mbps, 1Gbps, 1.2Gbps, 1.5Gbps, 1.8Gbps, 2Gbps, 2.1Gbps, 2.4Gbps, 2.7Gbps, 3Gbps, 3.2Gbps, 3.6Gbps, 4Gbps, 5Gbps, 6Gbps, 7Gbps, 8Gbps, 9Gbps, 10Gbps, 12Gbps, 15Gbps, 18Gbps, 20Gbps, 21Gbps, 24Gbps, 27Gbps, 30Gbps, 32Gbps, 36Gbps, 40Gbps, 50Gbps, 60Gbps, 70Gbps, 80Gbps, 100Gbps, 120Gbps, 150Gbps, 180Gbps, 200Gbps, 210Gbps, 240Gbps, 270Gbps, 300Gbps, 320Gbps, 360Gbps, 400Gbps, 450Gbps, 480Gbps, 500Gbps, 540Gbps, 600Gbps, 700Gbps, 800Gbps, 900Gbps, 1Tbps, 1.1Tbps, 1.2Tbps, 1.3Tbps, 1.4Tbps, 1.5Tbps, 1.6Tbps."
@@ -3075,6 +3459,9 @@ components:
         - unknown
     SiteLinkEnabled:
       type: boolean
+    PrefixPoolAllocatedCount:
+      type: integer
+      minimum: 0
     NewPublicVirtualInterfaceAllocation:
       description: Information about a public virtual interface to be provisioned on a connection.
       type: object
@@ -3158,6 +3545,57 @@ components:
         virtualInterface:
           $ref: "#/components/schemas/VirtualInterface"
           description: Information about the transit virtual interface.
+    ConnectionIdentifierList:
+      type: array
+      items:
+        $ref: "#/components/schemas/ConnectionIdentifier"
+    ConnectionIdentifier:
+      type: string
+      minLength: 1
+      maxLength: 1024
+    ResiliencyGroupId:
+      type: string
+      minLength: 22
+      maxLength: 22
+      pattern: ^(dxrg|DXRG)-[0-9a-zA-Z]{17}$
+    IdempotencyToken:
+      type: string
+      minLength: 1
+      maxLength: 128
+    AssociateConnectionsToResiliencyGroupResult:
+      type: object
+      properties:
+        resiliencyGroupAssociations:
+          $ref: "#/components/schemas/ResiliencyGroupAssociationList"
+          description: The connection associations for the resiliency group.
+    ResiliencyGroupAssociationList:
+      type: array
+      items:
+        $ref: "#/components/schemas/ResiliencyGroupAssociation"
+    ResiliencyGroupAssociation:
+      description: Information about an association between a connection and a resiliency group.
+      type: object
+      properties:
+        resiliencyGroupId:
+          $ref: "#/components/schemas/ResiliencyGroupId"
+          description: The ID of the resiliency group.
+        connectionArn:
+          $ref: "#/components/schemas/ConnectionArn"
+          description: The Amazon Resource Name (ARN) of the associated connection.
+        state:
+          $ref: "#/components/schemas/ResiliencyGroupAssociationState"
+          description: The state of the association. The valid values are associating, associated, disassociating, and disassociated.
+    ConnectionArn:
+      type: string
+      minLength: 1
+      maxLength: 1024
+    ResiliencyGroupAssociationState:
+      type: string
+      enum:
+        - associating
+        - associated
+        - disassociating
+        - disassociated
     Cak:
       type: string
     AssociateMacSecKeyResponse:
@@ -3235,6 +3673,15 @@ components:
           description: The virtual interface.
     RequestMACSec:
       type: boolean
+    RequestBillingMode:
+      type: string
+      enum:
+        - PayAsYouGo
+        - FlatRateTier1
+        - FlatRateTier2
+        - FlatRateTier3
+        - FlatRateTier4
+        - FlatRateTier5
     DirectConnectGatewayName:
       type: string
     CreateDirectConnectGatewayResult:
@@ -3265,6 +3712,9 @@ components:
         stateChangeError:
           $ref: "#/components/schemas/StateChangeError"
           description: The error message if the state of an object failed to advance.
+        totalPrefixPoolAllocations:
+          $ref: "#/components/schemas/PrefixPoolAllocatedCount"
+          description: The total number of inbound route prefixes allocated to the attachments on the Direct Connect gateway. The count combines the IPv4 and IPv6 address families.
         tags:
           $ref: "#/components/schemas/TagList"
           description: Information about a tag.
@@ -3462,9 +3912,24 @@ components:
         macSecKeys:
           $ref: "#/components/schemas/MacSecKeyList"
           description: The MAC Security (MACsec) security keys associated with the LAG.
+        prefixPoolSizeIpv4:
+          $ref: "#/components/schemas/PrefixPoolSize"
+          description: The total number of inbound IPv4 route prefixes you can allocate across the virtual interfaces on the LAG. Not applicable to LAGs that are interconnects and support hosted connections.
+        prefixPoolSizeIpv6:
+          $ref: "#/components/schemas/PrefixPoolSize"
+          description: The total number of inbound IPv6 route prefixes you can allocate across the virtual interfaces on the LAG. Not applicable to LAGs that are interconnects and support hosted connections.
+        prefixPoolUnallocatedCountIpv4:
+          $ref: "#/components/schemas/PrefixPoolUnallocatedCount"
+          description: The number of inbound IPv4 route prefixes in the LAG prefix pool not yet allocated to a virtual interface. Not applicable to LAGs that are interconnects and support hosted connections.
+        prefixPoolUnallocatedCountIpv6:
+          $ref: "#/components/schemas/PrefixPoolUnallocatedCount"
+          description: The number of inbound IPv6 route prefixes in the LAG prefix pool not yet allocated to a virtual interface. Not applicable to LAGs that are interconnects and support hosted connections.
         rateLimiterStatus:
           $ref: "#/components/schemas/RateLimiterStatus"
           description: The rate limiter status for the LAG, including how many rate limiters are in use and the maximum allowed.
+        billingMode:
+          $ref: "#/components/schemas/BillingMode"
+          description: The billing mode of the LAG.
     LagState:
       type: string
       enum:
@@ -3524,6 +3989,12 @@ components:
         enableSiteLink:
           $ref: "#/components/schemas/EnableSiteLink"
           description: Indicates whether to enable or disable SiteLink.
+        prefixPoolAllocatedCountIpv4:
+          $ref: "#/components/schemas/PrefixPoolAllocatedCount"
+          description: The number of inbound IPv4 route prefixes to allocate to the virtual interface.
+        prefixPoolAllocatedCountIpv6:
+          $ref: "#/components/schemas/PrefixPoolAllocatedCount"
+          description: The number of inbound IPv6 route prefixes to allocate to the virtual interface.
         rateLimit:
           $ref: "#/components/schemas/RateLimit"
           description: The rate limit (bandwidth allocation) to apply to the virtual interface. The rate limit restricts the maximum bandwidth that the virtual interface can use on the parent connection.
@@ -3572,6 +4043,64 @@ components:
       required:
         - virtualInterfaceName
         - vlan
+    ResiliencyGroupName:
+      type: string
+      minLength: 1
+      maxLength: 255
+      pattern: ^[a-zA-Z0-9_\-]+$
+    ResiliencyModel:
+      type: string
+      enum:
+        - maximum-resiliency
+        - high-resiliency
+        - basic-resiliency
+    CreateResiliencyGroupResult:
+      type: object
+      properties:
+        resiliencyGroup:
+          $ref: "#/components/schemas/ResiliencyGroup"
+          description: Information about the resiliency group.
+    ResiliencyGroup:
+      description: Information about a resiliency group.
+      type: object
+      properties:
+        resiliencyGroupId:
+          $ref: "#/components/schemas/ResiliencyGroupId"
+          description: The ID of the resiliency group.
+        resiliencyGroupArn:
+          $ref: "#/components/schemas/ResiliencyGroupArn"
+          description: The Amazon Resource Name (ARN) of the resiliency group.
+        resiliencyGroupName:
+          $ref: "#/components/schemas/ResiliencyGroupName"
+          description: The name of the resiliency group.
+        resiliencyGroupType:
+          $ref: "#/components/schemas/ResiliencyGroupType"
+          description: The type of the resiliency group. The valid value is Managed.
+        ownerAccount:
+          $ref: "#/components/schemas/OwnerAccount"
+          description: The ID of the Amazon Web Services account that owns the resiliency group.
+        state:
+          $ref: "#/components/schemas/ResiliencyGroupState"
+          description: The state of the resiliency group. The valid values are pending, available, deleting, and deleted.
+        tags:
+          $ref: "#/components/schemas/TagList"
+          description: The tags associated with the resiliency group.
+    ResiliencyGroupArn:
+      type: string
+      minLength: 1
+      maxLength: 1024
+      pattern: ^arn:(aws|aws-cn|aws-us-gov):directconnect::[0-9]{12}:dx-resiliency-group/dxrg-[0-9a-z]{17}$
+    ResiliencyGroupType:
+      type: string
+      enum:
+        - Managed
+    ResiliencyGroupState:
+      type: string
+      enum:
+        - pending
+        - available
+        - deleting
+        - deleted
     NewTransitVirtualInterface:
       description: Information about a transit virtual interface.
       type: object
@@ -3612,6 +4141,12 @@ components:
         enableSiteLink:
           $ref: "#/components/schemas/EnableSiteLink"
           description: Indicates whether to enable or disable SiteLink.
+        prefixPoolAllocatedCountIpv4:
+          $ref: "#/components/schemas/PrefixPoolAllocatedCount"
+          description: The number of inbound IPv4 route prefixes to allocate to the virtual interface.
+        prefixPoolAllocatedCountIpv6:
+          $ref: "#/components/schemas/PrefixPoolAllocatedCount"
+          description: The number of inbound IPv6 route prefixes to allocate to the virtual interface.
         rateLimit:
           $ref: "#/components/schemas/RateLimit"
           description: The rate limit (bandwidth allocation) to apply to the virtual interface. The rate limit restricts the maximum bandwidth that the virtual interface can use on the parent connection.
@@ -3651,6 +4186,12 @@ components:
         interconnectState:
           $ref: "#/components/schemas/InterconnectState"
           description: "The state of the interconnect. The following are the possible values: requested: The initial state of an interconnect. The interconnect stays in the requested state until the Letter of Authorization (LOA) is sent to the customer. pending: The interconnect is approved, and is being initialized. available: The network link is up, and the interconnect is ready for use. down: The network link is down. deleting: The interconnect is being deleted. deleted: The interconnect is deleted. unknown: The state of the interconnect is not available."
+    DeleteResiliencyGroupResult:
+      type: object
+      properties:
+        resiliencyGroup:
+          $ref: "#/components/schemas/ResiliencyGroup"
+          description: Information about the resiliency group.
     DeleteVirtualInterfaceResponse:
       type: object
       properties:
@@ -3879,6 +4420,9 @@ components:
         availableMacSecPortSpeeds:
           $ref: "#/components/schemas/AvailableMacSecPortSpeeds"
           description: The available MAC Security (MACsec) port speeds for the location.
+        availableBillingModes:
+          $ref: "#/components/schemas/AvailableBillingModeList"
+          description: The billing modes available at the location, including the port speeds and Amazon Web Services Regions supported by each mode.
     LocationName:
       type: string
     AvailablePortSpeeds:
@@ -3895,6 +4439,27 @@ components:
       type: array
       items:
         $ref: "#/components/schemas/PortSpeed"
+    AvailableBillingModeList:
+      type: array
+      items:
+        $ref: "#/components/schemas/AvailableBillingMode"
+    AvailableBillingMode:
+      description: Information about a billing mode available at an Direct Connect location.
+      type: object
+      properties:
+        billingMode:
+          $ref: "#/components/schemas/BillingMode"
+          description: The billing mode.
+        availablePortSpeeds:
+          $ref: "#/components/schemas/AvailablePortSpeeds"
+          description: The port speeds available for the billing mode.
+        includedRegions:
+          $ref: "#/components/schemas/IncludedRegionList"
+          description: The Amazon Web Services Regions included with the billing mode.
+    IncludedRegionList:
+      type: array
+      items:
+        $ref: "#/components/schemas/Region"
     RouterTypeIdentifier:
       type: string
     DescribeRouterConfigurationResponse:
@@ -4005,6 +4570,12 @@ components:
       type: array
       items:
         $ref: "#/components/schemas/VirtualInterface"
+    DisassociateConnectionsFromResiliencyGroupResult:
+      type: object
+      properties:
+        resiliencyGroupAssociations:
+          $ref: "#/components/schemas/ResiliencyGroupAssociationList"
+          description: The connection associations for the resiliency group.
     DisassociateMacSecKeyResponse:
       type: object
       properties:
@@ -4014,6 +4585,56 @@ components:
         macSecKeys:
           $ref: "#/components/schemas/MacSecKeyList"
           description: The MAC Security (MACsec) security keys no longer associated with the connection.
+    GetResiliencyGroupResult:
+      type: object
+      properties:
+        resiliencyGroup:
+          $ref: "#/components/schemas/ResiliencyGroup"
+          description: Information about the resiliency group.
+    ListResiliencyGroupAssociationsResult:
+      type: object
+      properties:
+        items_:
+          $ref: "#/components/schemas/ResiliencyGroupAssociationList"
+          description: The connection associations for the resiliency group.
+        nextToken:
+          $ref: "#/components/schemas/PaginationToken"
+          description: The token to use to retrieve the next page of results. This value is null when there are no more results to return.
+    ListResiliencyGroupsResult:
+      type: object
+      properties:
+        items_:
+          $ref: "#/components/schemas/ResiliencyGroupSummaryList"
+          description: Summary information about the resiliency groups.
+        nextToken:
+          $ref: "#/components/schemas/PaginationToken"
+          description: The token to use to retrieve the next page of results. This value is null when there are no more results to return.
+    ResiliencyGroupSummaryList:
+      type: array
+      items:
+        $ref: "#/components/schemas/ResiliencyGroupSummary"
+    ResiliencyGroupSummary:
+      description: Summary information about a resiliency group.
+      type: object
+      properties:
+        resiliencyGroupId:
+          $ref: "#/components/schemas/ResiliencyGroupId"
+          description: The ID of the resiliency group.
+        resiliencyGroupArn:
+          $ref: "#/components/schemas/ResiliencyGroupArn"
+          description: The Amazon Resource Name (ARN) of the resiliency group.
+        resiliencyGroupName:
+          $ref: "#/components/schemas/ResiliencyGroupName"
+          description: The name of the resiliency group.
+        resiliencyGroupType:
+          $ref: "#/components/schemas/ResiliencyGroupType"
+          description: The type of the resiliency group. The valid value is Managed.
+        ownerAccount:
+          $ref: "#/components/schemas/OwnerAccount"
+          description: The ID of the Amazon Web Services account that owns the resiliency group.
+        state:
+          $ref: "#/components/schemas/ResiliencyGroupState"
+          description: The state of the resiliency group.
     RouteFilters:
       description: The filters used to limit the routes returned by ListVirtualInterfaceRoutes.
       type: object
@@ -4188,14 +4809,23 @@ components:
         virtualInterfaceTest:
           $ref: "#/components/schemas/VirtualInterfaceTestHistory"
           description: Information about the virtual interface failover test.
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
         $ref: "#/components/schemas/TagKey"
-    UntagResourceResponse:
+    ConnectionIdList:
+      type: array
+      items:
+        $ref: "#/components/schemas/ConnectionId"
+    UpdateConnectionsBillingModeResponse:
       type: object
+      properties:
+        billingMode:
+          $ref: "#/components/schemas/BillingMode"
+          description: The billing mode applied to the connections.
+        connections:
+          $ref: "#/components/schemas/ConnectionList"
+          description: The connections with the updated billing mode.
     UpdateDirectConnectGatewayResponse:
       type: object
       properties:
@@ -4208,6 +4838,12 @@ components:
         directConnectGatewayAssociation:
           $ref: "#/components/schemas/DirectConnectGatewayAssociation"
           description: Information about an association between a Direct Connect gateway and a virtual private gateway or transit gateway.
+    UpdateResiliencyGroupResult:
+      type: object
+      properties:
+        resiliencyGroup:
+          $ref: "#/components/schemas/ResiliencyGroup"
+          description: Information about the resiliency group.
   x-stackQL-resources:
     direct_connect_gateway_associations:
       id: aws.directconnect.direct_connect_gateway_associations
@@ -4609,10 +5245,10 @@ components:
           - $ref: "#/components/x-stackQL-resources/virtual_interfaces/methods/create_public_virtual_interface"
           - $ref: "#/components/x-stackQL-resources/virtual_interfaces/methods/create_transit_virtual_interface"
         update:
+          - $ref: "#/components/x-stackQL-resources/virtual_interfaces/methods/associate_virtual_interface"
           - $ref: "#/components/x-stackQL-resources/virtual_interfaces/methods/allocate_private_virtual_interface"
           - $ref: "#/components/x-stackQL-resources/virtual_interfaces/methods/allocate_public_virtual_interface"
           - $ref: "#/components/x-stackQL-resources/virtual_interfaces/methods/allocate_transit_virtual_interface"
-          - $ref: "#/components/x-stackQL-resources/virtual_interfaces/methods/associate_virtual_interface"
           - $ref: "#/components/x-stackQL-resources/virtual_interfaces/methods/update_virtual_interface_attributes"
         delete:
           - $ref: "#/components/x-stackQL-resources/virtual_interfaces/methods/delete_virtual_interface"
@@ -4709,6 +5345,114 @@ components:
           - $ref: "#/components/x-stackQL-resources/lags/methods/update_lag"
         delete:
           - $ref: "#/components/x-stackQL-resources/lags/methods/delete_lag"
+    resiliency_groups:
+      id: aws.directconnect.resiliency_groups
+      name: resiliency_groups
+      title: resiliency_groups
+      methods:
+        associate_connections_to_resiliency_group:
+          operation:
+            $ref: "#/paths/~1AssociateConnectionsToResiliencyGroup/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        create_resiliency_group:
+          operation:
+            $ref: "#/paths/~1CreateResiliencyGroup/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        delete_resiliency_group:
+          operation:
+            $ref: "#/paths/~1DeleteResiliencyGroup/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        disassociate_connections_from_resiliency_group:
+          operation:
+            $ref: "#/paths/~1DisassociateConnectionsFromResiliencyGroup/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        get_resiliency_group:
+          operation:
+            $ref: "#/paths/~1GetResiliencyGroup/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.resiliencyGroup
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        list_resiliency_groups:
+          operation:
+            $ref: "#/paths/~1ListResiliencyGroups/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        update_resiliency_group:
+          operation:
+            $ref: "#/paths/~1UpdateResiliencyGroup/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/resiliency_groups/methods/get_resiliency_group"
+          - $ref: "#/components/x-stackQL-resources/resiliency_groups/methods/list_resiliency_groups"
+        insert:
+          - $ref: "#/components/x-stackQL-resources/resiliency_groups/methods/create_resiliency_group"
+        update:
+          - $ref: "#/components/x-stackQL-resources/resiliency_groups/methods/update_resiliency_group"
+          - $ref: "#/components/x-stackQL-resources/resiliency_groups/methods/associate_connections_to_resiliency_group"
+        delete:
+          - $ref: "#/components/x-stackQL-resources/resiliency_groups/methods/delete_resiliency_group"
     connections:
       id: aws.directconnect.connections
       name: connections
@@ -4805,6 +5549,19 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        update_connections_billing_mode:
+          operation:
+            $ref: "#/paths/~1UpdateConnectionsBillingMode/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/connections/methods/describe_connections"
@@ -4813,8 +5570,32 @@ components:
         update:
           - $ref: "#/components/x-stackQL-resources/connections/methods/disassociate_mac_sec_key"
           - $ref: "#/components/x-stackQL-resources/connections/methods/update_connection"
+          - $ref: "#/components/x-stackQL-resources/connections/methods/update_connections_billing_mode"
         delete:
           - $ref: "#/components/x-stackQL-resources/connections/methods/delete_connection"
+    customer_agreements:
+      id: aws.directconnect.customer_agreements
+      name: customer_agreements
+      title: customer_agreements
+      methods:
+        confirm_customer_agreement:
+          operation:
+            $ref: "#/paths/~1ConfirmCustomerAgreement/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
     direct_connect_gateways:
       id: aws.directconnect.direct_connect_gateways
       name: direct_connect_gateways
@@ -5041,10 +5822,10 @@ components:
         insert: []
         update: []
         delete: []
-    customer_metadatas:
-      id: aws.directconnect.customer_metadatas
-      name: customer_metadatas
-      title: customer_metadatas
+    customer_metadata:
+      id: aws.directconnect.customer_metadata
+      name: customer_metadata
+      title: customer_metadata
       methods:
         describe_customer_metadata:
           operation:
@@ -5057,7 +5838,7 @@ components:
             base: "{}"
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/customer_metadatas/methods/describe_customer_metadata"
+          - $ref: "#/components/x-stackQL-resources/customer_metadata/methods/describe_customer_metadata"
         insert: []
         update: []
         delete: []
@@ -5209,7 +5990,6 @@ components:
             $ref: "#/paths/~1TagResource/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -5222,7 +6002,6 @@ components:
             $ref: "#/paths/~1UntagResource/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -5255,6 +6034,30 @@ components:
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/virtual_gateways/methods/describe_virtual_gateways"
+        insert: []
+        update: []
+        delete: []
+    resiliency_group_associations:
+      id: aws.directconnect.resiliency_group_associations
+      name: resiliency_group_associations
+      title: resiliency_group_associations
+      methods:
+        list_resiliency_group_associations:
+          operation:
+            $ref: "#/paths/~1ListResiliencyGroupAssociations/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/resiliency_group_associations/methods/list_resiliency_group_associations"
         insert: []
         update: []
         delete: []

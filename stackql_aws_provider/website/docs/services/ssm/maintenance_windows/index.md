@@ -36,6 +36,7 @@ The following fields are returned by `SELECT` queries:
     defaultValue="get_maintenance_window"
     values={[
         { label: 'get_maintenance_window', value: 'get_maintenance_window' },
+        { label: 'describe_maintenance_windows_for_target', value: 'describe_maintenance_windows_for_target' },
         { label: 'describe_maintenance_windows', value: 'describe_maintenance_windows' }
     ]}
 >
@@ -124,6 +125,30 @@ The following fields are returned by `SELECT` queries:
     <td><CopyableCode code="window_id" /></td>
     <td><code>string</code></td>
     <td>The ID of the created maintenance window. (pattern: &lt;code&gt;^mw-&#91;0-9a-f&#93;&#123;17&#125;$&lt;/code&gt;)</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
+<TabItem value="describe_maintenance_windows_for_target">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="name" /></td>
+    <td><code>string</code></td>
+    <td>The name of the maintenance window. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9_\-.&#93;&#123;3,128&#125;$&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="window_id" /></td>
+    <td><code>string</code></td>
+    <td>The ID of the maintenance window. (pattern: &lt;code&gt;^mw-&#91;0-9a-f&#93;&#123;17&#125;$&lt;/code&gt;)</td>
 </tr>
 </tbody>
 </table>
@@ -227,11 +252,25 @@ The following methods are available for this resource:
     <td>Retrieves a maintenance window.</td>
 </tr>
 <tr>
+    <td><a href="#describe_maintenance_windows_for_target"><CopyableCode code="describe_maintenance_windows_for_target" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Retrieves information about the maintenance window targets or tasks that a managed node is associated with.</td>
+</tr>
+<tr>
     <td><a href="#describe_maintenance_windows"><CopyableCode code="describe_maintenance_windows" /></a></td>
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td></td>
     <td>Retrieves the maintenance windows in an Amazon Web Services account.</td>
+</tr>
+<tr>
+    <td><a href="#create_maintenance_window"><CopyableCode code="create_maintenance_window" /></a></td>
+    <td><CopyableCode code="insert" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-AllowUnassociatedTargets"><code>AllowUnassociatedTargets</code></a></td>
+    <td></td>
+    <td>Creates a new maintenance window. The value you specify for Duration determines the specific end time for the maintenance window based on the time it begins. No maintenance window tasks are permitted to start after the resulting endtime minus the number of hours you specify for Cutoff. For example, if the maintenance window starts at 3 PM, the duration is three hours, and the value you specify for Cutoff is one hour, no maintenance window tasks can start after 5 PM.</td>
 </tr>
 <tr>
     <td><a href="#register_target_with_maintenance_window"><CopyableCode code="register_target_with_maintenance_window" /></a></td>
@@ -246,13 +285,6 @@ The following methods are available for this resource:
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-WindowId"><code>WindowId</code></a>, <a href="#parameter-TaskArn"><code>TaskArn</code></a>, <a href="#parameter-TaskType"><code>TaskType</code></a></td>
     <td></td>
     <td>Adds a new task to a maintenance window.</td>
-</tr>
-<tr>
-    <td><a href="#create_maintenance_window"><CopyableCode code="create_maintenance_window" /></a></td>
-    <td><CopyableCode code="insert" /></td>
-    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-AllowUnassociatedTargets"><code>AllowUnassociatedTargets</code></a></td>
-    <td></td>
-    <td>Creates a new maintenance window. The value you specify for Duration determines the specific end time for the maintenance window based on the time it begins. No maintenance window tasks are permitted to start after the resulting endtime minus the number of hours you specify for Cutoff. For example, if the maintenance window starts at 3 PM, the duration is three hours, and the value you specify for Cutoff is one hour, no maintenance window tasks can start after 5 PM.</td>
 </tr>
 <tr>
     <td><a href="#update_maintenance_window"><CopyableCode code="update_maintenance_window" /></a></td>
@@ -319,6 +351,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     defaultValue="get_maintenance_window"
     values={[
         { label: 'get_maintenance_window', value: 'get_maintenance_window' },
+        { label: 'describe_maintenance_windows_for_target', value: 'describe_maintenance_windows_for_target' },
         { label: 'describe_maintenance_windows', value: 'describe_maintenance_windows' }
     ]}
 >
@@ -342,6 +375,19 @@ schedule,
 schedule_offset,
 schedule_timezone,
 start_date,
+window_id
+FROM aws.ssm.maintenance_windows
+WHERE region = '{{ region }}' -- required
+;
+```
+</TabItem>
+<TabItem value="describe_maintenance_windows_for_target">
+
+Retrieves information about the maintenance window targets or tasks that a managed node is associated with.
+
+```sql
+SELECT
+name,
 window_id
 FROM aws.ssm.maintenance_windows
 WHERE region = '{{ region }}' -- required
@@ -377,14 +423,53 @@ WHERE region = '{{ region }}' -- required
 ## `INSERT` examples
 
 <Tabs
-    defaultValue="register_target_with_maintenance_window"
+    defaultValue="create_maintenance_window"
     values={[
+        { label: 'create_maintenance_window', value: 'create_maintenance_window' },
         { label: 'register_target_with_maintenance_window', value: 'register_target_with_maintenance_window' },
         { label: 'register_task_with_maintenance_window', value: 'register_task_with_maintenance_window' },
-        { label: 'create_maintenance_window', value: 'create_maintenance_window' },
         { label: 'Manifest', value: 'manifest' }
     ]}
 >
+<TabItem value="create_maintenance_window">
+
+Creates a new maintenance window. The value you specify for Duration determines the specific end time for the maintenance window based on the time it begins. No maintenance window tasks are permitted to start after the resulting endtime minus the number of hours you specify for Cutoff. For example, if the maintenance window starts at 3 PM, the duration is three hours, and the value you specify for Cutoff is one hour, no maintenance window tasks can start after 5 PM.
+
+```sql
+INSERT INTO aws.ssm.maintenance_windows (
+Name,
+Description,
+StartDate,
+EndDate,
+Schedule,
+ScheduleTimezone,
+ScheduleOffset,
+Duration,
+Cutoff,
+AllowUnassociatedTargets,
+ClientToken,
+Tags,
+region
+)
+SELECT 
+'{{ Name }}',
+'{{ Description }}',
+'{{ StartDate }}',
+'{{ EndDate }}',
+'{{ Schedule }}',
+'{{ ScheduleTimezone }}',
+{{ ScheduleOffset }},
+{{ Duration }},
+{{ Cutoff }},
+{{ AllowUnassociatedTargets }} /* required */,
+'{{ ClientToken }}',
+'{{ Tags }}',
+'{{ region }}'
+RETURNING
+window_id
+;
+```
+</TabItem>
 <TabItem value="register_target_with_maintenance_window">
 
 Registers a target with a maintenance window.
@@ -461,45 +546,6 @@ window_task_id
 ;
 ```
 </TabItem>
-<TabItem value="create_maintenance_window">
-
-Creates a new maintenance window. The value you specify for Duration determines the specific end time for the maintenance window based on the time it begins. No maintenance window tasks are permitted to start after the resulting endtime minus the number of hours you specify for Cutoff. For example, if the maintenance window starts at 3 PM, the duration is three hours, and the value you specify for Cutoff is one hour, no maintenance window tasks can start after 5 PM.
-
-```sql
-INSERT INTO aws.ssm.maintenance_windows (
-Name,
-Description,
-StartDate,
-EndDate,
-Schedule,
-ScheduleTimezone,
-ScheduleOffset,
-Duration,
-Cutoff,
-AllowUnassociatedTargets,
-ClientToken,
-Tags,
-region
-)
-SELECT 
-'{{ Name }}',
-'{{ Description }}',
-'{{ StartDate }}',
-'{{ EndDate }}',
-'{{ Schedule }}',
-'{{ ScheduleTimezone }}',
-{{ ScheduleOffset }},
-{{ Duration }},
-{{ Cutoff }},
-{{ AllowUnassociatedTargets }} /* required */,
-'{{ ClientToken }}',
-'{{ Tags }}',
-'{{ region }}'
-RETURNING
-window_id
-;
-```
-</TabItem>
 <TabItem value="manifest">
 
 <CodeBlock language="yaml">{`# Description fields are for documentation purposes
@@ -508,6 +554,56 @@ window_id
     - name: region
       value: "{{ region }}"
       description: Required parameter for the maintenance_windows resource.
+    - name: Name
+      value: "{{ Name }}"
+      description: |
+        An optional name for the task.
+    - name: Description
+      value: "{{ Description }}"
+      description: |
+        An optional description for the task.
+    - name: StartDate
+      value: "{{ StartDate }}"
+      description: |
+        The date and time, in ISO-8601 Extended format, for when you want the maintenance window to become active. StartDate allows you to delay activation of the maintenance window until the specified future date. When using a rate schedule, if you provide a start date that occurs in the past, the current date and time are used as the start date.
+    - name: EndDate
+      value: "{{ EndDate }}"
+      description: |
+        The date and time, in ISO-8601 Extended format, for when you want the maintenance window to become inactive. EndDate allows you to set a date and time in the future when the maintenance window will no longer run.
+    - name: Schedule
+      value: "{{ Schedule }}"
+      description: |
+        The schedule of the maintenance window in the form of a cron or rate expression.
+    - name: ScheduleTimezone
+      value: "{{ ScheduleTimezone }}"
+      description: |
+        The time zone that the scheduled maintenance window executions are based on, in Internet Assigned Numbers Authority (IANA) format. For example: "America/Los_Angeles", "UTC", or "Asia/Seoul". For more information, see the Time Zone Database on the IANA website.
+    - name: ScheduleOffset
+      value: {{ ScheduleOffset }}
+      description: |
+        The number of days to wait after the date and time specified by a cron expression before running the maintenance window. For example, the following cron expression schedules a maintenance window to run on the third Tuesday of every month at 11:30 PM. cron(30 23 ? * TUE#3 *) If the schedule offset is 2, the maintenance window won't run until two days later.
+    - name: Duration
+      value: {{ Duration }}
+      description: |
+        The duration of the maintenance window in hours.
+    - name: Cutoff
+      value: {{ Cutoff }}
+      description: |
+        The number of hours before the end of the maintenance window that Amazon Web Services Systems Manager stops scheduling new tasks for execution.
+    - name: AllowUnassociatedTargets
+      value: {{ AllowUnassociatedTargets }}
+      description: |
+        Enables a maintenance window task to run on managed nodes, even if you haven't registered those nodes as targets. If enabled, then you must specify the unregistered managed nodes (by node ID) when you register a task with the maintenance window. If you don't enable this option, then you must specify previously-registered targets when you register a task with the maintenance window.
+    - name: ClientToken
+      value: "{{ ClientToken }}"
+      description: |
+        User-provided idempotency token.
+    - name: Tags
+      description: |
+        Optional metadata that you assign to a resource. Tags enable you to categorize a resource in different ways, such as by purpose, owner, or environment. For example, you might want to tag a maintenance window to identify the type of tasks it will run, the types of targets, and the environment it will run in. In this case, you could specify the following key-value pairs: Key=TaskType,Value=AgentUpdate Key=OS,Value=Windows Key=Environment,Value=Production To add tags to an existing maintenance window, use the AddTagsToResource operation.
+      value:
+        - Key: "{{ Key }}"
+          Value: "{{ Value }}"
     - name: WindowId
       value: "{{ WindowId }}"
       description: |
@@ -527,18 +623,6 @@ window_id
       value: "{{ OwnerInformation }}"
       description: |
         User-provided value that will be included in any Amazon CloudWatch Events events raised while running tasks for these targets in this maintenance window.
-    - name: Name
-      value: "{{ Name }}"
-      description: |
-        The name of the maintenance window.
-    - name: Description
-      value: "{{ Description }}"
-      description: |
-        An optional description for the maintenance window. We recommend specifying a description to help you organize your maintenance windows.
-    - name: ClientToken
-      value: "{{ ClientToken }}"
-      description: |
-        User-provided idempotency token.
     - name: TaskArn
       value: "{{ TaskArn }}"
       description: |
@@ -619,44 +703,6 @@ window_id
         IgnorePollAlarmFailure: {{ IgnorePollAlarmFailure }}
         Alarms:
           - Name: "{{ Name }}"
-    - name: StartDate
-      value: "{{ StartDate }}"
-      description: |
-        The date and time, in ISO-8601 Extended format, for when you want the maintenance window to become active. StartDate allows you to delay activation of the maintenance window until the specified future date. When using a rate schedule, if you provide a start date that occurs in the past, the current date and time are used as the start date.
-    - name: EndDate
-      value: "{{ EndDate }}"
-      description: |
-        The date and time, in ISO-8601 Extended format, for when you want the maintenance window to become inactive. EndDate allows you to set a date and time in the future when the maintenance window will no longer run.
-    - name: Schedule
-      value: "{{ Schedule }}"
-      description: |
-        The schedule of the maintenance window in the form of a cron or rate expression.
-    - name: ScheduleTimezone
-      value: "{{ ScheduleTimezone }}"
-      description: |
-        The time zone that the scheduled maintenance window executions are based on, in Internet Assigned Numbers Authority (IANA) format. For example: "America/Los_Angeles", "UTC", or "Asia/Seoul". For more information, see the Time Zone Database on the IANA website.
-    - name: ScheduleOffset
-      value: {{ ScheduleOffset }}
-      description: |
-        The number of days to wait after the date and time specified by a cron expression before running the maintenance window. For example, the following cron expression schedules a maintenance window to run on the third Tuesday of every month at 11:30 PM. cron(30 23 ? * TUE#3 *) If the schedule offset is 2, the maintenance window won't run until two days later.
-    - name: Duration
-      value: {{ Duration }}
-      description: |
-        The duration of the maintenance window in hours.
-    - name: Cutoff
-      value: {{ Cutoff }}
-      description: |
-        The number of hours before the end of the maintenance window that Amazon Web Services Systems Manager stops scheduling new tasks for execution.
-    - name: AllowUnassociatedTargets
-      value: {{ AllowUnassociatedTargets }}
-      description: |
-        Enables a maintenance window task to run on managed nodes, even if you haven't registered those nodes as targets. If enabled, then you must specify the unregistered managed nodes (by node ID) when you register a task with the maintenance window. If you don't enable this option, then you must specify previously-registered targets when you register a task with the maintenance window.
-    - name: Tags
-      description: |
-        Optional metadata that you assign to a resource. Tags enable you to categorize a resource in different ways, such as by purpose, owner, or environment. For example, you might want to tag a maintenance window to identify the type of tasks it will run, the types of targets, and the environment it will run in. In this case, you could specify the following key-value pairs: Key=TaskType,Value=AgentUpdate Key=OS,Value=Windows Key=Environment,Value=Production To add tags to an existing maintenance window, use the AddTagsToResource operation.
-      value:
-        - Key: "{{ Key }}"
-          Value: "{{ Value }}"
 `}</CodeBlock>
 
 </TabItem>

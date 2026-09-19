@@ -18,7 +18,7 @@ polly service documentation.
 
 :::info[Service Summary]
 
-total resources: __3__  
+total resources: __4__  
 
 :::
 
@@ -26,9 +26,10 @@ total resources: __3__
 <div class="row">
 <div class="providerDocColumn">
 <a href="/services/polly/lexicons/">lexicons</a><br />
-<a href="/services/polly/speech_synthesis_tasks/">speech_synthesis_tasks</a>
+<a href="/services/polly/speech_synthesis_streams/">speech_synthesis_streams</a>
 </div>
 <div class="providerDocColumn">
+<a href="/services/polly/speech_synthesis_tasks/">speech_synthesis_tasks</a><br />
 <a href="/services/polly/voices/">voices</a>
 </div>
 </div>

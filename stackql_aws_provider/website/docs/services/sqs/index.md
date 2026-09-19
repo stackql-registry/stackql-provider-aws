@@ -18,7 +18,7 @@ sqs service documentation.
 
 :::info[Service Summary]
 
-total resources: __10__  
+total resources: __12__  
 
 :::
 
@@ -28,10 +28,12 @@ total resources: __10__
 <a href="/services/sqs/dead_letter_source_queues/">dead_letter_source_queues</a><br />
 <a href="/services/sqs/message_batches/">message_batches</a><br />
 <a href="/services/sqs/message_move_tasks/">message_move_tasks</a><br />
-<a href="/services/sqs/messages/">messages</a><br />
-<a href="/services/sqs/permissions/">permissions</a>
+<a href="/services/sqs/message_visibilities/">message_visibilities</a><br />
+<a href="/services/sqs/message_visibility_batches/">message_visibility_batches</a><br />
+<a href="/services/sqs/messages/">messages</a>
 </div>
 <div class="providerDocColumn">
+<a href="/services/sqs/permissions/">permissions</a><br />
 <a href="/services/sqs/queue_attributes/">queue_attributes</a><br />
 <a href="/services/sqs/queue_tags/">queue_tags</a><br />
 <a href="/services/sqs/queue_urls/">queue_urls</a><br />

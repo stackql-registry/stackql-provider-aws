@@ -18,7 +18,7 @@ billing service documentation.
 
 :::info[Service Summary]
 
-total resources: __11__  
+total resources: __10__  
 
 :::
 
@@ -29,14 +29,13 @@ total resources: __11__
 <a href="/services/billing/billing_views/">billing_views</a><br />
 <a href="/services/billing/credit_allocation_histories/">credit_allocation_histories</a><br />
 <a href="/services/billing/credits/">credits</a><br />
-<a href="/services/billing/enterprise_support_charge_summaries/">enterprise_support_charge_summaries</a><br />
-<a href="/services/billing/enterprise_support_contract_details/">enterprise_support_contract_details</a>
+<a href="/services/billing/enterprise_support_charge_summaries/">enterprise_support_charge_summaries</a>
 </div>
 <div class="providerDocColumn">
+<a href="/services/billing/enterprise_support_contract_details/">enterprise_support_contract_details</a><br />
 <a href="/services/billing/enterprise_support_linked_account_charges/">enterprise_support_linked_account_charges</a><br />
 <a href="/services/billing/resource_policies/">resource_policies</a><br />
 <a href="/services/billing/source_views/">source_views</a><br />
-<a href="/services/billing/source_views_for_billing_views/">source_views_for_billing_views</a><br />
 <a href="/services/billing/tags/">tags</a>
 </div>
 </div>

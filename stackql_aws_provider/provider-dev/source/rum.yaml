@@ -200,10 +200,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateRumMetricDefinitionResponse'
       x-stackql-resource: rum_metric_definitions
       x-stackql-method: update_rum_metric_definition
       x-stackql-verb: UPDATE
@@ -268,10 +264,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteAppMonitorResponse'
       x-stackql-resource: app_monitors
       x-stackql-method: delete_app_monitor
       x-stackql-verb: DELETE
@@ -333,10 +325,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateAppMonitorResponse'
       x-stackql-resource: app_monitors
       x-stackql-method: update_app_monitor
       x-stackql-verb: UPDATE
@@ -453,10 +441,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteRumMetricsDestinationResponse'
       x-stackql-resource: rum_metrics_destinations
       x-stackql-method: delete_rum_metrics_destination
       x-stackql-verb: DELETE
@@ -527,10 +511,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PutRumMetricsDestinationResponse'
       x-stackql-resource: rum_metrics_destinations
       x-stackql-method: put_rum_metrics_destination
       x-stackql-verb: REPLACE
@@ -570,7 +550,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetAppMonitorDataOutputDisplay'
-      x-stackql-resource: app_monitor_datas
+      x-stackql-resource: app_monitor_data
       x-stackql-method: get_app_monitor_data
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: GetAppMonitorDataOutputDisplay
@@ -666,10 +646,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -692,10 +668,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -737,10 +709,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PutRumEventsResponse'
       x-stackql-resource: rum_events
       x-stackql-method: put_rum_events
       x-stackql-verb: REPLACE
@@ -1203,8 +1171,6 @@ components:
       minLength: 36
       maxLength: 36
       pattern: '[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}'
-    DeleteAppMonitorResponse:
-      type: object
     PolicyRevisionId:
       type: string
       minLength: 1
@@ -1215,8 +1181,6 @@ components:
         PolicyRevisionId:
           $ref: '#/components/schemas/PolicyRevisionId'
           description: The revision ID of the policy that was removed, if it had one.
-    DeleteRumMetricsDestinationResponse:
-      type: object
     GetAppMonitorResponse:
       type: object
       properties:
@@ -1551,12 +1515,6 @@ components:
       type: string
       minLength: 1
       maxLength: 255
-    PutRumEventsResponse:
-      type: object
-    PutRumMetricsDestinationResponse:
-      type: object
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
@@ -1566,9 +1524,3 @@ components:
       minLength: 1
       maxLength: 128
       pattern: (?!aws:)[a-zA-Z+-=._:/]+
-    UntagResourceResponse:
-      type: object
-    UpdateAppMonitorResponse:
-      type: object
-    UpdateRumMetricDefinitionResponse:
-      type: object

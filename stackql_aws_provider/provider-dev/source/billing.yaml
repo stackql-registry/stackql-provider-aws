@@ -659,7 +659,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListSourceViewsForBillingViewOutputDisplay'
-      x-stackql-resource: source_views_for_billing_views
+      x-stackql-resource: source_views
       x-stackql-method: list_source_views_for_billing_view
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: ListSourceViewsForBillingViewOutputDisplay
@@ -739,10 +739,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedeemCreditsResponse'
       x-stackql-resource: credits
       x-stackql-method: redeem_credits
       x-stackql-verb: EXEC
@@ -779,10 +775,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -819,10 +811,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -866,10 +854,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateBillingPreferencesResponse'
       x-stackql-resource: billing_preferences
       x-stackql-method: update_billing_preferences
       x-stackql-verb: UPDATE
@@ -2091,16 +2075,10 @@ components:
       minLength: 1
       maxLength: 256
       pattern: .*[^<>"&\%|'  ]*.*
-    RedeemCreditsResponse:
-      type: object
-    TagResourceResponse:
-      type: object
     ResourceTagKeyList:
       type: array
       items:
         $ref: '#/components/schemas/ResourceTagKey'
-    UntagResourceResponse:
-      type: object
     BillingPreferencesPerKey:
       type: array
       items:
@@ -2118,8 +2096,6 @@ components:
       required:
       - key
       - value
-    UpdateBillingPreferencesResponse:
-      type: object
     UpdateBillingViewResponse:
       type: object
       properties:

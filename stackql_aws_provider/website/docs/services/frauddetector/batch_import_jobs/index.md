@@ -100,6 +100,13 @@ The following methods are available for this resource:
     <td></td>
     <td>Deletes the specified batch import job ID record. This action does not delete the data that was batch imported.</td>
 </tr>
+<tr>
+    <td><a href="#cancel_batch_import_job"><CopyableCode code="cancel_batch_import_job" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-jobId"><code>jobId</code></a></td>
+    <td></td>
+    <td>Cancels an in-progress batch import job.</td>
+</tr>
 </tbody>
 </table>
 
@@ -237,6 +244,31 @@ Deletes the specified batch import job ID record. This action does not delete th
 ```sql
 DELETE FROM aws.frauddetector.batch_import_jobs
 WHERE region = '{{ region }}' --required
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="cancel_batch_import_job"
+    values={[
+        { label: 'cancel_batch_import_job', value: 'cancel_batch_import_job' }
+    ]}
+>
+<TabItem value="cancel_batch_import_job">
+
+Cancels an in-progress batch import job.
+
+```sql
+EXEC aws.frauddetector.batch_import_jobs.cancel_batch_import_job 
+@region='{{ region }}' --required 
+@@json=
+'{
+"jobId": "{{ jobId }}"
+}'
 ;
 ```
 </TabItem>

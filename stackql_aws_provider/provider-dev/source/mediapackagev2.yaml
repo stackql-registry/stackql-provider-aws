@@ -56,11 +56,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CancelHarvestJobResponse'
-      x-stackql-resource: origin_endpoints
+      x-stackql-resource: harvest_jobs
       x-stackql-method: cancel_harvest_job
       x-stackql-verb: EXEC
     get:
@@ -140,6 +136,8 @@ paths:
                   $ref: '#/components/schemas/InputSwitchConfiguration'
                 OutputHeaderConfiguration:
                   $ref: '#/components/schemas/OutputHeaderConfiguration'
+                MultiviewConfiguration:
+                  $ref: '#/components/schemas/MultiviewConfiguration'
                 OutputLockingMode:
                   $ref: '#/components/schemas/OutputLockingMode'
                 Tags:
@@ -465,10 +463,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteChannelResponse'
       x-stackql-resource: channels
       x-stackql-method: delete_channel
       x-stackql-verb: DELETE
@@ -541,6 +535,8 @@ paths:
                   $ref: '#/components/schemas/InputSwitchConfiguration'
                 OutputHeaderConfiguration:
                   $ref: '#/components/schemas/OutputHeaderConfiguration'
+                MultiviewConfiguration:
+                  $ref: '#/components/schemas/MultiviewConfiguration'
       responses:
         '200':
           description: Success
@@ -568,10 +564,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteChannelGroupResponse'
       x-stackql-resource: channel_groups
       x-stackql-method: delete_channel_group
       x-stackql-verb: DELETE
@@ -657,10 +649,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteChannelPolicyResponse'
       x-stackql-resource: channel_policies
       x-stackql-method: delete_channel_policy
       x-stackql-verb: DELETE
@@ -726,10 +714,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PutChannelPolicyResponse'
       x-stackql-resource: channel_policies
       x-stackql-method: put_channel_policy
       x-stackql-verb: REPLACE
@@ -763,10 +747,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteOriginEndpointResponse'
       x-stackql-resource: origin_endpoints
       x-stackql-method: delete_origin_endpoint
       x-stackql-verb: DELETE
@@ -910,10 +890,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteOriginEndpointPolicyResponse'
       x-stackql-resource: origin_endpoint_policies
       x-stackql-method: delete_origin_endpoint_policy
       x-stackql-verb: DELETE
@@ -993,10 +969,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PutOriginEndpointPolicyResponse'
       x-stackql-resource: origin_endpoint_policies
       x-stackql-method: put_origin_endpoint_policy
       x-stackql-verb: REPLACE
@@ -1255,8 +1227,6 @@ components:
       minLength: 1
       maxLength: 256
       pattern: '[\S]+'
-    CancelHarvestJobResponse:
-      type: object
     IdempotencyToken:
       type: string
       minLength: 1
@@ -1267,6 +1237,7 @@ components:
       enum:
       - HLS
       - CMAF
+      - MULTIVIEW
     ResourceDescription:
       type: string
       minLength: 0
@@ -1300,6 +1271,50 @@ components:
           $ref: '#/components/schemas/Boolean'
           description: When true, AWS Elemental MediaPackage includes the MQCS in responses to the CDN. This setting is valid
             only when InputType is CMAF.
+    MultiviewConfiguration:
+      description: The multiview configuration for a channel. A multiview channel composites video from several source channels
+        into a single tiled output stream. Players receive one standard HLS or DASH stream instead of several separate streams.
+        This setting is required when InputType is MULTIVIEW, and can't be set for any other input type.
+      type: object
+      properties:
+        AvailableSources:
+          $ref: '#/components/schemas/MultiviewSourceList'
+          description: The channels that players can use as tiles in this multiview channel's output. Each source channel
+            must be in the same channel group as the multiview channel, and must have an InputType of CMAF. Only the channels
+            that you list here are available as tiles.
+        AvailableLayouts:
+          $ref: '#/components/schemas/MultiviewLayoutList'
+          description: The tile layouts that players can request from this multiview channel's origin endpoints. Only the
+            layouts that you list here are available. Each layout must appear at most once.
+      required:
+      - AvailableSources
+      - AvailableLayouts
+    MultiviewSourceList:
+      description: A list of channel names that players can use as tiles in a multiview channel's output.
+      type: array
+      items:
+        $ref: '#/components/schemas/ResourceName'
+    MultiviewLayoutList:
+      description: A list of tile layouts that players can request from a multiview channel's origin endpoints.
+      type: array
+      items:
+        $ref: '#/components/schemas/MultiviewLayoutType'
+    MultiviewLayoutType:
+      description: 'A tile layout for a multiview channel. Each layout determines how many source tiles are composited into
+        the output and how those tiles are arranged. The allowed values are: LAYOUT_SINGLE – One tile at full resolution.
+        Use this to serve a single source as a standard stream. LAYOUT_2EH – Two tiles of equal size, arranged horizontally.
+        LAYOUT_2PL – Two tiles, with one larger primary tile. LAYOUT_3EB – Three tiles of equal size, with two on top and
+        one below. LAYOUT_3EL – Three tiles of equal size, arranged in two columns. LAYOUT_3PL – Three tiles, with one larger
+        primary tile on the left and two stacked on the right. LAYOUT_4E – Four tiles of equal size, arranged in a two-by-two
+        grid. LAYOUT_4PL – Four tiles, with one larger primary tile on the left and three stacked on the right.'
+      type: string
+      enum:
+      - LAYOUT_2EH
+      - LAYOUT_2PL
+      - LAYOUT_3EL
+      - LAYOUT_3PL
+      - LAYOUT_4E
+      - LAYOUT_4PL
     OutputLockingMode:
       type: string
       enum:
@@ -1311,6 +1326,14 @@ components:
     CreateChannelResponse:
       type: object
       properties:
+        MultiviewConfiguration:
+          $ref: '#/components/schemas/MultiviewConfiguration'
+          description: The multiview configuration for the channel. This is present only when InputType is MULTIVIEW.
+        AttachedMultiviewChannels:
+          $ref: '#/components/schemas/AttachedMultiviewChannelList'
+          description: The multiview channels, in the same channel group, that list this channel as an available source. This
+            is a read-only field. You can't delete a channel while any multiview channel still lists it as a source. Use this
+            field to find the multiview channels that you need to update first.
         Arn:
           $ref: '#/components/schemas/String'
           description: The Amazon Resource Name (ARN) associated with the resource.
@@ -1335,10 +1358,12 @@ components:
           $ref: '#/components/schemas/IngestEndpointList'
         InputType:
           $ref: '#/components/schemas/InputType'
-          description: 'The input type will be an immutable field which will be used to define whether the channel will allow
-            CMAF ingest or HLS ingest. If unprovided, it will default to HLS to preserve current behavior. The allowed values
-            are: HLS - The HLS streaming specification (which defines M3U8 manifests and TS segments). CMAF - The DASH-IF
-            CMAF Ingest specification (which defines CMAF segments with optional DASH manifests).'
+          description: 'The input type is an immutable field. It defines whether the channel allows CMAF ingest, HLS ingest,
+            or server-side multiview output. Multiview channels receive no ingest of their own. If unprovided, the value defaults
+            to HLS. The allowed values are: HLS - The HLS streaming specification (which defines M3U8 manifests and TS segments).
+            CMAF - The DASH-IF CMAF Ingest specification (which defines CMAF segments with optional DASH manifests). MULTIVIEW
+            – Server-side multiview. The channel receives no ingest of its own. Instead, it composites video from the source
+            channels in its MultiviewConfiguration into a single tiled output stream.'
         ETag:
           $ref: '#/components/schemas/EntityTag'
           description: The current Entity Tag (ETag) associated with this resource. The entity tag can be used to safely make
@@ -1367,6 +1392,11 @@ components:
       - ChannelGroupName
       - CreatedAt
       - ModifiedAt
+    AttachedMultiviewChannelList:
+      description: A list of the names of multiview channels.
+      type: array
+      items:
+        $ref: '#/components/schemas/ResourceName'
     String:
       type: string
     Timestamp:
@@ -2845,19 +2875,17 @@ components:
       required:
       - ManifestName
       - Url
-    DeleteChannelResponse:
-      type: object
-    DeleteChannelGroupResponse:
-      type: object
-    DeleteChannelPolicyResponse:
-      type: object
-    DeleteOriginEndpointResponse:
-      type: object
-    DeleteOriginEndpointPolicyResponse:
-      type: object
     GetChannelResponse:
       type: object
       properties:
+        MultiviewConfiguration:
+          $ref: '#/components/schemas/MultiviewConfiguration'
+          description: The multiview configuration for the channel. This is present only when InputType is MULTIVIEW.
+        AttachedMultiviewChannels:
+          $ref: '#/components/schemas/AttachedMultiviewChannelList'
+          description: The multiview channels, in the same channel group, that list this channel as an available source. This
+            is a read-only field. You can't delete a channel while any multiview channel still lists it as a source. Use this
+            field to find the multiview channels that you need to update first.
         Arn:
           $ref: '#/components/schemas/String'
           description: The Amazon Resource Name (ARN) associated with the resource.
@@ -2885,10 +2913,12 @@ components:
           $ref: '#/components/schemas/IngestEndpointList'
         InputType:
           $ref: '#/components/schemas/InputType'
-          description: 'The input type will be an immutable field which will be used to define whether the channel will allow
-            CMAF ingest or HLS ingest. If unprovided, it will default to HLS to preserve current behavior. The allowed values
-            are: HLS - The HLS streaming specification (which defines M3U8 manifests and TS segments). CMAF - The DASH-IF
-            CMAF Ingest specification (which defines CMAF segments with optional DASH manifests).'
+          description: 'The input type is an immutable field. It defines whether the channel allows CMAF ingest, HLS ingest,
+            or server-side multiview output. Multiview channels receive no ingest of their own. If unprovided, the value defaults
+            to HLS. The allowed values are: HLS - The HLS streaming specification (which defines M3U8 manifests and TS segments).
+            CMAF - The DASH-IF CMAF Ingest specification (which defines CMAF segments with optional DASH manifests). MULTIVIEW
+            – Server-side multiview. The channel receives no ingest of its own. Instead, it composites video from the source
+            channels in its MultiviewConfiguration into a single tiled output stream.'
         ETag:
           $ref: '#/components/schemas/EntityTag'
           description: The current Entity Tag (ETag) associated with this resource. The entity tag can be used to safely make
@@ -3248,16 +3278,25 @@ components:
           description: Any descriptive information that you want to add to the channel for future identification purposes.
         InputType:
           $ref: '#/components/schemas/InputType'
-          description: 'The input type will be an immutable field which will be used to define whether the channel will allow
-            CMAF ingest or HLS ingest. If unprovided, it will default to HLS to preserve current behavior. The allowed values
-            are: HLS - The HLS streaming specification (which defines M3U8 manifests and TS segments). CMAF - The DASH-IF
-            CMAF Ingest specification (which defines CMAF segments with optional DASH manifests).'
+          description: 'The input type is an immutable field. It defines whether the channel allows CMAF ingest, HLS ingest,
+            or server-side multiview output. Multiview channels receive no ingest of their own. If unprovided, the value defaults
+            to HLS. The allowed values are: HLS - The HLS streaming specification (which defines M3U8 manifests and TS segments).
+            CMAF - The DASH-IF CMAF Ingest specification (which defines CMAF segments with optional DASH manifests). MULTIVIEW
+            – Server-side multiview. The channel receives no ingest of its own. Instead, it composites video from the source
+            channels in its MultiviewConfiguration into a single tiled output stream.'
         OutputLockingMode:
           $ref: '#/components/schemas/OutputLockingMode'
           description: 'The output locking mode configured for the channel. The allowed values are: EPOCH_LOCKED - The channel
             uses epoch-locked behavior with deterministic sequence numbering and fixed segment boundaries aligned to epoch
             time. NON_EPOCH_LOCKED - The channel uses non-epoch-locked behavior with duration-based segment combining and
             monotonically increasing sequence numbers starting from 0.'
+        MultiviewConfiguration:
+          $ref: '#/components/schemas/MultiviewConfiguration'
+          description: The multiview configuration for the channel. This is present only when InputType is MULTIVIEW.
+        AttachedMultiviewChannels:
+          $ref: '#/components/schemas/AttachedMultiviewChannelList'
+          description: The multiview channels, in the same channel group, that list this channel as an available source. This
+            is a read-only field.
       required:
       - Arn
       - ChannelName
@@ -3518,10 +3557,6 @@ components:
           type: object
           properties: {}
           description: Contains a map of the key-value pairs for the resource tag or tags assigned to the resource.
-    PutChannelPolicyResponse:
-      type: object
-    PutOriginEndpointPolicyResponse:
-      type: object
     ResetChannelStateResponse:
       type: object
       properties:
@@ -3575,6 +3610,14 @@ components:
     UpdateChannelResponse:
       type: object
       properties:
+        MultiviewConfiguration:
+          $ref: '#/components/schemas/MultiviewConfiguration'
+          description: The multiview configuration for the channel. This is present only when InputType is MULTIVIEW.
+        AttachedMultiviewChannels:
+          $ref: '#/components/schemas/AttachedMultiviewChannelList'
+          description: The multiview channels, in the same channel group, that list this channel as an available source. This
+            is a read-only field. You can't delete a channel while any multiview channel still lists it as a source. Use this
+            field to find the multiview channels that you need to update first.
         Arn:
           $ref: '#/components/schemas/String'
           description: The Amazon Resource Name (ARN) associated with the resource.
@@ -3599,10 +3642,12 @@ components:
           $ref: '#/components/schemas/IngestEndpointList'
         InputType:
           $ref: '#/components/schemas/InputType'
-          description: 'The input type will be an immutable field which will be used to define whether the channel will allow
-            CMAF ingest or HLS ingest. If unprovided, it will default to HLS to preserve current behavior. The allowed values
-            are: HLS - The HLS streaming specification (which defines M3U8 manifests and TS segments). CMAF - The DASH-IF
-            CMAF Ingest specification (which defines CMAF segments with optional DASH manifests).'
+          description: 'The input type is an immutable field. It defines whether the channel allows CMAF ingest, HLS ingest,
+            or server-side multiview output. Multiview channels receive no ingest of their own. If unprovided, the value defaults
+            to HLS. The allowed values are: HLS - The HLS streaming specification (which defines M3U8 manifests and TS segments).
+            CMAF - The DASH-IF CMAF Ingest specification (which defines CMAF segments with optional DASH manifests). MULTIVIEW
+            – Server-side multiview. The channel receives no ingest of its own. Instead, it composites video from the source
+            channels in its MultiviewConfiguration into a single tiled output stream.'
         ETag:
           $ref: '#/components/schemas/EntityTag'
           description: The current Entity Tag (ETag) associated with this resource. The entity tag can be used to safely make

@@ -128,18 +128,18 @@ The following methods are available for this resource:
     <td>For an existing CodeBuild build project that has its source code stored in a GitHub or Bitbucket repository, enables CodeBuild to start rebuilding the source code every time a code change is pushed to the repository. If you enable webhooks for an CodeBuild project, and the project is used as a build step in CodePipeline, then two identical builds are created for each commit. One build is triggered through webhooks, and one through CodePipeline. Because billing is on a per-build basis, you are billed for both builds. Therefore, if you are using CodePipeline, we recommend that you disable webhooks in CodeBuild. In the CodeBuild console, clear the Webhook box. For more information, see step 5 in Change a Build Project's Settings.</td>
 </tr>
 <tr>
-    <td><a href="#update_project_visibility"><CopyableCode code="update_project_visibility" /></a></td>
-    <td><CopyableCode code="update" /></td>
-    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-projectArn"><code>projectArn</code></a>, <a href="#parameter-projectVisibility"><code>projectVisibility</code></a></td>
-    <td></td>
-    <td>Changes the public visibility for a project. The project's build results, logs, and artifacts are available to the general public. For more information, see Public build projects in the CodeBuild User Guide. The following should be kept in mind when making your projects public: All of a project's build results, logs, and artifacts, including builds that were run when the project was private, are available to the general public. All build logs and artifacts are available to the public. Environment variables, source code, and other sensitive information may have been output to the build logs and artifacts. You must be careful about what information is output to the build logs. Some best practice are: Do not store sensitive values in environment variables. We recommend that you use an Amazon EC2 Systems Manager Parameter Store or Secrets Manager to store sensitive values. Follow Best practices for using webhooks in the CodeBuild User Guide to limit which entities can trigger a build, and do not store the buildspec in the project itself, to ensure that your webhooks are as secure as possible. A malicious user can use public builds to distribute malicious artifacts. We recommend that you review all pull requests to verify that the pull request is a legitimate change. We also recommend that you validate any artifacts with their checksums to make sure that the correct artifacts are being downloaded.</td>
-</tr>
-<tr>
     <td><a href="#update_project"><CopyableCode code="update_project" /></a></td>
     <td><CopyableCode code="update" /></td>
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-name"><code>name</code></a></td>
     <td></td>
     <td>Changes the settings of a build project.</td>
+</tr>
+<tr>
+    <td><a href="#update_project_visibility"><CopyableCode code="update_project_visibility" /></a></td>
+    <td><CopyableCode code="update" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-projectArn"><code>projectArn</code></a>, <a href="#parameter-projectVisibility"><code>projectVisibility</code></a></td>
+    <td></td>
+    <td>Changes the public visibility for a project. The project's build results, logs, and artifacts are available to the general public. For more information, see Public build projects in the CodeBuild User Guide. The following should be kept in mind when making your projects public: All of a project's build results, logs, and artifacts, including builds that were run when the project was private, are available to the general public. All build logs and artifacts are available to the public. Environment variables, source code, and other sensitive information may have been output to the build logs and artifacts. You must be careful about what information is output to the build logs. Some best practice are: Do not store sensitive values in environment variables. We recommend that you use an Amazon EC2 Systems Manager Parameter Store or Secrets Manager to store sensitive values. Follow Best practices for using webhooks in the CodeBuild User Guide to limit which entities can trigger a build, and do not store the buildspec in the project itself, to ensure that your webhooks are as secure as possible. A malicious user can use public builds to distribute malicious artifacts. We recommend that you review all pull requests to verify that the pull request is a legitimate change. We also recommend that you validate any artifacts with their checksums to make sure that the correct artifacts are being downloaded.</td>
 </tr>
 <tr>
     <td><a href="#update_webhook"><CopyableCode code="update_webhook" /></a></td>
@@ -586,33 +586,13 @@ webhook
 ## `UPDATE` examples
 
 <Tabs
-    defaultValue="update_project_visibility"
+    defaultValue="update_project"
     values={[
-        { label: 'update_project_visibility', value: 'update_project_visibility' },
         { label: 'update_project', value: 'update_project' },
+        { label: 'update_project_visibility', value: 'update_project_visibility' },
         { label: 'update_webhook', value: 'update_webhook' }
     ]}
 >
-<TabItem value="update_project_visibility">
-
-Changes the public visibility for a project. The project's build results, logs, and artifacts are available to the general public. For more information, see Public build projects in the CodeBuild User Guide. The following should be kept in mind when making your projects public: All of a project's build results, logs, and artifacts, including builds that were run when the project was private, are available to the general public. All build logs and artifacts are available to the public. Environment variables, source code, and other sensitive information may have been output to the build logs and artifacts. You must be careful about what information is output to the build logs. Some best practice are: Do not store sensitive values in environment variables. We recommend that you use an Amazon EC2 Systems Manager Parameter Store or Secrets Manager to store sensitive values. Follow Best practices for using webhooks in the CodeBuild User Guide to limit which entities can trigger a build, and do not store the buildspec in the project itself, to ensure that your webhooks are as secure as possible. A malicious user can use public builds to distribute malicious artifacts. We recommend that you review all pull requests to verify that the pull request is a legitimate change. We also recommend that you validate any artifacts with their checksums to make sure that the correct artifacts are being downloaded.
-
-```sql
-UPDATE aws.codebuild.projects
-SET 
-projectArn = '{{ projectArn }}',
-projectVisibility = '{{ projectVisibility }}',
-resourceAccessRole = '{{ resourceAccessRole }}'
-WHERE 
-region = '{{ region }}' --required
-AND projectArn = '{{ projectArn }}' --required
-AND projectVisibility = '{{ projectVisibility }}' --required
-RETURNING
-project_arn,
-project_visibility,
-public_project_alias;
-```
-</TabItem>
 <TabItem value="update_project">
 
 Changes the settings of a build project.
@@ -647,6 +627,26 @@ region = '{{ region }}' --required
 AND name = '{{ name }}' --required
 RETURNING
 project;
+```
+</TabItem>
+<TabItem value="update_project_visibility">
+
+Changes the public visibility for a project. The project's build results, logs, and artifacts are available to the general public. For more information, see Public build projects in the CodeBuild User Guide. The following should be kept in mind when making your projects public: All of a project's build results, logs, and artifacts, including builds that were run when the project was private, are available to the general public. All build logs and artifacts are available to the public. Environment variables, source code, and other sensitive information may have been output to the build logs and artifacts. You must be careful about what information is output to the build logs. Some best practice are: Do not store sensitive values in environment variables. We recommend that you use an Amazon EC2 Systems Manager Parameter Store or Secrets Manager to store sensitive values. Follow Best practices for using webhooks in the CodeBuild User Guide to limit which entities can trigger a build, and do not store the buildspec in the project itself, to ensure that your webhooks are as secure as possible. A malicious user can use public builds to distribute malicious artifacts. We recommend that you review all pull requests to verify that the pull request is a legitimate change. We also recommend that you validate any artifacts with their checksums to make sure that the correct artifacts are being downloaded.
+
+```sql
+UPDATE aws.codebuild.projects
+SET 
+projectArn = '{{ projectArn }}',
+projectVisibility = '{{ projectVisibility }}',
+resourceAccessRole = '{{ resourceAccessRole }}'
+WHERE 
+region = '{{ region }}' --required
+AND projectArn = '{{ projectArn }}' --required
+AND projectVisibility = '{{ projectVisibility }}' --required
+RETURNING
+project_arn,
+project_visibility,
+public_project_alias;
 ```
 </TabItem>
 <TabItem value="update_webhook">

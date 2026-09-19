@@ -677,10 +677,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TagResourceResponse"
     delete:
       operationId: UntagResource
       description: Removes a tag from an IoT Greengrass resource.
@@ -700,10 +696,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UntagResourceResponse"
   /greengrass/v2/resolveComponentCandidates:
     post:
       operationId: ResolveComponentCandidates
@@ -2008,8 +2000,6 @@ components:
         message:
           $ref: "#/components/schemas/NonEmptyString"
           description: A message that communicates details about the vendor guidance state of the component version. This message communicates why a component version is discontinued or deleted.
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
@@ -2018,8 +2008,6 @@ components:
       type: string
       minLength: 1
       maxLength: 128
-    UntagResourceResponse:
-      type: object
     UpdateConnectivityInfoResponse:
       type: object
       properties:
@@ -2069,10 +2057,10 @@ components:
         update:
           - $ref: "#/components/x-stackQL-resources/service_role_from_accounts/methods/disassociate_service_role_from_account"
         delete: []
-    service_role_for_accounts:
-      id: aws.greengrassv2.service_role_for_accounts
-      name: service_role_for_accounts
-      title: service_role_for_accounts
+    service_roles:
+      id: aws.greengrassv2.service_roles
+      name: service_roles
+      title: service_roles
       methods:
         get_service_role_for_account:
           operation:
@@ -2082,10 +2070,83 @@ components:
             mediaType: application/json
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/service_role_for_accounts/methods/get_service_role_for_account"
+          - $ref: "#/components/x-stackQL-resources/service_roles/methods/get_service_role_for_account"
         insert: []
         update: []
         delete: []
+    client_devices:
+      id: aws.greengrassv2.client_devices
+      name: client_devices
+      title: client_devices
+      methods:
+        batch_associate_client_device_with_core_device:
+          operation:
+            $ref: "#/paths/~1greengrass~1v2~1coreDevices~1{core_device_thing_name}~1associateClientDevices/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
+    core_devices:
+      id: aws.greengrassv2.core_devices
+      name: core_devices
+      title: core_devices
+      methods:
+        batch_disassociate_client_device_from_core_device:
+          operation:
+            $ref: "#/paths/~1greengrass~1v2~1coreDevices~1{core_device_thing_name}~1disassociateClientDevices/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        delete_core_device:
+          operation:
+            $ref: "#/paths/~1greengrass~1v2~1coreDevices~1{core_device_thing_name}/delete"
+          response:
+            openAPIDocKey: "204"
+        get_core_device:
+          operation:
+            $ref: "#/paths/~1greengrass~1v2~1coreDevices~1{core_device_thing_name}/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+        list_core_devices:
+          operation:
+            $ref: "#/paths/~1greengrass~1v2~1coreDevices/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.coreDevices
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/core_devices/methods/get_core_device"
+          - $ref: "#/components/x-stackQL-resources/core_devices/methods/list_core_devices"
+        insert: []
+        update: []
+        delete:
+          - $ref: "#/components/x-stackQL-resources/core_devices/methods/delete_core_device"
     deployments:
       id: aws.greengrassv2.deployments
       name: deployments
@@ -2234,47 +2295,6 @@ components:
         update: []
         delete:
           - $ref: "#/components/x-stackQL-resources/components/methods/delete_component"
-    core_devices:
-      id: aws.greengrassv2.core_devices
-      name: core_devices
-      title: core_devices
-      methods:
-        delete_core_device:
-          operation:
-            $ref: "#/paths/~1greengrass~1v2~1coreDevices~1{core_device_thing_name}/delete"
-          response:
-            openAPIDocKey: "204"
-        get_core_device:
-          operation:
-            $ref: "#/paths/~1greengrass~1v2~1coreDevices~1{core_device_thing_name}/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-        list_core_devices:
-          operation:
-            $ref: "#/paths/~1greengrass~1v2~1coreDevices/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.coreDevices
-          request:
-            nativeCasing: pascal
-          config:
-            pagination:
-              requestToken:
-                key: nextToken
-                location: query
-              responseToken:
-                key: $.nextToken
-                location: body
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/core_devices/methods/get_core_device"
-          - $ref: "#/components/x-stackQL-resources/core_devices/methods/list_core_devices"
-        insert: []
-        update: []
-        delete:
-          - $ref: "#/components/x-stackQL-resources/core_devices/methods/delete_core_device"
     component_version_artifacts:
       id: aws.greengrassv2.component_version_artifacts
       name: component_version_artifacts
@@ -2294,10 +2314,10 @@ components:
         insert: []
         update: []
         delete: []
-    connectivity_infos:
-      id: aws.greengrassv2.connectivity_infos
-      name: connectivity_infos
-      title: connectivity_infos
+    connectivity_info:
+      id: aws.greengrassv2.connectivity_info
+      name: connectivity_info
+      title: connectivity_info
       methods:
         get_connectivity_info:
           operation:
@@ -2318,10 +2338,10 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/connectivity_infos/methods/get_connectivity_info"
+          - $ref: "#/components/x-stackQL-resources/connectivity_info/methods/get_connectivity_info"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/connectivity_infos/methods/update_connectivity_info"
+          - $ref: "#/components/x-stackQL-resources/connectivity_info/methods/update_connectivity_info"
         delete: []
     client_devices_associated_with_core_devices:
       id: aws.greengrassv2.client_devices_associated_with_core_devices
@@ -2423,7 +2443,6 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -2434,7 +2453,6 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
       sqlVerbs:
@@ -2444,4 +2462,25 @@ components:
         update:
           - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
           - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
+        delete: []
+    component_candidates:
+      id: aws.greengrassv2.component_candidates
+      name: component_candidates
+      title: component_candidates
+      methods:
+        resolve_component_candidates:
+          operation:
+            $ref: "#/paths/~1greengrass~1v2~1resolveComponentCandidates/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
         delete: []

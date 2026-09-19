@@ -79,14 +79,14 @@ The following methods are available for this resource:
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-ResourceArn"><code>ResourceArn</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>Retrieves the specified inline DataProtectionPolicy document that is stored in the specified Amazon SNS topic.</td>
+    <td>Amazon SNS message data protection is no longer available to new customers. For more information and guidance on alternatives, see Amazon SNS message data protection availability change. Retrieves the specified inline DataProtectionPolicy document that is stored in the specified Amazon SNS topic.</td>
 </tr>
 <tr>
     <td><a href="#put_data_protection_policy"><CopyableCode code="put_data_protection_policy" /></a></td>
     <td><CopyableCode code="replace" /></td>
     <td><a href="#parameter-ResourceArn"><code>ResourceArn</code></a>, <a href="#parameter-DataProtectionPolicy"><code>DataProtectionPolicy</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>Adds or updates an inline policy document that is stored in the specified Amazon SNS topic.</td>
+    <td>Amazon SNS message data protection is no longer available to new customers. For more information and guidance on alternatives, see Amazon SNS message data protection availability change. Adds or updates an inline policy document that is stored in the specified Amazon SNS topic.</td>
 </tr>
 </tbody>
 </table>
@@ -132,7 +132,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 >
 <TabItem value="get_data_protection_policy">
 
-Retrieves the specified inline DataProtectionPolicy document that is stored in the specified Amazon SNS topic.
+Amazon SNS message data protection is no longer available to new customers. For more information and guidance on alternatives, see Amazon SNS message data protection availability change. Retrieves the specified inline DataProtectionPolicy document that is stored in the specified Amazon SNS topic.
 
 ```sql
 SELECT
@@ -156,7 +156,7 @@ AND region = '{{ region }}' -- required
 >
 <TabItem value="put_data_protection_policy">
 
-Adds or updates an inline policy document that is stored in the specified Amazon SNS topic.
+Amazon SNS message data protection is no longer available to new customers. For more information and guidance on alternatives, see Amazon SNS message data protection availability change. Adds or updates an inline policy document that is stored in the specified Amazon SNS topic.
 
 ```sql
 REPLACE aws.sns.data_protection_policies

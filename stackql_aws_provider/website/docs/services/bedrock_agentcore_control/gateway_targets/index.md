@@ -529,6 +529,10 @@ updated_at
             stickinessConfiguration:
               identifier: "{{ identifier }}"
               timeout: {{ timeout }}
+              compositeIdentifier:
+                - "{{ compositeIdentifier }}"
+            staticQueryParameters: "{{ staticQueryParameters }}"
+            staticQueryParameterConflictResolution: "{{ staticQueryParameterConflictResolution }}"
           connector:
             source:
               connectorId: "{{ connectorId }}"

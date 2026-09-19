@@ -256,7 +256,7 @@ The following methods are available for this resource:
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>Lists all executions of a state machine or a Map Run. You can list all executions related to a state machine by specifying a state machine Amazon Resource Name (ARN), or those related to a Map Run by specifying a Map Run ARN. Using this API action, you can also list all redriven executions. You can also provide a state machine alias ARN or version ARN to list the executions associated with a specific alias or version. Results are sorted by time, with the most recent execution first. If nextToken is returned, there are more results available. The value of nextToken is a unique pagination token for each page. Make the call again using the returned token to retrieve the next page. Keep all other arguments unchanged. Each pagination token expires after 24 hours. Using an expired pagination token will return an HTTP 400 InvalidToken error. This operation is eventually consistent. The results are best effort and may not reflect very recent updates and changes. This API action is not supported by EXPRESS state machines.</td>
+    <td>Lists all executions of a state machine or a Map Run. You can list all executions related to a state machine by specifying a state machine Amazon Resource Name (ARN), or those related to a Map Run by specifying a Map Run ARN. Using this API action, you can also list all redriven executions. You can also provide a state machine alias ARN or version ARN to list the executions associated with a specific alias or version. Results are sorted by time, with the most recent execution first. Running executions are sorted by their startDate or redriveDate, and other executions are sorted by their stopDate. If nextToken is returned, there are more results available. The value of nextToken is a unique pagination token for each page. Make the call again using the returned token to retrieve the next page. Keep all other arguments unchanged. Each pagination token expires after 24 hours. Using an expired pagination token will return an HTTP 400 InvalidToken error. This operation is eventually consistent. The results are best effort and may not reflect very recent updates and changes. This API action is not supported by EXPRESS state machines. However, you may list EXPRESS children started by a map run using the mapRunArn parameter.</td>
 </tr>
 <tr>
     <td><a href="#redrive_execution"><CopyableCode code="redrive_execution" /></a></td>
@@ -264,6 +264,20 @@ The following methods are available for this resource:
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-executionArn"><code>executionArn</code></a></td>
     <td></td>
     <td>Restarts unsuccessful executions of Standard workflows that didn't complete successfully in the last 14 days. These include failed, aborted, or timed out executions. When you redrive an execution, it continues the failed execution from the unsuccessful step and uses the same input. Step Functions preserves the results and execution history of the successful steps, and doesn't rerun these steps when you redrive an execution. Redriven executions use the same state machine definition and execution ARN as the original execution attempt. For workflows that include an Inline Map or Parallel state, RedriveExecution API action reschedules and redrives only the iterations and branches that failed or aborted. To redrive a workflow that includes a Distributed Map state whose Map Run failed, you must redrive the parent workflow. The parent workflow redrives all the unsuccessful states, including a failed Map Run. If a Map Run was not started in the original execution attempt, the redriven parent workflow starts the Map Run. This API action is not supported by EXPRESS state machines. However, you can restart the unsuccessful executions of Express child workflows in a Distributed Map by redriving its Map Run. When you redrive a Map Run, the Express child workflows are rerun using the StartExecution API action. For more information, see Redriving Map Runs. You can redrive executions if your original execution meets the following conditions: The execution status isn't SUCCEEDED. Your workflow execution has not exceeded the redrivable period of 14 days. Redrivable period refers to the time during which you can redrive a given execution. This period starts from the day a state machine completes its execution. The workflow execution has not exceeded the maximum open time of one year. For more information about state machine quotas, see Quotas related to state machine executions. The execution event history count is less than 24,999. Redriven executions append their event history to the existing event history. Make sure your workflow execution contains less than 24,999 events to accommodate the ExecutionRedriven history event and at least one other history event.</td>
+</tr>
+<tr>
+    <td><a href="#start_execution"><CopyableCode code="start_execution" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-stateMachineArn"><code>stateMachineArn</code></a></td>
+    <td></td>
+    <td>Starts a state machine execution. A qualified state machine ARN can either refer to a Distributed Map state defined within a state machine, a version ARN, or an alias ARN. The following are some examples of qualified and unqualified state machine ARNs: The following qualified state machine ARN refers to a Distributed Map state with a label mapStateLabel in a state machine named myStateMachine. arn:partition:states:region:account-id:stateMachine:myStateMachine/mapStateLabel If you provide a qualified state machine ARN that refers to a Distributed Map state, the request fails with ValidationException. The following qualified state machine ARN refers to an alias named PROD. arn:<code>&lt;partition&gt;</code>:states:<code>&lt;region&gt;</code>:<code>&lt;account-id&gt;</code>:stateMachine:<code>&lt;myStateMachine:PROD&gt;</code> If you provide a qualified state machine ARN that refers to a version ARN or an alias ARN, the request starts execution for that version or alias. The following unqualified state machine ARN refers to a state machine named myStateMachine. arn:<code>&lt;partition&gt;</code>:states:<code>&lt;region&gt;</code>:<code>&lt;account-id&gt;</code>:stateMachine:<code>&lt;myStateMachine&gt;</code> If you start an execution with an unqualified state machine ARN, Step Functions uses the latest revision of the state machine for the execution. To start executions of a state machine version, call StartExecution and provide the version ARN or the ARN of an alias that points to the version. StartExecution is idempotent for STANDARD workflows. For a STANDARD workflow, if you call StartExecution with the same name and input as a running execution, the call succeeds and return the same response as the original request. If the execution is closed or if the input is different, it returns a 400 ExecutionAlreadyExists error. You can reuse the name 90 days after it closes. StartExecution isn't idempotent for EXPRESS workflows.</td>
+</tr>
+<tr>
+    <td><a href="#stop_execution"><CopyableCode code="stop_execution" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-executionArn"><code>executionArn</code></a></td>
+    <td></td>
+    <td>Stops an execution. This API action is not supported by EXPRESS state machines. For an execution with encryption enabled, Step Functions will encrypt the error and cause fields using the KMS key for the execution role. A caller can stop an execution without using any KMS permissions in the execution role if the caller provides a null value for both error and cause fields because no data needs to be encrypted.</td>
 </tr>
 </tbody>
 </table>
@@ -331,7 +345,7 @@ WHERE region = '{{ region }}' -- required
 </TabItem>
 <TabItem value="list_executions">
 
-Lists all executions of a state machine or a Map Run. You can list all executions related to a state machine by specifying a state machine Amazon Resource Name (ARN), or those related to a Map Run by specifying a Map Run ARN. Using this API action, you can also list all redriven executions. You can also provide a state machine alias ARN or version ARN to list the executions associated with a specific alias or version. Results are sorted by time, with the most recent execution first. If nextToken is returned, there are more results available. The value of nextToken is a unique pagination token for each page. Make the call again using the returned token to retrieve the next page. Keep all other arguments unchanged. Each pagination token expires after 24 hours. Using an expired pagination token will return an HTTP 400 InvalidToken error. This operation is eventually consistent. The results are best effort and may not reflect very recent updates and changes. This API action is not supported by EXPRESS state machines.
+Lists all executions of a state machine or a Map Run. You can list all executions related to a state machine by specifying a state machine Amazon Resource Name (ARN), or those related to a Map Run by specifying a Map Run ARN. Using this API action, you can also list all redriven executions. You can also provide a state machine alias ARN or version ARN to list the executions associated with a specific alias or version. Results are sorted by time, with the most recent execution first. Running executions are sorted by their startDate or redriveDate, and other executions are sorted by their stopDate. If nextToken is returned, there are more results available. The value of nextToken is a unique pagination token for each page. Make the call again using the returned token to retrieve the next page. Keep all other arguments unchanged. Each pagination token expires after 24 hours. Using an expired pagination token will return an HTTP 400 InvalidToken error. This operation is eventually consistent. The results are best effort and may not reflect very recent updates and changes. This API action is not supported by EXPRESS state machines. However, you may list EXPRESS children started by a map run using the mapRunArn parameter.
 
 ```sql
 SELECT
@@ -360,7 +374,9 @@ WHERE region = '{{ region }}' -- required
 <Tabs
     defaultValue="redrive_execution"
     values={[
-        { label: 'redrive_execution', value: 'redrive_execution' }
+        { label: 'redrive_execution', value: 'redrive_execution' },
+        { label: 'start_execution', value: 'start_execution' },
+        { label: 'stop_execution', value: 'stop_execution' }
     ]}
 >
 <TabItem value="redrive_execution">
@@ -374,6 +390,39 @@ EXEC aws.stepfunctions.executions.redrive_execution
 '{
 "executionArn": "{{ executionArn }}", 
 "clientToken": "{{ clientToken }}"
+}'
+;
+```
+</TabItem>
+<TabItem value="start_execution">
+
+Starts a state machine execution. A qualified state machine ARN can either refer to a Distributed Map state defined within a state machine, a version ARN, or an alias ARN. The following are some examples of qualified and unqualified state machine ARNs: The following qualified state machine ARN refers to a Distributed Map state with a label mapStateLabel in a state machine named myStateMachine. arn:partition:states:region:account-id:stateMachine:myStateMachine/mapStateLabel If you provide a qualified state machine ARN that refers to a Distributed Map state, the request fails with ValidationException. The following qualified state machine ARN refers to an alias named PROD. arn:<code>&lt;partition&gt;</code>:states:<code>&lt;region&gt;</code>:<code>&lt;account-id&gt;</code>:stateMachine:<code>&lt;myStateMachine:PROD&gt;</code> If you provide a qualified state machine ARN that refers to a version ARN or an alias ARN, the request starts execution for that version or alias. The following unqualified state machine ARN refers to a state machine named myStateMachine. arn:<code>&lt;partition&gt;</code>:states:<code>&lt;region&gt;</code>:<code>&lt;account-id&gt;</code>:stateMachine:<code>&lt;myStateMachine&gt;</code> If you start an execution with an unqualified state machine ARN, Step Functions uses the latest revision of the state machine for the execution. To start executions of a state machine version, call StartExecution and provide the version ARN or the ARN of an alias that points to the version. StartExecution is idempotent for STANDARD workflows. For a STANDARD workflow, if you call StartExecution with the same name and input as a running execution, the call succeeds and return the same response as the original request. If the execution is closed or if the input is different, it returns a 400 ExecutionAlreadyExists error. You can reuse the name 90 days after it closes. StartExecution isn't idempotent for EXPRESS workflows.
+
+```sql
+EXEC aws.stepfunctions.executions.start_execution 
+@region='{{ region }}' --required 
+@@json=
+'{
+"stateMachineArn": "{{ stateMachineArn }}", 
+"name": "{{ name }}", 
+"input": "{{ input }}", 
+"traceHeader": "{{ traceHeader }}"
+}'
+;
+```
+</TabItem>
+<TabItem value="stop_execution">
+
+Stops an execution. This API action is not supported by EXPRESS state machines. For an execution with encryption enabled, Step Functions will encrypt the error and cause fields using the KMS key for the execution role. A caller can stop an execution without using any KMS permissions in the execution role if the caller provides a null value for both error and cause fields because no data needs to be encrypted.
+
+```sql
+EXEC aws.stepfunctions.executions.stop_execution 
+@region='{{ region }}' --required 
+@@json=
+'{
+"executionArn": "{{ executionArn }}", 
+"error": "{{ error }}", 
+"cause": "{{ cause }}"
 }'
 ;
 ```

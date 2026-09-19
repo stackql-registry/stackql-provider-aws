@@ -113,10 +113,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteEdgeConfigurationOutput'
       x-stackql-resource: edge_configurations
       x-stackql-method: delete_edge_configuration
       x-stackql-verb: DELETE
@@ -142,10 +138,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteSignalingChannelOutput'
       x-stackql-resource: signaling_channels
       x-stackql-method: delete_signaling_channel
       x-stackql-verb: DELETE
@@ -174,10 +166,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteStreamOutput'
       x-stackql-resource: streams
       x-stackql-method: delete_stream
       x-stackql-verb: DELETE
@@ -701,10 +689,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceOutput'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -735,10 +719,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagStreamOutput'
       x-stackql-resource: tags
       x-stackql-method: tag_stream
       x-stackql-verb: UPDATE
@@ -765,10 +745,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceOutput'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -797,10 +773,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagStreamOutput'
       x-stackql-resource: tags
       x-stackql-method: untag_stream
       x-stackql-verb: UPDATE
@@ -841,10 +813,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateDataRetentionOutput'
       x-stackql-resource: data_retentions
       x-stackql-method: update_data_retention
       x-stackql-verb: UPDATE
@@ -869,10 +837,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateImageGenerationConfigurationOutput'
       x-stackql-resource: image_generation_configurations
       x-stackql-method: update_image_generation_configuration
       x-stackql-verb: UPDATE
@@ -903,10 +867,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateMediaStorageConfigurationOutput'
       x-stackql-resource: media_storage_configurations
       x-stackql-method: update_media_storage_configuration
       x-stackql-verb: UPDATE
@@ -931,10 +891,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateNotificationConfigurationOutput'
       x-stackql-resource: notification_configurations
       x-stackql-method: update_notification_configuration
       x-stackql-verb: UPDATE
@@ -964,10 +920,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateSignalingChannelOutput'
       x-stackql-resource: signaling_channels
       x-stackql-method: update_signaling_channel
       x-stackql-verb: UPDATE
@@ -1002,10 +954,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateStreamOutput'
       x-stackql-resource: streams
       x-stackql-method: update_stream
       x-stackql-verb: UPDATE
@@ -1038,10 +986,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateStreamStorageConfigurationOutput'
       x-stackql-resource: stream_storage_configurations
       x-stackql-method: update_stream_storage_configuration
       x-stackql-verb: UPDATE
@@ -1202,17 +1146,11 @@ components:
         StreamARN:
           $ref: '#/components/schemas/ResourceARN'
           description: The Amazon Resource Name (ARN) of the stream.
-    DeleteEdgeConfigurationOutput:
-      type: object
     Version:
       type: string
       minLength: 1
       maxLength: 64
       pattern: '[a-zA-Z0-9]+'
-    DeleteSignalingChannelOutput:
-      type: object
-    DeleteStreamOutput:
-      type: object
     DescribeEdgeConfigurationOutput:
       type: object
       properties:
@@ -1982,18 +1920,10 @@ components:
       type: array
       items:
         $ref: '#/components/schemas/Tag'
-    TagResourceOutput:
-      type: object
-    TagStreamOutput:
-      type: object
     TagKeyList:
       type: array
       items:
         $ref: '#/components/schemas/TagKey'
-    UntagResourceOutput:
-      type: object
-    UntagStreamOutput:
-      type: object
     UpdateDataRetentionOperation:
       type: string
       enum:
@@ -2002,17 +1932,3 @@ components:
     DataRetentionChangeInHours:
       type: integer
       minimum: 1
-    UpdateDataRetentionOutput:
-      type: object
-    UpdateImageGenerationConfigurationOutput:
-      type: object
-    UpdateMediaStorageConfigurationOutput:
-      type: object
-    UpdateNotificationConfigurationOutput:
-      type: object
-    UpdateSignalingChannelOutput:
-      type: object
-    UpdateStreamOutput:
-      type: object
-    UpdateStreamStorageConfigurationOutput:
-      type: object

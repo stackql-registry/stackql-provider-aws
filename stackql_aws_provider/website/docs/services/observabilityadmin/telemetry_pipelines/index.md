@@ -195,6 +195,13 @@ The following methods are available for this resource:
     <td>Deletes a telemetry pipeline and its associated resources. This operation stops data processing and removes the pipeline configuration.</td>
 </tr>
 <tr>
+    <td><a href="#test_telemetry_pipeline"><CopyableCode code="test_telemetry_pipeline" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-Records"><code>Records</code></a>, <a href="#parameter-Configuration"><code>Configuration</code></a></td>
+    <td></td>
+    <td>Tests a pipeline configuration with sample records to validate data processing before deployment. This operation helps ensure your pipeline configuration works as expected.</td>
+</tr>
+<tr>
     <td><a href="#validate_telemetry_pipeline_configuration"><CopyableCode code="validate_telemetry_pipeline_configuration" /></a></td>
     <td><CopyableCode code="exec" /></td>
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-Configuration"><code>Configuration</code></a></td>
@@ -377,11 +384,28 @@ WHERE region = '{{ region }}' --required
 ## Lifecycle Methods
 
 <Tabs
-    defaultValue="validate_telemetry_pipeline_configuration"
+    defaultValue="test_telemetry_pipeline"
     values={[
+        { label: 'test_telemetry_pipeline', value: 'test_telemetry_pipeline' },
         { label: 'validate_telemetry_pipeline_configuration', value: 'validate_telemetry_pipeline_configuration' }
     ]}
 >
+<TabItem value="test_telemetry_pipeline">
+
+Tests a pipeline configuration with sample records to validate data processing before deployment. This operation helps ensure your pipeline configuration works as expected.
+
+```sql
+EXEC aws.observabilityadmin.telemetry_pipelines.test_telemetry_pipeline 
+@region='{{ region }}' --required 
+@@json=
+'{
+"Records": "{{ Records }}", 
+"Configuration": "{{ Configuration }}", 
+"SignalType": "{{ SignalType }}"
+}'
+;
+```
+</TabItem>
 <TabItem value="validate_telemetry_pipeline_configuration">
 
 Validates a pipeline configuration without creating the pipeline. This operation checks the configuration for syntax errors and compatibility issues.

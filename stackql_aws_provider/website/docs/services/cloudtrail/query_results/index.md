@@ -99,7 +99,7 @@ The following methods are available for this resource:
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>Gets event data results of a query. You must specify the QueryID value returned by the StartQuery operation.</td>
+    <td>CloudTrail Lake will no longer be open to new customers starting May 31, 2026. If you would like to use CloudTrail Lake, sign up prior to that date. Existing customers can continue to use the service as normal. For more information, see CloudTrail Lake availability change. Gets event data results of a query. You must specify the QueryID value returned by the StartQuery operation.</td>
 </tr>
 </tbody>
 </table>
@@ -135,7 +135,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 >
 <TabItem value="get_query_results">
 
-Gets event data results of a query. You must specify the QueryID value returned by the StartQuery operation.
+CloudTrail Lake will no longer be open to new customers starting May 31, 2026. If you would like to use CloudTrail Lake, sign up prior to that date. Existing customers can continue to use the service as normal. For more information, see CloudTrail Lake availability change. Gets event data results of a query. You must specify the QueryID value returned by the StartQuery operation.
 
 ```sql
 SELECT

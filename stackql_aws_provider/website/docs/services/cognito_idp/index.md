@@ -18,30 +18,36 @@ cognito_idp service documentation.
 
 :::info[Service Summary]
 
-total resources: __30__  
+total resources: __37__  
 
 :::
 
 ## Resources
 <div class="row">
 <div class="providerDocColumn">
+<a href="/services/cognito_idp/auth_challenges/">auth_challenges</a><br />
+<a href="/services/cognito_idp/auths/">auths</a><br />
+<a href="/services/cognito_idp/client_tokens/">client_tokens</a><br />
+<a href="/services/cognito_idp/confirmation_codes/">confirmation_codes</a><br />
 <a href="/services/cognito_idp/csv_headers/">csv_headers</a><br />
 <a href="/services/cognito_idp/devices/">devices</a><br />
+<a href="/services/cognito_idp/forgot_passwords/">forgot_passwords</a><br />
 <a href="/services/cognito_idp/groups/">groups</a><br />
-<a href="/services/cognito_idp/identity_provider_by_identifiers/">identity_provider_by_identifiers</a><br />
 <a href="/services/cognito_idp/identity_providers/">identity_providers</a><br />
 <a href="/services/cognito_idp/log_delivery_configurations/">log_delivery_configurations</a><br />
-<a href="/services/cognito_idp/managed_login_branding_by_clients/">managed_login_branding_by_clients</a><br />
 <a href="/services/cognito_idp/managed_login_brandings/">managed_login_brandings</a><br />
+<a href="/services/cognito_idp/passwords/">passwords</a><br />
 <a href="/services/cognito_idp/provisioned_limits/">provisioned_limits</a><br />
 <a href="/services/cognito_idp/resource_servers/">resource_servers</a><br />
 <a href="/services/cognito_idp/risk_configurations/">risk_configurations</a><br />
+<a href="/services/cognito_idp/sign_outs/">sign_outs</a><br />
+<a href="/services/cognito_idp/sign_ups/">sign_ups</a><br />
 <a href="/services/cognito_idp/signing_certificates/">signing_certificates</a><br />
-<a href="/services/cognito_idp/software_tokens/">software_tokens</a><br />
-<a href="/services/cognito_idp/tags/">tags</a><br />
-<a href="/services/cognito_idp/terms/">terms</a>
+<a href="/services/cognito_idp/software_tokens/">software_tokens</a>
 </div>
 <div class="providerDocColumn">
+<a href="/services/cognito_idp/tags/">tags</a><br />
+<a href="/services/cognito_idp/terms/">terms</a><br />
 <a href="/services/cognito_idp/tokens/">tokens</a><br />
 <a href="/services/cognito_idp/tokens_from_refresh_tokens/">tokens_from_refresh_tokens</a><br />
 <a href="/services/cognito_idp/ui_customizations/">ui_customizations</a><br />
@@ -56,6 +62,7 @@ total resources: __30__
 <a href="/services/cognito_idp/user_pools/">user_pools</a><br />
 <a href="/services/cognito_idp/users/">users</a><br />
 <a href="/services/cognito_idp/users_in_groups/">users_in_groups</a><br />
-<a href="/services/cognito_idp/web_authn_credentials/">web_authn_credentials</a>
+<a href="/services/cognito_idp/web_authn_credentials/">web_authn_credentials</a><br />
+<a href="/services/cognito_idp/web_authn_registrations/">web_authn_registrations</a>
 </div>
 </div>

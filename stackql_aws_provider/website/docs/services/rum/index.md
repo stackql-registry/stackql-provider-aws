@@ -25,7 +25,7 @@ total resources: __7__
 ## Resources
 <div class="row">
 <div class="providerDocColumn">
-<a href="/services/rum/app_monitor_datas/">app_monitor_datas</a><br />
+<a href="/services/rum/app_monitor_data/">app_monitor_data</a><br />
 <a href="/services/rum/app_monitors/">app_monitors</a><br />
 <a href="/services/rum/resource_policies/">resource_policies</a><br />
 <a href="/services/rum/rum_events/">rum_events</a>

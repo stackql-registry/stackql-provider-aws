@@ -45,10 +45,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/AcceptAdministratorInvitationResponse'
       x-stackql-resource: invitations
       x-stackql-method: accept_administrator_invitation
       x-stackql-verb: EXEC
@@ -107,10 +103,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/AcceptInvitationResponse'
       x-stackql-resource: invitations
       x-stackql-method: accept_invitation
       x-stackql-verb: EXEC
@@ -164,13 +156,154 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ArchiveFindingsResponse'
       x-stackql-resource: findings
       x-stackql-method: archive_findings
       x-stackql-verb: EXEC
+  /custom-detection-rule/association:
+    post:
+      operationId: CreateCustomDetectionRuleAssociation
+      description: Enables a custom detection rule for your account by creating an association. You specify the rule and the
+        mode in which it operates.
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                RuleId:
+                  $ref: '#/components/schemas/RuleId'
+                Mode:
+                  $ref: '#/components/schemas/AssociationMode'
+                ClientToken:
+                  $ref: '#/components/schemas/ClientToken'
+                Tags:
+                  $ref: '#/components/schemas/TagMap'
+              required:
+              - RuleId
+              - Mode
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateCustomDetectionRuleAssociationResponse'
+      x-stackql-resource: custom_detection_rule_associations
+      x-stackql-method: create_custom_detection_rule_association
+      x-stackql-verb: INSERT
+    get:
+      operationId: ListCustomDetectionRuleAssociations
+      description: Returns all custom detection rule associations for your account. You can filter by rule ID and mode.
+      parameters:
+      - name: maxResults
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/DetectionRuleMaxResults'
+        description: The maximum number of results to return in a single page. Minimum value of 1, maximum value of 100.
+      - name: nextToken
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/String'
+        description: A pagination token from a previous response. Use this token to retrieve the next page of results.
+      - name: ruleId
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/RuleId'
+        description: The unique identifier for the custom detection rule to filter associations by.
+      - name: mode
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/AssociationMode'
+        description: The rule execution mode to filter associations by.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListCustomDetectionRuleAssociationsResponse'
+      x-stackql-resource: custom_detection_rule_associations
+      x-stackql-method: list_custom_detection_rule_associations
+      x-stackql-verb: SELECT
+      x-stackql-objectKey: $.RuleAssociations
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
+  /custom-detection-rule/org-configuration:
+    post:
+      operationId: CreateCustomDetectionRuleOrgConfiguration
+      description: Creates an organization-level configuration that enables a custom detection rule across your organization.
+        This operation is available only to the delegated administrator account.
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                RuleId:
+                  $ref: '#/components/schemas/RuleId'
+                Mode:
+                  $ref: '#/components/schemas/AssociationMode'
+                IncludeAccountIds:
+                  $ref: '#/components/schemas/DetectionRuleAccountIds'
+                ExcludeAccountIds:
+                  $ref: '#/components/schemas/DetectionRuleAccountIds'
+                ClientToken:
+                  $ref: '#/components/schemas/ClientToken'
+              required:
+              - RuleId
+              - Mode
+      responses:
+        '200':
+          description: Success
+      x-stackql-resource: custom_detection_rule_org_configurations
+      x-stackql-method: create_custom_detection_rule_org_configuration
+      x-stackql-verb: INSERT
+    get:
+      operationId: ListCustomDetectionRuleOrgConfigurations
+      description: Returns all organization-level configurations for custom detection rules. You can filter the results by
+        status.
+      parameters:
+      - name: maxResults
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/DetectionRuleMaxResults'
+        description: The maximum number of results to return in a single page. Minimum value of 1, maximum value of 100.
+      - name: nextToken
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/String'
+        description: A pagination token from a previous response. Use this token to retrieve the next page of results.
+      - name: status
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/DetectionRuleConfigurationStatus'
+        description: The configuration status to filter by.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListCustomDetectionRuleOrgConfigurationsResponse'
+      x-stackql-resource: custom_detection_rule_org_configurations
+      x-stackql-method: list_custom_detection_rule_org_configurations
+      x-stackql-verb: SELECT
+      x-stackql-objectKey: $.Configurations
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /detector:
     post:
       operationId: CreateDetector
@@ -746,10 +879,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CreateSampleFindingsResponse'
       x-stackql-resource: findings
       x-stackql-method: create_sample_findings
       x-stackql-verb: INSERT
@@ -1071,6 +1200,171 @@ paths:
       x-stackql-resource: invitations
       x-stackql-method: decline_invitations
       x-stackql-verb: EXEC
+  /custom-detection-rule/rule/{rule_id}/association/{association_id}:
+    delete:
+      operationId: DeleteCustomDetectionRuleAssociation
+      description: Disables a custom detection rule by deleting its association. This operation is idempotent.
+      parameters:
+      - name: rule_id
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/RuleId'
+        description: The unique identifier for the custom detection rule.
+      - name: association_id
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/AssociationId'
+        description: The unique identifier for the association to delete.
+      responses:
+        '200':
+          description: Success
+      x-stackql-resource: custom_detection_rule_associations
+      x-stackql-method: delete_custom_detection_rule_association
+      x-stackql-verb: DELETE
+    get:
+      operationId: GetCustomDetectionRuleAssociation
+      description: Returns details for a custom detection rule association.
+      parameters:
+      - name: rule_id
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/RuleId'
+        description: The unique identifier for the custom detection rule.
+      - name: association_id
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/AssociationId'
+        description: The unique identifier for the association.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetCustomDetectionRuleAssociationResponse'
+      x-stackql-resource: custom_detection_rule_associations
+      x-stackql-method: get_custom_detection_rule_association
+      x-stackql-verb: SELECT
+    put:
+      operationId: UpdateCustomDetectionRuleAssociation
+      description: Updates the mode of an existing custom detection rule association.
+      parameters:
+      - name: rule_id
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/RuleId'
+        description: The unique identifier for the custom detection rule.
+      - name: association_id
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/AssociationId'
+        description: The unique identifier for the association to update.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                Mode:
+                  $ref: '#/components/schemas/AssociationMode'
+              required:
+              - Mode
+      responses:
+        '200':
+          description: Success
+      x-stackql-resource: custom_detection_rule_associations
+      x-stackql-method: update_custom_detection_rule_association
+      x-stackql-verb: UPDATE
+  /custom-detection-rule/org-configuration/{rule_id}:
+    delete:
+      operationId: DeleteCustomDetectionRuleOrgConfiguration
+      description: Deletes the organization-level configuration for a custom detection rule. This operation is available only
+        to the delegated administrator account.
+      parameters:
+      - name: rule_id
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/RuleId'
+        description: The unique identifier for the custom detection rule.
+      - name: mode
+        in: query
+        required: true
+        schema:
+          $ref: '#/components/schemas/AssociationMode'
+        description: 'The execution mode of the organization configuration to delete. Valid values: LIVE | DRY_RUN.'
+      responses:
+        '200':
+          description: Success
+      x-stackql-resource: custom_detection_rule_org_configurations
+      x-stackql-method: delete_custom_detection_rule_org_configuration
+      x-stackql-verb: DELETE
+    get:
+      operationId: GetCustomDetectionRuleOrgConfiguration
+      description: Returns the organization-level configuration for a custom detection rule.
+      parameters:
+      - name: rule_id
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/RuleId'
+        description: The unique identifier for the custom detection rule.
+      - name: mode
+        in: query
+        required: true
+        schema:
+          $ref: '#/components/schemas/AssociationMode'
+        description: 'The execution mode of the organization configuration to retrieve. Valid values: LIVE | DRY_RUN.'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetCustomDetectionRuleOrgConfigurationResponse'
+      x-stackql-resource: custom_detection_rule_org_configurations
+      x-stackql-method: get_custom_detection_rule_org_configuration
+      x-stackql-verb: SELECT
+      x-stackql-objectKey: $.Configuration
+    put:
+      operationId: UpdateCustomDetectionRuleOrgConfiguration
+      description: Updates the organization-level configuration for a custom detection rule, including the mode and include/exclude
+        account lists.
+      parameters:
+      - name: rule_id
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/RuleId'
+        description: The unique identifier for the custom detection rule.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                Mode:
+                  $ref: '#/components/schemas/AssociationMode'
+                IncludeAccountIds:
+                  $ref: '#/components/schemas/DetectionRuleAccountIds'
+                ExcludeAccountIds:
+                  $ref: '#/components/schemas/DetectionRuleAccountIds'
+              required:
+              - Mode
+      responses:
+        '200':
+          description: Success
+      x-stackql-resource: custom_detection_rule_org_configurations
+      x-stackql-method: update_custom_detection_rule_org_configuration
+      x-stackql-verb: UPDATE
   /detector/{detector_id}:
     delete:
       operationId: DeleteDetector
@@ -1086,10 +1380,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteDetectorResponse'
       x-stackql-resource: detectors
       x-stackql-method: delete_detector
       x-stackql-verb: DELETE
@@ -1149,10 +1439,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateDetectorResponse'
       x-stackql-resource: detectors
       x-stackql-method: update_detector
       x-stackql-verb: UPDATE
@@ -1177,10 +1463,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteFilterResponse'
       x-stackql-resource: filters
       x-stackql-method: delete_filter
       x-stackql-verb: DELETE
@@ -1275,10 +1557,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteIPSetResponse'
       x-stackql-resource: ip_sets
       x-stackql-method: delete_ip_set
       x-stackql-verb: DELETE
@@ -1344,10 +1622,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateIPSetResponse'
       x-stackql-resource: ip_sets
       x-stackql-method: update_ip_set
       x-stackql-verb: UPDATE
@@ -1501,10 +1775,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeletePublishingDestinationResponse'
       x-stackql-resource: publishing_destinations
       x-stackql-method: delete_publishing_destination
       x-stackql-verb: DELETE
@@ -1564,10 +1834,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdatePublishingDestinationResponse'
       x-stackql-resource: publishing_destinations
       x-stackql-method: update_publishing_destination
       x-stackql-verb: UPDATE
@@ -1592,10 +1858,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteThreatEntitySetResponse'
       x-stackql-resource: threat_entity_sets
       x-stackql-method: delete_threat_entity_set
       x-stackql-verb: DELETE
@@ -1662,10 +1924,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateThreatEntitySetResponse'
       x-stackql-resource: threat_entity_sets
       x-stackql-method: update_threat_entity_set
       x-stackql-verb: UPDATE
@@ -1690,10 +1948,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteThreatIntelSetResponse'
       x-stackql-resource: threat_intel_sets
       x-stackql-method: delete_threat_intel_set
       x-stackql-verb: DELETE
@@ -1759,10 +2013,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateThreatIntelSetResponse'
       x-stackql-resource: threat_intel_sets
       x-stackql-method: update_threat_intel_set
       x-stackql-verb: UPDATE
@@ -1787,10 +2037,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteTrustedEntitySetResponse'
       x-stackql-resource: trusted_entity_sets
       x-stackql-method: delete_trusted_entity_set
       x-stackql-verb: DELETE
@@ -1856,10 +2102,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateTrustedEntitySetResponse'
       x-stackql-resource: trusted_entity_sets
       x-stackql-method: update_trusted_entity_set
       x-stackql-verb: UPDATE
@@ -1979,10 +2221,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateOrganizationConfigurationResponse'
       x-stackql-resource: organization_configurations
       x-stackql-method: update_organization_configuration
       x-stackql-verb: UPDATE
@@ -2006,11 +2244,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DisableOrganizationAdminAccountResponse'
-      x-stackql-resource: organization_admin_account
+      x-stackql-resource: organization_admin_accounts
       x-stackql-method: disable_organization_admin_account
       x-stackql-verb: EXEC
   /detector/{detector_id}/administrator/disassociate:
@@ -2033,10 +2267,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DisassociateFromAdministratorAccountResponse'
       x-stackql-resource: administrator_accounts
       x-stackql-method: disassociate_from_administrator_account
       x-stackql-verb: UPDATE
@@ -2058,10 +2288,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DisassociateFromMasterAccountResponse'
       x-stackql-resource: master_accounts
       x-stackql-method: disassociate_from_master_account
       x-stackql-verb: UPDATE
@@ -2130,11 +2356,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/EnableOrganizationAdminAccountResponse'
-      x-stackql-resource: organization_admin_account
+      x-stackql-resource: organization_admin_accounts
       x-stackql-method: enable_organization_admin_account
       x-stackql-verb: EXEC
   /detector/{detector_id}/coverage/statistics:
@@ -2175,6 +2397,28 @@ paths:
       x-stackql-method: get_coverage_statistics
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.CoverageStatistics
+  /custom-detection-rule/rule/{rule_id}:
+    get:
+      operationId: GetCustomDetectionRule
+      description: Returns details for a custom detection rule in GuardDuty, including its detection logic.
+      parameters:
+      - name: rule_id
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/RuleId'
+        description: The unique identifier for the custom detection rule.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetCustomDetectionRuleResponse'
+      x-stackql-resource: custom_detection_rules
+      x-stackql-method: get_custom_detection_rule
+      x-stackql-verb: SELECT
+      x-stackql-objectKey: $.Rule
   /detector/{detector_id}/findings/get:
     post:
       operationId: GetFindings
@@ -2379,10 +2623,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateMalwareScanSettingsResponse'
       x-stackql-resource: malware_scan_settings
       x-stackql-method: update_malware_scan_settings
       x-stackql-verb: UPDATE
@@ -2649,6 +2889,39 @@ paths:
       x-stackql-pagination-request-token-key: NextToken
       x-stackql-pagination-request-token-location: body
       x-stackql-pagination-response-token-key: $.NextToken
+  /custom-detection-rule/rule:
+    post:
+      operationId: ListCustomDetectionRules
+      description: Returns all available custom detection rules in GuardDuty. You can filter the results by data source, severity,
+        tactic, technique, and service.
+      parameters: []
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                MaxResults:
+                  $ref: '#/components/schemas/DetectionRuleMaxResults'
+                NextToken:
+                  $ref: '#/components/schemas/String'
+                Filters:
+                  $ref: '#/components/schemas/DetectionRuleFilterList'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListCustomDetectionRulesResponse'
+      x-stackql-resource: custom_detection_rules
+      x-stackql-method: list_custom_detection_rules
+      x-stackql-verb: SELECT
+      x-stackql-objectKey: $.Rules
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /detector/{detector_id}/findings:
     post:
       operationId: ListFindings
@@ -2901,10 +3174,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -2927,10 +3196,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -2954,11 +3219,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/SendObjectMalwareScanResponse'
-      x-stackql-resource: object_malware_scan
+      x-stackql-resource: malware_scans
       x-stackql-method: send_object_malware_scan
       x-stackql-verb: EXEC
   /malware-scan/start:
@@ -2992,7 +3253,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartMalwareScanResponse'
-      x-stackql-resource: malware_scan
+      x-stackql-resource: malware_scans
       x-stackql-method: start_malware_scan
       x-stackql-verb: EXEC
   /detector/{detector_id}/member/start:
@@ -3092,10 +3353,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UnarchiveFindingsResponse'
       x-stackql-resource: findings
       x-stackql-method: unarchive_findings
       x-stackql-verb: EXEC
@@ -3131,10 +3388,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateFindingsFeedbackResponse'
       x-stackql-resource: findings
       x-stackql-method: update_findings_feedback
       x-stackql-verb: UPDATE
@@ -3230,10 +3483,6 @@ components:
       maxLength: 300
     String:
       type: string
-    AcceptAdministratorInvitationResponse:
-      type: object
-    AcceptInvitationResponse:
-      type: object
     FindingIds:
       type: array
       items:
@@ -3242,14 +3491,90 @@ components:
       type: string
       minLength: 1
       maxLength: 300
-    ArchiveFindingsResponse:
-      type: object
-    Boolean:
-      type: boolean
+    RuleId:
+      type: string
+      minLength: 1
+      maxLength: 100
+      pattern: '[a-z0-9]+(-[a-z0-9]+)*'
+    AssociationMode:
+      type: string
+      enum:
+      - LIVE
+      - DRY_RUN
     ClientToken:
       type: string
       minLength: 0
       maxLength: 64
+    TagMap:
+      type: object
+      properties: {}
+    CreateCustomDetectionRuleAssociationResponse:
+      type: object
+      properties:
+        RuleAssociation:
+          $ref: '#/components/schemas/AssociationDetail'
+          description: The details of the newly created custom detection rule association.
+      required:
+      - RuleAssociation
+    AssociationDetail:
+      description: Contains the full details of a custom detection rule association.
+      type: object
+      properties:
+        AssociationId:
+          $ref: '#/components/schemas/AssociationId'
+          description: The unique identifier for the association.
+        Arn:
+          $ref: '#/components/schemas/DetectionRuleArn'
+          description: The Amazon Resource Name (ARN) of the association.
+        RuleId:
+          $ref: '#/components/schemas/RuleId'
+          description: The unique identifier for the custom detection rule.
+        AccountId:
+          $ref: '#/components/schemas/AccountId'
+          description: The Amazon Web Services account ID associated with this rule association.
+        Mode:
+          $ref: '#/components/schemas/AssociationMode'
+          description: 'The rule execution mode. Valid values: LIVE | DRY_RUN.'
+        CreatedAt:
+          $ref: '#/components/schemas/Timestamp'
+          description: The timestamp when the association was created.
+        UpdatedAt:
+          $ref: '#/components/schemas/Timestamp'
+          description: The timestamp when the association was last updated.
+        ExpiresAt:
+          $ref: '#/components/schemas/Timestamp'
+          description: The timestamp when the association expires.
+      required:
+      - AssociationId
+      - Arn
+      - RuleId
+      - AccountId
+      - Mode
+      - CreatedAt
+      - UpdatedAt
+    AssociationId:
+      type: string
+      minLength: 1
+      maxLength: 64
+      pattern: '[a-zA-Z0-9_-]{1,64}'
+    DetectionRuleArn:
+      type: string
+      minLength: 1
+      maxLength: 1024
+      pattern: arn:[a-zA-Z0-9\-]+:[a-zA-Z0-9\-]+:[a-zA-Z0-9\-]*:([0-9]*|aws):.+
+    AccountId:
+      type: string
+      minLength: 12
+      maxLength: 12
+    Timestamp:
+      type: string
+      format: date-time
+    DetectionRuleAccountIds:
+      type: array
+      items:
+        $ref: '#/components/schemas/AccountId'
+    Boolean:
+      type: boolean
     FindingPublishingFrequency:
       type: string
       enum:
@@ -3310,9 +3635,6 @@ components:
         EbsVolumes:
           $ref: '#/components/schemas/Boolean'
           description: Describes the configuration for scanning EBS volumes as data source.
-    TagMap:
-      type: object
-      properties: {}
     DetectorFeatureConfigurations:
       type: array
       items:
@@ -3474,10 +3796,6 @@ components:
       type: string
       minLength: 1
       maxLength: 300
-    AccountId:
-      type: string
-      minLength: 12
-      maxLength: 12
     CreateIPSetResponse:
       type: object
       properties:
@@ -3637,8 +3955,6 @@ components:
       type: string
       minLength: 1
       maxLength: 100
-    CreateSampleFindingsResponse:
-      type: object
     ThreatEntitySetFormat:
       type: string
       enum:
@@ -3714,12 +4030,6 @@ components:
             unprocessed.
       required:
       - UnprocessedAccounts
-    DeleteDetectorResponse:
-      type: object
-    DeleteFilterResponse:
-      type: object
-    DeleteIPSetResponse:
-      type: object
     DeleteInvitationsResponse:
       type: object
       properties:
@@ -3737,14 +4047,6 @@ components:
           description: The accounts that could not be processed.
       required:
       - UnprocessedAccounts
-    DeletePublishingDestinationResponse:
-      type: object
-    DeleteThreatEntitySetResponse:
-      type: object
-    DeleteThreatIntelSetResponse:
-      type: object
-    DeleteTrustedEntitySetResponse:
-      type: object
     IntegerValueWithMax:
       type: integer
       minimum: 1
@@ -3891,9 +4193,6 @@ components:
       - COMPLETED
       - FAILED
       - SKIPPED
-    Timestamp:
-      type: string
-      format: date-time
     TriggerDetails:
       description: Represents the reason the scan was triggered.
       type: object
@@ -4194,12 +4493,6 @@ components:
     Long:
       type: integer
       format: int64
-    DisableOrganizationAdminAccountResponse:
-      type: object
-    DisassociateFromAdministratorAccountResponse:
-      type: object
-    DisassociateFromMasterAccountResponse:
-      type: object
     DisassociateMembersResponse:
       type: object
       properties:
@@ -4209,8 +4502,6 @@ components:
             unprocessed.
       required:
       - UnprocessedAccounts
-    EnableOrganizationAdminAccountResponse:
-      type: object
     GetAdministratorAccountResponse:
       type: object
       properties:
@@ -4316,6 +4607,190 @@ components:
           type: object
           properties: {}
           description: Represents coverage statistics for EKS clusters aggregated by coverage status.
+    GetCustomDetectionRuleResponse:
+      type: object
+      properties:
+        Rule:
+          $ref: '#/components/schemas/RuleDetail'
+          description: The details of the custom detection rule.
+      required:
+      - Rule
+    RuleDetail:
+      description: Contains the full details of a custom detection rule, including its detection logic.
+      type: object
+      properties:
+        RuleId:
+          $ref: '#/components/schemas/RuleId'
+          description: The unique identifier for the rule.
+        Arn:
+          $ref: '#/components/schemas/DetectionRuleArn'
+          description: The Amazon Resource Name (ARN) of the rule.
+        Name:
+          $ref: '#/components/schemas/RuleName'
+          description: The display name of the rule.
+        Description:
+          $ref: '#/components/schemas/DetectionRuleDescription'
+          description: A description of what the rule detects.
+        Severity:
+          $ref: '#/components/schemas/DetectionRuleSeverity'
+          description: The severity level assigned to findings generated by this rule.
+        DataSource:
+          $ref: '#/components/schemas/DetectionRuleDataSource'
+          description: The data source that the rule analyzes.
+        Tactic:
+          $ref: '#/components/schemas/MitreTactic'
+          description: The MITRE ATT&CK tactic associated with the rule.
+        Technique:
+          $ref: '#/components/schemas/MitreTechnique'
+          description: The MITRE ATT&CK technique associated with the rule.
+        Service:
+          $ref: '#/components/schemas/DetectionRuleServiceName'
+          description: The Amazon Web Services service associated with the rule.
+        Definition:
+          $ref: '#/components/schemas/RuleDefinition'
+          description: The detection logic definition for the rule.
+        Language:
+          $ref: '#/components/schemas/RuleLanguage'
+          description: The language used for the detection logic expression.
+        Schema:
+          $ref: '#/components/schemas/RuleSchema'
+          description: The schema version used by the rule definition.
+        CreatedAt:
+          $ref: '#/components/schemas/Timestamp'
+          description: The timestamp when the rule was created.
+        UpdatedAt:
+          $ref: '#/components/schemas/Timestamp'
+          description: The timestamp when the rule was last updated.
+      required:
+      - RuleId
+      - Arn
+      - Name
+      - Description
+      - Severity
+      - DataSource
+      - Tactic
+      - Technique
+      - Service
+      - Definition
+      - CreatedAt
+    RuleName:
+      type: string
+      minLength: 1
+      maxLength: 255
+    DetectionRuleDescription:
+      type: string
+      minLength: 1
+      maxLength: 1024
+    DetectionRuleSeverity:
+      type: string
+      enum:
+      - CRITICAL
+      - HIGH
+      - MEDIUM
+      - LOW
+    DetectionRuleDataSource:
+      type: string
+      enum:
+      - CloudTrailManagementEvent
+    MitreTactic:
+      type: string
+      minLength: 1
+      maxLength: 255
+    MitreTechnique:
+      type: string
+      minLength: 1
+      maxLength: 255
+    DetectionRuleServiceName:
+      type: string
+      minLength: 1
+      maxLength: 128
+    RuleDefinition:
+      description: Contains the detection logic for a custom detection rule.
+      type: object
+      properties:
+        Expression:
+          $ref: '#/components/schemas/RuleExpression'
+          description: The detection logic expression for the rule.
+      required:
+      - Expression
+    RuleExpression:
+      type: string
+      minLength: 1
+      maxLength: 4096
+    RuleLanguage:
+      type: string
+      enum:
+      - SQL
+    RuleSchema:
+      type: string
+      enum:
+      - CloudTrail
+    GetCustomDetectionRuleAssociationResponse:
+      type: object
+      properties:
+        RuleAssociation:
+          $ref: '#/components/schemas/AssociationDetail'
+          description: The details of the custom detection rule association.
+        Tags:
+          type: object
+          properties: {}
+          description: The tags associated with the custom detection rule association resource.
+      required:
+      - RuleAssociation
+    GetCustomDetectionRuleOrgConfigurationResponse:
+      type: object
+      properties:
+        Configuration:
+          $ref: '#/components/schemas/DetectionRuleOrgConfiguration'
+          description: The details of the organization configuration.
+      required:
+      - Configuration
+    DetectionRuleOrgConfiguration:
+      description: Contains the organization-level configuration for a custom detection rule.
+      type: object
+      properties:
+        RuleId:
+          $ref: '#/components/schemas/RuleId'
+          description: The unique identifier for the custom detection rule.
+        Mode:
+          $ref: '#/components/schemas/AssociationMode'
+          description: 'The execution mode of the organization configuration. Valid values: LIVE | DRY_RUN.'
+        Status:
+          $ref: '#/components/schemas/DetectionRuleConfigurationStatus'
+          description: 'The configuration status. Valid values: ACTIVE | PROCESSING | FAILED.'
+        StatusReason:
+          $ref: '#/components/schemas/String'
+          description: The reason for the current configuration status.
+        IncludeAccountIds:
+          $ref: '#/components/schemas/DetectionRuleAccountIds'
+          description: A list of member account IDs included in the organization configuration. Mutually exclusive with ExcludeAccountIds.
+        ExcludeAccountIds:
+          $ref: '#/components/schemas/DetectionRuleAccountIds'
+          description: A list of member account IDs excluded from the organization configuration. Mutually exclusive with
+            IncludeAccountIds.
+        CreatedAt:
+          $ref: '#/components/schemas/Timestamp'
+          description: The timestamp when the organization configuration was created.
+        UpdatedAt:
+          $ref: '#/components/schemas/Timestamp'
+          description: The timestamp when the organization configuration was last updated.
+        ExpiresAt:
+          $ref: '#/components/schemas/Timestamp'
+          description: The timestamp when the organization configuration expires.
+      required:
+      - RuleId
+      - Mode
+      - Status
+      - IncludeAccountIds
+      - ExcludeAccountIds
+      - CreatedAt
+      - UpdatedAt
+    DetectionRuleConfigurationStatus:
+      type: string
+      enum:
+      - ACTIVE
+      - PROCESSING
+      - FAILED
     GetDetectorResponse:
       type: object
       properties:
@@ -6572,6 +7047,16 @@ components:
       - EC2_LAUNCH_TEMPLATE
       - EC2_VPC
       - EC2_IMAGE
+      - BEDROCK_CUSTOM_MODEL
+      - BEDROCK_IMPORTED_MODEL
+      - BEDROCK_PROVISIONED_MODEL
+      - BEDROCK_CUSTOM_MODEL_DEPLOYMENT
+      - BEDROCK_INFERENCE_PROFILE
+      - BEDROCK_APPLICATION_INFERENCE_PROFILE
+      - BEDROCK_PROMPT
+      - BEDROCK_PROMPT_ROUTER
+      - BEDROCK_GUARDRAIL
+      - SAGEMAKER_ENDPOINT
     ResourceData:
       description: Contains information about the Amazon Web Services resource that is associated with the activity that prompted
         GuardDuty to generate a finding.
@@ -6636,6 +7121,10 @@ components:
           $ref: '#/components/schemas/CloudformationStack'
           description: Contains detailed information about the CloudFormation stack associated with the activity that prompted
             GuardDuty to generate a finding.
+        BedrockGuardrail:
+          $ref: '#/components/schemas/BedrockGuardrailResource'
+          description: Contains detailed information about the Amazon Bedrock guardrail associated with the activity that
+            prompted GuardDuty to generate a finding.
     S3Bucket:
       description: Contains information about the Amazon S3 bucket policies and encryption.
       type: object
@@ -6989,6 +7478,24 @@ components:
           $ref: '#/components/schemas/Ec2InstanceUids'
           description: A list of unique identifiers for the compromised Amazon EC2 instances that were created as part of
             the same CloudFormation stack.
+    BedrockGuardrailResource:
+      description: Contains details about an Amazon Bedrock guardrail evaluated during a model invocation.
+      type: object
+      properties:
+        Version:
+          $ref: '#/components/schemas/BedrockGuardrailResourceVersionString'
+          description: The version of the Amazon Bedrock guardrail. Valid values are a numeric version, DRAFT, or ENFORCED.
+        GuardrailAction:
+          $ref: '#/components/schemas/GuardrailAction'
+          description: Indicates whether the guardrail intervened during the model invocation.
+        GuardrailSource:
+          $ref: '#/components/schemas/GuardrailSource'
+          description: Indicates whether the guardrail was applied on the input or output of the model invocation.
+    BedrockGuardrailResourceVersionString:
+      type: string
+      minLength: 1
+      maxLength: 8
+      pattern: (([1-9][0-9]{0,7})|(DRAFT)|(ENFORCED))
     NetworkEndpoints:
       type: array
       items:
@@ -7127,6 +7634,9 @@ components:
         SignalIndicators:
           $ref: '#/components/schemas/Indicators'
           description: Contains information about the indicators associated with the signals.
+        Activities:
+          $ref: '#/components/schemas/Activities'
+          description: Contains information about the activities, such as API calls, that were observed for this signal.
       required:
       - Uid
       - Type
@@ -7221,6 +7731,60 @@ components:
       type: string
       minLength: 1
       maxLength: 256
+    Activities:
+      description: A list of activities that were observed for a signal.
+      type: array
+      items:
+        $ref: '#/components/schemas/Activity'
+    Activity:
+      description: Contains information about an activity, such as an API call, that was observed for a signal.
+      type: object
+      properties:
+        Type:
+          $ref: '#/components/schemas/ActivityType'
+          description: The type of the observed activity.
+        Api:
+          $ref: '#/components/schemas/ApiCall'
+          description: Contains information about the API call that was observed, when the activity type is API_CALL.
+      required:
+      - Type
+    ActivityType:
+      description: The type of an observed activity.
+      type: string
+      enum:
+      - API_CALL
+    ApiCall:
+      description: Contains information about an API call that was observed as part of an activity.
+      type: object
+      properties:
+        Operation:
+          $ref: '#/components/schemas/ApiCallOperationString'
+          description: The name of the API operation that was invoked.
+        Service:
+          $ref: '#/components/schemas/ApiCallServiceString'
+          description: The service that the API operation was invoked against.
+        Error:
+          $ref: '#/components/schemas/ApiCallErrorString'
+          description: The error code that was returned, if the API call failed.
+        UserAgent:
+          $ref: '#/components/schemas/ApiCallUserAgentString'
+          description: User agent in the request to the API operation
+    ApiCallOperationString:
+      type: string
+      minLength: 0
+      maxLength: 512
+    ApiCallServiceString:
+      type: string
+      minLength: 0
+      maxLength: 512
+    ApiCallErrorString:
+      type: string
+      minLength: 0
+      maxLength: 512
+    ApiCallUserAgentString:
+      type: string
+      minLength: 0
+      maxLength: 1024
     AdditionalSequenceTypes:
       type: array
       items:
@@ -8852,6 +9416,219 @@ components:
       enum:
       - HEALTHY
       - UNHEALTHY
+    DetectionRuleMaxResults:
+      type: integer
+      minimum: 1
+      maximum: 100
+    ListCustomDetectionRuleAssociationsResponse:
+      type: object
+      properties:
+        RuleAssociations:
+          $ref: '#/components/schemas/AssociationSummaryList'
+          description: A list of custom detection rule association summaries.
+        NextToken:
+          $ref: '#/components/schemas/String'
+          description: A pagination token to retrieve the next page of results. If this field is empty, there are no additional
+            results.
+      required:
+      - RuleAssociations
+    AssociationSummaryList:
+      type: array
+      items:
+        $ref: '#/components/schemas/AssociationSummary'
+    AssociationSummary:
+      description: Contains summary information about a custom detection rule association.
+      type: object
+      properties:
+        AssociationId:
+          $ref: '#/components/schemas/AssociationId'
+          description: The unique identifier for the association.
+        Arn:
+          $ref: '#/components/schemas/DetectionRuleArn'
+          description: The Amazon Resource Name (ARN) of the association.
+        RuleId:
+          $ref: '#/components/schemas/RuleId'
+          description: The unique identifier for the custom detection rule.
+        Mode:
+          $ref: '#/components/schemas/AssociationMode'
+          description: 'The rule execution mode. Valid values: LIVE | DRY_RUN.'
+        CreatedAt:
+          $ref: '#/components/schemas/Timestamp'
+          description: The timestamp when the association was created.
+        UpdatedAt:
+          $ref: '#/components/schemas/Timestamp'
+          description: The timestamp when the association was last updated.
+        ExpiresAt:
+          $ref: '#/components/schemas/Timestamp'
+          description: The timestamp when the association expires.
+      required:
+      - AssociationId
+      - Arn
+      - RuleId
+      - Mode
+      - CreatedAt
+      - UpdatedAt
+    ListCustomDetectionRuleOrgConfigurationsResponse:
+      type: object
+      properties:
+        Configurations:
+          $ref: '#/components/schemas/DetectionRuleOrgConfigurationSummaryList'
+          description: A list of organization configurations for custom detection rules.
+        NextToken:
+          $ref: '#/components/schemas/String'
+          description: A pagination token to retrieve the next page of results. If this field is empty, there are no additional
+            results.
+      required:
+      - Configurations
+    DetectionRuleOrgConfigurationSummaryList:
+      type: array
+      items:
+        $ref: '#/components/schemas/DetectionRuleOrgConfigurationSummary'
+    DetectionRuleOrgConfigurationSummary:
+      description: Contains summary information about an organization-level configuration for a custom detection rule.
+      type: object
+      properties:
+        RuleId:
+          $ref: '#/components/schemas/RuleId'
+          description: The unique identifier for the custom detection rule.
+        Mode:
+          $ref: '#/components/schemas/AssociationMode'
+          description: The rule execution mode.
+        Status:
+          $ref: '#/components/schemas/DetectionRuleConfigurationStatus'
+          description: The configuration status.
+        StatusReason:
+          $ref: '#/components/schemas/String'
+          description: The reason for the current configuration status.
+        CreatedAt:
+          $ref: '#/components/schemas/Timestamp'
+          description: The timestamp when the organization configuration was created.
+        UpdatedAt:
+          $ref: '#/components/schemas/Timestamp'
+          description: The timestamp when the organization configuration was last updated.
+        ExpiresAt:
+          $ref: '#/components/schemas/Timestamp'
+          description: The timestamp when the organization configuration expires.
+      required:
+      - RuleId
+      - Mode
+      - Status
+      - CreatedAt
+      - UpdatedAt
+    DetectionRuleFilterList:
+      type: array
+      items:
+        $ref: '#/components/schemas/DetectionRuleFilter'
+    DetectionRuleFilter:
+      description: Contains filter criteria for listing custom detection rules or associations.
+      type: object
+      properties:
+        Name:
+          $ref: '#/components/schemas/FilterFieldName'
+          description: The name of the field to filter by.
+        Values:
+          $ref: '#/components/schemas/DetectionRuleFilterValues'
+          description: The values to match against the specified filter name.
+        Condition:
+          $ref: '#/components/schemas/DetectionRuleFilterCondition'
+          description: The condition to apply to the filter. For example, EQUALS or CONTAINS.
+      required:
+      - Name
+      - Values
+    FilterFieldName:
+      type: string
+      enum:
+      - name
+      - description
+      - dataSource
+      - severity
+      - tactic
+      - technique
+      - service
+    DetectionRuleFilterValues:
+      type: array
+      items:
+        $ref: '#/components/schemas/DetectionRuleFilterValue'
+    DetectionRuleFilterValue:
+      type: string
+      minLength: 1
+      maxLength: 255
+      pattern: '[a-zA-Z0-9 _.\-:/]+'
+    DetectionRuleFilterCondition:
+      type: string
+      enum:
+      - EQUALS
+      - CONTAINS
+    ListCustomDetectionRulesResponse:
+      type: object
+      properties:
+        Rules:
+          $ref: '#/components/schemas/RuleSummaryList'
+          description: A list of custom detection rule summaries.
+        NextToken:
+          $ref: '#/components/schemas/String'
+          description: A pagination token to retrieve the next page of results. If this field is empty, there are no additional
+            results.
+      required:
+      - Rules
+    RuleSummaryList:
+      type: array
+      items:
+        $ref: '#/components/schemas/RuleSummary'
+    RuleSummary:
+      description: Contains summary information about a custom detection rule.
+      type: object
+      properties:
+        RuleId:
+          $ref: '#/components/schemas/RuleId'
+          description: The unique identifier for the rule.
+        Arn:
+          $ref: '#/components/schemas/DetectionRuleArn'
+          description: The Amazon Resource Name (ARN) of the rule.
+        Name:
+          $ref: '#/components/schemas/RuleName'
+          description: The display name of the rule.
+        Description:
+          $ref: '#/components/schemas/DetectionRuleDescription'
+          description: A description of what the rule detects.
+        Severity:
+          $ref: '#/components/schemas/DetectionRuleSeverity'
+          description: The severity level assigned to findings generated by this rule.
+        DataSource:
+          $ref: '#/components/schemas/DetectionRuleDataSource'
+          description: The data source that the rule analyzes.
+        Tactic:
+          $ref: '#/components/schemas/MitreTactic'
+          description: The MITRE ATT&CK tactic associated with the rule.
+        Technique:
+          $ref: '#/components/schemas/MitreTechnique'
+          description: The MITRE ATT&CK technique associated with the rule.
+        Service:
+          $ref: '#/components/schemas/DetectionRuleServiceName'
+          description: The Amazon Web Services service associated with the rule.
+        Language:
+          $ref: '#/components/schemas/RuleLanguage'
+          description: The language used for the detection logic expression.
+        Schema:
+          $ref: '#/components/schemas/RuleSchema'
+          description: The schema version used by the rule definition.
+        CreatedAt:
+          $ref: '#/components/schemas/Timestamp'
+          description: The timestamp when the rule was created.
+        UpdatedAt:
+          $ref: '#/components/schemas/Timestamp'
+          description: The timestamp when the rule was last updated.
+      required:
+      - RuleId
+      - Arn
+      - Name
+      - Description
+      - Severity
+      - DataSource
+      - Tactic
+      - Technique
+      - Service
+      - CreatedAt
     ListDetectorsRowDisplay:
       type: object
       properties:
@@ -9244,8 +10021,6 @@ components:
         VersionId:
           $ref: '#/components/schemas/String'
           description: The version ID of the S3 object to scan. If not specified, the latest version of the object is scanned.
-    SendObjectMalwareScanResponse:
-      type: object
     ResourceArn:
       type: string
       pattern: arn:[A-Za-z-]+:[A-Za-z0-9]+:[A-Za-z0-9-]+:\d+:(([A-Za-z0-9-]+)[:\/])?[A-Za-z0-9:-]*
@@ -9318,10 +10093,6 @@ components:
             string that indicates why the account was not processed.
       required:
       - UnprocessedAccounts
-    TagResourceResponse:
-      type: object
-    UnarchiveFindingsResponse:
-      type: object
     TagKeyList:
       type: array
       items:
@@ -9331,10 +10102,6 @@ components:
       minLength: 1
       maxLength: 128
       pattern: (?!aws:)[a-zA-Z+-=._:/]+
-    UntagResourceResponse:
-      type: object
-    UpdateDetectorResponse:
-      type: object
     UpdateFilterResponse:
       type: object
       properties:
@@ -9348,10 +10115,6 @@ components:
       enum:
       - USEFUL
       - NOT_USEFUL
-    UpdateFindingsFeedbackResponse:
-      type: object
-    UpdateIPSetResponse:
-      type: object
     UpdateProtectedResource:
       description: Information about the protected resource that is associated with the created Malware Protection plan. Presently,
         S3Bucket is the only supported protected resource.
@@ -9368,8 +10131,6 @@ components:
           $ref: '#/components/schemas/MalwareProtectionPlanObjectPrefixesList'
           description: Information about the specified object prefixes. The S3 object will be scanned only if it belongs to
             any of the specified object prefixes.
-    UpdateMalwareScanSettingsResponse:
-      type: object
     MemberFeaturesConfigurations:
       type: array
       items:
@@ -9521,13 +10282,3 @@ components:
             in GuardDuty. It may take up to 24 hours to update the configuration for all the member accounts. NONE: Indicates
             that the additional configuration will not be automatically enabled for any account in the organization. The administrator
             must manage the additional configuration for each account individually.'
-    UpdateOrganizationConfigurationResponse:
-      type: object
-    UpdatePublishingDestinationResponse:
-      type: object
-    UpdateThreatEntitySetResponse:
-      type: object
-    UpdateThreatIntelSetResponse:
-      type: object
-    UpdateTrustedEntitySetResponse:
-      type: object

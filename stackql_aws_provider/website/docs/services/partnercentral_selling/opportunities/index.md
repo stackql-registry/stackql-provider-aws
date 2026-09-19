@@ -270,6 +270,13 @@ The following methods are available for this resource:
     <td></td>
     <td>This action creates an opportunity from an existing engagement context. The task is asynchronous and orchestrates the process of converting engagement contextual information into a structured opportunity record within the partner's account.</td>
 </tr>
+<tr>
+    <td><a href="#submit_opportunity"><CopyableCode code="submit_opportunity" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-Identifier"><code>Identifier</code></a>, <a href="#parameter-InvolvementType"><code>InvolvementType</code></a></td>
+    <td></td>
+    <td>Use this action to submit an Opportunity that was previously created by partner for AWS review. After you perform this action, the Opportunity becomes non-editable until it is reviewed by AWS and has LifeCycle.ReviewStatus as either Approved or Action Required.</td>
+</tr>
 </tbody>
 </table>
 
@@ -636,7 +643,8 @@ last_modified_date;
     defaultValue="disassociate_opportunity"
     values={[
         { label: 'disassociate_opportunity', value: 'disassociate_opportunity' },
-        { label: 'start_opportunity_from_engagement_task', value: 'start_opportunity_from_engagement_task' }
+        { label: 'start_opportunity_from_engagement_task', value: 'start_opportunity_from_engagement_task' },
+        { label: 'submit_opportunity', value: 'submit_opportunity' }
     ]}
 >
 <TabItem value="disassociate_opportunity">
@@ -670,6 +678,23 @@ EXEC aws.partnercentral_selling.opportunities.start_opportunity_from_engagement_
 "Identifier": "{{ Identifier }}", 
 "ContextIdentifier": "{{ ContextIdentifier }}", 
 "Tags": "{{ Tags }}"
+}'
+;
+```
+</TabItem>
+<TabItem value="submit_opportunity">
+
+Use this action to submit an Opportunity that was previously created by partner for AWS review. After you perform this action, the Opportunity becomes non-editable until it is reviewed by AWS and has LifeCycle.ReviewStatus as either Approved or Action Required.
+
+```sql
+EXEC aws.partnercentral_selling.opportunities.submit_opportunity 
+@region='{{ region }}' --required 
+@@json=
+'{
+"Catalog": "{{ Catalog }}", 
+"Identifier": "{{ Identifier }}", 
+"InvolvementType": "{{ InvolvementType }}", 
+"Visibility": "{{ Visibility }}"
 }'
 ;
 ```

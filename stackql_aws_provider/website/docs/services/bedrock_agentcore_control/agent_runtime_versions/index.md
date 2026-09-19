@@ -35,7 +35,8 @@ The following fields are returned by `SELECT` queries:
 <Tabs
     defaultValue="list_agent_runtime_versions"
     values={[
-        { label: 'list_agent_runtime_versions', value: 'list_agent_runtime_versions' }
+        { label: 'list_agent_runtime_versions', value: 'list_agent_runtime_versions' },
+        { label: 'list_agent_runtime_versions_by_capacity_provider', value: 'list_agent_runtime_versions_by_capacity_provider' }
     ]}
 >
 <TabItem value="list_agent_runtime_versions">
@@ -82,7 +83,36 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
-    <td>The current status of the agent runtime. (CREATING, CREATE_FAILED, UPDATING, UPDATE_FAILED, READY, DELETING)</td>
+    <td>The current status of the agent runtime. (CREATING, CREATE_FAILED, UPDATING, UPDATE_FAILED, READY, DELETING, DELETE_FAILED)</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
+<TabItem value="list_agent_runtime_versions_by_capacity_provider">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="agent_runtime_arn" /></td>
+    <td><code>string</code></td>
+    <td>The Amazon Resource Name (ARN) of the agent runtime. (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:bedrock-agentcore:&#91;a-z0-9-&#93;+:&#91;0-9&#93;&#123;12&#125;:runtime/&#91;a-zA-Z&#93;&#91;a-zA-Z0-9_&#93;&#123;0,47&#125;-&#91;a-zA-Z0-9&#93;&#123;10&#125;&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="agent_runtime_version" /></td>
+    <td><code>string</code></td>
+    <td>The version of the agent runtime. (pattern: &lt;code&gt;(&#91;1-9&#93;&#91;0-9&#93;&#123;0,4&#125;)&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="status" /></td>
+    <td><code>string</code></td>
+    <td>The current status of the agent runtime version. (CREATING, CREATE_FAILED, UPDATING, UPDATE_FAILED, READY, DELETING, DELETE_FAILED)</td>
 </tr>
 </tbody>
 </table>
@@ -111,6 +141,13 @@ The following methods are available for this resource:
     <td><a href="#parameter-maxResults"><code>maxResults</code></a>, <a href="#parameter-nextToken"><code>nextToken</code></a></td>
     <td>Lists all versions of a specific Amazon Secure Agent.</td>
 </tr>
+<tr>
+    <td><a href="#list_agent_runtime_versions_by_capacity_provider"><CopyableCode code="list_agent_runtime_versions_by_capacity_provider" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-capacity_provider_id"><code>capacity_provider_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td><a href="#parameter-maxResults"><code>maxResults</code></a>, <a href="#parameter-nextToken"><code>nextToken</code></a></td>
+    <td>Lists the agent runtime versions that are associated with a capacity provider. Use this operation to identify the runtimes you must disassociate before you can delete the capacity provider. Results are paginated; use the nextToken parameter to retrieve additional results.</td>
+</tr>
 </tbody>
 </table>
 
@@ -132,6 +169,11 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     <td><code>string</code></td>
     <td>The unique identifier of the AgentCore Runtime to list versions for.</td>
 </tr>
+<tr id="parameter-capacity_provider_id">
+    <td><CopyableCode code="capacity_provider_id" /></td>
+    <td><code>string</code></td>
+    <td>The unique identifier of the capacity provider.</td>
+</tr>
 <tr id="parameter-region">
     <td><CopyableCode code="region" /></td>
     <td><code>string</code></td>
@@ -140,12 +182,12 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-maxResults">
     <td><CopyableCode code="maxResults" /></td>
     <td><code>integer</code></td>
-    <td>The maximum number of results to return in the response.</td>
+    <td>The maximum number of results to return in the response. If the total number of results is greater than this value, use the token returned in the response in the nextToken field when making another request to return the next batch of results.</td>
 </tr>
 <tr id="parameter-nextToken">
     <td><CopyableCode code="nextToken" /></td>
     <td><code>string</code></td>
-    <td>A token to retrieve the next page of results.</td>
+    <td>If the total number of results is greater than the maxResults value provided in the request, enter the token returned in the nextToken field in the response in this field to return the next batch of results.</td>
 </tr>
 </tbody>
 </table>
@@ -155,7 +197,8 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <Tabs
     defaultValue="list_agent_runtime_versions"
     values={[
-        { label: 'list_agent_runtime_versions', value: 'list_agent_runtime_versions' }
+        { label: 'list_agent_runtime_versions', value: 'list_agent_runtime_versions' },
+        { label: 'list_agent_runtime_versions_by_capacity_provider', value: 'list_agent_runtime_versions_by_capacity_provider' }
     ]}
 >
 <TabItem value="list_agent_runtime_versions">
@@ -173,6 +216,23 @@ last_updated_at,
 status
 FROM aws.bedrock_agentcore_control.agent_runtime_versions
 WHERE agent_runtime_id = '{{ agent_runtime_id }}' -- required
+AND region = '{{ region }}' -- required
+AND maxResults = '{{ maxResults }}'
+AND nextToken = '{{ nextToken }}'
+;
+```
+</TabItem>
+<TabItem value="list_agent_runtime_versions_by_capacity_provider">
+
+Lists the agent runtime versions that are associated with a capacity provider. Use this operation to identify the runtimes you must disassociate before you can delete the capacity provider. Results are paginated; use the nextToken parameter to retrieve additional results.
+
+```sql
+SELECT
+agent_runtime_arn,
+agent_runtime_version,
+status
+FROM aws.bedrock_agentcore_control.agent_runtime_versions
+WHERE capacity_provider_id = '{{ capacity_provider_id }}' -- required
 AND region = '{{ region }}' -- required
 AND maxResults = '{{ maxResults }}'
 AND nextToken = '{{ nextToken }}'

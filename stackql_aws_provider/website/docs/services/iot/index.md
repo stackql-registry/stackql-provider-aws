@@ -18,7 +18,7 @@ iot service documentation.
 
 :::info[Service Summary]
 
-total resources: __88__  
+total resources: __84__  
 
 :::
 
@@ -33,6 +33,7 @@ total resources: __88__
 <a href="/services/iot/audit_mitigation_actions_tasks/">audit_mitigation_actions_tasks</a><br />
 <a href="/services/iot/audit_suppressions/">audit_suppressions</a><br />
 <a href="/services/iot/audit_tasks/">audit_tasks</a><br />
+<a href="/services/iot/authorizations/">authorizations</a><br />
 <a href="/services/iot/authorizers/">authorizers</a><br />
 <a href="/services/iot/behavior_model_training_summaries/">behavior_model_training_summaries</a><br />
 <a href="/services/iot/billing_groups/">billing_groups</a><br />
@@ -41,7 +42,6 @@ total resources: __88__
 <a href="/services/iot/cardinalities/">cardinalities</a><br />
 <a href="/services/iot/certificate_providers/">certificate_providers</a><br />
 <a href="/services/iot/certificates/">certificates</a><br />
-<a href="/services/iot/certificates_by_cas/">certificates_by_cas</a><br />
 <a href="/services/iot/command_executions/">command_executions</a><br />
 <a href="/services/iot/commands/">commands</a><br />
 <a href="/services/iot/custom_metrics/">custom_metrics</a><br />
@@ -60,17 +60,16 @@ total resources: __88__
 <a href="/services/iot/indices/">indices</a><br />
 <a href="/services/iot/job_documents/">job_documents</a><br />
 <a href="/services/iot/job_executions/">job_executions</a><br />
-<a href="/services/iot/job_executions_for_jobs/">job_executions_for_jobs</a><br />
-<a href="/services/iot/job_executions_for_things/">job_executions_for_things</a><br />
 <a href="/services/iot/job_templates/">job_templates</a><br />
 <a href="/services/iot/jobs/">jobs</a><br />
 <a href="/services/iot/logging_options/">logging_options</a><br />
 <a href="/services/iot/managed_job_templates/">managed_job_templates</a><br />
 <a href="/services/iot/metric_values/">metric_values</a><br />
 <a href="/services/iot/mitigation_actions/">mitigation_actions</a><br />
-<a href="/services/iot/ota_updates/">ota_updates</a>
+<a href="/services/iot/on_demand_audit_tasks/">on_demand_audit_tasks</a>
 </div>
 <div class="providerDocColumn">
+<a href="/services/iot/ota_updates/">ota_updates</a><br />
 <a href="/services/iot/outgoing_certificates/">outgoing_certificates</a><br />
 <a href="/services/iot/package_configurations/">package_configurations</a><br />
 <a href="/services/iot/package_versions/">package_versions</a><br />
@@ -81,28 +80,25 @@ total resources: __88__
 <a href="/services/iot/policy_versions/">policy_versions</a><br />
 <a href="/services/iot/principal_policies/">principal_policies</a><br />
 <a href="/services/iot/principal_things/">principal_things</a><br />
-<a href="/services/iot/principal_things_v2s/">principal_things_v2s</a><br />
+<a href="/services/iot/principal_things_v2/">principal_things_v2</a><br />
 <a href="/services/iot/provisioning_claims/">provisioning_claims</a><br />
 <a href="/services/iot/provisioning_template_versions/">provisioning_template_versions</a><br />
 <a href="/services/iot/provisioning_templates/">provisioning_templates</a><br />
 <a href="/services/iot/registration_codes/">registration_codes</a><br />
-<a href="/services/iot/related_resources_for_audit_findings/">related_resources_for_audit_findings</a><br />
-<a href="/services/iot/role_alias/">role_alias</a><br />
+<a href="/services/iot/related_resources/">related_resources</a><br />
 <a href="/services/iot/role_aliases/">role_aliases</a><br />
 <a href="/services/iot/sbom_validation_results/">sbom_validation_results</a><br />
 <a href="/services/iot/scheduled_audits/">scheduled_audits</a><br />
 <a href="/services/iot/security_profiles/">security_profiles</a><br />
-<a href="/services/iot/security_profiles_for_targets/">security_profiles_for_targets</a><br />
 <a href="/services/iot/statistics/">statistics</a><br />
 <a href="/services/iot/streams/">streams</a><br />
 <a href="/services/iot/tags/">tags</a><br />
-<a href="/services/iot/targets_for_policies/">targets_for_policies</a><br />
-<a href="/services/iot/targets_for_security_profiles/">targets_for_security_profiles</a><br />
-<a href="/services/iot/thing_connectivity_datas/">thing_connectivity_datas</a><br />
+<a href="/services/iot/targets/">targets</a><br />
+<a href="/services/iot/thing_connectivity_data/">thing_connectivity_data</a><br />
 <a href="/services/iot/thing_groups/">thing_groups</a><br />
 <a href="/services/iot/thing_groups_for_things/">thing_groups_for_things</a><br />
 <a href="/services/iot/thing_principals/">thing_principals</a><br />
-<a href="/services/iot/thing_principals_v2s/">thing_principals_v2s</a><br />
+<a href="/services/iot/thing_principals_v2/">thing_principals_v2</a><br />
 <a href="/services/iot/thing_registration_task_reports/">thing_registration_task_reports</a><br />
 <a href="/services/iot/thing_registration_tasks/">thing_registration_tasks</a><br />
 <a href="/services/iot/thing_types/">thing_types</a><br />

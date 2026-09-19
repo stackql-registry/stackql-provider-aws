@@ -58,7 +58,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AcknowledgeJobOutput'
-      x-stackql-resource: acknowledge_job
+      x-stackql-resource: jobs
       x-stackql-method: acknowledge_job
       x-stackql-verb: EXEC
   /AcknowledgeThirdPartyJob:
@@ -104,7 +104,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AcknowledgeThirdPartyJobOutput'
-      x-stackql-resource: acknowledge_third_party_job
+      x-stackql-resource: third_party_jobs
       x-stackql-method: acknowledge_third_party_job
       x-stackql-verb: EXEC
   /CreateCustomActionType:
@@ -319,10 +319,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteWebhookOutput'
       x-stackql-resource: webhooks
       x-stackql-method: delete_webhook
       x-stackql-verb: DELETE
@@ -354,10 +350,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeregisterWebhookWithThirdPartyOutput'
       x-stackql-resource: webhooks
       x-stackql-method: deregister_webhook_with_third_party
       x-stackql-verb: DELETE
@@ -1234,7 +1226,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PollForJobsOutput'
-      x-stackql-resource: action_types
+      x-stackql-resource: jobs
       x-stackql-method: poll_for_jobs
       x-stackql-verb: EXEC
   /PollForThirdPartyJobs:
@@ -1275,7 +1267,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PollForThirdPartyJobsOutput'
-      x-stackql-resource: action_types
+      x-stackql-resource: third_party_jobs
       x-stackql-method: poll_for_third_party_jobs
       x-stackql-verb: EXEC
   /PutActionRevision:
@@ -1642,10 +1634,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RegisterWebhookWithThirdPartyOutput'
       x-stackql-resource: webhooks
       x-stackql-method: register_webhook_with_third_party
       x-stackql-verb: INSERT
@@ -1793,7 +1781,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartPipelineExecutionOutput'
-      x-stackql-resource: pipelines
+      x-stackql-resource: pipeline_executions
       x-stackql-method: start_pipeline_execution
       x-stackql-verb: EXEC
   /StopPipelineExecution:
@@ -1844,7 +1832,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StopPipelineExecutionOutput'
-      x-stackql-resource: pipelines
+      x-stackql-resource: pipeline_executions
       x-stackql-method: stop_pipeline_execution
       x-stackql-verb: EXEC
   /TagResource:
@@ -1880,10 +1868,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceOutput'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -1920,10 +1904,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceOutput'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -3049,10 +3029,6 @@ components:
       minLength: 1
       maxLength: 100
       pattern: '[A-Za-z0-9.@\-_]+'
-    DeleteWebhookOutput:
-      type: object
-    DeregisterWebhookWithThirdPartyOutput:
-      type: object
     StageTransitionType:
       type: string
       enum:
@@ -5193,8 +5169,6 @@ components:
         webhook:
           $ref: '#/components/schemas/ListWebhookItem'
           description: The detail returned from creating the webhook, such as the webhook name, webhook URL, and webhook ARN.
-    RegisterWebhookWithThirdPartyOutput:
-      type: object
     RetryStageExecutionOutput:
       description: Represents the output of a RetryStageExecution action.
       type: object
@@ -5278,14 +5252,10 @@ components:
         pipelineExecutionId:
           $ref: '#/components/schemas/PipelineExecutionId'
           description: The unique system-generated ID of the pipeline execution that was stopped.
-    TagResourceOutput:
-      type: object
     TagKeyList:
       type: array
       items:
         $ref: '#/components/schemas/TagKey'
-    UntagResourceOutput:
-      type: object
     UpdatePipelineOutput:
       description: Represents the output of an UpdatePipeline action.
       type: object

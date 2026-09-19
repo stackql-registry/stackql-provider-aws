@@ -401,10 +401,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteResourcePolicyResponse"
     get:
       operationId: GetResourcePolicy
       description: Gets the resource-based permission policy that is set for the given environment.
@@ -650,10 +646,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TagResourceResponse"
     delete:
       operationId: UntagResource
       description: Adds to or modifies the tags of the given resource. Tags are metadata which can be used to manage a resource. To untag a resource, the caller account must be the same as the resource’s OwnerAccountId. Untagging resources across accounts is not supported.
@@ -673,10 +665,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UntagResourceResponse"
   /resourcepolicy:
     put:
       operationId: PutResourcePolicy
@@ -698,10 +686,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/PutResourcePolicyResponse"
 components:
   parameters:
     X-Amz-Content-Sha256:
@@ -1183,8 +1167,6 @@ components:
       minLength: 20
       maxLength: 2048
       pattern: ^arn:aws:refactor-spaces:[a-zA-Z0-9\-]+:\w{12}:[a-zA-Z_0-9+=,.@\-_/]+$
-    DeleteResourcePolicyResponse:
-      type: object
     DeleteRouteResponse:
       type: object
       properties:
@@ -1943,16 +1925,10 @@ components:
           type: object
           properties: {}
           description: The list of tags assigned to the resource.
-    PutResourcePolicyResponse:
-      type: object
-    TagResourceResponse:
-      type: object
     TagKeys:
       type: array
       items:
         $ref: "#/components/schemas/String"
-    UntagResourceResponse:
-      type: object
     UpdateRouteResponse:
       type: object
       properties:
@@ -2213,7 +2189,6 @@ components:
             $ref: "#/paths/~1resourcepolicy~1{identifier}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         get_resource_policy:
           operation:
             $ref: "#/paths/~1resourcepolicy~1{identifier}/get"
@@ -2225,7 +2200,6 @@ components:
             $ref: "#/paths/~1resourcepolicy/put"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -2284,7 +2258,6 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -2295,7 +2268,6 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
       sqlVerbs:

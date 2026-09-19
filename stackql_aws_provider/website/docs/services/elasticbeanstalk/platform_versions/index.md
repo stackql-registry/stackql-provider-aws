@@ -122,7 +122,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="platform_owner" /></td>
     <td><code>string</code></td>
-    <td>The AWS account ID of the person who created the platform version.</td>
+    <td>The Amazon Web Services account ID of the person who created the platform version.</td>
 </tr>
 <tr>
     <td><CopyableCode code="platform_status" /></td>
@@ -179,7 +179,7 @@ The following methods are available for this resource:
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td><a href="#parameter-PlatformArn"><code>PlatformArn</code></a></td>
-    <td>Describes a platform version. Provides full details. Compare to ListPlatformVersions, which provides summary information about a list of platform versions. For definitions of platform version and other platform-related terms, see AWS Elastic Beanstalk Platforms Glossary.</td>
+    <td>Describes a platform version. Provides full details. Compare to ListPlatformVersions, which provides summary information about a list of platform versions. For definitions of platform version and other platform-related terms, see Elastic Beanstalk Platforms Glossary. This action only returns information about resources that the calling principle has IAM permissions to access. For example, consider a case where a user only has permission to access one of three resources. When the user calls the this action, the response will only include the one resource that the user has permission to access instead of all three resources. If the user doesn’t have access to any of the resources an empty result is returned. The AWSElasticBeanstalkReadOnly managed policy allows operators to view information about resources related to Elastic Beanstalk. For more information, see Managing Elastic Beanstalk user policies in the Elastic Beanstalk Developer Guide. For detailed instructions to attach a policy to a user or group, see the section Controlling access with managed policies in the same topic.</td>
 </tr>
 <tr>
     <td><a href="#create_platform_version"><CopyableCode code="create_platform_version" /></a></td>
@@ -200,7 +200,7 @@ The following methods are available for this resource:
     <td><CopyableCode code="exec" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td><a href="#parameter-Filters"><code>Filters</code></a>, <a href="#parameter-MaxRecords"><code>MaxRecords</code></a>, <a href="#parameter-NextToken"><code>NextToken</code></a></td>
-    <td>Lists the platform versions available for your account in an AWS Region. Provides summary information about each platform version. Compare to DescribePlatformVersion, which provides full details about a single platform version. For definitions of platform version and other platform-related terms, see AWS Elastic Beanstalk Platforms Glossary.</td>
+    <td>Lists the platform versions available for your account in an Amazon Web Services Region. Provides summary information about each platform version. Compare to DescribePlatformVersion, which provides full details about a single platform version. This action only returns information about platform versions that the calling principle has IAM permissions to access. For example, consider a case where a user only has permission to access one of ten platform versions. When the user calls the ListPlatformVersions action, the response will only include the one platform version that the user has permission to access instead of all ten platform versions. If the user doesn’t have access to any of the platform versions an empty result is returned. The AWSElasticBeanstalkReadOnly managed policy allows operators to view information about resources related to Elastic Beanstalk environments. For more information, see Managing Elastic Beanstalk user policies in the Elastic Beanstalk Developer Guide. For detailed instructions to attach a policy to a user or group, see the section Controlling access with managed policies in the same topic. For definitions of platform version and other platform-related terms, see Elastic Beanstalk Platforms Glossary.</td>
 </tr>
 </tbody>
 </table>
@@ -286,7 +286,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 >
 <TabItem value="describe_platform_version">
 
-Describes a platform version. Provides full details. Compare to ListPlatformVersions, which provides summary information about a list of platform versions. For definitions of platform version and other platform-related terms, see AWS Elastic Beanstalk Platforms Glossary.
+Describes a platform version. Provides full details. Compare to ListPlatformVersions, which provides summary information about a list of platform versions. For definitions of platform version and other platform-related terms, see Elastic Beanstalk Platforms Glossary. This action only returns information about resources that the calling principle has IAM permissions to access. For example, consider a case where a user only has permission to access one of three resources. When the user calls the this action, the response will only include the one resource that the user has permission to access instead of all three resources. If the user doesn’t have access to any of the resources an empty result is returned. The AWSElasticBeanstalkReadOnly managed policy allows operators to view information about resources related to Elastic Beanstalk. For more information, see Managing Elastic Beanstalk user policies in the Elastic Beanstalk Developer Guide. For detailed instructions to attach a policy to a user or group, see the section Controlling access with managed policies in the same topic.
 
 ```sql
 SELECT
@@ -424,7 +424,7 @@ AND PlatformArn = '{{ PlatformArn }}'
 >
 <TabItem value="list_platform_versions">
 
-Lists the platform versions available for your account in an AWS Region. Provides summary information about each platform version. Compare to DescribePlatformVersion, which provides full details about a single platform version. For definitions of platform version and other platform-related terms, see AWS Elastic Beanstalk Platforms Glossary.
+Lists the platform versions available for your account in an Amazon Web Services Region. Provides summary information about each platform version. Compare to DescribePlatformVersion, which provides full details about a single platform version. This action only returns information about platform versions that the calling principle has IAM permissions to access. For example, consider a case where a user only has permission to access one of ten platform versions. When the user calls the ListPlatformVersions action, the response will only include the one platform version that the user has permission to access instead of all ten platform versions. If the user doesn’t have access to any of the platform versions an empty result is returned. The AWSElasticBeanstalkReadOnly managed policy allows operators to view information about resources related to Elastic Beanstalk environments. For more information, see Managing Elastic Beanstalk user policies in the Elastic Beanstalk Developer Guide. For detailed instructions to attach a policy to a user or group, see the section Controlling access with managed policies in the same topic. For definitions of platform version and other platform-related terms, see Elastic Beanstalk Platforms Glossary.
 
 ```sql
 EXEC aws.elasticbeanstalk.platform_versions.list_platform_versions 

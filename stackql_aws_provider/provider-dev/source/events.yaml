@@ -48,7 +48,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: event_source
+      x-stackql-resource: event_sources
       x-stackql-method: activate_event_source
       x-stackql-verb: EXEC
   /CancelReplay:
@@ -397,7 +397,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreateEventBusResponse'
-      x-stackql-resource: event_bus
+      x-stackql-resource: event_buses
       x-stackql-method: create_event_bus
       x-stackql-verb: INSERT
   /CreatePartnerEventSource:
@@ -488,7 +488,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: event_source
+      x-stackql-resource: event_sources
       x-stackql-method: deactivate_event_source
       x-stackql-verb: EXEC
   /DeauthorizeConnection:
@@ -525,7 +525,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DeauthorizeConnectionResponse'
-      x-stackql-resource: deauthorize_connection
+      x-stackql-resource: connections
       x-stackql-method: deauthorize_connection
       x-stackql-verb: EXEC
   /DeleteApiDestination:
@@ -557,10 +557,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteApiDestinationResponse'
       x-stackql-resource: api_destinations
       x-stackql-method: delete_api_destination
       x-stackql-verb: DELETE
@@ -593,10 +589,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteArchiveResponse'
       x-stackql-resource: archives
       x-stackql-method: delete_archive
       x-stackql-verb: DELETE
@@ -666,10 +658,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteEndpointResponse'
       x-stackql-resource: endpoints
       x-stackql-method: delete_endpoint
       x-stackql-verb: DELETE
@@ -703,7 +691,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: event_bus
+      x-stackql-resource: event_buses
       x-stackql-method: delete_event_bus
       x-stackql-verb: DELETE
   /DeletePartnerEventSource:
@@ -979,7 +967,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DescribeEventBusResponse'
-      x-stackql-resource: event_bus
+      x-stackql-resource: event_buses
       x-stackql-method: describe_event_bus
       x-stackql-verb: SELECT
   /DescribeEventSource:
@@ -1173,7 +1161,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: rule
+      x-stackql-resource: rules
       x-stackql-method: disable_rule
       x-stackql-verb: EXEC
   /EnableRule:
@@ -1211,7 +1199,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: rule
+      x-stackql-resource: rules
       x-stackql-method: enable_rule
       x-stackql-verb: EXEC
   /ListApiDestinations:
@@ -1694,7 +1682,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListRuleNamesByTargetOutputDisplay'
-      x-stackql-resource: rule_names_by_targets
+      x-stackql-resource: rule_names
       x-stackql-method: list_rule_names_by_target
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: ListRuleNamesByTargetOutputDisplay
@@ -1843,7 +1831,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTargetsByRuleResponse'
-      x-stackql-resource: targets_by_rules
+      x-stackql-resource: targets
       x-stackql-method: list_targets_by_rule
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Targets
@@ -2377,10 +2365,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -2427,7 +2411,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TestEventPatternResponse'
-      x-stackql-resource: event_pattern
+      x-stackql-resource: event_patterns
       x-stackql-method: test_event_pattern
       x-stackql-verb: EXEC
   /UntagResource:
@@ -2464,10 +2448,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -2739,7 +2719,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateEventBusResponse'
-      x-stackql-resource: event_bus
+      x-stackql-resource: event_buses
       x-stackql-method: update_event_bus
       x-stackql-verb: UPDATE
 components:
@@ -3454,10 +3434,6 @@ components:
         LastAuthorizedTime:
           $ref: '#/components/schemas/Timestamp'
           description: A time stamp for the time that the connection was last authorized.
-    DeleteApiDestinationResponse:
-      type: object
-    DeleteArchiveResponse:
-      type: object
     DeleteConnectionResponse:
       type: object
       properties:
@@ -3476,8 +3452,6 @@ components:
         LastAuthorizedTime:
           $ref: '#/components/schemas/Timestamp'
           description: A time stamp for the time that the connection was last authorized before it wa deleted.
-    DeleteEndpointResponse:
-      type: object
     RuleName:
       type: string
       minLength: 1
@@ -5382,8 +5356,6 @@ components:
         ReplayStartTime:
           $ref: '#/components/schemas/Timestamp'
           description: The time at which the replay started.
-    TagResourceResponse:
-      type: object
     TestEventPatternResponse:
       type: object
       properties:
@@ -5394,8 +5366,6 @@ components:
       type: array
       items:
         $ref: '#/components/schemas/TagKey'
-    UntagResourceResponse:
-      type: object
     UpdateApiDestinationResponse:
       type: object
       properties:

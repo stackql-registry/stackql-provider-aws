@@ -1996,10 +1996,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TagResourceResponse"
   /UntagResource:
     post:
       operationId: UntagResource
@@ -2033,10 +2029,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UntagResourceResponse"
   /UpdateImageStorageClass:
     post:
       operationId: UpdateImageStorageClass
@@ -4441,14 +4433,10 @@ components:
         status:
           $ref: "#/components/schemas/LifecyclePolicyPreviewStatus"
           description: The status of the lifecycle policy preview request.
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
         $ref: "#/components/schemas/TagKey"
-    UntagResourceResponse:
-      type: object
     TargetStorageClass:
       type: string
       enum:
@@ -4901,6 +4889,19 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        validate_pull_through_cache_rule:
+          operation:
+            $ref: "#/paths/~1ValidatePullThroughCacheRule/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/pull_through_cache_rules/methods/describe_pull_through_cache_rules"
@@ -5267,10 +5268,10 @@ components:
         update: []
         delete:
           - $ref: "#/components/x-stackQL-resources/pull_time_update_exclusions/methods/deregister_pull_time_update_exclusion"
-    image_replication_status:
-      id: aws.ecr.image_replication_status
-      name: image_replication_status
-      title: image_replication_status
+    image_replication_statuses:
+      id: aws.ecr.image_replication_statuses
+      name: image_replication_statuses
+      title: image_replication_statuses
       methods:
         describe_image_replication_status:
           operation:
@@ -5287,7 +5288,7 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/image_replication_status/methods/describe_image_replication_status"
+          - $ref: "#/components/x-stackQL-resources/image_replication_statuses/methods/describe_image_replication_status"
         insert: []
         update: []
         delete: []
@@ -5322,10 +5323,10 @@ components:
         insert: []
         update: []
         delete: []
-    image_signing_status:
-      id: aws.ecr.image_signing_status
-      name: image_signing_status
-      title: image_signing_status
+    image_signing_statuses:
+      id: aws.ecr.image_signing_statuses
+      name: image_signing_statuses
+      title: image_signing_statuses
       methods:
         describe_image_signing_status:
           operation:
@@ -5342,7 +5343,7 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/image_signing_status/methods/describe_image_signing_status"
+          - $ref: "#/components/x-stackQL-resources/image_signing_statuses/methods/describe_image_signing_status"
         insert: []
         update: []
         delete: []
@@ -5433,10 +5434,10 @@ components:
         insert: []
         update: []
         delete: []
-    download_url_for_layers:
-      id: aws.ecr.download_url_for_layers
-      name: download_url_for_layers
-      title: download_url_for_layers
+    download_urls:
+      id: aws.ecr.download_urls
+      name: download_urls
+      title: download_urls
       methods:
         get_download_url_for_layer:
           operation:
@@ -5453,7 +5454,7 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/download_url_for_layers/methods/get_download_url_for_layer"
+          - $ref: "#/components/x-stackQL-resources/download_urls/methods/get_download_url_for_layer"
         insert: []
         update: []
         delete: []
@@ -5575,7 +5576,6 @@ components:
             $ref: "#/paths/~1TagResource/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -5588,7 +5588,6 @@ components:
             $ref: "#/paths/~1UntagResource/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1

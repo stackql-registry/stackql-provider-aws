@@ -1285,8 +1285,6 @@ paths:
               properties:
                 Body:
                   $ref: "#/components/schemas/__string"
-              required:
-                - Body
       responses:
         "201":
           description: Success
@@ -2144,10 +2142,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/PutPortalProductSharingPolicyResponse"
   /v2/portalproducts/{portal_product_id}/productpages/{product_page_id}:
     delete:
       operationId: DeleteProductPage
@@ -2764,10 +2758,6 @@ paths:
       responses:
         "202":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteVpcLinkResponse"
     get:
       operationId: GetVpcLink
       description: Gets a VPC link.
@@ -2847,10 +2837,6 @@ paths:
       responses:
         "202":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/PublishPortalResponse"
   /v2/apis/{api_id}/exports/{specification}:
     get:
       operationId: ExportApi
@@ -2962,10 +2948,6 @@ paths:
       responses:
         "201":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TagResourceResponse"
     delete:
       operationId: UntagResource
       description: Deletes a Tag.
@@ -2999,10 +2981,6 @@ paths:
       responses:
         "202":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/PreviewPortalResponse"
   /v2/apis/{api_id}/stages/{stage_name}/cache/authorizers:
     delete:
       operationId: ResetAuthorizersCache
@@ -4411,8 +4389,6 @@ components:
       type: string
       enum:
         - V2
-    DeleteVpcLinkResponse:
-      type: object
     ExportApiResponse:
       type: object
       properties:
@@ -5889,12 +5865,6 @@ components:
         RoutingRuleId:
           $ref: "#/components/schemas/Id"
           description: The routing rule ID.
-    PreviewPortalResponse:
-      type: object
-    PublishPortalResponse:
-      type: object
-    PutPortalProductSharingPolicyResponse:
-      type: object
     PutRoutingRuleResponse:
       type: object
       properties:
@@ -5968,8 +5938,6 @@ components:
         Warnings:
           $ref: "#/components/schemas/__listOf__string"
           description: The warning messages reported when failonwarnings is turned on during API import.
-    TagResourceResponse:
-      type: object
     UpdateApiResponse:
       type: object
       properties:
@@ -6519,6 +6487,17 @@ components:
               responseToken:
                 key: $.NextToken
                 location: body
+        import_api:
+          operation:
+            $ref: "#/paths/~1v2~1apis/put"
+          response:
+            openAPIDocKey: "201"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         delete_api:
           operation:
             $ref: "#/paths/~1v2~1apis~1{api_id}/delete"
@@ -6557,6 +6536,12 @@ components:
             $ref: "#/paths/~1v2~1apis~1{api_id}~1cors/delete"
           response:
             openAPIDocKey: "204"
+        export_api:
+          operation:
+            $ref: "#/paths/~1v2~1apis~1{api_id}~1exports~1{specification}/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/apis/methods/get_api"
@@ -7083,7 +7068,6 @@ components:
             $ref: "#/paths/~1v2~1portals~1{portal_id}~1publish/post"
           response:
             openAPIDocKey: "202"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -7094,7 +7078,6 @@ components:
             $ref: "#/paths/~1v2~1portals~1{portal_id}~1preview/post"
           response:
             openAPIDocKey: "202"
-            mediaType: application/json
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/portals/methods/get_portal"
@@ -7381,8 +7364,8 @@ components:
           - $ref: "#/components/x-stackQL-resources/routes/methods/update_route"
         delete:
           - $ref: "#/components/x-stackQL-resources/routes/methods/delete_route_request_parameter"
-          - $ref: "#/components/x-stackQL-resources/routes/methods/delete_route_settings"
           - $ref: "#/components/x-stackQL-resources/routes/methods/delete_route"
+          - $ref: "#/components/x-stackQL-resources/routes/methods/delete_route_settings"
     route_responses:
       id: aws.apigatewayv2.route_responses
       name: route_responses
@@ -7617,7 +7600,6 @@ components:
             $ref: "#/paths/~1v2~1vpclinks~1{vpc_link_id}/delete"
           response:
             openAPIDocKey: "202"
-            mediaType: application/json
         get_vpc_link:
           operation:
             $ref: "#/paths/~1v2~1vpclinks~1{vpc_link_id}/get"
@@ -7666,7 +7648,6 @@ components:
             $ref: "#/paths/~1v2~1portalproducts~1{portal_product_id}~1sharingpolicy/put"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -7714,7 +7695,6 @@ components:
             $ref: "#/paths/~1v2~1tags~1{resource-arn}/post"
           response:
             openAPIDocKey: "201"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:

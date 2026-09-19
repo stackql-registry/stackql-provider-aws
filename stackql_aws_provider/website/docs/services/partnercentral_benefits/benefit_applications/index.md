@@ -271,13 +271,6 @@ The following methods are available for this resource:
     <td>Creates a new benefit application for a partner to request access to AWS benefits and programs.</td>
 </tr>
 <tr>
-    <td><a href="#associate_benefit_application_resource"><CopyableCode code="associate_benefit_application_resource" /></a></td>
-    <td><CopyableCode code="update" /></td>
-    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-BenefitApplicationIdentifier"><code>BenefitApplicationIdentifier</code></a>, <a href="#parameter-ResourceArn"><code>ResourceArn</code></a></td>
-    <td></td>
-    <td>Links an AWS resource to an existing benefit application for tracking and management purposes.</td>
-</tr>
-<tr>
     <td><a href="#update_benefit_application"><CopyableCode code="update_benefit_application" /></a></td>
     <td><CopyableCode code="update" /></td>
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-ClientToken"><code>ClientToken</code></a>, <a href="#parameter-Identifier"><code>Identifier</code></a></td>
@@ -285,11 +278,32 @@ The following methods are available for this resource:
     <td>Updates an existing benefit application with new information while maintaining revision control.</td>
 </tr>
 <tr>
+    <td><a href="#associate_benefit_application_resource"><CopyableCode code="associate_benefit_application_resource" /></a></td>
+    <td><CopyableCode code="update" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-BenefitApplicationIdentifier"><code>BenefitApplicationIdentifier</code></a>, <a href="#parameter-ResourceArn"><code>ResourceArn</code></a></td>
+    <td></td>
+    <td>Links an AWS resource to an existing benefit application for tracking and management purposes.</td>
+</tr>
+<tr>
+    <td><a href="#amend_benefit_application"><CopyableCode code="amend_benefit_application" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-ClientToken"><code>ClientToken</code></a>, <a href="#parameter-Identifier"><code>Identifier</code></a>, <a href="#parameter-AmendmentReason"><code>AmendmentReason</code></a>, <a href="#parameter-Amendments"><code>Amendments</code></a></td>
+    <td></td>
+    <td>Modifies an existing benefit application by applying amendments to specific fields while maintaining revision control.</td>
+</tr>
+<tr>
     <td><a href="#disassociate_benefit_application_resource"><CopyableCode code="disassociate_benefit_application_resource" /></a></td>
     <td><CopyableCode code="exec" /></td>
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-BenefitApplicationIdentifier"><code>BenefitApplicationIdentifier</code></a>, <a href="#parameter-ResourceArn"><code>ResourceArn</code></a></td>
     <td></td>
     <td>Removes the association between an AWS resource and a benefit application.</td>
+</tr>
+<tr>
+    <td><a href="#recall_benefit_application"><CopyableCode code="recall_benefit_application" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-Identifier"><code>Identifier</code></a>, <a href="#parameter-Reason"><code>Reason</code></a></td>
+    <td></td>
+    <td>Recalls a submitted benefit application, returning it to draft status for further modifications.</td>
 </tr>
 </tbody>
 </table>
@@ -502,32 +516,12 @@ revision
 ## `UPDATE` examples
 
 <Tabs
-    defaultValue="associate_benefit_application_resource"
+    defaultValue="update_benefit_application"
     values={[
-        { label: 'associate_benefit_application_resource', value: 'associate_benefit_application_resource' },
-        { label: 'update_benefit_application', value: 'update_benefit_application' }
+        { label: 'update_benefit_application', value: 'update_benefit_application' },
+        { label: 'associate_benefit_application_resource', value: 'associate_benefit_application_resource' }
     ]}
 >
-<TabItem value="associate_benefit_application_resource">
-
-Links an AWS resource to an existing benefit application for tracking and management purposes.
-
-```sql
-UPDATE aws.partnercentral_benefits.benefit_applications
-SET 
-Catalog = '{{ Catalog }}',
-BenefitApplicationIdentifier = '{{ BenefitApplicationIdentifier }}',
-ResourceArn = '{{ ResourceArn }}'
-WHERE 
-region = '{{ region }}' --required
-AND BenefitApplicationIdentifier = '{{ BenefitApplicationIdentifier }}' --required
-AND ResourceArn = '{{ ResourceArn }}' --required
-RETURNING
-arn,
-id,
-revision;
-```
-</TabItem>
 <TabItem value="update_benefit_application">
 
 Updates an existing benefit application with new information while maintaining revision control.
@@ -554,17 +548,58 @@ id,
 revision;
 ```
 </TabItem>
+<TabItem value="associate_benefit_application_resource">
+
+Links an AWS resource to an existing benefit application for tracking and management purposes.
+
+```sql
+UPDATE aws.partnercentral_benefits.benefit_applications
+SET 
+Catalog = '{{ Catalog }}',
+BenefitApplicationIdentifier = '{{ BenefitApplicationIdentifier }}',
+ResourceArn = '{{ ResourceArn }}'
+WHERE 
+region = '{{ region }}' --required
+AND BenefitApplicationIdentifier = '{{ BenefitApplicationIdentifier }}' --required
+AND ResourceArn = '{{ ResourceArn }}' --required
+RETURNING
+arn,
+id,
+revision;
+```
+</TabItem>
 </Tabs>
 
 
 ## Lifecycle Methods
 
 <Tabs
-    defaultValue="disassociate_benefit_application_resource"
+    defaultValue="amend_benefit_application"
     values={[
-        { label: 'disassociate_benefit_application_resource', value: 'disassociate_benefit_application_resource' }
+        { label: 'amend_benefit_application', value: 'amend_benefit_application' },
+        { label: 'disassociate_benefit_application_resource', value: 'disassociate_benefit_application_resource' },
+        { label: 'recall_benefit_application', value: 'recall_benefit_application' }
     ]}
 >
+<TabItem value="amend_benefit_application">
+
+Modifies an existing benefit application by applying amendments to specific fields while maintaining revision control.
+
+```sql
+EXEC aws.partnercentral_benefits.benefit_applications.amend_benefit_application 
+@region='{{ region }}' --required 
+@@json=
+'{
+"Catalog": "{{ Catalog }}", 
+"ClientToken": "{{ ClientToken }}", 
+"Revision": "{{ Revision }}", 
+"Identifier": "{{ Identifier }}", 
+"AmendmentReason": "{{ AmendmentReason }}", 
+"Amendments": "{{ Amendments }}"
+}'
+;
+```
+</TabItem>
 <TabItem value="disassociate_benefit_application_resource">
 
 Removes the association between an AWS resource and a benefit application.
@@ -577,6 +612,23 @@ EXEC aws.partnercentral_benefits.benefit_applications.disassociate_benefit_appli
 "Catalog": "{{ Catalog }}", 
 "BenefitApplicationIdentifier": "{{ BenefitApplicationIdentifier }}", 
 "ResourceArn": "{{ ResourceArn }}"
+}'
+;
+```
+</TabItem>
+<TabItem value="recall_benefit_application">
+
+Recalls a submitted benefit application, returning it to draft status for further modifications.
+
+```sql
+EXEC aws.partnercentral_benefits.benefit_applications.recall_benefit_application 
+@region='{{ region }}' --required 
+@@json=
+'{
+"Catalog": "{{ Catalog }}", 
+"ClientToken": "{{ ClientToken }}", 
+"Identifier": "{{ Identifier }}", 
+"Reason": "{{ Reason }}"
 }'
 ;
 ```

@@ -133,6 +133,20 @@ The following methods are available for this resource:
     <td><a href="#parameter-UserName"><code>UserName</code></a>, <a href="#parameter-Marker"><code>Marker</code></a>, <a href="#parameter-MaxItems"><code>MaxItems</code></a></td>
     <td>Lists the MFA devices for an IAM user. If the request includes a IAM user name, then this operation lists all the MFA devices associated with the specified user. If you do not specify a user name, IAM determines the user name implicitly based on the Amazon Web Services access key ID signing the request for this operation. You can paginate the results using the MaxItems and Marker parameters.</td>
 </tr>
+<tr>
+    <td><a href="#deactivate_mfa_device"><CopyableCode code="deactivate_mfa_device" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-SerialNumber"><code>SerialNumber</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td><a href="#parameter-UserName"><code>UserName</code></a></td>
+    <td>Deactivates the specified MFA device and removes it from association with the user name for which it was originally enabled. For more information about creating and working with virtual MFA devices, see Enabling a virtual multi-factor authentication (MFA) device in the IAM User Guide.</td>
+</tr>
+<tr>
+    <td><a href="#enable_mfa_device"><CopyableCode code="enable_mfa_device" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-UserName"><code>UserName</code></a>, <a href="#parameter-SerialNumber"><code>SerialNumber</code></a>, <a href="#parameter-AuthenticationCode1"><code>AuthenticationCode1</code></a>, <a href="#parameter-AuthenticationCode2"><code>AuthenticationCode2</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Enables the specified MFA device and associates it with the specified IAM user. When enabled, the MFA device is required for every subsequent login by the IAM user associated with the device.</td>
+</tr>
 </tbody>
 </table>
 
@@ -149,10 +163,25 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     </tr>
 </thead>
 <tbody>
+<tr id="parameter-AuthenticationCode1">
+    <td><CopyableCode code="AuthenticationCode1" /></td>
+    <td><code>string</code></td>
+    <td>An authentication code emitted by the device. The format for this parameter is a string of six digits. Submit your request immediately after generating the authentication codes. If you generate the codes and then wait too long to submit the request, the MFA device successfully associates with the user but the MFA device becomes out of sync. This happens because time-based one-time passwords (TOTP) expire after a short period of time. If this happens, you can resync the device.</td>
+</tr>
+<tr id="parameter-AuthenticationCode2">
+    <td><CopyableCode code="AuthenticationCode2" /></td>
+    <td><code>string</code></td>
+    <td>A subsequent authentication code emitted by the device. The format for this parameter is a string of six digits. Submit your request immediately after generating the authentication codes. If you generate the codes and then wait too long to submit the request, the MFA device successfully associates with the user but the MFA device becomes out of sync. This happens because time-based one-time passwords (TOTP) expire after a short period of time. If this happens, you can resync the device.</td>
+</tr>
 <tr id="parameter-SerialNumber">
     <td><CopyableCode code="SerialNumber" /></td>
     <td><code>string</code></td>
-    <td>Serial number that uniquely identifies the MFA device. For this API, we only accept FIDO security key ARNs.</td>
+    <td>The serial number that uniquely identifies the MFA device. For virtual MFA devices, the serial number is the device ARN. This parameter allows (through its regex pattern) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@:/-</td>
+</tr>
+<tr id="parameter-UserName">
+    <td><CopyableCode code="UserName" /></td>
+    <td><code>string</code></td>
+    <td>The name of the IAM user for whom you want to enable the MFA device. This parameter allows (through its regex pattern) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-</td>
 </tr>
 <tr id="parameter-region">
     <td><CopyableCode code="region" /></td>
@@ -172,7 +201,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-UserName">
     <td><CopyableCode code="UserName" /></td>
     <td><code>string</code></td>
-    <td>The name of the user whose MFA devices you want to list. This parameter allows (through its regex pattern) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-</td>
+    <td>The name of the user whose MFA device you want to deactivate. This parameter is optional. If no user name is included, it defaults to the principal making the request. When you make this request with root user credentials, you must use an AssumeRoot session to omit the user name. This parameter allows (through its regex pattern) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-</td>
 </tr>
 </tbody>
 </table>
@@ -217,6 +246,44 @@ WHERE region = '{{ region }}' -- required
 AND UserName = '{{ UserName }}'
 AND Marker = '{{ Marker }}'
 AND MaxItems = '{{ MaxItems }}'
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="deactivate_mfa_device"
+    values={[
+        { label: 'deactivate_mfa_device', value: 'deactivate_mfa_device' },
+        { label: 'enable_mfa_device', value: 'enable_mfa_device' }
+    ]}
+>
+<TabItem value="deactivate_mfa_device">
+
+Deactivates the specified MFA device and removes it from association with the user name for which it was originally enabled. For more information about creating and working with virtual MFA devices, see Enabling a virtual multi-factor authentication (MFA) device in the IAM User Guide.
+
+```sql
+EXEC aws.iam.mfa_devices.deactivate_mfa_device 
+@SerialNumber='{{ SerialNumber }}' --required, 
+@region='{{ region }}' --required, 
+@UserName='{{ UserName }}'
+;
+```
+</TabItem>
+<TabItem value="enable_mfa_device">
+
+Enables the specified MFA device and associates it with the specified IAM user. When enabled, the MFA device is required for every subsequent login by the IAM user associated with the device.
+
+```sql
+EXEC aws.iam.mfa_devices.enable_mfa_device 
+@UserName='{{ UserName }}' --required, 
+@SerialNumber='{{ SerialNumber }}' --required, 
+@AuthenticationCode1='{{ AuthenticationCode1 }}' --required, 
+@AuthenticationCode2='{{ AuthenticationCode2 }}' --required, 
+@region='{{ region }}' --required
 ;
 ```
 </TabItem>

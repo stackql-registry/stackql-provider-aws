@@ -3724,6 +3724,90 @@ components:
       required:
         - invocationArn
   x-stackQL-resources:
+    guardrails:
+      id: aws.bedrock_runtime.guardrails
+      name: guardrails
+      title: guardrails
+      methods:
+        apply_guardrail:
+          operation:
+            $ref: "#/paths/~1guardrail~1{guardrail_identifier}~1version~1{guardrail_version}~1apply/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
+    converses:
+      id: aws.bedrock_runtime.converses
+      name: converses
+      title: converses
+      methods:
+        converse:
+          operation:
+            $ref: "#/paths/~1model~1{model_id}~1converse/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
+    streams:
+      id: aws.bedrock_runtime.streams
+      name: streams
+      title: streams
+      methods:
+        converse_stream:
+          operation:
+            $ref: "#/paths/~1model~1{model_id}~1converse-stream/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
+    tokens:
+      id: aws.bedrock_runtime.tokens
+      name: tokens
+      title: tokens
+      methods:
+        count_tokens:
+          operation:
+            $ref: "#/paths/~1model~1{model_id}~1count-tokens/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
     async_invokes:
       id: aws.bedrock_runtime.async_invokes
       name: async_invokes
@@ -3752,10 +3836,105 @@ components:
               responseToken:
                 key: $.nextToken
                 location: body
+        start_async_invoke:
+          operation:
+            $ref: "#/paths/~1async-invoke/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/async_invokes/methods/get_async_invoke"
           - $ref: "#/components/x-stackQL-resources/async_invokes/methods/list_async_invokes"
+        insert: []
+        update: []
+        delete: []
+    guardrail_checks:
+      id: aws.bedrock_runtime.guardrail_checks
+      name: guardrail_checks
+      title: guardrail_checks
+      methods:
+        invoke_guardrail_checks:
+          operation:
+            $ref: "#/paths/~1guardrail-checks~1invoke/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
+    models:
+      id: aws.bedrock_runtime.models
+      name: models
+      title: models
+      methods:
+        invoke_model:
+          operation:
+            $ref: "#/paths/~1model~1{model_id}~1invoke/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
+    model_with_bidirectional_streams:
+      id: aws.bedrock_runtime.model_with_bidirectional_streams
+      name: model_with_bidirectional_streams
+      title: model_with_bidirectional_streams
+      methods:
+        invoke_model_with_bidirectional_stream:
+          operation:
+            $ref: "#/paths/~1model~1{model_id}~1invoke-with-bidirectional-stream/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
+    model_with_response_streams:
+      id: aws.bedrock_runtime.model_with_response_streams
+      name: model_with_response_streams
+      title: model_with_response_streams
+      methods:
+        invoke_model_with_response_stream:
+          operation:
+            $ref: "#/paths/~1model~1{model_id}~1invoke-with-response-stream/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
         insert: []
         update: []
         delete: []

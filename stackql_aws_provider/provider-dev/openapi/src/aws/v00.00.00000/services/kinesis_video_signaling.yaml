@@ -219,3 +219,24 @@ components:
         insert: []
         update: []
         delete: []
+    alexa_offer_to_masters:
+      id: aws.kinesis_video_signaling.alexa_offer_to_masters
+      name: alexa_offer_to_masters
+      title: alexa_offer_to_masters
+      methods:
+        send_alexa_offer_to_master:
+          operation:
+            $ref: "#/paths/~1v1~1send-alexa-offer-to-master/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []

@@ -108,6 +108,13 @@ The following methods are available for this resource:
     <td>Creates a transit virtual interface. A transit virtual interface should be used to access one or more transit gateways associated with Direct Connect gateways. A transit virtual interface enables the connection of multiple VPCs attached to a transit gateway to a Direct Connect gateway. If you associate your transit gateway with one or more Direct Connect gateways, the Autonomous System Number (ASN) used by the transit gateway and the Direct Connect gateway must be different. For example, if you use the default ASN 64512 for both your the transit gateway and Direct Connect gateway, the association request fails. A jumbo MTU value must be either 1500 or 8500. No other values will be accepted. Setting the MTU of a virtual interface to 8500 (jumbo frames) can cause an update to the underlying physical connection if it wasn't updated to support jumbo frames. Updating the connection disrupts network connectivity for all virtual interfaces associated with the connection for up to 30 seconds. To check whether your connection supports jumbo frames, call DescribeConnections. To check whether your virtual interface supports jumbo frames, call DescribeVirtualInterfaces.</td>
 </tr>
 <tr>
+    <td><a href="#associate_virtual_interface"><CopyableCode code="associate_virtual_interface" /></a></td>
+    <td><CopyableCode code="update" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-virtualInterfaceId"><code>virtualInterfaceId</code></a>, <a href="#parameter-connectionId"><code>connectionId</code></a></td>
+    <td></td>
+    <td>Associates a virtual interface with a specified link aggregation group (LAG) or connection. Connectivity to Amazon Web Services is temporarily interrupted as the virtual interface is being migrated. If the target connection or LAG has an associated virtual interface with a conflicting VLAN number or a conflicting IP address, the operation fails. Virtual interfaces associated with a hosted connection cannot be associated with a LAG; hosted connections must be migrated along with their virtual interfaces using AssociateHostedConnection. To reassociate a virtual interface to a new connection or LAG, the requester must own either the virtual interface itself or the connection to which the virtual interface is currently associated. Additionally, the requester must own the connection or LAG for the association.</td>
+</tr>
+<tr>
     <td><a href="#allocate_private_virtual_interface"><CopyableCode code="allocate_private_virtual_interface" /></a></td>
     <td><CopyableCode code="update" /></td>
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-connectionId"><code>connectionId</code></a>, <a href="#parameter-ownerAccount"><code>ownerAccount</code></a>, <a href="#parameter-newPrivateVirtualInterfaceAllocation"><code>newPrivateVirtualInterfaceAllocation</code></a></td>
@@ -127,13 +134,6 @@ The following methods are available for this resource:
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-connectionId"><code>connectionId</code></a>, <a href="#parameter-ownerAccount"><code>ownerAccount</code></a>, <a href="#parameter-newTransitVirtualInterfaceAllocation"><code>newTransitVirtualInterfaceAllocation</code></a></td>
     <td></td>
     <td>Provisions a transit virtual interface to be owned by the specified Amazon Web Services account. Use this type of interface to connect a transit gateway to your Direct Connect gateway. The owner of a connection provisions a transit virtual interface to be owned by the specified Amazon Web Services account. After you create a transit virtual interface, it must be confirmed by the owner using ConfirmTransitVirtualInterface. Until this step has been completed, the transit virtual interface is in the requested state and is not available to handle traffic.</td>
-</tr>
-<tr>
-    <td><a href="#associate_virtual_interface"><CopyableCode code="associate_virtual_interface" /></a></td>
-    <td><CopyableCode code="update" /></td>
-    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-virtualInterfaceId"><code>virtualInterfaceId</code></a>, <a href="#parameter-connectionId"><code>connectionId</code></a></td>
-    <td></td>
-    <td>Associates a virtual interface with a specified link aggregation group (LAG) or connection. Connectivity to Amazon Web Services is temporarily interrupted as the virtual interface is being migrated. If the target connection or LAG has an associated virtual interface with a conflicting VLAN number or a conflicting IP address, the operation fails. Virtual interfaces associated with a hosted connection cannot be associated with a LAG; hosted connections must be migrated along with their virtual interfaces using AssociateHostedConnection. To reassociate a virtual interface to a new connection or LAG, the requester must own either the virtual interface itself or the connection to which the virtual interface is currently associated. Additionally, the requester must own the connection or LAG for the association.</td>
 </tr>
 <tr>
     <td><a href="#update_virtual_interface_attributes"><CopyableCode code="update_virtual_interface_attributes" /></a></td>
@@ -268,6 +268,8 @@ jumbo_frame_capable,
 location,
 mtu,
 owner_account,
+prefix_pool_allocated_count_ipv_4,
+prefix_pool_allocated_count_ipv_6,
 rate_limit,
 region,
 route_filter_prefixes,
@@ -314,6 +316,8 @@ jumbo_frame_capable,
 location,
 mtu,
 owner_account,
+prefix_pool_allocated_count_ipv_4,
+prefix_pool_allocated_count_ipv_6,
 rate_limit,
 region,
 route_filter_prefixes,
@@ -378,6 +382,8 @@ virtual_interface
           - key: "{{ key }}"
             value: "{{ value }}"
         enableSiteLink: {{ enableSiteLink }}
+        prefixPoolAllocatedCountIpv4: {{ prefixPoolAllocatedCountIpv4 }}
+        prefixPoolAllocatedCountIpv6: {{ prefixPoolAllocatedCountIpv6 }}
         rateLimit: "{{ rateLimit }}"
     - name: newPublicVirtualInterface
       description: |
@@ -415,6 +421,8 @@ virtual_interface
           - key: "{{ key }}"
             value: "{{ value }}"
         enableSiteLink: {{ enableSiteLink }}
+        prefixPoolAllocatedCountIpv4: {{ prefixPoolAllocatedCountIpv4 }}
+        prefixPoolAllocatedCountIpv6: {{ prefixPoolAllocatedCountIpv6 }}
         rateLimit: "{{ rateLimit }}"
 `}</CodeBlock>
 
@@ -425,15 +433,61 @@ virtual_interface
 ## `UPDATE` examples
 
 <Tabs
-    defaultValue="allocate_private_virtual_interface"
+    defaultValue="associate_virtual_interface"
     values={[
+        { label: 'associate_virtual_interface', value: 'associate_virtual_interface' },
         { label: 'allocate_private_virtual_interface', value: 'allocate_private_virtual_interface' },
         { label: 'allocate_public_virtual_interface', value: 'allocate_public_virtual_interface' },
         { label: 'allocate_transit_virtual_interface', value: 'allocate_transit_virtual_interface' },
-        { label: 'associate_virtual_interface', value: 'associate_virtual_interface' },
         { label: 'update_virtual_interface_attributes', value: 'update_virtual_interface_attributes' }
     ]}
 >
+<TabItem value="associate_virtual_interface">
+
+Associates a virtual interface with a specified link aggregation group (LAG) or connection. Connectivity to Amazon Web Services is temporarily interrupted as the virtual interface is being migrated. If the target connection or LAG has an associated virtual interface with a conflicting VLAN number or a conflicting IP address, the operation fails. Virtual interfaces associated with a hosted connection cannot be associated with a LAG; hosted connections must be migrated along with their virtual interfaces using AssociateHostedConnection. To reassociate a virtual interface to a new connection or LAG, the requester must own either the virtual interface itself or the connection to which the virtual interface is currently associated. Additionally, the requester must own the connection or LAG for the association.
+
+```sql
+UPDATE aws.directconnect.virtual_interfaces
+SET 
+virtualInterfaceId = '{{ virtualInterfaceId }}',
+connectionId = '{{ connectionId }}'
+WHERE 
+region = '{{ region }}' --required
+AND virtualInterfaceId = '{{ virtualInterfaceId }}' --required
+AND connectionId = '{{ connectionId }}' --required
+RETURNING
+address_family,
+amazon_address,
+amazon_side_asn,
+asn,
+asn_long,
+auth_key,
+aws_device_v2,
+aws_logical_device_id,
+bgp_peers,
+connection_id,
+customer_address,
+customer_router_config,
+direct_connect_gateway_id,
+jumbo_frame_capable,
+location,
+mtu,
+owner_account,
+prefix_pool_allocated_count_ipv_4,
+prefix_pool_allocated_count_ipv_6,
+rate_limit,
+region,
+route_filter_prefixes,
+site_link_enabled,
+tags,
+virtual_gateway_id,
+virtual_interface_id,
+virtual_interface_name,
+virtual_interface_state,
+virtual_interface_type,
+vlan;
+```
+</TabItem>
 <TabItem value="allocate_private_virtual_interface">
 
 Provisions a private virtual interface to be owned by the specified Amazon Web Services account. Virtual interfaces created using this action must be confirmed by the owner using ConfirmPrivateVirtualInterface. Until then, the virtual interface is in the Confirming state and is not available to handle traffic.
@@ -467,6 +521,8 @@ jumbo_frame_capable,
 location,
 mtu,
 owner_account,
+prefix_pool_allocated_count_ipv_4,
+prefix_pool_allocated_count_ipv_6,
 rate_limit,
 region,
 route_filter_prefixes,
@@ -513,6 +569,8 @@ jumbo_frame_capable,
 location,
 mtu,
 owner_account,
+prefix_pool_allocated_count_ipv_4,
+prefix_pool_allocated_count_ipv_6,
 rate_limit,
 region,
 route_filter_prefixes,
@@ -545,50 +603,6 @@ RETURNING
 virtual_interface;
 ```
 </TabItem>
-<TabItem value="associate_virtual_interface">
-
-Associates a virtual interface with a specified link aggregation group (LAG) or connection. Connectivity to Amazon Web Services is temporarily interrupted as the virtual interface is being migrated. If the target connection or LAG has an associated virtual interface with a conflicting VLAN number or a conflicting IP address, the operation fails. Virtual interfaces associated with a hosted connection cannot be associated with a LAG; hosted connections must be migrated along with their virtual interfaces using AssociateHostedConnection. To reassociate a virtual interface to a new connection or LAG, the requester must own either the virtual interface itself or the connection to which the virtual interface is currently associated. Additionally, the requester must own the connection or LAG for the association.
-
-```sql
-UPDATE aws.directconnect.virtual_interfaces
-SET 
-virtualInterfaceId = '{{ virtualInterfaceId }}',
-connectionId = '{{ connectionId }}'
-WHERE 
-region = '{{ region }}' --required
-AND virtualInterfaceId = '{{ virtualInterfaceId }}' --required
-AND connectionId = '{{ connectionId }}' --required
-RETURNING
-address_family,
-amazon_address,
-amazon_side_asn,
-asn,
-asn_long,
-auth_key,
-aws_device_v2,
-aws_logical_device_id,
-bgp_peers,
-connection_id,
-customer_address,
-customer_router_config,
-direct_connect_gateway_id,
-jumbo_frame_capable,
-location,
-mtu,
-owner_account,
-rate_limit,
-region,
-route_filter_prefixes,
-site_link_enabled,
-tags,
-virtual_gateway_id,
-virtual_interface_id,
-virtual_interface_name,
-virtual_interface_state,
-virtual_interface_type,
-vlan;
-```
-</TabItem>
 <TabItem value="update_virtual_interface_attributes">
 
 Updates the specified attributes of the specified virtual private interface. Setting the MTU of a virtual interface to 8500 (jumbo frames) can cause an update to the underlying physical connection if it wasn't updated to support jumbo frames. Updating the connection disrupts network connectivity for all virtual interfaces associated with the connection for up to 30 seconds. To check whether your connection supports jumbo frames, call DescribeConnections. To check whether your virtual interface supports jumbo frames, call DescribeVirtualInterfaces.
@@ -600,6 +614,8 @@ virtualInterfaceId = '{{ virtualInterfaceId }}',
 mtu = {{ mtu }},
 enableSiteLink = {{ enableSiteLink }},
 virtualInterfaceName = '{{ virtualInterfaceName }}',
+prefixPoolAllocatedCountIpv4 = {{ prefixPoolAllocatedCountIpv4 }},
+prefixPoolAllocatedCountIpv6 = {{ prefixPoolAllocatedCountIpv6 }},
 rateLimit = '{{ rateLimit }}'
 WHERE 
 region = '{{ region }}' --required
@@ -622,6 +638,8 @@ jumbo_frame_capable,
 location,
 mtu,
 owner_account,
+prefix_pool_allocated_count_ipv_4,
+prefix_pool_allocated_count_ipv_6,
 rate_limit,
 region,
 route_filter_prefixes,

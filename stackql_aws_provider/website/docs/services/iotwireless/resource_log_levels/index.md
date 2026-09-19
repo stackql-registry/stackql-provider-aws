@@ -95,6 +95,13 @@ The following methods are available for this resource:
     <td></td>
     <td>Removes the log-level overrides for all resources; wireless devices, wireless gateways, and FUOTA tasks.</td>
 </tr>
+<tr>
+    <td><a href="#reset_resource_log_level"><CopyableCode code="reset_resource_log_level" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-resource_identifier"><code>resource_identifier</code></a>, <a href="#parameter-resourceType"><code>resourceType</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Removes the log-level override, if any, for a specific resource ID and resource type. It can be used for a wireless device, a wireless gateway, or a FUOTA task.</td>
+</tr>
 </tbody>
 </table>
 
@@ -185,7 +192,8 @@ AND LogLevel = '{{ LogLevel }}' --required;
 <Tabs
     defaultValue="reset_all_resource_log_levels"
     values={[
-        { label: 'reset_all_resource_log_levels', value: 'reset_all_resource_log_levels' }
+        { label: 'reset_all_resource_log_levels', value: 'reset_all_resource_log_levels' },
+        { label: 'reset_resource_log_level', value: 'reset_resource_log_level' }
     ]}
 >
 <TabItem value="reset_all_resource_log_levels">
@@ -194,6 +202,18 @@ Removes the log-level overrides for all resources; wireless devices, wireless ga
 
 ```sql
 EXEC aws.iotwireless.resource_log_levels.reset_all_resource_log_levels 
+@region='{{ region }}' --required
+;
+```
+</TabItem>
+<TabItem value="reset_resource_log_level">
+
+Removes the log-level override, if any, for a specific resource ID and resource type. It can be used for a wireless device, a wireless gateway, or a FUOTA task.
+
+```sql
+EXEC aws.iotwireless.resource_log_levels.reset_resource_log_level 
+@resource_identifier='{{ resource_identifier }}' --required, 
+@resourceType='{{ resourceType }}' --required, 
 @region='{{ region }}' --required
 ;
 ```

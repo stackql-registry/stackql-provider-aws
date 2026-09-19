@@ -2740,6 +2740,9 @@ components:
         dbParameterGroupIdentifier:
           $ref: "#/components/schemas/DbParameterGroupIdentifier"
           description: The ID of the DB parameter group assigned to your DB cluster.
+        effectiveDbParameterGroupIdentifier:
+          $ref: "#/components/schemas/DbParameterGroupIdentifier"
+          description: The ID of the DB parameter group actually applied to your DB cluster. When the service applies optimized defaults, it creates a service-managed DB parameter group and this field reflects that group, while dbParameterGroupIdentifier reflects the customer-provided DB parameter group. When no service-managed DB parameter group is applied, this value matches dbParameterGroupIdentifier.
         logDeliveryConfiguration:
           $ref: "#/components/schemas/LogDeliveryConfiguration"
           description: Configuration for sending InfluxDB engine logs to send to specified S3 bucket.
@@ -3665,6 +3668,40 @@ components:
                 location: body
             requestBodyTranslate:
               algorithm: naive
+        list_db_instances_for_cluster:
+          operation:
+            $ref: "#/paths/~1ListDbInstancesForCluster/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.items_
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        reboot_db_instance:
+          operation:
+            $ref: "#/paths/~1RebootDbInstance/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         update_db_instance:
           operation:
             $ref: "#/paths/~1UpdateDbInstance/post"
@@ -3681,6 +3718,7 @@ components:
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/db_instances/methods/get_db_instance"
+          - $ref: "#/components/x-stackQL-resources/db_instances/methods/list_db_instances_for_cluster"
           - $ref: "#/components/x-stackQL-resources/db_instances/methods/list_db_instances"
         insert:
           - $ref: "#/components/x-stackQL-resources/db_instances/methods/create_db_instance"
@@ -3746,38 +3784,6 @@ components:
           - $ref: "#/components/x-stackQL-resources/db_parameter_groups/methods/list_db_parameter_groups"
         insert:
           - $ref: "#/components/x-stackQL-resources/db_parameter_groups/methods/create_db_parameter_group"
-        update: []
-        delete: []
-    db_instances_for_clusters:
-      id: aws.timestream_influxdb.db_instances_for_clusters
-      name: db_instances_for_clusters
-      title: db_instances_for_clusters
-      methods:
-        list_db_instances_for_cluster:
-          operation:
-            $ref: "#/paths/~1ListDbInstancesForCluster/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.items_
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.0
-            base: "{}"
-          config:
-            pagination:
-              requestToken:
-                key: nextToken
-                location: body
-              responseToken:
-                key: $.nextToken
-                location: body
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/db_instances_for_clusters/methods/list_db_instances_for_cluster"
-        insert: []
         update: []
         delete: []
     tags:

@@ -18,7 +18,7 @@ guardduty service documentation.
 
 :::info[Service Summary]
 
-total resources: __27__  
+total resources: __31__  
 
 :::
 
@@ -28,6 +28,9 @@ total resources: __27__
 <a href="/services/guardduty/administrator_accounts/">administrator_accounts</a><br />
 <a href="/services/guardduty/coverage_statistics/">coverage_statistics</a><br />
 <a href="/services/guardduty/coverages/">coverages</a><br />
+<a href="/services/guardduty/custom_detection_rule_associations/">custom_detection_rule_associations</a><br />
+<a href="/services/guardduty/custom_detection_rule_org_configurations/">custom_detection_rule_org_configurations</a><br />
+<a href="/services/guardduty/custom_detection_rules/">custom_detection_rules</a><br />
 <a href="/services/guardduty/detectors/">detectors</a><br />
 <a href="/services/guardduty/filters/">filters</a><br />
 <a href="/services/guardduty/findings/">findings</a><br />
@@ -37,13 +40,14 @@ total resources: __27__
 <a href="/services/guardduty/invitations_counts/">invitations_counts</a><br />
 <a href="/services/guardduty/ip_sets/">ip_sets</a><br />
 <a href="/services/guardduty/malware_protection_plans/">malware_protection_plans</a><br />
-<a href="/services/guardduty/malware_scan_settings/">malware_scan_settings</a><br />
-<a href="/services/guardduty/malware_scans/">malware_scans</a>
+<a href="/services/guardduty/malware_scan_settings/">malware_scan_settings</a>
 </div>
 <div class="providerDocColumn">
+<a href="/services/guardduty/malware_scans/">malware_scans</a><br />
 <a href="/services/guardduty/master_accounts/">master_accounts</a><br />
 <a href="/services/guardduty/member_detectors/">member_detectors</a><br />
 <a href="/services/guardduty/members/">members</a><br />
+<a href="/services/guardduty/object_malware_scans/">object_malware_scans</a><br />
 <a href="/services/guardduty/organization_admin_accounts/">organization_admin_accounts</a><br />
 <a href="/services/guardduty/organization_configurations/">organization_configurations</a><br />
 <a href="/services/guardduty/organization_statistics/">organization_statistics</a><br />

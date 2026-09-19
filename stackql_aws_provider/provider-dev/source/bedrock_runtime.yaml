@@ -57,7 +57,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ApplyGuardrailResponse'
-      x-stackql-resource: apply_guardrail
+      x-stackql-resource: guardrails
       x-stackql-method: apply_guardrail
       x-stackql-verb: EXEC
   /model/{model_id}/converse:
@@ -136,7 +136,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ConverseResponse'
-      x-stackql-resource: converse
+      x-stackql-resource: es
       x-stackql-method: converse
       x-stackql-verb: EXEC
   /model/{model_id}/converse-stream:
@@ -218,7 +218,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ConverseStreamResponse'
-      x-stackql-resource: converse_stream
+      x-stackql-resource: streams
       x-stackql-method: converse_stream
       x-stackql-verb: EXEC
   /model/{model_id}/count-tokens:
@@ -260,7 +260,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CountTokensResponse'
-      x-stackql-resource: count_tokens
+      x-stackql-resource: tokens
       x-stackql-method: count_tokens
       x-stackql-verb: EXEC
   /async-invoke/{invocation_arn}:
@@ -409,7 +409,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/InvokeModelResponse'
-      x-stackql-resource: model
+      x-stackql-resource: models
       x-stackql-method: invoke_model
       x-stackql-verb: EXEC
   /model/{model_id}/invoke-with-bidirectional-stream:
@@ -446,7 +446,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/InvokeModelWithBidirectionalStreamResponse'
-      x-stackql-resource: model_with_bidirectional_stream
+      x-stackql-resource: model_with_bidirectional_streams
       x-stackql-method: invoke_model_with_bidirectional_stream
       x-stackql-verb: EXEC
   /model/{model_id}/invoke-with-response-stream:
@@ -546,7 +546,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/InvokeModelWithResponseStreamResponse'
-      x-stackql-resource: model_with_response_stream
+      x-stackql-resource: model_with_response_streams
       x-stackql-method: invoke_model_with_response_stream
       x-stackql-verb: EXEC
   /async-invoke:
@@ -645,7 +645,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartAsyncInvokeResponse'
-      x-stackql-resource: async_invoke
+      x-stackql-resource: async_invokes
       x-stackql-method: start_async_invoke
       x-stackql-verb: EXEC
 components:

@@ -205,7 +205,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreateContentResponse'
-      x-stackql-resource: contents
+      x-stackql-resource: content
       x-stackql-method: create_content
       x-stackql-verb: INSERT
     get:
@@ -467,10 +467,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteAssistantResponse'
       x-stackql-resource: assistants
       x-stackql-method: delete_assistant
       x-stackql-verb: DELETE
@@ -516,10 +512,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteAssistantAssociationResponse'
       x-stackql-resource: assistant_associations
       x-stackql-method: delete_assistant_association
       x-stackql-verb: DELETE
@@ -572,11 +564,7 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteContentResponse'
-      x-stackql-resource: contents
+      x-stackql-resource: content
       x-stackql-method: delete_content
       x-stackql-verb: DELETE
     get:
@@ -603,7 +591,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetContentResponse'
-      x-stackql-resource: contents
+      x-stackql-resource: content
       x-stackql-method: get_content
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.content
@@ -650,7 +638,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateContentResponse'
-      x-stackql-resource: contents
+      x-stackql-resource: content
       x-stackql-method: update_content
       x-stackql-verb: UPDATE
   /knowledgeBases/{knowledge_base_id}/importJobs/{import_job_id}:
@@ -674,10 +662,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteImportJobResponse'
       x-stackql-resource: import_jobs
       x-stackql-method: delete_import_job
       x-stackql-verb: DELETE
@@ -725,10 +709,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteKnowledgeBaseResponse'
       x-stackql-resource: knowledge_bases
       x-stackql-method: delete_knowledge_base
       x-stackql-verb: DELETE
@@ -775,10 +755,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteQuickResponseResponse'
       x-stackql-resource: quick_responses
       x-stackql-method: delete_quick_response
       x-stackql-verb: DELETE
@@ -1049,7 +1025,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartImportJobResponse'
-      x-stackql-resource: knowledge_bases
+      x-stackql-resource: import_jobs
       x-stackql-method: start_import_job
       x-stackql-verb: EXEC
   /tags/{resource_arn}:
@@ -1097,10 +1073,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -1123,10 +1095,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -1225,10 +1193,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RemoveKnowledgeBaseTemplateUriResponse'
       x-stackql-resource: knowledge_bases
       x-stackql-method: remove_knowledge_base_template_uri
       x-stackql-verb: UPDATE
@@ -1310,7 +1274,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SearchContentResponse'
-      x-stackql-resource: contents
+      x-stackql-resource: content
       x-stackql-method: search_content
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.contentSummaries
@@ -1452,7 +1416,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartContentUploadResponse'
-      x-stackql-resource: contents
+      x-stackql-resource: content
       x-stackql-method: start_content_upload
       x-stackql-verb: EXEC
 components:
@@ -2115,18 +2079,6 @@ components:
         topicIntegrationArn:
           $ref: '#/components/schemas/GenericArn'
           description: The Amazon Resource Name (ARN) of the integrated Amazon SNS topic used for streaming chat messages.
-    DeleteAssistantResponse:
-      type: object
-    DeleteAssistantAssociationResponse:
-      type: object
-    DeleteContentResponse:
-      type: object
-    DeleteImportJobResponse:
-      type: object
-    DeleteKnowledgeBaseResponse:
-      type: object
-    DeleteQuickResponseResponse:
-      type: object
     GetAssistantResponse:
       type: object
       properties:
@@ -2895,8 +2847,6 @@ components:
       required:
       - document
       - resultId
-    RemoveKnowledgeBaseTemplateUriResponse:
-      type: object
     SearchExpression:
       description: The search expression.
       type: object
@@ -3239,8 +3189,6 @@ components:
         importJob:
           $ref: '#/components/schemas/ImportJobData'
           description: The import job.
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
@@ -3250,8 +3198,6 @@ components:
       minLength: 1
       maxLength: 128
       pattern: ^(?!aws:)[a-zA-Z+-=._:/]+$
-    UntagResourceResponse:
-      type: object
     UpdateContentResponse:
       type: object
       properties:

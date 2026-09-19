@@ -36,7 +36,9 @@ The following fields are returned by `SELECT` queries:
     defaultValue="get_invalidation"
     values={[
         { label: 'get_invalidation', value: 'get_invalidation' },
-        { label: 'list_invalidations', value: 'list_invalidations' }
+        { label: 'list_invalidations', value: 'list_invalidations' },
+        { label: 'get_invalidation_for_distribution_tenant', value: 'get_invalidation_for_distribution_tenant' },
+        { label: 'list_invalidations_for_distribution_tenant', value: 'list_invalidations_for_distribution_tenant' }
     ]}
 >
 <TabItem value="get_invalidation">
@@ -117,6 +119,84 @@ The following fields are returned by `SELECT` queries:
 </tbody>
 </table>
 </TabItem>
+<TabItem value="get_invalidation_for_distribution_tenant">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="create_time" /></td>
+    <td><code>string</code></td>
+    <td>The date and time the invalidation request was first made.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="id" /></td>
+    <td><code>string</code></td>
+    <td>The identifier for the invalidation request. For example: IDFDVBD632BHDS5.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="invalidation_batch" /></td>
+    <td><code>string</code></td>
+    <td>The current invalidation information for the batch request.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="status" /></td>
+    <td><code>string</code></td>
+    <td>The status of the invalidation request. When the invalidation batch is finished, the status is Completed.</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
+<TabItem value="list_invalidations_for_distribution_tenant">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="is_truncated" /></td>
+    <td><code>boolean</code></td>
+    <td>A flag that indicates whether more invalidation batch requests remain to be listed. If your results were truncated, you can make a follow-up pagination request using the Marker request parameter to retrieve more invalidation batches in the list.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="items" /></td>
+    <td><code>string</code></td>
+    <td>A complex type that contains one InvalidationSummary element for each invalidation batch created by the current Amazon Web Services account.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="marker" /></td>
+    <td><code>string</code></td>
+    <td>The value that you provided for the Marker request parameter.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="max_items" /></td>
+    <td><code>integer</code></td>
+    <td>The value that you provided for the MaxItems request parameter.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="next_marker" /></td>
+    <td><code>string</code></td>
+    <td>If IsTruncated is true, this element is present and contains the value that you can use for the Marker request parameter to continue listing your invalidation batches where they left off.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="quantity" /></td>
+    <td><code>integer</code></td>
+    <td>The number of invalidation batches that were created by the current Amazon Web Services account.</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
 </Tabs>
 
 ## Methods
@@ -149,11 +229,32 @@ The following methods are available for this resource:
     <td>Lists invalidation batches.</td>
 </tr>
 <tr>
+    <td><a href="#get_invalidation_for_distribution_tenant"><CopyableCode code="get_invalidation_for_distribution_tenant" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-distribution_tenant_id"><code>distribution_tenant_id</code></a>, <a href="#parameter-id"><code>id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Gets information about a specific invalidation for a distribution tenant.</td>
+</tr>
+<tr>
+    <td><a href="#list_invalidations_for_distribution_tenant"><CopyableCode code="list_invalidations_for_distribution_tenant" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-id"><code>id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td><a href="#parameter-Marker"><code>Marker</code></a>, <a href="#parameter-MaxItems"><code>MaxItems</code></a></td>
+    <td>Lists the invalidations for a distribution tenant.</td>
+</tr>
+<tr>
     <td><a href="#create_invalidation"><CopyableCode code="create_invalidation" /></a></td>
     <td><CopyableCode code="insert" /></td>
     <td><a href="#parameter-distribution_id"><code>distribution_id</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-InvalidationBatch"><code>InvalidationBatch</code></a></td>
     <td></td>
     <td>Create a new invalidation. For more information, see Invalidating files in the Amazon CloudFront Developer Guide.</td>
+</tr>
+<tr>
+    <td><a href="#create_invalidation_for_distribution_tenant"><CopyableCode code="create_invalidation_for_distribution_tenant" /></a></td>
+    <td><CopyableCode code="insert" /></td>
+    <td><a href="#parameter-id"><code>id</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-InvalidationBatch"><code>InvalidationBatch</code></a></td>
+    <td></td>
+    <td>Creates an invalidation for a distribution tenant. For more information, see Invalidating files in the Amazon CloudFront Developer Guide.</td>
 </tr>
 </tbody>
 </table>
@@ -176,10 +277,15 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     <td><code>string</code></td>
     <td>The distribution's id.</td>
 </tr>
+<tr id="parameter-distribution_tenant_id">
+    <td><CopyableCode code="distribution_tenant_id" /></td>
+    <td><code>string</code></td>
+    <td>The ID of the distribution tenant.</td>
+</tr>
 <tr id="parameter-id">
     <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
-    <td>The identifier for the invalidation request, for example, IDFDVBD632BHDS5.</td>
+    <td>The ID of the distribution tenant.</td>
 </tr>
 <tr id="parameter-region">
     <td><CopyableCode code="region" /></td>
@@ -193,8 +299,8 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 </tr>
 <tr id="parameter-MaxItems">
     <td><CopyableCode code="MaxItems" /></td>
-    <td><code>string</code></td>
-    <td>The maximum number of invalidation batches that you want in the response body.</td>
+    <td><code>integer</code></td>
+    <td>The maximum number of invalidations to return for the distribution tenant.</td>
 </tr>
 </tbody>
 </table>
@@ -205,7 +311,9 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     defaultValue="get_invalidation"
     values={[
         { label: 'get_invalidation', value: 'get_invalidation' },
-        { label: 'list_invalidations', value: 'list_invalidations' }
+        { label: 'list_invalidations', value: 'list_invalidations' },
+        { label: 'get_invalidation_for_distribution_tenant', value: 'get_invalidation_for_distribution_tenant' },
+        { label: 'list_invalidations_for_distribution_tenant', value: 'list_invalidations_for_distribution_tenant' }
     ]}
 >
 <TabItem value="get_invalidation">
@@ -245,6 +353,43 @@ AND MaxItems = '{{ MaxItems }}'
 ;
 ```
 </TabItem>
+<TabItem value="get_invalidation_for_distribution_tenant">
+
+Gets information about a specific invalidation for a distribution tenant.
+
+```sql
+SELECT
+create_time,
+id,
+invalidation_batch,
+status
+FROM aws.cloudfront.invalidations
+WHERE distribution_tenant_id = '{{ distribution_tenant_id }}' -- required
+AND id = '{{ id }}' -- required
+AND region = '{{ region }}' -- required
+;
+```
+</TabItem>
+<TabItem value="list_invalidations_for_distribution_tenant">
+
+Lists the invalidations for a distribution tenant.
+
+```sql
+SELECT
+is_truncated,
+items,
+marker,
+max_items,
+next_marker,
+quantity
+FROM aws.cloudfront.invalidations
+WHERE id = '{{ id }}' -- required
+AND region = '{{ region }}' -- required
+AND Marker = '{{ Marker }}'
+AND MaxItems = '{{ MaxItems }}'
+;
+```
+</TabItem>
 </Tabs>
 
 
@@ -254,6 +399,7 @@ AND MaxItems = '{{ MaxItems }}'
     defaultValue="create_invalidation"
     values={[
         { label: 'create_invalidation', value: 'create_invalidation' },
+        { label: 'create_invalidation_for_distribution_tenant', value: 'create_invalidation_for_distribution_tenant' },
         { label: 'Manifest', value: 'manifest' }
     ]}
 >
@@ -279,6 +425,26 @@ status
 ;
 ```
 </TabItem>
+<TabItem value="create_invalidation_for_distribution_tenant">
+
+Creates an invalidation for a distribution tenant. For more information, see Invalidating files in the Amazon CloudFront Developer Guide.
+
+```sql
+INSERT INTO aws.cloudfront.invalidations (
+InvalidationBatch,
+id,
+region
+)
+SELECT 
+'{{ InvalidationBatch }}' /* required */,
+'{{ id }}',
+'{{ region }}'
+RETURNING
+invalidation,
+location
+;
+```
+</TabItem>
 <TabItem value="manifest">
 
 <CodeBlock language="yaml">{`# Description fields are for documentation purposes
@@ -289,6 +455,9 @@ status
       description: Required parameter for the invalidations resource.
     - name: region
       value: "{{ region }}"
+      description: Required parameter for the invalidations resource.
+    - name: id
+      value: "{{ id }}"
       description: Required parameter for the invalidations resource.
     - name: InvalidationBatch
       description: |

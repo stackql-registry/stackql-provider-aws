@@ -119,7 +119,7 @@ The following methods are available for this resource:
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td><a href="#parameter-taskId"><code>taskId</code></a>, <a href="#parameter-violationId"><code>violationId</code></a>, <a href="#parameter-thingName"><code>thingName</code></a>, <a href="#parameter-startTime"><code>startTime</code></a>, <a href="#parameter-endTime"><code>endTime</code></a>, <a href="#parameter-maxResults"><code>maxResults</code></a>, <a href="#parameter-nextToken"><code>nextToken</code></a></td>
-    <td>Lists mitigation actions executions for a Device Defender ML Detect Security Profile. Requires permission to access the ListDetectMitigationActionsExecutions action.</td>
+    <td>The IoT Device Defender detect feature will no longer be available to new customers starting August 31, 2026. If you would like to use the detect feature, sign up prior to August 31, 2026. To learn about alternatives to IoT Device Defender detect, see IoT Device Defender detect feature availability change in the IoT Device Defender Developer Guide. There is no change to IoT Device Defender audit availability. Lists mitigation actions executions for a Device Defender ML Detect Security Profile. Requires permission to access the ListDetectMitigationActionsExecutions action.</td>
 </tr>
 </tbody>
 </table>
@@ -190,7 +190,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 >
 <TabItem value="list_detect_mitigation_actions_executions">
 
-Lists mitigation actions executions for a Device Defender ML Detect Security Profile. Requires permission to access the ListDetectMitigationActionsExecutions action.
+The IoT Device Defender detect feature will no longer be available to new customers starting August 31, 2026. If you would like to use the detect feature, sign up prior to August 31, 2026. To learn about alternatives to IoT Device Defender detect, see IoT Device Defender detect feature availability change in the IoT Device Defender Developer Guide. There is no change to IoT Device Defender audit availability. Lists mitigation actions executions for a Device Defender ML Detect Security Profile. Requires permission to access the ListDetectMitigationActionsExecutions action.
 
 ```sql
 SELECT

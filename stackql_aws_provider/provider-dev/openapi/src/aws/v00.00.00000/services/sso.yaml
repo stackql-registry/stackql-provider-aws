@@ -347,3 +347,18 @@ components:
         insert: []
         update: []
         delete: []
+    logouts:
+      id: aws.sso.logouts
+      name: logouts
+      title: logouts
+      methods:
+        logout:
+          operation:
+            $ref: "#/paths/~1logout/post"
+          response:
+            openAPIDocKey: "200"
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []

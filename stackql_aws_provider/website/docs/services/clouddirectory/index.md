@@ -18,7 +18,7 @@ clouddirectory service documentation.
 
 :::info[Service Summary]
 
-total resources: __31__  
+total resources: __34__  
 
 :::
 
@@ -39,24 +39,27 @@ total resources: __31__
 <a href="/services/clouddirectory/managed_schema_arns/">managed_schema_arns</a><br />
 <a href="/services/clouddirectory/object_attributes/">object_attributes</a><br />
 <a href="/services/clouddirectory/object_childrens/">object_childrens</a><br />
-<a href="/services/clouddirectory/object_informations/">object_informations</a><br />
-<a href="/services/clouddirectory/object_parent_paths/">object_parent_paths</a>
+<a href="/services/clouddirectory/object_information/">object_information</a><br />
+<a href="/services/clouddirectory/object_parent_paths/">object_parent_paths</a><br />
+<a href="/services/clouddirectory/object_parents/">object_parents</a>
 </div>
 <div class="providerDocColumn">
-<a href="/services/clouddirectory/object_parents/">object_parents</a><br />
 <a href="/services/clouddirectory/object_policies/">object_policies</a><br />
 <a href="/services/clouddirectory/objects/">objects</a><br />
 <a href="/services/clouddirectory/outgoing_typed_links/">outgoing_typed_links</a><br />
 <a href="/services/clouddirectory/policies/">policies</a><br />
 <a href="/services/clouddirectory/policy_attachments/">policy_attachments</a><br />
 <a href="/services/clouddirectory/published_schema_arns/">published_schema_arns</a><br />
+<a href="/services/clouddirectory/published_schemas/">published_schemas</a><br />
+<a href="/services/clouddirectory/reads/">reads</a><br />
 <a href="/services/clouddirectory/schema_as_jsons/">schema_as_jsons</a><br />
 <a href="/services/clouddirectory/schema_from_jsons/">schema_from_jsons</a><br />
 <a href="/services/clouddirectory/schemas/">schemas</a><br />
 <a href="/services/clouddirectory/tags/">tags</a><br />
 <a href="/services/clouddirectory/typed_link_facet_attributes/">typed_link_facet_attributes</a><br />
-<a href="/services/clouddirectory/typed_link_facet_informations/">typed_link_facet_informations</a><br />
+<a href="/services/clouddirectory/typed_link_facet_information/">typed_link_facet_information</a><br />
 <a href="/services/clouddirectory/typed_link_facet_names/">typed_link_facet_names</a><br />
-<a href="/services/clouddirectory/typed_links/">typed_links</a>
+<a href="/services/clouddirectory/typed_links/">typed_links</a><br />
+<a href="/services/clouddirectory/writes/">writes</a>
 </div>
 </div>

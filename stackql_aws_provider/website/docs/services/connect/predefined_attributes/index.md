@@ -36,8 +36,7 @@ The following fields are returned by `SELECT` queries:
     defaultValue="describe_predefined_attribute"
     values={[
         { label: 'describe_predefined_attribute', value: 'describe_predefined_attribute' },
-        { label: 'list_predefined_attributes', value: 'list_predefined_attributes' },
-        { label: 'search_predefined_attributes', value: 'search_predefined_attributes' }
+        { label: 'list_predefined_attributes', value: 'list_predefined_attributes' }
     ]}
 >
 <TabItem value="describe_predefined_attribute">
@@ -113,50 +112,6 @@ The following fields are returned by `SELECT` queries:
 </tbody>
 </table>
 </TabItem>
-<TabItem value="search_predefined_attributes">
-
-<table>
-<thead>
-    <tr>
-    <th>Name</th>
-    <th>Datatype</th>
-    <th>Description</th>
-    </tr>
-</thead>
-<tbody>
-<tr>
-    <td><CopyableCode code="attribute_configuration" /></td>
-    <td><code>object</code></td>
-    <td>Custom metadata that is associated to predefined attributes to control behavior in upstream services, such as controlling how a predefined attribute should be displayed in the Connect Customer admin website.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="last_modified_region" /></td>
-    <td><code>string</code></td>
-    <td>Last modified region. (pattern: &lt;code&gt;&#91;a-z&#93;&#123;2&#125;(-&#91;a-z&#93;+)&#123;1,2&#125;(-&#91;0-9&#93;)?&lt;/code&gt;)</td>
-</tr>
-<tr>
-    <td><CopyableCode code="last_modified_time" /></td>
-    <td><code>string (date-time)</code></td>
-    <td>Last modified time.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="name" /></td>
-    <td><code>string</code></td>
-    <td>The name of the predefined attribute.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="purposes" /></td>
-    <td><code>array</code></td>
-    <td>Values that enable you to categorize your predefined attributes. You can use them in custom UI elements across the Connect Customer admin website.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="values" /></td>
-    <td><code>object</code></td>
-    <td>Information about values of a predefined attribute.</td>
-</tr>
-</tbody>
-</table>
-</TabItem>
 </Tabs>
 
 ## Methods
@@ -189,13 +144,6 @@ The following methods are available for this resource:
     <td>Lists predefined attributes for the specified Connect Customer instance. A predefined attribute is made up of a name and a value. You can use predefined attributes for: Routing proficiency (for example, agent certification) that has predefined values (for example, a list of possible certifications). For more information, see Create predefined attributes for routing contacts to agents. Contact information that varies between transfers or conferences, such as the name of the business unit handling the contact. For more information, see Use contact segment attributes. For the predefined attributes per instance quota, see Connect Customer quotas. Endpoints: See Connect Customer endpoints and quotas.</td>
 </tr>
 <tr>
-    <td><a href="#search_predefined_attributes"><CopyableCode code="search_predefined_attributes" /></a></td>
-    <td><CopyableCode code="select" /></td>
-    <td><a href="#parameter-region"><code>region</code></a></td>
-    <td></td>
-    <td>Searches predefined attributes that meet certain criteria. A predefined attribute is made up of a name and a value. You can use predefined attributes for: Routing proficiency (for example, agent certification) that has predefined values (for example, a list of possible certifications). For more information, see Create predefined attributes for routing contacts to agents. Contact information that varies between transfers or conferences, such as the name of the business unit handling the contact. For more information, see Use contact segment attributes. For the predefined attributes per instance quota, see Connect Customer quotas. Endpoints: See Connect Customer endpoints and quotas.</td>
-</tr>
-<tr>
     <td><a href="#create_predefined_attribute"><CopyableCode code="create_predefined_attribute" /></a></td>
     <td><CopyableCode code="insert" /></td>
     <td><a href="#parameter-instance_id"><code>instance_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
@@ -215,6 +163,13 @@ The following methods are available for this resource:
     <td><a href="#parameter-instance_id"><code>instance_id</code></a>, <a href="#parameter-name"><code>name</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td></td>
     <td>Deletes a predefined attribute from the specified Connect Customer instance.</td>
+</tr>
+<tr>
+    <td><a href="#search_predefined_attributes"><CopyableCode code="search_predefined_attributes" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-InstanceId"><code>InstanceId</code></a></td>
+    <td></td>
+    <td>Searches predefined attributes that meet certain criteria. A predefined attribute is made up of a name and a value. You can use predefined attributes for: Routing proficiency (for example, agent certification) that has predefined values (for example, a list of possible certifications). For more information, see Create predefined attributes for routing contacts to agents. Contact information that varies between transfers or conferences, such as the name of the business unit handling the contact. For more information, see Use contact segment attributes. For the predefined attributes per instance quota, see Connect Customer quotas. Endpoints: See Connect Customer endpoints and quotas.</td>
 </tr>
 </tbody>
 </table>
@@ -266,8 +221,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     defaultValue="describe_predefined_attribute"
     values={[
         { label: 'describe_predefined_attribute', value: 'describe_predefined_attribute' },
-        { label: 'list_predefined_attributes', value: 'list_predefined_attributes' },
-        { label: 'search_predefined_attributes', value: 'search_predefined_attributes' }
+        { label: 'list_predefined_attributes', value: 'list_predefined_attributes' }
     ]}
 >
 <TabItem value="describe_predefined_attribute">
@@ -303,23 +257,6 @@ WHERE instance_id = '{{ instance_id }}' -- required
 AND region = '{{ region }}' -- required
 AND nextToken = '{{ nextToken }}'
 AND maxResults = '{{ maxResults }}'
-;
-```
-</TabItem>
-<TabItem value="search_predefined_attributes">
-
-Searches predefined attributes that meet certain criteria. A predefined attribute is made up of a name and a value. You can use predefined attributes for: Routing proficiency (for example, agent certification) that has predefined values (for example, a list of possible certifications). For more information, see Create predefined attributes for routing contacts to agents. Contact information that varies between transfers or conferences, such as the name of the business unit handling the contact. For more information, see Use contact segment attributes. For the predefined attributes per instance quota, see Connect Customer quotas. Endpoints: See Connect Customer endpoints and quotas.
-
-```sql
-SELECT
-attribute_configuration,
-last_modified_region,
-last_modified_time,
-name,
-purposes,
-values
-FROM aws.connect.predefined_attributes
-WHERE region = '{{ region }}' -- required
 ;
 ```
 </TabItem>
@@ -435,6 +372,34 @@ DELETE FROM aws.connect.predefined_attributes
 WHERE instance_id = '{{ instance_id }}' --required
 AND name = '{{ name }}' --required
 AND region = '{{ region }}' --required
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="search_predefined_attributes"
+    values={[
+        { label: 'search_predefined_attributes', value: 'search_predefined_attributes' }
+    ]}
+>
+<TabItem value="search_predefined_attributes">
+
+Searches predefined attributes that meet certain criteria. A predefined attribute is made up of a name and a value. You can use predefined attributes for: Routing proficiency (for example, agent certification) that has predefined values (for example, a list of possible certifications). For more information, see Create predefined attributes for routing contacts to agents. Contact information that varies between transfers or conferences, such as the name of the business unit handling the contact. For more information, see Use contact segment attributes. For the predefined attributes per instance quota, see Connect Customer quotas. Endpoints: See Connect Customer endpoints and quotas.
+
+```sql
+EXEC aws.connect.predefined_attributes.search_predefined_attributes 
+@region='{{ region }}' --required 
+@@json=
+'{
+"InstanceId": "{{ InstanceId }}", 
+"NextToken": "{{ NextToken }}", 
+"MaxResults": {{ MaxResults }}, 
+"SearchCriteria": "{{ SearchCriteria }}"
+}'
 ;
 ```
 </TabItem>

@@ -174,6 +174,20 @@ The following methods are available for this resource:
     <td></td>
     <td>Gets a list of stream processors that you have created with CreateStreamProcessor.</td>
 </tr>
+<tr>
+    <td><a href="#start_stream_processor"><CopyableCode code="start_stream_processor" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Starts processing a stream processor. You create a stream processor by calling CreateStreamProcessor. To tell StartStreamProcessor which stream processor to start, use the value of the Name field specified in the call to CreateStreamProcessor. If you are using a label detection stream processor to detect labels, you need to provide a Start selector and a Stop selector to determine the length of the stream processing time.</td>
+</tr>
+<tr>
+    <td><a href="#stop_stream_processor"><CopyableCode code="stop_stream_processor" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Stops a running stream processor that was created by CreateStreamProcessor.</td>
+</tr>
 </tbody>
 </table>
 
@@ -407,7 +421,9 @@ WHERE region = '{{ region }}' --required
 <Tabs
     defaultValue="list_stream_processors"
     values={[
-        { label: 'list_stream_processors', value: 'list_stream_processors' }
+        { label: 'list_stream_processors', value: 'list_stream_processors' },
+        { label: 'start_stream_processor', value: 'start_stream_processor' },
+        { label: 'stop_stream_processor', value: 'stop_stream_processor' }
     ]}
 >
 <TabItem value="list_stream_processors">
@@ -421,6 +437,36 @@ EXEC aws.rekognition.stream_processors.list_stream_processors
 '{
 "NextToken": "{{ NextToken }}", 
 "MaxResults": {{ MaxResults }}
+}'
+;
+```
+</TabItem>
+<TabItem value="start_stream_processor">
+
+Starts processing a stream processor. You create a stream processor by calling CreateStreamProcessor. To tell StartStreamProcessor which stream processor to start, use the value of the Name field specified in the call to CreateStreamProcessor. If you are using a label detection stream processor to detect labels, you need to provide a Start selector and a Stop selector to determine the length of the stream processing time.
+
+```sql
+EXEC aws.rekognition.stream_processors.start_stream_processor 
+@region='{{ region }}' --required 
+@@json=
+'{
+"Name": "{{ Name }}", 
+"StartSelector": "{{ StartSelector }}", 
+"StopSelector": "{{ StopSelector }}"
+}'
+;
+```
+</TabItem>
+<TabItem value="stop_stream_processor">
+
+Stops a running stream processor that was created by CreateStreamProcessor.
+
+```sql
+EXEC aws.rekognition.stream_processors.stop_stream_processor 
+@region='{{ region }}' --required 
+@@json=
+'{
+"Name": "{{ Name }}"
 }'
 ;
 ```

@@ -195,6 +195,20 @@ The following methods are available for this resource:
     <td></td>
     <td>Creates a new Neptune Analytics graph and imports data into it, either from Amazon Simple Storage Service (S3) or from a Neptune database or a Neptune database snapshot. The data can be loaded from files in S3 that in either the Gremlin CSV format or the openCypher load format.</td>
 </tr>
+<tr>
+    <td><a href="#cancel_import_task"><CopyableCode code="cancel_import_task" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-task_identifier"><code>task_identifier</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Deletes the specified import task.</td>
+</tr>
+<tr>
+    <td><a href="#start_import_task"><CopyableCode code="start_import_task" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-graph_identifier"><code>graph_identifier</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-source"><code>source</code></a>, <a href="#parameter-roleArn"><code>roleArn</code></a></td>
+    <td></td>
+    <td>Import data into existing Neptune Analytics graph from Amazon Simple Storage Service (S3). The graph needs to be empty and in the AVAILABLE state.</td>
+</tr>
 </tbody>
 </table>
 
@@ -211,6 +225,11 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     </tr>
 </thead>
 <tbody>
+<tr id="parameter-graph_identifier">
+    <td><CopyableCode code="graph_identifier" /></td>
+    <td><code>string</code></td>
+    <td>The unique identifier of the Neptune Analytics graph.</td>
+</tr>
 <tr id="parameter-region">
     <td><CopyableCode code="region" /></td>
     <td><code>string</code></td>
@@ -407,5 +426,49 @@ task_id
       value: "{{ roleArn }}"
 `}</CodeBlock>
 
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="cancel_import_task"
+    values={[
+        { label: 'cancel_import_task', value: 'cancel_import_task' },
+        { label: 'start_import_task', value: 'start_import_task' }
+    ]}
+>
+<TabItem value="cancel_import_task">
+
+Deletes the specified import task.
+
+```sql
+EXEC aws.neptune_graph.import_tasks.cancel_import_task 
+@task_identifier='{{ task_identifier }}' --required, 
+@region='{{ region }}' --required
+;
+```
+</TabItem>
+<TabItem value="start_import_task">
+
+Import data into existing Neptune Analytics graph from Amazon Simple Storage Service (S3). The graph needs to be empty and in the AVAILABLE state.
+
+```sql
+EXEC aws.neptune_graph.import_tasks.start_import_task 
+@graph_identifier='{{ graph_identifier }}' --required, 
+@region='{{ region }}' --required 
+@@json=
+'{
+"importOptions": "{{ importOptions }}", 
+"failOnError": {{ failOnError }}, 
+"source": "{{ source }}", 
+"format": "{{ format }}", 
+"parquetType": "{{ parquetType }}", 
+"blankNodeHandling": "{{ blankNodeHandling }}", 
+"roleArn": "{{ roleArn }}"
+}'
+;
+```
 </TabItem>
 </Tabs>

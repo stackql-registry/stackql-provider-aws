@@ -153,6 +153,13 @@ The following methods are available for this resource:
     <td><a href="#parameter-nextToken"><code>nextToken</code></a>, <a href="#parameter-maxResults"><code>maxResults</code></a></td>
     <td>Lists all jobs for a given workflow.</td>
 </tr>
+<tr>
+    <td><a href="#start_matching_job"><CopyableCode code="start_matching_job" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-workflow_name"><code>workflow_name</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Starts the MatchingJob of a workflow. The workflow must have previously been created using the CreateMatchingWorkflow endpoint.</td>
+</tr>
 </tbody>
 </table>
 
@@ -182,7 +189,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-workflow_name">
     <td><CopyableCode code="workflow_name" /></td>
     <td><code>string</code></td>
-    <td>The name of the workflow to be retrieved.</td>
+    <td>The name of the matching job to be retrieved.</td>
 </tr>
 <tr id="parameter-maxResults">
     <td><CopyableCode code="maxResults" /></td>
@@ -241,6 +248,28 @@ WHERE workflow_name = '{{ workflow_name }}' -- required
 AND region = '{{ region }}' -- required
 AND nextToken = '{{ nextToken }}'
 AND maxResults = '{{ maxResults }}'
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="start_matching_job"
+    values={[
+        { label: 'start_matching_job', value: 'start_matching_job' }
+    ]}
+>
+<TabItem value="start_matching_job">
+
+Starts the MatchingJob of a workflow. The workflow must have previously been created using the CreateMatchingWorkflow endpoint.
+
+```sql
+EXEC aws.entityresolution.matching_jobs.start_matching_job 
+@workflow_name='{{ workflow_name }}' --required, 
+@region='{{ region }}' --required
 ;
 ```
 </TabItem>

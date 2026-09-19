@@ -26,8 +26,8 @@ For the AWS Cloud Control provider see the [__`awscc`__](https://awscc-provider.
 
 :::info[Provider Summary] 
 
-total services: __419__  
-total resources: __6618__  
+total services: __430__  
+total resources: __6852__  
 
 :::
 
@@ -324,11 +324,13 @@ EXEC aws.ec2.instances.start_instances
 <a href="/services/dynamodbstreams/">dynamodbstreams</a><br />
 <a href="/services/ebs/">ebs</a><br />
 <a href="/services/ec2/">ec2</a><br />
+<a href="/services/ec2_instance_connect/">ec2_instance_connect</a><br />
 <a href="/services/ecr/">ecr</a><br />
 <a href="/services/ecr_public/">ecr_public</a><br />
 <a href="/services/ecs/">ecs</a><br />
 <a href="/services/efs/">efs</a><br />
 <a href="/services/eks/">eks</a><br />
+<a href="/services/eks_auth/">eks_auth</a><br />
 <a href="/services/elasticache/">elasticache</a><br />
 <a href="/services/elasticbeanstalk/">elasticbeanstalk</a><br />
 <a href="/services/elb/">elb</a><br />
@@ -347,6 +349,7 @@ EXEC aws.ec2.instances.start_instances
 <a href="/services/fis/">fis</a><br />
 <a href="/services/fms/">fms</a><br />
 <a href="/services/forecast/">forecast</a><br />
+<a href="/services/forecastquery/">forecastquery</a><br />
 <a href="/services/frauddetector/">frauddetector</a><br />
 <a href="/services/freetier/">freetier</a><br />
 <a href="/services/fsx/">fsx</a><br />
@@ -354,6 +357,7 @@ EXEC aws.ec2.instances.start_instances
 <a href="/services/gameliftstreams/">gameliftstreams</a><br />
 <a href="/services/geo_maps/">geo_maps</a><br />
 <a href="/services/geo_places/">geo_places</a><br />
+<a href="/services/geo_routes/">geo_routes</a><br />
 <a href="/services/glacier/">glacier</a><br />
 <a href="/services/globalaccelerator/">globalaccelerator</a><br />
 <a href="/services/glue/">glue</a><br />
@@ -365,11 +369,13 @@ EXEC aws.ec2.instances.start_instances
 <a href="/services/health/">health</a><br />
 <a href="/services/healthlake/">healthlake</a><br />
 <a href="/services/iam/">iam</a><br />
+<a href="/services/iam_toolbox/">iam_toolbox</a><br />
 <a href="/services/identitystore/">identitystore</a><br />
 <a href="/services/imagebuilder/">imagebuilder</a><br />
 <a href="/services/importexport/">importexport</a><br />
 <a href="/services/inspector/">inspector</a><br />
 <a href="/services/inspector2/">inspector2</a><br />
+<a href="/services/inspector_scan/">inspector_scan</a><br />
 <a href="/services/interconnect/">interconnect</a><br />
 <a href="/services/internetmonitor/">internetmonitor</a><br />
 <a href="/services/invoicing/">invoicing</a><br />
@@ -397,9 +403,10 @@ EXEC aws.ec2.instances.start_instances
 <a href="/services/kinesis_video_archived_media/">kinesis_video_archived_media</a><br />
 <a href="/services/kinesis_video_media/">kinesis_video_media</a><br />
 <a href="/services/kinesis_video_signaling/">kinesis_video_signaling</a><br />
-<a href="/services/kinesisanalytics/">kinesisanalytics</a><br />
 </div>
 <div class="providerDocColumn">
+<a href="/services/kinesis_video_webrtc_storage/">kinesis_video_webrtc_storage</a><br />
+<a href="/services/kinesisanalytics/">kinesisanalytics</a><br />
 <a href="/services/kinesisanalyticsv2/">kinesisanalyticsv2</a><br />
 <a href="/services/kinesisvideo/">kinesisvideo</a><br />
 <a href="/services/kms/">kms</a><br />
@@ -431,6 +438,7 @@ EXEC aws.ec2.instances.start_instances
 <a href="/services/marketplace_discovery/">marketplace_discovery</a><br />
 <a href="/services/marketplace_entitlement/">marketplace_entitlement</a><br />
 <a href="/services/marketplace_reporting/">marketplace_reporting</a><br />
+<a href="/services/marketplacecommerceanalytics/">marketplacecommerceanalytics</a><br />
 <a href="/services/mediaconnect/">mediaconnect</a><br />
 <a href="/services/mediaconvert/">mediaconvert</a><br />
 <a href="/services/medialive/">medialive</a><br />
@@ -478,6 +486,7 @@ EXEC aws.ec2.instances.start_instances
 <a href="/services/partnercentral_channel/">partnercentral_channel</a><br />
 <a href="/services/partnercentral_selling/">partnercentral_selling</a><br />
 <a href="/services/payment_cryptography/">payment_cryptography</a><br />
+<a href="/services/payment_cryptography_data/">payment_cryptography_data</a><br />
 <a href="/services/pca_connector_ad/">pca_connector_ad</a><br />
 <a href="/services/pca_connector_scep/">pca_connector_scep</a><br />
 <a href="/services/pcs/">pcs</a><br />
@@ -501,6 +510,7 @@ EXEC aws.ec2.instances.start_instances
 <a href="/services/ram/">ram</a><br />
 <a href="/services/rbin/">rbin</a><br />
 <a href="/services/rds/">rds</a><br />
+<a href="/services/rds_data/">rds_data</a><br />
 <a href="/services/redshift/">redshift</a><br />
 <a href="/services/redshift_data/">redshift_data</a><br />
 <a href="/services/redshift_serverless/">redshift_serverless</a><br />
@@ -534,6 +544,7 @@ EXEC aws.ec2.instances.start_instances
 <a href="/services/sagemaker_featurestore_runtime/">sagemaker_featurestore_runtime</a><br />
 <a href="/services/sagemaker_geospatial/">sagemaker_geospatial</a><br />
 <a href="/services/sagemaker_metrics/">sagemaker_metrics</a><br />
+<a href="/services/sagemaker_runtime/">sagemaker_runtime</a><br />
 <a href="/services/sagemakerjobruntime/">sagemakerjobruntime</a><br />
 <a href="/services/savingsplans/">savingsplans</a><br />
 <a href="/services/scheduler/">scheduler</a><br />

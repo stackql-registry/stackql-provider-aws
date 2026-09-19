@@ -118,6 +118,8 @@ paths:
                   $ref: "#/components/schemas/CapacityProviderConfiguration"
                 tags:
                   $ref: "#/components/schemas/TagsMap"
+                platformVersion:
+                  $ref: "#/components/schemas/PlatformVersion"
               required:
                 - agentRuntimeName
                 - agentRuntimeArtifact
@@ -548,6 +550,42 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/CreateConfigurationBundleResponse"
+  /identities/CreateConsentPortal:
+    post:
+      operationId: CreateConsentPortal
+      description: Creates a new consent portal.
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                executionRoleArn:
+                  $ref: "#/components/schemas/ExecutionRoleArnType"
+                idpConfig:
+                  $ref: "#/components/schemas/ConsentPortalIdpConfig"
+                name:
+                  $ref: "#/components/schemas/ConsentPortalNameType"
+                sources:
+                  $ref: "#/components/schemas/ConsentPortalSources"
+                description:
+                  $ref: "#/components/schemas/ConsentPortalDescriptionType"
+                tags:
+                  $ref: "#/components/schemas/TagsMap"
+              required:
+                - executionRoleArn
+                - idpConfig
+                - name
+                - sources
+      responses:
+        "202":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CreateConsentPortalResponse"
   /datasets:
     post:
       operationId: CreateDataset
@@ -1227,6 +1265,8 @@ paths:
                   $ref: "#/components/schemas/InsightList"
                 clusteringConfig:
                   $ref: "#/components/schemas/ClusteringConfig"
+                outputConfig:
+                  $ref: "#/components/schemas/OutputConfig"
                 evaluationExecutionRoleArn:
                   $ref: "#/components/schemas/RoleArn"
                 enableOnCreate:
@@ -1360,7 +1400,7 @@ paths:
   /policy-engines/{policy_engine_id}/policies:
     post:
       operationId: CreatePolicy
-      description: Creates a policy within the AgentCore Policy system. Policies provide real-time, deterministic control over agentic interactions with AgentCore Gateway. Using the Cedar policy language, you can define fine-grained policies that specify which interactions with Gateway tools are permitted based on input parameters and OAuth claims, ensuring agents operate within defined boundaries and business rules. The policy is validated during creation against the Cedar schema generated from the Gateway's tools' input schemas, which defines the available tools, their parameters, and expected data types. This is an asynchronous operation. Use the GetPolicy operation to poll the status field to track completion. If the new policy is a temporal policy, creating it invalidates the policy engine's active temporal sessions. For more information about temporal policy sessions, see session-based temporal policies. The policy engine returns an HTTP 409 ConflictException to in-flight sessions. To resume, you must start a new session with a new session ID.
+      description: Creates a policy within the AgentCore Policy system. Policies provide real-time, deterministic control over agentic interactions with AgentCore Gateway. Using Cedar or Dogwood, you can define fine-grained policies that specify which interactions with Gateway tools are permitted based on input parameters and OAuth claims, ensuring agents operate within defined boundaries and business rules. The policy is validated during creation against the Cedar schema generated from the Gateway's tools' input schemas, which defines the available tools, their parameters, and expected data types. This is an asynchronous operation. Use the GetPolicy operation to poll the status field to track completion. If the new policy is a temporal policy, creating it invalidates the policy engine's active temporal sessions. For more information about temporal policy sessions, see session-based temporal policies. The policy engine returns an HTTP 409 ConflictException to in-flight sessions. To resume, you must start a new session with a new session ID.
       parameters:
         - name: policy_engine_id
           in: path
@@ -1766,6 +1806,8 @@ paths:
                   $ref: "#/components/schemas/FilesystemConfigurations"
                 capacityProviderConfiguration:
                   $ref: "#/components/schemas/CapacityProviderConfiguration"
+                platformVersion:
+                  $ref: "#/components/schemas/PlatformVersion"
                 clientToken:
                   $ref: "#/components/schemas/ClientToken"
               required:
@@ -1886,10 +1928,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteApiKeyCredentialProviderResponse"
   /browsers/{browser_id}:
     delete:
       operationId: DeleteBrowser
@@ -2134,7 +2172,7 @@ paths:
             $ref: "#/components/schemas/ConfigurationBundleId"
           description: The unique identifier of the configuration bundle to update.
       requestBody:
-        required: false
+        required: true
         content:
           application/json:
             schema:
@@ -2158,6 +2196,8 @@ paths:
                   $ref: "#/components/schemas/VersionCreatedBySource"
                 kmsKeyArn:
                   $ref: "#/components/schemas/KmsKeyArn"
+              required:
+                - parentVersionIds
       responses:
         "200":
           description: Success
@@ -2165,6 +2205,25 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/UpdateConfigurationBundleResponse"
+  /identities/DeleteConsentPortal:
+    post:
+      operationId: DeleteConsentPortal
+      description: Deletes a consent portal.
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                consentPortalIdentifier:
+                  $ref: "#/components/schemas/ConsentPortalIdentifier"
+              required:
+                - consentPortalIdentifier
+      responses:
+        "204":
+          description: Success
   /datasets/{dataset_id}:
     delete:
       operationId: DeleteDataset
@@ -2895,7 +2954,7 @@ paths:
   /memories/{memory_id}/delete:
     delete:
       operationId: DeleteMemory
-      description: Deletes an Amazon Bedrock AgentCore Memory resource.
+      description: Deletes an Amazon Bedrock AgentCore Memory resource. When you delete a memory resource, it is permanently removed.
       parameters:
         - name: clientToken
           in: query
@@ -2935,10 +2994,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteOauth2CredentialProviderResponse"
   /online-evaluation-configs/{online_evaluation_config_id}:
     delete:
       operationId: DeleteOnlineEvaluationConfig
@@ -3005,6 +3060,8 @@ paths:
                   $ref: "#/components/schemas/InsightList"
                 clusteringConfig:
                   $ref: "#/components/schemas/ClusteringConfig"
+                outputConfig:
+                  $ref: "#/components/schemas/OutputConfig"
                 evaluationExecutionRoleArn:
                   $ref: "#/components/schemas/RoleArn"
                 executionStatus:
@@ -3126,10 +3183,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeletePaymentCredentialProviderResponse"
   /payments/managers/{payment_manager_id}:
     delete:
       operationId: DeletePaymentManager
@@ -3440,10 +3493,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteRegistryRecordResponse"
     get:
       operationId: GetRegistryRecord
       description: Retrieves information about a specific registry record.
@@ -3527,10 +3576,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteResourcePolicyResponse"
     get:
       operationId: GetResourcePolicy
       description: Retrieves the resource-based policy for a specified resource. This feature is currently available only for AgentCore Runtime and Gateway.
@@ -3595,10 +3640,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteWorkloadIdentityResponse"
   /identities/GetApiKeyCredentialProvider:
     post:
       operationId: GetApiKeyCredentialProvider
@@ -3646,6 +3687,29 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/GetConfigurationBundleVersionResponse"
+  /identities/GetConsentPortal:
+    post:
+      operationId: GetConsentPortal
+      description: Retrieves information about a consent portal.
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                consentPortalIdentifier:
+                  $ref: "#/components/schemas/ConsentPortalIdentifier"
+              required:
+                - consentPortalIdentifier
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GetConsentPortalResponse"
   /memories/{memory_id}/details:
     get:
       operationId: GetMemory
@@ -3737,7 +3801,7 @@ paths:
   /policy-engines/{policy_engine_id}/policy-generations/{policy_generation_id}:
     get:
       operationId: GetPolicyGeneration
-      description: Retrieves information about a policy generation request within the AgentCore Policy system. Policy generation converts natural language descriptions into Cedar policy statements using AI-powered translation, enabling non-technical users to create policies.
+      description: Retrieves information about a policy generation request within the AgentCore Policy system. Policy generation converts natural language descriptions into Dogwood policy statements using AI-powered translation, enabling non-technical users to create policies.
       parameters:
         - name: policy_generation_id
           in: path
@@ -3996,6 +4060,29 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ListConfigurationBundlesResponse"
+  /identities/ListConsentPortals:
+    post:
+      operationId: ListConsentPortals
+      description: Lists all of the consent portals in your account.
+      parameters: []
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                maxResults:
+                  $ref: "#/components/schemas/ListConsentPortalsRequestMaxResultsInteger"
+                nextToken:
+                  $ref: "#/components/schemas/String"
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ListConsentPortalsResponse"
   /datasets/{dataset_id}/examples:
     get:
       operationId: ListDatasetExamples
@@ -4260,7 +4347,7 @@ paths:
   /policy-engines/{policy_engine_id}/policy-generations/{policy_generation_id}/assets:
     get:
       operationId: ListPolicyGenerationAssets
-      description: Retrieves a list of generated policy assets from a policy generation request within the AgentCore Policy system. This operation returns the actual Cedar policies and related artifacts produced by the AI-powered policy generation process, allowing users to review and select from multiple generated policy options.
+      description: Retrieves a list of generated policy assets from a policy generation request within the AgentCore Policy system. This operation returns the actual Dogwood policies and related artifacts produced by the AI-powered policy generation process, allowing users to review and select from multiple generated policy options.
       parameters:
         - name: policy_generation_id
           in: path
@@ -4355,7 +4442,7 @@ paths:
                 $ref: "#/components/schemas/ListPolicyGenerationsResponse"
     post:
       operationId: StartPolicyGeneration
-      description: Initiates the AI-powered generation of Cedar policies from natural language descriptions within the AgentCore Policy system. This feature enables both technical and non-technical users to create policies by describing their authorization requirements in plain English, which is then automatically translated into formal Cedar policy statements. The generation process analyzes the natural language input along with the Gateway's tool context to produce validated policy options. Generated policy assets are automatically deleted after 7 days, so you should review and create policies from the generated assets within this timeframe. Once created, policies are permanent and not subject to this expiration. Generated policies should be reviewed and tested in log-only mode before deploying to production. Use this when you want to describe policy intent naturally rather than learning Cedar syntax, though generated policies may require refinement for complex scenarios.
+      description: Initiates the AI-powered generation of Dogwood policies from natural language descriptions within the AgentCore Policy system. This feature enables both technical and non-technical users to create policies by describing their authorization requirements in plain English, which is then automatically translated into formal Dogwood policy statements. The generation process analyzes the natural language input along with the Gateway's tool context to produce validated policy options. Generated policy assets are automatically deleted after 7 days, so you should review and create policies from the generated assets within this timeframe. Once created, policies are permanent and not subject to this expiration. Generated policies should be reviewed and tested in log-only mode before deploying to production. Use this when you want to describe policy intent naturally rather than learning Dogwood syntax, though generated policies may require refinement for complex scenarios.
       parameters:
         - name: policy_engine_id
           in: path
@@ -4467,10 +4554,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TagResourceResponse"
     delete:
       operationId: UntagResource
       description: Removes the specified tags from the specified resource. This feature is currently available only for AgentCore Runtime, Browser, Browser Profile, Code Interpreter tool, and Gateway.
@@ -4490,10 +4573,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UntagResourceResponse"
   /identities/ListWorkloadIdentities:
     post:
       operationId: ListWorkloadIdentities
@@ -4624,6 +4703,35 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/UpdateApiKeyCredentialProviderResponse"
+  /identities/UpdateConsentPortal:
+    post:
+      operationId: UpdateConsentPortal
+      description: Updates an existing consent portal.
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                consentPortalIdentifier:
+                  $ref: "#/components/schemas/ConsentPortalIdentifier"
+                executionRoleArn:
+                  $ref: "#/components/schemas/ExecutionRoleArnType"
+                idpConfig:
+                  $ref: "#/components/schemas/ConsentPortalIdpConfig"
+                description:
+                  $ref: "#/components/schemas/ConsentPortalDescriptionType"
+              required:
+                - consentPortalIdentifier
+      responses:
+        "202":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UpdateConsentPortalResponse"
   /datasets/{dataset_id}/examples/update:
     post:
       operationId: UpdateDatasetExamples
@@ -5698,6 +5806,11 @@ components:
     TagsMap:
       type: object
       properties: {}
+    PlatformVersion:
+      type: string
+      minLength: 1
+      maxLength: 128
+      pattern: "[^\\s]+"
     CreateAgentRuntimeResponse:
       type: object
       properties:
@@ -5758,6 +5871,7 @@ components:
         - UPDATE_FAILED
         - READY
         - DELETING
+        - DELETE_FAILED
     EndpointName:
       type: string
       pattern: "[a-zA-Z][a-zA-Z0-9_]{0,47}"
@@ -5807,6 +5921,7 @@ components:
         - UPDATE_FAILED
         - READY
         - DELETING
+        - DELETE_FAILED
     CredentialProviderName:
       type: string
       minLength: 1
@@ -6665,6 +6780,138 @@ components:
     ConfigurationBundleVersion:
       type: string
       pattern: "[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}"
+    ExecutionRoleArnType:
+      type: string
+      pattern: arn:aws(-[a-z-]+)?:iam::[0-9]{12}:role/[a-zA-Z0-9+=,.@\-_/]+
+    ConsentPortalIdpConfig:
+      description: The identity provider configuration used to authenticate end users to the consent portal.
+      type: object
+      properties:
+        credentialProviderArn:
+          $ref: "#/components/schemas/OAuth2CredentialProviderArn"
+          description: The Amazon Resource Name (ARN) of the OAuth2 credential provider used to authenticate end users to the consent portal.
+        scopes:
+          $ref: "#/components/schemas/AllowedScopesType"
+          description: The OAuth2 scopes that the consent portal requests when authenticating end users.
+        audience:
+          $ref: "#/components/schemas/AllowedAudienceType"
+          description: The audience value that the consent portal includes when requesting tokens from the identity provider.
+      required:
+        - credentialProviderArn
+        - scopes
+    OAuth2CredentialProviderArn:
+      type: string
+      pattern: arn:(aws|aws-cn|aws-us-gov|aws-iso|aws-iso-b|aws-iso-e|aws-iso-f|aws-eusc):bedrock-agentcore:[a-z0-9-]{1,32}:[0-9]{12}:token-vault/[a-zA-Z0-9_-]{1,64}/oauth2credentialprovider/[a-zA-Z0-9_-]{1,128}
+    AllowedAudienceType:
+      type: string
+    ConsentPortalNameType:
+      type: string
+      minLength: 1
+      maxLength: 50
+      pattern: "[a-zA-Z0-9_-]{1,50}"
+    ConsentPortalSources:
+      description: The list of resources served by the consent portal.
+      type: array
+      items:
+        $ref: "#/components/schemas/ConsentPortalSource"
+    ConsentPortalSource:
+      description: A resource served by the consent portal.
+      type: object
+      properties:
+        identifier:
+          $ref: "#/components/schemas/ConsentPortalSourceIdentifierType"
+          description: The identifier of the source resource. For an agentcore-gateway source, this is the gateway ID or its Amazon Resource Name (ARN).
+        type_:
+          $ref: "#/components/schemas/ConsentPortalSourceType"
+          description: The type of the source resource.
+      required:
+        - identifier
+        - type_
+    ConsentPortalSourceIdentifierType:
+      type: string
+      pattern: ([0-9a-z][-]?){1,100}-[0-9a-z]{10}$|^arn:aws(-[a-z-]+)?:bedrock-agentcore:[a-z0-9-]{1,20}:[0-9]{12}:gateway/([0-9a-z][-]?){1,48}-[a-z0-9]{10}
+    ConsentPortalSourceType:
+      description: The type of a consent portal source. Currently, we only support type agentcore-gateway.
+      type: string
+      enum:
+        - agentcore-gateway
+    ConsentPortalDescriptionType:
+      type: string
+      minLength: 0
+      maxLength: 512
+    CreateConsentPortalResponse:
+      type: object
+      properties:
+        sources:
+          $ref: "#/components/schemas/ConsentPortalSources"
+          description: The resources served by the consent portal.
+        consentPortalArn:
+          $ref: "#/components/schemas/ConsentPortalArnType"
+          description: The Amazon Resource Name (ARN) of the consent portal.
+        consentPortalId:
+          $ref: "#/components/schemas/ConsentPortalIdType"
+          description: The unique identifier of the consent portal.
+        createdAt:
+          $ref: "#/components/schemas/Timestamp"
+          description: The timestamp for when the consent portal was created.
+        description:
+          $ref: "#/components/schemas/ConsentPortalDescriptionType"
+          description: The description of the consent portal.
+        executionRoleArn:
+          $ref: "#/components/schemas/ExecutionRoleArnType"
+          description: The Amazon Resource Name (ARN) of the IAM role that the consent portal assumes to access the resources defined in its sources.
+        idpConfig:
+          $ref: "#/components/schemas/ConsentPortalIdpConfig"
+          description: The identity provider configuration that the consent portal uses to authenticate end users.
+        name:
+          $ref: "#/components/schemas/ConsentPortalNameType"
+          description: The name of the consent portal.
+        portalUrl:
+          $ref: "#/components/schemas/PortalUrlType"
+          description: The URL used to access the consent portal.
+        status:
+          $ref: "#/components/schemas/ConsentPortalStatus"
+          description: The current status of the consent portal.
+        statusReason:
+          $ref: "#/components/schemas/StatusReasonType"
+          description: A message that provides additional information about the current status of the consent portal.
+        updatedAt:
+          $ref: "#/components/schemas/Timestamp"
+          description: The timestamp for when the consent portal was last updated.
+      required:
+        - sources
+        - consentPortalArn
+        - consentPortalId
+        - createdAt
+        - executionRoleArn
+        - idpConfig
+        - name
+        - status
+        - updatedAt
+    ConsentPortalArnType:
+      type: string
+      pattern: arn:aws[^:]*:bedrock-agentcore:[a-z0-9-]+:[0-9]{12}:consent-portal/[a-zA-Z0-9\-_]{1,50}-[A-Za-z0-9]{10}
+    ConsentPortalIdType:
+      type: string
+      pattern: "[a-zA-Z0-9\\-_]{1,50}-[A-Za-z0-9]{10}"
+    PortalUrlType:
+      type: string
+      minLength: 1
+      maxLength: 2000
+    ConsentPortalStatus:
+      description: The lifecycle status of a consent portal.
+      type: string
+      enum:
+        - CREATING
+        - ACTIVE
+        - UPDATING
+        - UPDATE_FAILED
+        - DELETING
+        - FAILED
+    StatusReasonType:
+      type: string
+      minLength: 1
+      maxLength: 1024
     DatasetName:
       type: string
       pattern: "[a-zA-Z][a-zA-Z0-9_]{0,47}"
@@ -6678,7 +6925,7 @@ components:
       enum:
         - AGENTCORE_EVALUATION_PREDEFINED_V1
         - AGENTCORE_EVALUATION_SIMULATED_V1
-        - GENERIC_EVALUATION_PREDEFINED_V1
+        - THIRD_PARTY_EVALUATION_V1
     CreateDatasetResponse:
       type: object
       properties:
@@ -7186,7 +7433,7 @@ components:
       properties:
         arn:
           $ref: "#/components/schemas/GatewayPolicyEngineArn"
-          description: The ARN of the policy engine. The policy engine contains Cedar policies that define fine-grained authorization rules specifying who can perform what actions on which resources as agents interact through the gateway.
+          description: The ARN of the policy engine. The policy engine contains Cedar or Dogwood policies that define fine-grained authorization rules specifying who can perform what actions on which resources as agents interact through the gateway.
         mode:
           $ref: "#/components/schemas/GatewayPolicyEngineMode"
           description: "The enforcement mode for the policy engine. Valid values include: LOG_ONLY - The policy engine evaluates each action against your policies and adds traces on whether tool calls would be allowed or denied, but does not enforce the decision. Use this mode to test and validate policies before enabling enforcement. ENFORCE - The policy engine evaluates actions against your policies and enforces decisions by allowing or denying agent operations. Test and validate policies in LOG_ONLY mode before enabling enforcement to avoid unintended denials or adversely affecting production traffic."
@@ -8121,6 +8368,13 @@ components:
         stickinessConfiguration:
           $ref: "#/components/schemas/StickinessConfiguration"
           description: The session stickiness configuration for the passthrough target. This configuration routes requests within the same session to the same target.
+        staticQueryParameters:
+          type: object
+          properties: {}
+          description: A map of static query parameters that the gateway always appends to the outbound URL when forwarding requests to the target. The total outbound URL length, which includes the endpoint and the percent-encoded query parameters, is enforced by the service.
+        staticQueryParameterConflictResolution:
+          $ref: "#/components/schemas/StaticQueryParameterConflictResolution"
+          description: "Controls precedence when a client request supplies a query parameter whose name matches a configured static query parameter. If not set, defaults to CLIENT_OVERRIDE: CLIENT_OVERRIDE - The client-supplied value overrides the configured static value for that parameter name. STATIC_OVERRIDE - The configured static value is retained, overriding the client-supplied value for that parameter name."
       required:
         - endpoint
         - protocolType
@@ -8146,6 +8400,9 @@ components:
         timeout:
           $ref: "#/components/schemas/StickinessTimeout"
           description: The session stickiness timeout, in seconds. After this duration of inactivity, the session affinity expires. Valid values range from 1 to 86400.
+        compositeIdentifier:
+          $ref: "#/components/schemas/CompositeIdentifierList"
+          description: Additional headers to include in session affinity routing. When set, requests are only considered part of the same session if both the identifier and all composite identifier values match.
       required:
         - identifier
     StickinessConfigurationIdentifierString:
@@ -8156,6 +8413,20 @@ components:
       type: integer
       minimum: 1
       maximum: 86400
+    CompositeIdentifierList:
+      type: array
+      items:
+        $ref: "#/components/schemas/CompositeIdentifierEntry"
+    CompositeIdentifierEntry:
+      type: string
+      minLength: 1
+      maxLength: 256
+    StaticQueryParameterConflictResolution:
+      description: "The precedence used when a client-supplied query parameter has the same name as a configured static query parameter: CLIENT_OVERRIDE - The client-supplied value overrides the configured static value for that parameter name. This is the default. STATIC_OVERRIDE - The configured static value is retained, overriding the client-supplied value for that parameter name."
+      type: string
+      enum:
+        - CLIENT_OVERRIDE
+        - STATIC_OVERRIDE
     HttpConnectorTargetConfiguration:
       description: The configuration for an HTTP connector target. Use this configuration when you want to route HTTP requests through a managed connector.
       type: object
@@ -11208,11 +11479,13 @@ components:
         logGroupNames:
           $ref: "#/components/schemas/CloudWatchLogsInputConfigLogGroupNamesList"
           description: The list of CloudWatch log group names to monitor for agent traces.
+        logGroupNamePrefixes:
+          $ref: "#/components/schemas/CloudWatchLogsInputConfigLogGroupNamePrefixesList"
+          description: The list of CloudWatch log group name prefixes to monitor for agent traces. Specify this instead of logGroupNames to match log groups by prefix. Specify either logGroupNames or logGroupNamePrefixes, not both. One of the two is required.
         serviceNames:
           $ref: "#/components/schemas/CloudWatchLogsInputConfigServiceNamesList"
           description: The list of service names to filter traces within the specified log groups. Used to identify relevant agent sessions.
       required:
-        - logGroupNames
         - serviceNames
     CloudWatchLogsInputConfigLogGroupNamesList:
       type: array
@@ -11220,6 +11493,17 @@ components:
         $ref: "#/components/schemas/LogGroupName"
     LogGroupName:
       type: string
+      pattern: "[.\\-_/#A-Za-z0-9]+"
+    CloudWatchLogsInputConfigLogGroupNamePrefixesList:
+      description: List of CloudWatch Logs log group name prefixes to source trace data from.
+      type: array
+      items:
+        $ref: "#/components/schemas/LogGroupNamePrefix"
+    LogGroupNamePrefix:
+      description: Prefix of a CloudWatch Logs log group name.
+      type: string
+      minLength: 1
+      maxLength: 512
       pattern: "[.\\-_/#A-Za-z0-9]+"
     CloudWatchLogsInputConfigServiceNamesList:
       type: array
@@ -11277,6 +11561,44 @@ components:
         - DAILY
         - WEEKLY
         - MONTHLY
+    OutputConfig:
+      description: The configuration that specifies where evaluation results should be written for monitoring and analysis.
+      type: object
+      properties:
+        cloudWatchConfig:
+          $ref: "#/components/schemas/CloudWatchOutputConfig"
+          description: The CloudWatch configuration for writing evaluation results to CloudWatch logs with embedded metric format.
+      required:
+        - cloudWatchConfig
+    CloudWatchOutputConfig:
+      description: The configuration for writing evaluation results to CloudWatch logs with embedded metric format (EMF) for monitoring.
+      type: object
+      properties:
+        logGroupName:
+          $ref: "#/components/schemas/OptionalLogGroupName"
+          description: The name of the CloudWatch log group where evaluation results will be written. An existing log group is used as-is; otherwise the service creates it, which requires the evaluation execution role to grant logs:CreateLogGroup on the log group. Don't specify this value when resultDestination is SOURCE_LOG_GROUP. The name can't be under the service-reserved /aws/bedrock-agentcore/evaluations/ namespace, apart from this configuration's own service-managed default group.
+        metricsNamespace:
+          $ref: "#/components/schemas/MetricsNamespace"
+          description: The CloudWatch metrics namespace where evaluation result metrics are published. If you omit this value, the service publishes metrics to Bedrock-AgentCore/Evaluations. This value can't begin with AWS/.
+        resultDestination:
+          $ref: "#/components/schemas/ResultDestination"
+          description: "The destination where evaluation results are written. Valid values: DEDICATED_LOG_GROUP (default) – Writes results to a dedicated result log group. SOURCE_LOG_GROUP – Writes results back to the log group that the agent traces were read from. If you use this value, don't specify logGroupName."
+    OptionalLogGroupName:
+      description: A log group name that may also be empty. The empty string is the @default of members that were relaxed from @required, and carries the meaning "no log group" for that member.
+      type: string
+      pattern: $|^[.\-_/#A-Za-z0-9]+
+    MetricsNamespace:
+      description: CloudWatch metrics namespace for evaluation result metrics.
+      type: string
+      minLength: 1
+      maxLength: 255
+      pattern: "[a-zA-Z0-9._#/:-]+"
+    ResultDestination:
+      description: "Where evaluation results are written: dedicated results log group (default) or the source log group."
+      type: string
+      enum:
+        - DEDICATED_LOG_GROUP
+        - SOURCE_LOG_GROUP
     CreateOnlineEvaluationConfigResponse:
       type: object
       properties:
@@ -11312,24 +11634,6 @@ components:
     OnlineEvaluationConfigId:
       type: string
       pattern: "[a-zA-Z][a-zA-Z0-9-_]{0,99}-[a-zA-Z0-9]{10}"
-    OutputConfig:
-      description: The configuration that specifies where evaluation results should be written for monitoring and analysis.
-      type: object
-      properties:
-        cloudWatchConfig:
-          $ref: "#/components/schemas/CloudWatchOutputConfig"
-          description: The CloudWatch configuration for writing evaluation results to CloudWatch logs with embedded metric format.
-      required:
-        - cloudWatchConfig
-    CloudWatchOutputConfig:
-      description: The configuration for writing evaluation results to CloudWatch logs with embedded metric format (EMF) for monitoring.
-      type: object
-      properties:
-        logGroupName:
-          $ref: "#/components/schemas/LogGroupName"
-          description: The name of the CloudWatch log group where evaluation results will be written. The log group will be created if it doesn't exist.
-      required:
-        - logGroupName
     OnlineEvaluationConfigStatus:
       type: string
       enum:
@@ -11745,10 +12049,10 @@ components:
           description: The Cedar policy definition within the policy definition structure. This contains the Cedar policy statement that defines the authorization logic using Cedar's human-readable, analyzable policy language. Cedar policies specify principals (who can access), actions (what operations are allowed), resources (what can be accessed), and optional conditions for fine-grained control. Cedar provides a formal policy language designed for authorization with deterministic evaluation, making policies testable, reviewable, and auditable. All Cedar policies follow a default-deny model where actions are denied unless explicitly permitted, and forbid policies always override permit policies.
         policyGeneration:
           $ref: "#/components/schemas/PolicyGenerationDetails"
-          description: The generated policy asset information within the policy definition structure. This contains information identifying a generated policy asset from the AI-powered policy generation process within the AgentCore Policy system. Each asset contains a Cedar policy statement generated from natural language input, along with associated metadata and analysis findings to help users evaluate and select the most appropriate policy option.
+          description: The generated policy asset information within the policy definition structure. This contains information identifying a generated policy asset from the AI-powered policy generation process within the AgentCore Policy system. Each asset contains a Dogwood policy statement generated from natural language input, along with associated metadata and analysis findings to help users evaluate and select the most appropriate policy option.
         policy:
           $ref: "#/components/schemas/PolicyStatement"
-          description: An AgentCore policy statement that defines the access control rules. The statement can be a Cedar policy or a guardrails definition.
+          description: The Dogwood policy statement that defines the access control rules. This policy definition can include Dogwood policies and supports temporal conditions and information providers such as guardrails.
     CedarPolicy:
       description: Represents a Cedar policy statement within the AgentCore Policy system. Cedar is a policy language designed for authorization that provides human-readable, analyzable, and high-performance policy evaluation for controlling agent behavior and access decisions.
       type: object
@@ -11763,7 +12067,7 @@ components:
       minLength: 35
       maxLength: 10000
     PolicyGenerationDetails:
-      description: Represents the information identifying a generated policy asset from the AI-powered policy generation process within the AgentCore Policy system. Each asset contains a Cedar policy statement generated from natural language input, along with associated metadata and analysis findings to help users evaluate and select the most appropriate policy option.
+      description: Represents the information identifying a generated policy asset from the AI-powered policy generation process within the AgentCore Policy system. Each asset contains a Dogwood policy statement generated from natural language input, along with associated metadata and analysis findings to help users evaluate and select the most appropriate policy option.
       type: object
       properties:
         policyGenerationId:
@@ -11776,12 +12080,12 @@ components:
         - policyGenerationId
         - policyGenerationAssetId
     PolicyStatement:
-      description: An AgentCore policy statement, which supports plain Cedar policies as well as guardrails definitions.
+      description: An AgentCore Cedar or Dogwood policy statement, which supports plain Cedar policies, temporal policies, and guardrails definitions.
       type: object
       properties:
         statement:
           $ref: "#/components/schemas/Statement"
-          description: The body of the AgentCore policy statement. Contains the policy logic, which can be a Cedar policy or a guardrails definition.
+          description: The body of the AgentCore Cedar or Dogwood policy statement. Contains the policy logic, which can be a Cedar policy, a temporal policy, or a guardrails definition.
       required:
         - statement
     PolicyValidationMode:
@@ -11824,7 +12128,7 @@ components:
           description: The enforcement mode of the created policy.
         definition:
           $ref: "#/components/schemas/PolicyDefinition"
-          description: The Cedar policy statement that was created. This is the validated policy definition that will be used for agent behavior control and access decisions.
+          description: The Cedar or Dogwood policy statement that was created. This is the validated policy definition that will be used for agent behavior control and access decisions.
         description:
           $ref: "#/components/schemas/Description"
           description: The human-readable description of the policy's purpose and functionality. This helps administrators understand and manage the policy.
@@ -12278,8 +12582,6 @@ components:
           description: The name of the AgentCore Runtime endpoint.
       required:
         - status
-    DeleteApiKeyCredentialProviderResponse:
-      type: object
     DeleteBrowserResponse:
       type: object
       properties:
@@ -12369,6 +12671,9 @@ components:
         - UPDATE_FAILED
         - DELETING
         - DELETE_FAILED
+    ConsentPortalIdentifier:
+      type: string
+      pattern: "[a-zA-Z0-9\\-_]{1,50}-[A-Za-z0-9]{10}"
     DeleteDatasetResponse:
       type: object
       properties:
@@ -12527,8 +12832,6 @@ components:
           description: The current status of the AgentCore Memory resource deletion.
       required:
         - memoryId
-    DeleteOauth2CredentialProviderResponse:
-      type: object
     DeleteOnlineEvaluationConfigResponse:
       type: object
       properties:
@@ -12556,8 +12859,6 @@ components:
           description: The unique identifier of the deleted payment connector.
       required:
         - status
-    DeletePaymentCredentialProviderResponse:
-      type: object
     DeletePaymentManagerResponse:
       type: object
       properties:
@@ -12675,12 +12976,6 @@ components:
       minLength: 1
       maxLength: 2048
       pattern: (arn:aws(-[^:]+)?:bedrock-agentcore:[a-z0-9-]+:[0-9]{12}:registry/[a-zA-Z0-9]{12,16}/record/)?[a-zA-Z0-9]{12}
-    DeleteRegistryRecordResponse:
-      type: object
-    DeleteResourcePolicyResponse:
-      type: object
-    DeleteWorkloadIdentityResponse:
-      type: object
     GetAgentRuntimeResponse:
       type: object
       properties:
@@ -12747,6 +13042,9 @@ components:
         capacityProviderConfiguration:
           $ref: "#/components/schemas/CapacityProviderConfiguration"
           description: The capacity provider configuration for the AgentCore Runtime.
+        platformVersion:
+          $ref: "#/components/schemas/PlatformVersion"
+          description: The version of the runtime platform used by the AgentCore Runtime.
       required:
         - agentRuntimeArn
         - agentRuntimeName
@@ -13156,6 +13454,55 @@ components:
         - components
         - createdAt
         - versionCreatedAt
+    GetConsentPortalResponse:
+      type: object
+      properties:
+        sources:
+          $ref: "#/components/schemas/ConsentPortalSources"
+          description: The resources served by the consent portal.
+        consentPortalArn:
+          $ref: "#/components/schemas/ConsentPortalArnType"
+          description: The Amazon Resource Name (ARN) of the consent portal.
+        consentPortalId:
+          $ref: "#/components/schemas/ConsentPortalIdType"
+          description: The unique identifier of the consent portal.
+        createdAt:
+          $ref: "#/components/schemas/Timestamp"
+          description: The timestamp for when the consent portal was created.
+        description:
+          $ref: "#/components/schemas/ConsentPortalDescriptionType"
+          description: The description of the consent portal.
+        executionRoleArn:
+          $ref: "#/components/schemas/ExecutionRoleArnType"
+          description: The Amazon Resource Name (ARN) of the IAM role that the consent portal assumes to access the resources defined in its sources.
+        idpConfig:
+          $ref: "#/components/schemas/ConsentPortalIdpConfig"
+          description: The identity provider configuration that the consent portal uses to authenticate end users.
+        name:
+          $ref: "#/components/schemas/ConsentPortalNameType"
+          description: The name of the consent portal.
+        portalUrl:
+          $ref: "#/components/schemas/PortalUrlType"
+          description: The URL used to access the consent portal.
+        status:
+          $ref: "#/components/schemas/ConsentPortalStatus"
+          description: The current status of the consent portal.
+        statusReason:
+          $ref: "#/components/schemas/StatusReasonType"
+          description: A message that provides additional information about the current status of the consent portal.
+        updatedAt:
+          $ref: "#/components/schemas/Timestamp"
+          description: The timestamp for when the consent portal was last updated.
+      required:
+        - sources
+        - consentPortalArn
+        - consentPortalId
+        - createdAt
+        - executionRoleArn
+        - idpConfig
+        - name
+        - status
+        - updatedAt
     GetDatasetResponse:
       type: object
       properties:
@@ -13800,7 +14147,7 @@ components:
           description: The current enforcement mode of the policy.
         definition:
           $ref: "#/components/schemas/PolicyDefinition"
-          description: The Cedar policy statement that defines the access control rules. This contains the actual policy logic used for agent behavior control and access decisions.
+          description: The Cedar or Dogwood policy statement that defines the access control rules. This contains the actual policy logic used for agent behavior control and access decisions.
         description:
           $ref: "#/components/schemas/Description"
           description: The human-readable description of the policy's purpose and functionality. This helps administrators understand and manage the policy.
@@ -14688,6 +15035,65 @@ components:
         - bundleArn
         - bundleId
         - bundleName
+    ListConsentPortalsRequestMaxResultsInteger:
+      type: integer
+      minimum: 1
+      maximum: 100
+    ListConsentPortalsResponse:
+      type: object
+      properties:
+        consentPortals:
+          $ref: "#/components/schemas/ConsentPortalSummaries"
+          description: The list of consent portals.
+        nextToken:
+          $ref: "#/components/schemas/String"
+          description: The token to use in a subsequent request to retrieve the next page of results. This value is null when there are no more results to return.
+      required:
+        - consentPortals
+    ConsentPortalSummaries:
+      description: A list of consent portal summaries.
+      type: array
+      items:
+        $ref: "#/components/schemas/ConsentPortalSummary"
+    ConsentPortalSummary:
+      description: Summary information about a consent portal.
+      type: object
+      properties:
+        sources:
+          $ref: "#/components/schemas/ConsentPortalSources"
+          description: The resources served by the consent portal.
+        consentPortalArn:
+          $ref: "#/components/schemas/ConsentPortalArnType"
+          description: The Amazon Resource Name (ARN) of the consent portal.
+        consentPortalId:
+          $ref: "#/components/schemas/ConsentPortalIdType"
+          description: The unique identifier of the consent portal.
+        createdAt:
+          $ref: "#/components/schemas/Timestamp"
+          description: The timestamp for when the consent portal was created.
+        description:
+          $ref: "#/components/schemas/ConsentPortalDescriptionType"
+          description: The description of the consent portal.
+        name:
+          $ref: "#/components/schemas/ConsentPortalNameType"
+          description: The name of the consent portal.
+        portalUrl:
+          $ref: "#/components/schemas/PortalUrlType"
+          description: The URL used to access the consent portal.
+        status:
+          $ref: "#/components/schemas/ConsentPortalStatus"
+          description: The current status of the consent portal.
+        updatedAt:
+          $ref: "#/components/schemas/Timestamp"
+          description: The timestamp for when the consent portal was last updated.
+      required:
+        - sources
+        - consentPortalArn
+        - consentPortalId
+        - createdAt
+        - name
+        - status
+        - updatedAt
     ListDatasetExamplesRequestMaxResultsInteger:
       type: integer
       minimum: 1
@@ -15523,7 +15929,7 @@ components:
       items:
         $ref: "#/components/schemas/Policy"
     Policy:
-      description: Represents a complete policy resource within the AgentCore Policy system. Policies are ARN-able resources that contain Cedar policy statements and associated metadata for controlling agent behavior and access decisions. Each policy belongs to a policy engine and defines fine-grained authorization rules that are evaluated in real-time as agents interact with tools through Gateway. Policies use the Cedar policy language to specify who (principals based on OAuth claims like username, role, or scope) can perform what actions (tool calls) on which resources (Gateways), with optional conditions for attribute-based access control. Multiple policies can apply to a single request, with Cedar's forbid-wins semantics ensuring that security restrictions are never accidentally overridden.
+      description: Represents a complete policy resource within the AgentCore Policy system. Policies are ARN-able resources that contain Cedar or Dogwood policy statements and associated metadata for controlling agent behavior and access decisions. Each policy belongs to a policy engine and defines fine-grained authorization rules that are evaluated in real-time as agents interact with tools through Gateway. Policies use Cedar or Dogwood to specify who (principals based on OAuth claims like username, role, or scope) can perform what actions (tool calls) on which resources (Gateways), with optional conditions for attribute-based access control. Multiple policies can apply to a single request, with forbid-wins semantics ensuring that security restrictions are never accidentally overridden.
       type: object
       properties:
         policyId:
@@ -15552,7 +15958,7 @@ components:
           description: The current enforcement mode of the policy.
         definition:
           $ref: "#/components/schemas/PolicyDefinition"
-          description: The Cedar policy statement that defines the access control rules. This contains the actual policy logic used for agent behavior control and access decisions.
+          description: The Cedar or Dogwood policy statement that defines the access control rules. This contains the actual policy logic used for agent behavior control and access decisions.
         description:
           $ref: "#/components/schemas/Description"
           description: A human-readable description of the policy's purpose and functionality. Limited to 4,096 characters, this helps administrators understand and manage the policy.
@@ -15675,7 +16081,7 @@ components:
       properties:
         policyGenerationAssets:
           $ref: "#/components/schemas/PolicyGenerationAssets"
-          description: An array of generated policy assets including Cedar policies and related artifacts from the AI-powered policy generation process. Each asset represents a different policy option or variation generated from the original natural language input.
+          description: An array of generated policy assets including Dogwood policies and related artifacts from the AI-powered policy generation process. Each asset represents a different policy option or variation generated from the original natural language input.
         nextToken:
           $ref: "#/components/schemas/NextToken"
           description: A pagination token that can be used in subsequent ListPolicyGenerationAssets calls to retrieve additional assets. This token is only present when there are more generated policy assets available beyond the current response.
@@ -15684,7 +16090,7 @@ components:
       items:
         $ref: "#/components/schemas/PolicyGenerationAsset"
     PolicyGenerationAsset:
-      description: Represents a generated policy asset from the AI-powered policy generation process within the AgentCore Policy system. Each asset contains a Cedar policy statement generated from natural language input, along with associated metadata and analysis findings to help users evaluate and select the most appropriate policy option.
+      description: Represents a generated policy asset from the AI-powered policy generation process within the AgentCore Policy system. Each asset contains a Dogwood policy statement generated from natural language input, along with associated metadata and analysis findings to help users evaluate and select the most appropriate policy option.
       type: object
       properties:
         policyGenerationAssetId:
@@ -15694,7 +16100,7 @@ components:
           $ref: "#/components/schemas/PolicyDefinition"
         rawTextFragment:
           $ref: "#/components/schemas/NaturalLanguage"
-          description: The portion of the original natural language input that this generated policy asset addresses. This helps users understand which part of their policy description was translated into this specific Cedar policy statement, enabling better policy selection and refinement. When a single natural language input describes multiple authorization requirements, the generation process creates separate policy assets for each requirement, with each asset's rawTextFragment showing which requirement it addresses. Use this mapping to verify that all parts of your natural language input were correctly translated into Cedar policies.
+          description: The portion of the original natural language input that this generated policy asset addresses. This helps users understand which part of their policy description was translated into this specific Dogwood policy statement, enabling better policy selection and refinement. When a single natural language input describes multiple authorization requirements, the generation process creates separate policy assets for each requirement, with each asset's rawTextFragment showing which requirement it addresses. Use this mapping to verify that all parts of your natural language input were correctly translated into Dogwood policies.
         findings:
           $ref: "#/components/schemas/Findings"
           description: Analysis findings and insights related to this specific generated policy asset. These findings may include validation results, potential issues, or recommendations for improvement to help users evaluate the quality and appropriateness of the generated policy.
@@ -15801,7 +16207,7 @@ components:
       items:
         $ref: "#/components/schemas/PolicyGeneration"
     PolicyGeneration:
-      description: Represents a policy generation request within the AgentCore Policy system. Tracks the AI-powered conversion of natural language descriptions into Cedar policy statements, enabling users to author policies by describing authorization requirements in plain English. The generation process analyzes the natural language input along with the Gateway's tool context and Cedar schema to produce one or more validated policy options. Each generation request tracks the status of the conversion process and maintains findings about the generated policies, including validation results and potential issues. Generated policy assets remain available for one week after successful generation, allowing time to review and create policies from the generated options.
+      description: Represents a policy generation request within the AgentCore Policy system. Tracks the AI-powered conversion of natural language descriptions into Dogwood policy statements, enabling users to author policies by describing authorization requirements in plain English. The generation process analyzes the natural language input along with the Gateway's tool context and Cedar schema to produce one or more validated policy options. Each generation request tracks the status of the conversion process and maintains findings about the generated policies, including validation results and potential issues. Generated policy assets remain available for one week after successful generation, allowing time to review and create policies from the generated options.
       type: object
       properties:
         policyEngineId:
@@ -16081,7 +16487,7 @@ components:
       properties:
         rawText:
           $ref: "#/components/schemas/NaturalLanguage"
-          description: The raw text content containing natural language descriptions of desired policy behavior. This text is processed by AI to generate corresponding Cedar policy statements that match the described intent.
+          description: The raw text content containing natural language descriptions of desired policy behavior. This text is processed by AI to generate corresponding Dogwood policy statements that match the described intent.
     StartPolicyGenerationResponse:
       type: object
       properties:
@@ -16222,8 +16628,6 @@ components:
         - name
         - targetConfiguration
         - credentialProviderConfigurations
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
@@ -16233,8 +16637,6 @@ components:
       minLength: 1
       maxLength: 128
       pattern: "[a-zA-Z0-9\\s._:/=+@-]*"
-    UntagResourceResponse:
-      type: object
     UpdateAgentRuntimeResponse:
       type: object
       properties:
@@ -16384,6 +16786,55 @@ components:
         - bundleArn
         - bundleId
         - versionId
+        - updatedAt
+    UpdateConsentPortalResponse:
+      type: object
+      properties:
+        sources:
+          $ref: "#/components/schemas/ConsentPortalSources"
+          description: The resources served by the consent portal.
+        consentPortalArn:
+          $ref: "#/components/schemas/ConsentPortalArnType"
+          description: The Amazon Resource Name (ARN) of the consent portal.
+        consentPortalId:
+          $ref: "#/components/schemas/ConsentPortalIdType"
+          description: The unique identifier of the consent portal.
+        createdAt:
+          $ref: "#/components/schemas/Timestamp"
+          description: The timestamp for when the consent portal was created.
+        description:
+          $ref: "#/components/schemas/ConsentPortalDescriptionType"
+          description: The description of the consent portal.
+        executionRoleArn:
+          $ref: "#/components/schemas/ExecutionRoleArnType"
+          description: The Amazon Resource Name (ARN) of the IAM role that the consent portal assumes to access the resources defined in its sources.
+        idpConfig:
+          $ref: "#/components/schemas/ConsentPortalIdpConfig"
+          description: The identity provider configuration that the consent portal uses to authenticate end users.
+        name:
+          $ref: "#/components/schemas/ConsentPortalNameType"
+          description: The name of the consent portal.
+        portalUrl:
+          $ref: "#/components/schemas/PortalUrlType"
+          description: The URL used to access the consent portal.
+        status:
+          $ref: "#/components/schemas/ConsentPortalStatus"
+          description: The current status of the consent portal.
+        statusReason:
+          $ref: "#/components/schemas/StatusReasonType"
+          description: A message that provides additional information about the current status of the consent portal.
+        updatedAt:
+          $ref: "#/components/schemas/Timestamp"
+          description: The timestamp for when the consent portal was last updated.
+      required:
+        - sources
+        - consentPortalArn
+        - consentPortalId
+        - createdAt
+        - executionRoleArn
+        - idpConfig
+        - name
+        - status
         - updatedAt
     UpdateDatasetRequestDescriptionString:
       type: string
@@ -17077,7 +17528,7 @@ components:
           description: The current enforcement mode of the updated policy.
         definition:
           $ref: "#/components/schemas/PolicyDefinition"
-          description: The updated Cedar policy statement.
+          description: The updated Cedar or Dogwood policy statement.
         description:
           $ref: "#/components/schemas/Description"
           description: The updated description of the policy.
@@ -17712,7 +18163,6 @@ components:
             $ref: "#/paths/~1identities~1DeleteApiKeyCredentialProvider/post"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -18075,6 +18525,83 @@ components:
           - $ref: "#/components/x-stackQL-resources/configuration_bundles/methods/update_configuration_bundle"
         delete:
           - $ref: "#/components/x-stackQL-resources/configuration_bundles/methods/delete_configuration_bundle"
+    consent_portals:
+      id: aws.bedrock_agentcore_control.consent_portals
+      name: consent_portals
+      title: consent_portals
+      methods:
+        create_consent_portal:
+          operation:
+            $ref: "#/paths/~1identities~1CreateConsentPortal/post"
+          response:
+            openAPIDocKey: "202"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        delete_consent_portal:
+          operation:
+            $ref: "#/paths/~1identities~1DeleteConsentPortal/post"
+          response:
+            openAPIDocKey: "204"
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        get_consent_portal:
+          operation:
+            $ref: "#/paths/~1identities~1GetConsentPortal/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        list_consent_portals:
+          operation:
+            $ref: "#/paths/~1identities~1ListConsentPortals/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.consentPortals
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        update_consent_portal:
+          operation:
+            $ref: "#/paths/~1identities~1UpdateConsentPortal/post"
+          response:
+            openAPIDocKey: "202"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/consent_portals/methods/get_consent_portal"
+          - $ref: "#/components/x-stackQL-resources/consent_portals/methods/list_consent_portals"
+        insert:
+          - $ref: "#/components/x-stackQL-resources/consent_portals/methods/create_consent_portal"
+        update:
+          - $ref: "#/components/x-stackQL-resources/consent_portals/methods/update_consent_portal"
+        delete:
+          - $ref: "#/components/x-stackQL-resources/consent_portals/methods/delete_consent_portal"
     datasets:
       id: aws.bedrock_agentcore_control.datasets
       name: datasets
@@ -18462,10 +18989,10 @@ components:
           - $ref: "#/components/x-stackQL-resources/gateway_targets/methods/update_gateway_target"
         delete:
           - $ref: "#/components/x-stackQL-resources/gateway_targets/methods/delete_gateway_target"
-    harness:
-      id: aws.bedrock_agentcore_control.harness
-      name: harness
-      title: harness
+    harnesses:
+      id: aws.bedrock_agentcore_control.harnesses
+      name: harnesses
+      title: harnesses
       methods:
         create_harness:
           operation:
@@ -18478,6 +19005,23 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        list_harnesses:
+          operation:
+            $ref: "#/paths/~1harnesses/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.harnesses
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_harness:
           operation:
             $ref: "#/paths/~1harnesses~1{harness_id}/delete"
@@ -18508,41 +19052,14 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/harness/methods/get_harness"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/harness/methods/create_harness"
-        update:
-          - $ref: "#/components/x-stackQL-resources/harness/methods/update_harness"
-        delete:
-          - $ref: "#/components/x-stackQL-resources/harness/methods/delete_harness"
-    harnesses:
-      id: aws.bedrock_agentcore_control.harnesses
-      name: harnesses
-      title: harnesses
-      methods:
-        list_harnesses:
-          operation:
-            $ref: "#/paths/~1harnesses/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.harnesses
-          request:
-            nativeCasing: pascal
-          config:
-            pagination:
-              requestToken:
-                key: nextToken
-                location: query
-              responseToken:
-                key: $.nextToken
-                location: body
-      sqlVerbs:
-        select:
+          - $ref: "#/components/x-stackQL-resources/harnesses/methods/get_harness"
           - $ref: "#/components/x-stackQL-resources/harnesses/methods/list_harnesses"
-        insert: []
-        update: []
-        delete: []
+        insert:
+          - $ref: "#/components/x-stackQL-resources/harnesses/methods/create_harness"
+        update:
+          - $ref: "#/components/x-stackQL-resources/harnesses/methods/update_harness"
+        delete:
+          - $ref: "#/components/x-stackQL-resources/harnesses/methods/delete_harness"
     harness_endpoints:
       id: aws.bedrock_agentcore_control.harness_endpoints
       name: harness_endpoints
@@ -18706,7 +19223,6 @@ components:
             $ref: "#/paths/~1identities~1DeleteOauth2CredentialProvider/post"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -18918,7 +19434,6 @@ components:
             $ref: "#/paths/~1identities~1DeletePaymentCredentialProvider/post"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -19290,7 +19805,6 @@ components:
             $ref: "#/paths/~1registries~1{registry_id}~1records~1{record_id}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         get_registry_record:
           operation:
             $ref: "#/paths/~1registries~1{registry_id}~1records~1{record_id}/get"
@@ -19357,7 +19871,6 @@ components:
             $ref: "#/paths/~1identities~1DeleteWorkloadIdentity/post"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -19424,7 +19937,6 @@ components:
             $ref: "#/paths/~1resourcepolicy~1{resource_arn}/delete"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
         get_resource_policy:
           operation:
             $ref: "#/paths/~1resourcepolicy~1{resource_arn}/get"
@@ -19684,17 +20196,6 @@ components:
               responseToken:
                 key: $.nextToken
                 location: body
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/agent_runtime_versions/methods/list_agent_runtime_versions"
-        insert: []
-        update: []
-        delete: []
-    agent_runtime_versions_by_capacity_providers:
-      id: aws.bedrock_agentcore_control.agent_runtime_versions_by_capacity_providers
-      name: agent_runtime_versions_by_capacity_providers
-      title: agent_runtime_versions_by_capacity_providers
-      methods:
         list_agent_runtime_versions_by_capacity_provider:
           operation:
             $ref: "#/paths/~1capacity-providers~1{capacity_provider_id}~1runtime-versions/post"
@@ -19714,7 +20215,8 @@ components:
                 location: body
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/agent_runtime_versions_by_capacity_providers/methods/list_agent_runtime_versions_by_capacity_provider"
+          - $ref: "#/components/x-stackQL-resources/agent_runtime_versions/methods/list_agent_runtime_versions"
+          - $ref: "#/components/x-stackQL-resources/agent_runtime_versions/methods/list_agent_runtime_versions_by_capacity_provider"
         insert: []
         update: []
         delete: []
@@ -19790,7 +20292,6 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/post"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -19801,7 +20302,6 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/delete"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
           request:
             nativeCasing: pascal
       sqlVerbs:

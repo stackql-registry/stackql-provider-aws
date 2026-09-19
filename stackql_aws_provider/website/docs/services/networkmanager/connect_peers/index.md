@@ -203,18 +203,18 @@ The following methods are available for this resource:
     <td>Associates a core network Connect peer with a device and optionally, with a link. If you specify a link, it must be associated with the specified device. You can only associate core network Connect peers that have been created on a core network Connect attachment on a core network.</td>
 </tr>
 <tr>
-    <td><a href="#associate_transit_gateway_connect_peer"><CopyableCode code="associate_transit_gateway_connect_peer" /></a></td>
-    <td><CopyableCode code="update" /></td>
-    <td><a href="#parameter-global_network_id"><code>global_network_id</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-TransitGatewayConnectPeerArn"><code>TransitGatewayConnectPeerArn</code></a>, <a href="#parameter-DeviceId"><code>DeviceId</code></a></td>
-    <td></td>
-    <td>Associates a transit gateway Connect peer with a device, and optionally, with a link. If you specify a link, it must be associated with the specified device. You can only associate transit gateway Connect peers that have been created on a transit gateway that's registered in your global network. You cannot associate a transit gateway Connect peer with more than one device and link.</td>
-</tr>
-<tr>
     <td><a href="#disassociate_connect_peer"><CopyableCode code="disassociate_connect_peer" /></a></td>
     <td><CopyableCode code="update" /></td>
     <td><a href="#parameter-global_network_id"><code>global_network_id</code></a>, <a href="#parameter-connect_peer_id"><code>connect_peer_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td></td>
     <td>Disassociates a core network Connect peer from a device and a link.</td>
+</tr>
+<tr>
+    <td><a href="#associate_transit_gateway_connect_peer"><CopyableCode code="associate_transit_gateway_connect_peer" /></a></td>
+    <td><CopyableCode code="update" /></td>
+    <td><a href="#parameter-global_network_id"><code>global_network_id</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-TransitGatewayConnectPeerArn"><code>TransitGatewayConnectPeerArn</code></a>, <a href="#parameter-DeviceId"><code>DeviceId</code></a></td>
+    <td></td>
+    <td>Associates a transit gateway Connect peer with a device, and optionally, with a link. If you specify a link, it must be associated with the specified device. You can only associate transit gateway Connect peers that have been created on a transit gateway that's registered in your global network. You cannot associate a transit gateway Connect peer with more than one device and link.</td>
 </tr>
 <tr>
     <td><a href="#disassociate_transit_gateway_connect_peer"><CopyableCode code="disassociate_transit_gateway_connect_peer" /></a></td>
@@ -428,8 +428,8 @@ connect_peer
     defaultValue="associate_connect_peer"
     values={[
         { label: 'associate_connect_peer', value: 'associate_connect_peer' },
-        { label: 'associate_transit_gateway_connect_peer', value: 'associate_transit_gateway_connect_peer' },
         { label: 'disassociate_connect_peer', value: 'disassociate_connect_peer' },
+        { label: 'associate_transit_gateway_connect_peer', value: 'associate_transit_gateway_connect_peer' },
         { label: 'disassociate_transit_gateway_connect_peer', value: 'disassociate_transit_gateway_connect_peer' }
     ]}
 >
@@ -452,6 +452,22 @@ RETURNING
 connect_peer_association;
 ```
 </TabItem>
+<TabItem value="disassociate_connect_peer">
+
+Disassociates a core network Connect peer from a device and a link.
+
+```sql
+UPDATE aws.networkmanager.connect_peers
+SET 
+-- No updatable properties
+WHERE 
+global_network_id = '{{ global_network_id }}' --required
+AND connect_peer_id = '{{ connect_peer_id }}' --required
+AND region = '{{ region }}' --required
+RETURNING
+connect_peer_association;
+```
+</TabItem>
 <TabItem value="associate_transit_gateway_connect_peer">
 
 Associates a transit gateway Connect peer with a device, and optionally, with a link. If you specify a link, it must be associated with the specified device. You can only associate transit gateway Connect peers that have been created on a transit gateway that's registered in your global network. You cannot associate a transit gateway Connect peer with more than one device and link.
@@ -469,22 +485,6 @@ AND TransitGatewayConnectPeerArn = '{{ TransitGatewayConnectPeerArn }}' --requir
 AND DeviceId = '{{ DeviceId }}' --required
 RETURNING
 transit_gateway_connect_peer_association;
-```
-</TabItem>
-<TabItem value="disassociate_connect_peer">
-
-Disassociates a core network Connect peer from a device and a link.
-
-```sql
-UPDATE aws.networkmanager.connect_peers
-SET 
--- No updatable properties
-WHERE 
-global_network_id = '{{ global_network_id }}' --required
-AND connect_peer_id = '{{ connect_peer_id }}' --required
-AND region = '{{ region }}' --required
-RETURNING
-connect_peer_association;
 ```
 </TabItem>
 <TabItem value="disassociate_transit_gateway_connect_peer">

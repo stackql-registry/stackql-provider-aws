@@ -36,7 +36,7 @@ total resources: __16__
 </div>
 <div class="providerDocColumn">
 <a href="/services/datasync/location_nfs/">location_nfs</a><br />
-<a href="/services/datasync/location_object_storages/">location_object_storages</a><br />
+<a href="/services/datasync/location_object_storage/">location_object_storage</a><br />
 <a href="/services/datasync/location_s3s/">location_s3s</a><br />
 <a href="/services/datasync/location_smbs/">location_smbs</a><br />
 <a href="/services/datasync/locations/">locations</a><br />

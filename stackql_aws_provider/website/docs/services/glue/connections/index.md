@@ -188,11 +188,25 @@ The following methods are available for this resource:
     <td>Deletes a connection from the Data Catalog.</td>
 </tr>
 <tr>
+    <td><a href="#batch_delete_connection"><CopyableCode code="batch_delete_connection" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-ConnectionNameList"><code>ConnectionNameList</code></a></td>
+    <td></td>
+    <td>Deletes a list of connection definitions from the Data Catalog.</td>
+</tr>
+<tr>
     <td><a href="#get_connections"><CopyableCode code="get_connections" /></a></td>
     <td><CopyableCode code="exec" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td></td>
     <td>Retrieves a list of connection definitions from the Data Catalog.</td>
+</tr>
+<tr>
+    <td><a href="#test_connection"><CopyableCode code="test_connection" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Tests a connection to a service to validate the service credentials that you provide. You can either provide an existing connection name or a TestConnectionInput for testing a non-existing connection input. Providing both at the same time will cause an error. If the action is successful, the service sends back an HTTP 200 response.</td>
 </tr>
 </tbody>
 </table>
@@ -404,11 +418,28 @@ WHERE region = '{{ region }}' --required
 ## Lifecycle Methods
 
 <Tabs
-    defaultValue="get_connections"
+    defaultValue="batch_delete_connection"
     values={[
-        { label: 'get_connections', value: 'get_connections' }
+        { label: 'batch_delete_connection', value: 'batch_delete_connection' },
+        { label: 'get_connections', value: 'get_connections' },
+        { label: 'test_connection', value: 'test_connection' }
     ]}
 >
+<TabItem value="batch_delete_connection">
+
+Deletes a list of connection definitions from the Data Catalog.
+
+```sql
+EXEC aws.glue.connections.batch_delete_connection 
+@region='{{ region }}' --required 
+@@json=
+'{
+"CatalogId": "{{ CatalogId }}", 
+"ConnectionNameList": "{{ ConnectionNameList }}"
+}'
+;
+```
+</TabItem>
 <TabItem value="get_connections">
 
 Retrieves a list of connection definitions from the Data Catalog.
@@ -423,6 +454,22 @@ EXEC aws.glue.connections.get_connections
 "HidePassword": {{ HidePassword }}, 
 "NextToken": "{{ NextToken }}", 
 "MaxResults": {{ MaxResults }}
+}'
+;
+```
+</TabItem>
+<TabItem value="test_connection">
+
+Tests a connection to a service to validate the service credentials that you provide. You can either provide an existing connection name or a TestConnectionInput for testing a non-existing connection input. Providing both at the same time will cause an error. If the action is successful, the service sends back an HTTP 200 response.
+
+```sql
+EXEC aws.glue.connections.test_connection 
+@region='{{ region }}' --required 
+@@json=
+'{
+"ConnectionName": "{{ ConnectionName }}", 
+"CatalogId": "{{ CatalogId }}", 
+"TestConnectionInput": "{{ TestConnectionInput }}"
 }'
 ;
 ```

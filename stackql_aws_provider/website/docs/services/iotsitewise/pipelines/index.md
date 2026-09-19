@@ -500,6 +500,7 @@ EXEC aws.iotsitewise.pipelines.start_pipeline_execution
 @@json=
 '{
 "executionEnvironmentVariableOverrides": "{{ executionEnvironmentVariableOverrides }}", 
+"executionMountOverrides": "{{ executionMountOverrides }}", 
 "executionPriority": {{ executionPriority }}, 
 "clientToken": "{{ clientToken }}"
 }'

@@ -33,7 +33,7 @@ total resources: __26__
 <a href="/services/qbusiness/data_accessors/">data_accessors</a><br />
 <a href="/services/qbusiness/data_source_sync_jobs/">data_source_sync_jobs</a><br />
 <a href="/services/qbusiness/data_sources/">data_sources</a><br />
-<a href="/services/qbusiness/document_contents/">document_contents</a><br />
+<a href="/services/qbusiness/document_content/">document_content</a><br />
 <a href="/services/qbusiness/documents/">documents</a><br />
 <a href="/services/qbusiness/groups/">groups</a><br />
 <a href="/services/qbusiness/indexes/">indexes</a><br />
@@ -44,10 +44,10 @@ total resources: __26__
 <a href="/services/qbusiness/messages/">messages</a><br />
 <a href="/services/qbusiness/plugin_actions/">plugin_actions</a><br />
 <a href="/services/qbusiness/plugin_type_actions/">plugin_type_actions</a><br />
-<a href="/services/qbusiness/plugin_type_metadatas/">plugin_type_metadatas</a><br />
+<a href="/services/qbusiness/plugin_type_metadata/">plugin_type_metadata</a><br />
 <a href="/services/qbusiness/plugins/">plugins</a><br />
 <a href="/services/qbusiness/policies/">policies</a><br />
-<a href="/services/qbusiness/relevant_contents/">relevant_contents</a><br />
+<a href="/services/qbusiness/relevant_content/">relevant_content</a><br />
 <a href="/services/qbusiness/retrievers/">retrievers</a><br />
 <a href="/services/qbusiness/subscriptions/">subscriptions</a><br />
 <a href="/services/qbusiness/tags/">tags</a><br />

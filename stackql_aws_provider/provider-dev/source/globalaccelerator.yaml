@@ -1807,7 +1807,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListCustomRoutingPortMappingsByDestinationResponse'
-      x-stackql-resource: custom_routing_port_mappings_by_destinations
+      x-stackql-resource: custom_routing_port_mappings
       x-stackql-method: list_custom_routing_port_mappings_by_destination
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.DestinationPortMappings
@@ -2107,10 +2107,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -2150,10 +2146,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -3839,14 +3831,10 @@ components:
             travels to applications on the endpoint fronted by the accelerator.
       required:
       - EndpointId
-    TagResourceResponse:
-      type: object
     TagKeys:
       type: array
       items:
         $ref: '#/components/schemas/TagKey'
-    UntagResourceResponse:
-      type: object
     UpdateAcceleratorResponse:
       type: object
       properties:

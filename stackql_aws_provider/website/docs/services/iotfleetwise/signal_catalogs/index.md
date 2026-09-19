@@ -169,6 +169,13 @@ The following methods are available for this resource:
     <td></td>
     <td>Deletes a signal catalog.</td>
 </tr>
+<tr>
+    <td><a href="#import_signal_catalog"><CopyableCode code="import_signal_catalog" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-name"><code>name</code></a></td>
+    <td></td>
+    <td>Creates a signal catalog using your existing VSS formatted content from your local device.</td>
+</tr>
 </tbody>
 </table>
 
@@ -404,6 +411,34 @@ Deletes a signal catalog.
 ```sql
 DELETE FROM aws.iotfleetwise.signal_catalogs
 WHERE region = '{{ region }}' --required
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="import_signal_catalog"
+    values={[
+        { label: 'import_signal_catalog', value: 'import_signal_catalog' }
+    ]}
+>
+<TabItem value="import_signal_catalog">
+
+Creates a signal catalog using your existing VSS formatted content from your local device.
+
+```sql
+EXEC aws.iotfleetwise.signal_catalogs.import_signal_catalog 
+@region='{{ region }}' --required 
+@@json=
+'{
+"name": "{{ name }}", 
+"description": "{{ description }}", 
+"vss": "{{ vss }}", 
+"tags": "{{ tags }}"
+}'
 ;
 ```
 </TabItem>

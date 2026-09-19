@@ -97,10 +97,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/AssociateMulticastGroupWithFuotaTaskResponse'
       x-stackql-resource: fuota_tasks
       x-stackql-method: associate_multicast_group_with_fuota_task
       x-stackql-verb: UPDATE
@@ -128,10 +124,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/AssociateWirelessDeviceWithFuotaTaskResponse'
       x-stackql-resource: fuota_tasks
       x-stackql-method: associate_wireless_device_with_fuota_task
       x-stackql-verb: UPDATE
@@ -159,10 +151,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/AssociateWirelessDeviceWithMulticastGroupResponse'
       x-stackql-resource: multicast_groups
       x-stackql-method: associate_wireless_device_with_multicast_group
       x-stackql-verb: UPDATE
@@ -191,10 +179,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/AssociateWirelessDeviceWithThingResponse'
       x-stackql-resource: wireless_devices
       x-stackql-method: associate_wireless_device_with_thing
       x-stackql-verb: UPDATE
@@ -211,10 +195,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DisassociateWirelessDeviceFromThingResponse'
       x-stackql-resource: wireless_devices
       x-stackql-method: disassociate_wireless_device_from_thing
       x-stackql-verb: UPDATE
@@ -263,10 +243,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DisassociateWirelessGatewayFromCertificateResponse'
       x-stackql-resource: wireless_gateways
       x-stackql-method: disassociate_wireless_gateway_from_certificate
       x-stackql-verb: UPDATE
@@ -315,10 +291,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/AssociateWirelessGatewayWithThingResponse'
       x-stackql-resource: wireless_gateways
       x-stackql-method: associate_wireless_gateway_with_thing
       x-stackql-verb: UPDATE
@@ -335,10 +307,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DisassociateWirelessGatewayFromThingResponse'
       x-stackql-resource: wireless_gateways
       x-stackql-method: disassociate_wireless_gateway_from_thing
       x-stackql-verb: UPDATE
@@ -355,11 +323,7 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CancelMulticastGroupSessionResponse'
-      x-stackql-resource: multicast_groups
+      x-stackql-resource: multicast_group_sessions
       x-stackql-method: cancel_multicast_group_session
       x-stackql-verb: EXEC
     get:
@@ -405,11 +369,7 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/StartMulticastGroupSessionResponse'
-      x-stackql-resource: multicast_groups
+      x-stackql-resource: multicast_group_sessions
       x-stackql-method: start_multicast_group_session
       x-stackql-verb: EXEC
   /destinations:
@@ -1014,10 +974,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteWirelessGatewayTaskResponse'
       x-stackql-resource: wireless_gateway_tasks
       x-stackql-method: delete_wireless_gateway_task
       x-stackql-verb: DELETE
@@ -1122,10 +1078,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteDestinationResponse'
       x-stackql-resource: destinations
       x-stackql-method: delete_destination
       x-stackql-verb: DELETE
@@ -1177,10 +1129,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateDestinationResponse'
       x-stackql-resource: destinations
       x-stackql-method: update_destination
       x-stackql-verb: UPDATE
@@ -1198,10 +1146,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteDeviceProfileResponse'
       x-stackql-resource: device_profiles
       x-stackql-method: delete_device_profile
       x-stackql-verb: DELETE
@@ -1238,10 +1182,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteFuotaTaskResponse'
       x-stackql-resource: fuota_tasks
       x-stackql-method: delete_fuota_task
       x-stackql-verb: DELETE
@@ -1285,11 +1225,7 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/StartFuotaTaskResponse'
-      x-stackql-resource: fuota_task
+      x-stackql-resource: fuota_tasks
       x-stackql-method: start_fuota_task
       x-stackql-verb: EXEC
     patch:
@@ -1329,10 +1265,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateFuotaTaskResponse'
       x-stackql-resource: fuota_tasks
       x-stackql-method: update_fuota_task
       x-stackql-verb: UPDATE
@@ -1349,10 +1281,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteMulticastGroupResponse'
       x-stackql-resource: multicast_groups
       x-stackql-method: delete_multicast_group
       x-stackql-verb: DELETE
@@ -1400,10 +1328,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateMulticastGroupResponse'
       x-stackql-resource: multicast_groups
       x-stackql-method: update_multicast_group
       x-stackql-verb: UPDATE
@@ -1420,10 +1344,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteNetworkAnalyzerConfigurationResponse'
       x-stackql-resource: network_analyzer_configurations
       x-stackql-method: delete_network_analyzer_configuration
       x-stackql-verb: DELETE
@@ -1481,10 +1401,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateNetworkAnalyzerConfigurationResponse'
       x-stackql-resource: network_analyzer_configurations
       x-stackql-method: update_network_analyzer_configuration
       x-stackql-verb: UPDATE
@@ -1515,10 +1431,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteQueuedMessagesResponse'
       x-stackql-resource: queued_messages
       x-stackql-method: delete_queued_messages
       x-stackql-verb: DELETE
@@ -1594,7 +1506,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SendDataToWirelessDeviceResponse'
-      x-stackql-resource: data_to_wireless_device
+      x-stackql-resource: wireless_devices
       x-stackql-method: send_data_to_wireless_device
       x-stackql-verb: EXEC
   /service-profiles/{id}:
@@ -1611,10 +1523,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteServiceProfileResponse'
       x-stackql-resource: service_profiles
       x-stackql-method: delete_service_profile
       x-stackql-verb: DELETE
@@ -1652,10 +1560,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteWirelessDeviceResponse'
       x-stackql-resource: wireless_devices
       x-stackql-method: delete_wireless_device
       x-stackql-verb: DELETE
@@ -1691,10 +1595,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateWirelessDeviceResponse'
       x-stackql-resource: wireless_devices
       x-stackql-method: update_wireless_device
       x-stackql-verb: UPDATE
@@ -1712,10 +1612,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteWirelessDeviceImportTaskResponse'
       x-stackql-resource: wireless_device_import_tasks
       x-stackql-method: delete_wireless_device_import_task
       x-stackql-verb: DELETE
@@ -1764,10 +1660,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateWirelessDeviceImportTaskResponse'
       x-stackql-resource: wireless_device_import_tasks
       x-stackql-method: update_wireless_device_import_task
       x-stackql-verb: UPDATE
@@ -1788,10 +1680,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteWirelessGatewayResponse'
       x-stackql-resource: wireless_gateways
       x-stackql-method: delete_wireless_gateway
       x-stackql-verb: DELETE
@@ -1825,10 +1713,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateWirelessGatewayResponse'
       x-stackql-resource: wireless_gateways
       x-stackql-method: update_wireless_gateway
       x-stackql-verb: UPDATE
@@ -1847,10 +1731,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteWirelessGatewayTaskDefinitionResponse'
       x-stackql-resource: wireless_gateway_task_definitions
       x-stackql-method: delete_wireless_gateway_task_definition
       x-stackql-verb: DELETE
@@ -1894,10 +1774,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeregisterWirelessDeviceResponse'
       x-stackql-resource: wireless_devices
       x-stackql-method: deregister_wireless_device
       x-stackql-verb: DELETE
@@ -1922,10 +1798,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DisassociateAwsAccountFromPartnerAccountResponse'
       x-stackql-resource: partner_accounts
       x-stackql-method: disassociate_aws_account_from_partner_account
       x-stackql-verb: UPDATE
@@ -1986,10 +1858,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdatePartnerAccountResponse'
       x-stackql-resource: partner_accounts
       x-stackql-method: update_partner_account
       x-stackql-verb: UPDATE
@@ -2011,10 +1879,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DisassociateMulticastGroupFromFuotaTaskResponse'
       x-stackql-resource: fuota_tasks
       x-stackql-method: disassociate_multicast_group_from_fuota_task
       x-stackql-verb: UPDATE
@@ -2036,10 +1900,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DisassociateWirelessDeviceFromFuotaTaskResponse'
       x-stackql-resource: fuota_tasks
       x-stackql-method: disassociate_wireless_device_from_fuota_task
       x-stackql-verb: UPDATE
@@ -2061,10 +1921,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DisassociateWirelessDeviceFromMulticastGroupResponse'
       x-stackql-resource: multicast_groups
       x-stackql-method: disassociate_wireless_device_from_multicast_group
       x-stackql-verb: UPDATE
@@ -2080,7 +1936,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetEventConfigurationByResourceTypesResponse'
-      x-stackql-resource: event_configuration_by_resource_types
+      x-stackql-resource: event_configurations
       x-stackql-method: get_event_configuration_by_resource_types
       x-stackql-verb: SELECT
     patch:
@@ -2107,11 +1963,7 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateEventConfigurationByResourceTypesResponse'
-      x-stackql-resource: event_configuration_by_resource_types
+      x-stackql-resource: event_configurations
       x-stackql-method: update_event_configuration_by_resource_types
       x-stackql-verb: UPDATE
   /log-levels:
@@ -2127,7 +1979,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetLogLevelsByResourceTypesResponse'
-      x-stackql-resource: log_levels_by_resource_types
+      x-stackql-resource: log_levels
       x-stackql-method: get_log_levels_by_resource_types
       x-stackql-verb: SELECT
     delete:
@@ -2137,10 +1989,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ResetAllResourceLogLevelsResponse'
       x-stackql-resource: resource_log_levels
       x-stackql-method: reset_all_resource_log_levels
       x-stackql-verb: EXEC
@@ -2167,11 +2015,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateLogLevelsByResourceTypesResponse'
-      x-stackql-resource: log_levels_by_resource_types
+      x-stackql-resource: log_levels
       x-stackql-method: update_log_levels_by_resource_types
       x-stackql-verb: UPDATE
   /metric-configuration:
@@ -2206,10 +2050,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateMetricConfigurationResponse'
       x-stackql-resource: metric_configurations
       x-stackql-method: update_metric_configuration
       x-stackql-verb: UPDATE
@@ -2296,10 +2136,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdatePositionResponse'
       x-stackql-resource: positions
       x-stackql-method: update_position
       x-stackql-verb: UPDATE
@@ -2362,10 +2198,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PutPositionConfigurationResponse'
       x-stackql-resource: position_configurations
       x-stackql-method: put_position_configuration
       x-stackql-verb: REPLACE
@@ -2390,6 +2222,8 @@ paths:
                   $ref: '#/components/schemas/Ip'
                 Gnss:
                   $ref: '#/components/schemas/Gnss'
+                GnssMultiFrame:
+                  $ref: '#/components/schemas/GnssMultiFrame'
                 Timestamp:
                   $ref: '#/components/schemas/CreationDate'
                 AdvancedConfiguration:
@@ -2479,10 +2313,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateResourceEventConfigurationResponse'
       x-stackql-resource: resource_event_configurations
       x-stackql-method: update_resource_event_configuration
       x-stackql-verb: UPDATE
@@ -2542,10 +2372,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PutResourceLogLevelResponse'
       x-stackql-resource: resource_log_levels
       x-stackql-method: put_resource_log_level
       x-stackql-verb: REPLACE
@@ -2568,11 +2394,7 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ResetResourceLogLevelResponse'
-      x-stackql-resource: resource_log_level
+      x-stackql-resource: resource_log_levels
       x-stackql-method: reset_resource_log_level
       x-stackql-verb: EXEC
   /resource-positions/{resource_identifier}:
@@ -2636,10 +2458,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateResourcePositionResponse'
       x-stackql-resource: resource_positions
       x-stackql-method: update_resource_position
       x-stackql-verb: UPDATE
@@ -2759,7 +2577,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetWirelessGatewayFirmwareInformationResponse'
-      x-stackql-resource: wireless_gateway_firmware_informations
+      x-stackql-resource: wireless_gateway_firmware_information
       x-stackql-method: get_wireless_gateway_firmware_information
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.LoRaWAN
@@ -2820,7 +2638,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListDevicesForWirelessDeviceImportTaskResponse'
-      x-stackql-resource: devices_for_wireless_device_import_tasks
+      x-stackql-resource: devices
       x-stackql-method: list_devices_for_wireless_device_import_task
       x-stackql-verb: SELECT
     post:
@@ -2854,7 +2672,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartWirelessDeviceImportTaskResponse'
-      x-stackql-resource: wireless_devices
+      x-stackql-resource: wireless_device_import_tasks
       x-stackql-method: start_wireless_device_import_task
       x-stackql-verb: EXEC
   /event-configurations:
@@ -2919,7 +2737,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListMulticastGroupsByFuotaTaskResponse'
-      x-stackql-resource: multicast_groups_by_fuota_tasks
+      x-stackql-resource: multicast_groups
       x-stackql-method: list_multicast_groups_by_fuota_task
       x-stackql-verb: SELECT
   /position-configurations:
@@ -3001,10 +2819,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -3027,10 +2841,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -3092,7 +2902,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SendDataToMulticastGroupResponse'
-      x-stackql-resource: data_to_multicast_group
+      x-stackql-resource: multicast_groups
       x-stackql-method: send_data_to_multicast_group
       x-stackql-verb: EXEC
   /multicast-groups/{id}/bulk:
@@ -3119,11 +2929,7 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/StartBulkAssociateWirelessDeviceWithMulticastGroupResponse'
-      x-stackql-resource: bulk_associate_wireless_device_with_multicast_group
+      x-stackql-resource: multicast_groups
       x-stackql-method: start_bulk_associate_wireless_device_with_multicast_group
       x-stackql-verb: EXEC
     post:
@@ -3149,11 +2955,7 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/StartBulkDisassociateWirelessDeviceFromMulticastGroupResponse'
-      x-stackql-resource: bulk_disassociate_wireless_device_from_multicast_group
+      x-stackql-resource: multicast_groups
       x-stackql-method: start_bulk_disassociate_wireless_device_from_multicast_group
       x-stackql-verb: EXEC
   /wireless_single_device_import_task:
@@ -3190,7 +2992,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartSingleWirelessDeviceImportTaskResponse'
-      x-stackql-resource: destinations
+      x-stackql-resource: wireless_device_import_tasks
       x-stackql-method: start_single_wireless_device_import_task
       x-stackql-verb: EXEC
   /wireless-devices/{id}/test:
@@ -3211,7 +3013,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TestWirelessDeviceResponse'
-      x-stackql-resource: wireless_device
+      x-stackql-resource: wireless_devices
       x-stackql-method: test_wireless_device
       x-stackql-verb: EXEC
 components:
@@ -3333,20 +3135,12 @@ components:
       description: The ID of the multicast group.
       type: string
       maxLength: 256
-    AssociateMulticastGroupWithFuotaTaskResponse:
-      type: object
     WirelessDeviceId:
       description: The ID of the wireless device.
       type: string
       maxLength: 256
-    AssociateWirelessDeviceWithFuotaTaskResponse:
-      type: object
-    AssociateWirelessDeviceWithMulticastGroupResponse:
-      type: object
     ThingArn:
       type: string
-    AssociateWirelessDeviceWithThingResponse:
-      type: object
     WirelessGatewayId:
       type: string
       maxLength: 256
@@ -3360,10 +3154,6 @@ components:
         IotCertificateId:
           $ref: '#/components/schemas/IotCertificateId'
           description: The ID of the certificate associated with the wireless gateway.
-    AssociateWirelessGatewayWithThingResponse:
-      type: object
-    CancelMulticastGroupSessionResponse:
-      type: object
     DestinationName:
       type: string
       maxLength: 128
@@ -4281,40 +4071,14 @@ components:
           description: The Amazon Resource Name of the resource.
     WirelessGatewayTaskDefinitionArn:
       type: string
-    DeleteDestinationResponse:
-      type: object
-    DeleteDeviceProfileResponse:
-      type: object
-    DeleteFuotaTaskResponse:
-      type: object
-    DeleteMulticastGroupResponse:
-      type: object
-    DeleteNetworkAnalyzerConfigurationResponse:
-      type: object
     MessageId:
       type: string
-    DeleteQueuedMessagesResponse:
-      type: object
-    DeleteServiceProfileResponse:
-      type: object
-    DeleteWirelessDeviceResponse:
-      type: object
     ImportTaskId:
       type: string
       maxLength: 256
-    DeleteWirelessDeviceImportTaskResponse:
-      type: object
-    DeleteWirelessGatewayResponse:
-      type: object
-    DeleteWirelessGatewayTaskResponse:
-      type: object
-    DeleteWirelessGatewayTaskDefinitionResponse:
-      type: object
     Identifier:
       type: string
       maxLength: 256
-    DeregisterWirelessDeviceResponse:
-      type: object
     PartnerAccountId:
       type: string
       maxLength: 256
@@ -4322,20 +4086,6 @@ components:
       type: string
       enum:
       - Sidewalk
-    DisassociateAwsAccountFromPartnerAccountResponse:
-      type: object
-    DisassociateMulticastGroupFromFuotaTaskResponse:
-      type: object
-    DisassociateWirelessDeviceFromFuotaTaskResponse:
-      type: object
-    DisassociateWirelessDeviceFromMulticastGroupResponse:
-      type: object
-    DisassociateWirelessDeviceFromThingResponse:
-      type: object
-    DisassociateWirelessGatewayFromCertificateResponse:
-      type: object
-    DisassociateWirelessGatewayFromThingResponse:
-      type: object
     GetDestinationResponse:
       type: object
       properties:
@@ -5826,24 +5576,73 @@ components:
       format: float
     Use2DSolver:
       type: boolean
+    GnssMultiFrame:
+      description: Global navigation satellite system (GNSS) multi-frame object used for positioning. Contains multiple GNSS
+        scan captures that are combined by the solver.
+      type: object
+      properties:
+        Captures:
+          $ref: '#/components/schemas/GnssCaptures'
+          description: List of GNSS scan captures. Each capture contains a payload from a single GNSS scan. The number of
+            captures must be 2, 4, 8, 16, or 32.
+        CaptureTimeAccuracy:
+          $ref: '#/components/schemas/CaptureTimeAccuracy'
+          description: Optional value that gives the capture time estimate accuracy, in seconds. If capture time accuracy
+            is not specified, default value of 300 is used.
+        AssistPosition:
+          $ref: '#/components/schemas/AssistPosition'
+          description: Optional assistance position information, specified using latitude and longitude values in degrees.
+            The coordinates are inside the WGS84 reference frame.
+        AssistAltitude:
+          $ref: '#/components/schemas/Coordinate'
+          description: Optional assistance altitude, which is the altitude of the device at capture time, specified in meters
+            above the WGS84 reference ellipsoid. This parameter is required when Use2DSolver is enabled.
+        Use2DSolver:
+          $ref: '#/components/schemas/Use2DSolver'
+          description: Optional parameter that forces 2D solve, which modifies the positioning algorithm to a 2D solution
+            problem. When this parameter is specified, the assistance altitude should have an accuracy of at least 10 meters.
+      required:
+      - Captures
+    GnssCaptures:
+      type: array
+      items:
+        $ref: '#/components/schemas/GnssCapture'
+    GnssCapture:
+      description: A single GNSS scan capture containing the scan payload and optional capture time.
+      type: object
+      properties:
+        Payload:
+          $ref: '#/components/schemas/GnssNav'
+          description: Payload that contains the GNSS scan result, or NAV message, in hexadecimal notation.
+        CaptureTime:
+          $ref: '#/components/schemas/GPST'
+          description: Optional parameter that gives an estimate of the time when the GNSS scan information is taken, in seconds
+            GPS time (GPST). If capture time is not specified, the local server time is used.
+      required:
+      - Payload
     CreationDate:
       type: string
       format: date-time
     AdvancedConfiguration:
-      description: Optional configuration to customize location estimates.
+      description: Optional configuration for customizing position estimates, including parameters that affect the accuracy
+        and uncertainty of WiFi and cellular-based location estimates.
       type: object
       properties:
         WiFiCellular:
           $ref: '#/components/schemas/WiFiCellular'
-          description: Configuration for WiFi and cellular-based payloads for location estimates.
+          description: Configuration for WiFi and cellular-based location estimate payloads resolved by HERE's solvers.
     WiFiCellular:
-      description: Configuration for WiFi and cellular location payloads.
+      description: Configuration for WiFi and cellular location payloads. Contains the confidence level that determines the
+        size of the uncertainty radius in the position estimate.
       type: object
       properties:
         ConfidencePercent:
           $ref: '#/components/schemas/ConfidencePercent'
-          description: 'Confidence level for WiFi and cellular position estimates, expressed as a percentage. Valid range:
-            50–99 inclusive. Defaults to 68 if not specified.'
+          description: 'The confidence level for WiFi and cellular position estimates, expressed as a percentage. This value
+            determines the size of the confidence area or uncertainty radius for the estimated position. A higher confidence
+            level produces a larger uncertainty radius, while a lower confidence level produces a smaller, more precise radius.
+            Valid range: 50 to 99 inclusive. If not specified, the default value of 68 is used, which corresponds to approximately
+            one standard deviation of the normal distribution.'
     ConfidencePercent:
       type: integer
       minimum: 50
@@ -7311,14 +7110,6 @@ components:
       required:
       - Status
       - Fec
-    PutPositionConfigurationResponse:
-      type: object
-    PutResourceLogLevelResponse:
-      type: object
-    ResetAllResourceLogLevelsResponse:
-      type: object
-    ResetResourceLogLevelResponse:
-      type: object
     PayloadData:
       description: The binary to be sent to the end device, encoded in base64.
       type: string
@@ -7393,20 +7184,12 @@ components:
       description: Query string used to search for wireless devices as part of the bulk associate and disassociate process.
       type: string
       maxLength: 4096
-    StartBulkAssociateWirelessDeviceWithMulticastGroupResponse:
-      type: object
-    StartBulkDisassociateWirelessDeviceFromMulticastGroupResponse:
-      type: object
     LoRaWANStartFuotaTask:
       description: The LoRaWAN information used to start a FUOTA task.
       type: object
       properties:
         StartTime:
           $ref: '#/components/schemas/StartTime'
-    StartFuotaTaskResponse:
-      type: object
-    StartMulticastGroupSessionResponse:
-      type: object
     DeviceName:
       type: string
     SidewalkSingleStartImportInfo:
@@ -7450,8 +7233,6 @@ components:
         Arn:
           $ref: '#/components/schemas/ImportTaskArn'
           description: The ARN (Amazon Resource Name) of the import task.
-    TagResourceResponse:
-      type: object
     TestWirelessDeviceResponse:
       type: object
       properties:
@@ -7465,22 +7246,6 @@ components:
       type: array
       items:
         $ref: '#/components/schemas/TagKey'
-    UntagResourceResponse:
-      type: object
-    UpdateDestinationResponse:
-      type: object
-    UpdateEventConfigurationByResourceTypesResponse:
-      type: object
-    UpdateFuotaTaskResponse:
-      type: object
-    UpdateLogLevelsByResourceTypesResponse:
-      type: object
-    UpdateMetricConfigurationResponse:
-      type: object
-    UpdateMulticastGroupResponse:
-      type: object
-    UpdateNetworkAnalyzerConfigurationResponse:
-      type: object
     SidewalkUpdateAccount:
       description: Sidewalk update.
       type: object
@@ -7488,14 +7253,6 @@ components:
         AppServerPrivateKey:
           $ref: '#/components/schemas/AppServerPrivateKey'
           description: The new Sidewalk application server private key.
-    UpdatePartnerAccountResponse:
-      type: object
-    UpdatePositionResponse:
-      type: object
-    UpdateResourceEventConfigurationResponse:
-      type: object
-    UpdateResourcePositionResponse:
-      type: object
     LoRaWANUpdateDevice:
       description: LoRaWAN object for update functions.
       type: object
@@ -7546,8 +7303,6 @@ components:
         Positioning:
           $ref: '#/components/schemas/SidewalkPositioning'
           description: The Positioning object of the Sidewalk device.
-    UpdateWirelessDeviceResponse:
-      type: object
     SidewalkUpdateImportInfo:
       description: Sidewalk object information for updating an import task.
       type: object
@@ -7555,7 +7310,3 @@ components:
         DeviceCreationFile:
           $ref: '#/components/schemas/DeviceCreationFile'
           description: The CSV file contained in an S3 bucket that's used for appending devices to an existing import task.
-    UpdateWirelessDeviceImportTaskResponse:
-      type: object
-    UpdateWirelessGatewayResponse:
-      type: object

@@ -113,7 +113,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="schema_type" /></td>
     <td><code>string</code></td>
-    <td>Versioned schema type for dataset examples. Each value identifies both the source format and the version of that format's schema. (AGENTCORE_EVALUATION_PREDEFINED_V1, AGENTCORE_EVALUATION_SIMULATED_V1, GENERIC_EVALUATION_PREDEFINED_V1)</td>
+    <td>Versioned schema type for dataset examples. Each value identifies both the source format and the version of that format's schema. (AGENTCORE_EVALUATION_PREDEFINED_V1, AGENTCORE_EVALUATION_SIMULATED_V1, THIRD_PARTY_EVALUATION_V1)</td>
 </tr>
 <tr>
     <td><CopyableCode code="status" /></td>
@@ -182,7 +182,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="schema_type" /></td>
     <td><code>string</code></td>
-    <td>Versioned schema type for dataset examples. Each value identifies both the source format and the version of that format's schema. (AGENTCORE_EVALUATION_PREDEFINED_V1, AGENTCORE_EVALUATION_SIMULATED_V1, GENERIC_EVALUATION_PREDEFINED_V1)</td>
+    <td>Versioned schema type for dataset examples. Each value identifies both the source format and the version of that format's schema. (AGENTCORE_EVALUATION_PREDEFINED_V1, AGENTCORE_EVALUATION_SIMULATED_V1, THIRD_PARTY_EVALUATION_V1)</td>
 </tr>
 <tr>
     <td><CopyableCode code="status" /></td>
@@ -424,7 +424,7 @@ status
       value: "{{ schemaType }}"
       description: |
         Versioned schema type for dataset examples. Each value identifies both the source format and the version of that format's schema.
-      valid_values: ['AGENTCORE_EVALUATION_PREDEFINED_V1', 'AGENTCORE_EVALUATION_SIMULATED_V1', 'GENERIC_EVALUATION_PREDEFINED_V1']
+      valid_values: ['AGENTCORE_EVALUATION_PREDEFINED_V1', 'AGENTCORE_EVALUATION_SIMULATED_V1', 'THIRD_PARTY_EVALUATION_V1']
     - name: kmsKeyArn
       value: "{{ kmsKeyArn }}"
     - name: tags

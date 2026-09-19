@@ -1056,7 +1056,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ImportDatasetResponse'
-      x-stackql-resource: dataset
+      x-stackql-resource: datasets
       x-stackql-method: import_dataset
       x-stackql-verb: EXEC
   /ImportModelVersion:
@@ -1125,7 +1125,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ImportModelVersionResponse'
-      x-stackql-resource: models
+      x-stackql-resource: model_versions
       x-stackql-method: import_model_version
       x-stackql-verb: EXEC
   /ListDataIngestionJobs:
@@ -1790,7 +1790,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartDataIngestionJobResponse'
-      x-stackql-resource: datasets
+      x-stackql-resource: data_ingestion_jobs
       x-stackql-method: start_data_ingestion_job
       x-stackql-verb: EXEC
   /StartInferenceScheduler:
@@ -1862,7 +1862,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartRetrainingSchedulerResponse'
-      x-stackql-resource: models
+      x-stackql-resource: retraining_schedulers
       x-stackql-method: start_retraining_scheduler
       x-stackql-verb: EXEC
   /StopInferenceScheduler:
@@ -1934,7 +1934,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StopRetrainingSchedulerResponse'
-      x-stackql-resource: models
+      x-stackql-resource: retraining_schedulers
       x-stackql-method: stop_retraining_scheduler
       x-stackql-verb: EXEC
   /TagResource:
@@ -1973,10 +1973,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -2013,10 +2009,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -4282,14 +4274,10 @@ components:
         Status:
           $ref: '#/components/schemas/RetrainingSchedulerStatus'
           description: The status of the retraining scheduler.
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
         $ref: '#/components/schemas/TagKey'
-    UntagResourceResponse:
-      type: object
     UpdateActiveModelVersionResponse:
       type: object
       properties:

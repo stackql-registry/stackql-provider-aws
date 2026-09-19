@@ -137,18 +137,18 @@ The following methods are available for this resource:
     <td>Retrieves a list that describes one or more specified images, if the image identifiers are provided. Otherwise, all images in the account are described.</td>
 </tr>
 <tr>
-    <td><a href="#create_updated_workspace_image"><CopyableCode code="create_updated_workspace_image" /></a></td>
-    <td><CopyableCode code="insert" /></td>
-    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-SourceImageId"><code>SourceImageId</code></a></td>
-    <td></td>
-    <td>Creates a new updated WorkSpace image based on the specified source image. The new updated WorkSpace image has the latest drivers and other updates required by the Amazon WorkSpaces components. To determine which WorkSpace images need to be updated with the latest Amazon WorkSpaces requirements, use DescribeWorkspaceImages. Only Windows 10, Windows Server 2016, and Windows Server 2019 WorkSpace images can be programmatically updated at this time. Microsoft Windows updates and other application updates are not included in the update process. The source WorkSpace image is not deleted. You can delete the source image after you've verified your new updated image and created a new bundle.</td>
-</tr>
-<tr>
     <td><a href="#create_workspace_image"><CopyableCode code="create_workspace_image" /></a></td>
     <td><CopyableCode code="insert" /></td>
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-WorkspaceId"><code>WorkspaceId</code></a></td>
     <td></td>
     <td>Creates a new WorkSpace image from an existing WorkSpace.</td>
+</tr>
+<tr>
+    <td><a href="#create_updated_workspace_image"><CopyableCode code="create_updated_workspace_image" /></a></td>
+    <td><CopyableCode code="insert" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-SourceImageId"><code>SourceImageId</code></a></td>
+    <td></td>
+    <td>Creates a new updated WorkSpace image based on the specified source image. The new updated WorkSpace image has the latest drivers and other updates required by the Amazon WorkSpaces components. To determine which WorkSpace images need to be updated with the latest Amazon WorkSpaces requirements, use DescribeWorkspaceImages. Only Windows 10, Windows Server 2016, and Windows Server 2019 WorkSpace images can be programmatically updated at this time. Microsoft Windows updates and other application updates are not included in the update process. The source WorkSpace image is not deleted. You can delete the source image after you've verified your new updated image and created a new bundle.</td>
 </tr>
 <tr>
     <td><a href="#delete_workspace_image"><CopyableCode code="delete_workspace_image" /></a></td>
@@ -218,36 +218,13 @@ WHERE region = '{{ region }}' -- required
 ## `INSERT` examples
 
 <Tabs
-    defaultValue="create_updated_workspace_image"
+    defaultValue="create_workspace_image"
     values={[
-        { label: 'create_updated_workspace_image', value: 'create_updated_workspace_image' },
         { label: 'create_workspace_image', value: 'create_workspace_image' },
+        { label: 'create_updated_workspace_image', value: 'create_updated_workspace_image' },
         { label: 'Manifest', value: 'manifest' }
     ]}
 >
-<TabItem value="create_updated_workspace_image">
-
-Creates a new updated WorkSpace image based on the specified source image. The new updated WorkSpace image has the latest drivers and other updates required by the Amazon WorkSpaces components. To determine which WorkSpace images need to be updated with the latest Amazon WorkSpaces requirements, use DescribeWorkspaceImages. Only Windows 10, Windows Server 2016, and Windows Server 2019 WorkSpace images can be programmatically updated at this time. Microsoft Windows updates and other application updates are not included in the update process. The source WorkSpace image is not deleted. You can delete the source image after you've verified your new updated image and created a new bundle.
-
-```sql
-INSERT INTO aws.workspaces.workspace_images (
-Name,
-Description,
-SourceImageId,
-Tags,
-region
-)
-SELECT 
-'{{ Name }}',
-'{{ Description }}',
-'{{ SourceImageId }}' /* required */,
-'{{ Tags }}',
-'{{ region }}'
-RETURNING
-image_id
-;
-```
-</TabItem>
 <TabItem value="create_workspace_image">
 
 Creates a new WorkSpace image from an existing WorkSpace.
@@ -278,6 +255,29 @@ state
 ;
 ```
 </TabItem>
+<TabItem value="create_updated_workspace_image">
+
+Creates a new updated WorkSpace image based on the specified source image. The new updated WorkSpace image has the latest drivers and other updates required by the Amazon WorkSpaces components. To determine which WorkSpace images need to be updated with the latest Amazon WorkSpaces requirements, use DescribeWorkspaceImages. Only Windows 10, Windows Server 2016, and Windows Server 2019 WorkSpace images can be programmatically updated at this time. Microsoft Windows updates and other application updates are not included in the update process. The source WorkSpace image is not deleted. You can delete the source image after you've verified your new updated image and created a new bundle.
+
+```sql
+INSERT INTO aws.workspaces.workspace_images (
+Name,
+Description,
+SourceImageId,
+Tags,
+region
+)
+SELECT 
+'{{ Name }}',
+'{{ Description }}',
+'{{ SourceImageId }}' /* required */,
+'{{ Tags }}',
+'{{ region }}'
+RETURNING
+image_id
+;
+```
+</TabItem>
 <TabItem value="manifest">
 
 <CodeBlock language="yaml">{`# Description fields are for documentation purposes
@@ -289,25 +289,25 @@ state
     - name: Name
       value: "{{ Name }}"
       description: |
-        The name of the new WorkSpace image.
+        The name of the new updated WorkSpace image.
     - name: Description
       value: "{{ Description }}"
       description: |
-        The description of the new WorkSpace image.
-    - name: SourceImageId
-      value: "{{ SourceImageId }}"
-      description: |
-        The identifier of the source WorkSpace image.
-    - name: Tags
-      description: |
-        The tags that you want to add to the new WorkSpace image. To add tags when you're creating the image, you must create an IAM policy that grants your IAM user permission to use workspaces:CreateTags.
-      value:
-        - Key: "{{ Key }}"
-          Value: "{{ Value }}"
+        A description of whether updates for the WorkSpace image are available.
     - name: WorkspaceId
       value: "{{ WorkspaceId }}"
       description: |
         The identifier of the source WorkSpace
+    - name: Tags
+      description: |
+        The tags that you want to add to the new updated WorkSpace image. To add tags at the same time when you're creating the updated image, you must create an IAM policy that grants your IAM user permissions to use workspaces:CreateTags.
+      value:
+        - Key: "{{ Key }}"
+          Value: "{{ Value }}"
+    - name: SourceImageId
+      value: "{{ SourceImageId }}"
+      description: |
+        The identifier of the source WorkSpace image.
 `}</CodeBlock>
 
 </TabItem>

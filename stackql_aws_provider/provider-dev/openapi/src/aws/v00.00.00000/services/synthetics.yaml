@@ -42,10 +42,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/AssociateResourceResponse"
   /canary:
     post:
       operationId: CreateCanary
@@ -150,10 +146,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteCanaryResponse"
     get:
       operationId: GetCanary
       description: Retrieves complete information about one canary. You must specify the name of the canary that you want. To get a list of canaries and their names, use DescribeCanaries.
@@ -233,10 +225,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateCanaryResponse"
   /group/{group_identifier}:
     delete:
       operationId: DeleteGroup
@@ -251,10 +239,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteGroupResponse"
     get:
       operationId: GetGroup
       description: Returns information about one group. Groups are a global resource, so you can use this operation from any Region.
@@ -372,10 +356,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DisassociateResourceResponse"
   /canary/{name}/runs:
     post:
       operationId: GetCanaryRuns
@@ -530,10 +510,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TagResourceResponse"
     delete:
       operationId: UntagResource
       description: Removes one or more tags from the specified resource.
@@ -553,10 +529,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UntagResourceResponse"
   /canary/{name}/start:
     post:
       operationId: StartCanary
@@ -571,10 +543,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/StartCanaryResponse"
   /canary/{name}/dry-run/start:
     post:
       operationId: StartCanaryDryRun
@@ -640,10 +608,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/StopCanaryResponse"
 components:
   parameters:
     X-Amz-Content-Sha256:
@@ -698,8 +662,6 @@ components:
       minLength: 1
       maxLength: 2048
       pattern: arn:(aws[a-zA-Z-]*)?:synthetics:[a-z]{2,4}(-[a-z]{2,4})?-[a-z]+-\d{1}:\d{12}:canary:[0-9a-z_\-]{1,255}
-    AssociateResourceResponse:
-      type: object
     CanaryName:
       type: string
       minLength: 1
@@ -1348,10 +1310,6 @@ components:
       pattern: arn:(aws[a-zA-Z-]*)?:synthetics:[a-z]{2,4}(-[a-z]{2,4})?-[a-z]+-\d{1}:\d{12}:group:[0-9a-z]+
     boolean:
       type: boolean
-    DeleteCanaryResponse:
-      type: object
-    DeleteGroupResponse:
-      type: object
     Token:
       type: string
       minLength: 4
@@ -1528,8 +1486,6 @@ components:
         DeprecationDate:
           $ref: "#/components/schemas/Timestamp"
           description: If this runtime version is deprecated, this value is the date of deprecation.
-    DisassociateResourceResponse:
-      type: object
     GetCanaryResponse:
       type: object
       properties:
@@ -1629,8 +1585,6 @@ components:
           type: object
           properties: {}
           description: The list of tag keys and values associated with the resource that you specified.
-    StartCanaryResponse:
-      type: object
     VisualReferenceInput:
       description: An object that specifies what screenshots to use as a baseline for visual monitoring by this canary. It can optionally also specify parts of the screenshots to ignore during the visual monitoring comparison. Visual monitoring is supported only on canaries running the syn-puppeteer-node-3.2 runtime or later. For more information, see Visual monitoring and Visual monitoring blueprint
       type: object
@@ -1656,10 +1610,6 @@ components:
         DryRunConfig:
           $ref: "#/components/schemas/DryRunConfigOutput"
           description: Returns the dry run configurations for a canary.
-    StopCanaryResponse:
-      type: object
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
@@ -1669,14 +1619,10 @@ components:
       minLength: 1
       maxLength: 128
       pattern: ^(?!aws:)[a-zA-Z+-=._:/]+$
-    UntagResourceResponse:
-      type: object
     RemoveReplicaLocations:
       type: array
       items:
         $ref: "#/components/schemas/Location"
-    UpdateCanaryResponse:
-      type: object
   x-stackQL-resources:
     groups:
       id: aws.synthetics.groups
@@ -1688,7 +1634,6 @@ components:
             $ref: "#/paths/~1group~1{group_identifier}~1associate/patch"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -1710,7 +1655,6 @@ components:
             $ref: "#/paths/~1group~1{group_identifier}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         get_group:
           operation:
             $ref: "#/paths/~1group~1{group_identifier}/get"
@@ -1723,7 +1667,6 @@ components:
             $ref: "#/paths/~1group~1{group_identifier}~1disassociate/patch"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -1771,7 +1714,6 @@ components:
             $ref: "#/paths/~1canary~1{name}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
         get_canary:
@@ -1788,7 +1730,6 @@ components:
             $ref: "#/paths/~1canary~1{name}/patch"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -1805,6 +1746,11 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        start_canary:
+          operation:
+            $ref: "#/paths/~1canary~1{name}~1start/post"
+          response:
+            openAPIDocKey: "200"
         start_canary_dry_run:
           operation:
             $ref: "#/paths/~1canary~1{name}~1dry-run~1start/post"
@@ -1816,6 +1762,11 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        stop_canary:
+          operation:
+            $ref: "#/paths/~1canary~1{name}~1stop/post"
+          response:
+            openAPIDocKey: "200"
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/canaries/methods/get_canary"
@@ -1959,7 +1910,6 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -1970,7 +1920,6 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
       sqlVerbs:

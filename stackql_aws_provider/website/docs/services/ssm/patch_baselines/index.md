@@ -36,6 +36,7 @@ The following fields are returned by `SELECT` queries:
     defaultValue="get_patch_baseline"
     values={[
         { label: 'get_patch_baseline', value: 'get_patch_baseline' },
+        { label: 'get_patch_baseline_for_patch_group', value: 'get_patch_baseline_for_patch_group' },
         { label: 'describe_patch_baselines', value: 'describe_patch_baselines' }
     ]}
 >
@@ -133,6 +134,35 @@ The following fields are returned by `SELECT` queries:
 </tbody>
 </table>
 </TabItem>
+<TabItem value="get_patch_baseline_for_patch_group">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="baseline_id" /></td>
+    <td><code>string</code></td>
+    <td>The ID of the patch baseline that should be used for the patch group. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9_\-:/&#93;&#123;20,128&#125;$&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="operating_system" /></td>
+    <td><code>string</code></td>
+    <td>The operating system rule specified for patch groups using the patch baseline. (WINDOWS, AMAZON_LINUX, AMAZON_LINUX_2, AMAZON_LINUX_2022, UBUNTU, REDHAT_ENTERPRISE_LINUX, SUSE, CENTOS, ORACLE_LINUX, DEBIAN, MACOS, RASPBIAN, ROCKY_LINUX, ALMA_LINUX, AMAZON_LINUX_2023)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="patch_group" /></td>
+    <td><code>string</code></td>
+    <td>The name of the patch group. (pattern: &lt;code&gt;^(&#91;\p&#123;L&#125;\p&#123;Z&#125;\p&#123;N&#125;_.:/=+\-@&#93;*)$&lt;/code&gt;)</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
 <TabItem value="describe_patch_baselines">
 
 <table>
@@ -197,11 +227,25 @@ The following methods are available for this resource:
     <td>Retrieves information about a patch baseline.</td>
 </tr>
 <tr>
+    <td><a href="#get_patch_baseline_for_patch_group"><CopyableCode code="get_patch_baseline_for_patch_group" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Retrieves the patch baseline that should be used for the specified patch group.</td>
+</tr>
+<tr>
     <td><a href="#describe_patch_baselines"><CopyableCode code="describe_patch_baselines" /></a></td>
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td></td>
     <td>Lists the patch baselines in your Amazon Web Services account.</td>
+</tr>
+<tr>
+    <td><a href="#register_patch_baseline_for_patch_group"><CopyableCode code="register_patch_baseline_for_patch_group" /></a></td>
+    <td><CopyableCode code="insert" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-BaselineId"><code>BaselineId</code></a>, <a href="#parameter-PatchGroup"><code>PatchGroup</code></a></td>
+    <td></td>
+    <td>Registers a patch baseline for a patch group.</td>
 </tr>
 <tr>
     <td><a href="#create_patch_baseline"><CopyableCode code="create_patch_baseline" /></a></td>
@@ -216,6 +260,13 @@ The following methods are available for this resource:
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-BaselineId"><code>BaselineId</code></a></td>
     <td></td>
     <td>Modifies an existing patch baseline. Fields not specified in the request are left unchanged. For information about valid key-value pairs in PatchFilters for each supported operating system type, see PatchFilter.</td>
+</tr>
+<tr>
+    <td><a href="#deregister_patch_baseline_for_patch_group"><CopyableCode code="deregister_patch_baseline_for_patch_group" /></a></td>
+    <td><CopyableCode code="delete" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Removes a patch group from a patch baseline.</td>
 </tr>
 <tr>
     <td><a href="#delete_patch_baseline"><CopyableCode code="delete_patch_baseline" /></a></td>
@@ -254,6 +305,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     defaultValue="get_patch_baseline"
     values={[
         { label: 'get_patch_baseline', value: 'get_patch_baseline' },
+        { label: 'get_patch_baseline_for_patch_group', value: 'get_patch_baseline_for_patch_group' },
         { label: 'describe_patch_baselines', value: 'describe_patch_baselines' }
     ]}
 >
@@ -284,6 +336,20 @@ WHERE region = '{{ region }}' -- required
 ;
 ```
 </TabItem>
+<TabItem value="get_patch_baseline_for_patch_group">
+
+Retrieves the patch baseline that should be used for the specified patch group.
+
+```sql
+SELECT
+baseline_id,
+operating_system,
+patch_group
+FROM aws.ssm.patch_baselines
+WHERE region = '{{ region }}' -- required
+;
+```
+</TabItem>
 <TabItem value="describe_patch_baselines">
 
 Lists the patch baselines in your Amazon Web Services account.
@@ -306,12 +372,33 @@ WHERE region = '{{ region }}' -- required
 ## `INSERT` examples
 
 <Tabs
-    defaultValue="create_patch_baseline"
+    defaultValue="register_patch_baseline_for_patch_group"
     values={[
+        { label: 'register_patch_baseline_for_patch_group', value: 'register_patch_baseline_for_patch_group' },
         { label: 'create_patch_baseline', value: 'create_patch_baseline' },
         { label: 'Manifest', value: 'manifest' }
     ]}
 >
+<TabItem value="register_patch_baseline_for_patch_group">
+
+Registers a patch baseline for a patch group.
+
+```sql
+INSERT INTO aws.ssm.patch_baselines (
+BaselineId,
+PatchGroup,
+region
+)
+SELECT 
+'{{ BaselineId }}' /* required */,
+'{{ PatchGroup }}' /* required */,
+'{{ region }}'
+RETURNING
+baseline_id,
+patch_group
+;
+```
+</TabItem>
 <TabItem value="create_patch_baseline">
 
 Creates a patch baseline. For information about valid key-value pairs in PatchFilters for each supported operating system type, see PatchFilter.
@@ -363,6 +450,14 @@ baseline_id
     - name: region
       value: "{{ region }}"
       description: Required parameter for the patch_baselines resource.
+    - name: BaselineId
+      value: "{{ BaselineId }}"
+      description: |
+        The ID of the patch baseline to register with the patch group.
+    - name: PatchGroup
+      value: "{{ PatchGroup }}"
+      description: |
+        The name of the patch group to be registered with the patch baseline.
     - name: OperatingSystem
       value: "{{ OperatingSystem }}"
       description: |
@@ -503,11 +598,22 @@ sources;
 ## `DELETE` examples
 
 <Tabs
-    defaultValue="delete_patch_baseline"
+    defaultValue="deregister_patch_baseline_for_patch_group"
     values={[
+        { label: 'deregister_patch_baseline_for_patch_group', value: 'deregister_patch_baseline_for_patch_group' },
         { label: 'delete_patch_baseline', value: 'delete_patch_baseline' }
     ]}
 >
+<TabItem value="deregister_patch_baseline_for_patch_group">
+
+Removes a patch group from a patch baseline.
+
+```sql
+DELETE FROM aws.ssm.patch_baselines
+WHERE region = '{{ region }}' --required
+;
+```
+</TabItem>
 <TabItem value="delete_patch_baseline">
 
 Deletes a patch baseline.

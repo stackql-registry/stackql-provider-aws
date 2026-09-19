@@ -203,6 +203,13 @@ The following methods are available for this resource:
     <td></td>
     <td>Lists billing adjustment requests for a specific agreement. Sellers (proposers) can use this operation to view all billing adjustment requests associated with an agreement.</td>
 </tr>
+<tr>
+    <td><a href="#batch_create_billing_adjustment_request"><CopyableCode code="batch_create_billing_adjustment_request" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-billingAdjustmentRequestEntries"><code>billingAdjustmentRequestEntries</code></a></td>
+    <td></td>
+    <td>Allows sellers (proposers) to submit billing adjustment requests for one or more invoices within an agreement. Each entry in the batch specifies an invoice and the adjustment amount. The operation returns successfully created adjustment request IDs and any errors for entries that failed to process. Each entry requires a unique clientToken for idempotency.</td>
+</tr>
 </tbody>
 </table>
 
@@ -276,6 +283,31 @@ status,
 updated_at
 FROM aws.marketplace_agreement.billing_adjustment_requests
 WHERE region = '{{ region }}' -- required
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="batch_create_billing_adjustment_request"
+    values={[
+        { label: 'batch_create_billing_adjustment_request', value: 'batch_create_billing_adjustment_request' }
+    ]}
+>
+<TabItem value="batch_create_billing_adjustment_request">
+
+Allows sellers (proposers) to submit billing adjustment requests for one or more invoices within an agreement. Each entry in the batch specifies an invoice and the adjustment amount. The operation returns successfully created adjustment request IDs and any errors for entries that failed to process. Each entry requires a unique clientToken for idempotency.
+
+```sql
+EXEC aws.marketplace_agreement.billing_adjustment_requests.batch_create_billing_adjustment_request 
+@region='{{ region }}' --required 
+@@json=
+'{
+"billingAdjustmentRequestEntries": "{{ billingAdjustmentRequestEntries }}"
+}'
 ;
 ```
 </TabItem>

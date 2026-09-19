@@ -401,10 +401,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/CreateApplicationSnapshotResponse"
   /DeleteApplication:
     post:
       operationId: DeleteApplication
@@ -438,10 +434,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteApplicationResponse"
   /DeleteApplicationCloudWatchLoggingOption:
     post:
       operationId: DeleteApplicationCloudWatchLoggingOption
@@ -645,10 +637,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteApplicationSnapshotResponse"
   /DeleteApplicationVpcConfiguration:
     post:
       operationId: DeleteApplicationVpcConfiguration
@@ -1208,10 +1196,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TagResourceResponse"
   /UntagResource:
     post:
       operationId: UntagResource
@@ -1245,10 +1229,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UntagResourceResponse"
   /UpdateApplication:
     post:
       operationId: UpdateApplication
@@ -2995,10 +2975,6 @@ components:
       type: string
       minLength: 1
       maxLength: 2048
-    CreateApplicationSnapshotResponse:
-      type: object
-    DeleteApplicationResponse:
-      type: object
     DeleteApplicationCloudWatchLoggingOptionResponse:
       type: object
       properties:
@@ -3041,8 +3017,6 @@ components:
         ApplicationVersionId:
           $ref: "#/components/schemas/ApplicationVersionId"
           description: The updated version ID of the application.
-    DeleteApplicationSnapshotResponse:
-      type: object
     DeleteApplicationVpcConfigurationResponse:
       type: object
       properties:
@@ -3430,14 +3404,10 @@ components:
         OperationId:
           $ref: "#/components/schemas/OperationId"
           description: The operation ID that can be used to track the request.
-    TagResourceResponse:
-      type: object
     TagKeys:
       type: array
       items:
         $ref: "#/components/schemas/TagKey"
-    UntagResourceResponse:
-      type: object
     ApplicationConfigurationUpdate:
       description: Describes updates to an application's configuration.
       type: object
@@ -4039,7 +4009,6 @@ components:
             $ref: "#/paths/~1DeleteApplication/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -4229,10 +4198,10 @@ components:
           - $ref: "#/components/x-stackQL-resources/applications/methods/update_application_maintenance_configuration"
           - $ref: "#/components/x-stackQL-resources/applications/methods/update_application"
         delete:
+          - $ref: "#/components/x-stackQL-resources/applications/methods/delete_application"
           - $ref: "#/components/x-stackQL-resources/applications/methods/delete_application_input_processing_configuration"
           - $ref: "#/components/x-stackQL-resources/applications/methods/delete_application_output"
           - $ref: "#/components/x-stackQL-resources/applications/methods/delete_application_reference_data_source"
-          - $ref: "#/components/x-stackQL-resources/applications/methods/delete_application"
           - $ref: "#/components/x-stackQL-resources/applications/methods/delete_application_cloud_watch_logging_option"
           - $ref: "#/components/x-stackQL-resources/applications/methods/delete_application_vpc_configuration"
     application_snapshots:
@@ -4245,7 +4214,6 @@ components:
             $ref: "#/paths/~1CreateApplicationSnapshot/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -4258,7 +4226,6 @@ components:
             $ref: "#/paths/~1DeleteApplicationSnapshot/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -4404,6 +4371,29 @@ components:
         insert: []
         update: []
         delete: []
+    input_schemas:
+      id: aws.kinesisanalyticsv2.input_schemas
+      name: input_schemas
+      title: input_schemas
+      methods:
+        discover_input_schema:
+          operation:
+            $ref: "#/paths/~1DiscoverInputSchema/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
     tags:
       id: aws.kinesisanalyticsv2.tags
       name: tags
@@ -4427,7 +4417,6 @@ components:
             $ref: "#/paths/~1TagResource/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -4440,7 +4429,6 @@ components:
             $ref: "#/paths/~1UntagResource/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1

@@ -18,16 +18,17 @@ sms_voice service documentation.
 
 :::info[Service Summary]
 
-total resources: __2__  
+total resources: __3__  
 
 :::
 
 ## Resources
 <div class="row">
 <div class="providerDocColumn">
-<a href="/services/sms_voice/configuration_set_event_destinations/">configuration_set_event_destinations</a>
+<a href="/services/sms_voice/configuration_set_event_destinations/">configuration_set_event_destinations</a><br />
+<a href="/services/sms_voice/configuration_sets/">configuration_sets</a>
 </div>
 <div class="providerDocColumn">
-<a href="/services/sms_voice/configuration_sets/">configuration_sets</a>
+<a href="/services/sms_voice/voice_messages/">voice_messages</a>
 </div>
 </div>

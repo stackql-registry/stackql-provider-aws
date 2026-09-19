@@ -193,6 +193,13 @@ The following methods are available for this resource:
     <td><a href="#parameter-nextToken"><code>nextToken</code></a>, <a href="#parameter-maxResults"><code>maxResults</code></a></td>
     <td>Retrieves a list of code generation jobs for a specified Amplify app and backend environment.</td>
 </tr>
+<tr>
+    <td><a href="#start_codegen_job"><CopyableCode code="start_codegen_job" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-app_id"><code>app_id</code></a>, <a href="#parameter-environment_name"><code>environment_name</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-codegenJobToCreate"><code>codegenJobToCreate</code></a></td>
+    <td><a href="#parameter-clientToken"><code>clientToken</code></a></td>
+    <td>Starts a code generation job for a specified Amplify app and backend environment.</td>
+</tr>
 </tbody>
 </table>
 
@@ -228,6 +235,11 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     <td><CopyableCode code="region" /></td>
     <td><code>string</code></td>
     <td>AWS region (default: us-east-1)</td>
+</tr>
+<tr id="parameter-clientToken">
+    <td><CopyableCode code="clientToken" /></td>
+    <td><code>string</code></td>
+    <td>The idempotency token used to ensure that the code generation job request completes only once.</td>
 </tr>
 <tr id="parameter-maxResults">
     <td><CopyableCode code="maxResults" /></td>
@@ -296,6 +308,34 @@ AND environment_name = '{{ environment_name }}' -- required
 AND region = '{{ region }}' -- required
 AND nextToken = '{{ nextToken }}'
 AND maxResults = '{{ maxResults }}'
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="start_codegen_job"
+    values={[
+        { label: 'start_codegen_job', value: 'start_codegen_job' }
+    ]}
+>
+<TabItem value="start_codegen_job">
+
+Starts a code generation job for a specified Amplify app and backend environment.
+
+```sql
+EXEC aws.amplifyuibuilder.codegen_jobs.start_codegen_job 
+@app_id='{{ app_id }}' --required, 
+@environment_name='{{ environment_name }}' --required, 
+@region='{{ region }}' --required, 
+@clientToken='{{ clientToken }}' 
+@@json=
+'{
+"codegenJobToCreate": "{{ codegenJobToCreate }}"
+}'
 ;
 ```
 </TabItem>

@@ -118,6 +118,13 @@ The following methods are available for this resource:
     <td><a href="#parameter-maxResults"><code>maxResults</code></a>, <a href="#parameter-nextToken"><code>nextToken</code></a></td>
     <td>Retrieves a list of all maintenance actions that are pending.</td>
 </tr>
+<tr>
+    <td><a href="#apply_pending_maintenance_action"><CopyableCode code="apply_pending_maintenance_action" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-applyAction"><code>applyAction</code></a>, <a href="#parameter-optInType"><code>optInType</code></a>, <a href="#parameter-resourceArn"><code>resourceArn</code></a></td>
+    <td></td>
+    <td>The type of pending maintenance action to be applied to the resource.</td>
+</tr>
 </tbody>
 </table>
 
@@ -192,6 +199,34 @@ FROM aws.docdb_elastic.pending_maintenance_actions
 WHERE region = '{{ region }}' -- required
 AND maxResults = '{{ maxResults }}'
 AND nextToken = '{{ nextToken }}'
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="apply_pending_maintenance_action"
+    values={[
+        { label: 'apply_pending_maintenance_action', value: 'apply_pending_maintenance_action' }
+    ]}
+>
+<TabItem value="apply_pending_maintenance_action">
+
+The type of pending maintenance action to be applied to the resource.
+
+```sql
+EXEC aws.docdb_elastic.pending_maintenance_actions.apply_pending_maintenance_action 
+@region='{{ region }}' --required 
+@@json=
+'{
+"applyAction": "{{ applyAction }}", 
+"applyOn": "{{ applyOn }}", 
+"optInType": "{{ optInType }}", 
+"resourceArn": "{{ resourceArn }}"
+}'
 ;
 ```
 </TabItem>

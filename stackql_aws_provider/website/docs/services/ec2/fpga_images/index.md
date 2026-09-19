@@ -171,6 +171,13 @@ The following methods are available for this resource:
     <td>Deletes the specified Amazon FPGA Image (AFI).</td>
 </tr>
 <tr>
+    <td><a href="#copy_fpga_image"><CopyableCode code="copy_fpga_image" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-SourceFpgaImageId"><code>SourceFpgaImageId</code></a>, <a href="#parameter-SourceRegion"><code>SourceRegion</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td><a href="#parameter-DryRun"><code>DryRun</code></a>, <a href="#parameter-Description"><code>Description</code></a>, <a href="#parameter-Name"><code>Name</code></a>, <a href="#parameter-ClientToken"><code>ClientToken</code></a></td>
+    <td>Copies the specified Amazon FPGA Image (AFI) to the current Region.</td>
+</tr>
+<tr>
     <td><a href="#reset_fpga_image_attribute"><CopyableCode code="reset_fpga_image_attribute" /></a></td>
     <td><CopyableCode code="exec" /></td>
     <td><a href="#parameter-FpgaImageId"><code>FpgaImageId</code></a>, <a href="#parameter-region"><code>region</code></a></td>
@@ -203,6 +210,16 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     <td><code>object</code></td>
     <td>The location of the encrypted design checkpoint in Amazon S3. The input must be a tarball.</td>
 </tr>
+<tr id="parameter-SourceFpgaImageId">
+    <td><CopyableCode code="SourceFpgaImageId" /></td>
+    <td><code>string</code></td>
+    <td>The ID of the source AFI.</td>
+</tr>
+<tr id="parameter-SourceRegion">
+    <td><CopyableCode code="SourceRegion" /></td>
+    <td><code>string</code></td>
+    <td>The Region that contains the source AFI.</td>
+</tr>
 <tr id="parameter-region">
     <td><CopyableCode code="region" /></td>
     <td><code>string</code></td>
@@ -216,12 +233,12 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-ClientToken">
     <td><CopyableCode code="ClientToken" /></td>
     <td><code>string</code></td>
-    <td>Unique, case-sensitive identifier that you provide to ensure the idempotency of the request. For more information, see Ensuring Idempotency.</td>
+    <td>Unique, case-sensitive identifier that you provide to ensure the idempotency of the request. For more information, see Ensuring idempotency.</td>
 </tr>
 <tr id="parameter-Description">
     <td><CopyableCode code="Description" /></td>
     <td><code>string</code></td>
-    <td>A description for the AFI.</td>
+    <td>The description for the new AFI.</td>
 </tr>
 <tr id="parameter-DryRun">
     <td><CopyableCode code="DryRun" /></td>
@@ -251,7 +268,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-Name">
     <td><CopyableCode code="Name" /></td>
     <td><code>string</code></td>
-    <td>A name for the AFI.</td>
+    <td>The name for the new AFI. The default is the name of the source AFI.</td>
 </tr>
 <tr id="parameter-NextToken">
     <td><CopyableCode code="NextToken" /></td>
@@ -421,11 +438,28 @@ AND DryRun = '{{ DryRun }}'
 ## Lifecycle Methods
 
 <Tabs
-    defaultValue="reset_fpga_image_attribute"
+    defaultValue="copy_fpga_image"
     values={[
+        { label: 'copy_fpga_image', value: 'copy_fpga_image' },
         { label: 'reset_fpga_image_attribute', value: 'reset_fpga_image_attribute' }
     ]}
 >
+<TabItem value="copy_fpga_image">
+
+Copies the specified Amazon FPGA Image (AFI) to the current Region.
+
+```sql
+EXEC aws.ec2.fpga_images.copy_fpga_image 
+@SourceFpgaImageId='{{ SourceFpgaImageId }}' --required, 
+@SourceRegion='{{ SourceRegion }}' --required, 
+@region='{{ region }}' --required, 
+@DryRun={{ DryRun }}, 
+@Description='{{ Description }}', 
+@Name='{{ Name }}', 
+@ClientToken='{{ ClientToken }}'
+;
+```
+</TabItem>
 <TabItem value="reset_fpga_image_attribute">
 
 Resets the specified attribute of the specified Amazon FPGA Image (AFI) to its default value. You can only reset the load permission attribute.

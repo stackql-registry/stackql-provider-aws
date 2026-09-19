@@ -249,7 +249,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchGetArtifactMetadataOutput'
-      x-stackql-resource: artifact_metadatas
+      x-stackql-resource: artifact_metadata
       x-stackql-method: batch_get_artifact_metadata
       x-stackql-verb: SELECT
   /BatchGetCodeReviewJobTasks:
@@ -835,10 +835,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CreateMembershipResponse'
       x-stackql-resource: memberships
       x-stackql-method: create_membership
       x-stackql-verb: INSERT
@@ -1158,10 +1154,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteArtifactOutput'
       x-stackql-resource: artifacts
       x-stackql-method: delete_artifact
       x-stackql-verb: DELETE
@@ -1184,10 +1176,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteIntegrationOutput'
       x-stackql-resource: integrations
       x-stackql-method: delete_integration
       x-stackql-verb: DELETE
@@ -1218,10 +1206,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteMembershipResponse'
       x-stackql-resource: memberships
       x-stackql-method: delete_membership
       x-stackql-verb: DELETE
@@ -1270,10 +1254,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteSecurityRequirementPackOutput'
       x-stackql-resource: security_requirement_packs
       x-stackql-method: delete_security_requirement_pack
       x-stackql-verb: DELETE
@@ -1492,7 +1472,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/InitiateProviderRegistrationOutput'
-      x-stackql-resource: initiate_provider_registration
+      x-stackql-resource: provider_registrations
       x-stackql-method: initiate_provider_registration
       x-stackql-verb: EXEC
   /ListAgentSpaces:
@@ -1660,7 +1640,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListCodeReviewJobsForCodeReviewOutput'
-      x-stackql-resource: code_review_jobs_for_code_reviews
+      x-stackql-resource: code_review_jobs
       x-stackql-method: list_code_review_jobs_for_code_review
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.codeReviewJobSummaries
@@ -1968,7 +1948,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListPentestJobsForPentestOutput'
-      x-stackql-resource: pentest_jobs_for_pentests
+      x-stackql-resource: pentest_jobs
       x-stackql-method: list_pentest_jobs_for_pentest
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.pentestJobSummaries
@@ -2150,10 +2130,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceOutput'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -2176,10 +2152,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceOutput'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -2385,10 +2357,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/StartCodeRemediationOutput'
       x-stackql-resource: agent_spaces
       x-stackql-method: start_code_remediation
       x-stackql-verb: EXEC
@@ -2421,7 +2389,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartCodeReviewJobOutput'
-      x-stackql-resource: code_reviews
+      x-stackql-resource: code_review_jobs
       x-stackql-method: start_code_review_job
       x-stackql-verb: EXEC
   /StartPentestJob:
@@ -2455,7 +2423,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartPentestJobOutput'
-      x-stackql-resource: pentests
+      x-stackql-resource: pentest_jobs
       x-stackql-method: start_pentest_job
       x-stackql-verb: EXEC
   /StartThreatModelJob:
@@ -2484,7 +2452,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartThreatModelJobOutput'
-      x-stackql-resource: threat_models
+      x-stackql-resource: threat_model_jobs
       x-stackql-method: start_threat_model_job
       x-stackql-verb: EXEC
   /StopCodeReviewJob:
@@ -2510,11 +2478,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/StopCodeReviewJobOutput'
-      x-stackql-resource: code_reviews
+      x-stackql-resource: code_review_jobs
       x-stackql-method: stop_code_review_job
       x-stackql-verb: EXEC
   /StopPentestJob:
@@ -2540,11 +2504,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/StopPentestJobOutput'
-      x-stackql-resource: pentests
+      x-stackql-resource: pentest_jobs
       x-stackql-method: stop_pentest_job
       x-stackql-verb: EXEC
   /StopThreatModelJob:
@@ -2569,11 +2529,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/StopThreatModelJobOutput'
-      x-stackql-resource: threat_models
+      x-stackql-resource: threat_model_jobs
       x-stackql-method: stop_threat_model_job
       x-stackql-verb: EXEC
   /UpdateAgentSpace:
@@ -2726,10 +2682,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateFindingOutput'
       x-stackql-resource: findings
       x-stackql-method: update_finding
       x-stackql-verb: UPDATE
@@ -2758,10 +2710,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateIntegratedResourcesOutput'
       x-stackql-resource: integrated_resources
       x-stackql-method: update_integrated_resources
       x-stackql-verb: UPDATE
@@ -3344,6 +3292,10 @@ components:
         integratedRepositories:
           $ref: '#/components/schemas/IntegratedRepositoryList'
           description: The list of integrated repositories associated with the pentest.
+        trustedCaCertificates:
+          $ref: '#/components/schemas/TrustedCaCertificateList'
+          description: The trust anchors used to validate target endpoint TLS certificates. Provide these for endpoints served
+            by a private or internal certificate authority (CA), an intermediate CA, or a self-signed certificate.
     EndpointList:
       type: array
       items:
@@ -3471,6 +3423,37 @@ components:
       required:
       - integrationId
       - providerResourceId
+    TrustedCaCertificateList:
+      type: array
+      items:
+        $ref: '#/components/schemas/TrustedCaCertificate'
+    TrustedCaCertificate:
+      description: A trust anchor used when validating a target endpoint's TLS certificate.
+      type: object
+      properties:
+        source:
+          $ref: '#/components/schemas/CaCertificateSource'
+          description: The source that AWS Security Agent reads the certificate from.
+      required:
+      - source
+    CaCertificateSource:
+      description: The source of a trusted CA certificate. Exactly one member must be set.
+      type: object
+      properties:
+        inlinePem:
+          $ref: '#/components/schemas/CaCertificatePem'
+          description: A PEM-encoded X.509 certificate supplied inline.
+        artifactId:
+          $ref: '#/components/schemas/String'
+          description: The artifact ID of an uploaded certificate file.
+        s3Location:
+          $ref: '#/components/schemas/String'
+          description: The Amazon S3 location URI of a customer-staged certificate.
+    CaCertificatePem:
+      description: A PEM-encoded X.509 certificate.
+      type: string
+      minLength: 1
+      maxLength: 8192
     RiskTypeList:
       type: array
       items:
@@ -4594,6 +4577,9 @@ components:
         integratedRepositories:
           $ref: '#/components/schemas/IntegratedRepositoryList'
           description: The list of integrated repositories associated with the pentest job.
+        trustedCaCertificates:
+          $ref: '#/components/schemas/TrustedCaCertificateList'
+          description: The trust anchors used to validate target endpoint TLS certificates during the pentest job.
         codeRemediationStrategy:
           $ref: '#/components/schemas/CodeRemediationStrategy'
           description: The code remediation strategy for the pentest job.
@@ -5444,9 +5430,6 @@ components:
       type: string
       enum:
       - MEMBER
-    CreateMembershipResponse:
-      description: Response structure for adding a single member to an agent space.
-      type: object
     CreatePentestOutput:
       description: Output for the CreatePentest operation.
       type: object
@@ -5830,13 +5813,6 @@ components:
         agentSpaceId:
           $ref: '#/components/schemas/AgentSpaceId'
           description: The unique identifier of the deleted agent space.
-    DeleteArtifactOutput:
-      type: object
-    DeleteIntegrationOutput:
-      type: object
-    DeleteMembershipResponse:
-      description: Response structure for removing a single member from an agent space.
-      type: object
     DeletePrivateConnectionOutput:
       type: object
       properties:
@@ -5878,8 +5854,6 @@ components:
       - name
       - type_
       - status
-    DeleteSecurityRequirementPackOutput:
-      type: object
     DeleteTargetDomainOutput:
       description: Output for the DeleteTargetDomain operation.
       type: object
@@ -7383,9 +7357,6 @@ components:
         updatedAt:
           $ref: '#/components/schemas/SyntheticTimestamp_date_time'
           description: The date and time the threat was last updated, in UTC format.
-    StartCodeRemediationOutput:
-      description: Output for the StartCodeRemediation operation.
-      type: object
     DiffSource:
       description: Source of the diff for a differential code scan.
       type: object
@@ -7474,18 +7445,6 @@ components:
           description: The unique identifier of the agent space.
       required:
       - threatModelJobId
-    StopCodeReviewJobOutput:
-      description: Output for the StopCodeReviewJob operation.
-      type: object
-    StopPentestJobOutput:
-      description: Output for the StopPentestJob operation.
-      type: object
-    StopThreatModelJobOutput:
-      description: Output for the StopThreatModelJob operation.
-      type: object
-    TagResourceOutput:
-      description: Output for TagResource operation.
-      type: object
     TagKeyList:
       description: List of tag keys.
       type: array
@@ -7494,9 +7453,6 @@ components:
     TagKey:
       description: Key for a resource tag.
       type: string
-    UntagResourceOutput:
-      description: Output for UntagResource operation.
-      type: object
     UpdateAgentSpaceOutput:
       description: Output for the UpdateAgentSpace operation.
       type: object
@@ -7576,9 +7532,6 @@ components:
             no budget cap is set.
       required:
       - codeReviewId
-    UpdateFindingOutput:
-      description: Output for the UpdateFinding operation.
-      type: object
     IntegratedResourceInputItemList:
       description: List of integrated resources.
       type: array
@@ -7669,8 +7622,6 @@ components:
       - name
       - spaceKey
       - pageId
-    UpdateIntegratedResourcesOutput:
-      type: object
     UpdatePentestOutput:
       description: Output for the UpdatePentest operation.
       type: object

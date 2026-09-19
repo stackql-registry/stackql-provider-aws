@@ -929,10 +929,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteAccessEntryResponse"
     get:
       operationId: DescribeAccessEntry
       description: Describes an access entry.
@@ -1776,10 +1772,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DisassociateAccessPolicyResponse"
   /clusters/{name}/identity-provider-configs/disassociate:
     post:
       operationId: DisassociateIdentityProviderConfig
@@ -1938,10 +1930,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TagResourceResponse"
     delete:
       operationId: UntagResource
       description: Deletes specified tags from an Amazon EKS resource.
@@ -1961,10 +1949,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UntagResourceResponse"
   /clusters/{name}/updates:
     get:
       operationId: ListUpdates
@@ -2610,7 +2594,7 @@ components:
       properties:
         resources:
           $ref: "#/components/schemas/StringList"
-          description: Specifies the resources to be encrypted. The only supported value is secrets.
+          description: Amazon EKS encrypts all Kubernetes API data with envelope encryption by default for clusters running Kubernetes version 1.28 or higher, so this field no longer affects which resources are encrypted. Specifies the resources to be encrypted. The only supported value is secrets.
         provider:
           $ref: "#/components/schemas/Provider"
           description: Key Management Service (KMS) key. Either the ARN or the alias can be used.
@@ -3442,9 +3426,24 @@ components:
       description: The configuration for the Kubernetes controller manager on an Amazon EKS cluster.
       type: object
       properties:
+        podGcControllerConfig:
+          $ref: "#/components/schemas/PodGcControllerConfigRequest"
+          description: The pod garbage collection controller configuration.
         horizontalPodAutoscalerControllerConfig:
           $ref: "#/components/schemas/HorizontalPodAutoscalerControllerConfigRequest"
           description: The horizontal pod autoscaler controller configuration.
+    PodGcControllerConfigRequest:
+      description: The pod garbage collection controller configuration for the Kubernetes controller manager.
+      type: object
+      properties:
+        terminatedPodGcThreshold:
+          $ref: "#/components/schemas/TerminatedPodGcThresholdValue"
+          description: The number of terminated pods that can exist before the garbage collector starts deleting them.
+    TerminatedPodGcThresholdValue:
+      description: The threshold for the number of terminated pods before garbage collection starts.
+      type: integer
+      minimum: 1
+      maximum: 1000000
     HorizontalPodAutoscalerControllerConfigRequest:
       description: The horizontal pod autoscaler controller configuration for the Kubernetes controller manager.
       type: object
@@ -3824,9 +3823,19 @@ components:
       description: The Kubernetes controller manager configuration for an Amazon EKS cluster.
       type: object
       properties:
+        podGcControllerConfig:
+          $ref: "#/components/schemas/PodGcControllerConfigResponse"
+          description: The pod garbage collection controller configuration.
         horizontalPodAutoscalerControllerConfig:
           $ref: "#/components/schemas/HorizontalPodAutoscalerControllerConfigResponse"
           description: The horizontal pod autoscaler controller configuration.
+    PodGcControllerConfigResponse:
+      description: The pod garbage collection controller configuration for the Kubernetes controller manager.
+      type: object
+      properties:
+        terminatedPodGcThreshold:
+          $ref: "#/components/schemas/TerminatedPodGcThresholdValue"
+          description: The number of terminated pods that can exist before the garbage collector starts deleting them.
     HorizontalPodAutoscalerControllerConfigResponse:
       description: The horizontal pod autoscaler controller configuration for the Kubernetes controller manager.
       type: object
@@ -4458,8 +4467,6 @@ components:
         policy:
           $ref: "#/components/schemas/String"
           description: An optional IAM policy in JSON format (as an escaped string) that applies additional restrictions to this pod identity association beyond the IAM policies attached to the IAM role. This policy is applied as the intersection of the role's policies and this policy, allowing you to reduce the permissions that applications in the pods can use. Use this policy to enforce least privilege access while still leveraging a shared IAM role across multiple applications.
-    DeleteAccessEntryResponse:
-      type: object
     DeleteAddonResponse:
       type: object
       properties:
@@ -4941,9 +4948,39 @@ components:
       description: The Kubernetes controller manager version-specific configuration defaults and constraints.
       type: object
       properties:
+        podGcControllerConfig:
+          $ref: "#/components/schemas/PodGcControllerVersionConfig"
+          description: The pod garbage collection controller configuration with default value and constraints.
         horizontalPodAutoscalerControllerConfig:
           $ref: "#/components/schemas/HorizontalPodAutoscalerControllerVersionConfig"
           description: The horizontal pod autoscaler controller configuration with default value and constraints.
+    PodGcControllerVersionConfig:
+      description: The pod garbage collection controller version configuration.
+      type: object
+      properties:
+        terminatedPodGcThreshold:
+          $ref: "#/components/schemas/IntegerParameterConfig"
+          description: The terminated pod garbage collection threshold configuration with default value and constraints.
+    IntegerParameterConfig:
+      description: An integer parameter configuration with default value and constraints.
+      type: object
+      properties:
+        defaultValue:
+          $ref: "#/components/schemas/BoxedInteger"
+          description: The default value for the integer parameter.
+        constraints:
+          $ref: "#/components/schemas/IntegerConstraints"
+          description: The constraints for the integer parameter.
+    IntegerConstraints:
+      description: Constraints for an integer parameter specifying allowed range.
+      type: object
+      properties:
+        min:
+          $ref: "#/components/schemas/BoxedInteger"
+          description: The minimum allowed value.
+        max:
+          $ref: "#/components/schemas/BoxedInteger"
+          description: The maximum allowed value.
     HorizontalPodAutoscalerControllerVersionConfig:
       description: The horizontal pod autoscaler controller version configuration.
       type: object
@@ -5227,8 +5264,6 @@ components:
         update:
           $ref: "#/components/schemas/Update"
           description: The full description of the specified update.
-    DisassociateAccessPolicyResponse:
-      type: object
     DisassociateIdentityProviderConfigResponse:
       type: object
       properties:
@@ -5647,8 +5682,6 @@ components:
         status:
           $ref: "#/components/schemas/InsightsRefreshStatus"
           description: The current status of the insights refresh operation.
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
@@ -5658,8 +5691,6 @@ components:
       type: string
       minLength: 1
       maxLength: 128
-    UntagResourceResponse:
-      type: object
     UpdateAccessEntryResponse:
       type: object
       properties:
@@ -5865,7 +5896,6 @@ components:
             $ref: "#/paths/~1clusters~1{name}~1access-entries~1{principal_arn}~1access-policies~1{policy_arn}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         list_access_policies:
           operation:
             $ref: "#/paths/~1access-policies/get"
@@ -6105,7 +6135,6 @@ components:
             $ref: "#/paths/~1clusters~1{name}~1access-entries~1{principal_arn}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         describe_access_entry:
           operation:
             $ref: "#/paths/~1clusters~1{name}~1access-entries~1{principal_arn}/get"
@@ -6810,7 +6839,6 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -6821,7 +6849,6 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
       sqlVerbs:

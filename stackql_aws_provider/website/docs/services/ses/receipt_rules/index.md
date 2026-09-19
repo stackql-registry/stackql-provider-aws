@@ -114,18 +114,18 @@ The following methods are available for this resource:
     <td>Creates a receipt rule. For information about setting up receipt rules, see the Amazon SES Developer Guide. You can execute this operation no more than once per second.</td>
 </tr>
 <tr>
-    <td><a href="#set_receipt_rule_position"><CopyableCode code="set_receipt_rule_position" /></a></td>
-    <td><CopyableCode code="update" /></td>
-    <td><a href="#parameter-RuleSetName"><code>RuleSetName</code></a>, <a href="#parameter-RuleName"><code>RuleName</code></a>, <a href="#parameter-region"><code>region</code></a></td>
-    <td><a href="#parameter-After"><code>After</code></a></td>
-    <td>Sets the position of the specified receipt rule in the receipt rule set. For information about managing receipt rules, see the Amazon SES Developer Guide. You can execute this operation no more than once per second.</td>
-</tr>
-<tr>
     <td><a href="#update_receipt_rule"><CopyableCode code="update_receipt_rule" /></a></td>
     <td><CopyableCode code="update" /></td>
     <td><a href="#parameter-RuleSetName"><code>RuleSetName</code></a>, <a href="#parameter-Rule"><code>Rule</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td></td>
     <td>Updates a receipt rule. For information about managing receipt rules, see the Amazon SES Developer Guide. You can execute this operation no more than once per second.</td>
+</tr>
+<tr>
+    <td><a href="#set_receipt_rule_position"><CopyableCode code="set_receipt_rule_position" /></a></td>
+    <td><CopyableCode code="update" /></td>
+    <td><a href="#parameter-RuleSetName"><code>RuleSetName</code></a>, <a href="#parameter-RuleName"><code>RuleName</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td><a href="#parameter-After"><code>After</code></a></td>
+    <td>Sets the position of the specified receipt rule in the receipt rule set. For information about managing receipt rules, see the Amazon SES Developer Guide. You can execute this operation no more than once per second.</td>
 </tr>
 <tr>
     <td><a href="#delete_receipt_rule"><CopyableCode code="delete_receipt_rule" /></a></td>
@@ -263,12 +263,26 @@ SELECT
 ## `UPDATE` examples
 
 <Tabs
-    defaultValue="set_receipt_rule_position"
+    defaultValue="update_receipt_rule"
     values={[
-        { label: 'set_receipt_rule_position', value: 'set_receipt_rule_position' },
-        { label: 'update_receipt_rule', value: 'update_receipt_rule' }
+        { label: 'update_receipt_rule', value: 'update_receipt_rule' },
+        { label: 'set_receipt_rule_position', value: 'set_receipt_rule_position' }
     ]}
 >
+<TabItem value="update_receipt_rule">
+
+Updates a receipt rule. For information about managing receipt rules, see the Amazon SES Developer Guide. You can execute this operation no more than once per second.
+
+```sql
+UPDATE aws.ses.receipt_rules
+SET 
+-- No updatable properties
+WHERE 
+RuleSetName = '{{ RuleSetName }}' --required
+AND Rule = '{{ Rule }}' --required
+AND region = '{{ region }}' --required;
+```
+</TabItem>
 <TabItem value="set_receipt_rule_position">
 
 Sets the position of the specified receipt rule in the receipt rule set. For information about managing receipt rules, see the Amazon SES Developer Guide. You can execute this operation no more than once per second.
@@ -282,20 +296,6 @@ RuleSetName = '{{ RuleSetName }}' --required
 AND RuleName = '{{ RuleName }}' --required
 AND region = '{{ region }}' --required
 AND After = '{{ After}}';
-```
-</TabItem>
-<TabItem value="update_receipt_rule">
-
-Updates a receipt rule. For information about managing receipt rules, see the Amazon SES Developer Guide. You can execute this operation no more than once per second.
-
-```sql
-UPDATE aws.ses.receipt_rules
-SET 
--- No updatable properties
-WHERE 
-RuleSetName = '{{ RuleSetName }}' --required
-AND Rule = '{{ Rule }}' --required
-AND region = '{{ region }}' --required;
 ```
 </TabItem>
 </Tabs>

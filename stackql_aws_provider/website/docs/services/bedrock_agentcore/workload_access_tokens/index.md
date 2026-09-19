@@ -33,11 +33,51 @@ Creates, updates, deletes, gets or lists a <code>workload_access_tokens</code> r
 The following fields are returned by `SELECT` queries:
 
 <Tabs
-    defaultValue="get_workload_access_token"
+    defaultValue="get_workload_access_token_for_jwt"
     values={[
+        { label: 'get_workload_access_token_for_jwt', value: 'get_workload_access_token_for_jwt' },
+        { label: 'get_workload_access_token_for_user_id', value: 'get_workload_access_token_for_user_id' },
         { label: 'get_workload_access_token', value: 'get_workload_access_token' }
     ]}
 >
+<TabItem value="get_workload_access_token_for_jwt">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="workload_access_token" /></td>
+    <td><code>string</code></td>
+    <td>An opaque token representing the identity of both the workload and the user.</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
+<TabItem value="get_workload_access_token_for_user_id">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="workload_access_token" /></td>
+    <td><code>string</code></td>
+    <td>The access token for the specified workload.</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
 <TabItem value="get_workload_access_token">
 
 <table>
@@ -75,6 +115,20 @@ The following methods are available for this resource:
 </thead>
 <tbody>
 <tr>
+    <td><a href="#get_workload_access_token_for_jwt"><CopyableCode code="get_workload_access_token_for_jwt" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Obtains a workload access token for agentic workloads acting on behalf of a user, using a JWT token.</td>
+</tr>
+<tr>
+    <td><a href="#get_workload_access_token_for_user_id"><CopyableCode code="get_workload_access_token_for_user_id" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Obtains a workload access token for agentic workloads acting on behalf of a user, using the user's ID.</td>
+</tr>
+<tr>
     <td><a href="#get_workload_access_token"><CopyableCode code="get_workload_access_token" /></a></td>
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
@@ -108,11 +162,37 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 ## `SELECT` examples
 
 <Tabs
-    defaultValue="get_workload_access_token"
+    defaultValue="get_workload_access_token_for_jwt"
     values={[
+        { label: 'get_workload_access_token_for_jwt', value: 'get_workload_access_token_for_jwt' },
+        { label: 'get_workload_access_token_for_user_id', value: 'get_workload_access_token_for_user_id' },
         { label: 'get_workload_access_token', value: 'get_workload_access_token' }
     ]}
 >
+<TabItem value="get_workload_access_token_for_jwt">
+
+Obtains a workload access token for agentic workloads acting on behalf of a user, using a JWT token.
+
+```sql
+SELECT
+workload_access_token
+FROM aws.bedrock_agentcore.workload_access_tokens
+WHERE region = '{{ region }}' -- required
+;
+```
+</TabItem>
+<TabItem value="get_workload_access_token_for_user_id">
+
+Obtains a workload access token for agentic workloads acting on behalf of a user, using the user's ID.
+
+```sql
+SELECT
+workload_access_token
+FROM aws.bedrock_agentcore.workload_access_tokens
+WHERE region = '{{ region }}' -- required
+;
+```
+</TabItem>
 <TabItem value="get_workload_access_token">
 
 Obtains a workload access token for agentic workloads not acting on behalf of a user.

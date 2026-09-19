@@ -178,9 +178,7 @@ SET
 WHERE 
 LoadBalancerNames = '{{ LoadBalancerNames }}' --required
 AND region = '{{ region }}' --required
-AND Tags = '{{ Tags}}'
-RETURNING
-line_items;
+AND Tags = '{{ Tags}}';
 ```
 </TabItem>
 </Tabs>

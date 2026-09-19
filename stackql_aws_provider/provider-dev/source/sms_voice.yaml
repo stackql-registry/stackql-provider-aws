@@ -35,10 +35,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CreateConfigurationSetResponse'
       x-stackql-resource: configuration_sets
       x-stackql-method: create_configuration_set
       x-stackql-verb: INSERT
@@ -98,10 +94,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CreateConfigurationSetEventDestinationResponse'
       x-stackql-resource: configuration_set_event_destinations
       x-stackql-method: create_configuration_set_event_destination
       x-stackql-verb: INSERT
@@ -140,10 +132,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteConfigurationSetResponse'
       x-stackql-resource: configuration_sets
       x-stackql-method: delete_configuration_set
       x-stackql-verb: DELETE
@@ -167,10 +155,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteConfigurationSetEventDestinationResponse'
       x-stackql-resource: configuration_set_event_destinations
       x-stackql-method: delete_configuration_set_event_destination
       x-stackql-verb: DELETE
@@ -204,10 +188,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateConfigurationSetEventDestinationResponse'
       x-stackql-resource: configuration_set_event_destinations
       x-stackql-method: update_configuration_set_event_destination
       x-stackql-verb: UPDATE
@@ -240,7 +220,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SendVoiceMessageResponse'
-      x-stackql-resource: voice_message
+      x-stackql-resource: voice_messages
       x-stackql-method: send_voice_message
       x-stackql-verb: EXEC
 components:
@@ -290,9 +270,6 @@ components:
   schemas:
     WordCharactersWithDelimiters:
       type: string
-    CreateConfigurationSetResponse:
-      description: An empty object that indicates that the configuration set was successfully created.
-      type: object
     __string:
       type: string
     EventDestinationDefinition:
@@ -364,15 +341,6 @@ components:
           description: The Amazon Resource Name (ARN) of the Amazon SNS topic that you want to publish events to.
     NonEmptyString:
       type: string
-    CreateConfigurationSetEventDestinationResponse:
-      description: An empty object that indicates that the event destination was created successfully.
-      type: object
-    DeleteConfigurationSetResponse:
-      description: An empty object that indicates that the configuration set was deleted successfully.
-      type: object
-    DeleteConfigurationSetEventDestinationResponse:
-      description: An empty object that indicates that the event destination was deleted successfully.
-      type: object
     GetConfigurationSetEventDestinationsResponse:
       description: An object that contains information about an event destination.
       type: object
@@ -473,6 +441,3 @@ components:
         MessageId:
           $ref: '#/components/schemas/String'
           description: A unique identifier for the voice message.
-    UpdateConfigurationSetEventDestinationResponse:
-      description: An empty object that indicates that the event destination was updated successfully.
-      type: object

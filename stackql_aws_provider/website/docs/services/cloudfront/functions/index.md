@@ -161,6 +161,20 @@ The following methods are available for this resource:
     <td><a href="#parameter-Stage"><code>Stage</code></a></td>
     <td>Gets configuration information and metadata about a CloudFront function, but not the function's code. To get a function's code, use GetFunction. To get configuration information and metadata about a function, you must provide the function's name and stage. To get these values, you can use ListFunctions.</td>
 </tr>
+<tr>
+    <td><a href="#publish_function"><CopyableCode code="publish_function" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-name"><code>name</code></a>, <a href="#parameter-If-Match"><code>If-Match</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Publishes a CloudFront function by copying the function code from the DEVELOPMENT stage to LIVE. This automatically updates all cache behaviors that are using this function to use the newly published copy in the LIVE stage. When a function is published to the LIVE stage, you can attach the function to a distribution's cache behavior, using the function's Amazon Resource Name (ARN). To publish a function, you must provide the function's name and version (ETag value). To get these values, you can use ListFunctions and DescribeFunction.</td>
+</tr>
+<tr>
+    <td><a href="#test_function"><CopyableCode code="test_function" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-name"><code>name</code></a>, <a href="#parameter-If-Match"><code>If-Match</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-EventObject"><code>EventObject</code></a></td>
+    <td></td>
+    <td>Tests a CloudFront function. To test a function, you provide an event object that represents an HTTP request or response that your CloudFront distribution could receive in production. CloudFront runs the function, passing it the event object that you provided, and returns the function's result (the modified event object) in the response. The response also contains function logs and error messages, if any exist. For more information about testing functions, see Testing functions in the Amazon CloudFront Developer Guide. To test a function, you provide the function's name and version (ETag value) along with the event object. To get the function's name and version, you can use ListFunctions and DescribeFunction.</td>
+</tr>
 </tbody>
 </table>
 
@@ -180,12 +194,12 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-If-Match">
     <td><CopyableCode code="If-Match" /></td>
     <td><code>string</code></td>
-    <td>The current version (ETag value) of the function that you are deleting, which you can get using DescribeFunction.</td>
+    <td>The current version (ETag value) of the function that you are testing, which you can get using DescribeFunction.</td>
 </tr>
 <tr id="parameter-name">
     <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
-    <td>The name of the function that you are getting information about.</td>
+    <td>The name of the function that you are testing.</td>
 </tr>
 <tr id="parameter-region">
     <td><CopyableCode code="region" /></td>
@@ -384,7 +398,9 @@ AND region = '{{ region }}' --required
 <Tabs
     defaultValue="describe_function"
     values={[
-        { label: 'describe_function', value: 'describe_function' }
+        { label: 'describe_function', value: 'describe_function' },
+        { label: 'publish_function', value: 'publish_function' },
+        { label: 'test_function', value: 'test_function' }
     ]}
 >
 <TabItem value="describe_function">
@@ -396,6 +412,35 @@ EXEC aws.cloudfront.functions.describe_function
 @name='{{ name }}' --required, 
 @region='{{ region }}' --required, 
 @Stage='{{ Stage }}'
+;
+```
+</TabItem>
+<TabItem value="publish_function">
+
+Publishes a CloudFront function by copying the function code from the DEVELOPMENT stage to LIVE. This automatically updates all cache behaviors that are using this function to use the newly published copy in the LIVE stage. When a function is published to the LIVE stage, you can attach the function to a distribution's cache behavior, using the function's Amazon Resource Name (ARN). To publish a function, you must provide the function's name and version (ETag value). To get these values, you can use ListFunctions and DescribeFunction.
+
+```sql
+EXEC aws.cloudfront.functions.publish_function 
+@name='{{ name }}' --required, 
+@If-Match='{{ If-Match }}' --required, 
+@region='{{ region }}' --required
+;
+```
+</TabItem>
+<TabItem value="test_function">
+
+Tests a CloudFront function. To test a function, you provide an event object that represents an HTTP request or response that your CloudFront distribution could receive in production. CloudFront runs the function, passing it the event object that you provided, and returns the function's result (the modified event object) in the response. The response also contains function logs and error messages, if any exist. For more information about testing functions, see Testing functions in the Amazon CloudFront Developer Guide. To test a function, you provide the function's name and version (ETag value) along with the event object. To get the function's name and version, you can use ListFunctions and DescribeFunction.
+
+```sql
+EXEC aws.cloudfront.functions.test_function 
+@name='{{ name }}' --required, 
+@If-Match='{{ If-Match }}' --required, 
+@region='{{ region }}' --required 
+@@json=
+'{
+"Stage": "{{ Stage }}", 
+"EventObject": "{{ EventObject }}"
+}'
 ;
 ```
 </TabItem>

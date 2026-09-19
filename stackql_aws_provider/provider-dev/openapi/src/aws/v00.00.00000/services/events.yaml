@@ -42,8 +42,6 @@ paths:
                 Name:
                   $ref: "#/components/schemas/EventSourceName"
                   description: The name of the partner event source to activate.
-              required:
-                - Name
       responses:
         "200":
           description: Success
@@ -385,8 +383,6 @@ paths:
                 Name:
                   $ref: "#/components/schemas/EventSourceName"
                   description: The name of the partner event source to deactivate.
-              required:
-                - Name
       responses:
         "200":
           description: Success
@@ -414,8 +410,6 @@ paths:
                 Name:
                   $ref: "#/components/schemas/ConnectionName"
                   description: The name of the connection to remove authorization from.
-              required:
-                - Name
       responses:
         "200":
           description: Success
@@ -450,10 +444,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteApiDestinationResponse"
   /DeleteArchive:
     post:
       operationId: DeleteArchive
@@ -483,10 +473,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteArchiveResponse"
   /DeleteConnection:
     post:
       operationId: DeleteConnection
@@ -545,10 +531,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteEndpointResponse"
   /DeleteEventBus:
     post:
       operationId: DeleteEventBus
@@ -957,8 +939,6 @@ paths:
                 EventBusName:
                   $ref: "#/components/schemas/EventBusNameOrArn"
                   description: The name or ARN of the event bus associated with the rule. If you omit this, the default event bus is used.
-              required:
-                - Name
       responses:
         "200":
           description: Success
@@ -989,8 +969,6 @@ paths:
                 EventBusName:
                   $ref: "#/components/schemas/EventBusNameOrArn"
                   description: The name or ARN of the event bus associated with the rule. If you omit this, the default event bus is used.
-              required:
-                - Name
       responses:
         "200":
           description: Success
@@ -1867,10 +1845,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TagResourceResponse"
   /TestEventPattern:
     post:
       operationId: TestEventPattern
@@ -1941,10 +1915,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UntagResourceResponse"
   /UpdateApiDestination:
     post:
       operationId: UpdateApiDestination
@@ -2862,10 +2832,6 @@ components:
         LastAuthorizedTime:
           $ref: "#/components/schemas/Timestamp"
           description: A time stamp for the time that the connection was last authorized.
-    DeleteApiDestinationResponse:
-      type: object
-    DeleteArchiveResponse:
-      type: object
     DeleteConnectionResponse:
       type: object
       properties:
@@ -2884,8 +2850,6 @@ components:
         LastAuthorizedTime:
           $ref: "#/components/schemas/Timestamp"
           description: A time stamp for the time that the connection was last authorized before it wa deleted.
-    DeleteEndpointResponse:
-      type: object
     RuleName:
       type: string
       minLength: 1
@@ -4540,8 +4504,6 @@ components:
         ReplayStartTime:
           $ref: "#/components/schemas/Timestamp"
           description: The time at which the replay started.
-    TagResourceResponse:
-      type: object
     TestEventPatternResponse:
       type: object
       properties:
@@ -4552,8 +4514,6 @@ components:
       type: array
       items:
         $ref: "#/components/schemas/TagKey"
-    UntagResourceResponse:
-      type: object
     UpdateApiDestinationResponse:
       type: object
       properties:
@@ -4718,6 +4678,67 @@ components:
           $ref: "#/components/schemas/LogConfig"
           description: The logging configuration settings for the event bus. For more information, see Configuring logs for event buses in the EventBridge User Guide.
   x-stackQL-resources:
+    event_sources:
+      id: aws.events.event_sources
+      name: event_sources
+      title: event_sources
+      methods:
+        activate_event_source:
+          operation:
+            $ref: "#/paths/~1ActivateEventSource/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        deactivate_event_source:
+          operation:
+            $ref: "#/paths/~1DeactivateEventSource/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        describe_event_source:
+          operation:
+            $ref: "#/paths/~1DescribeEventSource/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        list_event_sources:
+          operation:
+            $ref: "#/paths/~1ListEventSources/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/event_sources/methods/describe_event_source"
+        insert: []
+        update: []
+        delete: []
     replays:
       id: aws.events.replays
       name: replays
@@ -4805,7 +4826,6 @@ components:
             $ref: "#/paths/~1DeleteApiDestination/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -4884,7 +4904,6 @@ components:
             $ref: "#/paths/~1DeleteArchive/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -4949,6 +4968,19 @@ components:
         create_connection:
           operation:
             $ref: "#/paths/~1CreateConnection/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        deauthorize_connection:
+          operation:
+            $ref: "#/paths/~1DeauthorizeConnection/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -5043,7 +5075,6 @@ components:
             $ref: "#/paths/~1DeleteEndpoint/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -5259,6 +5290,30 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        disable_rule:
+          operation:
+            $ref: "#/paths/~1DisableRule/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        enable_rule:
+          operation:
+            $ref: "#/paths/~1EnableRule/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         list_rules:
           operation:
             $ref: "#/paths/~1ListRules/post"
@@ -5302,43 +5357,6 @@ components:
           - $ref: "#/components/x-stackQL-resources/rules/methods/put_rule"
         delete:
           - $ref: "#/components/x-stackQL-resources/rules/methods/delete_rule"
-    event_sources:
-      id: aws.events.event_sources
-      name: event_sources
-      title: event_sources
-      methods:
-        describe_event_source:
-          operation:
-            $ref: "#/paths/~1DescribeEventSource/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        list_event_sources:
-          operation:
-            $ref: "#/paths/~1ListEventSources/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/event_sources/methods/describe_event_source"
-        insert: []
-        update: []
-        delete: []
     event_buses:
       id: aws.events.event_buses
       name: event_buses
@@ -5387,10 +5405,10 @@ components:
         insert: []
         update: []
         delete: []
-    rule_names_by_targets:
-      id: aws.events.rule_names_by_targets
-      name: rule_names_by_targets
-      title: rule_names_by_targets
+    rule_names:
+      id: aws.events.rule_names
+      name: rule_names
+      title: rule_names
       methods:
         list_rule_names_by_target:
           operation:
@@ -5421,7 +5439,7 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/rule_names_by_targets/methods/list_rule_names_by_target"
+          - $ref: "#/components/x-stackQL-resources/rule_names/methods/list_rule_names_by_target"
         insert: []
         update: []
         delete: []
@@ -5448,7 +5466,6 @@ components:
             $ref: "#/paths/~1TagResource/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -5461,7 +5478,6 @@ components:
             $ref: "#/paths/~1UntagResource/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -5477,10 +5493,10 @@ components:
           - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
           - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
         delete: []
-    targets_by_rules:
-      id: aws.events.targets_by_rules
-      name: targets_by_rules
-      title: targets_by_rules
+    targets:
+      id: aws.events.targets
+      name: targets
+      title: targets
       methods:
         list_targets_by_rule:
           operation:
@@ -5503,11 +5519,40 @@ components:
                 location: body
             requestBodyTranslate:
               algorithm: naive
+        put_targets:
+          operation:
+            $ref: "#/paths/~1PutTargets/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        remove_targets:
+          operation:
+            $ref: "#/paths/~1RemoveTargets/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/targets_by_rules/methods/list_targets_by_rule"
+          - $ref: "#/components/x-stackQL-resources/targets/methods/list_targets_by_rule"
         insert: []
-        update: []
+        update:
+          - $ref: "#/components/x-stackQL-resources/targets/methods/remove_targets"
+        replace:
+          - $ref: "#/components/x-stackQL-resources/targets/methods/put_targets"
         delete: []
     events:
       id: aws.events.events
@@ -5596,27 +5641,14 @@ components:
         replace:
           - $ref: "#/components/x-stackQL-resources/permissions/methods/put_permission"
         delete: []
-    targets:
-      id: aws.events.targets
-      name: targets
-      title: targets
+    event_patterns:
+      id: aws.events.event_patterns
+      name: event_patterns
+      title: event_patterns
       methods:
-        put_targets:
+        test_event_pattern:
           operation:
-            $ref: "#/paths/~1PutTargets/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        remove_targets:
-          operation:
-            $ref: "#/paths/~1RemoveTargets/post"
+            $ref: "#/paths/~1TestEventPattern/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -5630,8 +5662,5 @@ components:
       sqlVerbs:
         select: []
         insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/targets/methods/remove_targets"
-        replace:
-          - $ref: "#/components/x-stackQL-resources/targets/methods/put_targets"
+        update: []
         delete: []

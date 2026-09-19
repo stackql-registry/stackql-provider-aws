@@ -196,7 +196,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetChallengeMetadataResponse'
-      x-stackql-resource: challenge_metadatas
+      x-stackql-resource: challenge_metadata
       x-stackql-method: get_challenge_metadata
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ChallengeMetadata
@@ -255,7 +255,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListChallengeMetadataResponse'
-      x-stackql-resource: challenge_metadatas
+      x-stackql-resource: challenge_metadata
       x-stackql-method: list_challenge_metadata
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Challenges

@@ -25,7 +25,7 @@ total resources: __3__
 ## Resources
 <div class="row">
 <div class="providerDocColumn">
-<a href="/services/cloudcontrol/resource_request_status/">resource_request_status</a><br />
+<a href="/services/cloudcontrol/resource_request_statuses/">resource_request_statuses</a><br />
 <a href="/services/cloudcontrol/resource_requests/">resource_requests</a>
 </div>
 <div class="providerDocColumn">

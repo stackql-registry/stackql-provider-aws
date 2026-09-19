@@ -100,10 +100,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteScheduleOutput'
       x-stackql-resource: schedules
       x-stackql-method: delete_schedule
       x-stackql-verb: DELETE
@@ -249,10 +245,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteScheduleGroupOutput'
       x-stackql-resource: schedule_groups
       x-stackql-method: delete_schedule_group
       x-stackql-verb: DELETE
@@ -410,10 +402,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceOutput'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -436,10 +424,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceOutput'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -1029,10 +1013,6 @@ components:
       minLength: 1
       maxLength: 1224
       pattern: ^arn:aws(-[a-z]+)?:scheduler:[a-z0-9\-]+:\d{12}:schedule-group\/[0-9a-zA-Z-_.]+$
-    DeleteScheduleOutput:
-      type: object
-    DeleteScheduleGroupOutput:
-      type: object
     GetScheduleOutput:
       type: object
       properties:
@@ -1238,14 +1218,10 @@ components:
         Tags:
           $ref: '#/components/schemas/TagList'
           description: The list of tags associated with the specified resource.
-    TagResourceOutput:
-      type: object
     TagKeyList:
       type: array
       items:
         $ref: '#/components/schemas/TagKey'
-    UntagResourceOutput:
-      type: object
     UpdateScheduleOutput:
       type: object
       properties:

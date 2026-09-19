@@ -218,6 +218,20 @@ The following methods are available for this resource:
     <td><a href="#parameter-maxResults"><code>maxResults</code></a>, <a href="#parameter-nextToken"><code>nextToken</code></a>, <a href="#parameter-experimentTemplateId"><code>experimentTemplateId</code></a></td>
     <td>Lists your experiments.</td>
 </tr>
+<tr>
+    <td><a href="#stop_experiment"><CopyableCode code="stop_experiment" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-id"><code>id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Stops the specified experiment.</td>
+</tr>
+<tr>
+    <td><a href="#start_experiment"><CopyableCode code="start_experiment" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-clientToken"><code>clientToken</code></a>, <a href="#parameter-experimentTemplateId"><code>experimentTemplateId</code></a></td>
+    <td></td>
+    <td>Starts running an experiment from the specified experiment template.</td>
+</tr>
 </tbody>
 </table>
 
@@ -318,6 +332,46 @@ WHERE region = '{{ region }}' -- required
 AND maxResults = '{{ maxResults }}'
 AND nextToken = '{{ nextToken }}'
 AND experimentTemplateId = '{{ experimentTemplateId }}'
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="stop_experiment"
+    values={[
+        { label: 'stop_experiment', value: 'stop_experiment' },
+        { label: 'start_experiment', value: 'start_experiment' }
+    ]}
+>
+<TabItem value="stop_experiment">
+
+Stops the specified experiment.
+
+```sql
+EXEC aws.fis.experiments.stop_experiment 
+@id='{{ id }}' --required, 
+@region='{{ region }}' --required
+;
+```
+</TabItem>
+<TabItem value="start_experiment">
+
+Starts running an experiment from the specified experiment template.
+
+```sql
+EXEC aws.fis.experiments.start_experiment 
+@region='{{ region }}' --required 
+@@json=
+'{
+"clientToken": "{{ clientToken }}", 
+"experimentTemplateId": "{{ experimentTemplateId }}", 
+"experimentOptions": "{{ experimentOptions }}", 
+"tags": "{{ tags }}"
+}'
 ;
 ```
 </TabItem>

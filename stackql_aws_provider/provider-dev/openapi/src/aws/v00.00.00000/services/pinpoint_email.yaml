@@ -46,10 +46,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/CreateConfigurationSetResponse"
     get:
       operationId: ListConfigurationSets
       description: List all of the configuration sets associated with your Amazon Pinpoint account in the current region. In Amazon Pinpoint, configuration sets are groups of rules that you can apply to the emails you send. You apply a configuration set to an email by including a reference to the configuration set in the headers of the email. When you apply a configuration set to an email, all of the rules in that configuration set are applied to the email.
@@ -101,10 +97,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/CreateConfigurationSetEventDestinationResponse"
     get:
       operationId: GetConfigurationSetEventDestinations
       description: Retrieve a list of event destinations that are associated with a configuration set. In Amazon Pinpoint, events include message sends, deliveries, opens, clicks, bounces, and complaints. Event destinations are places that you can send information about these events to. For example, you can send event data to Amazon SNS to receive notifications when you receive bounces or complaints, or you can use Amazon Kinesis Data Firehose to stream data to Amazon S3 for long-term storage.
@@ -143,10 +135,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/CreateDedicatedIpPoolResponse"
     get:
       operationId: ListDedicatedIpPools
       description: List all of the dedicated IP pools that exist in your Amazon Pinpoint account in the current AWS Region.
@@ -262,10 +250,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteConfigurationSetResponse"
     get:
       operationId: GetConfigurationSet
       description: Get information about an existing configuration set, including the dedicated IP pool that it's associated with, whether or not it's enabled for sending email, and more. In Amazon Pinpoint, configuration sets are groups of rules that you can apply to the emails you send. You apply a configuration set to an email by including a reference to the configuration set in the headers of the email. When you apply a configuration set to an email, all of the rules in that configuration set are applied to the email.
@@ -303,10 +287,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteConfigurationSetEventDestinationResponse"
     put:
       operationId: UpdateConfigurationSetEventDestination
       description: Update the configuration of an event destination for a configuration set. In Amazon Pinpoint, events include message sends, deliveries, opens, clicks, bounces, and complaints. Event destinations are places that you can send information about these events to. For example, you can send event data to Amazon SNS to receive notifications when you receive bounces or complaints, or you can use Amazon Kinesis Data Firehose to stream data to Amazon S3 for long-term storage.
@@ -337,10 +317,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateConfigurationSetEventDestinationResponse"
   /v1/email/dedicated-ip-pools/{pool_name}:
     delete:
       operationId: DeleteDedicatedIpPool
@@ -355,10 +331,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteDedicatedIpPoolResponse"
   /v1/email/identities/{email_identity}:
     delete:
       operationId: DeleteEmailIdentity
@@ -373,10 +345,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteEmailIdentityResponse"
     get:
       operationId: GetEmailIdentity
       description: Provides information about a specific identity associated with your Amazon Pinpoint account, including the identity's verification status, its DKIM authentication status, and its custom Mail-From settings.
@@ -504,10 +472,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/PutDeliverabilityDashboardOptionResponse"
   /v1/email/deliverability-dashboard/test-reports/{report_id}:
     get:
       operationId: GetDeliverabilityTestReport
@@ -678,10 +642,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TagResourceResponse"
     delete:
       operationId: UntagResource
       description: Remove one or more tags (keys and values) from a specified resource.
@@ -701,10 +661,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UntagResourceResponse"
   /v1/email/account/dedicated-ips/warmup:
     put:
       operationId: PutAccountDedicatedIpWarmupAttributes
@@ -722,10 +678,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/PutAccountDedicatedIpWarmupAttributesResponse"
   /v1/email/account/sending:
     put:
       operationId: PutAccountSendingAttributes
@@ -743,10 +695,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/PutAccountSendingAttributesResponse"
   /v1/email/configuration-sets/{configuration_set_name}/delivery-options:
     put:
       operationId: PutConfigurationSetDeliveryOptions
@@ -772,10 +720,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/PutConfigurationSetDeliveryOptionsResponse"
   /v1/email/configuration-sets/{configuration_set_name}/reputation-options:
     put:
       operationId: PutConfigurationSetReputationOptions
@@ -799,10 +743,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/PutConfigurationSetReputationOptionsResponse"
   /v1/email/configuration-sets/{configuration_set_name}/sending:
     put:
       operationId: PutConfigurationSetSendingOptions
@@ -826,10 +766,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/PutConfigurationSetSendingOptionsResponse"
   /v1/email/configuration-sets/{configuration_set_name}/tracking-options:
     put:
       operationId: PutConfigurationSetTrackingOptions
@@ -853,10 +789,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/PutConfigurationSetTrackingOptionsResponse"
   /v1/email/dedicated-ips/{ip}/pool:
     put:
       operationId: PutDedicatedIpInPool
@@ -882,10 +814,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/PutDedicatedIpInPoolResponse"
   /v1/email/dedicated-ips/{ip}/warmup:
     put:
       operationId: PutDedicatedIpWarmupAttributes
@@ -910,10 +838,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/PutDedicatedIpWarmupAttributesResponse"
   /v1/email/identities/{email_identity}/dkim:
     put:
       operationId: PutEmailIdentityDkimAttributes
@@ -937,10 +861,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/PutEmailIdentityDkimAttributesResponse"
   /v1/email/identities/{email_identity}/feedback:
     put:
       operationId: PutEmailIdentityFeedbackAttributes
@@ -964,10 +884,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/PutEmailIdentityFeedbackAttributesResponse"
   /v1/email/identities/{email_identity}/mail-from:
     put:
       operationId: PutEmailIdentityMailFromAttributes
@@ -993,10 +909,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/PutEmailIdentityMailFromAttributesResponse"
   /v1/email/outbound-emails:
     post:
       operationId: SendEmail
@@ -1156,9 +1068,6 @@ components:
       type: string
     TagValue:
       type: string
-    CreateConfigurationSetResponse:
-      description: An HTTP 200 response if the request succeeds, or an error message if the request fails.
-      type: object
     EventDestinationName:
       description: The name of an event destination. In Amazon Pinpoint, events include message sends, deliveries, opens, clicks, bounces, and complaints. Event destinations are places that you can send information about these events to. For example, you can send event data to Amazon SNS to receive notifications when you receive bounces or complaints, or you can use Amazon Kinesis Data Firehose to stream data to Amazon S3 for long-term storage.
       type: string
@@ -1274,12 +1183,6 @@ components:
         ApplicationArn:
           $ref: "#/components/schemas/AmazonResourceName"
           description: The Amazon Resource Name (ARN) of the Amazon Pinpoint project that you want to send email events to.
-    CreateConfigurationSetEventDestinationResponse:
-      description: An HTTP 200 response if the request succeeds, or an error message if the request fails.
-      type: object
-    CreateDedicatedIpPoolResponse:
-      description: An HTTP 200 response if the request succeeds, or an error message if the request fails.
-      type: object
     ReportName:
       description: A name that helps you identify a report generated by the Deliverability dashboard.
       type: string
@@ -1436,18 +1339,6 @@ components:
         $ref: "#/components/schemas/DnsToken"
     DnsToken:
       type: string
-    DeleteConfigurationSetResponse:
-      description: An HTTP 200 response if the request succeeds, or an error message if the request fails.
-      type: object
-    DeleteConfigurationSetEventDestinationResponse:
-      description: An HTTP 200 response if the request succeeds, or an error message if the request fails.
-      type: object
-    DeleteDedicatedIpPoolResponse:
-      description: An HTTP 200 response if the request succeeds, or an error message if the request fails.
-      type: object
-    DeleteEmailIdentityResponse:
-      description: An HTTP 200 response if the request succeeds, or an error message if the request fails.
-      type: object
     GetAccountResponse:
       description: A list of details about the email-sending capabilities of your Amazon Pinpoint account in the current AWS Region.
       type: object
@@ -2088,45 +1979,9 @@ components:
           description: An array that lists all the tags that are associated with the resource. Each tag consists of a required tag key (Key) and an associated tag value (Value)
       required:
         - Tags
-    PutAccountDedicatedIpWarmupAttributesResponse:
-      description: An HTTP 200 response if the request succeeds, or an error message if the request fails.
-      type: object
-    PutAccountSendingAttributesResponse:
-      description: An HTTP 200 response if the request succeeds, or an error message if the request fails.
-      type: object
     SendingPoolName:
       description: The name of the dedicated IP pool that you want to associate with the configuration set.
       type: string
-    PutConfigurationSetDeliveryOptionsResponse:
-      description: An HTTP 200 response if the request succeeds, or an error message if the request fails.
-      type: object
-    PutConfigurationSetReputationOptionsResponse:
-      description: An HTTP 200 response if the request succeeds, or an error message if the request fails.
-      type: object
-    PutConfigurationSetSendingOptionsResponse:
-      description: An HTTP 200 response if the request succeeds, or an error message if the request fails.
-      type: object
-    PutConfigurationSetTrackingOptionsResponse:
-      description: An HTTP 200 response if the request succeeds, or an error message if the request fails.
-      type: object
-    PutDedicatedIpInPoolResponse:
-      description: An HTTP 200 response if the request succeeds, or an error message if the request fails.
-      type: object
-    PutDedicatedIpWarmupAttributesResponse:
-      description: An HTTP 200 response if the request succeeds, or an error message if the request fails.
-      type: object
-    PutDeliverabilityDashboardOptionResponse:
-      description: A response that indicates whether the Deliverability dashboard is enabled for your Amazon Pinpoint account.
-      type: object
-    PutEmailIdentityDkimAttributesResponse:
-      description: An HTTP 200 response if the request succeeds, or an error message if the request fails.
-      type: object
-    PutEmailIdentityFeedbackAttributesResponse:
-      description: An HTTP 200 response if the request succeeds, or an error message if the request fails.
-      type: object
-    PutEmailIdentityMailFromAttributesResponse:
-      description: An HTTP 200 response if the request succeeds, or an error message if the request fails.
-      type: object
     Destination:
       description: An object that describes the recipients for an email.
       type: object
@@ -2177,17 +2032,10 @@ components:
           description: A unique identifier for the message that is generated when Amazon Pinpoint accepts the message. It is possible for Amazon Pinpoint to accept a message without sending it. This can happen when the message you're trying to send has an attachment doesn't pass a virus check, or when you send a templated email that contains invalid personalization content, for example.
     OutboundMessageId:
       type: string
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
         $ref: "#/components/schemas/TagKey"
-    UntagResourceResponse:
-      type: object
-    UpdateConfigurationSetEventDestinationResponse:
-      description: An HTTP 200 response if the request succeeds, or an error message if the request fails.
-      type: object
   x-stackQL-resources:
     configuration_sets:
       id: aws.pinpoint_email.configuration_sets
@@ -2199,7 +2047,6 @@ components:
             $ref: "#/paths/~1v1~1email~1configuration-sets/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -2233,7 +2080,6 @@ components:
             $ref: "#/paths/~1v1~1email~1configuration-sets~1{configuration_set_name}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         get_configuration_set:
           operation:
             $ref: "#/paths/~1v1~1email~1configuration-sets~1{configuration_set_name}/get"
@@ -2245,7 +2091,6 @@ components:
             $ref: "#/paths/~1v1~1email~1configuration-sets~1{configuration_set_name}~1delivery-options/put"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -2256,7 +2101,6 @@ components:
             $ref: "#/paths/~1v1~1email~1configuration-sets~1{configuration_set_name}~1reputation-options/put"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -2267,7 +2111,6 @@ components:
             $ref: "#/paths/~1v1~1email~1configuration-sets~1{configuration_set_name}~1sending/put"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -2278,7 +2121,6 @@ components:
             $ref: "#/paths/~1v1~1email~1configuration-sets~1{configuration_set_name}~1tracking-options/put"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -2305,7 +2147,6 @@ components:
             $ref: "#/paths/~1v1~1email~1configuration-sets~1{configuration_set_name}~1event-destinations/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -2322,13 +2163,11 @@ components:
             $ref: "#/paths/~1v1~1email~1configuration-sets~1{configuration_set_name}~1event-destinations~1{event_destination_name}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         update_configuration_set_event_destination:
           operation:
             $ref: "#/paths/~1v1~1email~1configuration-sets~1{configuration_set_name}~1event-destinations~1{event_destination_name}/put"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -2353,7 +2192,6 @@ components:
             $ref: "#/paths/~1v1~1email~1dedicated-ip-pools/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -2387,7 +2225,6 @@ components:
             $ref: "#/paths/~1v1~1email~1dedicated-ip-pools~1{pool_name}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/dedicated_ip_pools/methods/list_dedicated_ip_pools"
@@ -2481,7 +2318,6 @@ components:
             $ref: "#/paths/~1v1~1email~1identities~1{email_identity}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         get_email_identity:
           operation:
             $ref: "#/paths/~1v1~1email~1identities~1{email_identity}/get"
@@ -2493,7 +2329,6 @@ components:
             $ref: "#/paths/~1v1~1email~1identities~1{email_identity}~1dkim/put"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -2504,7 +2339,6 @@ components:
             $ref: "#/paths/~1v1~1email~1identities~1{email_identity}~1feedback/put"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -2515,7 +2349,6 @@ components:
             $ref: "#/paths/~1v1~1email~1identities~1{email_identity}~1mail-from/put"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -2548,7 +2381,6 @@ components:
             $ref: "#/paths/~1v1~1email~1account~1dedicated-ips~1warmup/put"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -2559,7 +2391,6 @@ components:
             $ref: "#/paths/~1v1~1email~1account~1sending/put"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -2626,7 +2457,6 @@ components:
             $ref: "#/paths/~1v1~1email~1dedicated-ips~1{ip}~1pool/put"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -2637,7 +2467,6 @@ components:
             $ref: "#/paths/~1v1~1email~1dedicated-ips~1{ip}~1warmup/put"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -2669,7 +2498,6 @@ components:
             $ref: "#/paths/~1v1~1email~1deliverability-dashboard/put"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -2747,7 +2575,6 @@ components:
             $ref: "#/paths/~1v1~1email~1tags/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -2758,7 +2585,6 @@ components:
             $ref: "#/paths/~1v1~1email~1tags/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
       sqlVerbs:
@@ -2768,4 +2594,25 @@ components:
         update:
           - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
           - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
+        delete: []
+    emails:
+      id: aws.pinpoint_email.emails
+      name: emails
+      title: emails
+      methods:
+        send_email:
+          operation:
+            $ref: "#/paths/~1v1~1email~1outbound-emails/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
         delete: []

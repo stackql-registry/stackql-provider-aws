@@ -52,7 +52,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="mode" /></td>
     <td><code>string</code></td>
-    <td>The data retention mode configured for the account. (default, none, provider_data_share, inherit)</td>
+    <td>The data retention mode configured for the account. (default, none, aws_review, provider_data_share, inherit)</td>
 </tr>
 <tr>
     <td><CopyableCode code="updated_at" /></td>

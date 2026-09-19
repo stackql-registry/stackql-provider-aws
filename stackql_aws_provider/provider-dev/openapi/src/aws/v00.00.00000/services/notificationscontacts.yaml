@@ -36,10 +36,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ActivateEmailContactResponse"
   /2022-09-19/emailcontacts:
     post:
       operationId: CreateEmailContact
@@ -82,10 +78,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteEmailContactResponse"
     get:
       operationId: GetEmailContact
       description: Returns an email contact.
@@ -169,10 +161,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TagResourceResponse"
     delete:
       operationId: UntagResource
       description: Detaches a key-value pair from a resource, as identified by its Amazon Resource Name (ARN). Taggable resources in AWS User Notifications Contacts include email contacts..
@@ -192,10 +180,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UntagResourceResponse"
   /2022-10-31/emailcontacts/{arn}/activate/send:
     post:
       operationId: SendActivationCode
@@ -210,10 +194,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/SendActivationCodeResponse"
 components:
   parameters:
     X-Amz-Content-Sha256:
@@ -267,8 +247,6 @@ components:
       minLength: 7
       maxLength: 7
       pattern: "[a-z0-9]{7}"
-    ActivateEmailContactResponse:
-      type: object
     EmailContactName:
       type: string
       minLength: 1
@@ -291,8 +269,6 @@ components:
           description: The Amazon Resource Name (ARN) of the resource.
       required:
         - arn
-    DeleteEmailContactResponse:
-      type: object
     GetEmailContactResponse:
       type: object
       properties:
@@ -374,10 +350,6 @@ components:
           type: object
           properties: {}
           description: Key-value pairs that are assigned to a resource, usually for the purpose of grouping and searching for items. Tags are metadata that you define.
-    SendActivationCodeResponse:
-      type: object
-    TagResourceResponse:
-      type: object
     TagKeys:
       type: array
       items:
@@ -385,14 +357,17 @@ components:
     TagKey:
       type: string
       pattern: (?!aws:).{1,128}
-    UntagResourceResponse:
-      type: object
   x-stackQL-resources:
     email_contacts:
       id: aws.notificationscontacts.email_contacts
       name: email_contacts
       title: email_contacts
       methods:
+        activate_email_contact:
+          operation:
+            $ref: "#/paths/~1emailcontacts~1{arn}~1activate~1{code}/put"
+          response:
+            openAPIDocKey: "200"
         create_email_contact:
           operation:
             $ref: "#/paths/~12022-09-19~1emailcontacts/post"
@@ -409,7 +384,6 @@ components:
             $ref: "#/paths/~1emailcontacts~1{arn}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         get_email_contact:
           operation:
             $ref: "#/paths/~1emailcontacts~1{arn}/get"
@@ -459,7 +433,6 @@ components:
             $ref: "#/paths/~1tags~1{arn}/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -470,7 +443,6 @@ components:
             $ref: "#/paths/~1tags~1{arn}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
       sqlVerbs:
@@ -480,4 +452,19 @@ components:
         update:
           - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
           - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
+        delete: []
+    activation_codes:
+      id: aws.notificationscontacts.activation_codes
+      name: activation_codes
+      title: activation_codes
+      methods:
+        send_activation_code:
+          operation:
+            $ref: "#/paths/~12022-10-31~1emailcontacts~1{arn}~1activate~1send/post"
+          response:
+            openAPIDocKey: "200"
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
         delete: []

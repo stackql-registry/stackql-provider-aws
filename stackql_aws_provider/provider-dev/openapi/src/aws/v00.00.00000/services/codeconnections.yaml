@@ -244,10 +244,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteConnectionOutput"
   /DeleteHost:
     post:
       operationId: DeleteHost
@@ -277,10 +273,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteHostOutput"
   /DeleteRepositoryLink:
     post:
       operationId: DeleteRepositoryLink
@@ -310,10 +302,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteRepositoryLinkOutput"
   /DeleteSyncConfiguration:
     post:
       operationId: DeleteSyncConfiguration
@@ -347,10 +335,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteSyncConfigurationOutput"
   /GetConnection:
     post:
       operationId: GetConnection
@@ -855,10 +839,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TagResourceOutput"
   /UntagResource:
     post:
       operationId: UntagResource
@@ -892,10 +872,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UntagResourceOutput"
   /UpdateHost:
     post:
       operationId: UpdateHost
@@ -931,10 +907,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateHostOutput"
   /UpdateRepositoryLink:
     post:
       operationId: UpdateRepositoryLink
@@ -1405,14 +1377,6 @@ components:
         - ResourceName
         - RoleArn
         - SyncType
-    DeleteConnectionOutput:
-      type: object
-    DeleteHostOutput:
-      type: object
-    DeleteRepositoryLinkOutput:
-      type: object
-    DeleteSyncConfigurationOutput:
-      type: object
     GetConnectionOutput:
       type: object
       properties:
@@ -1915,16 +1879,10 @@ components:
         Tags:
           $ref: "#/components/schemas/TagList"
           description: A list of tag key and value pairs associated with the specified resource.
-    TagResourceOutput:
-      type: object
     TagKeyList:
       type: array
       items:
         $ref: "#/components/schemas/TagKey"
-    UntagResourceOutput:
-      type: object
-    UpdateHostOutput:
-      type: object
     UpdateRepositoryLinkOutput:
       type: object
       properties:
@@ -1980,7 +1938,6 @@ components:
             $ref: "#/paths/~1DeleteConnection/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.0
@@ -2047,7 +2004,6 @@ components:
             $ref: "#/paths/~1DeleteHost/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.0
@@ -2086,7 +2042,6 @@ components:
             $ref: "#/paths/~1UpdateHost/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.0
@@ -2127,7 +2082,6 @@ components:
             $ref: "#/paths/~1DeleteRepositoryLink/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.0
@@ -2208,7 +2162,6 @@ components:
             $ref: "#/paths/~1DeleteSyncConfiguration/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.0
@@ -2266,10 +2219,10 @@ components:
           - $ref: "#/components/x-stackQL-resources/sync_configurations/methods/update_sync_configuration"
         delete:
           - $ref: "#/components/x-stackQL-resources/sync_configurations/methods/delete_sync_configuration"
-    repository_sync_status:
-      id: aws.codeconnections.repository_sync_status
-      name: repository_sync_status
-      title: repository_sync_status
+    repository_sync_statuses:
+      id: aws.codeconnections.repository_sync_statuses
+      name: repository_sync_statuses
+      title: repository_sync_statuses
       methods:
         get_repository_sync_status:
           operation:
@@ -2287,14 +2240,14 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/repository_sync_status/methods/get_repository_sync_status"
+          - $ref: "#/components/x-stackQL-resources/repository_sync_statuses/methods/get_repository_sync_status"
         insert: []
         update: []
         delete: []
-    resource_sync_status:
-      id: aws.codeconnections.resource_sync_status
-      name: resource_sync_status
-      title: resource_sync_status
+    resource_sync_statuses:
+      id: aws.codeconnections.resource_sync_statuses
+      name: resource_sync_statuses
+      title: resource_sync_statuses
       methods:
         get_resource_sync_status:
           operation:
@@ -2311,7 +2264,7 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/resource_sync_status/methods/get_resource_sync_status"
+          - $ref: "#/components/x-stackQL-resources/resource_sync_statuses/methods/get_resource_sync_status"
         insert: []
         update: []
         delete: []
@@ -2387,7 +2340,6 @@ components:
             $ref: "#/paths/~1TagResource/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.0
@@ -2400,7 +2352,6 @@ components:
             $ref: "#/paths/~1UntagResource/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.0

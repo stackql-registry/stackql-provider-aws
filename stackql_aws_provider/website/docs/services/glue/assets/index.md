@@ -181,13 +181,6 @@ The following methods are available for this resource:
     <td>Updates the name and description of an existing asset in Glue Data Catalog. Only the fields that you provide are updated.</td>
 </tr>
 <tr>
-    <td><a href="#put_attachment"><CopyableCode code="put_attachment" /></a></td>
-    <td><CopyableCode code="replace" /></td>
-    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-AssetIdentifier"><code>AssetIdentifier</code></a>, <a href="#parameter-AttachmentName"><code>AttachmentName</code></a>, <a href="#parameter-Content"><code>Content</code></a>, <a href="#parameter-FormTypeId"><code>FormTypeId</code></a></td>
-    <td></td>
-    <td>Attaches a form to an asset or an iterable form item in Glue Data Catalog. If an attachment with the same name already exists, it is overwritten.</td>
-</tr>
-<tr>
     <td><a href="#put_asset"><CopyableCode code="put_asset" /></a></td>
     <td><CopyableCode code="replace" /></td>
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-AssetTypeId"><code>AssetTypeId</code></a>, <a href="#parameter-Identifier"><code>Identifier</code></a></td>
@@ -195,11 +188,11 @@ The following methods are available for this resource:
     <td>Creates or updates an asset in Glue Data Catalog. If the asset already exists, this operation updates it; otherwise, a new asset is created.</td>
 </tr>
 <tr>
-    <td><a href="#delete_attachment"><CopyableCode code="delete_attachment" /></a></td>
-    <td><CopyableCode code="delete" /></td>
-    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td><a href="#put_attachment"><CopyableCode code="put_attachment" /></a></td>
+    <td><CopyableCode code="replace" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-AssetIdentifier"><code>AssetIdentifier</code></a>, <a href="#parameter-AttachmentName"><code>AttachmentName</code></a>, <a href="#parameter-Content"><code>Content</code></a>, <a href="#parameter-FormTypeId"><code>FormTypeId</code></a></td>
     <td></td>
-    <td>Deletes a form attachment from an asset in Glue Data Catalog.</td>
+    <td>Attaches a form to an asset or an iterable form item in Glue Data Catalog. If an attachment with the same name already exists, it is overwritten.</td>
 </tr>
 <tr>
     <td><a href="#delete_asset"><CopyableCode code="delete_asset" /></a></td>
@@ -207,6 +200,13 @@ The following methods are available for this resource:
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td></td>
     <td>Deletes an asset from Glue Data Catalog.</td>
+</tr>
+<tr>
+    <td><a href="#delete_attachment"><CopyableCode code="delete_attachment" /></a></td>
+    <td><CopyableCode code="delete" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Deletes a form attachment from an asset in Glue Data Catalog.</td>
 </tr>
 </tbody>
 </table>
@@ -316,12 +316,37 @@ updated_at;
 ## `REPLACE` examples
 
 <Tabs
-    defaultValue="put_attachment"
+    defaultValue="put_asset"
     values={[
-        { label: 'put_attachment', value: 'put_attachment' },
-        { label: 'put_asset', value: 'put_asset' }
+        { label: 'put_asset', value: 'put_asset' },
+        { label: 'put_attachment', value: 'put_attachment' }
     ]}
 >
+<TabItem value="put_asset">
+
+Creates or updates an asset in Glue Data Catalog. If the asset already exists, this operation updates it; otherwise, a new asset is created.
+
+```sql
+REPLACE aws.glue.assets
+SET 
+AssetTypeId = '{{ AssetTypeId }}',
+Identifier = '{{ Identifier }}',
+Name = '{{ Name }}',
+Description = '{{ Description }}',
+Forms = '{{ Forms }}',
+ClientToken = '{{ ClientToken }}'
+WHERE 
+region = '{{ region }}' --required
+AND AssetTypeId = '{{ AssetTypeId }}' --required
+AND Identifier = '{{ Identifier }}' --required
+RETURNING
+created_at,
+description,
+forms,
+id,
+name;
+```
+</TabItem>
 <TabItem value="put_attachment">
 
 Attaches a form to an asset or an iterable form item in Glue Data Catalog. If an attachment with the same name already exists, it is overwritten.
@@ -350,46 +375,21 @@ item_identifier,
 iterable_form_name;
 ```
 </TabItem>
-<TabItem value="put_asset">
-
-Creates or updates an asset in Glue Data Catalog. If the asset already exists, this operation updates it; otherwise, a new asset is created.
-
-```sql
-REPLACE aws.glue.assets
-SET 
-AssetTypeId = '{{ AssetTypeId }}',
-Identifier = '{{ Identifier }}',
-Name = '{{ Name }}',
-Description = '{{ Description }}',
-Forms = '{{ Forms }}',
-ClientToken = '{{ ClientToken }}'
-WHERE 
-region = '{{ region }}' --required
-AND AssetTypeId = '{{ AssetTypeId }}' --required
-AND Identifier = '{{ Identifier }}' --required
-RETURNING
-created_at,
-description,
-forms,
-id,
-name;
-```
-</TabItem>
 </Tabs>
 
 
 ## `DELETE` examples
 
 <Tabs
-    defaultValue="delete_attachment"
+    defaultValue="delete_asset"
     values={[
-        { label: 'delete_attachment', value: 'delete_attachment' },
-        { label: 'delete_asset', value: 'delete_asset' }
+        { label: 'delete_asset', value: 'delete_asset' },
+        { label: 'delete_attachment', value: 'delete_attachment' }
     ]}
 >
-<TabItem value="delete_attachment">
+<TabItem value="delete_asset">
 
-Deletes a form attachment from an asset in Glue Data Catalog.
+Deletes an asset from Glue Data Catalog.
 
 ```sql
 DELETE FROM aws.glue.assets
@@ -397,9 +397,9 @@ WHERE region = '{{ region }}' --required
 ;
 ```
 </TabItem>
-<TabItem value="delete_asset">
+<TabItem value="delete_attachment">
 
-Deletes an asset from Glue Data Catalog.
+Deletes a form attachment from an asset in Glue Data Catalog.
 
 ```sql
 DELETE FROM aws.glue.assets

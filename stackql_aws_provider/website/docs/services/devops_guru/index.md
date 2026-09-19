@@ -18,7 +18,7 @@ devops_guru service documentation.
 
 :::info[Service Summary]
 
-total resources: __20__  
+total resources: __19__  
 
 :::
 
@@ -28,16 +28,15 @@ total resources: __20__
 <a href="/services/devops_guru/account_healths/">account_healths</a><br />
 <a href="/services/devops_guru/account_overviews/">account_overviews</a><br />
 <a href="/services/devops_guru/anomalies/">anomalies</a><br />
-<a href="/services/devops_guru/anomalies_for_insights/">anomalies_for_insights</a><br />
 <a href="/services/devops_guru/anomalous_log_groups/">anomalous_log_groups</a><br />
 <a href="/services/devops_guru/cost_estimations/">cost_estimations</a><br />
 <a href="/services/devops_guru/event_sources_configs/">event_sources_configs</a><br />
 <a href="/services/devops_guru/events/">events</a><br />
-<a href="/services/devops_guru/feedbacks/">feedbacks</a><br />
-<a href="/services/devops_guru/insights/">insights</a>
+<a href="/services/devops_guru/feedback/">feedback</a><br />
+<a href="/services/devops_guru/insights/">insights</a><br />
+<a href="/services/devops_guru/monitored_resources/">monitored_resources</a>
 </div>
 <div class="providerDocColumn">
-<a href="/services/devops_guru/monitored_resources/">monitored_resources</a><br />
 <a href="/services/devops_guru/notification_channels/">notification_channels</a><br />
 <a href="/services/devops_guru/organization_healths/">organization_healths</a><br />
 <a href="/services/devops_guru/organization_insights/">organization_insights</a><br />

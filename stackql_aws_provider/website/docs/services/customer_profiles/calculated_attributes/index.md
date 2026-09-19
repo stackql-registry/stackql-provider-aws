@@ -1,0 +1,284 @@
+--- 
+title: calculated_attributes
+hide_title: false
+hide_table_of_contents: false
+keywords:
+  - calculated_attributes
+  - customer_profiles
+  - aws
+  - infrastructure-as-code
+  - configuration-as-data
+  - cloud inventory
+description: Query, deploy and manage aws resources using SQL
+custom_edit_url: null
+image: /img/stackql-aws-provider-featured-image.png
+---
+
+import CopyableCode from '@site/src/components/CopyableCode/CopyableCode';
+import CodeBlock from '@theme/CodeBlock';
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+Creates, updates, deletes, gets or lists a <code>calculated_attributes</code> resource.
+
+## Overview
+<table><tbody>
+<tr><td><b>Name</b></td><td><CopyableCode code="calculated_attributes" /></td></tr>
+<tr><td><b>Type</b></td><td>Resource</td></tr>
+<tr><td><b>Id</b></td><td><CopyableCode code="aws.customer_profiles.calculated_attributes" /></td></tr>
+</tbody></table>
+
+## Fields
+
+The following fields are returned by `SELECT` queries:
+
+<Tabs
+    defaultValue="batch_get_calculated_attribute_for_profile"
+    values={[
+        { label: 'batch_get_calculated_attribute_for_profile', value: 'batch_get_calculated_attribute_for_profile' },
+        { label: 'get_calculated_attribute_for_profile', value: 'get_calculated_attribute_for_profile' },
+        { label: 'list_calculated_attributes_for_profile', value: 'list_calculated_attributes_for_profile' }
+    ]}
+>
+<TabItem value="batch_get_calculated_attribute_for_profile">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="calculated_attribute_values" /></td>
+    <td><code>array</code></td>
+    <td>List of calculated attribute values retrieved.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="condition_overrides" /></td>
+    <td><code>object</code></td>
+    <td>An object to override the original condition block of a calculated attribute.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="errors" /></td>
+    <td><code>array</code></td>
+    <td>List of errors for calculated attribute values that could not be retrieved.</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
+<TabItem value="get_calculated_attribute_for_profile">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="calculated_attribute_name" /></td>
+    <td><code>string</code></td>
+    <td>The unique name of the calculated attribute. (pattern: &lt;code&gt;^&#91;a-zA-Z_&#93;&#91;a-zA-Z_0-9-&#93;*$&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="display_name" /></td>
+    <td><code>string</code></td>
+    <td>The display name of the calculated attribute. (pattern: &lt;code&gt;^&#91;a-zA-Z_&#93;&#91;a-zA-Z_0-9-\s&#93;*$&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="is_data_partial" /></td>
+    <td><code>string</code></td>
+    <td>Indicates whether the calculated attribute’s value is based on partial data. If data is partial, it is set to true.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="last_object_timestamp" /></td>
+    <td><code>string (date-time)</code></td>
+    <td>The timestamp of the newest object included in the calculated attribute calculation.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="value" /></td>
+    <td><code>string</code></td>
+    <td>The value of the calculated attribute.</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
+<TabItem value="list_calculated_attributes_for_profile">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="items" /></td>
+    <td><code>array</code></td>
+    <td>The list of calculated attributes.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="next_token" /></td>
+    <td><code>string</code></td>
+    <td>The pagination token from the previous call to ListCalculatedAttributesForProfile.</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
+</Tabs>
+
+## Methods
+
+The following methods are available for this resource:
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Accessible by</th>
+    <th>Required Params</th>
+    <th>Optional Params</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><a href="#batch_get_calculated_attribute_for_profile"><CopyableCode code="batch_get_calculated_attribute_for_profile" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-calculated_attribute_name"><code>calculated_attribute_name</code></a>, <a href="#parameter-domain_name"><code>domain_name</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Fetch the possible attribute values given the attribute name.</td>
+</tr>
+<tr>
+    <td><a href="#get_calculated_attribute_for_profile"><CopyableCode code="get_calculated_attribute_for_profile" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-domain_name"><code>domain_name</code></a>, <a href="#parameter-profile_id"><code>profile_id</code></a>, <a href="#parameter-calculated_attribute_name"><code>calculated_attribute_name</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Retrieve a calculated attribute for a customer profile.</td>
+</tr>
+<tr>
+    <td><a href="#list_calculated_attributes_for_profile"><CopyableCode code="list_calculated_attributes_for_profile" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-domain_name"><code>domain_name</code></a>, <a href="#parameter-profile_id"><code>profile_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td><a href="#parameter-next-token"><code>next-token</code></a>, <a href="#parameter-max-results"><code>max-results</code></a></td>
+    <td>Retrieve a list of calculated attributes for a customer profile.</td>
+</tr>
+</tbody>
+</table>
+
+## Parameters
+
+Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#methods) section to see which parameters are required or optional for each operation.
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr id="parameter-calculated_attribute_name">
+    <td><CopyableCode code="calculated_attribute_name" /></td>
+    <td><code>string</code></td>
+    <td>The unique name of the calculated attribute.</td>
+</tr>
+<tr id="parameter-domain_name">
+    <td><CopyableCode code="domain_name" /></td>
+    <td><code>string</code></td>
+    <td>The unique name of the domain.</td>
+</tr>
+<tr id="parameter-profile_id">
+    <td><CopyableCode code="profile_id" /></td>
+    <td><code>string</code></td>
+    <td>The unique identifier of a customer profile.</td>
+</tr>
+<tr id="parameter-region">
+    <td><CopyableCode code="region" /></td>
+    <td><code>string</code></td>
+    <td>AWS region (default: us-east-1)</td>
+</tr>
+<tr id="parameter-max-results">
+    <td><CopyableCode code="max-results" /></td>
+    <td><code>integer</code></td>
+    <td>The maximum number of calculated attributes returned per page.</td>
+</tr>
+<tr id="parameter-next-token">
+    <td><CopyableCode code="next-token" /></td>
+    <td><code>string</code></td>
+    <td>The pagination token from the previous call to ListCalculatedAttributesForProfile.</td>
+</tr>
+</tbody>
+</table>
+
+## `SELECT` examples
+
+<Tabs
+    defaultValue="batch_get_calculated_attribute_for_profile"
+    values={[
+        { label: 'batch_get_calculated_attribute_for_profile', value: 'batch_get_calculated_attribute_for_profile' },
+        { label: 'get_calculated_attribute_for_profile', value: 'get_calculated_attribute_for_profile' },
+        { label: 'list_calculated_attributes_for_profile', value: 'list_calculated_attributes_for_profile' }
+    ]}
+>
+<TabItem value="batch_get_calculated_attribute_for_profile">
+
+Fetch the possible attribute values given the attribute name.
+
+```sql
+SELECT
+calculated_attribute_values,
+condition_overrides,
+errors
+FROM aws.customer_profiles.calculated_attributes
+WHERE calculated_attribute_name = '{{ calculated_attribute_name }}' -- required
+AND domain_name = '{{ domain_name }}' -- required
+AND region = '{{ region }}' -- required
+;
+```
+</TabItem>
+<TabItem value="get_calculated_attribute_for_profile">
+
+Retrieve a calculated attribute for a customer profile.
+
+```sql
+SELECT
+calculated_attribute_name,
+display_name,
+is_data_partial,
+last_object_timestamp,
+value
+FROM aws.customer_profiles.calculated_attributes
+WHERE domain_name = '{{ domain_name }}' -- required
+AND profile_id = '{{ profile_id }}' -- required
+AND calculated_attribute_name = '{{ calculated_attribute_name }}' -- required
+AND region = '{{ region }}' -- required
+;
+```
+</TabItem>
+<TabItem value="list_calculated_attributes_for_profile">
+
+Retrieve a list of calculated attributes for a customer profile.
+
+```sql
+SELECT
+items,
+next_token
+FROM aws.customer_profiles.calculated_attributes
+WHERE domain_name = '{{ domain_name }}' -- required
+AND profile_id = '{{ profile_id }}' -- required
+AND region = '{{ region }}' -- required
+AND `next-token` = '{{ next-token }}'
+AND `max-results` = '{{ max-results }}'
+;
+```
+</TabItem>
+</Tabs>

@@ -53,7 +53,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ActivateMessageTemplateResponse'
-      x-stackql-resource: messages
+      x-stackql-resource: message_templates
       x-stackql-method: activate_message_template
       x-stackql-verb: EXEC
   /assistants/{assistant_id}/aiagents:
@@ -802,7 +802,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreateContentResponse'
-      x-stackql-resource: contents
+      x-stackql-resource: content
       x-stackql-method: create_content
       x-stackql-verb: INSERT
     get:
@@ -1416,7 +1416,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DeactivateMessageTemplateResponse'
-      x-stackql-resource: messages
+      x-stackql-resource: message_templates
       x-stackql-method: deactivate_message_template
       x-stackql-verb: EXEC
   /assistants/{assistant_id}/aiagents/{ai_agent_id}:
@@ -1441,10 +1441,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteAIAgentResponse'
       x-stackql-resource: ai_agents
       x-stackql-method: delete_ai_agent
       x-stackql-verb: DELETE
@@ -1548,10 +1544,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteAIAgentVersionResponse'
       x-stackql-resource: ai_agent_versions
       x-stackql-method: delete_ai_agent_version
       x-stackql-verb: DELETE
@@ -1577,10 +1569,6 @@ paths:
       responses:
         '202':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteAIGuardrailResponse'
       x-stackql-resource: ai_guardrails
       x-stackql-method: delete_ai_guardrail
       x-stackql-verb: DELETE
@@ -1696,10 +1684,6 @@ paths:
       responses:
         '202':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteAIGuardrailVersionResponse'
       x-stackql-resource: ai_guardrail_versions
       x-stackql-method: delete_ai_guardrail_version
       x-stackql-verb: DELETE
@@ -1725,10 +1709,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteAIPromptResponse'
       x-stackql-resource: ai_prompts
       x-stackql-method: delete_ai_prompt
       x-stackql-verb: DELETE
@@ -1834,10 +1814,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteAIPromptVersionResponse'
       x-stackql-resource: ai_prompt_versions
       x-stackql-method: delete_ai_prompt_version
       x-stackql-verb: DELETE
@@ -1856,10 +1832,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteAssistantResponse'
       x-stackql-resource: assistants
       x-stackql-method: delete_assistant
       x-stackql-verb: DELETE
@@ -1907,10 +1879,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteAssistantAssociationResponse'
       x-stackql-resource: assistant_associations
       x-stackql-method: delete_assistant_association
       x-stackql-verb: DELETE
@@ -1963,11 +1931,7 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteContentResponse'
-      x-stackql-resource: contents
+      x-stackql-resource: content
       x-stackql-method: delete_content
       x-stackql-verb: DELETE
     get:
@@ -1994,7 +1958,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetContentResponse'
-      x-stackql-resource: contents
+      x-stackql-resource: content
       x-stackql-method: get_content
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.content
@@ -2041,7 +2005,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateContentResponse'
-      x-stackql-resource: contents
+      x-stackql-resource: content
       x-stackql-method: update_content
       x-stackql-verb: UPDATE
   /knowledgeBases/{knowledge_base_id}/contents/{content_id}/associations/{content_association_id}:
@@ -2071,10 +2035,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteContentAssociationResponse'
       x-stackql-resource: content_associations
       x-stackql-method: delete_content_association
       x-stackql-verb: DELETE
@@ -2132,10 +2092,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteImportJobResponse'
       x-stackql-resource: import_jobs
       x-stackql-method: delete_import_job
       x-stackql-verb: DELETE
@@ -2183,10 +2139,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteKnowledgeBaseResponse'
       x-stackql-resource: knowledge_bases
       x-stackql-method: delete_knowledge_base
       x-stackql-verb: DELETE
@@ -2234,10 +2186,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteMessageTemplateResponse'
       x-stackql-resource: message_templates
       x-stackql-method: delete_message_template
       x-stackql-verb: DELETE
@@ -2341,10 +2289,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteMessageTemplateAttachmentResponse'
       x-stackql-resource: message_templates
       x-stackql-method: delete_message_template_attachment
       x-stackql-verb: DELETE
@@ -2368,10 +2312,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteQuickResponseResponse'
       x-stackql-resource: quick_responses
       x-stackql-method: delete_quick_response
       x-stackql-verb: DELETE
@@ -2734,7 +2674,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartImportJobResponse'
-      x-stackql-resource: knowledge_bases
+      x-stackql-resource: import_jobs
       x-stackql-method: start_import_job
       x-stackql-verb: EXEC
   /assistants/{assistant_id}/sessions/{session_id}/messages:
@@ -2930,10 +2870,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -2956,10 +2892,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -3119,10 +3051,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RemoveAssistantAIAgentResponse'
       x-stackql-resource: ai_agents
       x-stackql-method: remove_assistant_ai_agent
       x-stackql-verb: UPDATE
@@ -3177,10 +3105,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RemoveKnowledgeBaseTemplateUriResponse'
       x-stackql-resource: knowledge_bases
       x-stackql-method: remove_knowledge_base_template_uri
       x-stackql-verb: UPDATE
@@ -3338,7 +3262,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SearchContentResponse'
-      x-stackql-resource: contents
+      x-stackql-resource: content
       x-stackql-method: search_content
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.contentSummaries
@@ -3548,7 +3472,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SendMessageResponse'
-      x-stackql-resource: assistants
+      x-stackql-resource: messages
       x-stackql-method: send_message
       x-stackql-verb: EXEC
   /knowledgeBases/{knowledge_base_id}/upload:
@@ -3584,7 +3508,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartContentUploadResponse'
-      x-stackql-resource: contents
+      x-stackql-resource: content
       x-stackql-method: start_content_upload
       x-stackql-verb: EXEC
   /knowledgeBases/{knowledge_base_id}/messageTemplates/{message_template_id}/metadata:
@@ -6864,36 +6788,6 @@ components:
       - messageTemplateArn
       - messageTemplateId
       - versionNumber
-    DeleteAIAgentResponse:
-      type: object
-    DeleteAIAgentVersionResponse:
-      type: object
-    DeleteAIGuardrailResponse:
-      type: object
-    DeleteAIGuardrailVersionResponse:
-      type: object
-    DeleteAIPromptResponse:
-      type: object
-    DeleteAIPromptVersionResponse:
-      type: object
-    DeleteAssistantResponse:
-      type: object
-    DeleteAssistantAssociationResponse:
-      type: object
-    DeleteContentResponse:
-      type: object
-    DeleteContentAssociationResponse:
-      type: object
-    DeleteImportJobResponse:
-      type: object
-    DeleteKnowledgeBaseResponse:
-      type: object
-    DeleteMessageTemplateResponse:
-      type: object
-    DeleteMessageTemplateAttachmentResponse:
-      type: object
-    DeleteQuickResponseResponse:
-      type: object
     GetAIAgentResponse:
       type: object
       properties:
@@ -9355,10 +9249,6 @@ components:
       - NOTES
       - NOTES_CHUNK
       - BLOCKED_NOTES_CHUNK
-    RemoveAssistantAIAgentResponse:
-      type: object
-    RemoveKnowledgeBaseTemplateUriResponse:
-      type: object
     RenderMessageTemplateResponse:
       type: object
       properties:
@@ -10108,14 +9998,10 @@ components:
         importJob:
           $ref: '#/components/schemas/ImportJobData'
           description: The import job.
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
         $ref: '#/components/schemas/TagKey'
-    UntagResourceResponse:
-      type: object
     UpdateAIAgentResponse:
       type: object
       properties:

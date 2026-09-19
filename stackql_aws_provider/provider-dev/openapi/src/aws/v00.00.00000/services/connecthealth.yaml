@@ -1607,6 +1607,17 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.medicalScribeListeningSessionDetails
+        start_medical_scribe_listening_session:
+          operation:
+            $ref: "#/paths/~1medical-scribe-stream~1/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/medical_scribe_listening_sessions/methods/get_medical_scribe_listening_session"

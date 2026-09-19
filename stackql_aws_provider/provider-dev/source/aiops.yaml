@@ -173,10 +173,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateInvestigationGroupOutput'
       x-stackql-resource: investigation_groups
       x-stackql-method: update_investigation_group
       x-stackql-verb: UPDATE
@@ -194,10 +190,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteInvestigationGroupPolicyOutput'
       x-stackql-resource: investigation_group_policies
       x-stackql-method: delete_investigation_group_policy
       x-stackql-verb: DELETE
@@ -311,10 +303,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -338,10 +326,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -467,8 +451,6 @@ components:
     InvestigationGroupIdentifier:
       type: string
       pattern: (?:[\-_A-Za-z0-9]{1,512}|arn:(aws|aws-us-gov|aws-cn|aws-iso|aws-iso-b):aiops:[a-zA-Z0-9-]*:[0-9]{12}:investigation-group\/[A-Za-z0-9]{16})
-    DeleteInvestigationGroupPolicyOutput:
-      type: object
     GetInvestigationGroupResponse:
       type: object
       properties:
@@ -588,13 +570,7 @@ components:
         investigationGroupArn:
           $ref: '#/components/schemas/InvestigationGroupArn'
           description: The ARN of the investigation group that will use this policy.
-    TagResourceResponse:
-      type: object
     TagKeys:
       type: array
       items:
         $ref: '#/components/schemas/TagKey'
-    UntagResourceResponse:
-      type: object
-    UpdateInvestigationGroupOutput:
-      type: object

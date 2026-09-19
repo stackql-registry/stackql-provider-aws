@@ -243,10 +243,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteGroupResponse'
       x-stackql-resource: groups
       x-stackql-method: delete_group
       x-stackql-verb: DELETE
@@ -283,10 +279,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteGroupMembershipResponse'
       x-stackql-resource: group_memberships
       x-stackql-method: delete_group_membership
       x-stackql-verb: DELETE
@@ -323,10 +315,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteUserResponse'
       x-stackql-resource: users
       x-stackql-method: delete_user
       x-stackql-verb: DELETE
@@ -753,7 +741,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListGroupMembershipsForMemberResponse'
-      x-stackql-resource: group_memberships_for_members
+      x-stackql-resource: group_memberships
       x-stackql-method: list_group_memberships_for_member
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.GroupMemberships
@@ -919,10 +907,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateGroupResponse'
       x-stackql-resource: groups
       x-stackql-method: update_group
       x-stackql-verb: UPDATE
@@ -965,10 +949,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateUserResponse'
       x-stackql-resource: users
       x-stackql-method: update_user
       x-stackql-verb: UPDATE
@@ -1221,12 +1201,6 @@ components:
       required:
       - IdentityStoreId
       - UserId
-    DeleteGroupResponse:
-      type: object
-    DeleteGroupMembershipResponse:
-      type: object
-    DeleteUserResponse:
-      type: object
     DescribeGroupResponse:
       type: object
       properties:
@@ -1809,7 +1783,3 @@ components:
             and older versions of the CLI.
       required:
       - AttributePath
-    UpdateGroupResponse:
-      type: object
-    UpdateUserResponse:
-      type: object

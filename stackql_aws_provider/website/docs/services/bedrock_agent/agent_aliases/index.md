@@ -33,11 +33,91 @@ Creates, updates, deletes, gets or lists an <code>agent_aliases</code> resource.
 The following fields are returned by `SELECT` queries:
 
 <Tabs
-    defaultValue="list_agent_aliases"
+    defaultValue="get_agent_alias"
     values={[
+        { label: 'get_agent_alias', value: 'get_agent_alias' },
         { label: 'list_agent_aliases', value: 'list_agent_aliases' }
     ]}
 >
+<TabItem value="get_agent_alias">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="agent_alias_arn" /></td>
+    <td><code>string</code></td>
+    <td>The Amazon Resource Name (ARN) of the alias of the agent. (pattern: &lt;code&gt;arn:aws:bedrock:&#91;a-z0-9-&#93;&#123;1,20&#125;:&#91;0-9&#93;&#123;12&#125;:agent-alias/&#91;0-9a-zA-Z&#93;&#123;10&#125;/&#91;0-9a-zA-Z&#93;&#123;10&#125;&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="agent_alias_history_events" /></td>
+    <td><code>array</code></td>
+    <td>Contains details about the history of the alias.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="agent_alias_id" /></td>
+    <td><code>string</code></td>
+    <td>The unique identifier of the alias of the agent. (pattern: &lt;code&gt;(\bTSTALIASID\b|&#91;0-9a-zA-Z&#93;+)&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="agent_alias_name" /></td>
+    <td><code>string</code></td>
+    <td>The name of the alias of the agent. (pattern: &lt;code&gt;(&#91;0-9a-zA-Z&#93;&#91;_-&#93;?)&#123;1,100&#125;&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="agent_alias_status" /></td>
+    <td><code>string</code></td>
+    <td>The status of the alias of the agent and whether it is ready for use. The following statuses are possible: CREATING – The agent alias is being created. PREPARED – The agent alias is finished being created or updated and is ready to be invoked. FAILED – The agent alias API operation failed. UPDATING – The agent alias is being updated. DELETING – The agent alias is being deleted. DISSOCIATED - The agent alias has no version associated with it. (CREATING, PREPARED, FAILED, UPDATING, DELETING, DISSOCIATED)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="agent_id" /></td>
+    <td><code>string</code></td>
+    <td>The unique identifier of the agent. (pattern: &lt;code&gt;&#91;0-9a-zA-Z&#93;&#123;10&#125;&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="alias_invocation_state" /></td>
+    <td><code>string</code></td>
+    <td>The invocation state for the agent alias. If the agent alias is running, the value is ACCEPT_INVOCATIONS. If the agent alias is paused, the value is REJECT_INVOCATIONS. Use the UpdateAgentAlias operation to change the invocation state. (ACCEPT_INVOCATIONS, REJECT_INVOCATIONS)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="client_token" /></td>
+    <td><code>string</code></td>
+    <td>A unique, case-sensitive identifier to ensure that the API request completes no more than one time. If this token matches a previous request, Amazon Bedrock ignores the request, but does not return an error. For more information, see Ensuring idempotency. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,256&#125;&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="created_at" /></td>
+    <td><code>string (date-time)</code></td>
+    <td>The time at which the alias of the agent was created.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="description" /></td>
+    <td><code>string</code></td>
+    <td>The description of the alias of the agent.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="failure_reasons" /></td>
+    <td><code>array</code></td>
+    <td>Information on the failure of Provisioned Throughput assigned to an agent alias.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="routing_configuration" /></td>
+    <td><code>array</code></td>
+    <td>Contains details about the routing configuration of the alias.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="updated_at" /></td>
+    <td><code>string (date-time)</code></td>
+    <td>The time at which the alias was last updated.</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
 <TabItem value="list_agent_aliases">
 
 <table>
@@ -110,11 +190,39 @@ The following methods are available for this resource:
 </thead>
 <tbody>
 <tr>
+    <td><a href="#get_agent_alias"><CopyableCode code="get_agent_alias" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-agent_id"><code>agent_id</code></a>, <a href="#parameter-agent_alias_id"><code>agent_alias_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Gets information about an alias of an agent.</td>
+</tr>
+<tr>
     <td><a href="#list_agent_aliases"><CopyableCode code="list_agent_aliases" /></a></td>
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-agent_id"><code>agent_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td></td>
     <td>Lists the aliases of an agent and information about each one.</td>
+</tr>
+<tr>
+    <td><a href="#create_agent_alias"><CopyableCode code="create_agent_alias" /></a></td>
+    <td><CopyableCode code="insert" /></td>
+    <td><a href="#parameter-agent_id"><code>agent_id</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-agentAliasName"><code>agentAliasName</code></a></td>
+    <td></td>
+    <td>Creates an alias of an agent that can be used to deploy the agent.</td>
+</tr>
+<tr>
+    <td><a href="#update_agent_alias"><CopyableCode code="update_agent_alias" /></a></td>
+    <td><CopyableCode code="update" /></td>
+    <td><a href="#parameter-agent_id"><code>agent_id</code></a>, <a href="#parameter-agent_alias_id"><code>agent_alias_id</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-agentAliasName"><code>agentAliasName</code></a></td>
+    <td></td>
+    <td>Updates configurations for an alias of an agent.</td>
+</tr>
+<tr>
+    <td><a href="#delete_agent_alias"><CopyableCode code="delete_agent_alias" /></a></td>
+    <td><CopyableCode code="delete" /></td>
+    <td><a href="#parameter-agent_id"><code>agent_id</code></a>, <a href="#parameter-agent_alias_id"><code>agent_alias_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Deletes an alias of an agent.</td>
 </tr>
 </tbody>
 </table>
@@ -132,10 +240,15 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     </tr>
 </thead>
 <tbody>
+<tr id="parameter-agent_alias_id">
+    <td><CopyableCode code="agent_alias_id" /></td>
+    <td><code>string</code></td>
+    <td>The unique identifier of the alias to delete.</td>
+</tr>
 <tr id="parameter-agent_id">
     <td><CopyableCode code="agent_id" /></td>
     <td><code>string</code></td>
-    <td>The unique identifier of the agent.</td>
+    <td>The unique identifier of the agent that the alias belongs to.</td>
 </tr>
 <tr id="parameter-region">
     <td><CopyableCode code="region" /></td>
@@ -148,11 +261,38 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 ## `SELECT` examples
 
 <Tabs
-    defaultValue="list_agent_aliases"
+    defaultValue="get_agent_alias"
     values={[
+        { label: 'get_agent_alias', value: 'get_agent_alias' },
         { label: 'list_agent_aliases', value: 'list_agent_aliases' }
     ]}
 >
+<TabItem value="get_agent_alias">
+
+Gets information about an alias of an agent.
+
+```sql
+SELECT
+agent_alias_arn,
+agent_alias_history_events,
+agent_alias_id,
+agent_alias_name,
+agent_alias_status,
+agent_id,
+alias_invocation_state,
+client_token,
+created_at,
+description,
+failure_reasons,
+routing_configuration,
+updated_at
+FROM aws.bedrock_agent.agent_aliases
+WHERE agent_id = '{{ agent_id }}' -- required
+AND agent_alias_id = '{{ agent_alias_id }}' -- required
+AND region = '{{ region }}' -- required
+;
+```
+</TabItem>
 <TabItem value="list_agent_aliases">
 
 Lists the aliases of an agent and information about each one.
@@ -170,6 +310,125 @@ updated_at
 FROM aws.bedrock_agent.agent_aliases
 WHERE agent_id = '{{ agent_id }}' -- required
 AND region = '{{ region }}' -- required
+;
+```
+</TabItem>
+</Tabs>
+
+
+## `INSERT` examples
+
+<Tabs
+    defaultValue="create_agent_alias"
+    values={[
+        { label: 'create_agent_alias', value: 'create_agent_alias' },
+        { label: 'Manifest', value: 'manifest' }
+    ]}
+>
+<TabItem value="create_agent_alias">
+
+Creates an alias of an agent that can be used to deploy the agent.
+
+```sql
+INSERT INTO aws.bedrock_agent.agent_aliases (
+agentAliasName,
+clientToken,
+description,
+routingConfiguration,
+tags,
+agent_id,
+region
+)
+SELECT 
+'{{ agentAliasName }}' /* required */,
+'{{ clientToken }}',
+'{{ description }}',
+'{{ routingConfiguration }}',
+'{{ tags }}',
+'{{ agent_id }}',
+'{{ region }}'
+RETURNING
+agent_alias
+;
+```
+</TabItem>
+<TabItem value="manifest">
+
+<CodeBlock language="yaml">{`# Description fields are for documentation purposes
+- name: agent_aliases
+  props:
+    - name: agent_id
+      value: "{{ agent_id }}"
+      description: Required parameter for the agent_aliases resource.
+    - name: region
+      value: "{{ region }}"
+      description: Required parameter for the agent_aliases resource.
+    - name: agentAliasName
+      value: "{{ agentAliasName }}"
+    - name: clientToken
+      value: "{{ clientToken }}"
+    - name: description
+      value: "{{ description }}"
+    - name: routingConfiguration
+      value:
+        - agentVersion: "{{ agentVersion }}"
+          provisionedThroughput: "{{ provisionedThroughput }}"
+    - name: tags
+      value: "{{ tags }}"
+`}</CodeBlock>
+
+</TabItem>
+</Tabs>
+
+
+## `UPDATE` examples
+
+<Tabs
+    defaultValue="update_agent_alias"
+    values={[
+        { label: 'update_agent_alias', value: 'update_agent_alias' }
+    ]}
+>
+<TabItem value="update_agent_alias">
+
+Updates configurations for an alias of an agent.
+
+```sql
+UPDATE aws.bedrock_agent.agent_aliases
+SET 
+agentAliasName = '{{ agentAliasName }}',
+description = '{{ description }}',
+routingConfiguration = '{{ routingConfiguration }}',
+aliasInvocationState = '{{ aliasInvocationState }}'
+WHERE 
+agent_id = '{{ agent_id }}' --required
+AND agent_alias_id = '{{ agent_alias_id }}' --required
+AND region = '{{ region }}' --required
+AND agentAliasName = '{{ agentAliasName }}' --required
+RETURNING
+agent_alias;
+```
+</TabItem>
+</Tabs>
+
+
+## `DELETE` examples
+
+<Tabs
+    defaultValue="delete_agent_alias"
+    values={[
+        { label: 'delete_agent_alias', value: 'delete_agent_alias' }
+    ]}
+>
+<TabItem value="delete_agent_alias">
+
+Deletes an alias of an agent.
+
+```sql
+DELETE FROM aws.bedrock_agent.agent_aliases
+WHERE agent_id = '{{ agent_id }}' --required
+AND agent_alias_id = '{{ agent_alias_id }}' --required
+AND region = '{{ region }}' --required
 ;
 ```
 </TabItem>

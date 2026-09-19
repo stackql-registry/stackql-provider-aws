@@ -99,10 +99,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteScalingPlanResponse'
       x-stackql-resource: scaling_plans
       x-stackql-method: delete_scaling_plan
       x-stackql-verb: DELETE
@@ -284,7 +280,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetScalingPlanResourceForecastDataResponse'
-      x-stackql-resource: scaling_plan_resource_forecast_datas
+      x-stackql-resource: scaling_plan_resource_forecast_data
       x-stackql-method: get_scaling_plan_resource_forecast_data
       x-stackql-verb: SELECT
   /UpdateScalingPlan:
@@ -330,10 +326,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateScalingPlanResponse'
       x-stackql-resource: scaling_plans
       x-stackql-method: update_scaling_plan
       x-stackql-verb: UPDATE
@@ -826,8 +818,6 @@ components:
     ScalingPlanVersion:
       type: integer
       format: int64
-    DeleteScalingPlanResponse:
-      type: object
     MaxResults:
       type: integer
     NextToken:
@@ -1038,5 +1028,3 @@ components:
         Value:
           $ref: '#/components/schemas/MetricScale'
           description: The value of the data point.
-    UpdateScalingPlanResponse:
-      type: object

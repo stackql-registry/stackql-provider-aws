@@ -44,20 +44,12 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/AddTagsOutputDisplay"
     post:
       operationId: POST_AddTags
       description: Adds the specified tags to the specified load balancer. Each load balancer can have a maximum of 10 tags. Each tag consists of a key and an optional value. If a tag with the same key is already associated with the load balancer, AddTags updates its value. For more information, see Tag Your Classic Load Balancer in the Classic Load Balancers Guide.
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/AddTagsOutputDisplay"
       parameters: []
       requestBody:
         content:
@@ -242,20 +234,12 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/CreateAppCookieStickinessPolicyOutputDisplay"
     post:
       operationId: POST_CreateAppCookieStickinessPolicy
       description: Generates a stickiness policy with sticky session lifetimes that follow that of an application-generated cookie. This policy can be associated only with HTTP/HTTPS listeners. This policy is similar to the policy created by CreateLBCookieStickinessPolicy, except that the lifetime of the special Elastic Load Balancing cookie, AWSELB, follows the lifetime of the application-generated cookie specified in the policy configuration. The load balancer only inserts a new stickiness cookie when the application response includes a new application cookie. If the application cookie is explicitly removed or expires, the session stops being sticky until a new application cookie is issued. For more information, see Application-Controlled Session Stickiness in the Classic Load Balancers Guide.
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/CreateAppCookieStickinessPolicyOutputDisplay"
       parameters: []
       requestBody:
         content:
@@ -296,20 +280,12 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/CreateLBCookieStickinessPolicyOutputDisplay"
     post:
       operationId: POST_CreateLBCookieStickinessPolicy
       description: Generates a stickiness policy with sticky session lifetimes controlled by the lifetime of the browser (user-agent) or a specified expiration period. This policy can be associated only with HTTP/HTTPS listeners. When a load balancer implements this policy, the load balancer uses a special cookie to track the instance for each request. When the load balancer receives a request, it first checks to see if this cookie is present in the request. If so, the load balancer sends the request to the application server specified in the cookie. If not, the load balancer sends the request to a server that is chosen based on the existing load-balancing algorithm. A cookie is inserted into the response for binding subsequent requests from the same user to that server. The validity of the cookie is based on the cookie expiration time, which is specified in the policy configuration. For more information, see Duration-Based Session Stickiness in the Classic Load Balancers Guide.
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/CreateLBCookieStickinessPolicyOutputDisplay"
       parameters: []
       requestBody:
         content:
@@ -422,20 +398,12 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/CreateLoadBalancerListenersOutputDisplay"
     post:
       operationId: POST_CreateLoadBalancerListeners
       description: Creates one or more listeners for the specified load balancer. If a listener with the specified port does not already exist, it is created; otherwise, the properties of the new listener must match the properties of the existing listener. For more information, see Listeners for Your Classic Load Balancer in the Classic Load Balancers Guide.
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/CreateLoadBalancerListenersOutputDisplay"
       parameters: []
       requestBody:
         content:
@@ -482,20 +450,12 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/CreateLoadBalancerPolicyOutputDisplay"
     post:
       operationId: POST_CreateLoadBalancerPolicy
       description: Creates a policy with the specified attributes for the specified load balancer. Policies are settings that are saved for your load balancer and that can be applied to the listener or the application server, depending on the policy type.
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/CreateLoadBalancerPolicyOutputDisplay"
       parameters: []
       requestBody:
         content:
@@ -524,20 +484,12 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/DeleteLoadBalancerOutputDisplay"
     post:
       operationId: POST_DeleteLoadBalancer
       description: Deletes the specified load balancer. If you are attempting to recreate a load balancer, you must reconfigure all settings. The DNS name associated with a deleted load balancer are no longer usable. The name and associated DNS record of the deleted load balancer no longer exist and traffic sent to any of its IP addresses is no longer delivered to your instances. If the load balancer does not exist or has already been deleted, the call to DeleteLoadBalancer still succeeds.
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/DeleteLoadBalancerOutputDisplay"
       parameters: []
       requestBody:
         content:
@@ -572,20 +524,12 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/DeleteLoadBalancerListenersOutputDisplay"
     post:
       operationId: POST_DeleteLoadBalancerListeners
       description: Deletes the specified listeners from the specified load balancer.
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/DeleteLoadBalancerListenersOutputDisplay"
       parameters: []
       requestBody:
         content:
@@ -620,20 +564,12 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/DeleteLoadBalancerPolicyOutputDisplay"
     post:
       operationId: POST_DeleteLoadBalancerPolicy
       description: Deletes the specified policy from the specified load balancer. This policy must not be enabled for any listeners.
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/DeleteLoadBalancerPolicyOutputDisplay"
       parameters: []
       requestBody:
         content:
@@ -1280,20 +1216,12 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/RemoveTagsOutputDisplay"
     post:
       operationId: POST_RemoveTags
       description: Removes one or more tags from the specified load balancer.
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/RemoveTagsOutputDisplay"
       parameters: []
       requestBody:
         content:
@@ -1334,20 +1262,12 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/SetLoadBalancerListenerSSLCertificateOutputDisplay"
     post:
       operationId: POST_SetLoadBalancerListenerSSLCertificate
       description: Sets the certificate that terminates the specified listener's SSL connections. The specified certificate replaces any prior certificate that was used on the same load balancer and port. For more information about updating your SSL certificate, see Replace the SSL Certificate for Your Load Balancer in the Classic Load Balancers Guide.
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/SetLoadBalancerListenerSSLCertificateOutputDisplay"
       parameters: []
       requestBody:
         content:
@@ -1388,20 +1308,12 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/SetLoadBalancerPoliciesForBackendServerOutputDisplay"
     post:
       operationId: POST_SetLoadBalancerPoliciesForBackendServer
       description: Replaces the set of policies associated with the specified port on which the EC2 instance is listening with a new set of policies. At this time, only the back-end server authentication policy type can be applied to the instance ports; this policy type is composed of multiple public key policies. Each time you use SetLoadBalancerPoliciesForBackendServer to enable the policies, use the PolicyNames parameter to list the policies that you want to enable. You can use DescribeLoadBalancers or DescribeLoadBalancerPolicies to verify that the policy is associated with the EC2 instance. For more information about enabling back-end instance authentication, see Configure Back-end Instance Authentication in the Classic Load Balancers Guide. For more information about Proxy Protocol, see Configure Proxy Protocol Support in the Classic Load Balancers Guide.
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/SetLoadBalancerPoliciesForBackendServerOutputDisplay"
       parameters: []
       requestBody:
         content:
@@ -1442,20 +1354,12 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/SetLoadBalancerPoliciesOfListenerOutputDisplay"
     post:
       operationId: POST_SetLoadBalancerPoliciesOfListener
       description: Replaces the current set of policies for the specified load balancer port with the specified set of policies. To enable back-end server authentication, use SetLoadBalancerPoliciesForBackendServer. For more information about setting policies, see Update the SSL Negotiation Configuration, Duration-Based Session Stickiness, and Application-Controlled Session Stickiness in the Classic Load Balancers Guide.
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/SetLoadBalancerPoliciesOfListenerOutputDisplay"
       parameters: []
       requestBody:
         content:
@@ -1539,13 +1443,6 @@ components:
       minLength: 0
       maxLength: 256
       pattern: ^([\p{L}\p{Z}\p{N}_.:/=+\-@]*)$
-    AddTagsOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: "#/components/schemas/AddTagsOutputDisplay"
     AddTagsInput:
       description: Contains the parameters for AddTags.
       type: object
@@ -1696,13 +1593,6 @@ components:
       type: string
     CookieName:
       type: string
-    CreateAppCookieStickinessPolicyOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: "#/components/schemas/CreateAppCookieStickinessPolicyOutputDisplay"
     CreateAppCookieStickinessPolicyInput:
       description: Contains the parameters for CreateAppCookieStickinessPolicy.
       type: object
@@ -1723,13 +1613,6 @@ components:
     CookieExpirationPeriod:
       type: integer
       format: int64
-    CreateLBCookieStickinessPolicyOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: "#/components/schemas/CreateLBCookieStickinessPolicyOutputDisplay"
     CreateLBCookieStickinessPolicyInput:
       description: Contains the parameters for CreateLBCookieStickinessPolicy.
       type: object
@@ -1832,16 +1715,6 @@ components:
       required:
         - LoadBalancerName
         - Listeners
-    CreateLoadBalancerListenerOutputDisplay:
-      type: object
-      properties: {}
-    CreateLoadBalancerListenersOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: "#/components/schemas/CreateLoadBalancerListenerOutputDisplay"
     CreateLoadBalancerListenerInput:
       description: Contains the parameters for CreateLoadBalancerListeners.
       type: object
@@ -1875,13 +1748,6 @@ components:
       type: string
     AttributeValue:
       type: string
-    CreateLoadBalancerPolicyOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: "#/components/schemas/CreateLoadBalancerPolicyOutputDisplay"
     CreateLoadBalancerPolicyInput:
       description: Contains the parameters for CreateLoadBalancerPolicy.
       type: object
@@ -1902,16 +1768,6 @@ components:
         - LoadBalancerName
         - PolicyName
         - PolicyTypeName
-    DeleteAccessPointOutputDisplay:
-      type: object
-      properties: {}
-    DeleteLoadBalancerOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: "#/components/schemas/DeleteAccessPointOutputDisplay"
     DeleteAccessPointInput:
       description: Contains the parameters for DeleteLoadBalancer.
       type: object
@@ -1925,16 +1781,6 @@ components:
       type: array
       items:
         $ref: "#/components/schemas/AccessPointPort"
-    DeleteLoadBalancerListenerOutputDisplay:
-      type: object
-      properties: {}
-    DeleteLoadBalancerListenersOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: "#/components/schemas/DeleteLoadBalancerListenerOutputDisplay"
     DeleteLoadBalancerListenerInput:
       description: Contains the parameters for DeleteLoadBalancerListeners.
       type: object
@@ -1948,13 +1794,6 @@ components:
       required:
         - LoadBalancerName
         - LoadBalancerPorts
-    DeleteLoadBalancerPolicyOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: "#/components/schemas/DeleteLoadBalancerPolicyOutputDisplay"
     DeleteLoadBalancerPolicyInput:
       description: Contains the parameters for DeleteLoadBalancerPolicy.
       type: object
@@ -2505,13 +2344,6 @@ components:
         Key:
           $ref: "#/components/schemas/TagKey"
           description: The name of the key.
-    RemoveTagsOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: "#/components/schemas/RemoveTagsOutputDisplay"
     RemoveTagsInput:
       description: Contains the parameters for RemoveTags.
       type: object
@@ -2525,13 +2357,6 @@ components:
       required:
         - LoadBalancerNames
         - Tags
-    SetLoadBalancerListenerSSLCertificateOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: "#/components/schemas/SetLoadBalancerListenerSSLCertificateOutputDisplay"
     SetLoadBalancerListenerSSLCertificateInput:
       description: Contains the parameters for SetLoadBalancerListenerSSLCertificate.
       type: object
@@ -2551,13 +2376,6 @@ components:
         - SSLCertificateId
     EndPointPort:
       type: integer
-    SetLoadBalancerPoliciesForBackendServerOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: "#/components/schemas/SetLoadBalancerPoliciesForBackendServerOutputDisplay"
     SetLoadBalancerPoliciesForBackendServerInput:
       description: Contains the parameters for SetLoadBalancerPoliciesForBackendServer.
       type: object
@@ -2575,13 +2393,6 @@ components:
         - LoadBalancerName
         - InstancePort
         - PolicyNames
-    SetLoadBalancerPoliciesOfListenerOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: "#/components/schemas/SetLoadBalancerPoliciesOfListenerOutputDisplay"
     SetLoadBalancerPoliciesOfListenerInput:
       description: Contains the parameters for SetLoadBalancePoliciesOfListener.
       type: object
@@ -2610,13 +2421,6 @@ components:
             $ref: "#/paths/~1?Action=AddTags&Version=2012-06-01/get"
           response:
             openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/AddTagsOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
           request:
             nativeCasing: pascal
           config:
@@ -2648,13 +2452,6 @@ components:
             $ref: "#/paths/~1?Action=RemoveTags&Version=2012-06-01/get"
           response:
             openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/RemoveTagsOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
           config:
             queryParamTranspose:
               algorithm: AWSCanonical
@@ -2730,13 +2527,6 @@ components:
             $ref: "#/paths/~1?Action=CreateAppCookieStickinessPolicy&Version=2012-06-01/get"
           response:
             openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/CreateAppCookieStickinessPolicyOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
           request:
             nativeCasing: pascal
           config:
@@ -2749,13 +2539,6 @@ components:
             $ref: "#/paths/~1?Action=CreateLBCookieStickinessPolicy&Version=2012-06-01/get"
           response:
             openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/CreateLBCookieStickinessPolicyOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
           request:
             nativeCasing: pascal
           config:
@@ -2787,13 +2570,6 @@ components:
             $ref: "#/paths/~1?Action=CreateLoadBalancerListeners&Version=2012-06-01/get"
           response:
             openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/CreateLoadBalancerListenersOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
           config:
             queryParamTranspose:
               algorithm: AWSCanonical
@@ -2804,13 +2580,6 @@ components:
             $ref: "#/paths/~1?Action=DeleteLoadBalancer&Version=2012-06-01/get"
           response:
             openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/DeleteLoadBalancerOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
           request:
             nativeCasing: pascal
           config:
@@ -2823,13 +2592,6 @@ components:
             $ref: "#/paths/~1?Action=DeleteLoadBalancerListeners&Version=2012-06-01/get"
           response:
             openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/DeleteLoadBalancerListenersOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
           request:
             nativeCasing: pascal
           config:
@@ -2948,13 +2710,6 @@ components:
             $ref: "#/paths/~1?Action=SetLoadBalancerListenerSSLCertificate&Version=2012-06-01/get"
           response:
             openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/SetLoadBalancerListenerSSLCertificateOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
           request:
             nativeCasing: pascal
           config:
@@ -2966,9 +2721,9 @@ components:
         select:
           - $ref: "#/components/x-stackQL-resources/load_balancers/methods/describe_load_balancers"
         insert:
+          - $ref: "#/components/x-stackQL-resources/load_balancers/methods/create_load_balancer"
           - $ref: "#/components/x-stackQL-resources/load_balancers/methods/create_app_cookie_stickiness_policy"
           - $ref: "#/components/x-stackQL-resources/load_balancers/methods/create_lb_cookie_stickiness_policy"
-          - $ref: "#/components/x-stackQL-resources/load_balancers/methods/create_load_balancer"
           - $ref: "#/components/x-stackQL-resources/load_balancers/methods/register_instances_with_load_balancer"
         update:
           - $ref: "#/components/x-stackQL-resources/load_balancers/methods/set_load_balancer_listener_ssl_certificate"
@@ -2986,13 +2741,6 @@ components:
             $ref: "#/paths/~1?Action=CreateLoadBalancerPolicy&Version=2012-06-01/get"
           response:
             openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/CreateLoadBalancerPolicyOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
           request:
             nativeCasing: pascal
           config:
@@ -3005,13 +2753,6 @@ components:
             $ref: "#/paths/~1?Action=DeleteLoadBalancerPolicy&Version=2012-06-01/get"
           response:
             openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/DeleteLoadBalancerPolicyOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
           request:
             nativeCasing: pascal
           config:
@@ -3043,13 +2784,6 @@ components:
             $ref: "#/paths/~1?Action=SetLoadBalancerPoliciesForBackendServer&Version=2012-06-01/get"
           response:
             openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/SetLoadBalancerPoliciesForBackendServerOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
           request:
             nativeCasing: pascal
           config:
@@ -3062,13 +2796,6 @@ components:
             $ref: "#/paths/~1?Action=SetLoadBalancerPoliciesOfListener&Version=2012-06-01/get"
           response:
             openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/SetLoadBalancerPoliciesOfListenerOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
           request:
             nativeCasing: pascal
           config:

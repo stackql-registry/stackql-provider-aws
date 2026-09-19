@@ -65,10 +65,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApprovePlanExecutionStepResponse'
       x-stackql-resource: plan_executions
       x-stackql-method: approve_plan_execution_step
       x-stackql-verb: EXEC
@@ -110,11 +106,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CancelPlanExecutionResponse'
-      x-stackql-resource: plans
+      x-stackql-resource: plan_executions
       x-stackql-method: cancel_plan_execution
       x-stackql-verb: EXEC
   /CreatePlan:
@@ -225,10 +217,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeletePlanResponse'
       x-stackql-resource: plans
       x-stackql-method: delete_plan
       x-stackql-verb: DELETE
@@ -311,7 +299,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetPlanEvaluationStatusResponse'
-      x-stackql-resource: plan_evaluation_status
+      x-stackql-resource: plan_evaluation_statuses
       x-stackql-method: get_plan_evaluation_status
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.warnings
@@ -814,7 +802,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartPlanExecutionResponse'
-      x-stackql-resource: plans
+      x-stackql-resource: plan_executions
       x-stackql-method: start_plan_execution
       x-stackql-verb: EXEC
   /TagResource:
@@ -851,10 +839,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -891,10 +875,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -1000,10 +980,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdatePlanExecutionResponse'
       x-stackql-resource: plan_executions
       x-stackql-method: update_plan_execution
       x-stackql-verb: UPDATE
@@ -1053,10 +1029,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdatePlanExecutionStepResponse'
       x-stackql-resource: plan_executions
       x-stackql-method: update_plan_execution_step
       x-stackql-verb: UPDATE
@@ -1121,10 +1093,6 @@ components:
       type: string
       minLength: 0
       maxLength: 1024
-    ApprovePlanExecutionStepResponse:
-      type: object
-    CancelPlanExecutionResponse:
-      type: object
     String:
       type: string
     WorkflowList:
@@ -1230,6 +1198,9 @@ components:
         neptuneGlobalDatabaseConfig:
           $ref: '#/components/schemas/NeptuneGlobalDatabaseConfiguration'
           description: A Neptune global database execution block.
+        rdsSwitchoverReadReplicaConfig:
+          $ref: '#/components/schemas/RdsSwitchoverReadReplicaConfiguration'
+          description: An Amazon RDS switchover read replica execution block.
     CustomActionLambdaConfiguration:
       description: Configuration for Amazon Web Services Lambda functions that perform custom actions during a Region switch.
       type: object
@@ -1966,6 +1937,45 @@ components:
       minLength: 1
       maxLength: 63
       pattern: '[A-Za-z][0-9A-Za-z-]*'
+    RdsSwitchoverReadReplicaConfiguration:
+      description: Configuration for switching over an Amazon RDS read replica to become the new primary database instance
+        during a Region switch.
+      type: object
+      properties:
+        timeoutMinutes:
+          $ref: '#/components/schemas/RdsSwitchoverReadReplicaConfigurationTimeoutMinutesInteger'
+          description: The timeout value specified for the configuration.
+        crossAccountRole:
+          $ref: '#/components/schemas/IamRoleArn'
+          description: The cross-account role for the configuration.
+        externalId:
+          $ref: '#/components/schemas/String'
+          description: The external ID (secret key) for the configuration.
+        dbInstanceArnMap:
+          type: object
+          properties: {}
+          description: A map of database instance ARNs for each Region in the plan.
+        ungraceful:
+          $ref: '#/components/schemas/RdsUngraceful'
+          description: The ungraceful execution settings for the configuration.
+      required:
+      - dbInstanceArnMap
+    RdsSwitchoverReadReplicaConfigurationTimeoutMinutesInteger:
+      type: integer
+      minimum: 1
+    RdsUngraceful:
+      description: The ungraceful execution settings for an Amazon RDS switchover read replica execution block.
+      type: object
+      properties:
+        ungraceful:
+          $ref: '#/components/schemas/RdsUngracefulBehavior'
+          description: The ungraceful behavior to perform if switching to ungraceful execution.
+    RdsUngracefulBehavior:
+      description: The ungraceful behavior for an Amazon RDS switchover read replica, that is, promote the read replica to
+        a standalone primary.
+      type: string
+      enum:
+      - promoteReadReplica
     ExecutionBlockType:
       type: string
       enum:
@@ -1986,6 +1996,7 @@ components:
       - AuroraServerlessScaling
       - AuroraProvisionedScaling
       - NeptuneGlobalDatabase
+      - RdsSwitchoverReadReplica
     WorkflowTargetAction:
       type: string
       enum:
@@ -2178,8 +2189,6 @@ components:
     Timestamp:
       type: string
       format: date-time
-    DeletePlanResponse:
-      type: object
     GetPlanResponse:
       type: object
       properties:
@@ -2807,8 +2816,6 @@ components:
         deactivateRegion:
           $ref: '#/components/schemas/String'
           description: The Amazon Web Services Region to deactivate.
-    TagResourceResponse:
-      type: object
     TagKeys:
       type: array
       items:
@@ -2817,8 +2824,6 @@ components:
       type: string
       minLength: 1
       maxLength: 128
-    UntagResourceResponse:
-      type: object
     UpdatePlanRequestRecoveryTimeObjectiveMinutesInteger:
       type: integer
       minimum: 1
@@ -2836,12 +2841,8 @@ components:
       - switchToUngraceful
       - pause
       - resume
-    UpdatePlanExecutionResponse:
-      type: object
     UpdatePlanExecutionStepAction:
       type: string
       enum:
       - switchToUngraceful
       - skip
-    UpdatePlanExecutionStepResponse:
-      type: object

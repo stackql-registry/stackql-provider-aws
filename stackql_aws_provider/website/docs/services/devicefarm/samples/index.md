@@ -89,7 +89,7 @@ The following methods are available for this resource:
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>Gets information about samples, given an AWS Device Farm job ARN.</td>
+    <td>Gets information about samples, given an AWS Device Farm job ARN. Device Farm does not support performance data samples during test executions.</td>
 </tr>
 </tbody>
 </table>
@@ -125,7 +125,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 >
 <TabItem value="list_samples">
 
-Gets information about samples, given an AWS Device Farm job ARN.
+Gets information about samples, given an AWS Device Farm job ARN. Device Farm does not support performance data samples during test executions.
 
 ```sql
 SELECT

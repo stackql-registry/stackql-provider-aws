@@ -33,11 +33,36 @@ Creates, updates, deletes, gets or lists an <code>aliases</code> resource.
 The following fields are returned by `SELECT` queries:
 
 <Tabs
-    defaultValue="list_aliases"
+    defaultValue="get_alias"
     values={[
+        { label: 'get_alias', value: 'get_alias' },
         { label: 'list_aliases', value: 'list_aliases' }
     ]}
 >
+<TabItem value="get_alias">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="alias_name" /></td>
+    <td><code>string</code></td>
+    <td>A friendly name that you can use to refer to a key. The value must begin with alias/. Do not include confidential or sensitive information in this field. This field may be displayed in plaintext in CloudTrail logs and other output. (pattern: &lt;code&gt;alias/&#91;a-zA-Z0-9/_-&#93;+&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="key_arn" /></td>
+    <td><code>string</code></td>
+    <td>The KeyARN of the key associated with the alias. (pattern: &lt;code&gt;arn:aws:payment-cryptography:&#91;a-z&#93;&#123;2&#125;-&#91;a-z&#93;&#123;1,16&#125;-&#91;0-9&#93;+:&#91;0-9&#93;&#123;12&#125;:key/&#91;0-9a-zA-Z&#93;&#123;16,64&#125;&lt;/code&gt;)</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
 <TabItem value="list_aliases">
 
 <table>
@@ -80,11 +105,39 @@ The following methods are available for this resource:
 </thead>
 <tbody>
 <tr>
+    <td><a href="#get_alias"><CopyableCode code="get_alias" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Gets the Amazon Web Services Payment Cryptography key associated with the alias. Cross-account use: This operation can't be used across different Amazon Web Services accounts. Related operations: CreateAlias DeleteAlias ListAliases UpdateAlias</td>
+</tr>
+<tr>
     <td><a href="#list_aliases"><CopyableCode code="list_aliases" /></a></td>
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td></td>
     <td>Lists the aliases for all keys in the caller's Amazon Web Services account and Amazon Web Services Region. You can filter the aliases by keyARN. For more information, see Using aliases in the Amazon Web Services Payment Cryptography User Guide. This is a paginated operation, which means that each response might contain only a subset of all the aliases. When the response contains only a subset of aliases, it includes a NextToken value. Use this value in a subsequent ListAliases request to get more aliases. When you receive a response with no NextToken (or an empty or null value), that means there are no more aliases to get. Cross-account use: This operation can't be used across different Amazon Web Services accounts. Related operations: CreateAlias DeleteAlias GetAlias UpdateAlias</td>
+</tr>
+<tr>
+    <td><a href="#create_alias"><CopyableCode code="create_alias" /></a></td>
+    <td><CopyableCode code="insert" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-AliasName"><code>AliasName</code></a></td>
+    <td></td>
+    <td>Creates an alias, or a friendly name, for an Amazon Web Services Payment Cryptography key. You can use an alias to identify a key in the console and when you call cryptographic operations such as EncryptData or DecryptData. You can associate the alias with any key in the same Amazon Web Services Region. Each alias is associated with only one key at a time, but a key can have multiple aliases. You can't create an alias without a key. The alias must be unique in the account and Amazon Web Services Region, but you can create another alias with the same name in a different Amazon Web Services Region. To change the key that's associated with the alias, call UpdateAlias. To delete the alias, call DeleteAlias. These operations don't affect the underlying key. To get the alias that you created, call ListAliases. Cross-account use: This operation can't be used across different Amazon Web Services accounts. Related operations: DeleteAlias GetAlias ListAliases UpdateAlias</td>
+</tr>
+<tr>
+    <td><a href="#update_alias"><CopyableCode code="update_alias" /></a></td>
+    <td><CopyableCode code="update" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-AliasName"><code>AliasName</code></a></td>
+    <td></td>
+    <td>Associates an existing Amazon Web Services Payment Cryptography alias with a different key. Each alias is associated with only one Amazon Web Services Payment Cryptography key at a time, although a key can have multiple aliases. The alias and the Amazon Web Services Payment Cryptography key must be in the same Amazon Web Services account and Amazon Web Services Region Cross-account use: This operation can't be used across different Amazon Web Services accounts. Related operations: CreateAlias DeleteAlias GetAlias ListAliases</td>
+</tr>
+<tr>
+    <td><a href="#delete_alias"><CopyableCode code="delete_alias" /></a></td>
+    <td><CopyableCode code="delete" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Deletes the alias, but doesn't affect the underlying key. Each key can have multiple aliases. To get the aliases of all keys, use the UpdateAlias operation. To change the alias of a key, first use DeleteAlias to delete the current alias and then use CreateAlias to create a new alias. To associate an existing alias with a different key, call UpdateAlias. Cross-account use: This operation can't be used across different Amazon Web Services accounts. Related operations: CreateAlias GetAlias ListAliases UpdateAlias</td>
 </tr>
 </tbody>
 </table>
@@ -113,11 +166,25 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 ## `SELECT` examples
 
 <Tabs
-    defaultValue="list_aliases"
+    defaultValue="get_alias"
     values={[
+        { label: 'get_alias', value: 'get_alias' },
         { label: 'list_aliases', value: 'list_aliases' }
     ]}
 >
+<TabItem value="get_alias">
+
+Gets the Amazon Web Services Payment Cryptography key associated with the alias. Cross-account use: This operation can't be used across different Amazon Web Services accounts. Related operations: CreateAlias DeleteAlias ListAliases UpdateAlias
+
+```sql
+SELECT
+alias_name,
+key_arn
+FROM aws.payment_cryptography.aliases
+WHERE region = '{{ region }}' -- required
+;
+```
+</TabItem>
 <TabItem value="list_aliases">
 
 Lists the aliases for all keys in the caller's Amazon Web Services account and Amazon Web Services Region. You can filter the aliases by keyARN. For more information, see Using aliases in the Amazon Web Services Payment Cryptography User Guide. This is a paginated operation, which means that each response might contain only a subset of all the aliases. When the response contains only a subset of aliases, it includes a NextToken value. Use this value in a subsequent ListAliases request to get more aliases. When you receive a response with no NextToken (or an empty or null value), that means there are no more aliases to get. Cross-account use: This operation can't be used across different Amazon Web Services accounts. Related operations: CreateAlias DeleteAlias GetAlias UpdateAlias
@@ -128,6 +195,104 @@ alias_name,
 key_arn
 FROM aws.payment_cryptography.aliases
 WHERE region = '{{ region }}' -- required
+;
+```
+</TabItem>
+</Tabs>
+
+
+## `INSERT` examples
+
+<Tabs
+    defaultValue="create_alias"
+    values={[
+        { label: 'create_alias', value: 'create_alias' },
+        { label: 'Manifest', value: 'manifest' }
+    ]}
+>
+<TabItem value="create_alias">
+
+Creates an alias, or a friendly name, for an Amazon Web Services Payment Cryptography key. You can use an alias to identify a key in the console and when you call cryptographic operations such as EncryptData or DecryptData. You can associate the alias with any key in the same Amazon Web Services Region. Each alias is associated with only one key at a time, but a key can have multiple aliases. You can't create an alias without a key. The alias must be unique in the account and Amazon Web Services Region, but you can create another alias with the same name in a different Amazon Web Services Region. To change the key that's associated with the alias, call UpdateAlias. To delete the alias, call DeleteAlias. These operations don't affect the underlying key. To get the alias that you created, call ListAliases. Cross-account use: This operation can't be used across different Amazon Web Services accounts. Related operations: DeleteAlias GetAlias ListAliases UpdateAlias
+
+```sql
+INSERT INTO aws.payment_cryptography.aliases (
+AliasName,
+KeyArn,
+region
+)
+SELECT 
+'{{ AliasName }}' /* required */,
+'{{ KeyArn }}',
+'{{ region }}'
+RETURNING
+alias
+;
+```
+</TabItem>
+<TabItem value="manifest">
+
+<CodeBlock language="yaml">{`# Description fields are for documentation purposes
+- name: aliases
+  props:
+    - name: region
+      value: "{{ region }}"
+      description: Required parameter for the aliases resource.
+    - name: AliasName
+      value: "{{ AliasName }}"
+      description: |
+        A friendly name that you can use to refer to a key. An alias must begin with alias/ followed by a name, for example alias/ExampleAlias. It can contain only alphanumeric characters, forward slashes (/), underscores (_), and dashes (-). Don't include personal, confidential or sensitive information in this field. This field may be displayed in plaintext in CloudTrail logs and other output.
+    - name: KeyArn
+      value: "{{ KeyArn }}"
+      description: |
+        The KeyARN of the key to associate with the alias.
+`}</CodeBlock>
+
+</TabItem>
+</Tabs>
+
+
+## `UPDATE` examples
+
+<Tabs
+    defaultValue="update_alias"
+    values={[
+        { label: 'update_alias', value: 'update_alias' }
+    ]}
+>
+<TabItem value="update_alias">
+
+Associates an existing Amazon Web Services Payment Cryptography alias with a different key. Each alias is associated with only one Amazon Web Services Payment Cryptography key at a time, although a key can have multiple aliases. The alias and the Amazon Web Services Payment Cryptography key must be in the same Amazon Web Services account and Amazon Web Services Region Cross-account use: This operation can't be used across different Amazon Web Services accounts. Related operations: CreateAlias DeleteAlias GetAlias ListAliases
+
+```sql
+UPDATE aws.payment_cryptography.aliases
+SET 
+AliasName = '{{ AliasName }}',
+KeyArn = '{{ KeyArn }}'
+WHERE 
+region = '{{ region }}' --required
+AND AliasName = '{{ AliasName }}' --required
+RETURNING
+alias;
+```
+</TabItem>
+</Tabs>
+
+
+## `DELETE` examples
+
+<Tabs
+    defaultValue="delete_alias"
+    values={[
+        { label: 'delete_alias', value: 'delete_alias' }
+    ]}
+>
+<TabItem value="delete_alias">
+
+Deletes the alias, but doesn't affect the underlying key. Each key can have multiple aliases. To get the aliases of all keys, use the UpdateAlias operation. To change the alias of a key, first use DeleteAlias to delete the current alias and then use CreateAlias to create a new alias. To associate an existing alias with a different key, call UpdateAlias. Cross-account use: This operation can't be used across different Amazon Web Services accounts. Related operations: CreateAlias GetAlias ListAliases UpdateAlias
+
+```sql
+DELETE FROM aws.payment_cryptography.aliases
+WHERE region = '{{ region }}' --required
 ;
 ```
 </TabItem>

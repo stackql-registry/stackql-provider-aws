@@ -168,6 +168,13 @@ The following methods are available for this resource:
     <td></td>
     <td>Returns a list of media analysis jobs. Results are sorted by CreationTimestamp in descending order.</td>
 </tr>
+<tr>
+    <td><a href="#start_media_analysis_job"><CopyableCode code="start_media_analysis_job" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-OperationsConfig"><code>OperationsConfig</code></a>, <a href="#parameter-OutputConfig"><code>OutputConfig</code></a></td>
+    <td></td>
+    <td>Initiates a new media analysis job. Accepts a manifest file in an Amazon S3 bucket. The output is a manifest file and a summary of the manifest stored in the Amazon S3 bucket.</td>
+</tr>
 </tbody>
 </table>
 
@@ -234,6 +241,36 @@ media_analysis_jobs,
 next_token
 FROM aws.rekognition.media_analysis_jobs
 WHERE region = '{{ region }}' -- required
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="start_media_analysis_job"
+    values={[
+        { label: 'start_media_analysis_job', value: 'start_media_analysis_job' }
+    ]}
+>
+<TabItem value="start_media_analysis_job">
+
+Initiates a new media analysis job. Accepts a manifest file in an Amazon S3 bucket. The output is a manifest file and a summary of the manifest stored in the Amazon S3 bucket.
+
+```sql
+EXEC aws.rekognition.media_analysis_jobs.start_media_analysis_job 
+@region='{{ region }}' --required 
+@@json=
+'{
+"ClientRequestToken": "{{ ClientRequestToken }}", 
+"JobName": "{{ JobName }}", 
+"OperationsConfig": "{{ OperationsConfig }}", 
+"Input": "{{ Input }}", 
+"OutputConfig": "{{ OutputConfig }}", 
+"KmsKeyId": "{{ KmsKeyId }}"
+}'
 ;
 ```
 </TabItem>

@@ -18,7 +18,7 @@ sesv2 service documentation.
 
 :::info[Service Summary]
 
-total resources: __29__  
+total resources: __34__  
 
 :::
 
@@ -27,11 +27,13 @@ total resources: __29__
 <div class="providerDocColumn">
 <a href="/services/sesv2/accounts/">accounts</a><br />
 <a href="/services/sesv2/blacklist_reports/">blacklist_reports</a><br />
+<a href="/services/sesv2/bulk_emails/">bulk_emails</a><br />
 <a href="/services/sesv2/configuration_set_event_destinations/">configuration_set_event_destinations</a><br />
 <a href="/services/sesv2/configuration_sets/">configuration_sets</a><br />
 <a href="/services/sesv2/contact_lists/">contact_lists</a><br />
 <a href="/services/sesv2/contacts/">contacts</a><br />
 <a href="/services/sesv2/custom_verification_email_templates/">custom_verification_email_templates</a><br />
+<a href="/services/sesv2/custom_verification_emails/">custom_verification_emails</a><br />
 <a href="/services/sesv2/dedicated_ip_pools/">dedicated_ip_pools</a><br />
 <a href="/services/sesv2/dedicated_ips/">dedicated_ips</a><br />
 <a href="/services/sesv2/deliverability_dashboard_options/">deliverability_dashboard_options</a><br />
@@ -42,14 +44,17 @@ total resources: __29__
 <a href="/services/sesv2/email_identities/">email_identities</a>
 </div>
 <div class="providerDocColumn">
+<a href="/services/sesv2/email_identity_certificates/">email_identity_certificates</a><br />
 <a href="/services/sesv2/email_identity_policies/">email_identity_policies</a><br />
 <a href="/services/sesv2/email_templates/">email_templates</a><br />
+<a href="/services/sesv2/emails/">emails</a><br />
 <a href="/services/sesv2/export_jobs/">export_jobs</a><br />
 <a href="/services/sesv2/import_jobs/">import_jobs</a><br />
 <a href="/services/sesv2/message_insights/">message_insights</a><br />
-<a href="/services/sesv2/metric_datas/">metric_datas</a><br />
+<a href="/services/sesv2/metric_data/">metric_data</a><br />
 <a href="/services/sesv2/multi_region_endpoints/">multi_region_endpoints</a><br />
 <a href="/services/sesv2/recommendations/">recommendations</a><br />
+<a href="/services/sesv2/render_email_templates/">render_email_templates</a><br />
 <a href="/services/sesv2/reputation_entities/">reputation_entities</a><br />
 <a href="/services/sesv2/resource_tenants/">resource_tenants</a><br />
 <a href="/services/sesv2/suppressed_destinations/">suppressed_destinations</a><br />

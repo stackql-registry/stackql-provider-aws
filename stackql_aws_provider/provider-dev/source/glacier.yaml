@@ -53,7 +53,7 @@ paths:
       responses:
         '204':
           description: Success
-      x-stackql-resource: vaults
+      x-stackql-resource: multipart_uploads
       x-stackql-method: abort_multipart_upload
       x-stackql-verb: EXEC
     post:
@@ -124,7 +124,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ArchiveCreationOutput'
-      x-stackql-resource: vaults
+      x-stackql-resource: multipart_uploads
       x-stackql-method: complete_multipart_upload
       x-stackql-verb: EXEC
     get:
@@ -266,7 +266,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UploadMultipartPartOutput'
-      x-stackql-resource: vaults
+      x-stackql-resource: parts
       x-stackql-method: upload_multipart_part
       x-stackql-verb: EXEC
   /{account_id}/vaults/{vault_name}/lock-policy:
@@ -299,7 +299,7 @@ paths:
       responses:
         '204':
           description: Success
-      x-stackql-resource: vaults
+      x-stackql-resource: vault_locks
       x-stackql-method: abort_vault_lock
       x-stackql-verb: EXEC
     get:
@@ -385,7 +385,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/InitiateVaultLockOutput'
-      x-stackql-resource: vaults
+      x-stackql-resource: vault_locks
       x-stackql-method: initiate_vault_lock
       x-stackql-verb: EXEC
   /{account_id}/vaults/{vault_name}/tags?operation=add:
@@ -462,7 +462,7 @@ paths:
       responses:
         '204':
           description: Success
-      x-stackql-resource: vaults
+      x-stackql-resource: vault_locks
       x-stackql-method: complete_vault_lock
       x-stackql-verb: EXEC
   /{account_id}/vaults/{vault_name}:
@@ -1050,7 +1050,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/InitiateJobOutput'
-      x-stackql-resource: vaults
+      x-stackql-resource: jobs
       x-stackql-method: initiate_job
       x-stackql-verb: EXEC
     get:
@@ -1186,7 +1186,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/InitiateMultipartUploadOutput'
-      x-stackql-resource: vaults
+      x-stackql-resource: multipart_uploads
       x-stackql-method: initiate_multipart_upload
       x-stackql-verb: EXEC
     get:
@@ -1293,7 +1293,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PurchaseProvisionedCapacityOutput'
-      x-stackql-resource: purchase_provisioned_capacity
+      x-stackql-resource: provisioned_capacities
       x-stackql-method: purchase_provisioned_capacity
       x-stackql-verb: EXEC
   /{account_id}/vaults/{vault_name}/tags:

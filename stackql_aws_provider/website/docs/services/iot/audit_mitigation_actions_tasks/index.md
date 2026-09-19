@@ -148,6 +148,20 @@ The following methods are available for this resource:
     <td></td>
     <td>Gets information about an audit mitigation task that is used to apply mitigation actions to a set of audit findings. Properties include the actions being applied, the audit checks to which they're being applied, the task status, and aggregated task statistics.</td>
 </tr>
+<tr>
+    <td><a href="#cancel_audit_mitigation_actions_task"><CopyableCode code="cancel_audit_mitigation_actions_task" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-task_id"><code>task_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Cancels a mitigation action task that is in progress. If the task is not in progress, an InvalidRequestException occurs. Requires permission to access the CancelAuditMitigationActionsTask action.</td>
+</tr>
+<tr>
+    <td><a href="#start_audit_mitigation_actions_task"><CopyableCode code="start_audit_mitigation_actions_task" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-task_id"><code>task_id</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-target"><code>target</code></a>, <a href="#parameter-auditCheckToActionsMapping"><code>auditCheckToActionsMapping</code></a>, <a href="#parameter-clientRequestToken"><code>clientRequestToken</code></a></td>
+    <td></td>
+    <td>Starts a task that applies a set of mitigation actions to the specified target. Requires permission to access the StartAuditMitigationActionsTask action.</td>
+</tr>
 </tbody>
 </table>
 
@@ -182,7 +196,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-task_id">
     <td><CopyableCode code="task_id" /></td>
     <td><code>string</code></td>
-    <td>The unique identifier for the audit mitigation task.</td>
+    <td>A unique identifier for the task. You can use this identifier to check the status of the task or to cancel it.</td>
 </tr>
 <tr id="parameter-auditTaskId">
     <td><CopyableCode code="auditTaskId" /></td>
@@ -258,6 +272,46 @@ task_status
 FROM aws.iot.audit_mitigation_actions_tasks
 WHERE task_id = '{{ task_id }}' -- required
 AND region = '{{ region }}' -- required
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="cancel_audit_mitigation_actions_task"
+    values={[
+        { label: 'cancel_audit_mitigation_actions_task', value: 'cancel_audit_mitigation_actions_task' },
+        { label: 'start_audit_mitigation_actions_task', value: 'start_audit_mitigation_actions_task' }
+    ]}
+>
+<TabItem value="cancel_audit_mitigation_actions_task">
+
+Cancels a mitigation action task that is in progress. If the task is not in progress, an InvalidRequestException occurs. Requires permission to access the CancelAuditMitigationActionsTask action.
+
+```sql
+EXEC aws.iot.audit_mitigation_actions_tasks.cancel_audit_mitigation_actions_task 
+@task_id='{{ task_id }}' --required, 
+@region='{{ region }}' --required
+;
+```
+</TabItem>
+<TabItem value="start_audit_mitigation_actions_task">
+
+Starts a task that applies a set of mitigation actions to the specified target. Requires permission to access the StartAuditMitigationActionsTask action.
+
+```sql
+EXEC aws.iot.audit_mitigation_actions_tasks.start_audit_mitigation_actions_task 
+@task_id='{{ task_id }}' --required, 
+@region='{{ region }}' --required 
+@@json=
+'{
+"target": "{{ target }}", 
+"auditCheckToActionsMapping": "{{ auditCheckToActionsMapping }}", 
+"clientRequestToken": "{{ clientRequestToken }}"
+}'
 ;
 ```
 </TabItem>

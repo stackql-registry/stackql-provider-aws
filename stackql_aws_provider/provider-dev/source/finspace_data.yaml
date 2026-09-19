@@ -943,7 +943,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListPermissionGroupsByUserResponse'
-      x-stackql-resource: permission_groups_by_users
+      x-stackql-resource: permission_groups
       x-stackql-method: list_permission_groups_by_user
       x-stackql-verb: SELECT
   /permission-group/{permission_group_id}/users:
@@ -976,7 +976,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListUsersByPermissionGroupResponse'
-      x-stackql-resource: users_by_permission_groups
+      x-stackql-resource: users
       x-stackql-method: list_users_by_permission_group
       x-stackql-verb: SELECT
   /user/{user_id}/password:

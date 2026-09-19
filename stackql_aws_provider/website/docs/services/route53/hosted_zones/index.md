@@ -36,6 +36,7 @@ The following fields are returned by `SELECT` queries:
     defaultValue="get_hosted_zone"
     values={[
         { label: 'get_hosted_zone', value: 'get_hosted_zone' },
+        { label: 'list_hosted_zones_by_vpc', value: 'list_hosted_zones_by_vpc' },
         { label: 'list_hosted_zones', value: 'list_hosted_zones' }
     ]}
 >
@@ -84,6 +85,35 @@ The following fields are returned by `SELECT` queries:
     <td><CopyableCode code="resource_record_set_count" /></td>
     <td><code>integer</code></td>
     <td>The number of resource record sets in the hosted zone.</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
+<TabItem value="list_hosted_zones_by_vpc">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="hosted_zone_id" /></td>
+    <td><code>string</code></td>
+    <td>The Route 53 hosted zone ID of a private hosted zone that the specified VPC is associated with.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="name" /></td>
+    <td><code>string</code></td>
+    <td>The name of the private hosted zone, such as example.com.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="owner" /></td>
+    <td><code>string</code></td>
+    <td>The owner of a private hosted zone that the specified VPC is associated with. The owner can be either an Amazon Web Services account or an Amazon Web Services service.</td>
 </tr>
 </tbody>
 </table>
@@ -162,6 +192,13 @@ The following methods are available for this resource:
     <td>Gets information about a specified hosted zone including the four name servers assigned to the hosted zone. returns the VPCs associated with the specified hosted zone and does not reflect the VPC associations by Route 53 Profiles. To get the associations to a Profile, call the ListProfileAssociations API.</td>
 </tr>
 <tr>
+    <td><a href="#list_hosted_zones_by_vpc"><CopyableCode code="list_hosted_zones_by_vpc" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-vpcid"><code>vpcid</code></a>, <a href="#parameter-vpcregion"><code>vpcregion</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td><a href="#parameter-maxitems"><code>maxitems</code></a>, <a href="#parameter-nexttoken"><code>nexttoken</code></a></td>
+    <td>Lists all the private hosted zones that a specified VPC is associated with, regardless of which Amazon Web Services account or Amazon Web Services service owns the hosted zones. The HostedZoneOwner structure in the response contains one of the following values: An OwningAccount element, which contains the account number of either the current Amazon Web Services account or another Amazon Web Services account. Some services, such as Cloud Map, create hosted zones using the current account. An OwningService element, which identifies the Amazon Web Services service that created and owns the hosted zone. For example, if a hosted zone was created by Amazon Elastic File System (Amazon EFS), the value of Owner is efs.amazonaws.com. ListHostedZonesByVPC returns the hosted zones associated with the specified VPC and does not reflect the hosted zone associations to VPCs via Route 53 Profiles. To get the associations to a Profile, call the ListProfileResourceAssociations API. When listing private hosted zones, the hosted zone and the Amazon VPC must belong to the same partition where the hosted zones were created. A partition is a group of Amazon Web Services Regions. Each Amazon Web Services account is scoped to one partition. The following are the supported partitions: aws - Amazon Web Services Regions aws-cn - China Regions aws-us-gov - Amazon Web Services GovCloud (US) Region For more information, see Access Management in the Amazon Web Services General Reference.</td>
+</tr>
+<tr>
     <td><a href="#list_hosted_zones"><CopyableCode code="list_hosted_zones" /></a></td>
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
@@ -190,18 +227,18 @@ The following methods are available for this resource:
     <td>Associates an Amazon VPC with a private hosted zone. To perform the association, the VPC and the private hosted zone must already exist. You can't convert a public hosted zone into a private hosted zone. If you want to associate a VPC that was created by using one Amazon Web Services account with a private hosted zone that was created by using a different account, the Amazon Web Services account that created the private hosted zone must first submit a CreateVPCAssociationAuthorization request. Then the account that created the VPC must submit an AssociateVPCWithHostedZone request. When granting access, the hosted zone and the Amazon VPC must belong to the same partition. A partition is a group of Amazon Web Services Regions. Each Amazon Web Services account is scoped to one partition. The following are the supported partitions: aws - Amazon Web Services Regions aws-cn - China Regions aws-us-gov - Amazon Web Services GovCloud (US) Region For more information, see Access Management in the Amazon Web Services General Reference.</td>
 </tr>
 <tr>
-    <td><a href="#delete_key_signing_key"><CopyableCode code="delete_key_signing_key" /></a></td>
-    <td><CopyableCode code="delete" /></td>
-    <td><a href="#parameter-hosted_zone_id"><code>hosted_zone_id</code></a>, <a href="#parameter-name"><code>name</code></a>, <a href="#parameter-region"><code>region</code></a></td>
-    <td></td>
-    <td>Deletes a key-signing key (KSK). Before you can delete a KSK, you must deactivate it. The KSK must be deactivated before you can delete it regardless of whether the hosted zone is enabled for DNSSEC signing. You can use DeactivateKeySigningKey to deactivate the key before you delete it. Use GetDNSSEC to verify that the KSK is in an INACTIVE status.</td>
-</tr>
-<tr>
     <td><a href="#delete_hosted_zone"><CopyableCode code="delete_hosted_zone" /></a></td>
     <td><CopyableCode code="delete" /></td>
     <td><a href="#parameter-id"><code>id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td></td>
     <td>Deletes a hosted zone. If the hosted zone was created by another service, such as Cloud Map, see Deleting Public Hosted Zones That Were Created by Another Service in the Amazon Route 53 Developer Guide for information about how to delete it. (The process is the same for public and private hosted zones that were created by another service.) If you want to keep your domain registration but you want to stop routing internet traffic to your website or web application, we recommend that you delete resource record sets in the hosted zone instead of deleting the hosted zone. If you delete a hosted zone, you can't undelete it. You must create a new hosted zone and update the name servers for your domain registration, which can require up to 48 hours to take effect. (If you delegated responsibility for a subdomain to a hosted zone and you delete the child hosted zone, you must update the name servers in the parent hosted zone.) In addition, if you delete a hosted zone, someone could hijack the domain and route traffic to their own resources using your domain name. If you want to avoid the monthly charge for the hosted zone, you can transfer DNS service for the domain to a free DNS service. When you transfer DNS service, you have to update the name servers for the domain registration. If the domain is registered with Route 53, see UpdateDomainNameservers for information about how to replace Route 53 name servers with name servers for the new DNS service. If the domain is registered with another registrar, use the method provided by the registrar to update name servers for the domain registration. For more information, perform an internet search on "free DNS service." You can delete a hosted zone only if it contains only the default SOA and NS records and has DNSSEC signing disabled. If the hosted zone contains other records or has DNSSEC enabled, you must delete the records and disable DNSSEC before deletion. Attempting to delete a hosted zone with additional records or DNSSEC enabled returns a HostedZoneNotEmpty error. For information about deleting records, see ChangeResourceRecordSets. To verify that the hosted zone has been deleted, do one of the following: Use the GetHostedZone action to request information about the hosted zone. Use the ListHostedZones action to get a list of the hosted zones associated with the current Amazon Web Services account.</td>
+</tr>
+<tr>
+    <td><a href="#delete_key_signing_key"><CopyableCode code="delete_key_signing_key" /></a></td>
+    <td><CopyableCode code="delete" /></td>
+    <td><a href="#parameter-hosted_zone_id"><code>hosted_zone_id</code></a>, <a href="#parameter-name"><code>name</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Deletes a key-signing key (KSK). Before you can delete a KSK, you must deactivate it. The KSK must be deactivated before you can delete it regardless of whether the hosted zone is enabled for DNSSEC signing. You can use DeactivateKeySigningKey to deactivate the key before you delete it. Use GetDNSSEC to verify that the KSK is in an INACTIVE status.</td>
 </tr>
 <tr>
     <td><a href="#activate_key_signing_key"><CopyableCode code="activate_key_signing_key" /></a></td>
@@ -288,6 +325,16 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     <td><code>string</code></td>
     <td>AWS region (default: us-east-1)</td>
 </tr>
+<tr id="parameter-vpcid">
+    <td><CopyableCode code="vpcid" /></td>
+    <td><code>string</code></td>
+    <td>The ID of the Amazon VPC that you want to list hosted zones for.</td>
+</tr>
+<tr id="parameter-vpcregion">
+    <td><CopyableCode code="vpcregion" /></td>
+    <td><code>string</code></td>
+    <td>For the Amazon VPC that you specified for VPCId, the Amazon Web Services Region that you created the VPC in.</td>
+</tr>
 <tr id="parameter-delegationsetid">
     <td><CopyableCode code="delegationsetid" /></td>
     <td><code>string</code></td>
@@ -308,6 +355,11 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     <td><code>string</code></td>
     <td>(Optional) The maximum number of hosted zones that you want Amazon Route 53 to return. If you have more than maxitems hosted zones, the value of IsTruncated in the response is true, and the value of NextMarker is the hosted zone ID of the first hosted zone that Route 53 will return if you submit another request.</td>
 </tr>
+<tr id="parameter-nexttoken">
+    <td><CopyableCode code="nexttoken" /></td>
+    <td><code>string</code></td>
+    <td>If the previous response included a NextToken element, the specified VPC is associated with more hosted zones. To get more hosted zones, submit another ListHostedZonesByVPC request. For the value of NextToken, specify the value of NextToken from the previous response. If the previous response didn't include a NextToken element, there are no more hosted zones to get.</td>
+</tr>
 </tbody>
 </table>
 
@@ -317,6 +369,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     defaultValue="get_hosted_zone"
     values={[
         { label: 'get_hosted_zone', value: 'get_hosted_zone' },
+        { label: 'list_hosted_zones_by_vpc', value: 'list_hosted_zones_by_vpc' },
         { label: 'list_hosted_zones', value: 'list_hosted_zones' }
     ]}
 >
@@ -336,6 +389,24 @@ resource_record_set_count
 FROM aws.route53.hosted_zones
 WHERE id = '{{ id }}' -- required
 AND region = '{{ region }}' -- required
+;
+```
+</TabItem>
+<TabItem value="list_hosted_zones_by_vpc">
+
+Lists all the private hosted zones that a specified VPC is associated with, regardless of which Amazon Web Services account or Amazon Web Services service owns the hosted zones. The HostedZoneOwner structure in the response contains one of the following values: An OwningAccount element, which contains the account number of either the current Amazon Web Services account or another Amazon Web Services account. Some services, such as Cloud Map, create hosted zones using the current account. An OwningService element, which identifies the Amazon Web Services service that created and owns the hosted zone. For example, if a hosted zone was created by Amazon Elastic File System (Amazon EFS), the value of Owner is efs.amazonaws.com. ListHostedZonesByVPC returns the hosted zones associated with the specified VPC and does not reflect the hosted zone associations to VPCs via Route 53 Profiles. To get the associations to a Profile, call the ListProfileResourceAssociations API. When listing private hosted zones, the hosted zone and the Amazon VPC must belong to the same partition where the hosted zones were created. A partition is a group of Amazon Web Services Regions. Each Amazon Web Services account is scoped to one partition. The following are the supported partitions: aws - Amazon Web Services Regions aws-cn - China Regions aws-us-gov - Amazon Web Services GovCloud (US) Region For more information, see Access Management in the Amazon Web Services General Reference.
+
+```sql
+SELECT
+hosted_zone_id,
+name,
+owner
+FROM aws.route53.hosted_zones
+WHERE vpcid = '{{ vpcid }}' -- required
+AND vpcregion = '{{ vpcregion }}' -- required
+AND region = '{{ region }}' -- required
+AND maxitems = '{{ maxitems }}'
+AND nexttoken = '{{ nexttoken }}'
 ;
 ```
 </TabItem>
@@ -516,12 +587,23 @@ submitted_at;
 ## `DELETE` examples
 
 <Tabs
-    defaultValue="delete_key_signing_key"
+    defaultValue="delete_hosted_zone"
     values={[
-        { label: 'delete_key_signing_key', value: 'delete_key_signing_key' },
-        { label: 'delete_hosted_zone', value: 'delete_hosted_zone' }
+        { label: 'delete_hosted_zone', value: 'delete_hosted_zone' },
+        { label: 'delete_key_signing_key', value: 'delete_key_signing_key' }
     ]}
 >
+<TabItem value="delete_hosted_zone">
+
+Deletes a hosted zone. If the hosted zone was created by another service, such as Cloud Map, see Deleting Public Hosted Zones That Were Created by Another Service in the Amazon Route 53 Developer Guide for information about how to delete it. (The process is the same for public and private hosted zones that were created by another service.) If you want to keep your domain registration but you want to stop routing internet traffic to your website or web application, we recommend that you delete resource record sets in the hosted zone instead of deleting the hosted zone. If you delete a hosted zone, you can't undelete it. You must create a new hosted zone and update the name servers for your domain registration, which can require up to 48 hours to take effect. (If you delegated responsibility for a subdomain to a hosted zone and you delete the child hosted zone, you must update the name servers in the parent hosted zone.) In addition, if you delete a hosted zone, someone could hijack the domain and route traffic to their own resources using your domain name. If you want to avoid the monthly charge for the hosted zone, you can transfer DNS service for the domain to a free DNS service. When you transfer DNS service, you have to update the name servers for the domain registration. If the domain is registered with Route 53, see UpdateDomainNameservers for information about how to replace Route 53 name servers with name servers for the new DNS service. If the domain is registered with another registrar, use the method provided by the registrar to update name servers for the domain registration. For more information, perform an internet search on "free DNS service." You can delete a hosted zone only if it contains only the default SOA and NS records and has DNSSEC signing disabled. If the hosted zone contains other records or has DNSSEC enabled, you must delete the records and disable DNSSEC before deletion. Attempting to delete a hosted zone with additional records or DNSSEC enabled returns a HostedZoneNotEmpty error. For information about deleting records, see ChangeResourceRecordSets. To verify that the hosted zone has been deleted, do one of the following: Use the GetHostedZone action to request information about the hosted zone. Use the ListHostedZones action to get a list of the hosted zones associated with the current Amazon Web Services account.
+
+```sql
+DELETE FROM aws.route53.hosted_zones
+WHERE id = '{{ id }}' --required
+AND region = '{{ region }}' --required
+;
+```
+</TabItem>
 <TabItem value="delete_key_signing_key">
 
 Deletes a key-signing key (KSK). Before you can delete a KSK, you must deactivate it. The KSK must be deactivated before you can delete it regardless of whether the hosted zone is enabled for DNSSEC signing. You can use DeactivateKeySigningKey to deactivate the key before you delete it. Use GetDNSSEC to verify that the KSK is in an INACTIVE status.
@@ -530,17 +612,6 @@ Deletes a key-signing key (KSK). Before you can delete a KSK, you must deactivat
 DELETE FROM aws.route53.hosted_zones
 WHERE hosted_zone_id = '{{ hosted_zone_id }}' --required
 AND name = '{{ name }}' --required
-AND region = '{{ region }}' --required
-;
-```
-</TabItem>
-<TabItem value="delete_hosted_zone">
-
-Deletes a hosted zone. If the hosted zone was created by another service, such as Cloud Map, see Deleting Public Hosted Zones That Were Created by Another Service in the Amazon Route 53 Developer Guide for information about how to delete it. (The process is the same for public and private hosted zones that were created by another service.) If you want to keep your domain registration but you want to stop routing internet traffic to your website or web application, we recommend that you delete resource record sets in the hosted zone instead of deleting the hosted zone. If you delete a hosted zone, you can't undelete it. You must create a new hosted zone and update the name servers for your domain registration, which can require up to 48 hours to take effect. (If you delegated responsibility for a subdomain to a hosted zone and you delete the child hosted zone, you must update the name servers in the parent hosted zone.) In addition, if you delete a hosted zone, someone could hijack the domain and route traffic to their own resources using your domain name. If you want to avoid the monthly charge for the hosted zone, you can transfer DNS service for the domain to a free DNS service. When you transfer DNS service, you have to update the name servers for the domain registration. If the domain is registered with Route 53, see UpdateDomainNameservers for information about how to replace Route 53 name servers with name servers for the new DNS service. If the domain is registered with another registrar, use the method provided by the registrar to update name servers for the domain registration. For more information, perform an internet search on "free DNS service." You can delete a hosted zone only if it contains only the default SOA and NS records and has DNSSEC signing disabled. If the hosted zone contains other records or has DNSSEC enabled, you must delete the records and disable DNSSEC before deletion. Attempting to delete a hosted zone with additional records or DNSSEC enabled returns a HostedZoneNotEmpty error. For information about deleting records, see ChangeResourceRecordSets. To verify that the hosted zone has been deleted, do one of the following: Use the GetHostedZone action to request information about the hosted zone. Use the ListHostedZones action to get a list of the hosted zones associated with the current Amazon Web Services account.
-
-```sql
-DELETE FROM aws.route53.hosted_zones
-WHERE id = '{{ id }}' --required
 AND region = '{{ region }}' --required
 ;
 ```

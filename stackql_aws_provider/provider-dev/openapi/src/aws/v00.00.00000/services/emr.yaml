@@ -168,10 +168,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/AddTagsOutput"
   /CancelSteps:
     post:
       operationId: CancelSteps
@@ -450,10 +446,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteSecurityConfigurationOutput"
   /DeleteStudio:
     post:
       operationId: DeleteStudio
@@ -1813,10 +1805,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/PutAutoTerminationPolicyOutput"
   /PutBlockPublicAccessConfiguration:
     post:
       operationId: PutBlockPublicAccessConfiguration
@@ -1846,10 +1834,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/PutBlockPublicAccessConfigurationOutput"
   /PutManagedScalingPolicy:
     post:
       operationId: PutManagedScalingPolicy
@@ -1883,10 +1867,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/PutManagedScalingPolicyOutput"
   /RemoveAutoScalingPolicy:
     post:
       operationId: RemoveAutoScalingPolicy
@@ -1920,10 +1900,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/RemoveAutoScalingPolicyOutput"
   /RemoveAutoTerminationPolicy:
     post:
       operationId: RemoveAutoTerminationPolicy
@@ -1953,10 +1929,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/RemoveAutoTerminationPolicyOutput"
   /RemoveManagedScalingPolicy:
     post:
       operationId: RemoveManagedScalingPolicy
@@ -1986,10 +1958,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/RemoveManagedScalingPolicyOutput"
   /RemoveTags:
     post:
       operationId: RemoveTags
@@ -2026,10 +1994,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/RemoveTagsOutput"
   /RunJobFlow:
     post:
       operationId: RunJobFlow
@@ -3311,9 +3275,6 @@ components:
     ClusterId:
       type: string
       maxLength: 256
-    AddTagsOutput:
-      description: This output indicates the result of adding tags to a resource.
-      type: object
     StepCancellationOption:
       type: string
       enum:
@@ -3417,8 +3378,6 @@ components:
       enum:
         - USER
         - GROUP
-    DeleteSecurityConfigurationOutput:
-      type: object
     DescribeClusterOutput:
       description: This output contains the description of the cluster.
       type: object
@@ -5844,21 +5803,6 @@ components:
         ClusterArn:
           $ref: "#/components/schemas/ArnType"
           description: The Amazon Resource Name (ARN) of the cluster.
-    PutAutoTerminationPolicyOutput:
-      type: object
-    PutBlockPublicAccessConfigurationOutput:
-      type: object
-    PutManagedScalingPolicyOutput:
-      type: object
-    RemoveAutoScalingPolicyOutput:
-      type: object
-    RemoveAutoTerminationPolicyOutput:
-      type: object
-    RemoveManagedScalingPolicyOutput:
-      type: object
-    RemoveTagsOutput:
-      description: This output indicates the result of removing tags from the resource.
-      type: object
     JobFlowInstancesConfig:
       description: A description of the Amazon EC2 instance on which the cluster (job flow) runs. A valid JobFlowInstancesConfig must contain either InstanceGroups or InstanceFleets. They cannot be used together. You may also have MasterInstanceType, SlaveInstanceType, and InstanceCount (all three must be present), but we don't recommend this configuration.
       type: object
@@ -6152,7 +6096,6 @@ components:
             $ref: "#/paths/~1RemoveAutoScalingPolicy/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -6268,7 +6211,6 @@ components:
             $ref: "#/paths/~1AddTags/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -6281,7 +6223,6 @@ components:
             $ref: "#/paths/~1RemoveTags/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -6358,7 +6299,6 @@ components:
             $ref: "#/paths/~1DeleteSecurityConfiguration/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -6673,6 +6613,19 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        run_job_flow:
+          operation:
+            $ref: "#/paths/~1RunJobFlow/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         set_termination_protection:
           operation:
             $ref: "#/paths/~1SetTerminationProtection/post"
@@ -6771,6 +6724,31 @@ components:
                 location: body
             requestBodyTranslate:
               algorithm: naive
+        start_notebook_execution:
+          operation:
+            $ref: "#/paths/~1StartNotebookExecution/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        stop_notebook_execution:
+          operation:
+            $ref: "#/paths/~1StopNotebookExecution/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/notebook_executions/methods/describe_notebook_execution"
@@ -6847,7 +6825,6 @@ components:
             $ref: "#/paths/~1PutAutoTerminationPolicy/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -6860,7 +6837,6 @@ components:
             $ref: "#/paths/~1RemoveAutoTerminationPolicy/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -6900,7 +6876,6 @@ components:
             $ref: "#/paths/~1PutBlockPublicAccessConfiguration/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -6964,7 +6939,6 @@ components:
             $ref: "#/paths/~1PutManagedScalingPolicy/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -6977,7 +6951,6 @@ components:
             $ref: "#/paths/~1RemoveManagedScalingPolicy/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1

@@ -26,7 +26,7 @@ total resources: __7__
 <div class="row">
 <div class="providerDocColumn">
 <a href="/services/osis/pipeline_blueprints/">pipeline_blueprints</a><br />
-<a href="/services/osis/pipeline_change_progress/">pipeline_change_progress</a><br />
+<a href="/services/osis/pipeline_change_progresses/">pipeline_change_progresses</a><br />
 <a href="/services/osis/pipeline_endpoint_connections/">pipeline_endpoint_connections</a><br />
 <a href="/services/osis/pipeline_endpoints/">pipeline_endpoints</a>
 </div>

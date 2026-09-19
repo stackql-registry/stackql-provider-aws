@@ -961,10 +961,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TagResourceResponse"
   /untagresource:
     post:
       operationId: UntagResource
@@ -988,10 +984,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UntagResourceResponse"
   /updateresourceshare:
     post:
       operationId: UpdateResourceShare
@@ -1905,14 +1897,10 @@ components:
         clientToken:
           $ref: "#/components/schemas/String"
           description: The idempotency identifier associated with this request. If you want to repeat the same operation in an idempotent manner then you must include this value in the clientToken request parameter of that later call. All other parameters must also have the same values that you used in the first call.
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
         $ref: "#/components/schemas/TagKey"
-    UntagResourceResponse:
-      type: object
     UpdateResourceShareResponse:
       type: object
       properties:
@@ -2203,6 +2191,22 @@ components:
           - $ref: "#/components/x-stackQL-resources/permission_versions/methods/set_default_permission_version"
         delete:
           - $ref: "#/components/x-stackQL-resources/permission_versions/methods/delete_permission_version"
+    sharing_with_aws_organizations:
+      id: aws.ram.sharing_with_aws_organizations
+      name: sharing_with_aws_organizations
+      title: sharing_with_aws_organizations
+      methods:
+        enable_sharing_with_aws_organization:
+          operation:
+            $ref: "#/paths/~1enablesharingwithawsorganization/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
     resource_policies:
       id: aws.ram.resource_policies
       name: resource_policies
@@ -2500,7 +2504,6 @@ components:
             $ref: "#/paths/~1tagresource/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -2511,7 +2514,6 @@ components:
             $ref: "#/paths/~1untagresource/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:

@@ -36,7 +36,8 @@ The following fields are returned by `SELECT` queries:
     defaultValue="describe_application_assignment"
     values={[
         { label: 'describe_application_assignment', value: 'describe_application_assignment' },
-        { label: 'list_application_assignments', value: 'list_application_assignments' }
+        { label: 'list_application_assignments', value: 'list_application_assignments' },
+        { label: 'list_application_assignments_for_principal', value: 'list_application_assignments_for_principal' }
     ]}
 >
 <TabItem value="describe_application_assignment">
@@ -97,6 +98,35 @@ The following fields are returned by `SELECT` queries:
 </tbody>
 </table>
 </TabItem>
+<TabItem value="list_application_assignments_for_principal">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="application_arn" /></td>
+    <td><code>string</code></td>
+    <td>The ARN of the application to which the specified principal is assigned. (pattern: &lt;code&gt;arn:aws(-&#91;a-z&#93;&#123;1,5&#125;)&#123;0,3&#125;:sso::\d&#123;12&#125;:application/(sso)?ins-&#91;a-zA-Z0-9-.&#93;&#123;16&#125;/apl-&#91;a-zA-Z0-9&#93;&#123;16&#125;&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="principal_id" /></td>
+    <td><code>string</code></td>
+    <td>The unique identifier of the principal assigned to the application. (pattern: &lt;code&gt;(&#91;0-9a-f&#93;&#123;10&#125;-|)&#91;A-Fa-f0-9&#93;&#123;8&#125;-&#91;A-Fa-f0-9&#93;&#123;4&#125;-&#91;A-Fa-f0-9&#93;&#123;4&#125;-&#91;A-Fa-f0-9&#93;&#123;4&#125;-&#91;A-Fa-f0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="principal_type" /></td>
+    <td><code>string</code></td>
+    <td>The type of the principal assigned to the application. (USER, GROUP)</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
 </Tabs>
 
 ## Methods
@@ -127,6 +157,13 @@ The following methods are available for this resource:
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td></td>
     <td>Lists Amazon Web Services account users that are assigned to an application.</td>
+</tr>
+<tr>
+    <td><a href="#list_application_assignments_for_principal"><CopyableCode code="list_application_assignments_for_principal" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Lists the applications to which a specified principal is assigned. You must provide a filter when calling this action from a member account against your organization instance of IAM Identity Center. A filter is not required when called from the management account against an organization instance of IAM Identity Center, or from a member account against an account instance of IAM Identity Center in the same account.</td>
 </tr>
 <tr>
     <td><a href="#create_application_assignment"><CopyableCode code="create_application_assignment" /></a></td>
@@ -172,7 +209,8 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     defaultValue="describe_application_assignment"
     values={[
         { label: 'describe_application_assignment', value: 'describe_application_assignment' },
-        { label: 'list_application_assignments', value: 'list_application_assignments' }
+        { label: 'list_application_assignments', value: 'list_application_assignments' },
+        { label: 'list_application_assignments_for_principal', value: 'list_application_assignments_for_principal' }
     ]}
 >
 <TabItem value="describe_application_assignment">
@@ -192,6 +230,20 @@ WHERE region = '{{ region }}' -- required
 <TabItem value="list_application_assignments">
 
 Lists Amazon Web Services account users that are assigned to an application.
+
+```sql
+SELECT
+application_arn,
+principal_id,
+principal_type
+FROM aws.sso_admin.application_assignments
+WHERE region = '{{ region }}' -- required
+;
+```
+</TabItem>
+<TabItem value="list_application_assignments_for_principal">
+
+Lists the applications to which a specified principal is assigned. You must provide a filter when calling this action from a member account against your organization instance of IAM Identity Center. A filter is not required when called from the management account against an organization instance of IAM Identity Center, or from a member account against an account instance of IAM Identity Center in the same account.
 
 ```sql
 SELECT

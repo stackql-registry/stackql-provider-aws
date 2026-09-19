@@ -48,15 +48,9 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/CloneReceiptRuleSetOutputDisplay'
-      x-stackql-resource: clone_receipt_rule_set
+      x-stackql-resource: receipt_rule_sets
       x-stackql-method: clone_receipt_rule_set
       x-stackql-verb: EXEC
-      x-stackql-responseEnvelope: CloneReceiptRuleSetOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
     post:
       operationId: POST_CloneReceiptRuleSet
       description: Creates a receipt rule set by cloning an existing one. All receipt rules and configurations are copied
@@ -65,21 +59,15 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/CloneReceiptRuleSetOutputDisplay'
       parameters: []
       requestBody:
         content:
           text/xml:
             schema:
               $ref: '#/components/schemas/CloneReceiptRuleSetRequest'
-      x-stackql-resource: clone_receipt_rule_set
+      x-stackql-resource: receipt_rule_sets
       x-stackql-method: clone_receipt_rule_set
       x-stackql-verb: EXEC
-      x-stackql-responseEnvelope: CloneReceiptRuleSetOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
   /?Action=CreateConfigurationSet&Version=2010-12-01:
     parameters:
     - $ref: '#/components/parameters/X-Amz-Content-Sha256'
@@ -104,15 +92,9 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/CreateConfigurationSetOutputDisplay'
       x-stackql-resource: configuration_sets
       x-stackql-method: create_configuration_set
       x-stackql-verb: INSERT
-      x-stackql-responseEnvelope: CreateConfigurationSetOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
     post:
       operationId: POST_CreateConfigurationSet
       description: Creates a configuration set. Configuration sets enable you to publish email sending events. For information
@@ -121,10 +103,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/CreateConfigurationSetOutputDisplay'
       parameters: []
       requestBody:
         content:
@@ -134,8 +112,6 @@ paths:
       x-stackql-resource: configuration_sets
       x-stackql-method: create_configuration_set
       x-stackql-verb: INSERT
-      x-stackql-responseEnvelope: CreateConfigurationSetOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
   /?Action=CreateConfigurationSetEventDestination&Version=2010-12-01:
     parameters:
     - $ref: '#/components/parameters/X-Amz-Content-Sha256'
@@ -169,15 +145,9 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/CreateConfigurationSetEventDestinationOutputDisplay'
       x-stackql-resource: configuration_sets
       x-stackql-method: create_configuration_set_event_destination
       x-stackql-verb: INSERT
-      x-stackql-responseEnvelope: CreateConfigurationSetEventDestinationOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
     post:
       operationId: POST_CreateConfigurationSetEventDestination
       description: Creates a configuration set event destination. When you create or update an event destination, you must
@@ -188,10 +158,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/CreateConfigurationSetEventDestinationOutputDisplay'
       parameters: []
       requestBody:
         content:
@@ -201,8 +167,6 @@ paths:
       x-stackql-resource: configuration_sets
       x-stackql-method: create_configuration_set_event_destination
       x-stackql-verb: INSERT
-      x-stackql-responseEnvelope: CreateConfigurationSetEventDestinationOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
   /?Action=CreateConfigurationSetTrackingOptions&Version=2010-12-01:
     parameters:
     - $ref: '#/components/parameters/X-Amz-Content-Sha256'
@@ -233,15 +197,9 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/CreateConfigurationSetTrackingOptionsOutputDisplay'
       x-stackql-resource: configuration_sets
       x-stackql-method: create_configuration_set_tracking_options
       x-stackql-verb: INSERT
-      x-stackql-responseEnvelope: CreateConfigurationSetTrackingOptionsOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
     post:
       operationId: POST_CreateConfigurationSetTrackingOptions
       description: Creates an association between a configuration set and a custom domain for open and click event tracking.
@@ -251,10 +209,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/CreateConfigurationSetTrackingOptionsOutputDisplay'
       parameters: []
       requestBody:
         content:
@@ -264,8 +218,6 @@ paths:
       x-stackql-resource: configuration_sets
       x-stackql-method: create_configuration_set_tracking_options
       x-stackql-verb: INSERT
-      x-stackql-responseEnvelope: CreateConfigurationSetTrackingOptionsOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
   /?Action=CreateCustomVerificationEmailTemplate&Version=2010-12-01:
     parameters:
     - $ref: '#/components/parameters/X-Amz-Content-Sha256'
@@ -368,15 +320,9 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/CreateReceiptFilterOutputDisplay'
       x-stackql-resource: receipt_filters
       x-stackql-method: create_receipt_filter
       x-stackql-verb: INSERT
-      x-stackql-responseEnvelope: CreateReceiptFilterOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
     post:
       operationId: POST_CreateReceiptFilter
       description: Creates a new IP address filter. For information about setting up IP address filters, see the Amazon SES
@@ -384,10 +330,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/CreateReceiptFilterOutputDisplay'
       parameters: []
       requestBody:
         content:
@@ -397,8 +339,6 @@ paths:
       x-stackql-resource: receipt_filters
       x-stackql-method: create_receipt_filter
       x-stackql-verb: INSERT
-      x-stackql-responseEnvelope: CreateReceiptFilterOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
   /?Action=CreateReceiptRule&Version=2010-12-01:
     parameters:
     - $ref: '#/components/parameters/X-Amz-Content-Sha256'
@@ -436,15 +376,9 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/CreateReceiptRuleOutputDisplay'
       x-stackql-resource: receipt_rules
       x-stackql-method: create_receipt_rule
       x-stackql-verb: INSERT
-      x-stackql-responseEnvelope: CreateReceiptRuleOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
     post:
       operationId: POST_CreateReceiptRule
       description: Creates a receipt rule. For information about setting up receipt rules, see the Amazon SES Developer Guide.
@@ -452,10 +386,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/CreateReceiptRuleOutputDisplay'
       parameters: []
       requestBody:
         content:
@@ -465,8 +395,6 @@ paths:
       x-stackql-resource: receipt_rules
       x-stackql-method: create_receipt_rule
       x-stackql-verb: INSERT
-      x-stackql-responseEnvelope: CreateReceiptRuleOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
   /?Action=CreateReceiptRuleSet&Version=2010-12-01:
     parameters:
     - $ref: '#/components/parameters/X-Amz-Content-Sha256'
@@ -492,15 +420,9 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/CreateReceiptRuleSetOutputDisplay'
       x-stackql-resource: receipt_rule_sets
       x-stackql-method: create_receipt_rule_set
       x-stackql-verb: INSERT
-      x-stackql-responseEnvelope: CreateReceiptRuleSetOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
     post:
       operationId: POST_CreateReceiptRuleSet
       description: Creates an empty receipt rule set. For information about setting up receipt rule sets, see the Amazon SES
@@ -508,10 +430,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/CreateReceiptRuleSetOutputDisplay'
       parameters: []
       requestBody:
         content:
@@ -521,8 +439,6 @@ paths:
       x-stackql-resource: receipt_rule_sets
       x-stackql-method: create_receipt_rule_set
       x-stackql-verb: INSERT
-      x-stackql-responseEnvelope: CreateReceiptRuleSetOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
   /?Action=CreateTemplate&Version=2010-12-01:
     parameters:
     - $ref: '#/components/parameters/X-Amz-Content-Sha256'
@@ -547,15 +463,9 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/CreateTemplateOutputDisplay'
       x-stackql-resource: templates
       x-stackql-method: create_template
       x-stackql-verb: INSERT
-      x-stackql-responseEnvelope: CreateTemplateOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
     post:
       operationId: POST_CreateTemplate
       description: Creates an email template. Email templates enable you to send personalized email to one or more destinations
@@ -564,10 +474,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/CreateTemplateOutputDisplay'
       parameters: []
       requestBody:
         content:
@@ -577,8 +483,6 @@ paths:
       x-stackql-resource: templates
       x-stackql-method: create_template
       x-stackql-verb: INSERT
-      x-stackql-responseEnvelope: CreateTemplateOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
   /?Action=DeleteConfigurationSet&Version=2010-12-01:
     parameters:
     - $ref: '#/components/parameters/X-Amz-Content-Sha256'
@@ -603,15 +507,9 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/DeleteConfigurationSetOutputDisplay'
       x-stackql-resource: configuration_sets
       x-stackql-method: delete_configuration_set
       x-stackql-verb: DELETE
-      x-stackql-responseEnvelope: DeleteConfigurationSetOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
     post:
       operationId: POST_DeleteConfigurationSet
       description: Deletes a configuration set. Configuration sets enable you to publish email sending events. For information
@@ -620,10 +518,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/DeleteConfigurationSetOutputDisplay'
       parameters: []
       requestBody:
         content:
@@ -633,8 +527,6 @@ paths:
       x-stackql-resource: configuration_sets
       x-stackql-method: delete_configuration_set
       x-stackql-verb: DELETE
-      x-stackql-responseEnvelope: DeleteConfigurationSetOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
   /?Action=DeleteConfigurationSetEventDestination&Version=2010-12-01:
     parameters:
     - $ref: '#/components/parameters/X-Amz-Content-Sha256'
@@ -665,15 +557,9 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/DeleteConfigurationSetEventDestinationOutputDisplay'
       x-stackql-resource: configuration_sets
       x-stackql-method: delete_configuration_set_event_destination
       x-stackql-verb: DELETE
-      x-stackql-responseEnvelope: DeleteConfigurationSetEventDestinationOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
     post:
       operationId: POST_DeleteConfigurationSetEventDestination
       description: Deletes a configuration set event destination. Configuration set event destinations are associated with
@@ -682,10 +568,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/DeleteConfigurationSetEventDestinationOutputDisplay'
       parameters: []
       requestBody:
         content:
@@ -695,8 +577,6 @@ paths:
       x-stackql-resource: configuration_sets
       x-stackql-method: delete_configuration_set_event_destination
       x-stackql-verb: DELETE
-      x-stackql-responseEnvelope: DeleteConfigurationSetEventDestinationOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
   /?Action=DeleteConfigurationSetTrackingOptions&Version=2010-12-01:
     parameters:
     - $ref: '#/components/parameters/X-Amz-Content-Sha256'
@@ -723,15 +603,9 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/DeleteConfigurationSetTrackingOptionsOutputDisplay'
       x-stackql-resource: configuration_sets
       x-stackql-method: delete_configuration_set_tracking_options
       x-stackql-verb: DELETE
-      x-stackql-responseEnvelope: DeleteConfigurationSetTrackingOptionsOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
     post:
       operationId: POST_DeleteConfigurationSetTrackingOptions
       description: Deletes an association between a configuration set and a custom domain for open and click event tracking.
@@ -742,10 +616,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/DeleteConfigurationSetTrackingOptionsOutputDisplay'
       parameters: []
       requestBody:
         content:
@@ -755,8 +625,6 @@ paths:
       x-stackql-resource: configuration_sets
       x-stackql-method: delete_configuration_set_tracking_options
       x-stackql-verb: DELETE
-      x-stackql-responseEnvelope: DeleteConfigurationSetTrackingOptionsOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
   /?Action=DeleteCustomVerificationEmailTemplate&Version=2010-12-01:
     parameters:
     - $ref: '#/components/parameters/X-Amz-Content-Sha256'
@@ -824,15 +692,9 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/DeleteIdentityOutputDisplay'
       x-stackql-resource: identities
       x-stackql-method: delete_identity
       x-stackql-verb: DELETE
-      x-stackql-responseEnvelope: DeleteIdentityOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
     post:
       operationId: POST_DeleteIdentity
       description: Deletes the specified identity (an email address or a domain) from the list of verified identities. You
@@ -840,10 +702,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/DeleteIdentityOutputDisplay'
       parameters: []
       requestBody:
         content:
@@ -853,8 +711,6 @@ paths:
       x-stackql-resource: identities
       x-stackql-method: delete_identity
       x-stackql-verb: DELETE
-      x-stackql-responseEnvelope: DeleteIdentityOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
   /?Action=DeleteIdentityPolicy&Version=2010-12-01:
     parameters:
     - $ref: '#/components/parameters/X-Amz-Content-Sha256'
@@ -889,15 +745,9 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/DeleteIdentityPolicyOutputDisplay'
       x-stackql-resource: identity_policies
       x-stackql-method: delete_identity_policy
       x-stackql-verb: DELETE
-      x-stackql-responseEnvelope: DeleteIdentityPolicyOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
     post:
       operationId: POST_DeleteIdentityPolicy
       description: Deletes the specified sending authorization policy for the given identity (an email address or a domain).
@@ -908,10 +758,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/DeleteIdentityPolicyOutputDisplay'
       parameters: []
       requestBody:
         content:
@@ -921,8 +767,6 @@ paths:
       x-stackql-resource: identity_policies
       x-stackql-method: delete_identity_policy
       x-stackql-verb: DELETE
-      x-stackql-responseEnvelope: DeleteIdentityPolicyOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
   /?Action=DeleteReceiptFilter&Version=2010-12-01:
     parameters:
     - $ref: '#/components/parameters/X-Amz-Content-Sha256'
@@ -946,15 +790,9 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/DeleteReceiptFilterOutputDisplay'
       x-stackql-resource: receipt_filters
       x-stackql-method: delete_receipt_filter
       x-stackql-verb: DELETE
-      x-stackql-responseEnvelope: DeleteReceiptFilterOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
     post:
       operationId: POST_DeleteReceiptFilter
       description: Deletes the specified IP address filter. For information about managing IP address filters, see the Amazon
@@ -962,10 +800,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/DeleteReceiptFilterOutputDisplay'
       parameters: []
       requestBody:
         content:
@@ -975,8 +809,6 @@ paths:
       x-stackql-resource: receipt_filters
       x-stackql-method: delete_receipt_filter
       x-stackql-verb: DELETE
-      x-stackql-responseEnvelope: DeleteReceiptFilterOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
   /?Action=DeleteReceiptRule&Version=2010-12-01:
     parameters:
     - $ref: '#/components/parameters/X-Amz-Content-Sha256'
@@ -1006,15 +838,9 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/DeleteReceiptRuleOutputDisplay'
       x-stackql-resource: receipt_rules
       x-stackql-method: delete_receipt_rule
       x-stackql-verb: DELETE
-      x-stackql-responseEnvelope: DeleteReceiptRuleOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
     post:
       operationId: POST_DeleteReceiptRule
       description: Deletes the specified receipt rule. For information about managing receipt rules, see the Amazon SES Developer
@@ -1022,10 +848,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/DeleteReceiptRuleOutputDisplay'
       parameters: []
       requestBody:
         content:
@@ -1035,8 +857,6 @@ paths:
       x-stackql-resource: receipt_rules
       x-stackql-method: delete_receipt_rule
       x-stackql-verb: DELETE
-      x-stackql-responseEnvelope: DeleteReceiptRuleOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
   /?Action=DeleteReceiptRuleSet&Version=2010-12-01:
     parameters:
     - $ref: '#/components/parameters/X-Amz-Content-Sha256'
@@ -1061,15 +881,9 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/DeleteReceiptRuleSetOutputDisplay'
       x-stackql-resource: receipt_rule_sets
       x-stackql-method: delete_receipt_rule_set
       x-stackql-verb: DELETE
-      x-stackql-responseEnvelope: DeleteReceiptRuleSetOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
     post:
       operationId: POST_DeleteReceiptRuleSet
       description: Deletes the specified receipt rule set and all of the receipt rules it contains. The currently active rule
@@ -1078,10 +892,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/DeleteReceiptRuleSetOutputDisplay'
       parameters: []
       requestBody:
         content:
@@ -1091,8 +901,6 @@ paths:
       x-stackql-resource: receipt_rule_sets
       x-stackql-method: delete_receipt_rule_set
       x-stackql-verb: DELETE
-      x-stackql-responseEnvelope: DeleteReceiptRuleSetOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
   /?Action=DeleteTemplate&Version=2010-12-01:
     parameters:
     - $ref: '#/components/parameters/X-Amz-Content-Sha256'
@@ -1115,25 +923,15 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/DeleteTemplateOutputDisplay'
       x-stackql-resource: templates
       x-stackql-method: delete_template
       x-stackql-verb: DELETE
-      x-stackql-responseEnvelope: DeleteTemplateOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
     post:
       operationId: POST_DeleteTemplate
       description: Deletes an email template. You can execute this operation no more than once per second.
       responses:
         '200':
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/DeleteTemplateOutputDisplay'
       parameters: []
       requestBody:
         content:
@@ -1143,8 +941,6 @@ paths:
       x-stackql-resource: templates
       x-stackql-method: delete_template
       x-stackql-verb: DELETE
-      x-stackql-responseEnvelope: DeleteTemplateOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
   /?Action=DeleteVerifiedEmailAddress&Version=2010-12-01:
     parameters:
     - $ref: '#/components/parameters/X-Amz-Content-Sha256'
@@ -1167,7 +963,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: verified_email_address
+      x-stackql-resource: verified_email_addresses
       x-stackql-method: delete_verified_email_address
       x-stackql-verb: DELETE
     post:
@@ -1182,7 +978,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/DeleteVerifiedEmailAddressRequest'
-      x-stackql-resource: verified_email_address
+      x-stackql-resource: verified_email_addresses
       x-stackql-method: delete_verified_email_address
       x-stackql-verb: DELETE
   /?Action=DescribeActiveReceiptRuleSet&Version=2010-12-01:
@@ -2536,25 +2332,15 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/PutConfigurationSetDeliveryOptionsOutputDisplay'
       x-stackql-resource: configuration_sets
       x-stackql-method: put_configuration_set_delivery_options
       x-stackql-verb: REPLACE
-      x-stackql-responseEnvelope: PutConfigurationSetDeliveryOptionsOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
     post:
       operationId: POST_PutConfigurationSetDeliveryOptions
       description: Adds or updates the delivery options for a configuration set.
       responses:
         '200':
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/PutConfigurationSetDeliveryOptionsOutputDisplay'
       parameters: []
       requestBody:
         content:
@@ -2564,8 +2350,6 @@ paths:
       x-stackql-resource: configuration_sets
       x-stackql-method: put_configuration_set_delivery_options
       x-stackql-verb: REPLACE
-      x-stackql-responseEnvelope: PutConfigurationSetDeliveryOptionsOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
   /?Action=PutIdentityPolicy&Version=2010-12-01:
     parameters:
     - $ref: '#/components/parameters/X-Amz-Content-Sha256'
@@ -2608,15 +2392,9 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/PutIdentityPolicyOutputDisplay'
       x-stackql-resource: identity_policies
       x-stackql-method: put_identity_policy
       x-stackql-verb: REPLACE
-      x-stackql-responseEnvelope: PutIdentityPolicyOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
     post:
       operationId: POST_PutIdentityPolicy
       description: Adds or updates a sending authorization policy for the specified identity (an email address or a domain).
@@ -2627,10 +2405,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/PutIdentityPolicyOutputDisplay'
       parameters: []
       requestBody:
         content:
@@ -2640,8 +2414,6 @@ paths:
       x-stackql-resource: identity_policies
       x-stackql-method: put_identity_policy
       x-stackql-verb: REPLACE
-      x-stackql-responseEnvelope: PutIdentityPolicyOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
   /?Action=ReorderReceiptRuleSet&Version=2010-12-01:
     parameters:
     - $ref: '#/components/parameters/X-Amz-Content-Sha256'
@@ -2673,15 +2445,9 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/ReorderReceiptRuleSetOutputDisplay'
-      x-stackql-resource: reorder_receipt_rule_set
+      x-stackql-resource: receipt_rule_sets
       x-stackql-method: reorder_receipt_rule_set
       x-stackql-verb: EXEC
-      x-stackql-responseEnvelope: ReorderReceiptRuleSetOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
     post:
       operationId: POST_ReorderReceiptRuleSet
       description: Reorders the receipt rules within a receipt rule set. All of the rules in the rule set must be represented
@@ -2691,21 +2457,15 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/ReorderReceiptRuleSetOutputDisplay'
       parameters: []
       requestBody:
         content:
           text/xml:
             schema:
               $ref: '#/components/schemas/ReorderReceiptRuleSetRequest'
-      x-stackql-resource: reorder_receipt_rule_set
+      x-stackql-resource: receipt_rule_sets
       x-stackql-method: reorder_receipt_rule_set
       x-stackql-verb: EXEC
-      x-stackql-responseEnvelope: ReorderReceiptRuleSetOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
   /?Action=SendBounce&Version=2010-12-01:
     parameters:
     - $ref: '#/components/parameters/X-Amz-Content-Sha256'
@@ -2770,7 +2530,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/SendBounceOutputDisplay'
-      x-stackql-resource: bounce
+      x-stackql-resource: bounces
       x-stackql-method: send_bounce
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: SendBounceOutputDisplay
@@ -2794,7 +2554,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/SendBounceRequest'
-      x-stackql-resource: bounce
+      x-stackql-resource: bounces
       x-stackql-method: send_bounce
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: SendBounceOutputDisplay
@@ -2927,7 +2687,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/SendBulkTemplatedEmailOutputDisplay'
-      x-stackql-resource: bulk_templated_email
+      x-stackql-resource: bulk_templated_emails
       x-stackql-method: send_bulk_templated_email
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: SendBulkTemplatedEmailOutputDisplay
@@ -2960,7 +2720,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/SendBulkTemplatedEmailRequest'
-      x-stackql-resource: bulk_templated_email
+      x-stackql-resource: bulk_templated_emails
       x-stackql-method: send_bulk_templated_email
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: SendBulkTemplatedEmailOutputDisplay
@@ -3151,7 +2911,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/SendEmailOutputDisplay'
-      x-stackql-resource: email
+      x-stackql-resource: emails
       x-stackql-method: send_email
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: SendEmailOutputDisplay
@@ -3186,7 +2946,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/SendEmailRequest'
-      x-stackql-resource: email
+      x-stackql-resource: emails
       x-stackql-method: send_email
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: SendEmailOutputDisplay
@@ -3327,7 +3087,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/SendRawEmailOutputDisplay'
-      x-stackql-resource: raw_email
+      x-stackql-resource: raw_emails
       x-stackql-method: send_raw_email
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: SendRawEmailOutputDisplay
@@ -3378,7 +3138,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/SendRawEmailRequest'
-      x-stackql-resource: raw_email
+      x-stackql-resource: raw_emails
       x-stackql-method: send_raw_email
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: SendRawEmailOutputDisplay
@@ -3513,7 +3273,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/SendTemplatedEmailOutputDisplay'
-      x-stackql-resource: templated_email
+      x-stackql-resource: templated_emails
       x-stackql-method: send_templated_email
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: SendTemplatedEmailOutputDisplay
@@ -3550,7 +3310,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/SendTemplatedEmailRequest'
-      x-stackql-resource: templated_email
+      x-stackql-resource: templated_emails
       x-stackql-method: send_templated_email
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: SendTemplatedEmailOutputDisplay
@@ -3579,15 +3339,9 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/SetActiveReceiptRuleSetOutputDisplay'
       x-stackql-resource: active_receipt_rule_sets
       x-stackql-method: set_active_receipt_rule_set
       x-stackql-verb: UPDATE
-      x-stackql-responseEnvelope: SetActiveReceiptRuleSetOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
     post:
       operationId: POST_SetActiveReceiptRuleSet
       description: Sets the specified receipt rule set as the active receipt rule set. To disable your email-receiving through
@@ -3596,10 +3350,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/SetActiveReceiptRuleSetOutputDisplay'
       parameters: []
       requestBody:
         content:
@@ -3609,8 +3359,6 @@ paths:
       x-stackql-resource: active_receipt_rule_sets
       x-stackql-method: set_active_receipt_rule_set
       x-stackql-verb: UPDATE
-      x-stackql-responseEnvelope: SetActiveReceiptRuleSetOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
   /?Action=SetIdentityDkimEnabled&Version=2010-12-01:
     parameters:
     - $ref: '#/components/parameters/X-Amz-Content-Sha256'
@@ -3646,15 +3394,9 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/SetIdentityDkimEnabledOutputDisplay'
       x-stackql-resource: identities
       x-stackql-method: set_identity_dkim_enabled
       x-stackql-verb: UPDATE
-      x-stackql-responseEnvelope: SetIdentityDkimEnabledOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
     post:
       operationId: POST_SetIdentityDkimEnabled
       description: Enables or disables Easy DKIM signing of email sent from an identity. If Easy DKIM signing is enabled for
@@ -3667,10 +3409,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/SetIdentityDkimEnabledOutputDisplay'
       parameters: []
       requestBody:
         content:
@@ -3680,8 +3418,6 @@ paths:
       x-stackql-resource: identities
       x-stackql-method: set_identity_dkim_enabled
       x-stackql-verb: UPDATE
-      x-stackql-responseEnvelope: SetIdentityDkimEnabledOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
   /?Action=SetIdentityFeedbackForwardingEnabled&Version=2010-12-01:
     parameters:
     - $ref: '#/components/parameters/X-Amz-Content-Sha256'
@@ -3719,15 +3455,9 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/SetIdentityFeedbackForwardingEnabledOutputDisplay'
       x-stackql-resource: identities
       x-stackql-method: set_identity_feedback_forwarding_enabled
       x-stackql-verb: UPDATE
-      x-stackql-responseEnvelope: SetIdentityFeedbackForwardingEnabledOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
     post:
       operationId: POST_SetIdentityFeedbackForwardingEnabled
       description: Given an identity (an email address or a domain), enables or disables whether Amazon SES forwards bounce
@@ -3739,10 +3469,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/SetIdentityFeedbackForwardingEnabledOutputDisplay'
       parameters: []
       requestBody:
         content:
@@ -3752,8 +3478,6 @@ paths:
       x-stackql-resource: identities
       x-stackql-method: set_identity_feedback_forwarding_enabled
       x-stackql-verb: UPDATE
-      x-stackql-responseEnvelope: SetIdentityFeedbackForwardingEnabledOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
   /?Action=SetIdentityHeadersInNotificationsEnabled&Version=2010-12-01:
     parameters:
     - $ref: '#/components/parameters/X-Amz-Content-Sha256'
@@ -3794,15 +3518,9 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/SetIdentityHeadersInNotificationsEnabledOutputDisplay'
       x-stackql-resource: identities
       x-stackql-method: set_identity_headers_in_notifications_enabled
       x-stackql-verb: UPDATE
-      x-stackql-responseEnvelope: SetIdentityHeadersInNotificationsEnabledOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
     post:
       operationId: POST_SetIdentityHeadersInNotificationsEnabled
       description: Given an identity (an email address or a domain), sets whether Amazon SES includes the original email headers
@@ -3812,10 +3530,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/SetIdentityHeadersInNotificationsEnabledOutputDisplay'
       parameters: []
       requestBody:
         content:
@@ -3825,8 +3539,6 @@ paths:
       x-stackql-resource: identities
       x-stackql-method: set_identity_headers_in_notifications_enabled
       x-stackql-verb: UPDATE
-      x-stackql-responseEnvelope: SetIdentityHeadersInNotificationsEnabledOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
   /?Action=SetIdentityMailFromDomain&Version=2010-12-01:
     parameters:
     - $ref: '#/components/parameters/X-Amz-Content-Sha256'
@@ -3871,15 +3583,9 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/SetIdentityMailFromDomainOutputDisplay'
       x-stackql-resource: identities
       x-stackql-method: set_identity_mail_from_domain
       x-stackql-verb: UPDATE
-      x-stackql-responseEnvelope: SetIdentityMailFromDomainOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
     post:
       operationId: POST_SetIdentityMailFromDomain
       description: Enables or disables the custom MAIL FROM domain setup for a verified identity (an email address or a domain).
@@ -3889,10 +3595,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/SetIdentityMailFromDomainOutputDisplay'
       parameters: []
       requestBody:
         content:
@@ -3902,8 +3604,6 @@ paths:
       x-stackql-resource: identities
       x-stackql-method: set_identity_mail_from_domain
       x-stackql-verb: UPDATE
-      x-stackql-responseEnvelope: SetIdentityMailFromDomainOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
   /?Action=SetIdentityNotificationTopic&Version=2010-12-01:
     parameters:
     - $ref: '#/components/parameters/X-Amz-Content-Sha256'
@@ -3946,15 +3646,9 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/SetIdentityNotificationTopicOutputDisplay'
       x-stackql-resource: identities
       x-stackql-method: set_identity_notification_topic
       x-stackql-verb: UPDATE
-      x-stackql-responseEnvelope: SetIdentityNotificationTopicOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
     post:
       operationId: POST_SetIdentityNotificationTopic
       description: Sets an Amazon Simple Notification Service (Amazon SNS) topic to use when delivering notifications. When
@@ -3966,10 +3660,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/SetIdentityNotificationTopicOutputDisplay'
       parameters: []
       requestBody:
         content:
@@ -3979,8 +3669,6 @@ paths:
       x-stackql-resource: identities
       x-stackql-method: set_identity_notification_topic
       x-stackql-verb: UPDATE
-      x-stackql-responseEnvelope: SetIdentityNotificationTopicOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
   /?Action=SetReceiptRulePosition&Version=2010-12-01:
     parameters:
     - $ref: '#/components/parameters/X-Amz-Content-Sha256'
@@ -4016,15 +3704,9 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/SetReceiptRulePositionOutputDisplay'
       x-stackql-resource: receipt_rules
       x-stackql-method: set_receipt_rule_position
       x-stackql-verb: UPDATE
-      x-stackql-responseEnvelope: SetReceiptRulePositionOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
     post:
       operationId: POST_SetReceiptRulePosition
       description: Sets the position of the specified receipt rule in the receipt rule set. For information about managing
@@ -4032,10 +3714,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/SetReceiptRulePositionOutputDisplay'
       parameters: []
       requestBody:
         content:
@@ -4045,8 +3723,6 @@ paths:
       x-stackql-resource: receipt_rules
       x-stackql-method: set_receipt_rule_position
       x-stackql-verb: UPDATE
-      x-stackql-responseEnvelope: SetReceiptRulePositionOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
   /?Action=TestRenderTemplate&Version=2010-12-01:
     parameters:
     - $ref: '#/components/parameters/X-Amz-Content-Sha256'
@@ -4188,15 +3864,9 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/UpdateConfigurationSetEventDestinationOutputDisplay'
       x-stackql-resource: configuration_sets
       x-stackql-method: update_configuration_set_event_destination
       x-stackql-verb: UPDATE
-      x-stackql-responseEnvelope: UpdateConfigurationSetEventDestinationOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
     post:
       operationId: POST_UpdateConfigurationSetEventDestination
       description: Updates the event destination of a configuration set. Event destinations are associated with configuration
@@ -4208,10 +3878,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/UpdateConfigurationSetEventDestinationOutputDisplay'
       parameters: []
       requestBody:
         content:
@@ -4221,8 +3887,6 @@ paths:
       x-stackql-resource: configuration_sets
       x-stackql-method: update_configuration_set_event_destination
       x-stackql-verb: UPDATE
-      x-stackql-responseEnvelope: UpdateConfigurationSetEventDestinationOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
   /?Action=UpdateConfigurationSetReputationMetricsEnabled&Version=2010-12-01:
     parameters:
     - $ref: '#/components/parameters/X-Amz-Content-Sha256'
@@ -4358,15 +4022,9 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/UpdateConfigurationSetTrackingOptionsOutputDisplay'
       x-stackql-resource: configuration_sets
       x-stackql-method: update_configuration_set_tracking_options
       x-stackql-verb: UPDATE
-      x-stackql-responseEnvelope: UpdateConfigurationSetTrackingOptionsOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
     post:
       operationId: POST_UpdateConfigurationSetTrackingOptions
       description: Modifies an association between a configuration set and a custom domain for open and click event tracking.
@@ -4376,10 +4034,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/UpdateConfigurationSetTrackingOptionsOutputDisplay'
       parameters: []
       requestBody:
         content:
@@ -4389,8 +4043,6 @@ paths:
       x-stackql-resource: configuration_sets
       x-stackql-method: update_configuration_set_tracking_options
       x-stackql-verb: UPDATE
-      x-stackql-responseEnvelope: UpdateConfigurationSetTrackingOptionsOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
   /?Action=UpdateCustomVerificationEmailTemplate&Version=2010-12-01:
     parameters:
     - $ref: '#/components/parameters/X-Amz-Content-Sha256'
@@ -4498,15 +4150,9 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/UpdateReceiptRuleOutputDisplay'
       x-stackql-resource: receipt_rules
       x-stackql-method: update_receipt_rule
       x-stackql-verb: UPDATE
-      x-stackql-responseEnvelope: UpdateReceiptRuleOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
     post:
       operationId: POST_UpdateReceiptRule
       description: Updates a receipt rule. For information about managing receipt rules, see the Amazon SES Developer Guide.
@@ -4514,10 +4160,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/UpdateReceiptRuleOutputDisplay'
       parameters: []
       requestBody:
         content:
@@ -4527,8 +4169,6 @@ paths:
       x-stackql-resource: receipt_rules
       x-stackql-method: update_receipt_rule
       x-stackql-verb: UPDATE
-      x-stackql-responseEnvelope: UpdateReceiptRuleOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
   /?Action=UpdateTemplate&Version=2010-12-01:
     parameters:
     - $ref: '#/components/parameters/X-Amz-Content-Sha256'
@@ -4552,15 +4192,9 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/UpdateTemplateOutputDisplay'
       x-stackql-resource: templates
       x-stackql-method: update_template
       x-stackql-verb: UPDATE
-      x-stackql-responseEnvelope: UpdateTemplateOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
     post:
       operationId: POST_UpdateTemplate
       description: Updates an email template. Email templates enable you to send personalized email to one or more destinations
@@ -4569,10 +4203,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/UpdateTemplateOutputDisplay'
       parameters: []
       requestBody:
         content:
@@ -4582,8 +4212,6 @@ paths:
       x-stackql-resource: templates
       x-stackql-method: update_template
       x-stackql-verb: UPDATE
-      x-stackql-responseEnvelope: UpdateTemplateOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
   /?Action=VerifyDomainDkim&Version=2010-12-01:
     parameters:
     - $ref: '#/components/parameters/X-Amz-Content-Sha256'
@@ -4621,7 +4249,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/VerifyDomainDkimOutputDisplay'
-      x-stackql-resource: domain_dkim
+      x-stackql-resource: domain_dkims
       x-stackql-method: verify_domain_dkim
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: VerifyDomainDkimOutputDisplay
@@ -4653,7 +4281,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/VerifyDomainDkimRequest'
-      x-stackql-resource: domain_dkim
+      x-stackql-resource: domain_dkims
       x-stackql-method: verify_domain_dkim
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: VerifyDomainDkimOutputDisplay
@@ -4686,7 +4314,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/VerifyDomainIdentityOutputDisplay'
-      x-stackql-resource: domain_identity
+      x-stackql-resource: identities
       x-stackql-method: verify_domain_identity
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: VerifyDomainIdentityOutputDisplay
@@ -4709,7 +4337,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/VerifyDomainIdentityRequest'
-      x-stackql-resource: domain_identity
+      x-stackql-resource: identities
       x-stackql-method: verify_domain_identity
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: VerifyDomainIdentityOutputDisplay
@@ -4736,7 +4364,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: email_address
+      x-stackql-resource: email_addresses
       x-stackql-method: verify_email_address
       x-stackql-verb: EXEC
     post:
@@ -4751,7 +4379,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/VerifyEmailAddressRequest'
-      x-stackql-resource: email_address
+      x-stackql-resource: email_addresses
       x-stackql-method: verify_email_address
       x-stackql-verb: EXEC
   /?Action=VerifyEmailIdentity&Version=2010-12-01:
@@ -4778,15 +4406,9 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/VerifyEmailIdentityOutputDisplay'
-      x-stackql-resource: email_identity
+      x-stackql-resource: identities
       x-stackql-method: verify_email_identity
       x-stackql-verb: EXEC
-      x-stackql-responseEnvelope: VerifyEmailIdentityOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
     post:
       operationId: POST_VerifyEmailIdentity
       description: Adds an email address to the list of identities for your Amazon SES account in the current Amazon Web Services
@@ -4795,21 +4417,15 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/VerifyEmailIdentityOutputDisplay'
       parameters: []
       requestBody:
         content:
           text/xml:
             schema:
               $ref: '#/components/schemas/VerifyEmailIdentityRequest'
-      x-stackql-resource: email_identity
+      x-stackql-resource: identities
       x-stackql-method: verify_email_identity
       x-stackql-verb: EXEC
-      x-stackql-responseEnvelope: VerifyEmailIdentityOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
 components:
   parameters:
     X-Amz-Content-Sha256:
@@ -4857,16 +4473,6 @@ components:
   schemas:
     ReceiptRuleSetName:
       type: string
-    CloneReceiptRuleSetResponseDisplay:
-      type: object
-      properties: {}
-    CloneReceiptRuleSetOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: '#/components/schemas/CloneReceiptRuleSetResponseDisplay'
     CloneReceiptRuleSetRequest:
       description: Represents a request to create a receipt rule set by cloning an existing one. You use receipt rule sets
         to receive email with Amazon SES. For more information, see the Amazon SES Developer Guide.
@@ -4897,16 +4503,6 @@ components:
       - Name
     ConfigurationSetName:
       type: string
-    CreateConfigurationSetResponseDisplay:
-      type: object
-      properties: {}
-    CreateConfigurationSetOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: '#/components/schemas/CreateConfigurationSetResponseDisplay'
     CreateConfigurationSetRequest:
       description: Represents a request to create a configuration set. Configuration sets enable you to publish email sending
         events. For information about using configuration sets, see the Amazon SES Developer Guide.
@@ -5062,16 +4658,6 @@ components:
             Guide.
       required:
       - TopicARN
-    CreateConfigurationSetEventDestinationResponseDisplay:
-      type: object
-      properties: {}
-    CreateConfigurationSetEventDestinationOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: '#/components/schemas/CreateConfigurationSetEventDestinationResponseDisplay'
     CreateConfigurationSetEventDestinationRequest:
       description: Represents a request to create a configuration set event destination. A configuration set event destination,
         which can be either Amazon CloudWatch or Amazon Kinesis Firehose, describes an Amazon Web Services service in which
@@ -5100,16 +4686,6 @@ components:
           description: The custom subdomain that is used to redirect email recipients to the Amazon SES event tracking domain.
     CustomRedirectDomain:
       type: string
-    CreateConfigurationSetTrackingOptionsResponseDisplay:
-      type: object
-      properties: {}
-    CreateConfigurationSetTrackingOptionsOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: '#/components/schemas/CreateConfigurationSetTrackingOptionsResponseDisplay'
     CreateConfigurationSetTrackingOptionsRequest:
       description: Represents a request to create an open and click tracking option object in a configuration set.
       type: object
@@ -5211,16 +4787,6 @@ components:
       - Allow
     Cidr:
       type: string
-    CreateReceiptFilterResponseDisplay:
-      type: object
-      properties: {}
-    CreateReceiptFilterOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: '#/components/schemas/CreateReceiptFilterResponseDisplay'
     CreateReceiptFilterRequest:
       description: Represents a request to create a new IP address filter. You use IP address filters when you receive email
         with Amazon SES. For more information, see the Amazon SES Developer Guide.
@@ -5561,16 +5127,6 @@ components:
     ConnectInstanceArn:
       type: string
       pattern: arn:(aws|aws-us-gov):connect:[a-z]{2}-[a-z]+-[0-9-]{1}:[0-9]{1,20}:instance/[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}
-    CreateReceiptRuleResponseDisplay:
-      type: object
-      properties: {}
-    CreateReceiptRuleOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: '#/components/schemas/CreateReceiptRuleResponseDisplay'
     CreateReceiptRuleRequest:
       description: Represents a request to create a receipt rule. You use receipt rules to receive email with Amazon SES.
         For more information, see the Amazon SES Developer Guide.
@@ -5590,16 +5146,6 @@ components:
       required:
       - RuleSetName
       - Rule
-    CreateReceiptRuleSetResponseDisplay:
-      type: object
-      properties: {}
-    CreateReceiptRuleSetOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: '#/components/schemas/CreateReceiptRuleSetResponseDisplay'
     CreateReceiptRuleSetRequest:
       description: Represents a request to create an empty receipt rule set. You use receipt rule sets to receive email with
         Amazon SES. For more information, see the Amazon SES Developer Guide.
@@ -5637,16 +5183,6 @@ components:
       type: string
     HtmlPart:
       type: string
-    CreateTemplateResponseDisplay:
-      type: object
-      properties: {}
-    CreateTemplateOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: '#/components/schemas/CreateTemplateResponseDisplay'
     CreateTemplateRequest:
       description: Represents a request to create an email template. For more information, see the Amazon SES Developer Guide.
       type: object
@@ -5656,16 +5192,6 @@ components:
           description: The content of the email, composed of a subject line and either an HTML part or a text-only part.
       required:
       - Template
-    DeleteConfigurationSetResponseDisplay:
-      type: object
-      properties: {}
-    DeleteConfigurationSetOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: '#/components/schemas/DeleteConfigurationSetResponseDisplay'
     DeleteConfigurationSetRequest:
       description: Represents a request to delete a configuration set. Configuration sets enable you to publish email sending
         events. For information about using configuration sets, see the Amazon SES Developer Guide.
@@ -5676,16 +5202,6 @@ components:
           description: The name of the configuration set to delete.
       required:
       - ConfigurationSetName
-    DeleteConfigurationSetEventDestinationResponseDisplay:
-      type: object
-      properties: {}
-    DeleteConfigurationSetEventDestinationOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: '#/components/schemas/DeleteConfigurationSetEventDestinationResponseDisplay'
     DeleteConfigurationSetEventDestinationRequest:
       description: Represents a request to delete a configuration set event destination. Configuration set event destinations
         are associated with configuration sets, which enable you to publish email sending events. For information about using
@@ -5701,16 +5217,6 @@ components:
       required:
       - ConfigurationSetName
       - EventDestinationName
-    DeleteConfigurationSetTrackingOptionsResponseDisplay:
-      type: object
-      properties: {}
-    DeleteConfigurationSetTrackingOptionsOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: '#/components/schemas/DeleteConfigurationSetTrackingOptionsResponseDisplay'
     DeleteConfigurationSetTrackingOptionsRequest:
       description: Represents a request to delete open and click tracking options in a configuration set.
       type: object
@@ -5731,16 +5237,6 @@ components:
       - TemplateName
     Identity:
       type: string
-    DeleteIdentityResponseDisplay:
-      type: object
-      properties: {}
-    DeleteIdentityOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: '#/components/schemas/DeleteIdentityResponseDisplay'
     DeleteIdentityRequest:
       description: Represents a request to delete one of your Amazon SES identities (an email address or domain).
       type: object
@@ -5754,16 +5250,6 @@ components:
       type: string
       minLength: 1
       maxLength: 64
-    DeleteIdentityPolicyResponseDisplay:
-      type: object
-      properties: {}
-    DeleteIdentityPolicyOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: '#/components/schemas/DeleteIdentityPolicyResponseDisplay'
     DeleteIdentityPolicyRequest:
       description: Represents a request to delete a sending authorization policy for an identity. Sending authorization is
         an Amazon SES feature that enables you to authorize other senders to use your identities. For information, see the
@@ -5781,16 +5267,6 @@ components:
       required:
       - Identity
       - PolicyName
-    DeleteReceiptFilterResponseDisplay:
-      type: object
-      properties: {}
-    DeleteReceiptFilterOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: '#/components/schemas/DeleteReceiptFilterResponseDisplay'
     DeleteReceiptFilterRequest:
       description: Represents a request to delete an IP address filter. You use IP address filters when you receive email
         with Amazon SES. For more information, see the Amazon SES Developer Guide.
@@ -5801,16 +5277,6 @@ components:
           description: The name of the IP address filter to delete.
       required:
       - FilterName
-    DeleteReceiptRuleResponseDisplay:
-      type: object
-      properties: {}
-    DeleteReceiptRuleOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: '#/components/schemas/DeleteReceiptRuleResponseDisplay'
     DeleteReceiptRuleRequest:
       description: Represents a request to delete a receipt rule. You use receipt rules to receive email with Amazon SES.
         For more information, see the Amazon SES Developer Guide.
@@ -5825,16 +5291,6 @@ components:
       required:
       - RuleSetName
       - RuleName
-    DeleteReceiptRuleSetResponseDisplay:
-      type: object
-      properties: {}
-    DeleteReceiptRuleSetOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: '#/components/schemas/DeleteReceiptRuleSetResponseDisplay'
     DeleteReceiptRuleSetRequest:
       description: Represents a request to delete a receipt rule set and all of the receipt rules it contains. You use receipt
         rule sets to receive email with Amazon SES. For more information, see the Amazon SES Developer Guide.
@@ -5845,16 +5301,6 @@ components:
           description: The name of the receipt rule set to delete.
       required:
       - RuleSetName
-    DeleteTemplateResponseDisplay:
-      type: object
-      properties: {}
-    DeleteTemplateOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: '#/components/schemas/DeleteTemplateResponseDisplay'
     DeleteTemplateRequest:
       description: Represents a request to delete an email template. For more information, see the Amazon SES Developer Guide.
       type: object
@@ -6515,16 +5961,6 @@ components:
           description: Specifies whether messages that use the configuration set are required to use Transport Layer Security
             (TLS). If the value is Require, messages are only delivered if a TLS connection can be established. If the value
             is Optional, messages can be delivered in plain text if a TLS connection can't be established.
-    PutConfigurationSetDeliveryOptionsResponseDisplay:
-      type: object
-      properties: {}
-    PutConfigurationSetDeliveryOptionsOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: '#/components/schemas/PutConfigurationSetDeliveryOptionsResponseDisplay'
     PutConfigurationSetDeliveryOptionsRequest:
       description: A request to modify the delivery options for a configuration set.
       type: object
@@ -6541,16 +5977,6 @@ components:
     Policy:
       type: string
       minLength: 1
-    PutIdentityPolicyResponseDisplay:
-      type: object
-      properties: {}
-    PutIdentityPolicyOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: '#/components/schemas/PutIdentityPolicyResponseDisplay'
     PutIdentityPolicyRequest:
       description: Represents a request to add or update a sending authorization policy for an identity. Sending authorization
         is an Amazon SES feature that enables you to authorize other senders to use your identities. For information, see
@@ -6578,16 +6004,6 @@ components:
       type: array
       items:
         $ref: '#/components/schemas/ReceiptRuleName'
-    ReorderReceiptRuleSetResponseDisplay:
-      type: object
-      properties: {}
-    ReorderReceiptRuleSetOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: '#/components/schemas/ReorderReceiptRuleSetResponseDisplay'
     ReorderReceiptRuleSetRequest:
       description: Represents a request to reorder the receipt rules within a receipt rule set. You use receipt rule sets
         to receive email with Amazon SES. For more information, see the Amazon SES Developer Guide.
@@ -7280,16 +6696,6 @@ components:
       - Destination
       - Template
       - TemplateData
-    SetActiveReceiptRuleSetResponseDisplay:
-      type: object
-      properties: {}
-    SetActiveReceiptRuleSetOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: '#/components/schemas/SetActiveReceiptRuleSetResponseDisplay'
     SetActiveReceiptRuleSetRequest:
       description: Represents a request to set a receipt rule set as the active receipt rule set. You use receipt rule sets
         to receive email with Amazon SES. For more information, see the Amazon SES Developer Guide.
@@ -7298,16 +6704,6 @@ components:
         RuleSetName:
           $ref: '#/components/schemas/ReceiptRuleSetName'
           description: The name of the receipt rule set to make active. Setting this value to null disables all email receiving.
-    SetIdentityDkimEnabledResponseDisplay:
-      type: object
-      properties: {}
-    SetIdentityDkimEnabledOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: '#/components/schemas/SetIdentityDkimEnabledResponseDisplay'
     SetIdentityDkimEnabledRequest:
       description: Represents a request to enable or disable Amazon SES Easy DKIM signing for an identity. For more information
         about setting up Easy DKIM, see the Amazon SES Developer Guide.
@@ -7323,16 +6719,6 @@ components:
       required:
       - Identity
       - DkimEnabled
-    SetIdentityFeedbackForwardingEnabledResponseDisplay:
-      type: object
-      properties: {}
-    SetIdentityFeedbackForwardingEnabledOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: '#/components/schemas/SetIdentityFeedbackForwardingEnabledResponseDisplay'
     SetIdentityFeedbackForwardingEnabledRequest:
       description: Represents a request to enable or disable whether Amazon SES forwards you bounce and complaint notifications
         through email. For information about email feedback forwarding, see the Amazon SES Developer Guide.
@@ -7358,16 +6744,6 @@ components:
       - Bounce
       - Complaint
       - Delivery
-    SetIdentityHeadersInNotificationsEnabledResponseDisplay:
-      type: object
-      properties: {}
-    SetIdentityHeadersInNotificationsEnabledOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: '#/components/schemas/SetIdentityHeadersInNotificationsEnabledResponseDisplay'
     SetIdentityHeadersInNotificationsEnabledRequest:
       description: Represents a request to set whether Amazon SES includes the original email headers in the Amazon SNS notifications
         of a specified type. For information about notifications, see the Amazon SES Developer Guide.
@@ -7397,16 +6773,6 @@ components:
       enum:
       - UseDefaultValue
       - RejectMessage
-    SetIdentityMailFromDomainResponseDisplay:
-      type: object
-      properties: {}
-    SetIdentityMailFromDomainOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: '#/components/schemas/SetIdentityMailFromDomainResponseDisplay'
     SetIdentityMailFromDomainRequest:
       description: Represents a request to enable or disable the Amazon SES custom MAIL FROM domain setup for a verified identity.
         For information about using a custom MAIL FROM domain, see the Amazon SES Developer Guide.
@@ -7432,16 +6798,6 @@ components:
       - Identity
     NotificationTopic:
       type: string
-    SetIdentityNotificationTopicResponseDisplay:
-      type: object
-      properties: {}
-    SetIdentityNotificationTopicOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: '#/components/schemas/SetIdentityNotificationTopicResponseDisplay'
     SetIdentityNotificationTopicRequest:
       description: Represents a request to specify the Amazon SNS topic to which Amazon SES publishes bounce, complaint, or
         delivery notifications for emails sent with that identity as the source. For information about Amazon SES notifications,
@@ -7463,16 +6819,6 @@ components:
       required:
       - Identity
       - NotificationType
-    SetReceiptRulePositionResponseDisplay:
-      type: object
-      properties: {}
-    SetReceiptRulePositionOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: '#/components/schemas/SetReceiptRulePositionResponseDisplay'
     SetReceiptRulePositionRequest:
       description: Represents a request to set the position of a receipt rule in a receipt rule set. You use receipt rule
         sets to receive email with Amazon SES. For more information, see the Amazon SES Developer Guide.
@@ -7525,16 +6871,6 @@ components:
           $ref: '#/components/schemas/Enabled'
           description: Describes whether email sending is enabled or disabled for your Amazon SES account in the current Amazon
             Web Services Region.
-    UpdateConfigurationSetEventDestinationResponseDisplay:
-      type: object
-      properties: {}
-    UpdateConfigurationSetEventDestinationOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: '#/components/schemas/UpdateConfigurationSetEventDestinationResponseDisplay'
     UpdateConfigurationSetEventDestinationRequest:
       description: Represents a request to update the event destination of a configuration set. Configuration sets enable
         you to publish email sending events. For information about using configuration sets, see the Amazon SES Developer
@@ -7577,16 +6913,6 @@ components:
       required:
       - ConfigurationSetName
       - Enabled
-    UpdateConfigurationSetTrackingOptionsResponseDisplay:
-      type: object
-      properties: {}
-    UpdateConfigurationSetTrackingOptionsOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: '#/components/schemas/UpdateConfigurationSetTrackingOptionsResponseDisplay'
     UpdateConfigurationSetTrackingOptionsRequest:
       description: Represents a request to update the tracking options for a configuration set.
       type: object
@@ -7627,16 +6953,6 @@ components:
             verified.
       required:
       - TemplateName
-    UpdateReceiptRuleResponseDisplay:
-      type: object
-      properties: {}
-    UpdateReceiptRuleOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: '#/components/schemas/UpdateReceiptRuleResponseDisplay'
     UpdateReceiptRuleRequest:
       description: Represents a request to update a receipt rule. You use receipt rules to receive email with Amazon SES.
         For more information, see the Amazon SES Developer Guide.
@@ -7651,16 +6967,6 @@ components:
       required:
       - RuleSetName
       - Rule
-    UpdateTemplateResponseDisplay:
-      type: object
-      properties: {}
-    UpdateTemplateOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: '#/components/schemas/UpdateTemplateResponseDisplay'
     UpdateTemplateRequest:
       type: object
       properties:
@@ -7737,16 +7043,6 @@ components:
           description: The email address to be verified.
       required:
       - EmailAddress
-    VerifyEmailIdentityResponseDisplay:
-      type: object
-      properties: {}
-    VerifyEmailIdentityOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: '#/components/schemas/VerifyEmailIdentityResponseDisplay'
     VerifyEmailIdentityRequest:
       description: Represents a request to begin email address verification with Amazon SES. For information about email address
         verification, see the Amazon SES Developer Guide.

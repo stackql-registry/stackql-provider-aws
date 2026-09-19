@@ -51,10 +51,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/AssociateConfigurationItemsToApplicationResponse"
   /BatchDeleteAgents:
     post:
       operationId: BatchDeleteAgents
@@ -196,10 +192,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/CreateTagsResponse"
   /DeleteApplications:
     post:
       operationId: DeleteApplications
@@ -229,10 +221,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteApplicationsResponse"
   /DeleteTags:
     post:
       operationId: DeleteTags
@@ -265,10 +253,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteTagsResponse"
   /DescribeAgents:
     post:
       operationId: DescribeAgents
@@ -596,10 +580,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DisassociateConfigurationItemsFromApplicationResponse"
   /ExportConfigurations:
     post:
       operationId: ExportConfigurations
@@ -1022,10 +1002,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateApplicationResponse"
 components:
   parameters:
     X-Amz-Content-Sha256:
@@ -1083,8 +1059,6 @@ components:
       type: string
       maxLength: 200
       pattern: \S*
-    AssociateConfigurationItemsToApplicationResponse:
-      type: object
     DeleteAgents:
       type: array
       items:
@@ -1224,16 +1198,10 @@ components:
       type: string
     TagValue:
       type: string
-    CreateTagsResponse:
-      type: object
     ApplicationIdsList:
       type: array
       items:
         $ref: "#/components/schemas/ApplicationId"
-    DeleteApplicationsResponse:
-      type: object
-    DeleteTagsResponse:
-      type: object
     AgentIds:
       type: array
       items:
@@ -1812,8 +1780,6 @@ components:
         - PROCESS
         - CONNECTION
         - APPLICATION
-    DisassociateConfigurationItemsFromApplicationResponse:
-      type: object
     ExportConfigurationsResponse:
       type: object
       properties:
@@ -2250,8 +2216,6 @@ components:
         agentsConfigurationStatus:
           $ref: "#/components/schemas/AgentConfigurationStatusList"
           description: Information about the agents that were instructed to stop collecting data. Information includes the agent ID, a description of the operation performed, and whether the agent configuration was updated.
-    UpdateApplicationResponse:
-      type: object
   x-stackQL-resources:
     configurations:
       id: aws.discovery.configurations
@@ -2263,7 +2227,6 @@ components:
             $ref: "#/paths/~1AssociateConfigurationItemsToApplication/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -2296,7 +2259,6 @@ components:
             $ref: "#/paths/~1DisassociateConfigurationItemsFromApplication/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -2471,6 +2433,19 @@ components:
                 location: body
             requestBodyTranslate:
               algorithm: naive
+        start_import_task:
+          operation:
+            $ref: "#/paths/~1StartImportTask/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/import_tasks/methods/describe_import_tasks"
@@ -2500,7 +2475,6 @@ components:
             $ref: "#/paths/~1DeleteApplications/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -2513,7 +2487,6 @@ components:
             $ref: "#/paths/~1UpdateApplication/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -2539,7 +2512,6 @@ components:
             $ref: "#/paths/~1CreateTags/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -2552,7 +2524,6 @@ components:
             $ref: "#/paths/~1DeleteTags/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -2640,6 +2611,32 @@ components:
                 location: body
             requestBodyTranslate:
               algorithm: naive
+        start_continuous_export:
+          operation:
+            $ref: "#/paths/~1StartContinuousExport/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        stop_continuous_export:
+          operation:
+            $ref: "#/paths/~1StopContinuousExport/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/continuous_exports/methods/describe_continuous_exports"
@@ -2702,6 +2699,19 @@ components:
               responseToken:
                 key: $.nextToken
                 location: body
+            requestBodyTranslate:
+              algorithm: naive
+        start_export_task:
+          operation:
+            $ref: "#/paths/~1StartExportTask/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:

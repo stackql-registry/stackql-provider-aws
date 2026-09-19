@@ -67,7 +67,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchAssociateCodeSecurityScanConfigurationResponse'
-      x-stackql-resource: batch_associate_code_security_scan_configuration
+      x-stackql-resource: code_security_scan_configurations
       x-stackql-method: batch_associate_code_security_scan_configuration
       x-stackql-verb: EXEC
   /codesecurity/scan-configuration/batch/disassociate:
@@ -93,7 +93,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchDisassociateCodeSecurityScanConfigurationResponse'
-      x-stackql-resource: batch_disassociate_code_security_scan_configuration
+      x-stackql-resource: code_security_scan_configurations
       x-stackql-method: batch_disassociate_code_security_scan_configuration
       x-stackql-verb: EXEC
   /status/batch/get:
@@ -117,7 +117,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchGetAccountStatusResponse'
-      x-stackql-resource: account_status
+      x-stackql-resource: account_statuses
       x-stackql-method: batch_get_account_status
       x-stackql-verb: SELECT
   /codesnippet/batchget:
@@ -195,7 +195,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchGetFreeTrialInfoResponse'
-      x-stackql-resource: free_trial_infos
+      x-stackql-resource: free_trial_info
       x-stackql-method: batch_get_free_trial_info
       x-stackql-verb: SELECT
   /ec2deepinspectionstatus/member/batch/get:
@@ -220,7 +220,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchGetMemberEc2DeepInspectionStatusResponse'
-      x-stackql-resource: member_ec2_deep_inspection_status
+      x-stackql-resource: member_ec2_deep_inspection_statuses
       x-stackql-method: batch_get_member_ec2_deep_inspection_status
       x-stackql-verb: SELECT
   /ec2deepinspectionstatus/member/batch/update:
@@ -247,7 +247,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchUpdateMemberEc2DeepInspectionStatusResponse'
-      x-stackql-resource: member_ec2_deep_inspection_status
+      x-stackql-resource: member_ec2_deep_inspection_statuses
       x-stackql-method: batch_update_member_ec2_deep_inspection_status
       x-stackql-verb: EXEC
   /reporting/cancel:
@@ -299,7 +299,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CancelSbomExportResponse'
-      x-stackql-resource: sbom_export
+      x-stackql-resource: sbom_exports
       x-stackql-method: cancel_sbom_export
       x-stackql-verb: EXEC
   /cis/scan-configuration/create:
@@ -647,10 +647,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteConnectorResponse'
       x-stackql-resource: connectors
       x-stackql-method: delete_connector
       x-stackql-verb: DELETE
@@ -719,7 +715,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DisableResponse'
-      x-stackql-resource: disable
+      x-stackql-resource: es
       x-stackql-method: disable
       x-stackql-verb: EXEC
   /delegatedadminaccounts/disable:
@@ -801,7 +797,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/EnableResponse'
-      x-stackql-resource: enable
+      x-stackql-resource: es
       x-stackql-method: enable
       x-stackql-verb: EXEC
   /delegatedadminaccounts/enable:
@@ -935,7 +931,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetClustersForImageResponse'
-      x-stackql-resource: clusters_for_images
+      x-stackql-resource: clusters
       x-stackql-method: get_clusters_for_image
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.cluster
@@ -1131,7 +1127,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetFindingsReportStatusResponse'
-      x-stackql-resource: findings_report_status
+      x-stackql-resource: findings_report_statuses
       x-stackql-method: get_findings_report_status
       x-stackql-verb: SELECT
   /members/get:
@@ -1289,7 +1285,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListCisScanResultsAggregatedByChecksResponse'
-      x-stackql-resource: cis_scan_results_aggregated_by_checks
+      x-stackql-resource: cis_scan_results_aggregateds
       x-stackql-method: list_cis_scan_results_aggregated_by_checks
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.checkAggregations
@@ -1329,7 +1325,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListCisScanResultsAggregatedByTargetResourceResponse'
-      x-stackql-resource: cis_scan_results_aggregated_by_target_resources
+      x-stackql-resource: cis_scan_results_aggregateds
       x-stackql-method: list_cis_scan_results_aggregated_by_target_resource
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.targetResourceAggregations
@@ -1816,10 +1812,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -1842,10 +1834,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -1904,11 +1892,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ResetEncryptionKeyResponse'
-      x-stackql-resource: encryption_key
+      x-stackql-resource: encryption_keys
       x-stackql-method: reset_encryption_key
       x-stackql-verb: EXEC
   /vulnerabilities/search:
@@ -1967,11 +1951,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/SendCisSessionHealthResponse'
-      x-stackql-resource: cis_session_health
+      x-stackql-resource: cis_session_healths
       x-stackql-method: send_cis_session_health
       x-stackql-verb: EXEC
   /cissession/telemetry/send:
@@ -2001,11 +1981,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/SendCisSessionTelemetryResponse'
-      x-stackql-resource: cis_session_telemetry
+      x-stackql-resource: cis_session_telemetries
       x-stackql-method: send_cis_session_telemetry
       x-stackql-verb: EXEC
   /cissession/start:
@@ -2032,11 +2008,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/StartCisSessionResponse'
-      x-stackql-resource: cis_session
+      x-stackql-resource: cis_sessions
       x-stackql-method: start_cis_session
       x-stackql-verb: EXEC
   /codesecurity/scan/start:
@@ -2064,7 +2036,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartCodeSecurityScanResponse'
-      x-stackql-resource: code_security_scan
+      x-stackql-resource: code_security_scans
       x-stackql-method: start_code_security_scan
       x-stackql-verb: EXEC
   /cissession/stop:
@@ -2094,11 +2066,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/StopCisSessionResponse'
-      x-stackql-resource: cis_session
+      x-stackql-resource: cis_sessions
       x-stackql-method: stop_cis_session
       x-stackql-verb: EXEC
   /cis/scan-configuration/update:
@@ -2221,10 +2189,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateConfigurationResponse'
       x-stackql-resource: configurations
       x-stackql-method: update_configuration
       x-stackql-verb: UPDATE
@@ -2280,10 +2244,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateConnectorScanConfigurationResponse'
       x-stackql-resource: connector_scan_configurations
       x-stackql-method: update_connector_scan_configuration
       x-stackql-verb: UPDATE
@@ -2339,10 +2299,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateEncryptionKeyResponse'
       x-stackql-resource: encryption_keys
       x-stackql-method: update_encryption_key
       x-stackql-verb: UPDATE
@@ -2402,10 +2358,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateOrgEc2DeepInspectionConfigurationResponse'
       x-stackql-resource: ec2_deep_inspection_configurations
       x-stackql-method: update_org_ec2_deep_inspection_configuration
       x-stackql-verb: UPDATE
@@ -4225,8 +4177,6 @@ components:
         scanConfigurationArn:
           $ref: '#/components/schemas/ScanConfigurationArn'
           description: The Amazon Resource Name (ARN) of the deleted scan configuration.
-    DeleteConnectorResponse:
-      type: object
     DeleteFilterResponse:
       type: object
       properties:
@@ -9337,8 +9287,6 @@ components:
       type: string
       enum:
       - USD
-    ResetEncryptionKeyResponse:
-      type: object
     SearchVulnerabilitiesFilterCriteria:
       description: Details on the criteria used to define the filter for a vulnerability search.
       type: object
@@ -9537,8 +9485,6 @@ components:
     UUID:
       type: string
       pattern: '[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}'
-    SendCisSessionHealthResponse:
-      type: object
     CisSessionMessages:
       type: array
       items:
@@ -9579,8 +9525,6 @@ components:
       format: byte
       minLength: 0
       maxLength: 1000
-    SendCisSessionTelemetryResponse:
-      type: object
     StartCisSessionMessage:
       description: The start CIS session message.
       type: object
@@ -9590,8 +9534,6 @@ components:
           description: The unique token that identifies the CIS session.
       required:
       - sessionToken
-    StartCisSessionResponse:
-      type: object
     CodeSecurityClientToken:
       type: string
       minLength: 1
@@ -9707,10 +9649,6 @@ components:
       type: string
       minLength: 0
       maxLength: 128
-    StopCisSessionResponse:
-      type: object
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
@@ -9720,8 +9658,6 @@ components:
       minLength: 1
       maxLength: 128
       pattern: (?!aws:)[a-zA-Z+-=._:/]+
-    UntagResourceResponse:
-      type: object
     UpdateCisTargets:
       description: Updates CIS targets.
       type: object
@@ -9853,8 +9789,6 @@ components:
       type: string
       enum:
       - INHERIT_FROM_ADMIN
-    UpdateConfigurationResponse:
-      type: object
     ProviderDetailUpdate:
       description: The provider-specific configuration details for updating a connector.
       type: object
@@ -9882,8 +9816,6 @@ components:
         connectorArn:
           $ref: '#/components/schemas/ConnectorArn'
           description: The Amazon Resource Name (ARN) of the updated connector.
-    UpdateConnectorScanConfigurationResponse:
-      type: object
     UpdateEc2DeepInspectionConfigurationResponse:
       type: object
       properties:
@@ -9899,8 +9831,6 @@ components:
         errorMessage:
           $ref: '#/components/schemas/NonEmptyString'
           description: An error message explaining why new Amazon Inspector deep inspection custom paths could not be added.
-    UpdateEncryptionKeyResponse:
-      type: object
     UpdateFilterResponse:
       type: object
       properties:
@@ -9909,8 +9839,6 @@ components:
           description: The Amazon Resource Number (ARN) of the successfully updated filter.
       required:
       - arn
-    UpdateOrgEc2DeepInspectionConfigurationResponse:
-      type: object
     UpdateOrganizationConfigurationResponse:
       type: object
       properties:

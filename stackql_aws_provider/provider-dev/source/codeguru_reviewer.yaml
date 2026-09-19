@@ -282,7 +282,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DescribeRecommendationFeedbackResponse'
-      x-stackql-resource: recommendation_feedbacks
+      x-stackql-resource: recommendation_feedback
       x-stackql-method: describe_recommendation_feedback
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.RecommendationFeedback
@@ -377,7 +377,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListRecommendationFeedbackResponse'
-      x-stackql-resource: recommendation_feedbacks
+      x-stackql-resource: recommendation_feedback
       x-stackql-method: list_recommendation_feedback
       x-stackql-verb: SELECT
   /codereviews/{code_review_arn}/Recommendations:
@@ -460,10 +460,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -487,10 +483,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -520,11 +512,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PutRecommendationFeedbackResponse'
-      x-stackql-resource: recommendation_feedbacks
+      x-stackql-resource: recommendation_feedback
       x-stackql-method: put_recommendation_feedback
       x-stackql-verb: REPLACE
 components:
@@ -1569,10 +1557,6 @@ components:
             with two parts: A tag key (for example, CostCenter, Environment, Project, or Secret). Tag keys are case sensitive.
             An optional field known as a tag value (for example, 111122223333, Production, or a team name). Omitting the tag
             value is the same as using an empty string. Like tag keys, tag values are case sensitive.'
-    PutRecommendationFeedbackResponse:
-      type: object
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
@@ -1581,5 +1565,3 @@ components:
       type: string
       minLength: 1
       maxLength: 128
-    UntagResourceResponse:
-      type: object

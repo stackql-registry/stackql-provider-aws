@@ -123,6 +123,13 @@ The following methods are available for this resource:
     <td></td>
     <td>Lists all the migration statuses for your applications. If you use the optional ApplicationIds parameter, only the migration statuses for those applications will be returned.</td>
 </tr>
+<tr>
+    <td><a href="#notify_application_state"><CopyableCode code="notify_application_state" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-ApplicationId"><code>ApplicationId</code></a>, <a href="#parameter-Status"><code>Status</code></a></td>
+    <td></td>
+    <td>Sets the migration state of an application. For a given application identified by the value passed to ApplicationId, its status is set or updated by passing one of three values to Status: NOT_STARTED | IN_PROGRESS | COMPLETED.</td>
+</tr>
 </tbody>
 </table>
 
@@ -180,6 +187,34 @@ application_status,
 last_updated_time
 FROM aws.mgh.application_states
 WHERE region = '{{ region }}' -- required
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="notify_application_state"
+    values={[
+        { label: 'notify_application_state', value: 'notify_application_state' }
+    ]}
+>
+<TabItem value="notify_application_state">
+
+Sets the migration state of an application. For a given application identified by the value passed to ApplicationId, its status is set or updated by passing one of three values to Status: NOT_STARTED | IN_PROGRESS | COMPLETED.
+
+```sql
+EXEC aws.mgh.application_states.notify_application_state 
+@region='{{ region }}' --required 
+@@json=
+'{
+"ApplicationId": "{{ ApplicationId }}", 
+"Status": "{{ Status }}", 
+"UpdateDateTime": "{{ UpdateDateTime }}", 
+"DryRun": {{ DryRun }}
+}'
 ;
 ```
 </TabItem>

@@ -197,6 +197,13 @@ The following methods are available for this resource:
     <td>Retrieves information of a node (also called a instance interchangeably) of a SageMaker HyperPod cluster.</td>
 </tr>
 <tr>
+    <td><a href="#attach_cluster_node_network_interface"><CopyableCode code="attach_cluster_node_network_interface" /></a></td>
+    <td><CopyableCode code="update" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-ClusterName"><code>ClusterName</code></a>, <a href="#parameter-NodeId"><code>NodeId</code></a>, <a href="#parameter-NetworkInterfaceId"><code>NetworkInterfaceId</code></a></td>
+    <td></td>
+    <td>Attaches an elastic network interface (ENI) to a node in a HyperPod cluster. To use this operation, you must have the sagemaker:AttachClusterNodeNetworkInterface permission.</td>
+</tr>
+<tr>
     <td><a href="#attach_cluster_node_volume"><CopyableCode code="attach_cluster_node_volume" /></a></td>
     <td><CopyableCode code="update" /></td>
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-ClusterArn"><code>ClusterArn</code></a>, <a href="#parameter-NodeId"><code>NodeId</code></a>, <a href="#parameter-VolumeId"><code>VolumeId</code></a></td>
@@ -318,11 +325,34 @@ WHERE region = '{{ region }}' -- required
 ## `UPDATE` examples
 
 <Tabs
-    defaultValue="attach_cluster_node_volume"
+    defaultValue="attach_cluster_node_network_interface"
     values={[
+        { label: 'attach_cluster_node_network_interface', value: 'attach_cluster_node_network_interface' },
         { label: 'attach_cluster_node_volume', value: 'attach_cluster_node_volume' }
     ]}
 >
+<TabItem value="attach_cluster_node_network_interface">
+
+Attaches an elastic network interface (ENI) to a node in a HyperPod cluster. To use this operation, you must have the sagemaker:AttachClusterNodeNetworkInterface permission.
+
+```sql
+UPDATE aws.sagemaker.cluster_nodes
+SET 
+ClusterName = '{{ ClusterName }}',
+NodeId = '{{ NodeId }}',
+NetworkInterfaceId = '{{ NetworkInterfaceId }}'
+WHERE 
+region = '{{ region }}' --required
+AND ClusterName = '{{ ClusterName }}' --required
+AND NodeId = '{{ NodeId }}' --required
+AND NetworkInterfaceId = '{{ NetworkInterfaceId }}' --required
+RETURNING
+attachment_id,
+cluster_arn,
+network_interface_id,
+node_id;
+```
+</TabItem>
 <TabItem value="attach_cluster_node_volume">
 
 Attaches your Amazon Elastic Block Store (Amazon EBS) volume to a node in your EKS orchestrated HyperPod cluster. This API works with the Amazon Elastic Block Store (Amazon EBS) Container Storage Interface (CSI) driver to manage the lifecycle of persistent storage in your HyperPod EKS clusters.

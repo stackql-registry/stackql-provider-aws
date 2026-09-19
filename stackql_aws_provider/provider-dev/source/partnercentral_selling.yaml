@@ -57,7 +57,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: engagements
+      x-stackql-resource: engagement_invitations
       x-stackql-method: accept_engagement_invitation
       x-stackql-verb: EXEC
   /AssignOpportunity:
@@ -1126,7 +1126,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListEngagementByAcceptingInvitationTasksResponse'
-      x-stackql-resource: engagement_by_accepting_invitation_tasks
+      x-stackql-resource: engagements
       x-stackql-method: list_engagement_by_accepting_invitation_tasks
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.TaskSummaries
@@ -2019,7 +2019,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: engagements
+      x-stackql-resource: engagement_invitations
       x-stackql-method: reject_engagement_invitation
       x-stackql-verb: EXEC
   /StartEngagementByAcceptingInvitationTask:
@@ -2129,7 +2129,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartEngagementFromOpportunityTaskResponse'
-      x-stackql-resource: engagements
+      x-stackql-resource: engagement_from_opportunity_tasks
       x-stackql-method: start_engagement_from_opportunity_task
       x-stackql-verb: EXEC
   /StartOpportunityFromEngagementTask:
@@ -2187,7 +2187,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartOpportunityFromEngagementTaskResponse'
-      x-stackql-resource: opportunities
+      x-stackql-resource: opportunity_from_engagement_tasks
       x-stackql-method: start_opportunity_from_engagement_task
       x-stackql-verb: EXEC
   /StartProspectingFromEngagementTask:
@@ -2241,7 +2241,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartProspectingFromEngagementTaskResponse'
-      x-stackql-resource: prospecting_from_engagement_task
+      x-stackql-resource: prospecting_from_engagement_tasks
       x-stackql-method: start_prospecting_from_engagement_task
       x-stackql-verb: EXEC
   /StartResourceSnapshotJob:
@@ -2279,7 +2279,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: resource_snapshots
+      x-stackql-resource: resource_snapshot_jobs
       x-stackql-method: start_resource_snapshot_job
       x-stackql-verb: EXEC
   /StopResourceSnapshotJob:
@@ -2317,7 +2317,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: resource_snapshots
+      x-stackql-resource: resource_snapshot_jobs
       x-stackql-method: stop_resource_snapshot_job
       x-stackql-verb: EXEC
   /SubmitOpportunity:
@@ -2369,7 +2369,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: opportunity
+      x-stackql-resource: opportunities
       x-stackql-method: submit_opportunity
       x-stackql-verb: EXEC
   /TagResource:
@@ -2405,10 +2405,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -2445,10 +2441,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -2661,6 +2653,8 @@ components:
         type: string
   schemas:
     CatalogIdentifier:
+      description: Value space is validated at runtime against an allowlist, so the model keeps only a coarse character-class
+        pattern.
       type: string
       pattern: '[a-zA-Z]+'
     EngagementInvitationArnOrIdentifier:
@@ -3355,7 +3349,7 @@ components:
       - LastName
     LeadJobTitle:
       type: string
-      minLength: 0
+      minLength: 1
       maxLength: 255
     LeadEmail:
       type: string
@@ -4750,6 +4744,9 @@ components:
           $ref: '#/components/schemas/String'
           description: 'Engagement classification for this opportunity. Read-only. Null before scoring. Known values: AWS
             Field-engaged, Agent-engaged, Partner-led.'
+        SoftwareRevenue:
+          $ref: '#/components/schemas/AwsSoftwareRevenue'
+          description: 'Seller-provided PARC deal terms: commitment value, discount, and contract dates.'
         Catalog:
           $ref: '#/components/schemas/CatalogIdentifier'
           description: Specifies the catalog in which the AWS Opportunity exists. This is the environment (e.g., AWS or Sandbox)
@@ -4928,6 +4925,7 @@ components:
       - PDM
       - PSM
       - ISVSM
+      - Signatory
     AwsOpportunityInsights:
       description: Contains insights provided by AWS for the opportunity, offering recommendations and analysis that can help
         the partner optimize their engagement and strategy.
@@ -5178,6 +5176,22 @@ components:
           $ref: '#/components/schemas/AwsPartition'
           description: 'AWS partition where the opportunity will be deployed. Possible values: aws-eusc for AWS European Sovereign
             Cloud, null for all other partitions.'
+    AwsSoftwareRevenue:
+      description: Seller-provided PARC deal terms for the opportunity, including commitment value, discount percentage, and
+        contract dates.
+      type: object
+      properties:
+        Value:
+          $ref: '#/components/schemas/MonetaryValue'
+        Discount:
+          $ref: '#/components/schemas/String'
+          description: 'Discount percentage offered on the software revenue. Percent convention: 15.00 means 15%.'
+        EffectiveDate:
+          $ref: '#/components/schemas/String'
+          description: Contract effective (start) date in YYYY-MM-DD format.
+        ExpirationDate:
+          $ref: '#/components/schemas/String'
+          description: Contract expiration (end) date in YYYY-MM-DD format.
     GetEngagementResponse:
       type: object
       properties:
@@ -5741,6 +5755,9 @@ components:
           $ref: '#/components/schemas/String'
           description: 'Engagement classification for this opportunity. Read-only. Null before scoring. Known values: AWS
             Field-engaged, Agent-engaged, Partner-led.'
+        SoftwareRevenue:
+          $ref: '#/components/schemas/AwsSoftwareRevenue'
+          description: 'Seller-provided PARC deal terms: commitment value, discount, and contract dates.'
     AwsAccountIdOrAliasList:
       type: array
       items:
@@ -7139,14 +7156,10 @@ components:
       - TaskName
       - StartTime
       - TaskStatus
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
         $ref: '#/components/schemas/TagKey'
-    UntagResourceResponse:
-      type: object
     UpdateEngagementContextPayload:
       description: Represents the updated payload of an engagement context. The structure of this payload varies based on
         the context type being updated.

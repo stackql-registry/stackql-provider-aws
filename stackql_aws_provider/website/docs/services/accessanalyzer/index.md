@@ -31,13 +31,13 @@ total resources: __13__
 <a href="/services/accessanalyzer/analyzers/">analyzers</a><br />
 <a href="/services/accessanalyzer/archive_rules/">archive_rules</a><br />
 <a href="/services/accessanalyzer/finding_recommendations/">finding_recommendations</a><br />
-<a href="/services/accessanalyzer/finding_v2s/">finding_v2s</a>
+<a href="/services/accessanalyzer/findings/">findings</a>
 </div>
 <div class="providerDocColumn">
-<a href="/services/accessanalyzer/findings/">findings</a><br />
 <a href="/services/accessanalyzer/findings_statistics/">findings_statistics</a><br />
-<a href="/services/accessanalyzer/findings_v2s/">findings_v2s</a><br />
+<a href="/services/accessanalyzer/findings_v2/">findings_v2</a><br />
 <a href="/services/accessanalyzer/generated_policies/">generated_policies</a><br />
+<a href="/services/accessanalyzer/policies/">policies</a><br />
 <a href="/services/accessanalyzer/policy_generations/">policy_generations</a><br />
 <a href="/services/accessanalyzer/tags/">tags</a>
 </div>

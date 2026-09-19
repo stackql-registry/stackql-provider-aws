@@ -27,7 +27,7 @@ total resources: __22__
 <div class="providerDocColumn">
 <a href="/services/waf/activated_rules_in_rule_groups/">activated_rules_in_rule_groups</a><br />
 <a href="/services/waf/byte_match_sets/">byte_match_sets</a><br />
-<a href="/services/waf/change_token_status/">change_token_status</a><br />
+<a href="/services/waf/change_token_statuses/">change_token_statuses</a><br />
 <a href="/services/waf/change_tokens/">change_tokens</a><br />
 <a href="/services/waf/geo_match_sets/">geo_match_sets</a><br />
 <a href="/services/waf/ip_sets/">ip_sets</a><br />

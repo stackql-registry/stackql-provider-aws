@@ -57,7 +57,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="service_name" /></td>
     <td><code>string</code></td>
-    <td>The VPC endpoint service name. (pattern: &lt;code&gt;com\.amazonaws\.&#91;a-z0-9-&#93;+\.dsql-&#91;a-f0-9&#93;&#123;6&#125;&lt;/code&gt;)</td>
+    <td>The VPC endpoint service name. (pattern: &lt;code&gt;com\.amazonaws\.&#91;a-z0-9-&#93;+\.dsql&#91;a-z0-9-&#93;*&lt;/code&gt;)</td>
 </tr>
 </tbody>
 </table>

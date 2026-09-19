@@ -124,7 +124,7 @@ The following methods are available for this resource:
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td><a href="#parameter-EnvironmentName"><code>EnvironmentName</code></a>, <a href="#parameter-EnvironmentId"><code>EnvironmentId</code></a>, <a href="#parameter-AttributeNames"><code>AttributeNames</code></a>, <a href="#parameter-NextToken"><code>NextToken</code></a></td>
-    <td>Retrieves detailed information about the health of instances in your AWS Elastic Beanstalk. This operation requires enhanced health reporting.</td>
+    <td>Retrieves detailed information about the health of instances in your Elastic Beanstalk environments. This operation requires enhanced health reporting. This action only returns information about environments that the calling principle has IAM permissions to access. For example, consider a case where a user only has permission to access one of three environments. When the user calls this action, the response will only include the one environment that the user has permission to access instead of all three environments. If the user doesn’t have access to any of the environments an empty result is returned. The AWSElasticBeanstalkReadOnly managed policy allows operators to view information about resources related to Elastic Beanstalk environments. For more information, see Managing Elastic Beanstalk user policies in the Elastic Beanstalk Developer Guide. For detailed instructions to attach a policy to a user or group, see the section Controlling access with managed policies in the same topic.</td>
 </tr>
 </tbody>
 </table>
@@ -155,12 +155,12 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-EnvironmentId">
     <td><CopyableCode code="EnvironmentId" /></td>
     <td><code>string</code></td>
-    <td>Specify the AWS Elastic Beanstalk environment by ID.</td>
+    <td>Specify the Elastic Beanstalk environment by ID.</td>
 </tr>
 <tr id="parameter-EnvironmentName">
     <td><CopyableCode code="EnvironmentName" /></td>
     <td><code>string</code></td>
-    <td>Specify the AWS Elastic Beanstalk environment by name.</td>
+    <td>Specify the Elastic Beanstalk environment by name.</td>
 </tr>
 <tr id="parameter-NextToken">
     <td><CopyableCode code="NextToken" /></td>
@@ -180,7 +180,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 >
 <TabItem value="describe_instances_health">
 
-Retrieves detailed information about the health of instances in your AWS Elastic Beanstalk. This operation requires enhanced health reporting.
+Retrieves detailed information about the health of instances in your Elastic Beanstalk environments. This operation requires enhanced health reporting. This action only returns information about environments that the calling principle has IAM permissions to access. For example, consider a case where a user only has permission to access one of three environments. When the user calls this action, the response will only include the one environment that the user has permission to access instead of all three environments. If the user doesn’t have access to any of the environments an empty result is returned. The AWSElasticBeanstalkReadOnly managed policy allows operators to view information about resources related to Elastic Beanstalk environments. For more information, see Managing Elastic Beanstalk user policies in the Elastic Beanstalk Developer Guide. For detailed instructions to attach a policy to a user or group, see the section Controlling access with managed policies in the same topic.
 
 ```sql
 SELECT

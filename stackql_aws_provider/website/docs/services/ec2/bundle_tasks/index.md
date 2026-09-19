@@ -116,6 +116,13 @@ The following methods are available for this resource:
     <td><a href="#parameter-BundleId"><code>BundleId</code></a>, <a href="#parameter-DryRun"><code>DryRun</code></a>, <a href="#parameter-Filter"><code>Filter</code></a></td>
     <td>Describes the specified bundle tasks or all of your bundle tasks. Completed bundle tasks are listed for only a limited time. If your bundle task is no longer in the list, you can still register an AMI from it. Just use RegisterImage with the Amazon S3 bucket name and image manifest name you provided to the bundle task. The order of the elements in the response, including those within nested structures, might vary. Applications should not assume the elements appear in a particular order.</td>
 </tr>
+<tr>
+    <td><a href="#cancel_bundle_task"><CopyableCode code="cancel_bundle_task" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-BundleId"><code>BundleId</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td><a href="#parameter-DryRun"><code>DryRun</code></a></td>
+    <td>Cancels a bundling operation for an instance store-backed Windows instance. CancelBundleTask is no longer supported because BundleInstance, the operation it cancels, is no longer supported.</td>
+</tr>
 </tbody>
 </table>
 
@@ -132,6 +139,11 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     </tr>
 </thead>
 <tbody>
+<tr id="parameter-BundleId">
+    <td><CopyableCode code="BundleId" /></td>
+    <td><code>string</code></td>
+    <td>The ID of the bundle task.</td>
+</tr>
 <tr id="parameter-region">
     <td><CopyableCode code="region" /></td>
     <td><code>string</code></td>
@@ -182,6 +194,29 @@ WHERE region = '{{ region }}' -- required
 AND BundleId = '{{ BundleId }}'
 AND DryRun = '{{ DryRun }}'
 AND Filter = '{{ Filter }}'
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="cancel_bundle_task"
+    values={[
+        { label: 'cancel_bundle_task', value: 'cancel_bundle_task' }
+    ]}
+>
+<TabItem value="cancel_bundle_task">
+
+Cancels a bundling operation for an instance store-backed Windows instance. CancelBundleTask is no longer supported because BundleInstance, the operation it cancels, is no longer supported.
+
+```sql
+EXEC aws.ec2.bundle_tasks.cancel_bundle_task 
+@BundleId='{{ BundleId }}' --required, 
+@region='{{ region }}' --required, 
+@DryRun={{ DryRun }}
 ;
 ```
 </TabItem>

@@ -36,8 +36,7 @@ The following fields are returned by `SELECT` queries:
     defaultValue="describe_routing_profile"
     values={[
         { label: 'describe_routing_profile', value: 'describe_routing_profile' },
-        { label: 'list_routing_profiles', value: 'list_routing_profiles' },
-        { label: 'search_routing_profiles', value: 'search_routing_profiles' }
+        { label: 'list_routing_profiles', value: 'list_routing_profiles' }
     ]}
 >
 <TabItem value="describe_routing_profile">
@@ -178,105 +177,6 @@ The following fields are returned by `SELECT` queries:
 </tbody>
 </table>
 </TabItem>
-<TabItem value="search_routing_profiles">
-
-<table>
-<thead>
-    <tr>
-    <th>Name</th>
-    <th>Datatype</th>
-    <th>Description</th>
-    </tr>
-</thead>
-<tbody>
-<tr>
-    <td><CopyableCode code="agent_availability_timer" /></td>
-    <td><code>string</code></td>
-    <td>Whether agents with this routing profile will have their routing order calculated based on time since their last inbound contact or longest idle time. (TIME_SINCE_LAST_ACTIVITY, TIME_SINCE_LAST_INBOUND)</td>
-</tr>
-<tr>
-    <td><CopyableCode code="associated_manual_assignment_queue_ids" /></td>
-    <td><code>array</code></td>
-    <td>The IDs of the associated manual assignment queues.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="associated_queue_ids" /></td>
-    <td><code>array</code></td>
-    <td>The IDs of the associated queue.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="default_outbound_queue_id" /></td>
-    <td><code>string</code></td>
-    <td>The identifier of the default outbound queue for this routing profile.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="description" /></td>
-    <td><code>string</code></td>
-    <td>The description of the routing profile.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="instance_id" /></td>
-    <td><code>string</code></td>
-    <td>The identifier of the Connect Customer instance. You can find the instance ID in the Amazon Resource Name (ARN) of the instance.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="is_default" /></td>
-    <td><code>boolean</code></td>
-    <td>Whether this a default routing profile.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="last_modified_region" /></td>
-    <td><code>string</code></td>
-    <td>The Amazon Web Services Region where this resource was last modified. (pattern: &lt;code&gt;&#91;a-z&#93;&#123;2&#125;(-&#91;a-z&#93;+)&#123;1,2&#125;(-&#91;0-9&#93;)?&lt;/code&gt;)</td>
-</tr>
-<tr>
-    <td><CopyableCode code="last_modified_time" /></td>
-    <td><code>string (date-time)</code></td>
-    <td>The timestamp when this resource was last modified.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="media_concurrencies" /></td>
-    <td><code>array</code></td>
-    <td>The channels agents can handle in the Contact Control Panel (CCP) for this routing profile.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="name" /></td>
-    <td><code>string</code></td>
-    <td>The name of the routing profile.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="number_of_associated_manual_assignment_queues" /></td>
-    <td><code>integer (int64)</code></td>
-    <td>The number of associated manual assignment queues in routing profile.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="number_of_associated_queues" /></td>
-    <td><code>integer (int64)</code></td>
-    <td>The number of associated queues in routing profile.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="number_of_associated_users" /></td>
-    <td><code>integer (int64)</code></td>
-    <td>The number of associated users in routing profile.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="routing_profile_arn" /></td>
-    <td><code>string</code></td>
-    <td>The Amazon Resource Name (ARN) of the routing profile.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="routing_profile_id" /></td>
-    <td><code>string</code></td>
-    <td>The identifier of the routing profile.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="tags" /></td>
-    <td><code>object</code></td>
-    <td>The tags used to organize, track, or control access for this resource. For example, &#123; "Tags": &#123;"key1":"value1", "key2":"value2"&#125; &#125;.</td>
-</tr>
-</tbody>
-</table>
-</TabItem>
 </Tabs>
 
 ## Methods
@@ -307,13 +207,6 @@ The following methods are available for this resource:
     <td><a href="#parameter-instance_id"><code>instance_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td><a href="#parameter-nextToken"><code>nextToken</code></a>, <a href="#parameter-maxResults"><code>maxResults</code></a></td>
     <td>Provides summary information about the routing profiles for the specified Connect Customer instance. For more information about routing profiles, see Routing Profiles and Create a Routing Profile in the Connect Customer Administrator Guide.</td>
-</tr>
-<tr>
-    <td><a href="#search_routing_profiles"><CopyableCode code="search_routing_profiles" /></a></td>
-    <td><CopyableCode code="select" /></td>
-    <td><a href="#parameter-region"><code>region</code></a></td>
-    <td></td>
-    <td>Searches routing profiles in an Connect Customer instance, with optional filtering. SearchRoutingProfiles does not populate LastModifiedRegion, LastModifiedTime, MediaConcurrencies.CrossChannelBehavior, and AgentAvailabilityTimer in its response, but DescribeRoutingProfile does.</td>
 </tr>
 <tr>
     <td><a href="#create_routing_profile"><CopyableCode code="create_routing_profile" /></a></td>
@@ -356,6 +249,13 @@ The following methods are available for this resource:
     <td><a href="#parameter-instance_id"><code>instance_id</code></a>, <a href="#parameter-routing_profile_id"><code>routing_profile_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td></td>
     <td>Deletes a routing profile.</td>
+</tr>
+<tr>
+    <td><a href="#search_routing_profiles"><CopyableCode code="search_routing_profiles" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-InstanceId"><code>InstanceId</code></a></td>
+    <td></td>
+    <td>Searches routing profiles in an Connect Customer instance, with optional filtering. SearchRoutingProfiles does not populate LastModifiedRegion, LastModifiedTime, MediaConcurrencies.CrossChannelBehavior, and AgentAvailabilityTimer in its response, but DescribeRoutingProfile does.</td>
 </tr>
 </tbody>
 </table>
@@ -412,8 +312,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     defaultValue="describe_routing_profile"
     values={[
         { label: 'describe_routing_profile', value: 'describe_routing_profile' },
-        { label: 'list_routing_profiles', value: 'list_routing_profiles' },
-        { label: 'search_routing_profiles', value: 'search_routing_profiles' }
+        { label: 'list_routing_profiles', value: 'list_routing_profiles' }
     ]}
 >
 <TabItem value="describe_routing_profile">
@@ -462,34 +361,6 @@ WHERE instance_id = '{{ instance_id }}' -- required
 AND region = '{{ region }}' -- required
 AND nextToken = '{{ nextToken }}'
 AND maxResults = '{{ maxResults }}'
-;
-```
-</TabItem>
-<TabItem value="search_routing_profiles">
-
-Searches routing profiles in an Connect Customer instance, with optional filtering. SearchRoutingProfiles does not populate LastModifiedRegion, LastModifiedTime, MediaConcurrencies.CrossChannelBehavior, and AgentAvailabilityTimer in its response, but DescribeRoutingProfile does.
-
-```sql
-SELECT
-agent_availability_timer,
-associated_manual_assignment_queue_ids,
-associated_queue_ids,
-default_outbound_queue_id,
-description,
-instance_id,
-is_default,
-last_modified_region,
-last_modified_time,
-media_concurrencies,
-name,
-number_of_associated_manual_assignment_queues,
-number_of_associated_queues,
-number_of_associated_users,
-routing_profile_arn,
-routing_profile_id,
-tags
-FROM aws.connect.routing_profiles
-WHERE region = '{{ region }}' -- required
 ;
 ```
 </TabItem>
@@ -574,6 +445,7 @@ routing_profile_id
           Concurrency: {{ Concurrency }}
           CrossChannelBehavior:
             BehaviorType: "{{ BehaviorType }}"
+          WorkloadTypeConcurrencies: "{{ WorkloadTypeConcurrencies }}"
     - name: Tags
       value: "{{ Tags }}"
     - name: AgentAvailabilityTimer
@@ -676,6 +548,35 @@ DELETE FROM aws.connect.routing_profiles
 WHERE instance_id = '{{ instance_id }}' --required
 AND routing_profile_id = '{{ routing_profile_id }}' --required
 AND region = '{{ region }}' --required
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="search_routing_profiles"
+    values={[
+        { label: 'search_routing_profiles', value: 'search_routing_profiles' }
+    ]}
+>
+<TabItem value="search_routing_profiles">
+
+Searches routing profiles in an Connect Customer instance, with optional filtering. SearchRoutingProfiles does not populate LastModifiedRegion, LastModifiedTime, MediaConcurrencies.CrossChannelBehavior, and AgentAvailabilityTimer in its response, but DescribeRoutingProfile does.
+
+```sql
+EXEC aws.connect.routing_profiles.search_routing_profiles 
+@region='{{ region }}' --required 
+@@json=
+'{
+"InstanceId": "{{ InstanceId }}", 
+"NextToken": "{{ NextToken }}", 
+"MaxResults": {{ MaxResults }}, 
+"SearchFilter": "{{ SearchFilter }}", 
+"SearchCriteria": "{{ SearchCriteria }}"
+}'
 ;
 ```
 </TabItem>

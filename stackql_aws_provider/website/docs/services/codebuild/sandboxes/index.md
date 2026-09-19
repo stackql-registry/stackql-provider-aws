@@ -36,6 +36,7 @@ The following fields are returned by `SELECT` queries:
     defaultValue="batch_get_sandboxes"
     values={[
         { label: 'batch_get_sandboxes', value: 'batch_get_sandboxes' },
+        { label: 'list_sandboxes_for_project', value: 'list_sandboxes_for_project' },
         { label: 'list_sandboxes', value: 'list_sandboxes' }
     ]}
 >
@@ -59,6 +60,25 @@ The following fields are returned by `SELECT` queries:
     <td><CopyableCode code="sandboxes_not_found" /></td>
     <td><code>array</code></td>
     <td>The IDs of sandboxes for which information could not be found.</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
+<TabItem value="list_sandboxes_for_project">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="id" /></td>
+    <td><code>string</code></td>
+    <td>Information about the requested sandbox IDs.</td>
 </tr>
 </tbody>
 </table>
@@ -107,6 +127,13 @@ The following methods are available for this resource:
     <td>Gets information about the sandbox status.</td>
 </tr>
 <tr>
+    <td><a href="#list_sandboxes_for_project"><CopyableCode code="list_sandboxes_for_project" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Gets a list of sandboxes for a given project.</td>
+</tr>
+<tr>
     <td><a href="#list_sandboxes"><CopyableCode code="list_sandboxes" /></a></td>
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
@@ -121,11 +148,25 @@ The following methods are available for this resource:
     <td>Starts a command execution.</td>
 </tr>
 <tr>
+    <td><a href="#start_sandbox"><CopyableCode code="start_sandbox" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Starts a sandbox.</td>
+</tr>
+<tr>
     <td><a href="#start_sandbox_connection"><CopyableCode code="start_sandbox_connection" /></a></td>
     <td><CopyableCode code="exec" /></td>
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-sandboxId"><code>sandboxId</code></a></td>
     <td></td>
     <td>Starts a sandbox connection.</td>
+</tr>
+<tr>
+    <td><a href="#stop_sandbox"><CopyableCode code="stop_sandbox" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-id"><code>id</code></a></td>
+    <td></td>
+    <td>Stops a sandbox.</td>
 </tr>
 </tbody>
 </table>
@@ -157,6 +198,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     defaultValue="batch_get_sandboxes"
     values={[
         { label: 'batch_get_sandboxes', value: 'batch_get_sandboxes' },
+        { label: 'list_sandboxes_for_project', value: 'list_sandboxes_for_project' },
         { label: 'list_sandboxes', value: 'list_sandboxes' }
     ]}
 >
@@ -168,6 +210,18 @@ Gets information about the sandbox status.
 SELECT
 sandboxes,
 sandboxes_not_found
+FROM aws.codebuild.sandboxes
+WHERE region = '{{ region }}' -- required
+;
+```
+</TabItem>
+<TabItem value="list_sandboxes_for_project">
+
+Gets a list of sandboxes for a given project.
+
+```sql
+SELECT
+id
 FROM aws.codebuild.sandboxes
 WHERE region = '{{ region }}' -- required
 ;
@@ -194,7 +248,9 @@ WHERE region = '{{ region }}' -- required
     defaultValue="start_command_execution"
     values={[
         { label: 'start_command_execution', value: 'start_command_execution' },
-        { label: 'start_sandbox_connection', value: 'start_sandbox_connection' }
+        { label: 'start_sandbox', value: 'start_sandbox' },
+        { label: 'start_sandbox_connection', value: 'start_sandbox_connection' },
+        { label: 'stop_sandbox', value: 'stop_sandbox' }
     ]}
 >
 <TabItem value="start_command_execution">
@@ -213,6 +269,21 @@ EXEC aws.codebuild.sandboxes.start_command_execution
 ;
 ```
 </TabItem>
+<TabItem value="start_sandbox">
+
+Starts a sandbox.
+
+```sql
+EXEC aws.codebuild.sandboxes.start_sandbox 
+@region='{{ region }}' --required 
+@@json=
+'{
+"projectName": "{{ projectName }}", 
+"idempotencyToken": "{{ idempotencyToken }}"
+}'
+;
+```
+</TabItem>
 <TabItem value="start_sandbox_connection">
 
 Starts a sandbox connection.
@@ -223,6 +294,20 @@ EXEC aws.codebuild.sandboxes.start_sandbox_connection
 @@json=
 '{
 "sandboxId": "{{ sandboxId }}"
+}'
+;
+```
+</TabItem>
+<TabItem value="stop_sandbox">
+
+Stops a sandbox.
+
+```sql
+EXEC aws.codebuild.sandboxes.stop_sandbox 
+@region='{{ region }}' --required 
+@@json=
+'{
+"id": "{{ id }}"
 }'
 ;
 ```

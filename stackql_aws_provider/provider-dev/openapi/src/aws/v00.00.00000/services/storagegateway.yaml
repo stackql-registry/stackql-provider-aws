@@ -6622,6 +6622,32 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        refresh_cache:
+          operation:
+            $ref: "#/paths/~1RefreshCache/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        reset_cache:
+          operation:
+            $ref: "#/paths/~1ResetCache/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         start_cache_report:
           operation:
             $ref: "#/paths/~1StartCacheReport/post"
@@ -6740,10 +6766,10 @@ components:
         update:
           - $ref: "#/components/x-stackQL-resources/upload_buffers/methods/add_upload_buffer"
         delete: []
-    working_storages:
-      id: aws.storagegateway.working_storages
-      name: working_storages
-      title: working_storages
+    working_storage:
+      id: aws.storagegateway.working_storage
+      name: working_storage
+      title: working_storage
       methods:
         add_working_storage:
           operation:
@@ -6773,10 +6799,10 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/working_storages/methods/describe_working_storage"
+          - $ref: "#/components/x-stackQL-resources/working_storage/methods/describe_working_storage"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/working_storages/methods/add_working_storage"
+          - $ref: "#/components/x-stackQL-resources/working_storage/methods/add_working_storage"
         delete: []
     tape_pools:
       id: aws.storagegateway.tape_pools
@@ -7131,8 +7157,8 @@ components:
         insert:
           - $ref: "#/components/x-stackQL-resources/smb_file_shares/methods/create_smb_file_share"
         update:
-          - $ref: "#/components/x-stackQL-resources/smb_file_shares/methods/update_smb_file_share_visibility"
           - $ref: "#/components/x-stackQL-resources/smb_file_shares/methods/update_smb_file_share"
+          - $ref: "#/components/x-stackQL-resources/smb_file_shares/methods/update_smb_file_share_visibility"
         delete: []
     volume_recovery_points:
       id: aws.storagegateway.volume_recovery_points
@@ -7815,10 +7841,10 @@ components:
         update:
           - $ref: "#/components/x-stackQL-resources/file_system_associations/methods/update_file_system_association"
         delete: []
-    gateway_informations:
-      id: aws.storagegateway.gateway_informations
-      name: gateway_informations
-      title: gateway_informations
+    gateway_information:
+      id: aws.storagegateway.gateway_information
+      name: gateway_information
+      title: gateway_information
       methods:
         describe_gateway_information:
           operation:
@@ -7848,10 +7874,10 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/gateway_informations/methods/describe_gateway_information"
+          - $ref: "#/components/x-stackQL-resources/gateway_information/methods/describe_gateway_information"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/gateway_informations/methods/update_gateway_information"
+          - $ref: "#/components/x-stackQL-resources/gateway_information/methods/update_gateway_information"
         delete: []
     maintenance_start_times:
       id: aws.storagegateway.maintenance_start_times

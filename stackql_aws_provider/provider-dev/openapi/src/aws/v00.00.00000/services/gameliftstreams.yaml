@@ -506,10 +506,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ExportStreamSessionFilesOutput"
   /streamgroups/{identifier}/streamsessions/{stream_session_identifier}:
     get:
       operationId: GetStreamSession
@@ -804,10 +800,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TagResourceResponse"
     delete:
       operationId: UntagResource
       description: Removes one or more tags from a Amazon GameLift Streams resource. To remove tags, specify the Amazon GameLift Streams resource and a list of one or more tags to remove.
@@ -827,10 +819,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UntagResourceResponse"
   /streamgroups/{identifier}/streamurls/{stream_url_identifier}/revoke:
     post:
       operationId: RevokeStreamUrl
@@ -1503,8 +1491,6 @@ components:
       minLength: 0
       maxLength: 1024
       pattern: s3://.*(/|\.zip|\.ZIP)
-    ExportStreamSessionFilesOutput:
-      type: object
     GetApplicationOutput:
       type: object
       properties:
@@ -2146,8 +2132,6 @@ components:
         DisplayConfiguration:
           $ref: "#/components/schemas/DisplayConfiguration"
           description: The configuration for the stream session's virtual monitor.
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
@@ -2156,8 +2140,6 @@ components:
       type: string
       minLength: 1
       maxLength: 128
-    UntagResourceResponse:
-      type: object
     UpdateApplicationOutput:
       type: object
       properties:
@@ -2458,7 +2440,6 @@ components:
             $ref: "#/paths/~1streamgroups~1{identifier}~1streamsessions~1{stream_session_identifier}~1exportfiles/put"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -2492,10 +2473,28 @@ components:
               responseToken:
                 key: $.NextToken
                 location: body
+        list_stream_sessions_by_account:
+          operation:
+            $ref: "#/paths/~1streamsessions/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.Items
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/stream_sessions/methods/get_stream_session"
           - $ref: "#/components/x-stackQL-resources/stream_sessions/methods/list_stream_sessions"
+          - $ref: "#/components/x-stackQL-resources/stream_sessions/methods/list_stream_sessions_by_account"
         insert:
           - $ref: "#/components/x-stackQL-resources/stream_sessions/methods/create_stream_session_connection"
           - $ref: "#/components/x-stackQL-resources/stream_sessions/methods/create_stream_session_admin_shell"
@@ -2577,34 +2576,6 @@ components:
         insert: []
         update: []
         delete: []
-    stream_sessions_by_accounts:
-      id: aws.gameliftstreams.stream_sessions_by_accounts
-      name: stream_sessions_by_accounts
-      title: stream_sessions_by_accounts
-      methods:
-        list_stream_sessions_by_account:
-          operation:
-            $ref: "#/paths/~1streamsessions/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.Items
-          request:
-            nativeCasing: pascal
-          config:
-            pagination:
-              requestToken:
-                key: NextToken
-                location: query
-              responseToken:
-                key: $.NextToken
-                location: body
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/stream_sessions_by_accounts/methods/list_stream_sessions_by_account"
-        insert: []
-        update: []
-        delete: []
     tags:
       id: aws.gameliftstreams.tags
       name: tags
@@ -2621,7 +2592,6 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -2632,7 +2602,6 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
       sqlVerbs:

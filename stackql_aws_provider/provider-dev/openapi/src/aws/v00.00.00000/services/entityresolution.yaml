@@ -992,10 +992,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TagResourceOutput"
     delete:
       operationId: UntagResource
       description: Removes one or more tags from the specified Entity Resolution resource. In Entity Resolution, SchemaMapping, and MatchingWorkflow can be tagged.
@@ -1015,10 +1011,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UntagResourceOutput"
 components:
   parameters:
     X-Amz-Content-Sha256:
@@ -2897,8 +2889,6 @@ components:
           description: The ID of the job.
       required:
         - jobId
-    TagResourceOutput:
-      type: object
     TagKeyList:
       type: array
       items:
@@ -2907,8 +2897,6 @@ components:
       type: string
       minLength: 1
       maxLength: 128
-    UntagResourceOutput:
-      type: object
     UpdateIdMappingWorkflowOutput:
       type: object
       properties:
@@ -3076,6 +3064,22 @@ components:
           - $ref: "#/components/x-stackQL-resources/policies/methods/put_policy"
         delete:
           - $ref: "#/components/x-stackQL-resources/policies/methods/delete_policy_statement"
+    unique_ids:
+      id: aws.entityresolution.unique_ids
+      name: unique_ids
+      title: unique_ids
+      methods:
+        batch_delete_unique_id:
+          operation:
+            $ref: "#/paths/~1matchingworkflows~1{workflow_name}~1uniqueids/delete"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
     id_mapping_workflows:
       id: aws.entityresolution.id_mapping_workflows
       name: id_mapping_workflows
@@ -3340,6 +3344,39 @@ components:
           - $ref: "#/components/x-stackQL-resources/schema_mappings/methods/update_schema_mapping"
         delete:
           - $ref: "#/components/x-stackQL-resources/schema_mappings/methods/delete_schema_mapping"
+    match_ids:
+      id: aws.entityresolution.match_ids
+      name: match_ids
+      title: match_ids
+      methods:
+        generate_match_id:
+          operation:
+            $ref: "#/paths/~1matchingworkflows~1{workflow_name}~1generateMatches/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        get_match_id:
+          operation:
+            $ref: "#/paths/~1matchingworkflows~1{workflow_name}~1matches/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/match_ids/methods/get_match_id"
+        insert: []
+        update: []
+        delete: []
     id_mapping_jobs:
       id: aws.entityresolution.id_mapping_jobs
       name: id_mapping_jobs
@@ -3368,21 +3405,9 @@ components:
               responseToken:
                 key: $.nextToken
                 location: body
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/id_mapping_jobs/methods/get_id_mapping_job"
-          - $ref: "#/components/x-stackQL-resources/id_mapping_jobs/methods/list_id_mapping_jobs"
-        insert: []
-        update: []
-        delete: []
-    match_ids:
-      id: aws.entityresolution.match_ids
-      name: match_ids
-      title: match_ids
-      methods:
-        get_match_id:
+        start_id_mapping_job:
           operation:
-            $ref: "#/paths/~1matchingworkflows~1{workflow_name}~1matches/post"
+            $ref: "#/paths/~1idmappingworkflows~1{workflow_name}~1jobs/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -3393,7 +3418,8 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/match_ids/methods/get_match_id"
+          - $ref: "#/components/x-stackQL-resources/id_mapping_jobs/methods/get_id_mapping_job"
+          - $ref: "#/components/x-stackQL-resources/id_mapping_jobs/methods/list_id_mapping_jobs"
         insert: []
         update: []
         delete: []
@@ -3425,6 +3451,12 @@ components:
               responseToken:
                 key: $.nextToken
                 location: body
+        start_matching_job:
+          operation:
+            $ref: "#/paths/~1matchingworkflows~1{workflow_name}~1jobs/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/matching_jobs/methods/get_matching_job"
@@ -3483,7 +3515,6 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -3494,7 +3525,6 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
       sqlVerbs:

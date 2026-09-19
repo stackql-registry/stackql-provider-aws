@@ -92,10 +92,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteScalingPlanResponse"
   /DescribeScalingPlanResources:
     post:
       operationId: DescribeScalingPlanResources
@@ -282,10 +278,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateScalingPlanResponse"
 components:
   parameters:
     X-Amz-Content-Sha256:
@@ -662,8 +654,6 @@ components:
     ScalingPlanVersion:
       type: integer
       format: int64
-    DeleteScalingPlanResponse:
-      type: object
     MaxResults:
       type: integer
     NextToken:
@@ -849,8 +839,6 @@ components:
         Value:
           $ref: "#/components/schemas/MetricScale"
           description: The value of the data point.
-    UpdateScalingPlanResponse:
-      type: object
   x-stackQL-resources:
     scaling_plans:
       id: aws.autoscaling_plans.scaling_plans
@@ -875,7 +863,6 @@ components:
             $ref: "#/paths/~1DeleteScalingPlan/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -909,7 +896,6 @@ components:
             $ref: "#/paths/~1UpdateScalingPlan/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -958,10 +944,10 @@ components:
         insert: []
         update: []
         delete: []
-    scaling_plan_resource_forecast_datas:
-      id: aws.autoscaling_plans.scaling_plan_resource_forecast_datas
-      name: scaling_plan_resource_forecast_datas
-      title: scaling_plan_resource_forecast_datas
+    scaling_plan_resource_forecast_data:
+      id: aws.autoscaling_plans.scaling_plan_resource_forecast_data
+      name: scaling_plan_resource_forecast_data
+      title: scaling_plan_resource_forecast_data
       methods:
         get_scaling_plan_resource_forecast_data:
           operation:
@@ -978,7 +964,7 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/scaling_plan_resource_forecast_datas/methods/get_scaling_plan_resource_forecast_data"
+          - $ref: "#/components/x-stackQL-resources/scaling_plan_resource_forecast_data/methods/get_scaling_plan_resource_forecast_data"
         insert: []
         update: []
         delete: []

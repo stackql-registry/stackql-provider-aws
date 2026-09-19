@@ -109,7 +109,7 @@ The following methods are available for this resource:
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>Get a list of workflow steps that are waiting for action for workflows in your Amazon Web Services account.</td>
+    <td>Retrieves a list of workflow steps that are waiting for action for workflows in your Amazon Web Services account.</td>
 </tr>
 </tbody>
 </table>
@@ -145,7 +145,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 >
 <TabItem value="list_waiting_workflow_steps">
 
-Get a list of workflow steps that are waiting for action for workflows in your Amazon Web Services account.
+Retrieves a list of workflow steps that are waiting for action for workflows in your Amazon Web Services account.
 
 ```sql
 SELECT

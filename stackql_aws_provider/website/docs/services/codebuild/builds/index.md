@@ -36,6 +36,7 @@ The following fields are returned by `SELECT` queries:
     defaultValue="batch_get_builds"
     values={[
         { label: 'batch_get_builds', value: 'batch_get_builds' },
+        { label: 'list_builds_for_project', value: 'list_builds_for_project' },
         { label: 'list_builds', value: 'list_builds' }
     ]}
 >
@@ -59,6 +60,25 @@ The following fields are returned by `SELECT` queries:
     <td><CopyableCode code="builds_not_found" /></td>
     <td><code>array</code></td>
     <td>The IDs of builds for which information could not be found.</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
+<TabItem value="list_builds_for_project">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="id" /></td>
+    <td><code>string</code></td>
+    <td>A list of build identifiers for the specified build project, with each build ID representing a single build.</td>
 </tr>
 </tbody>
 </table>
@@ -107,6 +127,13 @@ The following methods are available for this resource:
     <td>Gets information about one or more builds.</td>
 </tr>
 <tr>
+    <td><a href="#list_builds_for_project"><CopyableCode code="list_builds_for_project" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Gets a list of build identifiers for the specified build project, with each build identifier representing a single build.</td>
+</tr>
+<tr>
     <td><a href="#list_builds"><CopyableCode code="list_builds" /></a></td>
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
@@ -121,11 +148,32 @@ The following methods are available for this resource:
     <td>Deletes one or more builds.</td>
 </tr>
 <tr>
+    <td><a href="#retry_build"><CopyableCode code="retry_build" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Restarts a build.</td>
+</tr>
+<tr>
+    <td><a href="#start_build"><CopyableCode code="start_build" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-projectName"><code>projectName</code></a></td>
+    <td></td>
+    <td>Starts running a build with the settings defined in the project. These setting include: how to run a build, where to get the source code, which build environment to use, which build commands to run, and where to store the build output. You can also start a build run by overriding some of the build settings in the project. The overrides only apply for that specific start build request. The settings in the project are unaltered.</td>
+</tr>
+<tr>
     <td><a href="#start_build_batch"><CopyableCode code="start_build_batch" /></a></td>
     <td><CopyableCode code="exec" /></td>
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-projectName"><code>projectName</code></a></td>
     <td></td>
     <td>Starts a batch build for a project.</td>
+</tr>
+<tr>
+    <td><a href="#stop_build"><CopyableCode code="stop_build" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-id"><code>id</code></a></td>
+    <td></td>
+    <td>Attempts to stop running a build.</td>
 </tr>
 <tr>
     <td><a href="#stop_build_batch"><CopyableCode code="stop_build_batch" /></a></td>
@@ -164,6 +212,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     defaultValue="batch_get_builds"
     values={[
         { label: 'batch_get_builds', value: 'batch_get_builds' },
+        { label: 'list_builds_for_project', value: 'list_builds_for_project' },
         { label: 'list_builds', value: 'list_builds' }
     ]}
 >
@@ -175,6 +224,18 @@ Gets information about one or more builds.
 SELECT
 builds,
 builds_not_found
+FROM aws.codebuild.builds
+WHERE region = '{{ region }}' -- required
+;
+```
+</TabItem>
+<TabItem value="list_builds_for_project">
+
+Gets a list of build identifiers for the specified build project, with each build identifier representing a single build.
+
+```sql
+SELECT
+id
 FROM aws.codebuild.builds
 WHERE region = '{{ region }}' -- required
 ;
@@ -201,7 +262,10 @@ WHERE region = '{{ region }}' -- required
     defaultValue="batch_delete_builds"
     values={[
         { label: 'batch_delete_builds', value: 'batch_delete_builds' },
+        { label: 'retry_build', value: 'retry_build' },
+        { label: 'start_build', value: 'start_build' },
         { label: 'start_build_batch', value: 'start_build_batch' },
+        { label: 'stop_build', value: 'stop_build' },
         { label: 'stop_build_batch', value: 'stop_build_batch' }
     ]}
 >
@@ -215,6 +279,68 @@ EXEC aws.codebuild.builds.batch_delete_builds
 @@json=
 '{
 "ids": "{{ ids }}"
+}'
+;
+```
+</TabItem>
+<TabItem value="retry_build">
+
+Restarts a build.
+
+```sql
+EXEC aws.codebuild.builds.retry_build 
+@region='{{ region }}' --required 
+@@json=
+'{
+"id": "{{ id }}", 
+"idempotencyToken": "{{ idempotencyToken }}"
+}'
+;
+```
+</TabItem>
+<TabItem value="start_build">
+
+Starts running a build with the settings defined in the project. These setting include: how to run a build, where to get the source code, which build environment to use, which build commands to run, and where to store the build output. You can also start a build run by overriding some of the build settings in the project. The overrides only apply for that specific start build request. The settings in the project are unaltered.
+
+```sql
+EXEC aws.codebuild.builds.start_build 
+@region='{{ region }}' --required 
+@@json=
+'{
+"projectName": "{{ projectName }}", 
+"secondarySourcesOverride": "{{ secondarySourcesOverride }}", 
+"secondarySourcesVersionOverride": "{{ secondarySourcesVersionOverride }}", 
+"sourceVersion": "{{ sourceVersion }}", 
+"artifactsOverride": "{{ artifactsOverride }}", 
+"secondaryArtifactsOverride": "{{ secondaryArtifactsOverride }}", 
+"environmentVariablesOverride": "{{ environmentVariablesOverride }}", 
+"sourceTypeOverride": "{{ sourceTypeOverride }}", 
+"sourceLocationOverride": "{{ sourceLocationOverride }}", 
+"sourceAuthOverride": "{{ sourceAuthOverride }}", 
+"gitCloneDepthOverride": {{ gitCloneDepthOverride }}, 
+"gitSubmodulesConfigOverride": "{{ gitSubmodulesConfigOverride }}", 
+"buildspecOverride": "{{ buildspecOverride }}", 
+"insecureSslOverride": {{ insecureSslOverride }}, 
+"reportBuildStatusOverride": {{ reportBuildStatusOverride }}, 
+"buildStatusConfigOverride": "{{ buildStatusConfigOverride }}", 
+"environmentTypeOverride": "{{ environmentTypeOverride }}", 
+"imageOverride": "{{ imageOverride }}", 
+"computeTypeOverride": "{{ computeTypeOverride }}", 
+"certificateOverride": "{{ certificateOverride }}", 
+"cacheOverride": "{{ cacheOverride }}", 
+"serviceRoleOverride": "{{ serviceRoleOverride }}", 
+"privilegedModeOverride": {{ privilegedModeOverride }}, 
+"timeoutInMinutesOverride": {{ timeoutInMinutesOverride }}, 
+"queuedTimeoutInMinutesOverride": {{ queuedTimeoutInMinutesOverride }}, 
+"encryptionKeyOverride": "{{ encryptionKeyOverride }}", 
+"idempotencyToken": "{{ idempotencyToken }}", 
+"logsConfigOverride": "{{ logsConfigOverride }}", 
+"registryCredentialOverride": "{{ registryCredentialOverride }}", 
+"imagePullCredentialsTypeOverride": "{{ imagePullCredentialsTypeOverride }}", 
+"debugSessionEnabled": {{ debugSessionEnabled }}, 
+"fleetOverride": "{{ fleetOverride }}", 
+"autoRetryLimitOverride": {{ autoRetryLimitOverride }}, 
+"hostKernelOverride": "{{ hostKernelOverride }}"
 }'
 ;
 ```
@@ -259,6 +385,20 @@ EXEC aws.codebuild.builds.start_build_batch
 "imagePullCredentialsTypeOverride": "{{ imagePullCredentialsTypeOverride }}", 
 "buildBatchConfigOverride": "{{ buildBatchConfigOverride }}", 
 "debugSessionEnabled": {{ debugSessionEnabled }}
+}'
+;
+```
+</TabItem>
+<TabItem value="stop_build">
+
+Attempts to stop running a build.
+
+```sql
+EXEC aws.codebuild.builds.stop_build 
+@region='{{ region }}' --required 
+@@json=
+'{
+"id": "{{ id }}"
 }'
 ;
 ```

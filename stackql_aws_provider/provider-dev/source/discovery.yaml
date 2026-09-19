@@ -51,10 +51,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/AssociateConfigurationItemsToApplicationResponse'
       x-stackql-resource: configurations
       x-stackql-method: associate_configuration_items_to_application
       x-stackql-verb: UPDATE
@@ -217,10 +213,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CreateTagsResponse'
       x-stackql-resource: tags
       x-stackql-method: create_tags
       x-stackql-verb: INSERT
@@ -253,10 +245,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteApplicationsResponse'
       x-stackql-resource: applications
       x-stackql-method: delete_applications
       x-stackql-verb: DELETE
@@ -294,10 +282,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteTagsResponse'
       x-stackql-resource: tags
       x-stackql-method: delete_tags
       x-stackql-verb: DELETE
@@ -706,10 +690,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DisassociateConfigurationItemsFromApplicationResponse'
       x-stackql-resource: configurations
       x-stackql-method: disassociate_configuration_items_from_application
       x-stackql-verb: UPDATE
@@ -925,7 +905,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartBatchDeleteConfigurationTaskResponse'
-      x-stackql-resource: configurations
+      x-stackql-resource: batch_delete_configuration_tasks
       x-stackql-method: start_batch_delete_configuration_task
       x-stackql-verb: EXEC
   /StartContinuousExport:
@@ -955,7 +935,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartContinuousExportResponse'
-      x-stackql-resource: continuous_export
+      x-stackql-resource: continuous_exports
       x-stackql-method: start_continuous_export
       x-stackql-verb: EXEC
   /StartDataCollectionByAgentIds:
@@ -1061,7 +1041,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartExportTaskResponse'
-      x-stackql-resource: export_task
+      x-stackql-resource: export_tasks
       x-stackql-method: start_export_task
       x-stackql-verb: EXEC
   /StartImportTask:
@@ -1123,7 +1103,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartImportTaskResponse'
-      x-stackql-resource: import_task
+      x-stackql-resource: import_tasks
       x-stackql-method: start_import_task
       x-stackql-verb: EXEC
   /StopContinuousExport:
@@ -1159,7 +1139,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StopContinuousExportResponse'
-      x-stackql-resource: continuous_export
+      x-stackql-resource: continuous_exports
       x-stackql-method: stop_continuous_export
       x-stackql-verb: EXEC
   /StopDataCollectionByAgentIds:
@@ -1236,10 +1216,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateApplicationResponse'
       x-stackql-resource: applications
       x-stackql-method: update_application
       x-stackql-verb: UPDATE
@@ -1300,8 +1276,6 @@ components:
       type: string
       maxLength: 200
       pattern: \S*
-    AssociateConfigurationItemsToApplicationResponse:
-      type: object
     DeleteAgents:
       type: array
       items:
@@ -1447,16 +1421,10 @@ components:
       type: string
     TagValue:
       type: string
-    CreateTagsResponse:
-      type: object
     ApplicationIdsList:
       type: array
       items:
         $ref: '#/components/schemas/ApplicationId'
-    DeleteApplicationsResponse:
-      type: object
-    DeleteTagsResponse:
-      type: object
     AgentIds:
       type: array
       items:
@@ -2110,8 +2078,6 @@ components:
       - PROCESS
       - CONNECTION
       - APPLICATION
-    DisassociateConfigurationItemsFromApplicationResponse:
-      type: object
     ExportConfigurationsResponse:
       type: object
       properties:
@@ -2561,5 +2527,3 @@ components:
           $ref: '#/components/schemas/AgentConfigurationStatusList'
           description: Information about the agents that were instructed to stop collecting data. Information includes the
             agent ID, a description of the operation performed, and whether the agent configuration was updated.
-    UpdateApplicationResponse:
-      type: object

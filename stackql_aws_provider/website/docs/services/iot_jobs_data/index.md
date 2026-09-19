@@ -18,16 +18,18 @@ iot_jobs_data service documentation.
 
 :::info[Service Summary]
 
-total resources: __2__  
+total resources: __4__  
 
 :::
 
 ## Resources
 <div class="row">
 <div class="providerDocColumn">
+<a href="/services/iot_jobs_data/command_executions/">command_executions</a><br />
 <a href="/services/iot_jobs_data/job_executions/">job_executions</a>
 </div>
 <div class="providerDocColumn">
+<a href="/services/iot_jobs_data/next_pending_job_executions/">next_pending_job_executions</a><br />
 <a href="/services/iot_jobs_data/pending_job_executions/">pending_job_executions</a>
 </div>
 </div>

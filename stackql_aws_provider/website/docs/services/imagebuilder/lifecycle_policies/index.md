@@ -199,35 +199,35 @@ The following methods are available for this resource:
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-lifecyclePolicyArn"><code>lifecyclePolicyArn</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>Get details for the specified image lifecycle policy.</td>
+    <td>Retrieves details for the specified image lifecycle policy.</td>
 </tr>
 <tr>
     <td><a href="#list_lifecycle_policies"><CopyableCode code="list_lifecycle_policies" /></a></td>
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>Get a list of lifecycle policies in your Amazon Web Services account.</td>
+    <td>Retrieves a list of lifecycle policies in your Amazon Web Services account.</td>
 </tr>
 <tr>
     <td><a href="#create_lifecycle_policy"><CopyableCode code="create_lifecycle_policy" /></a></td>
     <td><CopyableCode code="insert" /></td>
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-name"><code>name</code></a>, <a href="#parameter-executionRole"><code>executionRole</code></a>, <a href="#parameter-resourceType"><code>resourceType</code></a>, <a href="#parameter-policyDetails"><code>policyDetails</code></a>, <a href="#parameter-resourceSelection"><code>resourceSelection</code></a>, <a href="#parameter-clientToken"><code>clientToken</code></a></td>
     <td></td>
-    <td>Create a lifecycle policy resource.</td>
+    <td>Creates a lifecycle policy resource.</td>
 </tr>
 <tr>
     <td><a href="#update_lifecycle_policy"><CopyableCode code="update_lifecycle_policy" /></a></td>
     <td><CopyableCode code="update" /></td>
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-lifecyclePolicyArn"><code>lifecyclePolicyArn</code></a>, <a href="#parameter-executionRole"><code>executionRole</code></a>, <a href="#parameter-resourceType"><code>resourceType</code></a>, <a href="#parameter-policyDetails"><code>policyDetails</code></a>, <a href="#parameter-resourceSelection"><code>resourceSelection</code></a>, <a href="#parameter-clientToken"><code>clientToken</code></a></td>
     <td></td>
-    <td>Update the specified lifecycle policy.</td>
+    <td>Updates the specified lifecycle policy.</td>
 </tr>
 <tr>
     <td><a href="#delete_lifecycle_policy"><CopyableCode code="delete_lifecycle_policy" /></a></td>
     <td><CopyableCode code="delete" /></td>
     <td><a href="#parameter-lifecyclePolicyArn"><code>lifecyclePolicyArn</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>Delete the specified lifecycle policy resource.</td>
+    <td>Deletes the specified lifecycle policy resource.</td>
 </tr>
 </tbody>
 </table>
@@ -269,7 +269,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 >
 <TabItem value="get_lifecycle_policy">
 
-Get details for the specified image lifecycle policy.
+Retrieves details for the specified image lifecycle policy.
 
 ```sql
 SELECT
@@ -293,7 +293,7 @@ AND region = '{{ region }}' -- required
 </TabItem>
 <TabItem value="list_lifecycle_policies">
 
-Get a list of lifecycle policies in your Amazon Web Services account.
+Retrieves a list of lifecycle policies in your Amazon Web Services account.
 
 ```sql
 SELECT
@@ -326,7 +326,7 @@ WHERE region = '{{ region }}' -- required
 >
 <TabItem value="create_lifecycle_policy">
 
-Create a lifecycle policy resource.
+Creates a lifecycle policy resource.
 
 ```sql
 INSERT INTO aws.imagebuilder.lifecycle_policies (
@@ -339,6 +339,7 @@ policyDetails,
 resourceSelection,
 tags,
 clientToken,
+dryRun,
 region
 )
 SELECT 
@@ -351,6 +352,7 @@ SELECT
 '{{ resourceSelection }}' /* required */,
 '{{ tags }}',
 '{{ clientToken }}' /* required */,
+{{ dryRun }},
 '{{ region }}'
 RETURNING
 client_token,
@@ -415,6 +417,8 @@ lifecycle_policy_arn
       value: "{{ tags }}"
     - name: clientToken
       value: "{{ clientToken }}"
+    - name: dryRun
+      value: {{ dryRun }}
 `}</CodeBlock>
 
 </TabItem>
@@ -431,7 +435,7 @@ lifecycle_policy_arn
 >
 <TabItem value="update_lifecycle_policy">
 
-Update the specified lifecycle policy.
+Updates the specified lifecycle policy.
 
 ```sql
 UPDATE aws.imagebuilder.lifecycle_policies
@@ -469,7 +473,7 @@ lifecycle_policy_arn;
 >
 <TabItem value="delete_lifecycle_policy">
 
-Delete the specified lifecycle policy resource.
+Deletes the specified lifecycle policy resource.
 
 ```sql
 DELETE FROM aws.imagebuilder.lifecycle_policies

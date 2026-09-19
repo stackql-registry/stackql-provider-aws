@@ -50,7 +50,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ApprovePaidSubscriptionOutput'
-      x-stackql-resource: paid_subscription
+      x-stackql-resource: subscriptions
       x-stackql-method: approve_paid_subscription
       x-stackql-verb: EXEC
   /v1/AssociateResourcesToSubscription:
@@ -58,8 +58,8 @@ paths:
       operationId: AssociateResourcesToSubscription
       description: Adds one or more resources to an existing subscription. The subscription must be in an active state that
         is not pending other changes. For subscriptions in the CloudFront plan family, the associated resources must include
-        exactly one Amazon CloudFront distribution and one AWS WAF web ACL. You can also include other supported resources,
-        such as Amazon Route 53 hosted zones, and CloudFront KeyValueStores.
+        exactly one Amazon CloudFront distribution and one WAF web ACL. You can also include other supported resources, such
+        as Amazon Route 53 hosted zones, and CloudFront KeyValueStores.
       parameters:
       - name: If-Match
         in: header
@@ -127,7 +127,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CancelSubscriptionOutput'
-      x-stackql-resource: subscription
+      x-stackql-resource: subscriptions
       x-stackql-method: cancel_subscription
       x-stackql-verb: EXEC
   /v1/CancelSubscriptionChange:
@@ -211,8 +211,8 @@ paths:
     post:
       operationId: DisassociateResourcesFromSubscription
       description: Removes one or more resources from an existing subscription. For subscriptions in the CloudFront plan family,
-        the associated resources must always include exactly one Amazon CloudFront distribution and exactly one AWS WAF web
-        ACL. You cannot remove these required resources.
+        the associated resources must always include exactly one Amazon CloudFront distribution and exactly one WAF web ACL.
+        You cannot remove these required resources.
       parameters:
       - name: If-Match
         in: header
@@ -443,7 +443,7 @@ components:
           description: A human-readable explanation of the current status, present when additional context is available.
         resourceArns:
           $ref: '#/components/schemas/ResourceArns'
-          description: The ARNs of the AWS resources covered by this subscription.
+          description: The ARNs of the resources covered by this subscription.
         createdAt:
           $ref: '#/components/schemas/SyntheticTimestamp_date_time'
           description: The date and time when the subscription was created, in ISO 8601 format.
@@ -503,7 +503,7 @@ components:
       - SYNC_IN_PROGRESS
       - FAILED
     ResourceArns:
-      description: A list of 1 to 10 AWS resource ARNs to include in the subscription.
+      description: A list of 1 to 10 resource ARNs to include in the subscription.
       type: array
       items:
         $ref: '#/components/schemas/String'
@@ -631,7 +631,7 @@ components:
           description: A human-readable explanation of the current status, present when additional context is available.
         resourceArns:
           $ref: '#/components/schemas/ResourceArns'
-          description: The ARNs of the AWS resources covered by this subscription.
+          description: The ARNs of the resources covered by this subscription.
         createdAt:
           $ref: '#/components/schemas/SyntheticTimestamp_date_time'
           description: The date and time when the subscription was created, in ISO 8601 format.

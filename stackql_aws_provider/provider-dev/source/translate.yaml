@@ -72,7 +72,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreateParallelDataResponse'
-      x-stackql-resource: parallel_datas
+      x-stackql-resource: parallel_data
       x-stackql-method: create_parallel_data
       x-stackql-verb: INSERT
   /DeleteParallelData:
@@ -108,7 +108,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DeleteParallelDataResponse'
-      x-stackql-resource: parallel_datas
+      x-stackql-resource: parallel_data
       x-stackql-method: delete_parallel_data
       x-stackql-verb: DELETE
   /DeleteTerminology:
@@ -215,7 +215,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetParallelDataResponse'
-      x-stackql-resource: parallel_datas
+      x-stackql-resource: parallel_data
       x-stackql-method: get_parallel_data
       x-stackql-verb: SELECT
   /GetTerminology:
@@ -318,7 +318,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ImportTerminologyResponse'
-      x-stackql-resource: terminology
+      x-stackql-resource: terminologies
       x-stackql-method: import_terminology
       x-stackql-verb: EXEC
   /ListLanguages:
@@ -396,7 +396,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListParallelDataResponse'
-      x-stackql-resource: parallel_datas
+      x-stackql-resource: parallel_data
       x-stackql-method: list_parallel_data
       x-stackql-verb: SELECT
   /ListTagsForResource:
@@ -611,7 +611,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartTextTranslationJobResponse'
-      x-stackql-resource: text_translation_job
+      x-stackql-resource: text_translation_jobs
       x-stackql-method: start_text_translation_job
       x-stackql-verb: EXEC
   /StopTextTranslationJob:
@@ -651,7 +651,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StopTextTranslationJobResponse'
-      x-stackql-resource: text_translation_job
+      x-stackql-resource: text_translation_jobs
       x-stackql-method: stop_text_translation_job
       x-stackql-verb: EXEC
   /TagResource:
@@ -690,10 +690,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -761,7 +757,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TranslateDocumentResponse'
-      x-stackql-resource: translate_document
+      x-stackql-resource: documents
       x-stackql-method: translate_document
       x-stackql-verb: EXEC
   /TranslateText:
@@ -824,7 +820,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TranslateTextResponse'
-      x-stackql-resource: translate_text
+      x-stackql-resource: texts
       x-stackql-method: translate_text
       x-stackql-verb: EXEC
   /UntagResource:
@@ -863,10 +859,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -915,7 +907,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateParallelDataResponse'
-      x-stackql-resource: parallel_datas
+      x-stackql-resource: parallel_data
       x-stackql-method: update_parallel_data
       x-stackql-verb: UPDATE
 components:
@@ -1691,8 +1683,6 @@ components:
         JobStatus:
           $ref: '#/components/schemas/JobStatus'
           description: The status of the designated job. Upon successful completion, the job's status will be STOPPED.
-    TagResourceResponse:
-      type: object
     Document:
       description: The content and content type of a document.
       type: object
@@ -1818,8 +1808,6 @@ components:
       type: array
       items:
         $ref: '#/components/schemas/TagKey'
-    UntagResourceResponse:
-      type: object
     UpdateParallelDataResponse:
       type: object
       properties:

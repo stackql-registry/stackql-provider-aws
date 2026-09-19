@@ -118,10 +118,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteScalingPolicyResponse'
       x-stackql-resource: scaling_policies
       x-stackql-method: delete_scaling_policy
       x-stackql-verb: DELETE
@@ -224,10 +220,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteScheduledActionResponse'
       x-stackql-resource: scheduled_actions
       x-stackql-method: delete_scheduled_action
       x-stackql-verb: DELETE
@@ -326,10 +318,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeregisterScalableTargetResponse'
       x-stackql-resource: scalable_targets
       x-stackql-method: deregister_scalable_target
       x-stackql-verb: DELETE
@@ -1180,10 +1168,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PutScheduledActionResponse'
       x-stackql-resource: scheduled_actions
       x-stackql-method: put_scheduled_action
       x-stackql-verb: REPLACE
@@ -1401,10 +1385,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -1444,10 +1424,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -1546,12 +1522,6 @@ components:
       - sagemaker:variant:DesiredProvisionedConcurrency
       - sagemaker:inference-component:DesiredCopyCount
       - workspaces:workspacespool:DesiredUserSessions
-    DeleteScalingPolicyResponse:
-      type: object
-    DeleteScheduledActionResponse:
-      type: object
-    DeregisterScalableTargetResponse:
-      type: object
     ResourceIdsMaxLen1600:
       type: array
       items:
@@ -2863,8 +2833,6 @@ components:
           description: The CloudWatch alarms created for the target tracking scaling policy.
       required:
       - PolicyARN
-    PutScheduledActionResponse:
-      type: object
     TagMap:
       type: object
       properties: {}
@@ -2874,8 +2842,6 @@ components:
         ScalableTargetARN:
           $ref: '#/components/schemas/XmlString'
           description: The ARN of the scalable target.
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
@@ -2884,5 +2850,3 @@ components:
       type: string
       minLength: 1
       maxLength: 128
-    UntagResourceResponse:
-      type: object

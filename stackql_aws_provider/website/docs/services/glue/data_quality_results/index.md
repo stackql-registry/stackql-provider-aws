@@ -33,37 +33,13 @@ Creates, updates, deletes, gets or lists a <code>data_quality_results</code> res
 The following fields are returned by `SELECT` queries:
 
 <Tabs
-    defaultValue="batch_get_data_quality_result"
+    defaultValue="get_data_quality_result"
     values={[
-        { label: 'batch_get_data_quality_result', value: 'batch_get_data_quality_result' },
         { label: 'get_data_quality_result', value: 'get_data_quality_result' },
+        { label: 'batch_get_data_quality_result', value: 'batch_get_data_quality_result' },
         { label: 'list_data_quality_results', value: 'list_data_quality_results' }
     ]}
 >
-<TabItem value="batch_get_data_quality_result">
-
-<table>
-<thead>
-    <tr>
-    <th>Name</th>
-    <th>Datatype</th>
-    <th>Description</th>
-    </tr>
-</thead>
-<tbody>
-<tr>
-    <td><CopyableCode code="results" /></td>
-    <td><code>array</code></td>
-    <td>A list of DataQualityResult objects representing the data quality results.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="results_not_found" /></td>
-    <td><code>array</code></td>
-    <td>A list of result IDs for which results were not found.</td>
-</tr>
-</tbody>
-</table>
-</TabItem>
 <TabItem value="get_data_quality_result">
 
 <table>
@@ -153,6 +129,30 @@ The following fields are returned by `SELECT` queries:
 </tbody>
 </table>
 </TabItem>
+<TabItem value="batch_get_data_quality_result">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="results" /></td>
+    <td><code>array</code></td>
+    <td>A list of DataQualityResult objects representing the data quality results.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="results_not_found" /></td>
+    <td><code>array</code></td>
+    <td>A list of result IDs for which results were not found.</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
 <TabItem value="list_data_quality_results">
 
 <table>
@@ -195,18 +195,18 @@ The following methods are available for this resource:
 </thead>
 <tbody>
 <tr>
-    <td><a href="#batch_get_data_quality_result"><CopyableCode code="batch_get_data_quality_result" /></a></td>
-    <td><CopyableCode code="select" /></td>
-    <td><a href="#parameter-region"><code>region</code></a></td>
-    <td></td>
-    <td>Retrieves a list of data quality results for the specified result IDs.</td>
-</tr>
-<tr>
     <td><a href="#get_data_quality_result"><CopyableCode code="get_data_quality_result" /></a></td>
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td></td>
     <td>Retrieves the result of a data quality rule evaluation.</td>
+</tr>
+<tr>
+    <td><a href="#batch_get_data_quality_result"><CopyableCode code="batch_get_data_quality_result" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Retrieves a list of data quality results for the specified result IDs.</td>
 </tr>
 <tr>
     <td><a href="#list_data_quality_results"><CopyableCode code="list_data_quality_results" /></a></td>
@@ -242,26 +242,13 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 ## `SELECT` examples
 
 <Tabs
-    defaultValue="batch_get_data_quality_result"
+    defaultValue="get_data_quality_result"
     values={[
-        { label: 'batch_get_data_quality_result', value: 'batch_get_data_quality_result' },
         { label: 'get_data_quality_result', value: 'get_data_quality_result' },
+        { label: 'batch_get_data_quality_result', value: 'batch_get_data_quality_result' },
         { label: 'list_data_quality_results', value: 'list_data_quality_results' }
     ]}
 >
-<TabItem value="batch_get_data_quality_result">
-
-Retrieves a list of data quality results for the specified result IDs.
-
-```sql
-SELECT
-results,
-results_not_found
-FROM aws.glue.data_quality_results
-WHERE region = '{{ region }}' -- required
-;
-```
-</TabItem>
 <TabItem value="get_data_quality_result">
 
 Retrieves the result of a data quality rule evaluation.
@@ -283,6 +270,19 @@ ruleset_evaluation_run_id,
 ruleset_name,
 score,
 started_on
+FROM aws.glue.data_quality_results
+WHERE region = '{{ region }}' -- required
+;
+```
+</TabItem>
+<TabItem value="batch_get_data_quality_result">
+
+Retrieves a list of data quality results for the specified result IDs.
+
+```sql
+SELECT
+results,
+results_not_found
 FROM aws.glue.data_quality_results
 WHERE region = '{{ region }}' -- required
 ;

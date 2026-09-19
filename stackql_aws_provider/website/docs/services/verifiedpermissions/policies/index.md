@@ -36,8 +36,8 @@ The following fields are returned by `SELECT` queries:
     defaultValue="get_policy"
     values={[
         { label: 'get_policy', value: 'get_policy' },
-        { label: 'batch_get_policy', value: 'batch_get_policy' },
-        { label: 'list_policies', value: 'list_policies' }
+        { label: 'list_policies', value: 'list_policies' },
+        { label: 'batch_get_policy', value: 'batch_get_policy' }
     ]}
 >
 <TabItem value="get_policy">
@@ -105,30 +105,6 @@ The following fields are returned by `SELECT` queries:
     <td><CopyableCode code="resource" /></td>
     <td><code>object</code></td>
     <td>Contains the identifier of an entity, including its ID and type. This data type is used as a request parameter for IsAuthorized operation, and as a response parameter for the CreatePolicy, GetPolicy, and UpdatePolicy operations. Example: &#123;"entityId":"string","entityType":"string"&#125;</td>
-</tr>
-</tbody>
-</table>
-</TabItem>
-<TabItem value="batch_get_policy">
-
-<table>
-<thead>
-    <tr>
-    <th>Name</th>
-    <th>Datatype</th>
-    <th>Description</th>
-    </tr>
-</thead>
-<tbody>
-<tr>
-    <td><CopyableCode code="errors" /></td>
-    <td><code>array</code></td>
-    <td>Information about the policies from the request that resulted in an error. These results are returned in the order they were requested.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="results" /></td>
-    <td><code>array</code></td>
-    <td>Information about the policies listed in the request that were successfully returned. These results are returned in the order they were requested.</td>
 </tr>
 </tbody>
 </table>
@@ -202,6 +178,30 @@ The following fields are returned by `SELECT` queries:
 </tbody>
 </table>
 </TabItem>
+<TabItem value="batch_get_policy">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="errors" /></td>
+    <td><code>array</code></td>
+    <td>Information about the policies from the request that resulted in an error. These results are returned in the order they were requested.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="results" /></td>
+    <td><code>array</code></td>
+    <td>Information about the policies listed in the request that were successfully returned. These results are returned in the order they were requested.</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
 </Tabs>
 
 ## Methods
@@ -227,18 +227,18 @@ The following methods are available for this resource:
     <td>Retrieves information about the specified policy.</td>
 </tr>
 <tr>
-    <td><a href="#batch_get_policy"><CopyableCode code="batch_get_policy" /></a></td>
-    <td><CopyableCode code="select" /></td>
-    <td><a href="#parameter-region"><code>region</code></a></td>
-    <td></td>
-    <td>Retrieves information about a group (batch) of policies. The BatchGetPolicy operation doesn't have its own IAM permission. To authorize this operation for Amazon Web Services principals, include the permission verifiedpermissions:GetPolicy in their IAM policies.</td>
-</tr>
-<tr>
     <td><a href="#list_policies"><CopyableCode code="list_policies" /></a></td>
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td></td>
     <td>Returns a paginated list of all policies stored in the specified policy store.</td>
+</tr>
+<tr>
+    <td><a href="#batch_get_policy"><CopyableCode code="batch_get_policy" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Retrieves information about a group (batch) of policies. The BatchGetPolicy operation doesn't have its own IAM permission. To authorize this operation for Amazon Web Services principals, include the permission verifiedpermissions:GetPolicy in their IAM policies.</td>
 </tr>
 <tr>
     <td><a href="#create_policy"><CopyableCode code="create_policy" /></a></td>
@@ -291,13 +291,35 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     defaultValue="get_policy"
     values={[
         { label: 'get_policy', value: 'get_policy' },
-        { label: 'batch_get_policy', value: 'batch_get_policy' },
-        { label: 'list_policies', value: 'list_policies' }
+        { label: 'list_policies', value: 'list_policies' },
+        { label: 'batch_get_policy', value: 'batch_get_policy' }
     ]}
 >
 <TabItem value="get_policy">
 
 Retrieves information about the specified policy.
+
+```sql
+SELECT
+name,
+actions,
+created_date,
+definition,
+effect,
+last_updated_date,
+policy_id,
+policy_store_id,
+policy_type,
+principal,
+resource
+FROM aws.verifiedpermissions.policies
+WHERE region = '{{ region }}' -- required
+;
+```
+</TabItem>
+<TabItem value="list_policies">
+
+Returns a paginated list of all policies stored in the specified policy store.
 
 ```sql
 SELECT
@@ -325,28 +347,6 @@ Retrieves information about a group (batch) of policies. The BatchGetPolicy oper
 SELECT
 errors,
 results
-FROM aws.verifiedpermissions.policies
-WHERE region = '{{ region }}' -- required
-;
-```
-</TabItem>
-<TabItem value="list_policies">
-
-Returns a paginated list of all policies stored in the specified policy store.
-
-```sql
-SELECT
-name,
-actions,
-created_date,
-definition,
-effect,
-last_updated_date,
-policy_id,
-policy_store_id,
-policy_type,
-principal,
-resource
 FROM aws.verifiedpermissions.policies
 WHERE region = '{{ region }}' -- required
 ;

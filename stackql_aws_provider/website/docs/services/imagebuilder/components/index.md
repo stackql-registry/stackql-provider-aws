@@ -122,7 +122,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="supported_os_versions" /></td>
     <td><code>array</code></td>
-    <td>he operating system (OS) version supported by the component. If the OS information is available, a prefix match is performed against the base image OS version during image recipe creation.</td>
+    <td>The operating system (OS) version supported by the component. If OS information is available, Image Builder performs a prefix match against the base image OS version during image recipe creation.</td>
 </tr>
 <tr>
     <td><CopyableCode code="type_" /></td>
@@ -132,7 +132,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="version" /></td>
     <td><code>string</code></td>
-    <td>The semantic version of the component. The semantic version has four nodes: <code>&lt;major&gt;</code>.<code>&lt;minor&gt;</code>.<code>&lt;patch&gt;</code>/<code>&lt;build&gt;</code>. You can assign values for the first three, and can filter on all of them. Assignment: For the first three nodes you can assign any positive integer value, including zero, with an upper limit of 2^30-1, or 1073741823 for each node. Image Builder automatically assigns the build number to the fourth node. Patterns: You can use any numeric pattern that adheres to the assignment requirements for the nodes that you can assign. For example, you might choose a software version pattern, such as 1.0.0, or a date, such as 2021.01.01. Filtering: With semantic versioning, you have the flexibility to use wildcards (x) to specify the most recent versions or nodes when selecting the base image or components for your recipe. When you use a wildcard in any node, all nodes to the right of the first wildcard must also be wildcards. (pattern: &lt;code&gt;^&#91;0-9&#93;+\.&#91;0-9&#93;+\.&#91;0-9&#93;+$&lt;/code&gt;)</td>
+    <td>The semantic version of the component. The semantic version has four nodes: <code>&lt;major&gt;</code>.<code>&lt;minor&gt;</code>.<code>&lt;patch&gt;</code>/<code>&lt;build&gt;</code>. You can assign values for the first three, and can filter on all of them. Assignment: For the first three nodes, you can assign any positive integer value, including zero. The upper limit is 2^30-1, or 1073741823, for each node. Image Builder automatically assigns the build number to the fourth node. Patterns: You can use any numeric pattern that adheres to the assignment requirements for the nodes that you can assign. For example, you might choose a software version pattern, such as 1.0.0, or a date, such as 2021.01.01. Filtering: You can use wildcards (x) to specify the most recent versions or nodes when selecting the base image or components for your recipe. When you use a wildcard in any node, all nodes to the right of the first wildcard must also be wildcards. (pattern: &lt;code&gt;^&#91;0-9&#93;+\.&#91;0-9&#93;+\.&#91;0-9&#93;+$&lt;/code&gt;)</td>
 </tr>
 </tbody>
 </table>
@@ -159,14 +159,14 @@ The following methods are available for this resource:
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-componentBuildVersionArn"><code>componentBuildVersionArn</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>Gets a component object.</td>
+    <td>Retrieves a component object.</td>
 </tr>
 <tr>
     <td><a href="#list_components"><CopyableCode code="list_components" /></a></td>
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>Returns the list of components that can be filtered by name, or by using the listed filters to streamline results. Newly created components can take up to two minutes to appear in the ListComponents API Results. The semantic version has four nodes: <code>&lt;major&gt;</code>.<code>&lt;minor&gt;</code>.<code>&lt;patch&gt;</code>/<code>&lt;build&gt;</code>. You can assign values for the first three, and can filter on all of them. Filtering: With semantic versioning, you have the flexibility to use wildcards (x) to specify the most recent versions or nodes when selecting the base image or components for your recipe. When you use a wildcard in any node, all nodes to the right of the first wildcard must also be wildcards.</td>
+    <td>Returns the list of components that can be filtered by name, or by using the listed filters to streamline results. Newly created components can take up to two minutes to appear in the ListComponents API Results. The semantic version has four nodes: <code>&lt;major&gt;</code>.<code>&lt;minor&gt;</code>.<code>&lt;patch&gt;</code>/<code>&lt;build&gt;</code>. You can assign values for the first three, and can filter on all of them. Filtering: You can use wildcards (x) to specify the most recent versions or nodes when selecting the base image or components for your recipe. When you use a wildcard in any node, all nodes to the right of the first wildcard must also be wildcards.</td>
 </tr>
 <tr>
     <td><a href="#create_component"><CopyableCode code="create_component" /></a></td>
@@ -181,6 +181,13 @@ The following methods are available for this resource:
     <td><a href="#parameter-componentBuildVersionArn"><code>componentBuildVersionArn</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td></td>
     <td>Deletes a component build version.</td>
+</tr>
+<tr>
+    <td><a href="#import_component"><CopyableCode code="import_component" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-name"><code>name</code></a>, <a href="#parameter-semanticVersion"><code>semanticVersion</code></a>, <a href="#parameter-type"><code>type</code></a>, <a href="#parameter-format"><code>format</code></a>, <a href="#parameter-platform"><code>platform</code></a>, <a href="#parameter-clientToken"><code>clientToken</code></a></td>
+    <td></td>
+    <td>Imports a component and transforms its data into a component document.</td>
 </tr>
 </tbody>
 </table>
@@ -222,7 +229,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 >
 <TabItem value="get_component">
 
-Gets a component object.
+Retrieves a component object.
 
 ```sql
 SELECT
@@ -237,7 +244,7 @@ AND region = '{{ region }}' -- required
 </TabItem>
 <TabItem value="list_components">
 
-Returns the list of components that can be filtered by name, or by using the listed filters to streamline results. Newly created components can take up to two minutes to appear in the ListComponents API Results. The semantic version has four nodes: <code>&lt;major&gt;</code>.<code>&lt;minor&gt;</code>.<code>&lt;patch&gt;</code>/<code>&lt;build&gt;</code>. You can assign values for the first three, and can filter on all of them. Filtering: With semantic versioning, you have the flexibility to use wildcards (x) to specify the most recent versions or nodes when selecting the base image or components for your recipe. When you use a wildcard in any node, all nodes to the right of the first wildcard must also be wildcards.
+Returns the list of components that can be filtered by name, or by using the listed filters to streamline results. Newly created components can take up to two minutes to appear in the ListComponents API Results. The semantic version has four nodes: <code>&lt;major&gt;</code>.<code>&lt;minor&gt;</code>.<code>&lt;patch&gt;</code>/<code>&lt;build&gt;</code>. You can assign values for the first three, and can filter on all of them. Filtering: You can use wildcards (x) to specify the most recent versions or nodes when selecting the base image or components for your recipe. When you use a wildcard in any node, all nodes to the right of the first wildcard must also be wildcards.
 
 ```sql
 SELECT
@@ -367,6 +374,42 @@ Deletes a component build version.
 DELETE FROM aws.imagebuilder.components
 WHERE componentBuildVersionArn = '{{ componentBuildVersionArn }}' --required
 AND region = '{{ region }}' --required
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="import_component"
+    values={[
+        { label: 'import_component', value: 'import_component' }
+    ]}
+>
+<TabItem value="import_component">
+
+Imports a component and transforms its data into a component document.
+
+```sql
+EXEC aws.imagebuilder.components.import_component 
+@region='{{ region }}' --required 
+@@json=
+'{
+"name": "{{ name }}", 
+"semanticVersion": "{{ semanticVersion }}", 
+"description": "{{ description }}", 
+"changeDescription": "{{ changeDescription }}", 
+"type": "{{ type }}", 
+"format": "{{ format }}", 
+"platform": "{{ platform }}", 
+"data": "{{ data }}", 
+"uri": "{{ uri }}", 
+"kmsKeyId": "{{ kmsKeyId }}", 
+"tags": "{{ tags }}", 
+"clientToken": "{{ clientToken }}"
+}'
 ;
 ```
 </TabItem>

@@ -46,10 +46,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/CopyBlueprintStageResponse"
   /blueprints/:
     put:
       operationId: CreateBlueprint
@@ -293,10 +289,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteBlueprintResponse"
     post:
       operationId: GetBlueprint
       description: Gets an existing Amazon Bedrock Data Automation Blueprint
@@ -764,10 +756,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TagResourceResponse"
   /untagResource:
     post:
       operationId: UntagResource
@@ -790,10 +778,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UntagResourceResponse"
 components:
   parameters:
     X-Amz-Content-Sha256:
@@ -857,9 +841,6 @@ components:
       minLength: 33
       maxLength: 256
       pattern: "[a-zA-Z0-9](-*[a-zA-Z0-9]){0,256}"
-    CopyBlueprintStageResponse:
-      description: CopyBlueprintStage Response
-      type: object
     BlueprintName:
       description: Name of the Blueprint
       type: string
@@ -1709,9 +1690,6 @@ components:
         - COMPLETED
         - IN_PROGRESS
         - FAILED
-    DeleteBlueprintResponse:
-      description: Delete Blueprint Response
-      type: object
     DeleteDataAutomationLibraryResponse:
       description: Delete DataAutomationLibrary Response
       type: object
@@ -2371,15 +2349,11 @@ components:
       properties:
         tags:
           $ref: "#/components/schemas/TagList"
-    TagResourceResponse:
-      type: object
     TagKeyList:
       description: List of tag keys
       type: array
       items:
         $ref: "#/components/schemas/TagKey"
-    UntagResourceResponse:
-      type: object
     UpdateBlueprintResponse:
       description: Update Blueprint Response
       type: object
@@ -2419,7 +2393,6 @@ components:
             $ref: "#/paths/~1blueprints~1{blueprint_arn}~1copy-stage/put"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -2471,7 +2444,6 @@ components:
             $ref: "#/paths/~1blueprints~1{blueprint_arn}~1/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
         get_blueprint:
@@ -2673,10 +2645,10 @@ components:
           - $ref: "#/components/x-stackQL-resources/data_automation_projects/methods/update_data_automation_project"
         delete:
           - $ref: "#/components/x-stackQL-resources/data_automation_projects/methods/delete_data_automation_project"
-    blueprint_optimization_status:
-      id: aws.bedrock_data_automation.blueprint_optimization_status
-      name: blueprint_optimization_status
-      title: blueprint_optimization_status
+    blueprint_optimization_statuses:
+      id: aws.bedrock_data_automation.blueprint_optimization_statuses
+      name: blueprint_optimization_statuses
+      title: blueprint_optimization_statuses
       methods:
         get_blueprint_optimization_status:
           operation:
@@ -2686,7 +2658,7 @@ components:
             mediaType: application/json
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/blueprint_optimization_status/methods/get_blueprint_optimization_status"
+          - $ref: "#/components/x-stackQL-resources/blueprint_optimization_statuses/methods/get_blueprint_optimization_status"
         insert: []
         update: []
         delete: []
@@ -2787,7 +2759,6 @@ components:
             $ref: "#/paths/~1tagResource/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -2798,7 +2769,6 @@ components:
             $ref: "#/paths/~1untagResource/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:

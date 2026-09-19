@@ -62,7 +62,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="notification_hub_region" /></td>
     <td><code>string</code></td>
-    <td>The Region of the resource. (pattern: &lt;code&gt;(&#91;a-z&#93;&#123;1,2&#125;)-(&#91;a-z&#93;&#123;1,15&#125;-)+(&#91;0-9&#93;)&lt;/code&gt;)</td>
+    <td>The Region of the resource. (pattern: &lt;code&gt;(&#91;a-z&#93;&#123;1,4&#125;)-(&#91;a-z&#93;&#123;1,15&#125;-)+(&#91;0-9&#93;)&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="status_summary" /></td>
@@ -101,14 +101,14 @@ The following methods are available for this resource:
     <td><CopyableCode code="insert" /></td>
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-notificationHubRegion"><code>notificationHubRegion</code></a></td>
     <td></td>
-    <td>Registers a NotificationConfiguration in the specified Region. There is a maximum of one NotificationConfiguration per Region. You can have a maximum of 3 NotificationHub resources at a time.</td>
+    <td>Registers a NotificationHub in the specified Region. There is a maximum of one NotificationHub per Region. You can have a maximum of 3 NotificationHub resources at a time.</td>
 </tr>
 <tr>
     <td><a href="#deregister_notification_hub"><CopyableCode code="deregister_notification_hub" /></a></td>
     <td><CopyableCode code="delete" /></td>
     <td><a href="#parameter-notification_hub_region"><code>notification_hub_region</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>Deregisters a NotificationConfiguration in the specified Region. You can't deregister the last NotificationHub in the account. NotificationEvents stored in the deregistered NotificationConfiguration are no longer be visible. Recreating a new NotificationConfiguration in the same Region restores access to those NotificationEvents.</td>
+    <td>Deregisters a NotificationHub in the specified Region. You can't deregister the last NotificationHub in the account. NotificationEvents stored in the deregistered NotificationHub are no longer visible. Recreating a new NotificationHub in the same Region restores access to those NotificationEvents.</td>
 </tr>
 </tbody>
 </table>
@@ -129,7 +129,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-notification_hub_region">
     <td><CopyableCode code="notification_hub_region" /></td>
     <td><code>string</code></td>
-    <td>The NotificationConfiguration Region.</td>
+    <td>The NotificationHub Region.</td>
 </tr>
 <tr id="parameter-region">
     <td><CopyableCode code="region" /></td>
@@ -188,7 +188,7 @@ AND nextToken = '{{ nextToken }}'
 >
 <TabItem value="register_notification_hub">
 
-Registers a NotificationConfiguration in the specified Region. There is a maximum of one NotificationConfiguration per Region. You can have a maximum of 3 NotificationHub resources at a time.
+Registers a NotificationHub in the specified Region. There is a maximum of one NotificationHub per Region. You can have a maximum of 3 NotificationHub resources at a time.
 
 ```sql
 INSERT INTO aws.notifications.notification_hubs (
@@ -232,7 +232,7 @@ status_summary
 >
 <TabItem value="deregister_notification_hub">
 
-Deregisters a NotificationConfiguration in the specified Region. You can't deregister the last NotificationHub in the account. NotificationEvents stored in the deregistered NotificationConfiguration are no longer be visible. Recreating a new NotificationConfiguration in the same Region restores access to those NotificationEvents.
+Deregisters a NotificationHub in the specified Region. You can't deregister the last NotificationHub in the account. NotificationEvents stored in the deregistered NotificationHub are no longer visible. Recreating a new NotificationHub in the same Region restores access to those NotificationEvents.
 
 ```sql
 DELETE FROM aws.notifications.notification_hubs

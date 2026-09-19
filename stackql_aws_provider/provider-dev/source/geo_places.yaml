@@ -67,7 +67,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AutocompleteResponse'
-      x-stackql-resource: autocomplete
+      x-stackql-resource: es
       x-stackql-method: autocomplete
       x-stackql-verb: EXEC
   /v2/geocode:
@@ -124,7 +124,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GeocodeResponse'
-      x-stackql-resource: geocode
+      x-stackql-resource: es
       x-stackql-method: geocode
       x-stackql-verb: EXEC
   /v2/place/{place_id}:
@@ -249,7 +249,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ReverseGeocodeResponse'
-      x-stackql-resource: reverse_geocode
+      x-stackql-resource: geocodes
       x-stackql-method: reverse_geocode
       x-stackql-verb: EXEC
   /v2/search-nearby:
@@ -413,7 +413,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SuggestResponse'
-      x-stackql-resource: suggest
+      x-stackql-resource: ts
       x-stackql-method: suggest
       x-stackql-verb: EXEC
 components:

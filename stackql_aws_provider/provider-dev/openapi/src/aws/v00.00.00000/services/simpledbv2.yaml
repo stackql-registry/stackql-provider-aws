@@ -367,3 +367,24 @@ components:
         insert: []
         update: []
         delete: []
+    domain_exports:
+      id: aws.simpledbv2.domain_exports
+      name: domain_exports
+      title: domain_exports
+      methods:
+        start_domain_export:
+          operation:
+            $ref: "#/paths/~1v2~1StartDomainExport/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []

@@ -94,18 +94,18 @@ The following methods are available for this resource:
     <td>Creates a new entitlement. Entitlements control access to specific applications within a stack, based on user attributes. Entitlements apply to SAML 2.0 federated user identities. WorkSpaces Applications user pool and streaming URL users are entitled to all applications in a stack. Entitlements don't apply to the desktop stream view application, or to applications managed by a dynamic app provider using the Dynamic Application Framework.</td>
 </tr>
 <tr>
-    <td><a href="#associate_application_to_entitlement"><CopyableCode code="associate_application_to_entitlement" /></a></td>
-    <td><CopyableCode code="update" /></td>
-    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-StackName"><code>StackName</code></a>, <a href="#parameter-EntitlementName"><code>EntitlementName</code></a>, <a href="#parameter-ApplicationIdentifier"><code>ApplicationIdentifier</code></a></td>
-    <td></td>
-    <td>Associates an application to entitle.</td>
-</tr>
-<tr>
     <td><a href="#update_entitlement"><CopyableCode code="update_entitlement" /></a></td>
     <td><CopyableCode code="update" /></td>
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-Name"><code>Name</code></a>, <a href="#parameter-StackName"><code>StackName</code></a></td>
     <td></td>
     <td>Updates the specified entitlement.</td>
+</tr>
+<tr>
+    <td><a href="#associate_application_to_entitlement"><CopyableCode code="associate_application_to_entitlement" /></a></td>
+    <td><CopyableCode code="update" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-StackName"><code>StackName</code></a>, <a href="#parameter-EntitlementName"><code>EntitlementName</code></a>, <a href="#parameter-ApplicationIdentifier"><code>ApplicationIdentifier</code></a></td>
+    <td></td>
+    <td>Associates an application to entitle.</td>
 </tr>
 <tr>
     <td><a href="#delete_entitlement"><CopyableCode code="delete_entitlement" /></a></td>
@@ -243,29 +243,12 @@ entitlement
 ## `UPDATE` examples
 
 <Tabs
-    defaultValue="associate_application_to_entitlement"
+    defaultValue="update_entitlement"
     values={[
-        { label: 'associate_application_to_entitlement', value: 'associate_application_to_entitlement' },
-        { label: 'update_entitlement', value: 'update_entitlement' }
+        { label: 'update_entitlement', value: 'update_entitlement' },
+        { label: 'associate_application_to_entitlement', value: 'associate_application_to_entitlement' }
     ]}
 >
-<TabItem value="associate_application_to_entitlement">
-
-Associates an application to entitle.
-
-```sql
-UPDATE aws.appstream.entitlements
-SET 
-StackName = '{{ StackName }}',
-EntitlementName = '{{ EntitlementName }}',
-ApplicationIdentifier = '{{ ApplicationIdentifier }}'
-WHERE 
-region = '{{ region }}' --required
-AND StackName = '{{ StackName }}' --required
-AND EntitlementName = '{{ EntitlementName }}' --required
-AND ApplicationIdentifier = '{{ ApplicationIdentifier }}' --required;
-```
-</TabItem>
 <TabItem value="update_entitlement">
 
 Updates the specified entitlement.
@@ -284,6 +267,23 @@ AND Name = '{{ Name }}' --required
 AND StackName = '{{ StackName }}' --required
 RETURNING
 entitlement;
+```
+</TabItem>
+<TabItem value="associate_application_to_entitlement">
+
+Associates an application to entitle.
+
+```sql
+UPDATE aws.appstream.entitlements
+SET 
+StackName = '{{ StackName }}',
+EntitlementName = '{{ EntitlementName }}',
+ApplicationIdentifier = '{{ ApplicationIdentifier }}'
+WHERE 
+region = '{{ region }}' --required
+AND StackName = '{{ StackName }}' --required
+AND EntitlementName = '{{ EntitlementName }}' --required
+AND ApplicationIdentifier = '{{ ApplicationIdentifier }}' --required;
 ```
 </TabItem>
 </Tabs>

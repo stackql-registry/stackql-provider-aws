@@ -18,7 +18,7 @@ codepipeline service documentation.
 
 :::info[Service Summary]
 
-total resources: __16__  
+total resources: __18__  
 
 :::
 
@@ -31,6 +31,7 @@ total resources: __16__
 <a href="/services/codepipeline/job_details/">job_details</a><br />
 <a href="/services/codepipeline/job_failure_results/">job_failure_results</a><br />
 <a href="/services/codepipeline/job_success_results/">job_success_results</a><br />
+<a href="/services/codepipeline/jobs/">jobs</a><br />
 <a href="/services/codepipeline/pipeline_executions/">pipeline_executions</a><br />
 <a href="/services/codepipeline/pipeline_states/">pipeline_states</a>
 </div>
@@ -42,6 +43,7 @@ total resources: __16__
 <a href="/services/codepipeline/third_party_job_details/">third_party_job_details</a><br />
 <a href="/services/codepipeline/third_party_job_failure_results/">third_party_job_failure_results</a><br />
 <a href="/services/codepipeline/third_party_job_success_results/">third_party_job_success_results</a><br />
+<a href="/services/codepipeline/third_party_jobs/">third_party_jobs</a><br />
 <a href="/services/codepipeline/webhooks/">webhooks</a>
 </div>
 </div>

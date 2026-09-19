@@ -382,7 +382,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StopExperimentResponse'
-      x-stackql-resource: experiment
+      x-stackql-resource: experiments
       x-stackql-method: stop_experiment
       x-stackql-verb: EXEC
   /experiments/{id}/targetAccountConfigurations/{account_id}:
@@ -627,7 +627,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartExperimentResponse'
-      x-stackql-resource: experiment
+      x-stackql-resource: experiments
       x-stackql-method: start_experiment
       x-stackql-verb: EXEC
   /tags/{resource_arn}:
@@ -675,10 +675,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -701,10 +697,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -1982,8 +1974,6 @@ components:
         experiment:
           $ref: '#/components/schemas/Experiment'
           description: Information about the experiment.
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
@@ -1992,8 +1982,6 @@ components:
       type: string
       maxLength: 128
       pattern: '[\s\S]+'
-    UntagResourceResponse:
-      type: object
     UpdateExperimentTemplateStopConditionInputList:
       type: array
       items:

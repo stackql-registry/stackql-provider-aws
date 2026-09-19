@@ -101,6 +101,20 @@ The following methods are available for this resource:
     <td><a href="#parameter-MaxResults"><code>MaxResults</code></a>, <a href="#parameter-NextToken"><code>NextToken</code></a>, <a href="#parameter-Filter"><code>Filter</code></a>, <a href="#parameter-DryRun"><code>DryRun</code></a></td>
     <td>Describes the current Infrastructure Performance metric subscriptions.</td>
 </tr>
+<tr>
+    <td><a href="#disable_aws_network_performance_metric_subscription"><CopyableCode code="disable_aws_network_performance_metric_subscription" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td><a href="#parameter-Source"><code>Source</code></a>, <a href="#parameter-Destination"><code>Destination</code></a>, <a href="#parameter-Metric"><code>Metric</code></a>, <a href="#parameter-Statistic"><code>Statistic</code></a>, <a href="#parameter-DryRun"><code>DryRun</code></a></td>
+    <td>Disables Infrastructure Performance metric subscriptions.</td>
+</tr>
+<tr>
+    <td><a href="#enable_aws_network_performance_metric_subscription"><CopyableCode code="enable_aws_network_performance_metric_subscription" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td><a href="#parameter-Source"><code>Source</code></a>, <a href="#parameter-Destination"><code>Destination</code></a>, <a href="#parameter-Metric"><code>Metric</code></a>, <a href="#parameter-Statistic"><code>Statistic</code></a>, <a href="#parameter-DryRun"><code>DryRun</code></a></td>
+    <td>Enables Infrastructure Performance subscriptions.</td>
+</tr>
 </tbody>
 </table>
 
@@ -122,6 +136,11 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     <td><code>string</code></td>
     <td>AWS region (default: us-east-1)</td>
 </tr>
+<tr id="parameter-Destination">
+    <td><CopyableCode code="Destination" /></td>
+    <td><code>string</code></td>
+    <td>The target Region (like us-east-2) or Availability Zone ID (like use2-az2) that the metric subscription is enabled for. If you use Availability Zone IDs, the Source and Destination Availability Zones must be in the same Region.</td>
+</tr>
 <tr id="parameter-DryRun">
     <td><CopyableCode code="DryRun" /></td>
     <td><code>boolean</code></td>
@@ -137,10 +156,25 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     <td><code>integer</code></td>
     <td>The maximum number of results to return with a single call. To retrieve the remaining results, make another call with the returned nextToken value.</td>
 </tr>
+<tr id="parameter-Metric">
+    <td><CopyableCode code="Metric" /></td>
+    <td><code>string</code></td>
+    <td>The metric used for the enabled subscription.</td>
+</tr>
 <tr id="parameter-NextToken">
     <td><CopyableCode code="NextToken" /></td>
     <td><code>string</code></td>
     <td>The token for the next page of results.</td>
+</tr>
+<tr id="parameter-Source">
+    <td><CopyableCode code="Source" /></td>
+    <td><code>string</code></td>
+    <td>The source Region (like us-east-1) or Availability Zone ID (like use1-az1) that the metric subscription is enabled for. If you use Availability Zone IDs, the Source and Destination Availability Zones must be in the same Region.</td>
+</tr>
+<tr id="parameter-Statistic">
+    <td><CopyableCode code="Statistic" /></td>
+    <td><code>string</code></td>
+    <td>The statistic used for the enabled subscription.</td>
 </tr>
 </tbody>
 </table>
@@ -170,6 +204,48 @@ AND MaxResults = '{{ MaxResults }}'
 AND NextToken = '{{ NextToken }}'
 AND Filter = '{{ Filter }}'
 AND DryRun = '{{ DryRun }}'
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="disable_aws_network_performance_metric_subscription"
+    values={[
+        { label: 'disable_aws_network_performance_metric_subscription', value: 'disable_aws_network_performance_metric_subscription' },
+        { label: 'enable_aws_network_performance_metric_subscription', value: 'enable_aws_network_performance_metric_subscription' }
+    ]}
+>
+<TabItem value="disable_aws_network_performance_metric_subscription">
+
+Disables Infrastructure Performance metric subscriptions.
+
+```sql
+EXEC aws.ec2.aws_network_performance_metric_subscriptions.disable_aws_network_performance_metric_subscription 
+@region='{{ region }}' --required, 
+@Source='{{ Source }}', 
+@Destination='{{ Destination }}', 
+@Metric='{{ Metric }}', 
+@Statistic='{{ Statistic }}', 
+@DryRun={{ DryRun }}
+;
+```
+</TabItem>
+<TabItem value="enable_aws_network_performance_metric_subscription">
+
+Enables Infrastructure Performance subscriptions.
+
+```sql
+EXEC aws.ec2.aws_network_performance_metric_subscriptions.enable_aws_network_performance_metric_subscription 
+@region='{{ region }}' --required, 
+@Source='{{ Source }}', 
+@Destination='{{ Destination }}', 
+@Metric='{{ Metric }}', 
+@Statistic='{{ Statistic }}', 
+@DryRun={{ DryRun }}
 ;
 ```
 </TabItem>

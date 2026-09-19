@@ -106,6 +106,27 @@ The following methods are available for this resource:
     <td><a href="#parameter-AllocationId"><code>AllocationId</code></a>, <a href="#parameter-NextToken"><code>NextToken</code></a>, <a href="#parameter-MaxResults"><code>MaxResults</code></a>, <a href="#parameter-DryRun"><code>DryRun</code></a></td>
     <td>Describes an Elastic IP address transfer. For more information, see Transfer Elastic IP addresses in the Amazon VPC User Guide. When you transfer an Elastic IP address, there is a two-step handshake between the source and transfer Amazon Web Services accounts. When the source account starts the transfer, the transfer account has seven days to accept the Elastic IP address transfer. During those seven days, the source account can view the pending transfer by using this action. After seven days, the transfer expires and ownership of the Elastic IP address returns to the source account. Accepted transfers are visible to the source account for 14 days after the transfers have been accepted.</td>
 </tr>
+<tr>
+    <td><a href="#accept_address_transfer"><CopyableCode code="accept_address_transfer" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td><a href="#parameter-Address"><code>Address</code></a>, <a href="#parameter-TagSpecification"><code>TagSpecification</code></a>, <a href="#parameter-DryRun"><code>DryRun</code></a></td>
+    <td>Accepts an Elastic IP address transfer. For more information, see Accept a transferred Elastic IP address in the Amazon VPC User Guide.</td>
+</tr>
+<tr>
+    <td><a href="#disable_address_transfer"><CopyableCode code="disable_address_transfer" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-AllocationId"><code>AllocationId</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td><a href="#parameter-DryRun"><code>DryRun</code></a></td>
+    <td>Disables Elastic IP address transfer. For more information, see Transfer Elastic IP addresses in the Amazon VPC User Guide.</td>
+</tr>
+<tr>
+    <td><a href="#enable_address_transfer"><CopyableCode code="enable_address_transfer" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-AllocationId"><code>AllocationId</code></a>, <a href="#parameter-TransferAccountId"><code>TransferAccountId</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td><a href="#parameter-DryRun"><code>DryRun</code></a></td>
+    <td>Enables Elastic IP address transfer. For more information, see Transfer Elastic IP addresses in the Amazon VPC User Guide.</td>
+</tr>
 </tbody>
 </table>
 
@@ -122,10 +143,25 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     </tr>
 </thead>
 <tbody>
+<tr id="parameter-AllocationId">
+    <td><CopyableCode code="AllocationId" /></td>
+    <td><code>string</code></td>
+    <td>The allocation ID of an Elastic IP address.</td>
+</tr>
+<tr id="parameter-TransferAccountId">
+    <td><CopyableCode code="TransferAccountId" /></td>
+    <td><code>string</code></td>
+    <td>The ID of the account that you want to transfer the Elastic IP address to.</td>
+</tr>
 <tr id="parameter-region">
     <td><CopyableCode code="region" /></td>
     <td><code>string</code></td>
     <td>AWS region (default: us-east-1)</td>
+</tr>
+<tr id="parameter-Address">
+    <td><CopyableCode code="Address" /></td>
+    <td><code>string</code></td>
+    <td>The Elastic IP address you are accepting for transfer.</td>
 </tr>
 <tr id="parameter-AllocationId">
     <td><CopyableCode code="AllocationId" /></td>
@@ -146,6 +182,11 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     <td><CopyableCode code="NextToken" /></td>
     <td><code>string</code></td>
     <td>Specify the pagination token from a previous request to retrieve the next page of results.</td>
+</tr>
+<tr id="parameter-TagSpecification">
+    <td><CopyableCode code="TagSpecification" /></td>
+    <td><code>array</code></td>
+    <td>tag:<code>&lt;key&gt;</code> - The key/value combination of a tag assigned to the resource. Use the tag key in the filter name and the tag value as the filter value. For example, to find all resources that have a tag with the key Owner and the value TeamA, specify tag:Owner for the filter name and TeamA for the filter value.</td>
 </tr>
 </tbody>
 </table>
@@ -176,6 +217,57 @@ AND AllocationId = '{{ AllocationId }}'
 AND NextToken = '{{ NextToken }}'
 AND MaxResults = '{{ MaxResults }}'
 AND DryRun = '{{ DryRun }}'
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="accept_address_transfer"
+    values={[
+        { label: 'accept_address_transfer', value: 'accept_address_transfer' },
+        { label: 'disable_address_transfer', value: 'disable_address_transfer' },
+        { label: 'enable_address_transfer', value: 'enable_address_transfer' }
+    ]}
+>
+<TabItem value="accept_address_transfer">
+
+Accepts an Elastic IP address transfer. For more information, see Accept a transferred Elastic IP address in the Amazon VPC User Guide.
+
+```sql
+EXEC aws.ec2.address_transfers.accept_address_transfer 
+@region='{{ region }}' --required, 
+@Address='{{ Address }}', 
+@TagSpecification='{{ TagSpecification }}', 
+@DryRun={{ DryRun }}
+;
+```
+</TabItem>
+<TabItem value="disable_address_transfer">
+
+Disables Elastic IP address transfer. For more information, see Transfer Elastic IP addresses in the Amazon VPC User Guide.
+
+```sql
+EXEC aws.ec2.address_transfers.disable_address_transfer 
+@AllocationId='{{ AllocationId }}' --required, 
+@region='{{ region }}' --required, 
+@DryRun={{ DryRun }}
+;
+```
+</TabItem>
+<TabItem value="enable_address_transfer">
+
+Enables Elastic IP address transfer. For more information, see Transfer Elastic IP addresses in the Amazon VPC User Guide.
+
+```sql
+EXEC aws.ec2.address_transfers.enable_address_transfer 
+@AllocationId='{{ AllocationId }}' --required, 
+@TransferAccountId='{{ TransferAccountId }}' --required, 
+@region='{{ region }}' --required, 
+@DryRun={{ DryRun }}
 ;
 ```
 </TabItem>

@@ -350,13 +350,6 @@ The following methods are available for this resource:
     <td>Creates an association between a Merged API and source API using the source API's identifier.</td>
 </tr>
 <tr>
-    <td><a href="#associate_source_graphql_api"><CopyableCode code="associate_source_graphql_api" /></a></td>
-    <td><CopyableCode code="update" /></td>
-    <td><a href="#parameter-merged_api_identifier"><code>merged_api_identifier</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-sourceApiIdentifier"><code>sourceApiIdentifier</code></a></td>
-    <td></td>
-    <td>Creates an association between a Merged API and source API using the Merged API's identifier.</td>
-</tr>
-<tr>
     <td><a href="#disassociate_merged_graphql_api"><CopyableCode code="disassociate_merged_graphql_api" /></a></td>
     <td><CopyableCode code="update" /></td>
     <td><a href="#parameter-source_api_identifier"><code>source_api_identifier</code></a>, <a href="#parameter-association_id"><code>association_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
@@ -376,6 +369,13 @@ The following methods are available for this resource:
     <td><a href="#parameter-api_id"><code>api_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td></td>
     <td>Deletes a GraphqlApi object.</td>
+</tr>
+<tr>
+    <td><a href="#associate_source_graphql_api"><CopyableCode code="associate_source_graphql_api" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-merged_api_identifier"><code>merged_api_identifier</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-sourceApiIdentifier"><code>sourceApiIdentifier</code></a></td>
+    <td></td>
+    <td>Creates an association between a Merged API and source API using the Merged API's identifier.</td>
 </tr>
 </tbody>
 </table>
@@ -686,7 +686,6 @@ graphql_api
     values={[
         { label: 'update_graphql_api', value: 'update_graphql_api' },
         { label: 'associate_merged_graphql_api', value: 'associate_merged_graphql_api' },
-        { label: 'associate_source_graphql_api', value: 'associate_source_graphql_api' },
         { label: 'disassociate_merged_graphql_api', value: 'disassociate_merged_graphql_api' },
         { label: 'disassociate_source_graphql_api', value: 'disassociate_source_graphql_api' }
     ]}
@@ -735,24 +734,6 @@ WHERE
 source_api_identifier = '{{ source_api_identifier }}' --required
 AND region = '{{ region }}' --required
 AND mergedApiIdentifier = '{{ mergedApiIdentifier }}' --required
-RETURNING
-source_api_association;
-```
-</TabItem>
-<TabItem value="associate_source_graphql_api">
-
-Creates an association between a Merged API and source API using the Merged API's identifier.
-
-```sql
-UPDATE aws.appsync.graphql_apis
-SET 
-sourceApiIdentifier = '{{ sourceApiIdentifier }}',
-description = '{{ description }}',
-sourceApiAssociationConfig = '{{ sourceApiAssociationConfig }}'
-WHERE 
-merged_api_identifier = '{{ merged_api_identifier }}' --required
-AND region = '{{ region }}' --required
-AND sourceApiIdentifier = '{{ sourceApiIdentifier }}' --required
 RETURNING
 source_api_association;
 ```
@@ -808,6 +789,34 @@ Deletes a GraphqlApi object.
 DELETE FROM aws.appsync.graphql_apis
 WHERE api_id = '{{ api_id }}' --required
 AND region = '{{ region }}' --required
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="associate_source_graphql_api"
+    values={[
+        { label: 'associate_source_graphql_api', value: 'associate_source_graphql_api' }
+    ]}
+>
+<TabItem value="associate_source_graphql_api">
+
+Creates an association between a Merged API and source API using the Merged API's identifier.
+
+```sql
+EXEC aws.appsync.graphql_apis.associate_source_graphql_api 
+@merged_api_identifier='{{ merged_api_identifier }}' --required, 
+@region='{{ region }}' --required 
+@@json=
+'{
+"sourceApiIdentifier": "{{ sourceApiIdentifier }}", 
+"description": "{{ description }}", 
+"sourceApiAssociationConfig": "{{ sourceApiAssociationConfig }}"
+}'
 ;
 ```
 </TabItem>

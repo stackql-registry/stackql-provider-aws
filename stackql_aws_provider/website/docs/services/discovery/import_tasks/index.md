@@ -153,6 +153,13 @@ The following methods are available for this resource:
     <td></td>
     <td>Deletes one or more import tasks, each identified by their import ID. Each import task has a number of records that can identify servers or applications. Amazon Web Services Application Discovery Service has built-in matching logic that will identify when discovered servers match existing entries that you've previously discovered, the information for the already-existing discovered server is updated. When you delete an import task that contains records that were used to match, the information in those matched records that comes from the deleted records will also be deleted.</td>
 </tr>
+<tr>
+    <td><a href="#start_import_task"><CopyableCode code="start_import_task" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-name"><code>name</code></a>, <a href="#parameter-importUrl"><code>importUrl</code></a></td>
+    <td></td>
+    <td>Starts an import task, which allows you to import details of your on-premises environment directly into Amazon Web Services Migration Hub without having to use the Amazon Web Services Application Discovery Service (Application Discovery Service) tools such as the Amazon Web Services Application Discovery Service Agentless Collector or Application Discovery Agent. This gives you the option to perform migration assessment and planning directly from your imported data, including the ability to group your devices as applications and track their migration status. To start an import request, do this: Download the specially formatted comma separated value (CSV) import template, which you can find here: https:​//s3.us-west-2.amazonaws.com/templates-7cffcf56-bd96-4b1c-b45b-a5b42f282e46/import_template.csv. Fill out the template with your server and application data. Upload your import file to an Amazon S3 bucket, and make a note of it's Object URL. Your import file must be in the CSV format. Use the console or the StartImportTask command with the Amazon Web Services CLI or one of the Amazon Web Services SDKs to import the records from your file. For more information, including step-by-step procedures, see Migration Hub Import in the Amazon Web Services Application Discovery Service User Guide. There are limits to the number of import tasks you can create (and delete) in an Amazon Web Services account. For more information, see Amazon Web Services Application Discovery Service Limits in the Amazon Web Services Application Discovery Service User Guide.</td>
+</tr>
 </tbody>
 </table>
 
@@ -218,7 +225,8 @@ WHERE region = '{{ region }}' -- required
 <Tabs
     defaultValue="batch_delete_import_data"
     values={[
-        { label: 'batch_delete_import_data', value: 'batch_delete_import_data' }
+        { label: 'batch_delete_import_data', value: 'batch_delete_import_data' },
+        { label: 'start_import_task', value: 'start_import_task' }
     ]}
 >
 <TabItem value="batch_delete_import_data">
@@ -232,6 +240,22 @@ EXEC aws.discovery.import_tasks.batch_delete_import_data
 '{
 "importTaskIds": "{{ importTaskIds }}", 
 "deleteHistory": {{ deleteHistory }}
+}'
+;
+```
+</TabItem>
+<TabItem value="start_import_task">
+
+Starts an import task, which allows you to import details of your on-premises environment directly into Amazon Web Services Migration Hub without having to use the Amazon Web Services Application Discovery Service (Application Discovery Service) tools such as the Amazon Web Services Application Discovery Service Agentless Collector or Application Discovery Agent. This gives you the option to perform migration assessment and planning directly from your imported data, including the ability to group your devices as applications and track their migration status. To start an import request, do this: Download the specially formatted comma separated value (CSV) import template, which you can find here: https://s3.us-west-2.amazonaws.com/templates-7cffcf56-bd96-4b1c-b45b-a5b42f282e46/import_template.csv. Fill out the template with your server and application data. Upload your import file to an Amazon S3 bucket, and make a note of it's Object URL. Your import file must be in the CSV format. Use the console or the StartImportTask command with the Amazon Web Services CLI or one of the Amazon Web Services SDKs to import the records from your file. For more information, including step-by-step procedures, see Migration Hub Import in the Amazon Web Services Application Discovery Service User Guide. There are limits to the number of import tasks you can create (and delete) in an Amazon Web Services account. For more information, see Amazon Web Services Application Discovery Service Limits in the Amazon Web Services Application Discovery Service User Guide.
+
+```sql
+EXEC aws.discovery.import_tasks.start_import_task 
+@region='{{ region }}' --required 
+@@json=
+'{
+"clientRequestToken": "{{ clientRequestToken }}", 
+"name": "{{ name }}", 
+"importUrl": "{{ importUrl }}"
 }'
 ;
 ```

@@ -60,7 +60,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AcceptConnectionInvitationResponse'
-      x-stackql-resource: connections
+      x-stackql-resource: connection_invitations
       x-stackql-method: accept_connection_invitation
       x-stackql-verb: EXEC
   /AssociateAwsTrainingCertificationEmailDomain:
@@ -108,10 +108,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/AssociateAwsTrainingCertificationEmailDomainResponse'
       x-stackql-resource: aws_training_certification_email_domains
       x-stackql-method: associate_aws_training_certification_email_domain
       x-stackql-verb: UPDATE
@@ -164,7 +160,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CancelConnectionResponse'
-      x-stackql-resource: connection
+      x-stackql-resource: connections
       x-stackql-method: cancel_connection
       x-stackql-verb: EXEC
   /CancelConnectionInvitation:
@@ -208,7 +204,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CancelConnectionInvitationResponse'
-      x-stackql-resource: connections
+      x-stackql-resource: connection_invitations
       x-stackql-method: cancel_connection_invitation
       x-stackql-verb: EXEC
   /CancelProfileUpdateTask:
@@ -255,7 +251,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CancelProfileUpdateTaskResponse'
-      x-stackql-resource: profile_update_task
+      x-stackql-resource: profile_update_tasks
       x-stackql-method: cancel_profile_update_task
       x-stackql-verb: EXEC
   /CreateConnectionInvitation:
@@ -417,10 +413,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DisassociateAwsTrainingCertificationEmailDomainResponse'
       x-stackql-resource: aws_training_certification_email_domains
       x-stackql-method: disassociate_aws_training_certification_email_domain
       x-stackql-verb: UPDATE
@@ -1190,7 +1182,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RejectConnectionInvitationResponse'
-      x-stackql-resource: connections
+      x-stackql-resource: connection_invitations
       x-stackql-method: reject_connection_invitation
       x-stackql-verb: EXEC
   /SendEmailVerificationCode:
@@ -1226,11 +1218,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/SendEmailVerificationCodeResponse'
-      x-stackql-resource: email_verification_code
+      x-stackql-resource: email_verification_codes
       x-stackql-method: send_email_verification_code
       x-stackql-verb: EXEC
   /StartProfileUpdateTask:
@@ -1277,7 +1265,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartProfileUpdateTaskResponse'
-      x-stackql-resource: profile_update_task
+      x-stackql-resource: profile_update_tasks
       x-stackql-method: start_profile_update_task
       x-stackql-verb: EXEC
   /StartQualificationsAssociationTask:
@@ -1329,7 +1317,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartQualificationsAssociationTaskResponse'
-      x-stackql-resource: qualifications_association_task
+      x-stackql-resource: qualifications_association_tasks
       x-stackql-method: start_qualifications_association_task
       x-stackql-verb: EXEC
   /StartQualificationsDisassociationTask:
@@ -1381,7 +1369,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartQualificationsDisassociationTaskResponse'
-      x-stackql-resource: qualifications_disassociation_task
+      x-stackql-resource: qualifications_disassociation_tasks
       x-stackql-method: start_qualifications_disassociation_task
       x-stackql-verb: EXEC
   /StartVerification:
@@ -1421,7 +1409,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartVerificationResponse'
-      x-stackql-resource: verification
+      x-stackql-resource: verifications
       x-stackql-method: start_verification
       x-stackql-verb: EXEC
   /TagResource:
@@ -1457,10 +1445,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -1497,10 +1481,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -1676,8 +1656,6 @@ components:
       minLength: 6
       maxLength: 6
       pattern: '[0-9]+'
-    AssociateAwsTrainingCertificationEmailDomainResponse:
-      type: object
     ConnectionType:
       type: string
       enum:
@@ -2295,8 +2273,6 @@ components:
       minLength: 1
       maxLength: 253
       pattern: '[a-zA-Z0-9]([a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(\.[a-zA-Z0-9]([a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*'
-    DisassociateAwsTrainingCertificationEmailDomainResponse:
-      type: object
     GetAllianceLeadContactResponse:
       type: object
       properties:
@@ -3143,8 +3119,6 @@ components:
       minLength: 1
       maxLength: 256
       pattern: '[\u0020-\u007E\u00A0-\uD7FF\uE000-\uFFFD\n]+'
-    SendEmailVerificationCodeResponse:
-      type: object
     StartProfileUpdateTaskResponse:
       type: object
       properties:
@@ -3293,14 +3267,10 @@ components:
       - VerificationStatus
       - VerificationResponseDetails
       - StartedAt
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
         $ref: '#/components/schemas/TagKey'
-    UntagResourceResponse:
-      type: object
     UpdateConnectionPreferencesRequestExcludedParticipantIdentifiersList:
       type: array
       items:

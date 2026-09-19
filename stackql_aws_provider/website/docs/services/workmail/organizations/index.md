@@ -221,18 +221,18 @@ The following methods are available for this resource:
     <td>Puts a retention policy to the specified organization.</td>
 </tr>
 <tr>
-    <td><a href="#delete_alias"><CopyableCode code="delete_alias" /></a></td>
-    <td><CopyableCode code="delete" /></td>
-    <td><a href="#parameter-region"><code>region</code></a></td>
-    <td></td>
-    <td>Remove one or more specified aliases from a set of aliases for a given user.</td>
-</tr>
-<tr>
     <td><a href="#delete_organization"><CopyableCode code="delete_organization" /></a></td>
     <td><CopyableCode code="delete" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td></td>
     <td>Deletes an WorkMail organization and all underlying AWS resources managed by WorkMail as part of the organization. You can choose whether to delete the associated directory. For more information, see Removing an organization in the WorkMail Administrator Guide.</td>
+</tr>
+<tr>
+    <td><a href="#delete_alias"><CopyableCode code="delete_alias" /></a></td>
+    <td><CopyableCode code="delete" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Remove one or more specified aliases from a set of aliases for a given user.</td>
 </tr>
 <tr>
     <td><a href="#delete_retention_policy"><CopyableCode code="delete_retention_policy" /></a></td>
@@ -557,16 +557,16 @@ AND FolderConfigurations = '{{ FolderConfigurations }}' --required;
 ## `DELETE` examples
 
 <Tabs
-    defaultValue="delete_alias"
+    defaultValue="delete_organization"
     values={[
-        { label: 'delete_alias', value: 'delete_alias' },
         { label: 'delete_organization', value: 'delete_organization' },
+        { label: 'delete_alias', value: 'delete_alias' },
         { label: 'delete_retention_policy', value: 'delete_retention_policy' }
     ]}
 >
-<TabItem value="delete_alias">
+<TabItem value="delete_organization">
 
-Remove one or more specified aliases from a set of aliases for a given user.
+Deletes an WorkMail organization and all underlying AWS resources managed by WorkMail as part of the organization. You can choose whether to delete the associated directory. For more information, see Removing an organization in the WorkMail Administrator Guide.
 
 ```sql
 DELETE FROM aws.workmail.organizations
@@ -574,9 +574,9 @@ WHERE region = '{{ region }}' --required
 ;
 ```
 </TabItem>
-<TabItem value="delete_organization">
+<TabItem value="delete_alias">
 
-Deletes an WorkMail organization and all underlying AWS resources managed by WorkMail as part of the organization. You can choose whether to delete the associated directory. For more information, see Removing an organization in the WorkMail Administrator Guide.
+Remove one or more specified aliases from a set of aliases for a given user.
 
 ```sql
 DELETE FROM aws.workmail.organizations

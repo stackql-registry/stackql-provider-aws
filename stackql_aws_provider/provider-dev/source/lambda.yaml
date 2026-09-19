@@ -280,7 +280,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AliasConfiguration'
-      x-stackql-resource: alias
+      x-stackql-resource: aliases
       x-stackql-method: create_alias
       x-stackql-verb: INSERT
     get:
@@ -934,7 +934,7 @@ paths:
       responses:
         '204':
           description: Success
-      x-stackql-resource: alias
+      x-stackql-resource: aliases
       x-stackql-method: delete_alias
       x-stackql-verb: DELETE
     get:
@@ -962,7 +962,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AliasConfiguration'
-      x-stackql-resource: alias
+      x-stackql-resource: aliases
       x-stackql-method: get_alias
       x-stackql-verb: SELECT
     put:
@@ -1005,7 +1005,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AliasConfiguration'
-      x-stackql-resource: alias
+      x-stackql-resource: aliases
       x-stackql-method: update_alias
       x-stackql-verb: UPDATE
   /2025-11-30/capacity-providers/{capacity_provider_name}:
@@ -1100,10 +1100,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteCodeSigningConfigResponse'
       x-stackql-resource: code_signing_configs
       x-stackql-method: delete_code_signing_config
       x-stackql-verb: DELETE
@@ -1786,6 +1782,92 @@ paths:
       x-stackql-resource: provisioned_concurrency_configs
       x-stackql-method: put_provisioned_concurrency_config
       x-stackql-verb: REPLACE
+  /2026-07-09/resource-policy/{resource_arn}:
+    delete:
+      operationId: DeleteResourcePolicy
+      description: Deletes a resource-based policy from a Lambda resource.
+      parameters:
+      - name: resource_arn
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/PolicyResourceArn'
+        description: The Amazon Resource Name (ARN) of the Lambda resource you want to delete the policy from. You can use
+          a qualified or an unqualified ARN. The value must be a complete ARN, and the operation does not accept wildcard
+          characters.
+      - name: RevisionId
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/RevisionId'
+        description: The revision ID that the existing policy must match for the deletion to proceed. If the revision ID doesn't
+          match, the operation fails with a PreconditionFailedException error. To retrieve the current revision ID, use the
+          GetResourcePolicy operation.
+      responses:
+        '204':
+          description: Success
+      x-stackql-resource: resource_policies
+      x-stackql-method: delete_resource_policy
+      x-stackql-verb: DELETE
+    get:
+      operationId: GetResourcePolicy
+      description: Retrieves the resource-based policy attached to a Lambda resource.
+      parameters:
+      - name: resource_arn
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/PolicyResourceArn'
+        description: The Amazon Resource Name (ARN) of the Lambda resource you want to retrieve the policy for. You can use
+          a qualified or an unqualified ARN. The value must be a complete ARN, and the operation does not accept wildcard
+          characters.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetResourcePolicyResponse'
+      x-stackql-resource: resource_policies
+      x-stackql-method: get_resource_policy
+      x-stackql-verb: SELECT
+    put:
+      operationId: PutResourcePolicy
+      description: Adds a resource-based policy to a Lambda resource. Resource-based policies grant access to other Amazon
+        Web Services accounts, organizations, or services. Resource-based policies apply to a single Lambda resource (for
+        example, a function, function version, or function alias). This operation replaces any existing policy on the Lambda
+        resource. If you previously added permissions using the AddPermission operation, the new policy overwrites those permissions.
+      parameters:
+      - name: resource_arn
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/PolicyResourceArn'
+        description: The Amazon Resource Name (ARN) of the Lambda resource you want to add the policy to. You can use a qualified
+          or an unqualified ARN. The value must be a complete ARN, and the operation does not accept wildcard characters.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                Policy:
+                  $ref: '#/components/schemas/ResourcePolicy'
+                RevisionId:
+                  $ref: '#/components/schemas/RevisionId'
+              required:
+              - Policy
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PutResourcePolicyResponse'
+      x-stackql-resource: resource_policies
+      x-stackql-method: put_resource_policy
+      x-stackql-verb: REPLACE
   /2016-08-19/account-settings:
     get:
       operationId: GetAccountSettings
@@ -2213,7 +2295,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetLayerVersionResponse'
-      x-stackql-resource: layer_version_by_arns
+      x-stackql-resource: layer_versions
       x-stackql-method: get_layer_version_by_arn
       x-stackql-verb: SELECT
   /2021-07-20/functions/{function_name}/runtime-management-config:
@@ -2564,7 +2646,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListDurableExecutionsByFunctionResponse'
-      x-stackql-resource: durable_executions_by_functions
+      x-stackql-resource: durable_executions
       x-stackql-method: list_durable_executions_by_function
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.DurableExecutions
@@ -2681,7 +2763,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListFunctionVersionsByCapacityProviderResponse'
-      x-stackql-resource: function_versions_by_capacity_providers
+      x-stackql-resource: function_versions
       x-stackql-method: list_function_versions_by_capacity_provider
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.FunctionVersions
@@ -2719,7 +2801,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListFunctionsByCodeSigningConfigOutputDisplay'
-      x-stackql-resource: functions_by_code_signing_configs
+      x-stackql-resource: functions
       x-stackql-method: list_functions_by_code_signing_config
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: ListFunctionsByCodeSigningConfigOutputDisplay
@@ -2820,7 +2902,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PublishLayerVersionResponse'
-      x-stackql-resource: layers
+      x-stackql-resource: layer_versions
       x-stackql-method: publish_layer_version
       x-stackql-verb: EXEC
   /2018-10-31/layers:
@@ -3014,7 +3096,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListVersionsByFunctionResponse'
-      x-stackql-resource: versions_by_functions
+      x-stackql-resource: versions
       x-stackql-method: list_versions_by_function
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Versions
@@ -3059,7 +3141,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/FunctionConfiguration'
-      x-stackql-resource: functions
+      x-stackql-resource: versions
       x-stackql-method: publish_version
       x-stackql-verb: EXEC
   /2018-10-31/layers/{layer_name}/versions/{version_number}/policy/{statement_id}:
@@ -3164,10 +3246,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/SendDurableExecutionCallbackFailureResponse'
       x-stackql-resource: durable_executions
       x-stackql-method: send_durable_execution_callback_failure
       x-stackql-verb: EXEC
@@ -3186,10 +3264,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/SendDurableExecutionCallbackHeartbeatResponse'
       x-stackql-resource: durable_executions
       x-stackql-method: send_durable_execution_callback_heartbeat
       x-stackql-verb: EXEC
@@ -3217,10 +3291,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/SendDurableExecutionCallbackSuccessResponse'
       x-stackql-resource: durable_executions
       x-stackql-method: send_durable_execution_callback_success
       x-stackql-verb: EXEC
@@ -3406,7 +3476,7 @@ components:
       type: string
       minLength: 1
       maxLength: 256
-      pattern: (arn:(aws[a-zA-Z-]*)?:lambda:(eusc-)?[a-z]{2}((-gov)|(-iso([a-z]?)))?-[a-z]+-\d{1}:\d{12}:|(((eusc-)?[a-z]{2}((-gov)|(-iso([a-z]?)))?-[a-z]+-\d{1}:)?(\d{12}:)?))(function:)?([a-zA-Z0-9-_\.]+)(:(\$LATEST(\.PUBLISHED)?|[a-zA-Z0-9-_]+))?
+      pattern: (arn:(aws[a-zA-Z-]*)?:lambda:)?((eusc-)?[a-z]{2}((-gov)|(-iso([a-z]?)))?-[a-z]+-\d{1}:)?(\d{12}:)?(function:)?([a-zA-Z0-9-_\.]+)(:(\$LATEST(\.PUBLISHED)?|[a-zA-Z0-9-_]+))?
     NumericLatestPublishedOrAliasQualifier:
       type: string
       minLength: 1
@@ -4599,9 +4669,9 @@ components:
             default is 1.
         MaximumPollers:
           $ref: '#/components/schemas/MaximumNumberOfPollers'
-          description: The maximum number of event pollers this event source can scale up to. For Amazon SQS events source
-            mappings, default is 200, and minimum value allowed is 2. For Amazon MSK and self-managed Apache Kafka event source
-            mappings, default is 200, and minimum value allowed is 1.
+          description: The maximum number of event pollers this event source can scale up to. For Amazon SQS event source
+            mappings, the accepted range is between 2 and 10,000, with a default of 200. For Amazon MSK and self-managed Apache
+            Kafka event source mappings, the accepted range is between 1 and 2,000, with a default of 200.
         PollerGroupName:
           $ref: '#/components/schemas/ProvisionedPollerGroupName'
           description: (Amazon MSK and self-managed Apache Kafka) The name of the provisioned poller group. Use this option
@@ -4994,8 +5064,8 @@ components:
       items:
         $ref: '#/components/schemas/FileSystemConfig'
     FileSystemConfig:
-      description: Details about the connection between a Lambda function and an Amazon EFS file system or an Amazon S3 Files
-        file system.
+      description: Details about the connection between a Lambda function and an Amazon EFS file system or an Amazon S3 file
+        system.
       type: object
       properties:
         Arn:
@@ -5005,6 +5075,11 @@ components:
         LocalMountPath:
           $ref: '#/components/schemas/LocalMountPath'
           description: The path where the function can access the file system, starting with /mnt/.
+        S3FilesConfig:
+          $ref: '#/components/schemas/S3FilesConfig'
+          description: The configuration for how your function accesses data on an Amazon S3 file system. Valid only when
+            the file system access point ARN is an Amazon S3 Files access point. If you specify a different access point type
+            (for example, Amazon Elastic File System), the operation returns an InvalidParameterException.
       required:
       - Arn
       - LocalMountPath
@@ -5018,6 +5093,25 @@ components:
       minLength: 0
       maxLength: 160
       pattern: /mnt/[a-zA-Z0-9-_.]+
+    S3FilesConfig:
+      description: Setting controls how your function accesses data from an Amazon S3 file system.
+      type: object
+      properties:
+        DirectS3Read:
+          $ref: '#/components/schemas/DirectS3Read'
+          description: 'Specifies if a function reads from the file system for the lowest latency, or through Amazon S3 Files
+            feature "direct Amazon S3 bucket reads" for the highest throughput. Valid values: AUTO (default) – Direct reads
+            are active for functions you configure with 512 MB or more of memory. ENABLED – Enforces all reads are directly
+            from the Amazon S3 bucket, regardless of available memory (less than 512 MB). DISABLED – Routes all reads through
+            the file system, regardless of memory configuration. To use direct reads, you must grant the execution role the
+            s3:GetObject and s3:GetObjectVersion permissions. If a direct read fails, Lambda automatically falls back to reading
+            through the file system.'
+    DirectS3Read:
+      type: string
+      enum:
+      - ENABLED
+      - DISABLED
+      - AUTO
     ImageConfig:
       description: Configuration values that override the container image Dockerfile settings. For more information, see Container
         image settings.
@@ -5053,7 +5147,7 @@ components:
     EphemeralStorageSize:
       type: integer
       minimum: 512
-      maximum: 10240
+      maximum: 32768
     SnapStart:
       description: The function's Lambda SnapStart setting. Set ApplyOn to PublishedVersions to create a snapshot of the initialized
         execution environment when you publish a function version.
@@ -5277,7 +5371,7 @@ components:
           description: The reason code for the last update that was performed on the function.
         FileSystemConfigs:
           $ref: '#/components/schemas/FileSystemConfigList'
-          description: Connection settings for an Amazon EFS file system or an Amazon S3 Files file system.
+          description: Connection settings for an Amazon EFS file system or an Amazon S3 file system.
         SigningProfileVersionArn:
           $ref: '#/components/schemas/Arn'
           description: The ARN of the signing profile version.
@@ -5684,8 +5778,6 @@ components:
           description: Information about the deleted capacity provider.
       required:
       - CapacityProvider
-    DeleteCodeSigningConfigResponse:
-      type: object
     DeleteFunctionResponse:
       type: object
       properties:
@@ -5699,6 +5791,16 @@ components:
       minLength: 1
       maxLength: 128
       pattern: (|[a-zA-Z0-9$_-]+)
+    PolicyResourceArn:
+      type: string
+      minLength: 0
+      maxLength: 256
+      pattern: arn:(aws[a-zA-Z-]*)?:lambda:(eusc-)?[a-z]{2}((-gov)|(-iso([a-z]?)))?-[a-z]+-\d{1}:\d{12}:function:[a-zA-Z0-9-_]+(:(\$LATEST(\.PUBLISHED)?|[a-zA-Z0-9-_])+)?
+    RevisionId:
+      type: string
+      minLength: 36
+      maxLength: 36
+      pattern: '[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}'
     GetAccountSettingsResponse:
       type: object
       properties:
@@ -6670,6 +6772,21 @@ components:
       - IN_PROGRESS
       - READY
       - FAILED
+    GetResourcePolicyResponse:
+      type: object
+      properties:
+        Policy:
+          $ref: '#/components/schemas/ResourcePolicy'
+          description: The resource-based policy attached to the Lambda resource you specified.
+        RevisionId:
+          $ref: '#/components/schemas/RevisionId'
+          description: The revision ID of the policy. Pass this value as the RevisionId in a PutResourcePolicy or DeleteResourcePolicy
+            request. Doing so ensures the operation acts on the expected version of the policy.
+    ResourcePolicy:
+      type: string
+      minLength: 1
+      maxLength: 20480
+      pattern: '[\s\S]+'
     GetRuntimeManagementConfigResponse:
       type: object
       properties:
@@ -7284,6 +7401,15 @@ components:
         LastModified:
           $ref: '#/components/schemas/Timestamp'
           description: The date and time that a user last updated the configuration, in ISO 8601 format.
+    PutResourcePolicyResponse:
+      type: object
+      properties:
+        Policy:
+          $ref: '#/components/schemas/ResourcePolicy'
+          description: The resource-based policy that Lambda adds to the resource.
+        RevisionId:
+          $ref: '#/components/schemas/RevisionId'
+          description: The revision ID of the policy that Lambda adds to your Lambda resource.
     PutRuntimeManagementConfigResponse:
       type: object
       properties:
@@ -7305,17 +7431,11 @@ components:
       minLength: 1
       maxLength: 100
       pattern: ([a-zA-Z0-9-_.]+)
-    SendDurableExecutionCallbackFailureResponse:
-      type: object
-    SendDurableExecutionCallbackHeartbeatResponse:
-      type: object
     BinaryOperationPayload:
       type: string
       format: byte
       minLength: 0
       maxLength: 262144
-    SendDurableExecutionCallbackSuccessResponse:
-      type: object
     StopDurableExecutionResponse:
       type: object
       properties:

@@ -81,10 +81,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteApplicationResponse"
     get:
       operationId: GetApplication
       description: Retrieves details about an account access manager application, including its status, identity source, and tags.
@@ -122,10 +118,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteEntitlementResponse"
     get:
       operationId: GetEntitlement
       description: Retrieves details about a specific entitlement for an account access manager application, including the principal, IAM role, and target account.
@@ -244,10 +236,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TagResourceResponse"
     delete:
       operationId: UntagResource
       description: Removes tags from an account access manager resource.
@@ -267,10 +255,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UntagResourceResponse"
 components:
   parameters:
     X-Amz-Content-Sha256:
@@ -413,10 +397,6 @@ components:
         - entitlementId
     String:
       type: string
-    DeleteApplicationResponse:
-      type: object
-    DeleteEntitlementResponse:
-      type: object
     GetApplicationResponse:
       type: object
       properties:
@@ -700,14 +680,10 @@ components:
           type: object
           properties: {}
           description: The tags associated with the resource.
-    TagResourceResponse:
-      type: object
     TagKeys:
       type: array
       items:
         $ref: "#/components/schemas/String"
-    UntagResourceResponse:
-      type: object
   x-stackQL-resources:
     applications:
       id: aws.account_access.applications
@@ -730,7 +706,6 @@ components:
             $ref: "#/paths/~1applications~1{application_arn}/delete"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
         get_application:
           operation:
             $ref: "#/paths/~1applications~1{application_arn}/get"
@@ -786,7 +761,6 @@ components:
             $ref: "#/paths/~1entitlements~1{entitlement_id}/delete"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
           request:
             nativeCasing: pascal
         get_entitlement:
@@ -841,7 +815,6 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -852,7 +825,6 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
       sqlVerbs:

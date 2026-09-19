@@ -29,8 +29,8 @@ total resources: __12__
 <a href="/services/route53_recovery_readiness/cell_readiness_summaries/">cell_readiness_summaries</a><br />
 <a href="/services/route53_recovery_readiness/cells/">cells</a><br />
 <a href="/services/route53_recovery_readiness/cross_account_authorizations/">cross_account_authorizations</a><br />
-<a href="/services/route53_recovery_readiness/readiness_check_resource_status/">readiness_check_resource_status</a><br />
-<a href="/services/route53_recovery_readiness/readiness_check_status/">readiness_check_status</a>
+<a href="/services/route53_recovery_readiness/readiness_check_resource_statuses/">readiness_check_resource_statuses</a><br />
+<a href="/services/route53_recovery_readiness/readiness_check_statuses/">readiness_check_statuses</a>
 </div>
 <div class="providerDocColumn">
 <a href="/services/route53_recovery_readiness/readiness_checks/">readiness_checks</a><br />

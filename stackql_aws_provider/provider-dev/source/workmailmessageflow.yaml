@@ -35,7 +35,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetRawMessageContentResponse'
-      x-stackql-resource: raw_message_contents
+      x-stackql-resource: raw_message_content
       x-stackql-method: get_raw_message_content
       x-stackql-verb: SELECT
     post:
@@ -66,11 +66,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PutRawMessageContentResponse'
-      x-stackql-resource: raw_message_contents
+      x-stackql-resource: raw_message_content
       x-stackql-method: put_raw_message_content
       x-stackql-verb: REPLACE
 components:
@@ -183,5 +179,3 @@ components:
       minLength: 1
       maxLength: 1024
       pattern: .+
-    PutRawMessageContentResponse:
-      type: object

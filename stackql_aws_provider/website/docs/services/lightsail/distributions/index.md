@@ -201,6 +201,9 @@ ipAddressType,
 tags,
 certificateName,
 viewerMinimumTlsProtocolVersion,
+enablePrivateOriginAccess,
+defaultRootObject,
+customErrorResponses,
 region
 )
 SELECT 
@@ -214,6 +217,9 @@ SELECT
 '{{ tags }}',
 '{{ certificateName }}',
 '{{ viewerMinimumTlsProtocolVersion }}',
+{{ enablePrivateOriginAccess }},
+'{{ defaultRootObject }}',
+'{{ customErrorResponses }}',
 '{{ region }}'
 RETURNING
 distribution,
@@ -298,6 +304,22 @@ operation
       description: |
         The minimum TLS protocol version for the SSL/TLS certificate.
       valid_values: ['TLSv1.1_2016', 'TLSv1.2_2018', 'TLSv1.2_2019', 'TLSv1.2_2021']
+    - name: enablePrivateOriginAccess
+      value: {{ enablePrivateOriginAccess }}
+      description: |
+        Specifies whether to enable private origin access for the distribution. With private origin access, the distribution can serve objects that aren't publicly accessible from a Lightsail bucket. Lightsail grants the distribution permission to read the bucket's objects. Enabling private origin access doesn't change the bucket's access settings, and you can still retrieve publicly accessible objects directly from the bucket's endpoint. You can enable private origin access only when the distribution's origin is a Lightsail bucket. If the origin is another resource type, the request fails.
+    - name: defaultRootObject
+      value: "{{ defaultRootObject }}"
+      description: |
+        The object (for example, index.html) that the distribution returns when a viewer requests the root URL of the distribution (/) instead of a specific object. The object that you specify must be available from the origin.
+    - name: customErrorResponses
+      description: |
+        An array of objects that describe the custom error responses for the distribution. With a custom error response, you can specify the page to return when the origin responds with a given HTTP error code. You can also specify the HTTP status code to send to the viewer.
+      value:
+        - errorCode: {{ errorCode }}
+          responseCode: "{{ responseCode }}"
+          responsePagePath: "{{ responsePagePath }}"
+          errorCachingMinTTL: {{ errorCachingMinTTL }}
 `}</CodeBlock>
 
 </TabItem>
@@ -345,7 +367,10 @@ cacheBehaviors = '{{ cacheBehaviors }}',
 isEnabled = {{ isEnabled }},
 viewerMinimumTlsProtocolVersion = '{{ viewerMinimumTlsProtocolVersion }}',
 certificateName = '{{ certificateName }}',
-useDefaultCertificate = {{ useDefaultCertificate }}
+useDefaultCertificate = {{ useDefaultCertificate }},
+enablePrivateOriginAccess = {{ enablePrivateOriginAccess }},
+defaultRootObject = '{{ defaultRootObject }}',
+customErrorResponses = '{{ customErrorResponses }}'
 WHERE 
 region = '{{ region }}' --required
 AND distributionName = '{{ distributionName }}' --required

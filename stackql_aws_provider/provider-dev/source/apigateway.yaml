@@ -2662,7 +2662,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TestInvokeMethodResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: methods
       x-stackql-method: test_invoke_method
       x-stackql-verb: EXEC
     patch:
@@ -3600,7 +3600,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ClientCertificate'
-      x-stackql-resource: client_certificate
+      x-stackql-resource: client_certificates
       x-stackql-method: generate_client_certificate
       x-stackql-verb: EXEC
     get:
@@ -4148,7 +4148,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RestApi'
-      x-stackql-resource: rest_api
+      x-stackql-resource: rest_apis
       x-stackql-method: import_rest_api
       x-stackql-verb: EXEC
   /rejectdomainnameaccessassociations:
@@ -4174,7 +4174,7 @@ paths:
       responses:
         '202':
           description: Success
-      x-stackql-resource: domain_names
+      x-stackql-resource: domain_name_access_associations
       x-stackql-method: reject_domain_name_access_association
       x-stackql-verb: EXEC
   /usageplans/{usageplan_id}/keys/{key_id}/usage:

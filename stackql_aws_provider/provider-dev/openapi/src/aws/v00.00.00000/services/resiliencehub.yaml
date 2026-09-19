@@ -1447,10 +1447,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TagResourceResponse"
     delete:
       operationId: UntagResource
       description: Removes one or more tags from a resource.
@@ -1470,10 +1466,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UntagResourceResponse"
   /list-test-recommendations:
     post:
       operationId: ListTestRecommendations
@@ -4464,8 +4456,6 @@ components:
         - appArn
         - groupingId
         - status
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
@@ -4475,8 +4465,6 @@ components:
       minLength: 1
       maxLength: 128
       pattern: ^[^\x00-\x1f\x22]+$
-    UntagResourceResponse:
-      type: object
     UpdateAppResponse:
       type: object
       properties:
@@ -5144,10 +5132,10 @@ components:
         update:
           - $ref: "#/components/x-stackQL-resources/app_versions/methods/update_app_version"
         delete: []
-    app_version_resources_resolution_status:
-      id: aws.resiliencehub.app_version_resources_resolution_status
-      name: app_version_resources_resolution_status
-      title: app_version_resources_resolution_status
+    app_version_resources_resolution_statuses:
+      id: aws.resiliencehub.app_version_resources_resolution_statuses
+      name: app_version_resources_resolution_statuses
+      title: app_version_resources_resolution_statuses
       methods:
         describe_app_version_resources_resolution_status:
           operation:
@@ -5162,7 +5150,7 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/app_version_resources_resolution_status/methods/describe_app_version_resources_resolution_status"
+          - $ref: "#/components/x-stackQL-resources/app_version_resources_resolution_statuses/methods/describe_app_version_resources_resolution_status"
         insert: []
         update: []
         delete: []
@@ -5201,10 +5189,10 @@ components:
         replace:
           - $ref: "#/components/x-stackQL-resources/app_version_templates/methods/put_draft_app_version_template"
         delete: []
-    draft_app_version_resources_import_status:
-      id: aws.resiliencehub.draft_app_version_resources_import_status
-      name: draft_app_version_resources_import_status
-      title: draft_app_version_resources_import_status
+    draft_app_version_resources_import_statuses:
+      id: aws.resiliencehub.draft_app_version_resources_import_statuses
+      name: draft_app_version_resources_import_statuses
+      title: draft_app_version_resources_import_statuses
       methods:
         describe_draft_app_version_resources_import_status:
           operation:
@@ -5219,7 +5207,7 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/draft_app_version_resources_import_status/methods/describe_draft_app_version_resources_import_status"
+          - $ref: "#/components/x-stackQL-resources/draft_app_version_resources_import_statuses/methods/describe_draft_app_version_resources_import_status"
         insert: []
         update: []
         delete: []
@@ -5489,7 +5477,6 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -5500,7 +5487,6 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
       sqlVerbs:

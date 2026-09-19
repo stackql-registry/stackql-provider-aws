@@ -18,7 +18,7 @@ invoicing service documentation.
 
 :::info[Service Summary]
 
-total resources: __6__  
+total resources: __8__  
 
 :::
 
@@ -27,11 +27,13 @@ total resources: __6__
 <div class="providerDocColumn">
 <a href="/services/invoicing/invoice_pdfs/">invoice_pdfs</a><br />
 <a href="/services/invoicing/invoice_profiles/">invoice_profiles</a><br />
-<a href="/services/invoicing/invoice_summaries/">invoice_summaries</a>
+<a href="/services/invoicing/invoice_summaries/">invoice_summaries</a><br />
+<a href="/services/invoicing/invoice_units/">invoice_units</a>
 </div>
 <div class="providerDocColumn">
-<a href="/services/invoicing/invoice_units/">invoice_units</a><br />
 <a href="/services/invoicing/procurement_portal_preferences/">procurement_portal_preferences</a><br />
+<a href="/services/invoicing/procurement_portal_suppliers/">procurement_portal_suppliers</a><br />
+<a href="/services/invoicing/procurement_portals/">procurement_portals</a><br />
 <a href="/services/invoicing/tags/">tags</a>
 </div>
 </div>

@@ -53,7 +53,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
-    <td>The Amazon Resource Name (ARN) of the EventRule. CloudFormation stack generates this ARN and then uses this ARN to associate with the NotificationConfiguration. (pattern: &lt;code&gt;arn:aws:notifications::&#91;0-9&#93;&#123;12&#125;:configuration/&#91;a-z0-9&#93;&#123;27&#125;/rule/&#91;a-z0-9&#93;&#123;27&#125;&lt;/code&gt;)</td>
+    <td>The Amazon Resource Name (ARN) of the EventRule. CloudFormation stack generates this ARN and then uses this ARN to associate with the NotificationConfiguration. (pattern: &lt;code&gt;arn:&#91;a-z-&#93;&#123;3,10&#125;:notifications::&#91;0-9&#93;&#123;12&#125;:configuration/&#91;a-z0-9&#93;&#123;27&#125;/rule/&#91;a-z0-9&#93;&#123;27&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="creation_time" /></td>
@@ -78,7 +78,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="notification_configuration_arn" /></td>
     <td><code>string</code></td>
-    <td>The ARN for the NotificationConfiguration associated with this EventRule. (pattern: &lt;code&gt;arn:aws:notifications::&#91;0-9&#93;&#123;12&#125;:configuration/&#91;a-z0-9&#93;&#123;27&#125;&lt;/code&gt;)</td>
+    <td>The ARN for the NotificationConfiguration associated with this EventRule. (pattern: &lt;code&gt;arn:&#91;a-z-&#93;&#123;3,10&#125;:notifications::&#91;0-9&#93;&#123;12&#125;:configuration/&#91;a-z0-9&#93;&#123;27&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="regions" /></td>
@@ -112,7 +112,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
-    <td>The ARN of the resource. (pattern: &lt;code&gt;arn:aws:notifications::&#91;0-9&#93;&#123;12&#125;:configuration/&#91;a-z0-9&#93;&#123;27&#125;/rule/&#91;a-z0-9&#93;&#123;27&#125;&lt;/code&gt;)</td>
+    <td>The ARN of the resource. (pattern: &lt;code&gt;arn:&#91;a-z-&#93;&#123;3,10&#125;:notifications::&#91;0-9&#93;&#123;12&#125;:configuration/&#91;a-z0-9&#93;&#123;27&#125;/rule/&#91;a-z0-9&#93;&#123;27&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="creation_time" /></td>
@@ -137,7 +137,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="notification_configuration_arn" /></td>
     <td><code>string</code></td>
-    <td>The ARN of a NotificationConfiguration. (pattern: &lt;code&gt;arn:aws:notifications::&#91;0-9&#93;&#123;12&#125;:configuration/&#91;a-z0-9&#93;&#123;27&#125;&lt;/code&gt;)</td>
+    <td>The ARN of a NotificationConfiguration. (pattern: &lt;code&gt;arn:&#91;a-z-&#93;&#123;3,10&#125;:notifications::&#91;0-9&#93;&#123;12&#125;:configuration/&#91;a-z0-9&#93;&#123;27&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="regions" /></td>

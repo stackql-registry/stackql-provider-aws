@@ -301,12 +301,14 @@ connector_profile_arn
             oAuthRequest:
               authCode: "{{ authCode }}"
               redirectUri: "{{ redirectUri }}"
+              codeVerifier: "{{ codeVerifier }}"
           Honeycode:
             accessToken: "{{ accessToken }}"
             refreshToken: "{{ refreshToken }}"
             oAuthRequest:
               authCode: "{{ authCode }}"
               redirectUri: "{{ redirectUri }}"
+              codeVerifier: "{{ codeVerifier }}"
           InforNexus:
             accessKeyId: "{{ accessKeyId }}"
             userId: "{{ userId }}"
@@ -319,6 +321,7 @@ connector_profile_arn
             oAuthRequest:
               authCode: "{{ authCode }}"
               redirectUri: "{{ redirectUri }}"
+              codeVerifier: "{{ codeVerifier }}"
           Redshift:
             username: "{{ username }}"
             password: "{{ password }}"
@@ -328,6 +331,7 @@ connector_profile_arn
             oAuthRequest:
               authCode: "{{ authCode }}"
               redirectUri: "{{ redirectUri }}"
+              codeVerifier: "{{ codeVerifier }}"
             clientCredentialsArn: "{{ clientCredentialsArn }}"
             oAuth2GrantType: "{{ oAuth2GrantType }}"
             jwtToken: "{{ jwtToken }}"
@@ -342,6 +346,7 @@ connector_profile_arn
               oAuthRequest:
                 authCode: "{{ authCode }}"
                 redirectUri: "{{ redirectUri }}"
+                codeVerifier: "{{ codeVerifier }}"
           Singular:
             apiKey: "{{ apiKey }}"
           Slack:
@@ -351,9 +356,11 @@ connector_profile_arn
             oAuthRequest:
               authCode: "{{ authCode }}"
               redirectUri: "{{ redirectUri }}"
+              codeVerifier: "{{ codeVerifier }}"
           Snowflake:
             username: "{{ username }}"
             password: "{{ password }}"
+            privateKey: "{{ privateKey }}"
           Trendmicro:
             apiSecretKey: "{{ apiSecretKey }}"
           Veeva:
@@ -366,6 +373,7 @@ connector_profile_arn
             oAuthRequest:
               authCode: "{{ authCode }}"
               redirectUri: "{{ redirectUri }}"
+              codeVerifier: "{{ codeVerifier }}"
           SAPOData:
             basicAuthCredentials:
               username: "{{ username }}"
@@ -378,6 +386,7 @@ connector_profile_arn
               oAuthRequest:
                 authCode: "{{ authCode }}"
                 redirectUri: "{{ redirectUri }}"
+                codeVerifier: "{{ codeVerifier }}"
           CustomConnector:
             authenticationType: "{{ authenticationType }}"
             basic:
@@ -391,6 +400,7 @@ connector_profile_arn
               oAuthRequest:
                 authCode: "{{ authCode }}"
                 redirectUri: "{{ redirectUri }}"
+                codeVerifier: "{{ codeVerifier }}"
             apiKey:
               apiKey: "{{ apiKey }}"
               apiSecretKey: "{{ apiSecretKey }}"
@@ -403,6 +413,7 @@ connector_profile_arn
             oAuthRequest:
               authCode: "{{ authCode }}"
               redirectUri: "{{ redirectUri }}"
+              codeVerifier: "{{ codeVerifier }}"
             clientCredentialsArn: "{{ clientCredentialsArn }}"
     - name: clientToken
       value: "{{ clientToken }}"

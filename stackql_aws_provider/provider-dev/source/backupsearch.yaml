@@ -215,7 +215,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartSearchJobOutput'
-      x-stackql-resource: search_job
+      x-stackql-resource: search_jobs
       x-stackql-method: start_search_job
       x-stackql-verb: EXEC
   /export-search-jobs:
@@ -294,7 +294,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartSearchResultExportJobOutput'
-      x-stackql-resource: search_jobs
+      x-stackql-resource: search_result_export_jobs
       x-stackql-method: start_search_result_export_job
       x-stackql-verb: EXEC
   /tags/{resource_arn}:
@@ -343,10 +343,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -369,10 +365,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -390,11 +382,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/StopSearchJobOutput'
-      x-stackql-resource: search_job
+      x-stackql-resource: search_jobs
       x-stackql-method: stop_search_job
       x-stackql-verb: EXEC
 components:
@@ -1100,13 +1088,7 @@ components:
           description: This is the unique identifier that specifies the new export job.
       required:
       - ExportJobIdentifier
-    StopSearchJobOutput:
-      type: object
-    TagResourceResponse:
-      type: object
     TagKeys:
       type: array
       items:
         $ref: '#/components/schemas/String'
-    UntagResourceResponse:
-      type: object

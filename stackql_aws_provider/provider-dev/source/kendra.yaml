@@ -243,7 +243,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchGetDocumentStatusResponse'
-      x-stackql-resource: document_status
+      x-stackql-resource: document_statuses
       x-stackql-method: batch_get_document_status
       x-stackql-verb: SELECT
   /BatchPutDocument:
@@ -962,10 +962,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteAccessControlConfigurationResponse'
       x-stackql-resource: access_control_configurations
       x-stackql-method: delete_access_control_configuration
       x-stackql-verb: DELETE
@@ -1043,10 +1039,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteExperienceResponse'
       x-stackql-resource: experiences
       x-stackql-method: delete_experience
       x-stackql-verb: DELETE
@@ -2802,7 +2794,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartDataSourceSyncJobResponse'
-      x-stackql-resource: data_sources
+      x-stackql-resource: data_source_sync_jobs
       x-stackql-method: start_data_source_sync_job
       x-stackql-verb: EXEC
   /StopDataSourceSyncJob:
@@ -2838,7 +2830,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: data_sources
+      x-stackql-resource: data_source_sync_jobs
       x-stackql-method: stop_data_source_sync_job
       x-stackql-verb: EXEC
   /SubmitFeedback:
@@ -2923,10 +2915,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -2966,10 +2954,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -3034,10 +3018,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateAccessControlConfigurationResponse'
       x-stackql-resource: access_control_configurations
       x-stackql-method: update_access_control_configuration
       x-stackql-verb: UPDATE
@@ -6849,10 +6829,6 @@ components:
       minLength: 1
       maxLength: 100
       pattern: '[a-zA-Z0-9][a-zA-Z0-9_-]*'
-    DeleteAccessControlConfigurationResponse:
-      type: object
-    DeleteExperienceResponse:
-      type: object
     GroupId:
       type: string
       minLength: 1
@@ -9234,16 +9210,10 @@ components:
       enum:
       - RELEVANT
       - NOT_RELEVANT
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
         $ref: '#/components/schemas/TagKey'
-    UntagResourceResponse:
-      type: object
-    UpdateAccessControlConfigurationResponse:
-      type: object
     UpdateFeaturedResultsSetResponse:
       type: object
       properties:

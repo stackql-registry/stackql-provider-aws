@@ -425,8 +425,6 @@ SELECT
 '{{ TargetGroupArn }}',
 '{{ Targets }}',
 '{{ region }}'
-RETURNING
-line_items
 ;
 ```
 </TabItem>

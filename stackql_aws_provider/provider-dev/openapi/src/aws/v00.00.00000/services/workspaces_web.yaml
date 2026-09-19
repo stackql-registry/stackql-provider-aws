@@ -53,10 +53,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DisassociateBrowserSettingsResponse"
   /portals/{portal_arn}/dataProtectionSettings:
     put:
       operationId: AssociateDataProtectionSettings
@@ -94,10 +90,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DisassociateDataProtectionSettingsResponse"
   /portals/{portal_arn}/ipAccessSettings:
     put:
       operationId: AssociateIpAccessSettings
@@ -135,10 +127,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DisassociateIpAccessSettingsResponse"
   /portals/{portal_arn}/networkSettings:
     put:
       operationId: AssociateNetworkSettings
@@ -176,10 +164,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DisassociateNetworkSettingsResponse"
   /portals/{portal_arn}/sessionLogger:
     put:
       operationId: AssociateSessionLogger
@@ -217,10 +201,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DisassociateSessionLoggerResponse"
   /portals/{portal_arn}/trustStores:
     put:
       operationId: AssociateTrustStore
@@ -258,10 +238,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DisassociateTrustStoreResponse"
   /portals/{portal_arn}/userAccessLoggingSettings:
     put:
       operationId: AssociateUserAccessLoggingSettings
@@ -299,10 +275,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DisassociateUserAccessLoggingSettingsResponse"
   /portals/{portal_arn}/userSettings:
     put:
       operationId: AssociateUserSettings
@@ -340,10 +312,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DisassociateUserSettingsResponse"
   /browserSettings:
     post:
       operationId: CreateBrowserSettings
@@ -917,10 +885,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteBrowserSettingsResponse"
     get:
       operationId: GetBrowserSettings
       description: Gets browser settings.
@@ -982,10 +946,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteDataProtectionSettingsResponse"
     get:
       operationId: GetDataProtectionSettings
       description: Gets the data protection settings.
@@ -1049,10 +1009,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteIdentityProviderResponse"
     get:
       operationId: GetIdentityProvider
       description: Gets the identity provider.
@@ -1116,10 +1072,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteIpAccessSettingsResponse"
     get:
       operationId: GetIpAccessSettings
       description: Gets the IP access settings.
@@ -1183,10 +1135,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteNetworkSettingsResponse"
     get:
       operationId: GetNetworkSettings
       description: Gets the network settings.
@@ -1250,10 +1198,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeletePortalResponse"
     get:
       operationId: GetPortal
       description: Gets the web portal.
@@ -1319,10 +1263,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteSessionLoggerResponse"
     get:
       operationId: GetSessionLogger
       description: Gets details about a specific session logger resource.
@@ -1384,10 +1324,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteTrustStoreResponse"
     get:
       operationId: GetTrustStore
       description: Gets the trust store.
@@ -1449,10 +1385,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteUserAccessLoggingSettingsResponse"
     get:
       operationId: GetUserAccessLoggingSettings
       description: Gets user access logging settings.
@@ -1512,10 +1444,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteUserSettingsResponse"
     get:
       operationId: GetUserSettings
       description: Gets user settings.
@@ -1603,10 +1531,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ExpireSessionResponse"
     get:
       operationId: GetSession
       description: Gets information for a secure browser session.
@@ -1800,10 +1724,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TagResourceResponse"
     delete:
       operationId: UntagResource
       description: Removes one or more tags from the specified resource.
@@ -1823,10 +1743,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UntagResourceResponse"
   /trustStores/{trust_store_arn}/certificates:
     get:
       operationId: ListTrustStoreCertificates
@@ -2691,42 +2607,6 @@ components:
           description: The ARN of the user settings.
       required:
         - userSettingsArn
-    DeleteBrowserSettingsResponse:
-      type: object
-    DeleteDataProtectionSettingsResponse:
-      type: object
-    DeleteIdentityProviderResponse:
-      type: object
-    DeleteIpAccessSettingsResponse:
-      type: object
-    DeleteNetworkSettingsResponse:
-      type: object
-    DeletePortalResponse:
-      type: object
-    DeleteSessionLoggerResponse:
-      type: object
-    DeleteTrustStoreResponse:
-      type: object
-    DeleteUserAccessLoggingSettingsResponse:
-      type: object
-    DeleteUserSettingsResponse:
-      type: object
-    DisassociateBrowserSettingsResponse:
-      type: object
-    DisassociateDataProtectionSettingsResponse:
-      type: object
-    DisassociateIpAccessSettingsResponse:
-      type: object
-    DisassociateNetworkSettingsResponse:
-      type: object
-    DisassociateSessionLoggerResponse:
-      type: object
-    DisassociateTrustStoreResponse:
-      type: object
-    DisassociateUserAccessLoggingSettingsResponse:
-      type: object
-    DisassociateUserSettingsResponse:
-      type: object
     PortalId:
       type: string
       minLength: 36
@@ -2737,8 +2617,6 @@ components:
       minLength: 36
       maxLength: 36
       pattern: "[a-zA-Z0-9\\-]+"
-    ExpireSessionResponse:
-      type: object
     GetBrowserSettingsResponse:
       type: object
       properties:
@@ -3743,14 +3621,10 @@ components:
           description: Specifies whether the user can use WebAuthn redirection for passwordless login to websites within the streaming session.
       required:
         - userSettingsArn
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
         $ref: "#/components/schemas/TagKey"
-    UntagResourceResponse:
-      type: object
     UpdateBrowserSettingsResponse:
       type: object
       properties:
@@ -3875,7 +3749,6 @@ components:
             $ref: "#/paths/~1portals~1{portal_arn}~1browserSettings/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         create_browser_settings:
           operation:
             $ref: "#/paths/~1browserSettings/post"
@@ -3900,7 +3773,6 @@ components:
             $ref: "#/paths/~1browserSettings~1{browser_settings_arn}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         get_browser_settings:
           operation:
             $ref: "#/paths/~1browserSettings~1{browser_settings_arn}/get"
@@ -3949,7 +3821,6 @@ components:
             $ref: "#/paths/~1portals~1{portal_arn}~1dataProtectionSettings/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         create_data_protection_settings:
           operation:
             $ref: "#/paths/~1dataProtectionSettings/post"
@@ -3983,7 +3854,6 @@ components:
             $ref: "#/paths/~1dataProtectionSettings~1{data_protection_settings_arn}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         get_data_protection_settings:
           operation:
             $ref: "#/paths/~1dataProtectionSettings~1{data_protection_settings_arn}/get"
@@ -4032,7 +3902,6 @@ components:
             $ref: "#/paths/~1portals~1{portal_arn}~1ipAccessSettings/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         create_ip_access_settings:
           operation:
             $ref: "#/paths/~1ipAccessSettings/post"
@@ -4057,7 +3926,6 @@ components:
             $ref: "#/paths/~1ipAccessSettings~1{ip_access_settings_arn}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         get_ip_access_settings:
           operation:
             $ref: "#/paths/~1ipAccessSettings~1{ip_access_settings_arn}/get"
@@ -4106,7 +3974,6 @@ components:
             $ref: "#/paths/~1portals~1{portal_arn}~1networkSettings/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         create_network_settings:
           operation:
             $ref: "#/paths/~1networkSettings/post"
@@ -4131,7 +3998,6 @@ components:
             $ref: "#/paths/~1networkSettings~1{network_settings_arn}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         get_network_settings:
           operation:
             $ref: "#/paths/~1networkSettings~1{network_settings_arn}/get"
@@ -4180,7 +4046,6 @@ components:
             $ref: "#/paths/~1portals~1{portal_arn}~1sessionLogger/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         create_session_logger:
           operation:
             $ref: "#/paths/~1sessionLoggers/post"
@@ -4214,7 +4079,6 @@ components:
             $ref: "#/paths/~1sessionLoggers~1{session_logger_arn}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         get_session_logger:
           operation:
             $ref: "#/paths/~1sessionLoggers~1{session_logger_arn}/get"
@@ -4263,7 +4127,6 @@ components:
             $ref: "#/paths/~1portals~1{portal_arn}~1trustStores/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         create_trust_store:
           operation:
             $ref: "#/paths/~1trustStores/post"
@@ -4288,7 +4151,6 @@ components:
             $ref: "#/paths/~1trustStores~1{trust_store_arn}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         get_trust_store:
           operation:
             $ref: "#/paths/~1trustStores~1{trust_store_arn}/get"
@@ -4337,7 +4199,6 @@ components:
             $ref: "#/paths/~1portals~1{portal_arn}~1userAccessLoggingSettings/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         create_user_access_logging_settings:
           operation:
             $ref: "#/paths/~1userAccessLoggingSettings/post"
@@ -4362,7 +4223,6 @@ components:
             $ref: "#/paths/~1userAccessLoggingSettings~1{user_access_logging_settings_arn}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         get_user_access_logging_settings:
           operation:
             $ref: "#/paths/~1userAccessLoggingSettings~1{user_access_logging_settings_arn}/get"
@@ -4411,7 +4271,6 @@ components:
             $ref: "#/paths/~1portals~1{portal_arn}~1userSettings/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         create_user_settings:
           operation:
             $ref: "#/paths/~1userSettings/post"
@@ -4436,7 +4295,6 @@ components:
             $ref: "#/paths/~1userSettings~1{user_settings_arn}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         get_user_settings:
           operation:
             $ref: "#/paths/~1userSettings~1{user_settings_arn}/get"
@@ -4488,7 +4346,6 @@ components:
             $ref: "#/paths/~1identityProviders~1{identity_provider_arn}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         get_identity_provider:
           operation:
             $ref: "#/paths/~1identityProviders~1{identity_provider_arn}/get"
@@ -4554,7 +4411,6 @@ components:
             $ref: "#/paths/~1portals~1{portal_arn}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         get_portal:
           operation:
             $ref: "#/paths/~1portals~1{portal_arn}/get"
@@ -4593,7 +4449,6 @@ components:
             $ref: "#/paths/~1portals~1{portal_id}~1sessions~1{session_id}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         get_session:
           operation:
             $ref: "#/paths/~1portals~1{portal_id}~1sessions~1{session_id}/get"
@@ -4625,10 +4480,10 @@ components:
         insert: []
         update: []
         delete: []
-    portal_service_provider_metadatas:
-      id: aws.workspaces_web.portal_service_provider_metadatas
-      name: portal_service_provider_metadatas
-      title: portal_service_provider_metadatas
+    portal_service_provider_metadata:
+      id: aws.workspaces_web.portal_service_provider_metadata
+      name: portal_service_provider_metadata
+      title: portal_service_provider_metadata
       methods:
         get_portal_service_provider_metadata:
           operation:
@@ -4638,7 +4493,7 @@ components:
             mediaType: application/json
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/portal_service_provider_metadatas/methods/get_portal_service_provider_metadata"
+          - $ref: "#/components/x-stackQL-resources/portal_service_provider_metadata/methods/get_portal_service_provider_metadata"
         insert: []
         update: []
         delete: []
@@ -4686,7 +4541,6 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -4697,7 +4551,6 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
       sqlVerbs:

@@ -36,8 +36,7 @@ The following fields are returned by `SELECT` queries:
     defaultValue="describe_evaluation_form"
     values={[
         { label: 'describe_evaluation_form', value: 'describe_evaluation_form' },
-        { label: 'list_evaluation_forms', value: 'list_evaluation_forms' },
-        { label: 'search_evaluation_forms', value: 'search_evaluation_forms' }
+        { label: 'list_evaluation_forms', value: 'list_evaluation_forms' }
     ]}
 >
 <TabItem value="describe_evaluation_form">
@@ -51,6 +50,11 @@ The following fields are returned by `SELECT` queries:
     </tr>
 </thead>
 <tbody>
+<tr>
+    <td><CopyableCode code="ai_version" /></td>
+    <td><code>string</code></td>
+    <td>The AI version to use for the evaluation form. This specifies which AI model version is used for automated evaluations.</td>
+</tr>
 <tr>
     <td><CopyableCode code="auto_evaluation_configuration" /></td>
     <td><code>object</code></td>
@@ -223,35 +227,6 @@ The following fields are returned by `SELECT` queries:
 </tbody>
 </table>
 </TabItem>
-<TabItem value="search_evaluation_forms">
-
-<table>
-<thead>
-    <tr>
-    <th>Name</th>
-    <th>Datatype</th>
-    <th>Description</th>
-    </tr>
-</thead>
-<tbody>
-<tr>
-    <td><CopyableCode code="approximate_total_count" /></td>
-    <td><code>integer (int64)</code></td>
-    <td>The total number of evaluation forms that matched your search query.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="evaluation_form_search_summary_list" /></td>
-    <td><code>array</code></td>
-    <td>Information about the returned evaluation forms.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="next_token" /></td>
-    <td><code>string</code></td>
-    <td>If there are additional results, this is the token for the next set of results.</td>
-</tr>
-</tbody>
-</table>
-</TabItem>
 </Tabs>
 
 ## Methods
@@ -282,13 +257,6 @@ The following methods are available for this resource:
     <td><a href="#parameter-instance_id"><code>instance_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td><a href="#parameter-maxResults"><code>maxResults</code></a>, <a href="#parameter-nextToken"><code>nextToken</code></a></td>
     <td>Lists evaluation forms in the specified Connect Customer instance.</td>
-</tr>
-<tr>
-    <td><a href="#search_evaluation_forms"><CopyableCode code="search_evaluation_forms" /></a></td>
-    <td><CopyableCode code="select" /></td>
-    <td><a href="#parameter-region"><code>region</code></a></td>
-    <td></td>
-    <td>Searches evaluation forms in an Connect Customer instance, with optional filtering. Use cases Following are common uses cases for this API: List all evaluation forms in an instance. Find all evaluation forms that meet specific criteria, such as Title, Description, Status, and more. Find all evaluation forms that are tagged with a specific set of tags. Important things to know A Search operation, unlike a List operation, takes time to index changes to resource (create, update or delete). If you don't see updated information for recently changed contact evaluations, try calling the API again in a few seconds. Endpoints: See Connect Customer endpoints and quotas.</td>
 </tr>
 <tr>
     <td><a href="#create_evaluation_form"><CopyableCode code="create_evaluation_form" /></a></td>
@@ -324,6 +292,13 @@ The following methods are available for this resource:
     <td><a href="#parameter-instance_id"><code>instance_id</code></a>, <a href="#parameter-evaluation_form_id"><code>evaluation_form_id</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-EvaluationFormVersion"><code>EvaluationFormVersion</code></a></td>
     <td></td>
     <td>Deactivates an evaluation form in the specified Connect Customer instance. After a form is deactivated, it is no longer available for users to start new evaluations based on the form.</td>
+</tr>
+<tr>
+    <td><a href="#search_evaluation_forms"><CopyableCode code="search_evaluation_forms" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-InstanceId"><code>InstanceId</code></a></td>
+    <td></td>
+    <td>Searches evaluation forms in an Connect Customer instance, with optional filtering. Use cases Following are common uses cases for this API: List all evaluation forms in an instance. Find all evaluation forms that meet specific criteria, such as Title, Description, Status, and more. Find all evaluation forms that are tagged with a specific set of tags. Important things to know A Search operation, unlike a List operation, takes time to index changes to resource (create, update or delete). If you don't see updated information for recently changed contact evaluations, try calling the API again in a few seconds. Endpoints: See Connect Customer endpoints and quotas.</td>
 </tr>
 <tr>
     <td><a href="#start_evaluation_form_validation"><CopyableCode code="start_evaluation_form_validation" /></a></td>
@@ -387,8 +362,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     defaultValue="describe_evaluation_form"
     values={[
         { label: 'describe_evaluation_form', value: 'describe_evaluation_form' },
-        { label: 'list_evaluation_forms', value: 'list_evaluation_forms' },
-        { label: 'search_evaluation_forms', value: 'search_evaluation_forms' }
+        { label: 'list_evaluation_forms', value: 'list_evaluation_forms' }
     ]}
 >
 <TabItem value="describe_evaluation_form">
@@ -397,6 +371,7 @@ Describes an evaluation form in the specified Connect Customer instance. If the 
 
 ```sql
 SELECT
+ai_version,
 auto_evaluation_configuration,
 created_by,
 created_time,
@@ -450,20 +425,6 @@ AND nextToken = '{{ nextToken }}'
 ;
 ```
 </TabItem>
-<TabItem value="search_evaluation_forms">
-
-Searches evaluation forms in an Connect Customer instance, with optional filtering. Use cases Following are common uses cases for this API: List all evaluation forms in an instance. Find all evaluation forms that meet specific criteria, such as Title, Description, Status, and more. Find all evaluation forms that are tagged with a specific set of tags. Important things to know A Search operation, unlike a List operation, takes time to index changes to resource (create, update or delete). If you don't see updated information for recently changed contact evaluations, try calling the API again in a few seconds. Endpoints: See Connect Customer endpoints and quotas.
-
-```sql
-SELECT
-approximate_total_count,
-evaluation_form_search_summary_list,
-next_token
-FROM aws.connect.evaluation_forms
-WHERE region = '{{ region }}' -- required
-;
-```
-</TabItem>
 </Tabs>
 
 
@@ -493,6 +454,7 @@ Tags,
 ReviewConfiguration,
 TargetConfiguration,
 LanguageConfiguration,
+AIVersion,
 instance_id,
 region
 )
@@ -508,6 +470,7 @@ SELECT
 '{{ ReviewConfiguration }}',
 '{{ TargetConfiguration }}',
 '{{ LanguageConfiguration }}',
+'{{ AIVersion }}',
 '{{ instance_id }}',
 '{{ region }}'
 RETURNING
@@ -626,6 +589,9 @@ evaluation_form_id
                 - PerformanceCategory: "{{ PerformanceCategory }}"
                   MinScorePercentage: {{ MinScorePercentage }}
                   MaxScorePercentage: {{ MaxScorePercentage }}
+            MetricConfiguration:
+              MetricType: "{{ MetricType }}"
+              MetricName: "{{ MetricName }}"
     - name: ScoringStrategy
       description: |
         Information about scoring strategy for an evaluation form.
@@ -666,6 +632,8 @@ evaluation_form_id
         Language configuration for an evaluation form.
       value:
         FormLanguage: "{{ FormLanguage }}"
+    - name: AIVersion
+      value: "{{ AIVersion }}"
 `}</CodeBlock>
 
 </TabItem>
@@ -698,7 +666,8 @@ ReviewConfiguration = '{{ ReviewConfiguration }}',
 AsDraft = {{ AsDraft }},
 ClientToken = '{{ ClientToken }}',
 TargetConfiguration = '{{ TargetConfiguration }}',
-LanguageConfiguration = '{{ LanguageConfiguration }}'
+LanguageConfiguration = '{{ LanguageConfiguration }}',
+AIVersion = '{{ AIVersion }}'
 WHERE 
 instance_id = '{{ instance_id }}' --required
 AND evaluation_form_id = '{{ evaluation_form_id }}' --required
@@ -745,6 +714,7 @@ AND version = '{{ version }}'
     values={[
         { label: 'activate_evaluation_form', value: 'activate_evaluation_form' },
         { label: 'deactivate_evaluation_form', value: 'deactivate_evaluation_form' },
+        { label: 'search_evaluation_forms', value: 'search_evaluation_forms' },
         { label: 'start_evaluation_form_validation', value: 'start_evaluation_form_validation' }
     ]}
 >
@@ -776,6 +746,24 @@ EXEC aws.connect.evaluation_forms.deactivate_evaluation_form
 @@json=
 '{
 "EvaluationFormVersion": {{ EvaluationFormVersion }}
+}'
+;
+```
+</TabItem>
+<TabItem value="search_evaluation_forms">
+
+Searches evaluation forms in an Connect Customer instance, with optional filtering. Use cases Following are common uses cases for this API: List all evaluation forms in an instance. Find all evaluation forms that meet specific criteria, such as Title, Description, Status, and more. Find all evaluation forms that are tagged with a specific set of tags. Important things to know A Search operation, unlike a List operation, takes time to index changes to resource (create, update or delete). If you don't see updated information for recently changed contact evaluations, try calling the API again in a few seconds. Endpoints: See Connect Customer endpoints and quotas.
+
+```sql
+EXEC aws.connect.evaluation_forms.search_evaluation_forms 
+@region='{{ region }}' --required 
+@@json=
+'{
+"InstanceId": "{{ InstanceId }}", 
+"NextToken": "{{ NextToken }}", 
+"MaxResults": {{ MaxResults }}, 
+"SearchCriteria": "{{ SearchCriteria }}", 
+"SearchFilter": "{{ SearchFilter }}"
 }'
 ;
 ```

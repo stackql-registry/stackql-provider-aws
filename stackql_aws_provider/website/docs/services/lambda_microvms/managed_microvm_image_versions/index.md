@@ -65,6 +65,11 @@ The following fields are returned by `SELECT` queries:
     <td>A string which is not empty or blank (only whitespace). (pattern: &lt;code&gt;&#91;^\s&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
+    <td><CopyableCode code="status" /></td>
+    <td><code>string</code></td>
+    <td>The lifecycle status of the managed MicroVM image version. Valid values: AVAILABLE (the version is available for use) or DEPRECATED (the version is deprecated; do not use it for new MicroVM images). (AVAILABLE, DEPRECATED)</td>
+</tr>
+<tr>
     <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the version was last updated.</td>
@@ -152,6 +157,7 @@ SELECT
 created_at,
 image_arn,
 image_version,
+status,
 updated_at
 FROM aws.lambda_microvms.managed_microvm_image_versions
 WHERE image_identifier = '{{ image_identifier }}' -- required

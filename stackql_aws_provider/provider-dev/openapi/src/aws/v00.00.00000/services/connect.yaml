@@ -278,10 +278,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/AssociateContactWithUserResponse"
   /default-vocabulary/{instance_id}/{language_code}:
     put:
       operationId: AssociateDefaultVocabulary
@@ -311,10 +307,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/AssociateDefaultVocabularyResponse"
   /email-addresses/{instance_id}/{email_address_id}/associate-alias:
     post:
       operationId: AssociateEmailAddressAlias
@@ -348,10 +340,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/AssociateEmailAddressAliasResponse"
   /flow-associations/{instance_id}:
     put:
       operationId: AssociateFlow
@@ -383,10 +371,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/AssociateFlowResponse"
   /hours-of-operations/{instance_id}/{hours_of_operation_id}/associate-hours:
     post:
       operationId: AssociateHoursOfOperations
@@ -792,10 +776,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/AssociateTrafficDistributionGroupUserResponse"
     delete:
       operationId: DisassociateTrafficDistributionGroupUser
       description: Disassociates an agent from a traffic distribution group. This API can be called only in the Region where the traffic distribution group is created.
@@ -821,10 +801,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DisassociateTrafficDistributionGroupUserResponse"
     get:
       operationId: ListTrafficDistributionGroupUsers
       description: Lists traffic distribution group users.
@@ -839,7 +815,7 @@ paths:
           in: query
           required: false
           schema:
-            $ref: "#/components/schemas/MaxResult10"
+            $ref: "#/components/schemas/MaxResult1000"
           description: The maximum number of results to return per page.
         - name: nextToken
           in: query
@@ -1325,10 +1301,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/CompleteAttachedFileUploadResponse"
     delete:
       operationId: DeleteAttachedFile
       description: Deletes an attached file along with the underlying S3 Object. The attached file is permanently deleted if S3 bucket versioning is not enabled.
@@ -1354,10 +1326,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteAttachedFileResponse"
     get:
       operationId: GetAttachedFile
       description: Provides a pre-signed URL for download of an approved attached file. This API also returns metadata about the attached file. It will only return a downloadURL if the status of the attached file is APPROVED.
@@ -1421,9 +1389,6 @@ paths:
                   $ref: "#/components/schemas/AgentStatusOrderNumber"
                 Tags:
                   $ref: "#/components/schemas/TagMap"
-              required:
-                - Name
-                - State
       responses:
         "200":
           description: Success
@@ -2017,6 +1982,8 @@ paths:
                   $ref: "#/components/schemas/EvaluationFormTargetConfiguration"
                 LanguageConfiguration:
                   $ref: "#/components/schemas/EvaluationFormLanguageConfiguration"
+                AIVersion:
+                  $ref: "#/components/schemas/EvaluationFormAIVersion"
               required:
                 - Items
       responses:
@@ -2924,8 +2891,12 @@ paths:
                   $ref: "#/components/schemas/RuleActions"
                 PublishStatus:
                   $ref: "#/components/schemas/RulePublishStatus"
+                PreEvaluationFilters:
+                  $ref: "#/components/schemas/PreEvaluationFilters"
                 ClientToken:
                   $ref: "#/components/schemas/ClientToken"
+                Tags:
+                  $ref: "#/components/schemas/TagMap"
               required:
                 - TriggerEventSource
                 - Function
@@ -3186,7 +3157,7 @@ paths:
                 Description:
                   $ref: "#/components/schemas/Description250"
                 InstanceId:
-                  $ref: "#/components/schemas/InstanceIdOrArn"
+                  $ref: "#/components/schemas/ACGRInstanceIdOrArn"
                 ClientToken:
                   $ref: "#/components/schemas/ClientToken"
                 Tags:
@@ -3641,10 +3612,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/CreateWorkspacePageResponse"
     get:
       operationId: ListWorkspacePages
       description: Lists the page configurations in a workspace, including the views assigned to each page.
@@ -3746,10 +3713,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteContactDataResponse"
   /contact-evaluations/{instance_id}/{evaluation_id}:
     delete:
       operationId: DeleteContactEvaluation
@@ -3849,10 +3812,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteContactFlowResponse"
     get:
       operationId: DescribeContactFlow
       description: Describes the specified flow. You can also create and update flows using the Connect Customer Flow language. Use the $SAVED alias in the request to describe the SAVED content of a Flow. For example, arn:aws:.../contact-flow/{id}:$SAVED. After a flow is published, $SAVED needs to be supplied to view saved content that has not been published. Use arn:aws:.../contact-flow/{id}:{version} to retrieve the content of a specific flow version. In the response, Status indicates the flow status as either SAVED or PUBLISHED. The PUBLISHED status will initiate validation on the content. SAVED does not initiate validation of the content. SAVED | PUBLISHED
@@ -3896,10 +3855,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteContactFlowModuleResponse"
     get:
       operationId: DescribeContactFlowModule
       description: Describes the specified flow module. Use the $SAVED alias in the request to describe the SAVED content of a Flow. For example, arn:aws:.../contact-flow/{id}:$SAVED. After a flow is published, $SAVED needs to be supplied to view saved content that has not been published.
@@ -3949,10 +3904,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteContactFlowModuleAliasResponse"
     get:
       operationId: DescribeContactFlowModuleAlias
       description: Retrieves detailed information about a specific alias, including which version it currently points to and its metadata.
@@ -4020,10 +3971,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateContactFlowModuleAliasResponse"
   /contact-flow-modules/{instance_id}/{contact_flow_module_id}/version/{contact_flow_module_version}:
     delete:
       operationId: DeleteContactFlowModuleVersion
@@ -4050,10 +3997,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteContactFlowModuleVersionResponse"
   /contact-flows/{instance_id}/{contact_flow_id}/version/{contact_flow_version}:
     delete:
       operationId: DeleteContactFlowVersion
@@ -4080,10 +4023,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteContactFlowVersionResponse"
   /data-tables/{instance_id}/{data_table_id}:
     delete:
       operationId: DeleteDataTable
@@ -4104,10 +4043,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteDataTableResponse"
     get:
       operationId: DescribeDataTable
       description: Returns all properties for a data table except for attributes and values. All properties from CreateDataTable are returned as well as properties for region replication, versioning, and system tables. "Describe" is a deprecated term but is allowed to maintain consistency with existing operations.
@@ -4299,10 +4234,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteEmailAddressResponse"
     get:
       operationId: DescribeEmailAddress
       description: Describe email address form the specified Connect Customer instance.
@@ -4464,6 +4395,8 @@ paths:
                   $ref: "#/components/schemas/EvaluationFormTargetConfiguration"
                 LanguageConfiguration:
                   $ref: "#/components/schemas/EvaluationFormLanguageConfiguration"
+                AIVersion:
+                  $ref: "#/components/schemas/EvaluationFormAIVersion"
               required:
                 - EvaluationFormVersion
                 - Items
@@ -4494,10 +4427,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteExtractionDefinitionResponse"
     get:
       operationId: DescribeExtractionDefinition
       description: Describes an extraction definition in the specified Connect Customer instance.
@@ -4557,10 +4486,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateExtractionDefinitionResponse"
   /hours-of-operations/{instance_id}/{hours_of_operation_id}:
     delete:
       operationId: DeleteHoursOfOperation
@@ -4816,10 +4741,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteMetricResponse"
     get:
       operationId: DescribeMetric
       description: Retrieves the full definition of an existing metric from the specified Connect Customer instance.
@@ -4863,10 +4784,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteNotificationResponse"
     get:
       operationId: DescribeNotification
       description: Retrieves detailed information about a specific notification, including its content, priority, recipients, and metadata.
@@ -4920,10 +4837,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateNotificationContentResponse"
   /predefined-attributes/{instance_id}/{name}:
     delete:
       operationId: DeletePredefinedAttribute
@@ -5104,10 +5017,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeletePushNotificationRegistrationResponse"
   /queues/{instance_id}/{queue_id}:
     delete:
       operationId: DeleteQueue
@@ -5311,6 +5220,8 @@ paths:
                   $ref: "#/components/schemas/RuleActions"
                 PublishStatus:
                   $ref: "#/components/schemas/RulePublishStatus"
+                PreEvaluationFilters:
+                  $ref: "#/components/schemas/PreEvaluationFilters"
               required:
                 - Function
                 - Actions
@@ -5425,10 +5336,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteSessionResponse"
   /instance/{instance_id}/task/template/{task_template_id}:
     delete:
       operationId: DeleteTaskTemplate
@@ -5449,10 +5356,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteTaskTemplateResponse"
     get:
       operationId: GetTaskTemplate
       description: Gets details about a specific task template in the specified Connect Customer instance.
@@ -5548,10 +5451,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteTestCaseResponse"
     get:
       operationId: DescribeTestCase
       description: Describes the specified test case and allows you to get the content and metadata of the test case for the specified Amazon Connect instance.
@@ -5631,10 +5530,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateTestCaseResponse"
   /traffic-distribution-group/{traffic_distribution_group_id}:
     delete:
       operationId: DeleteTrafficDistributionGroup
@@ -5649,10 +5544,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteTrafficDistributionGroupResponse"
     get:
       operationId: DescribeTrafficDistributionGroup
       description: Gets details and status of a traffic distribution group.
@@ -5802,10 +5693,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteViewResponse"
     get:
       operationId: DescribeView
       description: Retrieves the view for the specified Connect Customer instance and view identifier. The view identifier can be supplied as a ViewId or ARN. $SAVED needs to be supplied if a view is unpublished. The view identifier can contain an optional qualifier, for example, `<view-id>`:$SAVED, which is either an actual version number or an Connect Customer managed qualifier $SAVED | $LATEST. If it is not supplied, then $LATEST is assumed for customer managed views and an error is returned if there is no published content available. Version 1 is assumed for Amazon Web Services managed views.
@@ -5889,10 +5776,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteViewVersionResponse"
   /vocabulary-remove/{instance_id}/{vocabulary_id}:
     post:
       operationId: DeleteVocabulary
@@ -5937,10 +5820,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteWorkspaceResponse"
     get:
       operationId: DescribeWorkspace
       description: Retrieves details about a workspace, including its configuration and metadata.
@@ -5990,10 +5869,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteWorkspaceMediaResponse"
     post:
       operationId: ImportWorkspaceMedia
       description: Imports a media asset (such as a logo) for use in a workspace.
@@ -6027,10 +5902,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ImportWorkspaceMediaResponse"
     get:
       operationId: ListWorkspaceMedia
       description: Lists media assets (such as logos) associated with a workspace.
@@ -6080,10 +5951,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteWorkspacePageResponse"
     post:
       operationId: UpdateWorkspacePage
       description: Updates the configuration of a page in a workspace, including the associated view and input data.
@@ -6124,10 +5991,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateWorkspacePageResponse"
   /agent-status/{instance_id}/{agent_status_id}:
     get:
       operationId: DescribeAgentStatus
@@ -6376,10 +6239,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateContactResponse"
   /instance/{instance_id}/attribute/{attribute_type}:
     get:
       operationId: DescribeInstanceAttribute
@@ -6699,10 +6558,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DisassociateEmailAddressAliasResponse"
   /flow-associations/{instance_id}/{resource_id}/{resource_type}:
     delete:
       operationId: DisassociateFlow
@@ -6729,10 +6584,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DisassociateFlowResponse"
     get:
       operationId: GetFlowAssociation
       description: Retrieves the flow associated for a given resource.
@@ -7042,10 +6893,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DismissUserContactResponse"
   /data-tables/{instance_id}/{data_table_id}/values/evaluate:
     post:
       operationId: EvaluateDataTableValues
@@ -7146,6 +6993,48 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/GetContactMetricsResponse"
+  /cross-region-routing/{instance_id}:
+    get:
+      operationId: GetCrossRegionRouting
+      description: Retrieves the current cross-region routing configuration for an Amazon Connect Global Resiliency instance enabled for global routing. This operation returns whether cross-region routing is currently enabled or disabled (isolated) for the instance. This operation is available only for Amazon Connect Global Resiliency instances enabled for global routing.
+      parameters:
+        - name: instance_id
+          in: path
+          required: true
+          schema:
+            $ref: "#/components/schemas/ACGRInstanceIdOrArn"
+          description: The identifier of the Connect Customer instance. You can find the instance ID in the Amazon Resource Name (ARN) of the instance.
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GetCrossRegionRoutingOutputDisplay"
+    put:
+      operationId: UpdateCrossRegionRouting
+      description: Updates the cross-region routing configuration for an Amazon Connect Global Resiliency instance enabled for global routing. When invoked with IsolatedAll set to true, this operation disables cross-region routing, meaning contacts originating in one Region will no longer be routed to agents in another Region. This operation is available only for Amazon Connect Global Resiliency instances enabled for global routing. Reporting and contact search continue to operate globally after you use this operation.
+      parameters:
+        - name: instance_id
+          in: path
+          required: true
+          schema:
+            $ref: "#/components/schemas/ACGRInstanceIdOrArn"
+          description: The identifier of the Connect Customer instance. You can find the instance ID in the Amazon Resource Name (ARN) of the instance.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                IsolatedAll:
+                  $ref: "#/components/schemas/Boolean"
+              required:
+                - IsolatedAll
+      responses:
+        "200":
+          description: Success
   /metrics/current/{instance_id}:
     post:
       operationId: GetCurrentMetricData
@@ -7488,10 +7377,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateTrafficDistributionResponse"
   /phone-number/import:
     post:
       operationId: ImportPhoneNumber
@@ -7784,7 +7669,7 @@ paths:
                 $ref: "#/components/schemas/ListContactEvaluationsResponse"
     put:
       operationId: StartContactEvaluation
-      description: Starts an empty evaluation in the specified Connect Customer instance, using the given evaluation form for the particular contact. The evaluation form version used for the contact evaluation corresponds to the currently activated version. If no version is activated for the evaluation form, the contact evaluation cannot be started. Evaluations created through the public API do not contain answer values suggested from automation.
+      description: Starts an empty evaluation in the specified Connect Customer instance, using the given evaluation form for the particular contact. The evaluation form version used for the contact evaluation corresponds to the currently activated version. If no version is activated for the evaluation form, the contact evaluation cannot be started.
       parameters:
         - name: instance_id
           in: path
@@ -8196,6 +8081,42 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ListEntitySecurityProfilesResponse"
+  /instances/{instance_id}/evaluation-form-ai-versions:
+    get:
+      operationId: ListEvaluationFormAIVersions
+      description: Lists the available AI versions for evaluation forms in the specified Connect Customer instance.
+      parameters:
+        - name: instance_id
+          in: path
+          required: true
+          schema:
+            $ref: "#/components/schemas/InstanceId"
+          description: The identifier of the Connect Customer instance. You can find the instance ID in the Amazon Resource Name (ARN) of the instance.
+        - name: contactInteractionType
+          in: query
+          required: true
+          schema:
+            $ref: "#/components/schemas/ContactInteractionType"
+          description: The contact interaction type for the evaluation form.
+        - name: maxResults
+          in: query
+          required: false
+          schema:
+            $ref: "#/components/schemas/MaxResult100"
+          description: The maximum number of results to return per page.
+        - name: nextToken
+          in: query
+          required: false
+          schema:
+            $ref: "#/components/schemas/NextToken"
+          description: The token for the next set of results. Use the value returned in the previous response in the next request to retrieve the next set of results.
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ListEvaluationFormAIVersionsResponse"
   /evaluation-forms/{instance_id}/{evaluation_form_id}/versions:
     get:
       operationId: ListEvaluationFormVersions
@@ -9199,7 +9120,7 @@ paths:
           in: query
           required: false
           schema:
-            $ref: "#/components/schemas/InstanceIdOrArn"
+            $ref: "#/components/schemas/ACGRInstanceIdOrArn"
           description: The identifier of the Connect Customer instance. You can find the instance ID in the Amazon Resource Name (ARN) of the instance.
       responses:
         "200":
@@ -9427,10 +9348,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/PauseContactResponse"
   /users/{instance_id}/{user_id}/status:
     put:
       operationId: PutUserStatus
@@ -9462,10 +9379,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/PutUserStatusResponse"
   /instance/{instance_id}/replicate:
     post:
       operationId: ReplicateInstance
@@ -9475,7 +9388,7 @@ paths:
           in: path
           required: true
           schema:
-            $ref: "#/components/schemas/InstanceIdOrArn"
+            $ref: "#/components/schemas/ACGRInstanceIdOrArn"
           description: The identifier of the Connect Customer instance. You can find the instance ID in the Amazon Resource Name (ARN) of the instance. You can provide the InstanceId, or the entire ARN.
       requestBody:
         required: true
@@ -9492,7 +9405,6 @@ paths:
                   $ref: "#/components/schemas/DirectoryAlias"
               required:
                 - ReplicaRegion
-                - ReplicaAlias
       responses:
         "200":
           description: Success
@@ -9524,10 +9436,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ResumeContactResponse"
   /contact/resume-recording:
     post:
       operationId: ResumeContactRecording
@@ -9555,10 +9463,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ResumeContactRecordingResponse"
   /search-agent-statuses:
     post:
       operationId: SearchAgentStatuses
@@ -10510,10 +10414,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/SendOutboundEmailResponse"
   /instance/{instance_id}/outbound-web-notification:
     post:
       operationId: SendOutboundWebNotification
@@ -10556,10 +10456,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/SendOutboundWebNotificationResponse"
   /contact/assistant:
     put:
       operationId: StartAssistantContact
@@ -10713,10 +10609,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/StartContactMediaProcessingResponse"
   /contact/start-recording:
     post:
       operationId: StartContactRecording
@@ -10745,10 +10637,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/StartContactRecordingResponse"
   /contact/start-streaming:
     post:
       operationId: StartContactStreaming
@@ -11036,10 +10924,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/StartScreenSharingResponse"
   /contact/task:
     put:
       operationId: StartTaskContact
@@ -11190,10 +11074,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/StopContactResponse"
   /contact/stop-contact-media-processing:
     post:
       operationId: StopContactMediaProcessing
@@ -11213,10 +11093,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/StopContactMediaProcessingResponse"
   /contact/stop-recording:
     post:
       operationId: StopContactRecording
@@ -11244,10 +11120,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/StopContactRecordingResponse"
   /contact/stop-streaming:
     post:
       operationId: StopContactStreaming
@@ -11273,10 +11145,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/StopContactStreamingResponse"
   /test-cases/{instance_id}/{test_case_id}/{test_case_execution_id}/stop-execution:
     post:
       operationId: StopTestCaseExecution
@@ -11312,10 +11180,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/StopTestCaseExecutionResponse"
   /contact-evaluations/{instance_id}/{evaluation_id}/submit:
     post:
       operationId: SubmitContactEvaluation
@@ -11380,10 +11244,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/SuspendContactRecordingResponse"
   /contact/tags:
     post:
       operationId: TagContact
@@ -11408,10 +11268,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TagContactResponse"
   /contact/transfer:
     post:
       operationId: TransferContact
@@ -11473,10 +11329,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UntagContactResponse"
   /contact/attributes:
     post:
       operationId: UpdateContactAttributes
@@ -11501,10 +11353,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateContactAttributesResponse"
   /contact-flows/{instance_id}/{contact_flow_id}/content:
     post:
       operationId: UpdateContactFlowContent
@@ -11534,10 +11382,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateContactFlowContentResponse"
   /contact-flows/{instance_id}/{contact_flow_id}/metadata:
     post:
       operationId: UpdateContactFlowMetadata
@@ -11571,10 +11415,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateContactFlowMetadataResponse"
   /contact-flow-modules/{instance_id}/{contact_flow_module_id}/content:
     post:
       operationId: UpdateContactFlowModuleContent
@@ -11606,10 +11446,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateContactFlowModuleContentResponse"
   /contact-flow-modules/{instance_id}/{contact_flow_module_id}/metadata:
     post:
       operationId: UpdateContactFlowModuleMetadata
@@ -11643,10 +11479,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateContactFlowModuleMetadataResponse"
   /contact-flows/{instance_id}/{contact_flow_id}/name:
     post:
       operationId: UpdateContactFlowName
@@ -11678,10 +11510,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateContactFlowNameResponse"
   /contacts/{instance_id}/{contact_id}/routing-data:
     post:
       operationId: UpdateContactRoutingData
@@ -11715,10 +11543,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateContactRoutingDataResponse"
   /contact/schedule:
     post:
       operationId: UpdateContactSchedule
@@ -11744,10 +11568,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateContactScheduleResponse"
   /contact/task-template:
     post:
       operationId: UpdateContactTaskTemplate
@@ -11773,10 +11593,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateContactTaskTemplateResponse"
   /data-tables/{instance_id}/{data_table_id}/values/update-primary:
     post:
       operationId: UpdateDataTablePrimaryValues
@@ -11851,10 +11667,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateMetricContentResponse"
   /metrics/definitions/{instance_id}/{metric_id}/metadata:
     post:
       operationId: UpdateMetricMetadata
@@ -11886,10 +11698,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateMetricMetadataResponse"
   /contact/update-participant-authentication:
     post:
       operationId: UpdateParticipantAuthentication
@@ -11918,10 +11726,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateParticipantAuthenticationResponse"
   /contact/participant-role-config/{instance_id}/{contact_id}:
     put:
       operationId: UpdateParticipantRoleConfig
@@ -11953,10 +11757,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateParticipantRoleConfigResponse"
   /phone-number/{phone_number_id}/metadata:
     put:
       operationId: UpdatePhoneNumberMetadata
@@ -12525,10 +12325,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateUserNotificationStatusResponse"
   /users/{instance_id}/{user_id}/phone-config:
     post:
       operationId: UpdateUserPhoneConfig
@@ -12653,10 +12449,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateViewMetadataResponse"
   /workspaces/{instance_id}/{workspace_id}/metadata:
     post:
       operationId: UpdateWorkspaceMetadata
@@ -12690,10 +12482,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateWorkspaceMetadataResponse"
   /workspaces/{instance_id}/{workspace_id}/theme:
     post:
       operationId: UpdateWorkspaceTheme
@@ -12723,10 +12511,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateWorkspaceThemeResponse"
   /workspaces/{instance_id}/{workspace_id}/visibility:
     post:
       operationId: UpdateWorkspaceVisibility
@@ -12756,10 +12540,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateWorkspaceVisibilityResponse"
 components:
   parameters:
     X-Amz-Content-Sha256:
@@ -12900,8 +12680,6 @@ components:
       type: string
       minLength: 1
       maxLength: 256
-    AssociateContactWithUserResponse:
-      type: object
     VocabularyLanguageCode:
       type: string
       enum:
@@ -12942,8 +12720,6 @@ components:
       type: string
       minLength: 1
       maxLength: 500
-    AssociateDefaultVocabularyResponse:
-      type: object
     EmailAddressId:
       type: string
       minLength: 1
@@ -12957,8 +12733,6 @@ components:
           description: The email address ID.
       required:
         - EmailAddressId
-    AssociateEmailAddressAliasResponse:
-      type: object
     FlowAssociationResourceType:
       type: string
       enum:
@@ -12967,8 +12741,6 @@ components:
         - OUTBOUND_EMAIL
         - ANALYTICS_CONNECTOR
         - WHATSAPP_MESSAGING_PHONE_NUMBER
-    AssociateFlowResponse:
-      type: object
     HoursOfOperationId:
       type: string
     ParentHoursOfOperationConfigList:
@@ -13252,8 +13024,6 @@ components:
       pattern: ^(arn:(aws|aws-us-gov):connect:[a-z]{2}-[a-z-]+-[0-9]{1}:[0-9]{1,20}:traffic-distribution-group/)?[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$
     UserId:
       type: string
-    AssociateTrafficDistributionGroupUserResponse:
-      type: object
     UserProficiencyList:
       type: array
       items:
@@ -14127,9 +13897,6 @@ components:
         PhoneNumberArn:
           $ref: "#/components/schemas/ARN"
           description: The Amazon Resource Name (ARN) of the phone number.
-    CompleteAttachedFileUploadResponse:
-      description: Response from CompleteAttachedFileUpload API
-      type: object
     AgentStatusName:
       type: string
       minLength: 1
@@ -14684,6 +14451,9 @@ components:
         ScoringConfiguration:
           $ref: "#/components/schemas/EvaluationFormQuestionScoringConfiguration"
           description: The scoring configuration of the question.
+        MetricConfiguration:
+          $ref: "#/components/schemas/EvaluationFormMetricConfiguration"
+          description: The metric configuration for the question. Use this to associate a business outcome metric with the question.
       required:
         - Title
         - RefId
@@ -15194,6 +14964,28 @@ components:
         IsBonus:
           $ref: "#/components/schemas/Boolean"
           description: The flag to mark the question as a bonus question.
+    EvaluationFormMetricConfiguration:
+      description: Information about the metric configuration for an evaluation form question. Use this to associate a business outcome metric with a question.
+      type: object
+      properties:
+        MetricType:
+          $ref: "#/components/schemas/EvaluationFormMetricType"
+          description: The type of metric. Currently, only BUSINESS_OUTCOME is supported.
+        MetricName:
+          $ref: "#/components/schemas/EvaluationFormMetricName"
+          description: "The name of the metric. Valid values are: SALE_SUCCESS – Sale success. CSAT – Customer satisfaction. CHURN_PROPENSITY – Churn propensity. SELF_SERVICE_SUCCESS – Self-service success. PARTIAL_SELF_SERVICE_SUCCESS – Partial self-service success."
+      required:
+        - MetricType
+        - MetricName
+    EvaluationFormMetricType:
+      type: string
+      enum:
+        - BUSINESS_OUTCOME
+    EvaluationFormMetricName:
+      type: string
+      minLength: 1
+      maxLength: 256
+      pattern: ^[^\p{C}]*$
     EvaluationFormScoringStrategy:
       description: Information about scoring strategy for an evaluation form.
       type: object
@@ -15307,6 +15099,10 @@ components:
         - ko-KR
         - zh-CN
         - ms-MY
+    EvaluationFormAIVersion:
+      type: string
+      minLength: 1
+      maxLength: 256
     CreateEvaluationFormResponse:
       type: object
       properties:
@@ -16197,12 +15993,14 @@ components:
         CrossChannelBehavior:
           $ref: "#/components/schemas/CrossChannelBehavior"
           description: Defines the cross-channel routing behavior for each channel that is enabled for this Routing Profile. For example, this allows you to offer an agent a different contact from another channel when they are currently working with a contact from a Voice channel.
+        WorkloadTypeConcurrencies:
+          $ref: "#/components/schemas/WorkloadTypeConcurrencies"
+          description: Defines the list of workload type concurrency configurations for a channel. When provided, enables granular concurrency control based on workload type values.
       required:
         - Channel
-        - Concurrency
     Concurrency:
       type: integer
-      minimum: 1
+      minimum: 0
       maximum: 10
     CrossChannelBehavior:
       description: Defines the cross-channel routing behavior that allows an agent working on a contact in one channel to be offered a contact from a different channel.
@@ -16218,6 +16016,45 @@ components:
       enum:
         - ROUTE_CURRENT_CHANNEL_ONLY
         - ROUTE_ANY_CHANNEL
+    WorkloadTypeConcurrencies:
+      type: array
+      items:
+        $ref: "#/components/schemas/WorkloadTypeConcurrency"
+    WorkloadTypeConcurrency:
+      description: Defines the maximum number of contacts an agent can handle simultaneously for a specific channel and workload type combination.
+      type: object
+      properties:
+        WorkloadType:
+          $ref: "#/components/schemas/WorkloadType"
+          description: The value of the workload type.
+        Concurrency:
+          $ref: "#/components/schemas/WorkloadTypeConcurrencyType"
+          description: "The maximum number of contacts an agent can handle simultaneously for a specific channel and workload type combination. Valid Range for VOICE: Minimum value of 1. Maximum value of 1. Valid Range for CHAT: Minimum value of 1. Maximum value of 10. Valid Range for TASK: Minimum value of 1. Maximum value of 10."
+        CrossChannelWorkloadBehavior:
+          $ref: "#/components/schemas/CrossChannelWorkloadBehavior"
+          description: Defines the cross-channel and workload type routing behavior for each channel and workload type combination that is enabled for this Routing Profile.
+      required:
+        - WorkloadType
+        - Concurrency
+    WorkloadType:
+      type: string
+    WorkloadTypeConcurrencyType:
+      type: integer
+      minimum: 1
+      maximum: 10
+    CrossChannelWorkloadBehavior:
+      description: Defines the cross-channel and workload type routing behavior that allows an agent working on a contact to be offered a contact from a different channel or workload type.
+      type: object
+      properties:
+        ChannelWorkloadBehaviorType:
+          $ref: "#/components/schemas/ChannelWorkloadBehaviorType"
+          description: Specifies the routing behavior for an agent handling their current channel and workload type.
+    ChannelWorkloadBehaviorType:
+      type: string
+      enum:
+        - ROUTE_CURRENT_CHANNEL_CURRENT_WORKLOADTYPE_ONLY
+        - ROUTE_CURRENT_CHANNEL_ANY_WORKLOADTYPE_ONLY
+        - ROUTE_ANY_CHANNEL_ANY_WORKLOAD_TYPE
     AgentAvailabilityTimer:
       type: string
       enum:
@@ -16605,6 +16442,54 @@ components:
       enum:
         - DRAFT
         - PUBLISHED
+    PreEvaluationFilters:
+      description: The pre-evaluation filters for a rule, that restrict a rule to be applied to only certain resources based on the resource's attributes, such as tags assigned to a contact. The pre-evaluation filters are applied even before rule conditions are evaluated and are used to enforce tag-based-access-control while applying rules.
+      type: object
+      properties:
+        AndConditions:
+          $ref: "#/components/schemas/PreEvaluationFilterList"
+          description: A list of conditions that the rule evaluates together using AND logic. All conditions must be met for the event to be evaluated by the rule.
+    PreEvaluationFilterList:
+      type: array
+      items:
+        $ref: "#/components/schemas/PreEvaluationFilter"
+    PreEvaluationFilter:
+      description: A single pre-evaluation filter condition. Specifies a resource type, filter type, key, value, and operator to match against a resource attribute.
+      type: object
+      properties:
+        ResourceType:
+          $ref: "#/components/schemas/PreEvaluationFilterResourceType"
+          description: "The type of resource to filter on. Valid values: CONTACT."
+        FilterType:
+          $ref: "#/components/schemas/PreEvaluationFilterType"
+          description: "The type of filter to apply. Valid values: TAG."
+        FilterKey:
+          $ref: "#/components/schemas/String"
+          description: The key of the attribute to filter on. For tag filters, this is the tag key.
+        FilterValue:
+          $ref: "#/components/schemas/String"
+          description: The value to match against. For tag filters, this is the tag value.
+        Operator:
+          $ref: "#/components/schemas/PreEvaluationFilterOperator"
+          description: "The comparison operator for the filter condition. Valid values: EQUALS."
+      required:
+        - ResourceType
+        - FilterType
+        - FilterKey
+        - FilterValue
+        - Operator
+    PreEvaluationFilterResourceType:
+      type: string
+      enum:
+        - CONTACT
+    PreEvaluationFilterType:
+      type: string
+      enum:
+        - TAG
+    PreEvaluationFilterOperator:
+      type: string
+      enum:
+        - EQUALS
     CreateRuleResponse:
       type: object
       properties:
@@ -17018,21 +16903,26 @@ components:
       minLength: 1
       maxLength: 250
       pattern: (^[\S].*[\S]$)|(^[\S]$)
+    ACGRInstanceIdOrArn:
+      type: string
+      minLength: 1
+      maxLength: 250
+      pattern: ^(arn:([a-zA-Z0-9-]+):connect:[a-z]+-[a-z-]+-[0-9]+:[0-9]+:instance/)?[a-zA-Z0-9_-]+$
     CreateTrafficDistributionGroupResponse:
       type: object
       properties:
         Id:
-          $ref: "#/components/schemas/TrafficDistributionGroupId"
+          $ref: "#/components/schemas/ACGRTrafficDistributionGroupId"
           description: The identifier of the traffic distribution group. This can be the ID or the ARN of the traffic distribution group.
         Arn:
-          $ref: "#/components/schemas/TrafficDistributionGroupArn"
+          $ref: "#/components/schemas/ACGRTrafficDistributionGroupArn"
           description: The Amazon Resource Name (ARN) of the traffic distribution group.
-    TrafficDistributionGroupId:
+    ACGRTrafficDistributionGroupId:
       type: string
-      pattern: ^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$
-    TrafficDistributionGroupArn:
+      pattern: ^[a-zA-Z0-9_-]+$
+    ACGRTrafficDistributionGroupArn:
       type: string
-      pattern: ^arn:(aws|aws-us-gov):connect:[a-z]{2}-[a-z]+-[0-9]{1}:[0-9]{1,20}:traffic-distribution-group/[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$
+      pattern: ^arn:([a-zA-Z0-9-]+):connect:[a-z]+-[a-z-]+-[0-9]+:[0-9]+:traffic-distribution-group/[a-zA-Z0-9_-]+$
     UseCaseType:
       type: string
       enum:
@@ -17619,8 +17509,6 @@ components:
       type: string
       minLength: 0
       maxLength: 4096
-    CreateWorkspacePageResponse:
-      type: object
     DeactivateEvaluationFormResponse:
       type: object
       properties:
@@ -17637,9 +17525,6 @@ components:
         - EvaluationFormId
         - EvaluationFormArn
         - EvaluationFormVersion
-    DeleteAttachedFileResponse:
-      description: Response from DeleteAttachedFile API
-      type: object
     ContactFields:
       type: array
       items:
@@ -17650,20 +17535,6 @@ components:
         - CUSTOMER_ENDPOINT
         - ADDITIONAL_EMAIL_RECIPIENTS
         - EMAIL_SUBJECT
-    DeleteContactDataResponse:
-      type: object
-    DeleteContactFlowResponse:
-      type: object
-    DeleteContactFlowModuleResponse:
-      type: object
-    DeleteContactFlowModuleAliasResponse:
-      type: object
-    DeleteContactFlowModuleVersionResponse:
-      type: object
-    DeleteContactFlowVersionResponse:
-      type: object
-    DeleteDataTableResponse:
-      type: object
     DeleteDataTableAttributeResponse:
       type: object
       properties:
@@ -17672,29 +17543,6 @@ components:
           description: The updated lock version of the data table.
       required:
         - LockVersion
-    DeleteEmailAddressResponse:
-      type: object
-    DeleteExtractionDefinitionResponse:
-      type: object
-    DeleteMetricResponse:
-      type: object
-    DeleteNotificationResponse:
-      description: The response from deleting a notification.
-      type: object
-    DeletePushNotificationRegistrationResponse:
-      type: object
-    DeleteSessionResponse:
-      type: object
-    DeleteTaskTemplateResponse:
-      type: object
-    DeleteTestCaseResponse:
-      type: object
-    DeleteTrafficDistributionGroupResponse:
-      type: object
-    DeleteViewResponse:
-      type: object
-    DeleteViewVersionResponse:
-      type: object
     DeleteVocabularyResponse:
       type: object
       properties:
@@ -17711,8 +17559,6 @@ components:
         - VocabularyArn
         - VocabularyId
         - State
-    DeleteWorkspaceResponse:
-      type: object
     MediaType:
       type: string
       enum:
@@ -17720,10 +17566,6 @@ components:
         - IMAGE_LOGO_DARK_FAVICON
         - IMAGE_LOGO_LIGHT_HORIZONTAL
         - IMAGE_LOGO_DARK_HORIZONTAL
-    DeleteWorkspaceMediaResponse:
-      type: object
-    DeleteWorkspacePageResponse:
-      type: object
     DescribeAgentStatusResponse:
       type: object
       properties:
@@ -18144,6 +17986,9 @@ components:
         VoiceEnhancementMode:
           $ref: "#/components/schemas/VoiceEnhancementMode"
           description: "The voice enhancement mode used by the agent as the call is ending. Valid values: VOICE_ISOLATION | NOISE_SUPPRESSION | NONE. A value of null indicates this mode has not yet been set for this user."
+        ActiveRegion:
+          $ref: "#/components/schemas/ActiveRegion"
+          description: The Region where the agent was active when they handled the contact. For Amazon Connect Global Resiliency instances enabled for global routing, this indicates the Region in which the agent's session was established at the time of the contact.
     AgentPauseDurationInSeconds:
       type: integer
       minimum: 0
@@ -18225,6 +18070,10 @@ components:
         - CONNECTED
         - DISCONNECTED
         - MISSED
+    ActiveRegion:
+      type: string
+      minLength: 0
+      maxLength: 1024
     TotalPauseCount:
       type: integer
       minimum: 0
@@ -18786,14 +18635,13 @@ components:
         TrafficDistributionGroupId:
           $ref: "#/components/schemas/TrafficDistributionGroupId"
           description: The identifier of the traffic distribution group.
-    ActiveRegion:
-      type: string
-      minLength: 0
-      maxLength: 1024
     OriginRegion:
       type: string
       minLength: 0
       maxLength: 1024
+    TrafficDistributionGroupId:
+      type: string
+      pattern: ^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$
     DescribeContactEvaluationResponse:
       type: object
       properties:
@@ -19066,6 +18914,9 @@ components:
         ReviewConfiguration:
           $ref: "#/components/schemas/EvaluationReviewConfiguration"
           description: Configuration for evaluation review settings of this evaluation form content.
+        AIVersion:
+          $ref: "#/components/schemas/EvaluationFormAIVersion"
+          description: The AI version to use for the evaluation form. This specifies which AI model version is used for automated evaluations.
       required:
         - EvaluationFormVersion
         - EvaluationFormId
@@ -19448,6 +19299,9 @@ components:
         LastValidationTime:
           $ref: "#/components/schemas/Timestamp"
           description: The timestamp when the most recent validation was started for this evaluation form.
+        AIVersion:
+          $ref: "#/components/schemas/EvaluationFormAIVersion"
+          description: The AI version to use for the evaluation form. This specifies which AI model version is used for automated evaluations.
       required:
         - EvaluationFormId
         - EvaluationFormVersion
@@ -20587,6 +20441,9 @@ components:
         PublishStatus:
           $ref: "#/components/schemas/RulePublishStatus"
           description: The publish status of the rule.
+        PreEvaluationFilters:
+          $ref: "#/components/schemas/PreEvaluationFilters"
+          description: The pre-evaluation filters for the rule, that restrict the rule to be applied to only certain resources based on the resource's attributes, such as tags assigned to a contact. The pre-evaluation filters are applied even before rule conditions are evaluated and are used to enforce tag-based-access-control while applying rules.
         CreatedTime:
           $ref: "#/components/schemas/Timestamp"
           description: The timestamp for when the rule was created.
@@ -20735,10 +20592,10 @@ components:
       type: object
       properties:
         Id:
-          $ref: "#/components/schemas/TrafficDistributionGroupId"
+          $ref: "#/components/schemas/ACGRTrafficDistributionGroupId"
           description: The identifier of the traffic distribution group. This can be the ID or the ARN if the API is being called in the Region where the traffic distribution group was created. The ARN must be provided if the call is from the replicated Region.
         Arn:
-          $ref: "#/components/schemas/TrafficDistributionGroupArn"
+          $ref: "#/components/schemas/ACGRTrafficDistributionGroupArn"
           description: The Amazon Resource Name (ARN) of the traffic distribution group.
         Name:
           $ref: "#/components/schemas/Name128"
@@ -20747,7 +20604,7 @@ components:
           $ref: "#/components/schemas/Description250"
           description: The description of the traffic distribution group.
         InstanceArn:
-          $ref: "#/components/schemas/InstanceArn"
+          $ref: "#/components/schemas/ACGRInstanceArn"
           description: The Amazon Resource Name (ARN).
         Status:
           $ref: "#/components/schemas/TrafficDistributionGroupStatus"
@@ -20759,9 +20616,9 @@ components:
         IsDefault:
           $ref: "#/components/schemas/Boolean"
           description: Whether this is the default traffic distribution group created during instance replication. The default traffic distribution group cannot be deleted by the DeleteTrafficDistributionGroup API. The default traffic distribution group is deleted as part of the process for deleting a replica. The SignInConfig distribution is available only on a default TrafficDistributionGroup (see the IsDefault parameter in the TrafficDistributionGroup data type). If you call UpdateTrafficDistribution with a modified SignInConfig and a non-default TrafficDistributionGroup, an InvalidRequestException is returned.
-    InstanceArn:
+    ACGRInstanceArn:
       type: string
-      pattern: arn:(aws|aws-us-gov):connect:[a-z]{2}-[a-z]+-[0-9-]{1}:[0-9]{1,20}:instance/[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}
+      pattern: ^arn:([a-zA-Z0-9-]+):connect:[a-z]+-[a-z-]+-[0-9]+:[0-9]+:instance/[a-zA-Z0-9_-]+$
     TrafficDistributionGroupStatus:
       type: string
       enum:
@@ -21066,10 +20923,6 @@ components:
         - ALL
         - ASSIGNED
         - NONE
-    DisassociateEmailAddressAliasResponse:
-      type: object
-    DisassociateFlowResponse:
-      type: object
     ParentHoursOfOperationIdList:
       type: array
       items:
@@ -21082,8 +20935,6 @@ components:
       type: array
       items:
         $ref: "#/components/schemas/RoutingProfileQueueReference"
-    DisassociateTrafficDistributionGroupUserResponse:
-      type: object
     UserProficiencyDisassociateList:
       type: array
       items:
@@ -21110,8 +20961,6 @@ components:
         FailedList:
           $ref: "#/components/schemas/FailedBatchAssociationSummaryList"
           description: A list of resources that failed to be disassociated from the workspace, including error details.
-    DismissUserContactResponse:
-      type: object
     NextToken:
       type: string
     MaxResult100:
@@ -21305,6 +21154,19 @@ components:
         Number:
           $ref: "#/components/schemas/Double"
           description: The numeric value of the metric result. For POSITION_IN_QUEUE, this represents the contact's current position in the queue (e.g., 3.00 means third in line). For ESTIMATED_WAIT_TIME, this represents the predicted wait time in seconds (e.g., 120.00 means approximately 2 minutes).
+    GetCrossRegionRoutingRowDisplay:
+      type: object
+      properties:
+        isolated_region:
+          type: string
+          description: The list of Regions for which cross-region routing is currently disabled (isolated). When a Region appears in this list, contacts originating in that Region will not be routed to agents in other Regions, and agents in that Region will not receive contacts from other Regions.
+    GetCrossRegionRoutingOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/GetCrossRegionRoutingRowDisplay"
     Filters:
       description: Contains the filter to apply when retrieving metrics.
       type: object
@@ -22331,10 +22193,10 @@ components:
           $ref: "#/components/schemas/TelephonyConfig"
           description: The distribution of traffic between the instance and its replicas.
         Id:
-          $ref: "#/components/schemas/TrafficDistributionGroupId"
+          $ref: "#/components/schemas/ACGRTrafficDistributionGroupId"
           description: The identifier of the traffic distribution group. This can be the ID or the ARN if the API is being called in the Region where the traffic distribution group was created. The ARN must be provided if the call is from the replicated Region.
         Arn:
-          $ref: "#/components/schemas/TrafficDistributionGroupArn"
+          $ref: "#/components/schemas/ACGRTrafficDistributionGroupArn"
           description: The Amazon Resource Name (ARN) of the traffic distribution group.
         SignInConfig:
           $ref: "#/components/schemas/SignInConfig"
@@ -22421,8 +22283,6 @@ components:
       minLength: 1
       maxLength: 533333
       pattern: .*\\S.*
-    ImportWorkspaceMediaResponse:
-      type: object
     MaxResult1000:
       type: integer
       minimum: 1
@@ -22979,6 +22839,8 @@ components:
         Email:
           $ref: "#/components/schemas/EmailReference"
           description: Information about a reference when the referenceType is EMAIL. Otherwise, null.
+        ContactAnalysis:
+          $ref: "#/components/schemas/ContactAnalysisReference"
     UrlReference:
       description: The URL reference.
       type: object
@@ -23077,6 +22939,35 @@ components:
         Value:
           $ref: "#/components/schemas/ReferenceValue"
           description: A valid email address.
+    ContactAnalysisReference:
+      description: Information about a reference when the referenceType is CONTACT_ANALYSIS. Otherwise, null.
+      type: object
+      properties:
+        Name:
+          $ref: "#/components/schemas/ReferenceKey"
+          description: Identifier of the contact analysis reference.
+        Value:
+          $ref: "#/components/schemas/ReferenceValue"
+          description: The location path of the contact analysis reference.
+        Status:
+          $ref: "#/components/schemas/ReferenceStatus"
+          description: Status of the contact analysis reference type.
+        Arn:
+          $ref: "#/components/schemas/ARN"
+          description: The Amazon Resource Name (ARN) of the contact analysis reference.
+        AnalyticsMode:
+          $ref: "#/components/schemas/AnalyticsMode"
+          description: The analytics mode of the contact analysis.
+        IsRedacted:
+          $ref: "#/components/schemas/NullableBoolean"
+          description: Indicates whether sensitive data has been redacted from the contact analysis.
+    AnalyticsMode:
+      type: string
+      enum:
+        - PostContact
+        - RealTime
+        - ContactLens
+        - AutomatedInteraction
     AttributeIds:
       type: array
       items:
@@ -23291,6 +23182,57 @@ components:
       type: array
       items:
         $ref: "#/components/schemas/SecurityProfileItem"
+    ListEvaluationFormAIVersionsResponse:
+      type: object
+      properties:
+        AIVersionSummaries:
+          $ref: "#/components/schemas/EvaluationFormAIVersionSummaryList"
+          description: The list of AI version summaries.
+        NextToken:
+          $ref: "#/components/schemas/NextToken"
+          description: If there are additional results, this is the token for the next set of results.
+      required:
+        - AIVersionSummaries
+    EvaluationFormAIVersionSummaryList:
+      type: array
+      items:
+        $ref: "#/components/schemas/EvaluationFormAIVersionSummary"
+    EvaluationFormAIVersionSummary:
+      description: Contains the name and lifecycle information for an AI version that you can use when creating or updating an evaluation form.
+      type: object
+      properties:
+        AIVersionName:
+          $ref: "#/components/schemas/EvaluationFormAIVersion"
+          description: The name of the AI version.
+        AIVersionLifecycle:
+          $ref: "#/components/schemas/EvaluationFormAIVersionLifecycle"
+          description: The lifecycle information for this AI version, including its status and availability dates.
+      required:
+        - AIVersionName
+        - AIVersionLifecycle
+    EvaluationFormAIVersionLifecycle:
+      description: Contains the status and availability dates for an AI version, indicating when the version became active and when it reaches end of life.
+      type: object
+      properties:
+        Status:
+          $ref: "#/components/schemas/EvaluationFormAIVersionStatus"
+          description: "The status of the AI version. Valid values: Latest - The most recent AI version. Preview - An AI version available for preview. Active - An AI version that is currently available. Deprecated - An AI version that is no longer recommended for use. Removed - An AI version that is no longer available."
+        StartOfLifeTime:
+          $ref: "#/components/schemas/Timestamp"
+          description: The timestamp for when this AI version became available.
+        EndOfLifeTime:
+          $ref: "#/components/schemas/Timestamp"
+          description: The timestamp when this AI version reaches or reached end of life.
+      required:
+        - Status
+        - StartOfLifeTime
+    EvaluationFormAIVersionStatus:
+      type: string
+      enum:
+        - LATEST
+        - PREVIEW
+        - ACTIVE
+        - DEPRECATED
     ListEvaluationFormVersionsResponse:
       type: object
       properties:
@@ -24029,6 +23971,7 @@ components:
         - Event
         - Attachments
         - PostContactSummary
+        - ExtractedInformation
     ListRealtimeContactAnalysisSegmentsV2Response:
       type: object
       properties:
@@ -24081,6 +24024,9 @@ components:
         PostContactSummary:
           $ref: "#/components/schemas/RealTimeContactAnalysisSegmentPostContactSummary"
           description: Information about the post-contact summary.
+        ExtractedInformation:
+          $ref: "#/components/schemas/RealTimeContactAnalysisSegmentExtractedInformation"
+          description: The extracted information from the conversation.
     RealTimeContactAnalysisSegmentTranscript:
       description: The analyzed transcript segment.
       type: object
@@ -24354,6 +24300,73 @@ components:
         - FAILED_SAFETY_GUIDELINES
         - INVALID_ANALYSIS_CONFIGURATION
         - INTERNAL_ERROR
+    RealTimeContactAnalysisSegmentExtractedInformation:
+      description: Segment containing information extracted from the conversation. Each segment represents the results for a single extraction definition.
+      type: object
+      properties:
+        ExtractionDefinitionId:
+          $ref: "#/components/schemas/ExtractionDefinitionId"
+          description: The identifier of the extraction definition that produced this result.
+        ExtractionDefinitionName:
+          $ref: "#/components/schemas/ExtractionDefinitionName"
+          description: The name of the extraction definition that produced this result.
+        ExtractionDefinitionDisplayLabel:
+          $ref: "#/components/schemas/ExtractionDefinitionDisplayLabel"
+          description: The display label of the extraction definition that produced this result.
+        ExtractedValues:
+          $ref: "#/components/schemas/RealTimeContactAnalysisExtractedInformationValues"
+          description: The list of values extracted from the conversation for this extraction definition. This field is empty when a FailureCode is present.
+        FailureCode:
+          $ref: "#/components/schemas/RealTimeContactAnalysisExtractedInformationFailureCode"
+          description: "If the information failed to be extracted, one of the following failure codes occurs: QUOTA_EXCEEDED: The number of concurrent analytics jobs reached your service quota. INSUFFICIENT_CONVERSATION_CONTENT: Information extraction requires a conversation with at least one turn from each participant. FAILED_SAFETY_GUIDELINES: The extracted information cannot be provided because it failed to meet system safety guidelines. INTERNAL_ERROR: Internal system error. MAX_PACKAGE_FEATURE_ONLY: Information extraction is only available in Amazon Connect Customer instances."
+      required:
+        - ExtractionDefinitionId
+        - ExtractionDefinitionName
+    RealTimeContactAnalysisExtractedInformationValues:
+      type: array
+      items:
+        $ref: "#/components/schemas/RealTimeContactAnalysisExtractedInformationValue"
+    RealTimeContactAnalysisExtractedInformationValue:
+      description: An individual value extracted from the conversation, including its content and the locations where it was found.
+      type: object
+      properties:
+        Content:
+          $ref: "#/components/schemas/RealTimeContactAnalysisExtractedInformationContent"
+          description: The text content of the extracted value.
+        PointsOfInterest:
+          $ref: "#/components/schemas/RealTimeContactAnalysisTranscriptItemsWithCharacterOffsets"
+          description: The sections in the conversation that indicate where the extracted value was found.
+      required:
+        - Content
+        - PointsOfInterest
+    RealTimeContactAnalysisExtractedInformationContent:
+      type: string
+      minLength: 1
+      maxLength: 1024
+    RealTimeContactAnalysisTranscriptItemsWithCharacterOffsets:
+      type: array
+      items:
+        $ref: "#/components/schemas/RealTimeContactAnalysisTranscriptItemWithCharacterOffsets"
+    RealTimeContactAnalysisTranscriptItemWithCharacterOffsets:
+      description: Transcript representation containing Id and list of character intervals that are associated with analysis data. For example, this object within a RealTimeContactAnalysisPointOfInterest in Category.MatchedDetails would have character interval describing part of the text that matched category.
+      type: object
+      properties:
+        Id:
+          $ref: "#/components/schemas/RealTimeContactAnalysisId256"
+          description: Transcript identifier. Matches the identifier from one of the TranscriptSegments.
+        CharacterOffsets:
+          $ref: "#/components/schemas/RealTimeContactAnalysisCharacterInterval"
+          description: List of character intervals within transcript content/text.
+      required:
+        - Id
+    RealTimeContactAnalysisExtractedInformationFailureCode:
+      type: string
+      enum:
+        - QUOTA_EXCEEDED
+        - INSUFFICIENT_CONVERSATION_CONTENT
+        - FAILED_SAFETY_GUIDELINES
+        - INTERNAL_ERROR
+        - MAX_PACKAGE_FEATURE_ONLY
     ListRoutingProfileManualAssignmentQueuesResponse:
       type: object
       properties:
@@ -24851,17 +24864,17 @@ components:
       type: object
       properties:
         Id:
-          $ref: "#/components/schemas/TrafficDistributionGroupId"
+          $ref: "#/components/schemas/ACGRTrafficDistributionGroupId"
           description: The identifier of the traffic distribution group. This can be the ID or the ARN if the API is being called in the Region where the traffic distribution group was created. The ARN must be provided if the call is from the replicated Region.
         Arn:
-          $ref: "#/components/schemas/TrafficDistributionGroupArn"
+          $ref: "#/components/schemas/ACGRTrafficDistributionGroupArn"
           description: The Amazon Resource Name (ARN) of the traffic distribution group.
         Name:
           $ref: "#/components/schemas/Name128"
           description: The name of the traffic distribution group.
         InstanceArn:
-          $ref: "#/components/schemas/InstanceArn"
-          description: The Amazon Resource Name (ARN) of the traffic distribution group.
+          $ref: "#/components/schemas/ACGRInstanceArn"
+          description: The Amazon Resource Name (ARN) of the instance.
         Status:
           $ref: "#/components/schemas/TrafficDistributionGroupStatus"
           description: The status of the traffic distribution group. CREATION_IN_PROGRESS means the previous CreateTrafficDistributionGroup operation is still in progress and has not yet completed. ACTIVE means the previous CreateTrafficDistributionGroup operation has succeeded. CREATION_FAILED indicates that the previous CreateTrafficDistributionGroup operation has failed. PENDING_DELETION means the previous DeleteTrafficDistributionGroup operation is still in progress and has not yet completed. DELETION_FAILED means the previous DeleteTrafficDistributionGroup operation has failed. UPDATE_IN_PROGRESS means the previous UpdateTrafficDistributionGroup operation is still in progress and has not yet completed.
@@ -25199,10 +25212,6 @@ components:
         ContactArn:
           $ref: "#/components/schemas/ARN"
           description: The ARN of the contact.
-    PauseContactResponse:
-      type: object
-    PutUserStatusResponse:
-      type: object
     ReplicateInstanceResponse:
       type: object
       properties:
@@ -25212,16 +25221,12 @@ components:
         Arn:
           $ref: "#/components/schemas/ARN"
           description: The Amazon Resource Name (ARN) of the replicated instance.
-    ResumeContactResponse:
-      type: object
     ContactRecordingType:
       type: string
       enum:
         - AGENT
         - IVR
         - SCREEN
-    ResumeContactRecordingResponse:
-      type: object
     AgentStatusSearchFilter:
       description: Filters to be applied to search results.
       type: object
@@ -26520,6 +26525,9 @@ components:
           type: object
           properties: {}
           description: 'The tags used to organize, track, or control access for this resource. For example, { "Tags": {"key1":"value1", "key2":"value2"} }.'
+        AIVersion:
+          $ref: "#/components/schemas/EvaluationFormAIVersion"
+          description: The AI version to use for the evaluation form. This specifies which AI model version is used for automated evaluations.
       required:
         - EvaluationFormId
         - EvaluationFormArn
@@ -27097,6 +27105,9 @@ components:
         PublishStatus:
           $ref: "#/components/schemas/RulePublishStatus"
           description: The publish status of the rule.
+        PreEvaluationFilters:
+          $ref: "#/components/schemas/PreEvaluationFilters"
+          description: The pre-evaluation filters for the rule, that restrict the rule to be applied to only certain resources based on the resource's attributes, such as tags assigned to a contact. The pre-evaluation filters are applied even before rule conditions are evaluated and are used to enforce tag-based-access-control while applying rules.
         CreatedTime:
           $ref: "#/components/schemas/Timestamp"
           description: The timestamp for when the rule was created.
@@ -27892,8 +27903,6 @@ components:
       type: string
       minLength: 36
       maxLength: 36
-    SendOutboundEmailResponse:
-      type: object
     WebBrowserId:
       type: string
       minLength: 1
@@ -27988,8 +27997,6 @@ components:
       type: string
       minLength: 1
       maxLength: 64
-    SendOutboundWebNotificationResponse:
-      type: object
     AiAgentInput:
       description: The AI agent that participates in the contact, including its identifier.
       type: object
@@ -28120,13 +28127,6 @@ components:
       type: array
       items:
         $ref: "#/components/schemas/AnalyticsMode"
-    AnalyticsMode:
-      type: string
-      enum:
-        - PostContact
-        - RealTime
-        - ContactLens
-        - AutomatedInteraction
     AnalyticsConfiguration:
       description: The configuration for conversational analytics.
       type: object
@@ -28273,8 +28273,6 @@ components:
       enum:
         - DELIVER_UNPROCESSED_MESSAGE
         - DO_NOT_DELIVER_UNPROCESSED_MESSAGE
-    StartContactMediaProcessingResponse:
-      type: object
     VoiceRecordingConfiguration:
       description: Contains information about the recording configuration settings.
       type: object
@@ -28295,8 +28293,6 @@ components:
       type: string
       enum:
         - ALL
-    StartContactRecordingResponse:
-      type: object
     StartContactStreamingResponse:
       type: object
       properties:
@@ -28435,8 +28431,6 @@ components:
         ContactId:
           $ref: "#/components/schemas/ContactId"
           description: The identifier of this contact within the Connect Customer instance.
-    StartScreenSharingResponse:
-      type: object
     TaskAttachments:
       type: array
       items:
@@ -28587,16 +28581,6 @@ components:
           description: A code that indicates how the contact was terminated.
     DisconnectReasonCode:
       type: string
-    StopContactResponse:
-      type: object
-    StopContactMediaProcessingResponse:
-      type: object
-    StopContactRecordingResponse:
-      type: object
-    StopContactStreamingResponse:
-      type: object
-    StopTestCaseExecutionResponse:
-      type: object
     EvaluationAnswersInputMap:
       type: object
       properties: {}
@@ -28622,13 +28606,9 @@ components:
       required:
         - EvaluationId
         - EvaluationArn
-    SuspendContactRecordingResponse:
-      type: object
     ContactTagMap:
       type: object
       properties: {}
-    TagContactResponse:
-      type: object
     TransferContactResponse:
       type: object
       properties:
@@ -28647,8 +28627,6 @@ components:
       minLength: 1
       maxLength: 128
       pattern: ^(?!aws:)[a-zA-Z+-=._:/]+$
-    UntagContactResponse:
-      type: object
     TagKeyList:
       type: array
       items:
@@ -28685,10 +28663,6 @@ components:
         Id:
           $ref: "#/components/schemas/QueueId"
           description: The identifier of the queue.
-    UpdateContactResponse:
-      type: object
-    UpdateContactAttributesResponse:
-      type: object
     UpdateContactEvaluationResponse:
       type: object
       properties:
@@ -28701,18 +28675,6 @@ components:
       required:
         - EvaluationId
         - EvaluationArn
-    UpdateContactFlowContentResponse:
-      type: object
-    UpdateContactFlowMetadataResponse:
-      type: object
-    UpdateContactFlowModuleAliasResponse:
-      type: object
-    UpdateContactFlowModuleContentResponse:
-      type: object
-    UpdateContactFlowModuleMetadataResponse:
-      type: object
-    UpdateContactFlowNameResponse:
-      type: object
     RoutingCriteriaInput:
       description: An object to define the RoutingCriteria.
       type: object
@@ -28741,12 +28703,6 @@ components:
         DurationInSeconds:
           $ref: "#/components/schemas/DurationInSeconds"
           description: The number of seconds that the contact will be routed only to agents matching this routing step, if expiry was configured for this routing step.
-    UpdateContactRoutingDataResponse:
-      type: object
-    UpdateContactScheduleResponse:
-      type: object
-    UpdateContactTaskTemplateResponse:
-      type: object
     UpdateDataTableAttributeResponse:
       type: object
       properties:
@@ -28800,19 +28756,10 @@ components:
         - EvaluationFormId
         - EvaluationFormArn
         - EvaluationFormVersion
-    UpdateExtractionDefinitionResponse:
-      type: object
     UpdateHoursOfOperationDescription:
       type: string
       minLength: 0
       maxLength: 250
-    UpdateMetricContentResponse:
-      type: object
-    UpdateMetricMetadataResponse:
-      type: object
-    UpdateNotificationContentResponse:
-      description: The response from updating notification content.
-      type: object
     AuthorizationCode:
       type: string
       minLength: 1
@@ -28827,8 +28774,6 @@ components:
       minLength: 1
       maxLength: 2048
       pattern: ^[\x20-\x21\x23-\x5B\x5D-\x7E]*$
-    UpdateParticipantAuthenticationResponse:
-      type: object
     UpdateParticipantRoleConfigChannelInfo:
       description: Configuration information for the chat participant role.
       type: object
@@ -28894,8 +28839,6 @@ components:
       type: integer
       minimum: 2
       maximum: 480
-    UpdateParticipantRoleConfigResponse:
-      type: object
     UpdatePhoneNumberResponse:
       type: object
       properties:
@@ -28960,10 +28903,6 @@ components:
         CreatedTime:
           $ref: "#/components/schemas/timestamp"
           description: The timestamp when the task template was created.
-    UpdateTestCaseResponse:
-      type: object
-    UpdateTrafficDistributionResponse:
-      type: object
     HierarchyStructureUpdate:
       description: Contains information about the level hierarchy to update.
       type: object
@@ -28992,25 +28931,12 @@ components:
           description: The name of the user hierarchy level. Must not be more than 50 characters.
       required:
         - Name
-    UpdateUserNotificationStatusResponse:
-      description: The response from updating a user's notification status.
-      type: object
     UpdateViewContentResponse:
       type: object
       properties:
         View:
           $ref: "#/components/schemas/View"
           description: A view resource object. Contains metadata and content necessary to render the view.
-    UpdateViewMetadataResponse:
-      type: object
-    UpdateWorkspaceMetadataResponse:
-      type: object
-    UpdateWorkspacePageResponse:
-      type: object
-    UpdateWorkspaceThemeResponse:
-      type: object
-    UpdateWorkspaceVisibilityResponse:
-      type: object
   x-stackQL-resources:
     evaluation_forms:
       id: aws.connect.evaluation_forms
@@ -29120,7 +29046,6 @@ components:
         select:
           - $ref: "#/components/x-stackQL-resources/evaluation_forms/methods/describe_evaluation_form"
           - $ref: "#/components/x-stackQL-resources/evaluation_forms/methods/list_evaluation_forms"
-          - $ref: "#/components/x-stackQL-resources/evaluation_forms/methods/search_evaluation_forms"
         insert:
           - $ref: "#/components/x-stackQL-resources/evaluation_forms/methods/create_evaluation_form"
         update:
@@ -29158,7 +29083,6 @@ components:
             $ref: "#/paths/~1flow-associations~1{instance_id}/put"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -29202,7 +29126,6 @@ components:
             $ref: "#/paths/~1attached-files~1{instance_id}~1{file_id}/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         create_auth_code:
           operation:
             $ref: "#/paths/~1auth~1code~1{instance_id}/post"
@@ -29293,7 +29216,6 @@ components:
             $ref: "#/paths/~1push-notification~1{instance_id}~1registrations~1{registration_id}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
         delete_session:
@@ -29301,19 +29223,16 @@ components:
             $ref: "#/paths/~1auth~1sessions~1{instance_id}~1{session_id}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         disassociate_flow:
           operation:
             $ref: "#/paths/~1flow-associations~1{instance_id}~1{resource_id}~1{resource_type}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         dismiss_user_contact:
           operation:
             $ref: "#/paths/~1users~1{instance_id}~1{user_id}~1contact/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -29346,7 +29265,6 @@ components:
             $ref: "#/paths/~1contact~1pause/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -29368,7 +29286,6 @@ components:
             $ref: "#/paths/~1contact~1resume/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -29379,7 +29296,6 @@ components:
             $ref: "#/paths/~1instance~1{instance_id}~1outbound-email/put"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -29390,7 +29306,6 @@ components:
             $ref: "#/paths/~1instance~1{instance_id}~1outbound-web-notification/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -29434,7 +29349,6 @@ components:
             $ref: "#/paths/~1contact~1screen-sharing/put"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -29456,7 +29370,6 @@ components:
             $ref: "#/paths/~1contact~1stop/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -29467,7 +29380,6 @@ components:
             $ref: "#/paths/~1contact~1suspend-recording/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -29478,7 +29390,6 @@ components:
             $ref: "#/paths/~1contact~1update-participant-authentication/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -29489,7 +29400,6 @@ components:
             $ref: "#/paths/~1contact~1participant-role-config~1{instance_id}~1{contact_id}/put"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -29500,10 +29410,10 @@ components:
           - $ref: "#/components/x-stackQL-resources/instances/methods/describe_instance"
           - $ref: "#/components/x-stackQL-resources/instances/methods/list_instances"
         insert:
+          - $ref: "#/components/x-stackQL-resources/instances/methods/create_instance"
           - $ref: "#/components/x-stackQL-resources/instances/methods/create_push_notification_registration"
           - $ref: "#/components/x-stackQL-resources/instances/methods/create_persistent_contact_association"
           - $ref: "#/components/x-stackQL-resources/instances/methods/create_auth_code"
-          - $ref: "#/components/x-stackQL-resources/instances/methods/create_instance"
           - $ref: "#/components/x-stackQL-resources/instances/methods/create_participant"
         update:
           - $ref: "#/components/x-stackQL-resources/instances/methods/associate_flow"
@@ -29646,7 +29556,6 @@ components:
             $ref: "#/paths/~1contacts~1{instance_id}~1{contact_id}~1associate-user/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -29697,7 +29606,6 @@ components:
             $ref: "#/paths/~1users~1{instance_id}~1{user_id}~1status/put"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -29766,7 +29674,6 @@ components:
         select:
           - $ref: "#/components/x-stackQL-resources/users/methods/describe_user"
           - $ref: "#/components/x-stackQL-resources/users/methods/list_users"
-          - $ref: "#/components/x-stackQL-resources/users/methods/search_users"
         insert:
           - $ref: "#/components/x-stackQL-resources/users/methods/create_user"
         update:
@@ -29788,7 +29695,6 @@ components:
             $ref: "#/paths/~1default-vocabulary~1{instance_id}~1{language_code}/put"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -29820,17 +29726,16 @@ components:
         update:
           - $ref: "#/components/x-stackQL-resources/default_vocabularies/methods/associate_default_vocabulary"
         delete: []
-    email_address:
-      id: aws.connect.email_address
-      name: email_address
-      title: email_address
+    email_addresses:
+      id: aws.connect.email_addresses
+      name: email_addresses
+      title: email_addresses
       methods:
         associate_email_address_alias:
           operation:
             $ref: "#/paths/~1email-addresses~1{instance_id}~1{email_address_id}~1associate-alias/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -29852,7 +29757,6 @@ components:
             $ref: "#/paths/~1email-addresses~1{instance_id}~1{email_address_id}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         describe_email_address:
           operation:
             $ref: "#/paths/~1email-addresses~1{instance_id}~1{email_address_id}/get"
@@ -29875,6 +29779,16 @@ components:
             $ref: "#/paths/~1email-addresses~1{instance_id}~1{email_address_id}~1disassociate-alias/post"
           response:
             openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        search_email_addresses:
+          operation:
+            $ref: "#/paths/~1search-email-addresses/post"
+          response:
+            openAPIDocKey: "200"
             mediaType: application/json
           request:
             nativeCasing: pascal
@@ -29883,14 +29797,15 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/email_address/methods/describe_email_address"
+          - $ref: "#/components/x-stackQL-resources/email_addresses/methods/describe_email_address"
+          - $ref: "#/components/x-stackQL-resources/email_addresses/methods/search_email_addresses"
         insert:
-          - $ref: "#/components/x-stackQL-resources/email_address/methods/create_email_address"
+          - $ref: "#/components/x-stackQL-resources/email_addresses/methods/create_email_address"
         update:
-          - $ref: "#/components/x-stackQL-resources/email_address/methods/associate_email_address_alias"
-          - $ref: "#/components/x-stackQL-resources/email_address/methods/update_email_address_metadata"
+          - $ref: "#/components/x-stackQL-resources/email_addresses/methods/associate_email_address_alias"
+          - $ref: "#/components/x-stackQL-resources/email_addresses/methods/update_email_address_metadata"
         delete:
-          - $ref: "#/components/x-stackQL-resources/email_address/methods/delete_email_address"
+          - $ref: "#/components/x-stackQL-resources/email_addresses/methods/delete_email_address"
     hours_of_operations:
       id: aws.connect.hours_of_operations
       name: hours_of_operations
@@ -29999,7 +29914,6 @@ components:
         select:
           - $ref: "#/components/x-stackQL-resources/hours_of_operations/methods/describe_hours_of_operation"
           - $ref: "#/components/x-stackQL-resources/hours_of_operations/methods/list_hours_of_operations"
-          - $ref: "#/components/x-stackQL-resources/hours_of_operations/methods/search_hours_of_operations"
         insert:
           - $ref: "#/components/x-stackQL-resources/hours_of_operations/methods/create_hours_of_operation"
         update:
@@ -30216,7 +30130,6 @@ components:
             $ref: "#/paths/~1contact-flows~1{instance_id}~1{contact_flow_id}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         describe_contact_flow:
           operation:
             $ref: "#/paths/~1contact-flows~1{instance_id}~1{contact_flow_id}/get"
@@ -30320,7 +30233,6 @@ components:
             $ref: "#/paths/~1contact-flows~1{instance_id}~1{contact_flow_id}~1content/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -30331,7 +30243,6 @@ components:
             $ref: "#/paths/~1contact-flows~1{instance_id}~1{contact_flow_id}~1metadata/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -30342,7 +30253,6 @@ components:
             $ref: "#/paths/~1contact-flows~1{instance_id}~1{contact_flow_id}~1name/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -30352,7 +30262,6 @@ components:
         select:
           - $ref: "#/components/x-stackQL-resources/contact_flows/methods/describe_contact_flow"
           - $ref: "#/components/x-stackQL-resources/contact_flows/methods/list_contact_flows"
-          - $ref: "#/components/x-stackQL-resources/contact_flows/methods/search_contact_flows"
         insert:
           - $ref: "#/components/x-stackQL-resources/contact_flows/methods/create_contact_flow"
         update:
@@ -30667,13 +30576,12 @@ components:
         select:
           - $ref: "#/components/x-stackQL-resources/security_profiles/methods/describe_security_profile"
           - $ref: "#/components/x-stackQL-resources/security_profiles/methods/list_security_profiles"
-          - $ref: "#/components/x-stackQL-resources/security_profiles/methods/search_security_profiles"
         insert:
           - $ref: "#/components/x-stackQL-resources/security_profiles/methods/create_security_profile"
         update:
           - $ref: "#/components/x-stackQL-resources/security_profiles/methods/associate_security_profiles"
-          - $ref: "#/components/x-stackQL-resources/security_profiles/methods/update_user_security_profiles"
           - $ref: "#/components/x-stackQL-resources/security_profiles/methods/update_security_profile"
+          - $ref: "#/components/x-stackQL-resources/security_profiles/methods/update_user_security_profiles"
         delete:
           - $ref: "#/components/x-stackQL-resources/security_profiles/methods/delete_security_profile"
     traffic_distribution_group_users:
@@ -30686,7 +30594,6 @@ components:
             $ref: "#/paths/~1traffic-distribution-group~1{traffic_distribution_group_id}~1user/put"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -30697,7 +30604,6 @@ components:
             $ref: "#/paths/~1traffic-distribution-group~1{traffic_distribution_group_id}~1user/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         list_traffic_distribution_group_users:
           operation:
             $ref: "#/paths/~1traffic-distribution-group~1{traffic_distribution_group_id}~1user/get"
@@ -30830,7 +30736,6 @@ components:
             $ref: "#/paths/~1workspaces~1{instance_id}~1{workspace_id}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         describe_workspace:
           operation:
             $ref: "#/paths/~1workspaces~1{instance_id}~1{workspace_id}/get"
@@ -30843,7 +30748,6 @@ components:
             $ref: "#/paths/~1workspaces~1{instance_id}~1{workspace_id}~1media/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -30884,7 +30788,6 @@ components:
             $ref: "#/paths/~1workspaces~1{instance_id}~1{workspace_id}~1metadata/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -30895,7 +30798,6 @@ components:
             $ref: "#/paths/~1workspaces~1{instance_id}~1{workspace_id}~1theme/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -30906,7 +30808,6 @@ components:
             $ref: "#/paths/~1workspaces~1{instance_id}~1{workspace_id}~1visibility/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -30916,7 +30817,6 @@ components:
         select:
           - $ref: "#/components/x-stackQL-resources/workspaces/methods/describe_workspace"
           - $ref: "#/components/x-stackQL-resources/workspaces/methods/list_workspaces"
-          - $ref: "#/components/x-stackQL-resources/workspaces/methods/search_workspaces"
         insert:
           - $ref: "#/components/x-stackQL-resources/workspaces/methods/create_workspace"
         update:
@@ -31006,7 +30906,6 @@ components:
             $ref: "#/paths/~1data-tables~1{instance_id}~1{data_table_id}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         describe_data_table:
           operation:
             $ref: "#/paths/~1data-tables~1{instance_id}~1{data_table_id}/get"
@@ -31048,17 +30947,16 @@ components:
         select:
           - $ref: "#/components/x-stackQL-resources/data_tables/methods/describe_data_table"
           - $ref: "#/components/x-stackQL-resources/data_tables/methods/list_data_tables"
-          - $ref: "#/components/x-stackQL-resources/data_tables/methods/search_data_tables"
         insert:
           - $ref: "#/components/x-stackQL-resources/data_tables/methods/create_data_table"
         update:
           - $ref: "#/components/x-stackQL-resources/data_tables/methods/update_data_table_metadata"
         delete:
           - $ref: "#/components/x-stackQL-resources/data_tables/methods/delete_data_table"
-    attached_file_metadatas:
-      id: aws.connect.attached_file_metadatas
-      name: attached_file_metadatas
-      title: attached_file_metadatas
+    attached_file_metadata:
+      id: aws.connect.attached_file_metadata
+      name: attached_file_metadata
+      title: attached_file_metadata
       methods:
         batch_get_attached_file_metadata:
           operation:
@@ -31073,7 +30971,7 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/attached_file_metadatas/methods/batch_get_attached_file_metadata"
+          - $ref: "#/components/x-stackQL-resources/attached_file_metadata/methods/batch_get_attached_file_metadata"
         insert: []
         update: []
         delete: []
@@ -31098,7 +30996,6 @@ components:
             $ref: "#/paths/~1attached-files~1{instance_id}~1{file_id}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
         get_attached_file:
@@ -31175,10 +31072,86 @@ components:
         insert: []
         update: []
         delete: []
-    agent_status:
-      id: aws.connect.agent_status
-      name: agent_status
-      title: agent_status
+    phone_numbers:
+      id: aws.connect.phone_numbers
+      name: phone_numbers
+      title: phone_numbers
+      methods:
+        claim_phone_number:
+          operation:
+            $ref: "#/paths/~1phone-number~1claim/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        describe_phone_number:
+          operation:
+            $ref: "#/paths/~1phone-number~1{phone_number_id}/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.ClaimedPhoneNumberSummary
+        release_phone_number:
+          operation:
+            $ref: "#/paths/~1phone-number~1{phone_number_id}/delete"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+        update_phone_number:
+          operation:
+            $ref: "#/paths/~1phone-number~1{phone_number_id}/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        list_phone_numbers:
+          operation:
+            $ref: "#/paths/~1phone-numbers-summary~1{instance_id}/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.PhoneNumberSummaryList
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
+        update_phone_number_metadata:
+          operation:
+            $ref: "#/paths/~1phone-number~1{phone_number_id}~1metadata/put"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/phone_numbers/methods/describe_phone_number"
+          - $ref: "#/components/x-stackQL-resources/phone_numbers/methods/list_phone_numbers"
+        insert: []
+        update:
+          - $ref: "#/components/x-stackQL-resources/phone_numbers/methods/release_phone_number"
+        delete: []
+    agent_statuses:
+      id: aws.connect.agent_statuses
+      name: agent_statuses
+      title: agent_statuses
       methods:
         create_agent_status:
           operation:
@@ -31191,36 +31164,6 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
-        describe_agent_status:
-          operation:
-            $ref: "#/paths/~1agent-status~1{instance_id}~1{agent_status_id}/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.AgentStatus
-        update_agent_status:
-          operation:
-            $ref: "#/paths/~1agent-status~1{instance_id}~1{agent_status_id}/post"
-          response:
-            openAPIDocKey: "200"
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/agent_status/methods/describe_agent_status"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/agent_status/methods/create_agent_status"
-        update:
-          - $ref: "#/components/x-stackQL-resources/agent_status/methods/update_agent_status"
-        delete: []
-    agent_statuses:
-      id: aws.connect.agent_statuses
-      name: agent_statuses
-      title: agent_statuses
-      methods:
         list_agent_statuses:
           operation:
             $ref: "#/paths/~1agent-status~1{instance_id}/get"
@@ -31238,6 +31181,23 @@ components:
               responseToken:
                 key: $.NextToken
                 location: body
+        describe_agent_status:
+          operation:
+            $ref: "#/paths/~1agent-status~1{instance_id}~1{agent_status_id}/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.AgentStatus
+        update_agent_status:
+          operation:
+            $ref: "#/paths/~1agent-status~1{instance_id}~1{agent_status_id}/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         search_agent_statuses:
           operation:
             $ref: "#/paths/~1search-agent-statuses/post"
@@ -31259,10 +31219,12 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
+          - $ref: "#/components/x-stackQL-resources/agent_statuses/methods/describe_agent_status"
           - $ref: "#/components/x-stackQL-resources/agent_statuses/methods/list_agent_statuses"
-          - $ref: "#/components/x-stackQL-resources/agent_statuses/methods/search_agent_statuses"
-        insert: []
-        update: []
+        insert:
+          - $ref: "#/components/x-stackQL-resources/agent_statuses/methods/create_agent_status"
+        update:
+          - $ref: "#/components/x-stackQL-resources/agent_statuses/methods/update_agent_status"
         delete: []
     contacts:
       id: aws.connect.contacts
@@ -31285,7 +31247,6 @@ components:
             $ref: "#/paths/~1contact~1delete~1{instance_id}~1{contact_id}/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -31303,7 +31264,6 @@ components:
             $ref: "#/paths/~1contacts~1{instance_id}~1{contact_id}/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -31325,7 +31285,6 @@ components:
             $ref: "#/paths/~1contact~1resume-recording/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -31366,7 +31325,6 @@ components:
             $ref: "#/paths/~1contact~1start-contact-media-processing/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -31377,7 +31335,6 @@ components:
             $ref: "#/paths/~1contact~1start-recording/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -31399,7 +31356,6 @@ components:
             $ref: "#/paths/~1contact~1stop-contact-media-processing/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -31410,7 +31366,6 @@ components:
             $ref: "#/paths/~1contact~1stop-recording/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -31421,7 +31376,6 @@ components:
             $ref: "#/paths/~1contact~1stop-streaming/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -31443,7 +31397,6 @@ components:
             $ref: "#/paths/~1contacts~1{instance_id}~1{contact_id}~1routing-data/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -31454,7 +31407,6 @@ components:
             $ref: "#/paths/~1contact~1schedule/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -31503,7 +31455,6 @@ components:
             $ref: "#/paths/~1contact-flow-modules~1{instance_id}~1{contact_flow_module_id}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         describe_contact_flow_module:
           operation:
             $ref: "#/paths/~1contact-flow-modules~1{instance_id}~1{contact_flow_module_id}/get"
@@ -31552,7 +31503,6 @@ components:
             $ref: "#/paths/~1contact-flow-modules~1{instance_id}~1{contact_flow_module_id}~1content/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -31563,7 +31513,6 @@ components:
             $ref: "#/paths/~1contact-flow-modules~1{instance_id}~1{contact_flow_module_id}~1metadata/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -31573,17 +31522,16 @@ components:
         select:
           - $ref: "#/components/x-stackQL-resources/contact_flow_modules/methods/describe_contact_flow_module"
           - $ref: "#/components/x-stackQL-resources/contact_flow_modules/methods/list_contact_flow_modules"
-          - $ref: "#/components/x-stackQL-resources/contact_flow_modules/methods/search_contact_flow_modules"
         insert:
           - $ref: "#/components/x-stackQL-resources/contact_flow_modules/methods/create_contact_flow_module"
         update:
           - $ref: "#/components/x-stackQL-resources/contact_flow_modules/methods/update_contact_flow_module_content"
         delete:
           - $ref: "#/components/x-stackQL-resources/contact_flow_modules/methods/delete_contact_flow_module"
-    contact_flow_module_alias:
-      id: aws.connect.contact_flow_module_alias
-      name: contact_flow_module_alias
-      title: contact_flow_module_alias
+    contact_flow_module_aliases:
+      id: aws.connect.contact_flow_module_aliases
+      name: contact_flow_module_aliases
+      title: contact_flow_module_aliases
       methods:
         create_contact_flow_module_alias:
           operation:
@@ -31601,7 +31549,6 @@ components:
             $ref: "#/paths/~1contact-flow-modules~1{instance_id}~1{contact_flow_module_id}~1alias~1{alias_id}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         describe_contact_flow_module_alias:
           operation:
             $ref: "#/paths/~1contact-flow-modules~1{instance_id}~1{contact_flow_module_id}~1alias~1{alias_id}/get"
@@ -31614,21 +31561,38 @@ components:
             $ref: "#/paths/~1contact-flow-modules~1{instance_id}~1{contact_flow_module_id}~1alias~1{alias_id}/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
+        list_contact_flow_module_aliases:
+          operation:
+            $ref: "#/paths/~1contact-flow-modules~1{instance_id}~1{contact_flow_module_id}~1aliases/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.ContactFlowModuleAliasSummaryList
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/contact_flow_module_alias/methods/describe_contact_flow_module_alias"
+          - $ref: "#/components/x-stackQL-resources/contact_flow_module_aliases/methods/describe_contact_flow_module_alias"
+          - $ref: "#/components/x-stackQL-resources/contact_flow_module_aliases/methods/list_contact_flow_module_aliases"
         insert:
-          - $ref: "#/components/x-stackQL-resources/contact_flow_module_alias/methods/create_contact_flow_module_alias"
+          - $ref: "#/components/x-stackQL-resources/contact_flow_module_aliases/methods/create_contact_flow_module_alias"
         update:
-          - $ref: "#/components/x-stackQL-resources/contact_flow_module_alias/methods/update_contact_flow_module_alias"
+          - $ref: "#/components/x-stackQL-resources/contact_flow_module_aliases/methods/update_contact_flow_module_alias"
         delete:
-          - $ref: "#/components/x-stackQL-resources/contact_flow_module_alias/methods/delete_contact_flow_module_alias"
+          - $ref: "#/components/x-stackQL-resources/contact_flow_module_aliases/methods/delete_contact_flow_module_alias"
     contact_flow_module_versions:
       id: aws.connect.contact_flow_module_versions
       name: contact_flow_module_versions
@@ -31650,7 +31614,6 @@ components:
             $ref: "#/paths/~1contact-flow-modules~1{instance_id}~1{contact_flow_module_id}~1version~1{contact_flow_module_version}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         list_contact_flow_module_versions:
           operation:
             $ref: "#/paths/~1contact-flow-modules~1{instance_id}~1{contact_flow_module_id}~1versions/get"
@@ -31697,7 +31660,6 @@ components:
             $ref: "#/paths/~1contact-flows~1{instance_id}~1{contact_flow_id}~1version~1{contact_flow_version}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         list_contact_flow_versions:
           operation:
             $ref: "#/paths/~1contact-flows~1{instance_id}~1{contact_flow_id}~1versions/get"
@@ -31830,7 +31792,6 @@ components:
             $ref: "#/paths/~1extraction-definitions~1{instance_id}~1{extraction_definition_id}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         describe_extraction_definition:
           operation:
             $ref: "#/paths/~1extraction-definitions~1{instance_id}~1{extraction_definition_id}/get"
@@ -31843,7 +31804,6 @@ components:
             $ref: "#/paths/~1extraction-definitions~1{instance_id}~1{extraction_definition_id}/put"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -32028,7 +31988,6 @@ components:
             $ref: "#/paths/~1metrics~1definitions~1{instance_id}~1{metric_id}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         describe_metric:
           operation:
             $ref: "#/paths/~1metrics~1definitions~1{instance_id}~1{metric_id}/get"
@@ -32060,7 +32019,6 @@ components:
             $ref: "#/paths/~1metrics~1definitions~1{instance_id}~1{metric_id}~1content/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -32071,7 +32029,6 @@ components:
             $ref: "#/paths/~1metrics~1definitions~1{instance_id}~1{metric_id}~1metadata/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -32081,7 +32038,6 @@ components:
         select:
           - $ref: "#/components/x-stackQL-resources/metrics/methods/describe_metric"
           - $ref: "#/components/x-stackQL-resources/metrics/methods/list_metrics"
-          - $ref: "#/components/x-stackQL-resources/metrics/methods/search_metrics"
         insert:
           - $ref: "#/components/x-stackQL-resources/metrics/methods/create_metric"
         update:
@@ -32117,7 +32073,6 @@ components:
             $ref: "#/paths/~1notifications~1{instance_id}~1{notification_id}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         describe_notification:
           operation:
             $ref: "#/paths/~1notifications~1{instance_id}~1{notification_id}/get"
@@ -32130,7 +32085,6 @@ components:
             $ref: "#/paths/~1notifications~1{instance_id}~1{notification_id}/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -32151,7 +32105,6 @@ components:
         select:
           - $ref: "#/components/x-stackQL-resources/notifications/methods/describe_notification"
           - $ref: "#/components/x-stackQL-resources/notifications/methods/list_notifications"
-          - $ref: "#/components/x-stackQL-resources/notifications/methods/search_notifications"
         insert:
           - $ref: "#/components/x-stackQL-resources/notifications/methods/create_notification"
         update:
@@ -32235,7 +32188,6 @@ components:
         select:
           - $ref: "#/components/x-stackQL-resources/predefined_attributes/methods/describe_predefined_attribute"
           - $ref: "#/components/x-stackQL-resources/predefined_attributes/methods/list_predefined_attributes"
-          - $ref: "#/components/x-stackQL-resources/predefined_attributes/methods/search_predefined_attributes"
         insert:
           - $ref: "#/components/x-stackQL-resources/predefined_attributes/methods/create_predefined_attribute"
         update:
@@ -32321,7 +32273,6 @@ components:
         select:
           - $ref: "#/components/x-stackQL-resources/prompts/methods/describe_prompt"
           - $ref: "#/components/x-stackQL-resources/prompts/methods/list_prompts"
-          - $ref: "#/components/x-stackQL-resources/prompts/methods/search_prompts"
         insert:
           - $ref: "#/components/x-stackQL-resources/prompts/methods/create_prompt"
         update:
@@ -32446,7 +32397,6 @@ components:
         select:
           - $ref: "#/components/x-stackQL-resources/queues/methods/describe_queue"
           - $ref: "#/components/x-stackQL-resources/queues/methods/list_queues"
-          - $ref: "#/components/x-stackQL-resources/queues/methods/search_queues"
         insert:
           - $ref: "#/components/x-stackQL-resources/queues/methods/create_queue"
         update:
@@ -32544,7 +32494,6 @@ components:
         select:
           - $ref: "#/components/x-stackQL-resources/quick_connects/methods/describe_quick_connect"
           - $ref: "#/components/x-stackQL-resources/quick_connects/methods/list_quick_connects"
-          - $ref: "#/components/x-stackQL-resources/quick_connects/methods/search_quick_connects"
         insert:
           - $ref: "#/components/x-stackQL-resources/quick_connects/methods/create_quick_connect"
         update:
@@ -32660,7 +32609,6 @@ components:
         select:
           - $ref: "#/components/x-stackQL-resources/routing_profiles/methods/describe_routing_profile"
           - $ref: "#/components/x-stackQL-resources/routing_profiles/methods/list_routing_profiles"
-          - $ref: "#/components/x-stackQL-resources/routing_profiles/methods/search_routing_profiles"
         insert:
           - $ref: "#/components/x-stackQL-resources/routing_profiles/methods/create_routing_profile"
         update:
@@ -32748,7 +32696,6 @@ components:
         select:
           - $ref: "#/components/x-stackQL-resources/rules/methods/describe_rule"
           - $ref: "#/components/x-stackQL-resources/rules/methods/list_rules"
-          - $ref: "#/components/x-stackQL-resources/rules/methods/search_rules"
         insert:
           - $ref: "#/components/x-stackQL-resources/rules/methods/create_rule"
         update:
@@ -32793,7 +32740,6 @@ components:
             $ref: "#/paths/~1instance~1{instance_id}~1task~1template~1{task_template_id}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         get_task_template:
           operation:
             $ref: "#/paths/~1instance~1{instance_id}~1task~1template~1{task_template_id}/get"
@@ -32818,7 +32764,6 @@ components:
             $ref: "#/paths/~1contact~1task-template/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -32856,7 +32801,6 @@ components:
             $ref: "#/paths/~1test-cases~1{instance_id}~1{test_case_id}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         describe_test_case:
           operation:
             $ref: "#/paths/~1test-cases~1{instance_id}~1{test_case_id}/get"
@@ -32871,7 +32815,6 @@ components:
             $ref: "#/paths/~1test-cases~1{instance_id}~1{test_case_id}/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -32929,7 +32872,6 @@ components:
             $ref: "#/paths/~1test-cases~1{instance_id}~1{test_case_id}~1{test_case_execution_id}~1stop-execution/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -32939,7 +32881,6 @@ components:
         select:
           - $ref: "#/components/x-stackQL-resources/test_cases/methods/describe_test_case"
           - $ref: "#/components/x-stackQL-resources/test_cases/methods/list_test_cases"
-          - $ref: "#/components/x-stackQL-resources/test_cases/methods/search_test_cases"
         insert:
           - $ref: "#/components/x-stackQL-resources/test_cases/methods/create_test_case"
         update:
@@ -32967,7 +32908,6 @@ components:
             $ref: "#/paths/~1traffic-distribution-group~1{traffic_distribution_group_id}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         describe_traffic_distribution_group:
           operation:
             $ref: "#/paths/~1traffic-distribution-group~1{traffic_distribution_group_id}/get"
@@ -33125,7 +33065,6 @@ components:
         select:
           - $ref: "#/components/x-stackQL-resources/user_hierarchy_groups/methods/describe_user_hierarchy_group"
           - $ref: "#/components/x-stackQL-resources/user_hierarchy_groups/methods/list_user_hierarchy_groups"
-          - $ref: "#/components/x-stackQL-resources/user_hierarchy_groups/methods/search_user_hierarchy_groups"
         insert:
           - $ref: "#/components/x-stackQL-resources/user_hierarchy_groups/methods/create_user_hierarchy_group"
         update:
@@ -33170,7 +33109,6 @@ components:
             $ref: "#/paths/~1views~1{instance_id}~1{view_id}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         describe_view:
           operation:
             $ref: "#/paths/~1views~1{instance_id}~1{view_id}/get"
@@ -33213,7 +33151,6 @@ components:
             $ref: "#/paths/~1views~1{instance_id}~1{view_id}~1metadata/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -33223,7 +33160,6 @@ components:
         select:
           - $ref: "#/components/x-stackQL-resources/views/methods/describe_view"
           - $ref: "#/components/x-stackQL-resources/views/methods/list_views"
-          - $ref: "#/components/x-stackQL-resources/views/methods/search_views"
         insert:
           - $ref: "#/components/x-stackQL-resources/views/methods/create_view"
         update:
@@ -33268,7 +33204,6 @@ components:
             $ref: "#/paths/~1views~1{instance_id}~1{view_id}~1versions~1{view_version}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/view_versions/methods/list_view_versions"
@@ -33344,7 +33279,6 @@ components:
             $ref: "#/paths/~1workspaces~1{instance_id}~1{workspace_id}~1pages/put"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -33372,13 +33306,11 @@ components:
             $ref: "#/paths/~1workspaces~1{instance_id}~1{workspace_id}~1pages~1{page}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         update_workspace_page:
           operation:
             $ref: "#/paths/~1workspaces~1{instance_id}~1{workspace_id}~1pages~1{page}/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -33468,7 +33400,6 @@ components:
             $ref: "#/paths/~1workspaces~1{instance_id}~1{workspace_id}~1media/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
         list_workspace_media:
@@ -33626,71 +33557,6 @@ components:
         update:
           - $ref: "#/components/x-stackQL-resources/instance_attributes/methods/update_instance_attribute"
         delete: []
-    phone_numbers:
-      id: aws.connect.phone_numbers
-      name: phone_numbers
-      title: phone_numbers
-      methods:
-        describe_phone_number:
-          operation:
-            $ref: "#/paths/~1phone-number~1{phone_number_id}/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.ClaimedPhoneNumberSummary
-        release_phone_number:
-          operation:
-            $ref: "#/paths/~1phone-number~1{phone_number_id}/delete"
-          response:
-            openAPIDocKey: "200"
-          request:
-            nativeCasing: pascal
-        update_phone_number:
-          operation:
-            $ref: "#/paths/~1phone-number~1{phone_number_id}/put"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        list_phone_numbers:
-          operation:
-            $ref: "#/paths/~1phone-numbers-summary~1{instance_id}/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.PhoneNumberSummaryList
-          request:
-            nativeCasing: pascal
-          config:
-            pagination:
-              requestToken:
-                key: nextToken
-                location: query
-              responseToken:
-                key: $.NextToken
-                location: body
-        update_phone_number_metadata:
-          operation:
-            $ref: "#/paths/~1phone-number~1{phone_number_id}~1metadata/put"
-          response:
-            openAPIDocKey: "200"
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/phone_numbers/methods/describe_phone_number"
-          - $ref: "#/components/x-stackQL-resources/phone_numbers/methods/list_phone_numbers"
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/phone_numbers/methods/release_phone_number"
-        delete: []
     user_hierarchy_structures:
       id: aws.connect.user_hierarchy_structures
       name: user_hierarchy_structures
@@ -33777,7 +33643,6 @@ components:
             $ref: "#/paths/~1contact~1attributes/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -33812,10 +33677,45 @@ components:
         insert: []
         update: []
         delete: []
-    current_metric_datas:
-      id: aws.connect.current_metric_datas
-      name: current_metric_datas
-      title: current_metric_datas
+    cross_region_routings:
+      id: aws.connect.cross_region_routings
+      name: cross_region_routings
+      title: cross_region_routings
+      methods:
+        get_cross_region_routing:
+          operation:
+            $ref: "#/paths/~1cross-region-routing~1{instance_id}/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/GetCrossRegionRoutingOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "IsolatedRegions" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"isolated_region": {{ toJson $v }}}{{- end -}}{{- end -}}]}'
+            objectKey: $.line_items
+        update_cross_region_routing:
+          operation:
+            $ref: "#/paths/~1cross-region-routing~1{instance_id}/put"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/cross_region_routings/methods/get_cross_region_routing"
+        insert: []
+        update:
+          - $ref: "#/components/x-stackQL-resources/cross_region_routings/methods/update_cross_region_routing"
+        delete: []
+    current_metric_data:
+      id: aws.connect.current_metric_data
+      name: current_metric_data
+      title: current_metric_data
       methods:
         get_current_metric_data:
           operation:
@@ -33830,14 +33730,14 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/current_metric_datas/methods/get_current_metric_data"
+          - $ref: "#/components/x-stackQL-resources/current_metric_data/methods/get_current_metric_data"
         insert: []
         update: []
         delete: []
-    current_user_datas:
-      id: aws.connect.current_user_datas
-      name: current_user_datas
-      title: current_user_datas
+    current_user_data:
+      id: aws.connect.current_user_data
+      name: current_user_data
+      title: current_user_data
       methods:
         get_current_user_data:
           operation:
@@ -33852,7 +33752,7 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/current_user_datas/methods/get_current_user_data"
+          - $ref: "#/components/x-stackQL-resources/current_user_data/methods/get_current_user_data"
         insert: []
         update: []
         delete: []
@@ -33911,10 +33811,10 @@ components:
         insert: []
         update: []
         delete: []
-    metric_datas:
-      id: aws.connect.metric_datas
-      name: metric_datas
-      title: metric_datas
+    metric_data:
+      id: aws.connect.metric_data
+      name: metric_data
+      title: metric_data
       methods:
         get_metric_data:
           operation:
@@ -33937,14 +33837,14 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/metric_datas/methods/get_metric_data"
+          - $ref: "#/components/x-stackQL-resources/metric_data/methods/get_metric_data"
         insert: []
         update: []
         delete: []
-    metric_data_v2s:
-      id: aws.connect.metric_data_v2s
-      name: metric_data_v2s
-      title: metric_data_v2s
+    metric_data_v2:
+      id: aws.connect.metric_data_v2
+      name: metric_data_v2
+      title: metric_data_v2
       methods:
         get_metric_data_v2:
           operation:
@@ -33959,7 +33859,7 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/metric_data_v2s/methods/get_metric_data_v2"
+          - $ref: "#/components/x-stackQL-resources/metric_data_v2/methods/get_metric_data_v2"
         insert: []
         update: []
         delete: []
@@ -34013,7 +33913,6 @@ components:
             $ref: "#/paths/~1traffic-distribution~1{id}/put"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -34089,34 +33988,6 @@ components:
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/child_hours_of_operations/methods/list_child_hours_of_operations"
-        insert: []
-        update: []
-        delete: []
-    contact_flow_module_aliases:
-      id: aws.connect.contact_flow_module_aliases
-      name: contact_flow_module_aliases
-      title: contact_flow_module_aliases
-      methods:
-        list_contact_flow_module_aliases:
-          operation:
-            $ref: "#/paths/~1contact-flow-modules~1{instance_id}~1{contact_flow_module_id}~1aliases/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.ContactFlowModuleAliasSummaryList
-          request:
-            nativeCasing: pascal
-          config:
-            pagination:
-              requestToken:
-                key: nextToken
-                location: query
-              responseToken:
-                key: $.NextToken
-                location: body
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/contact_flow_module_aliases/methods/list_contact_flow_module_aliases"
         insert: []
         update: []
         delete: []
@@ -34220,6 +34091,25 @@ components:
         insert: []
         update: []
         delete: []
+    evaluation_form_ai_versions:
+      id: aws.connect.evaluation_form_ai_versions
+      name: evaluation_form_ai_versions
+      title: evaluation_form_ai_versions
+      methods:
+        list_evaluation_form_ai_versions:
+          operation:
+            $ref: "#/paths/~1instances~1{instance_id}~1evaluation-form-ai-versions/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/evaluation_form_ai_versions/methods/list_evaluation_form_ai_versions"
+        insert: []
+        update: []
+        delete: []
     evaluation_form_versions:
       id: aws.connect.evaluation_form_versions
       name: evaluation_form_versions
@@ -34248,10 +34138,10 @@ components:
         insert: []
         update: []
         delete: []
-    phone_numbers_v2s:
-      id: aws.connect.phone_numbers_v2s
-      name: phone_numbers_v2s
-      title: phone_numbers_v2s
+    phone_numbers_v2:
+      id: aws.connect.phone_numbers_v2
+      name: phone_numbers_v2
+      title: phone_numbers_v2
       methods:
         list_phone_numbers_v2:
           operation:
@@ -34274,14 +34164,14 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/phone_numbers_v2s/methods/list_phone_numbers_v2"
+          - $ref: "#/components/x-stackQL-resources/phone_numbers_v2/methods/list_phone_numbers_v2"
         insert: []
         update: []
         delete: []
-    realtime_contact_analysis_segments_v2s:
-      id: aws.connect.realtime_contact_analysis_segments_v2s
-      name: realtime_contact_analysis_segments_v2s
-      title: realtime_contact_analysis_segments_v2s
+    realtime_contact_analysis_segments_v2:
+      id: aws.connect.realtime_contact_analysis_segments_v2
+      name: realtime_contact_analysis_segments_v2
+      title: realtime_contact_analysis_segments_v2
       methods:
         list_realtime_contact_analysis_segments_v2:
           operation:
@@ -34296,7 +34186,7 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/realtime_contact_analysis_segments_v2s/methods/list_realtime_contact_analysis_segments_v2"
+          - $ref: "#/components/x-stackQL-resources/realtime_contact_analysis_segments_v2/methods/list_realtime_contact_analysis_segments_v2"
         insert: []
         update: []
         delete: []
@@ -34451,7 +34341,6 @@ components:
             $ref: "#/paths/~1contact~1tags/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -34462,7 +34351,6 @@ components:
             $ref: "#/paths/~1contact~1tags~1{instance_id}~1{contact_id}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
       sqlVerbs:
@@ -34531,7 +34419,6 @@ components:
             $ref: "#/paths/~1users~1{instance_id}~1{user_id}~1notifications~1{notification_id}/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -34571,28 +34458,6 @@ components:
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/available_phone_numbers/methods/search_available_phone_numbers"
-        insert: []
-        update: []
-        delete: []
-    email_addresses:
-      id: aws.connect.email_addresses
-      name: email_addresses
-      title: email_addresses
-      methods:
-        search_email_addresses:
-          operation:
-            $ref: "#/paths/~1search-email-addresses/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/email_addresses/methods/search_email_addresses"
         insert: []
         update: []
         delete: []
@@ -34653,6 +34518,27 @@ components:
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/workspace_associations/methods/search_workspace_associations"
+        insert: []
+        update: []
+        delete: []
+    chat_integration_events:
+      id: aws.connect.chat_integration_events
+      name: chat_integration_events
+      title: chat_integration_events
+      methods:
+        send_chat_integration_event:
+          operation:
+            $ref: "#/paths/~1chat-integration-event/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
         insert: []
         update: []
         delete: []

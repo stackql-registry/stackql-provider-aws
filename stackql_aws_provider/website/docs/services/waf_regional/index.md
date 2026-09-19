@@ -18,7 +18,7 @@ waf_regional service documentation.
 
 :::info[Service Summary]
 
-total resources: __24__  
+total resources: __23__  
 
 :::
 
@@ -27,7 +27,7 @@ total resources: __24__
 <div class="providerDocColumn">
 <a href="/services/waf_regional/activated_rules_in_rule_groups/">activated_rules_in_rule_groups</a><br />
 <a href="/services/waf_regional/byte_match_sets/">byte_match_sets</a><br />
-<a href="/services/waf_regional/change_token_status/">change_token_status</a><br />
+<a href="/services/waf_regional/change_token_statuses/">change_token_statuses</a><br />
 <a href="/services/waf_regional/change_tokens/">change_tokens</a><br />
 <a href="/services/waf_regional/geo_match_sets/">geo_match_sets</a><br />
 <a href="/services/waf_regional/ip_sets/">ip_sets</a><br />
@@ -39,7 +39,7 @@ total resources: __24__
 <a href="/services/waf_regional/regex_pattern_sets/">regex_pattern_sets</a>
 </div>
 <div class="providerDocColumn">
-<a href="/services/waf_regional/resources_for_web_acls/">resources_for_web_acls</a><br />
+<a href="/services/waf_regional/resources/">resources</a><br />
 <a href="/services/waf_regional/rule_groups/">rule_groups</a><br />
 <a href="/services/waf_regional/rules/">rules</a><br />
 <a href="/services/waf_regional/sampled_requests/">sampled_requests</a><br />
@@ -48,7 +48,6 @@ total resources: __24__
 <a href="/services/waf_regional/subscribed_rule_groups/">subscribed_rule_groups</a><br />
 <a href="/services/waf_regional/tags/">tags</a><br />
 <a href="/services/waf_regional/web_ac_ls/">web_ac_ls</a><br />
-<a href="/services/waf_regional/web_acl_for_resources/">web_acl_for_resources</a><br />
 <a href="/services/waf_regional/web_acls/">web_acls</a><br />
 <a href="/services/waf_regional/xss_match_sets/">xss_match_sets</a>
 </div>

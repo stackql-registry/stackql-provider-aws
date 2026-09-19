@@ -287,10 +287,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -313,10 +309,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -338,7 +330,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartPipeResponse'
-      x-stackql-resource: pipe
+      x-stackql-resource: pipes
       x-stackql-method: start_pipe
       x-stackql-verb: EXEC
   /v1/pipes/{name}/stop:
@@ -359,7 +351,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StopPipeResponse'
-      x-stackql-resource: pipe
+      x-stackql-resource: pipes
       x-stackql-method: stop_pipe
       x-stackql-verb: EXEC
 components:
@@ -2414,14 +2406,10 @@ components:
         LastModifiedTime:
           $ref: '#/components/schemas/Timestamp'
           description: When the pipe was last updated, in ISO-8601 format (YYYY-MM-DDThh:mm:ss.sTZD).
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
         $ref: '#/components/schemas/TagKey'
-    UntagResourceResponse:
-      type: object
     UpdatePipeSourceParameters:
       description: The parameters required to set up a source for your pipe.
       type: object

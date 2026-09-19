@@ -36,8 +36,8 @@ The following fields are returned by `SELECT` queries:
     defaultValue="get_record"
     values={[
         { label: 'get_record', value: 'get_record' },
-        { label: 'batch_get_record', value: 'batch_get_record' },
-        { label: 'list_records', value: 'list_records' }
+        { label: 'list_records', value: 'list_records' },
+        { label: 'batch_get_record', value: 'batch_get_record' }
     ]}
 >
 <TabItem value="get_record">
@@ -60,6 +60,25 @@ The following fields are returned by `SELECT` queries:
     <td><CopyableCode code="record" /></td>
     <td><code>array</code></td>
     <td>The record you requested. A list of FeatureValues.</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
+<TabItem value="list_records">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="record_identifier" /></td>
+    <td><code>string</code></td>
+    <td>A list of record identifier values for the records stored in the OnlineStore.</td>
 </tr>
 </tbody>
 </table>
@@ -93,25 +112,6 @@ The following fields are returned by `SELECT` queries:
 </tbody>
 </table>
 </TabItem>
-<TabItem value="list_records">
-
-<table>
-<thead>
-    <tr>
-    <th>Name</th>
-    <th>Datatype</th>
-    <th>Description</th>
-    </tr>
-</thead>
-<tbody>
-<tr>
-    <td><CopyableCode code="record_identifier" /></td>
-    <td><code>string</code></td>
-    <td>A list of record identifier values for the records stored in the OnlineStore.</td>
-</tr>
-</tbody>
-</table>
-</TabItem>
 </Tabs>
 
 ## Methods
@@ -137,6 +137,13 @@ The following methods are available for this resource:
     <td>Use for OnlineStore serving from a FeatureStore. Only the latest records stored in the OnlineStore can be retrieved. If no Record with RecordIdentifierValue is found, then an empty result is returned.</td>
 </tr>
 <tr>
+    <td><a href="#list_records"><CopyableCode code="list_records" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-feature_group_name"><code>feature_group_name</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Lists the RecordIdentifier values of all records stored in a FeatureGroup's OnlineStore. This enables you to discover which records exist without retrieving the full record data.</td>
+</tr>
+<tr>
     <td><a href="#batch_get_record"><CopyableCode code="batch_get_record" /></a></td>
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
@@ -144,11 +151,11 @@ The following methods are available for this resource:
     <td>Retrieves a batch of Records from a FeatureGroup.</td>
 </tr>
 <tr>
-    <td><a href="#list_records"><CopyableCode code="list_records" /></a></td>
-    <td><CopyableCode code="select" /></td>
-    <td><a href="#parameter-feature_group_name"><code>feature_group_name</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td><a href="#update_record"><CopyableCode code="update_record" /></a></td>
+    <td><CopyableCode code="update" /></td>
+    <td><a href="#parameter-feature_group_name"><code>feature_group_name</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-RecordIdentifierValueAsString"><code>RecordIdentifierValueAsString</code></a>, <a href="#parameter-Features"><code>Features</code></a></td>
     <td></td>
-    <td>Lists the RecordIdentifier values of all records stored in a FeatureGroup's OnlineStore. This enables you to discover which records exist without retrieving the full record data.</td>
+    <td>Updates one or more feature values for an existing record in the specified feature group. Features that you do not include in the request remain unchanged. You can update up to 100 features per call. This operation is available only for feature groups that use the Standard_V2 or InMemory online store type. The record must already exist. If the record does not exist or has been soft-deleted, the operation returns a ResourceNotFound error. To create a record, use PutRecord. If you provide an EventTime that is older than the record's current EventTime, the service rejects the update with a ConflictException. If the EventTime is equal to or newer than the current value, the service applies the update. If you omit EventTime, the service keeps the record's existing EventTime and applies the update. If you specify a TtlDuration, you must also provide an EventTime in the request. Otherwise, the operation returns a ValidationError.</td>
 </tr>
 <tr>
     <td><a href="#put_record"><CopyableCode code="put_record" /></a></td>
@@ -163,6 +170,13 @@ The following methods are available for this resource:
     <td><a href="#parameter-feature_group_name"><code>feature_group_name</code></a>, <a href="#parameter-RecordIdentifierValueAsString"><code>RecordIdentifierValueAsString</code></a>, <a href="#parameter-EventTime"><code>EventTime</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td><a href="#parameter-TargetStores"><code>TargetStores</code></a>, <a href="#parameter-DeletionMode"><code>DeletionMode</code></a></td>
     <td>Deletes a Record from a FeatureGroup in the OnlineStore. Feature Store supports both SoftDelete and HardDelete. For SoftDelete (default), feature columns are set to null and the record is no longer retrievable by GetRecord or BatchGetRecord. For HardDelete, the complete Record is removed from the OnlineStore. In both cases, Feature Store appends the deleted record marker to the OfflineStore. The deleted record marker is a record with the same RecordIdentifer as the original, but with is_deleted value set to True, EventTime set to the delete input EventTime, and other feature values set to null. Note that the EventTime specified in DeleteRecord should be set later than the EventTime of the existing record in the OnlineStore for that RecordIdentifer. If it is not, the deletion does not occur: For SoftDelete, the existing (not deleted) record remains in the OnlineStore, though the delete record marker is still written to the OfflineStore. HardDelete returns EventTime: 400 ValidationException to indicate that the delete operation failed. No delete record marker is written to the OfflineStore. When a record is deleted from the OnlineStore, the deleted record marker is appended to the OfflineStore. If you have the Iceberg table format enabled for your OfflineStore, you can remove all history of a record from the OfflineStore using Amazon Athena or Apache Spark. For information on how to hard delete a record from the OfflineStore with the Iceberg table format enabled, see Delete records from the offline store.</td>
+</tr>
+<tr>
+    <td><a href="#batch_write_record"><CopyableCode code="batch_write_record" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-Entries"><code>Entries</code></a></td>
+    <td></td>
+    <td>Writes a batch of Records to one or more FeatureGroups. Use this API for bulk ingestion of records into the OnlineStore and OfflineStore. You can set the ingested records to expire at a given time to live (TTL) duration after the record's event time by specifying the TtlDuration parameter. A request level TtlDuration applies to all entries that do not specify their own TtlDuration.</td>
 </tr>
 </tbody>
 </table>
@@ -229,8 +243,8 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     defaultValue="get_record"
     values={[
         { label: 'get_record', value: 'get_record' },
-        { label: 'batch_get_record', value: 'batch_get_record' },
-        { label: 'list_records', value: 'list_records' }
+        { label: 'list_records', value: 'list_records' },
+        { label: 'batch_get_record', value: 'batch_get_record' }
     ]}
 >
 <TabItem value="get_record">
@@ -250,6 +264,19 @@ AND ExpirationTimeResponse = '{{ ExpirationTimeResponse }}'
 ;
 ```
 </TabItem>
+<TabItem value="list_records">
+
+Lists the RecordIdentifier values of all records stored in a FeatureGroup's OnlineStore. This enables you to discover which records exist without retrieving the full record data.
+
+```sql
+SELECT
+record_identifier
+FROM aws.sagemaker_featurestore_runtime.records
+WHERE feature_group_name = '{{ feature_group_name }}' -- required
+AND region = '{{ region }}' -- required
+;
+```
+</TabItem>
 <TabItem value="batch_get_record">
 
 Retrieves a batch of Records from a FeatureGroup.
@@ -264,17 +291,33 @@ WHERE region = '{{ region }}' -- required
 ;
 ```
 </TabItem>
-<TabItem value="list_records">
+</Tabs>
 
-Lists the RecordIdentifier values of all records stored in a FeatureGroup's OnlineStore. This enables you to discover which records exist without retrieving the full record data.
+
+## `UPDATE` examples
+
+<Tabs
+    defaultValue="update_record"
+    values={[
+        { label: 'update_record', value: 'update_record' }
+    ]}
+>
+<TabItem value="update_record">
+
+Updates one or more feature values for an existing record in the specified feature group. Features that you do not include in the request remain unchanged. You can update up to 100 features per call. This operation is available only for feature groups that use the Standard_V2 or InMemory online store type. The record must already exist. If the record does not exist or has been soft-deleted, the operation returns a ResourceNotFound error. To create a record, use PutRecord. If you provide an EventTime that is older than the record's current EventTime, the service rejects the update with a ConflictException. If the EventTime is equal to or newer than the current value, the service applies the update. If you omit EventTime, the service keeps the record's existing EventTime and applies the update. If you specify a TtlDuration, you must also provide an EventTime in the request. Otherwise, the operation returns a ValidationError.
 
 ```sql
-SELECT
-record_identifier
-FROM aws.sagemaker_featurestore_runtime.records
-WHERE feature_group_name = '{{ feature_group_name }}' -- required
-AND region = '{{ region }}' -- required
-;
+UPDATE aws.sagemaker_featurestore_runtime.records
+SET 
+RecordIdentifierValueAsString = '{{ RecordIdentifierValueAsString }}',
+Features = '{{ Features }}',
+TargetStores = '{{ TargetStores }}',
+TtlDuration = '{{ TtlDuration }}'
+WHERE 
+feature_group_name = '{{ feature_group_name }}' --required
+AND region = '{{ region }}' --required
+AND RecordIdentifierValueAsString = '{{ RecordIdentifierValueAsString }}' --required
+AND Features = '{{ Features }}' --required;
 ```
 </TabItem>
 </Tabs>
@@ -326,6 +369,32 @@ AND EventTime = '{{ EventTime }}' --required
 AND region = '{{ region }}' --required
 AND TargetStores = '{{ TargetStores }}'
 AND DeletionMode = '{{ DeletionMode }}'
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="batch_write_record"
+    values={[
+        { label: 'batch_write_record', value: 'batch_write_record' }
+    ]}
+>
+<TabItem value="batch_write_record">
+
+Writes a batch of Records to one or more FeatureGroups. Use this API for bulk ingestion of records into the OnlineStore and OfflineStore. You can set the ingested records to expire at a given time to live (TTL) duration after the record's event time by specifying the TtlDuration parameter. A request level TtlDuration applies to all entries that do not specify their own TtlDuration.
+
+```sql
+EXEC aws.sagemaker_featurestore_runtime.records.batch_write_record 
+@region='{{ region }}' --required 
+@@json=
+'{
+"Entries": "{{ Entries }}", 
+"TtlDuration": "{{ TtlDuration }}"
+}'
 ;
 ```
 </TabItem>

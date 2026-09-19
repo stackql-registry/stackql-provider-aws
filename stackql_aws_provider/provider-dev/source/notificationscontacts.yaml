@@ -38,11 +38,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ActivateEmailContactResponse'
-      x-stackql-resource: email_contact
+      x-stackql-resource: email_contacts
       x-stackql-method: activate_email_contact
       x-stackql-verb: EXEC
   /2022-09-19/emailcontacts:
@@ -90,10 +86,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteEmailContactResponse'
       x-stackql-resource: email_contacts
       x-stackql-method: delete_email_contact
       x-stackql-verb: DELETE
@@ -199,10 +191,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -227,10 +215,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -250,11 +234,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/SendActivationCodeResponse'
-      x-stackql-resource: activation_code
+      x-stackql-resource: activation_codes
       x-stackql-method: send_activation_code
       x-stackql-verb: EXEC
 components:
@@ -310,8 +290,6 @@ components:
       minLength: 7
       maxLength: 7
       pattern: '[a-z0-9]{7}'
-    ActivateEmailContactResponse:
-      type: object
     EmailContactName:
       type: string
       minLength: 1
@@ -334,8 +312,6 @@ components:
           description: The Amazon Resource Name (ARN) of the resource.
       required:
       - arn
-    DeleteEmailContactResponse:
-      type: object
     GetEmailContactResponse:
       type: object
       properties:
@@ -421,10 +397,6 @@ components:
           properties: {}
           description: Key-value pairs that are assigned to a resource, usually for the purpose of grouping and searching
             for items. Tags are metadata that you define.
-    SendActivationCodeResponse:
-      type: object
-    TagResourceResponse:
-      type: object
     TagKeys:
       type: array
       items:
@@ -432,5 +404,3 @@ components:
     TagKey:
       type: string
       pattern: (?!aws:).{1,128}
-    UntagResourceResponse:
-      type: object

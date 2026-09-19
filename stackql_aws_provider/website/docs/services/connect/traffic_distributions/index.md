@@ -57,12 +57,12 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
-    <td>The Amazon Resource Name (ARN) of the traffic distribution group. (pattern: &lt;code&gt;^arn:(aws|aws-us-gov):connect:&#91;a-z&#93;&#123;2&#125;-&#91;a-z&#93;+-&#91;0-9&#93;&#123;1&#125;:&#91;0-9&#93;&#123;1,20&#125;:traffic-distribution-group/&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;$&lt;/code&gt;)</td>
+    <td>The Amazon Resource Name (ARN) of the traffic distribution group. (pattern: &lt;code&gt;^arn:(&#91;a-zA-Z0-9-&#93;+):connect:&#91;a-z&#93;+-&#91;a-z-&#93;+-&#91;0-9&#93;+:&#91;0-9&#93;+:traffic-distribution-group/&#91;a-zA-Z0-9_-&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
-    <td>The identifier of the traffic distribution group. This can be the ID or the ARN if the API is being called in the Region where the traffic distribution group was created. The ARN must be provided if the call is from the replicated Region. (pattern: &lt;code&gt;^&#91;a-f0-9&#93;&#123;8&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;4&#125;-&#91;a-f0-9&#93;&#123;12&#125;$&lt;/code&gt;)</td>
+    <td>The identifier of the traffic distribution group. This can be the ID or the ARN if the API is being called in the Region where the traffic distribution group was created. The ARN must be provided if the call is from the replicated Region. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9_-&#93;+$&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="sign_in_config" /></td>

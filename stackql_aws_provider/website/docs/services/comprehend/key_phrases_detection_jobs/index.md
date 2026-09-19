@@ -228,6 +228,20 @@ The following methods are available for this resource:
     <td></td>
     <td>Get a list of key phrase detection jobs that you have submitted.</td>
 </tr>
+<tr>
+    <td><a href="#start_key_phrases_detection_job"><CopyableCode code="start_key_phrases_detection_job" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-InputDataConfig"><code>InputDataConfig</code></a>, <a href="#parameter-OutputDataConfig"><code>OutputDataConfig</code></a>, <a href="#parameter-DataAccessRoleArn"><code>DataAccessRoleArn</code></a>, <a href="#parameter-LanguageCode"><code>LanguageCode</code></a></td>
+    <td></td>
+    <td>Starts an asynchronous key phrase detection job for a collection of documents. Use the operation to track the status of a job.</td>
+</tr>
+<tr>
+    <td><a href="#stop_key_phrases_detection_job"><CopyableCode code="stop_key_phrases_detection_job" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-JobId"><code>JobId</code></a></td>
+    <td></td>
+    <td>Stops a key phrases detection job in progress. If the job state is IN_PROGRESS the job is marked for termination and put into the STOP_REQUESTED state. If the job completes before it can be stopped, it is put into the COMPLETED state; otherwise the job is stopped and put into the STOPPED state. If the job is in the COMPLETED or FAILED state when you call the StopDominantLanguageDetectionJob operation, the operation returns a 400 Internal Request Exception. When a job is stopped, any documents already processed are written to the output location.</td>
+</tr>
 </tbody>
 </table>
 
@@ -306,6 +320,54 @@ volume_kms_key_id,
 vpc_config
 FROM aws.comprehend.key_phrases_detection_jobs
 WHERE region = '{{ region }}' -- required
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="start_key_phrases_detection_job"
+    values={[
+        { label: 'start_key_phrases_detection_job', value: 'start_key_phrases_detection_job' },
+        { label: 'stop_key_phrases_detection_job', value: 'stop_key_phrases_detection_job' }
+    ]}
+>
+<TabItem value="start_key_phrases_detection_job">
+
+Starts an asynchronous key phrase detection job for a collection of documents. Use the operation to track the status of a job.
+
+```sql
+EXEC aws.comprehend.key_phrases_detection_jobs.start_key_phrases_detection_job 
+@region='{{ region }}' --required 
+@@json=
+'{
+"InputDataConfig": "{{ InputDataConfig }}", 
+"OutputDataConfig": "{{ OutputDataConfig }}", 
+"DataAccessRoleArn": "{{ DataAccessRoleArn }}", 
+"JobName": "{{ JobName }}", 
+"LanguageCode": "{{ LanguageCode }}", 
+"ClientRequestToken": "{{ ClientRequestToken }}", 
+"VolumeKmsKeyId": "{{ VolumeKmsKeyId }}", 
+"VpcConfig": "{{ VpcConfig }}", 
+"Tags": "{{ Tags }}"
+}'
+;
+```
+</TabItem>
+<TabItem value="stop_key_phrases_detection_job">
+
+Stops a key phrases detection job in progress. If the job state is IN_PROGRESS the job is marked for termination and put into the STOP_REQUESTED state. If the job completes before it can be stopped, it is put into the COMPLETED state; otherwise the job is stopped and put into the STOPPED state. If the job is in the COMPLETED or FAILED state when you call the StopDominantLanguageDetectionJob operation, the operation returns a 400 Internal Request Exception. When a job is stopped, any documents already processed are written to the output location.
+
+```sql
+EXEC aws.comprehend.key_phrases_detection_jobs.stop_key_phrases_detection_job 
+@region='{{ region }}' --required 
+@@json=
+'{
+"JobId": "{{ JobId }}"
+}'
 ;
 ```
 </TabItem>

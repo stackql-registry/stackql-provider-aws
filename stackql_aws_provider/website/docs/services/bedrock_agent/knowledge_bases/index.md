@@ -374,6 +374,7 @@ knowledge_base
               video:
                 - segmentationConfiguration:
                     fixedLengthDuration: {{ fixedLengthDuration }}
+              modelConfiguration: "{{ modelConfiguration }}"
           supplementalDataStorageConfiguration:
             storageLocations:
               - type_: "{{ type_ }}"
@@ -392,8 +393,14 @@ knowledge_base
               video:
                 - segmentationConfiguration:
                     fixedLengthDuration: {{ fixedLengthDuration }}
+              modelConfiguration: "{{ modelConfiguration }}"
           serverSideEncryptionConfiguration:
             kmsKeyArn: "{{ kmsKeyArn }}"
+          supplementalDataStorageConfiguration:
+            storageLocations:
+              - type_: "{{ type_ }}"
+                s3Location:
+                  uri: "{{ uri }}"
         kendraKnowledgeBaseConfiguration:
           kendraIndexArn: "{{ kendraIndexArn }}"
         sqlKnowledgeBaseConfiguration:

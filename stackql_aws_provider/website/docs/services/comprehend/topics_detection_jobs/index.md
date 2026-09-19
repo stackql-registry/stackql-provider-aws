@@ -228,6 +228,13 @@ The following methods are available for this resource:
     <td></td>
     <td>Gets a list of the topic detection jobs that you have submitted.</td>
 </tr>
+<tr>
+    <td><a href="#start_topics_detection_job"><CopyableCode code="start_topics_detection_job" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-InputDataConfig"><code>InputDataConfig</code></a>, <a href="#parameter-OutputDataConfig"><code>OutputDataConfig</code></a>, <a href="#parameter-DataAccessRoleArn"><code>DataAccessRoleArn</code></a></td>
+    <td></td>
+    <td>Starts an asynchronous topic detection job. Use the DescribeTopicDetectionJob operation to track the status of a job.</td>
+</tr>
 </tbody>
 </table>
 
@@ -306,6 +313,39 @@ volume_kms_key_id,
 vpc_config
 FROM aws.comprehend.topics_detection_jobs
 WHERE region = '{{ region }}' -- required
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="start_topics_detection_job"
+    values={[
+        { label: 'start_topics_detection_job', value: 'start_topics_detection_job' }
+    ]}
+>
+<TabItem value="start_topics_detection_job">
+
+Starts an asynchronous topic detection job. Use the DescribeTopicDetectionJob operation to track the status of a job.
+
+```sql
+EXEC aws.comprehend.topics_detection_jobs.start_topics_detection_job 
+@region='{{ region }}' --required 
+@@json=
+'{
+"InputDataConfig": "{{ InputDataConfig }}", 
+"OutputDataConfig": "{{ OutputDataConfig }}", 
+"DataAccessRoleArn": "{{ DataAccessRoleArn }}", 
+"JobName": "{{ JobName }}", 
+"NumberOfTopics": {{ NumberOfTopics }}, 
+"ClientRequestToken": "{{ ClientRequestToken }}", 
+"VolumeKmsKeyId": "{{ VolumeKmsKeyId }}", 
+"VpcConfig": "{{ VpcConfig }}", 
+"Tags": "{{ Tags }}"
+}'
 ;
 ```
 </TabItem>

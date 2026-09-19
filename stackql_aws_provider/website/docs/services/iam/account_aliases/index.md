@@ -81,6 +81,20 @@ The following methods are available for this resource:
     <td><a href="#parameter-Marker"><code>Marker</code></a>, <a href="#parameter-MaxItems"><code>MaxItems</code></a></td>
     <td>Lists the account alias associated with the Amazon Web Services account (Note: you can have only one). For information about using an Amazon Web Services account alias, see Creating, deleting, and listing an Amazon Web Services account alias in the IAM User Guide.</td>
 </tr>
+<tr>
+    <td><a href="#create_account_alias"><CopyableCode code="create_account_alias" /></a></td>
+    <td><CopyableCode code="insert" /></td>
+    <td><a href="#parameter-AccountAlias"><code>AccountAlias</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Creates an alias for your Amazon Web Services account. For information about using an Amazon Web Services account alias, see Creating, deleting, and listing an Amazon Web Services account alias in the Amazon Web Services Sign-In User Guide.</td>
+</tr>
+<tr>
+    <td><a href="#delete_account_alias"><CopyableCode code="delete_account_alias" /></a></td>
+    <td><CopyableCode code="delete" /></td>
+    <td><a href="#parameter-AccountAlias"><code>AccountAlias</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Deletes the specified Amazon Web Services account alias. For information about using an Amazon Web Services account alias, see Creating, deleting, and listing an Amazon Web Services account alias in the Amazon Web Services Sign-In User Guide.</td>
+</tr>
 </tbody>
 </table>
 
@@ -97,6 +111,11 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     </tr>
 </thead>
 <tbody>
+<tr id="parameter-AccountAlias">
+    <td><CopyableCode code="AccountAlias" /></td>
+    <td><code>string</code></td>
+    <td>The name of the account alias to delete. This parameter allows (through its regex pattern) a string of characters consisting of lowercase letters, digits, and dashes. You cannot start or finish with a dash, nor can you have two dashes in a row.</td>
+</tr>
 <tr id="parameter-region">
     <td><CopyableCode code="region" /></td>
     <td><code>string</code></td>
@@ -134,6 +153,69 @@ FROM aws.iam.account_aliases
 WHERE region = '{{ region }}' -- required
 AND Marker = '{{ Marker }}'
 AND MaxItems = '{{ MaxItems }}'
+;
+```
+</TabItem>
+</Tabs>
+
+
+## `INSERT` examples
+
+<Tabs
+    defaultValue="create_account_alias"
+    values={[
+        { label: 'create_account_alias', value: 'create_account_alias' },
+        { label: 'Manifest', value: 'manifest' }
+    ]}
+>
+<TabItem value="create_account_alias">
+
+Creates an alias for your Amazon Web Services account. For information about using an Amazon Web Services account alias, see Creating, deleting, and listing an Amazon Web Services account alias in the Amazon Web Services Sign-In User Guide.
+
+```sql
+INSERT INTO aws.iam.account_aliases (
+AccountAlias,
+region
+)
+SELECT 
+'{{ AccountAlias }}',
+'{{ region }}'
+;
+```
+</TabItem>
+<TabItem value="manifest">
+
+<CodeBlock language="yaml">{`# Description fields are for documentation purposes
+- name: account_aliases
+  props:
+    - name: AccountAlias
+      value: "{{ AccountAlias }}"
+      description: Required parameter for the account_aliases resource.
+    - name: region
+      value: "{{ region }}"
+      description: Required parameter for the account_aliases resource.
+`}</CodeBlock>
+
+</TabItem>
+</Tabs>
+
+
+## `DELETE` examples
+
+<Tabs
+    defaultValue="delete_account_alias"
+    values={[
+        { label: 'delete_account_alias', value: 'delete_account_alias' }
+    ]}
+>
+<TabItem value="delete_account_alias">
+
+Deletes the specified Amazon Web Services account alias. For information about using an Amazon Web Services account alias, see Creating, deleting, and listing an Amazon Web Services account alias in the Amazon Web Services Sign-In User Guide.
+
+```sql
+DELETE FROM aws.iam.account_aliases
+WHERE AccountAlias = '{{ AccountAlias }}' --required
+AND region = '{{ region }}' --required
 ;
 ```
 </TabItem>

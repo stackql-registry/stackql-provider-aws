@@ -18,7 +18,7 @@ resource_groups service documentation.
 
 :::info[Service Summary]
 
-total resources: __9__  
+total resources: __10__  
 
 :::
 
@@ -35,6 +35,7 @@ total resources: __9__
 <a href="/services/resource_groups/groups/">groups</a><br />
 <a href="/services/resource_groups/resources/">resources</a><br />
 <a href="/services/resource_groups/tag_sync_tasks/">tag_sync_tasks</a><br />
-<a href="/services/resource_groups/tags/">tags</a>
+<a href="/services/resource_groups/tags/">tags</a><br />
+<a href="/services/resource_groups/untags/">untags</a>
 </div>
 </div>

@@ -107,6 +107,20 @@ The following methods are available for this resource:
     <td>This operation lists details about a partner event source that is shared with your account.</td>
 </tr>
 <tr>
+    <td><a href="#activate_event_source"><CopyableCode code="activate_event_source" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Activates a partner event source that has been deactivated. Once activated, your matching event bus will start receiving events from the event source.</td>
+</tr>
+<tr>
+    <td><a href="#deactivate_event_source"><CopyableCode code="deactivate_event_source" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>You can use this operation to temporarily stop receiving events from the specified partner event source. The matching event bus is not deleted. When you deactivate a partner event source, the source goes into PENDING state. If it remains in PENDING state for more than two weeks, it is deleted. To activate a deactivated partner event source, use ActivateEventSource.</td>
+</tr>
+<tr>
     <td><a href="#list_event_sources"><CopyableCode code="list_event_sources" /></a></td>
     <td><CopyableCode code="exec" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
@@ -168,11 +182,41 @@ WHERE region = '{{ region }}' -- required
 ## Lifecycle Methods
 
 <Tabs
-    defaultValue="list_event_sources"
+    defaultValue="activate_event_source"
     values={[
+        { label: 'activate_event_source', value: 'activate_event_source' },
+        { label: 'deactivate_event_source', value: 'deactivate_event_source' },
         { label: 'list_event_sources', value: 'list_event_sources' }
     ]}
 >
+<TabItem value="activate_event_source">
+
+Activates a partner event source that has been deactivated. Once activated, your matching event bus will start receiving events from the event source.
+
+```sql
+EXEC aws.events.event_sources.activate_event_source 
+@region='{{ region }}' --required 
+@@json=
+'{
+"Name": "{{ Name }}"
+}'
+;
+```
+</TabItem>
+<TabItem value="deactivate_event_source">
+
+You can use this operation to temporarily stop receiving events from the specified partner event source. The matching event bus is not deleted. When you deactivate a partner event source, the source goes into PENDING state. If it remains in PENDING state for more than two weeks, it is deleted. To activate a deactivated partner event source, use ActivateEventSource.
+
+```sql
+EXEC aws.events.event_sources.deactivate_event_source 
+@region='{{ region }}' --required 
+@@json=
+'{
+"Name": "{{ Name }}"
+}'
+;
+```
+</TabItem>
 <TabItem value="list_event_sources">
 
 You can use this to see all the partner event sources that have been shared with your Amazon Web Services account. For more information about partner event sources, see CreateEventBus.

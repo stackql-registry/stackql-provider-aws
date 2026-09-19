@@ -161,7 +161,7 @@ The following methods are available for this resource:
     <td><CopyableCode code="exec" /></td>
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-imageBuildVersionArn"><code>imageBuildVersionArn</code></a>, <a href="#parameter-clientToken"><code>clientToken</code></a></td>
     <td></td>
-    <td>RetryImage retries an image distribution without rebuilding the image.</td>
+    <td>Retries an image distribution or test without rebuilding the image.</td>
 </tr>
 </tbody>
 </table>
@@ -235,7 +235,7 @@ WHERE region = '{{ region }}' -- required
 >
 <TabItem value="retry_image">
 
-RetryImage retries an image distribution without rebuilding the image.
+Retries an image distribution or test without rebuilding the image.
 
 ```sql
 EXEC aws.imagebuilder.image_build_versions.retry_image 

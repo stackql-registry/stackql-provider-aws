@@ -93,6 +93,13 @@ The following methods are available for this resource:
     <td></td>
     <td>Update a lens review associated with a review template.</td>
 </tr>
+<tr>
+    <td><a href="#upgrade_review_template_lens_review"><CopyableCode code="upgrade_review_template_lens_review" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-template_arn"><code>template_arn</code></a>, <a href="#parameter-lens_alias"><code>lens_alias</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Upgrade the lens review of a review template.</td>
+</tr>
 </tbody>
 </table>
 
@@ -122,7 +129,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-template_arn">
     <td><CopyableCode code="template_arn" /></td>
     <td><code>string</code></td>
-    <td>The review template ARN.</td>
+    <td>The ARN of the review template.</td>
 </tr>
 </tbody>
 </table>
@@ -177,6 +184,33 @@ AND region = '{{ region }}' --required
 RETURNING
 lens_review,
 template_arn;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="upgrade_review_template_lens_review"
+    values={[
+        { label: 'upgrade_review_template_lens_review', value: 'upgrade_review_template_lens_review' }
+    ]}
+>
+<TabItem value="upgrade_review_template_lens_review">
+
+Upgrade the lens review of a review template.
+
+```sql
+EXEC aws.wellarchitected.review_template_lens_reviews.upgrade_review_template_lens_review 
+@template_arn='{{ template_arn }}' --required, 
+@lens_alias='{{ lens_alias }}' --required, 
+@region='{{ region }}' --required 
+@@json=
+'{
+"ClientRequestToken": "{{ ClientRequestToken }}"
+}'
+;
 ```
 </TabItem>
 </Tabs>

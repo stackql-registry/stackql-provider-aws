@@ -793,10 +793,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteFleetOutput'
       x-stackql-resource: fleets
       x-stackql-method: delete_fleet
       x-stackql-verb: DELETE
@@ -829,10 +825,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteProjectOutput'
       x-stackql-resource: projects
       x-stackql-method: delete_project
       x-stackql-verb: DELETE
@@ -865,10 +857,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteReportOutput'
       x-stackql-resource: reports
       x-stackql-method: delete_report
       x-stackql-verb: DELETE
@@ -907,10 +895,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteReportGroupOutput'
       x-stackql-resource: report_groups
       x-stackql-method: delete_report_group
       x-stackql-verb: DELETE
@@ -943,10 +927,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteResourcePolicyOutput'
       x-stackql-resource: resource_policies
       x-stackql-method: delete_resource_policy
       x-stackql-verb: DELETE
@@ -1016,10 +996,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteWebhookOutput'
       x-stackql-resource: projects
       x-stackql-method: delete_webhook
       x-stackql-verb: DELETE
@@ -1311,10 +1287,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/InvalidateProjectCacheOutput'
       x-stackql-resource: projects
       x-stackql-method: invalidate_project_cache
       x-stackql-verb: EXEC
@@ -1419,7 +1391,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListBuildBatchesForProjectOutputDisplay'
-      x-stackql-resource: build_batches_for_projects
+      x-stackql-resource: build_batches
       x-stackql-method: list_build_batches_for_project
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: ListBuildBatchesForProjectOutputDisplay
@@ -1530,7 +1502,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListBuildsForProjectOutputDisplay'
-      x-stackql-resource: builds_for_projects
+      x-stackql-resource: builds
       x-stackql-method: list_builds_for_project
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: ListBuildsForProjectOutputDisplay
@@ -1585,7 +1557,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListCommandExecutionsForSandboxOutput'
-      x-stackql-resource: command_executions_for_sandboxes
+      x-stackql-resource: command_executions
       x-stackql-method: list_command_executions_for_sandbox
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.commandExecutions
@@ -1907,7 +1879,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListReportsForReportGroupOutputDisplay'
-      x-stackql-resource: reports_for_report_groups
+      x-stackql-resource: reports
       x-stackql-method: list_reports_for_report_group
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: ListReportsForReportGroupOutputDisplay
@@ -2012,7 +1984,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListSandboxesForProjectOutputDisplay'
-      x-stackql-resource: sandboxes_for_projects
+      x-stackql-resource: sandboxes
       x-stackql-method: list_sandboxes_for_project
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: ListSandboxesForProjectOutputDisplay
@@ -2252,7 +2224,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RetryBuildOutput'
-      x-stackql-resource: retry_build
+      x-stackql-resource: builds
       x-stackql-method: retry_build
       x-stackql-verb: EXEC
   /RetryBuildBatch:
@@ -2295,7 +2267,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RetryBuildBatchOutput'
-      x-stackql-resource: retry_build_batch
+      x-stackql-resource: build_batches
       x-stackql-method: retry_build_batch
       x-stackql-verb: EXEC
   /StartBuild:
@@ -2488,7 +2460,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartBuildOutput'
-      x-stackql-resource: build
+      x-stackql-resource: builds
       x-stackql-method: start_build
       x-stackql-verb: EXEC
   /StartBuildBatch:
@@ -2658,7 +2630,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartBuildBatchOutput'
-      x-stackql-resource: builds
+      x-stackql-resource: build_batches
       x-stackql-method: start_build_batch
       x-stackql-verb: EXEC
   /StartCommandExecution:
@@ -2701,7 +2673,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartCommandExecutionOutput'
-      x-stackql-resource: sandboxes
+      x-stackql-resource: command_executions
       x-stackql-method: start_command_execution
       x-stackql-verb: EXEC
   /StartSandbox:
@@ -2738,7 +2710,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartSandboxOutput'
-      x-stackql-resource: sandbox
+      x-stackql-resource: sandboxes
       x-stackql-method: start_sandbox
       x-stackql-verb: EXEC
   /StartSandboxConnection:
@@ -2810,7 +2782,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StopBuildOutput'
-      x-stackql-resource: build
+      x-stackql-resource: builds
       x-stackql-method: stop_build
       x-stackql-verb: EXEC
   /StopBuildBatch:
@@ -2846,7 +2818,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StopBuildBatchOutput'
-      x-stackql-resource: builds
+      x-stackql-resource: build_batches
       x-stackql-method: stop_build_batch
       x-stackql-verb: EXEC
   /StopSandbox:
@@ -2882,7 +2854,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StopSandboxOutput'
-      x-stackql-resource: sandbox
+      x-stackql-resource: sandboxes
       x-stackql-method: stop_sandbox
       x-stackql-verb: EXEC
   /UpdateFleet:
@@ -5861,24 +5833,12 @@ components:
         buildsNotDeleted:
           $ref: '#/components/schemas/BuildsNotDeleted'
           description: An array of BuildNotDeleted objects that specify the builds that could not be deleted.
-    DeleteFleetOutput:
-      type: object
-    DeleteProjectOutput:
-      type: object
-    DeleteReportOutput:
-      type: object
-    DeleteReportGroupOutput:
-      type: object
-    DeleteResourcePolicyOutput:
-      type: object
     DeleteSourceCredentialsOutput:
       type: object
       properties:
         arn:
           $ref: '#/components/schemas/NonEmptyString'
           description: The Amazon Resource Name (ARN) of the token.
-    DeleteWebhookOutput:
-      type: object
     PageSize:
       type: integer
       minimum: 1
@@ -6085,8 +6045,6 @@ components:
         arn:
           $ref: '#/components/schemas/NonEmptyString'
           description: The Amazon Resource Name (ARN) of the token.
-    InvalidateProjectCacheOutput:
-      type: object
     BuildBatchFilter:
       description: Specifies filters when retrieving batch builds.
       type: object

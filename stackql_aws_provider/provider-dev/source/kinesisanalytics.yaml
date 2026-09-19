@@ -61,10 +61,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/AddApplicationCloudWatchLoggingOptionResponse'
       x-stackql-resource: applications
       x-stackql-method: add_application_cloud_watch_logging_option
       x-stackql-verb: UPDATE
@@ -114,10 +110,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/AddApplicationInputResponse'
       x-stackql-resource: applications
       x-stackql-method: add_application_input
       x-stackql-verb: UPDATE
@@ -169,10 +161,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/AddApplicationInputProcessingConfigurationResponse'
       x-stackql-resource: applications
       x-stackql-method: add_application_input_processing_configuration
       x-stackql-verb: UPDATE
@@ -230,10 +218,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/AddApplicationOutputResponse'
       x-stackql-resource: applications
       x-stackql-method: add_application_output
       x-stackql-verb: UPDATE
@@ -288,10 +272,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/AddApplicationReferenceDataSourceResponse'
       x-stackql-resource: applications
       x-stackql-method: add_application_reference_data_source
       x-stackql-verb: UPDATE
@@ -427,10 +407,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteApplicationResponse'
       x-stackql-resource: applications
       x-stackql-method: delete_application
       x-stackql-verb: DELETE
@@ -475,10 +451,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteApplicationCloudWatchLoggingOptionResponse'
       x-stackql-resource: applications
       x-stackql-method: delete_application_cloud_watch_logging_option
       x-stackql-verb: DELETE
@@ -522,10 +494,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteApplicationInputProcessingConfigurationResponse'
       x-stackql-resource: applications
       x-stackql-method: delete_application_input_processing_configuration
       x-stackql-verb: DELETE
@@ -575,10 +543,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteApplicationOutputResponse'
       x-stackql-resource: applications
       x-stackql-method: delete_application_output
       x-stackql-verb: DELETE
@@ -628,10 +592,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteApplicationReferenceDataSourceResponse'
       x-stackql-resource: applications
       x-stackql-method: delete_application_reference_data_source
       x-stackql-verb: DELETE
@@ -730,7 +690,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DiscoverInputSchemaResponse'
-      x-stackql-resource: discover_input_schema
+      x-stackql-resource: input_schemas
       x-stackql-method: discover_input_schema
       x-stackql-verb: EXEC
   /ListApplications:
@@ -858,10 +818,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/StartApplicationResponse'
       x-stackql-resource: applications
       x-stackql-method: start_application
       x-stackql-verb: EXEC
@@ -900,10 +856,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/StopApplicationResponse'
       x-stackql-resource: applications
       x-stackql-method: stop_application
       x-stackql-verb: EXEC
@@ -942,10 +894,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -982,10 +930,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -1032,10 +976,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateApplicationResponse'
       x-stackql-resource: applications
       x-stackql-method: update_application
       x-stackql-verb: UPDATE
@@ -1119,8 +1059,6 @@ components:
       minLength: 1
       maxLength: 2048
       pattern: arn:aws:iam::\d{12}:role/?[a-zA-Z_0-9+=,.@\-_/]+
-    AddApplicationCloudWatchLoggingOptionResponse:
-      type: object
     Input:
       description: When you configure the application input, you specify the streaming source, the in-application stream name
         that is created, and the mapping between the two. For more information, see Configuring Application Input.
@@ -1351,15 +1289,11 @@ components:
     RecordColumnSqlType:
       type: string
       minLength: 1
-    AddApplicationInputResponse:
-      type: object
     Id:
       type: string
       minLength: 1
       maxLength: 50
       pattern: '[a-zA-Z0-9_.-]+'
-    AddApplicationInputProcessingConfigurationResponse:
-      type: object
     Output:
       description: Describes application output configuration in which you identify an in-application stream and a destination
         where you want the in-application stream data to be written. The destination can be an Amazon Kinesis stream or an
@@ -1446,8 +1380,6 @@ components:
           description: Specifies the format of the records on the output stream.
       required:
       - RecordFormatType
-    AddApplicationOutputResponse:
-      type: object
     ReferenceDataSource:
       description: Describes the reference data source by providing the source information (S3 bucket name and object key
         name), the resulting in-application table name that is created, and the necessary schema to map the data elements
@@ -1505,8 +1437,6 @@ components:
       type: string
       minLength: 1
       maxLength: 1024
-    AddApplicationReferenceDataSourceResponse:
-      type: object
     ApplicationDescription:
       type: string
       minLength: 0
@@ -1596,16 +1526,6 @@ components:
     Timestamp:
       type: string
       format: date-time
-    DeleteApplicationResponse:
-      type: object
-    DeleteApplicationCloudWatchLoggingOptionResponse:
-      type: object
-    DeleteApplicationInputProcessingConfigurationResponse:
-      type: object
-    DeleteApplicationOutputResponse:
-      type: object
-    DeleteApplicationReferenceDataSourceResponse:
-      type: object
     DescribeApplicationResponse:
       type: object
       properties:
@@ -2004,18 +1924,10 @@ components:
       required:
       - Id
       - InputStartingPositionConfiguration
-    StartApplicationResponse:
-      type: object
-    StopApplicationResponse:
-      type: object
-    TagResourceResponse:
-      type: object
     TagKeys:
       type: array
       items:
         $ref: '#/components/schemas/TagKey'
-    UntagResourceResponse:
-      type: object
     ApplicationUpdate:
       description: Describes updates to apply to an existing Amazon Kinesis Analytics application.
       type: object
@@ -2268,5 +2180,3 @@ components:
             the IAM role used must have the PutLogEvents policy action enabled.'
       required:
       - CloudWatchLoggingOptionId
-    UpdateApplicationResponse:
-      type: object

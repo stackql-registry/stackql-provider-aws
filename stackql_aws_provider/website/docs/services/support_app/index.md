@@ -25,11 +25,11 @@ total resources: __4__
 ## Resources
 <div class="row">
 <div class="providerDocColumn">
-<a href="/services/support_app/account_alias/">account_alias</a><br />
+<a href="/services/support_app/account_aliases/">account_aliases</a><br />
 <a href="/services/support_app/slack_channel_configurations/">slack_channel_configurations</a>
 </div>
 <div class="providerDocColumn">
 <a href="/services/support_app/slack_workspace_configurations/">slack_workspace_configurations</a><br />
-<a href="/services/support_app/slack_workspace_for_organizations/">slack_workspace_for_organizations</a>
+<a href="/services/support_app/slack_workspaces/">slack_workspaces</a>
 </div>
 </div>

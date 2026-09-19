@@ -52,27 +52,27 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="application_quota" /></td>
     <td><code>string</code></td>
-    <td>The quota for applications in the AWS account.</td>
+    <td>The quota for applications in the Amazon Web Services account.</td>
 </tr>
 <tr>
     <td><CopyableCode code="application_version_quota" /></td>
     <td><code>string</code></td>
-    <td>The quota for application versions in the AWS account.</td>
+    <td>The quota for application versions in the Amazon Web Services account.</td>
 </tr>
 <tr>
     <td><CopyableCode code="configuration_template_quota" /></td>
     <td><code>string</code></td>
-    <td>The quota for configuration templates in the AWS account.</td>
+    <td>The quota for configuration templates in the Amazon Web Services account.</td>
 </tr>
 <tr>
     <td><CopyableCode code="custom_platform_quota" /></td>
     <td><code>string</code></td>
-    <td>The quota for custom platforms in the AWS account.</td>
+    <td>The quota for custom platforms in the Amazon Web Services account.</td>
 </tr>
 <tr>
     <td><CopyableCode code="environment_quota" /></td>
     <td><code>string</code></td>
-    <td>The quota for environments in the AWS account.</td>
+    <td>The quota for environments in the Amazon Web Services account.</td>
 </tr>
 </tbody>
 </table>
@@ -99,7 +99,7 @@ The following methods are available for this resource:
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>Returns attributes related to AWS Elastic Beanstalk that are associated with the calling AWS account. The result currently has one set of attributes—resource quotas.</td>
+    <td>Returns attributes related to Elastic Beanstalk that are associated with the calling Amazon Web Services account. The result currently has one set of attributes—resource quotas. This action only returns information about resources that the calling principle has IAM permissions to access. For example, consider a case where a user only has permission to access one of three resources. When the user calls the this action, the response will only include the one resource that the user has permission to access instead of all three resources. If the user doesn’t have access to any of the resources an empty result is returned. The AWSElasticBeanstalkReadOnly managed policy allows operators to view information about resources related to Elastic Beanstalk. For more information, see Managing Elastic Beanstalk user policies in the Elastic Beanstalk Developer Guide. For detailed instructions to attach a policy to a user or group, see the section Controlling access with managed policies in the same topic.</td>
 </tr>
 </tbody>
 </table>
@@ -135,7 +135,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 >
 <TabItem value="describe_account_attributes">
 
-Returns attributes related to AWS Elastic Beanstalk that are associated with the calling AWS account. The result currently has one set of attributes—resource quotas.
+Returns attributes related to Elastic Beanstalk that are associated with the calling Amazon Web Services account. The result currently has one set of attributes—resource quotas. This action only returns information about resources that the calling principle has IAM permissions to access. For example, consider a case where a user only has permission to access one of three resources. When the user calls the this action, the response will only include the one resource that the user has permission to access instead of all three resources. If the user doesn’t have access to any of the resources an empty result is returned. The AWSElasticBeanstalkReadOnly managed policy allows operators to view information about resources related to Elastic Beanstalk. For more information, see Managing Elastic Beanstalk user policies in the Elastic Beanstalk Developer Guide. For detailed instructions to attach a policy to a user or group, see the section Controlling access with managed policies in the same topic.
 
 ```sql
 SELECT

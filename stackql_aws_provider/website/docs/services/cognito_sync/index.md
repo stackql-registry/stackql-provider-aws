@@ -18,7 +18,7 @@ cognito_sync service documentation.
 
 :::info[Service Summary]
 
-total resources: __8__  
+total resources: __9__  
 
 :::
 
@@ -28,12 +28,13 @@ total resources: __8__
 <a href="/services/cognito_sync/bulk_publish_details/">bulk_publish_details</a><br />
 <a href="/services/cognito_sync/cognito_events/">cognito_events</a><br />
 <a href="/services/cognito_sync/datasets/">datasets</a><br />
-<a href="/services/cognito_sync/devices/">devices</a>
+<a href="/services/cognito_sync/devices/">devices</a><br />
+<a href="/services/cognito_sync/identity_pool_configurations/">identity_pool_configurations</a>
 </div>
 <div class="providerDocColumn">
-<a href="/services/cognito_sync/identity_pool_configurations/">identity_pool_configurations</a><br />
 <a href="/services/cognito_sync/identity_pool_usages/">identity_pool_usages</a><br />
 <a href="/services/cognito_sync/identity_usages/">identity_usages</a><br />
+<a href="/services/cognito_sync/publishes/">publishes</a><br />
 <a href="/services/cognito_sync/records/">records</a>
 </div>
 </div>

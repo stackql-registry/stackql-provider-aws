@@ -25,7 +25,7 @@ total resources: __9__
 ## Resources
 <div class="row">
 <div class="providerDocColumn">
-<a href="/services/arc_region_switch/plan_evaluation_status/">plan_evaluation_status</a><br />
+<a href="/services/arc_region_switch/plan_evaluation_statuses/">plan_evaluation_statuses</a><br />
 <a href="/services/arc_region_switch/plan_execution_events/">plan_execution_events</a><br />
 <a href="/services/arc_region_switch/plan_executions/">plan_executions</a><br />
 <a href="/services/arc_region_switch/plan_in_regions/">plan_in_regions</a><br />

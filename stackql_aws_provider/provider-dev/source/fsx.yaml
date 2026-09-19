@@ -108,7 +108,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CancelDataRepositoryTaskResponse'
-      x-stackql-resource: data_repository_task
+      x-stackql-resource: data_repository_tasks
       x-stackql-method: cancel_data_repository_task
       x-stackql-verb: EXEC
   /CopyBackup:
@@ -176,7 +176,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CopyBackupResponse'
-      x-stackql-resource: backup
+      x-stackql-resource: backups
       x-stackql-method: copy_backup
       x-stackql-verb: EXEC
   /CopySnapshotAndUpdateVolume:
@@ -233,7 +233,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CopySnapshotAndUpdateVolumeResponse'
-      x-stackql-resource: snapshots
+      x-stackql-resource: volumes
       x-stackql-method: copy_snapshot_and_update_volume
       x-stackql-verb: EXEC
   /CreateAndAttachS3AccessPoint:
@@ -2167,7 +2167,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RestoreVolumeFromSnapshotResponse'
-      x-stackql-resource: volumes
+      x-stackql-resource: snapshots
       x-stackql-method: restore_volume_from_snapshot
       x-stackql-verb: EXEC
   /StartMisconfiguredStateRecovery:
@@ -2242,10 +2242,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -2283,10 +2279,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -7311,17 +7303,11 @@ components:
       properties:
         FileSystem:
           $ref: '#/components/schemas/FileSystem'
-    TagResourceResponse:
-      description: The response object for the TagResource operation.
-      type: object
     TagKeys:
       description: A list of TagKey values, with a maximum of 50 elements.
       type: array
       items:
         $ref: '#/components/schemas/TagKey'
-    UntagResourceResponse:
-      description: The response object for UntagResource action.
-      type: object
     UpdateDataRepositoryAssociationResponse:
       type: object
       properties:

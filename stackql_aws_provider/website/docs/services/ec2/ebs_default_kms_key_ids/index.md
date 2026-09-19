@@ -88,6 +88,13 @@ The following methods are available for this resource:
     <td><a href="#parameter-DryRun"><code>DryRun</code></a></td>
     <td>Changes the default KMS key for EBS encryption by default for your account in this Region. Amazon Web Services creates a unique Amazon Web Services managed KMS key in each Region for use with encryption by default. If you change the default KMS key to a symmetric customer managed KMS key, it is used instead of the Amazon Web Services managed KMS key. Amazon EBS does not support asymmetric KMS keys. If you delete or disable the customer managed KMS key that you specified for use with encryption by default, your instances will fail to launch. For more information, see Amazon EBS encryption in the Amazon EBS User Guide.</td>
 </tr>
+<tr>
+    <td><a href="#reset_ebs_default_kms_key_id"><CopyableCode code="reset_ebs_default_kms_key_id" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td><a href="#parameter-DryRun"><code>DryRun</code></a></td>
+    <td>Resets the default KMS key for EBS encryption for your account in this Region to the Amazon Web Services managed KMS key for EBS. After resetting the default KMS key to the Amazon Web Services managed KMS key, you can continue to encrypt by a customer managed KMS key by specifying it when you create the volume. For more information, see Amazon EBS encryption in the Amazon EBS User Guide.</td>
+</tr>
 </tbody>
 </table>
 
@@ -168,6 +175,28 @@ AND region = '{{ region }}' --required
 AND DryRun = {{ DryRun}}
 RETURNING
 kms_key_id;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="reset_ebs_default_kms_key_id"
+    values={[
+        { label: 'reset_ebs_default_kms_key_id', value: 'reset_ebs_default_kms_key_id' }
+    ]}
+>
+<TabItem value="reset_ebs_default_kms_key_id">
+
+Resets the default KMS key for EBS encryption for your account in this Region to the Amazon Web Services managed KMS key for EBS. After resetting the default KMS key to the Amazon Web Services managed KMS key, you can continue to encrypt by a customer managed KMS key by specifying it when you create the volume. For more information, see Amazon EBS encryption in the Amazon EBS User Guide.
+
+```sql
+EXEC aws.ec2.ebs_default_kms_key_ids.reset_ebs_default_kms_key_id 
+@region='{{ region }}' --required, 
+@DryRun={{ DryRun }}
+;
 ```
 </TabItem>
 </Tabs>

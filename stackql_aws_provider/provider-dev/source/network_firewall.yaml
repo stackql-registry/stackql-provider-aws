@@ -57,7 +57,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AcceptNetworkFirewallTransitGatewayAttachmentResponse'
-      x-stackql-resource: network_firewall_transit_gateway_attachment
+      x-stackql-resource: network_firewall_transit_gateway_attachments
       x-stackql-method: accept_network_firewall_transit_gateway_attachment
       x-stackql-verb: EXEC
   /AssociateAvailabilityZones:
@@ -1338,10 +1338,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteResourcePolicyResponse'
       x-stackql-resource: resource_policies
       x-stackql-method: delete_resource_policy
       x-stackql-verb: DELETE
@@ -1579,7 +1575,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DescribeFirewallMetadataResponse'
-      x-stackql-resource: firewall_metadatas
+      x-stackql-resource: firewall_metadata
       x-stackql-method: describe_firewall_metadata
       x-stackql-verb: SELECT
   /DescribeFirewallPolicy:
@@ -2001,7 +1997,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DescribeRuleGroupMetadataResponse'
-      x-stackql-resource: rule_group_metadatas
+      x-stackql-resource: rule_group_metadata
       x-stackql-method: describe_rule_group_metadata
       x-stackql-verb: SELECT
   /DescribeRuleGroupSummary:
@@ -3106,10 +3102,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PutResourcePolicyResponse'
       x-stackql-resource: resource_policies
       x-stackql-method: put_resource_policy
       x-stackql-verb: REPLACE
@@ -3152,7 +3144,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RejectNetworkFirewallTransitGatewayAttachmentResponse'
-      x-stackql-resource: network_firewall_transit_gateway_attachment
+      x-stackql-resource: network_firewall_transit_gateway_attachments
       x-stackql-method: reject_network_firewall_transit_gateway_attachment
       x-stackql-verb: EXEC
   /StartAnalysisReport:
@@ -3197,7 +3189,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartAnalysisReportResponse'
-      x-stackql-resource: analysis_report
+      x-stackql-resource: analysis_reports
       x-stackql-method: start_analysis_report
       x-stackql-verb: EXEC
   /StartFlowCapture:
@@ -3357,10 +3349,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -3400,10 +3388,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -5266,6 +5250,7 @@ components:
       - PROVISIONING
       - DELETING
       - READY
+      - FAILED
     ConfigurationSyncState:
       type: string
       enum:
@@ -7043,8 +7028,6 @@ components:
         ProxyRuleGroup:
           $ref: '#/components/schemas/ProxyRuleGroup'
           description: The properties that define the proxy rule group with the newly created proxy rule(s).
-    DeleteResourcePolicyResponse:
-      type: object
     DeleteRuleGroupResponse:
       type: object
       properties:
@@ -8290,8 +8273,6 @@ components:
         VpcEndpointAssociationArn:
           $ref: '#/components/schemas/ResourceArn'
           description: The Amazon Resource Name (ARN) of a VPC endpoint association.
-    PutResourcePolicyResponse:
-      type: object
     RejectNetworkFirewallTransitGatewayAttachmentResponse:
       type: object
       properties:
@@ -8348,14 +8329,10 @@ components:
           description: Returns the status of the flow operation. This string is returned in the responses to start, list,
             and describe commands. If the status is COMPLETED_WITH_ERRORS, results may be returned with any number of Flows
             missing from the response. If the status is FAILED, Flows returned will be empty.
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
         $ref: '#/components/schemas/TagKey'
-    UntagResourceResponse:
-      type: object
     UpdateAvailabilityZoneChangeProtectionResponse:
       type: object
       properties:

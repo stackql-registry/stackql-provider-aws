@@ -3407,6 +3407,79 @@ components:
           - $ref: "#/components/x-stackQL-resources/clusters/methods/update_cluster"
         delete:
           - $ref: "#/components/x-stackQL-resources/clusters/methods/delete_cluster"
+    snapshots:
+      id: aws.memorydb.snapshots
+      name: snapshots
+      title: snapshots
+      methods:
+        copy_snapshot:
+          operation:
+            $ref: "#/paths/~1CopySnapshot/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        create_snapshot:
+          operation:
+            $ref: "#/paths/~1CreateSnapshot/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        delete_snapshot:
+          operation:
+            $ref: "#/paths/~1DeleteSnapshot/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        describe_snapshots:
+          operation:
+            $ref: "#/paths/~1DescribeSnapshots/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.Snapshots
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/snapshots/methods/describe_snapshots"
+        insert:
+          - $ref: "#/components/x-stackQL-resources/snapshots/methods/create_snapshot"
+        update: []
+        delete:
+          - $ref: "#/components/x-stackQL-resources/snapshots/methods/delete_snapshot"
     acls:
       id: aws.memorydb.acls
       name: acls
@@ -3607,66 +3680,6 @@ components:
           - $ref: "#/components/x-stackQL-resources/parameter_groups/methods/update_parameter_group"
         delete:
           - $ref: "#/components/x-stackQL-resources/parameter_groups/methods/delete_parameter_group"
-    snapshots:
-      id: aws.memorydb.snapshots
-      name: snapshots
-      title: snapshots
-      methods:
-        create_snapshot:
-          operation:
-            $ref: "#/paths/~1CreateSnapshot/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        delete_snapshot:
-          operation:
-            $ref: "#/paths/~1DeleteSnapshot/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        describe_snapshots:
-          operation:
-            $ref: "#/paths/~1DescribeSnapshots/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.Snapshots
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            pagination:
-              requestToken:
-                key: NextToken
-                location: body
-              responseToken:
-                key: $.NextToken
-                location: body
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/snapshots/methods/describe_snapshots"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/snapshots/methods/create_snapshot"
-        update: []
-        delete:
-          - $ref: "#/components/x-stackQL-resources/snapshots/methods/delete_snapshot"
     subnet_groups:
       id: aws.memorydb.subnet_groups
       name: subnet_groups

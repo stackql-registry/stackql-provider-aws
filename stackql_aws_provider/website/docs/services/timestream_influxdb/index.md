@@ -18,7 +18,7 @@ timestream_influxdb service documentation.
 
 :::info[Service Summary]
 
-total resources: __6__  
+total resources: __5__  
 
 :::
 
@@ -30,7 +30,6 @@ total resources: __6__
 <a href="/services/timestream_influxdb/db_instances/">db_instances</a>
 </div>
 <div class="providerDocColumn">
-<a href="/services/timestream_influxdb/db_instances_for_clusters/">db_instances_for_clusters</a><br />
 <a href="/services/timestream_influxdb/db_parameter_groups/">db_parameter_groups</a><br />
 <a href="/services/timestream_influxdb/tags/">tags</a>
 </div>

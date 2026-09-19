@@ -42,10 +42,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/AssociateAssessmentReportEvidenceFolderResponse"
   /assessments/{assessment_id}/batchAssociateToAssessmentReport:
     put:
       operationId: BatchAssociateAssessmentReportEvidence
@@ -455,10 +451,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteAssessmentResponse"
     get:
       operationId: GetAssessment
       description: Gets information about a specified assessment.
@@ -526,10 +518,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteAssessmentFrameworkResponse"
     get:
       operationId: GetAssessmentFramework
       description: Gets information about a specified framework.
@@ -602,10 +590,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteAssessmentFrameworkShareResponse"
     put:
       operationId: UpdateAssessmentFrameworkShare
       description: Updates a share request for a custom framework in Audit Manager.
@@ -657,10 +641,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteAssessmentReportResponse"
   /controls/{control_id}:
     delete:
       operationId: DeleteControl
@@ -675,10 +655,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteControlResponse"
     get:
       operationId: GetControl
       description: Gets information about a specified control.
@@ -764,10 +740,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeregisterOrganizationAdminAccountResponse"
   /assessments/{assessment_id}/disassociateFromAssessmentReport:
     put:
       operationId: DisassociateAssessmentReportEvidenceFolder
@@ -793,10 +765,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DisassociateAssessmentReportEvidenceFolderResponse"
   /account/status:
     get:
       operationId: GetAccountStatus
@@ -1439,10 +1407,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TagResourceResponse"
     delete:
       operationId: UntagResource
       description: Removes a tag from a resource in Audit Manager.
@@ -1462,10 +1426,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UntagResourceResponse"
   /account/registerAccount:
     post:
       operationId: RegisterAccount
@@ -1760,8 +1720,6 @@ components:
       minLength: 36
       maxLength: 36
       pattern: ^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$
-    AssociateAssessmentReportEvidenceFolderResponse:
-      type: object
     EvidenceIds:
       type: array
       items:
@@ -2747,21 +2705,11 @@ components:
         control:
           $ref: "#/components/schemas/Control"
           description: The new control that the CreateControl API returned.
-    DeleteAssessmentResponse:
-      type: object
-    DeleteAssessmentFrameworkResponse:
-      type: object
     ShareRequestType:
       type: string
       enum:
         - SENT
         - RECEIVED
-    DeleteAssessmentFrameworkShareResponse:
-      type: object
-    DeleteAssessmentReportResponse:
-      type: object
-    DeleteControlResponse:
-      type: object
     DeregisterAccountResponse:
       type: object
       properties:
@@ -2774,10 +2722,6 @@ components:
         - ACTIVE
         - INACTIVE
         - PENDING_ACTIVATION
-    DeregisterOrganizationAdminAccountResponse:
-      type: object
-    DisassociateAssessmentReportEvidenceFolderResponse:
-      type: object
     GetAccountStatusResponse:
       type: object
       properties:
@@ -3819,8 +3763,6 @@ components:
         assessmentFrameworkShareRequest:
           $ref: "#/components/schemas/AssessmentFrameworkShareRequest"
           description: The share request that's created by the StartAssessmentFrameworkShare API.
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
@@ -3830,8 +3772,6 @@ components:
       minLength: 1
       maxLength: 128
       pattern: ^(?!aws:)[a-zA-Z+-=._:/]+$
-    UntagResourceResponse:
-      type: object
     UpdateAssessmentResponse:
       type: object
       properties:
@@ -3944,7 +3884,6 @@ components:
             $ref: "#/paths/~1assessments~1{assessment_id}~1associateToAssessmentReport/put"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -3977,7 +3916,6 @@ components:
             $ref: "#/paths/~1assessments~1{assessment_id}~1disassociateFromAssessmentReport/put"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -3990,9 +3928,27 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.evidenceFolder
+        get_evidence_folders_by_assessment:
+          operation:
+            $ref: "#/paths/~1assessments~1{assessment_id}~1evidenceFolders/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+        get_evidence_folders_by_assessment_control:
+          operation:
+            $ref: "#/paths/~1assessments~1{assessment_id}~1evidenceFolders-by-assessment-control~1{control_set_id}~1{control_id}/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/evidence_folders/methods/get_evidence_folder"
+          - $ref: "#/components/x-stackQL-resources/evidence_folders/methods/get_evidence_folders_by_assessment_control"
+          - $ref: "#/components/x-stackQL-resources/evidence_folders/methods/get_evidence_folders_by_assessment"
         insert: []
         update:
           - $ref: "#/components/x-stackQL-resources/evidence_folders/methods/associate_assessment_report_evidence_folder"
@@ -4059,7 +4015,6 @@ components:
             $ref: "#/paths/~1assessments~1{assessment_id}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         get_assessment:
           operation:
             $ref: "#/paths/~1assessments~1{assessment_id}/get"
@@ -4106,8 +4061,8 @@ components:
         insert:
           - $ref: "#/components/x-stackQL-resources/assessments/methods/create_assessment"
         update:
-          - $ref: "#/components/x-stackQL-resources/assessments/methods/update_assessment_control_set_status"
           - $ref: "#/components/x-stackQL-resources/assessments/methods/update_assessment"
+          - $ref: "#/components/x-stackQL-resources/assessments/methods/update_assessment_control_set_status"
           - $ref: "#/components/x-stackQL-resources/assessments/methods/update_assessment_status"
         delete:
           - $ref: "#/components/x-stackQL-resources/assessments/methods/delete_assessment"
@@ -4140,7 +4095,6 @@ components:
             $ref: "#/paths/~1assessmentFrameworks~1{framework_id}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         get_assessment_framework:
           operation:
             $ref: "#/paths/~1assessmentFrameworks~1{framework_id}/get"
@@ -4164,7 +4118,6 @@ components:
             $ref: "#/paths/~1assessmentFrameworkShareRequests~1{request_id}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
         update_assessment_framework_share:
@@ -4199,8 +4152,8 @@ components:
           - $ref: "#/components/x-stackQL-resources/assessment_frameworks/methods/update_assessment_framework"
           - $ref: "#/components/x-stackQL-resources/assessment_frameworks/methods/update_assessment_framework_share"
         delete:
-          - $ref: "#/components/x-stackQL-resources/assessment_frameworks/methods/delete_assessment_framework_share"
           - $ref: "#/components/x-stackQL-resources/assessment_frameworks/methods/delete_assessment_framework"
+          - $ref: "#/components/x-stackQL-resources/assessment_frameworks/methods/delete_assessment_framework_share"
     assessment_reports:
       id: aws.auditmanager.assessment_reports
       name: assessment_reports
@@ -4222,7 +4175,6 @@ components:
             $ref: "#/paths/~1assessments~1{assessment_id}~1reports~1{assessment_report_id}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         list_assessment_reports:
           operation:
             $ref: "#/paths/~1assessmentReports/get"
@@ -4279,7 +4231,6 @@ components:
             $ref: "#/paths/~1controls~1{control_id}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         get_control:
           operation:
             $ref: "#/paths/~1controls~1{control_id}/get"
@@ -4359,7 +4310,6 @@ components:
             $ref: "#/paths/~1account~1deregisterOrganizationAdminAccount/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -4390,10 +4340,10 @@ components:
         update: []
         delete:
           - $ref: "#/components/x-stackQL-resources/organization_admin_accounts/methods/deregister_organization_admin_account"
-    account_status:
-      id: aws.auditmanager.account_status
-      name: account_status
-      title: account_status
+    account_statuses:
+      id: aws.auditmanager.account_statuses
+      name: account_statuses
+      title: account_statuses
       methods:
         get_account_status:
           operation:
@@ -4403,7 +4353,7 @@ components:
             mediaType: application/json
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/account_status/methods/get_account_status"
+          - $ref: "#/components/x-stackQL-resources/account_statuses/methods/get_account_status"
         insert: []
         update: []
         delete: []
@@ -4475,17 +4425,6 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.evidence
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/evidences/methods/get_evidence"
-        insert: []
-        update: []
-        delete: []
-    evidence_by_evidence_folders:
-      id: aws.auditmanager.evidence_by_evidence_folders
-      name: evidence_by_evidence_folders
-      title: evidence_by_evidence_folders
-      methods:
         get_evidence_by_evidence_folder:
           operation:
             $ref: "#/paths/~1assessments~1{assessment_id}~1controlSets~1{control_set_id}~1evidenceFolders~1{evidence_folder_id}~1evidence/get"
@@ -4496,7 +4435,8 @@ components:
             nativeCasing: pascal
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/evidence_by_evidence_folders/methods/get_evidence_by_evidence_folder"
+          - $ref: "#/components/x-stackQL-resources/evidences/methods/get_evidence"
+          - $ref: "#/components/x-stackQL-resources/evidences/methods/get_evidence_by_evidence_folder"
         insert: []
         update: []
         delete: []
@@ -4519,44 +4459,6 @@ components:
         insert: []
         update: []
         delete: []
-    evidence_folders_by_assessments:
-      id: aws.auditmanager.evidence_folders_by_assessments
-      name: evidence_folders_by_assessments
-      title: evidence_folders_by_assessments
-      methods:
-        get_evidence_folders_by_assessment:
-          operation:
-            $ref: "#/paths/~1assessments~1{assessment_id}~1evidenceFolders/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/evidence_folders_by_assessments/methods/get_evidence_folders_by_assessment"
-        insert: []
-        update: []
-        delete: []
-    evidence_folders_by_assessment_controls:
-      id: aws.auditmanager.evidence_folders_by_assessment_controls
-      name: evidence_folders_by_assessment_controls
-      title: evidence_folders_by_assessment_controls
-      methods:
-        get_evidence_folders_by_assessment_control:
-          operation:
-            $ref: "#/paths/~1assessments~1{assessment_id}~1evidenceFolders-by-assessment-control~1{control_set_id}~1{control_id}/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/evidence_folders_by_assessment_controls/methods/get_evidence_folders_by_assessment_control"
-        insert: []
-        update: []
-        delete: []
     insights:
       id: aws.auditmanager.insights
       name: insights
@@ -4569,17 +4471,6 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.insights
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/insights/methods/get_insights"
-        insert: []
-        update: []
-        delete: []
-    insights_by_assessments:
-      id: aws.auditmanager.insights_by_assessments
-      name: insights_by_assessments
-      title: insights_by_assessments
-      methods:
         get_insights_by_assessment:
           operation:
             $ref: "#/paths/~1insights~1assessments~1{assessment_id}/get"
@@ -4589,7 +4480,8 @@ components:
             objectKey: $.insights
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/insights_by_assessments/methods/get_insights_by_assessment"
+          - $ref: "#/components/x-stackQL-resources/insights/methods/get_insights_by_assessment"
+          - $ref: "#/components/x-stackQL-resources/insights/methods/get_insights"
         insert: []
         update: []
         delete: []
@@ -4640,10 +4532,10 @@ components:
         update:
           - $ref: "#/components/x-stackQL-resources/settings/methods/update_settings"
         delete: []
-    assessment_control_insights_by_control_domains:
-      id: aws.auditmanager.assessment_control_insights_by_control_domains
-      name: assessment_control_insights_by_control_domains
-      title: assessment_control_insights_by_control_domains
+    assessment_control_insights:
+      id: aws.auditmanager.assessment_control_insights
+      name: assessment_control_insights
+      title: assessment_control_insights
       methods:
         list_assessment_control_insights_by_control_domain:
           operation:
@@ -4655,7 +4547,7 @@ components:
             nativeCasing: pascal
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/assessment_control_insights_by_control_domains/methods/list_assessment_control_insights_by_control_domain"
+          - $ref: "#/components/x-stackQL-resources/assessment_control_insights/methods/list_assessment_control_insights_by_control_domain"
         insert: []
         update: []
         delete: []
@@ -4691,17 +4583,6 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/control_domain_insights/methods/list_control_domain_insights"
-        insert: []
-        update: []
-        delete: []
-    control_domain_insights_by_assessments:
-      id: aws.auditmanager.control_domain_insights_by_assessments
-      name: control_domain_insights_by_assessments
-      title: control_domain_insights_by_assessments
-      methods:
         list_control_domain_insights_by_assessment:
           operation:
             $ref: "#/paths/~1insights~1control-domains-by-assessment/get"
@@ -4712,14 +4593,15 @@ components:
             nativeCasing: pascal
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/control_domain_insights_by_assessments/methods/list_control_domain_insights_by_assessment"
+          - $ref: "#/components/x-stackQL-resources/control_domain_insights/methods/list_control_domain_insights_by_assessment"
+          - $ref: "#/components/x-stackQL-resources/control_domain_insights/methods/list_control_domain_insights"
         insert: []
         update: []
         delete: []
-    control_insights_by_control_domains:
-      id: aws.auditmanager.control_insights_by_control_domains
-      name: control_insights_by_control_domains
-      title: control_insights_by_control_domains
+    control_insights:
+      id: aws.auditmanager.control_insights
+      name: control_insights
+      title: control_insights
       methods:
         list_control_insights_by_control_domain:
           operation:
@@ -4731,14 +4613,14 @@ components:
             nativeCasing: pascal
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/control_insights_by_control_domains/methods/list_control_insights_by_control_domain"
+          - $ref: "#/components/x-stackQL-resources/control_insights/methods/list_control_insights_by_control_domain"
         insert: []
         update: []
         delete: []
-    keywords_for_data_sources:
-      id: aws.auditmanager.keywords_for_data_sources
-      name: keywords_for_data_sources
-      title: keywords_for_data_sources
+    keywords:
+      id: aws.auditmanager.keywords
+      name: keywords
+      title: keywords
       methods:
         list_keywords_for_data_source:
           operation:
@@ -4757,7 +4639,7 @@ components:
             nativeCasing: pascal
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/keywords_for_data_sources/methods/list_keywords_for_data_source"
+          - $ref: "#/components/x-stackQL-resources/keywords/methods/list_keywords_for_data_source"
         insert: []
         update: []
         delete: []
@@ -4796,7 +4678,6 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -4807,7 +4688,6 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
       sqlVerbs:

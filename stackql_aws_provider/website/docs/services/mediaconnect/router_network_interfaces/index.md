@@ -33,37 +33,13 @@ Creates, updates, deletes, gets or lists a <code>router_network_interfaces</code
 The following fields are returned by `SELECT` queries:
 
 <Tabs
-    defaultValue="batch_get_router_network_interface"
+    defaultValue="get_router_network_interface"
     values={[
-        { label: 'batch_get_router_network_interface', value: 'batch_get_router_network_interface' },
         { label: 'get_router_network_interface', value: 'get_router_network_interface' },
+        { label: 'batch_get_router_network_interface', value: 'batch_get_router_network_interface' },
         { label: 'list_router_network_interfaces', value: 'list_router_network_interfaces' }
     ]}
 >
-<TabItem value="batch_get_router_network_interface">
-
-<table>
-<thead>
-    <tr>
-    <th>Name</th>
-    <th>Datatype</th>
-    <th>Description</th>
-    </tr>
-</thead>
-<tbody>
-<tr>
-    <td><CopyableCode code="errors" /></td>
-    <td><code>array</code></td>
-    <td>An array of errors that occurred when retrieving the requested router network interfaces.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="router_network_interfaces" /></td>
-    <td><code>array</code></td>
-    <td>An array of router network interfaces that were successfully retrieved.</td>
-</tr>
-</tbody>
-</table>
-</TabItem>
 <TabItem value="get_router_network_interface">
 
 <table>
@@ -134,6 +110,30 @@ The following fields are returned by `SELECT` queries:
     <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the router network interface was last updated.</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
+<TabItem value="batch_get_router_network_interface">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="errors" /></td>
+    <td><code>array</code></td>
+    <td>An array of errors that occurred when retrieving the requested router network interfaces.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="router_network_interfaces" /></td>
+    <td><code>array</code></td>
+    <td>An array of router network interfaces that were successfully retrieved.</td>
 </tr>
 </tbody>
 </table>
@@ -220,18 +220,18 @@ The following methods are available for this resource:
 </thead>
 <tbody>
 <tr>
-    <td><a href="#batch_get_router_network_interface"><CopyableCode code="batch_get_router_network_interface" /></a></td>
-    <td><CopyableCode code="select" /></td>
-    <td><a href="#parameter-arns"><code>arns</code></a>, <a href="#parameter-region"><code>region</code></a></td>
-    <td></td>
-    <td>Retrieves information about multiple router network interfaces in AWS Elemental MediaConnect.</td>
-</tr>
-<tr>
     <td><a href="#get_router_network_interface"><CopyableCode code="get_router_network_interface" /></a></td>
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-arn"><code>arn</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td></td>
     <td>Retrieves information about a specific router network interface in AWS Elemental MediaConnect.</td>
+</tr>
+<tr>
+    <td><a href="#batch_get_router_network_interface"><CopyableCode code="batch_get_router_network_interface" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-arns"><code>arns</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Retrieves information about multiple router network interfaces in AWS Elemental MediaConnect.</td>
 </tr>
 <tr>
     <td><a href="#list_router_network_interfaces"><CopyableCode code="list_router_network_interfaces" /></a></td>
@@ -308,27 +308,13 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 ## `SELECT` examples
 
 <Tabs
-    defaultValue="batch_get_router_network_interface"
+    defaultValue="get_router_network_interface"
     values={[
-        { label: 'batch_get_router_network_interface', value: 'batch_get_router_network_interface' },
         { label: 'get_router_network_interface', value: 'get_router_network_interface' },
+        { label: 'batch_get_router_network_interface', value: 'batch_get_router_network_interface' },
         { label: 'list_router_network_interfaces', value: 'list_router_network_interfaces' }
     ]}
 >
-<TabItem value="batch_get_router_network_interface">
-
-Retrieves information about multiple router network interfaces in AWS Elemental MediaConnect.
-
-```sql
-SELECT
-errors,
-router_network_interfaces
-FROM aws.mediaconnect.router_network_interfaces
-WHERE arns = '{{ arns }}' -- required
-AND region = '{{ region }}' -- required
-;
-```
-</TabItem>
 <TabItem value="get_router_network_interface">
 
 Retrieves information about a specific router network interface in AWS Elemental MediaConnect.
@@ -349,6 +335,20 @@ tags,
 updated_at
 FROM aws.mediaconnect.router_network_interfaces
 WHERE arn = '{{ arn }}' -- required
+AND region = '{{ region }}' -- required
+;
+```
+</TabItem>
+<TabItem value="batch_get_router_network_interface">
+
+Retrieves information about multiple router network interfaces in AWS Elemental MediaConnect.
+
+```sql
+SELECT
+errors,
+router_network_interfaces
+FROM aws.mediaconnect.router_network_interfaces
+WHERE arns = '{{ arns }}' -- required
 AND region = '{{ region }}' -- required
 ;
 ```

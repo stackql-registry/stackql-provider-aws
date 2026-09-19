@@ -18,7 +18,7 @@ imagebuilder service documentation.
 
 :::info[Service Summary]
 
-total resources: __27__  
+total resources: __29__  
 
 :::
 
@@ -38,17 +38,19 @@ total resources: __27__
 <a href="/services/imagebuilder/image_policies/">image_policies</a><br />
 <a href="/services/imagebuilder/image_recipe_policies/">image_recipe_policies</a><br />
 <a href="/services/imagebuilder/image_recipes/">image_recipes</a><br />
-<a href="/services/imagebuilder/image_scan_finding_aggregations/">image_scan_finding_aggregations</a>
+<a href="/services/imagebuilder/image_scan_finding_aggregations/">image_scan_finding_aggregations</a><br />
+<a href="/services/imagebuilder/image_scan_findings/">image_scan_findings</a>
 </div>
 <div class="providerDocColumn">
-<a href="/services/imagebuilder/image_scan_findings/">image_scan_findings</a><br />
 <a href="/services/imagebuilder/images/">images</a><br />
 <a href="/services/imagebuilder/infrastructure_configurations/">infrastructure_configurations</a><br />
 <a href="/services/imagebuilder/lifecycle_execution_resources/">lifecycle_execution_resources</a><br />
 <a href="/services/imagebuilder/lifecycle_executions/">lifecycle_executions</a><br />
 <a href="/services/imagebuilder/lifecycle_policies/">lifecycle_policies</a><br />
 <a href="/services/imagebuilder/marketplace_resources/">marketplace_resources</a><br />
+<a href="/services/imagebuilder/resource_state_updates/">resource_state_updates</a><br />
 <a href="/services/imagebuilder/tags/">tags</a><br />
+<a href="/services/imagebuilder/vm_images/">vm_images</a><br />
 <a href="/services/imagebuilder/waiting_workflow_steps/">waiting_workflow_steps</a><br />
 <a href="/services/imagebuilder/workflow_build_versions/">workflow_build_versions</a><br />
 <a href="/services/imagebuilder/workflow_executions/">workflow_executions</a><br />

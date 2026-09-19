@@ -178,6 +178,20 @@ The following methods are available for this resource:
     <td></td>
     <td>Gets a list of InferRxNorm jobs that you have submitted.</td>
 </tr>
+<tr>
+    <td><a href="#start_rx_norm_inference_job"><CopyableCode code="start_rx_norm_inference_job" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-InputDataConfig"><code>InputDataConfig</code></a>, <a href="#parameter-OutputDataConfig"><code>OutputDataConfig</code></a>, <a href="#parameter-DataAccessRoleArn"><code>DataAccessRoleArn</code></a>, <a href="#parameter-LanguageCode"><code>LanguageCode</code></a></td>
+    <td></td>
+    <td>Starts an asynchronous job to detect medication entities and link them to the RxNorm ontology. Use the DescribeRxNormInferenceJob operation to track the status of a job.</td>
+</tr>
+<tr>
+    <td><a href="#stop_rx_norm_inference_job"><CopyableCode code="stop_rx_norm_inference_job" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-JobId"><code>JobId</code></a></td>
+    <td></td>
+    <td>Stops an InferRxNorm inference job in progress.</td>
+</tr>
 </tbody>
 </table>
 
@@ -246,6 +260,52 @@ comprehend_medical_async_job_properties_list,
 next_token
 FROM aws.comprehendmedical.rx_norm_inference_jobs
 WHERE region = '{{ region }}' -- required
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="start_rx_norm_inference_job"
+    values={[
+        { label: 'start_rx_norm_inference_job', value: 'start_rx_norm_inference_job' },
+        { label: 'stop_rx_norm_inference_job', value: 'stop_rx_norm_inference_job' }
+    ]}
+>
+<TabItem value="start_rx_norm_inference_job">
+
+Starts an asynchronous job to detect medication entities and link them to the RxNorm ontology. Use the DescribeRxNormInferenceJob operation to track the status of a job.
+
+```sql
+EXEC aws.comprehendmedical.rx_norm_inference_jobs.start_rx_norm_inference_job 
+@region='{{ region }}' --required 
+@@json=
+'{
+"InputDataConfig": "{{ InputDataConfig }}", 
+"OutputDataConfig": "{{ OutputDataConfig }}", 
+"DataAccessRoleArn": "{{ DataAccessRoleArn }}", 
+"JobName": "{{ JobName }}", 
+"ClientRequestToken": "{{ ClientRequestToken }}", 
+"KMSKey": "{{ KMSKey }}", 
+"LanguageCode": "{{ LanguageCode }}"
+}'
+;
+```
+</TabItem>
+<TabItem value="stop_rx_norm_inference_job">
+
+Stops an InferRxNorm inference job in progress.
+
+```sql
+EXEC aws.comprehendmedical.rx_norm_inference_jobs.stop_rx_norm_inference_job 
+@region='{{ region }}' --required 
+@@json=
+'{
+"JobId": "{{ JobId }}"
+}'
 ;
 ```
 </TabItem>

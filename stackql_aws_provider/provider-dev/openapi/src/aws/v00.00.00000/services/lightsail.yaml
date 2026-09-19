@@ -839,6 +839,15 @@ paths:
                 viewerMinimumTlsProtocolVersion:
                   $ref: "#/components/schemas/ViewerMinimumTlsProtocolVersionEnum"
                   description: The minimum TLS protocol version for the SSL/TLS certificate.
+                enablePrivateOriginAccess:
+                  $ref: "#/components/schemas/boolean"
+                  description: Specifies whether to enable private origin access for the distribution. With private origin access, the distribution can serve objects that aren't publicly accessible from a Lightsail bucket. Lightsail grants the distribution permission to read the bucket's objects. Enabling private origin access doesn't change the bucket's access settings, and you can still retrieve publicly accessible objects directly from the bucket's endpoint. You can enable private origin access only when the distribution's origin is a Lightsail bucket. If the origin is another resource type, the request fails.
+                defaultRootObject:
+                  $ref: "#/components/schemas/string"
+                  description: The object (for example, index.html) that the distribution returns when a viewer requests the root URL of the distribution (/) instead of a specific object. The object that you specify must be available from the origin.
+                customErrorResponses:
+                  $ref: "#/components/schemas/DistributionCustomErrorResponseList"
+                  description: An array of objects that describe the custom error responses for the distribution. With a custom error response, you can specify the page to return when the origin responds with a given HTTP error code. You can also specify the HTTP status code to send to the viewer.
               required:
                 - distributionName
                 - origin
@@ -1678,10 +1687,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteContainerImageResult"
   /DeleteContainerService:
     post:
       operationId: DeleteContainerService
@@ -1711,10 +1716,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteContainerServiceResult"
   /DeleteDisk:
     post:
       operationId: DeleteDisk
@@ -4181,6 +4182,33 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/GetOperationsForResourceResult"
+  /GetProfile:
+    post:
+      operationId: GetProfile
+      description: Returns information about the profile of the Amazon Lightsail account that makes the request. The response includes the profile type and, for accounts enrolled in the Lightsail partner program, the partner membership details.
+      parameters:
+        - name: X-Amz-Target
+          in: header
+          description: Action Header
+          required: false
+          schema:
+            type: string
+            enum:
+              - Lightsail_20161128.GetProfile
+            default: Lightsail_20161128.GetProfile
+      requestBody:
+        required: true
+        content:
+          application/x-amz-json-1.1:
+            schema:
+              type: object
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GetProfileResult"
   /GetRegions:
     post:
       operationId: GetRegions
@@ -5857,6 +5885,15 @@ paths:
                 useDefaultCertificate:
                   $ref: "#/components/schemas/boolean"
                   description: Indicates whether the default SSL/TLS certificate is attached to the distribution. The default value is true. When true, the distribution uses the default domain name such as d111111abcdef8.cloudfront.net. Set this value to false to attach a new certificate to the distribution.
+                enablePrivateOriginAccess:
+                  $ref: "#/components/schemas/boolean"
+                  description: Specifies whether to enable private origin access for the distribution. With private origin access, the distribution can serve objects that aren't publicly accessible from a Lightsail bucket. Lightsail grants the distribution permission to read the bucket's objects. Enabling private origin access doesn't change the bucket's access settings, and you can still retrieve publicly accessible objects directly from the bucket's endpoint. When you include this parameter, you must also include the origin parameter with the resource name, even if the origin is not changing. You can enable private origin access only when the distribution's origin is a Lightsail bucket. If the origin is another resource type, the request fails.
+                defaultRootObject:
+                  $ref: "#/components/schemas/string"
+                  description: The object (for example, index.html) that the distribution returns when a viewer requests the root URL of the distribution (/) instead of a specific object. The object that you specify must be available from the origin.
+                customErrorResponses:
+                  $ref: "#/components/schemas/DistributionCustomErrorResponseList"
+                  description: An array of objects that describe the custom error responses for the distribution. With a custom error response, you can specify the page to return when the origin responds with a given HTTP error code. You can also specify the HTTP status code to send to the viewer.
               required:
                 - distributionName
       responses:
@@ -6373,6 +6410,7 @@ components:
         - StartGUISession
         - StopGUISession
         - SetupInstanceHttps
+        - GetProfile
     OperationStatus:
       type: string
       enum:
@@ -7481,6 +7519,26 @@ components:
         - TLSv1.2_2018
         - TLSv1.2_2019
         - TLSv1.2_2021
+    DistributionCustomErrorResponseList:
+      type: array
+      items:
+        $ref: "#/components/schemas/DistributionCustomErrorResponse"
+    DistributionCustomErrorResponse:
+      description: Describes a custom error response for a Lightsail distribution. A custom error response specifies the page that the distribution returns to the viewer. It also specifies the HTTP status code that the distribution sends when the origin responds with a given HTTP error code.
+      type: object
+      properties:
+        errorCode:
+          $ref: "#/components/schemas/integer"
+          description: The HTTP error code from the origin that triggers the custom error response (for example, 403 or 404).
+        responseCode:
+          $ref: "#/components/schemas/string"
+          description: The HTTP status code that the distribution returns to the viewer for the custom error response.
+        responsePagePath:
+          $ref: "#/components/schemas/string"
+          description: The path to the custom error page that the distribution returns to the viewer (for example, /404.html). The path must begin with a forward slash (/) and reference an object that is available from the origin.
+        errorCachingMinTTL:
+          $ref: "#/components/schemas/long"
+          description: The minimum time, in seconds, that the distribution caches the custom error response before requesting the object again from the origin. If you don't specify a value, the default is 10 seconds.
     CreateDistributionResult:
       type: object
       properties:
@@ -7557,6 +7615,12 @@ components:
         viewerMinimumTlsProtocolVersion:
           $ref: "#/components/schemas/string"
           description: The minimum TLS protocol version that the distribution can use to communicate with viewers.
+        defaultRootObject:
+          $ref: "#/components/schemas/string"
+          description: The object (for example, index.html) that the distribution returns when a viewer requests the root URL of the distribution (/) instead of a specific object.
+        customErrorResponses:
+          $ref: "#/components/schemas/DistributionCustomErrorResponseList"
+          description: An array of objects that describe the custom error responses configured for the distribution.
     Origin:
       description: Describes the origin resource of an Amazon Lightsail content delivery network (CDN) distribution. An origin can be a Lightsail instance, bucket, or load balancer. A distribution pulls content from an origin, caches it, and serves it to viewers via a worldwide network of edge servers.
       type: object
@@ -7579,6 +7643,9 @@ components:
         ipAddressType:
           $ref: "#/components/schemas/OriginIpAddressTypeEnum"
           description: The IP address type that the distribution uses when connecting to the origin. The possible values are ipv4 for IPv4 only, ipv6 for IPv6 only, and dualstack for IPv4 and IPv6.
+        isPrivateOriginAccessEnabled:
+          $ref: "#/components/schemas/boolean"
+          description: Specifies whether private origin access is enabled for the distribution's origin. With private origin access, the distribution can serve objects that aren't publicly accessible from a Lightsail bucket. This applies when you set the bucket's getObject access rule to private. It also applies when you set getObject to public but set individual objects to private.
     CreateDomainResult:
       type: object
       properties:
@@ -7808,10 +7875,6 @@ components:
         operations:
           $ref: "#/components/schemas/OperationList"
           description: An array of objects that describe the result of the action, such as the status of the request, the timestamp of the request, and the resources affected by the request.
-    DeleteContainerImageResult:
-      type: object
-    DeleteContainerServiceResult:
-      type: object
     DeleteDiskResult:
       type: object
       properties:
@@ -8108,6 +8171,8 @@ components:
         - FreeStorageSpace
         - NetworkReceiveThroughput
         - NetworkTransmitThroughput
+        - FreeableMemory
+        - SwapUsage
         - BurstCapacityTime
         - BurstCapacityPercentage
     AlarmState:
@@ -10227,6 +10292,50 @@ components:
         nextPageToken:
           $ref: "#/components/schemas/string"
           description: The token to advance to the next page of results from your request. A next page token is not returned if there are no more results to display. To get the next page of results, perform another GetOperationsForResource request and specify the next page token using the pageToken parameter.
+    GetProfileResult:
+      type: object
+      properties:
+        profileType:
+          $ref: "#/components/schemas/ProfileType"
+          description: "The type of the profile. The following profile types are possible: Lightsailor – The account is not enrolled in the Lightsail partner program. LightsailPartner – The account is enrolled in the Lightsail partner program."
+        partner:
+          $ref: "#/components/schemas/PartnerInfo"
+          description: An object that describes the partner membership of the account, such as the tier of the membership, its status, and when the account was enrolled. This parameter is returned only for accounts that have a profileType of LightsailPartner.
+      required:
+        - profileType
+    ProfileType:
+      type: string
+      enum:
+        - Lightsailor
+        - LightsailPartner
+    PartnerInfo:
+      description: An object that contains information about the Lightsail partner program membership of an Amazon Lightsail account.
+      type: object
+      properties:
+        enrolledAt:
+          $ref: "#/components/schemas/IsoDate"
+          description: The timestamp when the account was enrolled in the Lightsail partner program.
+        tierName:
+          $ref: "#/components/schemas/TierName"
+          description: The tier of the partner membership.
+        status:
+          $ref: "#/components/schemas/PartnerStatus"
+          description: "The status of the partner membership. The following statuses are possible: Active – The membership is active, and the benefits of the current tier are available to the account. Suspended – The membership is suspended, and the benefits of the tier are not available to the account."
+      required:
+        - enrolledAt
+        - status
+    TierName:
+      type: string
+      enum:
+        - Essential
+        - Growth
+        - Accelerate
+        - Premier
+    PartnerStatus:
+      type: string
+      enum:
+        - Active
+        - Suspended
     GetRegionsResult:
       type: object
       properties:
@@ -10589,6 +10698,8 @@ components:
         - FreeStorageSpace
         - NetworkReceiveThroughput
         - NetworkTransmitThroughput
+        - FreeableMemory
+        - SwapUsage
     GetRelationalDatabaseMetricDataResult:
       type: object
       properties:
@@ -11856,6 +11967,42 @@ components:
           - $ref: "#/components/x-stackQL-resources/instances/methods/put_instance_public_ports"
         delete:
           - $ref: "#/components/x-stackQL-resources/instances/methods/delete_instance"
+    snapshots:
+      id: aws.lightsail.snapshots
+      name: snapshots
+      title: snapshots
+      methods:
+        copy_snapshot:
+          operation:
+            $ref: "#/paths/~1CopySnapshot/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        export_snapshot:
+          operation:
+            $ref: "#/paths/~1ExportSnapshot/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
     buckets:
       id: aws.lightsail.buckets
       name: buckets
@@ -12165,7 +12312,6 @@ components:
             $ref: "#/paths/~1DeleteContainerService/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -12957,7 +13103,6 @@ components:
             $ref: "#/paths/~1DeleteContainerImage/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -12999,6 +13144,65 @@ components:
         update: []
         delete:
           - $ref: "#/components/x-stackQL-resources/container_images/methods/delete_container_image"
+    add_ons:
+      id: aws.lightsail.add_ons
+      name: add_ons
+      title: add_ons
+      methods:
+        disable_add_on:
+          operation:
+            $ref: "#/paths/~1DisableAddOn/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        enable_add_on:
+          operation:
+            $ref: "#/paths/~1EnableAddOn/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
+    default_key_pairs:
+      id: aws.lightsail.default_key_pairs
+      name: default_key_pairs
+      title: default_key_pairs
+      methods:
+        download_default_key_pair:
+          operation:
+            $ref: "#/paths/~1DownloadDefaultKeyPair/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
     active_names:
       id: aws.lightsail.active_names
       name: active_names
@@ -13107,10 +13311,10 @@ components:
         update:
           - $ref: "#/components/x-stackQL-resources/bucket_bundles/methods/update_bucket_bundle"
         delete: []
-    bucket_metric_datas:
-      id: aws.lightsail.bucket_metric_datas
-      name: bucket_metric_datas
-      title: bucket_metric_datas
+    bucket_metric_data:
+      id: aws.lightsail.bucket_metric_data
+      name: bucket_metric_data
+      title: bucket_metric_data
       methods:
         get_bucket_metric_data:
           operation:
@@ -13127,7 +13331,7 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/bucket_metric_datas/methods/get_bucket_metric_data"
+          - $ref: "#/components/x-stackQL-resources/bucket_metric_data/methods/get_bucket_metric_data"
         insert: []
         update: []
         delete: []
@@ -13195,10 +13399,10 @@ components:
         insert: []
         update: []
         delete: []
-    container_api_metadatas:
-      id: aws.lightsail.container_api_metadatas
-      name: container_api_metadatas
-      title: container_api_metadatas
+    container_api_metadata:
+      id: aws.lightsail.container_api_metadata
+      name: container_api_metadata
+      title: container_api_metadata
       methods:
         get_container_api_metadata:
           operation:
@@ -13222,7 +13426,7 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/container_api_metadatas/methods/get_container_api_metadata"
+          - $ref: "#/components/x-stackQL-resources/container_api_metadata/methods/get_container_api_metadata"
         insert: []
         update: []
         delete: []
@@ -13250,10 +13454,10 @@ components:
         insert: []
         update: []
         delete: []
-    container_service_metric_datas:
-      id: aws.lightsail.container_service_metric_datas
-      name: container_service_metric_datas
-      title: container_service_metric_datas
+    container_service_metric_data:
+      id: aws.lightsail.container_service_metric_data
+      name: container_service_metric_data
+      title: container_service_metric_data
       methods:
         get_container_service_metric_data:
           operation:
@@ -13270,7 +13474,7 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/container_service_metric_datas/methods/get_container_service_metric_data"
+          - $ref: "#/components/x-stackQL-resources/container_service_metric_data/methods/get_container_service_metric_data"
         insert: []
         update: []
         delete: []
@@ -13384,10 +13588,10 @@ components:
         insert: []
         update: []
         delete: []
-    distribution_metric_datas:
-      id: aws.lightsail.distribution_metric_datas
-      name: distribution_metric_datas
-      title: distribution_metric_datas
+    distribution_metric_data:
+      id: aws.lightsail.distribution_metric_data
+      name: distribution_metric_data
+      title: distribution_metric_data
       methods:
         get_distribution_metric_data:
           operation:
@@ -13404,7 +13608,7 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/distribution_metric_datas/methods/get_distribution_metric_data"
+          - $ref: "#/components/x-stackQL-resources/distribution_metric_data/methods/get_distribution_metric_data"
         insert: []
         update: []
         delete: []
@@ -13465,10 +13669,10 @@ components:
         insert: []
         update: []
         delete: []
-    instance_metric_datas:
-      id: aws.lightsail.instance_metric_datas
-      name: instance_metric_datas
-      title: instance_metric_datas
+    instance_metric_data:
+      id: aws.lightsail.instance_metric_data
+      name: instance_metric_data
+      title: instance_metric_data
       methods:
         get_instance_metric_data:
           operation:
@@ -13485,7 +13689,7 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/instance_metric_datas/methods/get_instance_metric_data"
+          - $ref: "#/components/x-stackQL-resources/instance_metric_data/methods/get_instance_metric_data"
         insert: []
         update: []
         delete: []
@@ -13538,10 +13742,10 @@ components:
         insert: []
         update: []
         delete: []
-    load_balancer_metric_datas:
-      id: aws.lightsail.load_balancer_metric_datas
-      name: load_balancer_metric_datas
-      title: load_balancer_metric_datas
+    load_balancer_metric_data:
+      id: aws.lightsail.load_balancer_metric_data
+      name: load_balancer_metric_data
+      title: load_balancer_metric_data
       methods:
         get_load_balancer_metric_data:
           operation:
@@ -13558,7 +13762,7 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/load_balancer_metric_datas/methods/get_load_balancer_metric_data"
+          - $ref: "#/components/x-stackQL-resources/load_balancer_metric_data/methods/get_load_balancer_metric_data"
         insert: []
         update: []
         delete: []
@@ -13626,18 +13830,6 @@ components:
                 location: body
             requestBodyTranslate:
               algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/operations/methods/get_operation"
-          - $ref: "#/components/x-stackQL-resources/operations/methods/get_operations"
-        insert: []
-        update: []
-        delete: []
-    operations_for_resources:
-      id: aws.lightsail.operations_for_resources
-      name: operations_for_resources
-      title: operations_for_resources
-      methods:
         get_operations_for_resource:
           operation:
             $ref: "#/paths/~1GetOperationsForResource/post"
@@ -13653,7 +13845,33 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/operations_for_resources/methods/get_operations_for_resource"
+          - $ref: "#/components/x-stackQL-resources/operations/methods/get_operation"
+          - $ref: "#/components/x-stackQL-resources/operations/methods/get_operations_for_resource"
+          - $ref: "#/components/x-stackQL-resources/operations/methods/get_operations"
+        insert: []
+        update: []
+        delete: []
+    profiles:
+      id: aws.lightsail.profiles
+      name: profiles
+      title: profiles
+      methods:
+        get_profile:
+          operation:
+            $ref: "#/paths/~1GetProfile/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/profiles/methods/get_profile"
         insert: []
         update: []
         delete: []
@@ -13856,10 +14074,10 @@ components:
         insert: []
         update: []
         delete: []
-    relational_database_metric_datas:
-      id: aws.lightsail.relational_database_metric_datas
-      name: relational_database_metric_datas
-      title: relational_database_metric_datas
+    relational_database_metric_data:
+      id: aws.lightsail.relational_database_metric_data
+      name: relational_database_metric_data
+      title: relational_database_metric_data
       methods:
         get_relational_database_metric_data:
           operation:
@@ -13876,7 +14094,7 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/relational_database_metric_datas/methods/get_relational_database_metric_data"
+          - $ref: "#/components/x-stackQL-resources/relational_database_metric_data/methods/get_relational_database_metric_data"
         insert: []
         update: []
         delete: []
@@ -13950,6 +14168,65 @@ components:
         insert: []
         update: []
         delete: []
+    vpc_peereds:
+      id: aws.lightsail.vpc_peereds
+      name: vpc_peereds
+      title: vpc_peereds
+      methods:
+        is_vpc_peered:
+          operation:
+            $ref: "#/paths/~1IsVpcPeered/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
+    vpcs:
+      id: aws.lightsail.vpcs
+      name: vpcs
+      title: vpcs
+      methods:
+        peer_vpc:
+          operation:
+            $ref: "#/paths/~1PeerVpc/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        unpeer_vpc:
+          operation:
+            $ref: "#/paths/~1UnpeerVpc/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
     ip_address_types:
       id: aws.lightsail.ip_address_types
       name: ip_address_types
@@ -13973,6 +14250,42 @@ components:
         insert: []
         update:
           - $ref: "#/components/x-stackQL-resources/ip_address_types/methods/set_ip_address_type"
+        delete: []
+    gui_sessions:
+      id: aws.lightsail.gui_sessions
+      name: gui_sessions
+      title: gui_sessions
+      methods:
+        start_gui_session:
+          operation:
+            $ref: "#/paths/~1StartGUISession/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        stop_gui_session:
+          operation:
+            $ref: "#/paths/~1StopGUISession/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
         delete: []
     tags:
       id: aws.lightsail.tags

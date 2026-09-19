@@ -73,10 +73,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteQueuedSavingsPlanResponse'
       x-stackql-resource: savings_plans
       x-stackql-method: delete_queued_savings_plan
       x-stackql-verb: DELETE
@@ -312,10 +308,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -341,10 +333,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -413,8 +401,6 @@ components:
           description: The ID of the Savings Plan.
     SavingsPlanId:
       type: string
-    DeleteQueuedSavingsPlanResponse:
-      type: object
     SavingsPlanRateFilterList:
       type: array
       items:
@@ -1030,13 +1016,9 @@ components:
         savingsPlanId:
           $ref: '#/components/schemas/SavingsPlanId'
           description: The ID of the Savings Plan.
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
         $ref: '#/components/schemas/TagKey'
     TagKey:
       type: string
-    UntagResourceResponse:
-      type: object

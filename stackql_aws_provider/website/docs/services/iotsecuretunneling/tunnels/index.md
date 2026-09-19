@@ -171,6 +171,13 @@ The following methods are available for this resource:
     <td>Closes a tunnel identified by the unique tunnel id. When a CloseTunnel request is received, we close the WebSocket connections between the client and proxy server so no data can be transmitted. Requires permission to access the CloseTunnel action.</td>
 </tr>
 <tr>
+    <td><a href="#open_tunnel"><CopyableCode code="open_tunnel" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Creates a new tunnel, and returns two client access tokens for clients to use to connect to the IoT Secure Tunneling proxy server. Requires permission to access the OpenTunnel action.</td>
+</tr>
+<tr>
     <td><a href="#rotate_tunnel_access_token"><CopyableCode code="rotate_tunnel_access_token" /></a></td>
     <td><CopyableCode code="exec" /></td>
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-tunnelId"><code>tunnelId</code></a>, <a href="#parameter-clientMode"><code>clientMode</code></a></td>
@@ -254,6 +261,7 @@ WHERE region = '{{ region }}' -- required
     defaultValue="close_tunnel"
     values={[
         { label: 'close_tunnel', value: 'close_tunnel' },
+        { label: 'open_tunnel', value: 'open_tunnel' },
         { label: 'rotate_tunnel_access_token', value: 'rotate_tunnel_access_token' }
     ]}
 >
@@ -268,6 +276,23 @@ EXEC aws.iotsecuretunneling.tunnels.close_tunnel
 '{
 "tunnelId": "{{ tunnelId }}", 
 "delete": {{ delete }}
+}'
+;
+```
+</TabItem>
+<TabItem value="open_tunnel">
+
+Creates a new tunnel, and returns two client access tokens for clients to use to connect to the IoT Secure Tunneling proxy server. Requires permission to access the OpenTunnel action.
+
+```sql
+EXEC aws.iotsecuretunneling.tunnels.open_tunnel 
+@region='{{ region }}' --required 
+@@json=
+'{
+"description": "{{ description }}", 
+"tags": "{{ tags }}", 
+"destinationConfig": "{{ destinationConfig }}", 
+"timeoutConfig": "{{ timeoutConfig }}"
 }'
 ;
 ```

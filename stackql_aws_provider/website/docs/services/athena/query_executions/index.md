@@ -33,37 +33,13 @@ Creates, updates, deletes, gets or lists a <code>query_executions</code> resourc
 The following fields are returned by `SELECT` queries:
 
 <Tabs
-    defaultValue="batch_get_query_execution"
+    defaultValue="get_query_execution"
     values={[
-        { label: 'batch_get_query_execution', value: 'batch_get_query_execution' },
         { label: 'get_query_execution', value: 'get_query_execution' },
+        { label: 'batch_get_query_execution', value: 'batch_get_query_execution' },
         { label: 'list_query_executions', value: 'list_query_executions' }
     ]}
 >
-<TabItem value="batch_get_query_execution">
-
-<table>
-<thead>
-    <tr>
-    <th>Name</th>
-    <th>Datatype</th>
-    <th>Description</th>
-    </tr>
-</thead>
-<tbody>
-<tr>
-    <td><CopyableCode code="query_executions" /></td>
-    <td><code>array</code></td>
-    <td>Information about a query execution.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="unprocessed_query_execution_ids" /></td>
-    <td><code>array</code></td>
-    <td>Information about the query executions that failed to run.</td>
-</tr>
-</tbody>
-</table>
-</TabItem>
 <TabItem value="get_query_execution">
 
 <table>
@@ -148,6 +124,30 @@ The following fields are returned by `SELECT` queries:
 </tbody>
 </table>
 </TabItem>
+<TabItem value="batch_get_query_execution">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="query_executions" /></td>
+    <td><code>array</code></td>
+    <td>Information about a query execution.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="unprocessed_query_execution_ids" /></td>
+    <td><code>array</code></td>
+    <td>Information about the query executions that failed to run.</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
 <TabItem value="list_query_executions">
 
 <table>
@@ -185,13 +185,6 @@ The following methods are available for this resource:
 </thead>
 <tbody>
 <tr>
-    <td><a href="#batch_get_query_execution"><CopyableCode code="batch_get_query_execution" /></a></td>
-    <td><CopyableCode code="select" /></td>
-    <td><a href="#parameter-region"><code>region</code></a></td>
-    <td></td>
-    <td>Returns the details of a single query execution or a list of up to 50 query executions, which you provide as an array of query execution ID strings. Requires you to have access to the workgroup in which the queries ran. To get a list of query execution IDs, use ListQueryExecutionsInput$WorkGroup. Query executions differ from named (saved) queries. Use BatchGetNamedQueryInput to get details about named queries.</td>
-</tr>
-<tr>
     <td><a href="#get_query_execution"><CopyableCode code="get_query_execution" /></a></td>
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
@@ -199,11 +192,32 @@ The following methods are available for this resource:
     <td>Returns information about a single execution of a query if you have access to the workgroup in which the query ran. Each time a query executes, information about the query execution is saved with a unique ID.</td>
 </tr>
 <tr>
+    <td><a href="#batch_get_query_execution"><CopyableCode code="batch_get_query_execution" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Returns the details of a single query execution or a list of up to 50 query executions, which you provide as an array of query execution ID strings. Requires you to have access to the workgroup in which the queries ran. To get a list of query execution IDs, use ListQueryExecutionsInput$WorkGroup. Query executions differ from named (saved) queries. Use BatchGetNamedQueryInput to get details about named queries.</td>
+</tr>
+<tr>
     <td><a href="#list_query_executions"><CopyableCode code="list_query_executions" /></a></td>
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td></td>
     <td>Provides a list of available query execution IDs for the queries in the specified workgroup. Athena keeps a query history for 45 days. If a workgroup is not specified, returns a list of query execution IDs for the primary workgroup. Requires you to have access to the workgroup in which the queries ran.</td>
+</tr>
+<tr>
+    <td><a href="#start_query_execution"><CopyableCode code="start_query_execution" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-QueryString"><code>QueryString</code></a></td>
+    <td></td>
+    <td>Runs the SQL query statements contained in the Query. Requires you to have access to the workgroup in which the query ran. Running queries against an external catalog requires GetDataCatalog permission to the catalog. For code samples using the Amazon Web Services SDK for Java, see Examples and Code Samples in the Amazon Athena User Guide.</td>
+</tr>
+<tr>
+    <td><a href="#stop_query_execution"><CopyableCode code="stop_query_execution" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-QueryExecutionId"><code>QueryExecutionId</code></a></td>
+    <td></td>
+    <td>Stops a query execution. Requires you to have access to the workgroup in which the query ran.</td>
 </tr>
 </tbody>
 </table>
@@ -232,26 +246,13 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 ## `SELECT` examples
 
 <Tabs
-    defaultValue="batch_get_query_execution"
+    defaultValue="get_query_execution"
     values={[
-        { label: 'batch_get_query_execution', value: 'batch_get_query_execution' },
         { label: 'get_query_execution', value: 'get_query_execution' },
+        { label: 'batch_get_query_execution', value: 'batch_get_query_execution' },
         { label: 'list_query_executions', value: 'list_query_executions' }
     ]}
 >
-<TabItem value="batch_get_query_execution">
-
-Returns the details of a single query execution or a list of up to 50 query executions, which you provide as an array of query execution ID strings. Requires you to have access to the workgroup in which the queries ran. To get a list of query execution IDs, use ListQueryExecutionsInput$WorkGroup. Query executions differ from named (saved) queries. Use BatchGetNamedQueryInput to get details about named queries.
-
-```sql
-SELECT
-query_executions,
-unprocessed_query_execution_ids
-FROM aws.athena.query_executions
-WHERE region = '{{ region }}' -- required
-;
-```
-</TabItem>
 <TabItem value="get_query_execution">
 
 Returns information about a single execution of a query if you have access to the workgroup in which the query ran. Each time a query executes, information about the query execution is saved with a unique ID.
@@ -277,6 +278,19 @@ WHERE region = '{{ region }}' -- required
 ;
 ```
 </TabItem>
+<TabItem value="batch_get_query_execution">
+
+Returns the details of a single query execution or a list of up to 50 query executions, which you provide as an array of query execution ID strings. Requires you to have access to the workgroup in which the queries ran. To get a list of query execution IDs, use ListQueryExecutionsInput$WorkGroup. Query executions differ from named (saved) queries. Use BatchGetNamedQueryInput to get details about named queries.
+
+```sql
+SELECT
+query_executions,
+unprocessed_query_execution_ids
+FROM aws.athena.query_executions
+WHERE region = '{{ region }}' -- required
+;
+```
+</TabItem>
 <TabItem value="list_query_executions">
 
 Provides a list of available query execution IDs for the queries in the specified workgroup. Athena keeps a query history for 45 days. If a workgroup is not specified, returns a list of query execution IDs for the primary workgroup. Requires you to have access to the workgroup in which the queries ran.
@@ -286,6 +300,53 @@ SELECT
 query_execution_id
 FROM aws.athena.query_executions
 WHERE region = '{{ region }}' -- required
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="start_query_execution"
+    values={[
+        { label: 'start_query_execution', value: 'start_query_execution' },
+        { label: 'stop_query_execution', value: 'stop_query_execution' }
+    ]}
+>
+<TabItem value="start_query_execution">
+
+Runs the SQL query statements contained in the Query. Requires you to have access to the workgroup in which the query ran. Running queries against an external catalog requires GetDataCatalog permission to the catalog. For code samples using the Amazon Web Services SDK for Java, see Examples and Code Samples in the Amazon Athena User Guide.
+
+```sql
+EXEC aws.athena.query_executions.start_query_execution 
+@region='{{ region }}' --required 
+@@json=
+'{
+"QueryString": "{{ QueryString }}", 
+"ClientRequestToken": "{{ ClientRequestToken }}", 
+"QueryExecutionContext": "{{ QueryExecutionContext }}", 
+"ResultConfiguration": "{{ ResultConfiguration }}", 
+"WorkGroup": "{{ WorkGroup }}", 
+"ExecutionParameters": "{{ ExecutionParameters }}", 
+"ResultReuseConfiguration": "{{ ResultReuseConfiguration }}", 
+"EngineConfiguration": "{{ EngineConfiguration }}"
+}'
+;
+```
+</TabItem>
+<TabItem value="stop_query_execution">
+
+Stops a query execution. Requires you to have access to the workgroup in which the query ran.
+
+```sql
+EXEC aws.athena.query_executions.stop_query_execution 
+@region='{{ region }}' --required 
+@@json=
+'{
+"QueryExecutionId": "{{ QueryExecutionId }}"
+}'
 ;
 ```
 </TabItem>

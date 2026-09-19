@@ -18,7 +18,7 @@ identitystore service documentation.
 
 :::info[Service Summary]
 
-total resources: __7__  
+total resources: __6__  
 
 :::
 
@@ -27,8 +27,7 @@ total resources: __7__
 <div class="providerDocColumn">
 <a href="/services/identitystore/group_ids/">group_ids</a><br />
 <a href="/services/identitystore/group_membership_ids/">group_membership_ids</a><br />
-<a href="/services/identitystore/group_memberships/">group_memberships</a><br />
-<a href="/services/identitystore/group_memberships_for_members/">group_memberships_for_members</a>
+<a href="/services/identitystore/group_memberships/">group_memberships</a>
 </div>
 <div class="providerDocColumn">
 <a href="/services/identitystore/groups/">groups</a><br />

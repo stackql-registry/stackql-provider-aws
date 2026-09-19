@@ -424,7 +424,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/AuthorizeEndpointAccessOutputDisplay'
-      x-stackql-resource: endpoint_access
+      x-stackql-resource: endpoint_accesses
       x-stackql-method: authorize_endpoint_access
       x-stackql-verb: UPDATE
       x-stackql-responseEnvelope: AuthorizeEndpointAccessOutputDisplay
@@ -445,7 +445,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/AuthorizeEndpointAccessMessage'
-      x-stackql-resource: endpoint_access
+      x-stackql-resource: endpoint_accesses
       x-stackql-method: authorize_endpoint_access
       x-stackql-verb: UPDATE
       x-stackql-responseEnvelope: AuthorizeEndpointAccessOutputDisplay
@@ -499,7 +499,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/AuthorizeSnapshotAccessOutputDisplay'
-      x-stackql-resource: snapshot_access
+      x-stackql-resource: snapshot_accesses
       x-stackql-method: authorize_snapshot_access
       x-stackql-verb: UPDATE
       x-stackql-responseEnvelope: AuthorizeSnapshotAccessOutputDisplay
@@ -521,7 +521,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/AuthorizeSnapshotAccessMessage'
-      x-stackql-resource: snapshot_access
+      x-stackql-resource: snapshot_accesses
       x-stackql-method: authorize_snapshot_access
       x-stackql-verb: UPDATE
       x-stackql-responseEnvelope: AuthorizeSnapshotAccessOutputDisplay
@@ -671,7 +671,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/CancelResizeOutputDisplay'
-      x-stackql-resource: clusters
+      x-stackql-resource: resizes
       x-stackql-method: cancel_resize
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: CancelResizeOutputDisplay
@@ -692,7 +692,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/CancelResizeMessage'
-      x-stackql-resource: clusters
+      x-stackql-resource: resizes
       x-stackql-method: cancel_resize
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: CancelResizeOutputDisplay
@@ -752,7 +752,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/CopyClusterSnapshotOutputDisplay'
-      x-stackql-resource: clusters
+      x-stackql-resource: cluster_snapshots
       x-stackql-method: copy_cluster_snapshot
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: CopyClusterSnapshotOutputDisplay
@@ -778,7 +778,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/CopyClusterSnapshotMessage'
-      x-stackql-resource: clusters
+      x-stackql-resource: cluster_snapshots
       x-stackql-method: copy_cluster_snapshot
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: CopyClusterSnapshotOutputDisplay
@@ -1654,7 +1654,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/CreateEndpointAccessOutputDisplay'
-      x-stackql-resource: endpoint_access
+      x-stackql-resource: endpoint_accesses
       x-stackql-method: create_endpoint_access
       x-stackql-verb: INSERT
       x-stackql-responseEnvelope: CreateEndpointAccessOutputDisplay
@@ -1675,7 +1675,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/CreateEndpointAccessMessage'
-      x-stackql-resource: endpoint_access
+      x-stackql-resource: endpoint_accesses
       x-stackql-method: create_endpoint_access
       x-stackql-verb: INSERT
       x-stackql-responseEnvelope: CreateEndpointAccessOutputDisplay
@@ -3128,7 +3128,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/DeleteEndpointAccessOutputDisplay'
-      x-stackql-resource: endpoint_access
+      x-stackql-resource: endpoint_accesses
       x-stackql-method: delete_endpoint_access
       x-stackql-verb: DELETE
       x-stackql-responseEnvelope: DeleteEndpointAccessOutputDisplay
@@ -3149,7 +3149,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/DeleteEndpointAccessMessage'
-      x-stackql-resource: endpoint_access
+      x-stackql-resource: endpoint_accesses
       x-stackql-method: delete_endpoint_access
       x-stackql-verb: DELETE
       x-stackql-responseEnvelope: DeleteEndpointAccessOutputDisplay
@@ -4964,7 +4964,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/DescribeDataSharesForConsumerOutputDisplay'
-      x-stackql-resource: data_shares_for_consumers
+      x-stackql-resource: data_shares
       x-stackql-method: describe_data_shares_for_consumer
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: DescribeDataSharesForConsumerOutputDisplay
@@ -4985,7 +4985,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/DescribeDataSharesForConsumerMessage'
-      x-stackql-resource: data_shares_for_consumers
+      x-stackql-resource: data_shares
       x-stackql-method: describe_data_shares_for_consumer
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: DescribeDataSharesForConsumerOutputDisplay
@@ -5040,7 +5040,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/DescribeDataSharesForProducerOutputDisplay'
-      x-stackql-resource: data_shares_for_producers
+      x-stackql-resource: data_shares
       x-stackql-method: describe_data_shares_for_producer
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: DescribeDataSharesForProducerOutputDisplay
@@ -5061,7 +5061,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/DescribeDataSharesForProducerMessage'
-      x-stackql-resource: data_shares_for_producers
+      x-stackql-resource: data_shares
       x-stackql-method: describe_data_shares_for_producer
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: DescribeDataSharesForProducerOutputDisplay
@@ -5199,7 +5199,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/DescribeEndpointAccessOutputDisplay'
-      x-stackql-resource: endpoint_access
+      x-stackql-resource: endpoint_accesses
       x-stackql-method: describe_endpoint_access
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: DescribeEndpointAccessOutputDisplay
@@ -5220,7 +5220,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/DescribeEndpointAccessMessage'
-      x-stackql-resource: endpoint_access
+      x-stackql-resource: endpoint_accesses
       x-stackql-method: describe_endpoint_access
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: DescribeEndpointAccessOutputDisplay
@@ -5951,7 +5951,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/DescribeLoggingStatusOutputDisplay'
-      x-stackql-resource: logging_status
+      x-stackql-resource: logging_statuses
       x-stackql-method: describe_logging_status
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: DescribeLoggingStatusOutputDisplay
@@ -5973,7 +5973,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/DescribeLoggingStatusMessage'
-      x-stackql-resource: logging_status
+      x-stackql-resource: logging_statuses
       x-stackql-method: describe_logging_status
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: DescribeLoggingStatusOutputDisplay
@@ -6435,7 +6435,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/DescribeReservedNodeExchangeStatusOutputDisplay'
-      x-stackql-resource: reserved_node_exchange_status
+      x-stackql-resource: reserved_node_exchange_statuses
       x-stackql-method: describe_reserved_node_exchange_status
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: DescribeReservedNodeExchangeStatusOutputDisplay
@@ -6457,7 +6457,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/DescribeReservedNodeExchangeStatusInputMessage'
-      x-stackql-resource: reserved_node_exchange_status
+      x-stackql-resource: reserved_node_exchange_statuses
       x-stackql-method: describe_reserved_node_exchange_status
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: DescribeReservedNodeExchangeStatusOutputDisplay
@@ -6999,7 +6999,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/DescribeStorageOutputDisplay'
-      x-stackql-resource: storages
+      x-stackql-resource: storage
       x-stackql-method: describe_storage
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: DescribeStorageOutputDisplay
@@ -7015,7 +7015,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/DescribeStorageOutputDisplay'
       parameters: []
-      x-stackql-resource: storages
+      x-stackql-resource: storage
       x-stackql-method: describe_storage
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: DescribeStorageOutputDisplay
@@ -7071,7 +7071,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/DescribeTableRestoreStatusOutputDisplay'
-      x-stackql-resource: table_restore_status
+      x-stackql-resource: table_restore_statuses
       x-stackql-method: describe_table_restore_status
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: DescribeTableRestoreStatusOutputDisplay
@@ -7095,7 +7095,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/DescribeTableRestoreStatusMessage'
-      x-stackql-resource: table_restore_status
+      x-stackql-resource: table_restore_statuses
       x-stackql-method: describe_table_restore_status
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: DescribeTableRestoreStatusOutputDisplay
@@ -9333,7 +9333,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/ModifyEndpointAccessOutputDisplay'
-      x-stackql-resource: endpoint_access
+      x-stackql-resource: endpoint_accesses
       x-stackql-method: modify_endpoint_access
       x-stackql-verb: UPDATE
       x-stackql-responseEnvelope: ModifyEndpointAccessOutputDisplay
@@ -9354,7 +9354,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/ModifyEndpointAccessMessage'
-      x-stackql-resource: endpoint_access
+      x-stackql-resource: endpoint_accesses
       x-stackql-method: modify_endpoint_access
       x-stackql-verb: UPDATE
       x-stackql-responseEnvelope: ModifyEndpointAccessOutputDisplay
@@ -10444,7 +10444,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/ResetClusterParameterGroupOutputDisplay'
-      x-stackql-resource: cluster_parameters
+      x-stackql-resource: cluster_parameter_groups
       x-stackql-method: reset_cluster_parameter_group
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: ResetClusterParameterGroupOutputDisplay
@@ -10467,7 +10467,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/ResetClusterParameterGroupMessage'
-      x-stackql-resource: cluster_parameters
+      x-stackql-resource: cluster_parameter_groups
       x-stackql-method: reset_cluster_parameter_group
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: ResetClusterParameterGroupOutputDisplay
@@ -10894,7 +10894,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/RestoreFromClusterSnapshotOutputDisplay'
-      x-stackql-resource: clusters
+      x-stackql-resource: cluster_snapshots
       x-stackql-method: restore_from_cluster_snapshot
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: RestoreFromClusterSnapshotOutputDisplay
@@ -10927,7 +10927,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/RestoreFromClusterSnapshotMessage'
-      x-stackql-resource: clusters
+      x-stackql-resource: cluster_snapshots
       x-stackql-method: restore_from_cluster_snapshot
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: RestoreFromClusterSnapshotOutputDisplay
@@ -11016,7 +11016,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/RestoreTableFromClusterSnapshotOutputDisplay'
-      x-stackql-resource: clusters
+      x-stackql-resource: cluster_snapshots
       x-stackql-method: restore_table_from_cluster_snapshot
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: RestoreTableFromClusterSnapshotOutputDisplay
@@ -11044,7 +11044,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/RestoreTableFromClusterSnapshotMessage'
-      x-stackql-resource: clusters
+      x-stackql-resource: cluster_snapshots
       x-stackql-method: restore_table_from_cluster_snapshot
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: RestoreTableFromClusterSnapshotOutputDisplay
@@ -11224,7 +11224,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/RevokeEndpointAccessOutputDisplay'
-      x-stackql-resource: endpoint_access
+      x-stackql-resource: endpoint_accesses
       x-stackql-method: revoke_endpoint_access
       x-stackql-verb: UPDATE
       x-stackql-responseEnvelope: RevokeEndpointAccessOutputDisplay
@@ -11245,7 +11245,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/RevokeEndpointAccessMessage'
-      x-stackql-resource: endpoint_access
+      x-stackql-resource: endpoint_accesses
       x-stackql-method: revoke_endpoint_access
       x-stackql-verb: UPDATE
       x-stackql-responseEnvelope: RevokeEndpointAccessOutputDisplay
@@ -11297,7 +11297,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/RevokeSnapshotAccessOutputDisplay'
-      x-stackql-resource: snapshot_access
+      x-stackql-resource: snapshot_accesses
       x-stackql-method: revoke_snapshot_access
       x-stackql-verb: UPDATE
       x-stackql-responseEnvelope: RevokeSnapshotAccessOutputDisplay
@@ -11320,7 +11320,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/RevokeSnapshotAccessMessage'
-      x-stackql-resource: snapshot_access
+      x-stackql-resource: snapshot_accesses
       x-stackql-method: revoke_snapshot_access
       x-stackql-verb: UPDATE
       x-stackql-responseEnvelope: RevokeSnapshotAccessOutputDisplay

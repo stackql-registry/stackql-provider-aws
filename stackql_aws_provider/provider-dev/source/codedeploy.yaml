@@ -386,7 +386,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: continue_deployment
+      x-stackql-resource: deployments
       x-stackql-method: continue_deployment
       x-stackql-verb: EXEC
   /CreateApplication:
@@ -507,6 +507,16 @@ paths:
                     specified. OVERWRITE: The version of the file from the application revision currently being deployed replaces
                     the version already on the instance. RETAIN: The version of the file already on the instance is kept and
                     used as part of the new deployment.'
+                deploymentMode:
+                  $ref: '#/components/schemas/DeploymentMode'
+                  description: 'The type of deployment to create. Valid values are: STANDARD: Deploys the specified revision.
+                    This is the default behavior if deploymentMode is not specified. RESTART: Restarts the application on
+                    the target instances using the revision from the deployment group''s last successful deployment, without
+                    downloading a new revision. RESTART is supported only for EC2/On-premises in-place deployments. When deploymentMode
+                    is RESTART, the following apply: The call is rejected for Amazon ECS and Lambda deployments. The revision
+                    parameter (including its s3Location and gitHubLocation) must not be specified, and is rejected if provided.
+                    The revision is resolved by the service from the deployment group''s last successful deployment. The updateOutdatedInstancesOnly
+                    parameter must not be set to true, and is rejected if provided.'
                 overrideAlarmConfiguration:
                   $ref: '#/components/schemas/AlarmConfiguration'
                   description: Allows you to specify information about alarms associated with a deployment. The alarm configuration
@@ -874,11 +884,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteResourcesByExternalIdOutput'
-      x-stackql-resource: resources_by_external_ids
+      x-stackql-resource: resources
       x-stackql-method: delete_resources_by_external_id
       x-stackql-verb: DELETE
   /DeregisterOnPremisesInstance:
@@ -1799,7 +1805,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PutLifecycleEventHookExecutionStatusOutput'
-      x-stackql-resource: lifecycle_event_hook_execution_status
+      x-stackql-resource: lifecycle_event_hook_execution_statuses
       x-stackql-method: put_lifecycle_event_hook_execution_status
       x-stackql-verb: REPLACE
   /RegisterApplicationRevision:
@@ -1945,7 +1951,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: skip_wait_time_for_instance_termination
+      x-stackql-resource: instance_terminations
       x-stackql-method: skip_wait_time_for_instance_termination
       x-stackql-verb: EXEC
   /StopDeployment:
@@ -2023,10 +2029,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceOutput'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -2066,10 +2068,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceOutput'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -2293,6 +2291,7 @@ components:
       type: string
       minLength: 1
       maxLength: 100
+      pattern: '[A-Za-z0-9+=,.@_-]*'
     RevisionLocationList:
       type: array
       items:
@@ -2472,6 +2471,7 @@ components:
       type: string
       minLength: 1
       maxLength: 100
+      pattern: '[A-Za-z0-9+=,.@_-]*'
     Timestamp:
       type: string
       format: date-time
@@ -2632,6 +2632,7 @@ components:
       type: string
       minLength: 1
       maxLength: 100
+      pattern: '[A-Za-z0-9+=,.@_-]*'
     EC2TagFilterList:
       type: array
       items:
@@ -3563,6 +3564,13 @@ components:
             behavior if no option is specified. OVERWRITE: The version of the file from the application revision currently
             being deployed replaces the version already on the instance. RETAIN: The version of the file already on the instance
             is kept and used as part of the new deployment.'
+        deploymentMode:
+          $ref: '#/components/schemas/DeploymentMode'
+          description: 'The deployment''s type. Valid values are: STANDARD: The deployment installed the specified revision.
+            RESTART: The deployment restarted the application on the target instances using the revision from the deployment
+            group''s last successful deployment, without downloading a new revision. This field is absent for deployments
+            created before deploymentMode existed, and for STANDARD deployments. An absent value must not be interpreted as
+            STANDARD; it simply means no value was recorded either way.'
         deploymentStatusMessages:
           $ref: '#/components/schemas/DeploymentStatusMessageList'
           description: Messages that contain information about the status of a deployment.
@@ -3717,6 +3725,11 @@ components:
       - DISALLOW
       - OVERWRITE
       - RETAIN
+    DeploymentMode:
+      type: string
+      enum:
+      - STANDARD
+      - RESTART
     DeploymentStatusMessageList:
       type: array
       items:
@@ -3962,8 +3975,6 @@ components:
         tokenName:
           $ref: '#/components/schemas/GitHubAccountTokenName'
           description: The name of the GitHub account connection that was deleted.
-    DeleteResourcesByExternalIdOutput:
-      type: object
     GetApplicationOutput:
       description: Represents the output of a GetApplication operation.
       type: object
@@ -4259,14 +4270,10 @@ components:
       - Succeeded
     Message:
       type: string
-    TagResourceOutput:
-      type: object
     TagKeyList:
       type: array
       items:
         $ref: '#/components/schemas/Key'
-    UntagResourceOutput:
-      type: object
     UpdateDeploymentGroupOutput:
       description: Represents the output of an UpdateDeploymentGroup operation.
       type: object

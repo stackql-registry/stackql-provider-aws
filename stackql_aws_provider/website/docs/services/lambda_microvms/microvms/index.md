@@ -73,7 +73,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="image_arn" /></td>
     <td><code>string</code></td>
-    <td>The ARN of the MicroVM image used to run this MicroVM.</td>
+    <td>The ARN of the MicroVM image used to run this MicroVM. (pattern: &lt;code&gt;arn:&#91;a-z0-9-&#93;+:lambda:&#91;a-z0-9-&#93;*:&#91;a-z0-9&#93;*:microvm-image:.+&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="image_version" /></td>
@@ -132,7 +132,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="image_arn" /></td>
     <td><code>string</code></td>
-    <td>The ARN of the MicroVM image used to run this MicroVM.</td>
+    <td>The ARN of the MicroVM image used to run this MicroVM. (pattern: &lt;code&gt;arn:&#91;a-z0-9-&#93;+:lambda:&#91;a-z0-9-&#93;*:&#91;a-z0-9&#93;*:microvm-image:.+&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="image_version" /></td>
@@ -208,6 +208,20 @@ The following methods are available for this resource:
     <td><a href="#parameter-microvm_identifier"><code>microvm_identifier</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td></td>
     <td>Terminates a MicroVM. This operation is idempotent; terminating a MicroVM that has already been terminated succeeds without error.</td>
+</tr>
+<tr>
+    <td><a href="#run_microvm"><CopyableCode code="run_microvm" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-imageIdentifier"><code>imageIdentifier</code></a></td>
+    <td></td>
+    <td>Runs a new MicroVM from the specified image. The MicroVM starts in PENDING state and transitions to RUNNING once provisioning completes. To connect, generate an authentication token using CreateMicrovmAuthToken.</td>
+</tr>
+<tr>
+    <td><a href="#resume_microvm"><CopyableCode code="resume_microvm" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-microvm_identifier"><code>microvm_identifier</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Resumes a suspended MicroVM, restoring it to RUNNING state with all state intact. The MicroVM must be in SUSPENDED state.</td>
 </tr>
 <tr>
     <td><a href="#suspend_microvm"><CopyableCode code="suspend_microvm" /></a></td>
@@ -425,11 +439,47 @@ AND region = '{{ region }}' --required
 ## Lifecycle Methods
 
 <Tabs
-    defaultValue="suspend_microvm"
+    defaultValue="run_microvm"
     values={[
+        { label: 'run_microvm', value: 'run_microvm' },
+        { label: 'resume_microvm', value: 'resume_microvm' },
         { label: 'suspend_microvm', value: 'suspend_microvm' }
     ]}
 >
+<TabItem value="run_microvm">
+
+Runs a new MicroVM from the specified image. The MicroVM starts in PENDING state and transitions to RUNNING once provisioning completes. To connect, generate an authentication token using CreateMicrovmAuthToken.
+
+```sql
+EXEC aws.lambda_microvms.microvms.run_microvm 
+@region='{{ region }}' --required 
+@@json=
+'{
+"ingressNetworkConnectors": "{{ ingressNetworkConnectors }}", 
+"egressNetworkConnectors": "{{ egressNetworkConnectors }}", 
+"imageIdentifier": "{{ imageIdentifier }}", 
+"imageVersion": "{{ imageVersion }}", 
+"executionRoleArn": "{{ executionRoleArn }}", 
+"idlePolicy": "{{ idlePolicy }}", 
+"logging": "{{ logging }}", 
+"runHookPayload": "{{ runHookPayload }}", 
+"maximumDurationInSeconds": {{ maximumDurationInSeconds }}, 
+"clientToken": "{{ clientToken }}"
+}'
+;
+```
+</TabItem>
+<TabItem value="resume_microvm">
+
+Resumes a suspended MicroVM, restoring it to RUNNING state with all state intact. The MicroVM must be in SUSPENDED state.
+
+```sql
+EXEC aws.lambda_microvms.microvms.resume_microvm 
+@microvm_identifier='{{ microvm_identifier }}' --required, 
+@region='{{ region }}' --required
+;
+```
+</TabItem>
 <TabItem value="suspend_microvm">
 
 Suspends a running MicroVM, preserving its full memory and disk state. The MicroVM transitions through SUSPENDING to SUSPENDED. To restore, call ResumeMicrovm or send traffic to the endpoint if autoResumeEnabled is true.

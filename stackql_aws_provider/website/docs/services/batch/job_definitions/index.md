@@ -97,7 +97,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="platform_capabilities" /></td>
     <td><code>array</code></td>
-    <td>The platform capabilities required by the job definition. If no value is specified, it defaults to EC2. Jobs run on Fargate resources specify FARGATE.</td>
+    <td>The platform capabilities required by the job definition. If no value is specified, it defaults to EC2. Jobs run on Fargate resources specify FARGATE. Jobs run on Amazon ECS Managed Instances specify MANAGED_INSTANCES.</td>
 </tr>
 <tr>
     <td><CopyableCode code="propagate_tags" /></td>
@@ -496,6 +496,7 @@ revision
                     cpuArchitecture: "{{ cpuArchitecture }}"
                   volumes: "{{ volumes }}"
                   enableExecuteCommand: {{ enableExecuteCommand }}
+                  networkMode: "{{ networkMode }}"
             eksProperties:
               podProperties:
                 serviceAccountName: "{{ serviceAccountName }}"
@@ -667,6 +668,7 @@ revision
               cpuArchitecture: "{{ cpuArchitecture }}"
             volumes: "{{ volumes }}"
             enableExecuteCommand: {{ enableExecuteCommand }}
+            networkMode: "{{ networkMode }}"
     - name: consumableResourceProperties
       description: |
         Contains a list of consumable resources required by a job.

@@ -107,10 +107,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteResourcePermissionStatementOutput"
   /get-console-authorization-configuration:
     post:
       operationId: GetConsoleAuthorizationConfiguration
@@ -267,10 +263,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/RevokeOAuth2TokenWithIAMResponse"
 components:
   parameters:
     X-Amz-Content-Sha256:
@@ -510,9 +502,6 @@ components:
       minLength: 1
       maxLength: 64
       pattern: "[!-~]+"
-    DeleteResourcePermissionStatementOutput:
-      description: Output for DeleteResourcePermissionStatement operation
-      type: object
     GetConsoleAuthorizationConfigurationOutput:
       description: Output for GetConsoleAuthorizationConfiguration operation
       type: object
@@ -746,9 +735,6 @@ components:
       minLength: 1
       maxLength: 4096
       pattern: ASOR[A-Za-z0-9+/=_\-]+
-    RevokeOAuth2TokenWithIAMResponse:
-      description: Output structure for RevokeOAuth2TokenWithIAM operation RFC 7009 §2.2 revocation response. The endpoint returns 200 OK with an empty body on success; there are no response fields.
-      type: object
   x-stackQL-resources:
     o_auth2_tokens:
       id: aws.signin.o_auth2_tokens
@@ -758,6 +744,17 @@ components:
         create_o_auth2_token:
           operation:
             $ref: "#/paths/~1v1~1token/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        introspect_o_auth2_token_with_iam:
+          operation:
+            $ref: "#/paths/~1v1~1introspect?x-amz-client-auth-method=iam/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -793,7 +790,6 @@ components:
             $ref: "#/paths/~1v1~1revoke?x-amz-client-auth-method=iam/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -863,7 +859,6 @@ components:
             $ref: "#/paths/~1delete-resource-permission-statement/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:

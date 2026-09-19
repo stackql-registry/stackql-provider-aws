@@ -18,7 +18,7 @@ customer_profiles service documentation.
 
 :::info[Service Summary]
 
-total resources: __38__  
+total resources: __41__  
 
 :::
 
@@ -28,8 +28,7 @@ total resources: __38__
 <a href="/services/customer_profiles/account_integrations/">account_integrations</a><br />
 <a href="/services/customer_profiles/auto_merging_previews/">auto_merging_previews</a><br />
 <a href="/services/customer_profiles/calculated_attribute_definitions/">calculated_attribute_definitions</a><br />
-<a href="/services/customer_profiles/calculated_attribute_for_profiles/">calculated_attribute_for_profiles</a><br />
-<a href="/services/customer_profiles/calculated_attributes_for_profiles/">calculated_attributes_for_profiles</a><br />
+<a href="/services/customer_profiles/calculated_attributes/">calculated_attributes</a><br />
 <a href="/services/customer_profiles/domain_layouts/">domain_layouts</a><br />
 <a href="/services/customer_profiles/domain_object_types/">domain_object_types</a><br />
 <a href="/services/customer_profiles/domains/">domains</a><br />
@@ -43,13 +42,14 @@ total resources: __38__
 <a href="/services/customer_profiles/object_type_attributes/">object_type_attributes</a><br />
 <a href="/services/customer_profiles/profile_attribute_values/">profile_attribute_values</a><br />
 <a href="/services/customer_profiles/profile_history_records/">profile_history_records</a><br />
-<a href="/services/customer_profiles/profile_object_type_templates/">profile_object_type_templates</a>
-</div>
-<div class="providerDocColumn">
+<a href="/services/customer_profiles/profile_object_type_templates/">profile_object_type_templates</a><br />
 <a href="/services/customer_profiles/profile_object_types/">profile_object_types</a><br />
 <a href="/services/customer_profiles/profile_objects/">profile_objects</a><br />
-<a href="/services/customer_profiles/profile_recommendations/">profile_recommendations</a><br />
+<a href="/services/customer_profiles/profile_recommendations/">profile_recommendations</a>
+</div>
+<div class="providerDocColumn">
 <a href="/services/customer_profiles/profiles/">profiles</a><br />
+<a href="/services/customer_profiles/recommendations/">recommendations</a><br />
 <a href="/services/customer_profiles/recommender_filters/">recommender_filters</a><br />
 <a href="/services/customer_profiles/recommender_recipes/">recommender_recipes</a><br />
 <a href="/services/customer_profiles/recommender_schemas/">recommender_schemas</a><br />
@@ -59,7 +59,10 @@ total resources: __38__
 <a href="/services/customer_profiles/segment_estimates/">segment_estimates</a><br />
 <a href="/services/customer_profiles/segment_memberships/">segment_memberships</a><br />
 <a href="/services/customer_profiles/segment_snapshots/">segment_snapshots</a><br />
+<a href="/services/customer_profiles/segment_subscription_events/">segment_subscription_events</a><br />
+<a href="/services/customer_profiles/segment_subscriptions/">segment_subscriptions</a><br />
 <a href="/services/customer_profiles/similar_profiles/">similar_profiles</a><br />
+<a href="/services/customer_profiles/streams/">streams</a><br />
 <a href="/services/customer_profiles/tags/">tags</a><br />
 <a href="/services/customer_profiles/upload_job_paths/">upload_job_paths</a><br />
 <a href="/services/customer_profiles/upload_jobs/">upload_jobs</a><br />

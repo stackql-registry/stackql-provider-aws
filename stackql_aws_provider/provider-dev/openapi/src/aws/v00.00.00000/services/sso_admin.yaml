@@ -92,10 +92,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/AttachCustomerManagedPolicyReferenceToPermissionSetResponse"
   /AttachManagedPolicyToPermissionSet:
     post:
       operationId: AttachManagedPolicyToPermissionSet
@@ -133,10 +129,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/AttachManagedPolicyToPermissionSetResponse"
   /CreateAccountAssignment:
     post:
       operationId: CreateAccountAssignment
@@ -282,10 +274,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/CreateApplicationAssignmentResponse"
   /CreateInstance:
     post:
       operationId: CreateInstance
@@ -356,10 +344,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/CreateInstanceAccessControlAttributeConfigurationResponse"
   /CreatePermissionSet:
     post:
       operationId: CreatePermissionSet
@@ -541,10 +525,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteApplicationResponse"
   /DeleteApplicationAccessScope:
     post:
       operationId: DeleteApplicationAccessScope
@@ -614,10 +594,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteApplicationAssignmentResponse"
   /DeleteApplicationAuthenticationMethod:
     post:
       operationId: DeleteApplicationAuthenticationMethod
@@ -717,10 +693,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteInlinePolicyFromPermissionSetResponse"
   /DeleteInstance:
     post:
       operationId: DeleteInstance
@@ -750,10 +722,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteInstanceResponse"
   /DeleteInstanceAccessControlAttributeConfiguration:
     post:
       operationId: DeleteInstanceAccessControlAttributeConfiguration
@@ -783,10 +751,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteInstanceAccessControlAttributeConfigurationResponse"
   /DeletePermissionSet:
     post:
       operationId: DeletePermissionSet
@@ -820,10 +784,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeletePermissionSetResponse"
   /DeletePermissionsBoundaryFromPermissionSet:
     post:
       operationId: DeletePermissionsBoundaryFromPermissionSet
@@ -857,10 +817,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeletePermissionsBoundaryFromPermissionSetResponse"
   /DeleteTrustedTokenIssuer:
     post:
       operationId: DeleteTrustedTokenIssuer
@@ -890,10 +846,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteTrustedTokenIssuerResponse"
   /DescribeAccountAssignmentCreationStatus:
     post:
       operationId: DescribeAccountAssignmentCreationStatus
@@ -1322,10 +1274,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DetachCustomerManagedPolicyReferenceFromPermissionSetResponse"
   /DetachManagedPolicyFromPermissionSet:
     post:
       operationId: DetachManagedPolicyFromPermissionSet
@@ -1363,10 +1311,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DetachManagedPolicyFromPermissionSetResponse"
   /GetApplicationAccessScope:
     post:
       operationId: GetApplicationAccessScope
@@ -2596,10 +2540,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/PutApplicationAssignmentConfigurationResponse"
   /PutApplicationAuthenticationMethod:
     post:
       operationId: PutApplicationAuthenticationMethod
@@ -2705,10 +2645,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/PutApplicationSessionConfigurationResponse"
   /PutInlinePolicyToPermissionSet:
     post:
       operationId: PutInlinePolicyToPermissionSet
@@ -2746,10 +2682,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/PutInlinePolicyToPermissionSetResponse"
   /PutPermissionsBoundaryToPermissionSet:
     post:
       operationId: PutPermissionsBoundaryToPermissionSet
@@ -2787,10 +2719,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/PutPermissionsBoundaryToPermissionSetResponse"
   /RemoveRegion:
     post:
       operationId: RemoveRegion
@@ -2864,10 +2792,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TagResourceResponse"
   /UntagResource:
     post:
       operationId: UntagResource
@@ -2904,10 +2828,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UntagResourceResponse"
   /UpdateApplication:
     post:
       operationId: UpdateApplication
@@ -2949,10 +2869,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateApplicationResponse"
   /UpdateInstance:
     post:
       operationId: UpdateInstance
@@ -2991,10 +2907,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateInstanceResponse"
   /UpdateInstanceAccessControlAttributeConfiguration:
     post:
       operationId: UpdateInstanceAccessControlAttributeConfiguration
@@ -3028,10 +2940,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateInstanceAccessControlAttributeConfigurationResponse"
   /UpdatePermissionSet:
     post:
       operationId: UpdatePermissionSet
@@ -3074,10 +2982,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdatePermissionSetResponse"
   /UpdateTrustedTokenIssuer:
     post:
       operationId: UpdateTrustedTokenIssuer
@@ -3113,10 +3017,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateTrustedTokenIssuerResponse"
 components:
   parameters:
     X-Amz-Content-Sha256:
@@ -3211,15 +3111,11 @@ components:
       minLength: 1
       maxLength: 512
       pattern: ((/[A-Za-z0-9\.,\+@=_-]+)*)/
-    AttachCustomerManagedPolicyReferenceToPermissionSetResponse:
-      type: object
     ManagedPolicyArn:
       type: string
       minLength: 20
       maxLength: 2048
       pattern: arn:aws(-[a-z]{1,5}){0,3}:iam::aws:policy((/[A-Za-z0-9\.,\+@=_-]+)*)/([A-Za-z0-9\.,\+=@_-]+)
-    AttachManagedPolicyToPermissionSetResponse:
-      type: object
     TargetId:
       type: string
       minLength: 12
@@ -3400,8 +3296,6 @@ components:
       pattern: arn:aws(-[a-z]{1,5}){0,3}:sso::\d{12}:application/(sso)?ins-[a-zA-Z0-9-.]{16}/apl-[a-zA-Z0-9]{16}
     IdentityStoreArn:
       type: string
-    CreateApplicationAssignmentResponse:
-      type: object
     NameType:
       type: string
       minLength: 0
@@ -3462,8 +3356,6 @@ components:
       minLength: 0
       maxLength: 256
       pattern: '[\p{L}\p{Z}\p{N}_.:\/=+\-@\[\]\{\}\$\\"]*'
-    CreateInstanceAccessControlAttributeConfigurationResponse:
-      type: object
     PermissionSetName:
       type: string
       minLength: 1
@@ -3585,13 +3477,9 @@ components:
         AccountAssignmentDeletionStatus:
           $ref: "#/components/schemas/AccountAssignmentOperationStatus"
           description: The status object for the account assignment deletion operation.
-    DeleteApplicationResponse:
-      type: object
     Scope:
       type: string
       pattern: ([A-Za-z0-9_]{1,50})(:[A-Za-z0-9_]{1,50}){0,1}(:[A-Za-z0-9_]{1,50}){0,1}
-    DeleteApplicationAssignmentResponse:
-      type: object
     AuthenticationMethodType:
       type: string
       enum:
@@ -3603,18 +3491,6 @@ components:
         - refresh_token
         - urn:ietf:params:oauth:grant-type:jwt-bearer
         - urn:ietf:params:oauth:grant-type:token-exchange
-    DeleteInlinePolicyFromPermissionSetResponse:
-      type: object
-    DeleteInstanceResponse:
-      type: object
-    DeleteInstanceAccessControlAttributeConfigurationResponse:
-      type: object
-    DeletePermissionSetResponse:
-      type: object
-    DeletePermissionsBoundaryFromPermissionSetResponse:
-      type: object
-    DeleteTrustedTokenIssuerResponse:
-      type: object
     DescribeAccountAssignmentCreationStatusResponse:
       type: object
       properties:
@@ -3894,10 +3770,6 @@ components:
         TrustedTokenIssuerConfiguration:
           $ref: "#/components/schemas/TrustedTokenIssuerConfiguration"
           description: A structure the describes the settings that apply of this trusted token issuer.
-    DetachCustomerManagedPolicyReferenceFromPermissionSetResponse:
-      type: object
-    DetachManagedPolicyFromPermissionSetResponse:
-      type: object
     GetApplicationAccessScopeResponse:
       type: object
       properties:
@@ -4644,36 +4516,22 @@ components:
         PermissionSetProvisioningStatus:
           $ref: "#/components/schemas/PermissionSetProvisioningStatus"
           description: The status object for the permission set provisioning operation.
-    PutApplicationAssignmentConfigurationResponse:
-      type: object
-    PutApplicationSessionConfigurationResponse:
-      type: object
-    PutInlinePolicyToPermissionSetResponse:
-      type: object
-    PutPermissionsBoundaryToPermissionSetResponse:
-      type: object
     RemoveRegionResponse:
       type: object
       properties:
         Status:
           $ref: "#/components/schemas/RegionStatus"
           description: The status of the Region after the remove operation. The status is REMOVING when the asynchronous workflow is in progress. The Region record is deleted when the workflow completes.
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
         $ref: "#/components/schemas/TagKey"
-    UntagResourceResponse:
-      type: object
     UpdateApplicationPortalOptions:
       description: A structure that describes the options for the access portal associated with an application that can be updated.
       type: object
       properties:
         SignInOptions:
           $ref: "#/components/schemas/SignInOptions"
-    UpdateApplicationResponse:
-      type: object
     EncryptionConfiguration:
       description: A structure that specifies the KMS key type and KMS key ARN used to encrypt data in your IAM Identity Center instance.
       type: object
@@ -4686,12 +4544,6 @@ components:
           description: The ARN of the KMS key used to encrypt data. Required when KeyType is CUSTOMER_MANAGED_KEY. Cannot be specified when KeyType is AWS_OWNED_KMS_KEY.
       required:
         - KeyType
-    UpdateInstanceResponse:
-      type: object
-    UpdateInstanceAccessControlAttributeConfigurationResponse:
-      type: object
-    UpdatePermissionSetResponse:
-      type: object
     TrustedTokenIssuerUpdateConfiguration:
       description: A structure that contains details to be updated for a trusted token issuer configuration. The structure and settings that you can include depend on the type of the trusted token issuer being updated.
       type: object
@@ -4712,8 +4564,6 @@ components:
         JwksRetrievalOption:
           $ref: "#/components/schemas/JwksRetrievalOption"
           description: The method that the trusted token issuer can use to retrieve the JSON Web Key Set used to verify a JWT.
-    UpdateTrustedTokenIssuerResponse:
-      type: object
   x-stackQL-resources:
     regions:
       id: aws.sso_admin.regions
@@ -4798,7 +4648,6 @@ components:
             $ref: "#/paths/~1AttachCustomerManagedPolicyReferenceToPermissionSet/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -4811,7 +4660,6 @@ components:
             $ref: "#/paths/~1AttachManagedPolicyToPermissionSet/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -4837,7 +4685,6 @@ components:
             $ref: "#/paths/~1DeleteInlinePolicyFromPermissionSet/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -4850,7 +4697,6 @@ components:
             $ref: "#/paths/~1DeletePermissionSet/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -4863,7 +4709,6 @@ components:
             $ref: "#/paths/~1DeletePermissionsBoundaryFromPermissionSet/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -4890,7 +4735,6 @@ components:
             $ref: "#/paths/~1DetachCustomerManagedPolicyReferenceFromPermissionSet/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -4903,7 +4747,6 @@ components:
             $ref: "#/paths/~1DetachManagedPolicyFromPermissionSet/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -4956,7 +4799,6 @@ components:
             $ref: "#/paths/~1PutInlinePolicyToPermissionSet/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -4969,7 +4811,6 @@ components:
             $ref: "#/paths/~1PutPermissionsBoundaryToPermissionSet/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -4982,7 +4823,6 @@ components:
             $ref: "#/paths/~1UpdatePermissionSet/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -4997,9 +4837,9 @@ components:
         insert:
           - $ref: "#/components/x-stackQL-resources/permission_sets/methods/create_permission_set"
         update:
+          - $ref: "#/components/x-stackQL-resources/permission_sets/methods/provision_permission_set"
           - $ref: "#/components/x-stackQL-resources/permission_sets/methods/attach_customer_managed_policy_reference_to_permission_set"
           - $ref: "#/components/x-stackQL-resources/permission_sets/methods/attach_managed_policy_to_permission_set"
-          - $ref: "#/components/x-stackQL-resources/permission_sets/methods/provision_permission_set"
           - $ref: "#/components/x-stackQL-resources/permission_sets/methods/update_permission_set"
         replace:
           - $ref: "#/components/x-stackQL-resources/permission_sets/methods/put_inline_policy_to_permission_set"
@@ -5058,9 +4898,31 @@ components:
                 location: body
             requestBodyTranslate:
               algorithm: naive
+        list_account_assignments_for_principal:
+          operation:
+            $ref: "#/paths/~1ListAccountAssignmentsForPrincipal/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.AccountAssignments
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/account_assignments/methods/list_account_assignments"
+          - $ref: "#/components/x-stackQL-resources/account_assignments/methods/list_account_assignments_for_principal"
         insert:
           - $ref: "#/components/x-stackQL-resources/account_assignments/methods/create_account_assignment"
         update: []
@@ -5089,7 +4951,6 @@ components:
             $ref: "#/paths/~1DeleteApplication/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -5136,7 +4997,6 @@ components:
             $ref: "#/paths/~1UpdateApplication/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -5164,7 +5024,6 @@ components:
             $ref: "#/paths/~1CreateApplicationAssignment/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -5177,7 +5036,6 @@ components:
             $ref: "#/paths/~1DeleteApplicationAssignment/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -5219,10 +5077,32 @@ components:
                 location: body
             requestBodyTranslate:
               algorithm: naive
+        list_application_assignments_for_principal:
+          operation:
+            $ref: "#/paths/~1ListApplicationAssignmentsForPrincipal/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.ApplicationAssignments
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/application_assignments/methods/describe_application_assignment"
           - $ref: "#/components/x-stackQL-resources/application_assignments/methods/list_application_assignments"
+          - $ref: "#/components/x-stackQL-resources/application_assignments/methods/list_application_assignments_for_principal"
         insert:
           - $ref: "#/components/x-stackQL-resources/application_assignments/methods/create_application_assignment"
         update: []
@@ -5251,7 +5131,6 @@ components:
             $ref: "#/paths/~1DeleteInstance/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -5298,7 +5177,6 @@ components:
             $ref: "#/paths/~1UpdateInstance/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -5326,7 +5204,6 @@ components:
             $ref: "#/paths/~1CreateInstanceAccessControlAttributeConfiguration/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -5339,7 +5216,6 @@ components:
             $ref: "#/paths/~1DeleteInstanceAccessControlAttributeConfiguration/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -5365,7 +5241,6 @@ components:
             $ref: "#/paths/~1UpdateInstanceAccessControlAttributeConfiguration/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -5405,7 +5280,6 @@ components:
             $ref: "#/paths/~1DeleteTrustedTokenIssuer/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -5452,7 +5326,6 @@ components:
             $ref: "#/paths/~1UpdateTrustedTokenIssuer/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -5690,10 +5563,10 @@ components:
           - $ref: "#/components/x-stackQL-resources/application_grants/methods/put_application_grant"
         delete:
           - $ref: "#/components/x-stackQL-resources/application_grants/methods/delete_application_grant"
-    account_assignment_creation_status:
-      id: aws.sso_admin.account_assignment_creation_status
-      name: account_assignment_creation_status
-      title: account_assignment_creation_status
+    account_assignment_creation_statuses:
+      id: aws.sso_admin.account_assignment_creation_statuses
+      name: account_assignment_creation_statuses
+      title: account_assignment_creation_statuses
       methods:
         describe_account_assignment_creation_status:
           operation:
@@ -5732,15 +5605,15 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/account_assignment_creation_status/methods/describe_account_assignment_creation_status"
-          - $ref: "#/components/x-stackQL-resources/account_assignment_creation_status/methods/list_account_assignment_creation_status"
+          - $ref: "#/components/x-stackQL-resources/account_assignment_creation_statuses/methods/describe_account_assignment_creation_status"
+          - $ref: "#/components/x-stackQL-resources/account_assignment_creation_statuses/methods/list_account_assignment_creation_status"
         insert: []
         update: []
         delete: []
-    account_assignment_deletion_status:
-      id: aws.sso_admin.account_assignment_deletion_status
-      name: account_assignment_deletion_status
-      title: account_assignment_deletion_status
+    account_assignment_deletion_statuses:
+      id: aws.sso_admin.account_assignment_deletion_statuses
+      name: account_assignment_deletion_statuses
+      title: account_assignment_deletion_statuses
       methods:
         describe_account_assignment_deletion_status:
           operation:
@@ -5779,8 +5652,8 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/account_assignment_deletion_status/methods/describe_account_assignment_deletion_status"
-          - $ref: "#/components/x-stackQL-resources/account_assignment_deletion_status/methods/list_account_assignment_deletion_status"
+          - $ref: "#/components/x-stackQL-resources/account_assignment_deletion_statuses/methods/describe_account_assignment_deletion_status"
+          - $ref: "#/components/x-stackQL-resources/account_assignment_deletion_statuses/methods/list_account_assignment_deletion_status"
         insert: []
         update: []
         delete: []
@@ -5830,10 +5703,10 @@ components:
         insert: []
         update: []
         delete: []
-    permission_set_provisioning_status:
-      id: aws.sso_admin.permission_set_provisioning_status
-      name: permission_set_provisioning_status
-      title: permission_set_provisioning_status
+    permission_set_provisioning_statuses:
+      id: aws.sso_admin.permission_set_provisioning_statuses
+      name: permission_set_provisioning_statuses
+      title: permission_set_provisioning_statuses
       methods:
         describe_permission_set_provisioning_status:
           operation:
@@ -5872,8 +5745,8 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/permission_set_provisioning_status/methods/describe_permission_set_provisioning_status"
-          - $ref: "#/components/x-stackQL-resources/permission_set_provisioning_status/methods/list_permission_set_provisioning_status"
+          - $ref: "#/components/x-stackQL-resources/permission_set_provisioning_statuses/methods/describe_permission_set_provisioning_status"
+          - $ref: "#/components/x-stackQL-resources/permission_set_provisioning_statuses/methods/list_permission_set_provisioning_status"
         insert: []
         update: []
         delete: []
@@ -5900,7 +5773,6 @@ components:
             $ref: "#/paths/~1PutApplicationAssignmentConfiguration/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -5939,7 +5811,6 @@ components:
             $ref: "#/paths/~1PutApplicationSessionConfiguration/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -5955,10 +5826,10 @@ components:
         replace:
           - $ref: "#/components/x-stackQL-resources/application_session_configurations/methods/put_application_session_configuration"
         delete: []
-    inline_policy_for_permission_sets:
-      id: aws.sso_admin.inline_policy_for_permission_sets
-      name: inline_policy_for_permission_sets
-      title: inline_policy_for_permission_sets
+    inline_policies:
+      id: aws.sso_admin.inline_policies
+      name: inline_policies
+      title: inline_policies
       methods:
         get_inline_policy_for_permission_set:
           operation:
@@ -5975,14 +5846,14 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/inline_policy_for_permission_sets/methods/get_inline_policy_for_permission_set"
+          - $ref: "#/components/x-stackQL-resources/inline_policies/methods/get_inline_policy_for_permission_set"
         insert: []
         update: []
         delete: []
-    permissions_boundary_for_permission_sets:
-      id: aws.sso_admin.permissions_boundary_for_permission_sets
-      name: permissions_boundary_for_permission_sets
-      title: permissions_boundary_for_permission_sets
+    permissions_boundaries:
+      id: aws.sso_admin.permissions_boundaries
+      name: permissions_boundaries
+      title: permissions_boundaries
       methods:
         get_permissions_boundary_for_permission_set:
           operation:
@@ -6000,46 +5871,14 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/permissions_boundary_for_permission_sets/methods/get_permissions_boundary_for_permission_set"
+          - $ref: "#/components/x-stackQL-resources/permissions_boundaries/methods/get_permissions_boundary_for_permission_set"
         insert: []
         update: []
         delete: []
-    account_assignments_for_principals:
-      id: aws.sso_admin.account_assignments_for_principals
-      name: account_assignments_for_principals
-      title: account_assignments_for_principals
-      methods:
-        list_account_assignments_for_principal:
-          operation:
-            $ref: "#/paths/~1ListAccountAssignmentsForPrincipal/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.AccountAssignments
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            pagination:
-              requestToken:
-                key: NextToken
-                location: body
-              responseToken:
-                key: $.NextToken
-                location: body
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/account_assignments_for_principals/methods/list_account_assignments_for_principal"
-        insert: []
-        update: []
-        delete: []
-    accounts_for_provisioned_permission_sets:
-      id: aws.sso_admin.accounts_for_provisioned_permission_sets
-      name: accounts_for_provisioned_permission_sets
-      title: accounts_for_provisioned_permission_sets
+    accounts:
+      id: aws.sso_admin.accounts
+      name: accounts
+      title: accounts
       methods:
         list_accounts_for_provisioned_permission_set:
           operation:
@@ -6070,39 +5909,7 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/accounts_for_provisioned_permission_sets/methods/list_accounts_for_provisioned_permission_set"
-        insert: []
-        update: []
-        delete: []
-    application_assignments_for_principals:
-      id: aws.sso_admin.application_assignments_for_principals
-      name: application_assignments_for_principals
-      title: application_assignments_for_principals
-      methods:
-        list_application_assignments_for_principal:
-          operation:
-            $ref: "#/paths/~1ListApplicationAssignmentsForPrincipal/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.ApplicationAssignments
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            pagination:
-              requestToken:
-                key: NextToken
-                location: body
-              responseToken:
-                key: $.NextToken
-                location: body
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/application_assignments_for_principals/methods/list_application_assignments_for_principal"
+          - $ref: "#/components/x-stackQL-resources/accounts/methods/list_accounts_for_provisioned_permission_set"
         insert: []
         update: []
         delete: []
@@ -6239,7 +6046,6 @@ components:
             $ref: "#/paths/~1TagResource/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -6252,7 +6058,6 @@ components:
             $ref: "#/paths/~1UntagResource/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1

@@ -35,7 +35,8 @@ The following fields are returned by `SELECT` queries:
 <Tabs
     defaultValue="batch_get_code_review_jobs"
     values={[
-        { label: 'batch_get_code_review_jobs', value: 'batch_get_code_review_jobs' }
+        { label: 'batch_get_code_review_jobs', value: 'batch_get_code_review_jobs' },
+        { label: 'list_code_review_jobs_for_code_review', value: 'list_code_review_jobs_for_code_review' }
     ]}
 >
 <TabItem value="batch_get_code_review_jobs">
@@ -58,6 +59,50 @@ The following fields are returned by `SELECT` queries:
     <td><CopyableCode code="not_found" /></td>
     <td><code>array</code></td>
     <td>List of code review job IDs.</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
+<TabItem value="list_code_review_jobs_for_code_review">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="code_review_id" /></td>
+    <td><code>string</code></td>
+    <td>The unique identifier of the code review associated with the job.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="code_review_job_id" /></td>
+    <td><code>string</code></td>
+    <td>The unique identifier of the code review job.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="created_at" /></td>
+    <td><code>string (date-time)</code></td>
+    <td>The date and time the code review job was created, in UTC format.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="status" /></td>
+    <td><code>string</code></td>
+    <td>The current status of the code review job. (IN_PROGRESS, STOPPING, STOPPED, FAILED, COMPLETED)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="title_" /></td>
+    <td><code>string</code></td>
+    <td>The title of the code review job.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="updated_at" /></td>
+    <td><code>string (date-time)</code></td>
+    <td>The date and time the code review job was last updated, in UTC format.</td>
 </tr>
 </tbody>
 </table>
@@ -85,6 +130,13 @@ The following methods are available for this resource:
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td></td>
     <td>Retrieves information about one or more code review jobs in an agent space.</td>
+</tr>
+<tr>
+    <td><a href="#list_code_review_jobs_for_code_review"><CopyableCode code="list_code_review_jobs_for_code_review" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Returns a paginated list of code review job summaries for the specified code review configuration.</td>
 </tr>
 </tbody>
 </table>
@@ -115,7 +167,8 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <Tabs
     defaultValue="batch_get_code_review_jobs"
     values={[
-        { label: 'batch_get_code_review_jobs', value: 'batch_get_code_review_jobs' }
+        { label: 'batch_get_code_review_jobs', value: 'batch_get_code_review_jobs' },
+        { label: 'list_code_review_jobs_for_code_review', value: 'list_code_review_jobs_for_code_review' }
     ]}
 >
 <TabItem value="batch_get_code_review_jobs">
@@ -126,6 +179,23 @@ Retrieves information about one or more code review jobs in an agent space.
 SELECT
 code_review_jobs,
 not_found
+FROM aws.securityagent.code_review_jobs
+WHERE region = '{{ region }}' -- required
+;
+```
+</TabItem>
+<TabItem value="list_code_review_jobs_for_code_review">
+
+Returns a paginated list of code review job summaries for the specified code review configuration.
+
+```sql
+SELECT
+code_review_id,
+code_review_job_id,
+created_at,
+status,
+title_,
+updated_at
 FROM aws.securityagent.code_review_jobs
 WHERE region = '{{ region }}' -- required
 ;

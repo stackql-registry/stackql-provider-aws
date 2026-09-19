@@ -233,6 +233,20 @@ The following methods are available for this resource:
     <td></td>
     <td>ListJobs retrieves a list of jobs with optional filtering and pagination support. For more information, see Job concepts in the Amazon Location Service Developer Guide.</td>
 </tr>
+<tr>
+    <td><a href="#cancel_job"><CopyableCode code="cancel_job" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-JobId"><code>JobId</code></a></td>
+    <td></td>
+    <td>CancelJob cancels a job that is currently running or pending. If the job is already in a terminal state (Completed, Failed, or Cancelled), the operation returns successfully with the current status. For more information, see Job concepts in the Amazon Location Service Developer Guide.</td>
+</tr>
+<tr>
+    <td><a href="#start_job"><CopyableCode code="start_job" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-ExecutionRoleArn"><code>ExecutionRoleArn</code></a>, <a href="#parameter-InputOptions"><code>InputOptions</code></a>, <a href="#parameter-OutputOptions"><code>OutputOptions</code></a></td>
+    <td></td>
+    <td>StartJob starts a new asynchronous bulk processing job. You specify the input data location in Amazon S3, the action to perform, and the output location where results are written. For more information, see Job concepts in the Amazon Location Service Developer Guide.</td>
+</tr>
 </tbody>
 </table>
 
@@ -318,6 +332,53 @@ status,
 updated_at
 FROM aws.location.jobs
 WHERE region = '{{ region }}' -- required
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="cancel_job"
+    values={[
+        { label: 'cancel_job', value: 'cancel_job' },
+        { label: 'start_job', value: 'start_job' }
+    ]}
+>
+<TabItem value="cancel_job">
+
+CancelJob cancels a job that is currently running or pending. If the job is already in a terminal state (Completed, Failed, or Cancelled), the operation returns successfully with the current status. For more information, see Job concepts in the Amazon Location Service Developer Guide.
+
+```sql
+EXEC aws.location.jobs.cancel_job 
+@region='{{ region }}' --required 
+@@json=
+'{
+"JobId": "{{ JobId }}"
+}'
+;
+```
+</TabItem>
+<TabItem value="start_job">
+
+StartJob starts a new asynchronous bulk processing job. You specify the input data location in Amazon S3, the action to perform, and the output location where results are written. For more information, see Job concepts in the Amazon Location Service Developer Guide.
+
+```sql
+EXEC aws.location.jobs.start_job 
+@region='{{ region }}' --required 
+@@json=
+'{
+"ClientToken": "{{ ClientToken }}", 
+"Action": "{{ Action }}", 
+"ActionOptions": "{{ ActionOptions }}", 
+"ExecutionRoleArn": "{{ ExecutionRoleArn }}", 
+"InputOptions": "{{ InputOptions }}", 
+"Name": "{{ Name }}", 
+"OutputOptions": "{{ OutputOptions }}", 
+"Tags": "{{ Tags }}"
+}'
 ;
 ```
 </TabItem>

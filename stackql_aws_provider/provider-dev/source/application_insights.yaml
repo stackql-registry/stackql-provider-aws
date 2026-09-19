@@ -166,10 +166,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CreateComponentResponse'
       x-stackql-resource: components
       x-stackql-method: create_component
       x-stackql-verb: INSERT
@@ -261,10 +257,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteApplicationResponse'
       x-stackql-resource: applications
       x-stackql-method: delete_application
       x-stackql-verb: DELETE
@@ -302,10 +294,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteComponentResponse'
       x-stackql-resource: components
       x-stackql-method: delete_component
       x-stackql-verb: DELETE
@@ -346,10 +334,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteLogPatternResponse'
       x-stackql-resource: log_patterns
       x-stackql-method: delete_log_pattern
       x-stackql-verb: DELETE
@@ -1173,10 +1157,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RemoveWorkloadResponse'
       x-stackql-resource: workloads
       x-stackql-method: remove_workload
       x-stackql-verb: UPDATE
@@ -1219,10 +1199,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -1262,10 +1238,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -1368,10 +1340,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateComponentResponse'
       x-stackql-resource: components
       x-stackql-method: update_component
       x-stackql-verb: UPDATE
@@ -1424,10 +1392,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateComponentConfigurationResponse'
       x-stackql-resource: component_configurations
       x-stackql-method: update_component_configuration
       x-stackql-verb: UPDATE
@@ -1526,10 +1490,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateProblemResponse'
       x-stackql-resource: problems
       x-stackql-method: update_problem
       x-stackql-verb: UPDATE
@@ -1840,8 +1800,6 @@ components:
       minLength: 1
       maxLength: 1011
       pattern: ^arn:aws(-\w+)*:[\w\d-]+:([\w\d-]*)?:[\w\d_-]*([:/].+)*$
-    CreateComponentResponse:
-      type: object
     LogPatternSetName:
       type: string
       minLength: 1
@@ -1893,12 +1851,6 @@ components:
             custom log patterns from the console, a Low severity pattern translates to a 750,000 rank. A Medium severity pattern
             translates to a 500,000 rank. And a High severity pattern translates to a 250,000 rank. Rank values less than
             1 or greater than 1,000,000 are reserved for Amazon Web Services provided patterns.
-    DeleteApplicationResponse:
-      type: object
-    DeleteComponentResponse:
-      type: object
-    DeleteLogPatternResponse:
-      type: object
     DescribeApplicationResponse:
       type: object
       properties:
@@ -2592,16 +2544,10 @@ components:
           description: Indicates whether all of the component configurations required to monitor a workload were provided.
     MissingWorkloadConfig:
       type: boolean
-    RemoveWorkloadResponse:
-      type: object
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
         $ref: '#/components/schemas/TagKey'
-    UntagResourceResponse:
-      type: object
     RemoveSNSTopic:
       type: boolean
     UpdateApplicationResponse:
@@ -2610,10 +2556,6 @@ components:
         ApplicationInfo:
           $ref: '#/components/schemas/ApplicationInfo'
           description: Information about the application.
-    UpdateComponentResponse:
-      type: object
-    UpdateComponentConfigurationResponse:
-      type: object
     UpdateLogPatternResponse:
       type: object
       properties:
@@ -2627,8 +2569,6 @@ components:
       type: string
       enum:
       - RESOLVED
-    UpdateProblemResponse:
-      type: object
     UpdateWorkloadResponse:
       type: object
       properties:

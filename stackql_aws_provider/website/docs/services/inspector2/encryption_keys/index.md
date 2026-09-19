@@ -88,6 +88,13 @@ The following methods are available for this resource:
     <td></td>
     <td>Updates an encryption key. A ResourceNotFoundException means that an Amazon Web Services owned key is being used for encryption.</td>
 </tr>
+<tr>
+    <td><a href="#reset_encryption_key"><CopyableCode code="reset_encryption_key" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-scanType"><code>scanType</code></a>, <a href="#parameter-resourceType"><code>resourceType</code></a></td>
+    <td></td>
+    <td>Resets an encryption key. After the key is reset your resources will be encrypted by an Amazon Web Services owned key.</td>
+</tr>
 </tbody>
 </table>
 
@@ -170,6 +177,32 @@ region = '{{ region }}' --required
 AND kmsKeyId = '{{ kmsKeyId }}' --required
 AND scanType = '{{ scanType }}' --required
 AND resourceType = '{{ resourceType }}' --required;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="reset_encryption_key"
+    values={[
+        { label: 'reset_encryption_key', value: 'reset_encryption_key' }
+    ]}
+>
+<TabItem value="reset_encryption_key">
+
+Resets an encryption key. After the key is reset your resources will be encrypted by an Amazon Web Services owned key.
+
+```sql
+EXEC aws.inspector2.encryption_keys.reset_encryption_key 
+@region='{{ region }}' --required 
+@@json=
+'{
+"scanType": "{{ scanType }}", 
+"resourceType": "{{ resourceType }}"
+}'
+;
 ```
 </TabItem>
 </Tabs>

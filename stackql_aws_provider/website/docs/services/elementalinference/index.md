@@ -18,7 +18,7 @@ elementalinference service documentation.
 
 :::info[Service Summary]
 
-total resources: __4__  
+total resources: __5__  
 
 :::
 
@@ -26,6 +26,7 @@ total resources: __4__
 <div class="row">
 <div class="providerDocColumn">
 <a href="/services/elementalinference/dictionaries/">dictionaries</a><br />
+<a href="/services/elementalinference/feed_policies/">feed_policies</a><br />
 <a href="/services/elementalinference/feeds/">feeds</a>
 </div>
 <div class="providerDocColumn">

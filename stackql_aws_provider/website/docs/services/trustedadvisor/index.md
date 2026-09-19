@@ -31,8 +31,8 @@ total resources: __7__
 <a href="/services/trustedadvisor/organization_recommendations/">organization_recommendations</a>
 </div>
 <div class="providerDocColumn">
+<a href="/services/trustedadvisor/recommendation_resource_exclusions/">recommendation_resource_exclusions</a><br />
 <a href="/services/trustedadvisor/recommendation_resources/">recommendation_resources</a><br />
-<a href="/services/trustedadvisor/recommendations/">recommendations</a><br />
-<a href="/services/trustedadvisor/recommendations_for_resources/">recommendations_for_resources</a>
+<a href="/services/trustedadvisor/recommendations/">recommendations</a>
 </div>
 </div>

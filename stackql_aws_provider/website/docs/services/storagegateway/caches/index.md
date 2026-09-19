@@ -126,6 +126,20 @@ The following methods are available for this resource:
     <td>Cancels generation of a specified cache report. You can use this operation to manually cancel an IN-PROGRESS report for any reason. This action changes the report status from IN-PROGRESS to CANCELLED. You can only cancel in-progress reports. If the the report you attempt to cancel is in FAILED, ERROR, or COMPLETED state, the cancel operation returns an error.</td>
 </tr>
 <tr>
+    <td><a href="#refresh_cache"><CopyableCode code="refresh_cache" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-FileShareARN"><code>FileShareARN</code></a></td>
+    <td></td>
+    <td>Refreshes the cached inventory of objects for the specified file share. This operation finds objects in the Amazon S3 bucket that were added, removed, or replaced since the gateway last listed the bucket's contents and cached the results. This operation does not import files into the S3 File Gateway cache storage. It only updates the cached inventory to reflect changes in the inventory of the objects in the S3 bucket. This operation is only supported in the S3 File Gateway types. You can subscribe to be notified through an Amazon CloudWatch event when your RefreshCache operation completes. For more information, see Getting notified about file operations in the Amazon S3 File Gateway User Guide. This operation is Only supported for S3 File Gateways. When this API is called, it only initiates the refresh operation. When the API call completes and returns a success code, it doesn't necessarily mean that the file refresh has completed. You should use the refresh-complete notification to determine that the operation has completed before you check for new files on the gateway file share. You can subscribe to be notified through a CloudWatch event when your RefreshCache operation completes. Throttle limit: This API is asynchronous, so the gateway will accept no more than two refreshes at any time. We recommend using the refresh-complete CloudWatch event notification before issuing additional requests. For more information, see Getting notified about file operations in the Amazon S3 File Gateway User Guide. Wait at least 60 seconds between consecutive RefreshCache API requests. If you invoke the RefreshCache API when two requests are already being processed, any new request will cause an InvalidGatewayRequestException error because too many requests were sent to the server. The S3 bucket name does not need to be included when entering the list of folders in the FolderList parameter. For more information, see Getting notified about file operations in the Amazon S3 File Gateway User Guide.</td>
+</tr>
+<tr>
+    <td><a href="#reset_cache"><CopyableCode code="reset_cache" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-GatewayARN"><code>GatewayARN</code></a></td>
+    <td></td>
+    <td>Resets all cache disks that have encountered an error and makes the disks available for reconfiguration as cache storage. If your cache disk encounters an error, the gateway prevents read and write operations on virtual tapes in the gateway. For example, an error can occur when a disk is corrupted or removed from the gateway. When a cache is reset, the gateway loses its cache storage. At this point, you can reconfigure the disks as cache disks. This operation is only supported in the cached volume and tape types. If the cache disk you are resetting contains data that has not been uploaded to Amazon S3 yet, that data can be lost. After you reset cache disks, there will be no configured cache disks left in the gateway, so you must configure at least one new cache disk for your gateway to function properly.</td>
+</tr>
+<tr>
     <td><a href="#start_cache_report"><CopyableCode code="start_cache_report" /></a></td>
     <td><CopyableCode code="exec" /></td>
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-FileShareARN"><code>FileShareARN</code></a>, <a href="#parameter-Role"><code>Role</code></a>, <a href="#parameter-LocationARN"><code>LocationARN</code></a>, <a href="#parameter-BucketRegion"><code>BucketRegion</code></a>, <a href="#parameter-ClientToken"><code>ClientToken</code></a></td>
@@ -219,6 +233,8 @@ gateway_arn;
     defaultValue="cancel_cache_report"
     values={[
         { label: 'cancel_cache_report', value: 'cancel_cache_report' },
+        { label: 'refresh_cache', value: 'refresh_cache' },
+        { label: 'reset_cache', value: 'reset_cache' },
         { label: 'start_cache_report', value: 'start_cache_report' }
     ]}
 >
@@ -232,6 +248,36 @@ EXEC aws.storagegateway.caches.cancel_cache_report
 @@json=
 '{
 "CacheReportARN": "{{ CacheReportARN }}"
+}'
+;
+```
+</TabItem>
+<TabItem value="refresh_cache">
+
+Refreshes the cached inventory of objects for the specified file share. This operation finds objects in the Amazon S3 bucket that were added, removed, or replaced since the gateway last listed the bucket's contents and cached the results. This operation does not import files into the S3 File Gateway cache storage. It only updates the cached inventory to reflect changes in the inventory of the objects in the S3 bucket. This operation is only supported in the S3 File Gateway types. You can subscribe to be notified through an Amazon CloudWatch event when your RefreshCache operation completes. For more information, see Getting notified about file operations in the Amazon S3 File Gateway User Guide. This operation is Only supported for S3 File Gateways. When this API is called, it only initiates the refresh operation. When the API call completes and returns a success code, it doesn't necessarily mean that the file refresh has completed. You should use the refresh-complete notification to determine that the operation has completed before you check for new files on the gateway file share. You can subscribe to be notified through a CloudWatch event when your RefreshCache operation completes. Throttle limit: This API is asynchronous, so the gateway will accept no more than two refreshes at any time. We recommend using the refresh-complete CloudWatch event notification before issuing additional requests. For more information, see Getting notified about file operations in the Amazon S3 File Gateway User Guide. Wait at least 60 seconds between consecutive RefreshCache API requests. If you invoke the RefreshCache API when two requests are already being processed, any new request will cause an InvalidGatewayRequestException error because too many requests were sent to the server. The S3 bucket name does not need to be included when entering the list of folders in the FolderList parameter. For more information, see Getting notified about file operations in the Amazon S3 File Gateway User Guide.
+
+```sql
+EXEC aws.storagegateway.caches.refresh_cache 
+@region='{{ region }}' --required 
+@@json=
+'{
+"FileShareARN": "{{ FileShareARN }}", 
+"FolderList": "{{ FolderList }}", 
+"Recursive": {{ Recursive }}
+}'
+;
+```
+</TabItem>
+<TabItem value="reset_cache">
+
+Resets all cache disks that have encountered an error and makes the disks available for reconfiguration as cache storage. If your cache disk encounters an error, the gateway prevents read and write operations on virtual tapes in the gateway. For example, an error can occur when a disk is corrupted or removed from the gateway. When a cache is reset, the gateway loses its cache storage. At this point, you can reconfigure the disks as cache disks. This operation is only supported in the cached volume and tape types. If the cache disk you are resetting contains data that has not been uploaded to Amazon S3 yet, that data can be lost. After you reset cache disks, there will be no configured cache disks left in the gateway, so you must configure at least one new cache disk for your gateway to function properly.
+
+```sql
+EXEC aws.storagegateway.caches.reset_cache 
+@region='{{ region }}' --required 
+@@json=
+'{
+"GatewayARN": "{{ GatewayARN }}"
 }'
 ;
 ```

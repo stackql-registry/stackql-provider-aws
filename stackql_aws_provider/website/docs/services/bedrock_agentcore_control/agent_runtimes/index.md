@@ -131,6 +131,11 @@ The following fields are returned by `SELECT` queries:
     <td>SecurityConfig for the Agent.</td>
 </tr>
 <tr>
+    <td><CopyableCode code="platform_version" /></td>
+    <td><code>string</code></td>
+    <td>The version of the runtime platform used by the AgentCore Runtime. (pattern: &lt;code&gt;&#91;^\s&#93;+&lt;/code&gt;)</td>
+</tr>
+<tr>
     <td><CopyableCode code="protocol_configuration" /></td>
     <td><code>object</code></td>
     <td>The protocol configuration for an agent runtime. This structure defines how the agent runtime communicates with clients.</td>
@@ -148,7 +153,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
-    <td>The current status of the AgentCore Runtime. (CREATING, CREATE_FAILED, UPDATING, UPDATE_FAILED, READY, DELETING)</td>
+    <td>The current status of the AgentCore Runtime. (CREATING, CREATE_FAILED, UPDATING, UPDATE_FAILED, READY, DELETING, DELETE_FAILED)</td>
 </tr>
 <tr>
     <td><CopyableCode code="workload_identity_details" /></td>
@@ -202,7 +207,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
-    <td>The current status of the agent runtime. (CREATING, CREATE_FAILED, UPDATING, UPDATE_FAILED, READY, DELETING)</td>
+    <td>The current status of the agent runtime. (CREATING, CREATE_FAILED, UPDATING, UPDATE_FAILED, READY, DELETING, DELETE_FAILED)</td>
 </tr>
 </tbody>
 </table>
@@ -339,6 +344,7 @@ last_updated_at,
 lifecycle_configuration,
 metadata_configuration,
 network_configuration,
+platform_version,
 protocol_configuration,
 request_header_configuration,
 role_arn,
@@ -403,6 +409,7 @@ environmentVariables,
 filesystemConfigurations,
 capacityProviderConfiguration,
 tags,
+platformVersion,
 region
 )
 SELECT 
@@ -420,6 +427,7 @@ SELECT
 '{{ filesystemConfigurations }}',
 '{{ capacityProviderConfiguration }}',
 '{{ tags }}',
+'{{ platformVersion }}',
 '{{ region }}'
 RETURNING
 agent_runtime_arn,
@@ -562,6 +570,8 @@ workload_identity_details
         capacityProviderArn: "{{ capacityProviderArn }}"
     - name: tags
       value: "{{ tags }}"
+    - name: platformVersion
+      value: "{{ platformVersion }}"
 `}</CodeBlock>
 
 </TabItem>
@@ -595,6 +605,7 @@ metadataConfiguration = '{{ metadataConfiguration }}',
 environmentVariables = '{{ environmentVariables }}',
 filesystemConfigurations = '{{ filesystemConfigurations }}',
 capacityProviderConfiguration = '{{ capacityProviderConfiguration }}',
+platformVersion = '{{ platformVersion }}',
 clientToken = '{{ clientToken }}'
 WHERE 
 agent_runtime_id = '{{ agent_runtime_id }}' --required

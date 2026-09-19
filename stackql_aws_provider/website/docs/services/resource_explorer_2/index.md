@@ -18,7 +18,7 @@ resource_explorer_2 service documentation.
 
 :::info[Service Summary]
 
-total resources: __14__  
+total resources: __13__  
 
 :::
 
@@ -28,16 +28,15 @@ total resources: __14__
 <a href="/services/resource_explorer_2/account_level_service_configurations/">account_level_service_configurations</a><br />
 <a href="/services/resource_explorer_2/default_views/">default_views</a><br />
 <a href="/services/resource_explorer_2/indexes/">indexes</a><br />
-<a href="/services/resource_explorer_2/indexes_for_members/">indexes_for_members</a><br />
 <a href="/services/resource_explorer_2/managed_views/">managed_views</a><br />
 <a href="/services/resource_explorer_2/resource_explorer_setups/">resource_explorer_setups</a><br />
-<a href="/services/resource_explorer_2/resources/">resources</a>
+<a href="/services/resource_explorer_2/resources/">resources</a><br />
+<a href="/services/resource_explorer_2/searches/">searches</a>
 </div>
 <div class="providerDocColumn">
-<a href="/services/resource_explorer_2/search/">search</a><br />
 <a href="/services/resource_explorer_2/service_indexes/">service_indexes</a><br />
 <a href="/services/resource_explorer_2/service_views/">service_views</a><br />
-<a href="/services/resource_explorer_2/streaming_access_for_services/">streaming_access_for_services</a><br />
+<a href="/services/resource_explorer_2/streaming_accesses/">streaming_accesses</a><br />
 <a href="/services/resource_explorer_2/supported_resource_types/">supported_resource_types</a><br />
 <a href="/services/resource_explorer_2/tags/">tags</a><br />
 <a href="/services/resource_explorer_2/views/">views</a>

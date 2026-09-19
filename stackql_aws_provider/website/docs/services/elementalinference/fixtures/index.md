@@ -35,7 +35,8 @@ The following fields are returned by `SELECT` queries:
 <Tabs
     defaultValue="search_fixtures"
     values={[
-        { label: 'search_fixtures', value: 'search_fixtures' }
+        { label: 'search_fixtures', value: 'search_fixtures' },
+        { label: 'get_fixture', value: 'get_fixture' }
     ]}
 >
 <TabItem value="search_fixtures">
@@ -82,6 +83,50 @@ The following fields are returned by `SELECT` queries:
 </tbody>
 </table>
 </TabItem>
+<TabItem value="get_fixture">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="name" /></td>
+    <td><code>string</code></td>
+    <td>The name of the fixture, as provided by the data source. For example, the names of the two competing teams.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="competitors" /></td>
+    <td><code>array</code></td>
+    <td>An array of the competitors (the teams or individuals) in the fixture.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="fixture_group" /></td>
+    <td><code>string</code></td>
+    <td>The group that the fixture belongs to, such as the competition, league, or tournament. The data source doesn't provide this information for every fixture.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="fixture_id" /></td>
+    <td><code>string</code></td>
+    <td>The ID that you specified in the request.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="scheduled_start" /></td>
+    <td><code>string (date-time)</code></td>
+    <td>The scheduled start time of the fixture, as provided by the data source. The actual start time might differ.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="status" /></td>
+    <td><code>string</code></td>
+    <td>The status of the fixture in its lifecycle, as provided by the data source. For example, Scheduled or Completed.</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
 </Tabs>
 
 ## Methods
@@ -106,6 +151,13 @@ The following methods are available for this resource:
     <td></td>
     <td>Searches for the fixtures (sports events, such as a specific basketball game) that are available for a sport in a date window. Each fixture in the response includes a fixtureId that you specify in the clipping output of a feed, so that Elemental Inference maps the event data for that fixture onto the clipping metadata. This operation is paginated: if there are more fixtures than fit in one page, the response includes a nextToken that you pass in a subsequent request.</td>
 </tr>
+<tr>
+    <td><a href="#get_fixture"><CopyableCode code="get_fixture" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-fixture_id"><code>fixture_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Retrieves information about the specified fixture (a sports event, such as a specific basketball game). You obtain a fixtureId from SearchFixtures, or from the clipping output of a feed.</td>
+</tr>
 </tbody>
 </table>
 
@@ -122,6 +174,11 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     </tr>
 </thead>
 <tbody>
+<tr id="parameter-fixture_id">
+    <td><CopyableCode code="fixture_id" /></td>
+    <td><code>string</code></td>
+    <td>The ID of the fixture to retrieve, as returned by SearchFixtures.</td>
+</tr>
 <tr id="parameter-region">
     <td><CopyableCode code="region" /></td>
     <td><code>string</code></td>
@@ -135,7 +192,8 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <Tabs
     defaultValue="search_fixtures"
     values={[
-        { label: 'search_fixtures', value: 'search_fixtures' }
+        { label: 'search_fixtures', value: 'search_fixtures' },
+        { label: 'get_fixture', value: 'get_fixture' }
     ]}
 >
 <TabItem value="search_fixtures">
@@ -152,6 +210,24 @@ scheduled_start,
 status
 FROM aws.elementalinference.fixtures
 WHERE region = '{{ region }}' -- required
+;
+```
+</TabItem>
+<TabItem value="get_fixture">
+
+Retrieves information about the specified fixture (a sports event, such as a specific basketball game). You obtain a fixtureId from SearchFixtures, or from the clipping output of a feed.
+
+```sql
+SELECT
+name,
+competitors,
+fixture_group,
+fixture_id,
+scheduled_start,
+status
+FROM aws.elementalinference.fixtures
+WHERE fixture_id = '{{ fixture_id }}' -- required
+AND region = '{{ region }}' -- required
 ;
 ```
 </TabItem>

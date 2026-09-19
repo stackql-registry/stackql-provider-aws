@@ -18,7 +18,7 @@ mwaa service documentation.
 
 :::info[Service Summary]
 
-total resources: __4__  
+total resources: __5__  
 
 :::
 
@@ -26,7 +26,8 @@ total resources: __4__
 <div class="row">
 <div class="providerDocColumn">
 <a href="/services/mwaa/cli_tokens/">cli_tokens</a><br />
-<a href="/services/mwaa/environments/">environments</a>
+<a href="/services/mwaa/environments/">environments</a><br />
+<a href="/services/mwaa/rest_apis/">rest_apis</a>
 </div>
 <div class="providerDocColumn">
 <a href="/services/mwaa/tags/">tags</a><br />

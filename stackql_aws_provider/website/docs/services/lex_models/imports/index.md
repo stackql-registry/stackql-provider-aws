@@ -111,6 +111,13 @@ The following methods are available for this resource:
     <td></td>
     <td>Gets information about an import job started with the StartImport operation.</td>
 </tr>
+<tr>
+    <td><a href="#start_import"><CopyableCode code="start_import" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-payload"><code>payload</code></a>, <a href="#parameter-resourceType"><code>resourceType</code></a>, <a href="#parameter-mergeStrategy"><code>mergeStrategy</code></a></td>
+    <td></td>
+    <td>Starts a job to import a resource to Amazon Lex.</td>
+</tr>
 </tbody>
 </table>
 
@@ -164,6 +171,34 @@ resource_type
 FROM aws.lex_models.imports
 WHERE import_id = '{{ import_id }}' -- required
 AND region = '{{ region }}' -- required
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="start_import"
+    values={[
+        { label: 'start_import', value: 'start_import' }
+    ]}
+>
+<TabItem value="start_import">
+
+Starts a job to import a resource to Amazon Lex.
+
+```sql
+EXEC aws.lex_models.imports.start_import 
+@region='{{ region }}' --required 
+@@json=
+'{
+"payload": "{{ payload }}", 
+"resourceType": "{{ resourceType }}", 
+"mergeStrategy": "{{ mergeStrategy }}", 
+"tags": "{{ tags }}"
+}'
 ;
 ```
 </TabItem>

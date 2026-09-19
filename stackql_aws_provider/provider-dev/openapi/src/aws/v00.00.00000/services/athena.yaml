@@ -150,10 +150,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/CancelCapacityReservationOutput"
   /CreateCapacityReservation:
     post:
       operationId: CreateCapacityReservation
@@ -190,10 +186,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/CreateCapacityReservationOutput"
   /CreateDataCatalog:
     post:
       operationId: CreateDataCatalog
@@ -369,10 +361,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/CreatePreparedStatementOutput"
   /CreatePresignedNotebookUrl:
     post:
       operationId: CreatePresignedNotebookUrl
@@ -444,10 +432,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/CreateWorkGroupOutput"
   /DeleteCapacityReservation:
     post:
       operationId: DeleteCapacityReservation
@@ -477,10 +461,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteCapacityReservationOutput"
   /DeleteDataCatalog:
     post:
       operationId: DeleteDataCatalog
@@ -546,10 +526,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteNamedQueryOutput"
   /DeleteNotebook:
     post:
       operationId: DeleteNotebook
@@ -579,10 +555,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteNotebookOutput"
   /DeletePreparedStatement:
     post:
       operationId: DeletePreparedStatement
@@ -616,10 +588,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeletePreparedStatementOutput"
   /DeleteWorkGroup:
     post:
       operationId: DeleteWorkGroup
@@ -652,10 +620,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteWorkGroupOutput"
   /ExportNotebook:
     post:
       operationId: ExportNotebook
@@ -2056,10 +2020,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/PutCapacityAssignmentConfigurationOutput"
   /StartCalculationExecution:
     post:
       operationId: StartCalculationExecution
@@ -2282,10 +2242,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/StopQueryExecutionOutput"
   /TagResource:
     post:
       operationId: TagResource
@@ -2319,10 +2275,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TagResourceOutput"
   /TerminateSession:
     post:
       operationId: TerminateSession
@@ -2389,10 +2341,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UntagResourceOutput"
   /UpdateCapacityReservation:
     post:
       operationId: UpdateCapacityReservation
@@ -2426,10 +2374,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateCapacityReservationOutput"
   /UpdateDataCatalog:
     post:
       operationId: UpdateDataCatalog
@@ -2468,10 +2412,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateDataCatalogOutput"
   /UpdateNamedQuery:
     post:
       operationId: UpdateNamedQuery
@@ -2512,10 +2452,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateNamedQueryOutput"
   /UpdateNotebook:
     post:
       operationId: UpdateNotebook
@@ -2554,15 +2490,10 @@ paths:
                   description: A unique case-sensitive string used to ensure the request to create the notebook is idempotent (executes only once). This token is listed as not required because Amazon Web Services SDKs (for example the Amazon Web Services SDK for Java) auto-generate the token for you. If you are not using the Amazon Web Services SDK or the Amazon Web Services CLI, you must provide this token or the action will fail.
               required:
                 - NotebookId
-                - Payload
                 - Type
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateNotebookOutput"
   /UpdateNotebookMetadata:
     post:
       operationId: UpdateNotebookMetadata
@@ -2599,10 +2530,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateNotebookMetadataOutput"
   /UpdatePreparedStatement:
     post:
       operationId: UpdatePreparedStatement
@@ -2643,10 +2570,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdatePreparedStatementOutput"
   /UpdateWorkGroup:
     post:
       operationId: UpdateWorkGroup
@@ -2685,10 +2608,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateWorkGroupOutput"
 components:
   parameters:
     X-Amz-Content-Sha256:
@@ -3244,8 +3163,6 @@ components:
       minLength: 1
       maxLength: 128
       pattern: "[a-zA-Z0-9._-]+"
-    CancelCapacityReservationOutput:
-      type: object
     TargetDpusInteger:
       type: integer
       minimum: 4
@@ -3271,8 +3188,6 @@ components:
       type: string
       minLength: 0
       maxLength: 256
-    CreateCapacityReservationOutput:
-      type: object
     DataCatalogType:
       type: string
       enum:
@@ -3383,8 +3298,6 @@ components:
       minLength: 1
       maxLength: 36
       pattern: "[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}"
-    CreatePreparedStatementOutput:
-      type: object
     SessionId:
       type: string
       minLength: 1
@@ -3617,23 +3530,11 @@ components:
       type: string
       minLength: 0
       maxLength: 1024
-    CreateWorkGroupOutput:
-      type: object
-    DeleteCapacityReservationOutput:
-      type: object
     DeleteDataCatalogOutput:
       type: object
       properties:
         DataCatalog:
           $ref: "#/components/schemas/DataCatalog"
-    DeleteNamedQueryOutput:
-      type: object
-    DeleteNotebookOutput:
-      type: object
-    DeletePreparedStatementOutput:
-      type: object
-    DeleteWorkGroupOutput:
-      type: object
     ExportNotebookOutput:
       type: object
       properties:
@@ -4853,8 +4754,6 @@ components:
         IdentityCenterApplicationArn:
           $ref: "#/components/schemas/IdentityCenterApplicationArn"
           description: The ARN of the IAM Identity Center enabled application associated with the workgroup.
-    PutCapacityAssignmentConfigurationOutput:
-      type: object
     CalculationConfiguration:
       description: Contains configuration information for the calculation.
       type: object
@@ -4892,10 +4791,6 @@ components:
         State:
           $ref: "#/components/schemas/CalculationExecutionState"
           description: CREATING - The calculation is in the process of being created. CREATED - The calculation has been created and is ready to run. QUEUED - The calculation has been queued for processing. RUNNING - The calculation is running. CANCELING - A request to cancel the calculation has been received and the system is working to stop it. CANCELED - The calculation is no longer running as the result of a cancel request. COMPLETED - The calculation has completed without error. FAILED - The calculation failed and is no longer running.
-    StopQueryExecutionOutput:
-      type: object
-    TagResourceOutput:
-      type: object
     TerminateSessionResponse:
       type: object
       properties:
@@ -4906,24 +4801,10 @@ components:
       type: array
       items:
         $ref: "#/components/schemas/TagKey"
-    UntagResourceOutput:
-      type: object
-    UpdateCapacityReservationOutput:
-      type: object
-    UpdateDataCatalogOutput:
-      type: object
     NamedQueryDescriptionString:
       type: string
       minLength: 0
       maxLength: 1024
-    UpdateNamedQueryOutput:
-      type: object
-    UpdateNotebookOutput:
-      type: object
-    UpdateNotebookMetadataOutput:
-      type: object
-    UpdatePreparedStatementOutput:
-      type: object
     WorkGroupConfigurationUpdates:
       description: The configuration information that will be updated for this workgroup, which includes the location in Amazon S3 where query and calculation results are stored, the encryption option, if any, used for query results, whether the Amazon CloudWatch Metrics are enabled for the workgroup, whether the workgroup settings override the client-side settings, and the data usage limit for the amount of bytes scanned per query, if it is specified.
       type: object
@@ -5015,8 +4896,6 @@ components:
         RemoveEncryptionConfiguration:
           $ref: "#/components/schemas/BoxedBoolean"
           description: If set to true, it removes workgroup from Athena owned storage. The existing query results are cleaned up after 24hrs. You must provide query results in location specified under ResultConfiguration$OutputLocation.
-    UpdateWorkGroupOutput:
-      type: object
   x-stackQL-resources:
     named_queries:
       id: aws.athena.named_queries
@@ -5054,7 +4933,6 @@ components:
             $ref: "#/paths/~1DeleteNamedQuery/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -5108,7 +4986,6 @@ components:
             $ref: "#/paths/~1UpdateNamedQuery/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -5118,8 +4995,8 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/named_queries/methods/batch_get_named_query"
           - $ref: "#/components/x-stackQL-resources/named_queries/methods/get_named_query"
+          - $ref: "#/components/x-stackQL-resources/named_queries/methods/batch_get_named_query"
           - $ref: "#/components/x-stackQL-resources/named_queries/methods/list_named_queries"
         insert:
           - $ref: "#/components/x-stackQL-resources/named_queries/methods/create_named_query"
@@ -5150,7 +5027,6 @@ components:
             $ref: "#/paths/~1CreatePreparedStatement/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -5163,7 +5039,6 @@ components:
             $ref: "#/paths/~1DeletePreparedStatement/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -5203,7 +5078,6 @@ components:
             $ref: "#/paths/~1UpdatePreparedStatement/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -5213,8 +5087,8 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/prepared_statements/methods/batch_get_prepared_statement"
           - $ref: "#/components/x-stackQL-resources/prepared_statements/methods/get_prepared_statement"
+          - $ref: "#/components/x-stackQL-resources/prepared_statements/methods/batch_get_prepared_statement"
           - $ref: "#/components/x-stackQL-resources/prepared_statements/methods/list_prepared_statements"
         insert:
           - $ref: "#/components/x-stackQL-resources/prepared_statements/methods/create_prepared_statement"
@@ -5281,10 +5155,35 @@ components:
                 location: body
             requestBodyTranslate:
               algorithm: naive
+        start_query_execution:
+          operation:
+            $ref: "#/paths/~1StartQueryExecution/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        stop_query_execution:
+          operation:
+            $ref: "#/paths/~1StopQueryExecution/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/query_executions/methods/batch_get_query_execution"
           - $ref: "#/components/x-stackQL-resources/query_executions/methods/get_query_execution"
+          - $ref: "#/components/x-stackQL-resources/query_executions/methods/batch_get_query_execution"
           - $ref: "#/components/x-stackQL-resources/query_executions/methods/list_query_executions"
         insert: []
         update: []
@@ -5294,12 +5193,23 @@ components:
       name: capacity_reservations
       title: capacity_reservations
       methods:
+        cancel_capacity_reservation:
+          operation:
+            $ref: "#/paths/~1CancelCapacityReservation/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         create_capacity_reservation:
           operation:
             $ref: "#/paths/~1CreateCapacityReservation/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -5312,7 +5222,6 @@ components:
             $ref: "#/paths/~1DeleteCapacityReservation/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -5352,7 +5261,6 @@ components:
             $ref: "#/paths/~1UpdateCapacityReservation/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -5441,7 +5349,6 @@ components:
             $ref: "#/paths/~1UpdateDataCatalog/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -5482,6 +5389,31 @@ components:
             $ref: "#/paths/~1DeleteNotebook/post"
           response:
             openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        export_notebook:
+          operation:
+            $ref: "#/paths/~1ExportNotebook/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        import_notebook:
+          operation:
+            $ref: "#/paths/~1ImportNotebook/post"
+          response:
+            openAPIDocKey: "200"
             mediaType: application/json
           request:
             nativeCasing: pascal
@@ -5495,7 +5427,6 @@ components:
             $ref: "#/paths/~1UpdateNotebook/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -5555,6 +5486,19 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        start_session:
+          operation:
+            $ref: "#/paths/~1StartSession/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         terminate_session:
           operation:
             $ref: "#/paths/~1TerminateSession/post"
@@ -5587,7 +5531,6 @@ components:
             $ref: "#/paths/~1CreateWorkGroup/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -5600,7 +5543,6 @@ components:
             $ref: "#/paths/~1DeleteWorkGroup/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -5640,7 +5582,6 @@ components:
             $ref: "#/paths/~1UpdateWorkGroup/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -5689,6 +5630,32 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        start_calculation_execution:
+          operation:
+            $ref: "#/paths/~1StartCalculationExecution/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        stop_calculation_execution:
+          operation:
+            $ref: "#/paths/~1StopCalculationExecution/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/calculation_executions/methods/get_calculation_execution"
@@ -5720,10 +5687,10 @@ components:
         insert: []
         update: []
         delete: []
-    calculation_execution_status:
-      id: aws.athena.calculation_execution_status
-      name: calculation_execution_status
-      title: calculation_execution_status
+    calculation_execution_statuses:
+      id: aws.athena.calculation_execution_statuses
+      name: calculation_execution_statuses
+      title: calculation_execution_statuses
       methods:
         get_calculation_execution_status:
           operation:
@@ -5740,7 +5707,7 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/calculation_execution_status/methods/get_calculation_execution_status"
+          - $ref: "#/components/x-stackQL-resources/calculation_execution_statuses/methods/get_calculation_execution_status"
         insert: []
         update: []
         delete: []
@@ -5768,7 +5735,6 @@ components:
             $ref: "#/paths/~1PutCapacityAssignmentConfiguration/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -5831,10 +5797,10 @@ components:
         insert: []
         update: []
         delete: []
-    notebook_metadatas:
-      id: aws.athena.notebook_metadatas
-      name: notebook_metadatas
-      title: notebook_metadatas
+    notebook_metadata:
+      id: aws.athena.notebook_metadata
+      name: notebook_metadata
+      title: notebook_metadata
       methods:
         get_notebook_metadata:
           operation:
@@ -5868,7 +5834,6 @@ components:
             $ref: "#/paths/~1UpdateNotebookMetadata/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -5878,11 +5843,11 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/notebook_metadatas/methods/get_notebook_metadata"
-          - $ref: "#/components/x-stackQL-resources/notebook_metadatas/methods/list_notebook_metadata"
+          - $ref: "#/components/x-stackQL-resources/notebook_metadata/methods/get_notebook_metadata"
+          - $ref: "#/components/x-stackQL-resources/notebook_metadata/methods/list_notebook_metadata"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/notebook_metadatas/methods/update_notebook_metadata"
+          - $ref: "#/components/x-stackQL-resources/notebook_metadata/methods/update_notebook_metadata"
         delete: []
     query_results:
       id: aws.athena.query_results
@@ -5988,10 +5953,10 @@ components:
         insert: []
         update: []
         delete: []
-    session_status:
-      id: aws.athena.session_status
-      name: session_status
-      title: session_status
+    session_statuses:
+      id: aws.athena.session_statuses
+      name: session_statuses
+      title: session_statuses
       methods:
         get_session_status:
           operation:
@@ -6008,14 +5973,14 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/session_status/methods/get_session_status"
+          - $ref: "#/components/x-stackQL-resources/session_statuses/methods/get_session_status"
         insert: []
         update: []
         delete: []
-    table_metadatas:
-      id: aws.athena.table_metadatas
-      name: table_metadatas
-      title: table_metadatas
+    table_metadata:
+      id: aws.athena.table_metadata
+      name: table_metadata
+      title: table_metadata
       methods:
         get_table_metadata:
           operation:
@@ -6054,8 +6019,8 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/table_metadatas/methods/get_table_metadata"
-          - $ref: "#/components/x-stackQL-resources/table_metadatas/methods/list_table_metadata"
+          - $ref: "#/components/x-stackQL-resources/table_metadata/methods/get_table_metadata"
+          - $ref: "#/components/x-stackQL-resources/table_metadata/methods/list_table_metadata"
         insert: []
         update: []
         delete: []
@@ -6186,7 +6151,6 @@ components:
             $ref: "#/paths/~1TagResource/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -6199,7 +6163,6 @@ components:
             $ref: "#/paths/~1UntagResource/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1

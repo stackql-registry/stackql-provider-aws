@@ -124,10 +124,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateRoutingControlStateResponse"
   /UpdateRoutingControlStates:
     post:
       operationId: UpdateRoutingControlStates
@@ -160,10 +156,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateRoutingControlStatesResponse"
 components:
   parameters:
     X-Amz-Content-Sha256:
@@ -298,8 +290,6 @@ components:
       type: array
       items:
         $ref: "#/components/schemas/Arn"
-    UpdateRoutingControlStateResponse:
-      type: object
     UpdateRoutingControlStateEntries:
       type: array
       items:
@@ -317,8 +307,6 @@ components:
       required:
         - RoutingControlArn
         - RoutingControlState
-    UpdateRoutingControlStatesResponse:
-      type: object
   x-stackQL-resources:
     routing_control_states:
       id: aws.route53_recovery_cluster.routing_control_states
@@ -343,7 +331,6 @@ components:
             $ref: "#/paths/~1UpdateRoutingControlState/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.0
@@ -356,7 +343,6 @@ components:
             $ref: "#/paths/~1UpdateRoutingControlStates/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.0

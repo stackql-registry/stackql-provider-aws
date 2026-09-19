@@ -433,3 +433,23 @@ components:
         insert: []
         update: []
         delete: []
+    heartbeats:
+      id: aws.sagemaker_edge.heartbeats
+      name: heartbeats
+      title: heartbeats
+      methods:
+        send_heartbeat:
+          operation:
+            $ref: "#/paths/~1SendHeartbeat/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []

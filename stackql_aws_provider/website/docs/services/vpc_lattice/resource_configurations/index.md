@@ -123,7 +123,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="protocol" /></td>
     <td><code>string</code></td>
-    <td>The TCP protocol accepted by the specified resource configuration. (TCP)</td>
+    <td>The TCP protocol accepted by the specified resource configuration. (TCP, TCP_UDP)</td>
 </tr>
 <tr>
     <td><CopyableCode code="resource_configuration_definition" /></td>
@@ -138,7 +138,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="resource_gateway_id" /></td>
     <td><code>string</code></td>
-    <td>The ID of the resource gateway used to connect to the resource configuration in a given VPC. You can specify the resource gateway identifier only for resource configurations with type SINGLE, GROUP, or ARN. (pattern: &lt;code&gt;rgw-&#91;0-9a-z&#93;&#123;17&#125;&lt;/code&gt;)</td>
+    <td>The ID of the resource gateway used to connect to the resource configuration in a given VPC. You can specify the resource gateway identifier only for resource configurations with type SINGLE, GROUP, ARN, or CIDR. (pattern: &lt;code&gt;rgw-&#91;0-9a-z&#93;&#123;17&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="status" /></td>
@@ -148,7 +148,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="type_" /></td>
     <td><code>string</code></td>
-    <td>The type of resource configuration. SINGLE - A single resource. GROUP - A group of resources. CHILD - A single resource that is part of a group resource configuration. ARN - An Amazon Web Services resource. (GROUP, CHILD, SINGLE, ARN)</td>
+    <td>The type of resource configuration. SINGLE - A single resource. GROUP - A group of resources. CHILD - A single resource that is part of a group resource configuration. ARN - An Amazon Web Services resource. CIDR - A network segment (a range of IP addresses) accessed through a Tunnel VPC endpoint. (GROUP, CHILD, SINGLE, ARN, CIDR)</td>
 </tr>
 </tbody>
 </table>
@@ -227,7 +227,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="type_" /></td>
     <td><code>string</code></td>
-    <td>The type of resource configuration. SINGLE - A single resource. GROUP - A group of resources. You must create a group resource configuration before you create a child resource configuration. CHILD - A single resource that is part of a group resource configuration. ARN - An Amazon Web Services resource. (GROUP, CHILD, SINGLE, ARN)</td>
+    <td>The type of resource configuration. SINGLE - A single resource. GROUP - A group of resources. You must create a group resource configuration before you create a child resource configuration. CHILD - A single resource that is part of a group resource configuration. ARN - An Amazon Web Services resource. CIDR - A network segment (a range of IP addresses) accessed through a Tunnel VPC endpoint. (GROUP, CHILD, SINGLE, ARN, CIDR)</td>
 </tr>
 </tbody>
 </table>
@@ -489,13 +489,13 @@ type_
       value: "{{ name }}"
     - name: type
       value: "{{ type }}"
-      valid_values: ['GROUP', 'CHILD', 'SINGLE', 'ARN']
+      valid_values: ['GROUP', 'CHILD', 'SINGLE', 'ARN', 'CIDR']
     - name: portRanges
       value:
         - "{{ portRanges }}"
     - name: protocol
       value: "{{ protocol }}"
-      valid_values: ['TCP']
+      valid_values: ['TCP', 'TCP_UDP']
     - name: resourceGatewayIdentifier
       value: "{{ resourceGatewayIdentifier }}"
     - name: resourceConfigurationGroupIdentifier
@@ -511,6 +511,9 @@ type_
           ipAddress: "{{ ipAddress }}"
         arnResource:
           arn: "{{ arn }}"
+        cidrResource:
+          cidrRanges:
+            - "{{ cidrRanges }}"
     - name: allowAssociationToShareableServiceNetwork
       value: {{ allowAssociationToShareableServiceNetwork }}
     - name: customDomainName

@@ -49,11 +49,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/AcceptMarketplaceRegistrationOutput'
-      x-stackql-resource: marketplace_registration
+      x-stackql-resource: marketplace_registrations
       x-stackql-method: accept_marketplace_registration
       x-stackql-verb: EXEC
   /AssociateIamRoleToResource:
@@ -97,10 +93,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/AssociateIamRoleToResourceOutput'
       x-stackql-resource: iam_role_to_resources
       x-stackql-method: associate_iam_role_to_resource
       x-stackql-verb: UPDATE
@@ -764,10 +756,10 @@ paths:
                   description: The Oracle license model to apply to the Exascale VM cluster.
                 scanListenerPortTcp:
                   $ref: '#/components/schemas/CreateExadbVmClusterInputScanListenerPortTcpInteger'
-                  description: The port number for TCP connections to the single client access name (SCAN) listener.
+                  description: The port number for TCP connections to the Single Client Access Name (SCAN) listener.
                 scanListenerPortTcpSsl:
                   $ref: '#/components/schemas/CreateExadbVmClusterInputScanListenerPortTcpSslInteger'
-                  description: The port number for TCP connections with SSL to the single client access name (SCAN) listener.
+                  description: The port number for TCP connections with SSL to the Single Client Access Name (SCAN) listener.
                 shapeAttribute:
                   $ref: '#/components/schemas/ShapeAttribute'
                   description: The shape attribute for the Exascale VM cluster.
@@ -782,10 +774,10 @@ paths:
                   description: The time zone for the Exascale VM cluster.
                 clientToken:
                   $ref: '#/components/schemas/CreateExadbVmClusterInputClientTokenString'
-                  description: A unique, case-sensitive identifier that you provide to ensure the idempotency of the request.
-                    If you don't specify a client token, the Amazon Web Services SDK automatically generates one and uses
-                    it for the request to ensure idempotency. The client token is valid for up to 24 hours after it's first
-                    used.
+                  description: A unique, case-sensitive identifier that you provide to ensure that the operation completes
+                    no more than one time. If you submit the same request twice with the same client token, the service ignores
+                    the second request and returns the result of the first. If you don't specify a client token, the AWS SDK
+                    automatically generates one. The client token is valid for up to 24 hours after it's first used.
               required:
               - displayName
               - enabledEcpuCount
@@ -862,10 +854,10 @@ paths:
                   description: The time zone for the Exascale storage vault.
                 clientToken:
                   $ref: '#/components/schemas/CreateExascaleDbStorageVaultInputClientTokenString'
-                  description: A unique, case-sensitive identifier that you provide to ensure the idempotency of the request.
-                    If you don't specify a client token, the Amazon Web Services SDK automatically generates one and uses
-                    it for the request to ensure idempotency. The client token is valid for up to 24 hours after it's first
-                    used.
+                  description: A unique, case-sensitive identifier that you provide to ensure that the operation completes
+                    no more than one time. If you submit the same request twice with the same client token, the service ignores
+                    the second request and returns the result of the first. If you don't specify a client token, the AWS SDK
+                    automatically generates one. The client token is valid for up to 24 hours after it's first used.
               required:
               - displayName
               - highCapacityDatabaseStorageTotalSizeInGBs
@@ -1066,10 +1058,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteAutonomousDatabaseOutput'
       x-stackql-resource: autonomous_databases
       x-stackql-method: delete_autonomous_database
       x-stackql-verb: DELETE
@@ -1102,10 +1090,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteAutonomousDatabaseBackupOutput'
       x-stackql-resource: autonomous_database_backups
       x-stackql-method: delete_autonomous_database_backup
       x-stackql-verb: DELETE
@@ -1138,10 +1122,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteCloudAutonomousVmClusterOutput'
       x-stackql-resource: cloud_autonomous_vm_clusters
       x-stackql-method: delete_cloud_autonomous_vm_cluster
       x-stackql-verb: DELETE
@@ -1175,10 +1155,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteCloudExadataInfrastructureOutput'
       x-stackql-resource: cloud_exadata_infrastructures
       x-stackql-method: delete_cloud_exadata_infrastructure
       x-stackql-verb: DELETE
@@ -1211,10 +1187,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteCloudVmClusterOutput'
       x-stackql-resource: cloud_vm_clusters
       x-stackql-method: delete_cloud_vm_cluster
       x-stackql-verb: DELETE
@@ -1247,10 +1219,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteExadbVmClusterOutput'
       x-stackql-resource: exadb_vm_clusters
       x-stackql-method: delete_exadb_vm_cluster
       x-stackql-verb: DELETE
@@ -1283,10 +1251,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteExascaleDbStorageVaultOutput'
       x-stackql-resource: exascale_db_storage_vaults
       x-stackql-method: delete_exascale_db_storage_vault
       x-stackql-verb: DELETE
@@ -1323,10 +1287,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteOdbNetworkOutput'
       x-stackql-resource: odb_networks
       x-stackql-method: delete_odb_network
       x-stackql-verb: DELETE
@@ -1360,10 +1320,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteOdbPeeringConnectionOutput'
       x-stackql-resource: odb_peering_connections
       x-stackql-method: delete_odb_peering_connection
       x-stackql-verb: DELETE
@@ -1408,10 +1364,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DisassociateIamRoleFromResourceOutput'
       x-stackql-resource: iam_role_from_resources
       x-stackql-method: disassociate_iam_role_from_resource
       x-stackql-verb: UPDATE
@@ -1944,7 +1896,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetOciOnboardingStatusOutput'
-      x-stackql-resource: oci_onboarding_status
+      x-stackql-resource: oci_onboarding_statuses
       x-stackql-method: get_oci_onboarding_status
       x-stackql-verb: SELECT
   /GetOdbNetwork:
@@ -2052,11 +2004,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/InitializeServiceOutput'
-      x-stackql-resource: initialize_service
+      x-stackql-resource: services
       x-stackql-method: initialize_service
       x-stackql-verb: EXEC
   /ListAutonomousDatabaseBackups:
@@ -2767,6 +2715,53 @@ paths:
       x-stackql-pagination-request-token-key: nextToken
       x-stackql-pagination-request-token-location: body
       x-stackql-pagination-response-token-key: $.nextToken
+  /ListFlexComponents:
+    post:
+      operationId: ListFlexComponents
+      description: Returns information about the flex components that are available for an Exadata infrastructure.
+      parameters:
+      - name: X-Amz-Target
+        in: header
+        description: Action Header
+        required: false
+        schema:
+          type: string
+          enum:
+          - Odb.ListFlexComponents
+          default: Odb.ListFlexComponents
+      requestBody:
+        required: true
+        content:
+          application/x-amz-json-1.0:
+            schema:
+              type: object
+              properties:
+                maxResults:
+                  $ref: '#/components/schemas/ListFlexComponentsInputMaxResultsInteger'
+                  description: The maximum number of items to return for this request. To get the next page of items, make
+                    another request with the token returned in the output.
+                nextToken:
+                  $ref: '#/components/schemas/ListFlexComponentsInputNextTokenString'
+                  description: The token returned from a previous paginated request. Pagination continues from the end of
+                    the items returned by the previous request.
+                shape:
+                  $ref: '#/components/schemas/ListFlexComponentsInputShapeString'
+                  description: The shape to return flex components for. For a list of valid shapes, use the ListDbSystemShapes
+                    operation.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListFlexComponentsOutput'
+      x-stackql-resource: flex_components
+      x-stackql-method: list_flex_components
+      x-stackql-verb: SELECT
+      x-stackql-objectKey: $.flexComponents
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListGiMinorVersions:
     post:
       operationId: ListGiMinorVersions
@@ -3442,10 +3437,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -3482,10 +3473,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -4034,8 +4021,6 @@ components:
   schemas:
     String:
       type: string
-    AcceptMarketplaceRegistrationOutput:
-      type: object
     RoleArn:
       type: string
       minLength: 20
@@ -4050,8 +4035,6 @@ components:
       minLength: 20
       maxLength: 2048
       pattern: arn:(?:aws|aws-cn|aws-us-gov|aws-iso-[a-z]?|aws-iso):odb:[a-z0-9-]+:\d{12}:(?:cloud-vm-cluster|cloud-autonomous-vm-cluster|exadb-vm-cluster)/[a-z0-9-_]+
-    AssociateIamRoleToResourceOutput:
-      type: object
     ResourceIdOrArn:
       type: string
       minLength: 6
@@ -5099,36 +5082,16 @@ components:
           description: The unique identifier of the ODB peering connection.
       required:
       - odbPeeringConnectionId
-    DeleteAutonomousDatabaseOutput:
-      type: object
     ResourceId:
       type: string
       minLength: 6
       maxLength: 64
       pattern: '[a-zA-Z0-9_~.-]+'
-    DeleteAutonomousDatabaseBackupOutput:
-      type: object
-    DeleteCloudAutonomousVmClusterOutput:
-      type: object
-    DeleteCloudExadataInfrastructureOutput:
-      type: object
-    DeleteCloudVmClusterOutput:
-      type: object
-    DeleteExadbVmClusterOutput:
-      type: object
-    DeleteExascaleDbStorageVaultOutput:
-      type: object
-    DeleteOdbNetworkOutput:
-      type: object
-    DeleteOdbPeeringConnectionOutput:
-      type: object
     DisassociateIamRoleFromResourceInputResourceArnString:
       type: string
       minLength: 20
       maxLength: 2048
       pattern: arn:(?:aws|aws-cn|aws-us-gov|aws-iso-[a-z]?|aws-iso):odb:[a-z0-9-]+:\d{12}:(?:cloud-vm-cluster|cloud-autonomous-vm-cluster|exadb-vm-cluster)/[a-z0-9-_]+
-    DisassociateIamRoleFromResourceOutput:
-      type: object
     ResourceIdList:
       type: array
       items:
@@ -6885,11 +6848,11 @@ components:
           description: The OCID of the SCAN IP addresses that are associated with the Exascale VM cluster.
         scanListenerPortTcp:
           $ref: '#/components/schemas/Integer'
-          description: The port number for TCP connections to the single client access name (SCAN) listener for the Exascale
+          description: The port number for TCP connections to the Single Client Access Name (SCAN) listener for the Exascale
             VM cluster.
         scanListenerPortTcpSsl:
           $ref: '#/components/schemas/Integer'
-          description: The port number for TCP connections with SSL to the single client access name (SCAN) listener for the
+          description: The port number for TCP connections with SSL to the Single Client Access Name (SCAN) listener for the
             Exascale VM cluster.
         shape:
           $ref: '#/components/schemas/String'
@@ -7473,8 +7436,6 @@ components:
           description: The percentage progress of the ODB peering connection creation or deletion.
       required:
       - odbPeeringConnectionId
-    InitializeServiceOutput:
-      type: object
     ListAutonomousDatabaseBackupsInputMaxResultsInteger:
       type: integer
       minimum: 1
@@ -9047,11 +9008,11 @@ components:
           description: The OCID of the SCAN IP addresses that are associated with the Exascale VM cluster.
         scanListenerPortTcp:
           $ref: '#/components/schemas/Integer'
-          description: The port number for TCP connections to the single client access name (SCAN) listener for the Exascale
+          description: The port number for TCP connections to the Single Client Access Name (SCAN) listener for the Exascale
             VM cluster.
         scanListenerPortTcpSsl:
           $ref: '#/components/schemas/Integer'
-          description: The port number for TCP connections with SSL to the single client access name (SCAN) listener for the
+          description: The port number for TCP connections with SSL to the Single Client Access Name (SCAN) listener for the
             Exascale VM cluster.
         shape:
           $ref: '#/components/schemas/String'
@@ -9189,6 +9150,81 @@ components:
           description: The time zone of the Exascale storage vault.
       required:
       - exascaleDbStorageVaultId
+    ListFlexComponentsInputMaxResultsInteger:
+      type: integer
+      minimum: 1
+      maximum: 1000
+    ListFlexComponentsInputNextTokenString:
+      type: string
+      minLength: 1
+      maxLength: 8192
+    ListFlexComponentsInputShapeString:
+      type: string
+      minLength: 1
+      maxLength: 256
+    ListFlexComponentsOutput:
+      type: object
+      properties:
+        nextToken:
+          $ref: '#/components/schemas/String'
+          description: The token to include in another request to get the next page of items. This value is null when there
+            are no more items to return.
+        flexComponents:
+          $ref: '#/components/schemas/FlexComponentList'
+          description: The list of flex components along with their properties.
+      required:
+      - flexComponents
+    FlexComponentList:
+      type: array
+      items:
+        $ref: '#/components/schemas/FlexComponentSummary'
+    FlexComponentSummary:
+      description: Information about a flex component that's available for an Exadata infrastructure. A flex component defines
+        the hardware resources, such as CPU cores, memory, and storage, that can be allocated to a shape.
+      type: object
+      properties:
+        availableCoreCount:
+          $ref: '#/components/schemas/Integer'
+          description: The maximum number of CPU cores that can be enabled for the flex component.
+        availableDbStorageInGBs:
+          $ref: '#/components/schemas/Integer'
+          description: The maximum amount of database storage, in gigabytes (GB), that can be enabled for the flex component.
+        availableLocalStorageInGBs:
+          $ref: '#/components/schemas/Integer'
+          description: The maximum amount of local storage, in gigabytes (GB), that can be enabled for the flex component.
+        availableMemoryInGBs:
+          $ref: '#/components/schemas/Integer'
+          description: The maximum amount of memory, in gigabytes (GB), that can be enabled for the flex component.
+        computeModel:
+          $ref: '#/components/schemas/ComputeModel'
+          description: 'The OCI model compute model used when you create or clone an instance: ECPU or OCPU. An ECPU is an
+            abstracted measure of compute resources. ECPUs are based on the number of cores elastically allocated from a pool
+            of compute and storage servers. An OCPU is a legacy physical measure of compute resources. OCPUs are based on
+            the physical core of a processor with hyper-threading enabled.'
+        descriptionSummary:
+          $ref: '#/components/schemas/String'
+          description: A summary description of the flex component.
+        hardwareType:
+          $ref: '#/components/schemas/HardwareType'
+          description: The type of hardware for the flex component. Valid values are COMPUTE for compute servers and CELL
+            for storage servers.
+        minimumCoreCount:
+          $ref: '#/components/schemas/Integer'
+          description: The minimum number of CPU cores that can be enabled for the flex component.
+        name:
+          $ref: '#/components/schemas/String'
+          description: The name of the flex component.
+        runtimeMinimumCoreCount:
+          $ref: '#/components/schemas/Integer'
+          description: The runtime minimum number of CPU cores that can be enabled for the flex component.
+        shape:
+          $ref: '#/components/schemas/String'
+          description: The shape that uses the flex component.
+    HardwareType:
+      type: string
+      enum:
+      - COMPUTE
+      - CELL
     ListGiMinorVersionsInputGiVersionString:
       type: string
       minLength: 1
@@ -9665,8 +9701,6 @@ components:
           description: Additional information about the status of the Autonomous Database after the switchover operation.
       required:
       - autonomousDatabaseId
-    TagResourceResponse:
-      type: object
     TagKeys:
       type: array
       items:
@@ -9675,8 +9709,6 @@ components:
       type: string
       minLength: 1
       maxLength: 128
-    UntagResourceResponse:
-      type: object
     UpdateAutonomousDatabaseInputAdminPasswordString:
       type: string
       minLength: 12

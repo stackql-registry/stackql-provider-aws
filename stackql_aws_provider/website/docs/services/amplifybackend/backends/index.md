@@ -140,6 +140,13 @@ The following methods are available for this resource:
     <td>Removes an existing environment from your Amplify project.</td>
 </tr>
 <tr>
+    <td><a href="#clone_backend"><CopyableCode code="clone_backend" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-app_id"><code>app_id</code></a>, <a href="#parameter-backend_environment_name"><code>backend_environment_name</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-TargetEnvironmentName"><code>TargetEnvironmentName</code></a></td>
+    <td></td>
+    <td>This operation clones an existing backend.</td>
+</tr>
+<tr>
     <td><a href="#import_backend_auth"><CopyableCode code="import_backend_auth" /></a></td>
     <td><CopyableCode code="exec" /></td>
     <td><a href="#parameter-app_id"><code>app_id</code></a>, <a href="#parameter-backend_environment_name"><code>backend_environment_name</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-NativeClientId"><code>NativeClientId</code></a>, <a href="#parameter-UserPoolId"><code>UserPoolId</code></a>, <a href="#parameter-WebClientId"><code>WebClientId</code></a></td>
@@ -380,14 +387,31 @@ AND region = '{{ region }}' --required
 ## Lifecycle Methods
 
 <Tabs
-    defaultValue="import_backend_auth"
+    defaultValue="clone_backend"
     values={[
+        { label: 'clone_backend', value: 'clone_backend' },
         { label: 'import_backend_auth', value: 'import_backend_auth' },
         { label: 'import_backend_storage', value: 'import_backend_storage' },
         { label: 'remove_backend_config', value: 'remove_backend_config' },
         { label: 'update_backend_config', value: 'update_backend_config' }
     ]}
 >
+<TabItem value="clone_backend">
+
+This operation clones an existing backend.
+
+```sql
+EXEC aws.amplifybackend.backends.clone_backend 
+@app_id='{{ app_id }}' --required, 
+@backend_environment_name='{{ backend_environment_name }}' --required, 
+@region='{{ region }}' --required 
+@@json=
+'{
+"TargetEnvironmentName": "{{ TargetEnvironmentName }}"
+}'
+;
+```
+</TabItem>
 <TabItem value="import_backend_auth">
 
 Imports an existing backend authentication resource.

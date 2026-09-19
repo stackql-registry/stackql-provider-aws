@@ -41,7 +41,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchDeleteTaxRegistrationResponse'
-      x-stackql-resource: batch_delete_tax_registration
+      x-stackql-resource: tax_registrations
       x-stackql-method: batch_delete_tax_registration
       x-stackql-verb: EXEC
   /BatchGetTaxExemptions:
@@ -130,7 +130,9 @@ paths:
         with the Bureau of Internal Revenue (BIR). Belgium You can optionally specify the peppolId in the belgiumAdditionalInfo
         field of the additionalTaxInformation object. Chile You can optionally specify the documentType and businessActivity
         in the chileAdditionalInfo field of the additionalTaxInformation object. France You must specify the sirenNumber in
-        the franceAdditionalInfo field of the additionalTaxInformation object. Poland You can optionally specify the taxRegistrationNumberType
+        the franceAdditionalInfo field of the additionalTaxInformation object. You can optionally specify the eInvoiceRoutingCode
+        in the franceAdditionalInfo field of the additionalTaxInformation object. Monaco You must specify the businessNumber
+        in the monacoAdditionalInfo field of the additionalTaxInformation object. Poland You can optionally specify the taxRegistrationNumberType
         in the polandAdditionalInfo field of the additionalTaxInformation object. Valid values are EUTaxRegistrationNumber,
         LocalTaxRegistrationNumber, or LocalRegistrationNumber.'
       parameters: []
@@ -155,7 +157,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchPutTaxRegistrationResponse'
-      x-stackql-resource: batch_put_tax_registration
+      x-stackql-resource: tax_registrations
       x-stackql-method: batch_put_tax_registration
       x-stackql-verb: EXEC
   /DeleteSupplementalTaxRegistration:
@@ -177,10 +179,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteSupplementalTaxRegistrationResponse'
       x-stackql-resource: supplemental_tax_registrations
       x-stackql-method: delete_supplemental_tax_registration
       x-stackql-verb: DELETE
@@ -202,10 +200,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteTaxRegistrationResponse'
       x-stackql-resource: tax_registrations
       x-stackql-method: delete_tax_registration
       x-stackql-verb: DELETE
@@ -461,10 +455,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PutTaxInheritanceResponse'
       x-stackql-resource: tax_inheritances
       x-stackql-method: put_tax_inheritance
       x-stackql-verb: REPLACE
@@ -527,7 +517,9 @@ paths:
         with the Bureau of Internal Revenue (BIR). Belgium You can optionally specify the peppolId in the belgiumAdditionalInfo
         field of the additionalTaxInformation object. Chile You can optionally specify the documentType and businessActivity
         in the chileAdditionalInfo field of the additionalTaxInformation object. France You must specify the sirenNumber in
-        the franceAdditionalInfo field of the additionalTaxInformation object. Poland You can optionally specify the taxRegistrationNumberType
+        the franceAdditionalInfo field of the additionalTaxInformation object. You can optionally specify the eInvoiceRoutingCode
+        in the franceAdditionalInfo field of the additionalTaxInformation object. Monaco You must specify the businessNumber
+        in the monacoAdditionalInfo field of the additionalTaxInformation object. Poland You can optionally specify the taxRegistrationNumberType
         in the polandAdditionalInfo field of the additionalTaxInformation object. Valid values are EUTaxRegistrationNumber,
         LocalTaxRegistrationNumber, or LocalRegistrationNumber.'
       parameters: []
@@ -889,6 +881,9 @@ components:
         franceAdditionalInfo:
           $ref: '#/components/schemas/FranceAdditionalInfo'
           description: Additional tax information to specify for a TRN in France.
+        monacoAdditionalInfo:
+          $ref: '#/components/schemas/MonacoAdditionalInfo'
+          description: Additional tax information to specify for a TRN in Monaco.
     MalaysiaAdditionalInfo:
       description: Additional tax information associated with your TRN in Malaysia.
       type: object
@@ -1358,7 +1353,8 @@ components:
           description: The type of tax document. For Chile, this can be Invoice or Receipt.
         businessActivity:
           $ref: '#/components/schemas/GenericString'
-          description: The business activity of the taxpayer in Chile.
+          description: The business activity code of the taxpayer in Chile. This must be the activity code shown on your SII
+            (Servicio de Impuestos Internos) tax profile. For the list of valid activity codes, see SII activity codes.
     ChileDocumentType:
       description: The type of tax document for Chile.
       type: string
@@ -1377,11 +1373,28 @@ components:
         sirenNumber:
           $ref: '#/components/schemas/SirenNumber'
           description: The SIREN number for the company in France. Must be a 9-digit number.
+        eInvoiceRoutingCode:
+          $ref: '#/components/schemas/String'
+          description: The routing code used for electronic invoicing (e-invoicing) for the company in France.
       required:
       - sirenNumber
     SirenNumber:
       type: string
       pattern: '[0-9]{9}'
+    String:
+      type: string
+    MonacoAdditionalInfo:
+      description: Additional tax information associated with your TRN in Monaco.
+      type: object
+      properties:
+        businessNumber:
+          $ref: '#/components/schemas/BusinessNumber'
+          description: The business number for the company in Monaco. Can be up to 12 alphanumeric characters.
+      required:
+      - businessNumber
+    BusinessNumber:
+      type: string
+      pattern: '[a-zA-Z0-9]{1,12}'
     VerificationDetails:
       description: Required information to verify your TRN.
       type: object
@@ -1499,10 +1512,6 @@ components:
       required:
       - accountId
       - message
-    DeleteSupplementalTaxRegistrationResponse:
-      type: object
-    DeleteTaxRegistrationResponse:
-      type: object
     GetTaxExemptionTypesResponse:
       type: object
       properties:
@@ -1708,6 +1717,9 @@ components:
         franceAdditionalInfo:
           $ref: '#/components/schemas/FranceAdditionalInfo'
           description: Additional tax information associated with your TRN in France.
+        monacoAdditionalInfo:
+          $ref: '#/components/schemas/MonacoAdditionalInfo'
+          description: Additional tax information associated with your TRN in Monaco.
     BrazilAdditionalInfo:
       description: Additional tax information associated with your TRN in Brazil.
       type: object
@@ -2035,8 +2047,6 @@ components:
         caseId:
           $ref: '#/components/schemas/GenericString'
           description: The customer support case ID.
-    PutTaxInheritanceResponse:
-      type: object
     PutTaxRegistrationResponse:
       type: object
       properties:

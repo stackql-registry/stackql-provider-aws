@@ -115,7 +115,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AssociateServiceRoleToAccountResponse'
-      x-stackql-resource: service_role_to_accounts
+      x-stackql-resource: service_roles
       x-stackql-method: associate_service_role_to_account
       x-stackql-verb: UPDATE
     delete:
@@ -129,7 +129,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DisassociateServiceRoleFromAccountResponse'
-      x-stackql-resource: service_role_from_accounts
+      x-stackql-resource: service_roles
       x-stackql-method: disassociate_service_role_from_account
       x-stackql-verb: UPDATE
     get:
@@ -143,7 +143,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetServiceRoleForAccountResponse'
-      x-stackql-resource: service_role_for_accounts
+      x-stackql-resource: service_roles
       x-stackql-method: get_service_role_for_account
       x-stackql-verb: SELECT
   /greengrass/definition/connectors:
@@ -1452,10 +1452,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteConnectorDefinitionResponse'
       x-stackql-resource: connector_definitions
       x-stackql-method: delete_connector_definition
       x-stackql-verb: DELETE
@@ -1501,10 +1497,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateConnectorDefinitionResponse'
       x-stackql-resource: connector_definitions
       x-stackql-method: update_connector_definition
       x-stackql-verb: UPDATE
@@ -1522,10 +1514,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteCoreDefinitionResponse'
       x-stackql-resource: core_definitions
       x-stackql-method: delete_core_definition
       x-stackql-verb: DELETE
@@ -1571,10 +1559,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateCoreDefinitionResponse'
       x-stackql-resource: core_definitions
       x-stackql-method: update_core_definition
       x-stackql-verb: UPDATE
@@ -1592,10 +1576,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteDeviceDefinitionResponse'
       x-stackql-resource: device_definitions
       x-stackql-method: delete_device_definition
       x-stackql-verb: DELETE
@@ -1641,10 +1621,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateDeviceDefinitionResponse'
       x-stackql-resource: device_definitions
       x-stackql-method: update_device_definition
       x-stackql-verb: UPDATE
@@ -1662,10 +1638,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteFunctionDefinitionResponse'
       x-stackql-resource: function_definitions
       x-stackql-method: delete_function_definition
       x-stackql-verb: DELETE
@@ -1711,10 +1683,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateFunctionDefinitionResponse'
       x-stackql-resource: function_definitions
       x-stackql-method: update_function_definition
       x-stackql-verb: UPDATE
@@ -1732,10 +1700,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteGroupResponse'
       x-stackql-resource: groups
       x-stackql-method: delete_group
       x-stackql-verb: DELETE
@@ -1781,10 +1745,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateGroupResponse'
       x-stackql-resource: groups
       x-stackql-method: update_group
       x-stackql-verb: UPDATE
@@ -1802,10 +1762,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteLoggerDefinitionResponse'
       x-stackql-resource: logger_definitions
       x-stackql-method: delete_logger_definition
       x-stackql-verb: DELETE
@@ -1851,10 +1807,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateLoggerDefinitionResponse'
       x-stackql-resource: logger_definitions
       x-stackql-method: update_logger_definition
       x-stackql-verb: UPDATE
@@ -1872,10 +1824,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteResourceDefinitionResponse'
       x-stackql-resource: resource_definitions
       x-stackql-method: delete_resource_definition
       x-stackql-verb: DELETE
@@ -1921,10 +1869,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateResourceDefinitionResponse'
       x-stackql-resource: resource_definitions
       x-stackql-method: update_resource_definition
       x-stackql-verb: UPDATE
@@ -1942,10 +1886,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteSubscriptionDefinitionResponse'
       x-stackql-resource: subscription_definitions
       x-stackql-method: delete_subscription_definition
       x-stackql-verb: DELETE
@@ -1991,10 +1931,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateSubscriptionDefinitionResponse'
       x-stackql-resource: subscription_definitions
       x-stackql-method: update_subscription_definition
       x-stackql-verb: UPDATE
@@ -2016,7 +1952,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetBulkDeploymentStatusResponse'
-      x-stackql-resource: bulk_deployment_status
+      x-stackql-resource: bulk_deployment_statuses
       x-stackql-method: get_bulk_deployment_status
       x-stackql-verb: SELECT
   /greengrass/things/{thing_name}/connectivityInfo:
@@ -2037,7 +1973,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetConnectivityInfoResponse'
-      x-stackql-resource: connectivity_infos
+      x-stackql-resource: connectivity_info
       x-stackql-method: get_connectivity_info
       x-stackql-verb: SELECT
     put:
@@ -2067,7 +2003,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateConnectivityInfoResponse'
-      x-stackql-resource: connectivity_infos
+      x-stackql-resource: connectivity_info
       x-stackql-method: update_connectivity_info
       x-stackql-verb: UPDATE
   /greengrass/definition/connectors/{connector_definition_id}/versions/{connector_definition_version_id}:
@@ -2161,7 +2097,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetDeploymentStatusResponse'
-      x-stackql-resource: deployment_status
+      x-stackql-resource: deployment_statuses
       x-stackql-method: get_deployment_status
       x-stackql-verb: SELECT
   /greengrass/definition/devices/{device_definition_id}/versions/{device_definition_version_id}:
@@ -2490,10 +2426,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateThingRuntimeConfigurationResponse'
       x-stackql-resource: thing_runtime_configurations
       x-stackql-method: update_thing_runtime_configuration
       x-stackql-verb: UPDATE
@@ -2602,7 +2534,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartBulkDeploymentResponse'
-      x-stackql-resource: bulk_deployment
+      x-stackql-resource: bulk_deployments
       x-stackql-method: start_bulk_deployment
       x-stackql-verb: EXEC
   /tags/{resource-arn}:
@@ -2727,11 +2659,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/StopBulkDeploymentResponse'
-      x-stackql-resource: bulk_deployment
+      x-stackql-resource: bulk_deployments
       x-stackql-method: stop_bulk_deployment
       x-stackql-verb: EXEC
 components:
@@ -3699,22 +3627,6 @@ components:
         Version:
           $ref: '#/components/schemas/__string'
           description: The ID of the version.
-    DeleteConnectorDefinitionResponse:
-      type: object
-    DeleteCoreDefinitionResponse:
-      type: object
-    DeleteDeviceDefinitionResponse:
-      type: object
-    DeleteFunctionDefinitionResponse:
-      type: object
-    DeleteGroupResponse:
-      type: object
-    DeleteLoggerDefinitionResponse:
-      type: object
-    DeleteResourceDefinitionResponse:
-      type: object
-    DeleteSubscriptionDefinitionResponse:
-      type: object
     DisassociateRoleFromGroupResponse:
       type: object
       properties:
@@ -4669,8 +4581,6 @@ components:
         BulkDeploymentId:
           $ref: '#/components/schemas/__string'
           description: The ID of the bulk deployment.
-    StopBulkDeploymentResponse:
-      type: object
     UpdateConnectivityInfoResponse:
       type: object
       properties:
@@ -4680,16 +4590,6 @@ components:
         Version:
           $ref: '#/components/schemas/__string'
           description: The new version of the connectivity info.
-    UpdateConnectorDefinitionResponse:
-      type: object
-    UpdateCoreDefinitionResponse:
-      type: object
-    UpdateDeviceDefinitionResponse:
-      type: object
-    UpdateFunctionDefinitionResponse:
-      type: object
-    UpdateGroupResponse:
-      type: object
     UpdateGroupCertificateConfigurationResponse:
       type: object
       properties:
@@ -4702,12 +4602,6 @@ components:
         GroupId:
           $ref: '#/components/schemas/__string'
           description: The ID of the group certificate configuration.
-    UpdateLoggerDefinitionResponse:
-      type: object
-    UpdateResourceDefinitionResponse:
-      type: object
-    UpdateSubscriptionDefinitionResponse:
-      type: object
     TelemetryConfigurationUpdate:
       description: Configuration settings for running telemetry.
       type: object
@@ -4717,5 +4611,3 @@ components:
           description: Configure telemetry to be on or off.
       required:
       - Telemetry
-    UpdateThingRuntimeConfigurationResponse:
-      type: object

@@ -161,18 +161,18 @@ The following methods are available for this resource:
     <td>Creates a version of the model using the specified model type and model id.</td>
 </tr>
 <tr>
-    <td><a href="#update_model_version_status"><CopyableCode code="update_model_version_status" /></a></td>
-    <td><CopyableCode code="update" /></td>
-    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-modelId"><code>modelId</code></a>, <a href="#parameter-modelType"><code>modelType</code></a>, <a href="#parameter-modelVersionNumber"><code>modelVersionNumber</code></a>, <a href="#parameter-status"><code>status</code></a></td>
-    <td></td>
-    <td>Updates the status of a model version. You can perform the following status updates: Change the TRAINING_IN_PROGRESS status to TRAINING_CANCELLED. Change the TRAINING_COMPLETE status to ACTIVE. Change ACTIVE to INACTIVE.</td>
-</tr>
-<tr>
     <td><a href="#update_model_version"><CopyableCode code="update_model_version" /></a></td>
     <td><CopyableCode code="update" /></td>
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-modelId"><code>modelId</code></a>, <a href="#parameter-modelType"><code>modelType</code></a>, <a href="#parameter-majorVersionNumber"><code>majorVersionNumber</code></a></td>
     <td></td>
     <td>Updates a model version. Updating a model version retrains an existing model version using updated training data and produces a new minor version of the model. You can update the training data set location and data access role attributes using this action. This action creates and trains a new minor version of the model, for example version 1.01, 1.02, 1.03.</td>
+</tr>
+<tr>
+    <td><a href="#update_model_version_status"><CopyableCode code="update_model_version_status" /></a></td>
+    <td><CopyableCode code="update" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-modelId"><code>modelId</code></a>, <a href="#parameter-modelType"><code>modelType</code></a>, <a href="#parameter-modelVersionNumber"><code>modelVersionNumber</code></a>, <a href="#parameter-status"><code>status</code></a></td>
+    <td></td>
+    <td>Updates the status of a model version. You can perform the following status updates: Change the TRAINING_IN_PROGRESS status to TRAINING_CANCELLED. Change the TRAINING_COMPLETE status to ACTIVE. Change ACTIVE to INACTIVE.</td>
 </tr>
 <tr>
     <td><a href="#delete_model_version"><CopyableCode code="delete_model_version" /></a></td>
@@ -350,31 +350,12 @@ status
 ## `UPDATE` examples
 
 <Tabs
-    defaultValue="update_model_version_status"
+    defaultValue="update_model_version"
     values={[
-        { label: 'update_model_version_status', value: 'update_model_version_status' },
-        { label: 'update_model_version', value: 'update_model_version' }
+        { label: 'update_model_version', value: 'update_model_version' },
+        { label: 'update_model_version_status', value: 'update_model_version_status' }
     ]}
 >
-<TabItem value="update_model_version_status">
-
-Updates the status of a model version. You can perform the following status updates: Change the TRAINING_IN_PROGRESS status to TRAINING_CANCELLED. Change the TRAINING_COMPLETE status to ACTIVE. Change ACTIVE to INACTIVE.
-
-```sql
-UPDATE aws.frauddetector.model_versions
-SET 
-modelId = '{{ modelId }}',
-modelType = '{{ modelType }}',
-modelVersionNumber = '{{ modelVersionNumber }}',
-status = '{{ status }}'
-WHERE 
-region = '{{ region }}' --required
-AND modelId = '{{ modelId }}' --required
-AND modelType = '{{ modelType }}' --required
-AND modelVersionNumber = '{{ modelVersionNumber }}' --required
-AND status = '{{ status }}' --required;
-```
-</TabItem>
 <TabItem value="update_model_version">
 
 Updates a model version. Updating a model version retrains an existing model version using updated training data and produces a new minor version of the model. You can update the training data set location and data access role attributes using this action. This action creates and trains a new minor version of the model, for example version 1.01, 1.02, 1.03.
@@ -398,6 +379,25 @@ model_id,
 model_type,
 model_version_number,
 status;
+```
+</TabItem>
+<TabItem value="update_model_version_status">
+
+Updates the status of a model version. You can perform the following status updates: Change the TRAINING_IN_PROGRESS status to TRAINING_CANCELLED. Change the TRAINING_COMPLETE status to ACTIVE. Change ACTIVE to INACTIVE.
+
+```sql
+UPDATE aws.frauddetector.model_versions
+SET 
+modelId = '{{ modelId }}',
+modelType = '{{ modelType }}',
+modelVersionNumber = '{{ modelVersionNumber }}',
+status = '{{ status }}'
+WHERE 
+region = '{{ region }}' --required
+AND modelId = '{{ modelId }}' --required
+AND modelType = '{{ modelType }}' --required
+AND modelVersionNumber = '{{ modelVersionNumber }}' --required
+AND status = '{{ status }}' --required;
 ```
 </TabItem>
 </Tabs>

@@ -36,7 +36,9 @@ The following fields are returned by `SELECT` queries:
     defaultValue="describe_channel_membership"
     values={[
         { label: 'describe_channel_membership', value: 'describe_channel_membership' },
-        { label: 'list_channel_memberships', value: 'list_channel_memberships' }
+        { label: 'describe_channel_membership_for_app_instance_user', value: 'describe_channel_membership_for_app_instance_user' },
+        { label: 'list_channel_memberships', value: 'list_channel_memberships' },
+        { label: 'list_channel_memberships_for_app_instance_user', value: 'list_channel_memberships_for_app_instance_user' }
     ]}
 >
 <TabItem value="describe_channel_membership">
@@ -88,6 +90,30 @@ The following fields are returned by `SELECT` queries:
 </tbody>
 </table>
 </TabItem>
+<TabItem value="describe_channel_membership_for_app_instance_user">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="app_instance_user_membership_summary" /></td>
+    <td><code>object</code></td>
+    <td>Returns the channel membership data for an AppInstance.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="channel_summary" /></td>
+    <td><code>object</code></td>
+    <td>Summary of the details of a Channel.</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
 <TabItem value="list_channel_memberships">
 
 <table>
@@ -117,6 +143,30 @@ The following fields are returned by `SELECT` queries:
 </tbody>
 </table>
 </TabItem>
+<TabItem value="list_channel_memberships_for_app_instance_user">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="channel_memberships" /></td>
+    <td><code>array</code></td>
+    <td>The information for the requested channel memberships.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="next_token" /></td>
+    <td><code>string</code></td>
+    <td>The token passed by previous API calls until all requested users are returned. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
 </Tabs>
 
 ## Methods
@@ -142,11 +192,25 @@ The following methods are available for this resource:
     <td>Returns the full details of a user's channel membership. The x-amz-chime-bearer request header is mandatory. Use the ARN of the AppInstanceUser or AppInstanceBot that makes the API call as the value in the header.</td>
 </tr>
 <tr>
+    <td><a href="#describe_channel_membership_for_app_instance_user"><CopyableCode code="describe_channel_membership_for_app_instance_user" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-channel_arn"><code>channel_arn</code></a>, <a href="#parameter-app-instance-user-arn"><code>app-instance-user-arn</code></a>, <a href="#parameter-x-amz-chime-bearer"><code>x-amz-chime-bearer</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Returns the details of a channel based on the membership of the specified AppInstanceUser or AppInstanceBot. The x-amz-chime-bearer request header is mandatory. Use the ARN of the AppInstanceUser or AppInstanceBot that makes the API call as the value in the header.</td>
+</tr>
+<tr>
     <td><a href="#list_channel_memberships"><CopyableCode code="list_channel_memberships" /></a></td>
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-channel_arn"><code>channel_arn</code></a>, <a href="#parameter-x-amz-chime-bearer"><code>x-amz-chime-bearer</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td><a href="#parameter-type"><code>type</code></a>, <a href="#parameter-max-results"><code>max-results</code></a>, <a href="#parameter-next-token"><code>next-token</code></a>, <a href="#parameter-sub-channel-id"><code>sub-channel-id</code></a></td>
     <td>Lists all channel memberships in a channel. The x-amz-chime-bearer request header is mandatory. Use the ARN of the AppInstanceUser or AppInstanceBot that makes the API call as the value in the header. If you want to list the channels to which a specific app instance user belongs, see the ListChannelMembershipsForAppInstanceUser API.</td>
+</tr>
+<tr>
+    <td><a href="#list_channel_memberships_for_app_instance_user"><CopyableCode code="list_channel_memberships_for_app_instance_user" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-x-amz-chime-bearer"><code>x-amz-chime-bearer</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td><a href="#parameter-app-instance-user-arn"><code>app-instance-user-arn</code></a>, <a href="#parameter-max-results"><code>max-results</code></a>, <a href="#parameter-next-token"><code>next-token</code></a></td>
+    <td>Lists all channels that an AppInstanceUser or AppInstanceBot is a part of. Only an AppInstanceAdmin can call the API with a user ARN that is not their own. The x-amz-chime-bearer request header is mandatory. Use the ARN of the AppInstanceUser or AppInstanceBot that makes the API call as the value in the header.</td>
 </tr>
 <tr>
     <td><a href="#create_channel_membership"><CopyableCode code="create_channel_membership" /></a></td>
@@ -178,6 +242,11 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     </tr>
 </thead>
 <tbody>
+<tr id="parameter-app-instance-user-arn">
+    <td><CopyableCode code="app-instance-user-arn" /></td>
+    <td><code>string</code></td>
+    <td>The ARN of the user or bot in a channel.</td>
+</tr>
 <tr id="parameter-channel_arn">
     <td><CopyableCode code="channel_arn" /></td>
     <td><code>string</code></td>
@@ -198,15 +267,20 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     <td><code>string</code></td>
     <td>The ARN of the AppInstanceUser or AppInstanceBot that makes the API call.</td>
 </tr>
+<tr id="parameter-app-instance-user-arn">
+    <td><CopyableCode code="app-instance-user-arn" /></td>
+    <td><code>string</code></td>
+    <td>The ARN of the user or bot.</td>
+</tr>
 <tr id="parameter-max-results">
     <td><CopyableCode code="max-results" /></td>
     <td><code>integer</code></td>
-    <td>The maximum number of channel memberships that you want returned.</td>
+    <td>The maximum number of users that you want returned.</td>
 </tr>
 <tr id="parameter-next-token">
     <td><CopyableCode code="next-token" /></td>
     <td><code>string</code></td>
-    <td>The token passed by previous API calls until all requested channel memberships are returned.</td>
+    <td>The token returned from previous API requests until the number of channel memberships is reached.</td>
 </tr>
 <tr id="parameter-sub-channel-id">
     <td><CopyableCode code="sub-channel-id" /></td>
@@ -227,7 +301,9 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     defaultValue="describe_channel_membership"
     values={[
         { label: 'describe_channel_membership', value: 'describe_channel_membership' },
-        { label: 'list_channel_memberships', value: 'list_channel_memberships' }
+        { label: 'describe_channel_membership_for_app_instance_user', value: 'describe_channel_membership_for_app_instance_user' },
+        { label: 'list_channel_memberships', value: 'list_channel_memberships' },
+        { label: 'list_channel_memberships_for_app_instance_user', value: 'list_channel_memberships_for_app_instance_user' }
     ]}
 >
 <TabItem value="describe_channel_membership">
@@ -252,6 +328,22 @@ AND `sub-channel-id` = '{{ sub-channel-id }}'
 ;
 ```
 </TabItem>
+<TabItem value="describe_channel_membership_for_app_instance_user">
+
+Returns the details of a channel based on the membership of the specified AppInstanceUser or AppInstanceBot. The x-amz-chime-bearer request header is mandatory. Use the ARN of the AppInstanceUser or AppInstanceBot that makes the API call as the value in the header.
+
+```sql
+SELECT
+app_instance_user_membership_summary,
+channel_summary
+FROM aws.chime_sdk_messaging.channel_memberships
+WHERE channel_arn = '{{ channel_arn }}' -- required
+AND `app-instance-user-arn` = '{{ app-instance-user-arn }}' -- required
+AND `x-amz-chime-bearer` = '{{ x-amz-chime-bearer }}' -- required
+AND region = '{{ region }}' -- required
+;
+```
+</TabItem>
 <TabItem value="list_channel_memberships">
 
 Lists all channel memberships in a channel. The x-amz-chime-bearer request header is mandatory. Use the ARN of the AppInstanceUser or AppInstanceBot that makes the API call as the value in the header. If you want to list the channels to which a specific app instance user belongs, see the ListChannelMembershipsForAppInstanceUser API.
@@ -269,6 +361,23 @@ AND type = '{{ type }}'
 AND `max-results` = '{{ max-results }}'
 AND `next-token` = '{{ next-token }}'
 AND `sub-channel-id` = '{{ sub-channel-id }}'
+;
+```
+</TabItem>
+<TabItem value="list_channel_memberships_for_app_instance_user">
+
+Lists all channels that an AppInstanceUser or AppInstanceBot is a part of. Only an AppInstanceAdmin can call the API with a user ARN that is not their own. The x-amz-chime-bearer request header is mandatory. Use the ARN of the AppInstanceUser or AppInstanceBot that makes the API call as the value in the header.
+
+```sql
+SELECT
+channel_memberships,
+next_token
+FROM aws.chime_sdk_messaging.channel_memberships
+WHERE `x-amz-chime-bearer` = '{{ x-amz-chime-bearer }}' -- required
+AND region = '{{ region }}' -- required
+AND `app-instance-user-arn` = '{{ app-instance-user-arn }}'
+AND `max-results` = '{{ max-results }}'
+AND `next-token` = '{{ next-token }}'
 ;
 ```
 </TabItem>

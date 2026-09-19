@@ -36,6 +36,7 @@ The following fields are returned by `SELECT` queries:
     defaultValue="get_attribute_group"
     values={[
         { label: 'get_attribute_group', value: 'get_attribute_group' },
+        { label: 'list_attribute_groups_for_application', value: 'list_attribute_groups_for_application' },
         { label: 'list_attribute_groups', value: 'list_attribute_groups' }
     ]}
 >
@@ -94,6 +95,40 @@ The following fields are returned by `SELECT` queries:
     <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>Key-value pairs associated with the attribute group.</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
+<TabItem value="list_attribute_groups_for_application">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="id" /></td>
+    <td><code>string</code></td>
+    <td>The unique identifier of the attribute group. (pattern: &lt;code&gt;&#91;-.\w&#93;+&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="name" /></td>
+    <td><code>string</code></td>
+    <td>This field is no longer supported. We recommend you don't use the field when using ListAttributeGroupsForApplication. The name of the attribute group. (pattern: &lt;code&gt;&#91;-.\w&#93;+&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="arn" /></td>
+    <td><code>string</code></td>
+    <td>The Amazon resource name (ARN) that specifies the attribute group. (pattern: &lt;code&gt;arn:aws&#91;-a-z&#93;*:servicecatalog:&#91;a-z&#93;&#123;2&#125;(-gov)?-&#91;a-z&#93;+-\d:\d&#123;12&#125;:/attribute-groups/&#91;-.\w&#93;+&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="created_by" /></td>
+    <td><code>string</code></td>
+    <td>The service principal that created the attribute group. (pattern: &lt;code&gt;^(?!-)(&#91;a-z0-9-&#93;+\.)+(aws\.internal|amazonaws\.com(\.cn)?)$&lt;/code&gt;)</td>
 </tr>
 </tbody>
 </table>
@@ -170,6 +205,13 @@ The following methods are available for this resource:
     <td><a href="#parameter-attribute_group"><code>attribute_group</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td></td>
     <td>Retrieves an attribute group by its ARN, ID, or name. The attribute group can be specified by its ARN, ID, or name.</td>
+</tr>
+<tr>
+    <td><a href="#list_attribute_groups_for_application"><CopyableCode code="list_attribute_groups_for_application" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-application"><code>application</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td><a href="#parameter-nextToken"><code>nextToken</code></a>, <a href="#parameter-maxResults"><code>maxResults</code></a></td>
+    <td>Lists the details of all attribute groups associated with a specific application. The results display in pages.</td>
 </tr>
 <tr>
     <td><a href="#list_attribute_groups"><CopyableCode code="list_attribute_groups" /></a></td>
@@ -263,6 +305,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     defaultValue="get_attribute_group"
     values={[
         { label: 'get_attribute_group', value: 'get_attribute_group' },
+        { label: 'list_attribute_groups_for_application', value: 'list_attribute_groups_for_application' },
         { label: 'list_attribute_groups', value: 'list_attribute_groups' }
     ]}
 >
@@ -284,6 +327,24 @@ tags
 FROM aws.servicecatalog_appregistry.attribute_groups
 WHERE attribute_group = '{{ attribute_group }}' -- required
 AND region = '{{ region }}' -- required
+;
+```
+</TabItem>
+<TabItem value="list_attribute_groups_for_application">
+
+Lists the details of all attribute groups associated with a specific application. The results display in pages.
+
+```sql
+SELECT
+id,
+name,
+arn,
+created_by
+FROM aws.servicecatalog_appregistry.attribute_groups
+WHERE application = '{{ application }}' -- required
+AND region = '{{ region }}' -- required
+AND nextToken = '{{ nextToken }}'
+AND maxResults = '{{ maxResults }}'
 ;
 ```
 </TabItem>

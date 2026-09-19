@@ -192,6 +192,27 @@ The following methods are available for this resource:
     <td></td>
     <td>Deletes a certificate revocation list (CRL). Required permissions: rolesanywhere:DeleteCrl.</td>
 </tr>
+<tr>
+    <td><a href="#disable_crl"><CopyableCode code="disable_crl" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-crl_id"><code>crl_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Disables a certificate revocation list (CRL). Required permissions: rolesanywhere:DisableCrl.</td>
+</tr>
+<tr>
+    <td><a href="#enable_crl"><CopyableCode code="enable_crl" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-crl_id"><code>crl_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Enables a certificate revocation list (CRL). When enabled, certificates stored in the CRL are unauthorized to receive session credentials. Required permissions: rolesanywhere:EnableCrl.</td>
+</tr>
+<tr>
+    <td><a href="#import_crl"><CopyableCode code="import_crl" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-name"><code>name</code></a>, <a href="#parameter-crlData"><code>crlData</code></a>, <a href="#parameter-trustAnchorArn"><code>trustAnchorArn</code></a></td>
+    <td></td>
+    <td>Imports the certificate revocation list (CRL). A CRL is a list of certificates that have been revoked by the issuing certificate Authority (CA).In order to be properly imported, a CRL must be in PEM format. IAM Roles Anywhere validates against the CRL before issuing credentials. Required permissions: rolesanywhere:ImportCrl.</td>
+</tr>
 </tbody>
 </table>
 
@@ -327,6 +348,59 @@ Deletes a certificate revocation list (CRL). Required permissions: rolesanywhere
 DELETE FROM aws.rolesanywhere.crls
 WHERE crl_id = '{{ crl_id }}' --required
 AND region = '{{ region }}' --required
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="disable_crl"
+    values={[
+        { label: 'disable_crl', value: 'disable_crl' },
+        { label: 'enable_crl', value: 'enable_crl' },
+        { label: 'import_crl', value: 'import_crl' }
+    ]}
+>
+<TabItem value="disable_crl">
+
+Disables a certificate revocation list (CRL). Required permissions: rolesanywhere:DisableCrl.
+
+```sql
+EXEC aws.rolesanywhere.crls.disable_crl 
+@crl_id='{{ crl_id }}' --required, 
+@region='{{ region }}' --required
+;
+```
+</TabItem>
+<TabItem value="enable_crl">
+
+Enables a certificate revocation list (CRL). When enabled, certificates stored in the CRL are unauthorized to receive session credentials. Required permissions: rolesanywhere:EnableCrl.
+
+```sql
+EXEC aws.rolesanywhere.crls.enable_crl 
+@crl_id='{{ crl_id }}' --required, 
+@region='{{ region }}' --required
+;
+```
+</TabItem>
+<TabItem value="import_crl">
+
+Imports the certificate revocation list (CRL). A CRL is a list of certificates that have been revoked by the issuing certificate Authority (CA).In order to be properly imported, a CRL must be in PEM format. IAM Roles Anywhere validates against the CRL before issuing credentials. Required permissions: rolesanywhere:ImportCrl.
+
+```sql
+EXEC aws.rolesanywhere.crls.import_crl 
+@region='{{ region }}' --required 
+@@json=
+'{
+"name": "{{ name }}", 
+"crlData": "{{ crlData }}", 
+"enabled": {{ enabled }}, 
+"tags": "{{ tags }}", 
+"trustAnchorArn": "{{ trustAnchorArn }}"
+}'
 ;
 ```
 </TabItem>

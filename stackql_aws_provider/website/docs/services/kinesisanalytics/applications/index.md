@@ -176,6 +176,13 @@ The following methods are available for this resource:
     <td>This documentation is for version 1 of the Amazon Kinesis Data Analytics API, which only supports SQL applications. Version 2 of the API supports SQL and Java applications. For more information about version 2, see Amazon Kinesis Data Analytics API V2 Documentation. Creates an Amazon Kinesis Analytics application. You can configure each application with one streaming source as input, application code to process the input, and up to three destinations where you want Amazon Kinesis Analytics to write the output data from your application. For an overview, see How it Works. In the input configuration, you map the streaming source to an in-application stream, which you can think of as a constantly updating table. In the mapping, you must provide a schema for the in-application stream and map each data column in the in-application stream to a data element in the streaming source. Your application code is one or more SQL statements that read input data, transform it, and generate output. Your application code can create one or more SQL artifacts like SQL streams or pumps. In the output configuration, you can configure the application to write data from in-application streams created in your applications to up to three destinations. To read data from your source stream or write data to destination streams, Amazon Kinesis Analytics needs your permissions. You grant these permissions by creating IAM roles. This operation requires permissions to perform the kinesisanalytics:CreateApplication action. For introductory exercises to create an Amazon Kinesis Analytics application, see Getting Started.</td>
 </tr>
 <tr>
+    <td><a href="#update_application"><CopyableCode code="update_application" /></a></td>
+    <td><CopyableCode code="update" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-ApplicationName"><code>ApplicationName</code></a>, <a href="#parameter-CurrentApplicationVersionId"><code>CurrentApplicationVersionId</code></a>, <a href="#parameter-ApplicationUpdate"><code>ApplicationUpdate</code></a></td>
+    <td></td>
+    <td>This documentation is for version 1 of the Amazon Kinesis Data Analytics API, which only supports SQL applications. Version 2 of the API supports SQL and Java applications. For more information about version 2, see Amazon Kinesis Data Analytics API V2 Documentation. Updates an existing Amazon Kinesis Analytics application. Using this API, you can update application code, input configuration, and output configuration. Note that Amazon Kinesis Analytics updates the CurrentApplicationVersionId each time you update your application. This operation requires permission for the kinesisanalytics:UpdateApplication action.</td>
+</tr>
+<tr>
     <td><a href="#add_application_input_processing_configuration"><CopyableCode code="add_application_input_processing_configuration" /></a></td>
     <td><CopyableCode code="update" /></td>
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-ApplicationName"><code>ApplicationName</code></a>, <a href="#parameter-CurrentApplicationVersionId"><code>CurrentApplicationVersionId</code></a>, <a href="#parameter-InputId"><code>InputId</code></a>, <a href="#parameter-InputProcessingConfiguration"><code>InputProcessingConfiguration</code></a></td>
@@ -211,11 +218,11 @@ The following methods are available for this resource:
     <td>This documentation is for version 1 of the Amazon Kinesis Data Analytics API, which only supports SQL applications. Version 2 of the API supports SQL and Java applications. For more information about version 2, see Amazon Kinesis Data Analytics API V2 Documentation. Adds a reference data source to an existing application. Amazon Kinesis Analytics reads reference data (that is, an Amazon S3 object) and creates an in-application table within your application. In the request, you provide the source (S3 bucket name and object key name), name of the in-application table to create, and the necessary mapping information that describes how data in Amazon S3 object maps to columns in the resulting in-application table. For conceptual information, see Configuring Application Input. For the limits on data sources you can add to your application, see Limits. This operation requires permissions to perform the kinesisanalytics:AddApplicationOutput action.</td>
 </tr>
 <tr>
-    <td><a href="#update_application"><CopyableCode code="update_application" /></a></td>
-    <td><CopyableCode code="update" /></td>
-    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-ApplicationName"><code>ApplicationName</code></a>, <a href="#parameter-CurrentApplicationVersionId"><code>CurrentApplicationVersionId</code></a>, <a href="#parameter-ApplicationUpdate"><code>ApplicationUpdate</code></a></td>
+    <td><a href="#delete_application"><CopyableCode code="delete_application" /></a></td>
+    <td><CopyableCode code="delete" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>This documentation is for version 1 of the Amazon Kinesis Data Analytics API, which only supports SQL applications. Version 2 of the API supports SQL and Java applications. For more information about version 2, see Amazon Kinesis Data Analytics API V2 Documentation. Updates an existing Amazon Kinesis Analytics application. Using this API, you can update application code, input configuration, and output configuration. Note that Amazon Kinesis Analytics updates the CurrentApplicationVersionId each time you update your application. This operation requires permission for the kinesisanalytics:UpdateApplication action.</td>
+    <td>This documentation is for version 1 of the Amazon Kinesis Data Analytics API, which only supports SQL applications. Version 2 of the API supports SQL and Java applications. For more information about version 2, see Amazon Kinesis Data Analytics API V2 Documentation. Deletes the specified application. Amazon Kinesis Analytics halts application execution and deletes the application, including any application artifacts (such as in-application streams, reference table, and application code). This operation requires permissions to perform the kinesisanalytics:DeleteApplication action.</td>
 </tr>
 <tr>
     <td><a href="#delete_application_cloud_watch_logging_option"><CopyableCode code="delete_application_cloud_watch_logging_option" /></a></td>
@@ -244,13 +251,6 @@ The following methods are available for this resource:
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td></td>
     <td>This documentation is for version 1 of the Amazon Kinesis Data Analytics API, which only supports SQL applications. Version 2 of the API supports SQL and Java applications. For more information about version 2, see Amazon Kinesis Data Analytics API V2 Documentation. Deletes a reference data source configuration from the specified application configuration. If the application is running, Amazon Kinesis Analytics immediately removes the in-application table that you created using the AddApplicationReferenceDataSource operation. This operation requires permissions to perform the kinesisanalytics.DeleteApplicationReferenceDataSource action.</td>
-</tr>
-<tr>
-    <td><a href="#delete_application"><CopyableCode code="delete_application" /></a></td>
-    <td><CopyableCode code="delete" /></td>
-    <td><a href="#parameter-region"><code>region</code></a></td>
-    <td></td>
-    <td>This documentation is for version 1 of the Amazon Kinesis Data Analytics API, which only supports SQL applications. Version 2 of the API supports SQL and Java applications. For more information about version 2, see Amazon Kinesis Data Analytics API V2 Documentation. Deletes the specified application. Amazon Kinesis Analytics halts application execution and deletes the application, including any application artifacts (such as in-application streams, reference table, and application code). This operation requires permissions to perform the kinesisanalytics:DeleteApplication action.</td>
 </tr>
 <tr>
     <td><a href="#start_application"><CopyableCode code="start_application" /></a></td>
@@ -464,16 +464,33 @@ application_summary
 ## `UPDATE` examples
 
 <Tabs
-    defaultValue="add_application_input_processing_configuration"
+    defaultValue="update_application"
     values={[
+        { label: 'update_application', value: 'update_application' },
         { label: 'add_application_input_processing_configuration', value: 'add_application_input_processing_configuration' },
         { label: 'add_application_cloud_watch_logging_option', value: 'add_application_cloud_watch_logging_option' },
         { label: 'add_application_input', value: 'add_application_input' },
         { label: 'add_application_output', value: 'add_application_output' },
-        { label: 'add_application_reference_data_source', value: 'add_application_reference_data_source' },
-        { label: 'update_application', value: 'update_application' }
+        { label: 'add_application_reference_data_source', value: 'add_application_reference_data_source' }
     ]}
 >
+<TabItem value="update_application">
+
+This documentation is for version 1 of the Amazon Kinesis Data Analytics API, which only supports SQL applications. Version 2 of the API supports SQL and Java applications. For more information about version 2, see Amazon Kinesis Data Analytics API V2 Documentation. Updates an existing Amazon Kinesis Analytics application. Using this API, you can update application code, input configuration, and output configuration. Note that Amazon Kinesis Analytics updates the CurrentApplicationVersionId each time you update your application. This operation requires permission for the kinesisanalytics:UpdateApplication action.
+
+```sql
+UPDATE aws.kinesisanalytics.applications
+SET 
+ApplicationName = '{{ ApplicationName }}',
+CurrentApplicationVersionId = {{ CurrentApplicationVersionId }},
+ApplicationUpdate = '{{ ApplicationUpdate }}'
+WHERE 
+region = '{{ region }}' --required
+AND ApplicationName = '{{ ApplicationName }}' --required
+AND CurrentApplicationVersionId = '{{ CurrentApplicationVersionId }}' --required
+AND ApplicationUpdate = '{{ ApplicationUpdate }}' --required;
+```
+</TabItem>
 <TabItem value="add_application_input_processing_configuration">
 
 This documentation is for version 1 of the Amazon Kinesis Data Analytics API, which only supports SQL applications. Version 2 of the API supports SQL and Java applications. For more information about version 2, see Amazon Kinesis Data Analytics API V2 Documentation. Adds an InputProcessingConfiguration to an application. An input processor preprocesses records on the input stream before the application's SQL code executes. Currently, the only input processor available is AWS Lambda.
@@ -561,38 +578,31 @@ AND CurrentApplicationVersionId = '{{ CurrentApplicationVersionId }}' --required
 AND ReferenceDataSource = '{{ ReferenceDataSource }}' --required;
 ```
 </TabItem>
-<TabItem value="update_application">
-
-This documentation is for version 1 of the Amazon Kinesis Data Analytics API, which only supports SQL applications. Version 2 of the API supports SQL and Java applications. For more information about version 2, see Amazon Kinesis Data Analytics API V2 Documentation. Updates an existing Amazon Kinesis Analytics application. Using this API, you can update application code, input configuration, and output configuration. Note that Amazon Kinesis Analytics updates the CurrentApplicationVersionId each time you update your application. This operation requires permission for the kinesisanalytics:UpdateApplication action.
-
-```sql
-UPDATE aws.kinesisanalytics.applications
-SET 
-ApplicationName = '{{ ApplicationName }}',
-CurrentApplicationVersionId = {{ CurrentApplicationVersionId }},
-ApplicationUpdate = '{{ ApplicationUpdate }}'
-WHERE 
-region = '{{ region }}' --required
-AND ApplicationName = '{{ ApplicationName }}' --required
-AND CurrentApplicationVersionId = '{{ CurrentApplicationVersionId }}' --required
-AND ApplicationUpdate = '{{ ApplicationUpdate }}' --required;
-```
-</TabItem>
 </Tabs>
 
 
 ## `DELETE` examples
 
 <Tabs
-    defaultValue="delete_application_cloud_watch_logging_option"
+    defaultValue="delete_application"
     values={[
+        { label: 'delete_application', value: 'delete_application' },
         { label: 'delete_application_cloud_watch_logging_option', value: 'delete_application_cloud_watch_logging_option' },
         { label: 'delete_application_input_processing_configuration', value: 'delete_application_input_processing_configuration' },
         { label: 'delete_application_output', value: 'delete_application_output' },
-        { label: 'delete_application_reference_data_source', value: 'delete_application_reference_data_source' },
-        { label: 'delete_application', value: 'delete_application' }
+        { label: 'delete_application_reference_data_source', value: 'delete_application_reference_data_source' }
     ]}
 >
+<TabItem value="delete_application">
+
+This documentation is for version 1 of the Amazon Kinesis Data Analytics API, which only supports SQL applications. Version 2 of the API supports SQL and Java applications. For more information about version 2, see Amazon Kinesis Data Analytics API V2 Documentation. Deletes the specified application. Amazon Kinesis Analytics halts application execution and deletes the application, including any application artifacts (such as in-application streams, reference table, and application code). This operation requires permissions to perform the kinesisanalytics:DeleteApplication action.
+
+```sql
+DELETE FROM aws.kinesisanalytics.applications
+WHERE region = '{{ region }}' --required
+;
+```
+</TabItem>
 <TabItem value="delete_application_cloud_watch_logging_option">
 
 This documentation is for version 1 of the Amazon Kinesis Data Analytics API, which only supports SQL applications. Version 2 of the API supports SQL and Java applications. For more information about version 2, see Amazon Kinesis Data Analytics API V2 Documentation. Deletes a CloudWatch log stream from an application. For more information about using CloudWatch log streams with Amazon Kinesis Analytics applications, see Working with Amazon CloudWatch Logs.
@@ -626,16 +636,6 @@ WHERE region = '{{ region }}' --required
 <TabItem value="delete_application_reference_data_source">
 
 This documentation is for version 1 of the Amazon Kinesis Data Analytics API, which only supports SQL applications. Version 2 of the API supports SQL and Java applications. For more information about version 2, see Amazon Kinesis Data Analytics API V2 Documentation. Deletes a reference data source configuration from the specified application configuration. If the application is running, Amazon Kinesis Analytics immediately removes the in-application table that you created using the AddApplicationReferenceDataSource operation. This operation requires permissions to perform the kinesisanalytics.DeleteApplicationReferenceDataSource action.
-
-```sql
-DELETE FROM aws.kinesisanalytics.applications
-WHERE region = '{{ region }}' --required
-;
-```
-</TabItem>
-<TabItem value="delete_application">
-
-This documentation is for version 1 of the Amazon Kinesis Data Analytics API, which only supports SQL applications. Version 2 of the API supports SQL and Java applications. For more information about version 2, see Amazon Kinesis Data Analytics API V2 Documentation. Deletes the specified application. Amazon Kinesis Analytics halts application execution and deletes the application, including any application artifacts (such as in-application streams, reference table, and application code). This operation requires permissions to perform the kinesisanalytics:DeleteApplication action.
 
 ```sql
 DELETE FROM aws.kinesisanalytics.applications

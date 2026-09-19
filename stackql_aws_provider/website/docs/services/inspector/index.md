@@ -18,28 +18,31 @@ inspector service documentation.
 
 :::info[Service Summary]
 
-total resources: __14__  
+total resources: __17__  
 
 :::
 
 ## Resources
 <div class="row">
 <div class="providerDocColumn">
+<a href="/services/inspector/agents/">agents</a><br />
 <a href="/services/inspector/assessment_reports/">assessment_reports</a><br />
 <a href="/services/inspector/assessment_run_agents/">assessment_run_agents</a><br />
 <a href="/services/inspector/assessment_runs/">assessment_runs</a><br />
 <a href="/services/inspector/assessment_targets/">assessment_targets</a><br />
 <a href="/services/inspector/assessment_templates/">assessment_templates</a><br />
 <a href="/services/inspector/cross_account_access_roles/">cross_account_access_roles</a><br />
-<a href="/services/inspector/event_subscriptions/">event_subscriptions</a>
+<a href="/services/inspector/event_subscriptions/">event_subscriptions</a><br />
+<a href="/services/inspector/exclusions/">exclusions</a>
 </div>
 <div class="providerDocColumn">
-<a href="/services/inspector/exclusions/">exclusions</a><br />
 <a href="/services/inspector/exclusions_previews/">exclusions_previews</a><br />
 <a href="/services/inspector/findings/">findings</a><br />
+<a href="/services/inspector/from_events/">from_events</a><br />
 <a href="/services/inspector/resource_groups/">resource_groups</a><br />
 <a href="/services/inspector/rules_packages/">rules_packages</a><br />
 <a href="/services/inspector/tags/">tags</a><br />
-<a href="/services/inspector/telemetry_metadatas/">telemetry_metadatas</a>
+<a href="/services/inspector/telemetry_metadata/">telemetry_metadata</a><br />
+<a href="/services/inspector/to_events/">to_events</a>
 </div>
 </div>

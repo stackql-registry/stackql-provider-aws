@@ -51,10 +51,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/AssociateVehicleFleetResponse'
       x-stackql-resource: fleets
       x-stackql-method: associate_vehicle_fleet
       x-stackql-verb: UPDATE
@@ -94,7 +90,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchCreateVehicleResponse'
-      x-stackql-resource: batch_create_vehicle
+      x-stackql-resource: vehicles
       x-stackql-method: batch_create_vehicle
       x-stackql-verb: EXEC
   /BatchUpdateVehicle:
@@ -133,7 +129,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchUpdateVehicleResponse'
-      x-stackql-resource: batch_update_vehicle
+      x-stackql-resource: vehicles
       x-stackql-method: batch_update_vehicle
       x-stackql-verb: EXEC
   /CreateCampaign:
@@ -880,10 +876,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DisassociateVehicleFleetResponse'
       x-stackql-resource: fleets
       x-stackql-method: disassociate_vehicle_fleet
       x-stackql-verb: UPDATE
@@ -1124,7 +1116,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetRegisterAccountStatusResponse'
-      x-stackql-resource: register_account_status
+      x-stackql-resource: register_account_statuses
       x-stackql-method: get_register_account_status
       x-stackql-verb: SELECT
   /GetSignalCatalog:
@@ -1282,7 +1274,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetVehicleStatusResponse'
-      x-stackql-resource: vehicle_status
+      x-stackql-resource: vehicle_statuses
       x-stackql-method: get_vehicle_status
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.campaigns
@@ -1327,7 +1319,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ImportDecoderManifestResponse'
-      x-stackql-resource: decoder_manifest
+      x-stackql-resource: decoder_manifests
       x-stackql-method: import_decoder_manifest
       x-stackql-verb: EXEC
   /ImportSignalCatalog:
@@ -1373,7 +1365,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ImportSignalCatalogResponse'
-      x-stackql-resource: signal_catalog
+      x-stackql-resource: signal_catalogs
       x-stackql-method: import_signal_catalog
       x-stackql-verb: EXEC
   /ListCampaigns:
@@ -1674,7 +1666,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListFleetsForVehicleOutputDisplay'
-      x-stackql-resource: fleets_for_vehicles
+      x-stackql-resource: fleets
       x-stackql-method: list_fleets_for_vehicle
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: ListFleetsForVehicleOutputDisplay
@@ -2169,10 +2161,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PutLoggingOptionsResponse'
       x-stackql-resource: logging_options
       x-stackql-method: put_logging_options
       x-stackql-verb: REPLACE
@@ -2257,10 +2245,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -2297,10 +2281,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -2738,8 +2718,6 @@ components:
       minLength: 1
       maxLength: 100
       pattern: '[a-zA-Z0-9:_-]+'
-    AssociateVehicleFleetResponse:
-      type: object
     createVehicleRequestItems:
       type: array
       items:
@@ -4439,8 +4417,6 @@ components:
       required:
       - vehicleName
       - arn
-    DisassociateVehicleFleetResponse:
-      type: object
     GetCampaignResponse:
       type: object
       properties:
@@ -5452,8 +5428,6 @@ components:
       required:
       - encryptionStatus
       - encryptionType
-    PutLoggingOptionsResponse:
-      type: object
     TimestreamResources:
       description: The registered Amazon Timestream resources that Amazon Web Services IoT FleetWise edge agent software can
         transfer your vehicle data to.
@@ -5502,14 +5476,10 @@ components:
       - iamResources
       - creationTime
       - lastModificationTime
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
         $ref: '#/components/schemas/TagKey'
-    UntagResourceResponse:
-      type: object
     UpdateCampaignAction:
       type: string
       enum:

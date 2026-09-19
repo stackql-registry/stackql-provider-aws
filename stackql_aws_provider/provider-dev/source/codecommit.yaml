@@ -96,7 +96,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchAssociateApprovalRuleTemplateWithRepositoriesOutput'
-      x-stackql-resource: repositories
+      x-stackql-resource: approval_rule_templates
       x-stackql-method: batch_associate_approval_rule_template_with_repositories
       x-stackql-verb: EXEC
   /BatchDescribeMergeConflicts:
@@ -1505,7 +1505,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetCommentsForComparedCommitOutput'
-      x-stackql-resource: comments_for_compared_commits
+      x-stackql-resource: comments
       x-stackql-method: get_comments_for_compared_commit
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.commentsForComparedCommitData
@@ -1567,7 +1567,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetCommentsForPullRequestOutput'
-      x-stackql-resource: comments_for_pull_requests
+      x-stackql-resource: comments
       x-stackql-method: get_comments_for_pull_request
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.commentsForPullRequestData
@@ -2237,7 +2237,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListAssociatedApprovalRuleTemplatesForRepositoryOutputDisplay'
-      x-stackql-resource: associated_approval_rule_templates_for_repositories
+      x-stackql-resource: associated_approval_rule_templates
       x-stackql-method: list_associated_approval_rule_templates_for_repository
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: ListAssociatedApprovalRuleTemplatesForRepositoryOutputDisplay
@@ -2491,7 +2491,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListRepositoriesForApprovalRuleTemplateOutputDisplay'
-      x-stackql-resource: repositories_for_approval_rule_templates
+      x-stackql-resource: repositories
       x-stackql-method: list_repositories_for_approval_rule_template
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: ListRepositoriesForApprovalRuleTemplateOutputDisplay
@@ -2586,7 +2586,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/MergeBranchesByFastForwardOutput'
-      x-stackql-resource: repositories
+      x-stackql-resource: branches
       x-stackql-method: merge_branches_by_fast_forward
       x-stackql-verb: EXEC
   /MergeBranchesBySquash:
@@ -2665,7 +2665,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/MergeBranchesBySquashOutput'
-      x-stackql-resource: repositories
+      x-stackql-resource: branches
       x-stackql-method: merge_branches_by_squash
       x-stackql-verb: EXEC
   /MergeBranchesByThreeWay:
@@ -2743,7 +2743,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/MergeBranchesByThreeWayOutput'
-      x-stackql-resource: repositories
+      x-stackql-resource: branches
       x-stackql-method: merge_branches_by_three_way
       x-stackql-verb: EXEC
   /MergePullRequestByFastForward:
@@ -3041,7 +3041,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PostCommentForComparedCommitOutput'
-      x-stackql-resource: repositories
+      x-stackql-resource: commits
       x-stackql-method: post_comment_for_compared_commit
       x-stackql-verb: EXEC
   /PostCommentForPullRequest:
@@ -3151,7 +3151,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PostCommentReplyOutput'
-      x-stackql-resource: post_comment_reply
+      x-stackql-resource: comments
       x-stackql-method: post_comment_reply
       x-stackql-verb: EXEC
   /PutCommentReaction:

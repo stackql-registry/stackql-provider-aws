@@ -141,6 +141,13 @@ The following methods are available for this resource:
     <td>Creates a permission set within a specified IAM Identity Center instance. To grant users and groups access to Amazon Web Services account resources, use CreateAccountAssignment .</td>
 </tr>
 <tr>
+    <td><a href="#provision_permission_set"><CopyableCode code="provision_permission_set" /></a></td>
+    <td><CopyableCode code="update" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-InstanceArn"><code>InstanceArn</code></a>, <a href="#parameter-PermissionSetArn"><code>PermissionSetArn</code></a>, <a href="#parameter-TargetType"><code>TargetType</code></a></td>
+    <td></td>
+    <td>The process by which a specified permission set is provisioned to the specified target.</td>
+</tr>
+<tr>
     <td><a href="#attach_customer_managed_policy_reference_to_permission_set"><CopyableCode code="attach_customer_managed_policy_reference_to_permission_set" /></a></td>
     <td><CopyableCode code="update" /></td>
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-InstanceArn"><code>InstanceArn</code></a>, <a href="#parameter-PermissionSetArn"><code>PermissionSetArn</code></a>, <a href="#parameter-CustomerManagedPolicyReference"><code>CustomerManagedPolicyReference</code></a></td>
@@ -153,13 +160,6 @@ The following methods are available for this resource:
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-InstanceArn"><code>InstanceArn</code></a>, <a href="#parameter-PermissionSetArn"><code>PermissionSetArn</code></a>, <a href="#parameter-ManagedPolicyArn"><code>ManagedPolicyArn</code></a></td>
     <td></td>
     <td>Attaches an Amazon Web Services managed policy ARN to a permission set. If the permission set is already referenced by one or more account assignments, you will need to call ProvisionPermissionSet after this operation. Calling ProvisionPermissionSet applies the corresponding IAM policy updates to all assigned accounts.</td>
-</tr>
-<tr>
-    <td><a href="#provision_permission_set"><CopyableCode code="provision_permission_set" /></a></td>
-    <td><CopyableCode code="update" /></td>
-    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-InstanceArn"><code>InstanceArn</code></a>, <a href="#parameter-PermissionSetArn"><code>PermissionSetArn</code></a>, <a href="#parameter-TargetType"><code>TargetType</code></a></td>
-    <td></td>
-    <td>The process by which a specified permission set is provisioned to the specified target.</td>
 </tr>
 <tr>
     <td><a href="#update_permission_set"><CopyableCode code="update_permission_set" /></a></td>
@@ -361,14 +361,34 @@ permission_set
 ## `UPDATE` examples
 
 <Tabs
-    defaultValue="attach_customer_managed_policy_reference_to_permission_set"
+    defaultValue="provision_permission_set"
     values={[
+        { label: 'provision_permission_set', value: 'provision_permission_set' },
         { label: 'attach_customer_managed_policy_reference_to_permission_set', value: 'attach_customer_managed_policy_reference_to_permission_set' },
         { label: 'attach_managed_policy_to_permission_set', value: 'attach_managed_policy_to_permission_set' },
-        { label: 'provision_permission_set', value: 'provision_permission_set' },
         { label: 'update_permission_set', value: 'update_permission_set' }
     ]}
 >
+<TabItem value="provision_permission_set">
+
+The process by which a specified permission set is provisioned to the specified target.
+
+```sql
+UPDATE aws.sso_admin.permission_sets
+SET 
+InstanceArn = '{{ InstanceArn }}',
+PermissionSetArn = '{{ PermissionSetArn }}',
+TargetId = '{{ TargetId }}',
+TargetType = '{{ TargetType }}'
+WHERE 
+region = '{{ region }}' --required
+AND InstanceArn = '{{ InstanceArn }}' --required
+AND PermissionSetArn = '{{ PermissionSetArn }}' --required
+AND TargetType = '{{ TargetType }}' --required
+RETURNING
+permission_set_provisioning_status;
+```
+</TabItem>
 <TabItem value="attach_customer_managed_policy_reference_to_permission_set">
 
 Attaches the specified customer managed policy to the specified PermissionSet.
@@ -401,26 +421,6 @@ region = '{{ region }}' --required
 AND InstanceArn = '{{ InstanceArn }}' --required
 AND PermissionSetArn = '{{ PermissionSetArn }}' --required
 AND ManagedPolicyArn = '{{ ManagedPolicyArn }}' --required;
-```
-</TabItem>
-<TabItem value="provision_permission_set">
-
-The process by which a specified permission set is provisioned to the specified target.
-
-```sql
-UPDATE aws.sso_admin.permission_sets
-SET 
-InstanceArn = '{{ InstanceArn }}',
-PermissionSetArn = '{{ PermissionSetArn }}',
-TargetId = '{{ TargetId }}',
-TargetType = '{{ TargetType }}'
-WHERE 
-region = '{{ region }}' --required
-AND InstanceArn = '{{ InstanceArn }}' --required
-AND PermissionSetArn = '{{ PermissionSetArn }}' --required
-AND TargetType = '{{ TargetType }}' --required
-RETURNING
-permission_set_provisioning_status;
 ```
 </TabItem>
 <TabItem value="update_permission_set">

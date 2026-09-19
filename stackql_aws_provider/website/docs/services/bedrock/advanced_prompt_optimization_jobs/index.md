@@ -185,6 +185,20 @@ The following methods are available for this resource:
     <td></td>
     <td>Creates an advanced prompt optimization job. The job optimizes your prompt templates for specific models using your evaluation dataset and criteria.</td>
 </tr>
+<tr>
+    <td><a href="#batch_delete_advanced_prompt_optimization_job"><CopyableCode code="batch_delete_advanced_prompt_optimization_job" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-jobIdentifiers"><code>jobIdentifiers</code></a></td>
+    <td></td>
+    <td>Deletes one or more advanced prompt optimization jobs.</td>
+</tr>
+<tr>
+    <td><a href="#stop_advanced_prompt_optimization_job"><CopyableCode code="stop_advanced_prompt_optimization_job" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-job_identifier"><code>job_identifier</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Stops an advanced prompt optimization job that is in progress.</td>
+</tr>
 </tbody>
 </table>
 
@@ -204,7 +218,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-job_identifier">
     <td><CopyableCode code="job_identifier" /></td>
     <td><code>string</code></td>
-    <td>The ARN or ID of the advanced prompt optimization job.</td>
+    <td>The ARN or ID of the advanced prompt optimization job to stop.</td>
 </tr>
 <tr id="parameter-region">
     <td><CopyableCode code="region" /></td>
@@ -377,5 +391,42 @@ job_arn
           additionalModelRequestFields: "{{ additionalModelRequestFields }}"
 `}</CodeBlock>
 
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="batch_delete_advanced_prompt_optimization_job"
+    values={[
+        { label: 'batch_delete_advanced_prompt_optimization_job', value: 'batch_delete_advanced_prompt_optimization_job' },
+        { label: 'stop_advanced_prompt_optimization_job', value: 'stop_advanced_prompt_optimization_job' }
+    ]}
+>
+<TabItem value="batch_delete_advanced_prompt_optimization_job">
+
+Deletes one or more advanced prompt optimization jobs.
+
+```sql
+EXEC aws.bedrock.advanced_prompt_optimization_jobs.batch_delete_advanced_prompt_optimization_job 
+@region='{{ region }}' --required 
+@@json=
+'{
+"jobIdentifiers": "{{ jobIdentifiers }}"
+}'
+;
+```
+</TabItem>
+<TabItem value="stop_advanced_prompt_optimization_job">
+
+Stops an advanced prompt optimization job that is in progress.
+
+```sql
+EXEC aws.bedrock.advanced_prompt_optimization_jobs.stop_advanced_prompt_optimization_job 
+@job_identifier='{{ job_identifier }}' --required, 
+@region='{{ region }}' --required
+;
+```
 </TabItem>
 </Tabs>

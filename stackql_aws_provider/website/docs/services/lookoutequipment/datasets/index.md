@@ -193,6 +193,13 @@ The following methods are available for this resource:
     <td>Deletes a dataset and associated artifacts. The operation will check to see if any inference scheduler or data ingestion job is currently using the dataset, and if there isn't, the dataset, its metadata, and any associated data stored in S3 will be deleted. This does not affect any models that used this dataset for training and evaluation, but does prevent it from being used in the future.</td>
 </tr>
 <tr>
+    <td><a href="#import_dataset"><CopyableCode code="import_dataset" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-SourceDatasetArn"><code>SourceDatasetArn</code></a>, <a href="#parameter-ClientToken"><code>ClientToken</code></a></td>
+    <td></td>
+    <td>Imports a dataset.</td>
+</tr>
+<tr>
     <td><a href="#start_data_ingestion_job"><CopyableCode code="start_data_ingestion_job" /></a></td>
     <td><CopyableCode code="exec" /></td>
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-DatasetName"><code>DatasetName</code></a>, <a href="#parameter-IngestionInputConfiguration"><code>IngestionInputConfiguration</code></a>, <a href="#parameter-RoleArn"><code>RoleArn</code></a>, <a href="#parameter-ClientToken"><code>ClientToken</code></a></td>
@@ -370,11 +377,30 @@ WHERE region = '{{ region }}' --required
 ## Lifecycle Methods
 
 <Tabs
-    defaultValue="start_data_ingestion_job"
+    defaultValue="import_dataset"
     values={[
+        { label: 'import_dataset', value: 'import_dataset' },
         { label: 'start_data_ingestion_job', value: 'start_data_ingestion_job' }
     ]}
 >
+<TabItem value="import_dataset">
+
+Imports a dataset.
+
+```sql
+EXEC aws.lookoutequipment.datasets.import_dataset 
+@region='{{ region }}' --required 
+@@json=
+'{
+"SourceDatasetArn": "{{ SourceDatasetArn }}", 
+"DatasetName": "{{ DatasetName }}", 
+"ClientToken": "{{ ClientToken }}", 
+"ServerSideKmsKeyId": "{{ ServerSideKmsKeyId }}", 
+"Tags": "{{ Tags }}"
+}'
+;
+```
+</TabItem>
 <TabItem value="start_data_ingestion_job">
 
 Starts a data ingestion job. Amazon Lookout for Equipment returns the job status.

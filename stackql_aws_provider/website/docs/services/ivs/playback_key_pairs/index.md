@@ -140,6 +140,13 @@ The following methods are available for this resource:
     <td></td>
     <td>Deletes a specified authorization key pair. This invalidates future viewer tokens generated using the key pair’s privateKey. For more information, see Setting Up Private Channels in the Amazon IVS User Guide.</td>
 </tr>
+<tr>
+    <td><a href="#import_playback_key_pair"><CopyableCode code="import_playback_key_pair" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-publicKeyMaterial"><code>publicKeyMaterial</code></a></td>
+    <td></td>
+    <td>Imports the public portion of a new key pair and returns its arn and fingerprint. The privateKey can then be used to generate viewer authorization tokens, to grant viewers access to private channels. For more information, see Setting Up Private Channels in the Amazon IVS User Guide.</td>
+</tr>
 </tbody>
 </table>
 
@@ -220,6 +227,33 @@ Deletes a specified authorization key pair. This invalidates future viewer token
 ```sql
 DELETE FROM aws.ivs.playback_key_pairs
 WHERE region = '{{ region }}' --required
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="import_playback_key_pair"
+    values={[
+        { label: 'import_playback_key_pair', value: 'import_playback_key_pair' }
+    ]}
+>
+<TabItem value="import_playback_key_pair">
+
+Imports the public portion of a new key pair and returns its arn and fingerprint. The privateKey can then be used to generate viewer authorization tokens, to grant viewers access to private channels. For more information, see Setting Up Private Channels in the Amazon IVS User Guide.
+
+```sql
+EXEC aws.ivs.playback_key_pairs.import_playback_key_pair 
+@region='{{ region }}' --required 
+@@json=
+'{
+"publicKeyMaterial": "{{ publicKeyMaterial }}", 
+"name": "{{ name }}", 
+"tags": "{{ tags }}"
+}'
 ;
 ```
 </TabItem>

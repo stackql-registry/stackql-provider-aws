@@ -70,6 +70,11 @@ The following fields are returned by `SELECT` queries:
     <td>The account that created the association. (pattern: &lt;code&gt;&#91;0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
+    <td><CopyableCode code="payer_responsibility" /></td>
+    <td><code>array</code></td>
+    <td>Who pays for each category of charges on the VPC endpoint association.</td>
+</tr>
+<tr>
     <td><CopyableCode code="resource_configuration_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the resource configuration. (pattern: &lt;code&gt;arn:&#91;a-z0-9f\-&#93;+:vpc-lattice:&#91;a-zA-Z0-9\-&#93;+:\d&#123;12&#125;:resourceconfiguration/rcfg-&#91;0-9a-z&#93;&#123;17&#125;&lt;/code&gt;)</td>
@@ -205,6 +210,7 @@ id,
 arn,
 created_at,
 created_by,
+payer_responsibility,
 resource_configuration_arn,
 resource_configuration_id,
 resource_configuration_name,

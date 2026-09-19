@@ -18,17 +18,16 @@ gamelift service documentation.
 
 :::info[Service Summary]
 
-total resources: __43__  
+total resources: __44__  
 
 :::
 
 ## Resources
 <div class="row">
 <div class="providerDocColumn">
-<a href="/services/gamelift/alias/">alias</a><br />
 <a href="/services/gamelift/aliases/">aliases</a><br />
 <a href="/services/gamelift/builds/">builds</a><br />
-<a href="/services/gamelift/compute_access/">compute_access</a><br />
+<a href="/services/gamelift/compute_accesses/">compute_accesses</a><br />
 <a href="/services/gamelift/compute_auth_tokens/">compute_auth_tokens</a><br />
 <a href="/services/gamelift/computes/">computes</a><br />
 <a href="/services/gamelift/container_fleets/">container_fleets</a><br />
@@ -46,19 +45,21 @@ total resources: __43__
 <a href="/services/gamelift/fleet_port_settings/">fleet_port_settings</a><br />
 <a href="/services/gamelift/fleet_utilizations/">fleet_utilizations</a><br />
 <a href="/services/gamelift/fleets/">fleets</a><br />
-<a href="/services/gamelift/game_server_groups/">game_server_groups</a>
+<a href="/services/gamelift/game_server_groups/">game_server_groups</a><br />
+<a href="/services/gamelift/game_server_instances/">game_server_instances</a>
 </div>
 <div class="providerDocColumn">
-<a href="/services/gamelift/game_server_instances/">game_server_instances</a><br />
 <a href="/services/gamelift/game_servers/">game_servers</a><br />
 <a href="/services/gamelift/game_session_details/">game_session_details</a><br />
 <a href="/services/gamelift/game_session_log_urls/">game_session_log_urls</a><br />
 <a href="/services/gamelift/game_session_placements/">game_session_placements</a><br />
 <a href="/services/gamelift/game_session_queues/">game_session_queues</a><br />
 <a href="/services/gamelift/game_sessions/">game_sessions</a><br />
-<a href="/services/gamelift/instance_access/">instance_access</a><br />
+<a href="/services/gamelift/instance_accesses/">instance_accesses</a><br />
 <a href="/services/gamelift/instances/">instances</a><br />
 <a href="/services/gamelift/locations/">locations</a><br />
+<a href="/services/gamelift/match_backfills/">match_backfills</a><br />
+<a href="/services/gamelift/matches/">matches</a><br />
 <a href="/services/gamelift/matchmaking_configurations/">matchmaking_configurations</a><br />
 <a href="/services/gamelift/matchmaking_rule_sets/">matchmaking_rule_sets</a><br />
 <a href="/services/gamelift/matchmakings/">matchmakings</a><br />

@@ -143,6 +143,20 @@ The following methods are available for this resource:
     <td></td>
     <td>Lists the calculations that have been submitted to a session in descending order. Newer calculations are listed first; older calculations are listed later.</td>
 </tr>
+<tr>
+    <td><a href="#start_calculation_execution"><CopyableCode code="start_calculation_execution" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-SessionId"><code>SessionId</code></a></td>
+    <td></td>
+    <td>Submits calculations for execution within a session. You can supply the code to run as an inline code block within the request. The request syntax requires the StartCalculationExecutionRequest$CodeBlock parameter or the CalculationConfiguration$CodeBlock parameter, but not both. Because CalculationConfiguration$CodeBlock is deprecated, use the StartCalculationExecutionRequest$CodeBlock parameter instead.</td>
+</tr>
+<tr>
+    <td><a href="#stop_calculation_execution"><CopyableCode code="stop_calculation_execution" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-CalculationExecutionId"><code>CalculationExecutionId</code></a></td>
+    <td></td>
+    <td>Requests the cancellation of a calculation. A StopCalculationExecution call on a calculation that is already in a terminal state (for example, STOPPED, FAILED, or COMPLETED) succeeds but has no effect. Cancelling a calculation is done on a best effort basis. If a calculation cannot be cancelled, you can be charged for its completion. If you are concerned about being charged for a calculation that cannot be cancelled, consider terminating the session in which the calculation is running.</td>
+</tr>
 </tbody>
 </table>
 
@@ -204,6 +218,50 @@ calculations,
 next_token
 FROM aws.athena.calculation_executions
 WHERE region = '{{ region }}' -- required
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="start_calculation_execution"
+    values={[
+        { label: 'start_calculation_execution', value: 'start_calculation_execution' },
+        { label: 'stop_calculation_execution', value: 'stop_calculation_execution' }
+    ]}
+>
+<TabItem value="start_calculation_execution">
+
+Submits calculations for execution within a session. You can supply the code to run as an inline code block within the request. The request syntax requires the StartCalculationExecutionRequest$CodeBlock parameter or the CalculationConfiguration$CodeBlock parameter, but not both. Because CalculationConfiguration$CodeBlock is deprecated, use the StartCalculationExecutionRequest$CodeBlock parameter instead.
+
+```sql
+EXEC aws.athena.calculation_executions.start_calculation_execution 
+@region='{{ region }}' --required 
+@@json=
+'{
+"SessionId": "{{ SessionId }}", 
+"Description": "{{ Description }}", 
+"CalculationConfiguration": "{{ CalculationConfiguration }}", 
+"CodeBlock": "{{ CodeBlock }}", 
+"ClientRequestToken": "{{ ClientRequestToken }}"
+}'
+;
+```
+</TabItem>
+<TabItem value="stop_calculation_execution">
+
+Requests the cancellation of a calculation. A StopCalculationExecution call on a calculation that is already in a terminal state (for example, STOPPED, FAILED, or COMPLETED) succeeds but has no effect. Cancelling a calculation is done on a best effort basis. If a calculation cannot be cancelled, you can be charged for its completion. If you are concerned about being charged for a calculation that cannot be cancelled, consider terminating the session in which the calculation is running.
+
+```sql
+EXEC aws.athena.calculation_executions.stop_calculation_execution 
+@region='{{ region }}' --required 
+@@json=
+'{
+"CalculationExecutionId": "{{ CalculationExecutionId }}"
+}'
 ;
 ```
 </TabItem>

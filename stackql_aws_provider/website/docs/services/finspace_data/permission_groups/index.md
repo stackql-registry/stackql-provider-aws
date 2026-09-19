@@ -33,13 +33,14 @@ Creates, updates, deletes, gets or lists a <code>permission_groups</code> resour
 The following fields are returned by `SELECT` queries:
 
 <Tabs
-    defaultValue="list_permission_groups"
+    defaultValue="get_permission_group"
     values={[
-        { label: 'list_permission_groups', value: 'list_permission_groups' },
-        { label: 'get_permission_group', value: 'get_permission_group' }
+        { label: 'get_permission_group', value: 'get_permission_group' },
+        { label: 'list_permission_groups_by_user', value: 'list_permission_groups_by_user' },
+        { label: 'list_permission_groups', value: 'list_permission_groups' }
     ]}
 >
-<TabItem value="list_permission_groups">
+<TabItem value="get_permission_group">
 
 <table>
 <thead>
@@ -88,7 +89,31 @@ The following fields are returned by `SELECT` queries:
 </tbody>
 </table>
 </TabItem>
-<TabItem value="get_permission_group">
+<TabItem value="list_permission_groups_by_user">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="next_token" /></td>
+    <td><code>string</code></td>
+    <td>A token that indicates where a results page should begin.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="permission_groups" /></td>
+    <td><code>array</code></td>
+    <td>A list of returned permission groups.</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
+<TabItem value="list_permission_groups">
 
 <table>
 <thead>
@@ -155,18 +180,25 @@ The following methods are available for this resource:
 </thead>
 <tbody>
 <tr>
-    <td><a href="#list_permission_groups"><CopyableCode code="list_permission_groups" /></a></td>
-    <td><CopyableCode code="select" /></td>
-    <td><a href="#parameter-maxResults"><code>maxResults</code></a>, <a href="#parameter-region"><code>region</code></a></td>
-    <td><a href="#parameter-nextToken"><code>nextToken</code></a></td>
-    <td>Lists all available permission groups in FinSpace.</td>
-</tr>
-<tr>
     <td><a href="#get_permission_group"><CopyableCode code="get_permission_group" /></a></td>
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-permission_group_id"><code>permission_group_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td></td>
     <td>Retrieves the details of a specific permission group.</td>
+</tr>
+<tr>
+    <td><a href="#list_permission_groups_by_user"><CopyableCode code="list_permission_groups_by_user" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-user_id"><code>user_id</code></a>, <a href="#parameter-maxResults"><code>maxResults</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td><a href="#parameter-nextToken"><code>nextToken</code></a></td>
+    <td>Lists all the permission groups that are associated with a specific user.</td>
+</tr>
+<tr>
+    <td><a href="#list_permission_groups"><CopyableCode code="list_permission_groups" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-maxResults"><code>maxResults</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td><a href="#parameter-nextToken"><code>nextToken</code></a></td>
+    <td>Lists all available permission groups in FinSpace.</td>
 </tr>
 <tr>
     <td><a href="#create_permission_group"><CopyableCode code="create_permission_group" /></a></td>
@@ -255,12 +287,48 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 ## `SELECT` examples
 
 <Tabs
-    defaultValue="list_permission_groups"
+    defaultValue="get_permission_group"
     values={[
-        { label: 'list_permission_groups', value: 'list_permission_groups' },
-        { label: 'get_permission_group', value: 'get_permission_group' }
+        { label: 'get_permission_group', value: 'get_permission_group' },
+        { label: 'list_permission_groups_by_user', value: 'list_permission_groups_by_user' },
+        { label: 'list_permission_groups', value: 'list_permission_groups' }
     ]}
 >
+<TabItem value="get_permission_group">
+
+Retrieves the details of a specific permission group.
+
+```sql
+SELECT
+name,
+application_permissions,
+create_time,
+description,
+last_modified_time,
+membership_status,
+permission_group_id
+FROM aws.finspace_data.permission_groups
+WHERE permission_group_id = '{{ permission_group_id }}' -- required
+AND region = '{{ region }}' -- required
+;
+```
+</TabItem>
+<TabItem value="list_permission_groups_by_user">
+
+Lists all the permission groups that are associated with a specific user.
+
+```sql
+SELECT
+next_token,
+permission_groups
+FROM aws.finspace_data.permission_groups
+WHERE user_id = '{{ user_id }}' -- required
+AND maxResults = '{{ maxResults }}' -- required
+AND region = '{{ region }}' -- required
+AND nextToken = '{{ nextToken }}'
+;
+```
+</TabItem>
 <TabItem value="list_permission_groups">
 
 Lists all available permission groups in FinSpace.
@@ -278,25 +346,6 @@ FROM aws.finspace_data.permission_groups
 WHERE maxResults = '{{ maxResults }}' -- required
 AND region = '{{ region }}' -- required
 AND nextToken = '{{ nextToken }}'
-;
-```
-</TabItem>
-<TabItem value="get_permission_group">
-
-Retrieves the details of a specific permission group.
-
-```sql
-SELECT
-name,
-application_permissions,
-create_time,
-description,
-last_modified_time,
-membership_status,
-permission_group_id
-FROM aws.finspace_data.permission_groups
-WHERE permission_group_id = '{{ permission_group_id }}' -- required
-AND region = '{{ region }}' -- required
 ;
 ```
 </TabItem>

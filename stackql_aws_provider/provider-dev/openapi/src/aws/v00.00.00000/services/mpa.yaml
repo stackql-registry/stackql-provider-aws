@@ -30,10 +30,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/CancelSessionResponse"
     get:
       operationId: GetSession
       description: Returns details for an approval session. For more information, see Session in the Multi-party approval User Guide.
@@ -164,10 +160,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteInactiveApprovalTeamVersionResponse"
   /approval-teams/{arn}:
     get:
       operationId: GetApprovalTeam
@@ -468,10 +460,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TagResourceResponse"
     post:
       operationId: UntagResource
       description: Removes a resource tag. Each tag is a label consisting of a user-defined key and value. Tags can help you manage, identify, organize, search for, and filter resources.
@@ -496,10 +484,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UntagResourceResponse"
   /approval-teams/{arn}?Delete:
     post:
       operationId: StartActiveApprovalTeamDeletion
@@ -604,8 +588,6 @@ components:
       minLength: 20
       maxLength: 2048
       pattern: arn:aws(-[^:]+)?:mpa:[a-z0-9-]{1,20}:[0-9]{12}:session/[a-zA-Z0-9._-]+/[a-zA-Z0-9_-]+
-    CancelSessionResponse:
-      type: object
     Token:
       type: string
       minLength: 0
@@ -748,8 +730,6 @@ components:
       type: string
       enum:
         - IAM_IDENTITY_CENTER
-    DeleteInactiveApprovalTeamVersionResponse:
-      type: object
     GetApprovalTeamResponse:
       type: object
       properties:
@@ -1621,8 +1601,6 @@ components:
         BaselineSessionArn:
           $ref: "#/components/schemas/SessionArn"
           description: Amazon Resource Name (ARN) for the session.
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
@@ -1631,8 +1609,6 @@ components:
       type: string
       minLength: 1
       maxLength: 128
-    UntagResourceResponse:
-      type: object
     UpdateActions:
       type: array
       items:
@@ -1659,7 +1635,6 @@ components:
             $ref: "#/paths/~1sessions~1{session_arn}/put"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         get_session:
           operation:
             $ref: "#/paths/~1sessions~1{session_arn}/get"
@@ -1825,7 +1800,6 @@ components:
             $ref: "#/paths/~1approval-teams~1{arn}~1{version_id}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
       sqlVerbs:
         select: []
         insert: []
@@ -1952,7 +1926,6 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/put"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -1963,7 +1936,6 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -1976,4 +1948,25 @@ components:
         update:
           - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
           - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
+        delete: []
+    active_approval_team_deletions:
+      id: aws.mpa.active_approval_team_deletions
+      name: active_approval_team_deletions
+      title: active_approval_team_deletions
+      methods:
+        start_active_approval_team_deletion:
+          operation:
+            $ref: "#/paths/~1approval-teams~1{arn}?Delete/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
         delete: []

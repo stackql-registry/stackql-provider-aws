@@ -283,7 +283,7 @@ paths:
   /applications/{application_identifier}:
     delete:
       operationId: DeleteApplication
-      description: Deletes the Application. Only Applications that don't have any Application Associations can be deleted.
+      description: Deletes an application. If the application has associations, you must delete them first. Alternatively, use the force option to delete the application and remove its associations.
       parameters:
         - name: application_identifier
           in: path
@@ -291,13 +291,15 @@ paths:
           schema:
             $ref: "#/components/schemas/ArnOrUUID"
           description: The Amazon Resource Name (ARN) of the Application.
+        - name: force
+          in: query
+          required: false
+          schema:
+            $ref: "#/components/schemas/Boolean"
+          description: Specifies whether to delete the application even if it still has application associations. If true, the operation removes the application and its associations. If false or absent, the delete fails when associations exist. Setting this parameter to true permanently removes all of the application's associations. Doing so might impact other resources that rely on and reference the application. This action can't be undone.
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteApplicationResponse"
     get:
       operationId: GetApplication
       description: Get an Application resource.
@@ -357,10 +359,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateApplicationResponse"
   /dataIntegrations/{identifier}:
     delete:
       operationId: DeleteDataIntegration
@@ -375,10 +373,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteDataIntegrationResponse"
     get:
       operationId: GetDataIntegration
       description: Returns information about the DataIntegration. You cannot create a DataIntegration association for a DataIntegration that has been previously associated. Use a different DataIntegration, or recreate the DataIntegration using the CreateDataIntegration API.
@@ -420,10 +414,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateDataIntegrationResponse"
   /eventIntegrations/{name}:
     delete:
       operationId: DeleteEventIntegration
@@ -438,10 +428,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteEventIntegrationResponse"
     get:
       operationId: GetEventIntegration
       description: Returns information about the event integration.
@@ -481,10 +467,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateEventIntegrationResponse"
   /applications/{application_identifier}/associations:
     get:
       operationId: ListApplicationAssociations
@@ -587,10 +569,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TagResourceResponse"
     delete:
       operationId: UntagResource
       description: Removes the specified tags from the specified resource.
@@ -610,10 +588,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UntagResourceResponse"
   /dataIntegrations/{identifier}/associations/{data_integration_association_identifier}:
     patch:
       operationId: UpdateDataIntegrationAssociation
@@ -645,10 +619,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateDataIntegrationAssociationResponse"
 components:
   parameters:
     X-Amz-Content-Sha256:
@@ -1062,12 +1032,6 @@ components:
       minLength: 1
       maxLength: 2048
       pattern: ^(arn:aws:[A-Za-z0-9][A-Za-z0-9_/.-]{0,62}:[A-Za-z0-9_/.-]{0,63}:[A-Za-z0-9_/.-]{0,63}:[A-Za-z0-9][A-Za-z0-9:_/+=,@.-]{0,1023}|[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12})(:[\w\$]+)?$
-    DeleteApplicationResponse:
-      type: object
-    DeleteDataIntegrationResponse:
-      type: object
-    DeleteEventIntegrationResponse:
-      type: object
     GetApplicationResponse:
       type: object
       properties:
@@ -1419,8 +1383,6 @@ components:
           type: object
           properties: {}
           description: Information about the tags.
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
@@ -1430,16 +1392,6 @@ components:
       minLength: 1
       maxLength: 128
       pattern: ^(?!aws:)[a-zA-Z+-=._:/]+$
-    UntagResourceResponse:
-      type: object
-    UpdateApplicationResponse:
-      type: object
-    UpdateDataIntegrationResponse:
-      type: object
-    UpdateDataIntegrationAssociationResponse:
-      type: object
-    UpdateEventIntegrationResponse:
-      type: object
   x-stackQL-resources:
     applications:
       id: aws.appintegrations.applications
@@ -1479,7 +1431,8 @@ components:
             $ref: "#/paths/~1applications~1{application_identifier}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
+          request:
+            nativeCasing: pascal
         get_application:
           operation:
             $ref: "#/paths/~1applications~1{application_identifier}/get"
@@ -1491,7 +1444,6 @@ components:
             $ref: "#/paths/~1applications~1{application_identifier}/patch"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -1545,7 +1497,6 @@ components:
             $ref: "#/paths/~1dataIntegrations~1{identifier}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         get_data_integration:
           operation:
             $ref: "#/paths/~1dataIntegrations~1{identifier}/get"
@@ -1557,7 +1508,6 @@ components:
             $ref: "#/paths/~1dataIntegrations~1{identifier}/patch"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -1611,7 +1561,6 @@ components:
             $ref: "#/paths/~1dataIntegrations~1{identifier}~1associations~1{data_integration_association_identifier}/patch"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -1663,7 +1612,6 @@ components:
             $ref: "#/paths/~1eventIntegrations~1{name}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         get_event_integration:
           operation:
             $ref: "#/paths/~1eventIntegrations~1{name}/get"
@@ -1675,7 +1623,6 @@ components:
             $ref: "#/paths/~1eventIntegrations~1{name}/patch"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -1763,7 +1710,6 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -1774,7 +1720,6 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
       sqlVerbs:

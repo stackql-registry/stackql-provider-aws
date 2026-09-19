@@ -41,10 +41,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/AssociateTrackerConsumerResponse"
   /tracking/v0/trackers/{tracker_name}/delete-positions:
     post:
       operationId: BatchDeleteDevicePositionHistory
@@ -566,10 +562,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteGeofenceCollectionResponse"
     get:
       operationId: DescribeGeofenceCollection
       description: Retrieves the geofence collection details.
@@ -637,10 +629,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteKeyResponse"
     get:
       operationId: DescribeKey
       description: Retrieves the API key resource details. For more information, see Use API keys to authenticate in the Amazon Location Service Developer Guide.
@@ -706,10 +694,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteMapResponse"
     get:
       operationId: DescribeMap
       description: This operation is no longer current and may be deprecated in the future. We recommend upgrading to the Maps API V2 unless you require Grab data. DescribeMap is part of a previous Amazon Location Service Maps API (version 1) which has been superseded by a more intuitive, powerful, and complete API (version 2). The Maps API version 2 has a simplified interface that can be used without creating or managing map resources. If you are using an AWS SDK or the AWS CLI, note that the Maps API version 2 is found under geo-maps or geo_maps, not under location. Since Grab is not yet fully supported in Maps API version 2, we recommend you continue using API version 1 when using Grab. Start your version 2 API journey with the Maps V2 API Reference or the Developer Guide. Retrieves the map resource details.
@@ -771,10 +755,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeletePlaceIndexResponse"
     get:
       operationId: DescribePlaceIndex
       description: This operation is no longer current and may be deprecated in the future. We recommend you upgrade to the Places API V2 unless you require Grab data. DescribePlaceIndex is part of a previous Amazon Location Service Places API (version 1) which has been superseded by a more intuitive, powerful, and complete API (version 2). The Places API version 2 has a simplified interface that can be used without creating or managing place index resources. If you are using an Amazon Web Services SDK or the Amazon Web Services CLI, note that the Places API version 2 is found under geo-places or geo_places, not under location. Since Grab is not yet fully supported in Places API version 2, we recommend you continue using API version 1 when using Grab. Start your version 2 API journey with the Places V2 API Reference or the Developer Guide. Retrieves the place index resource details.
@@ -836,10 +816,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteRouteCalculatorResponse"
     get:
       operationId: DescribeRouteCalculator
       description: This operation is no longer current and may be deprecated in the future. We recommend you upgrade to the Routes API V2 unless you require Grab data. DescribeRouteCalculator is part of a previous Amazon Location Service Routes API (version 1) which has been superseded by a more intuitive, powerful, and complete API (version 2). The Routes API version 2 has a simplified interface that can be used without creating or managing route calculator resources. If you are using an Amazon Web Services SDK or the Amazon Web Services CLI, note that the Routes API version 2 is found under geo-routes or geo_routes, not under location. Since Grab is not yet fully supported in Routes API version 2, we recommend you continue using API version 1 when using Grab. Start your version 2 API journey with the Routes V2 API Reference or the Developer Guide. Retrieves the route calculator resource details.
@@ -899,10 +875,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteTrackerResponse"
     get:
       operationId: DescribeTracker
       description: Retrieves the tracker resource details.
@@ -976,10 +948,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DisassociateTrackerConsumerResponse"
   /geofencing/v0/collections/{collection_name}/forecast-geofence-events:
     post:
       operationId: ForecastGeofenceEvents
@@ -1568,10 +1536,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TagResourceResponse"
     delete:
       operationId: UntagResource
       description: Removes one or more tags from the specified Amazon Location resource.
@@ -1591,10 +1555,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UntagResourceResponse"
   /tracking/v0/trackers/{tracker_name}/list-consumers:
     post:
       operationId: ListTrackerConsumers
@@ -1809,7 +1769,6 @@ paths:
                 Tags:
                   $ref: "#/components/schemas/TagMap"
               required:
-                - Action
                 - ExecutionRoleArn
                 - InputOptions
                 - OutputOptions
@@ -1906,8 +1865,6 @@ components:
       minLength: 0
       maxLength: 1600
       pattern: arn(:[a-z0-9]+([.-][a-z0-9]+)*){2}(:([a-z0-9]+([.-][a-z0-9]+)*)?){2}:([^/].*)?
-    AssociateTrackerConsumerResponse:
-      type: object
     BatchDeleteDevicePositionHistoryRequestDeviceIdsList:
       type: array
       items:
@@ -2957,18 +2914,6 @@ components:
         - TrackerName
         - TrackerArn
         - CreateTime
-    DeleteGeofenceCollectionResponse:
-      type: object
-    DeleteKeyResponse:
-      type: object
-    DeleteMapResponse:
-      type: object
-    DeletePlaceIndexResponse:
-      type: object
-    DeleteRouteCalculatorResponse:
-      type: object
-    DeleteTrackerResponse:
-      type: object
     DescribeGeofenceCollectionResponse:
       type: object
       properties:
@@ -3209,8 +3154,6 @@ components:
         - Description
         - CreateTime
         - UpdateTime
-    DisassociateTrackerConsumerResponse:
-      type: object
     ForecastGeofenceEventsDeviceState:
       description: The device's position and speed.
       type: object
@@ -4473,14 +4416,10 @@ components:
         - JobArn
         - JobId
         - Status
-    TagResourceResponse:
-      type: object
     TagKeys:
       type: array
       items:
         $ref: "#/components/schemas/String"
-    UntagResourceResponse:
-      type: object
     UpdateGeofenceCollectionResponse:
       type: object
       properties:
@@ -4830,7 +4769,6 @@ components:
             $ref: "#/paths/~1tracking~1v0~1trackers~1{tracker_name}~1consumers/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -4841,7 +4779,6 @@ components:
             $ref: "#/paths/~1tracking~1v0~1trackers~1{tracker_name}~1consumers~1{consumer_arn}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         list_tracker_consumers:
           operation:
             $ref: "#/paths/~1tracking~1v0~1trackers~1{tracker_name}~1list-consumers/post"
@@ -4873,7 +4810,6 @@ components:
         insert: []
         update:
           - $ref: "#/components/x-stackQL-resources/tracker_consumers/methods/associate_tracker_consumer"
-          - $ref: "#/components/x-stackQL-resources/tracker_consumers/methods/disassociate_tracker_consumer"
         delete: []
     trackers:
       id: aws.location.trackers
@@ -4918,7 +4854,6 @@ components:
             $ref: "#/paths/~1tracking~1v0~1trackers~1{tracker_name}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         describe_tracker:
           operation:
             $ref: "#/paths/~1tracking~1v0~1trackers~1{tracker_name}/get"
@@ -4995,6 +4930,17 @@ components:
         batch_evaluate_geofences:
           operation:
             $ref: "#/paths/~1geofencing~1v0~1collections~1{collection_name}~1positions/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        batch_put_geofence:
+          operation:
+            $ref: "#/paths/~1geofencing~1v0~1collections~1{collection_name}~1put-geofences/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -5091,9 +5037,110 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/device_positions/methods/batch_get_device_position"
           - $ref: "#/components/x-stackQL-resources/device_positions/methods/get_device_position"
+          - $ref: "#/components/x-stackQL-resources/device_positions/methods/batch_get_device_position"
           - $ref: "#/components/x-stackQL-resources/device_positions/methods/list_device_positions"
+        insert: []
+        update: []
+        delete: []
+    routes:
+      id: aws.location.routes
+      name: routes
+      title: routes
+      methods:
+        calculate_route:
+          operation:
+            $ref: "#/paths/~1routes~1v0~1calculators~1{calculator_name}~1calculate~1route/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
+    route_matrixes:
+      id: aws.location.route_matrixes
+      name: route_matrixes
+      title: route_matrixes
+      methods:
+        calculate_route_matrix:
+          operation:
+            $ref: "#/paths/~1routes~1v0~1calculators~1{calculator_name}~1calculate~1route-matrix/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
+    jobs:
+      id: aws.location.jobs
+      name: jobs
+      title: jobs
+      methods:
+        cancel_job:
+          operation:
+            $ref: "#/paths/~1metadata~1v0~1jobs~1cancel-job/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        get_job:
+          operation:
+            $ref: "#/paths/~1metadata~1v0~1jobs~1{job_id}/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+        list_jobs:
+          operation:
+            $ref: "#/paths/~1metadata~1v0~1jobs~1list-jobs/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.Entries
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        start_job:
+          operation:
+            $ref: "#/paths/~1metadata~1v0~1jobs/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/jobs/methods/get_job"
+          - $ref: "#/components/x-stackQL-resources/jobs/methods/list_jobs"
         insert: []
         update: []
         delete: []
@@ -5118,7 +5165,6 @@ components:
             $ref: "#/paths/~1geofencing~1v0~1collections~1{collection_name}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         describe_geofence_collection:
           operation:
             $ref: "#/paths/~1geofencing~1v0~1collections~1{collection_name}/get"
@@ -5186,7 +5232,6 @@ components:
             $ref: "#/paths/~1metadata~1v0~1keys~1{key_name}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
         describe_key:
@@ -5256,7 +5301,6 @@ components:
             $ref: "#/paths/~1maps~1v0~1maps~1{map_name}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         describe_map:
           operation:
             $ref: "#/paths/~1maps~1v0~1maps~1{map_name}/get"
@@ -5324,7 +5368,6 @@ components:
             $ref: "#/paths/~1places~1v0~1indexes~1{index_name}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         describe_place_index:
           operation:
             $ref: "#/paths/~1places~1v0~1indexes~1{index_name}/get"
@@ -5361,8 +5404,32 @@ components:
                 location: body
             requestBodyTranslate:
               algorithm: naive
+        search_place_index_for_position:
+          operation:
+            $ref: "#/paths/~1places~1v0~1indexes~1{index_name}~1search~1position/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        search_place_index_for_suggestions:
+          operation:
+            $ref: "#/paths/~1places~1v0~1indexes~1{index_name}~1search~1suggestions/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
+          - $ref: "#/components/x-stackQL-resources/place_indexes/methods/search_place_index_for_position"
+          - $ref: "#/components/x-stackQL-resources/place_indexes/methods/search_place_index_for_suggestions"
           - $ref: "#/components/x-stackQL-resources/place_indexes/methods/describe_place_index"
           - $ref: "#/components/x-stackQL-resources/place_indexes/methods/list_place_indexes"
         insert:
@@ -5392,7 +5459,6 @@ components:
             $ref: "#/paths/~1routes~1v0~1calculators~1{calculator_name}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         describe_route_calculator:
           operation:
             $ref: "#/paths/~1routes~1v0~1calculators~1{calculator_name}/get"
@@ -5439,6 +5505,34 @@ components:
           - $ref: "#/components/x-stackQL-resources/route_calculators/methods/update_route_calculator"
         delete:
           - $ref: "#/components/x-stackQL-resources/route_calculators/methods/delete_route_calculator"
+    geofence_events:
+      id: aws.location.geofence_events
+      name: geofence_events
+      title: geofence_events
+      methods:
+        forecast_geofence_events:
+          operation:
+            $ref: "#/paths/~1geofencing~1v0~1collections~1{collection_name}~1forecast-geofence-events/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
     device_position_histories:
       id: aws.location.device_position_histories
       name: device_position_histories
@@ -5466,43 +5560,6 @@ components:
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/device_position_histories/methods/get_device_position_history"
-        insert: []
-        update: []
-        delete: []
-    jobs:
-      id: aws.location.jobs
-      name: jobs
-      title: jobs
-      methods:
-        get_job:
-          operation:
-            $ref: "#/paths/~1metadata~1v0~1jobs~1{job_id}/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-        list_jobs:
-          operation:
-            $ref: "#/paths/~1metadata~1v0~1jobs~1list-jobs/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.Entries
-          request:
-            nativeCasing: pascal
-          config:
-            pagination:
-              requestToken:
-                key: NextToken
-                location: body
-              responseToken:
-                key: $.NextToken
-                location: body
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/jobs/methods/get_job"
-          - $ref: "#/components/x-stackQL-resources/jobs/methods/list_jobs"
         insert: []
         update: []
         delete: []
@@ -5618,7 +5675,6 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -5629,7 +5685,6 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
       sqlVerbs:
@@ -5639,50 +5694,6 @@ components:
         update:
           - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
           - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
-        delete: []
-    place_index_for_positions:
-      id: aws.location.place_index_for_positions
-      name: place_index_for_positions
-      title: place_index_for_positions
-      methods:
-        search_place_index_for_position:
-          operation:
-            $ref: "#/paths/~1places~1v0~1indexes~1{index_name}~1search~1position/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/place_index_for_positions/methods/search_place_index_for_position"
-        insert: []
-        update: []
-        delete: []
-    place_index_for_suggestions:
-      id: aws.location.place_index_for_suggestions
-      name: place_index_for_suggestions
-      title: place_index_for_suggestions
-      methods:
-        search_place_index_for_suggestions:
-          operation:
-            $ref: "#/paths/~1places~1v0~1indexes~1{index_name}~1search~1suggestions/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/place_index_for_suggestions/methods/search_place_index_for_suggestions"
-        insert: []
-        update: []
         delete: []
     place_index_for_texts:
       id: aws.location.place_index_for_texts

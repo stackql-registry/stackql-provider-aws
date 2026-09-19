@@ -64,10 +64,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/AcceptPageResult"
   /ActivateContactChannel:
     post:
       operationId: ActivateContactChannel
@@ -101,10 +97,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ActivateContactChannelResult"
   /CreateContact:
     post:
       operationId: CreateContact
@@ -329,10 +321,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeactivateContactChannelResult"
   /DeleteContact:
     post:
       operationId: DeleteContact
@@ -362,10 +350,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteContactResult"
   /DeleteContactChannel:
     post:
       operationId: DeleteContactChannel
@@ -395,10 +379,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteContactChannelResult"
   /DeleteRotation:
     post:
       operationId: DeleteRotation
@@ -428,10 +408,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteRotationResult"
   /DeleteRotationOverride:
     post:
       operationId: DeleteRotationOverride
@@ -465,10 +441,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteRotationOverrideResult"
   /DescribeEngagement:
     post:
       operationId: DescribeEngagement
@@ -1231,10 +1203,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/PutContactPolicyResult"
   /SendActivationCode:
     post:
       operationId: SendActivationCode
@@ -1264,10 +1232,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/SendActivationCodeResult"
   /StartEngagement:
     post:
       operationId: StartEngagement
@@ -1315,9 +1279,6 @@ paths:
                   description: A token ensuring that the operation is called only once with the specified details.
               required:
                 - ContactId
-                - Sender
-                - Subject
-                - Content
       responses:
         "200":
           description: Success
@@ -1357,10 +1318,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/StopEngagementResult"
   /TagResource:
     post:
       operationId: TagResource
@@ -1393,10 +1350,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TagResourceResult"
   /UntagResource:
     post:
       operationId: UntagResource
@@ -1430,10 +1383,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UntagResourceResult"
   /UpdateContact:
     post:
       operationId: UpdateContact
@@ -1469,10 +1418,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateContactResult"
   /UpdateContactChannel:
     post:
       operationId: UpdateContactChannel
@@ -1508,10 +1453,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateContactChannelResult"
   /UpdateRotation:
     post:
       operationId: UpdateRotation
@@ -1553,10 +1494,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateRotationResult"
 components:
   parameters:
     X-Amz-Content-Sha256:
@@ -1627,15 +1564,11 @@ components:
       enum:
         - IGNORE
         - ENFORCE
-    AcceptPageResult:
-      type: object
     ActivationCode:
       type: string
       minLength: 6
       maxLength: 10
       pattern: ^[0-9]*$
-    ActivateContactChannelResult:
-      type: object
     ContactAlias:
       type: string
       minLength: 1
@@ -1947,16 +1880,6 @@ components:
       minLength: 36
       maxLength: 39
       pattern: ([a-fA-Z0-9]{8,11}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}){1}
-    DeactivateContactChannelResult:
-      type: object
-    DeleteContactResult:
-      type: object
-    DeleteContactChannelResult:
-      type: object
-    DeleteRotationResult:
-      type: object
-    DeleteRotationOverrideResult:
-      type: object
     DescribeEngagementResult:
       type: object
       properties:
@@ -2633,10 +2556,6 @@ components:
         Tags:
           $ref: "#/components/schemas/TagsList"
           description: The tags related to the contact or escalation plan.
-    PutContactPolicyResult:
-      type: object
-    SendActivationCodeResult:
-      type: object
     StartEngagementResult:
       type: object
       properties:
@@ -2649,22 +2568,10 @@ components:
       type: string
       maxLength: 255
       pattern: ^[.\s\S]*$
-    StopEngagementResult:
-      type: object
-    TagResourceResult:
-      type: object
     TagKeyList:
       type: array
       items:
         $ref: "#/components/schemas/TagKey"
-    UntagResourceResult:
-      type: object
-    UpdateContactResult:
-      type: object
-    UpdateContactChannelResult:
-      type: object
-    UpdateRotationResult:
-      type: object
   x-stackQL-resources:
     pages:
       id: aws.ssm_contacts.pages
@@ -2676,7 +2583,6 @@ components:
             $ref: "#/paths/~1AcceptPage/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -2697,9 +2603,53 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        list_pages_by_contact:
+          operation:
+            $ref: "#/paths/~1ListPagesByContact/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.Pages
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        list_pages_by_engagement:
+          operation:
+            $ref: "#/paths/~1ListPagesByEngagement/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.Pages
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/pages/methods/describe_page"
+          - $ref: "#/components/x-stackQL-resources/pages/methods/list_pages_by_contact"
+          - $ref: "#/components/x-stackQL-resources/pages/methods/list_pages_by_engagement"
         insert: []
         update: []
         delete: []
@@ -2713,7 +2663,6 @@ components:
             $ref: "#/paths/~1ActivateContactChannel/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -2739,7 +2688,6 @@ components:
             $ref: "#/paths/~1DeactivateContactChannel/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -2752,7 +2700,6 @@ components:
             $ref: "#/paths/~1DeleteContact/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -2799,7 +2746,6 @@ components:
             $ref: "#/paths/~1UpdateContact/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -2840,7 +2786,6 @@ components:
             $ref: "#/paths/~1DeleteContactChannel/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -2887,7 +2832,6 @@ components:
             $ref: "#/paths/~1SendActivationCode/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -2900,7 +2844,6 @@ components:
             $ref: "#/paths/~1UpdateContactChannel/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -2941,7 +2884,6 @@ components:
             $ref: "#/paths/~1DeleteRotation/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -2988,7 +2930,6 @@ components:
             $ref: "#/paths/~1UpdateRotation/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -3029,7 +2970,6 @@ components:
             $ref: "#/paths/~1DeleteRotationOverride/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -3119,6 +3059,31 @@ components:
                 location: body
             requestBodyTranslate:
               algorithm: naive
+        start_engagement:
+          operation:
+            $ref: "#/paths/~1StartEngagement/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        stop_engagement:
+          operation:
+            $ref: "#/paths/~1StopEngagement/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/engagements/methods/describe_engagement"
@@ -3149,7 +3114,6 @@ components:
             $ref: "#/paths/~1PutContactPolicy/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -3226,70 +3190,6 @@ components:
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/page_resolutions/methods/list_page_resolutions"
-        insert: []
-        update: []
-        delete: []
-    pages_by_contacts:
-      id: aws.ssm_contacts.pages_by_contacts
-      name: pages_by_contacts
-      title: pages_by_contacts
-      methods:
-        list_pages_by_contact:
-          operation:
-            $ref: "#/paths/~1ListPagesByContact/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.Pages
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            pagination:
-              requestToken:
-                key: NextToken
-                location: body
-              responseToken:
-                key: $.NextToken
-                location: body
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/pages_by_contacts/methods/list_pages_by_contact"
-        insert: []
-        update: []
-        delete: []
-    pages_by_engagements:
-      id: aws.ssm_contacts.pages_by_engagements
-      name: pages_by_engagements
-      title: pages_by_engagements
-      methods:
-        list_pages_by_engagement:
-          operation:
-            $ref: "#/paths/~1ListPagesByEngagement/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.Pages
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            pagination:
-              requestToken:
-                key: NextToken
-                location: body
-              responseToken:
-                key: $.NextToken
-                location: body
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/pages_by_engagements/methods/list_pages_by_engagement"
         insert: []
         update: []
         delete: []
@@ -3380,7 +3280,6 @@ components:
             $ref: "#/paths/~1TagResource/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -3393,7 +3292,6 @@ components:
             $ref: "#/paths/~1UntagResource/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1

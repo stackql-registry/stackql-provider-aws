@@ -357,10 +357,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TagResourceResponse"
     delete:
       operationId: UntagResource
       description: Remove tags from a resource.
@@ -380,10 +376,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UntagResourceResponse"
   /v1/account-settings/put:
     put:
       operationId: PutAccountSettings
@@ -1137,8 +1129,6 @@ components:
           description: The timestamp when the feedback was submitted.
       required:
         - submittedAt
-    TagResourceResponse:
-      type: object
     TagKeys:
       description: A list of tag keys.
       type: array
@@ -1150,8 +1140,6 @@ components:
       minLength: 1
       maxLength: 128
       pattern: "[a-zA-Z0-9\\s_.:/=+\\-@]*"
-    UntagResourceResponse:
-      type: object
   x-stackQL-resources:
     compliance_inquiries:
       id: aws.artifact.compliance_inquiries
@@ -1248,10 +1236,10 @@ components:
         replace:
           - $ref: "#/components/x-stackQL-resources/account_settings/methods/put_account_settings"
         delete: []
-    compliance_inquiry_metadatas:
-      id: aws.artifact.compliance_inquiry_metadatas
-      name: compliance_inquiry_metadatas
-      title: compliance_inquiry_metadatas
+    compliance_inquiry_metadata:
+      id: aws.artifact.compliance_inquiry_metadata
+      name: compliance_inquiry_metadata
+      title: compliance_inquiry_metadata
       methods:
         get_compliance_inquiry_metadata:
           operation:
@@ -1263,7 +1251,7 @@ components:
             nativeCasing: pascal
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/compliance_inquiry_metadatas/methods/get_compliance_inquiry_metadata"
+          - $ref: "#/components/x-stackQL-resources/compliance_inquiry_metadata/methods/get_compliance_inquiry_metadata"
         insert: []
         update: []
         delete: []
@@ -1304,10 +1292,10 @@ components:
         insert: []
         update: []
         delete: []
-    report_metadatas:
-      id: aws.artifact.report_metadatas
-      name: report_metadatas
-      title: report_metadatas
+    report_metadata:
+      id: aws.artifact.report_metadata
+      name: report_metadata
+      title: report_metadata
       methods:
         get_report_metadata:
           operation:
@@ -1320,14 +1308,14 @@ components:
             nativeCasing: pascal
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/report_metadatas/methods/get_report_metadata"
+          - $ref: "#/components/x-stackQL-resources/report_metadata/methods/get_report_metadata"
         insert: []
         update: []
         delete: []
-    term_for_reports:
-      id: aws.artifact.term_for_reports
-      name: term_for_reports
-      title: term_for_reports
+    terms:
+      id: aws.artifact.terms
+      name: terms
+      title: terms
       methods:
         get_term_for_report:
           operation:
@@ -1339,7 +1327,7 @@ components:
             nativeCasing: pascal
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/term_for_reports/methods/get_term_for_report"
+          - $ref: "#/components/x-stackQL-resources/terms/methods/get_term_for_report"
         insert: []
         update: []
         delete: []
@@ -1443,7 +1431,6 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/post"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -1454,7 +1441,6 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/delete"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
           request:
             nativeCasing: pascal
       sqlVerbs:

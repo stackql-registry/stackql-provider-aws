@@ -543,6 +543,8 @@ server_id
         SetStatOption: "{{ SetStatOption }}"
         As2Transports:
           - "{{ As2Transports }}"
+        ProxyConfig:
+          SftpMode: "{{ SftpMode }}"
     - name: SecurityPolicyName
       value: "{{ SecurityPolicyName }}"
       description: |

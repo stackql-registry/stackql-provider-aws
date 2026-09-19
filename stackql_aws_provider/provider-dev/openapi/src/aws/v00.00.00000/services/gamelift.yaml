@@ -55,10 +55,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/AcceptMatchOutput"
   /ClaimGameServer:
     post:
       operationId: ClaimGameServer
@@ -135,7 +131,6 @@ paths:
                   $ref: "#/components/schemas/TagList"
                   description: A list of labels to assign to the new alias resource. Tags are developer-defined key-value pairs. Tagging Amazon Web Services resources are useful for resource management, access management and cost allocation. For more information, see Tagging Amazon Web Services Resources in the Amazon Web Services General Reference.
               required:
-                - Name
                 - RoutingStrategy
       responses:
         "200":
@@ -1005,10 +1000,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/CreateVpcPeeringConnectionOutput"
   /DeleteAlias:
     post:
       operationId: DeleteAlias
@@ -1096,10 +1087,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteContainerFleetOutput"
   /DeleteContainerGroupDefinition:
     post:
       operationId: DeleteContainerGroupDefinition
@@ -1133,10 +1120,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteContainerGroupDefinitionOutput"
   /DeleteFleet:
     post:
       operationId: DeleteFleet
@@ -1266,10 +1249,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteGameSessionQueueOutput"
   /DeleteLocation:
     post:
       operationId: DeleteLocation
@@ -1299,10 +1278,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteLocationOutput"
   /DeleteMatchmakingConfiguration:
     post:
       operationId: DeleteMatchmakingConfiguration
@@ -1330,10 +1305,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteMatchmakingConfigurationOutput"
   /DeleteMatchmakingRuleSet:
     post:
       operationId: DeleteMatchmakingRuleSet
@@ -1363,10 +1334,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteMatchmakingRuleSetOutput"
   /DeleteScalingPolicy:
     post:
       operationId: DeleteScalingPolicy
@@ -1461,10 +1428,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteVpcPeeringAuthorizationOutput"
   /DeleteVpcPeeringConnection:
     post:
       operationId: DeleteVpcPeeringConnection
@@ -1498,10 +1461,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteVpcPeeringConnectionOutput"
   /DeregisterCompute:
     post:
       operationId: DeregisterCompute
@@ -1535,10 +1494,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeregisterComputeOutput"
   /DeregisterGameServer:
     post:
       operationId: DeregisterGameServer
@@ -4083,10 +4038,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/StopMatchmakingOutput"
   /SuspendGameServerGroup:
     post:
       operationId: SuspendGameServerGroup
@@ -4156,10 +4107,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TagResourceResponse"
   /TerminateGameSession:
     post:
       operationId: TerminateGameSession
@@ -4230,10 +4177,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UntagResourceResponse"
   /UpdateAlias:
     post:
       operationId: UpdateAlias
@@ -5015,8 +4958,6 @@ components:
       enum:
         - ACCEPT
         - REJECT
-    AcceptMatchOutput:
-      type: object
     GameServerGroupNameOrArn:
       type: string
       minLength: 1
@@ -7740,12 +7681,6 @@ components:
         ExpirationTime:
           $ref: "#/components/schemas/Timestamp"
           description: Time stamp indicating when this authorization expires (24 hours after issuance). Format is a number expressed in Unix time as milliseconds (for example "1469498468.057").
-    CreateVpcPeeringConnectionOutput:
-      type: object
-    DeleteContainerFleetOutput:
-      type: object
-    DeleteContainerGroupDefinitionOutput:
-      type: object
     DeleteFleetLocationsOutput:
       type: object
       properties:
@@ -7775,34 +7710,20 @@ components:
       minLength: 1
       maxLength: 256
       pattern: ^([a-zA-Z0-9-]+|arn:.*:gamesessionqueue\/[a-zA-Z0-9-]+)$
-    DeleteGameSessionQueueOutput:
-      type: object
     CustomLocationNameOrArnModel:
       type: string
       minLength: 1
       maxLength: 128
       pattern: ^(custom-[A-Za-z0-9\-]+|arn:.*:location\/custom-\S+)$
-    DeleteLocationOutput:
-      type: object
     MatchmakingConfigurationName:
       type: string
       minLength: 1
       maxLength: 256
       pattern: ^([a-zA-Z0-9-\.]*|arn:.*:matchmakingconfiguration\/[a-zA-Z0-9-\.]*)$
-    DeleteMatchmakingConfigurationOutput:
-      type: object
-    DeleteMatchmakingRuleSetOutput:
-      type: object
-    DeleteVpcPeeringAuthorizationOutput:
-      type: object
-    DeleteVpcPeeringConnectionOutput:
-      type: object
     ComputeNameOrArn:
       type: string
       maxLength: 1024
       pattern: ^([a-zA-Z0-9\-]+(\/[a-zA-Z0-9\-]+)?|arn:.*:compute\/[a-zA-Z0-9\-]+(\/[a-zA-Z0-9\-]+)?)$
-    DeregisterComputeOutput:
-      type: object
     DescribeAliasOutput:
       type: object
       properties:
@@ -9525,16 +9446,12 @@ components:
         GameSessionPlacement:
           $ref: "#/components/schemas/GameSessionPlacement"
           description: Object that describes the canceled game session placement, with CANCELLED status and an end time stamp.
-    StopMatchmakingOutput:
-      type: object
     SuspendGameServerGroupOutput:
       type: object
       properties:
         GameServerGroup:
           $ref: "#/components/schemas/GameServerGroup"
           description: An object that describes the game server group resource, with the SuspendedActions property updated to reflect the suspended activity.
-    TagResourceResponse:
-      type: object
     TerminationMode:
       type: string
       enum:
@@ -9549,8 +9466,6 @@ components:
       type: array
       items:
         $ref: "#/components/schemas/TagKey"
-    UntagResourceResponse:
-      type: object
     UpdateAliasOutput:
       type: object
       properties:
@@ -9669,6 +9584,28 @@ components:
           $ref: "#/components/schemas/BooleanModel"
           description: A response indicating whether the rule set is valid.
   x-stackQL-resources:
+    matches:
+      id: aws.gamelift.matches
+      name: matches
+      title: matches
+      methods:
+        accept_match:
+          operation:
+            $ref: "#/paths/~1AcceptMatch/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
     game_server_groups:
       id: aws.gamelift.game_server_groups
       name: game_server_groups
@@ -9784,10 +9721,10 @@ components:
           - $ref: "#/components/x-stackQL-resources/game_server_groups/methods/update_game_server_group"
         delete:
           - $ref: "#/components/x-stackQL-resources/game_server_groups/methods/delete_game_server_group"
-    alias:
-      id: aws.gamelift.alias
-      name: alias
-      title: alias
+    aliases:
+      id: aws.gamelift.aliases
+      name: aliases
+      title: aliases
       methods:
         create_alias:
           operation:
@@ -9828,6 +9765,27 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        list_aliases:
+          operation:
+            $ref: "#/paths/~1ListAliases/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.Aliases
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
         resolve_alias:
           operation:
             $ref: "#/paths/~1ResolveAlias/post"
@@ -9856,13 +9814,14 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/alias/methods/describe_alias"
+          - $ref: "#/components/x-stackQL-resources/aliases/methods/describe_alias"
+          - $ref: "#/components/x-stackQL-resources/aliases/methods/list_aliases"
         insert:
-          - $ref: "#/components/x-stackQL-resources/alias/methods/create_alias"
+          - $ref: "#/components/x-stackQL-resources/aliases/methods/create_alias"
         update:
-          - $ref: "#/components/x-stackQL-resources/alias/methods/update_alias"
+          - $ref: "#/components/x-stackQL-resources/aliases/methods/update_alias"
         delete:
-          - $ref: "#/components/x-stackQL-resources/alias/methods/delete_alias"
+          - $ref: "#/components/x-stackQL-resources/aliases/methods/delete_alias"
     builds:
       id: aws.gamelift.builds
       name: builds
@@ -9987,7 +9946,6 @@ components:
             $ref: "#/paths/~1DeleteContainerFleet/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -10076,7 +10034,6 @@ components:
             $ref: "#/paths/~1DeleteContainerGroupDefinition/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -10281,7 +10238,6 @@ components:
             $ref: "#/paths/~1DeleteLocation/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -10314,12 +10270,12 @@ components:
         select:
           - $ref: "#/components/x-stackQL-resources/locations/methods/list_locations"
         insert:
-          - $ref: "#/components/x-stackQL-resources/locations/methods/create_fleet_locations"
           - $ref: "#/components/x-stackQL-resources/locations/methods/create_location"
+          - $ref: "#/components/x-stackQL-resources/locations/methods/create_fleet_locations"
         update: []
         delete:
-          - $ref: "#/components/x-stackQL-resources/locations/methods/delete_fleet_locations"
           - $ref: "#/components/x-stackQL-resources/locations/methods/delete_location"
+          - $ref: "#/components/x-stackQL-resources/locations/methods/delete_fleet_locations"
     game_sessions:
       id: aws.gamelift.game_sessions
       name: game_sessions
@@ -10464,7 +10420,6 @@ components:
             $ref: "#/paths/~1DeleteGameSessionQueue/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -10538,7 +10493,6 @@ components:
             $ref: "#/paths/~1DeleteMatchmakingConfiguration/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -10612,7 +10566,6 @@ components:
             $ref: "#/paths/~1DeleteMatchmakingRuleSet/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -10820,7 +10773,6 @@ components:
             $ref: "#/paths/~1DeleteVpcPeeringAuthorization/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -10859,7 +10811,6 @@ components:
             $ref: "#/paths/~1CreateVpcPeeringConnection/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -10872,7 +10823,6 @@ components:
             $ref: "#/paths/~1DeleteVpcPeeringConnection/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -10971,7 +10921,6 @@ components:
             $ref: "#/paths/~1DeregisterCompute/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -11638,6 +11587,31 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        start_matchmaking:
+          operation:
+            $ref: "#/paths/~1StartMatchmaking/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        stop_matchmaking:
+          operation:
+            $ref: "#/paths/~1StopMatchmaking/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         validate_matchmaking_rule_set:
           operation:
             $ref: "#/paths/~1ValidateMatchmakingRuleSet/post"
@@ -11696,10 +11670,10 @@ components:
         update:
           - $ref: "#/components/x-stackQL-resources/runtime_configurations/methods/update_runtime_configuration"
         delete: []
-    compute_access:
-      id: aws.gamelift.compute_access
-      name: compute_access
-      title: compute_access
+    compute_accesses:
+      id: aws.gamelift.compute_accesses
+      name: compute_accesses
+      title: compute_accesses
       methods:
         get_compute_access:
           operation:
@@ -11716,7 +11690,7 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/compute_access/methods/get_compute_access"
+          - $ref: "#/components/x-stackQL-resources/compute_accesses/methods/get_compute_access"
         insert: []
         update: []
         delete: []
@@ -11768,10 +11742,10 @@ components:
         insert: []
         update: []
         delete: []
-    instance_access:
-      id: aws.gamelift.instance_access
-      name: instance_access
-      title: instance_access
+    instance_accesses:
+      id: aws.gamelift.instance_accesses
+      name: instance_accesses
+      title: instance_accesses
       methods:
         get_instance_access:
           operation:
@@ -11789,7 +11763,7 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/instance_access/methods/get_instance_access"
+          - $ref: "#/components/x-stackQL-resources/instance_accesses/methods/get_instance_access"
         insert: []
         update: []
         delete: []
@@ -11814,38 +11788,6 @@ components:
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/player_connection_details/methods/get_player_connection_details"
-        insert: []
-        update: []
-        delete: []
-    aliases:
-      id: aws.gamelift.aliases
-      name: aliases
-      title: aliases
-      methods:
-        list_aliases:
-          operation:
-            $ref: "#/paths/~1ListAliases/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.Aliases
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            pagination:
-              requestToken:
-                key: NextToken
-                location: body
-              responseToken:
-                key: $.NextToken
-                location: body
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/aliases/methods/list_aliases"
         insert: []
         update: []
         delete: []
@@ -11904,7 +11846,6 @@ components:
             $ref: "#/paths/~1TagResource/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -11917,7 +11858,6 @@ components:
             $ref: "#/paths/~1UntagResource/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -11932,4 +11872,27 @@ components:
         update:
           - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
           - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
+        delete: []
+    match_backfills:
+      id: aws.gamelift.match_backfills
+      name: match_backfills
+      title: match_backfills
+      methods:
+        start_match_backfill:
+          operation:
+            $ref: "#/paths/~1StartMatchBackfill/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
         delete: []

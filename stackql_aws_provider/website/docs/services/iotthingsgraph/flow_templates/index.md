@@ -154,6 +154,13 @@ The following methods are available for this resource:
     <td></td>
     <td>Deletes a workflow. Any new system or deployment that contains this workflow will fail to update or deploy. Existing deployments that contain the workflow will continue to run (since they use a snapshot of the workflow taken at the time of deployment).</td>
 </tr>
+<tr>
+    <td><a href="#deprecate_flow_template"><CopyableCode code="deprecate_flow_template" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-id"><code>id</code></a></td>
+    <td></td>
+    <td>Deprecates the specified workflow. This action marks the workflow for deletion. Deprecated flows can't be deployed, but existing deployments will continue to run.</td>
+</tr>
 </tbody>
 </table>
 
@@ -315,6 +322,31 @@ Deletes a workflow. Any new system or deployment that contains this workflow wil
 ```sql
 DELETE FROM aws.iotthingsgraph.flow_templates
 WHERE region = '{{ region }}' --required
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="deprecate_flow_template"
+    values={[
+        { label: 'deprecate_flow_template', value: 'deprecate_flow_template' }
+    ]}
+>
+<TabItem value="deprecate_flow_template">
+
+Deprecates the specified workflow. This action marks the workflow for deletion. Deprecated flows can't be deployed, but existing deployments will continue to run.
+
+```sql
+EXEC aws.iotthingsgraph.flow_templates.deprecate_flow_template 
+@region='{{ region }}' --required 
+@@json=
+'{
+"id": "{{ id }}"
+}'
 ;
 ```
 </TabItem>

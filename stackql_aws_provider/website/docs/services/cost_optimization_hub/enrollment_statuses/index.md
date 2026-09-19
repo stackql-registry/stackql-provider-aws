@@ -96,6 +96,13 @@ The following methods are available for this resource:
     <td></td>
     <td>Retrieves the enrollment status for an account. It can also return the list of accounts that are enrolled under the organization.</td>
 </tr>
+<tr>
+    <td><a href="#update_enrollment_status"><CopyableCode code="update_enrollment_status" /></a></td>
+    <td><CopyableCode code="update" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-status"><code>status</code></a></td>
+    <td></td>
+    <td>Updates the enrollment (opt in and opt out) status of an account to the Cost Optimization Hub service. If the account is a management account of an organization, this action can also be used to enroll member accounts of the organization. You must have the appropriate permissions to opt in to Cost Optimization Hub and to view its recommendations. When you opt in, Cost Optimization Hub automatically creates a service-linked role in your account to access its data.</td>
+</tr>
 </tbody>
 </table>
 
@@ -141,6 +148,33 @@ status
 FROM aws.cost_optimization_hub.enrollment_statuses
 WHERE region = '{{ region }}' -- required
 ;
+```
+</TabItem>
+</Tabs>
+
+
+## `UPDATE` examples
+
+<Tabs
+    defaultValue="update_enrollment_status"
+    values={[
+        { label: 'update_enrollment_status', value: 'update_enrollment_status' }
+    ]}
+>
+<TabItem value="update_enrollment_status">
+
+Updates the enrollment (opt in and opt out) status of an account to the Cost Optimization Hub service. If the account is a management account of an organization, this action can also be used to enroll member accounts of the organization. You must have the appropriate permissions to opt in to Cost Optimization Hub and to view its recommendations. When you opt in, Cost Optimization Hub automatically creates a service-linked role in your account to access its data.
+
+```sql
+UPDATE aws.cost_optimization_hub.enrollment_statuses
+SET 
+status = '{{ status }}',
+includeMemberAccounts = {{ includeMemberAccounts }}
+WHERE 
+region = '{{ region }}' --required
+AND status = '{{ status }}' --required
+RETURNING
+status;
 ```
 </TabItem>
 </Tabs>

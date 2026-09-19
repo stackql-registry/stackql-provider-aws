@@ -242,6 +242,13 @@ The following methods are available for this resource:
     <td></td>
     <td>Modifies the definition of the LATEST_WORKING version of a DataBrew recipe.</td>
 </tr>
+<tr>
+    <td><a href="#publish_recipe"><CopyableCode code="publish_recipe" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-name"><code>name</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Publishes a new version of a DataBrew recipe.</td>
+</tr>
 </tbody>
 </table>
 
@@ -261,7 +268,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-name">
     <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
-    <td>The name of the recipe to be updated.</td>
+    <td>The name of the recipe to be published.</td>
 </tr>
 <tr id="parameter-region">
     <td><CopyableCode code="region" /></td>
@@ -431,6 +438,32 @@ name = '{{ name }}' --required
 AND region = '{{ region }}' --required
 RETURNING
 name;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="publish_recipe"
+    values={[
+        { label: 'publish_recipe', value: 'publish_recipe' }
+    ]}
+>
+<TabItem value="publish_recipe">
+
+Publishes a new version of a DataBrew recipe.
+
+```sql
+EXEC aws.databrew.recipes.publish_recipe 
+@name='{{ name }}' --required, 
+@region='{{ region }}' --required 
+@@json=
+'{
+"Description": "{{ Description }}"
+}'
+;
 ```
 </TabItem>
 </Tabs>

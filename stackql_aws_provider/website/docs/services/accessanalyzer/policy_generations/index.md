@@ -101,6 +101,20 @@ The following methods are available for this resource:
     <td><a href="#parameter-principalArn"><code>principalArn</code></a>, <a href="#parameter-maxResults"><code>maxResults</code></a>, <a href="#parameter-nextToken"><code>nextToken</code></a></td>
     <td>Lists all of the policy generations requested in the last seven days.</td>
 </tr>
+<tr>
+    <td><a href="#cancel_policy_generation"><CopyableCode code="cancel_policy_generation" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-job_id"><code>job_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Cancels the requested policy generation.</td>
+</tr>
+<tr>
+    <td><a href="#start_policy_generation"><CopyableCode code="start_policy_generation" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-policyGenerationDetails"><code>policyGenerationDetails</code></a></td>
+    <td></td>
+    <td>Starts the policy generation request.</td>
+</tr>
 </tbody>
 </table>
 
@@ -117,6 +131,11 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     </tr>
 </thead>
 <tbody>
+<tr id="parameter-job_id">
+    <td><CopyableCode code="job_id" /></td>
+    <td><code>string</code></td>
+    <td>The JobId that is returned by the StartPolicyGeneration operation. The JobId can be used with GetGeneratedPolicy to retrieve the generated policies or used with CancelPolicyGeneration to cancel the policy generation request.</td>
+</tr>
 <tr id="parameter-region">
     <td><CopyableCode code="region" /></td>
     <td><code>string</code></td>
@@ -164,6 +183,45 @@ WHERE region = '{{ region }}' -- required
 AND principalArn = '{{ principalArn }}'
 AND maxResults = '{{ maxResults }}'
 AND nextToken = '{{ nextToken }}'
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="cancel_policy_generation"
+    values={[
+        { label: 'cancel_policy_generation', value: 'cancel_policy_generation' },
+        { label: 'start_policy_generation', value: 'start_policy_generation' }
+    ]}
+>
+<TabItem value="cancel_policy_generation">
+
+Cancels the requested policy generation.
+
+```sql
+EXEC aws.accessanalyzer.policy_generations.cancel_policy_generation 
+@job_id='{{ job_id }}' --required, 
+@region='{{ region }}' --required
+;
+```
+</TabItem>
+<TabItem value="start_policy_generation">
+
+Starts the policy generation request.
+
+```sql
+EXEC aws.accessanalyzer.policy_generations.start_policy_generation 
+@region='{{ region }}' --required 
+@@json=
+'{
+"policyGenerationDetails": "{{ policyGenerationDetails }}", 
+"cloudTrailDetails": "{{ cloudTrailDetails }}", 
+"clientToken": "{{ clientToken }}"
+}'
 ;
 ```
 </TabItem>

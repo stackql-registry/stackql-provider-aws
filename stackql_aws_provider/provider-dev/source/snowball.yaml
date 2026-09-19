@@ -48,10 +48,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CancelClusterResult'
       x-stackql-resource: clusters
       x-stackql-method: cancel_cluster
       x-stackql-verb: EXEC
@@ -85,10 +81,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CancelJobResult'
       x-stackql-resource: jobs
       x-stackql-method: cancel_job
       x-stackql-verb: EXEC
@@ -128,7 +120,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreateAddressResult'
-      x-stackql-resource: address
+      x-stackql-resource: addresses
       x-stackql-method: create_address
       x-stackql-verb: INSERT
   /CreateCluster:
@@ -505,7 +497,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DescribeAddressResult'
-      x-stackql-resource: address
+      x-stackql-resource: addresses
       x-stackql-method: describe_address
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Address
@@ -1191,10 +1183,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateClusterResult'
       x-stackql-resource: clusters
       x-stackql-method: update_cluster
       x-stackql-verb: UPDATE
@@ -1264,10 +1252,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateJobResult'
       x-stackql-resource: jobs
       x-stackql-method: update_job
       x-stackql-verb: UPDATE
@@ -1305,10 +1289,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateJobShipmentStateResult'
       x-stackql-resource: jobs
       x-stackql-method: update_job_shipment_state
       x-stackql-verb: UPDATE
@@ -1349,10 +1329,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateLongTermPricingResult'
       x-stackql-resource: long_term_pricings
       x-stackql-method: update_long_term_pricing
       x-stackql-verb: UPDATE
@@ -1406,15 +1382,11 @@ components:
       minLength: 39
       maxLength: 39
       pattern: CID[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}
-    CancelClusterResult:
-      type: object
     JobId:
       type: string
       minLength: 39
       maxLength: 39
       pattern: (M|J)ID[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}
-    CancelJobResult:
-      type: object
     Address:
       description: The address that you want the Snow device(s) associated with a specific job to be shipped to. Addresses
         are validated at the time of creation. The address you provide must be located within the serviceable area of your
@@ -2518,16 +2490,8 @@ components:
       type: array
       items:
         $ref: '#/components/schemas/ServiceVersion'
-    UpdateClusterResult:
-      type: object
-    UpdateJobResult:
-      type: object
     ShipmentState:
       type: string
       enum:
       - RECEIVED
       - RETURNED
-    UpdateJobShipmentStateResult:
-      type: object
-    UpdateLongTermPricingResult:
-      type: object

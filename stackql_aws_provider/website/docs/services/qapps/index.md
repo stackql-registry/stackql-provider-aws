@@ -18,7 +18,7 @@ qapps service documentation.
 
 :::info[Service Summary]
 
-total resources: __9__  
+total resources: __10__  
 
 :::
 
@@ -26,13 +26,14 @@ total resources: __9__
 <div class="row">
 <div class="providerDocColumn">
 <a href="/services/qapps/categories/">categories</a><br />
+<a href="/services/qapps/documents/">documents</a><br />
 <a href="/services/qapps/library_items/">library_items</a><br />
 <a href="/services/qapps/presigned_urls/">presigned_urls</a><br />
-<a href="/services/qapps/q_app_permissions/">q_app_permissions</a><br />
-<a href="/services/qapps/q_app_session_datas/">q_app_session_datas</a>
+<a href="/services/qapps/q_app_permissions/">q_app_permissions</a>
 </div>
 <div class="providerDocColumn">
-<a href="/services/qapps/q_app_session_metadatas/">q_app_session_metadatas</a><br />
+<a href="/services/qapps/q_app_session_data/">q_app_session_data</a><br />
+<a href="/services/qapps/q_app_session_metadata/">q_app_session_metadata</a><br />
 <a href="/services/qapps/q_app_sessions/">q_app_sessions</a><br />
 <a href="/services/qapps/q_apps/">q_apps</a><br />
 <a href="/services/qapps/tags/">tags</a>

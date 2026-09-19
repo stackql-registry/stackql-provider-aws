@@ -1233,10 +1233,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TagResourceResponse"
   /UntagResource:
     post:
       operationId: UntagResource
@@ -1270,10 +1266,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UntagResourceResponse"
   /UpdateDefaultAutoScalingConfiguration:
     post:
       operationId: UpdateDefaultAutoScalingConfiguration
@@ -2755,14 +2747,10 @@ components:
           description: The unique ID of the asynchronous operation that this request started. You can use it combined with the ListOperations call to track the operation's progress.
       required:
         - OperationId
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
         $ref: "#/components/schemas/TagKey"
-    UntagResourceResponse:
-      type: object
     UpdateDefaultAutoScalingConfigurationResponse:
       type: object
       properties:
@@ -3101,6 +3089,26 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        list_services_for_auto_scaling_configuration:
+          operation:
+            $ref: "#/paths/~1ListServicesForAutoScalingConfiguration/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListServicesForAutoScalingConfigurationOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "ServiceArnList" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"service_arn": {{ toJson $v }}}{{- end -}}{{- end -}}]}'
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         pause_service:
           operation:
             $ref: "#/paths/~1PauseService/post"
@@ -3156,6 +3164,7 @@ components:
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/services/methods/describe_service"
+          - $ref: "#/components/x-stackQL-resources/services/methods/list_services_for_auto_scaling_configuration"
           - $ref: "#/components/x-stackQL-resources/services/methods/list_services"
         insert:
           - $ref: "#/components/x-stackQL-resources/services/methods/create_service"
@@ -3335,37 +3344,6 @@ components:
         insert: []
         update: []
         delete: []
-    services_for_auto_scaling_configurations:
-      id: aws.apprunner.services_for_auto_scaling_configurations
-      name: services_for_auto_scaling_configurations
-      title: services_for_auto_scaling_configurations
-      methods:
-        list_services_for_auto_scaling_configuration:
-          operation:
-            $ref: "#/paths/~1ListServicesForAutoScalingConfiguration/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/ListServicesForAutoScalingConfigurationOutputDisplay"
-            transform:
-              type: golang_template_json_v0.3.0
-              body: '{{- $lst := index . "ServiceArnList" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"service_arn": {{ toJson $v }}}{{- end -}}{{- end -}}]}'
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.0
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/services_for_auto_scaling_configurations/methods/list_services_for_auto_scaling_configuration"
-        insert: []
-        update: []
-        delete: []
     tags:
       id: aws.apprunner.tags
       name: tags
@@ -3389,7 +3367,6 @@ components:
             $ref: "#/paths/~1TagResource/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.0
@@ -3402,7 +3379,6 @@ components:
             $ref: "#/paths/~1UntagResource/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.0

@@ -284,7 +284,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/ApplyPendingMaintenanceActionOutputDisplay'
-      x-stackql-resource: apply_pending_maintenance_action
+      x-stackql-resource: pending_maintenance_actions
       x-stackql-method: apply_pending_maintenance_action
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: ApplyPendingMaintenanceActionOutputDisplay
@@ -305,7 +305,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/ApplyPendingMaintenanceActionMessage'
-      x-stackql-resource: apply_pending_maintenance_action
+      x-stackql-resource: pending_maintenance_actions
       x-stackql-method: apply_pending_maintenance_action
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: ApplyPendingMaintenanceActionOutputDisplay
@@ -596,7 +596,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/CopyDBClusterParameterGroupOutputDisplay'
-      x-stackql-resource: db_cluster_parameters
+      x-stackql-resource: db_cluster_parameter_groups
       x-stackql-method: copy_db_cluster_parameter_group
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: CopyDBClusterParameterGroupOutputDisplay
@@ -619,7 +619,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/CopyDBClusterParameterGroupMessage'
-      x-stackql-resource: db_cluster_parameters
+      x-stackql-resource: db_cluster_parameter_groups
       x-stackql-method: copy_db_cluster_parameter_group
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: CopyDBClusterParameterGroupOutputDisplay
@@ -732,7 +732,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/CopyDBClusterSnapshotOutputDisplay'
-      x-stackql-resource: db_clusters
+      x-stackql-resource: db_cluster_snapshots
       x-stackql-method: copy_db_cluster_snapshot
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: CopyDBClusterSnapshotOutputDisplay
@@ -768,7 +768,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/CopyDBClusterSnapshotMessage'
-      x-stackql-resource: db_clusters
+      x-stackql-resource: db_cluster_snapshots
       x-stackql-method: copy_db_cluster_snapshot
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: CopyDBClusterSnapshotOutputDisplay
@@ -822,7 +822,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/CopyDBParameterGroupOutputDisplay'
-      x-stackql-resource: db_parameters
+      x-stackql-resource: db_parameter_groups
       x-stackql-method: copy_db_parameter_group
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: CopyDBParameterGroupOutputDisplay
@@ -845,7 +845,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/CopyDBParameterGroupMessage'
-      x-stackql-resource: db_parameters
+      x-stackql-resource: db_parameter_groups
       x-stackql-method: copy_db_parameter_group
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: CopyDBParameterGroupOutputDisplay
@@ -991,7 +991,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/CopyDBSnapshotOutputDisplay'
-      x-stackql-resource: db_snapshot
+      x-stackql-resource: db_snapshots
       x-stackql-method: copy_db_snapshot
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: CopyDBSnapshotOutputDisplay
@@ -1016,7 +1016,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/CopyDBSnapshotMessage'
-      x-stackql-resource: db_snapshot
+      x-stackql-resource: db_snapshots
       x-stackql-method: copy_db_snapshot
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: CopyDBSnapshotOutputDisplay
@@ -1066,7 +1066,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/CopyOptionGroupOutputDisplay'
-      x-stackql-resource: option_group
+      x-stackql-resource: option_groups
       x-stackql-method: copy_option_group
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: CopyOptionGroupOutputDisplay
@@ -1087,7 +1087,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/CopyOptionGroupMessage'
-      x-stackql-resource: option_group
+      x-stackql-resource: option_groups
       x-stackql-method: copy_option_group
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: CopyOptionGroupOutputDisplay
@@ -6009,25 +6009,15 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/DeregisterDBProxyTargetsOutputDisplay'
       x-stackql-resource: db_proxy_targets
       x-stackql-method: deregister_db_proxy_targets
       x-stackql-verb: DELETE
-      x-stackql-responseEnvelope: DeregisterDBProxyTargetsOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
     post:
       operationId: POST_DeregisterDBProxyTargets
       description: Remove the association between one or more DBProxyTarget data structures and a DBProxyTargetGroup.
       responses:
         '200':
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/DeregisterDBProxyTargetsOutputDisplay'
       parameters: []
       requestBody:
         content:
@@ -6037,8 +6027,6 @@ paths:
       x-stackql-resource: db_proxy_targets
       x-stackql-method: deregister_db_proxy_targets
       x-stackql-verb: DELETE
-      x-stackql-responseEnvelope: DeregisterDBProxyTargetsOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
   /?Action=DescribeAccountAttributes&Version=2014-10-31:
     parameters:
     - $ref: '#/components/parameters/X-Amz-Content-Sha256'
@@ -10152,7 +10140,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/DisableHttpEndpointOutputDisplay'
-      x-stackql-resource: http_endpoint
+      x-stackql-resource: http_endpoints
       x-stackql-method: disable_http_endpoint
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: DisableHttpEndpointOutputDisplay
@@ -10176,7 +10164,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/DisableHttpEndpointRequest'
-      x-stackql-resource: http_endpoint
+      x-stackql-resource: http_endpoints
       x-stackql-method: disable_http_endpoint
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: DisableHttpEndpointOutputDisplay
@@ -10239,7 +10227,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/DownloadDBLogFilePortionOutputDisplay'
-      x-stackql-resource: db_instances
+      x-stackql-resource: db_log_files
       x-stackql-method: download_db_log_file_portion
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: DownloadDBLogFilePortionOutputDisplay
@@ -10263,7 +10251,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/DownloadDBLogFilePortionMessage'
-      x-stackql-resource: db_instances
+      x-stackql-resource: db_log_files
       x-stackql-method: download_db_log_file_portion
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: DownloadDBLogFilePortionOutputDisplay
@@ -10299,7 +10287,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/EnableHttpEndpointOutputDisplay'
-      x-stackql-resource: http_endpoint
+      x-stackql-resource: http_endpoints
       x-stackql-method: enable_http_endpoint
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: EnableHttpEndpointOutputDisplay
@@ -10325,7 +10313,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/EnableHttpEndpointRequest'
-      x-stackql-resource: http_endpoint
+      x-stackql-resource: http_endpoints
       x-stackql-method: enable_http_endpoint
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: EnableHttpEndpointOutputDisplay
@@ -14367,7 +14355,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/ResetDBClusterParameterGroupOutputDisplay'
-      x-stackql-resource: db_cluster_parameters
+      x-stackql-resource: db_cluster_parameter_groups
       x-stackql-method: reset_db_cluster_parameter_group
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: ResetDBClusterParameterGroupOutputDisplay
@@ -14395,7 +14383,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/ResetDBClusterParameterGroupMessage'
-      x-stackql-resource: db_cluster_parameters
+      x-stackql-resource: db_cluster_parameter_groups
       x-stackql-method: reset_db_cluster_parameter_group
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: ResetDBClusterParameterGroupOutputDisplay
@@ -14450,7 +14438,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/ResetDBParameterGroupOutputDisplay'
-      x-stackql-resource: db_parameters
+      x-stackql-resource: db_parameter_groups
       x-stackql-method: reset_db_parameter_group
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: ResetDBParameterGroupOutputDisplay
@@ -14475,7 +14463,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/ResetDBParameterGroupMessage'
-      x-stackql-resource: db_parameters
+      x-stackql-resource: db_parameter_groups
       x-stackql-method: reset_db_parameter_group
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: ResetDBParameterGroupOutputDisplay
@@ -16169,7 +16157,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/RestoreDBInstanceFromDBSnapshotOutputDisplay'
-      x-stackql-resource: db_instances
+      x-stackql-resource: db_snapshots
       x-stackql-method: restore_db_instance_from_db_snapshot
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: RestoreDBInstanceFromDBSnapshotOutputDisplay
@@ -16204,7 +16192,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/RestoreDBInstanceFromDBSnapshotMessage'
-      x-stackql-resource: db_instances
+      x-stackql-resource: db_snapshots
       x-stackql-method: restore_db_instance_from_db_snapshot
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: RestoreDBInstanceFromDBSnapshotOutputDisplay
@@ -17330,7 +17318,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/StartActivityStreamOutputDisplay'
-      x-stackql-resource: activity_stream
+      x-stackql-resource: activity_streams
       x-stackql-method: start_activity_stream
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: StartActivityStreamOutputDisplay
@@ -17353,7 +17341,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/StartActivityStreamRequest'
-      x-stackql-resource: activity_stream
+      x-stackql-resource: activity_streams
       x-stackql-method: start_activity_stream
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: StartActivityStreamOutputDisplay
@@ -17712,7 +17700,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/StopActivityStreamOutputDisplay'
-      x-stackql-resource: activity_stream
+      x-stackql-resource: activity_streams
       x-stackql-method: stop_activity_stream
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: StopActivityStreamOutputDisplay
@@ -17736,7 +17724,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/StopActivityStreamRequest'
-      x-stackql-resource: activity_stream
+      x-stackql-resource: activity_streams
       x-stackql-method: stop_activity_stream
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: StopActivityStreamOutputDisplay
@@ -18944,6 +18932,11 @@ components:
           type: string
           description: Specifies the name of the Availability Zone where RDS stores the DB snapshot. This value is valid only
             for snapshots that RDS stores on a Dedicated Local Zone.
+        FullSnapshotSizeInBytes:
+          type: integer
+          description: The full size of the DB snapshot, in bytes. This is not the incremental size of the snapshot. This
+            is the full snapshot size and represents the size of all the blocks that were written to the source volume at
+            the time the snapshot was created.
     CopyDBSnapshotOutputDisplay:
       type: object
       properties:
@@ -23371,16 +23364,6 @@ components:
       minLength: 1
       maxLength: 63
       pattern: '[a-zA-Z](?:-?[a-zA-Z0-9]+)*'
-    DeregisterDBProxyTargetsResponseDisplay:
-      type: object
-      properties: {}
-    DeregisterDBProxyTargetsOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: '#/components/schemas/DeregisterDBProxyTargetsResponseDisplay'
     DeregisterDBProxyTargetsRequest:
       type: object
       properties:

@@ -18,7 +18,7 @@ kafka service documentation.
 
 :::info[Service Summary]
 
-total resources: __21__  
+total resources: __19__  
 
 :::
 
@@ -28,17 +28,15 @@ total resources: __21__
 <a href="/services/kafka/bootstrap_brokers/">bootstrap_brokers</a><br />
 <a href="/services/kafka/channels/">channels</a><br />
 <a href="/services/kafka/client_vpc_connections/">client_vpc_connections</a><br />
-<a href="/services/kafka/cluster_operation_v2s/">cluster_operation_v2s</a><br />
 <a href="/services/kafka/cluster_operations/">cluster_operations</a><br />
-<a href="/services/kafka/cluster_operations_v2s/">cluster_operations_v2s</a><br />
+<a href="/services/kafka/cluster_operations_v2/">cluster_operations_v2</a><br />
 <a href="/services/kafka/cluster_policies/">cluster_policies</a><br />
-<a href="/services/kafka/cluster_v2s/">cluster_v2s</a><br />
 <a href="/services/kafka/clusters/">clusters</a><br />
-<a href="/services/kafka/clusters_v2s/">clusters_v2s</a><br />
-<a href="/services/kafka/compatible_kafka_versions/">compatible_kafka_versions</a>
+<a href="/services/kafka/clusters_v2/">clusters_v2</a><br />
+<a href="/services/kafka/compatible_kafka_versions/">compatible_kafka_versions</a><br />
+<a href="/services/kafka/configuration_revisions/">configuration_revisions</a>
 </div>
 <div class="providerDocColumn">
-<a href="/services/kafka/configuration_revisions/">configuration_revisions</a><br />
 <a href="/services/kafka/configurations/">configurations</a><br />
 <a href="/services/kafka/kafka_versions/">kafka_versions</a><br />
 <a href="/services/kafka/nodes/">nodes</a><br />

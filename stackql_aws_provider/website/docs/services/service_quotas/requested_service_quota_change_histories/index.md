@@ -33,11 +33,111 @@ Creates, updates, deletes, gets or lists a <code>requested_service_quota_change_
 The following fields are returned by `SELECT` queries:
 
 <Tabs
-    defaultValue="list_requested_service_quota_change_history"
+    defaultValue="list_requested_service_quota_change_history_by_quota"
     values={[
+        { label: 'list_requested_service_quota_change_history_by_quota', value: 'list_requested_service_quota_change_history_by_quota' },
         { label: 'list_requested_service_quota_change_history', value: 'list_requested_service_quota_change_history' }
     ]}
 >
+<TabItem value="list_requested_service_quota_change_history_by_quota">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="case_id" /></td>
+    <td><code>string</code></td>
+    <td>The case ID.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="created" /></td>
+    <td><code>string (date-time)</code></td>
+    <td>The date and time when the quota increase request was received and the case ID was created.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="desired_value" /></td>
+    <td><code>number (double)</code></td>
+    <td>The new, increased value for the quota.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="global_quota" /></td>
+    <td><code>boolean</code></td>
+    <td>Indicates whether the quota is global.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="id" /></td>
+    <td><code>string</code></td>
+    <td>The unique identifier. (pattern: &lt;code&gt;&#91;0-9a-zA-Z&#93;&#91;a-zA-Z0-9-&#93;&#123;1,128&#125;&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="last_updated" /></td>
+    <td><code>string (date-time)</code></td>
+    <td>The date and time of the most recent change.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="quota_arn" /></td>
+    <td><code>string</code></td>
+    <td>The Amazon Resource Name (ARN) of the quota.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="quota_code" /></td>
+    <td><code>string</code></td>
+    <td>Specifies the quota identifier. To find the quota code for a specific quota, use the ListServiceQuotas operation, and look for the QuotaCode response in the output for the quota you want. (pattern: &lt;code&gt;&#91;a-zA-Z&#93;&#91;a-zA-Z0-9-&#93;&#123;1,128&#125;&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="quota_context" /></td>
+    <td><code>object</code></td>
+    <td>The context for this service quota.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="quota_name" /></td>
+    <td><code>string</code></td>
+    <td>Specifies the quota name.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="quota_requested_at_level" /></td>
+    <td><code>string</code></td>
+    <td>Filters the response to return quota requests for the ACCOUNT, RESOURCE, or ALL levels. ACCOUNT is the default. (ACCOUNT, RESOURCE, ALL)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="request_type" /></td>
+    <td><code>string</code></td>
+    <td>The type of quota increase request. Possible values include: AutomaticManagement - The request was automatically created by Service Quotas Automatic Management when quota utilization approached the limit. If this field is not present, the request was manually created by a user. (AutomaticManagement)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="requester" /></td>
+    <td><code>string</code></td>
+    <td>The IAM identity of the requester.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="service_code" /></td>
+    <td><code>string</code></td>
+    <td>Specifies the service identifier. To find the service code value for an Amazon Web Services service, use the ListServices operation. (pattern: &lt;code&gt;&#91;a-zA-Z&#93;&#91;a-zA-Z0-9-&#93;&#123;1,63&#125;&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="service_name" /></td>
+    <td><code>string</code></td>
+    <td>Specifies the service name.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="status" /></td>
+    <td><code>string</code></td>
+    <td>The state of the quota increase request. PENDING: The quota increase request is under review by Amazon Web Services. CASE_OPENED: Service Quotas opened a support case to process the quota increase request. Follow-up on the support case for more information. APPROVED: The quota increase request is approved. DENIED: The quota increase request can't be approved by Service Quotas. Contact Amazon Web Services Support for more details. NOT APPROVED: The quota increase request can't be approved by Service Quotas. Contact Amazon Web Services Support for more details. CASE_CLOSED: The support case associated with this quota increase request was closed. Check the support case correspondence for the outcome of your quota request. INVALID_REQUEST: Service Quotas couldn't process your resource-level quota increase request because the Amazon Resource Name (ARN) specified as part of the ContextId is invalid. (PENDING, CASE_OPENED, APPROVED, DENIED, CASE_CLOSED, NOT_APPROVED, INVALID_REQUEST)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="unit" /></td>
+    <td><code>string</code></td>
+    <td>The unit of measurement.</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
 <TabItem value="list_requested_service_quota_change_history">
 
 <table>
@@ -155,6 +255,13 @@ The following methods are available for this resource:
 </thead>
 <tbody>
 <tr>
+    <td><a href="#list_requested_service_quota_change_history_by_quota"><CopyableCode code="list_requested_service_quota_change_history_by_quota" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Retrieves the quota increase requests for the specified quota. Filter responses to return quota requests at either the account level, resource level, or all levels.</td>
+</tr>
+<tr>
     <td><a href="#list_requested_service_quota_change_history"><CopyableCode code="list_requested_service_quota_change_history" /></a></td>
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
@@ -188,11 +295,40 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 ## `SELECT` examples
 
 <Tabs
-    defaultValue="list_requested_service_quota_change_history"
+    defaultValue="list_requested_service_quota_change_history_by_quota"
     values={[
+        { label: 'list_requested_service_quota_change_history_by_quota', value: 'list_requested_service_quota_change_history_by_quota' },
         { label: 'list_requested_service_quota_change_history', value: 'list_requested_service_quota_change_history' }
     ]}
 >
+<TabItem value="list_requested_service_quota_change_history_by_quota">
+
+Retrieves the quota increase requests for the specified quota. Filter responses to return quota requests at either the account level, resource level, or all levels.
+
+```sql
+SELECT
+case_id,
+created,
+desired_value,
+global_quota,
+id,
+last_updated,
+quota_arn,
+quota_code,
+quota_context,
+quota_name,
+quota_requested_at_level,
+request_type,
+requester,
+service_code,
+service_name,
+status,
+unit
+FROM aws.service_quotas.requested_service_quota_change_histories
+WHERE region = '{{ region }}' -- required
+;
+```
+</TabItem>
 <TabItem value="list_requested_service_quota_change_history">
 
 Retrieves the quota increase requests for the specified Amazon Web Services service. Filter responses to return quota requests at either the account level, resource level, or all levels. Responses include any open or closed requests within 90 days.

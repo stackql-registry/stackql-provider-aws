@@ -89,18 +89,18 @@ The following methods are available for this resource:
     <td>Creates a Server Message Block (SMB) file share on an existing S3 File Gateway. In Storage Gateway, a file share is a file system mount point backed by Amazon S3 cloud storage. Storage Gateway exposes file shares using an SMB interface. This operation is only supported for S3 File Gateways. S3 File Gateways require Security Token Service (Amazon Web Services STS) to be activated to enable you to create a file share. Make sure that Amazon Web Services STS is activated in the Amazon Web Services Region you are creating your S3 File Gateway in. If Amazon Web Services STS is not activated in this Amazon Web Services Region, activate it. For information about how to activate Amazon Web Services STS, see Activating and deactivating Amazon Web Services STS in an Amazon Web Services Region in the Identity and Access Management User Guide. File gateways don't support creating hard or symbolic links on a file share.</td>
 </tr>
 <tr>
-    <td><a href="#update_smb_file_share_visibility"><CopyableCode code="update_smb_file_share_visibility" /></a></td>
-    <td><CopyableCode code="update" /></td>
-    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-GatewayARN"><code>GatewayARN</code></a>, <a href="#parameter-FileSharesVisible"><code>FileSharesVisible</code></a></td>
-    <td></td>
-    <td>Controls whether the shares on an S3 File Gateway are visible in a net view or browse list. The operation is only supported for S3 File Gateways.</td>
-</tr>
-<tr>
     <td><a href="#update_smb_file_share"><CopyableCode code="update_smb_file_share" /></a></td>
     <td><CopyableCode code="update" /></td>
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-FileShareARN"><code>FileShareARN</code></a></td>
     <td></td>
     <td>Updates a Server Message Block (SMB) file share. This operation is only supported for S3 File Gateways. To leave a file share field unchanged, set the corresponding input field to null. File gateways require Security Token Service (Amazon Web Services STS) to be activated to enable you to create a file share. Make sure that Amazon Web Services STS is activated in the Amazon Web Services Region you are creating your file gateway in. If Amazon Web Services STS is not activated in this Amazon Web Services Region, activate it. For information about how to activate Amazon Web Services STS, see Activating and deactivating Amazon Web Services STS in an Amazon Web Services Region in the Identity and Access Management User Guide. File gateways don't support creating hard or symbolic links on a file share.</td>
+</tr>
+<tr>
+    <td><a href="#update_smb_file_share_visibility"><CopyableCode code="update_smb_file_share_visibility" /></a></td>
+    <td><CopyableCode code="update" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-GatewayARN"><code>GatewayARN</code></a>, <a href="#parameter-FileSharesVisible"><code>FileSharesVisible</code></a></td>
+    <td></td>
+    <td>Controls whether the shares on an S3 File Gateway are visible in a net view or browse list. The operation is only supported for S3 File Gateways.</td>
 </tr>
 </tbody>
 </table>
@@ -361,29 +361,12 @@ file_share_arn
 ## `UPDATE` examples
 
 <Tabs
-    defaultValue="update_smb_file_share_visibility"
+    defaultValue="update_smb_file_share"
     values={[
-        { label: 'update_smb_file_share_visibility', value: 'update_smb_file_share_visibility' },
-        { label: 'update_smb_file_share', value: 'update_smb_file_share' }
+        { label: 'update_smb_file_share', value: 'update_smb_file_share' },
+        { label: 'update_smb_file_share_visibility', value: 'update_smb_file_share_visibility' }
     ]}
 >
-<TabItem value="update_smb_file_share_visibility">
-
-Controls whether the shares on an S3 File Gateway are visible in a net view or browse list. The operation is only supported for S3 File Gateways.
-
-```sql
-UPDATE aws.storagegateway.smb_file_shares
-SET 
-GatewayARN = '{{ GatewayARN }}',
-FileSharesVisible = {{ FileSharesVisible }}
-WHERE 
-region = '{{ region }}' --required
-AND GatewayARN = '{{ GatewayARN }}' --required
-AND FileSharesVisible = {{ FileSharesVisible }} --required
-RETURNING
-gateway_arn;
-```
-</TabItem>
 <TabItem value="update_smb_file_share">
 
 Updates a Server Message Block (SMB) file share. This operation is only supported for S3 File Gateways. To leave a file share field unchanged, set the corresponding input field to null. File gateways require Security Token Service (Amazon Web Services STS) to be activated to enable you to create a file share. Make sure that Amazon Web Services STS is activated in the Amazon Web Services Region you are creating your file gateway in. If Amazon Web Services STS is not activated in this Amazon Web Services Region, activate it. For information about how to activate Amazon Web Services STS, see Activating and deactivating Amazon Web Services STS in an Amazon Web Services Region in the Identity and Access Management User Guide. File gateways don't support creating hard or symbolic links on a file share.
@@ -416,6 +399,23 @@ region = '{{ region }}' --required
 AND FileShareARN = '{{ FileShareARN }}' --required
 RETURNING
 file_share_arn;
+```
+</TabItem>
+<TabItem value="update_smb_file_share_visibility">
+
+Controls whether the shares on an S3 File Gateway are visible in a net view or browse list. The operation is only supported for S3 File Gateways.
+
+```sql
+UPDATE aws.storagegateway.smb_file_shares
+SET 
+GatewayARN = '{{ GatewayARN }}',
+FileSharesVisible = {{ FileSharesVisible }}
+WHERE 
+region = '{{ region }}' --required
+AND GatewayARN = '{{ GatewayARN }}' --required
+AND FileSharesVisible = {{ FileSharesVisible }} --required
+RETURNING
+gateway_arn;
 ```
 </TabItem>
 </Tabs>

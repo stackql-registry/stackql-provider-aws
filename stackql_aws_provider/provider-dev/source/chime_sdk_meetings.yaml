@@ -46,7 +46,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchCreateAttendeeResponse'
-      x-stackql-resource: meetings
+      x-stackql-resource: attendees
       x-stackql-method: batch_create_attendee
       x-stackql-verb: EXEC
   /meetings/{meeting_id}/attendees/capabilities?operation=batch-update-except:
@@ -93,7 +93,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: meetings
+      x-stackql-resource: attendees
       x-stackql-method: batch_update_attendee_capabilities_except
       x-stackql-verb: EXEC
   /meetings/{meeting_id}/attendees:
@@ -470,10 +470,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -507,10 +503,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -1288,14 +1280,10 @@ components:
       type: string
       enum:
       - PHI
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
         $ref: '#/components/schemas/TagKey'
-    UntagResourceResponse:
-      type: object
     UpdateAttendeeCapabilitiesResponse:
       type: object
       properties:

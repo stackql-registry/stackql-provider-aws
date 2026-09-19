@@ -146,7 +146,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/InvokeEndpointOutput'
-      x-stackql-resource: endpoint
+      x-stackql-resource: endpoints
       x-stackql-method: invoke_endpoint
       x-stackql-verb: EXEC
   /endpoints/{endpoint_name}/async-invocations:
@@ -251,7 +251,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/InvokeEndpointAsyncOutput'
-      x-stackql-resource: endpoint_async
+      x-stackql-resource: endpoint_asyncs
       x-stackql-method: invoke_endpoint_async
       x-stackql-verb: EXEC
   /endpoints/{endpoint_name}/invocations-response-stream:
@@ -368,7 +368,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/InvokeEndpointWithResponseStreamOutput'
-      x-stackql-resource: endpoint_with_response_stream
+      x-stackql-resource: endpoint_with_response_streams
       x-stackql-method: invoke_endpoint_with_response_stream
       x-stackql-verb: EXEC
 components:

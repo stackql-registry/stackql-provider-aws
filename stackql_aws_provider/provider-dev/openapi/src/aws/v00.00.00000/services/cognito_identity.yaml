@@ -746,10 +746,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TagResourceResponse"
   /UnlinkDeveloperIdentity:
     post:
       operationId: UnlinkDeveloperIdentity
@@ -860,10 +856,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UntagResourceResponse"
   /UpdateIdentityPool:
     post:
       operationId: UpdateIdentityPool
@@ -1358,8 +1350,6 @@ components:
           type: object
           properties: {}
           description: You can use this operation to add principal tags. The PrincipalTagsoperation enables you to reference user attributes in your IAM permissions policy.
-    TagResourceResponse:
-      type: object
     IdentityPoolTagsListType:
       type: array
       items:
@@ -1368,8 +1358,6 @@ components:
       type: string
       minLength: 1
       maxLength: 128
-    UntagResourceResponse:
-      type: object
   x-stackQL-resources:
     identity_pools:
       id: aws.cognito_identity.identity_pools
@@ -1534,10 +1522,10 @@ components:
         update: []
         delete:
           - $ref: "#/components/x-stackQL-resources/identities/methods/delete_identities"
-    credentials_for_identities:
-      id: aws.cognito_identity.credentials_for_identities
-      name: credentials_for_identities
-      title: credentials_for_identities
+    credentials:
+      id: aws.cognito_identity.credentials
+      name: credentials
+      title: credentials
       methods:
         get_credentials_for_identity:
           operation:
@@ -1554,7 +1542,7 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/credentials_for_identities/methods/get_credentials_for_identity"
+          - $ref: "#/components/x-stackQL-resources/credentials/methods/get_credentials_for_identity"
         insert: []
         update: []
         delete: []
@@ -1637,17 +1625,6 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/open_id_tokens/methods/get_open_id_token"
-        insert: []
-        update: []
-        delete: []
-    open_id_token_for_developer_identities:
-      id: aws.cognito_identity.open_id_token_for_developer_identities
-      name: open_id_token_for_developer_identities
-      title: open_id_token_for_developer_identities
-      methods:
         get_open_id_token_for_developer_identity:
           operation:
             $ref: "#/paths/~1GetOpenIdTokenForDeveloperIdentity/post"
@@ -1663,7 +1640,8 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/open_id_token_for_developer_identities/methods/get_open_id_token_for_developer_identity"
+          - $ref: "#/components/x-stackQL-resources/open_id_tokens/methods/get_open_id_token"
+          - $ref: "#/components/x-stackQL-resources/open_id_tokens/methods/get_open_id_token_for_developer_identity"
         insert: []
         update: []
         delete: []
@@ -1728,7 +1706,6 @@ components:
             $ref: "#/paths/~1TagResource/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -1741,7 +1718,6 @@ components:
             $ref: "#/paths/~1UntagResource/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1

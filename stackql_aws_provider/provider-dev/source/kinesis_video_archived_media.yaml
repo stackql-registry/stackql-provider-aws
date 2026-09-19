@@ -342,7 +342,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetMediaForFragmentListOutput'
-      x-stackql-resource: media_for_fragment_lists
+      x-stackql-resource: medias
       x-stackql-method: get_media_for_fragment_list
       x-stackql-verb: SELECT
   /listFragments:

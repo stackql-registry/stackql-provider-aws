@@ -113,6 +113,13 @@ The following methods are available for this resource:
     <td></td>
     <td>Deletes customized client branding. Client branding allows you to customize your WorkSpace's client login portal. You can tailor your login portal company logo, the support email address, support link, link to reset password, and a custom message for users trying to sign in. After you delete your customized client branding, your login portal reverts to the default client branding.</td>
 </tr>
+<tr>
+    <td><a href="#import_client_branding"><CopyableCode code="import_client_branding" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-ResourceId"><code>ResourceId</code></a></td>
+    <td></td>
+    <td>Imports client branding. Client branding allows you to customize your WorkSpace's client login portal. You can tailor your login portal company logo, the support email address, support link, link to reset password, and a custom message for users trying to sign in. After you import client branding, the default branding experience for the specified platform type is replaced with the imported experience You must specify at least one platform type when importing client branding. You can import up to 6 MB of data with each request. If your request exceeds this limit, you can import client branding for different platform types using separate requests. In each platform type, the SupportEmail and SupportLink parameters are mutually exclusive. You can specify only one parameter for each platform type, but not both. Imported data can take up to a minute to appear in the WorkSpaces client.</td>
+</tr>
 </tbody>
 </table>
 
@@ -180,6 +187,37 @@ Deletes customized client branding. Client branding allows you to customize your
 ```sql
 DELETE FROM aws.workspaces.client_brandings
 WHERE region = '{{ region }}' --required
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="import_client_branding"
+    values={[
+        { label: 'import_client_branding', value: 'import_client_branding' }
+    ]}
+>
+<TabItem value="import_client_branding">
+
+Imports client branding. Client branding allows you to customize your WorkSpace's client login portal. You can tailor your login portal company logo, the support email address, support link, link to reset password, and a custom message for users trying to sign in. After you import client branding, the default branding experience for the specified platform type is replaced with the imported experience You must specify at least one platform type when importing client branding. You can import up to 6 MB of data with each request. If your request exceeds this limit, you can import client branding for different platform types using separate requests. In each platform type, the SupportEmail and SupportLink parameters are mutually exclusive. You can specify only one parameter for each platform type, but not both. Imported data can take up to a minute to appear in the WorkSpaces client.
+
+```sql
+EXEC aws.workspaces.client_brandings.import_client_branding 
+@region='{{ region }}' --required 
+@@json=
+'{
+"ResourceId": "{{ ResourceId }}", 
+"DeviceTypeWindows": "{{ DeviceTypeWindows }}", 
+"DeviceTypeOsx": "{{ DeviceTypeOsx }}", 
+"DeviceTypeAndroid": "{{ DeviceTypeAndroid }}", 
+"DeviceTypeIos": "{{ DeviceTypeIos }}", 
+"DeviceTypeLinux": "{{ DeviceTypeLinux }}", 
+"DeviceTypeWeb": "{{ DeviceTypeWeb }}"
+}'
 ;
 ```
 </TabItem>

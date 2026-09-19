@@ -106,10 +106,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteIndexOutput"
   /DeleteVectorBucket:
     post:
       operationId: DeleteVectorBucket
@@ -129,10 +125,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteVectorBucketOutput"
   /DeleteVectorBucketPolicy:
     post:
       operationId: DeleteVectorBucketPolicy
@@ -152,10 +144,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteVectorBucketPolicyOutput"
   /DeleteVectors:
     post:
       operationId: DeleteVectors
@@ -181,10 +169,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteVectorsOutput"
   /GetIndex:
     post:
       operationId: GetIndex
@@ -364,10 +348,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TagResourceOutput"
     delete:
       operationId: UntagResource
       description: Removes the specified user-defined tags from an Amazon S3 Vectors resource. You can pass one or more tag keys. For a list of S3 resources that support tagging, see Managing tags for Amazon S3 resources. Permissions For vector buckets and vector indexes, you must have the s3vectors:UntagResource permission to use this operation.
@@ -387,10 +367,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UntagResourceOutput"
   /ListVectorBuckets:
     post:
       operationId: ListVectorBuckets
@@ -476,10 +452,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/PutVectorBucketPolicyOutput"
   /PutVectors:
     post:
       operationId: PutVectors
@@ -505,10 +477,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/PutVectorsOutput"
   /QueryVectors:
     post:
       operationId: QueryVectors
@@ -677,12 +645,6 @@ components:
           description: The Amazon Resource Name (ARN) of the newly created vector bucket.
       required:
         - vectorBucketArn
-    DeleteIndexOutput:
-      type: object
-    DeleteVectorBucketOutput:
-      type: object
-    DeleteVectorBucketPolicyOutput:
-      type: object
     DeleteVectorsInputList:
       type: array
       items:
@@ -691,8 +653,6 @@ components:
       type: string
       minLength: 1
       maxLength: 1024
-    DeleteVectorsOutput:
-      type: object
     GetIndexOutput:
       type: object
       properties:
@@ -979,8 +939,6 @@ components:
           description: Metadata about the vector.
       required:
         - key
-    PutVectorBucketPolicyOutput:
-      type: object
     PutVectorsInputList:
       type: array
       items:
@@ -1001,8 +959,6 @@ components:
       required:
         - key
         - data
-    PutVectorsOutput:
-      type: object
     TopK:
       type: integer
       minimum: 1
@@ -1046,8 +1002,6 @@ components:
           description: The metadata associated with the vector, if requested.
       required:
         - key
-    TagResourceOutput:
-      type: object
     TagKeyList:
       type: array
       items:
@@ -1057,8 +1011,6 @@ components:
       minLength: 1
       maxLength: 128
       pattern: ([\p{L}\p{Z}\p{N}_.:/=+\-@]*)
-    UntagResourceOutput:
-      type: object
   x-stackQL-resources:
     indexes:
       id: aws.s3vectors.indexes
@@ -1081,7 +1033,6 @@ components:
             $ref: "#/paths/~1DeleteIndex/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -1148,7 +1099,6 @@ components:
             $ref: "#/paths/~1DeleteVectorBucket/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -1204,7 +1154,6 @@ components:
             $ref: "#/paths/~1DeleteVectorBucketPolicy/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -1226,7 +1175,6 @@ components:
             $ref: "#/paths/~1PutVectorBucketPolicy/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -1251,7 +1199,6 @@ components:
             $ref: "#/paths/~1DeleteVectors/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -1292,7 +1239,6 @@ components:
             $ref: "#/paths/~1PutVectors/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -1342,7 +1288,6 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -1353,7 +1298,6 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
       sqlVerbs:

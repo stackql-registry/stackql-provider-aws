@@ -156,7 +156,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/DefineAnalysisSchemeOutputDisplay'
-      x-stackql-resource: domains
+      x-stackql-resource: analysis_schemes
       x-stackql-method: define_analysis_scheme
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: DefineAnalysisSchemeOutputDisplay
@@ -179,7 +179,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/DefineAnalysisSchemeRequest'
-      x-stackql-resource: domains
+      x-stackql-resource: analysis_schemes
       x-stackql-method: define_analysis_scheme
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: DefineAnalysisSchemeOutputDisplay
@@ -216,7 +216,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/DefineExpressionOutputDisplay'
-      x-stackql-resource: domains
+      x-stackql-resource: expressions
       x-stackql-method: define_expression
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: DefineExpressionOutputDisplay
@@ -239,7 +239,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/DefineExpressionRequest'
-      x-stackql-resource: domains
+      x-stackql-resource: expressions
       x-stackql-method: define_expression
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: DefineExpressionOutputDisplay
@@ -279,7 +279,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/DefineIndexFieldOutputDisplay'
-      x-stackql-resource: domains
+      x-stackql-resource: index_fields
       x-stackql-method: define_index_field
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: DefineIndexFieldOutputDisplay
@@ -304,7 +304,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/DefineIndexFieldRequest'
-      x-stackql-resource: domains
+      x-stackql-resource: index_fields
       x-stackql-method: define_index_field
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: DefineIndexFieldOutputDisplay
@@ -342,7 +342,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/DefineSuggesterOutputDisplay'
-      x-stackql-resource: domains
+      x-stackql-resource: suggesters
       x-stackql-method: define_suggester
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: DefineSuggesterOutputDisplay
@@ -366,7 +366,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/DefineSuggesterRequest'
-      x-stackql-resource: domains
+      x-stackql-resource: suggesters
       x-stackql-method: define_suggester
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: DefineSuggesterOutputDisplay

@@ -143,6 +143,13 @@ The following methods are available for this resource:
     <td></td>
     <td>Gets information about a Device Defender audit. Requires permission to access the DescribeAuditTask action.</td>
 </tr>
+<tr>
+    <td><a href="#cancel_audit_task"><CopyableCode code="cancel_audit_task" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-task_id"><code>task_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Cancels an audit that is in progress. The audit can be either scheduled or on demand. If the audit isn't in progress, an "InvalidRequestException" occurs. Requires permission to access the CancelAuditTask action.</td>
+</tr>
 </tbody>
 </table>
 
@@ -177,7 +184,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-task_id">
     <td><CopyableCode code="task_id" /></td>
     <td><code>string</code></td>
-    <td>The ID of the audit whose information you want to get.</td>
+    <td>The ID of the audit you want to cancel. You can only cancel an audit that is "IN_PROGRESS".</td>
 </tr>
 <tr id="parameter-maxResults">
     <td><CopyableCode code="maxResults" /></td>
@@ -246,6 +253,28 @@ task_type
 FROM aws.iot.audit_tasks
 WHERE task_id = '{{ task_id }}' -- required
 AND region = '{{ region }}' -- required
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="cancel_audit_task"
+    values={[
+        { label: 'cancel_audit_task', value: 'cancel_audit_task' }
+    ]}
+>
+<TabItem value="cancel_audit_task">
+
+Cancels an audit that is in progress. The audit can be either scheduled or on demand. If the audit isn't in progress, an "InvalidRequestException" occurs. Requires permission to access the CancelAuditTask action.
+
+```sql
+EXEC aws.iot.audit_tasks.cancel_audit_task 
+@task_id='{{ task_id }}' --required, 
+@region='{{ region }}' --required
 ;
 ```
 </TabItem>

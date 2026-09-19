@@ -229,7 +229,7 @@ The following methods are available for this resource:
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-aws_account_id"><code>aws_account_id</code></a>, <a href="#parameter-data_set_id"><code>data_set_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>Describes a dataset. This operation doesn't support datasets that include uploaded files as a source.</td>
+    <td>Describes a dataset.</td>
 </tr>
 <tr>
     <td><a href="#search_data_sets"><CopyableCode code="search_data_sets" /></a></td>
@@ -250,14 +250,14 @@ The following methods are available for this resource:
     <td><CopyableCode code="insert" /></td>
     <td><a href="#parameter-aws_account_id"><code>aws_account_id</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-DataSetId"><code>DataSetId</code></a>, <a href="#parameter-PhysicalTableMap"><code>PhysicalTableMap</code></a>, <a href="#parameter-ImportMode"><code>ImportMode</code></a></td>
     <td></td>
-    <td>Creates a dataset. This operation doesn't support datasets that include uploaded files as a source.</td>
+    <td>Creates a dataset.</td>
 </tr>
 <tr>
     <td><a href="#update_data_set"><CopyableCode code="update_data_set" /></a></td>
     <td><CopyableCode code="update" /></td>
     <td><a href="#parameter-aws_account_id"><code>aws_account_id</code></a>, <a href="#parameter-data_set_id"><code>data_set_id</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-PhysicalTableMap"><code>PhysicalTableMap</code></a>, <a href="#parameter-ImportMode"><code>ImportMode</code></a></td>
     <td></td>
-    <td>Updates a dataset. This operation doesn't support datasets that include uploaded files as a source. Partial updates are not supported by this operation.</td>
+    <td>Updates a dataset. Partial updates are not supported by this operation.</td>
 </tr>
 <tr>
     <td><a href="#delete_data_set"><CopyableCode code="delete_data_set" /></a></td>
@@ -322,7 +322,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 >
 <TabItem value="describe_data_set">
 
-Describes a dataset. This operation doesn't support datasets that include uploaded files as a source.
+Describes a dataset.
 
 ```sql
 SELECT
@@ -398,7 +398,7 @@ AND `max-results` = '{{ max-results }}'
 >
 <TabItem value="create_data_set">
 
-Creates a dataset. This operation doesn't support datasets that include uploaded files as a source.
+Creates a dataset.
 
 ```sql
 INSERT INTO aws.quicksight.data_sets (
@@ -601,7 +601,7 @@ status
 >
 <TabItem value="update_data_set">
 
-Updates a dataset. This operation doesn't support datasets that include uploaded files as a source. Partial updates are not supported by this operation.
+Updates a dataset. Partial updates are not supported by this operation.
 
 ```sql
 UPDATE aws.quicksight.data_sets

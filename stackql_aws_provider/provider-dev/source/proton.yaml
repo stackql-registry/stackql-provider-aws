@@ -54,7 +54,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AcceptEnvironmentAccountConnectionOutput'
-      x-stackql-resource: environments
+      x-stackql-resource: environment_account_connections
       x-stackql-method: accept_environment_account_connection
       x-stackql-verb: EXEC
   /CancelComponentDeployment:
@@ -91,7 +91,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CancelComponentDeploymentOutput'
-      x-stackql-resource: components
+      x-stackql-resource: deployments
       x-stackql-method: cancel_component_deployment
       x-stackql-verb: EXEC
   /CancelEnvironmentDeployment:
@@ -131,7 +131,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CancelEnvironmentDeploymentOutput'
-      x-stackql-resource: environments
+      x-stackql-resource: deployments
       x-stackql-method: cancel_environment_deployment
       x-stackql-verb: EXEC
   /CancelServiceInstanceDeployment:
@@ -176,7 +176,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CancelServiceInstanceDeploymentOutput'
-      x-stackql-resource: service_instances
+      x-stackql-resource: deployments
       x-stackql-method: cancel_service_instance_deployment
       x-stackql-verb: EXEC
   /CancelServicePipelineDeployment:
@@ -217,7 +217,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CancelServicePipelineDeploymentOutput'
-      x-stackql-resource: services
+      x-stackql-resource: deployments
       x-stackql-method: cancel_service_pipeline_deployment
       x-stackql-verb: EXEC
   /CreateComponent:
@@ -1847,7 +1847,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetRepositorySyncStatusOutput'
-      x-stackql-resource: repository_sync_status
+      x-stackql-resource: repository_sync_statuses
       x-stackql-method: get_repository_sync_status
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.latestSync
@@ -2005,7 +2005,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetServiceInstanceSyncStatusOutput'
-      x-stackql-resource: service_instance_sync_status
+      x-stackql-resource: service_instance_sync_statuses
       x-stackql-method: get_service_instance_sync_status
       x-stackql-verb: SELECT
   /GetServiceSyncBlockerSummary:
@@ -2251,7 +2251,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetTemplateSyncStatusOutput'
-      x-stackql-resource: template_sync_status
+      x-stackql-resource: template_sync_statuses
       x-stackql-method: get_template_sync_status
       x-stackql-verb: SELECT
   /ListComponentOutputs:
@@ -3312,11 +3312,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/NotifyResourceDeploymentStatusChangeOutput'
-      x-stackql-resource: resource_deployment_status_change
+      x-stackql-resource: resource_deployment_status_changes
       x-stackql-method: notify_resource_deployment_status_change
       x-stackql-verb: EXEC
   /RejectEnvironmentAccountConnection:
@@ -3355,7 +3351,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RejectEnvironmentAccountConnectionOutput'
-      x-stackql-resource: environments
+      x-stackql-resource: environment_account_connections
       x-stackql-method: reject_environment_account_connection
       x-stackql-verb: EXEC
   /TagResource:
@@ -3392,10 +3388,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceOutput'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -3433,10 +3425,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceOutput'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -7029,8 +7017,6 @@ components:
       type: string
       minLength: 0
       maxLength: 5000
-    NotifyResourceDeploymentStatusChangeOutput:
-      type: object
     RejectEnvironmentAccountConnectionOutput:
       type: object
       properties:
@@ -7039,14 +7025,10 @@ components:
           description: The environment connection account detail data that's returned by Proton.
       required:
       - environmentAccountConnection
-    TagResourceOutput:
-      type: object
     TagKeyList:
       type: array
       items:
         $ref: '#/components/schemas/TagKey'
-    UntagResourceOutput:
-      type: object
     Boolean:
       type: boolean
     UpdateAccountSettingsOutput:

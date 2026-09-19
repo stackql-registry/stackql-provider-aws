@@ -84,6 +84,11 @@ The following fields are returned by `SELECT` queries:
     <td><code>array</code></td>
     <td>Information about a tag.</td>
 </tr>
+<tr>
+    <td><CopyableCode code="total_prefix_pool_allocations" /></td>
+    <td><code>integer</code></td>
+    <td>The total number of inbound route prefixes allocated to the attachments on the Direct Connect gateway. The count combines the IPv4 and IPv6 address families.</td>
+</tr>
 </tbody>
 </table>
 </TabItem>
@@ -183,7 +188,8 @@ direct_connect_gateway_name,
 direct_connect_gateway_state,
 owner_account,
 state_change_error,
-tags
+tags,
+total_prefix_pool_allocations
 FROM aws.directconnect.direct_connect_gateways
 WHERE region = '{{ region }}' -- required
 ;

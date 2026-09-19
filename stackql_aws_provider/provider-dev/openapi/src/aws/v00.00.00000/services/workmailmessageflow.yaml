@@ -59,10 +59,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/PutRawMessageContentResponse"
 components:
   parameters:
     X-Amz-Content-Sha256:
@@ -164,13 +160,11 @@ components:
       minLength: 1
       maxLength: 1024
       pattern: .+
-    PutRawMessageContentResponse:
-      type: object
   x-stackQL-resources:
-    raw_message_contents:
-      id: aws.workmailmessageflow.raw_message_contents
-      name: raw_message_contents
-      title: raw_message_contents
+    raw_message_content:
+      id: aws.workmailmessageflow.raw_message_content
+      name: raw_message_content
+      title: raw_message_content
       methods:
         get_raw_message_content:
           operation:
@@ -183,7 +177,6 @@ components:
             $ref: "#/paths/~1messages~1{message_id}/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -191,9 +184,9 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/raw_message_contents/methods/get_raw_message_content"
+          - $ref: "#/components/x-stackQL-resources/raw_message_content/methods/get_raw_message_content"
         insert: []
         update: []
         replace:
-          - $ref: "#/components/x-stackQL-resources/raw_message_contents/methods/put_raw_message_content"
+          - $ref: "#/components/x-stackQL-resources/raw_message_content/methods/put_raw_message_content"
         delete: []

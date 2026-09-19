@@ -55,10 +55,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/AddApplicationCloudWatchLoggingOptionResponse"
   /AddApplicationInput:
     post:
       operationId: AddApplicationInput
@@ -96,10 +92,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/AddApplicationInputResponse"
   /AddApplicationInputProcessingConfiguration:
     post:
       operationId: AddApplicationInputProcessingConfiguration
@@ -141,10 +133,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/AddApplicationInputProcessingConfigurationResponse"
   /AddApplicationOutput:
     post:
       operationId: AddApplicationOutput
@@ -182,10 +170,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/AddApplicationOutputResponse"
   /AddApplicationReferenceDataSource:
     post:
       operationId: AddApplicationReferenceDataSource
@@ -223,10 +207,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/AddApplicationReferenceDataSourceResponse"
   /CreateApplication:
     post:
       operationId: CreateApplication
@@ -311,10 +291,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteApplicationResponse"
   /DeleteApplicationCloudWatchLoggingOption:
     post:
       operationId: DeleteApplicationCloudWatchLoggingOption
@@ -352,10 +328,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteApplicationCloudWatchLoggingOptionResponse"
   /DeleteApplicationInputProcessingConfiguration:
     post:
       operationId: DeleteApplicationInputProcessingConfiguration
@@ -393,10 +365,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteApplicationInputProcessingConfigurationResponse"
   /DeleteApplicationOutput:
     post:
       operationId: DeleteApplicationOutput
@@ -434,10 +402,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteApplicationOutputResponse"
   /DeleteApplicationReferenceDataSource:
     post:
       operationId: DeleteApplicationReferenceDataSource
@@ -475,10 +439,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteApplicationReferenceDataSourceResponse"
   /DescribeApplication:
     post:
       operationId: DescribeApplication
@@ -655,10 +615,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/StartApplicationResponse"
   /StopApplication:
     post:
       operationId: StopApplication
@@ -688,10 +644,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/StopApplicationResponse"
   /TagResource:
     post:
       operationId: TagResource
@@ -724,10 +676,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TagResourceResponse"
   /UntagResource:
     post:
       operationId: UntagResource
@@ -761,10 +709,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UntagResourceResponse"
   /UpdateApplication:
     post:
       operationId: UpdateApplication
@@ -802,10 +746,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateApplicationResponse"
 components:
   parameters:
     X-Amz-Content-Sha256:
@@ -884,8 +824,6 @@ components:
       minLength: 1
       maxLength: 2048
       pattern: arn:aws:iam::\d{12}:role/?[a-zA-Z_0-9+=,.@\-_/]+
-    AddApplicationCloudWatchLoggingOptionResponse:
-      type: object
     Input:
       description: When you configure the application input, you specify the streaming source, the in-application stream name that is created, and the mapping between the two. For more information, see Configuring Application Input.
       type: object
@@ -1083,15 +1021,11 @@ components:
     RecordColumnSqlType:
       type: string
       minLength: 1
-    AddApplicationInputResponse:
-      type: object
     Id:
       type: string
       minLength: 1
       maxLength: 50
       pattern: "[a-zA-Z0-9_.-]+"
-    AddApplicationInputProcessingConfigurationResponse:
-      type: object
     Output:
       description: Describes application output configuration in which you identify an in-application stream and a destination where you want the in-application stream data to be written. The destination can be an Amazon Kinesis stream or an Amazon Kinesis Firehose delivery stream. For limits on how many destinations an application can write and other limitations, see Limits.
       type: object
@@ -1162,8 +1096,6 @@ components:
           description: Specifies the format of the records on the output stream.
       required:
         - RecordFormatType
-    AddApplicationOutputResponse:
-      type: object
     ReferenceDataSource:
       description: Describes the reference data source by providing the source information (S3 bucket name and object key name), the resulting in-application table name that is created, and the necessary schema to map the data elements in the Amazon S3 object to the in-application table.
       type: object
@@ -1210,8 +1142,6 @@ components:
       type: string
       minLength: 1
       maxLength: 1024
-    AddApplicationReferenceDataSourceResponse:
-      type: object
     ApplicationDescription:
       type: string
       minLength: 0
@@ -1294,16 +1224,6 @@ components:
     Timestamp:
       type: string
       format: date-time
-    DeleteApplicationResponse:
-      type: object
-    DeleteApplicationCloudWatchLoggingOptionResponse:
-      type: object
-    DeleteApplicationInputProcessingConfigurationResponse:
-      type: object
-    DeleteApplicationOutputResponse:
-      type: object
-    DeleteApplicationReferenceDataSourceResponse:
-      type: object
     DescribeApplicationResponse:
       type: object
       properties:
@@ -1667,18 +1587,10 @@ components:
       required:
         - Id
         - InputStartingPositionConfiguration
-    StartApplicationResponse:
-      type: object
-    StopApplicationResponse:
-      type: object
-    TagResourceResponse:
-      type: object
     TagKeys:
       type: array
       items:
         $ref: "#/components/schemas/TagKey"
-    UntagResourceResponse:
-      type: object
     ApplicationUpdate:
       description: Describes updates to apply to an existing Amazon Kinesis Analytics application.
       type: object
@@ -1900,8 +1812,6 @@ components:
           description: "IAM ARN of the role to use to send application messages. Note: To write application messages to CloudWatch, the IAM role used must have the PutLogEvents policy action enabled."
       required:
         - CloudWatchLoggingOptionId
-    UpdateApplicationResponse:
-      type: object
   x-stackQL-resources:
     applications:
       id: aws.kinesisanalytics.applications
@@ -1913,7 +1823,6 @@ components:
             $ref: "#/paths/~1AddApplicationCloudWatchLoggingOption/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -1926,7 +1835,6 @@ components:
             $ref: "#/paths/~1AddApplicationInput/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -1939,7 +1847,6 @@ components:
             $ref: "#/paths/~1AddApplicationInputProcessingConfiguration/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -1952,7 +1859,6 @@ components:
             $ref: "#/paths/~1AddApplicationOutput/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -1965,7 +1871,6 @@ components:
             $ref: "#/paths/~1AddApplicationReferenceDataSource/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -1991,7 +1896,6 @@ components:
             $ref: "#/paths/~1DeleteApplication/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -2004,7 +1908,6 @@ components:
             $ref: "#/paths/~1DeleteApplicationCloudWatchLoggingOption/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -2017,7 +1920,6 @@ components:
             $ref: "#/paths/~1DeleteApplicationInputProcessingConfiguration/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -2030,7 +1932,6 @@ components:
             $ref: "#/paths/~1DeleteApplicationOutput/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -2043,7 +1944,6 @@ components:
             $ref: "#/paths/~1DeleteApplicationReferenceDataSource/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -2083,7 +1983,6 @@ components:
             $ref: "#/paths/~1StartApplication/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -2096,7 +1995,6 @@ components:
             $ref: "#/paths/~1StopApplication/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -2109,7 +2007,6 @@ components:
             $ref: "#/paths/~1UpdateApplication/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -2124,18 +2021,41 @@ components:
         insert:
           - $ref: "#/components/x-stackQL-resources/applications/methods/create_application"
         update:
+          - $ref: "#/components/x-stackQL-resources/applications/methods/update_application"
           - $ref: "#/components/x-stackQL-resources/applications/methods/add_application_input_processing_configuration"
           - $ref: "#/components/x-stackQL-resources/applications/methods/add_application_cloud_watch_logging_option"
           - $ref: "#/components/x-stackQL-resources/applications/methods/add_application_input"
           - $ref: "#/components/x-stackQL-resources/applications/methods/add_application_output"
           - $ref: "#/components/x-stackQL-resources/applications/methods/add_application_reference_data_source"
-          - $ref: "#/components/x-stackQL-resources/applications/methods/update_application"
         delete:
+          - $ref: "#/components/x-stackQL-resources/applications/methods/delete_application"
           - $ref: "#/components/x-stackQL-resources/applications/methods/delete_application_cloud_watch_logging_option"
           - $ref: "#/components/x-stackQL-resources/applications/methods/delete_application_input_processing_configuration"
           - $ref: "#/components/x-stackQL-resources/applications/methods/delete_application_output"
           - $ref: "#/components/x-stackQL-resources/applications/methods/delete_application_reference_data_source"
-          - $ref: "#/components/x-stackQL-resources/applications/methods/delete_application"
+    input_schemas:
+      id: aws.kinesisanalytics.input_schemas
+      name: input_schemas
+      title: input_schemas
+      methods:
+        discover_input_schema:
+          operation:
+            $ref: "#/paths/~1DiscoverInputSchema/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
     tags:
       id: aws.kinesisanalytics.tags
       name: tags
@@ -2159,7 +2079,6 @@ components:
             $ref: "#/paths/~1TagResource/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -2172,7 +2091,6 @@ components:
             $ref: "#/paths/~1UntagResource/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1

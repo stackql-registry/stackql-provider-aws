@@ -112,7 +112,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-agent_space_id">
     <td><CopyableCode code="agent_space_id" /></td>
     <td><code>string</code></td>
-    <td></td>
+    <td>The unique identifier for the agent space where the chat will be created.</td>
 </tr>
 <tr id="parameter-region">
     <td><CopyableCode code="region" /></td>

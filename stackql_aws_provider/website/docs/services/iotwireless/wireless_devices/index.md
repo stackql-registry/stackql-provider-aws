@@ -212,6 +212,13 @@ The following methods are available for this resource:
     <td></td>
     <td>Start import task for provisioning Sidewalk devices in bulk using an S3 CSV file.</td>
 </tr>
+<tr>
+    <td><a href="#test_wireless_device"><CopyableCode code="test_wireless_device" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-id"><code>id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Simulates a provisioned device by sending an uplink data payload of Hello.</td>
+</tr>
 </tbody>
 </table>
 
@@ -231,7 +238,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-id">
     <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
-    <td>The ID of the resource to update.</td>
+    <td>The ID of the wireless device to test.</td>
 </tr>
 <tr id="parameter-identifier">
     <td><CopyableCode code="identifier" /></td>
@@ -569,7 +576,8 @@ AND WirelessDeviceType = '{{ WirelessDeviceType }}'
     defaultValue="disassociate_wireless_device_from_thing"
     values={[
         { label: 'disassociate_wireless_device_from_thing', value: 'disassociate_wireless_device_from_thing' },
-        { label: 'start_wireless_device_import_task', value: 'start_wireless_device_import_task' }
+        { label: 'start_wireless_device_import_task', value: 'start_wireless_device_import_task' },
+        { label: 'test_wireless_device', value: 'test_wireless_device' }
     ]}
 >
 <TabItem value="disassociate_wireless_device_from_thing">
@@ -598,6 +606,17 @@ EXEC aws.iotwireless.wireless_devices.start_wireless_device_import_task
 "Positioning": "{{ Positioning }}", 
 "Sidewalk": "{{ Sidewalk }}"
 }'
+;
+```
+</TabItem>
+<TabItem value="test_wireless_device">
+
+Simulates a provisioned device by sending an uplink data payload of Hello.
+
+```sql
+EXEC aws.iotwireless.wireless_devices.test_wireless_device 
+@id='{{ id }}' --required, 
+@region='{{ region }}' --required
 ;
 ```
 </TabItem>

@@ -228,6 +228,20 @@ The following methods are available for this resource:
     <td></td>
     <td>Gets a list of the PII entity detection jobs that you have submitted.</td>
 </tr>
+<tr>
+    <td><a href="#start_pii_entities_detection_job"><CopyableCode code="start_pii_entities_detection_job" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-InputDataConfig"><code>InputDataConfig</code></a>, <a href="#parameter-OutputDataConfig"><code>OutputDataConfig</code></a>, <a href="#parameter-DataAccessRoleArn"><code>DataAccessRoleArn</code></a>, <a href="#parameter-LanguageCode"><code>LanguageCode</code></a></td>
+    <td></td>
+    <td>Starts an asynchronous PII entity detection job for a collection of documents.</td>
+</tr>
+<tr>
+    <td><a href="#stop_pii_entities_detection_job"><CopyableCode code="stop_pii_entities_detection_job" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-JobId"><code>JobId</code></a></td>
+    <td></td>
+    <td>Stops a PII entities detection job in progress.</td>
+</tr>
 </tbody>
 </table>
 
@@ -306,6 +320,54 @@ redaction_config,
 submit_time
 FROM aws.comprehend.pii_entities_detection_jobs
 WHERE region = '{{ region }}' -- required
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="start_pii_entities_detection_job"
+    values={[
+        { label: 'start_pii_entities_detection_job', value: 'start_pii_entities_detection_job' },
+        { label: 'stop_pii_entities_detection_job', value: 'stop_pii_entities_detection_job' }
+    ]}
+>
+<TabItem value="start_pii_entities_detection_job">
+
+Starts an asynchronous PII entity detection job for a collection of documents.
+
+```sql
+EXEC aws.comprehend.pii_entities_detection_jobs.start_pii_entities_detection_job 
+@region='{{ region }}' --required 
+@@json=
+'{
+"InputDataConfig": "{{ InputDataConfig }}", 
+"OutputDataConfig": "{{ OutputDataConfig }}", 
+"Mode": "{{ Mode }}", 
+"RedactionConfig": "{{ RedactionConfig }}", 
+"DataAccessRoleArn": "{{ DataAccessRoleArn }}", 
+"JobName": "{{ JobName }}", 
+"LanguageCode": "{{ LanguageCode }}", 
+"ClientRequestToken": "{{ ClientRequestToken }}", 
+"Tags": "{{ Tags }}"
+}'
+;
+```
+</TabItem>
+<TabItem value="stop_pii_entities_detection_job">
+
+Stops a PII entities detection job in progress.
+
+```sql
+EXEC aws.comprehend.pii_entities_detection_jobs.stop_pii_entities_detection_job 
+@region='{{ region }}' --required 
+@@json=
+'{
+"JobId": "{{ JobId }}"
+}'
 ;
 ```
 </TabItem>

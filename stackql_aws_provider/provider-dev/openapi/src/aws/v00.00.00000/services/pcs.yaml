@@ -229,10 +229,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteClusterResponse"
   /DeleteComputeNodeGroup:
     post:
       operationId: DeleteComputeNodeGroup
@@ -269,10 +265,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteComputeNodeGroupResponse"
   /DeleteQueue:
     post:
       operationId: DeleteQueue
@@ -309,10 +301,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteQueueResponse"
   /GetCluster:
     post:
       operationId: GetCluster
@@ -635,10 +623,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TagResourceResponse"
   /UntagResource:
     post:
       operationId: UntagResource
@@ -672,10 +656,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UntagResourceResponse"
   /UpdateCluster:
     post:
       operationId: UpdateCluster
@@ -888,7 +868,7 @@ components:
           description: The software PCS uses to manage cluster scaling and job scheduling.
         version:
           $ref: "#/components/schemas/String"
-          description: "The version of the specified scheduling software that PCS uses to manage cluster scaling and job scheduling. For more information, see Slurm versions in PCS in the PCS User Guide. Valid Values: 24.11 | 25.05 | 25.11"
+          description: "The version of the specified scheduling software that PCS uses to manage cluster scaling and job scheduling. For more information, see Slurm versions in PCS in the PCS User Guide. Valid Values: 24.11 | 25.05 | 25.11 | 26.05"
       required:
         - type_
         - version
@@ -1134,7 +1114,7 @@ components:
           description: The software PCS uses to manage cluster scaling and job scheduling.
         version:
           $ref: "#/components/schemas/String"
-          description: "The version of the specified scheduling software that PCS uses to manage cluster scaling and job scheduling. You can update this version using the UpdateCluster API action. For more information, see Updating the scheduler version on a cluster and Slurm versions in PCS in the PCS User Guide. Valid Values: 23.11 | 24.05 | 24.11 | 25.05 | 25.11"
+          description: "The version of the specified scheduling software that PCS uses to manage cluster scaling and job scheduling. You can update this version using the UpdateCluster API action. For more information, see Updating the scheduler version on a cluster and Slurm versions in PCS in the PCS User Guide. Valid Values: 23.11 | 24.05 | 24.11 | 25.05 | 25.11 | 26.05"
       required:
         - type_
         - version
@@ -1379,10 +1359,21 @@ components:
         slurmCustomSettings:
           $ref: "#/components/schemas/SlurmCustomSettings"
           description: Additional Slurm-specific configuration that directly maps to Slurm settings.
+        gresCustomSettings:
+          $ref: "#/components/schemas/GresCustomSettings"
+          description: The additional Slurm gres.conf records for the compute node group. Each item is a map of gres.conf attribute names to values that describes one gres.conf record, such as a GPU topology, MIG, MPS, or custom GRES entry. PCS adds the NodeName= prefix and merges these records with the GPU record it derives from the instance type.
     ComputeNodeGroupSlurmConfigurationRequestScaleDownIdleTimeInSecondsInteger:
       type: integer
       minimum: -1
       maximum: 10000000
+    GresCustomSettings:
+      type: array
+      items:
+        $ref: "#/components/schemas/GresCustomSettingMap"
+    GresCustomSettingMap:
+      description: 'A single Slurm gres.conf record, expressed as a map of gres.conf attribute names to their values. For example, {"Name": "gpu", "Type": "a100", "File": "/dev/nvidia[0-7]"} or {"AutoDetect": "nvml"}. PCS adds the NodeName= prefix for the compute node group. PCS supports a subset of gres.conf settings. For more information, see Configuring custom GRES settings in PCS in the PCS User Guide.'
+      type: object
+      properties: {}
     NodeLifecycleActionsRequest:
       description: The lifecycle actions to configure on a compute node group when you create it. Lifecycle actions define scripts that PCS runs on compute nodes at specific stages of their lifecycle.
       type: object
@@ -1607,6 +1598,9 @@ components:
         slurmCustomSettings:
           $ref: "#/components/schemas/SlurmCustomSettings"
           description: Additional Slurm-specific configuration that directly maps to Slurm settings.
+        gresCustomSettings:
+          $ref: "#/components/schemas/GresCustomSettings"
+          description: The additional Slurm gres.conf records for the compute node group. Each item is a map of gres.conf attribute names to values that describes one gres.conf record, such as a GPU topology, MIG, MPS, or custom GRES entry. PCS adds the NodeName= prefix and merges these records with the GPU record it derives from the instance type.
     ComputeNodeGroupSlurmConfigurationScaleDownIdleTimeInSecondsInteger:
       type: integer
       minimum: -1
@@ -1714,18 +1708,12 @@ components:
         slurmCustomSettings:
           $ref: "#/components/schemas/SlurmCustomSettings"
           description: Additional Slurm-specific configuration that directly maps to Slurm settings.
-    DeleteClusterResponse:
-      type: object
     ComputeNodeGroupIdentifier:
       type: string
       pattern: (pcs_[a-zA-Z0-9]+|[A-Za-z][A-Za-z0-9-]{2,25})
-    DeleteComputeNodeGroupResponse:
-      type: object
     QueueIdentifier:
       type: string
       pattern: (pcs_[a-zA-Z0-9]+|[A-Za-z][A-Za-z0-9-]{2,25})
-    DeleteQueueResponse:
-      type: object
     GetClusterResponse:
       type: object
       properties:
@@ -1933,8 +1921,6 @@ components:
         - endpoints
     SharedSecret:
       type: string
-    TagResourceResponse:
-      type: object
     TagKeys:
       type: array
       items:
@@ -1943,8 +1929,6 @@ components:
       type: string
       minLength: 1
       maxLength: 128
-    UntagResourceResponse:
-      type: object
     UpdateClusterSlurmConfigurationRequest:
       description: Additional options related to the Slurm scheduler.
       type: object
@@ -1998,7 +1982,7 @@ components:
       properties:
         version:
           $ref: "#/components/schemas/String"
-          description: "The scheduler version to update the cluster to. You can only update to a newer version. For more information about supported versions and update paths, see Updating the scheduler version on a cluster in the PCS User Guide. Valid Values: 24.05 | 24.11 | 25.05 | 25.11"
+          description: "The scheduler version to update the cluster to. You can only update to a newer version. For more information about supported versions and update paths, see Updating the scheduler version on a cluster in the PCS User Guide. Valid Values: 24.05 | 24.11 | 25.05 | 25.11 | 26.05"
       required:
         - version
     UpdateClusterResponse:
@@ -2016,6 +2000,9 @@ components:
         slurmCustomSettings:
           $ref: "#/components/schemas/SlurmCustomSettings"
           description: Additional Slurm-specific configuration that directly maps to Slurm settings.
+        gresCustomSettings:
+          $ref: "#/components/schemas/GresCustomSettings"
+          description: The additional Slurm gres.conf records for the compute node group. Each item is a map of gres.conf attribute names to values that describes one gres.conf record, such as a GPU topology, MIG, MPS, or custom GRES entry. PCS adds the NodeName= prefix and merges these records with the GPU record it derives from the instance type.
     UpdateComputeNodeGroupSlurmConfigurationRequestScaleDownIdleTimeInSecondsInteger:
       type: integer
       minimum: -1
@@ -2073,7 +2060,6 @@ components:
             $ref: "#/paths/~1DeleteCluster/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.0
@@ -2162,7 +2148,6 @@ components:
             $ref: "#/paths/~1DeleteComputeNodeGroup/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.0
@@ -2265,7 +2250,6 @@ components:
             $ref: "#/paths/~1DeleteQueue/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.0
@@ -2354,7 +2338,6 @@ components:
             $ref: "#/paths/~1TagResource/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.0
@@ -2367,7 +2350,6 @@ components:
             $ref: "#/paths/~1UntagResource/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.0

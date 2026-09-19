@@ -987,10 +987,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteAnalysisTemplateOutput"
     get:
       operationId: GetAnalysisTemplate
       description: Retrieves an analysis template.
@@ -1060,10 +1056,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteCollaborationOutput"
     get:
       operationId: GetCollaboration
       description: Returns metadata about a collaboration.
@@ -1131,10 +1123,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteConfiguredAudienceModelAssociationOutput"
     get:
       operationId: GetConfiguredAudienceModelAssociation
       description: Returns information about a configured audience model association.
@@ -1206,10 +1194,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteConfiguredTableOutput"
     get:
       operationId: GetConfiguredTable
       description: Retrieves a configured table.
@@ -1283,10 +1267,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteConfiguredTableAnalysisRuleOutput"
     get:
       operationId: GetConfiguredTableAnalysisRule
       description: Retrieves a configured table analysis rule.
@@ -1364,10 +1344,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteConfiguredTableAssociationOutput"
     get:
       operationId: GetConfiguredTableAssociation
       description: Retrieves a configured table association.
@@ -1451,10 +1427,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteConfiguredTableAssociationAnalysisRuleOutput"
     get:
       operationId: GetConfiguredTableAssociationAnalysisRule
       description: Retrieves the analysis rule for a configured table association.
@@ -1544,10 +1516,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteIdMappingTableOutput"
     get:
       operationId: GetIdMappingTable
       description: Retrieves an ID mapping table.
@@ -1625,10 +1593,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteIdNamespaceAssociationOutput"
     get:
       operationId: GetIdNamespaceAssociation
       description: Retrieves an ID namespace association.
@@ -1708,10 +1672,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteIntermediateTableOutput"
     get:
       operationId: GetIntermediateTable
       description: Retrieves an intermediate table. Returns the full details of the intermediate table, including schema, table dependencies, inherited constraints, child resources, and status. Only the intermediate table owner can call this operation.
@@ -1797,10 +1757,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteIntermediateTableAnalysisRuleOutput"
     get:
       operationId: GetIntermediateTableAnalysisRule
       description: Retrieves the analysis rule for an intermediate table.
@@ -1890,10 +1846,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteMemberOutput"
   /memberships/{membership_identifier}:
     delete:
       operationId: DeleteMembership
@@ -1908,10 +1860,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteMembershipOutput"
     get:
       operationId: GetMembership
       description: Retrieves a specified membership for an identifier.
@@ -1983,10 +1931,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeletePrivacyBudgetTemplateOutput"
     get:
       operationId: GetPrivacyBudgetTemplate
       description: Returns details for a specified privacy budget template.
@@ -2073,10 +2017,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DisallowIntermediateTableOutput"
   /memberships/{membership_identifier}/analysislogexports/{analysis_log_export_identifier}:
     get:
       operationId: GetAnalysisLogExport
@@ -2995,10 +2935,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TagResourceOutput"
     delete:
       operationId: UntagResource
       description: Removes a tag or list of tags from a resource.
@@ -3018,10 +2954,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UntagResourceOutput"
   /memberships/{membership_identifier}/idmappingtables/{id_mapping_table_identifier}/populate:
     post:
       operationId: PopulateIdMappingTable
@@ -6962,38 +6894,6 @@ components:
       required:
         - budgetParameters
         - resourceArn
-    DeleteAnalysisTemplateOutput:
-      type: object
-    DeleteCollaborationOutput:
-      type: object
-    DeleteConfiguredAudienceModelAssociationOutput:
-      type: object
-    DeleteConfiguredTableOutput:
-      description: The empty output for a successful deletion.
-      type: object
-    DeleteConfiguredTableAnalysisRuleOutput:
-      description: An empty response that indicates a successful delete.
-      type: object
-    DeleteConfiguredTableAssociationOutput:
-      type: object
-    DeleteConfiguredTableAssociationAnalysisRuleOutput:
-      type: object
-    DeleteIdMappingTableOutput:
-      type: object
-    DeleteIdNamespaceAssociationOutput:
-      type: object
-    DeleteIntermediateTableOutput:
-      type: object
-    DeleteIntermediateTableAnalysisRuleOutput:
-      type: object
-    DeleteMemberOutput:
-      type: object
-    DeleteMembershipOutput:
-      type: object
-    DeletePrivacyBudgetTemplateOutput:
-      type: object
-    DisallowIntermediateTableOutput:
-      type: object
     AnalysisLogExportIdentifier:
       type: string
       minLength: 36
@@ -9687,8 +9587,6 @@ components:
           description: The protected query.
       required:
         - protectedQuery
-    TagResourceOutput:
-      type: object
     TagKeys:
       type: array
       items:
@@ -9697,8 +9595,6 @@ components:
       type: string
       minLength: 1
       maxLength: 128
-    UntagResourceOutput:
-      type: object
     UpdateAnalysisTemplateOutput:
       type: object
       properties:
@@ -9944,8 +9840,8 @@ components:
                 location: body
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/collaboration_analysis_templates/methods/batch_get_collaboration_analysis_template"
           - $ref: "#/components/x-stackQL-resources/collaboration_analysis_templates/methods/get_collaboration_analysis_template"
+          - $ref: "#/components/x-stackQL-resources/collaboration_analysis_templates/methods/batch_get_collaboration_analysis_template"
           - $ref: "#/components/x-stackQL-resources/collaboration_analysis_templates/methods/list_collaboration_analysis_templates"
         insert: []
         update: []
@@ -9992,8 +9888,8 @@ components:
                 location: body
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/schemas/methods/batch_get_schema"
           - $ref: "#/components/x-stackQL-resources/schemas/methods/get_schema"
+          - $ref: "#/components/x-stackQL-resources/schemas/methods/batch_get_schema"
           - $ref: "#/components/x-stackQL-resources/schemas/methods/list_schemas"
         insert: []
         update: []
@@ -10066,7 +9962,6 @@ components:
             $ref: "#/paths/~1memberships~1{membership_identifier}~1analysistemplates~1{analysis_template_identifier}/delete"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
         get_analysis_template:
           operation:
             $ref: "#/paths/~1memberships~1{membership_identifier}~1analysistemplates~1{analysis_template_identifier}/get"
@@ -10133,7 +10028,6 @@ components:
             $ref: "#/paths/~1collaborations~1{collaboration_identifier}/delete"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
         get_collaboration:
           operation:
             $ref: "#/paths/~1collaborations~1{collaboration_identifier}/get"
@@ -10260,7 +10154,6 @@ components:
             $ref: "#/paths/~1memberships~1{membership_identifier}~1configuredaudiencemodelassociations~1{configured_audience_model_association_identifier}/delete"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
         get_configured_audience_model_association:
           operation:
             $ref: "#/paths/~1memberships~1{membership_identifier}~1configuredaudiencemodelassociations~1{configured_audience_model_association_identifier}/get"
@@ -10327,7 +10220,6 @@ components:
             $ref: "#/paths/~1configuredTables~1{configured_table_identifier}/delete"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
         get_configured_table:
           operation:
             $ref: "#/paths/~1configuredTables~1{configured_table_identifier}/get"
@@ -10377,7 +10269,6 @@ components:
             $ref: "#/paths/~1configuredTables~1{configured_table_identifier}~1analysisRule~1{analysis_rule_type}/delete"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
         get_configured_table_analysis_rule:
           operation:
             $ref: "#/paths/~1configuredTables~1{configured_table_identifier}~1analysisRule~1{analysis_rule_type}/get"
@@ -10443,7 +10334,6 @@ components:
             $ref: "#/paths/~1memberships~1{membership_identifier}~1configuredTableAssociations~1{configured_table_association_identifier}/delete"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
         get_configured_table_association:
           operation:
             $ref: "#/paths/~1memberships~1{membership_identifier}~1configuredTableAssociations~1{configured_table_association_identifier}/get"
@@ -10493,7 +10383,6 @@ components:
             $ref: "#/paths/~1memberships~1{membership_identifier}~1configuredTableAssociations~1{configured_table_association_identifier}~1analysisRule~1{analysis_rule_type}/delete"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
         get_configured_table_association_analysis_rule:
           operation:
             $ref: "#/paths/~1memberships~1{membership_identifier}~1configuredTableAssociations~1{configured_table_association_identifier}~1analysisRule~1{analysis_rule_type}/get"
@@ -10559,7 +10448,6 @@ components:
             $ref: "#/paths/~1memberships~1{membership_identifier}~1idmappingtables~1{id_mapping_table_identifier}/delete"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
         get_id_mapping_table:
           operation:
             $ref: "#/paths/~1memberships~1{membership_identifier}~1idmappingtables~1{id_mapping_table_identifier}/get"
@@ -10637,7 +10525,6 @@ components:
             $ref: "#/paths/~1memberships~1{membership_identifier}~1idnamespaceassociations~1{id_namespace_association_identifier}/delete"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
         get_id_namespace_association:
           operation:
             $ref: "#/paths/~1memberships~1{membership_identifier}~1idnamespaceassociations~1{id_namespace_association_identifier}/get"
@@ -10704,7 +10591,6 @@ components:
             $ref: "#/paths/~1memberships~1{membership_identifier}~1intermediateTables~1{intermediate_table_identifier}/delete"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
         get_intermediate_table:
           operation:
             $ref: "#/paths/~1memberships~1{membership_identifier}~1intermediateTables~1{intermediate_table_identifier}/get"
@@ -10728,7 +10614,6 @@ components:
             $ref: "#/paths/~1memberships~1{membership_identifier}~1disallowIntermediateTable/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -10776,7 +10661,6 @@ components:
             $ref: "#/paths/~1memberships~1{membership_identifier}~1intermediateTables~1{intermediate_table_identifier}~1analysisRule~1{analysis_rule_type}/delete"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
         get_intermediate_table_analysis_rule:
           operation:
             $ref: "#/paths/~1memberships~1{membership_identifier}~1intermediateTables~1{intermediate_table_identifier}~1analysisRule~1{analysis_rule_type}/get"
@@ -10842,7 +10726,6 @@ components:
             $ref: "#/paths/~1memberships~1{membership_identifier}/delete"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
         get_membership:
           operation:
             $ref: "#/paths/~1memberships~1{membership_identifier}/get"
@@ -10953,7 +10836,6 @@ components:
             $ref: "#/paths/~1memberships~1{membership_identifier}~1privacybudgettemplates~1{privacy_budget_template_identifier}/delete"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
         get_privacy_budget_template:
           operation:
             $ref: "#/paths/~1memberships~1{membership_identifier}~1privacybudgettemplates~1{privacy_budget_template_identifier}/get"
@@ -10992,7 +10874,6 @@ components:
             $ref: "#/paths/~1collaborations~1{collaboration_identifier}~1member~1{account_id}/delete"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
         list_members:
           operation:
             $ref: "#/paths/~1collaborations~1{collaboration_identifier}~1members/get"
@@ -11357,7 +11238,6 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -11368,7 +11248,6 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
       sqlVerbs:

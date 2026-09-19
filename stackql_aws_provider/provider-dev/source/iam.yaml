@@ -110,7 +110,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/AcquireRoleOutputDisplay'
-      x-stackql-resource: acquire_role
+      x-stackql-resource: roles
       x-stackql-method: acquire_role
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: AcquireRoleOutputDisplay
@@ -135,7 +135,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/AcquireRoleRequest'
-      x-stackql-resource: acquire_role
+      x-stackql-resource: roles
       x-stackql-method: acquire_role
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: AcquireRoleOutputDisplay
@@ -571,7 +571,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: change_password
+      x-stackql-resource: passwords
       x-stackql-method: change_password
       x-stackql-verb: EXEC
     post:
@@ -590,7 +590,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/ChangePasswordRequest'
-      x-stackql-resource: change_password
+      x-stackql-resource: passwords
       x-stackql-method: change_password
       x-stackql-verb: EXEC
   /?Action=CreateAccessKey&Version=2010-05-08:
@@ -689,7 +689,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: account_alias
+      x-stackql-resource: account_aliases
       x-stackql-method: create_account_alias
       x-stackql-verb: INSERT
     post:
@@ -706,7 +706,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/CreateAccountAliasRequest'
-      x-stackql-resource: account_alias
+      x-stackql-resource: account_aliases
       x-stackql-method: create_account_alias
       x-stackql-verb: INSERT
   /?Action=CreateDelegationRequest&Version=2010-05-08:
@@ -1964,7 +1964,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: mfa_device
+      x-stackql-resource: mfa_devices
       x-stackql-method: deactivate_mfa_device
       x-stackql-verb: EXEC
     post:
@@ -1981,7 +1981,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/DeactivateMFADeviceRequest'
-      x-stackql-resource: mfa_device
+      x-stackql-resource: mfa_devices
       x-stackql-method: deactivate_mfa_device
       x-stackql-verb: EXEC
   /?Action=DeleteAccessKey&Version=2010-05-08:
@@ -2065,7 +2065,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: account_alias
+      x-stackql-resource: account_aliases
       x-stackql-method: delete_account_alias
       x-stackql-verb: DELETE
     post:
@@ -2082,7 +2082,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/DeleteAccountAliasRequest'
-      x-stackql-resource: account_alias
+      x-stackql-resource: account_aliases
       x-stackql-method: delete_account_alias
       x-stackql-verb: DELETE
   /?Action=DeleteAccountPasswordPolicy&Version=2010-05-08:
@@ -3330,7 +3330,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/DisableOrganizationsRootCredentialsManagementOutputDisplay'
-      x-stackql-resource: organizations_root_credentials_management
+      x-stackql-resource: organizations_root_credentials_managements
       x-stackql-method: disable_organizations_root_credentials_management
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: DisableOrganizationsRootCredentialsManagementOutputDisplay
@@ -3353,7 +3353,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/DisableOrganizationsRootCredentialsManagementRequest'
-      x-stackql-resource: organizations_root_credentials_management
+      x-stackql-resource: organizations_root_credentials_managements
       x-stackql-method: disable_organizations_root_credentials_management
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: DisableOrganizationsRootCredentialsManagementOutputDisplay
@@ -3426,7 +3426,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: outbound_web_identity_federation
+      x-stackql-resource: outbound_web_identity_federations
       x-stackql-method: disable_outbound_web_identity_federation
       x-stackql-verb: EXEC
     post:
@@ -3438,7 +3438,7 @@ paths:
         '200':
           description: Success
       parameters: []
-      x-stackql-resource: outbound_web_identity_federation
+      x-stackql-resource: outbound_web_identity_federations
       x-stackql-method: disable_outbound_web_identity_federation
       x-stackql-verb: EXEC
   /?Action=EnableMFADevice&Version=2010-05-08:
@@ -3494,7 +3494,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: mfa_device
+      x-stackql-resource: mfa_devices
       x-stackql-method: enable_mfa_device
       x-stackql-verb: EXEC
     post:
@@ -3510,7 +3510,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/EnableMFADeviceRequest'
-      x-stackql-resource: mfa_device
+      x-stackql-resource: mfa_devices
       x-stackql-method: enable_mfa_device
       x-stackql-verb: EXEC
   /?Action=EnableOrganizationsRootCredentialsManagement&Version=2010-05-08:
@@ -3538,7 +3538,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/EnableOrganizationsRootCredentialsManagementOutputDisplay'
-      x-stackql-resource: organizations_root_credentials_management
+      x-stackql-resource: organizations_root_credentials_managements
       x-stackql-method: enable_organizations_root_credentials_management
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: EnableOrganizationsRootCredentialsManagementOutputDisplay
@@ -3564,7 +3564,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/EnableOrganizationsRootCredentialsManagementRequest'
-      x-stackql-resource: organizations_root_credentials_management
+      x-stackql-resource: organizations_root_credentials_managements
       x-stackql-method: enable_organizations_root_credentials_management
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: EnableOrganizationsRootCredentialsManagementOutputDisplay
@@ -3645,7 +3645,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/EnableOutboundWebIdentityFederationOutputDisplay'
-      x-stackql-resource: outbound_web_identity_federation
+      x-stackql-resource: outbound_web_identity_federations
       x-stackql-method: enable_outbound_web_identity_federation
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: EnableOutboundWebIdentityFederationOutputDisplay
@@ -3663,7 +3663,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/EnableOutboundWebIdentityFederationOutputDisplay'
       parameters: []
-      x-stackql-resource: outbound_web_identity_federation
+      x-stackql-resource: outbound_web_identity_federations
       x-stackql-method: enable_outbound_web_identity_federation
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: EnableOutboundWebIdentityFederationOutputDisplay
@@ -3689,7 +3689,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/GenerateCredentialReportOutputDisplay'
-      x-stackql-resource: credential_report
+      x-stackql-resource: credential_reports
       x-stackql-method: generate_credential_report
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: GenerateCredentialReportOutputDisplay
@@ -3706,7 +3706,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/GenerateCredentialReportOutputDisplay'
       parameters: []
-      x-stackql-resource: credential_report
+      x-stackql-resource: credential_reports
       x-stackql-method: generate_credential_report
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: GenerateCredentialReportOutputDisplay
@@ -3802,7 +3802,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/GenerateOrganizationsAccessReportOutputDisplay'
-      x-stackql-resource: organizations_access_report
+      x-stackql-resource: organizations_access_reports
       x-stackql-method: generate_organizations_access_report
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: GenerateOrganizationsAccessReportOutputDisplay
@@ -3877,7 +3877,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/GenerateOrganizationsAccessReportRequest'
-      x-stackql-resource: organizations_access_report
+      x-stackql-resource: organizations_access_reports
       x-stackql-method: generate_organizations_access_report
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: GenerateOrganizationsAccessReportOutputDisplay
@@ -4313,7 +4313,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/GetContextKeysForCustomPolicyOutputDisplay'
-      x-stackql-resource: context_keys_for_custom_policies
+      x-stackql-resource: context_keys
       x-stackql-method: get_context_keys_for_custom_policy
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: GetContextKeysForCustomPolicyOutputDisplay
@@ -4347,7 +4347,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/GetContextKeysForCustomPolicyRequest'
-      x-stackql-resource: context_keys_for_custom_policies
+      x-stackql-resource: context_keys
       x-stackql-method: get_context_keys_for_custom_policy
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: GetContextKeysForCustomPolicyOutputDisplay
@@ -4410,7 +4410,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/GetContextKeysForPrincipalPolicyOutputDisplay'
-      x-stackql-resource: context_keys_for_principal_policies
+      x-stackql-resource: context_keys
       x-stackql-method: get_context_keys_for_principal_policy
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: GetContextKeysForPrincipalPolicyOutputDisplay
@@ -4448,7 +4448,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/GetContextKeysForPrincipalPolicyRequest'
-      x-stackql-resource: context_keys_for_principal_policies
+      x-stackql-resource: context_keys
       x-stackql-method: get_context_keys_for_principal_policy
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: GetContextKeysForPrincipalPolicyOutputDisplay
@@ -5150,7 +5150,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/GetOutboundWebIdentityFederationInfoOutputDisplay'
-      x-stackql-resource: outbound_web_identity_federation_infos
+      x-stackql-resource: outbound_web_identity_federation_info
       x-stackql-method: get_outbound_web_identity_federation_info
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: GetOutboundWebIdentityFederationInfoOutputDisplay
@@ -5169,7 +5169,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/GetOutboundWebIdentityFederationInfoOutputDisplay'
       parameters: []
-      x-stackql-resource: outbound_web_identity_federation_infos
+      x-stackql-resource: outbound_web_identity_federation_info
       x-stackql-method: get_outbound_web_identity_federation_info
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: GetOutboundWebIdentityFederationInfoOutputDisplay
@@ -5948,7 +5948,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/GetServiceLinkedRoleDeletionStatusOutputDisplay'
-      x-stackql-resource: service_linked_role_deletion_status
+      x-stackql-resource: service_linked_role_deletion_statuses
       x-stackql-method: get_service_linked_role_deletion_status
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: GetServiceLinkedRoleDeletionStatusOutputDisplay
@@ -5972,7 +5972,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/GetServiceLinkedRoleDeletionStatusRequest'
-      x-stackql-resource: service_linked_role_deletion_status
+      x-stackql-resource: service_linked_role_deletion_statuses
       x-stackql-method: get_service_linked_role_deletion_status
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: GetServiceLinkedRoleDeletionStatusOutputDisplay
@@ -6703,7 +6703,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/ListEntitiesForPolicyOutputDisplay'
-      x-stackql-resource: entities_for_policies
+      x-stackql-resource: entities
       x-stackql-method: list_entities_for_policy
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: ListEntitiesForPolicyOutputDisplay
@@ -6727,7 +6727,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/ListEntitiesForPolicyRequest'
-      x-stackql-resource: entities_for_policies
+      x-stackql-resource: entities
       x-stackql-method: list_entities_for_policy
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: ListEntitiesForPolicyOutputDisplay
@@ -6950,7 +6950,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/ListGroupsForUserOutputDisplay'
-      x-stackql-resource: groups_for_users
+      x-stackql-resource: groups
       x-stackql-method: list_groups_for_user
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: ListGroupsForUserOutputDisplay
@@ -6972,7 +6972,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/ListGroupsForUserRequest'
-      x-stackql-resource: groups_for_users
+      x-stackql-resource: groups
       x-stackql-method: list_groups_for_user
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: ListGroupsForUserOutputDisplay
@@ -7182,7 +7182,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/ListInstanceProfilesForRoleOutputDisplay'
-      x-stackql-resource: instance_profiles_for_roles
+      x-stackql-resource: instance_profiles
       x-stackql-method: list_instance_profiles_for_role
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: ListInstanceProfilesForRoleOutputDisplay
@@ -7205,7 +7205,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/ListInstanceProfilesForRoleRequest'
-      x-stackql-resource: instance_profiles_for_roles
+      x-stackql-resource: instance_profiles
       x-stackql-method: list_instance_profiles_for_role
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: ListInstanceProfilesForRoleOutputDisplay
@@ -7723,7 +7723,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/ListPoliciesGrantingServiceAccessOutputDisplay'
-      x-stackql-resource: policies_granting_service_access
+      x-stackql-resource: policies_granting_service_accesses
       x-stackql-method: list_policies_granting_service_access
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: ListPoliciesGrantingServiceAccessOutputDisplay
@@ -7758,7 +7758,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/ListPoliciesGrantingServiceAccessRequest'
-      x-stackql-resource: policies_granting_service_access
+      x-stackql-resource: policies_granting_service_accesses
       x-stackql-method: list_policies_granting_service_access
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: ListPoliciesGrantingServiceAccessOutputDisplay
@@ -9083,15 +9083,9 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/PutAccountPropertiesOutputDisplay'
       x-stackql-resource: account_properties
       x-stackql-method: put_account_properties
       x-stackql-verb: REPLACE
-      x-stackql-responseEnvelope: PutAccountPropertiesOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
     post:
       operationId: POST_PutAccountProperties
       description: Sets account-level properties for the caller's Amazon Web Services account. Account properties are configuration
@@ -9101,10 +9095,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/PutAccountPropertiesOutputDisplay'
       parameters: []
       requestBody:
         content:
@@ -9114,8 +9104,6 @@ paths:
       x-stackql-resource: account_properties
       x-stackql-method: put_account_properties
       x-stackql-verb: REPLACE
-      x-stackql-responseEnvelope: PutAccountPropertiesOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
   /?Action=PutGroupPolicy&Version=2010-05-08:
     parameters:
     - $ref: '#/components/parameters/X-Amz-Content-Sha256'
@@ -9783,7 +9771,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: users
+      x-stackql-resource: mfa_devices
       x-stackql-method: resync_mfa_device
       x-stackql-verb: EXEC
     post:
@@ -9800,7 +9788,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/ResyncMFADeviceRequest'
-      x-stackql-resource: users
+      x-stackql-resource: mfa_devices
       x-stackql-method: resync_mfa_device
       x-stackql-verb: EXEC
   /?Action=SendDelegationToken&Version=2010-05-08:
@@ -10145,7 +10133,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/SimulateCustomPolicyOutputDisplay'
-      x-stackql-resource: simulate_custom_policy
+      x-stackql-resource: policies
       x-stackql-method: simulate_custom_policy
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: SimulateCustomPolicyOutputDisplay
@@ -10180,7 +10168,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/SimulateCustomPolicyRequest'
-      x-stackql-resource: simulate_custom_policy
+      x-stackql-resource: policies
       x-stackql-method: simulate_custom_policy
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: SimulateCustomPolicyOutputDisplay
@@ -10377,7 +10365,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/SimulatePrincipalPolicyOutputDisplay'
-      x-stackql-resource: simulate_principal_policy
+      x-stackql-resource: policies
       x-stackql-method: simulate_principal_policy
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: SimulatePrincipalPolicyOutputDisplay
@@ -10419,7 +10407,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/SimulatePrincipalPolicyRequest'
-      x-stackql-resource: simulate_principal_policy
+      x-stackql-resource: policies
       x-stackql-method: simulate_principal_policy
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: SimulatePrincipalPolicyOutputDisplay
@@ -11971,25 +11959,15 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/UpdateRoleOutputDisplay'
       x-stackql-resource: roles
       x-stackql-method: update_role
       x-stackql-verb: UPDATE
-      x-stackql-responseEnvelope: UpdateRoleOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
     post:
       operationId: POST_UpdateRole
       description: Updates the description or maximum session duration setting of a role.
       responses:
         '200':
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/UpdateRoleOutputDisplay'
       parameters: []
       requestBody:
         content:
@@ -11999,8 +11977,6 @@ paths:
       x-stackql-resource: roles
       x-stackql-method: update_role
       x-stackql-verb: UPDATE
-      x-stackql-responseEnvelope: UpdateRoleOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
   /?Action=UpdateRoleDescription&Version=2010-05-08:
     parameters:
     - $ref: '#/components/parameters/X-Amz-Content-Sha256'
@@ -12521,7 +12497,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/UploadSSHPublicKeyOutputDisplay'
-      x-stackql-resource: users
+      x-stackql-resource: ssh_public_keys
       x-stackql-method: upload_ssh_public_key
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: UploadSSHPublicKeyOutputDisplay
@@ -12545,7 +12521,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/UploadSSHPublicKeyRequest'
-      x-stackql-resource: users
+      x-stackql-resource: ssh_public_keys
       x-stackql-method: upload_ssh_public_key
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: UploadSSHPublicKeyOutputDisplay
@@ -12727,7 +12703,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/UploadSigningCertificateOutputDisplay'
-      x-stackql-resource: upload_signing_certificate
+      x-stackql-resource: signing_certificates
       x-stackql-method: upload_signing_certificate
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: UploadSigningCertificateOutputDisplay
@@ -12758,7 +12734,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/UploadSigningCertificateRequest'
-      x-stackql-resource: upload_signing_certificate
+      x-stackql-resource: signing_certificates
       x-stackql-method: upload_signing_certificate
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: UploadSigningCertificateOutputDisplay
@@ -17152,16 +17128,6 @@ components:
     accountPropertiesMapType:
       type: object
       properties: {}
-    PutAccountPropertiesResponseDisplay:
-      type: object
-      properties: {}
-    PutAccountPropertiesOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: '#/components/schemas/PutAccountPropertiesResponseDisplay'
     PutAccountPropertiesRequest:
       type: object
       properties:
@@ -18312,16 +18278,6 @@ components:
       required:
       - OpenIDConnectProviderArn
       - ThumbprintList
-    UpdateRoleResponseDisplay:
-      type: object
-      properties: {}
-    UpdateRoleOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: '#/components/schemas/UpdateRoleResponseDisplay'
     UpdateRoleRequest:
       type: object
       properties:

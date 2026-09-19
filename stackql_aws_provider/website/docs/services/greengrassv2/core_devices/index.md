@@ -175,6 +175,13 @@ The following methods are available for this resource:
     <td></td>
     <td>Deletes a Greengrass core device, which is an IoT thing. This operation removes the core device from the list of core devices. This operation doesn't delete the IoT thing. For more information about how to delete the IoT thing, see DeleteThing in the IoT API Reference.</td>
 </tr>
+<tr>
+    <td><a href="#batch_disassociate_client_device_from_core_device"><CopyableCode code="batch_disassociate_client_device_from_core_device" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-core_device_thing_name"><code>core_device_thing_name</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Disassociates a list of client devices from a core device. After you disassociate a client device from a core device, the client device won't be able to use cloud discovery to retrieve the core device's connectivity information and certificates.</td>
+</tr>
 </tbody>
 </table>
 
@@ -299,6 +306,32 @@ Deletes a Greengrass core device, which is an IoT thing. This operation removes 
 DELETE FROM aws.greengrassv2.core_devices
 WHERE core_device_thing_name = '{{ core_device_thing_name }}' --required
 AND region = '{{ region }}' --required
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="batch_disassociate_client_device_from_core_device"
+    values={[
+        { label: 'batch_disassociate_client_device_from_core_device', value: 'batch_disassociate_client_device_from_core_device' }
+    ]}
+>
+<TabItem value="batch_disassociate_client_device_from_core_device">
+
+Disassociates a list of client devices from a core device. After you disassociate a client device from a core device, the client device won't be able to use cloud discovery to retrieve the core device's connectivity information and certificates.
+
+```sql
+EXEC aws.greengrassv2.core_devices.batch_disassociate_client_device_from_core_device 
+@core_device_thing_name='{{ core_device_thing_name }}' --required, 
+@region='{{ region }}' --required 
+@@json=
+'{
+"entries": "{{ entries }}"
+}'
 ;
 ```
 </TabItem>

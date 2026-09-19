@@ -18,7 +18,7 @@ chime_sdk_voice service documentation.
 
 :::info[Service Summary]
 
-total resources: __28__  
+total resources: __29__  
 
 :::
 
@@ -27,6 +27,7 @@ total resources: __28__
 <div class="providerDocColumn">
 <a href="/services/chime_sdk_voice/available_phone_numbers/">available_phone_numbers</a><br />
 <a href="/services/chime_sdk_voice/available_voice_connector_regions/">available_voice_connector_regions</a><br />
+<a href="/services/chime_sdk_voice/e911_addresses/">e911_addresses</a><br />
 <a href="/services/chime_sdk_voice/global_settings/">global_settings</a><br />
 <a href="/services/chime_sdk_voice/phone_number_orders/">phone_number_orders</a><br />
 <a href="/services/chime_sdk_voice/phone_number_settings/">phone_number_settings</a><br />

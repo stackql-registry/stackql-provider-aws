@@ -181,10 +181,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteApplicationResponse"
     get:
       operationId: GetApplication
       description: Displays detailed information about a specified application.
@@ -665,10 +661,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TagResourceResponse"
     delete:
       operationId: UntagResource
       description: Removes tags from resources.
@@ -688,10 +680,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UntagResourceResponse"
   /applications/{application_id}/start:
     post:
       operationId: StartApplication
@@ -706,10 +694,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/StartApplicationResponse"
   /applications/{application_id}/stop:
     post:
       operationId: StopApplication
@@ -724,10 +708,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/StopApplicationResponse"
 components:
   parameters:
     X-Amz-Content-Sha256:
@@ -1120,8 +1100,6 @@ components:
       minLength: 60
       maxLength: 1024
       pattern: arn:(aws[a-zA-Z0-9-]*):emr-serverless:.+:(\d{12}):\/applications\/[0-9a-zA-Z]+
-    DeleteApplicationResponse:
-      type: object
     GetApplicationResponse:
       type: object
       properties:
@@ -2071,8 +2049,6 @@ components:
           type: object
           properties: {}
           description: The tags for the resource.
-    StartApplicationResponse:
-      type: object
     StartJobRunResponse:
       type: object
       properties:
@@ -2105,10 +2081,6 @@ components:
         - applicationId
         - sessionId
         - arn
-    StopApplicationResponse:
-      type: object
-    TagResourceResponse:
-      type: object
     TerminateSessionResponse:
       type: object
       properties:
@@ -2130,8 +2102,6 @@ components:
       minLength: 1
       maxLength: 128
       pattern: "[A-Za-z0-9 /_.:=+@-]+"
-    UntagResourceResponse:
-      type: object
     UpdateApplicationResponse:
       type: object
       properties:
@@ -2185,7 +2155,6 @@ components:
             $ref: "#/paths/~1applications~1{application_id}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         get_application:
           operation:
             $ref: "#/paths/~1applications~1{application_id}/get"
@@ -2231,13 +2200,11 @@ components:
             $ref: "#/paths/~1applications~1{application_id}~1start/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         stop_application:
           operation:
             $ref: "#/paths/~1applications~1{application_id}~1stop/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/applications/methods/get_application"
@@ -2286,10 +2253,10 @@ components:
         insert: []
         update: []
         delete: []
-    dashboard_for_job_runs:
-      id: aws.emr_serverless.dashboard_for_job_runs
-      name: dashboard_for_job_runs
-      title: dashboard_for_job_runs
+    dashboards:
+      id: aws.emr_serverless.dashboards
+      name: dashboards
+      title: dashboards
       methods:
         get_dashboard_for_job_run:
           operation:
@@ -2301,7 +2268,7 @@ components:
             nativeCasing: pascal
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/dashboard_for_job_runs/methods/get_dashboard_for_job_run"
+          - $ref: "#/components/x-stackQL-resources/dashboards/methods/get_dashboard_for_job_run"
         insert: []
         update: []
         delete: []
@@ -2428,7 +2395,6 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -2439,7 +2405,6 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
       sqlVerbs:

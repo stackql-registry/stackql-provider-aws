@@ -18,7 +18,7 @@ comprehend service documentation.
 
 :::info[Service Summary]
 
-total resources: __20__  
+total resources: __29__  
 
 :::
 
@@ -30,22 +30,31 @@ total resources: __20__
 <a href="/services/comprehend/document_classifier_summaries/">document_classifier_summaries</a><br />
 <a href="/services/comprehend/document_classifiers/">document_classifiers</a><br />
 <a href="/services/comprehend/dominant_language_detection_jobs/">dominant_language_detection_jobs</a><br />
+<a href="/services/comprehend/dominant_languages/">dominant_languages</a><br />
 <a href="/services/comprehend/endpoints/">endpoints</a><br />
+<a href="/services/comprehend/entities/">entities</a><br />
 <a href="/services/comprehend/entities_detection_jobs/">entities_detection_jobs</a><br />
 <a href="/services/comprehend/entity_recognizer_summaries/">entity_recognizer_summaries</a><br />
 <a href="/services/comprehend/entity_recognizers/">entity_recognizers</a><br />
-<a href="/services/comprehend/events_detection_jobs/">events_detection_jobs</a>
-</div>
-<div class="providerDocColumn">
+<a href="/services/comprehend/events_detection_jobs/">events_detection_jobs</a><br />
 <a href="/services/comprehend/flywheel_iteration_histories/">flywheel_iteration_histories</a><br />
 <a href="/services/comprehend/flywheel_iterations/">flywheel_iterations</a><br />
-<a href="/services/comprehend/flywheels/">flywheels</a><br />
+<a href="/services/comprehend/flywheels/">flywheels</a>
+</div>
+<div class="providerDocColumn">
+<a href="/services/comprehend/key_phrases/">key_phrases</a><br />
 <a href="/services/comprehend/key_phrases_detection_jobs/">key_phrases_detection_jobs</a><br />
+<a href="/services/comprehend/models/">models</a><br />
+<a href="/services/comprehend/pii_entities/">pii_entities</a><br />
 <a href="/services/comprehend/pii_entities_detection_jobs/">pii_entities_detection_jobs</a><br />
 <a href="/services/comprehend/resource_policies/">resource_policies</a><br />
 <a href="/services/comprehend/sentiment_detection_jobs/">sentiment_detection_jobs</a><br />
+<a href="/services/comprehend/sentiments/">sentiments</a><br />
+<a href="/services/comprehend/syntaxes/">syntaxes</a><br />
 <a href="/services/comprehend/tags/">tags</a><br />
 <a href="/services/comprehend/targeted_sentiment_detection_jobs/">targeted_sentiment_detection_jobs</a><br />
-<a href="/services/comprehend/topics_detection_jobs/">topics_detection_jobs</a>
+<a href="/services/comprehend/targeted_sentiments/">targeted_sentiments</a><br />
+<a href="/services/comprehend/topics_detection_jobs/">topics_detection_jobs</a><br />
+<a href="/services/comprehend/toxic_content/">toxic_content</a>
 </div>
 </div>

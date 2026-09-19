@@ -689,10 +689,10 @@ components:
         update: []
         delete:
           - $ref: "#/components/x-stackQL-resources/connectors/methods/delete_connector"
-    challenge_metadatas:
-      id: aws.pca_connector_scep.challenge_metadatas
-      name: challenge_metadatas
-      title: challenge_metadatas
+    challenge_metadata:
+      id: aws.pca_connector_scep.challenge_metadata
+      name: challenge_metadata
+      title: challenge_metadata
       methods:
         get_challenge_metadata:
           operation:
@@ -720,8 +720,8 @@ components:
                 location: body
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/challenge_metadatas/methods/get_challenge_metadata"
-          - $ref: "#/components/x-stackQL-resources/challenge_metadatas/methods/list_challenge_metadata"
+          - $ref: "#/components/x-stackQL-resources/challenge_metadata/methods/get_challenge_metadata"
+          - $ref: "#/components/x-stackQL-resources/challenge_metadata/methods/list_challenge_metadata"
         insert: []
         update: []
         delete: []

@@ -979,10 +979,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TagResourceResponse"
     delete:
       operationId: UntagResource
       description: Deassigns a resource tag.
@@ -1002,10 +998,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UntagResourceResponse"
   /agent:
     post:
       operationId: RegisterAgent
@@ -3364,16 +3356,10 @@ components:
         agentId:
           $ref: "#/components/schemas/Uuid"
           description: UUID of registered agent.
-    TagResourceResponse:
-      description: Output for the TagResource operation.
-      type: object
     TagKeys:
       type: array
       items:
         $ref: "#/components/schemas/UnboundedString"
-    UntagResourceResponse:
-      description: Output for the UntagResource operation.
-      type: object
     AggregateStatus:
       description: Aggregate status of Agent components.
       type: object
@@ -4016,7 +4002,6 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -4027,7 +4012,6 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
       sqlVerbs:
@@ -4060,10 +4044,10 @@ components:
           - $ref: "#/components/x-stackQL-resources/agents/methods/register_agent"
         update: []
         delete: []
-    agent_status:
-      id: aws.groundstation.agent_status
-      name: agent_status
-      title: agent_status
+    agent_statuses:
+      id: aws.groundstation.agent_statuses
+      name: agent_statuses
+      title: agent_statuses
       methods:
         update_agent_status:
           operation:
@@ -4080,5 +4064,5 @@ components:
         select: []
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/agent_status/methods/update_agent_status"
+          - $ref: "#/components/x-stackQL-resources/agent_statuses/methods/update_agent_status"
         delete: []

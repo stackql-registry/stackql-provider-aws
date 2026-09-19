@@ -7571,10 +7571,28 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        restart_router_input:
+          operation:
+            $ref: "#/paths/~1v1~1routerInput~1restart~1{arn}/post"
+          response:
+            openAPIDocKey: "202"
+            mediaType: application/json
+        start_router_input:
+          operation:
+            $ref: "#/paths/~1v1~1routerInput~1start~1{arn}/post"
+          response:
+            openAPIDocKey: "202"
+            mediaType: application/json
+        stop_router_input:
+          operation:
+            $ref: "#/paths/~1v1~1routerInput~1stop~1{arn}/post"
+          response:
+            openAPIDocKey: "202"
+            mediaType: application/json
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/router_inputs/methods/batch_get_router_input"
           - $ref: "#/components/x-stackQL-resources/router_inputs/methods/get_router_input"
+          - $ref: "#/components/x-stackQL-resources/router_inputs/methods/batch_get_router_input"
           - $ref: "#/components/x-stackQL-resources/router_inputs/methods/list_router_inputs"
         insert:
           - $ref: "#/components/x-stackQL-resources/router_inputs/methods/create_router_input"
@@ -7651,8 +7669,8 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/router_network_interfaces/methods/batch_get_router_network_interface"
           - $ref: "#/components/x-stackQL-resources/router_network_interfaces/methods/get_router_network_interface"
+          - $ref: "#/components/x-stackQL-resources/router_network_interfaces/methods/batch_get_router_network_interface"
           - $ref: "#/components/x-stackQL-resources/router_network_interfaces/methods/list_router_network_interfaces"
         insert:
           - $ref: "#/components/x-stackQL-resources/router_network_interfaces/methods/create_router_network_interface"
@@ -7727,6 +7745,24 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        restart_router_output:
+          operation:
+            $ref: "#/paths/~1v1~1routerOutput~1restart~1{arn}/post"
+          response:
+            openAPIDocKey: "202"
+            mediaType: application/json
+        start_router_output:
+          operation:
+            $ref: "#/paths/~1v1~1routerOutput~1start~1{arn}/post"
+          response:
+            openAPIDocKey: "202"
+            mediaType: application/json
+        stop_router_output:
+          operation:
+            $ref: "#/paths/~1v1~1routerOutput~1stop~1{arn}/post"
+          response:
+            openAPIDocKey: "202"
+            mediaType: application/json
         take_router_input:
           operation:
             $ref: "#/paths/~1v1~1routerOutput~1takeRouterInput~1{router_output_arn}/put"
@@ -7740,8 +7776,8 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/router_outputs/methods/batch_get_router_output"
           - $ref: "#/components/x-stackQL-resources/router_outputs/methods/get_router_output"
+          - $ref: "#/components/x-stackQL-resources/router_outputs/methods/batch_get_router_output"
           - $ref: "#/components/x-stackQL-resources/router_outputs/methods/list_router_outputs"
         insert:
           - $ref: "#/components/x-stackQL-resources/router_outputs/methods/create_router_output"
@@ -7861,10 +7897,10 @@ components:
           - $ref: "#/components/x-stackQL-resources/gateway_instances/methods/update_gateway_instance"
         delete:
           - $ref: "#/components/x-stackQL-resources/gateway_instances/methods/deregister_gateway_instance"
-    flow_source_metadatas:
-      id: aws.mediaconnect.flow_source_metadatas
-      name: flow_source_metadatas
-      title: flow_source_metadatas
+    flow_source_metadata:
+      id: aws.mediaconnect.flow_source_metadata
+      name: flow_source_metadata
+      title: flow_source_metadata
       methods:
         describe_flow_source_metadata:
           operation:
@@ -7874,7 +7910,7 @@ components:
             mediaType: application/json
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/flow_source_metadatas/methods/describe_flow_source_metadata"
+          - $ref: "#/components/x-stackQL-resources/flow_source_metadata/methods/describe_flow_source_metadata"
         insert: []
         update: []
         delete: []
@@ -7979,10 +8015,10 @@ components:
         insert: []
         update: []
         delete: []
-    router_input_source_metadatas:
-      id: aws.mediaconnect.router_input_source_metadatas
-      name: router_input_source_metadatas
-      title: router_input_source_metadatas
+    router_input_source_metadata:
+      id: aws.mediaconnect.router_input_source_metadata
+      name: router_input_source_metadata
+      title: router_input_source_metadata
       methods:
         get_router_input_source_metadata:
           operation:
@@ -7992,7 +8028,7 @@ components:
             mediaType: application/json
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/router_input_source_metadatas/methods/get_router_input_source_metadata"
+          - $ref: "#/components/x-stackQL-resources/router_input_source_metadata/methods/get_router_input_source_metadata"
         insert: []
         update: []
         delete: []

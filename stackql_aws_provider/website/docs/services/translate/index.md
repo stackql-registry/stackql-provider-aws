@@ -18,19 +18,21 @@ translate service documentation.
 
 :::info[Service Summary]
 
-total resources: __5__  
+total resources: __7__  
 
 :::
 
 ## Resources
 <div class="row">
 <div class="providerDocColumn">
+<a href="/services/translate/documents/">documents</a><br />
 <a href="/services/translate/languages/">languages</a><br />
-<a href="/services/translate/parallel_datas/">parallel_datas</a><br />
+<a href="/services/translate/parallel_data/">parallel_data</a><br />
 <a href="/services/translate/tags/">tags</a>
 </div>
 <div class="providerDocColumn">
 <a href="/services/translate/terminologies/">terminologies</a><br />
-<a href="/services/translate/text_translation_jobs/">text_translation_jobs</a>
+<a href="/services/translate/text_translation_jobs/">text_translation_jobs</a><br />
+<a href="/services/translate/texts/">texts</a>
 </div>
 </div>

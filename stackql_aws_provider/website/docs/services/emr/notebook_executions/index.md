@@ -223,6 +223,20 @@ The following methods are available for this resource:
     <td></td>
     <td>Provides summaries of all notebook executions. You can filter the list based on multiple criteria such as status, time range, and editor id. Returns a maximum of 50 notebook executions and a marker to track the paging of a longer notebook execution list across multiple ListNotebookExecutions calls.</td>
 </tr>
+<tr>
+    <td><a href="#start_notebook_execution"><CopyableCode code="start_notebook_execution" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-ExecutionEngine"><code>ExecutionEngine</code></a>, <a href="#parameter-ServiceRole"><code>ServiceRole</code></a></td>
+    <td></td>
+    <td>Starts a notebook execution.</td>
+</tr>
+<tr>
+    <td><a href="#stop_notebook_execution"><CopyableCode code="stop_notebook_execution" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-NotebookExecutionId"><code>NotebookExecutionId</code></a></td>
+    <td></td>
+    <td>Stops a notebook execution.</td>
+</tr>
 </tbody>
 </table>
 
@@ -300,6 +314,57 @@ start_time,
 status
 FROM aws.emr.notebook_executions
 WHERE region = '{{ region }}' -- required
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="start_notebook_execution"
+    values={[
+        { label: 'start_notebook_execution', value: 'start_notebook_execution' },
+        { label: 'stop_notebook_execution', value: 'stop_notebook_execution' }
+    ]}
+>
+<TabItem value="start_notebook_execution">
+
+Starts a notebook execution.
+
+```sql
+EXEC aws.emr.notebook_executions.start_notebook_execution 
+@region='{{ region }}' --required 
+@@json=
+'{
+"EditorId": "{{ EditorId }}", 
+"RelativePath": "{{ RelativePath }}", 
+"NotebookExecutionName": "{{ NotebookExecutionName }}", 
+"NotebookParams": "{{ NotebookParams }}", 
+"ExecutionEngine": "{{ ExecutionEngine }}", 
+"ServiceRole": "{{ ServiceRole }}", 
+"NotebookInstanceSecurityGroupId": "{{ NotebookInstanceSecurityGroupId }}", 
+"Tags": "{{ Tags }}", 
+"NotebookS3Location": "{{ NotebookS3Location }}", 
+"OutputNotebookS3Location": "{{ OutputNotebookS3Location }}", 
+"OutputNotebookFormat": "{{ OutputNotebookFormat }}", 
+"EnvironmentVariables": "{{ EnvironmentVariables }}"
+}'
+;
+```
+</TabItem>
+<TabItem value="stop_notebook_execution">
+
+Stops a notebook execution.
+
+```sql
+EXEC aws.emr.notebook_executions.stop_notebook_execution 
+@region='{{ region }}' --required 
+@@json=
+'{
+"NotebookExecutionId": "{{ NotebookExecutionId }}"
+}'
 ;
 ```
 </TabItem>

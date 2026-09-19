@@ -148,6 +148,27 @@ The following methods are available for this resource:
     <td></td>
     <td>Creates a new channel handshake request to establish a partnership with another AWS account.</td>
 </tr>
+<tr>
+    <td><a href="#accept_channel_handshake"><CopyableCode code="accept_channel_handshake" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-catalog"><code>catalog</code></a>, <a href="#parameter-identifier"><code>identifier</code></a></td>
+    <td></td>
+    <td>Accepts a pending channel handshake request from another AWS account.</td>
+</tr>
+<tr>
+    <td><a href="#cancel_channel_handshake"><CopyableCode code="cancel_channel_handshake" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-catalog"><code>catalog</code></a>, <a href="#parameter-identifier"><code>identifier</code></a></td>
+    <td></td>
+    <td>Cancels a pending channel handshake request.</td>
+</tr>
+<tr>
+    <td><a href="#reject_channel_handshake"><CopyableCode code="reject_channel_handshake" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-catalog"><code>catalog</code></a>, <a href="#parameter-identifier"><code>identifier</code></a></td>
+    <td></td>
+    <td>Rejects a pending channel handshake request.</td>
+</tr>
 </tbody>
 </table>
 
@@ -289,5 +310,63 @@ channel_handshake_detail
           value: "{{ value }}"
 `}</CodeBlock>
 
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="accept_channel_handshake"
+    values={[
+        { label: 'accept_channel_handshake', value: 'accept_channel_handshake' },
+        { label: 'cancel_channel_handshake', value: 'cancel_channel_handshake' },
+        { label: 'reject_channel_handshake', value: 'reject_channel_handshake' }
+    ]}
+>
+<TabItem value="accept_channel_handshake">
+
+Accepts a pending channel handshake request from another AWS account.
+
+```sql
+EXEC aws.partnercentral_channel.channel_handshakes.accept_channel_handshake 
+@region='{{ region }}' --required 
+@@json=
+'{
+"catalog": "{{ catalog }}", 
+"identifier": "{{ identifier }}"
+}'
+;
+```
+</TabItem>
+<TabItem value="cancel_channel_handshake">
+
+Cancels a pending channel handshake request.
+
+```sql
+EXEC aws.partnercentral_channel.channel_handshakes.cancel_channel_handshake 
+@region='{{ region }}' --required 
+@@json=
+'{
+"catalog": "{{ catalog }}", 
+"identifier": "{{ identifier }}"
+}'
+;
+```
+</TabItem>
+<TabItem value="reject_channel_handshake">
+
+Rejects a pending channel handshake request.
+
+```sql
+EXEC aws.partnercentral_channel.channel_handshakes.reject_channel_handshake 
+@region='{{ region }}' --required 
+@@json=
+'{
+"catalog": "{{ catalog }}", 
+"identifier": "{{ identifier }}"
+}'
+;
+```
 </TabItem>
 </Tabs>

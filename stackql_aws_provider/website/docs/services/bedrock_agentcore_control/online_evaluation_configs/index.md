@@ -380,6 +380,7 @@ dataSourceConfig,
 evaluators,
 insights,
 clusteringConfig,
+outputConfig,
 evaluationExecutionRoleArn,
 enableOnCreate,
 tags,
@@ -394,6 +395,7 @@ SELECT
 '{{ evaluators }}',
 '{{ insights }}',
 '{{ clusteringConfig }}',
+'{{ outputConfig }}',
 '{{ evaluationExecutionRoleArn }}' /* required */,
 {{ enableOnCreate }} /* required */,
 '{{ tags }}',
@@ -445,6 +447,8 @@ status
         cloudWatchLogs:
           logGroupNames:
             - "{{ logGroupNames }}"
+          logGroupNamePrefixes:
+            - "{{ logGroupNamePrefixes }}"
           serviceNames:
             - "{{ serviceNames }}"
     - name: evaluators
@@ -459,6 +463,14 @@ status
       value:
         frequencies:
           - "{{ frequencies }}"
+    - name: outputConfig
+      description: |
+        The configuration that specifies where evaluation results should be written for monitoring and analysis.
+      value:
+        cloudWatchConfig:
+          logGroupName: "{{ logGroupName }}"
+          metricsNamespace: "{{ metricsNamespace }}"
+          resultDestination: "{{ resultDestination }}"
     - name: evaluationExecutionRoleArn
       value: "{{ evaluationExecutionRoleArn }}"
     - name: enableOnCreate
@@ -493,6 +505,7 @@ dataSourceConfig = '{{ dataSourceConfig }}',
 evaluators = '{{ evaluators }}',
 insights = '{{ insights }}',
 clusteringConfig = '{{ clusteringConfig }}',
+outputConfig = '{{ outputConfig }}',
 evaluationExecutionRoleArn = '{{ evaluationExecutionRoleArn }}',
 executionStatus = '{{ executionStatus }}'
 WHERE 

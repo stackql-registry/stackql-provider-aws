@@ -1422,10 +1422,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TagResourceResponse"
     delete:
       operationId: UntagResource
       description: Removes metadata tags from a specified resource.
@@ -1445,10 +1441,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UntagResourceResponse"
   /memberships/{membership_identifier}/trained-model-inference-jobs:
     get:
       operationId: ListTrainedModelInferenceJobs
@@ -4987,8 +4979,6 @@ components:
           description: The Amazon Resource Name (ARN) of the trained model inference job.
       required:
         - trainedModelInferenceJobArn
-    TagResourceResponse:
-      type: object
     TagKeys:
       type: array
       items:
@@ -4997,8 +4987,6 @@ components:
       type: string
       minLength: 1
       maxLength: 128
-    UntagResourceResponse:
-      type: object
     UpdateConfiguredAudienceModelResponse:
       type: object
       properties:
@@ -5801,7 +5789,6 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -5812,7 +5799,6 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
       sqlVerbs:

@@ -2115,6 +2115,32 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        start_entities_detection_v2_job:
+          operation:
+            $ref: "#/paths/~1StartEntitiesDetectionV2Job/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        stop_entities_detection_v2_job:
+          operation:
+            $ref: "#/paths/~1StopEntitiesDetectionV2Job/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/entities_detection_v2_jobs/methods/describe_entities_detection_v2_job"
@@ -2144,6 +2170,32 @@ components:
         list_icd10_cm_inference_jobs:
           operation:
             $ref: "#/paths/~1ListICD10CMInferenceJobs/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        start_icd10_cm_inference_job:
+          operation:
+            $ref: "#/paths/~1StartICD10CMInferenceJob/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        stop_icd10_cm_inference_job:
+          operation:
+            $ref: "#/paths/~1StopICD10CMInferenceJob/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -2193,6 +2245,32 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        start_phi_detection_job:
+          operation:
+            $ref: "#/paths/~1StartPHIDetectionJob/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        stop_phi_detection_job:
+          operation:
+            $ref: "#/paths/~1StopPHIDetectionJob/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/phi_detection_jobs/methods/describe_phi_detection_job"
@@ -2222,6 +2300,32 @@ components:
         list_rx_norm_inference_jobs:
           operation:
             $ref: "#/paths/~1ListRxNormInferenceJobs/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        start_rx_norm_inference_job:
+          operation:
+            $ref: "#/paths/~1StartRxNormInferenceJob/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        stop_rx_norm_inference_job:
+          operation:
+            $ref: "#/paths/~1StopRxNormInferenceJob/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -2271,10 +2375,174 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        start_snomedct_inference_job:
+          operation:
+            $ref: "#/paths/~1StartSNOMEDCTInferenceJob/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        stop_snomedct_inference_job:
+          operation:
+            $ref: "#/paths/~1StopSNOMEDCTInferenceJob/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/snomedct_inference_jobs/methods/describe_snomedct_inference_job"
           - $ref: "#/components/x-stackQL-resources/snomedct_inference_jobs/methods/list_snomedct_inference_jobs"
+        insert: []
+        update: []
+        delete: []
+    entities:
+      id: aws.comprehendmedical.entities
+      name: entities
+      title: entities
+      methods:
+        detect_entities:
+          operation:
+            $ref: "#/paths/~1DetectEntities/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
+    entities_v2:
+      id: aws.comprehendmedical.entities_v2
+      name: entities_v2
+      title: entities_v2
+      methods:
+        detect_entities_v2:
+          operation:
+            $ref: "#/paths/~1DetectEntitiesV2/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
+    phis:
+      id: aws.comprehendmedical.phis
+      name: phis
+      title: phis
+      methods:
+        detect_phi:
+          operation:
+            $ref: "#/paths/~1DetectPHI/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
+    icd10_cms:
+      id: aws.comprehendmedical.icd10_cms
+      name: icd10_cms
+      title: icd10_cms
+      methods:
+        infer_icd10_cm:
+          operation:
+            $ref: "#/paths/~1InferICD10CM/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
+    rx_norms:
+      id: aws.comprehendmedical.rx_norms
+      name: rx_norms
+      title: rx_norms
+      methods:
+        infer_rx_norm:
+          operation:
+            $ref: "#/paths/~1InferRxNorm/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
+    snomedcts:
+      id: aws.comprehendmedical.snomedcts
+      name: snomedcts
+      title: snomedcts
+      methods:
+        infer_snomedct:
+          operation:
+            $ref: "#/paths/~1InferSNOMEDCT/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
         insert: []
         update: []
         delete: []

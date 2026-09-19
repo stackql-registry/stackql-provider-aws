@@ -517,10 +517,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ResumeBatchLoadTaskResponse"
   /TagResource:
     post:
       operationId: TagResource
@@ -553,10 +549,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TagResourceResponse"
   /UntagResource:
     post:
       operationId: UntagResource
@@ -590,10 +582,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UntagResourceResponse"
   /UpdateDatabase:
     post:
       operationId: UpdateDatabase
@@ -1397,16 +1385,10 @@ components:
         Tags:
           $ref: "#/components/schemas/TagList"
           description: The tags currently associated with the Timestream resource.
-    ResumeBatchLoadTaskResponse:
-      type: object
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
         $ref: "#/components/schemas/TagKey"
-    UntagResourceResponse:
-      type: object
     UpdateDatabaseResponse:
       type: object
       properties:
@@ -1557,6 +1539,18 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        resume_batch_load_task:
+          operation:
+            $ref: "#/paths/~1ResumeBatchLoadTask/post"
+          response:
+            openAPIDocKey: "200"
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.0
@@ -1792,7 +1786,6 @@ components:
             $ref: "#/paths/~1TagResource/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.0
@@ -1805,7 +1798,6 @@ components:
             $ref: "#/paths/~1UntagResource/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.0

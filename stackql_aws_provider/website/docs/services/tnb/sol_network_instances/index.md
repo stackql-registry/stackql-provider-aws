@@ -210,6 +210,13 @@ The following methods are available for this resource:
     <td>Deletes a network instance. A network instance is a single network created in Amazon Web Services TNB that can be deployed and on which life-cycle operations (like terminate, update, and delete) can be performed. To delete a network instance, the instance must be in a stopped or terminated state. To terminate a network instance, see TerminateSolNetworkInstance.</td>
 </tr>
 <tr>
+    <td><a href="#instantiate_sol_network_instance"><CopyableCode code="instantiate_sol_network_instance" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-ns_instance_id"><code>ns_instance_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td><a href="#parameter-dry_run"><code>dry_run</code></a></td>
+    <td>Instantiates a network instance. A network instance is a single network created in Amazon Web Services TNB that can be deployed and on which life-cycle operations (like terminate, update, and delete) can be performed. Before you can instantiate a network instance, you have to create a network instance. For more information, see CreateSolNetworkInstance.</td>
+</tr>
+<tr>
     <td><a href="#terminate_sol_network_instance"><CopyableCode code="terminate_sol_network_instance" /></a></td>
     <td><CopyableCode code="exec" /></td>
     <td><a href="#parameter-ns_instance_id"><code>ns_instance_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
@@ -241,6 +248,11 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     <td><CopyableCode code="region" /></td>
     <td><code>string</code></td>
     <td>AWS region (default: us-east-1)</td>
+</tr>
+<tr id="parameter-dry_run">
+    <td><CopyableCode code="dry_run" /></td>
+    <td><code>boolean</code></td>
+    <td>A check for whether you have the required permissions for the action without actually making the request and provides an error response. If you have the required permissions, the error response is DryRunOperation. Otherwise, it is UnauthorizedOperation.</td>
 </tr>
 <tr id="parameter-max_results">
     <td><CopyableCode code="max_results" /></td>
@@ -424,11 +436,29 @@ AND region = '{{ region }}' --required
 ## Lifecycle Methods
 
 <Tabs
-    defaultValue="terminate_sol_network_instance"
+    defaultValue="instantiate_sol_network_instance"
     values={[
+        { label: 'instantiate_sol_network_instance', value: 'instantiate_sol_network_instance' },
         { label: 'terminate_sol_network_instance', value: 'terminate_sol_network_instance' }
     ]}
 >
+<TabItem value="instantiate_sol_network_instance">
+
+Instantiates a network instance. A network instance is a single network created in Amazon Web Services TNB that can be deployed and on which life-cycle operations (like terminate, update, and delete) can be performed. Before you can instantiate a network instance, you have to create a network instance. For more information, see CreateSolNetworkInstance.
+
+```sql
+EXEC aws.tnb.sol_network_instances.instantiate_sol_network_instance 
+@ns_instance_id='{{ ns_instance_id }}' --required, 
+@region='{{ region }}' --required, 
+@dry_run={{ dry_run }} 
+@@json=
+'{
+"additionalParamsForNs": "{{ additionalParamsForNs }}", 
+"tags": "{{ tags }}"
+}'
+;
+```
+</TabItem>
 <TabItem value="terminate_sol_network_instance">
 
 Terminates a network instance. A network instance is a single network created in Amazon Web Services TNB that can be deployed and on which life-cycle operations (like terminate, update, and delete) can be performed. You must terminate a network instance before you can delete it.

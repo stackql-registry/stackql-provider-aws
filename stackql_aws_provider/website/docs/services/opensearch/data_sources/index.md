@@ -142,7 +142,7 @@ The following methods are available for this resource:
     <td><CopyableCode code="update" /></td>
     <td><a href="#parameter-id"><code>id</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-dataSourceArn"><code>dataSourceArn</code></a></td>
     <td></td>
-    <td>Attaches a data source to an OpenSearch application. The data source can be an Amazon OpenSearch Service domain or an Amazon OpenSearch Serverless collection. If both the application and data source are in the ACTIVE state, the attachment completes immediately and returns a status of ATTACHED. If either resource is not yet active, the operation stores the request and returns a status of PENDING. A background process then completes the attachment when both resources become active. Pending attachments that are not completed within 24 hours are marked as FAILED. This operation is idempotent. If a data source is already attached or pending for the same application, the existing attachment is returned.</td>
+    <td>Attaches a data source to an OpenSearch application. The data source must be an Amazon OpenSearch Service domain. If both the application and the data source are active, the attachment completes immediately with a status of ATTACHED. Otherwise, the operation returns PENDING and completes the attachment automatically once both become active. If the attachment cannot be completed, its status becomes FAILED. This operation is idempotent: If the data source is already attached or pending, the operation returns the existing attachment.</td>
 </tr>
 <tr>
     <td><a href="#delete_data_source"><CopyableCode code="delete_data_source" /></a></td>
@@ -288,7 +288,7 @@ message;
 </TabItem>
 <TabItem value="attach_data_source">
 
-Attaches a data source to an OpenSearch application. The data source can be an Amazon OpenSearch Service domain or an Amazon OpenSearch Serverless collection. If both the application and data source are in the ACTIVE state, the attachment completes immediately and returns a status of ATTACHED. If either resource is not yet active, the operation stores the request and returns a status of PENDING. A background process then completes the attachment when both resources become active. Pending attachments that are not completed within 24 hours are marked as FAILED. This operation is idempotent. If a data source is already attached or pending for the same application, the existing attachment is returned.
+Attaches a data source to an OpenSearch application. The data source must be an Amazon OpenSearch Service domain. If both the application and the data source are active, the attachment completes immediately with a status of ATTACHED. Otherwise, the operation returns PENDING and completes the attachment automatically once both become active. If the attachment cannot be completed, its status becomes FAILED. This operation is idempotent: If the data source is already attached or pending, the operation returns the existing attachment.
 
 ```sql
 UPDATE aws.opensearch.data_sources

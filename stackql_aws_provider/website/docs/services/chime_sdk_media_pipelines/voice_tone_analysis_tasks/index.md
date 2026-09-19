@@ -96,6 +96,20 @@ The following methods are available for this resource:
     <td></td>
     <td>Retrieves the details of a voice tone analysis task.</td>
 </tr>
+<tr>
+    <td><a href="#start_voice_tone_analysis_task"><CopyableCode code="start_voice_tone_analysis_task" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-identifier"><code>identifier</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-LanguageCode"><code>LanguageCode</code></a></td>
+    <td></td>
+    <td>Starts a voice tone analysis task. For more information about voice tone analysis, see Using Amazon Chime SDK voice analytics in the Amazon Chime SDK Developer Guide. Before starting any voice tone analysis tasks, you must provide all notices and obtain all consents from the speaker as required under applicable privacy and biometrics laws, and as required under the AWS service terms for the Amazon Chime SDK.</td>
+</tr>
+<tr>
+    <td><a href="#stop_voice_tone_analysis_task"><CopyableCode code="stop_voice_tone_analysis_task" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-identifier"><code>identifier</code></a>, <a href="#parameter-voice_tone_analysis_task_id"><code>voice_tone_analysis_task_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Stops a voice tone analysis task.</td>
+</tr>
 </tbody>
 </table>
 
@@ -152,6 +166,47 @@ FROM aws.chime_sdk_media_pipelines.voice_tone_analysis_tasks
 WHERE identifier = '{{ identifier }}' -- required
 AND voice_tone_analysis_task_id = '{{ voice_tone_analysis_task_id }}' -- required
 AND region = '{{ region }}' -- required
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="start_voice_tone_analysis_task"
+    values={[
+        { label: 'start_voice_tone_analysis_task', value: 'start_voice_tone_analysis_task' },
+        { label: 'stop_voice_tone_analysis_task', value: 'stop_voice_tone_analysis_task' }
+    ]}
+>
+<TabItem value="start_voice_tone_analysis_task">
+
+Starts a voice tone analysis task. For more information about voice tone analysis, see Using Amazon Chime SDK voice analytics in the Amazon Chime SDK Developer Guide. Before starting any voice tone analysis tasks, you must provide all notices and obtain all consents from the speaker as required under applicable privacy and biometrics laws, and as required under the AWS service terms for the Amazon Chime SDK.
+
+```sql
+EXEC aws.chime_sdk_media_pipelines.voice_tone_analysis_tasks.start_voice_tone_analysis_task 
+@identifier='{{ identifier }}' --required, 
+@region='{{ region }}' --required 
+@@json=
+'{
+"LanguageCode": "{{ LanguageCode }}", 
+"KinesisVideoStreamSourceTaskConfiguration": "{{ KinesisVideoStreamSourceTaskConfiguration }}", 
+"ClientRequestToken": "{{ ClientRequestToken }}"
+}'
+;
+```
+</TabItem>
+<TabItem value="stop_voice_tone_analysis_task">
+
+Stops a voice tone analysis task.
+
+```sql
+EXEC aws.chime_sdk_media_pipelines.voice_tone_analysis_tasks.stop_voice_tone_analysis_task 
+@identifier='{{ identifier }}' --required, 
+@voice_tone_analysis_task_id='{{ voice_tone_analysis_task_id }}' --required, 
+@region='{{ region }}' --required
 ;
 ```
 </TabItem>

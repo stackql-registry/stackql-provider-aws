@@ -135,10 +135,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/AssociateApplicationToEntitlementResult'
       x-stackql-resource: entitlements
       x-stackql-method: associate_application_to_entitlement
       x-stackql-verb: UPDATE
@@ -175,10 +171,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/AssociateFleetResult'
       x-stackql-resource: fleets
       x-stackql-method: associate_fleet
       x-stackql-verb: UPDATE
@@ -224,10 +216,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/AssociateSoftwareToImageBuilderResult'
       x-stackql-resource: image_builders
       x-stackql-method: associate_software_to_image_builder
       x-stackql-verb: UPDATE
@@ -265,7 +253,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchAssociateUserStackResult'
-      x-stackql-resource: batch_associate_user_stack
+      x-stackql-resource: stacks
       x-stackql-method: batch_associate_user_stack
       x-stackql-verb: EXEC
   /BatchDisassociateUserStack:
@@ -301,7 +289,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchDisassociateUserStackResult'
-      x-stackql-resource: batch_disassociate_user_stack
+      x-stackql-resource: stacks
       x-stackql-method: batch_disassociate_user_stack
       x-stackql-verb: EXEC
   /CopyImage:
@@ -350,7 +338,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CopyImageResponse'
-      x-stackql-resource: image
+      x-stackql-resource: images
       x-stackql-method: copy_image
       x-stackql-verb: EXEC
   /CreateAppBlock:
@@ -1398,7 +1386,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreateThemeForStackResult'
-      x-stackql-resource: theme_for_stacks
+      x-stackql-resource: themes
       x-stackql-method: create_theme_for_stack
       x-stackql-verb: INSERT
   /CreateUpdatedImage:
@@ -1540,10 +1528,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CreateUserResult'
       x-stackql-resource: users
       x-stackql-method: create_user
       x-stackql-verb: INSERT
@@ -1576,10 +1560,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteAppBlockResult'
       x-stackql-resource: app_blocks
       x-stackql-method: delete_app_block
       x-stackql-verb: DELETE
@@ -1613,10 +1593,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteAppBlockBuilderResult'
       x-stackql-resource: app_block_builders
       x-stackql-method: delete_app_block_builder
       x-stackql-verb: DELETE
@@ -1649,10 +1625,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteApplicationResult'
       x-stackql-resource: applications
       x-stackql-method: delete_application
       x-stackql-verb: DELETE
@@ -1686,10 +1658,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteDirectoryConfigResult'
       x-stackql-resource: directory_configs
       x-stackql-method: delete_directory_config
       x-stackql-verb: DELETE
@@ -1726,10 +1694,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteEntitlementResult'
       x-stackql-resource: entitlements
       x-stackql-method: delete_entitlement
       x-stackql-verb: DELETE
@@ -1762,10 +1726,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteFleetResult'
       x-stackql-resource: fleets
       x-stackql-method: delete_fleet
       x-stackql-verb: DELETE
@@ -1876,10 +1836,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteImagePermissionsResult'
       x-stackql-resource: image_permissions
       x-stackql-method: delete_image_permissions
       x-stackql-verb: DELETE
@@ -1914,10 +1870,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteStackResult'
       x-stackql-resource: stacks
       x-stackql-method: delete_stack
       x-stackql-verb: DELETE
@@ -1950,11 +1902,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteThemeForStackResult'
-      x-stackql-resource: theme_for_stacks
+      x-stackql-resource: themes
       x-stackql-method: delete_theme_for_stack
       x-stackql-verb: DELETE
   /DeleteUsageReportSubscription:
@@ -1980,10 +1928,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteUsageReportSubscriptionResult'
       x-stackql-resource: usage_report_subscriptions
       x-stackql-method: delete_usage_report_subscription
       x-stackql-verb: DELETE
@@ -2020,10 +1964,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteUserResult'
       x-stackql-resource: users
       x-stackql-method: delete_user
       x-stackql-verb: DELETE
@@ -2744,7 +2684,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DescribeThemeForStackResult'
-      x-stackql-resource: theme_for_stacks
+      x-stackql-resource: themes
       x-stackql-method: describe_theme_for_stack
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Theme
@@ -2921,10 +2861,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DisableUserResult'
       x-stackql-resource: users
       x-stackql-method: disable_user
       x-stackql-verb: EXEC
@@ -2961,10 +2897,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DisassociateAppBlockBuilderAppBlockResult'
       x-stackql-resource: app_blocks
       x-stackql-method: disassociate_app_block_builder_app_block
       x-stackql-verb: UPDATE
@@ -3001,10 +2933,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DisassociateApplicationFleetResult'
       x-stackql-resource: fleets
       x-stackql-method: disassociate_application_fleet
       x-stackql-verb: UPDATE
@@ -3045,10 +2973,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DisassociateApplicationFromEntitlementResult'
       x-stackql-resource: entitlements
       x-stackql-method: disassociate_application_from_entitlement
       x-stackql-verb: UPDATE
@@ -3085,10 +3009,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DisassociateFleetResult'
       x-stackql-resource: fleets
       x-stackql-method: disassociate_fleet
       x-stackql-verb: UPDATE
@@ -3134,10 +3054,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DisassociateSoftwareFromImageBuilderResult'
       x-stackql-resource: image_builders
       x-stackql-method: disassociate_software_from_image_builder
       x-stackql-verb: UPDATE
@@ -3172,10 +3088,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DrainSessionInstanceResult'
       x-stackql-resource: sessions
       x-stackql-method: drain_session_instance
       x-stackql-verb: EXEC
@@ -3215,10 +3127,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/EnableUserResult'
       x-stackql-resource: users
       x-stackql-method: enable_user
       x-stackql-verb: EXEC
@@ -3251,10 +3159,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ExpireSessionResult'
       x-stackql-resource: sessions
       x-stackql-method: expire_session
       x-stackql-verb: EXEC
@@ -3555,7 +3459,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartAppBlockBuilderResult'
-      x-stackql-resource: app_blocks
+      x-stackql-resource: app_block_builders
       x-stackql-method: start_app_block_builder
       x-stackql-verb: EXEC
   /StartFleet:
@@ -3587,11 +3491,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/StartFleetResult'
-      x-stackql-resource: fleet
+      x-stackql-resource: fleets
       x-stackql-method: start_fleet
       x-stackql-verb: EXEC
   /StartImageBuilder:
@@ -3631,7 +3531,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartImageBuilderResult'
-      x-stackql-resource: images
+      x-stackql-resource: image_builders
       x-stackql-method: start_image_builder
       x-stackql-verb: EXEC
   /StartSoftwareDeploymentToImageBuilder:
@@ -3666,10 +3566,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/StartSoftwareDeploymentToImageBuilderResult'
       x-stackql-resource: image_builders
       x-stackql-method: start_software_deployment_to_image_builder
       x-stackql-verb: EXEC
@@ -3707,7 +3603,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StopAppBlockBuilderResult'
-      x-stackql-resource: app_blocks
+      x-stackql-resource: app_block_builders
       x-stackql-method: stop_app_block_builder
       x-stackql-verb: EXEC
   /StopFleet:
@@ -3739,11 +3635,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/StopFleetResult'
-      x-stackql-resource: fleet
+      x-stackql-resource: fleets
       x-stackql-method: stop_fleet
       x-stackql-verb: EXEC
   /StopImageBuilder:
@@ -3779,7 +3671,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StopImageBuilderResult'
-      x-stackql-resource: images
+      x-stackql-resource: image_builders
       x-stackql-method: stop_image_builder
       x-stackql-verb: EXEC
   /TagResource:
@@ -3822,10 +3714,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -3864,10 +3752,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -4307,10 +4191,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateImagePermissionsResult'
       x-stackql-resource: image_permissions
       x-stackql-method: update_image_permissions
       x-stackql-verb: UPDATE
@@ -4458,7 +4338,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateThemeForStackResult'
-      x-stackql-resource: theme_for_stacks
+      x-stackql-resource: themes
       x-stackql-method: update_theme_for_stack
       x-stackql-verb: UPDATE
 components:
@@ -4554,16 +4434,10 @@ components:
     String:
       type: string
       minLength: 1
-    AssociateApplicationToEntitlementResult:
-      type: object
-    AssociateFleetResult:
-      type: object
     StringList:
       type: array
       items:
         $ref: '#/components/schemas/String'
-    AssociateSoftwareToImageBuilderResult:
-      type: object
     UserStackAssociationList:
       type: array
       items:
@@ -6398,20 +6272,6 @@ components:
       type: string
       maxLength: 2048
       pattern: ^[A-Za-z0-9_\-\s]+$
-    CreateUserResult:
-      type: object
-    DeleteAppBlockResult:
-      type: object
-    DeleteAppBlockBuilderResult:
-      type: object
-    DeleteApplicationResult:
-      type: object
-    DeleteDirectoryConfigResult:
-      type: object
-    DeleteEntitlementResult:
-      type: object
-    DeleteFleetResult:
-      type: object
     DeleteImageResult:
       type: object
       properties:
@@ -6427,16 +6287,6 @@ components:
     AwsAccountId:
       type: string
       pattern: ^\d+$
-    DeleteImagePermissionsResult:
-      type: object
-    DeleteStackResult:
-      type: object
-    DeleteThemeForStackResult:
-      type: object
-    DeleteUsageReportSubscriptionResult:
-      type: object
-    DeleteUserResult:
-      type: object
     DescribeAppBlockBuilderAppBlockAssociationsResult:
       type: object
       properties:
@@ -6935,24 +6785,6 @@ components:
           description: The authentication type for the user.
       required:
       - AuthenticationType
-    DisableUserResult:
-      type: object
-    DisassociateAppBlockBuilderAppBlockResult:
-      type: object
-    DisassociateApplicationFleetResult:
-      type: object
-    DisassociateApplicationFromEntitlementResult:
-      type: object
-    DisassociateFleetResult:
-      type: object
-    DisassociateSoftwareFromImageBuilderResult:
-      type: object
-    DrainSessionInstanceResult:
-      type: object
-    EnableUserResult:
-      type: object
-    ExpireSessionResult:
-      type: object
     GetExportImageTaskResult:
       type: object
       properties:
@@ -7061,31 +6893,23 @@ components:
       properties:
         AppBlockBuilder:
           $ref: '#/components/schemas/AppBlockBuilder'
-    StartFleetResult:
-      type: object
     StartImageBuilderResult:
       type: object
       properties:
         ImageBuilder:
           $ref: '#/components/schemas/ImageBuilder'
           description: Information about the image builder.
-    StartSoftwareDeploymentToImageBuilderResult:
-      type: object
     StopAppBlockBuilderResult:
       type: object
       properties:
         AppBlockBuilder:
           $ref: '#/components/schemas/AppBlockBuilder'
-    StopFleetResult:
-      type: object
     StopImageBuilderResult:
       type: object
       properties:
         ImageBuilder:
           $ref: '#/components/schemas/ImageBuilder'
           description: Information about the image builder.
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
@@ -7095,8 +6919,6 @@ components:
       minLength: 1
       maxLength: 128
       pattern: ^(^(?!aws:).[\p{L}\p{Z}\p{N}_.:/=+\-@]*)$
-    UntagResourceResponse:
-      type: object
     AppBlockBuilderAttributes:
       type: array
       items:
@@ -7161,8 +6983,6 @@ components:
         Fleet:
           $ref: '#/components/schemas/Fleet'
           description: Information about the fleet.
-    UpdateImagePermissionsResult:
-      type: object
     StackAttributes:
       type: array
       items:

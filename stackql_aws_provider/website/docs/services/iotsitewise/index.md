@@ -18,7 +18,7 @@ iotsitewise service documentation.
 
 :::info[Service Summary]
 
-total resources: __49__  
+total resources: __50__  
 
 :::
 
@@ -39,19 +39,20 @@ total resources: __49__
 <a href="/services/iotsitewise/asset_property_values/">asset_property_values</a><br />
 <a href="/services/iotsitewise/asset_relationships/">asset_relationships</a><br />
 <a href="/services/iotsitewise/assets/">assets</a><br />
+<a href="/services/iotsitewise/assistants/">assistants</a><br />
 <a href="/services/iotsitewise/associated_assets/">associated_assets</a><br />
 <a href="/services/iotsitewise/bulk_import_jobs/">bulk_import_jobs</a><br />
-<a href="/services/iotsitewise/capture_datas/">capture_datas</a><br />
+<a href="/services/iotsitewise/capture_data/">capture_data</a><br />
 <a href="/services/iotsitewise/composition_relationships/">composition_relationships</a><br />
 <a href="/services/iotsitewise/computation_model_data_binding_usages/">computation_model_data_binding_usages</a><br />
 <a href="/services/iotsitewise/computation_model_execution_summaries/">computation_model_execution_summaries</a><br />
 <a href="/services/iotsitewise/computation_model_resolve_to_resources/">computation_model_resolve_to_resources</a><br />
 <a href="/services/iotsitewise/computation_models/">computation_models</a><br />
 <a href="/services/iotsitewise/dashboards/">dashboards</a><br />
-<a href="/services/iotsitewise/dataset_data_segment_relationships/">dataset_data_segment_relationships</a><br />
-<a href="/services/iotsitewise/dataset_data_segments/">dataset_data_segments</a>
+<a href="/services/iotsitewise/dataset_data_segment_relationships/">dataset_data_segment_relationships</a>
 </div>
 <div class="providerDocColumn">
+<a href="/services/iotsitewise/dataset_data_segments/">dataset_data_segments</a><br />
 <a href="/services/iotsitewise/dataset_export_jobs/">dataset_export_jobs</a><br />
 <a href="/services/iotsitewise/datasets/">datasets</a><br />
 <a href="/services/iotsitewise/default_encryption_configurations/">default_encryption_configurations</a><br />

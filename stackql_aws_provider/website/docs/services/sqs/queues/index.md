@@ -95,6 +95,13 @@ The following methods are available for this resource:
     <td></td>
     <td>Deletes the queue specified by the QueueUrl, regardless of the queue's contents. Be careful with the DeleteQueue action: When you delete a queue, any messages in the queue are no longer available. When you delete a queue, the deletion process takes up to 60 seconds. Requests you send involving that queue during the 60 seconds might succeed. For example, a SendMessage request might succeed, but after 60 seconds the queue and the message you sent no longer exist. When you delete a queue, you must wait at least 60 seconds before creating a queue with the same name. Cross-account permissions don't apply to this action. For more information, see Grant cross-account permissions to a role and a username in the Amazon SQS Developer Guide. The delete operation uses the HTTP GET verb.</td>
 </tr>
+<tr>
+    <td><a href="#purge_queue"><CopyableCode code="purge_queue" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-QueueUrl"><code>QueueUrl</code></a></td>
+    <td></td>
+    <td>Deletes available messages in a queue (including in-flight messages) specified by the QueueURL parameter. When you use the PurgeQueue action, you can't retrieve any messages deleted from a queue. The message deletion process takes up to 60 seconds. We recommend waiting for 60 seconds regardless of your queue's size. Messages sent to the queue before you call PurgeQueue might be received but are deleted within the next minute. Messages sent to the queue after you call PurgeQueue might be deleted while the queue is being purged.</td>
+</tr>
 </tbody>
 </table>
 
@@ -213,6 +220,31 @@ Deletes the queue specified by the QueueUrl, regardless of the queue's contents.
 ```sql
 DELETE FROM aws.sqs.queues
 WHERE region = '{{ region }}' --required
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="purge_queue"
+    values={[
+        { label: 'purge_queue', value: 'purge_queue' }
+    ]}
+>
+<TabItem value="purge_queue">
+
+Deletes available messages in a queue (including in-flight messages) specified by the QueueURL parameter. When you use the PurgeQueue action, you can't retrieve any messages deleted from a queue. The message deletion process takes up to 60 seconds. We recommend waiting for 60 seconds regardless of your queue's size. Messages sent to the queue before you call PurgeQueue might be received but are deleted within the next minute. Messages sent to the queue after you call PurgeQueue might be deleted while the queue is being purged.
+
+```sql
+EXEC aws.sqs.queues.purge_queue 
+@region='{{ region }}' --required 
+@@json=
+'{
+"QueueUrl": "{{ QueueUrl }}"
+}'
 ;
 ```
 </TabItem>

@@ -1511,10 +1511,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteResourcePolicyResponse"
     get:
       operationId: GetResourcePolicy
       description: Returns information about a resource policy.
@@ -1556,10 +1552,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/PutResourcePolicyResponse"
   /global-networks/{global_network_id}/sites/{site_id}:
     delete:
       operationId: DeleteSite
@@ -1734,10 +1726,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ExecuteCoreNetworkChangeSetResponse"
   /connect-attachments/{attachment_id}:
     get:
       operationId: GetConnectAttachment
@@ -2745,10 +2733,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TagResourceResponse"
     delete:
       operationId: UntagResource
       description: Removes tags from a specified resource.
@@ -2768,10 +2752,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UntagResourceResponse"
   /routing-policy-label:
     post:
       operationId: PutAttachmentRoutingPolicyLabel
@@ -4324,8 +4304,6 @@ components:
         Peering:
           $ref: "#/components/schemas/Peering"
           description: Information about a deleted peering connection.
-    DeleteResourcePolicyResponse:
-      type: object
     DeleteSiteResponse:
       type: object
       properties:
@@ -4419,8 +4397,6 @@ components:
         TransitGatewayConnectPeerAssociation:
           $ref: "#/components/schemas/TransitGatewayConnectPeerAssociation"
           description: The transit gateway Connect peer association.
-    ExecuteCoreNetworkChangeSetResponse:
-      type: object
     GetConnectAttachmentResponse:
       type: object
       properties:
@@ -5707,8 +5683,6 @@ components:
         CoreNetworkPolicy:
           $ref: "#/components/schemas/CoreNetworkPolicy"
           description: Describes the changed core network policy.
-    PutResourcePolicyResponse:
-      type: object
     RegisterTransitGatewayResponse:
       type: object
       properties:
@@ -5765,14 +5739,10 @@ components:
         RouteAnalysis:
           $ref: "#/components/schemas/RouteAnalysis"
           description: The route analysis.
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
         $ref: "#/components/schemas/TagKey"
-    UntagResourceResponse:
-      type: object
     UpdateConnectionResponse:
       type: object
       properties:
@@ -5990,8 +5960,8 @@ components:
           - $ref: "#/components/x-stackQL-resources/connect_peers/methods/create_connect_peer"
         update:
           - $ref: "#/components/x-stackQL-resources/connect_peers/methods/associate_connect_peer"
-          - $ref: "#/components/x-stackQL-resources/connect_peers/methods/associate_transit_gateway_connect_peer"
           - $ref: "#/components/x-stackQL-resources/connect_peers/methods/disassociate_connect_peer"
+          - $ref: "#/components/x-stackQL-resources/connect_peers/methods/associate_transit_gateway_connect_peer"
           - $ref: "#/components/x-stackQL-resources/connect_peers/methods/disassociate_transit_gateway_connect_peer"
         delete:
           - $ref: "#/components/x-stackQL-resources/connect_peers/methods/delete_connect_peer"
@@ -6435,7 +6405,6 @@ components:
             $ref: "#/paths/~1core-networks~1{core_network_id}~1core-network-change-sets~1{policy_version_id}~1execute/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/core_networks/methods/get_core_network"
@@ -6865,7 +6834,6 @@ components:
             $ref: "#/paths/~1resource-policy~1{resource_arn}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         get_resource_policy:
           operation:
             $ref: "#/paths/~1resource-policy~1{resource_arn}/get"
@@ -6877,7 +6845,6 @@ components:
             $ref: "#/paths/~1resource-policy~1{resource_arn}/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -7133,10 +7100,10 @@ components:
         insert: []
         update: []
         delete: []
-    route_analysis:
-      id: aws.networkmanager.route_analysis
-      name: route_analysis
-      title: route_analysis
+    route_analyses:
+      id: aws.networkmanager.route_analyses
+      name: route_analyses
+      title: route_analyses
       methods:
         get_route_analysis:
           operation:
@@ -7158,7 +7125,7 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/route_analysis/methods/get_route_analysis"
+          - $ref: "#/components/x-stackQL-resources/route_analyses/methods/get_route_analysis"
         insert: []
         update: []
         delete: []
@@ -7218,10 +7185,10 @@ components:
         insert: []
         update: []
         delete: []
-    core_network_routing_informations:
-      id: aws.networkmanager.core_network_routing_informations
-      name: core_network_routing_informations
-      title: core_network_routing_informations
+    core_network_routing_information:
+      id: aws.networkmanager.core_network_routing_information
+      name: core_network_routing_information
+      title: core_network_routing_information
       methods:
         list_core_network_routing_information:
           operation:
@@ -7244,14 +7211,14 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/core_network_routing_informations/methods/list_core_network_routing_information"
+          - $ref: "#/components/x-stackQL-resources/core_network_routing_information/methods/list_core_network_routing_information"
         insert: []
         update: []
         delete: []
-    organization_service_access_status:
-      id: aws.networkmanager.organization_service_access_status
-      name: organization_service_access_status
-      title: organization_service_access_status
+    organization_service_access_statuses:
+      id: aws.networkmanager.organization_service_access_statuses
+      name: organization_service_access_statuses
+      title: organization_service_access_statuses
       methods:
         list_organization_service_access_status:
           operation:
@@ -7264,7 +7231,28 @@ components:
             nativeCasing: pascal
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/organization_service_access_status/methods/list_organization_service_access_status"
+          - $ref: "#/components/x-stackQL-resources/organization_service_access_statuses/methods/list_organization_service_access_status"
+        insert: []
+        update: []
+        delete: []
+    organization_service_access_updates:
+      id: aws.networkmanager.organization_service_access_updates
+      name: organization_service_access_updates
+      title: organization_service_access_updates
+      methods:
+        start_organization_service_access_update:
+          operation:
+            $ref: "#/paths/~1organizations~1service-access/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
         insert: []
         update: []
         delete: []
@@ -7284,7 +7272,6 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -7295,7 +7282,6 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
       sqlVerbs:

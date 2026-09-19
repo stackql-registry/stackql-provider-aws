@@ -36,7 +36,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CancelGremlinQueryOutput'
-      x-stackql-resource: gremlin_query
+      x-stackql-resource: gremlin_queries
       x-stackql-method: cancel_gremlin_query
       x-stackql-verb: EXEC
     get:
@@ -59,7 +59,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetGremlinQueryStatusOutput'
-      x-stackql-resource: gremlin_query_status
+      x-stackql-resource: gremlin_query_statuses
       x-stackql-method: get_gremlin_query_status
       x-stackql-verb: SELECT
   /loader/{load_id}:
@@ -83,7 +83,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CancelLoaderJobOutput'
-      x-stackql-resource: loader_job
+      x-stackql-resource: loader_jobs
       x-stackql-method: cancel_loader_job
       x-stackql-verb: EXEC
     get:
@@ -134,7 +134,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetLoaderJobStatusOutput'
-      x-stackql-resource: loader_job_status
+      x-stackql-resource: loader_job_statuses
       x-stackql-method: get_loader_job_status
       x-stackql-verb: SELECT
   /ml/dataprocessing/{id}:
@@ -171,7 +171,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CancelMLDataProcessingJobOutput'
-      x-stackql-resource: ml_data_processing_job
+      x-stackql-resource: ml_data_processing_jobs
       x-stackql-method: cancel_ml_data_processing_job
       x-stackql-verb: EXEC
     get:
@@ -237,7 +237,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CancelMLModelTrainingJobOutput'
-      x-stackql-resource: ml_model_training_job
+      x-stackql-resource: ml_model_training_jobs
       x-stackql-method: cancel_ml_model_training_job
       x-stackql-verb: EXEC
     get:
@@ -304,7 +304,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CancelMLModelTransformJobOutput'
-      x-stackql-resource: ml_model_transform_job
+      x-stackql-resource: ml_model_transform_jobs
       x-stackql-method: cancel_ml_model_transform_job
       x-stackql-verb: EXEC
     get:
@@ -363,7 +363,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CancelOpenCypherQueryOutput'
-      x-stackql-resource: open_cypher_query
+      x-stackql-resource: open_cypher_queries
       x-stackql-method: cancel_open_cypher_query
       x-stackql-verb: EXEC
     get:
@@ -387,7 +387,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetOpenCypherQueryStatusOutput'
-      x-stackql-resource: open_cypher_query_status
+      x-stackql-resource: open_cypher_query_statuses
       x-stackql-method: get_open_cypher_query_status
       x-stackql-verb: SELECT
   /ml/endpoints:
@@ -677,7 +677,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ExecuteFastResetOutput'
-      x-stackql-resource: execute_fast_reset
+      x-stackql-resource: fast_resets
       x-stackql-method: execute_fast_reset
       x-stackql-verb: EXEC
   /gremlin/explain:
@@ -712,7 +712,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ExecuteGremlinExplainQueryOutput'
-      x-stackql-resource: execute_gremlin_explain_query
+      x-stackql-resource: gremlin_explain_queries
       x-stackql-method: execute_gremlin_explain_query
       x-stackql-verb: EXEC
   /gremlin/profile:
@@ -751,7 +751,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ExecuteGremlinProfileQueryOutput'
-      x-stackql-resource: execute_gremlin_profile_query
+      x-stackql-resource: gremlin_profile_queries
       x-stackql-method: execute_gremlin_profile_query
       x-stackql-verb: EXEC
   /gremlin:
@@ -792,7 +792,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ExecuteGremlinQueryOutput'
-      x-stackql-resource: execute_gremlin_query
+      x-stackql-resource: gremlin_queries
       x-stackql-method: execute_gremlin_query
       x-stackql-verb: EXEC
   /opencypher/explain:
@@ -827,7 +827,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ExecuteOpenCypherExplainQueryOutput'
-      x-stackql-resource: execute_open_cypher_explain_query
+      x-stackql-resource: open_cypher_explain_queries
       x-stackql-method: execute_open_cypher_explain_query
       x-stackql-verb: EXEC
   /opencypher:
@@ -865,7 +865,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ExecuteOpenCypherQueryOutput'
-      x-stackql-resource: execute_open_cypher_query
+      x-stackql-resource: open_cypher_queries
       x-stackql-method: execute_open_cypher_query
       x-stackql-verb: EXEC
   /status:
@@ -882,7 +882,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetEngineStatusOutput'
-      x-stackql-resource: engine_status
+      x-stackql-resource: engine_statuses
       x-stackql-method: get_engine_status
       x-stackql-verb: SELECT
   /propertygraph/stream:
@@ -1167,7 +1167,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartLoaderJobOutput'
-      x-stackql-resource: loader_job
+      x-stackql-resource: loader_jobs
       x-stackql-method: start_loader_job
       x-stackql-verb: EXEC
   /ml/dataprocessing:
@@ -1260,7 +1260,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartMLDataProcessingJobOutput'
-      x-stackql-resource: ml_data_processing_job
+      x-stackql-resource: ml_data_processing_jobs
       x-stackql-method: start_ml_data_processing_job
       x-stackql-verb: EXEC
   /ml/modeltraining:
@@ -1357,7 +1357,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartMLModelTrainingJobOutput'
-      x-stackql-resource: ml_model_training_job
+      x-stackql-resource: ml_model_training_jobs
       x-stackql-method: start_ml_model_training_job
       x-stackql-verb: EXEC
   /ml/modeltransform:
@@ -1445,7 +1445,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartMLModelTransformJobOutput'
-      x-stackql-resource: ml_model_transform_job
+      x-stackql-resource: ml_model_transform_jobs
       x-stackql-method: start_ml_model_transform_job
       x-stackql-verb: EXEC
   /opencypher/status:

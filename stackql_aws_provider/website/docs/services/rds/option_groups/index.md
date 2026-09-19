@@ -152,6 +152,13 @@ The following methods are available for this resource:
     <td></td>
     <td>Deletes an existing option group.</td>
 </tr>
+<tr>
+    <td><a href="#copy_option_group"><CopyableCode code="copy_option_group" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-SourceOptionGroupIdentifier"><code>SourceOptionGroupIdentifier</code></a>, <a href="#parameter-TargetOptionGroupIdentifier"><code>TargetOptionGroupIdentifier</code></a>, <a href="#parameter-TargetOptionGroupDescription"><code>TargetOptionGroupDescription</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td><a href="#parameter-Tags"><code>Tags</code></a></td>
+    <td>Copies the specified option group.</td>
+</tr>
 </tbody>
 </table>
 
@@ -187,6 +194,21 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     <td><CopyableCode code="OptionGroupName" /></td>
     <td><code>string</code></td>
     <td>The name of the option group to be deleted. You can't delete default option groups.</td>
+</tr>
+<tr id="parameter-SourceOptionGroupIdentifier">
+    <td><CopyableCode code="SourceOptionGroupIdentifier" /></td>
+    <td><code>string</code></td>
+    <td>The identifier for the source option group. Constraints: Must specify a valid option group.</td>
+</tr>
+<tr id="parameter-TargetOptionGroupDescription">
+    <td><CopyableCode code="TargetOptionGroupDescription" /></td>
+    <td><code>string</code></td>
+    <td>The description for the copied option group.</td>
+</tr>
+<tr id="parameter-TargetOptionGroupIdentifier">
+    <td><CopyableCode code="TargetOptionGroupIdentifier" /></td>
+    <td><code>string</code></td>
+    <td>The identifier for the copied option group. Constraints: Can't be null, empty, or blank Must contain from 1 to 255 letters, numbers, or hyphens First character must be a letter Can't end with a hyphen or contain two consecutive hyphens Example: my-option-group</td>
 </tr>
 <tr id="parameter-region">
     <td><CopyableCode code="region" /></td>
@@ -241,7 +263,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-Tags">
     <td><CopyableCode code="Tags" /></td>
     <td><code>array</code></td>
-    <td>Tags to assign to the option group.</td>
+    <td></td>
 </tr>
 </tbody>
 </table>
@@ -414,6 +436,31 @@ Deletes an existing option group.
 DELETE FROM aws.rds.option_groups
 WHERE OptionGroupName = '{{ OptionGroupName }}' --required
 AND region = '{{ region }}' --required
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="copy_option_group"
+    values={[
+        { label: 'copy_option_group', value: 'copy_option_group' }
+    ]}
+>
+<TabItem value="copy_option_group">
+
+Copies the specified option group.
+
+```sql
+EXEC aws.rds.option_groups.copy_option_group 
+@SourceOptionGroupIdentifier='{{ SourceOptionGroupIdentifier }}' --required, 
+@TargetOptionGroupIdentifier='{{ TargetOptionGroupIdentifier }}' --required, 
+@TargetOptionGroupDescription='{{ TargetOptionGroupDescription }}' --required, 
+@region='{{ region }}' --required, 
+@Tags='{{ Tags }}'
 ;
 ```
 </TabItem>

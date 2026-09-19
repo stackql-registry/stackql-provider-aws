@@ -125,10 +125,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ConnectCustomKeyStoreResponse'
       x-stackql-resource: custom_key_stores
       x-stackql-method: connect_custom_key_store
       x-stackql-verb: EXEC
@@ -189,7 +185,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: alias
+      x-stackql-resource: aliases
       x-stackql-method: create_alias
       x-stackql-verb: INSERT
   /CreateCustomKeyStore:
@@ -858,7 +854,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DecryptResponse'
-      x-stackql-resource: decrypt
+      x-stackql-resource: ts
       x-stackql-method: decrypt
       x-stackql-verb: EXEC
   /DeleteAlias:
@@ -901,7 +897,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: alias
+      x-stackql-resource: aliases
       x-stackql-method: delete_alias
       x-stackql-verb: DELETE
   /DeleteCustomKeyStore:
@@ -953,10 +949,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteCustomKeyStoreResponse'
       x-stackql-resource: custom_key_stores
       x-stackql-method: delete_custom_key_store
       x-stackql-verb: DELETE
@@ -1352,7 +1344,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: keys
+      x-stackql-resource: key_rotations
       x-stackql-method: disable_key_rotation
       x-stackql-verb: EXEC
   /DisconnectCustomKeyStore:
@@ -1399,10 +1391,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DisconnectCustomKeyStoreResponse'
       x-stackql-resource: custom_key_stores
       x-stackql-method: disconnect_custom_key_store
       x-stackql-verb: EXEC
@@ -1509,7 +1497,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: keys
+      x-stackql-resource: key_rotations
       x-stackql-method: enable_key_rotation
       x-stackql-verb: EXEC
   /Encrypt:
@@ -1607,7 +1595,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/EncryptResponse'
-      x-stackql-resource: keys
+      x-stackql-resource: ts
       x-stackql-method: encrypt
       x-stackql-verb: EXEC
   /GenerateDataKey:
@@ -2180,7 +2168,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GenerateRandomResponse'
-      x-stackql-resource: random
+      x-stackql-resource: randoms
       x-stackql-method: generate_random
       x-stackql-verb: EXEC
   /GetKeyLastUsage:
@@ -2345,7 +2333,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetKeyRotationStatusResponse'
-      x-stackql-resource: key_rotation_status
+      x-stackql-resource: key_rotation_statuses
       x-stackql-method: get_key_rotation_status
       x-stackql-verb: SELECT
   /GetParametersForImport:
@@ -2430,7 +2418,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetParametersForImportResponse'
-      x-stackql-resource: parameters_for_imports
+      x-stackql-resource: parameters
       x-stackql-method: get_parameters_for_import
       x-stackql-verb: SELECT
   /GetPublicKey:
@@ -3312,7 +3300,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ReEncryptResponse'
-      x-stackql-resource: re_encrypt
+      x-stackql-resource: encrypts
       x-stackql-method: re_encrypt
       x-stackql-verb: EXEC
   /ReplicateKey:
@@ -3500,7 +3488,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: retire_grant
+      x-stackql-resource: grants
       x-stackql-method: retire_grant
       x-stackql-verb: EXEC
   /RevokeGrant:
@@ -3963,7 +3951,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: alias
+      x-stackql-resource: aliases
       x-stackql-method: update_alias
       x-stackql-verb: UPDATE
   /UpdateCustomKeyStore:
@@ -4102,10 +4090,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateCustomKeyStoreResponse'
       x-stackql-resource: custom_key_stores
       x-stackql-method: update_custom_key_store
       x-stackql-verb: UPDATE
@@ -4467,8 +4451,6 @@ components:
       type: string
       minLength: 1
       maxLength: 64
-    ConnectCustomKeyStoreResponse:
-      type: object
     AliasNameType:
       type: string
       minLength: 1
@@ -5100,8 +5082,6 @@ components:
       format: byte
       minLength: 1
       maxLength: 4096
-    DeleteCustomKeyStoreResponse:
-      type: object
     DeleteImportedKeyMaterialResponse:
       type: object
       properties:
@@ -5349,8 +5329,6 @@ components:
         KeyMetadata:
           $ref: '#/components/schemas/KeyMetadata'
           description: Metadata associated with the key.
-    DisconnectCustomKeyStoreResponse:
-      type: object
     RotationPeriodInDaysType:
       type: integer
       minimum: 90
@@ -6038,8 +6016,6 @@ components:
       type: array
       items:
         $ref: '#/components/schemas/TagKeyType'
-    UpdateCustomKeyStoreResponse:
-      type: object
     VerifyResponse:
       type: object
       properties:

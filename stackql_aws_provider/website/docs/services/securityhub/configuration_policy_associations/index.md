@@ -33,37 +33,13 @@ Creates, updates, deletes, gets or lists a <code>configuration_policy_associatio
 The following fields are returned by `SELECT` queries:
 
 <Tabs
-    defaultValue="batch_get_configuration_policy_associations"
+    defaultValue="get_configuration_policy_association"
     values={[
-        { label: 'batch_get_configuration_policy_associations', value: 'batch_get_configuration_policy_associations' },
         { label: 'get_configuration_policy_association', value: 'get_configuration_policy_association' },
+        { label: 'batch_get_configuration_policy_associations', value: 'batch_get_configuration_policy_associations' },
         { label: 'list_configuration_policy_associations', value: 'list_configuration_policy_associations' }
     ]}
 >
-<TabItem value="batch_get_configuration_policy_associations">
-
-<table>
-<thead>
-    <tr>
-    <th>Name</th>
-    <th>Datatype</th>
-    <th>Description</th>
-    </tr>
-</thead>
-<tbody>
-<tr>
-    <td><CopyableCode code="configuration_policy_associations" /></td>
-    <td><code>array</code></td>
-    <td>Describes associations for the target accounts, OUs, or the root.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="unprocessed_configuration_policy_associations" /></td>
-    <td><code>array</code></td>
-    <td>An array of configuration policy associations, one for each configuration policy association identifier, that was specified in the request but couldn’t be processed due to an error.</td>
-</tr>
-</tbody>
-</table>
-</TabItem>
 <TabItem value="get_configuration_policy_association">
 
 <table>
@@ -109,6 +85,30 @@ The following fields are returned by `SELECT` queries:
     <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time, in UTC and ISO 8601 format, that the configuration policy association was last updated.</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
+<TabItem value="batch_get_configuration_policy_associations">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="configuration_policy_associations" /></td>
+    <td><code>array</code></td>
+    <td>Describes associations for the target accounts, OUs, or the root.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="unprocessed_configuration_policy_associations" /></td>
+    <td><code>array</code></td>
+    <td>An array of configuration policy associations, one for each configuration policy association identifier, that was specified in the request but couldn’t be processed due to an error.</td>
 </tr>
 </tbody>
 </table>
@@ -180,18 +180,18 @@ The following methods are available for this resource:
 </thead>
 <tbody>
 <tr>
-    <td><a href="#batch_get_configuration_policy_associations"><CopyableCode code="batch_get_configuration_policy_associations" /></a></td>
-    <td><CopyableCode code="select" /></td>
-    <td><a href="#parameter-region"><code>region</code></a></td>
-    <td></td>
-    <td>Returns associations between an Security Hub CSPM configuration and a batch of target accounts, organizational units, or the root. Only the Security Hub CSPM delegated administrator can invoke this operation from the home Region. A configuration can refer to a configuration policy or to a self-managed configuration.</td>
-</tr>
-<tr>
     <td><a href="#get_configuration_policy_association"><CopyableCode code="get_configuration_policy_association" /></a></td>
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td></td>
     <td>Returns the association between a configuration and a target account, organizational unit, or the root. The configuration can be a configuration policy or self-managed behavior. Only the Security Hub CSPM delegated administrator can invoke this operation from the home Region.</td>
+</tr>
+<tr>
+    <td><a href="#batch_get_configuration_policy_associations"><CopyableCode code="batch_get_configuration_policy_associations" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Returns associations between an Security Hub CSPM configuration and a batch of target accounts, organizational units, or the root. Only the Security Hub CSPM delegated administrator can invoke this operation from the home Region. A configuration can refer to a configuration policy or to a self-managed configuration.</td>
 </tr>
 <tr>
     <td><a href="#list_configuration_policy_associations"><CopyableCode code="list_configuration_policy_associations" /></a></td>
@@ -227,26 +227,13 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 ## `SELECT` examples
 
 <Tabs
-    defaultValue="batch_get_configuration_policy_associations"
+    defaultValue="get_configuration_policy_association"
     values={[
-        { label: 'batch_get_configuration_policy_associations', value: 'batch_get_configuration_policy_associations' },
         { label: 'get_configuration_policy_association', value: 'get_configuration_policy_association' },
+        { label: 'batch_get_configuration_policy_associations', value: 'batch_get_configuration_policy_associations' },
         { label: 'list_configuration_policy_associations', value: 'list_configuration_policy_associations' }
     ]}
 >
-<TabItem value="batch_get_configuration_policy_associations">
-
-Returns associations between an Security Hub CSPM configuration and a batch of target accounts, organizational units, or the root. Only the Security Hub CSPM delegated administrator can invoke this operation from the home Region. A configuration can refer to a configuration policy or to a self-managed configuration.
-
-```sql
-SELECT
-configuration_policy_associations,
-unprocessed_configuration_policy_associations
-FROM aws.securityhub.configuration_policy_associations
-WHERE region = '{{ region }}' -- required
-;
-```
-</TabItem>
 <TabItem value="get_configuration_policy_association">
 
 Returns the association between a configuration and a target account, organizational unit, or the root. The configuration can be a configuration policy or self-managed behavior. Only the Security Hub CSPM delegated administrator can invoke this operation from the home Region.
@@ -260,6 +247,19 @@ configuration_policy_id,
 target_id,
 target_type,
 updated_at
+FROM aws.securityhub.configuration_policy_associations
+WHERE region = '{{ region }}' -- required
+;
+```
+</TabItem>
+<TabItem value="batch_get_configuration_policy_associations">
+
+Returns associations between an Security Hub CSPM configuration and a batch of target accounts, organizational units, or the root. Only the Security Hub CSPM delegated administrator can invoke this operation from the home Region. A configuration can refer to a configuration policy or to a self-managed configuration.
+
+```sql
+SELECT
+configuration_policy_associations,
+unprocessed_configuration_policy_associations
 FROM aws.securityhub.configuration_policy_associations
 WHERE region = '{{ region }}' -- required
 ;

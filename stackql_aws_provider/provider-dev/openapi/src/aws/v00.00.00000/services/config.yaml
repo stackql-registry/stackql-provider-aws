@@ -359,10 +359,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteEvaluationResultsResponse"
   /DeleteOrganizationConfigRule:
     post:
       operationId: DeleteOrganizationConfigRule
@@ -486,10 +482,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteRemediationConfigurationResponse"
   /DeleteRemediationExceptions:
     post:
       operationId: DeleteRemediationExceptions
@@ -652,10 +644,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteStoredQueryResponse"
   /DeliverConfigSnapshot:
     post:
       operationId: DeliverConfigSnapshot
@@ -3099,10 +3087,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/PutExternalEvaluationResponse"
   /PutOrganizationConfigRule:
     post:
       operationId: PutOrganizationConfigRule
@@ -3589,10 +3573,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/StartConfigRulesEvaluationResponse"
   /StartConfigurationRecorder:
     post:
       operationId: StartConfigurationRecorder
@@ -4759,9 +4739,6 @@ components:
       type: string
       minLength: 1
       maxLength: 64
-    DeleteEvaluationResultsResponse:
-      description: The output when you delete the evaluation results for the specified Config rule.
-      type: object
     OrganizationConfigRuleName:
       type: string
       minLength: 1
@@ -4772,8 +4749,6 @@ components:
       minLength: 1
       maxLength: 128
       pattern: "[a-zA-Z][-a-zA-Z0-9]*"
-    DeleteRemediationConfigurationResponse:
-      type: object
     RemediationExceptionResourceKeys:
       type: array
       items:
@@ -4842,8 +4817,6 @@ components:
       minLength: 1
       maxLength: 64
       pattern: ^[a-zA-Z0-9-_]+$
-    DeleteStoredQueryResponse:
-      type: object
     DeliverConfigSnapshotResponse:
       description: The output for the DeliverConfigSnapshot action, in JSON format.
       type: object
@@ -7929,8 +7902,6 @@ components:
         - ComplianceResourceId
         - ComplianceType
         - OrderingTimestamp
-    PutExternalEvaluationResponse:
-      type: object
     OrganizationCustomPolicyRuleMetadata:
       description: An object that specifies metadata for your organization's Config Custom Policy rule. The metadata includes the runtime system in use, which accounts have debug logging enabled, and other custom rule metadata, such as resource type, resource ID of Amazon Web Services resource, and organization trigger types that initiate Config to evaluate Amazon Web Services resources against a rule.
       type: object
@@ -8119,9 +8090,6 @@ components:
       type: array
       items:
         $ref: "#/components/schemas/ConfigRuleName"
-    StartConfigRulesEvaluationResponse:
-      description: The output when you start the evaluation for the specified Config rule.
-      type: object
     StartRemediationExecutionResponse:
       type: object
       properties:
@@ -8309,8 +8277,8 @@ components:
         update:
           - $ref: "#/components/x-stackQL-resources/configuration_recorders/methods/associate_resource_types"
         replace:
-          - $ref: "#/components/x-stackQL-resources/configuration_recorders/methods/put_third_party_service_linked_configuration_recorder"
           - $ref: "#/components/x-stackQL-resources/configuration_recorders/methods/put_configuration_recorder"
+          - $ref: "#/components/x-stackQL-resources/configuration_recorders/methods/put_third_party_service_linked_configuration_recorder"
           - $ref: "#/components/x-stackQL-resources/configuration_recorders/methods/put_service_linked_configuration_recorder"
         delete:
           - $ref: "#/components/x-stackQL-resources/configuration_recorders/methods/delete_configuration_recorder"
@@ -8349,8 +8317,8 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/aggregate_resource_configs/methods/batch_get_aggregate_resource_config"
           - $ref: "#/components/x-stackQL-resources/aggregate_resource_configs/methods/get_aggregate_resource_config"
+          - $ref: "#/components/x-stackQL-resources/aggregate_resource_configs/methods/batch_get_aggregate_resource_config"
         insert: []
         update: []
         delete: []
@@ -8394,6 +8362,26 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            requestBodyTranslate:
+              algorithm: naive
+        select_resource_config:
+          operation:
+            $ref: "#/paths/~1SelectResourceConfig/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -8487,7 +8475,6 @@ components:
             $ref: "#/paths/~1DeleteEvaluationResults/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -8533,7 +8520,6 @@ components:
             $ref: "#/paths/~1PutExternalEvaluation/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -8546,7 +8532,6 @@ components:
             $ref: "#/paths/~1StartConfigRulesEvaluation/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -8573,8 +8558,8 @@ components:
         insert: []
         update: []
         replace:
-          - $ref: "#/components/x-stackQL-resources/config_rules/methods/put_external_evaluation"
           - $ref: "#/components/x-stackQL-resources/config_rules/methods/put_config_rule"
+          - $ref: "#/components/x-stackQL-resources/config_rules/methods/put_external_evaluation"
         delete:
           - $ref: "#/components/x-stackQL-resources/config_rules/methods/delete_config_rule"
     configuration_aggregators:
@@ -9030,7 +9015,6 @@ components:
             $ref: "#/paths/~1DeleteRemediationConfiguration/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -9196,7 +9180,6 @@ components:
             $ref: "#/paths/~1DeleteStoredQuery/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -9254,10 +9237,10 @@ components:
           - $ref: "#/components/x-stackQL-resources/stored_queries/methods/put_stored_query"
         delete:
           - $ref: "#/components/x-stackQL-resources/stored_queries/methods/delete_stored_query"
-    aggregate_compliance_by_config_rules:
-      id: aws.config.aggregate_compliance_by_config_rules
-      name: aggregate_compliance_by_config_rules
-      title: aggregate_compliance_by_config_rules
+    aggregate_compliances:
+      id: aws.config.aggregate_compliances
+      name: aggregate_compliances
+      title: aggregate_compliances
       methods:
         describe_aggregate_compliance_by_config_rules:
           operation:
@@ -9282,7 +9265,7 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/aggregate_compliance_by_config_rules/methods/describe_aggregate_compliance_by_config_rules"
+          - $ref: "#/components/x-stackQL-resources/aggregate_compliances/methods/describe_aggregate_compliance_by_config_rules"
         insert: []
         update: []
         delete: []
@@ -9318,10 +9301,10 @@ components:
         insert: []
         update: []
         delete: []
-    compliance_by_config_rules:
-      id: aws.config.compliance_by_config_rules
-      name: compliance_by_config_rules
-      title: compliance_by_config_rules
+    compliances:
+      id: aws.config.compliances
+      name: compliances
+      title: compliances
       methods:
         describe_compliance_by_config_rule:
           operation:
@@ -9346,7 +9329,7 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/compliance_by_config_rules/methods/describe_compliance_by_config_rule"
+          - $ref: "#/components/x-stackQL-resources/compliances/methods/describe_compliance_by_config_rule"
         insert: []
         update: []
         delete: []
@@ -9382,10 +9365,10 @@ components:
         insert: []
         update: []
         delete: []
-    config_rule_evaluation_status:
-      id: aws.config.config_rule_evaluation_status
-      name: config_rule_evaluation_status
-      title: config_rule_evaluation_status
+    config_rule_evaluation_statuses:
+      id: aws.config.config_rule_evaluation_statuses
+      name: config_rule_evaluation_statuses
+      title: config_rule_evaluation_statuses
       methods:
         describe_config_rule_evaluation_status:
           operation:
@@ -9410,14 +9393,14 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/config_rule_evaluation_status/methods/describe_config_rule_evaluation_status"
+          - $ref: "#/components/x-stackQL-resources/config_rule_evaluation_statuses/methods/describe_config_rule_evaluation_status"
         insert: []
         update: []
         delete: []
-    configuration_aggregator_sources_status:
-      id: aws.config.configuration_aggregator_sources_status
-      name: configuration_aggregator_sources_status
-      title: configuration_aggregator_sources_status
+    configuration_aggregator_sources_statuses:
+      id: aws.config.configuration_aggregator_sources_statuses
+      name: configuration_aggregator_sources_statuses
+      title: configuration_aggregator_sources_statuses
       methods:
         describe_configuration_aggregator_sources_status:
           operation:
@@ -9442,14 +9425,14 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/configuration_aggregator_sources_status/methods/describe_configuration_aggregator_sources_status"
+          - $ref: "#/components/x-stackQL-resources/configuration_aggregator_sources_statuses/methods/describe_configuration_aggregator_sources_status"
         insert: []
         update: []
         delete: []
-    configuration_recorder_status:
-      id: aws.config.configuration_recorder_status
-      name: configuration_recorder_status
-      title: configuration_recorder_status
+    configuration_recorder_statuses:
+      id: aws.config.configuration_recorder_statuses
+      name: configuration_recorder_statuses
+      title: configuration_recorder_statuses
       methods:
         describe_configuration_recorder_status:
           operation:
@@ -9466,7 +9449,7 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/configuration_recorder_status/methods/describe_configuration_recorder_status"
+          - $ref: "#/components/x-stackQL-resources/configuration_recorder_statuses/methods/describe_configuration_recorder_status"
         insert: []
         update: []
         delete: []
@@ -9502,10 +9485,10 @@ components:
         insert: []
         update: []
         delete: []
-    conformance_pack_status:
-      id: aws.config.conformance_pack_status
-      name: conformance_pack_status
-      title: conformance_pack_status
+    conformance_pack_statuses:
+      id: aws.config.conformance_pack_statuses
+      name: conformance_pack_statuses
+      title: conformance_pack_statuses
       methods:
         describe_conformance_pack_status:
           operation:
@@ -9530,14 +9513,14 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/conformance_pack_status/methods/describe_conformance_pack_status"
+          - $ref: "#/components/x-stackQL-resources/conformance_pack_statuses/methods/describe_conformance_pack_status"
         insert: []
         update: []
         delete: []
-    delivery_channel_status:
-      id: aws.config.delivery_channel_status
-      name: delivery_channel_status
-      title: delivery_channel_status
+    delivery_channel_statuses:
+      id: aws.config.delivery_channel_statuses
+      name: delivery_channel_statuses
+      title: delivery_channel_statuses
       methods:
         describe_delivery_channel_status:
           operation:
@@ -9554,7 +9537,7 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/delivery_channel_status/methods/describe_delivery_channel_status"
+          - $ref: "#/components/x-stackQL-resources/delivery_channel_statuses/methods/describe_delivery_channel_status"
         insert: []
         update: []
         delete: []
@@ -9622,10 +9605,10 @@ components:
         insert: []
         update: []
         delete: []
-    remediation_execution_status:
-      id: aws.config.remediation_execution_status
-      name: remediation_execution_status
-      title: remediation_execution_status
+    remediation_execution_statuses:
+      id: aws.config.remediation_execution_statuses
+      name: remediation_execution_statuses
+      title: remediation_execution_statuses
       methods:
         describe_remediation_execution_status:
           operation:
@@ -9650,14 +9633,14 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/remediation_execution_status/methods/describe_remediation_execution_status"
+          - $ref: "#/components/x-stackQL-resources/remediation_execution_statuses/methods/describe_remediation_execution_status"
         insert: []
         update: []
         delete: []
-    aggregate_compliance_details_by_config_rules:
-      id: aws.config.aggregate_compliance_details_by_config_rules
-      name: aggregate_compliance_details_by_config_rules
-      title: aggregate_compliance_details_by_config_rules
+    aggregate_compliance_details:
+      id: aws.config.aggregate_compliance_details
+      name: aggregate_compliance_details
+      title: aggregate_compliance_details
       methods:
         get_aggregate_compliance_details_by_config_rule:
           operation:
@@ -9682,7 +9665,7 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/aggregate_compliance_details_by_config_rules/methods/get_aggregate_compliance_details_by_config_rule"
+          - $ref: "#/components/x-stackQL-resources/aggregate_compliance_details/methods/get_aggregate_compliance_details_by_config_rule"
         insert: []
         update: []
         delete: []
@@ -9758,10 +9741,10 @@ components:
         insert: []
         update: []
         delete: []
-    compliance_details_by_config_rules:
-      id: aws.config.compliance_details_by_config_rules
-      name: compliance_details_by_config_rules
-      title: compliance_details_by_config_rules
+    compliance_details:
+      id: aws.config.compliance_details
+      name: compliance_details
+      title: compliance_details
       methods:
         get_compliance_details_by_config_rule:
           operation:
@@ -9784,17 +9767,6 @@ components:
                 location: body
             requestBodyTranslate:
               algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/compliance_details_by_config_rules/methods/get_compliance_details_by_config_rule"
-        insert: []
-        update: []
-        delete: []
-    compliance_details_by_resources:
-      id: aws.config.compliance_details_by_resources
-      name: compliance_details_by_resources
-      title: compliance_details_by_resources
-      methods:
         get_compliance_details_by_resource:
           operation:
             $ref: "#/paths/~1GetComplianceDetailsByResource/post"
@@ -9818,14 +9790,15 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/compliance_details_by_resources/methods/get_compliance_details_by_resource"
+          - $ref: "#/components/x-stackQL-resources/compliance_details/methods/get_compliance_details_by_config_rule"
+          - $ref: "#/components/x-stackQL-resources/compliance_details/methods/get_compliance_details_by_resource"
         insert: []
         update: []
         delete: []
-    compliance_summary_by_config_rules:
-      id: aws.config.compliance_summary_by_config_rules
-      name: compliance_summary_by_config_rules
-      title: compliance_summary_by_config_rules
+    compliance_summaries:
+      id: aws.config.compliance_summaries
+      name: compliance_summaries
+      title: compliance_summaries
       methods:
         get_compliance_summary_by_config_rule:
           operation:
@@ -9839,7 +9812,7 @@ components:
             base: "{}"
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/compliance_summary_by_config_rules/methods/get_compliance_summary_by_config_rule"
+          - $ref: "#/components/x-stackQL-resources/compliance_summaries/methods/get_compliance_summary_by_config_rule"
         insert: []
         update: []
         delete: []
@@ -9971,10 +9944,10 @@ components:
         insert: []
         update: []
         delete: []
-    organization_config_rule_detailed_status:
-      id: aws.config.organization_config_rule_detailed_status
-      name: organization_config_rule_detailed_status
-      title: organization_config_rule_detailed_status
+    organization_config_rule_detailed_statuses:
+      id: aws.config.organization_config_rule_detailed_statuses
+      name: organization_config_rule_detailed_statuses
+      title: organization_config_rule_detailed_statuses
       methods:
         get_organization_config_rule_detailed_status:
           operation:
@@ -9999,14 +9972,14 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/organization_config_rule_detailed_status/methods/get_organization_config_rule_detailed_status"
+          - $ref: "#/components/x-stackQL-resources/organization_config_rule_detailed_statuses/methods/get_organization_config_rule_detailed_status"
         insert: []
         update: []
         delete: []
-    organization_conformance_pack_detailed_status:
-      id: aws.config.organization_conformance_pack_detailed_status
-      name: organization_conformance_pack_detailed_status
-      title: organization_conformance_pack_detailed_status
+    organization_conformance_pack_detailed_statuses:
+      id: aws.config.organization_conformance_pack_detailed_statuses
+      name: organization_conformance_pack_detailed_statuses
+      title: organization_conformance_pack_detailed_statuses
       methods:
         get_organization_conformance_pack_detailed_status:
           operation:
@@ -10031,7 +10004,7 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/organization_conformance_pack_detailed_status/methods/get_organization_conformance_pack_detailed_status"
+          - $ref: "#/components/x-stackQL-resources/organization_conformance_pack_detailed_statuses/methods/get_organization_conformance_pack_detailed_status"
         insert: []
         update: []
         delete: []
@@ -10227,6 +10200,19 @@ components:
               responseToken:
                 key: $.NextToken
                 location: body
+            requestBodyTranslate:
+              algorithm: naive
+        start_resource_evaluation:
+          operation:
+            $ref: "#/paths/~1StartResourceEvaluation/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:

@@ -27,7 +27,7 @@ total resources: __21__
 <div class="providerDocColumn">
 <a href="/services/devops_agent/account_usages/">account_usages</a><br />
 <a href="/services/devops_agent/agent_spaces/">agent_spaces</a><br />
-<a href="/services/devops_agent/asset_contents/">asset_contents</a><br />
+<a href="/services/devops_agent/asset_content/">asset_content</a><br />
 <a href="/services/devops_agent/asset_files/">asset_files</a><br />
 <a href="/services/devops_agent/asset_types/">asset_types</a><br />
 <a href="/services/devops_agent/asset_versions/">asset_versions</a><br />

@@ -93,6 +93,20 @@ The following methods are available for this resource:
     <td></td>
     <td>Allows the destination domain owner to delete an existing inbound cross-cluster search connection.</td>
 </tr>
+<tr>
+    <td><a href="#accept_inbound_cross_cluster_search_connection"><CopyableCode code="accept_inbound_cross_cluster_search_connection" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-connection_id"><code>connection_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Allows the destination domain owner to accept an inbound cross-cluster search connection request.</td>
+</tr>
+<tr>
+    <td><a href="#reject_inbound_cross_cluster_search_connection"><CopyableCode code="reject_inbound_cross_cluster_search_connection" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-connection_id"><code>connection_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Allows the destination domain owner to reject an inbound cross-cluster search connection request.</td>
+</tr>
 </tbody>
 </table>
 
@@ -112,7 +126,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-connection_id">
     <td><CopyableCode code="connection_id" /></td>
     <td><code>string</code></td>
-    <td>The id of the inbound connection that you want to permanently delete.</td>
+    <td>The id of the inbound connection that you want to reject.</td>
 </tr>
 <tr id="parameter-region">
     <td><CopyableCode code="region" /></td>
@@ -162,6 +176,40 @@ Allows the destination domain owner to delete an existing inbound cross-cluster 
 DELETE FROM aws.es.inbound_cross_cluster_search_connections
 WHERE connection_id = '{{ connection_id }}' --required
 AND region = '{{ region }}' --required
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="accept_inbound_cross_cluster_search_connection"
+    values={[
+        { label: 'accept_inbound_cross_cluster_search_connection', value: 'accept_inbound_cross_cluster_search_connection' },
+        { label: 'reject_inbound_cross_cluster_search_connection', value: 'reject_inbound_cross_cluster_search_connection' }
+    ]}
+>
+<TabItem value="accept_inbound_cross_cluster_search_connection">
+
+Allows the destination domain owner to accept an inbound cross-cluster search connection request.
+
+```sql
+EXEC aws.es.inbound_cross_cluster_search_connections.accept_inbound_cross_cluster_search_connection 
+@connection_id='{{ connection_id }}' --required, 
+@region='{{ region }}' --required
+;
+```
+</TabItem>
+<TabItem value="reject_inbound_cross_cluster_search_connection">
+
+Allows the destination domain owner to reject an inbound cross-cluster search connection request.
+
+```sql
+EXEC aws.es.inbound_cross_cluster_search_connections.reject_inbound_cross_cluster_search_connection 
+@connection_id='{{ connection_id }}' --required, 
+@region='{{ region }}' --required
 ;
 ```
 </TabItem>

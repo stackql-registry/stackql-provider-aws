@@ -754,10 +754,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/CreateMembershipResponse"
   /CreatePentest:
     post:
       operationId: CreatePentest
@@ -1046,10 +1042,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteArtifactOutput"
   /DeleteIntegration:
     post:
       operationId: DeleteIntegration
@@ -1069,10 +1061,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteIntegrationOutput"
   /DeleteMembership:
     post:
       operationId: DeleteMembership
@@ -1100,10 +1088,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteMembershipResponse"
   /DeletePrivateConnection:
     post:
       operationId: DeletePrivateConnection
@@ -1146,10 +1130,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteSecurityRequirementPackOutput"
   /DeleteTargetDomain:
     post:
       operationId: DeleteTargetDomain
@@ -1871,10 +1851,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TagResourceOutput"
     delete:
       operationId: UntagResource
       description: Removes tags from a resource.
@@ -1894,10 +1870,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UntagResourceOutput"
   /ListTargetDomains:
     post:
       operationId: ListTargetDomains
@@ -2064,10 +2036,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/StartCodeRemediationOutput"
   /StartCodeReviewJob:
     post:
       operationId: StartCodeReviewJob
@@ -2174,10 +2142,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/StopCodeReviewJobOutput"
   /StopPentestJob:
     post:
       operationId: StopPentestJob
@@ -2200,10 +2164,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/StopPentestJobOutput"
   /StopThreatModelJob:
     post:
       operationId: StopThreatModelJob
@@ -2226,10 +2186,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/StopThreatModelJobOutput"
   /UpdateAgentSpace:
     post:
       operationId: UpdateAgentSpace
@@ -2370,10 +2326,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateFindingOutput"
   /UpdateIntegratedResources:
     post:
       operationId: UpdateIntegratedResources
@@ -2399,10 +2351,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateIntegratedResourcesOutput"
   /UpdatePentest:
     post:
       operationId: UpdatePentest
@@ -2954,6 +2902,9 @@ components:
         integratedRepositories:
           $ref: "#/components/schemas/IntegratedRepositoryList"
           description: The list of integrated repositories associated with the pentest.
+        trustedCaCertificates:
+          $ref: "#/components/schemas/TrustedCaCertificateList"
+          description: The trust anchors used to validate target endpoint TLS certificates. Provide these for endpoints served by a private or internal certificate authority (CA), an intermediate CA, or a self-signed certificate.
     EndpointList:
       type: array
       items:
@@ -3078,6 +3029,37 @@ components:
       required:
         - integrationId
         - providerResourceId
+    TrustedCaCertificateList:
+      type: array
+      items:
+        $ref: "#/components/schemas/TrustedCaCertificate"
+    TrustedCaCertificate:
+      description: A trust anchor used when validating a target endpoint's TLS certificate.
+      type: object
+      properties:
+        source:
+          $ref: "#/components/schemas/CaCertificateSource"
+          description: The source that AWS Security Agent reads the certificate from.
+      required:
+        - source
+    CaCertificateSource:
+      description: The source of a trusted CA certificate. Exactly one member must be set.
+      type: object
+      properties:
+        inlinePem:
+          $ref: "#/components/schemas/CaCertificatePem"
+          description: A PEM-encoded X.509 certificate supplied inline.
+        artifactId:
+          $ref: "#/components/schemas/String"
+          description: The artifact ID of an uploaded certificate file.
+        s3Location:
+          $ref: "#/components/schemas/String"
+          description: The Amazon S3 location URI of a customer-staged certificate.
+    CaCertificatePem:
+      description: A PEM-encoded X.509 certificate.
+      type: string
+      minLength: 1
+      maxLength: 8192
     RiskTypeList:
       type: array
       items:
@@ -4182,6 +4164,9 @@ components:
         integratedRepositories:
           $ref: "#/components/schemas/IntegratedRepositoryList"
           description: The list of integrated repositories associated with the pentest job.
+        trustedCaCertificates:
+          $ref: "#/components/schemas/TrustedCaCertificateList"
+          description: The trust anchors used to validate target endpoint TLS certificates during the pentest job.
         codeRemediationStrategy:
           $ref: "#/components/schemas/CodeRemediationStrategy"
           description: The code remediation strategy for the pentest job.
@@ -5019,9 +5004,6 @@ components:
       type: string
       enum:
         - MEMBER
-    CreateMembershipResponse:
-      description: Response structure for adding a single member to an agent space.
-      type: object
     CreatePentestOutput:
       description: Output for the CreatePentest operation.
       type: object
@@ -5404,13 +5386,6 @@ components:
         agentSpaceId:
           $ref: "#/components/schemas/AgentSpaceId"
           description: The unique identifier of the deleted agent space.
-    DeleteArtifactOutput:
-      type: object
-    DeleteIntegrationOutput:
-      type: object
-    DeleteMembershipResponse:
-      description: Response structure for removing a single member from an agent space.
-      type: object
     DeletePrivateConnectionOutput:
       type: object
       properties:
@@ -5452,8 +5427,6 @@ components:
         - name
         - type_
         - status
-    DeleteSecurityRequirementPackOutput:
-      type: object
     DeleteTargetDomainOutput:
       description: Output for the DeleteTargetDomain operation.
       type: object
@@ -6935,9 +6908,6 @@ components:
         updatedAt:
           $ref: "#/components/schemas/SyntheticTimestamp_date_time"
           description: The date and time the threat was last updated, in UTC format.
-    StartCodeRemediationOutput:
-      description: Output for the StartCodeRemediation operation.
-      type: object
     DiffSource:
       description: Source of the diff for a differential code scan.
       type: object
@@ -7025,18 +6995,6 @@ components:
           description: The unique identifier of the agent space.
       required:
         - threatModelJobId
-    StopCodeReviewJobOutput:
-      description: Output for the StopCodeReviewJob operation.
-      type: object
-    StopPentestJobOutput:
-      description: Output for the StopPentestJob operation.
-      type: object
-    StopThreatModelJobOutput:
-      description: Output for the StopThreatModelJob operation.
-      type: object
-    TagResourceOutput:
-      description: Output for TagResource operation.
-      type: object
     TagKeyList:
       description: List of tag keys.
       type: array
@@ -7045,9 +7003,6 @@ components:
     TagKey:
       description: Key for a resource tag.
       type: string
-    UntagResourceOutput:
-      description: Output for UntagResource operation.
-      type: object
     UpdateAgentSpaceOutput:
       description: Output for the UpdateAgentSpace operation.
       type: object
@@ -7126,9 +7081,6 @@ components:
           description: The maximum number of billable task hours configured for jobs started from this code review. Null if no budget cap is set.
       required:
         - codeReviewId
-    UpdateFindingOutput:
-      description: Output for the UpdateFinding operation.
-      type: object
     IntegratedResourceInputItemList:
       description: List of integrated resources.
       type: array
@@ -7218,8 +7170,6 @@ components:
         - name
         - spaceKey
         - pageId
-    UpdateIntegratedResourcesOutput:
-      type: object
     UpdatePentestOutput:
       description: Output for the UpdatePentest operation.
       type: object
@@ -7491,7 +7441,6 @@ components:
             $ref: "#/paths/~1DeleteArtifact/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -7695,7 +7644,6 @@ components:
             $ref: "#/paths/~1StopCodeReviewJob/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -7794,7 +7742,6 @@ components:
             $ref: "#/paths/~1StopPentestJob/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -7893,7 +7840,6 @@ components:
             $ref: "#/paths/~1StopThreatModelJob/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -7981,7 +7927,6 @@ components:
             $ref: "#/paths/~1StartCodeRemediation/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -8008,10 +7953,10 @@ components:
           - $ref: "#/components/x-stackQL-resources/agent_spaces/methods/update_agent_space"
         delete:
           - $ref: "#/components/x-stackQL-resources/agent_spaces/methods/delete_agent_space"
-    artifact_metadatas:
-      id: aws.securityagent.artifact_metadatas
-      name: artifact_metadatas
-      title: artifact_metadatas
+    artifact_metadata:
+      id: aws.securityagent.artifact_metadata
+      name: artifact_metadata
+      title: artifact_metadata
       methods:
         batch_get_artifact_metadata:
           operation:
@@ -8026,7 +7971,7 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/artifact_metadatas/methods/batch_get_artifact_metadata"
+          - $ref: "#/components/x-stackQL-resources/artifact_metadata/methods/batch_get_artifact_metadata"
         insert: []
         update: []
         delete: []
@@ -8088,9 +8033,29 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        list_code_review_jobs_for_code_review:
+          operation:
+            $ref: "#/paths/~1ListCodeReviewJobsForCodeReview/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.codeReviewJobSummaries
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/code_review_jobs/methods/batch_get_code_review_jobs"
+          - $ref: "#/components/x-stackQL-resources/code_review_jobs/methods/list_code_review_jobs_for_code_review"
         insert: []
         update: []
         delete: []
@@ -8134,7 +8099,6 @@ components:
             $ref: "#/paths/~1UpdateFinding/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -8206,9 +8170,29 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        list_pentest_jobs_for_pentest:
+          operation:
+            $ref: "#/paths/~1ListPentestJobsForPentest/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.pentestJobSummaries
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/pentest_jobs/methods/batch_get_pentest_jobs"
+          - $ref: "#/components/x-stackQL-resources/pentest_jobs/methods/list_pentest_jobs_for_pentest"
         insert: []
         update: []
         delete: []
@@ -8338,8 +8322,8 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/threat_model_job_tasks/methods/batch_get_threat_model_job_tasks"
           - $ref: "#/components/x-stackQL-resources/threat_model_job_tasks/methods/list_threat_model_job_tasks"
+          - $ref: "#/components/x-stackQL-resources/threat_model_job_tasks/methods/batch_get_threat_model_job_tasks"
         insert: []
         update: []
         delete: []
@@ -8380,8 +8364,8 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/threat_model_jobs/methods/batch_get_threat_model_jobs"
           - $ref: "#/components/x-stackQL-resources/threat_model_jobs/methods/list_threat_model_jobs"
+          - $ref: "#/components/x-stackQL-resources/threat_model_jobs/methods/batch_get_threat_model_jobs"
         insert: []
         update: []
         delete: []
@@ -8444,8 +8428,8 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/threats/methods/batch_get_threats"
           - $ref: "#/components/x-stackQL-resources/threats/methods/list_threats"
+          - $ref: "#/components/x-stackQL-resources/threats/methods/batch_get_threats"
         insert:
           - $ref: "#/components/x-stackQL-resources/threats/methods/create_threat"
         update:
@@ -8549,7 +8533,6 @@ components:
             $ref: "#/paths/~1DeleteIntegration/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -8604,7 +8587,6 @@ components:
             $ref: "#/paths/~1CreateMembership/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -8615,7 +8597,6 @@ components:
             $ref: "#/paths/~1DeleteMembership/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -8747,7 +8728,6 @@ components:
             $ref: "#/paths/~1DeleteSecurityRequirementPack/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -8804,33 +8784,24 @@ components:
           - $ref: "#/components/x-stackQL-resources/security_requirement_packs/methods/update_security_requirement_pack"
         delete:
           - $ref: "#/components/x-stackQL-resources/security_requirement_packs/methods/delete_security_requirement_pack"
-    code_review_jobs_for_code_reviews:
-      id: aws.securityagent.code_review_jobs_for_code_reviews
-      name: code_review_jobs_for_code_reviews
-      title: code_review_jobs_for_code_reviews
+    provider_registrations:
+      id: aws.securityagent.provider_registrations
+      name: provider_registrations
+      title: provider_registrations
       methods:
-        list_code_review_jobs_for_code_review:
+        initiate_provider_registration:
           operation:
-            $ref: "#/paths/~1ListCodeReviewJobsForCodeReview/post"
+            $ref: "#/paths/~1oauth2~1provider~1register/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-            objectKey: $.codeReviewJobSummaries
           request:
             nativeCasing: pascal
           config:
-            pagination:
-              requestToken:
-                key: nextToken
-                location: body
-              responseToken:
-                key: $.nextToken
-                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/code_review_jobs_for_code_reviews/methods/list_code_review_jobs_for_code_review"
+        select: []
         insert: []
         update: []
         delete: []
@@ -8893,7 +8864,6 @@ components:
             $ref: "#/paths/~1UpdateIntegratedResources/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -8905,36 +8875,6 @@ components:
         insert: []
         update:
           - $ref: "#/components/x-stackQL-resources/integrated_resources/methods/update_integrated_resources"
-        delete: []
-    pentest_jobs_for_pentests:
-      id: aws.securityagent.pentest_jobs_for_pentests
-      name: pentest_jobs_for_pentests
-      title: pentest_jobs_for_pentests
-      methods:
-        list_pentest_jobs_for_pentest:
-          operation:
-            $ref: "#/paths/~1ListPentestJobsForPentest/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.pentestJobSummaries
-          request:
-            nativeCasing: pascal
-          config:
-            pagination:
-              requestToken:
-                key: nextToken
-                location: body
-              responseToken:
-                key: $.nextToken
-                location: body
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/pentest_jobs_for_pentests/methods/list_pentest_jobs_for_pentest"
-        insert: []
-        update: []
         delete: []
     tags:
       id: aws.securityagent.tags
@@ -8952,7 +8892,6 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/post"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -8963,7 +8902,6 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/delete"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
           request:
             nativeCasing: pascal
       sqlVerbs:

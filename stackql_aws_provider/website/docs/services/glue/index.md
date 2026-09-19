@@ -18,7 +18,7 @@ glue service documentation.
 
 :::info[Service Summary]
 
-total resources: __78__  
+total resources: __82__  
 
 :::
 
@@ -29,11 +29,10 @@ total resources: __78__
 <a href="/services/glue/assets/">assets</a><br />
 <a href="/services/glue/blueprint_runs/">blueprint_runs</a><br />
 <a href="/services/glue/blueprints/">blueprints</a><br />
-<a href="/services/glue/catalog_import_status/">catalog_import_status</a><br />
+<a href="/services/glue/catalog_import_statuses/">catalog_import_statuses</a><br />
 <a href="/services/glue/catalogs/">catalogs</a><br />
 <a href="/services/glue/classifiers/">classifiers</a><br />
-<a href="/services/glue/column_statistics_for_partitions/">column_statistics_for_partitions</a><br />
-<a href="/services/glue/column_statistics_for_tables/">column_statistics_for_tables</a><br />
+<a href="/services/glue/column_statistics/">column_statistics</a><br />
 <a href="/services/glue/column_statistics_task_runs/">column_statistics_task_runs</a><br />
 <a href="/services/glue/column_statistics_task_settings/">column_statistics_task_settings</a><br />
 <a href="/services/glue/connection_types/">connection_types</a><br />
@@ -59,14 +58,16 @@ total resources: __78__
 <a href="/services/glue/dev_endpoints/">dev_endpoints</a><br />
 <a href="/services/glue/entities/">entities</a><br />
 <a href="/services/glue/entity_records/">entity_records</a><br />
+<a href="/services/glue/export_labels_task_runs/">export_labels_task_runs</a><br />
 <a href="/services/glue/form_types/">form_types</a><br />
 <a href="/services/glue/glossaries/">glossaries</a><br />
 <a href="/services/glue/glossary_terms/">glossary_terms</a><br />
 <a href="/services/glue/glue_identity_center_configurations/">glue_identity_center_configurations</a><br />
-<a href="/services/glue/inbound_integrations/">inbound_integrations</a>
+<a href="/services/glue/import_labels_task_runs/">import_labels_task_runs</a><br />
+<a href="/services/glue/inbound_integrations/">inbound_integrations</a><br />
+<a href="/services/glue/integration_resource_properties/">integration_resource_properties</a>
 </div>
 <div class="providerDocColumn">
-<a href="/services/glue/integration_resource_properties/">integration_resource_properties</a><br />
 <a href="/services/glue/integration_table_properties/">integration_table_properties</a><br />
 <a href="/services/glue/integrations/">integrations</a><br />
 <a href="/services/glue/iterable_forms/">iterable_forms</a><br />
@@ -75,6 +76,8 @@ total resources: __78__
 <a href="/services/glue/jobs/">jobs</a><br />
 <a href="/services/glue/mappings/">mappings</a><br />
 <a href="/services/glue/materialized_view_refresh_task_runs/">materialized_view_refresh_task_runs</a><br />
+<a href="/services/glue/ml_evaluation_task_runs/">ml_evaluation_task_runs</a><br />
+<a href="/services/glue/ml_labeling_set_generation_task_runs/">ml_labeling_set_generation_task_runs</a><br />
 <a href="/services/glue/ml_task_runs/">ml_task_runs</a><br />
 <a href="/services/glue/ml_transforms/">ml_transforms</a><br />
 <a href="/services/glue/partition_indexes/">partition_indexes</a><br />
@@ -82,7 +85,8 @@ total resources: __78__
 <a href="/services/glue/plans/">plans</a><br />
 <a href="/services/glue/registries/">registries</a><br />
 <a href="/services/glue/resource_policies/">resource_policies</a><br />
-<a href="/services/glue/schema_by_definitions/">schema_by_definitions</a><br />
+<a href="/services/glue/schema_version_metadata/">schema_version_metadata</a><br />
+<a href="/services/glue/schema_version_validities/">schema_version_validities</a><br />
 <a href="/services/glue/schema_versions/">schema_versions</a><br />
 <a href="/services/glue/schema_versions_diffs/">schema_versions_diffs</a><br />
 <a href="/services/glue/schemas/">schemas</a><br />
@@ -97,9 +101,9 @@ total resources: __78__
 <a href="/services/glue/tables/">tables</a><br />
 <a href="/services/glue/tags/">tags</a><br />
 <a href="/services/glue/triggers/">triggers</a><br />
-<a href="/services/glue/unfiltered_partition_metadatas/">unfiltered_partition_metadatas</a><br />
-<a href="/services/glue/unfiltered_partitions_metadatas/">unfiltered_partitions_metadatas</a><br />
-<a href="/services/glue/unfiltered_table_metadatas/">unfiltered_table_metadatas</a><br />
+<a href="/services/glue/unfiltered_partition_metadata/">unfiltered_partition_metadata</a><br />
+<a href="/services/glue/unfiltered_partitions_metadata/">unfiltered_partitions_metadata</a><br />
+<a href="/services/glue/unfiltered_table_metadata/">unfiltered_table_metadata</a><br />
 <a href="/services/glue/usage_profiles/">usage_profiles</a><br />
 <a href="/services/glue/user_defined_functions/">user_defined_functions</a><br />
 <a href="/services/glue/workflow_run_properties/">workflow_run_properties</a><br />

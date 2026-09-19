@@ -110,6 +110,13 @@ The following methods are available for this resource:
     <td></td>
     <td>Deletes the log transformer for the specified log group. As soon as you do this, the transformation of incoming log events according to that transformer stops. If this account has an account-level transformer that applies to this log group, the log group begins using that account-level transformer when this log-group level transformer is deleted. After you delete a transformer, be sure to edit any metric filters or subscription filters that relied on the transformed versions of the log events.</td>
 </tr>
+<tr>
+    <td><a href="#test_transformer"><CopyableCode code="test_transformer" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-transformerConfig"><code>transformerConfig</code></a>, <a href="#parameter-logEventMessages"><code>logEventMessages</code></a></td>
+    <td></td>
+    <td>Use this operation to test a log transformer. You enter the transformer configuration and a set of log events to test with. The operation responds with an array that includes the original log events and the transformed versions.</td>
+</tr>
 </tbody>
 </table>
 
@@ -201,6 +208,32 @@ Deletes the log transformer for the specified log group. As soon as you do this,
 ```sql
 DELETE FROM aws.logs.transformers
 WHERE region = '{{ region }}' --required
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="test_transformer"
+    values={[
+        { label: 'test_transformer', value: 'test_transformer' }
+    ]}
+>
+<TabItem value="test_transformer">
+
+Use this operation to test a log transformer. You enter the transformer configuration and a set of log events to test with. The operation responds with an array that includes the original log events and the transformed versions.
+
+```sql
+EXEC aws.logs.transformers.test_transformer 
+@region='{{ region }}' --required 
+@@json=
+'{
+"transformerConfig": "{{ transformerConfig }}", 
+"logEventMessages": "{{ logEventMessages }}"
+}'
 ;
 ```
 </TabItem>

@@ -125,6 +125,13 @@ The following methods are available for this resource:
     <td></td>
     <td>Deletes an existing snapshot. When you receive a successful response from this operation, MemoryDB immediately begins deleting the snapshot; you cannot cancel or revert this operation.</td>
 </tr>
+<tr>
+    <td><a href="#copy_snapshot"><CopyableCode code="copy_snapshot" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-SourceSnapshotName"><code>SourceSnapshotName</code></a>, <a href="#parameter-TargetSnapshotName"><code>TargetSnapshotName</code></a></td>
+    <td></td>
+    <td>Makes a copy of an existing snapshot.</td>
+</tr>
 </tbody>
 </table>
 
@@ -257,6 +264,35 @@ Deletes an existing snapshot. When you receive a successful response from this o
 ```sql
 DELETE FROM aws.memorydb.snapshots
 WHERE region = '{{ region }}' --required
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="copy_snapshot"
+    values={[
+        { label: 'copy_snapshot', value: 'copy_snapshot' }
+    ]}
+>
+<TabItem value="copy_snapshot">
+
+Makes a copy of an existing snapshot.
+
+```sql
+EXEC aws.memorydb.snapshots.copy_snapshot 
+@region='{{ region }}' --required 
+@@json=
+'{
+"SourceSnapshotName": "{{ SourceSnapshotName }}", 
+"TargetSnapshotName": "{{ TargetSnapshotName }}", 
+"TargetBucket": "{{ TargetBucket }}", 
+"KmsKeyId": "{{ KmsKeyId }}", 
+"Tags": "{{ Tags }}"
+}'
 ;
 ```
 </TabItem>

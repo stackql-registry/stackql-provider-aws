@@ -443,7 +443,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreatePolicyStoreAliasOutput'
-      x-stackql-resource: policy_store_alias
+      x-stackql-resource: policy_store_aliases
       x-stackql-method: create_policy_store_alias
       x-stackql-verb: INSERT
   /CreatePolicyTemplate:
@@ -552,10 +552,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteIdentitySourceOutput'
       x-stackql-resource: identity_sources
       x-stackql-method: delete_identity_source
       x-stackql-verb: DELETE
@@ -598,10 +594,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeletePolicyOutput'
       x-stackql-resource: policies
       x-stackql-method: delete_policy
       x-stackql-verb: DELETE
@@ -636,10 +628,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeletePolicyStoreOutput'
       x-stackql-resource: policy_stores
       x-stackql-method: delete_policy_store
       x-stackql-verb: DELETE
@@ -687,11 +675,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeletePolicyStoreAliasOutput'
-      x-stackql-resource: policy_store_alias
+      x-stackql-resource: policy_store_aliases
       x-stackql-method: delete_policy_store_alias
       x-stackql-verb: DELETE
   /DeletePolicyTemplate:
@@ -734,10 +718,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeletePolicyTemplateOutput'
       x-stackql-resource: policy_templates
       x-stackql-method: delete_policy_template
       x-stackql-verb: DELETE
@@ -907,7 +887,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetPolicyStoreAliasOutput'
-      x-stackql-resource: policy_store_alias
+      x-stackql-resource: policy_store_aliases
       x-stackql-method: get_policy_store_alias
       x-stackql-verb: SELECT
   /GetPolicyTemplate:
@@ -1538,10 +1518,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceOutput'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -1579,10 +1555,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceOutput'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -2776,12 +2748,6 @@ components:
       - policyTemplateId
       - createdDate
       - lastUpdatedDate
-    DeleteIdentitySourceOutput:
-      type: object
-    DeletePolicyOutput:
-      type: object
-    DeletePolicyStoreOutput:
-      type: object
     DeletionMode:
       description: 'The deletion mode for a resource. The valid values are: SoftDelete – The resource enters the PendingDeletion
         state. This is the default behavior. HardDelete – The resource is immediately deleted, bypassing the PendingDeletion
@@ -2790,10 +2756,6 @@ components:
       enum:
       - SoftDelete
       - HardDelete
-    DeletePolicyStoreAliasOutput:
-      type: object
-    DeletePolicyTemplateOutput:
-      type: object
     GetIdentitySourceOutput:
       type: object
       properties:
@@ -3805,8 +3767,6 @@ components:
       - namespaces
       - createdDate
       - lastUpdatedDate
-    TagResourceOutput:
-      type: object
     TagKeyList:
       type: array
       items:
@@ -3815,8 +3775,6 @@ components:
       type: string
       minLength: 1
       maxLength: 128
-    UntagResourceOutput:
-      type: object
     UpdateConfiguration:
       description: Contains an update to replace the configuration in an existing identity source.
       type: object

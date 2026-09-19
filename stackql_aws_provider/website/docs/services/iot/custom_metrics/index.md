@@ -124,35 +124,35 @@ The following methods are available for this resource:
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-metric_name"><code>metric_name</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>Gets information about a Device Defender detect custom metric. Requires permission to access the DescribeCustomMetric action.</td>
+    <td>The IoT Device Defender detect feature will no longer be available to new customers starting August 31, 2026. If you would like to use the detect feature, sign up prior to August 31, 2026. To learn about alternatives to IoT Device Defender detect, see IoT Device Defender detect feature availability change in the IoT Device Defender Developer Guide. There is no change to IoT Device Defender audit availability. Gets information about a Device Defender detect custom metric. Requires permission to access the DescribeCustomMetric action.</td>
 </tr>
 <tr>
     <td><a href="#list_custom_metrics"><CopyableCode code="list_custom_metrics" /></a></td>
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td><a href="#parameter-nextToken"><code>nextToken</code></a>, <a href="#parameter-maxResults"><code>maxResults</code></a></td>
-    <td>Lists your Device Defender detect custom metrics. Requires permission to access the ListCustomMetrics action.</td>
+    <td>The IoT Device Defender detect feature will no longer be available to new customers starting August 31, 2026. If you would like to use the detect feature, sign up prior to August 31, 2026. To learn about alternatives to IoT Device Defender detect, see IoT Device Defender detect feature availability change in the IoT Device Defender Developer Guide. There is no change to IoT Device Defender audit availability. Lists your Device Defender detect custom metrics. Requires permission to access the ListCustomMetrics action.</td>
 </tr>
 <tr>
     <td><a href="#create_custom_metric"><CopyableCode code="create_custom_metric" /></a></td>
     <td><CopyableCode code="insert" /></td>
     <td><a href="#parameter-metric_name"><code>metric_name</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-metricType"><code>metricType</code></a>, <a href="#parameter-clientRequestToken"><code>clientRequestToken</code></a></td>
     <td></td>
-    <td>Use this API to define a Custom Metric published by your devices to Device Defender. Requires permission to access the CreateCustomMetric action.</td>
+    <td>The IoT Device Defender detect feature will no longer be available to new customers starting August 31, 2026. If you would like to use the detect feature, sign up prior to August 31, 2026. To learn about alternatives to IoT Device Defender detect, see IoT Device Defender detect feature availability change in the IoT Device Defender Developer Guide. There is no change to IoT Device Defender audit availability. Use this API to define a Custom Metric published by your devices to Device Defender. Requires permission to access the CreateCustomMetric action.</td>
 </tr>
 <tr>
     <td><a href="#update_custom_metric"><CopyableCode code="update_custom_metric" /></a></td>
     <td><CopyableCode code="update" /></td>
     <td><a href="#parameter-metric_name"><code>metric_name</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-displayName"><code>displayName</code></a></td>
     <td></td>
-    <td>Updates a Device Defender detect custom metric. Requires permission to access the UpdateCustomMetric action.</td>
+    <td>The IoT Device Defender detect feature will no longer be available to new customers starting August 31, 2026. If you would like to use the detect feature, sign up prior to August 31, 2026. To learn about alternatives to IoT Device Defender detect, see IoT Device Defender detect feature availability change in the IoT Device Defender Developer Guide. There is no change to IoT Device Defender audit availability. Updates a Device Defender detect custom metric. Requires permission to access the UpdateCustomMetric action.</td>
 </tr>
 <tr>
     <td><a href="#delete_custom_metric"><CopyableCode code="delete_custom_metric" /></a></td>
     <td><CopyableCode code="delete" /></td>
     <td><a href="#parameter-metric_name"><code>metric_name</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>Deletes a Device Defender detect custom metric. Requires permission to access the DeleteCustomMetric action. Before you can delete a custom metric, you must first remove the custom metric from all security profiles it's a part of. The security profile associated with the custom metric can be found using the ListSecurityProfiles API with metricName set to your custom metric name.</td>
+    <td>The IoT Device Defender detect feature will no longer be available to new customers starting August 31, 2026. If you would like to use the detect feature, sign up prior to August 31, 2026. To learn about alternatives to IoT Device Defender detect, see IoT Device Defender detect feature availability change in the IoT Device Defender Developer Guide. There is no change to IoT Device Defender audit availability. Deletes a Device Defender detect custom metric. Requires permission to access the DeleteCustomMetric action. Before you can delete a custom metric, you must first remove the custom metric from all security profiles it's a part of. The security profile associated with the custom metric can be found using the ListSecurityProfiles API with metricName set to your custom metric name.</td>
 </tr>
 </tbody>
 </table>
@@ -204,7 +204,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 >
 <TabItem value="describe_custom_metric">
 
-Gets information about a Device Defender detect custom metric. Requires permission to access the DescribeCustomMetric action.
+The IoT Device Defender detect feature will no longer be available to new customers starting August 31, 2026. If you would like to use the detect feature, sign up prior to August 31, 2026. To learn about alternatives to IoT Device Defender detect, see IoT Device Defender detect feature availability change in the IoT Device Defender Developer Guide. There is no change to IoT Device Defender audit availability. Gets information about a Device Defender detect custom metric. Requires permission to access the DescribeCustomMetric action.
 
 ```sql
 SELECT
@@ -222,7 +222,7 @@ AND region = '{{ region }}' -- required
 </TabItem>
 <TabItem value="list_custom_metrics">
 
-Lists your Device Defender detect custom metrics. Requires permission to access the ListCustomMetrics action.
+The IoT Device Defender detect feature will no longer be available to new customers starting August 31, 2026. If you would like to use the detect feature, sign up prior to August 31, 2026. To learn about alternatives to IoT Device Defender detect, see IoT Device Defender detect feature availability change in the IoT Device Defender Developer Guide. There is no change to IoT Device Defender audit availability. Lists your Device Defender detect custom metrics. Requires permission to access the ListCustomMetrics action.
 
 ```sql
 SELECT
@@ -248,7 +248,7 @@ AND maxResults = '{{ maxResults }}'
 >
 <TabItem value="create_custom_metric">
 
-Use this API to define a Custom Metric published by your devices to Device Defender. Requires permission to access the CreateCustomMetric action.
+The IoT Device Defender detect feature will no longer be available to new customers starting August 31, 2026. If you would like to use the detect feature, sign up prior to August 31, 2026. To learn about alternatives to IoT Device Defender detect, see IoT Device Defender detect feature availability change in the IoT Device Defender Developer Guide. There is no change to IoT Device Defender audit availability. Use this API to define a Custom Metric published by your devices to Device Defender. Requires permission to access the CreateCustomMetric action.
 
 ```sql
 INSERT INTO aws.iot.custom_metrics (
@@ -310,7 +310,7 @@ metric_name
 >
 <TabItem value="update_custom_metric">
 
-Updates a Device Defender detect custom metric. Requires permission to access the UpdateCustomMetric action.
+The IoT Device Defender detect feature will no longer be available to new customers starting August 31, 2026. If you would like to use the detect feature, sign up prior to August 31, 2026. To learn about alternatives to IoT Device Defender detect, see IoT Device Defender detect feature availability change in the IoT Device Defender Developer Guide. There is no change to IoT Device Defender audit availability. Updates a Device Defender detect custom metric. Requires permission to access the UpdateCustomMetric action.
 
 ```sql
 UPDATE aws.iot.custom_metrics
@@ -342,7 +342,7 @@ metric_type;
 >
 <TabItem value="delete_custom_metric">
 
-Deletes a Device Defender detect custom metric. Requires permission to access the DeleteCustomMetric action. Before you can delete a custom metric, you must first remove the custom metric from all security profiles it's a part of. The security profile associated with the custom metric can be found using the ListSecurityProfiles API with metricName set to your custom metric name.
+The IoT Device Defender detect feature will no longer be available to new customers starting August 31, 2026. If you would like to use the detect feature, sign up prior to August 31, 2026. To learn about alternatives to IoT Device Defender detect, see IoT Device Defender detect feature availability change in the IoT Device Defender Developer Guide. There is no change to IoT Device Defender audit availability. Deletes a Device Defender detect custom metric. Requires permission to access the DeleteCustomMetric action. Before you can delete a custom metric, you must first remove the custom metric from all security profiles it's a part of. The security profile associated with the custom metric can be found using the ListSecurityProfiles API with metricName set to your custom metric name.
 
 ```sql
 DELETE FROM aws.iot.custom_metrics

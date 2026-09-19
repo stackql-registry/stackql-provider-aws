@@ -1192,10 +1192,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/RevokeVpcEndpointAccessResponse"
   /2015-01-01/es/serviceSoftwareUpdate/start:
     post:
       operationId: StartElasticsearchServiceSoftwareUpdate
@@ -3776,9 +3772,6 @@ components:
         CrossClusterSearchConnection:
           $ref: "#/components/schemas/InboundCrossClusterSearchConnection"
           description: Specifies the InboundCrossClusterSearchConnection of rejected inbound connection.
-    RevokeVpcEndpointAccessResponse:
-      description: Container for response parameters to the RevokeVpcEndpointAccess operation. The response body for this operation is empty.
-      type: object
     StartElasticsearchServiceSoftwareUpdateResponse:
       description: The result of a StartElasticsearchServiceSoftwareUpdate operation. Contains the status of the update.
       type: object
@@ -3842,6 +3835,47 @@ components:
         ChangeProgressDetails:
           $ref: "#/components/schemas/ChangeProgressDetails"
   x-stackQL-resources:
+    inbound_cross_cluster_search_connections:
+      id: aws.es.inbound_cross_cluster_search_connections
+      name: inbound_cross_cluster_search_connections
+      title: inbound_cross_cluster_search_connections
+      methods:
+        accept_inbound_cross_cluster_search_connection:
+          operation:
+            $ref: "#/paths/~12015-01-01~1es~1ccs~1inboundConnection~1{connection_id}~1accept/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+        delete_inbound_cross_cluster_search_connection:
+          operation:
+            $ref: "#/paths/~12015-01-01~1es~1ccs~1inboundConnection~1{connection_id}/delete"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+        describe_inbound_cross_cluster_search_connections:
+          operation:
+            $ref: "#/paths/~12015-01-01~1es~1ccs~1inboundConnection~1search/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        reject_inbound_cross_cluster_search_connection:
+          operation:
+            $ref: "#/paths/~12015-01-01~1es~1ccs~1inboundConnection~1{connection_id}~1reject/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/inbound_cross_cluster_search_connections/methods/describe_inbound_cross_cluster_search_connections"
+        insert: []
+        update: []
+        delete:
+          - $ref: "#/components/x-stackQL-resources/inbound_cross_cluster_search_connections/methods/delete_inbound_cross_cluster_search_connection"
     tags:
       id: aws.es.tags
       name: tags
@@ -3928,6 +3962,14 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+        list_packages_for_domain:
+          operation:
+            $ref: "#/paths/~12015-01-01~1domain~1{domain_name}~1packages/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
         update_package:
           operation:
             $ref: "#/paths/~12015-01-01~1packages~1update/post"
@@ -3941,6 +3983,7 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
+          - $ref: "#/components/x-stackQL-resources/packages/methods/list_packages_for_domain"
           - $ref: "#/components/x-stackQL-resources/packages/methods/describe_packages"
         insert:
           - $ref: "#/components/x-stackQL-resources/packages/methods/create_package"
@@ -3949,10 +3992,10 @@ components:
           - $ref: "#/components/x-stackQL-resources/packages/methods/update_package"
         delete:
           - $ref: "#/components/x-stackQL-resources/packages/methods/delete_package"
-    vpc_endpoint_access:
-      id: aws.es.vpc_endpoint_access
-      name: vpc_endpoint_access
-      title: vpc_endpoint_access
+    vpc_endpoint_accesses:
+      id: aws.es.vpc_endpoint_accesses
+      name: vpc_endpoint_accesses
+      title: vpc_endpoint_accesses
       methods:
         authorize_vpc_endpoint_access:
           operation:
@@ -3978,7 +4021,6 @@ components:
             $ref: "#/paths/~12015-01-01~1es~1domain~1{domain_name}~1revokeVpcEndpointAccess/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -3986,10 +4028,63 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/vpc_endpoint_access/methods/list_vpc_endpoint_access"
+          - $ref: "#/components/x-stackQL-resources/vpc_endpoint_accesses/methods/list_vpc_endpoint_access"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/vpc_endpoint_access/methods/authorize_vpc_endpoint_access"
+          - $ref: "#/components/x-stackQL-resources/vpc_endpoint_accesses/methods/authorize_vpc_endpoint_access"
+        delete: []
+    domain_config_changes:
+      id: aws.es.domain_config_changes
+      name: domain_config_changes
+      title: domain_config_changes
+      methods:
+        cancel_domain_config_change:
+          operation:
+            $ref: "#/paths/~12015-01-01~1es~1domain~1{domain_name}~1config~1cancel/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
+    elasticsearch_service_software_updates:
+      id: aws.es.elasticsearch_service_software_updates
+      name: elasticsearch_service_software_updates
+      title: elasticsearch_service_software_updates
+      methods:
+        cancel_elasticsearch_service_software_update:
+          operation:
+            $ref: "#/paths/~12015-01-01~1es~1serviceSoftwareUpdate~1cancel/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        start_elasticsearch_service_software_update:
+          operation:
+            $ref: "#/paths/~12015-01-01~1es~1serviceSoftwareUpdate~1start/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
         delete: []
     elasticsearch_domains:
       id: aws.es.elasticsearch_domains
@@ -4023,6 +4118,17 @@ components:
         describe_elasticsearch_domains:
           operation:
             $ref: "#/paths/~12015-01-01~1es~1domain-info/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        upgrade_elasticsearch_domain:
+          operation:
+            $ref: "#/paths/~12015-01-01~1es~1upgradeDomain/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -4122,6 +4228,14 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        list_vpc_endpoints_for_domain:
+          operation:
+            $ref: "#/paths/~12015-01-01~1es~1domain~1{domain_name}~1vpcEndpoints/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
         update_vpc_endpoint:
           operation:
             $ref: "#/paths/~12015-01-01~1es~1vpcEndpoints~1update/post"
@@ -4136,6 +4250,7 @@ components:
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/vpc_endpoints/methods/describe_vpc_endpoints"
+          - $ref: "#/components/x-stackQL-resources/vpc_endpoints/methods/list_vpc_endpoints_for_domain"
           - $ref: "#/components/x-stackQL-resources/vpc_endpoints/methods/list_vpc_endpoints"
         insert:
           - $ref: "#/components/x-stackQL-resources/vpc_endpoints/methods/create_vpc_endpoint"
@@ -4159,35 +4274,6 @@ components:
         update: []
         delete:
           - $ref: "#/components/x-stackQL-resources/elasticsearch_service_roles/methods/delete_elasticsearch_service_role"
-    inbound_cross_cluster_search_connections:
-      id: aws.es.inbound_cross_cluster_search_connections
-      name: inbound_cross_cluster_search_connections
-      title: inbound_cross_cluster_search_connections
-      methods:
-        delete_inbound_cross_cluster_search_connection:
-          operation:
-            $ref: "#/paths/~12015-01-01~1es~1ccs~1inboundConnection~1{connection_id}/delete"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-        describe_inbound_cross_cluster_search_connections:
-          operation:
-            $ref: "#/paths/~12015-01-01~1es~1ccs~1inboundConnection~1search/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/inbound_cross_cluster_search_connections/methods/describe_inbound_cross_cluster_search_connections"
-        insert: []
-        update: []
-        delete:
-          - $ref: "#/components/x-stackQL-resources/inbound_cross_cluster_search_connections/methods/delete_inbound_cross_cluster_search_connection"
     domain_auto_tunes:
       id: aws.es.domain_auto_tunes
       name: domain_auto_tunes
@@ -4207,10 +4293,10 @@ components:
         insert: []
         update: []
         delete: []
-    domain_change_progress:
-      id: aws.es.domain_change_progress
-      name: domain_change_progress
-      title: domain_change_progress
+    domain_change_progresses:
+      id: aws.es.domain_change_progresses
+      name: domain_change_progresses
+      title: domain_change_progresses
       methods:
         describe_domain_change_progress:
           operation:
@@ -4223,7 +4309,7 @@ components:
             nativeCasing: pascal
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/domain_change_progress/methods/describe_domain_change_progress"
+          - $ref: "#/components/x-stackQL-resources/domain_change_progresses/methods/describe_domain_change_progress"
         insert: []
         update: []
         delete: []
@@ -4409,10 +4495,10 @@ components:
         insert: []
         update: []
         delete: []
-    upgrade_status:
-      id: aws.es.upgrade_status
-      name: upgrade_status
-      title: upgrade_status
+    upgrade_statuses:
+      id: aws.es.upgrade_statuses
+      name: upgrade_statuses
+      title: upgrade_statuses
       methods:
         get_upgrade_status:
           operation:
@@ -4422,7 +4508,7 @@ components:
             mediaType: application/json
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/upgrade_status/methods/get_upgrade_status"
+          - $ref: "#/components/x-stackQL-resources/upgrade_statuses/methods/get_upgrade_status"
         insert: []
         update: []
         delete: []
@@ -4445,10 +4531,10 @@ components:
         insert: []
         update: []
         delete: []
-    domains_for_packages:
-      id: aws.es.domains_for_packages
-      name: domains_for_packages
-      title: domains_for_packages
+    domains:
+      id: aws.es.domains
+      name: domains
+      title: domains
       methods:
         list_domains_for_package:
           operation:
@@ -4460,7 +4546,7 @@ components:
             nativeCasing: pascal
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/domains_for_packages/methods/list_domains_for_package"
+          - $ref: "#/components/x-stackQL-resources/domains/methods/list_domains_for_package"
         insert: []
         update: []
         delete: []
@@ -4529,44 +4615,6 @@ components:
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/elasticsearch_versions/methods/list_elasticsearch_versions"
-        insert: []
-        update: []
-        delete: []
-    packages_for_domains:
-      id: aws.es.packages_for_domains
-      name: packages_for_domains
-      title: packages_for_domains
-      methods:
-        list_packages_for_domain:
-          operation:
-            $ref: "#/paths/~12015-01-01~1domain~1{domain_name}~1packages/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/packages_for_domains/methods/list_packages_for_domain"
-        insert: []
-        update: []
-        delete: []
-    vpc_endpoints_for_domains:
-      id: aws.es.vpc_endpoints_for_domains
-      name: vpc_endpoints_for_domains
-      title: vpc_endpoints_for_domains
-      methods:
-        list_vpc_endpoints_for_domain:
-          operation:
-            $ref: "#/paths/~12015-01-01~1es~1domain~1{domain_name}~1vpcEndpoints/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/vpc_endpoints_for_domains/methods/list_vpc_endpoints_for_domain"
         insert: []
         update: []
         delete: []

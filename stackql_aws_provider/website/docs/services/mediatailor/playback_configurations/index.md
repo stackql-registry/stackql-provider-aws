@@ -113,7 +113,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="function_mapping" /></td>
     <td><code>object</code></td>
-    <td>A map of lifecycle hook event names to function identifiers. The function mapping specifies which function MediaTailor executes at each lifecycle hook during ad insertion. Valid keys are PRE_SESSION_INITIALIZATION and PRE_ADS_REQUEST. For more information, see Functions lifecycle hooks in the MediaTailor User Guide.</td>
+    <td>A map of lifecycle hook event names to function identifiers. The function mapping specifies which function MediaTailor executes at each lifecycle hook during ad insertion. Valid keys are PRE_SESSION_INITIALIZATION, PRE_ADS_REQUEST, POST_ADS_RESPONSE, and PRE_MANIFEST_INSERTION. For more information, see Functions lifecycle hooks in the MediaTailor User Guide.</td>
 </tr>
 <tr>
     <td><CopyableCode code="hls_configuration" /></td>
@@ -184,6 +184,11 @@ The following fields are returned by `SELECT` queries:
     <td><CopyableCode code="video_content_source_url" /></td>
     <td><code>string</code></td>
     <td>The URL prefix for the parent manifest for the stream, minus the asset ID. The maximum length is 512 characters.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="yield_optimization_configuration" /></td>
+    <td><code>object</code></td>
+    <td>Configuration for Yield Optimization, which fills unsold ad inventory in ad breaks with programmatic ads from Amazon Publisher Services (APS).</td>
 </tr>
 </tbody>
 </table>
@@ -262,7 +267,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="function_mapping" /></td>
     <td><code>object</code></td>
-    <td>A map of lifecycle hook event names to function identifiers. The function mapping specifies which function MediaTailor executes at each lifecycle hook during ad insertion. Valid keys are PRE_SESSION_INITIALIZATION and PRE_ADS_REQUEST. For more information, see Functions lifecycle hooks in the MediaTailor User Guide.</td>
+    <td>A map of lifecycle hook event names to function identifiers. The function mapping specifies which function MediaTailor executes at each lifecycle hook during ad insertion. Valid keys are PRE_SESSION_INITIALIZATION, PRE_ADS_REQUEST, POST_ADS_RESPONSE, and PRE_MANIFEST_INSERTION. For more information, see Functions lifecycle hooks in the MediaTailor User Guide.</td>
 </tr>
 <tr>
     <td><CopyableCode code="hls_configuration" /></td>
@@ -333,6 +338,11 @@ The following fields are returned by `SELECT` queries:
     <td><CopyableCode code="video_content_source_url" /></td>
     <td><code>string</code></td>
     <td>The URL prefix for the parent manifest for the stream, minus the asset ID. The maximum length is 512 characters.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="yield_optimization_configuration" /></td>
+    <td><code>object</code></td>
+    <td>Configuration for Yield Optimization, which fills unsold ad inventory in ad breaks with programmatic ads from Amazon Publisher Services (APS).</td>
 </tr>
 </tbody>
 </table>
@@ -469,7 +479,8 @@ session_initialization_endpoint_prefix,
 slate_ad_url,
 tags,
 transcode_profile_name,
-video_content_source_url
+video_content_source_url,
+yield_optimization_configuration
 FROM aws.mediatailor.playback_configurations
 WHERE name = '{{ name }}' -- required
 AND region = '{{ region }}' -- required
@@ -508,7 +519,8 @@ session_initialization_endpoint_prefix,
 slate_ad_url,
 tags,
 transcode_profile_name,
-video_content_source_url
+video_content_source_url,
+yield_optimization_configuration
 FROM aws.mediatailor.playback_configurations
 WHERE region = '{{ region }}' -- required
 AND MaxResults = '{{ MaxResults }}'
@@ -551,6 +563,7 @@ TranscodeProfileName = '{{ TranscodeProfileName }}',
 VideoContentSourceUrl = '{{ VideoContentSourceUrl }}',
 AdConditioningConfiguration = '{{ AdConditioningConfiguration }}',
 AdDecisionServerConfiguration = '{{ AdDecisionServerConfiguration }}',
+YieldOptimizationConfiguration = '{{ YieldOptimizationConfiguration }}',
 FunctionMapping = '{{ FunctionMapping }}',
 AdsPersonalizationTimeouts = '{{ AdsPersonalizationTimeouts }}',
 AdsPersonalizationConcurrency = '{{ AdsPersonalizationConcurrency }}'
@@ -583,7 +596,8 @@ session_initialization_endpoint_prefix,
 slate_ad_url,
 tags,
 transcode_profile_name,
-video_content_source_url;
+video_content_source_url,
+yield_optimization_configuration;
 ```
 </TabItem>
 </Tabs>

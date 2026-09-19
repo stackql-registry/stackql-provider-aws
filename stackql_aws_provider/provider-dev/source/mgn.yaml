@@ -96,10 +96,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/AssociateApplicationsResponse'
       x-stackql-resource: applications
       x-stackql-method: associate_applications
       x-stackql-verb: UPDATE
@@ -127,10 +123,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/AssociateSourceServersResponse'
       x-stackql-resource: source_servers
       x-stackql-method: associate_source_servers
       x-stackql-verb: UPDATE
@@ -311,6 +303,10 @@ paths:
                   $ref: '#/components/schemas/TargetNetwork'
                 targetDeployment:
                   $ref: '#/components/schemas/TargetDeployment'
+                vpcProvisioningStrategy:
+                  $ref: '#/components/schemas/VpcProvisioningStrategy'
+                cidrMappings:
+                  $ref: '#/components/schemas/CidrMappingsList'
                 tags:
                   $ref: '#/components/schemas/TagsMap'
                 scopeTags:
@@ -450,10 +446,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteApplicationResponse'
       x-stackql-resource: applications
       x-stackql-method: delete_application
       x-stackql-verb: DELETE
@@ -500,10 +492,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteJobResponse'
       x-stackql-resource: jobs
       x-stackql-method: delete_job
       x-stackql-verb: DELETE
@@ -526,10 +514,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteLaunchConfigurationTemplateResponse'
       x-stackql-resource: launch_configuration_templates
       x-stackql-method: delete_launch_configuration_template
       x-stackql-verb: DELETE
@@ -553,10 +537,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteNetworkMigrationDefinitionResponse'
       x-stackql-resource: network_migration_definitions
       x-stackql-method: delete_network_migration_definition
       x-stackql-verb: DELETE
@@ -579,10 +559,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteReplicationConfigurationTemplateResponse'
       x-stackql-resource: replication_configuration_templates
       x-stackql-method: delete_replication_configuration_template
       x-stackql-verb: DELETE
@@ -607,10 +583,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteSourceServerResponse'
       x-stackql-resource: source_servers
       x-stackql-method: delete_source_server
       x-stackql-verb: DELETE
@@ -657,10 +629,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteWaveResponse'
       x-stackql-resource: waves
       x-stackql-method: delete_wave
       x-stackql-verb: DELETE
@@ -703,8 +671,8 @@ paths:
   /DescribeJobs:
     post:
       operationId: DescribeJobs
-      description: Returns a list of Jobs. Use the JobsID and fromDate and toData filters to limit which jobs are returned.
-        The response is sorted by creationDataTime - latest date first. Jobs are normally created by the StartTest, StartCutover,
+      description: Returns a list of Jobs. Use the jobIDs and fromDate and toDate filters to limit which jobs are returned.
+        The response is sorted by creationDateTime - latest date first. Jobs are normally created by the StartTest, StartCutover,
         and TerminateTargetInstances APIs. Jobs are also created by DiagnosticLaunch and TerminateDiagnosticInstances, which
         are APIs available only to *Support* and only used in response to relevant support tickets.
       parameters: []
@@ -772,7 +740,7 @@ paths:
   /DescribeReplicationConfigurationTemplates:
     post:
       operationId: DescribeReplicationConfigurationTemplates
-      description: Lists all ReplicationConfigurationTemplates, filtered by Source Server IDs.
+      description: Lists all ReplicationConfigurationTemplates, filtered by replication configuration template IDs.
       parameters: []
       requestBody:
         required: false
@@ -890,10 +858,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DisassociateApplicationsResponse'
       x-stackql-resource: applications
       x-stackql-method: disassociate_applications
       x-stackql-verb: UPDATE
@@ -921,10 +885,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DisassociateSourceServersResponse'
       x-stackql-resource: source_servers
       x-stackql-method: disassociate_source_servers
       x-stackql-verb: UPDATE
@@ -934,9 +894,9 @@ paths:
       description: 'Disconnects specific Source Servers from Application Migration Service. Data replication is stopped immediately.
         All AWS resources created by Application Migration Service for enabling the replication of these source servers will
         be terminated / deleted within 90 minutes. Launched Test or Cutover instances will NOT be terminated. If the agent
-        on the source server has not been prevented from communicating with the Application Migration Service service, then
-        it will receive a command to uninstall itself (within approximately 10 minutes). The following properties of the SourceServer
-        will be changed immediately: dataReplicationInfo.dataReplicationState will be set to DISCONNECTED; The totalStorageBytes
+        on the source server has not been prevented from communicating with Application Migration Service, then it will receive
+        a command to uninstall itself (within approximately 10 minutes). The following properties of the SourceServer will
+        be changed immediately: dataReplicationInfo.dataReplicationState will be set to DISCONNECTED; The totalStorageBytes
         property for each of dataReplicationInfo.replicatedDisks will be set to zero; dataReplicationInfo.lagDuration and
         dataReplicationInfo.lagDuration will be nullified.'
       parameters: []
@@ -960,7 +920,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SourceServer'
-      x-stackql-resource: source_servers
+      x-stackql-resource: services
       x-stackql-method: disconnect_from_service
       x-stackql-verb: EXEC
   /FinalizeCutover:
@@ -971,8 +931,8 @@ paths:
         Launched Test or Cutover instances will NOT be terminated. The AWS Replication Agent will receive a command to uninstall
         itself (within 10 minutes). The following properties of the SourceServer will be changed immediately: dataReplicationInfo.dataReplicationState
         will be changed to DISCONNECTED; The SourceServer.lifeCycle.state will be changed to CUTOVER; The totalStorageBytes
-        property fo each of dataReplicationInfo.replicatedDisks will be set to zero; dataReplicationInfo.lagDuration and dataReplicationInfo.lagDuration
-        will be nullified.'
+        property for each of dataReplicationInfo.replicatedDisks will be set to zero; dataReplicationInfo.lagDuration and
+        dataReplicationInfo.lagDuration will be nullified.'
       parameters: []
       requestBody:
         required: true
@@ -994,7 +954,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SourceServer'
-      x-stackql-resource: source_servers
+      x-stackql-resource: cutovers
       x-stackql-method: finalize_cutover
       x-stackql-verb: EXEC
   /GetLaunchConfiguration:
@@ -1124,11 +1084,7 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/InitializeServiceResponse'
-      x-stackql-resource: initialize_service
+      x-stackql-resource: services
       x-stackql-method: initialize_service
       x-stackql-verb: EXEC
   /ListApplications:
@@ -2041,7 +1997,7 @@ paths:
     post:
       operationId: MarkAsArchived
       description: Archives specific Source Servers by setting the SourceServer.isArchived property to true for specified
-        SourceServers by ID. This command only works for SourceServers with a lifecycle. state which equals DISCONNECTED or
+        SourceServers by ID. This command only works for SourceServers with a lifecycle state that equals DISCONNECTED or
         CUTOVER.
       parameters: []
       requestBody:
@@ -2231,10 +2187,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RemoveSourceServerActionResponse'
       x-stackql-resource: source_server_actions
       x-stackql-method: remove_source_server_action
       x-stackql-verb: UPDATE
@@ -2260,10 +2212,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RemoveTemplateActionResponse'
       x-stackql-resource: template_actions
       x-stackql-method: remove_template_action
       x-stackql-verb: UPDATE
@@ -2353,7 +2301,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartCutoverResponse'
-      x-stackql-resource: cutover
+      x-stackql-resource: cutovers
       x-stackql-method: start_cutover
       x-stackql-verb: EXEC
   /StartExport:
@@ -2386,7 +2334,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartExportResponse'
-      x-stackql-resource: export
+      x-stackql-resource: exports
       x-stackql-method: start_export
       x-stackql-verb: EXEC
   /StartImport:
@@ -2416,7 +2364,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartImportResponse'
-      x-stackql-resource: import
+      x-stackql-resource: imports
       x-stackql-method: start_import
       x-stackql-verb: EXEC
   /network-migration/StartImportFileEnrichment:
@@ -2450,7 +2398,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartImportFileEnrichmentResponse'
-      x-stackql-resource: imports
+      x-stackql-resource: import_file_enrichments
       x-stackql-method: start_import_file_enrichment
       x-stackql-verb: EXEC
   /network-migration/StartNetworkMigrationAnalysis:
@@ -2479,7 +2427,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartNetworkMigrationAnalysisResponse'
-      x-stackql-resource: network_migration_definitions
+      x-stackql-resource: network_migration_analyses
       x-stackql-method: start_network_migration_analysis
       x-stackql-verb: EXEC
   /network-migration/StartNetworkMigrationCodeGeneration:
@@ -2510,7 +2458,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartNetworkMigrationCodeGenerationResponse'
-      x-stackql-resource: network_migration_definitions
+      x-stackql-resource: network_migration_code_generations
       x-stackql-method: start_network_migration_code_generation
       x-stackql-verb: EXEC
   /network-migration/StartNetworkMigrationDeployment:
@@ -2539,7 +2487,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartNetworkMigrationDeployerJobResponse'
-      x-stackql-resource: network_migration_definitions
+      x-stackql-resource: network_migration_deployments
       x-stackql-method: start_network_migration_deployment
       x-stackql-verb: EXEC
   /network-migration/StartNetworkMigrationMapping:
@@ -2570,7 +2518,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartNetworkMigrationMappingResponse'
-      x-stackql-resource: network_migration_definitions
+      x-stackql-resource: network_migration_mappings
       x-stackql-method: start_network_migration_mapping
       x-stackql-verb: EXEC
   /network-migration/StartNetworkMigrationMappingUpdate:
@@ -2603,7 +2551,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartNetworkMigrationMappingUpdateResponse'
-      x-stackql-resource: network_migration_mappings
+      x-stackql-resource: network_migration_mapping_updates
       x-stackql-method: start_network_migration_mapping_update
       x-stackql-verb: EXEC
   /StartReplication:
@@ -2662,7 +2610,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartTestResponse'
-      x-stackql-resource: test
+      x-stackql-resource: tests
       x-stackql-method: start_test
       x-stackql-verb: EXEC
   /StopReplication:
@@ -2846,6 +2794,7 @@ paths:
     post:
       operationId: UpdateLaunchConfiguration
       description: Updates multiple LaunchConfigurations by Source Server ID. bootMode valid values are LEGACY_BIOS | UEFI
+        | USE_SOURCE
       parameters: []
       requestBody:
         required: true
@@ -2972,6 +2921,10 @@ paths:
                   $ref: '#/components/schemas/TargetNetworkUpdate'
                 targetDeployment:
                   $ref: '#/components/schemas/TargetDeployment'
+                vpcProvisioningStrategy:
+                  $ref: '#/components/schemas/VpcProvisioningStrategy'
+                cidrMappings:
+                  $ref: '#/components/schemas/CidrMappingsList'
                 scopeTags:
                   $ref: '#/components/schemas/ScopeTagsMap'
               required:
@@ -3087,7 +3040,7 @@ paths:
   /UpdateReplicationConfigurationTemplate:
     post:
       operationId: UpdateReplicationConfigurationTemplate
-      description: Updates multiple ReplicationConfigurationTemplates by ID.
+      description: Updates a ReplicationConfigurationTemplate by ID.
       parameters: []
       requestBody:
         required: true
@@ -3467,8 +3420,6 @@ components:
       type: array
       items:
         $ref: '#/components/schemas/ApplicationID'
-    AssociateApplicationsResponse:
-      type: object
     AssociateSourceServersRequestSourceServerIDs:
       type: array
       items:
@@ -3478,8 +3429,6 @@ components:
       minLength: 19
       maxLength: 19
       pattern: s-[0-9a-zA-Z]{17}
-    AssociateSourceServersResponse:
-      type: object
     ChangeServerLifeCycleStateSourceServerLifecycle:
       description: The request to change the source server migration lifecycle state.
       type: object
@@ -3785,7 +3734,7 @@ components:
       properties:
         addedToServiceDateTime:
           $ref: '#/components/schemas/ISO8601DatetimeString'
-          description: Lifecycle added to service data and time.
+          description: Lifecycle added to service date and time.
         firstByteDateTime:
           $ref: '#/components/schemas/ISO8601DatetimeString'
           description: Lifecycle replication initiation date and time.
@@ -3840,7 +3789,7 @@ components:
       properties:
         apiCallDateTime:
           $ref: '#/components/schemas/ISO8601DatetimeString'
-          description: Lifecycle Test failed API call date and time.
+          description: Lifecycle Test finalized API call date and time.
     LifeCycleLastCutover:
       description: Lifecycle last Cutover .
       type: object
@@ -4100,7 +4049,7 @@ components:
       maxLength: 27
       pattern: connector-[0-9a-zA-Z]{17}
     PostLaunchActions:
-      description: Post Launch Actions to executed on the Test or Cutover instance.
+      description: Post Launch Actions to be executed on the Test or Cutover instance.
       type: object
       properties:
         deployment:
@@ -4207,6 +4156,12 @@ components:
         throughput:
           $ref: '#/components/schemas/Throughput'
           description: Launch template disk throughput configuration.
+        volumeInitializationRate:
+          $ref: '#/components/schemas/VolumeInitializationRate'
+          description: Launch template disk volume initialization rate configuration.
+        deleteOnTermination:
+          $ref: '#/components/schemas/Boolean'
+          description: Launch template disk delete on termination configuration.
     VolumeType:
       type: string
       enum:
@@ -4226,7 +4181,12 @@ components:
       type: integer
       format: int64
       minimum: 125
-      maximum: 1000
+      maximum: 2000
+    VolumeInitializationRate:
+      type: integer
+      format: int64
+      minimum: 100
+      maximum: 300
     KmsKeyArn:
       type: string
       minLength: 0
@@ -4408,6 +4368,28 @@ components:
       enum:
       - SINGLE_ACCOUNT
       - MULTI_ACCOUNT
+    VpcProvisioningStrategy:
+      type: string
+      enum:
+      - CREATE_NEW
+      - USE_EXISTING
+    CidrMappingsList:
+      type: array
+      items:
+        $ref: '#/components/schemas/CidrMapping'
+    CidrMapping:
+      description: Maps a source CIDR range to the corresponding target CIDR range to use in the target network.
+      type: object
+      properties:
+        originalCidr:
+          $ref: '#/components/schemas/Cidr'
+          description: The original CIDR range in the source network.
+        updatedCidr:
+          $ref: '#/components/schemas/Cidr'
+          description: The updated CIDR range to use in the target network.
+      required:
+      - originalCidr
+      - updatedCidr
     ScopeTagsMap:
       type: object
       properties: {}
@@ -4438,6 +4420,14 @@ components:
         targetDeployment:
           $ref: '#/components/schemas/TargetDeployment'
           description: The target deployment configuration for the migrated network.
+        vpcProvisioningStrategy:
+          $ref: '#/components/schemas/VpcProvisioningStrategy'
+          description: Indicates whether the migration creates new target VPCs or uses existing ones. CREATE_NEW provisions
+            new target VPCs; USE_EXISTING migrates into existing VPCs in the target account.
+        cidrMappings:
+          $ref: '#/components/schemas/CidrMappingsList'
+          description: A list of CIDR mappings that map original source CIDR ranges to updated target CIDR ranges. CIDR mappings
+            apply only when vpcProvisioningStrategy is set to USE_EXISTING.
         createdAt:
           $ref: '#/components/schemas/Timestamp'
           description: The timestamp when the network migration definition was created.
@@ -4601,20 +4591,6 @@ components:
       minLength: 21
       maxLength: 21
       pattern: rct-[0-9a-zA-Z]{17}
-    DeleteApplicationResponse:
-      type: object
-    DeleteJobResponse:
-      type: object
-    DeleteLaunchConfigurationTemplateResponse:
-      type: object
-    DeleteNetworkMigrationDefinitionResponse:
-      type: object
-    DeleteReplicationConfigurationTemplateResponse:
-      type: object
-    DeleteSourceServerResponse:
-      type: object
-    DeleteWaveResponse:
-      type: object
     MaxResultsType:
       type: integer
       minimum: 1
@@ -4822,13 +4798,13 @@ components:
       properties:
         ssmDocument:
           $ref: '#/components/schemas/SsmDocument'
-          description: AWS Systems Manager's Document of the of the Job Post Launch Actions.
+          description: AWS Systems Manager's Document of the Job Post Launch Actions.
         ssmDocumentType:
           $ref: '#/components/schemas/SsmDocumentType'
           description: AWS Systems Manager Document type.
         executionID:
           $ref: '#/components/schemas/BoundedString'
-          description: AWS Systems Manager Document's execution ID of the of the Job Post Launch Actions.
+          description: AWS Systems Manager Document's execution ID of the Job Post Launch Actions.
         executionStatus:
           $ref: '#/components/schemas/PostLaunchActionExecutionStatus'
           description: AWS Systems Manager Document's execution status.
@@ -4920,10 +4896,10 @@ components:
       properties:
         items_:
           $ref: '#/components/schemas/SourceServersList'
-          description: Request to filter Source Servers list by item.
+          description: The list of returned Source Servers.
         nextToken:
           $ref: '#/components/schemas/PaginationToken'
-          description: Request to filter Source Servers next token.
+          description: The token of the next Source Server to retrieve.
     SourceServersList:
       type: array
       items:
@@ -4971,14 +4947,10 @@ components:
           type: object
           properties: {}
           description: Tags for vCenter client.
-    DisassociateApplicationsResponse:
-      type: object
     DisassociateSourceServersRequestSourceServerIDs:
       type: array
       items:
         $ref: '#/components/schemas/SourceServerID'
-    DisassociateSourceServersResponse:
-      type: object
     LaunchConfiguration:
       type: object
       properties:
@@ -5191,8 +5163,6 @@ components:
       - GP3
       - IO2
       - FSX_ONTAP
-    InitializeServiceResponse:
-      type: object
     ListApplicationsRequestFilters:
       description: Applications list filters.
       type: object
@@ -5632,15 +5602,15 @@ components:
           $ref: '#/components/schemas/ImportTaskSummaryServers'
           description: Import task summary servers.
     ImportTaskSummaryWaves:
-      description: Import task summery waves.
+      description: Import task summary waves.
       type: object
       properties:
         createdCount:
           $ref: '#/components/schemas/PositiveInteger'
-          description: Import task summery waves created count.
+          description: Import task summary waves created count.
         modifiedCount:
           $ref: '#/components/schemas/PositiveInteger'
-          description: Import task summery waves modified count.
+          description: Import task summary waves modified count.
     ImportTaskSummaryApplications:
       description: Import task summary applications.
       type: object
@@ -5913,7 +5883,7 @@ components:
           description: The unique identifier of the artifact.
         artifactType:
           $ref: '#/components/schemas/NetworkMigrationCodeGenerationArtifactType'
-          description: The type of the artifact, such as CLOUDFORMATION_TEMPLATE or TERRAFORM_MODULE.
+          description: The type of the generated artifact.
         artifactSubType:
           $ref: '#/components/schemas/NetworkMigrationCodeGenerationArtifactSubType'
           description: The sub-type of the artifact for further classification.
@@ -6349,7 +6319,8 @@ components:
           description: The unique identifier of the segment.
         segmentType:
           $ref: '#/components/schemas/NetworkMigrationMapperSegmentType'
-          description: The type of the segment, such as VPC, subnet, or security group.
+          description: 'The category of the network migration segment. A segment groups the network constructs (such as VPCs,
+            subnets, and security groups) that are migrated together. Valid values: WORKLOAD, APPLIANCE.'
         name:
           $ref: '#/components/schemas/SegmentName'
           description: The name of the segment.
@@ -6700,10 +6671,6 @@ components:
     SsmDocumentExternalParameters:
       type: object
       properties: {}
-    RemoveSourceServerActionResponse:
-      type: object
-    RemoveTemplateActionResponse:
-      type: object
     StartCutoverRequestSourceServerIDs:
       type: array
       items:

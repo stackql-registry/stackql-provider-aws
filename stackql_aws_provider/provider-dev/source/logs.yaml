@@ -158,7 +158,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: export_task
+      x-stackql-resource: export_tasks
       x-stackql-method: cancel_export_task
       x-stackql-verb: EXEC
   /CancelImportTask:
@@ -194,7 +194,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CancelImportTaskResponse'
-      x-stackql-resource: import_task
+      x-stackql-resource: import_tasks
       x-stackql-method: cancel_import_task
       x-stackql-verb: EXEC
   /CreateDelivery:
@@ -1048,10 +1048,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteIndexPolicyResponse'
       x-stackql-resource: index_policies
       x-stackql-method: delete_index_policy
       x-stackql-verb: DELETE
@@ -1091,10 +1087,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteIntegrationResponse'
       x-stackql-resource: integrations
       x-stackql-method: delete_integration
       x-stackql-verb: DELETE
@@ -1410,10 +1402,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteScheduledQueryResponse'
       x-stackql-resource: scheduled_queries
       x-stackql-method: delete_scheduled_query
       x-stackql-verb: DELETE
@@ -3846,7 +3834,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListLogGroupsForQueryOutputDisplay'
-      x-stackql-resource: log_groups_for_queries
+      x-stackql-resource: log_groups
       x-stackql-method: list_log_groups_for_query
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: ListLogGroupsForQueryOutputDisplay
@@ -3946,7 +3934,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListSourcesForS3TableIntegrationResponse'
-      x-stackql-resource: sources_for_s3_table_integrations
+      x-stackql-resource: sources
       x-stackql-method: list_sources_for_s3_table_integration
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.sources
@@ -5502,7 +5490,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartLiveTailResponse'
-      x-stackql-resource: live_tail
+      x-stackql-resource: live_tails
       x-stackql-method: start_live_tail
       x-stackql-verb: EXEC
   /StartQuery:
@@ -5600,7 +5588,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartQueryResponse'
-      x-stackql-resource: query
+      x-stackql-resource: queries
       x-stackql-method: start_query
       x-stackql-verb: EXEC
   /StopQuery:
@@ -5639,7 +5627,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StopQueryResponse'
-      x-stackql-resource: query
+      x-stackql-resource: queries
       x-stackql-method: stop_query
       x-stackql-verb: EXEC
   /TagLogGroup:
@@ -5765,7 +5753,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TestMetricFilterResponse'
-      x-stackql-resource: metric_filter
+      x-stackql-resource: metric_filters
       x-stackql-method: test_metric_filter
       x-stackql-verb: EXEC
   /TestTransformer:
@@ -5809,7 +5797,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TestTransformerResponse'
-      x-stackql-resource: transformer
+      x-stackql-resource: transformers
       x-stackql-method: test_transformer
       x-stackql-verb: EXEC
   /UntagLogGroup:
@@ -5992,10 +5980,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateDeliveryConfigurationResponse'
       x-stackql-resource: deliveries
       x-stackql-method: update_delivery_configuration
       x-stackql-verb: UPDATE
@@ -6689,8 +6673,6 @@ components:
       minLength: 1
       maxLength: 512
       pattern: '[^:*]*'
-    DeleteIndexPolicyResponse:
-      type: object
     IntegrationName:
       type: string
       minLength: 1
@@ -6698,8 +6680,6 @@ components:
       pattern: '[\.\-_/#A-Za-z0-9]+'
     Force:
       type: boolean
-    DeleteIntegrationResponse:
-      type: object
     FilterName:
       type: string
       minLength: 1
@@ -6720,8 +6700,6 @@ components:
       type: string
       minLength: 1
       maxLength: 300
-    DeleteScheduledQueryResponse:
-      type: object
     VpcEndpointId:
       type: string
       pattern: ^vpce-[0-9a-f]{1,64}$
@@ -8790,6 +8768,12 @@ components:
         logGroupsScanned:
           $ref: '#/components/schemas/StatsValue'
           description: The number of log groups that were scanned by this query.
+        resultCount:
+          $ref: '#/components/schemas/StatsValue'
+          description: The number of rows in the final query result set. This value represents the total number of output
+            rows across all pages. For queries that include post-aggregation filters (such as stats count(*) by field | filter
+            count > threshold), this value might be less than recordsMatched. It reflects only the rows that survived all
+            operations in the query.
     StatsValue:
       type: number
       format: double
@@ -10765,8 +10749,6 @@ components:
       - HOURS
     Baseline:
       type: boolean
-    UpdateDeliveryConfigurationResponse:
-      type: object
     UpdateLookupTableResponse:
       type: object
       properties:

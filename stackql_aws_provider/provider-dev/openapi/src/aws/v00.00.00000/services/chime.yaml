@@ -47,10 +47,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/AssociatePhoneNumberWithUserResponse"
   /accounts/{account_id}?operation=associate-signin-delegate-groups:
     post:
       operationId: AssociateSigninDelegateGroupsWithAccount
@@ -76,10 +72,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/AssociateSigninDelegateGroupsWithAccountResponse"
   /accounts/{account_id}/rooms/{room_id}/memberships?operation=batch-create:
     post:
       operationId: BatchCreateRoomMembership
@@ -672,10 +664,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteAccountResponse"
     get:
       operationId: GetAccount
       description: Retrieves details for the specified Amazon Chime account, such as account type and supported licenses.
@@ -1016,10 +1004,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DisassociatePhoneNumberFromUserResponse"
   /accounts/{account_id}?operation=disassociate-signin-delegate-groups:
     post:
       operationId: DisassociateSigninDelegateGroupsFromAccount
@@ -1045,10 +1029,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DisassociateSigninDelegateGroupsFromAccountResponse"
   /accounts/{account_id}/settings:
     get:
       operationId: GetAccountSettings
@@ -1091,10 +1071,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateAccountSettingsResponse"
   /accounts/{account_id}/bots/{bot_id}:
     get:
       operationId: GetBot
@@ -1506,10 +1482,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/LogoutUserResponse"
   /accounts/{account_id}/conversations/{conversation_id}/messages/{message_id}?operation=redact:
     post:
       operationId: RedactConversationMessage
@@ -1536,10 +1508,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/RedactConversationMessageResponse"
   /accounts/{account_id}/rooms/{room_id}/messages/{message_id}?operation=redact:
     post:
       operationId: RedactRoomMessage
@@ -1566,10 +1534,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/RedactRoomMessageResponse"
   /accounts/{account_id}/bots/{bot_id}?operation=regenerate-security-token:
     post:
       operationId: RegenerateSecurityToken
@@ -1746,8 +1710,6 @@ components:
     E164PhoneNumber:
       type: string
       pattern: ^\+?[1-9]\d{1,14}$
-    AssociatePhoneNumberWithUserResponse:
-      type: object
     NonEmptyString:
       type: string
       pattern: .*\S.*
@@ -1762,8 +1724,6 @@ components:
         GroupName:
           $ref: "#/components/schemas/NonEmptyString"
           description: The group name.
-    AssociateSigninDelegateGroupsWithAccountResponse:
-      type: object
     MembershipItemList:
       type: array
       items:
@@ -2302,12 +2262,6 @@ components:
         - Pending
         - Accepted
         - Failed
-    DeleteAccountResponse:
-      type: object
-    DisassociatePhoneNumberFromUserResponse:
-      type: object
-    DisassociateSigninDelegateGroupsFromAccountResponse:
-      type: object
     GetAccountResponse:
       type: object
       properties:
@@ -2755,8 +2709,6 @@ components:
       type: array
       items:
         $ref: "#/components/schemas/User"
-    LogoutUserResponse:
-      type: object
     PutEventsConfigurationResponse:
       type: object
       properties:
@@ -2772,10 +2724,6 @@ components:
         InitiateDeletionTimestamp:
           $ref: "#/components/schemas/Iso8601Timestamp"
           description: The timestamp representing the time at which the specified items are permanently deleted, in ISO 8601 format.
-    RedactConversationMessageResponse:
-      type: object
-    RedactRoomMessageResponse:
-      type: object
     RegenerateSecurityTokenResponse:
       type: object
       properties:
@@ -2822,8 +2770,6 @@ components:
         Account:
           $ref: "#/components/schemas/Account"
           description: The updated Amazon Chime account details.
-    UpdateAccountSettingsResponse:
-      type: object
     UpdateBotResponse:
       type: object
       properties:
@@ -2865,7 +2811,6 @@ components:
             $ref: "#/paths/~1accounts~1{account_id}~1users~1{user_id}?operation=associate-phone-number/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -2904,7 +2849,6 @@ components:
             $ref: "#/paths/~1accounts~1{account_id}~1users~1{user_id}?operation=disassociate-phone-number/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         get_user:
           operation:
             $ref: "#/paths/~1accounts~1{account_id}~1users~1{user_id}/get"
@@ -2954,7 +2898,6 @@ components:
             $ref: "#/paths/~1accounts~1{account_id}?operation=associate-signin-delegate-groups/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -3037,7 +2980,6 @@ components:
             $ref: "#/paths/~1accounts~1{account_id}/delete"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
         get_account:
           operation:
             $ref: "#/paths/~1accounts~1{account_id}/get"
@@ -3061,7 +3003,6 @@ components:
             $ref: "#/paths/~1accounts~1{account_id}?operation=disassociate-signin-delegate-groups/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -3072,19 +3013,16 @@ components:
             $ref: "#/paths/~1accounts~1{account_id}~1users~1{user_id}?operation=logout/post"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
         redact_conversation_message:
           operation:
             $ref: "#/paths/~1accounts~1{account_id}~1conversations~1{conversation_id}~1messages~1{message_id}?operation=redact/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         redact_room_message:
           operation:
             $ref: "#/paths/~1accounts~1{account_id}~1rooms~1{room_id}~1messages~1{message_id}?operation=redact/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         regenerate_security_token:
           operation:
             $ref: "#/paths/~1accounts~1{account_id}~1bots~1{bot_id}?operation=regenerate-security-token/post"
@@ -3117,6 +3055,17 @@ components:
         batch_delete_phone_number:
           operation:
             $ref: "#/paths/~1phone-numbers?operation=batch-delete/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        batch_update_phone_number:
+          operation:
+            $ref: "#/paths/~1phone-numbers?operation=batch-update/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -3443,7 +3392,6 @@ components:
             $ref: "#/paths/~1accounts~1{account_id}~1settings/put"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:

@@ -129,10 +129,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/AssociateApplicationToEntitlementResult"
   /AssociateFleet:
     post:
       operationId: AssociateFleet
@@ -166,10 +162,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/AssociateFleetResult"
   /AssociateSoftwareToImageBuilder:
     post:
       operationId: AssociateSoftwareToImageBuilder
@@ -203,10 +195,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/AssociateSoftwareToImageBuilderResult"
   /BatchAssociateUserStack:
     post:
       operationId: BatchAssociateUserStack
@@ -1247,10 +1235,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/CreateUserResult"
   /DeleteAppBlock:
     post:
       operationId: DeleteAppBlock
@@ -1280,10 +1264,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteAppBlockResult"
   /DeleteAppBlockBuilder:
     post:
       operationId: DeleteAppBlockBuilder
@@ -1313,10 +1293,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteAppBlockBuilderResult"
   /DeleteApplication:
     post:
       operationId: DeleteApplication
@@ -1346,10 +1322,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteApplicationResult"
   /DeleteDirectoryConfig:
     post:
       operationId: DeleteDirectoryConfig
@@ -1379,10 +1351,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteDirectoryConfigResult"
   /DeleteEntitlement:
     post:
       operationId: DeleteEntitlement
@@ -1416,10 +1384,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteEntitlementResult"
   /DeleteFleet:
     post:
       operationId: DeleteFleet
@@ -1447,10 +1411,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteFleetResult"
   /DeleteImage:
     post:
       operationId: DeleteImage
@@ -1545,10 +1505,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteImagePermissionsResult"
   /DeleteStack:
     post:
       operationId: DeleteStack
@@ -1576,10 +1532,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteStackResult"
   /DeleteThemeForStack:
     post:
       operationId: DeleteThemeForStack
@@ -1609,10 +1561,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteThemeForStackResult"
   /DeleteUsageReportSubscription:
     post:
       operationId: DeleteUsageReportSubscription
@@ -1636,10 +1584,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteUsageReportSubscriptionResult"
   /DeleteUser:
     post:
       operationId: DeleteUser
@@ -1673,10 +1617,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteUserResult"
   /DescribeAppBlockBuilderAppBlockAssociations:
     post:
       operationId: DescribeAppBlockBuilderAppBlockAssociations
@@ -2447,10 +2387,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DisableUserResult"
   /DisassociateAppBlockBuilderAppBlock:
     post:
       operationId: DisassociateAppBlockBuilderAppBlock
@@ -2484,10 +2420,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DisassociateAppBlockBuilderAppBlockResult"
   /DisassociateApplicationFleet:
     post:
       operationId: DisassociateApplicationFleet
@@ -2521,10 +2453,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DisassociateApplicationFleetResult"
   /DisassociateApplicationFromEntitlement:
     post:
       operationId: DisassociateApplicationFromEntitlement
@@ -2562,10 +2490,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DisassociateApplicationFromEntitlementResult"
   /DisassociateFleet:
     post:
       operationId: DisassociateFleet
@@ -2599,10 +2523,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DisassociateFleetResult"
   /DisassociateSoftwareFromImageBuilder:
     post:
       operationId: DisassociateSoftwareFromImageBuilder
@@ -2636,10 +2556,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DisassociateSoftwareFromImageBuilderResult"
   /DrainSessionInstance:
     post:
       operationId: DrainSessionInstance
@@ -2669,10 +2585,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DrainSessionInstanceResult"
   /EnableUser:
     post:
       operationId: EnableUser
@@ -2706,10 +2618,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/EnableUserResult"
   /ExpireSession:
     post:
       operationId: ExpireSession
@@ -2739,10 +2647,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ExpireSessionResult"
   /GetExportImageTask:
     post:
       operationId: GetExportImageTask
@@ -3016,15 +2920,9 @@ paths:
                 Name:
                   $ref: "#/components/schemas/String"
                   description: The name of the fleet.
-              required:
-                - Name
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/StartFleetResult"
   /StartImageBuilder:
     post:
       operationId: StartImageBuilder
@@ -3091,10 +2989,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/StartSoftwareDeploymentToImageBuilderResult"
   /StopAppBlockBuilder:
     post:
       operationId: StopAppBlockBuilder
@@ -3152,15 +3046,9 @@ paths:
                 Name:
                   $ref: "#/components/schemas/String"
                   description: The name of the fleet.
-              required:
-                - Name
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/StopFleetResult"
   /StopImageBuilder:
     post:
       operationId: StopImageBuilder
@@ -3224,10 +3112,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TagResourceResponse"
   /UntagResource:
     post:
       operationId: UntagResource
@@ -3261,10 +3145,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UntagResourceResponse"
   /UpdateAppBlockBuilder:
     post:
       operationId: UpdateAppBlockBuilder
@@ -3609,10 +3489,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateImagePermissionsResult"
   /UpdateStack:
     post:
       operationId: UpdateStack
@@ -3831,16 +3707,10 @@ components:
     String:
       type: string
       minLength: 1
-    AssociateApplicationToEntitlementResult:
-      type: object
-    AssociateFleetResult:
-      type: object
     StringList:
       type: array
       items:
         $ref: "#/components/schemas/String"
-    AssociateSoftwareToImageBuilderResult:
-      type: object
     UserStackAssociationList:
       type: array
       items:
@@ -5501,20 +5371,6 @@ components:
       type: string
       maxLength: 2048
       pattern: ^[A-Za-z0-9_\-\s]+$
-    CreateUserResult:
-      type: object
-    DeleteAppBlockResult:
-      type: object
-    DeleteAppBlockBuilderResult:
-      type: object
-    DeleteApplicationResult:
-      type: object
-    DeleteDirectoryConfigResult:
-      type: object
-    DeleteEntitlementResult:
-      type: object
-    DeleteFleetResult:
-      type: object
     DeleteImageResult:
       type: object
       properties:
@@ -5530,16 +5386,6 @@ components:
     AwsAccountId:
       type: string
       pattern: ^\d+$
-    DeleteImagePermissionsResult:
-      type: object
-    DeleteStackResult:
-      type: object
-    DeleteThemeForStackResult:
-      type: object
-    DeleteUsageReportSubscriptionResult:
-      type: object
-    DeleteUserResult:
-      type: object
     DescribeAppBlockBuilderAppBlockAssociationsResult:
       type: object
       properties:
@@ -6005,24 +5851,6 @@ components:
           description: The authentication type for the user.
       required:
         - AuthenticationType
-    DisableUserResult:
-      type: object
-    DisassociateAppBlockBuilderAppBlockResult:
-      type: object
-    DisassociateApplicationFleetResult:
-      type: object
-    DisassociateApplicationFromEntitlementResult:
-      type: object
-    DisassociateFleetResult:
-      type: object
-    DisassociateSoftwareFromImageBuilderResult:
-      type: object
-    DrainSessionInstanceResult:
-      type: object
-    EnableUserResult:
-      type: object
-    ExpireSessionResult:
-      type: object
     GetExportImageTaskResult:
       type: object
       properties:
@@ -6129,31 +5957,23 @@ components:
       properties:
         AppBlockBuilder:
           $ref: "#/components/schemas/AppBlockBuilder"
-    StartFleetResult:
-      type: object
     StartImageBuilderResult:
       type: object
       properties:
         ImageBuilder:
           $ref: "#/components/schemas/ImageBuilder"
           description: Information about the image builder.
-    StartSoftwareDeploymentToImageBuilderResult:
-      type: object
     StopAppBlockBuilderResult:
       type: object
       properties:
         AppBlockBuilder:
           $ref: "#/components/schemas/AppBlockBuilder"
-    StopFleetResult:
-      type: object
     StopImageBuilderResult:
       type: object
       properties:
         ImageBuilder:
           $ref: "#/components/schemas/ImageBuilder"
           description: Information about the image builder.
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
@@ -6163,8 +5983,6 @@ components:
       minLength: 1
       maxLength: 128
       pattern: ^(^(?!aws:).[\p{L}\p{Z}\p{N}_.:/=+\-@]*)$
-    UntagResourceResponse:
-      type: object
     AppBlockBuilderAttributes:
       type: array
       items:
@@ -6229,8 +6047,6 @@ components:
         Fleet:
           $ref: "#/components/schemas/Fleet"
           description: Information about the fleet.
-    UpdateImagePermissionsResult:
-      type: object
     StackAttributes:
       type: array
       items:
@@ -6332,7 +6148,6 @@ components:
             $ref: "#/paths/~1DeleteAppBlock/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -6358,7 +6173,6 @@ components:
             $ref: "#/paths/~1DisassociateAppBlockBuilderAppBlock/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -6424,7 +6238,6 @@ components:
             $ref: "#/paths/~1AssociateFleet/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -6463,7 +6276,6 @@ components:
             $ref: "#/paths/~1DeleteFleet/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -6497,7 +6309,6 @@ components:
             $ref: "#/paths/~1DisassociateApplicationFleet/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -6510,7 +6321,30 @@ components:
             $ref: "#/paths/~1DisassociateFleet/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        start_fleet:
+          operation:
+            $ref: "#/paths/~1StartFleet/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        stop_fleet:
+          operation:
+            $ref: "#/paths/~1StopFleet/post"
+          response:
+            openAPIDocKey: "200"
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -6535,11 +6369,11 @@ components:
         select:
           - $ref: "#/components/x-stackQL-resources/fleets/methods/describe_fleets"
         insert:
-          - $ref: "#/components/x-stackQL-resources/fleets/methods/create_streaming_url"
           - $ref: "#/components/x-stackQL-resources/fleets/methods/create_fleet"
+          - $ref: "#/components/x-stackQL-resources/fleets/methods/create_streaming_url"
         update:
-          - $ref: "#/components/x-stackQL-resources/fleets/methods/associate_application_fleet"
           - $ref: "#/components/x-stackQL-resources/fleets/methods/associate_fleet"
+          - $ref: "#/components/x-stackQL-resources/fleets/methods/associate_application_fleet"
           - $ref: "#/components/x-stackQL-resources/fleets/methods/update_fleet"
         delete:
           - $ref: "#/components/x-stackQL-resources/fleets/methods/delete_fleet"
@@ -6553,7 +6387,6 @@ components:
             $ref: "#/paths/~1AssociateApplicationToEntitlement/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -6579,7 +6412,6 @@ components:
             $ref: "#/paths/~1DeleteEntitlement/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -6605,7 +6437,6 @@ components:
             $ref: "#/paths/~1DisassociateApplicationFromEntitlement/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -6632,8 +6463,8 @@ components:
         insert:
           - $ref: "#/components/x-stackQL-resources/entitlements/methods/create_entitlement"
         update:
-          - $ref: "#/components/x-stackQL-resources/entitlements/methods/associate_application_to_entitlement"
           - $ref: "#/components/x-stackQL-resources/entitlements/methods/update_entitlement"
+          - $ref: "#/components/x-stackQL-resources/entitlements/methods/associate_application_to_entitlement"
         delete:
           - $ref: "#/components/x-stackQL-resources/entitlements/methods/delete_entitlement"
     image_builders:
@@ -6646,7 +6477,6 @@ components:
             $ref: "#/paths/~1AssociateSoftwareToImageBuilder/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -6719,7 +6549,6 @@ components:
             $ref: "#/paths/~1DisassociateSoftwareFromImageBuilder/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -6732,7 +6561,6 @@ components:
             $ref: "#/paths/~1StartSoftwareDeploymentToImageBuilder/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -6750,6 +6578,155 @@ components:
           - $ref: "#/components/x-stackQL-resources/image_builders/methods/associate_software_to_image_builder"
         delete:
           - $ref: "#/components/x-stackQL-resources/image_builders/methods/delete_image_builder"
+    user_stacks:
+      id: aws.appstream.user_stacks
+      name: user_stacks
+      title: user_stacks
+      methods:
+        batch_associate_user_stack:
+          operation:
+            $ref: "#/paths/~1BatchAssociateUserStack/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        batch_disassociate_user_stack:
+          operation:
+            $ref: "#/paths/~1BatchDisassociateUserStack/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
+    images:
+      id: aws.appstream.images
+      name: images
+      title: images
+      methods:
+        copy_image:
+          operation:
+            $ref: "#/paths/~1CopyImage/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        create_imported_image:
+          operation:
+            $ref: "#/paths/~1CreateImportedImage/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        create_updated_image:
+          operation:
+            $ref: "#/paths/~1CreateUpdatedImage/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        delete_image:
+          operation:
+            $ref: "#/paths/~1DeleteImage/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        describe_images:
+          operation:
+            $ref: "#/paths/~1DescribeImages/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.Images
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        start_image_builder:
+          operation:
+            $ref: "#/paths/~1StartImageBuilder/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        stop_image_builder:
+          operation:
+            $ref: "#/paths/~1StopImageBuilder/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/images/methods/describe_images"
+        insert:
+          - $ref: "#/components/x-stackQL-resources/images/methods/create_updated_image"
+          - $ref: "#/components/x-stackQL-resources/images/methods/create_imported_image"
+        update: []
+        delete:
+          - $ref: "#/components/x-stackQL-resources/images/methods/delete_image"
     app_block_builders:
       id: aws.appstream.app_block_builders
       name: app_block_builders
@@ -6786,7 +6763,6 @@ components:
             $ref: "#/paths/~1DeleteAppBlockBuilder/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -6853,7 +6829,6 @@ components:
             $ref: "#/paths/~1DeleteApplication/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -6919,7 +6894,6 @@ components:
             $ref: "#/paths/~1DeleteDirectoryConfig/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -7022,106 +6996,6 @@ components:
           - $ref: "#/components/x-stackQL-resources/export_image_tasks/methods/create_export_image_task"
         update: []
         delete: []
-    images:
-      id: aws.appstream.images
-      name: images
-      title: images
-      methods:
-        create_imported_image:
-          operation:
-            $ref: "#/paths/~1CreateImportedImage/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        create_updated_image:
-          operation:
-            $ref: "#/paths/~1CreateUpdatedImage/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        delete_image:
-          operation:
-            $ref: "#/paths/~1DeleteImage/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        describe_images:
-          operation:
-            $ref: "#/paths/~1DescribeImages/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.Images
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            pagination:
-              requestToken:
-                key: NextToken
-                location: body
-              responseToken:
-                key: $.NextToken
-                location: body
-            requestBodyTranslate:
-              algorithm: naive
-        start_image_builder:
-          operation:
-            $ref: "#/paths/~1StartImageBuilder/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        stop_image_builder:
-          operation:
-            $ref: "#/paths/~1StopImageBuilder/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/images/methods/describe_images"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/images/methods/create_updated_image"
-          - $ref: "#/components/x-stackQL-resources/images/methods/create_imported_image"
-        update: []
-        delete:
-          - $ref: "#/components/x-stackQL-resources/images/methods/delete_image"
     stacks:
       id: aws.appstream.stacks
       name: stacks
@@ -7145,7 +7019,6 @@ components:
             $ref: "#/paths/~1DeleteStack/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -7196,10 +7069,10 @@ components:
           - $ref: "#/components/x-stackQL-resources/stacks/methods/update_stack"
         delete:
           - $ref: "#/components/x-stackQL-resources/stacks/methods/delete_stack"
-    theme_for_stacks:
-      id: aws.appstream.theme_for_stacks
-      name: theme_for_stacks
-      title: theme_for_stacks
+    themes:
+      id: aws.appstream.themes
+      name: themes
+      title: themes
       methods:
         create_theme_for_stack:
           operation:
@@ -7219,7 +7092,6 @@ components:
             $ref: "#/paths/~1DeleteThemeForStack/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -7256,13 +7128,13 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/theme_for_stacks/methods/describe_theme_for_stack"
+          - $ref: "#/components/x-stackQL-resources/themes/methods/describe_theme_for_stack"
         insert:
-          - $ref: "#/components/x-stackQL-resources/theme_for_stacks/methods/create_theme_for_stack"
+          - $ref: "#/components/x-stackQL-resources/themes/methods/create_theme_for_stack"
         update:
-          - $ref: "#/components/x-stackQL-resources/theme_for_stacks/methods/update_theme_for_stack"
+          - $ref: "#/components/x-stackQL-resources/themes/methods/update_theme_for_stack"
         delete:
-          - $ref: "#/components/x-stackQL-resources/theme_for_stacks/methods/delete_theme_for_stack"
+          - $ref: "#/components/x-stackQL-resources/themes/methods/delete_theme_for_stack"
     usage_report_subscriptions:
       id: aws.appstream.usage_report_subscriptions
       name: usage_report_subscriptions
@@ -7286,7 +7158,6 @@ components:
             $ref: "#/paths/~1DeleteUsageReportSubscription/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -7325,7 +7196,6 @@ components:
             $ref: "#/paths/~1CreateUser/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -7338,7 +7208,6 @@ components:
             $ref: "#/paths/~1DeleteUser/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -7372,7 +7241,6 @@ components:
             $ref: "#/paths/~1DisableUser/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -7385,7 +7253,6 @@ components:
             $ref: "#/paths/~1EnableUser/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -7411,7 +7278,6 @@ components:
             $ref: "#/paths/~1DeleteImagePermissions/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -7437,7 +7303,6 @@ components:
             $ref: "#/paths/~1UpdateImagePermissions/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -7556,7 +7421,6 @@ components:
             $ref: "#/paths/~1DrainSessionInstance/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -7569,7 +7433,6 @@ components:
             $ref: "#/paths/~1ExpireSession/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -7762,7 +7625,6 @@ components:
             $ref: "#/paths/~1TagResource/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -7775,7 +7637,6 @@ components:
             $ref: "#/paths/~1UntagResource/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1

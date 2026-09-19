@@ -36,10 +36,10 @@ total resources: __33__
 <a href="/services/workspaces/client_brandings/">client_brandings</a><br />
 <a href="/services/workspaces/client_properties/">client_properties</a><br />
 <a href="/services/workspaces/connect_client_add_ins/">connect_client_add_ins</a><br />
-<a href="/services/workspaces/connection_alias/">connection_alias</a><br />
 <a href="/services/workspaces/connection_alias_permissions/">connection_alias_permissions</a><br />
 <a href="/services/workspaces/connection_aliases/">connection_aliases</a><br />
 <a href="/services/workspaces/custom_workspace_image_imports/">custom_workspace_image_imports</a><br />
+<a href="/services/workspaces/custom_workspace_images/">custom_workspace_images</a><br />
 <a href="/services/workspaces/endpoint_encryption_modes/">endpoint_encryption_modes</a><br />
 <a href="/services/workspaces/image_associations/">image_associations</a>
 </div>
@@ -57,7 +57,7 @@ total resources: __33__
 <a href="/services/workspaces/workspace_images/">workspace_images</a><br />
 <a href="/services/workspaces/workspace_snapshots/">workspace_snapshots</a><br />
 <a href="/services/workspaces/workspaces/">workspaces</a><br />
-<a href="/services/workspaces/workspaces_connection_status/">workspaces_connection_status</a><br />
+<a href="/services/workspaces/workspaces_connection_statuses/">workspaces_connection_statuses</a><br />
 <a href="/services/workspaces/workspaces_pool_sessions/">workspaces_pool_sessions</a><br />
 <a href="/services/workspaces/workspaces_pools/">workspaces_pools</a>
 </div>

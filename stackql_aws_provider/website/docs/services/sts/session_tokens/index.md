@@ -50,24 +50,19 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="access_key_id" /></td>
+    <td><CopyableCode code="credentials" /></td>
     <td><code>string</code></td>
-    <td>The access key ID that identifies the temporary security credentials.</td>
+    <td>The temporary security credentials, which include an access key ID, a secret access key, and a security (or session) token. The size of the security token that STS API operations return is not fixed. We strongly recommend that you make no assumptions about the maximum size.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="expiration" /></td>
-    <td><code>string</code></td>
-    <td>The date on which the current credentials expire.</td>
+    <td><CopyableCode code="session_token_size" /></td>
+    <td><code>integer</code></td>
+    <td>The size, in bytes, of the session token returned in the Credentials for this response.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="secret_access_key" /></td>
-    <td><code>string</code></td>
-    <td>The secret access key that can be used to sign requests.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="session_token" /></td>
-    <td><code>string</code></td>
-    <td>The token that users must pass to the service API to use the temporary credentials.</td>
+    <td><CopyableCode code="session_token_utilization" /></td>
+    <td><code>integer</code></td>
+    <td>The percentage (0-100) of the maximum allowed session token size that the returned session token consumes.</td>
 </tr>
 </tbody>
 </table>
@@ -93,7 +88,7 @@ The following methods are available for this resource:
     <td><a href="#get_session_token"><CopyableCode code="get_session_token" /></a></td>
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
-    <td><a href="#parameter-DurationSeconds"><code>DurationSeconds</code></a>, <a href="#parameter-SerialNumber"><code>SerialNumber</code></a>, <a href="#parameter-TokenCode"><code>TokenCode</code></a></td>
+    <td><a href="#parameter-DurationSeconds"><code>DurationSeconds</code></a>, <a href="#parameter-SerialNumber"><code>SerialNumber</code></a>, <a href="#parameter-TokenCode"><code>TokenCode</code></a>, <a href="#parameter-MinimumSessionTokenSize"><code>MinimumSessionTokenSize</code></a></td>
     <td>Returns a set of temporary credentials for an Amazon Web Services account or IAM user. The credentials consist of an access key ID, a secret access key, and a security token. Typically, you use GetSessionToken if you want to use MFA to protect programmatic calls to specific Amazon Web Services API operations like Amazon EC2 StopInstances. MFA-enabled IAM users must call GetSessionToken and submit an MFA code that is associated with their MFA device. Using the temporary security credentials that the call returns, IAM users can then make programmatic calls to API operations that require MFA authentication. An incorrect MFA code causes the API to return an access denied error. For a comparison of GetSessionToken with the other API operations that produce temporary credentials, see Requesting Temporary Security Credentials and Compare STS credentials in the IAM User Guide. No permissions are required for users to perform this operation. The purpose of the sts:GetSessionToken operation is to authenticate the user using MFA. You cannot use policies to control authentication operations. For more information, see Permissions for GetSessionToken in the IAM User Guide. Session Duration The GetSessionToken operation must be called by using the long-term Amazon Web Services security credentials of an IAM user. Credentials that are created by IAM users are valid for the duration that you specify. This duration can range from 900 seconds (15 minutes) up to a maximum of 129,600 seconds (36 hours), with a default of 43,200 seconds (12 hours). Credentials based on account credentials can range from 900 seconds (15 minutes) up to 3,600 seconds (1 hour), with a default of 1 hour. Permissions The temporary security credentials created by GetSessionToken can be used to make API calls to any Amazon Web Services service with the following exceptions: You cannot call any IAM API operations unless MFA authentication information is included in the request. You cannot call any STS API except AssumeRole or GetCallerIdentity. The credentials that GetSessionToken returns are based on permissions associated with the IAM user whose credentials were used to call the operation. The temporary credentials have the same permissions as the IAM user. Although it is possible to call GetSessionToken using the security credentials of an Amazon Web Services account root user rather than an IAM user, we do not recommend it. If GetSessionToken is called using root user credentials, the temporary credentials have root user permissions. For more information, see Safeguard your root user credentials and don't use them for everyday tasks in the IAM User Guide For more information about using GetSessionToken to create temporary credentials, see Temporary Credentials for Users in Untrusted Environments in the IAM User Guide.</td>
 </tr>
 </tbody>
@@ -122,6 +117,11 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     <td><code>integer</code></td>
     <td>The duration, in seconds, that the credentials should remain valid. Acceptable durations for IAM user sessions range from 900 seconds (15 minutes) to 129,600 seconds (36 hours), with 43,200 seconds (12 hours) as the default. Sessions for Amazon Web Services account owners are restricted to a maximum of 3,600 seconds (one hour). If the duration is longer than one hour, the session for Amazon Web Services account owners defaults to one hour.</td>
 </tr>
+<tr id="parameter-MinimumSessionTokenSize">
+    <td><CopyableCode code="MinimumSessionTokenSize" /></td>
+    <td><code>integer</code></td>
+    <td></td>
+</tr>
 <tr id="parameter-SerialNumber">
     <td><CopyableCode code="SerialNumber" /></td>
     <td><code>string</code></td>
@@ -149,15 +149,15 @@ Returns a set of temporary credentials for an Amazon Web Services account or IAM
 
 ```sql
 SELECT
-access_key_id,
-expiration,
-secret_access_key,
-session_token
+credentials,
+session_token_size,
+session_token_utilization
 FROM aws.sts.session_tokens
 WHERE region = '{{ region }}' -- required
 AND DurationSeconds = '{{ DurationSeconds }}'
 AND SerialNumber = '{{ SerialNumber }}'
 AND TokenCode = '{{ TokenCode }}'
+AND MinimumSessionTokenSize = '{{ MinimumSessionTokenSize }}'
 ;
 ```
 </TabItem>

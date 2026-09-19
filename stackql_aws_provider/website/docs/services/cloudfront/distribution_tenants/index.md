@@ -36,6 +36,7 @@ The following fields are returned by `SELECT` queries:
     defaultValue="get_distribution_tenant"
     values={[
         { label: 'get_distribution_tenant', value: 'get_distribution_tenant' },
+        { label: 'get_distribution_tenant_by_domain', value: 'get_distribution_tenant_by_domain' },
         { label: 'list_distribution_tenants', value: 'list_distribution_tenants' }
     ]}
 >
@@ -114,6 +115,30 @@ The following fields are returned by `SELECT` queries:
     <td><CopyableCode code="tags" /></td>
     <td><code>string</code></td>
     <td>A complex type that contains zero or more Tag elements.</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
+<TabItem value="get_distribution_tenant_by_domain">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="distribution_tenant" /></td>
+    <td><code>string</code></td>
+    <td>The distribution tenant.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="e_tag" /></td>
+    <td><code>string</code></td>
+    <td>The current version of the distribution tenant.</td>
 </tr>
 </tbody>
 </table>
@@ -217,6 +242,13 @@ The following methods are available for this resource:
     <td>Gets information about a distribution tenant.</td>
 </tr>
 <tr>
+    <td><a href="#get_distribution_tenant_by_domain"><CopyableCode code="get_distribution_tenant_by_domain" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-domain"><code>domain</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Gets information about a distribution tenant by the associated domain.</td>
+</tr>
+<tr>
     <td><a href="#list_distribution_tenants"><CopyableCode code="list_distribution_tenants" /></a></td>
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
@@ -231,18 +263,18 @@ The following methods are available for this resource:
     <td>Creates a distribution tenant.</td>
 </tr>
 <tr>
-    <td><a href="#associate_distribution_tenant_web_acl"><CopyableCode code="associate_distribution_tenant_web_acl" /></a></td>
-    <td><CopyableCode code="update" /></td>
-    <td><a href="#parameter-id"><code>id</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-WebACLArn"><code>WebACLArn</code></a></td>
-    <td><a href="#parameter-If-Match"><code>If-Match</code></a></td>
-    <td>Associates the WAF web ACL with a distribution tenant.</td>
-</tr>
-<tr>
     <td><a href="#update_distribution_tenant"><CopyableCode code="update_distribution_tenant" /></a></td>
     <td><CopyableCode code="update" /></td>
     <td><a href="#parameter-id"><code>id</code></a>, <a href="#parameter-If-Match"><code>If-Match</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td></td>
     <td>Updates a distribution tenant.</td>
+</tr>
+<tr>
+    <td><a href="#associate_distribution_tenant_web_acl"><CopyableCode code="associate_distribution_tenant_web_acl" /></a></td>
+    <td><CopyableCode code="update" /></td>
+    <td><a href="#parameter-id"><code>id</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-WebACLArn"><code>WebACLArn</code></a></td>
+    <td><a href="#parameter-If-Match"><code>If-Match</code></a></td>
+    <td>Associates the WAF web ACL with a distribution tenant.</td>
 </tr>
 <tr>
     <td><a href="#disassociate_distribution_tenant_web_acl"><CopyableCode code="disassociate_distribution_tenant_web_acl" /></a></td>
@@ -279,6 +311,11 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     <td><code>string</code></td>
     <td>The value of the ETag header that you received when retrieving the distribution tenant. This value is returned in the response of the GetDistributionTenant API operation.</td>
 </tr>
+<tr id="parameter-domain">
+    <td><CopyableCode code="domain" /></td>
+    <td><code>string</code></td>
+    <td>A domain name associated with the target distribution tenant.</td>
+</tr>
 <tr id="parameter-id">
     <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
@@ -308,6 +345,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     defaultValue="get_distribution_tenant"
     values={[
         { label: 'get_distribution_tenant', value: 'get_distribution_tenant' },
+        { label: 'get_distribution_tenant_by_domain', value: 'get_distribution_tenant_by_domain' },
         { label: 'list_distribution_tenants', value: 'list_distribution_tenants' }
     ]}
 >
@@ -332,6 +370,20 @@ status,
 tags
 FROM aws.cloudfront.distribution_tenants
 WHERE identifier = '{{ identifier }}' -- required
+AND region = '{{ region }}' -- required
+;
+```
+</TabItem>
+<TabItem value="get_distribution_tenant_by_domain">
+
+Gets information about a distribution tenant by the associated domain.
+
+```sql
+SELECT
+distribution_tenant,
+e_tag
+FROM aws.cloudfront.distribution_tenants
+WHERE domain = '{{ domain }}' -- required
 AND region = '{{ region }}' -- required
 ;
 ```
@@ -475,32 +527,13 @@ tags
 ## `UPDATE` examples
 
 <Tabs
-    defaultValue="associate_distribution_tenant_web_acl"
+    defaultValue="update_distribution_tenant"
     values={[
-        { label: 'associate_distribution_tenant_web_acl', value: 'associate_distribution_tenant_web_acl' },
         { label: 'update_distribution_tenant', value: 'update_distribution_tenant' },
+        { label: 'associate_distribution_tenant_web_acl', value: 'associate_distribution_tenant_web_acl' },
         { label: 'disassociate_distribution_tenant_web_acl', value: 'disassociate_distribution_tenant_web_acl' }
     ]}
 >
-<TabItem value="associate_distribution_tenant_web_acl">
-
-Associates the WAF web ACL with a distribution tenant.
-
-```sql
-UPDATE aws.cloudfront.distribution_tenants
-SET 
-WebACLArn = '{{ WebACLArn }}'
-WHERE 
-id = '{{ id }}' --required
-AND region = '{{ region }}' --required
-AND WebACLArn = '{{ WebACLArn }}' --required
-AND `If-Match` = '{{ If-Match}}'
-RETURNING
-e_tag,
-id,
-web_acl_arn;
-```
-</TabItem>
 <TabItem value="update_distribution_tenant">
 
 Updates a distribution tenant.
@@ -533,6 +566,25 @@ name,
 parameters,
 status,
 tags;
+```
+</TabItem>
+<TabItem value="associate_distribution_tenant_web_acl">
+
+Associates the WAF web ACL with a distribution tenant.
+
+```sql
+UPDATE aws.cloudfront.distribution_tenants
+SET 
+WebACLArn = '{{ WebACLArn }}'
+WHERE 
+id = '{{ id }}' --required
+AND region = '{{ region }}' --required
+AND WebACLArn = '{{ WebACLArn }}' --required
+AND `If-Match` = '{{ If-Match}}'
+RETURNING
+e_tag,
+id,
+web_acl_arn;
 ```
 </TabItem>
 <TabItem value="disassociate_distribution_tenant_web_acl">

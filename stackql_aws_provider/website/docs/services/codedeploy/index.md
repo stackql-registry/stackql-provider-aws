@@ -18,7 +18,7 @@ codedeploy service documentation.
 
 :::info[Service Summary]
 
-total resources: __13__  
+total resources: __14__  
 
 :::
 
@@ -36,9 +36,10 @@ total resources: __13__
 <div class="providerDocColumn">
 <a href="/services/codedeploy/git_hub_account_token_names/">git_hub_account_token_names</a><br />
 <a href="/services/codedeploy/git_hub_account_tokens/">git_hub_account_tokens</a><br />
-<a href="/services/codedeploy/lifecycle_event_hook_execution_status/">lifecycle_event_hook_execution_status</a><br />
+<a href="/services/codedeploy/instance_terminations/">instance_terminations</a><br />
+<a href="/services/codedeploy/lifecycle_event_hook_execution_statuses/">lifecycle_event_hook_execution_statuses</a><br />
 <a href="/services/codedeploy/on_premises_instances/">on_premises_instances</a><br />
-<a href="/services/codedeploy/resources_by_external_ids/">resources_by_external_ids</a><br />
+<a href="/services/codedeploy/resources/">resources</a><br />
 <a href="/services/codedeploy/tags/">tags</a>
 </div>
 </div>

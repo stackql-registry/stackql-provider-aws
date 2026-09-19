@@ -18,7 +18,7 @@ codecommit service documentation.
 
 :::info[Service Summary]
 
-total resources: __25__  
+total resources: __23__  
 
 :::
 
@@ -26,14 +26,13 @@ total resources: __25__
 <div class="row">
 <div class="providerDocColumn">
 <a href="/services/codecommit/approval_rule_templates/">approval_rule_templates</a><br />
-<a href="/services/codecommit/associated_approval_rule_templates_for_repositories/">associated_approval_rule_templates_for_repositories</a><br />
+<a href="/services/codecommit/associated_approval_rule_templates/">associated_approval_rule_templates</a><br />
 <a href="/services/codecommit/blob_differences/">blob_differences</a><br />
 <a href="/services/codecommit/blobs/">blobs</a><br />
 <a href="/services/codecommit/branches/">branches</a><br />
 <a href="/services/codecommit/comment_reactions/">comment_reactions</a><br />
+<a href="/services/codecommit/comment_replies/">comment_replies</a><br />
 <a href="/services/codecommit/comments/">comments</a><br />
-<a href="/services/codecommit/comments_for_compared_commits/">comments_for_compared_commits</a><br />
-<a href="/services/codecommit/comments_for_pull_requests/">comments_for_pull_requests</a><br />
 <a href="/services/codecommit/commits/">commits</a><br />
 <a href="/services/codecommit/differences/">differences</a><br />
 <a href="/services/codecommit/file_commit_histories/">file_commit_histories</a><br />
@@ -49,7 +48,6 @@ total resources: __25__
 <a href="/services/codecommit/pull_request_override_states/">pull_request_override_states</a><br />
 <a href="/services/codecommit/pull_requests/">pull_requests</a><br />
 <a href="/services/codecommit/repositories/">repositories</a><br />
-<a href="/services/codecommit/repositories_for_approval_rule_templates/">repositories_for_approval_rule_templates</a><br />
 <a href="/services/codecommit/repository_triggers/">repository_triggers</a><br />
 <a href="/services/codecommit/tags/">tags</a>
 </div>

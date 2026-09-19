@@ -80,6 +80,11 @@ The following fields are returned by `SELECT` queries:
     <td>List of SageMaker Domain IDs for which this MLflow App is the default.</td>
 </tr>
 <tr>
+    <td><CopyableCode code="kms_key_id" /></td>
+    <td><code>string</code></td>
+    <td>The ID of the Amazon Web Services KMS key used to encrypt the data at rest associated with the MLflow App. This field is absent if the MLflow App is not encrypted with a customer-managed key. (pattern: &lt;code&gt;&#91;a-zA-Z0-9:/_-&#93;*&lt;/code&gt;)</td>
+</tr>
+<tr>
     <td><CopyableCode code="last_modified_by" /></td>
     <td><code>object</code></td>
     <td>Information about the user who created or modified a SageMaker resource.</td>
@@ -223,6 +228,7 @@ artifact_store_uri,
 created_by,
 creation_time,
 default_domain_id_list,
+kms_key_id,
 last_modified_by,
 last_modified_time,
 maintenance_status,
@@ -258,6 +264,7 @@ INSERT INTO aws.sagemaker.mlflow_apps (
 Name,
 ArtifactStoreUri,
 RoleArn,
+KmsKeyId,
 ModelRegistrationMode,
 WeeklyMaintenanceWindowStart,
 AccountDefaultStatus,
@@ -269,6 +276,7 @@ SELECT
 '{{ Name }}',
 '{{ ArtifactStoreUri }}' /* required */,
 '{{ RoleArn }}' /* required */,
+'{{ KmsKeyId }}',
 '{{ ModelRegistrationMode }}',
 '{{ WeeklyMaintenanceWindowStart }}',
 '{{ AccountDefaultStatus }}',
@@ -300,6 +308,10 @@ arn
       value: "{{ RoleArn }}"
       description: |
         The Amazon Resource Name (ARN) for an IAM role in your account that the MLflow App uses to access the artifact store in Amazon S3. The role should have the AmazonS3FullAccess permission.
+    - name: KmsKeyId
+      value: "{{ KmsKeyId }}"
+      description: |
+        The ID of the Amazon Web Services KMS key used to encrypt the data at rest associated with the MLflow App. If you don't specify a value, the MLflow App is not encrypted with a customer-managed key.
     - name: ModelRegistrationMode
       value: "{{ ModelRegistrationMode }}"
       description: |

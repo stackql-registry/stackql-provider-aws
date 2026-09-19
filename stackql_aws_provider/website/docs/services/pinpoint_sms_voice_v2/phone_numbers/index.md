@@ -75,6 +75,11 @@ The following fields are returned by `SELECT` queries:
     <td>The type of message. Valid values are TRANSACTIONAL for messages that are critical or time-sensitive and PROMOTIONAL for messages that aren't critical or time-sensitive. (TRANSACTIONAL, PROMOTIONAL)</td>
 </tr>
 <tr>
+    <td><CopyableCode code="messaging_limits" /></td>
+    <td><code>object</code></td>
+    <td>The messaging limits that apply to the phone number, including the per-capability send rates and any advisory per-provider daily message caps.</td>
+</tr>
+<tr>
     <td><CopyableCode code="monthly_leasing_price" /></td>
     <td><code>string</code></td>
     <td>The price, in US dollars, to lease the phone number.</td>
@@ -179,6 +184,13 @@ The following methods are available for this resource:
     <td>Releases an existing origination phone number in your account. Once released, a phone number is no longer available for sending messages. If the origination phone number has deletion protection enabled or is associated with a pool, an error is returned.</td>
 </tr>
 <tr>
+    <td><a href="#request_phone_number"><CopyableCode code="request_phone_number" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-IsoCountryCode"><code>IsoCountryCode</code></a>, <a href="#parameter-MessageType"><code>MessageType</code></a>, <a href="#parameter-NumberCapabilities"><code>NumberCapabilities</code></a>, <a href="#parameter-NumberType"><code>NumberType</code></a></td>
+    <td></td>
+    <td>Request an origination phone number for use in your account. For more information on phone number request see Request a phone number in the End User Messaging SMS User Guide.</td>
+</tr>
+<tr>
     <td><a href="#update_phone_number"><CopyableCode code="update_phone_number" /></a></td>
     <td><CopyableCode code="exec" /></td>
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-PhoneNumberId"><code>PhoneNumberId</code></a></td>
@@ -228,6 +240,7 @@ deletion_protection_enabled,
 international_sending_enabled,
 iso_country_code,
 message_type,
+messaging_limits,
 monthly_leasing_price,
 number_capabilities,
 number_type,
@@ -294,11 +307,37 @@ two_way_enabled;
 ## Lifecycle Methods
 
 <Tabs
-    defaultValue="update_phone_number"
+    defaultValue="request_phone_number"
     values={[
+        { label: 'request_phone_number', value: 'request_phone_number' },
         { label: 'update_phone_number', value: 'update_phone_number' }
     ]}
 >
+<TabItem value="request_phone_number">
+
+Request an origination phone number for use in your account. For more information on phone number request see Request a phone number in the End User Messaging SMS User Guide.
+
+```sql
+EXEC aws.pinpoint_sms_voice_v2.phone_numbers.request_phone_number 
+@region='{{ region }}' --required 
+@@json=
+'{
+"IsoCountryCode": "{{ IsoCountryCode }}", 
+"MessageType": "{{ MessageType }}", 
+"NumberCapabilities": "{{ NumberCapabilities }}", 
+"NumberType": "{{ NumberType }}", 
+"OptOutListName": "{{ OptOutListName }}", 
+"PoolId": "{{ PoolId }}", 
+"RegistrationId": "{{ RegistrationId }}", 
+"NumberPreference": "{{ NumberPreference }}", 
+"InternationalSendingEnabled": {{ InternationalSendingEnabled }}, 
+"DeletionProtectionEnabled": {{ DeletionProtectionEnabled }}, 
+"Tags": "{{ Tags }}", 
+"ClientToken": "{{ ClientToken }}"
+}'
+;
+```
+</TabItem>
 <TabItem value="update_phone_number">
 
 Updates the configuration of an existing origination phone number. You can update the opt-out list, enable or disable two-way messaging, change the TwoWayChannelArn, enable or disable self-managed opt-outs, and enable or disable deletion protection. If the origination phone number is associated with a pool, an error is returned.

@@ -103,7 +103,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DisableBaselineOutput'
-      x-stackql-resource: baseline
+      x-stackql-resource: baselines
       x-stackql-method: disable_baseline
       x-stackql-verb: EXEC
   /disable-control:
@@ -133,7 +133,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DisableControlOutput'
-      x-stackql-resource: control
+      x-stackql-resource: controls
       x-stackql-method: disable_control
       x-stackql-verb: EXEC
   /enable-baseline:
@@ -171,7 +171,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/EnableBaselineOutput'
-      x-stackql-resource: baseline
+      x-stackql-resource: baselines
       x-stackql-method: enable_baseline
       x-stackql-verb: EXEC
   /enable-control:
@@ -206,7 +206,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/EnableControlOutput'
-      x-stackql-resource: control
+      x-stackql-resource: controls
       x-stackql-method: enable_control
       x-stackql-verb: EXEC
   /get-baseline:
@@ -649,10 +649,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceOutput'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -675,10 +671,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceOutput'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -1937,8 +1929,6 @@ components:
             parameter of GetLandingZoneOperation to check the operation's status.
       required:
       - operationIdentifier
-    TagResourceOutput:
-      type: object
     TagKeys:
       type: array
       items:
@@ -1947,8 +1937,6 @@ components:
       type: string
       minLength: 1
       maxLength: 128
-    UntagResourceOutput:
-      type: object
     UpdateEnabledBaselineOutput:
       type: object
       properties:

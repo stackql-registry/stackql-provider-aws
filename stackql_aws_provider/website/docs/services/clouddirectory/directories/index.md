@@ -153,6 +153,20 @@ The following methods are available for this resource:
     <td>Deletes a directory. Only disabled directories can be deleted. A deleted directory cannot be undone. Exercise extreme caution when deleting directories.</td>
 </tr>
 <tr>
+    <td><a href="#disable_directory"><CopyableCode code="disable_directory" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-x-amz-data-partition"><code>x-amz-data-partition</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Disables the specified directory. Disabled directories cannot be read or written to. Only enabled directories can be disabled. Disabled directories may be reenabled.</td>
+</tr>
+<tr>
+    <td><a href="#enable_directory"><CopyableCode code="enable_directory" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-x-amz-data-partition"><code>x-amz-data-partition</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Enables the specified directory. Only disabled directories can be enabled. Once enabled, the directory can then be read and written to.</td>
+</tr>
+<tr>
     <td><a href="#upgrade_applied_schema"><CopyableCode code="upgrade_applied_schema" /></a></td>
     <td><CopyableCode code="exec" /></td>
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-PublishedSchemaArn"><code>PublishedSchemaArn</code></a>, <a href="#parameter-DirectoryArn"><code>DirectoryArn</code></a></td>
@@ -183,7 +197,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-x-amz-data-partition">
     <td><CopyableCode code="x-amz-data-partition" /></td>
     <td><code>string</code></td>
-    <td>The ARN of the directory to delete.</td>
+    <td>The ARN of the directory to enable.</td>
 </tr>
 </tbody>
 </table>
@@ -306,11 +320,35 @@ AND region = '{{ region }}' --required
 ## Lifecycle Methods
 
 <Tabs
-    defaultValue="upgrade_applied_schema"
+    defaultValue="disable_directory"
     values={[
+        { label: 'disable_directory', value: 'disable_directory' },
+        { label: 'enable_directory', value: 'enable_directory' },
         { label: 'upgrade_applied_schema', value: 'upgrade_applied_schema' }
     ]}
 >
+<TabItem value="disable_directory">
+
+Disables the specified directory. Disabled directories cannot be read or written to. Only enabled directories can be disabled. Disabled directories may be reenabled.
+
+```sql
+EXEC aws.clouddirectory.directories.disable_directory 
+@x-amz-data-partition='{{ x-amz-data-partition }}' --required, 
+@region='{{ region }}' --required
+;
+```
+</TabItem>
+<TabItem value="enable_directory">
+
+Enables the specified directory. Only disabled directories can be enabled. Once enabled, the directory can then be read and written to.
+
+```sql
+EXEC aws.clouddirectory.directories.enable_directory 
+@x-amz-data-partition='{{ x-amz-data-partition }}' --required, 
+@region='{{ region }}' --required
+;
+```
+</TabItem>
 <TabItem value="upgrade_applied_schema">
 
 Upgrades a single directory in-place using the PublishedSchemaArn with schema updates found in MinorVersion. Backwards-compatible minor version upgrades are instantaneously available for readers on all objects in the directory. Note: This is a synchronous API call and upgrades only one schema on a given directory per call. To upgrade multiple directories from one schema, you would need to call this API on each directory.

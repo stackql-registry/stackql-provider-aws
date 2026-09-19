@@ -61,7 +61,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AgenticRetrieveStreamResponse'
-      x-stackql-resource: agentic_retrieve_stream
+      x-stackql-resource: retrieve_streams
       x-stackql-method: agentic_retrieve_stream
       x-stackql-verb: EXEC
   /knowledgebases/{knowledge_base_id}/datasources/{data_source_id}/check-ingested-document-acl:
@@ -104,7 +104,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CheckIngestedDocumentAclResponse'
-      x-stackql-resource: check_ingested_document_acl
+      x-stackql-resource: ingested_document_acls
       x-stackql-method: check_ingested_document_acl
       x-stackql-verb: EXEC
   /sessions/{session_identifier}/invocations/:
@@ -285,10 +285,6 @@ paths:
       responses:
         '202':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteAgentMemoryResponse'
       x-stackql-resource: agent_memories
       x-stackql-method: delete_agent_memory
       x-stackql-verb: DELETE
@@ -366,10 +362,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteSessionResponse'
       x-stackql-resource: sessions
       x-stackql-method: delete_session
       x-stackql-verb: DELETE
@@ -477,7 +469,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GenerateQueryResponse'
-      x-stackql-resource: query
+      x-stackql-resource: queries
       x-stackql-method: generate_query
       x-stackql-verb: EXEC
   /knowledgebases/{knowledge_base_id}/datasources/{data_source_id}/documents/{document_id}/content:
@@ -522,7 +514,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetDocumentContentResponse'
-      x-stackql-resource: document_contents
+      x-stackql-resource: document_content
       x-stackql-method: get_document_content
       x-stackql-verb: SELECT
   /flows/{flow_identifier}/aliases/{flow_alias_identifier}/executions/{execution_identifier}/flowsnapshot:
@@ -795,7 +787,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/InvokeFlowResponse'
-      x-stackql-resource: flow
+      x-stackql-resource: flows
       x-stackql-method: invoke_flow
       x-stackql-verb: EXEC
   /agents/{session_id}:
@@ -1124,10 +1116,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -1150,10 +1138,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -1184,7 +1168,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/OptimizePromptResponse'
-      x-stackql-resource: optimize_prompt
+      x-stackql-resource: prompts
       x-stackql-method: optimize_prompt
       x-stackql-verb: EXEC
   /rerank:
@@ -1219,7 +1203,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RerankResponse'
-      x-stackql-resource: rerank
+      x-stackql-resource: ks
       x-stackql-method: rerank
       x-stackql-verb: EXEC
       x-stackql-pagination-request-token-key: nextToken
@@ -1262,7 +1246,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RetrieveResponse'
-      x-stackql-resource: retrieve
+      x-stackql-resource: es
       x-stackql-method: retrieve
       x-stackql-verb: EXEC
       x-stackql-pagination-request-token-key: nextToken
@@ -1301,7 +1285,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RetrieveAndGenerateResponse'
-      x-stackql-resource: retrieve_and_generate
+      x-stackql-resource: and_generates
       x-stackql-method: retrieve_and_generate
       x-stackql-verb: EXEC
   /retrieveAndGenerateStream:
@@ -1338,7 +1322,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RetrieveAndGenerateStreamResponse'
-      x-stackql-resource: retrieve_and_generate_stream
+      x-stackql-resource: and_generate_streams
       x-stackql-method: retrieve_and_generate_stream
       x-stackql-verb: EXEC
   /flows/{flow_identifier}/aliases/{flow_alias_identifier}/executions:
@@ -1384,7 +1368,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartFlowExecutionResponse'
-      x-stackql-resource: flow_execution
+      x-stackql-resource: flow_executions
       x-stackql-method: start_flow_execution
       x-stackql-verb: EXEC
   /flows/{flow_identifier}/aliases/{flow_alias_identifier}/executions/{execution_identifier}/stop:
@@ -1418,7 +1402,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StopFlowExecutionResponse'
-      x-stackql-resource: flow_execution
+      x-stackql-resource: flow_executions
       x-stackql-method: stop_flow_execution
       x-stackql-verb: EXEC
 components:
@@ -2621,10 +2605,6 @@ components:
       minLength: 2
       maxLength: 100
       pattern: ^[0-9a-zA-Z._:-]+$
-    DeleteAgentMemoryResponse:
-      type: object
-    DeleteSessionResponse:
-      type: object
     EndSessionResponse:
       type: object
       properties:
@@ -7823,8 +7803,6 @@ components:
             the execution was successfully stopped.
       required:
       - status
-    TagResourceResponse:
-      type: object
     TagKeyList:
       description: List of Tag Keys
       type: array
@@ -7836,8 +7814,6 @@ components:
       minLength: 1
       maxLength: 128
       pattern: ^[a-zA-Z0-9\s._:/=+@-]*$
-    UntagResourceResponse:
-      type: object
     UpdateSessionResponse:
       type: object
       properties:

@@ -179,10 +179,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteGroupingConfigurationOutput"
     put:
       operationId: PutGroupingConfiguration
       description: Creates or updates the grouping configuration for this account. This operation allows you to define custom grouping attributes that determine how services are logically grouped based on telemetry attributes, Amazon Web Services tags, or predefined mappings. These grouping attributes can then be used to organize and filter services in the Application Signals console and APIs.
@@ -252,10 +248,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteServiceLevelObjectiveOutput"
     get:
       operationId: GetServiceLevelObjective
       description: Returns information about one SLO created in the account.
@@ -931,10 +923,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/StartDiscoveryOutput"
   /tag-resource:
     post:
       operationId: TagResource
@@ -956,10 +944,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TagResourceResponse"
   /untag-resource:
     post:
       operationId: UntagResource
@@ -982,10 +966,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UntagResourceResponse"
 components:
   parameters:
     X-Amz-Content-Sha256:
@@ -2273,8 +2253,6 @@ components:
         - AppMonitor
         - Canary
         - Service
-    DeleteGroupingConfigurationOutput:
-      type: object
     DeleteInstrumentationConfigurationRequestServiceString:
       type: string
       minLength: 1
@@ -2310,8 +2288,6 @@ components:
       type: string
       enum:
         - DELETED
-    DeleteServiceLevelObjectiveOutput:
-      type: object
     GetInstrumentationConfigurationRequestServiceString:
       type: string
       minLength: 1
@@ -3571,16 +3547,10 @@ components:
         - THROTTLED
         - INTERNAL_ERROR
         - VALIDATION_ERROR
-    StartDiscoveryOutput:
-      type: object
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
         $ref: "#/components/schemas/TagKey"
-    UntagResourceResponse:
-      type: object
     UpdateServiceLevelObjectiveOutput:
       type: object
       properties:
@@ -3690,6 +3660,27 @@ components:
         insert: []
         update: []
         delete: []
+    exclusion_windows:
+      id: aws.application_signals.exclusion_windows
+      name: exclusion_windows
+      title: exclusion_windows
+      methods:
+        batch_update_exclusion_windows:
+          operation:
+            $ref: "#/paths/~1exclusion-windows/patch"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
     service_level_objectives:
       id: aws.application_signals.service_level_objectives
       name: service_level_objectives
@@ -3711,7 +3702,6 @@ components:
             $ref: "#/paths/~1slo~1{id}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         get_service_level_objective:
           operation:
             $ref: "#/paths/~1slo~1{id}/get"
@@ -3769,7 +3759,6 @@ components:
             $ref: "#/paths/~1grouping-configuration/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         put_grouping_configuration:
           operation:
             $ref: "#/paths/~1grouping-configuration/put"
@@ -3789,10 +3778,10 @@ components:
           - $ref: "#/components/x-stackQL-resources/grouping_configurations/methods/put_grouping_configuration"
         delete:
           - $ref: "#/components/x-stackQL-resources/grouping_configurations/methods/delete_grouping_configuration"
-    instrumentation_configuration_status:
-      id: aws.application_signals.instrumentation_configuration_status
-      name: instrumentation_configuration_status
-      title: instrumentation_configuration_status
+    instrumentation_configuration_statuses:
+      id: aws.application_signals.instrumentation_configuration_statuses
+      name: instrumentation_configuration_statuses
+      title: instrumentation_configuration_statuses
       methods:
         get_instrumentation_configuration_status:
           operation:
@@ -3826,7 +3815,7 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/instrumentation_configuration_status/methods/get_instrumentation_configuration_status"
+          - $ref: "#/components/x-stackQL-resources/instrumentation_configuration_statuses/methods/get_instrumentation_configuration_status"
         insert: []
         update: []
         delete: []
@@ -4107,7 +4096,6 @@ components:
             $ref: "#/paths/~1tag-resource/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -4118,7 +4106,6 @@ components:
             $ref: "#/paths/~1untag-resource/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -4131,4 +4118,19 @@ components:
         update:
           - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
           - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
+        delete: []
+    discoveries:
+      id: aws.application_signals.discoveries
+      name: discoveries
+      title: discoveries
+      methods:
+        start_discovery:
+          operation:
+            $ref: "#/paths/~1start-discovery/post"
+          response:
+            openAPIDocKey: "200"
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
         delete: []

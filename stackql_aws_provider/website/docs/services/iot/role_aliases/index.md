@@ -33,11 +33,61 @@ Creates, updates, deletes, gets or lists a <code>role_aliases</code> resource.
 The following fields are returned by `SELECT` queries:
 
 <Tabs
-    defaultValue="list_role_aliases"
+    defaultValue="describe_role_alias"
     values={[
+        { label: 'describe_role_alias', value: 'describe_role_alias' },
         { label: 'list_role_aliases', value: 'list_role_aliases' }
     ]}
 >
+<TabItem value="describe_role_alias">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="creation_date" /></td>
+    <td><code>string (date-time)</code></td>
+    <td>The UNIX timestamp of when the role alias was created.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="credential_duration_seconds" /></td>
+    <td><code>integer</code></td>
+    <td>The number of seconds for which the credential is valid.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="last_modified_date" /></td>
+    <td><code>string (date-time)</code></td>
+    <td>The UNIX timestamp of when the role alias was last modified.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="owner" /></td>
+    <td><code>string</code></td>
+    <td>The role alias owner. (pattern: &lt;code&gt;&#91;0-9&#93;+&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="role_alias" /></td>
+    <td><code>string</code></td>
+    <td>The role alias. (pattern: &lt;code&gt;&#91;\w=,@-&#93;+&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="role_alias_arn" /></td>
+    <td><code>string</code></td>
+    <td>The ARN of the role alias.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="role_arn" /></td>
+    <td><code>string</code></td>
+    <td>The role ARN.</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
 <TabItem value="list_role_aliases">
 
 <table>
@@ -75,11 +125,39 @@ The following methods are available for this resource:
 </thead>
 <tbody>
 <tr>
+    <td><a href="#describe_role_alias"><CopyableCode code="describe_role_alias" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-role_alias"><code>role_alias</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Describes a role alias. Requires permission to access the DescribeRoleAlias action.</td>
+</tr>
+<tr>
     <td><a href="#list_role_aliases"><CopyableCode code="list_role_aliases" /></a></td>
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td><a href="#parameter-pageSize"><code>pageSize</code></a>, <a href="#parameter-marker"><code>marker</code></a>, <a href="#parameter-isAscendingOrder"><code>isAscendingOrder</code></a></td>
     <td>Lists the role aliases registered in your account. Requires permission to access the ListRoleAliases action.</td>
+</tr>
+<tr>
+    <td><a href="#create_role_alias"><CopyableCode code="create_role_alias" /></a></td>
+    <td><CopyableCode code="insert" /></td>
+    <td><a href="#parameter-role_alias"><code>role_alias</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-roleArn"><code>roleArn</code></a></td>
+    <td></td>
+    <td>Creates a role alias. Requires permission to access the CreateRoleAlias action. The value of credentialDurationSeconds must be less than or equal to the maximum session duration of the IAM role that the role alias references. For more information, see Modifying a role maximum session duration (Amazon Web Services API) from the Amazon Web Services Identity and Access Management User Guide.</td>
+</tr>
+<tr>
+    <td><a href="#update_role_alias"><CopyableCode code="update_role_alias" /></a></td>
+    <td><CopyableCode code="update" /></td>
+    <td><a href="#parameter-role_alias"><code>role_alias</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Updates a role alias. Requires permission to access the UpdateRoleAlias action. The value of credentialDurationSeconds must be less than or equal to the maximum session duration of the IAM role that the role alias references. For more information, see Modifying a role maximum session duration (Amazon Web Services API) from the Amazon Web Services Identity and Access Management User Guide.</td>
+</tr>
+<tr>
+    <td><a href="#delete_role_alias"><CopyableCode code="delete_role_alias" /></a></td>
+    <td><CopyableCode code="delete" /></td>
+    <td><a href="#parameter-role_alias"><code>role_alias</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Deletes a role alias Requires permission to access the DeleteRoleAlias action.</td>
 </tr>
 </tbody>
 </table>
@@ -102,6 +180,11 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     <td><code>string</code></td>
     <td>AWS region (default: us-east-1)</td>
 </tr>
+<tr id="parameter-role_alias">
+    <td><CopyableCode code="role_alias" /></td>
+    <td><code>string</code></td>
+    <td>The role alias to delete.</td>
+</tr>
 <tr id="parameter-isAscendingOrder">
     <td><CopyableCode code="isAscendingOrder" /></td>
     <td><code>boolean</code></td>
@@ -123,11 +206,31 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 ## `SELECT` examples
 
 <Tabs
-    defaultValue="list_role_aliases"
+    defaultValue="describe_role_alias"
     values={[
+        { label: 'describe_role_alias', value: 'describe_role_alias' },
         { label: 'list_role_aliases', value: 'list_role_aliases' }
     ]}
 >
+<TabItem value="describe_role_alias">
+
+Describes a role alias. Requires permission to access the DescribeRoleAlias action.
+
+```sql
+SELECT
+creation_date,
+credential_duration_seconds,
+last_modified_date,
+owner,
+role_alias,
+role_alias_arn,
+role_arn
+FROM aws.iot.role_aliases
+WHERE role_alias = '{{ role_alias }}' -- required
+AND region = '{{ region }}' -- required
+;
+```
+</TabItem>
 <TabItem value="list_role_aliases">
 
 Lists the role aliases registered in your account. Requires permission to access the ListRoleAliases action.
@@ -140,6 +243,114 @@ WHERE region = '{{ region }}' -- required
 AND pageSize = '{{ pageSize }}'
 AND marker = '{{ marker }}'
 AND isAscendingOrder = '{{ isAscendingOrder }}'
+;
+```
+</TabItem>
+</Tabs>
+
+
+## `INSERT` examples
+
+<Tabs
+    defaultValue="create_role_alias"
+    values={[
+        { label: 'create_role_alias', value: 'create_role_alias' },
+        { label: 'Manifest', value: 'manifest' }
+    ]}
+>
+<TabItem value="create_role_alias">
+
+Creates a role alias. Requires permission to access the CreateRoleAlias action. The value of credentialDurationSeconds must be less than or equal to the maximum session duration of the IAM role that the role alias references. For more information, see Modifying a role maximum session duration (Amazon Web Services API) from the Amazon Web Services Identity and Access Management User Guide.
+
+```sql
+INSERT INTO aws.iot.role_aliases (
+roleArn,
+credentialDurationSeconds,
+tags,
+role_alias,
+region
+)
+SELECT 
+'{{ roleArn }}' /* required */,
+{{ credentialDurationSeconds }},
+'{{ tags }}',
+'{{ role_alias }}',
+'{{ region }}'
+RETURNING
+role_alias,
+role_alias_arn
+;
+```
+</TabItem>
+<TabItem value="manifest">
+
+<CodeBlock language="yaml">{`# Description fields are for documentation purposes
+- name: role_aliases
+  props:
+    - name: role_alias
+      value: "{{ role_alias }}"
+      description: Required parameter for the role_aliases resource.
+    - name: region
+      value: "{{ region }}"
+      description: Required parameter for the role_aliases resource.
+    - name: roleArn
+      value: "{{ roleArn }}"
+    - name: credentialDurationSeconds
+      value: {{ credentialDurationSeconds }}
+    - name: tags
+      value:
+        - Key: "{{ Key }}"
+          Value: "{{ Value }}"
+`}</CodeBlock>
+
+</TabItem>
+</Tabs>
+
+
+## `UPDATE` examples
+
+<Tabs
+    defaultValue="update_role_alias"
+    values={[
+        { label: 'update_role_alias', value: 'update_role_alias' }
+    ]}
+>
+<TabItem value="update_role_alias">
+
+Updates a role alias. Requires permission to access the UpdateRoleAlias action. The value of credentialDurationSeconds must be less than or equal to the maximum session duration of the IAM role that the role alias references. For more information, see Modifying a role maximum session duration (Amazon Web Services API) from the Amazon Web Services Identity and Access Management User Guide.
+
+```sql
+UPDATE aws.iot.role_aliases
+SET 
+roleArn = '{{ roleArn }}',
+credentialDurationSeconds = {{ credentialDurationSeconds }}
+WHERE 
+role_alias = '{{ role_alias }}' --required
+AND region = '{{ region }}' --required
+RETURNING
+role_alias,
+role_alias_arn;
+```
+</TabItem>
+</Tabs>
+
+
+## `DELETE` examples
+
+<Tabs
+    defaultValue="delete_role_alias"
+    values={[
+        { label: 'delete_role_alias', value: 'delete_role_alias' }
+    ]}
+>
+<TabItem value="delete_role_alias">
+
+Deletes a role alias Requires permission to access the DeleteRoleAlias action.
+
+```sql
+DELETE FROM aws.iot.role_aliases
+WHERE role_alias = '{{ role_alias }}' --required
+AND region = '{{ region }}' --required
 ;
 ```
 </TabItem>

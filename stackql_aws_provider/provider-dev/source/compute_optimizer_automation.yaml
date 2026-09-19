@@ -175,10 +175,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteAutomationRuleResponse'
       x-stackql-resource: automation_rules
       x-stackql-method: delete_automation_rule
       x-stackql-verb: DELETE
@@ -850,7 +846,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RollbackAutomationEventResponse'
-      x-stackql-resource: rollback_automation_event
+      x-stackql-resource: automation_events
       x-stackql-method: rollback_automation_event
       x-stackql-verb: EXEC
   /StartAutomationEvent:
@@ -892,7 +888,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartAutomationEventResponse'
-      x-stackql-resource: recommended_actions
+      x-stackql-resource: automation_events
       x-stackql-method: start_automation_event
       x-stackql-verb: EXEC
   /TagResource:
@@ -937,10 +933,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -986,10 +978,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -1484,8 +1472,6 @@ components:
     Timestamp:
       type: string
       format: date-time
-    DeleteAutomationRuleResponse:
-      type: object
     DisassociateAccountsResponse:
       type: object
       properties:
@@ -2370,14 +2356,10 @@ components:
         eventStatus:
           $ref: '#/components/schemas/EventStatus'
           description: The current status of the automation event.
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
         $ref: '#/components/schemas/String'
-    UntagResourceResponse:
-      type: object
     UpdateAutomationRuleResponse:
       type: object
       properties:

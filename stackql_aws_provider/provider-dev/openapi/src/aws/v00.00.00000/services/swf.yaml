@@ -4203,6 +4203,52 @@ components:
         insert: []
         update: []
         delete: []
+    pending_activity_tasks:
+      id: aws.swf.pending_activity_tasks
+      name: pending_activity_tasks
+      title: pending_activity_tasks
+      methods:
+        count_pending_activity_tasks:
+          operation:
+            $ref: "#/paths/~1CountPendingActivityTasks/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
+    pending_decision_tasks:
+      id: aws.swf.pending_decision_tasks
+      name: pending_decision_tasks
+      title: pending_decision_tasks
+      methods:
+        count_pending_decision_tasks:
+          operation:
+            $ref: "#/paths/~1CountPendingDecisionTasks/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
     activity_types:
       id: aws.swf.activity_types
       name: activity_types
@@ -4211,6 +4257,18 @@ components:
         delete_activity_type:
           operation:
             $ref: "#/paths/~1DeleteActivityType/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        deprecate_activity_type:
+          operation:
+            $ref: "#/paths/~1DeprecateActivityType/post"
           response:
             openAPIDocKey: "200"
           request:
@@ -4266,6 +4324,18 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        undeprecate_activity_type:
+          operation:
+            $ref: "#/paths/~1UndeprecateActivityType/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/activity_types/methods/describe_activity_type"
@@ -4283,6 +4353,18 @@ components:
         delete_workflow_type:
           operation:
             $ref: "#/paths/~1DeleteWorkflowType/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        deprecate_workflow_type:
+          operation:
+            $ref: "#/paths/~1DeprecateWorkflowType/post"
           response:
             openAPIDocKey: "200"
           request:
@@ -4338,6 +4420,18 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        undeprecate_workflow_type:
+          operation:
+            $ref: "#/paths/~1UndeprecateWorkflowType/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/workflow_types/methods/describe_workflow_type"
@@ -4352,6 +4446,18 @@ components:
       name: domains
       title: domains
       methods:
+        deprecate_domain:
+          operation:
+            $ref: "#/paths/~1DeprecateDomain/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         describe_domain:
           operation:
             $ref: "#/paths/~1DescribeDomain/post"
@@ -4398,6 +4504,18 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        undeprecate_domain:
+          operation:
+            $ref: "#/paths/~1UndeprecateDomain/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/domains/methods/describe_domain"
@@ -4414,6 +4532,31 @@ components:
         describe_workflow_execution:
           operation:
             $ref: "#/paths/~1DescribeWorkflowExecution/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        signal_workflow_execution:
+          operation:
+            $ref: "#/paths/~1SignalWorkflowExecution/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        start_workflow_execution:
+          operation:
+            $ref: "#/paths/~1StartWorkflowExecution/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -4524,4 +4667,190 @@ components:
         update:
           - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
           - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
+        delete: []
+    activity_tasks:
+      id: aws.swf.activity_tasks
+      name: activity_tasks
+      title: activity_tasks
+      methods:
+        poll_for_activity_task:
+          operation:
+            $ref: "#/paths/~1PollForActivityTask/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
+    decision_tasks:
+      id: aws.swf.decision_tasks
+      name: decision_tasks
+      title: decision_tasks
+      methods:
+        poll_for_decision_task:
+          operation:
+            $ref: "#/paths/~1PollForDecisionTask/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: nextPageToken
+                location: body
+              responseToken:
+                key: $.nextPageToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
+    activity_task_heartbeats:
+      id: aws.swf.activity_task_heartbeats
+      name: activity_task_heartbeats
+      title: activity_task_heartbeats
+      methods:
+        record_activity_task_heartbeat:
+          operation:
+            $ref: "#/paths/~1RecordActivityTaskHeartbeat/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
+    cancel_workflow_executions:
+      id: aws.swf.cancel_workflow_executions
+      name: cancel_workflow_executions
+      title: cancel_workflow_executions
+      methods:
+        request_cancel_workflow_execution:
+          operation:
+            $ref: "#/paths/~1RequestCancelWorkflowExecution/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
+    activity_task_canceleds:
+      id: aws.swf.activity_task_canceleds
+      name: activity_task_canceleds
+      title: activity_task_canceleds
+      methods:
+        respond_activity_task_canceled:
+          operation:
+            $ref: "#/paths/~1RespondActivityTaskCanceled/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
+    activity_task_completeds:
+      id: aws.swf.activity_task_completeds
+      name: activity_task_completeds
+      title: activity_task_completeds
+      methods:
+        respond_activity_task_completed:
+          operation:
+            $ref: "#/paths/~1RespondActivityTaskCompleted/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
+    activity_task_faileds:
+      id: aws.swf.activity_task_faileds
+      name: activity_task_faileds
+      title: activity_task_faileds
+      methods:
+        respond_activity_task_failed:
+          operation:
+            $ref: "#/paths/~1RespondActivityTaskFailed/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
+    decision_task_completeds:
+      id: aws.swf.decision_task_completeds
+      name: decision_task_completeds
+      title: decision_task_completeds
+      methods:
+        respond_decision_task_completed:
+          operation:
+            $ref: "#/paths/~1RespondDecisionTaskCompleted/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
         delete: []

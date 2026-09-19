@@ -36,6 +36,7 @@ The following fields are returned by `SELECT` queries:
     defaultValue="search_faces"
     values={[
         { label: 'search_faces', value: 'search_faces' },
+        { label: 'search_faces_by_image', value: 'search_faces_by_image' },
         { label: 'list_faces', value: 'list_faces' }
     ]}
 >
@@ -64,6 +65,40 @@ The following fields are returned by `SELECT` queries:
     <td><CopyableCode code="searched_face_id" /></td>
     <td><code>string</code></td>
     <td>ID of the face that was searched for matches in a collection. (pattern: &lt;code&gt;&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;&lt;/code&gt;)</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
+<TabItem value="search_faces_by_image">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="face_matches" /></td>
+    <td><code>array</code></td>
+    <td>An array of faces that match the input face, along with the confidence in the match.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="face_model_version" /></td>
+    <td><code>string</code></td>
+    <td>Version number of the face detection model associated with the input collection (CollectionId).</td>
+</tr>
+<tr>
+    <td><CopyableCode code="searched_face_bounding_box" /></td>
+    <td><code>object</code></td>
+    <td>Identifies the bounding box around the label, face, text, object of interest, or personal protective equipment. The left (x-coordinate) and top (y-coordinate) are coordinates representing the top and left sides of the bounding box. Note that the upper-left corner of the image is the origin (0,0). The top and left values returned are ratios of the overall image size. For example, if the input image is 700x200 pixels, and the top-left coordinate of the bounding box is 350x50 pixels, the API returns a left value of 0.5 (350/700) and a top value of 0.25 (50/200). The width and height values represent the dimensions of the bounding box as a ratio of the overall image dimension. For example, if the input image is 700x200 pixels, and the bounding box width is 70 pixels, the width returned is 0.1. The bounding box coordinates can have negative values. For example, if Amazon Rekognition is able to detect a face that is at the image edge and is only partially visible, the service can return coordinates that are outside the image bounds and, depending on the image edge, you might get negative values or values greater than 1 for the left or top values.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="searched_face_confidence" /></td>
+    <td><code>number (float)</code></td>
+    <td>The level of confidence that the searchedFaceBoundingBox, contains a face.</td>
 </tr>
 </tbody>
 </table>
@@ -140,6 +175,13 @@ The following methods are available for this resource:
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td></td>
     <td>For a given input face ID, searches for matching faces in the collection the face belongs to. You get a face ID when you add a face to the collection using the IndexFaces operation. The operation compares the features of the input face with faces in the specified collection. You can also search faces without indexing faces by using the SearchFacesByImage operation. The operation response returns an array of faces that match, ordered by similarity score with the highest similarity first. More specifically, it is an array of metadata for each face match that is found. Along with the metadata, the response also includes a confidence value for each face match, indicating the confidence that the specific face matches the input face. For an example, see Searching for a face using its face ID in the Amazon Rekognition Developer Guide. This operation requires permissions to perform the rekognition:SearchFaces action.</td>
+</tr>
+<tr>
+    <td><a href="#search_faces_by_image"><CopyableCode code="search_faces_by_image" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>For a given input image, first detects the largest face in the image, and then searches the specified collection for matching faces. The operation compares the features of the input face with faces in the specified collection. To search for all faces in an input image, you might first call the IndexFaces operation, and then use the face IDs returned in subsequent calls to the SearchFaces operation. You can also call the DetectFaces operation and use the bounding boxes in the response to make face crops, which then you can pass in to the SearchFacesByImage operation. You pass the input image either as base64-encoded image bytes or as a reference to an image in an Amazon S3 bucket. If you use the AWS CLI to call Amazon Rekognition operations, passing image bytes is not supported. The image must be either a PNG or JPEG formatted file. The response returns an array of faces that match, ordered by similarity score with the highest similarity first. More specifically, it is an array of metadata for each face match found. Along with the metadata, the response also includes a similarity indicating how similar the face is to the input face. In the response, the operation also returns the bounding box (and a confidence level that the bounding box contains a face) of the face that Amazon Rekognition used for the input image. If no faces are detected in the input image, SearchFacesByImage returns an InvalidParameterException error. For an example, Searching for a Face Using an Image in the Amazon Rekognition Developer Guide. The QualityFilter input parameter allows you to filter out detected faces that don’t meet a required quality bar. The quality bar is based on a variety of common use cases. Use QualityFilter to set the quality bar for filtering by specifying LOW, MEDIUM, or HIGH. If you do not want to filter detected faces, specify NONE. The default value is NONE. To use quality filtering, you need a collection associated with version 3 of the face model or higher. To get the version of the face model associated with a collection, call DescribeCollection. This operation requires permissions to perform the rekognition:SearchFacesByImage action.</td>
 </tr>
 <tr>
     <td><a href="#list_faces"><CopyableCode code="list_faces" /></a></td>
@@ -241,6 +283,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     defaultValue="search_faces"
     values={[
         { label: 'search_faces', value: 'search_faces' },
+        { label: 'search_faces_by_image', value: 'search_faces_by_image' },
         { label: 'list_faces', value: 'list_faces' }
     ]}
 >
@@ -253,6 +296,21 @@ SELECT
 face_matches,
 face_model_version,
 searched_face_id
+FROM aws.rekognition.faces
+WHERE region = '{{ region }}' -- required
+;
+```
+</TabItem>
+<TabItem value="search_faces_by_image">
+
+For a given input image, first detects the largest face in the image, and then searches the specified collection for matching faces. The operation compares the features of the input face with faces in the specified collection. To search for all faces in an input image, you might first call the IndexFaces operation, and then use the face IDs returned in subsequent calls to the SearchFaces operation. You can also call the DetectFaces operation and use the bounding boxes in the response to make face crops, which then you can pass in to the SearchFacesByImage operation. You pass the input image either as base64-encoded image bytes or as a reference to an image in an Amazon S3 bucket. If you use the AWS CLI to call Amazon Rekognition operations, passing image bytes is not supported. The image must be either a PNG or JPEG formatted file. The response returns an array of faces that match, ordered by similarity score with the highest similarity first. More specifically, it is an array of metadata for each face match found. Along with the metadata, the response also includes a similarity indicating how similar the face is to the input face. In the response, the operation also returns the bounding box (and a confidence level that the bounding box contains a face) of the face that Amazon Rekognition used for the input image. If no faces are detected in the input image, SearchFacesByImage returns an InvalidParameterException error. For an example, Searching for a Face Using an Image in the Amazon Rekognition Developer Guide. The QualityFilter input parameter allows you to filter out detected faces that don’t meet a required quality bar. The quality bar is based on a variety of common use cases. Use QualityFilter to set the quality bar for filtering by specifying LOW, MEDIUM, or HIGH. If you do not want to filter detected faces, specify NONE. The default value is NONE. To use quality filtering, you need a collection associated with version 3 of the face model or higher. To get the version of the face model associated with a collection, call DescribeCollection. This operation requires permissions to perform the rekognition:SearchFacesByImage action.
+
+```sql
+SELECT
+face_matches,
+face_model_version,
+searched_face_bounding_box,
+searched_face_confidence
 FROM aws.rekognition.faces
 WHERE region = '{{ region }}' -- required
 ;

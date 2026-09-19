@@ -55,10 +55,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/AddTagsToResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: add_tags_to_resource
       x-stackql-verb: UPDATE
@@ -108,7 +104,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ApplyPendingMaintenanceActionResponse'
-      x-stackql-resource: replication_instances
+      x-stackql-resource: pending_maintenance_actions
       x-stackql-method: apply_pending_maintenance_action
       x-stackql-verb: EXEC
   /BatchStartRecommendations:
@@ -192,7 +188,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CancelMetadataModelConversionResponse'
-      x-stackql-resource: metadata_models
+      x-stackql-resource: metadata_model_conversions
       x-stackql-method: cancel_metadata_model_conversion
       x-stackql-verb: EXEC
   /CancelMetadataModelCreation:
@@ -235,7 +231,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CancelMetadataModelCreationResponse'
-      x-stackql-resource: metadata_models
+      x-stackql-resource: metadata_model_creations
       x-stackql-method: cancel_metadata_model_creation
       x-stackql-verb: EXEC
   /CancelReplicationTaskAssessmentRun:
@@ -272,7 +268,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CancelReplicationTaskAssessmentRunResponse'
-      x-stackql-resource: replication_tasks
+      x-stackql-resource: replication_task_assessment_runs
       x-stackql-method: cancel_replication_task_assessment_run
       x-stackql-verb: EXEC
   /CreateDataMigration:
@@ -1686,10 +1682,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteReplicationSubnetGroupResponse'
       x-stackql-resource: replication_subnet_groups
       x-stackql-method: delete_replication_subnet_group
       x-stackql-verb: DELETE
@@ -2645,7 +2637,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DescribeFleetAdvisorLsaAnalysisResponse'
-      x-stackql-resource: fleet_advisor_lsa_analysis
+      x-stackql-resource: fleet_advisor_lsa_analyses
       x-stackql-method: describe_fleet_advisor_lsa_analysis
       x-stackql-verb: SELECT
   /DescribeFleetAdvisorSchemaObjectSummary:
@@ -3523,7 +3515,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DescribeRefreshSchemasStatusResponse'
-      x-stackql-resource: refresh_schemas_status
+      x-stackql-resource: refresh_schemas_statuses
       x-stackql-method: describe_refresh_schemas_status
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.RefreshSchemasStatus
@@ -4155,7 +4147,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ExportMetadataModelAssessmentResponse'
-      x-stackql-resource: metadata_models
+      x-stackql-resource: metadata_model_assessments
       x-stackql-method: export_metadata_model_assessment
       x-stackql-verb: EXEC
   /GetTargetSelectionRules:
@@ -5162,7 +5154,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/MoveReplicationTaskResponse'
-      x-stackql-resource: replications
+      x-stackql-resource: replication_tasks
       x-stackql-method: move_replication_task
       x-stackql-verb: EXEC
   /RebootReplicationInstance:
@@ -5210,7 +5202,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RebootReplicationInstanceResponse'
-      x-stackql-resource: replications
+      x-stackql-resource: replication_instances
       x-stackql-method: reboot_replication_instance
       x-stackql-verb: EXEC
   /RefreshSchemas:
@@ -5298,7 +5290,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ReloadReplicationTablesResponse'
-      x-stackql-resource: replication_configs
+      x-stackql-resource: replications
       x-stackql-method: reload_replication_tables
       x-stackql-verb: EXEC
   /ReloadTables:
@@ -5382,10 +5374,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RemoveTagsFromResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: remove_tags_from_resource
       x-stackql-verb: UPDATE
@@ -5413,7 +5401,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RunFleetAdvisorLsaAnalysisResponse'
-      x-stackql-resource: fleet_advisor_lsa_analysis
+      x-stackql-resource: fleet_advisor_lsa_analyses
       x-stackql-method: run_fleet_advisor_lsa_analysis
       x-stackql-verb: EXEC
   /StartDataMigration:
@@ -5496,7 +5484,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartExtensionPackAssociationResponse'
-      x-stackql-resource: migration_projects
+      x-stackql-resource: extension_pack_associations
       x-stackql-method: start_extension_pack_association
       x-stackql-verb: EXEC
   /StartMetadataModelAssessment:
@@ -5547,7 +5535,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartMetadataModelAssessmentResponse'
-      x-stackql-resource: metadata_models
+      x-stackql-resource: metadata_model_assessments
       x-stackql-method: start_metadata_model_assessment
       x-stackql-verb: EXEC
   /StartMetadataModelConversion:
@@ -5603,7 +5591,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartMetadataModelConversionResponse'
-      x-stackql-resource: metadata_models
+      x-stackql-resource: metadata_model_conversions
       x-stackql-method: start_metadata_model_conversion
       x-stackql-verb: EXEC
   /StartMetadataModelCreation:
@@ -5662,7 +5650,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartMetadataModelCreationResponse'
-      x-stackql-resource: metadata_models
+      x-stackql-resource: metadata_model_creations
       x-stackql-method: start_metadata_model_creation
       x-stackql-verb: EXEC
   /StartMetadataModelExportAsScript:
@@ -5832,7 +5820,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartMetadataModelImportResponse'
-      x-stackql-resource: metadata_models
+      x-stackql-resource: metadata_model_imports
       x-stackql-method: start_metadata_model_import
       x-stackql-verb: EXEC
   /StartRecommendations:
@@ -5955,7 +5943,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartReplicationResponse'
-      x-stackql-resource: replication_configs
+      x-stackql-resource: replications
       x-stackql-method: start_replication
       x-stackql-verb: EXEC
   /StartReplicationTask:
@@ -6028,7 +6016,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartReplicationTaskResponse'
-      x-stackql-resource: replications
+      x-stackql-resource: replication_tasks
       x-stackql-method: start_replication_task
       x-stackql-verb: EXEC
   /StartReplicationTaskAssessment:
@@ -6155,7 +6143,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartReplicationTaskAssessmentRunResponse'
-      x-stackql-resource: replication_tasks
+      x-stackql-resource: replication_task_assessment_runs
       x-stackql-method: start_replication_task_assessment_run
       x-stackql-verb: EXEC
   /StopDataMigration:
@@ -6228,7 +6216,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StopReplicationResponse'
-      x-stackql-resource: replication_configs
+      x-stackql-resource: replications
       x-stackql-method: stop_replication
       x-stackql-verb: EXEC
   /StopReplicationTask:
@@ -6264,7 +6252,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StopReplicationTaskResponse'
-      x-stackql-resource: replications
+      x-stackql-resource: replication_tasks
       x-stackql-method: stop_replication_task
       x-stackql-verb: EXEC
   /TestConnection:
@@ -6304,7 +6292,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TestConnectionResponse'
-      x-stackql-resource: replication_instances
+      x-stackql-resource: connections
       x-stackql-method: test_connection
       x-stackql-verb: EXEC
   /UpdateSubscriptionsToEventBridge:
@@ -6419,8 +6407,6 @@ components:
         ResourceArn:
           $ref: '#/components/schemas/String'
           description: The Amazon Resource Name (ARN) string that uniquely identifies the resource for which the tag is created.
-    AddTagsToResourceResponse:
-      type: object
     ApplyPendingMaintenanceActionResponse:
       type: object
       properties:
@@ -9961,8 +9947,6 @@ components:
         ReplicationInstance:
           $ref: '#/components/schemas/ReplicationInstance'
           description: The replication instance that was deleted.
-    DeleteReplicationSubnetGroupResponse:
-      type: object
     DeleteReplicationTaskResponse:
       type: object
       properties:
@@ -11856,8 +11840,6 @@ components:
       type: array
       items:
         $ref: '#/components/schemas/String'
-    RemoveTagsFromResourceResponse:
-      type: object
     RunFleetAdvisorLsaAnalysisResponse:
       type: object
       properties:

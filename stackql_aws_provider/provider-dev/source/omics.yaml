@@ -38,11 +38,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/AbortMultipartReadSetUploadResponse'
-      x-stackql-resource: sequence_stores
+      x-stackql-resource: multipart_read_set_uploads
       x-stackql-method: abort_multipart_read_set_upload
       x-stackql-verb: EXEC
   /share/{share_id}:
@@ -140,7 +136,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchDeleteReadSetResponse'
-      x-stackql-resource: batches
+      x-stackql-resource: read_sets
       x-stackql-method: batch_delete_read_set
       x-stackql-verb: EXEC
   /import/annotation/{job_id}:
@@ -159,11 +155,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CancelAnnotationImportResponse'
-      x-stackql-resource: annotation_import_job
+      x-stackql-resource: annotation_import_jobs
       x-stackql-method: cancel_annotation_import_job
       x-stackql-verb: EXEC
     get:
@@ -203,7 +195,7 @@ paths:
       responses:
         '202':
           description: Success
-      x-stackql-resource: run
+      x-stackql-resource: runs
       x-stackql-method: cancel_run
       x-stackql-verb: EXEC
   /runBatch/cancel:
@@ -229,11 +221,7 @@ paths:
       responses:
         '202':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CancelRunBatchResponse'
-      x-stackql-resource: runs
+      x-stackql-resource: batches
       x-stackql-method: cancel_run_batch
       x-stackql-verb: EXEC
   /import/variant/{job_id}:
@@ -252,11 +240,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CancelVariantImportResponse'
-      x-stackql-resource: variant_import_job
+      x-stackql-resource: variant_import_jobs
       x-stackql-method: cancel_variant_import_job
       x-stackql-verb: EXEC
     get:
@@ -320,7 +304,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CompleteMultipartReadSetUploadResponse'
-      x-stackql-resource: sequence_stores
+      x-stackql-resource: multipart_read_set_uploads
       x-stackql-method: complete_multipart_read_set_upload
       x-stackql-verb: EXEC
   /annotationStore:
@@ -768,8 +752,8 @@ paths:
     post:
       operationId: CreateShare
       description: 'Creates a cross-account shared resource. The resource owner makes an offer to share the resource with
-        the principal subscriber (an AWS user with a different account than the resource owner). The following resources support
-        cross-account sharing: HealthOmics variant stores HealthOmics annotation stores Private workflows'
+        the principal subscriber (an Amazon Web Services user with a different account than the resource owner). The following
+        resources support cross-account sharing: HealthOmics variant stores HealthOmics annotation stores Private workflows'
       parameters: []
       requestBody:
         required: true
@@ -1205,9 +1189,9 @@ paths:
       operationId: DeleteBatch
       description: 'Deletes a run batch resource and its associated metadata. This operation does not delete the individual
         workflow runs. To delete the runs, call DeleteRunBatch before calling DeleteBatch. DeleteBatch requires the batch
-        to be in a terminal state: PROCESSED, FAILED, CANCELLED, or RUNS_DELETED. After DeleteBatch completes, the batch metadata
-        is no longer accessible. You cannot call GetBatch, ListRunsInBatch, DeleteRunBatch, or CancelRunBatch on a deleted
-        batch.'
+        to be in a terminal state: PROCESSED, FAILED, CANCELLED, RUNS_DELETE_FAILED, or RUNS_DELETED. After DeleteBatch completes,
+        the batch metadata is no longer accessible. You cannot call GetBatch, ListRunsInBatch, DeleteRunBatch, or CancelRunBatch
+        on a deleted batch.'
       parameters:
       - name: batch_id
         in: path
@@ -1302,10 +1286,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteReferenceResponse'
       x-stackql-resource: references
       x-stackql-method: delete_reference
       x-stackql-verb: DELETE
@@ -1372,10 +1352,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteReferenceStoreResponse'
       x-stackql-resource: reference_stores
       x-stackql-method: delete_reference_store
       x-stackql-verb: DELETE
@@ -1471,10 +1447,6 @@ paths:
       responses:
         '202':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteRunBatchResponse'
       x-stackql-resource: batches
       x-stackql-method: delete_run_batch
       x-stackql-verb: DELETE
@@ -1640,10 +1612,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteS3AccessPolicyResponse'
       x-stackql-resource: s3_access_policies
       x-stackql-method: delete_s3_access_policy
       x-stackql-verb: DELETE
@@ -1716,10 +1684,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteSequenceStoreResponse'
       x-stackql-resource: sequence_stores
       x-stackql-method: delete_sequence_store
       x-stackql-verb: DELETE
@@ -2277,7 +2241,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetReadSetMetadataResponse'
-      x-stackql-resource: read_set_metadatas
+      x-stackql-resource: read_set_metadata
       x-stackql-method: get_read_set_metadata
       x-stackql-verb: SELECT
   /referencestore/{reference_store_id}/importjob/{id}:
@@ -2334,7 +2298,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetReferenceMetadataResponse'
-      x-stackql-resource: reference_metadatas
+      x-stackql-resource: reference_metadata
       x-stackql-method: get_reference_metadata
       x-stackql-verb: SELECT
   /run/{id}/task/{task_id}:
@@ -2585,7 +2549,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartRunBatchResponse'
-      x-stackql-resource: runs
+      x-stackql-resource: batches
       x-stackql-method: start_run_batch
       x-stackql-verb: EXEC
   /sequencestore/{sequence_store_id}/uploads:
@@ -3183,6 +3147,8 @@ paths:
                   $ref: '#/components/schemas/ScratchStorageMode'
                 configurationName:
                   $ref: '#/components/schemas/ConfigurationName'
+                sessionPolicy:
+                  $ref: '#/components/schemas/SessionPolicy'
                 engineSettings:
                   $ref: '#/components/schemas/EngineSettings'
               required:
@@ -3196,7 +3162,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartRunResponse'
-      x-stackql-resource: run
+      x-stackql-resource: runs
       x-stackql-method: start_run
       x-stackql-verb: EXEC
   /runBatch/{batch_id}/run:
@@ -3388,10 +3354,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -3414,10 +3376,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -3548,15 +3506,16 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartAnnotationImportResponse'
-      x-stackql-resource: annotation_import_job
+      x-stackql-resource: annotation_import_jobs
       x-stackql-method: start_annotation_import_job
       x-stackql-verb: EXEC
   /sequencestore/{sequence_store_id}/activationjob:
     post:
       operationId: StartReadSetActivationJob
-      description: Activates an archived read set and returns its metadata in a JSON formatted output. AWS HealthOmics automatically
-        archives unused read sets after 30 days. To monitor the status of your read set activation job, use the GetReadSetActivationJob
-        operation. To learn more, see Activating read sets in the Amazon Web Services HealthOmics User Guide.
+      description: Activates an archived read set and returns its metadata in a JSON formatted output. Amazon Web Services
+        HealthOmics automatically archives unused read sets after 30 days. To monitor the status of your read set activation
+        job, use the GetReadSetActivationJob operation. To learn more, see Activating read sets in the Amazon Web Services
+        HealthOmics User Guide.
       parameters:
       - name: sequence_store_id
         in: path
@@ -3584,7 +3543,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartReadSetActivationJobResponse'
-      x-stackql-resource: read_sets
+      x-stackql-resource: read_set_activation_jobs
       x-stackql-method: start_read_set_activation_job
       x-stackql-verb: EXEC
   /sequencestore/{sequence_store_id}/exportjob:
@@ -3626,7 +3585,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartReadSetExportJobResponse'
-      x-stackql-resource: read_sets
+      x-stackql-resource: read_set_export_jobs
       x-stackql-method: start_read_set_export_job
       x-stackql-verb: EXEC
   /sequencestore/{sequence_store_id}/importjob:
@@ -3664,7 +3623,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartReadSetImportJobResponse'
-      x-stackql-resource: read_sets
+      x-stackql-resource: read_set_import_jobs
       x-stackql-method: start_read_set_import_job
       x-stackql-verb: EXEC
   /referencestore/{reference_store_id}/importjob:
@@ -3703,7 +3662,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartReferenceImportJobResponse'
-      x-stackql-resource: references
+      x-stackql-resource: reference_import_jobs
       x-stackql-method: start_reference_import_job
       x-stackql-verb: EXEC
   /import/variant:
@@ -3741,7 +3700,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartVariantImportResponse'
-      x-stackql-resource: variant_import_job
+      x-stackql-resource: variant_import_jobs
       x-stackql-method: start_variant_import_job
       x-stackql-verb: EXEC
   /sequencestore/{sequence_store_id}/upload/{upload_id}/part:
@@ -3794,7 +3753,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UploadReadSetPartResponse'
-      x-stackql-resource: sequence_stores
+      x-stackql-resource: read_sets
       x-stackql-method: upload_read_set_part
       x-stackql-verb: EXEC
 components:
@@ -3852,8 +3811,6 @@ components:
       minLength: 10
       maxLength: 36
       pattern: '[0-9]+'
-    AbortMultipartReadSetUploadResponse:
-      type: object
     String:
       type: string
     AcceptShareResponse:
@@ -3910,8 +3867,6 @@ components:
     ResourceId:
       type: string
       pattern: '[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}'
-    CancelAnnotationImportResponse:
-      type: object
     RunId:
       type: string
       minLength: 1
@@ -3922,10 +3877,6 @@ components:
       minLength: 1
       maxLength: 18
       pattern: '[0-9]+'
-    CancelRunBatchResponse:
-      type: object
-    CancelVariantImportResponse:
-      type: object
     CompleteReadSetUploadPartList:
       type: array
       items:
@@ -5025,16 +4976,6 @@ components:
       minLength: 10
       maxLength: 36
       pattern: '[0-9]+'
-    DeleteReferenceResponse:
-      type: object
-    DeleteReferenceStoreResponse:
-      type: object
-    DeleteRunBatchResponse:
-      type: object
-    DeleteS3AccessPolicyResponse:
-      type: object
-    DeleteSequenceStoreResponse:
-      type: object
     DeleteShareResponse:
       type: object
       properties:
@@ -5383,11 +5324,11 @@ components:
           description: 'The current status of the run batch. Possible values: CREATING (initial setup), PENDING (ready to
             submit runs), SUBMITTING (submitting runs), INPROGRESS (runs executing), STOPPING (cancellation in progress),
             PROCESSED (all runs completed), CANCELLED (batch cancelled), FAILED (batch failed), RUNS_DELETING (deleting runs),
-            RUNS_DELETED (runs deleted).'
+            RUNS_DELETE_FAILED (run deletion failed for some or all runs), RUNS_DELETED (runs deleted).'
         tags:
           type: object
           properties: {}
-          description: AWS tags associated with the run batch.
+          description: Amazon Web Services tags associated with the run batch.
         totalRuns:
           $ref: '#/components/schemas/Integer'
           description: The total number of runs in the batch.
@@ -5443,6 +5384,7 @@ components:
       - FAILED
       - PROCESSED
       - RUNS_DELETING
+      - RUNS_DELETE_FAILED
       - RUNS_DELETED
       minLength: 1
       maxLength: 64
@@ -5460,8 +5402,8 @@ components:
           description: The type of the originating workflow. Batch runs are not supported with READY2RUN workflows.
         roleArn:
           $ref: '#/components/schemas/RunRoleArn'
-          description: The IAM role ARN that grants HealthOmics permissions to access required AWS resources such as Amazon
-            S3 and CloudWatch. The role must have the same permissions required for individual StartRun calls.
+          description: The IAM role ARN that grants HealthOmics permissions to access required Amazon Web Services resources
+            such as Amazon S3 and CloudWatch. The role must have the same permissions required for individual StartRun calls.
         name:
           $ref: '#/components/schemas/RunName'
           description: An optional user-friendly name applied to each workflow run. Can be overridden per run.
@@ -5496,8 +5438,8 @@ components:
         runTags:
           type: object
           properties: {}
-          description: AWS tags to associate with each workflow run. Merged with per-run runTags; run-specific values take
-            precedence when keys overlap.
+          description: Amazon Web Services tags to associate with each workflow run. Merged with per-run runTags; run-specific
+            values take precedence when keys overlap.
         retentionMode:
           $ref: '#/components/schemas/RunRetentionMode'
           description: The retention behavior for runs after completion.
@@ -5506,10 +5448,11 @@ components:
           description: The storage type for the workflow runs.
         workflowOwnerId:
           $ref: '#/components/schemas/WorkflowOwnerId'
-          description: The AWS account ID of the workflow owner, used for cross-account workflow sharing.
+          description: The Amazon Web Services account ID of the workflow owner, used for cross-account workflow sharing.
         outputBucketOwnerId:
           $ref: '#/components/schemas/AwsAccountId'
-          description: The expected AWS account ID of the owner of the output S3 bucket. Can be overridden per run.
+          description: The expected Amazon Web Services account ID of the owner of the output S3 bucket. Can be overridden
+            per run.
         workflowVersionName:
           $ref: '#/components/schemas/WorkflowVersionName'
           description: The version name of the specified workflow.
@@ -5519,6 +5462,10 @@ components:
         configurationName:
           $ref: '#/components/schemas/ConfigurationName'
           description: Optional configuration name to use for the workflow run.
+        sessionPolicy:
+          $ref: '#/components/schemas/SessionPolicy'
+          description: Optional inline policy json for scoping down permissions via a session policy on the IAM role provided
+            in the roleArn parameter.
         engineSettings:
           $ref: '#/components/schemas/EngineSettings'
           description: Engine-specific settings for the workflow run. Use this field to specify configuration options that
@@ -5592,6 +5539,11 @@ components:
       enum:
       - RESTRICTED
       - VPC
+    SessionPolicy:
+      type: string
+      minLength: 1
+      maxLength: 2048
+      pattern: '[\p{L}\p{M}\p{Z}\p{S}\p{N}\p{P}\t\n\r]+'
     EngineSettings:
       type: object
     ScratchStorageMode:
@@ -6521,6 +6473,9 @@ components:
         engineSettings:
           $ref: '#/components/schemas/EngineSettings'
           description: The engine-specific settings for the workflow run.
+        sessionPolicy:
+          $ref: '#/components/schemas/SessionPolicy'
+          description: Inline policy json for scoping down permissions via a session policy on the IAM role.
     RunArn:
       type: string
       minLength: 1
@@ -9267,12 +9222,12 @@ components:
             when keys overlap.
         outputBucketOwnerId:
           $ref: '#/components/schemas/AwsAccountId'
-          description: The expected AWS account ID of the owner of the output S3 bucket for this run.
+          description: The expected Amazon Web Services account ID of the owner of the output S3 bucket for this run.
         runTags:
           type: object
           properties: {}
-          description: Per-run AWS tags. Merged with defaultRunSetting.runTags; values in this object take precedence when
-            keys overlap.
+          description: Per-run Amazon Web Services tags. Merged with defaultRunSetting.runTags; values in this object take
+            precedence when keys overlap.
         engineSettings:
           $ref: '#/components/schemas/EngineSettings'
           description: Per-run engine-specific settings. Use this field to specify configuration options that are specific
@@ -9306,7 +9261,7 @@ components:
         tags:
           type: object
           properties: {}
-          description: AWS tags associated with the run batch.
+          description: Amazon Web Services tags associated with the run batch.
     VariantImportItemSources:
       type: array
       items:
@@ -9331,14 +9286,10 @@ components:
     TagResourceRequestTagsMap:
       type: object
       properties: {}
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
         $ref: '#/components/schemas/TagKey'
-    UntagResourceResponse:
-      type: object
     UpdateAnnotationStoreResponse:
       type: object
       properties:

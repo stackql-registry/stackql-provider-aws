@@ -766,10 +766,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TagResourceResponse"
     delete:
       operationId: UntagResource
       description: Removes tags from resources.
@@ -789,10 +785,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UntagResourceResponse"
 components:
   parameters:
     X-Amz-Content-Sha256:
@@ -1968,8 +1960,6 @@ components:
         virtualClusterId:
           $ref: "#/components/schemas/ResourceIdString"
           description: This output displays the virtual cluster ID for which the job run was submitted.
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
@@ -1979,8 +1969,6 @@ components:
       minLength: 1
       maxLength: 128
       pattern: .*\S.*
-    UntagResourceResponse:
-      type: object
     UpdateVirtualClusterResponse:
       description: Contains the virtual cluster returned after a successful update request.
       type: object
@@ -2312,7 +2300,6 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -2323,7 +2310,6 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
       sqlVerbs:

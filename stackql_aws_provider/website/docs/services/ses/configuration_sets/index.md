@@ -134,6 +134,13 @@ The following methods are available for this resource:
     <td>Provides a list of the configuration sets associated with your Amazon SES account in the current Amazon Web Services Region. For information about using configuration sets, see Monitoring Your Amazon SES Sending Activity in the Amazon SES Developer Guide. You can execute this operation no more than once per second. This operation returns up to 1,000 configuration sets each time it is run. If your Amazon SES account has more than 1,000 configuration sets, this operation also returns NextToken. You can then execute the ListConfigurationSets operation again, passing the NextToken parameter and the value of the NextToken element to retrieve additional results.</td>
 </tr>
 <tr>
+    <td><a href="#create_configuration_set"><CopyableCode code="create_configuration_set" /></a></td>
+    <td><CopyableCode code="insert" /></td>
+    <td><a href="#parameter-ConfigurationSet"><code>ConfigurationSet</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Creates a configuration set. Configuration sets enable you to publish email sending events. For information about using configuration sets, see the Amazon SES Developer Guide. You can execute this operation no more than once per second.</td>
+</tr>
+<tr>
     <td><a href="#create_configuration_set_event_destination"><CopyableCode code="create_configuration_set_event_destination" /></a></td>
     <td><CopyableCode code="insert" /></td>
     <td><a href="#parameter-ConfigurationSetName"><code>ConfigurationSetName</code></a>, <a href="#parameter-EventDestination"><code>EventDestination</code></a>, <a href="#parameter-region"><code>region</code></a></td>
@@ -146,13 +153,6 @@ The following methods are available for this resource:
     <td><a href="#parameter-ConfigurationSetName"><code>ConfigurationSetName</code></a>, <a href="#parameter-TrackingOptions"><code>TrackingOptions</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td></td>
     <td>Creates an association between a configuration set and a custom domain for open and click event tracking. By default, images and links used for tracking open and click events are hosted on domains operated by Amazon SES. You can configure a subdomain of your own to handle these events. For information about using custom domains, see the Amazon SES Developer Guide.</td>
-</tr>
-<tr>
-    <td><a href="#create_configuration_set"><CopyableCode code="create_configuration_set" /></a></td>
-    <td><CopyableCode code="insert" /></td>
-    <td><a href="#parameter-ConfigurationSet"><code>ConfigurationSet</code></a>, <a href="#parameter-region"><code>region</code></a></td>
-    <td></td>
-    <td>Creates a configuration set. Configuration sets enable you to publish email sending events. For information about using configuration sets, see the Amazon SES Developer Guide. You can execute this operation no more than once per second.</td>
 </tr>
 <tr>
     <td><a href="#update_configuration_set_event_destination"><CopyableCode code="update_configuration_set_event_destination" /></a></td>
@@ -332,14 +332,29 @@ AND MaxItems = '{{ MaxItems }}'
 ## `INSERT` examples
 
 <Tabs
-    defaultValue="create_configuration_set_event_destination"
+    defaultValue="create_configuration_set"
     values={[
+        { label: 'create_configuration_set', value: 'create_configuration_set' },
         { label: 'create_configuration_set_event_destination', value: 'create_configuration_set_event_destination' },
         { label: 'create_configuration_set_tracking_options', value: 'create_configuration_set_tracking_options' },
-        { label: 'create_configuration_set', value: 'create_configuration_set' },
         { label: 'Manifest', value: 'manifest' }
     ]}
 >
+<TabItem value="create_configuration_set">
+
+Creates a configuration set. Configuration sets enable you to publish email sending events. For information about using configuration sets, see the Amazon SES Developer Guide. You can execute this operation no more than once per second.
+
+```sql
+INSERT INTO aws.ses.configuration_sets (
+ConfigurationSet,
+region
+)
+SELECT 
+'{{ ConfigurationSet }}',
+'{{ region }}'
+;
+```
+</TabItem>
 <TabItem value="create_configuration_set_event_destination">
 
 Creates a configuration set event destination. When you create or update an event destination, you must provide one, and only one, destination. The destination can be CloudWatch, Amazon Kinesis Firehose, or Amazon Simple Notification Service (Amazon SNS). An event destination is the Amazon Web Services service to which Amazon SES publishes the email sending events associated with a configuration set. For information about using configuration sets, see the Amazon SES Developer Guide. You can execute this operation no more than once per second.
@@ -374,40 +389,25 @@ SELECT
 ;
 ```
 </TabItem>
-<TabItem value="create_configuration_set">
-
-Creates a configuration set. Configuration sets enable you to publish email sending events. For information about using configuration sets, see the Amazon SES Developer Guide. You can execute this operation no more than once per second.
-
-```sql
-INSERT INTO aws.ses.configuration_sets (
-ConfigurationSet,
-region
-)
-SELECT 
-'{{ ConfigurationSet }}',
-'{{ region }}'
-;
-```
-</TabItem>
 <TabItem value="manifest">
 
 <CodeBlock language="yaml">{`# Description fields are for documentation purposes
 - name: configuration_sets
   props:
+    - name: ConfigurationSet
+      value: "{{ ConfigurationSet }}"
+      description: Required parameter for the configuration_sets resource.
+    - name: region
+      value: "{{ region }}"
+      description: Required parameter for the configuration_sets resource.
     - name: ConfigurationSetName
       value: "{{ ConfigurationSetName }}"
       description: Required parameter for the configuration_sets resource.
     - name: EventDestination
       value: "{{ EventDestination }}"
       description: Required parameter for the configuration_sets resource.
-    - name: region
-      value: "{{ region }}"
-      description: Required parameter for the configuration_sets resource.
     - name: TrackingOptions
       value: "{{ TrackingOptions }}"
-      description: Required parameter for the configuration_sets resource.
-    - name: ConfigurationSet
-      value: "{{ ConfigurationSet }}"
       description: Required parameter for the configuration_sets resource.
 `}</CodeBlock>
 

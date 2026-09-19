@@ -338,10 +338,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteCrossAccountAuthorizationResponse"
   /readinesschecks/{readiness_check_name}:
     delete:
       operationId: DeleteReadinessCheck
@@ -745,10 +741,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TagResourceResponse"
     delete:
       operationId: UntagResource
       description: Removes a tag from a resource.
@@ -976,8 +968,6 @@ components:
         Tags:
           type: object
           properties: {}
-    DeleteCrossAccountAuthorizationResponse:
-      type: object
     MaxResults:
       type: integer
       minimum: 1
@@ -1408,8 +1398,6 @@ components:
         Tags:
           type: object
           properties: {}
-    TagResourceResponse:
-      type: object
     UpdateCellResponse:
       type: object
       properties:
@@ -1588,7 +1576,6 @@ components:
             $ref: "#/paths/~1crossaccountauthorizations~1{cross_account_authorization}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/cross_account_authorizations/methods/list_cross_account_authorizations"
@@ -1839,10 +1826,10 @@ components:
         insert: []
         update: []
         delete: []
-    readiness_check_resource_status:
-      id: aws.route53_recovery_readiness.readiness_check_resource_status
-      name: readiness_check_resource_status
-      title: readiness_check_resource_status
+    readiness_check_resource_statuses:
+      id: aws.route53_recovery_readiness.readiness_check_resource_statuses
+      name: readiness_check_resource_statuses
+      title: readiness_check_resource_statuses
       methods:
         get_readiness_check_resource_status:
           operation:
@@ -1863,14 +1850,14 @@ components:
                 location: body
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/readiness_check_resource_status/methods/get_readiness_check_resource_status"
+          - $ref: "#/components/x-stackQL-resources/readiness_check_resource_statuses/methods/get_readiness_check_resource_status"
         insert: []
         update: []
         delete: []
-    readiness_check_status:
-      id: aws.route53_recovery_readiness.readiness_check_status
-      name: readiness_check_status
-      title: readiness_check_status
+    readiness_check_statuses:
+      id: aws.route53_recovery_readiness.readiness_check_statuses
+      name: readiness_check_statuses
+      title: readiness_check_statuses
       methods:
         get_readiness_check_status:
           operation:
@@ -1891,7 +1878,7 @@ components:
                 location: body
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/readiness_check_status/methods/get_readiness_check_status"
+          - $ref: "#/components/x-stackQL-resources/readiness_check_statuses/methods/get_readiness_check_status"
         insert: []
         update: []
         delete: []
@@ -1967,7 +1954,6 @@ components:
             $ref: "#/paths/~1tags~1{resource-arn}/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:

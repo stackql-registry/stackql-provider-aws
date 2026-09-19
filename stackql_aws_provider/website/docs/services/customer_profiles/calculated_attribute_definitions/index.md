@@ -98,7 +98,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="statistic" /></td>
     <td><code>string</code></td>
-    <td>The aggregation operation to perform for the calculated attribute. (FIRST_OCCURRENCE, LAST_OCCURRENCE, COUNT, SUM, MINIMUM, MAXIMUM, AVERAGE, MAX_OCCURRENCE)</td>
+    <td>The aggregation operation to perform for the calculated attribute. (FIRST_OCCURRENCE, LAST_OCCURRENCE, COUNT, SUM, MINIMUM, MAXIMUM, AVERAGE, MAX_OCCURRENCE, RECENT_OCCURRENCES)</td>
 </tr>
 <tr>
     <td><CopyableCode code="status" /></td>
@@ -399,7 +399,7 @@ use_historical_data
             Dimensions: "{{ Dimensions }}"
     - name: Statistic
       value: "{{ Statistic }}"
-      valid_values: ['FIRST_OCCURRENCE', 'LAST_OCCURRENCE', 'COUNT', 'SUM', 'MINIMUM', 'MAXIMUM', 'AVERAGE', 'MAX_OCCURRENCE']
+      valid_values: ['FIRST_OCCURRENCE', 'LAST_OCCURRENCE', 'COUNT', 'SUM', 'MINIMUM', 'MAXIMUM', 'AVERAGE', 'MAX_OCCURRENCE', 'RECENT_OCCURRENCES']
     - name: UseHistoricalData
       value: {{ UseHistoricalData }}
     - name: Tags

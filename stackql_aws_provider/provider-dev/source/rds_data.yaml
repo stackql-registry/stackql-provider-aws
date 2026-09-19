@@ -62,7 +62,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchExecuteStatementResponse'
-      x-stackql-resource: batch_execute_statement
+      x-stackql-resource: statements
       x-stackql-method: batch_execute_statement
       x-stackql-verb: EXEC
   /BeginTransaction:
@@ -99,7 +99,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BeginTransactionResponse'
-      x-stackql-resource: begin_transaction
+      x-stackql-resource: transactions
       x-stackql-method: begin_transaction
       x-stackql-verb: EXEC
   /CommitTransaction:
@@ -131,7 +131,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CommitTransactionResponse'
-      x-stackql-resource: commit_transaction
+      x-stackql-resource: transactions
       x-stackql-method: commit_transaction
       x-stackql-verb: EXEC
   /ExecuteSql:
@@ -168,7 +168,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ExecuteSqlResponse'
-      x-stackql-resource: execute_sql
+      x-stackql-resource: sqls
       x-stackql-method: execute_sql
       x-stackql-verb: EXEC
   /Execute:
@@ -218,7 +218,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ExecuteStatementResponse'
-      x-stackql-resource: execute_statement
+      x-stackql-resource: statements
       x-stackql-method: execute_statement
       x-stackql-verb: EXEC
   /RollbackTransaction:
@@ -250,7 +250,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RollbackTransactionResponse'
-      x-stackql-resource: rollback_transaction
+      x-stackql-resource: transactions
       x-stackql-method: rollback_transaction
       x-stackql-verb: EXEC
 components:

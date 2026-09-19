@@ -37,6 +37,7 @@ The following fields are returned by `SELECT` queries:
     values={[
         { label: 'describe_folder', value: 'describe_folder' },
         { label: 'search_folders', value: 'search_folders' },
+        { label: 'list_folders_for_resource', value: 'list_folders_for_resource' },
         { label: 'list_folders', value: 'list_folders' }
     ]}
 >
@@ -114,6 +115,25 @@ The following fields are returned by `SELECT` queries:
     <td><CopyableCode code="sharing_model" /></td>
     <td><code>string</code></td>
     <td>The sharing scope of the folder. (ACCOUNT, NAMESPACE)</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
+<TabItem value="list_folders_for_resource">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="folder" /></td>
+    <td><code>string</code></td>
+    <td>A list that contains the Amazon Resource Names (ARNs) of all folders that the resource is a member of.</td>
 </tr>
 </tbody>
 </table>
@@ -199,6 +219,13 @@ The following methods are available for this resource:
     <td>Searches the subfolders in a folder.</td>
 </tr>
 <tr>
+    <td><a href="#list_folders_for_resource"><CopyableCode code="list_folders_for_resource" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-aws_account_id"><code>aws_account_id</code></a>, <a href="#parameter-resource_arn"><code>resource_arn</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td><a href="#parameter-next-token"><code>next-token</code></a>, <a href="#parameter-max-results"><code>max-results</code></a></td>
+    <td>List all folders that a resource is a member of.</td>
+</tr>
+<tr>
     <td><a href="#list_folders"><CopyableCode code="list_folders" /></a></td>
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-aws_account_id"><code>aws_account_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
@@ -281,6 +308,11 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     <td><code>string</code></td>
     <td>AWS region (default: us-east-1)</td>
 </tr>
+<tr id="parameter-resource_arn">
+    <td><CopyableCode code="resource_arn" /></td>
+    <td><code>string</code></td>
+    <td>The Amazon Resource Name (ARN) the resource whose folders you need to list.</td>
+</tr>
 <tr id="parameter-max-results">
     <td><CopyableCode code="max-results" /></td>
     <td><code>integer</code></td>
@@ -301,6 +333,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     values={[
         { label: 'describe_folder', value: 'describe_folder' },
         { label: 'search_folders', value: 'search_folders' },
+        { label: 'list_folders_for_resource', value: 'list_folders_for_resource' },
         { label: 'list_folders', value: 'list_folders' }
     ]}
 >
@@ -336,6 +369,22 @@ sharing_model
 FROM aws.quicksight.folders
 WHERE aws_account_id = '{{ aws_account_id }}' -- required
 AND region = '{{ region }}' -- required
+;
+```
+</TabItem>
+<TabItem value="list_folders_for_resource">
+
+List all folders that a resource is a member of.
+
+```sql
+SELECT
+folder
+FROM aws.quicksight.folders
+WHERE aws_account_id = '{{ aws_account_id }}' -- required
+AND resource_arn = '{{ resource_arn }}' -- required
+AND region = '{{ region }}' -- required
+AND `next-token` = '{{ next-token }}'
+AND `max-results` = '{{ max-results }}'
 ;
 ```
 </TabItem>

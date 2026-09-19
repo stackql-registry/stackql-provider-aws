@@ -33,42 +33,13 @@ Creates, updates, deletes, gets or lists a <code>domains</code> resource.
 The following fields are returned by `SELECT` queries:
 
 <Tabs
-    defaultValue="search"
+    defaultValue="get_domain"
     values={[
-        { label: 'search', value: 'search' },
         { label: 'get_domain', value: 'get_domain' },
+        { label: 'search', value: 'search' },
         { label: 'list_domains', value: 'list_domains' }
     ]}
 >
-<TabItem value="search">
-
-<table>
-<thead>
-    <tr>
-    <th>Name</th>
-    <th>Datatype</th>
-    <th>Description</th>
-    </tr>
-</thead>
-<tbody>
-<tr>
-    <td><CopyableCode code="items_" /></td>
-    <td><code>array</code></td>
-    <td>The results of the Search action.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="next_token" /></td>
-    <td><code>string</code></td>
-    <td>When the number of results is greater than the default value for the MaxResults parameter, or if you explicitly specify a value for MaxResults that is less than the number of results, the response includes a pagination token named NextToken. You can specify this NextToken value in a subsequent call to Search to list the next set of results.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="total_match_count" /></td>
-    <td><code>integer</code></td>
-    <td>Total number of search results.</td>
-</tr>
-</tbody>
-</table>
-</TabItem>
 <TabItem value="get_domain">
 
 <table>
@@ -101,6 +72,11 @@ The following fields are returned by `SELECT` queries:
     <td>The timestamp of when the Amazon DataZone domain was created.</td>
 </tr>
 <tr>
+    <td><CopyableCode code="delete_progress" /></td>
+    <td><code>object</code></td>
+    <td>The progress of the current domain deletion, including the number of projects that Amazon DataZone successfully deleted.</td>
+</tr>
+<tr>
     <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of the Amazon DataZone domain.</td>
@@ -114,6 +90,11 @@ The following fields are returned by `SELECT` queries:
     <td><CopyableCode code="domain_version" /></td>
     <td><code>string</code></td>
     <td>The version of the domain. (V1, V2)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="failure_reasons" /></td>
+    <td><code>array</code></td>
+    <td>The list of failure reasons for resources that Amazon DataZone could not delete during a cascade deletion of the domain.</td>
 </tr>
 <tr>
     <td><CopyableCode code="kms_key_identifier" /></td>
@@ -154,6 +135,35 @@ The following fields are returned by `SELECT` queries:
     <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>The tags specified for the Amazon DataZone domain.</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
+<TabItem value="search">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="items_" /></td>
+    <td><code>array</code></td>
+    <td>The results of the Search action.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="next_token" /></td>
+    <td><code>string</code></td>
+    <td>When the number of results is greater than the default value for the MaxResults parameter, or if you explicitly specify a value for MaxResults that is less than the number of results, the response includes a pagination token named NextToken. You can specify this NextToken value in a subsequent call to Search to list the next set of results.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="total_match_count" /></td>
+    <td><code>integer</code></td>
+    <td>Total number of search results.</td>
 </tr>
 </tbody>
 </table>
@@ -240,18 +250,18 @@ The following methods are available for this resource:
 </thead>
 <tbody>
 <tr>
-    <td><a href="#search"><CopyableCode code="search" /></a></td>
-    <td><CopyableCode code="select" /></td>
-    <td><a href="#parameter-domain_identifier"><code>domain_identifier</code></a>, <a href="#parameter-region"><code>region</code></a></td>
-    <td></td>
-    <td>Searches for assets in Amazon DataZone. Search in Amazon DataZone is a powerful capability that enables users to discover and explore data assets, glossary terms, and data products across their organization. It provides both basic and advanced search functionality, allowing users to find resources based on names, descriptions, metadata, and other attributes. Search can be scoped to specific types of resources (like assets, glossary terms, or data products) and can be filtered using various criteria such as creation date, owner, or status. The search functionality is essential for making the wealth of data resources in an organization discoverable and usable, helping users find the right data for their needs quickly and efficiently. Many search commands in Amazon DataZone are paginated, including search and search-types. When the result set is large, Amazon DataZone returns a nextToken in the response. This token can be used to retrieve the next page of results. Prerequisites: The --domain-identifier must refer to an existing Amazon DataZone domain. --search-scope must be one of: ASSET, GLOSSARY_TERM, DATA_PRODUCT, or GLOSSARY. The user must have search permissions in the specified domain. If using --filters, ensure that the JSON is well-formed and that each filter includes valid attribute and value keys. For paginated results, be prepared to use --next-token to fetch additional pages. To run a standard free-text search, the searchText parameter must be supplied. By default, all searchable fields are indexed for semantic search and will return semantic matches for SearchListings queries. To prevent semantic search indexing for a custom form attribute, see the CreateFormType API documentation. To run a lexical search query, enclose the query with double quotes (""). This will disable semantic search even for fields that have semantic search enabled and will only return results that contain the keywords wrapped by double quotes (order of tokens in the query is not enforced). Free-text search is supported for all attributes annotated with @amazon.datazone#searchable. To run a filtered search, provide filter clause using the filters parameter. To filter on glossary terms, use the special attribute __DataZoneGlossaryTerms. To filter on an indexed numeric attribute (i.e., a numeric attribute annotated with @amazon.datazone#sortable), provide a filter using the intValue parameter. The filters parameter can also be used to run more advanced free-text searches that target specific attributes (attributes must be annotated with @amazon.datazone#searchable for free-text search). Create/update timestamp filtering is supported using the special creationTime/lastUpdatedTime attributes. Filter types can be mixed and matched to power complex queries. To find out whether an attribute has been annotated and indexed for a given search type, use the GetFormType API to retrieve the form containing the attribute.</td>
-</tr>
-<tr>
     <td><a href="#get_domain"><CopyableCode code="get_domain" /></a></td>
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-identifier"><code>identifier</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td></td>
     <td>Gets an Amazon DataZone domain.</td>
+</tr>
+<tr>
+    <td><a href="#search"><CopyableCode code="search" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-domain_identifier"><code>domain_identifier</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Searches for assets in Amazon DataZone. Search in Amazon DataZone is a powerful capability that enables users to discover and explore data assets, glossary terms, and data products across their organization. It provides both basic and advanced search functionality, allowing users to find resources based on names, descriptions, metadata, and other attributes. Search can be scoped to specific types of resources (like assets, glossary terms, or data products) and can be filtered using various criteria such as creation date, owner, or status. The search functionality is essential for making the wealth of data resources in an organization discoverable and usable, helping users find the right data for their needs quickly and efficiently. Many search commands in Amazon DataZone are paginated, including search and search-types. When the result set is large, Amazon DataZone returns a nextToken in the response. This token can be used to retrieve the next page of results. Prerequisites: The --domain-identifier must refer to an existing Amazon DataZone domain. --search-scope must be one of: ASSET, GLOSSARY_TERM, DATA_PRODUCT, or GLOSSARY. The user must have search permissions in the specified domain. If using --filters, ensure that the JSON is well-formed and that each filter includes valid attribute and value keys. For paginated results, be prepared to use --next-token to fetch additional pages. To run a standard free-text search, the searchText parameter must be supplied. By default, all searchable fields are indexed for semantic search and will return semantic matches for SearchListings queries. To prevent semantic search indexing for a custom form attribute, see the CreateFormType API documentation. To run a lexical search query, enclose the query with double quotes (""). This will disable semantic search even for fields that have semantic search enabled and will only return results that contain the keywords wrapped by double quotes (order of tokens in the query is not enforced). Free-text search is supported for all attributes annotated with @amazon.datazone#searchable. To run a filtered search, provide filter clause using the filters parameter. To filter on glossary terms, use the special attribute __DataZoneGlossaryTerms. To filter on an indexed numeric attribute (i.e., a numeric attribute annotated with @amazon.datazone#sortable), provide a filter using the intValue parameter. The filters parameter can also be used to run more advanced free-text searches that target specific attributes (attributes must be annotated with @amazon.datazone#searchable for free-text search). Create/update timestamp filtering is supported using the special creationTime/lastUpdatedTime attributes. Filter types can be mixed and matched to power complex queries. To find out whether an attribute has been annotated and indexed for a given search type, use the GetFormType API to retrieve the form containing the attribute.</td>
 </tr>
 <tr>
     <td><a href="#list_domains"><CopyableCode code="list_domains" /></a></td>
@@ -268,6 +278,13 @@ The following methods are available for this resource:
     <td>Creates an Amazon DataZone domain.</td>
 </tr>
 <tr>
+    <td><a href="#update_domain"><CopyableCode code="update_domain" /></a></td>
+    <td><CopyableCode code="update" /></td>
+    <td><a href="#parameter-identifier"><code>identifier</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td><a href="#parameter-clientToken"><code>clientToken</code></a></td>
+    <td>Updates a Amazon DataZone domain.</td>
+</tr>
+<tr>
     <td><a href="#associate_governed_terms"><CopyableCode code="associate_governed_terms" /></a></td>
     <td><CopyableCode code="update" /></td>
     <td><a href="#parameter-domain_identifier"><code>domain_identifier</code></a>, <a href="#parameter-entity_identifier"><code>entity_identifier</code></a>, <a href="#parameter-entity_type"><code>entity_type</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-governedGlossaryTerms"><code>governedGlossaryTerms</code></a></td>
@@ -282,17 +299,10 @@ The following methods are available for this resource:
     <td>Updates the owner of the root domain unit.</td>
 </tr>
 <tr>
-    <td><a href="#update_domain"><CopyableCode code="update_domain" /></a></td>
-    <td><CopyableCode code="update" /></td>
-    <td><a href="#parameter-identifier"><code>identifier</code></a>, <a href="#parameter-region"><code>region</code></a></td>
-    <td><a href="#parameter-clientToken"><code>clientToken</code></a></td>
-    <td>Updates a Amazon DataZone domain.</td>
-</tr>
-<tr>
     <td><a href="#delete_domain"><CopyableCode code="delete_domain" /></a></td>
     <td><CopyableCode code="delete" /></td>
     <td><a href="#parameter-identifier"><code>identifier</code></a>, <a href="#parameter-region"><code>region</code></a></td>
-    <td><a href="#parameter-clientToken"><code>clientToken</code></a>, <a href="#parameter-skipDeletionCheck"><code>skipDeletionCheck</code></a></td>
+    <td><a href="#parameter-clientToken"><code>clientToken</code></a>, <a href="#parameter-skipDeletionCheck"><code>skipDeletionCheck</code></a>, <a href="#parameter-cascadeDelete"><code>cascadeDelete</code></a></td>
     <td>Deletes a Amazon DataZone domain.</td>
 </tr>
 <tr>
@@ -404,6 +414,11 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     <td><code>string</code></td>
     <td>A unique, case-sensitive identifier that is provided to ensure the idempotency of the request.</td>
 </tr>
+<tr id="parameter-cascadeDelete">
+    <td><CopyableCode code="cascadeDelete" /></td>
+    <td><code>boolean</code></td>
+    <td>Specifies whether to delete the domain along with all of its associated resources. When you use this parameter, Amazon DataZone deletes the domain and cleanly removes its associated resources without leaving orphaned resources behind. Amazon DataZone reports deletion progress in the deleteProgress field. Amazon DataZone reports any resources that it can't delete in the failureReasons field of the GetDomain response. You can't use this parameter together with skipDeletionCheck. If you don't specify a value, the default is false.</td>
+</tr>
 <tr id="parameter-clientToken">
     <td><CopyableCode code="clientToken" /></td>
     <td><code>string</code></td>
@@ -427,7 +442,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-skipDeletionCheck">
     <td><CopyableCode code="skipDeletionCheck" /></td>
     <td><code>boolean</code></td>
-    <td>Specifies the optional flag to delete all child entities within the domain.</td>
+    <td>Specifies whether to skip the check that prevents deletion of a domain that still contains resources. When you use this parameter, Amazon DataZone deletes the domain but might not remove its associated resources, which can leave orphaned resources behind. To delete a domain and fully clean up its associated resources, use cascadeDelete instead. You can't use this parameter together with cascadeDelete.</td>
 </tr>
 <tr id="parameter-status">
     <td><CopyableCode code="status" /></td>
@@ -440,13 +455,42 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 ## `SELECT` examples
 
 <Tabs
-    defaultValue="search"
+    defaultValue="get_domain"
     values={[
-        { label: 'search', value: 'search' },
         { label: 'get_domain', value: 'get_domain' },
+        { label: 'search', value: 'search' },
         { label: 'list_domains', value: 'list_domains' }
     ]}
 >
+<TabItem value="get_domain">
+
+Gets an Amazon DataZone domain.
+
+```sql
+SELECT
+id,
+name,
+arn,
+created_at,
+delete_progress,
+description,
+domain_execution_role,
+domain_version,
+failure_reasons,
+kms_key_identifier,
+last_updated_at,
+portal_url,
+root_domain_unit_id,
+service_role,
+single_sign_on,
+status,
+tags
+FROM aws.datazone.domains
+WHERE identifier = '{{ identifier }}' -- required
+AND region = '{{ region }}' -- required
+;
+```
+</TabItem>
 <TabItem value="search">
 
 Searches for assets in Amazon DataZone. Search in Amazon DataZone is a powerful capability that enables users to discover and explore data assets, glossary terms, and data products across their organization. It provides both basic and advanced search functionality, allowing users to find resources based on names, descriptions, metadata, and other attributes. Search can be scoped to specific types of resources (like assets, glossary terms, or data products) and can be filtered using various criteria such as creation date, owner, or status. The search functionality is essential for making the wealth of data resources in an organization discoverable and usable, helping users find the right data for their needs quickly and efficiently. Many search commands in Amazon DataZone are paginated, including search and search-types. When the result set is large, Amazon DataZone returns a nextToken in the response. This token can be used to retrieve the next page of results. Prerequisites: The --domain-identifier must refer to an existing Amazon DataZone domain. --search-scope must be one of: ASSET, GLOSSARY_TERM, DATA_PRODUCT, or GLOSSARY. The user must have search permissions in the specified domain. If using --filters, ensure that the JSON is well-formed and that each filter includes valid attribute and value keys. For paginated results, be prepared to use --next-token to fetch additional pages. To run a standard free-text search, the searchText parameter must be supplied. By default, all searchable fields are indexed for semantic search and will return semantic matches for SearchListings queries. To prevent semantic search indexing for a custom form attribute, see the CreateFormType API documentation. To run a lexical search query, enclose the query with double quotes (""). This will disable semantic search even for fields that have semantic search enabled and will only return results that contain the keywords wrapped by double quotes (order of tokens in the query is not enforced). Free-text search is supported for all attributes annotated with @amazon.datazone#searchable. To run a filtered search, provide filter clause using the filters parameter. To filter on glossary terms, use the special attribute __DataZoneGlossaryTerms. To filter on an indexed numeric attribute (i.e., a numeric attribute annotated with @amazon.datazone#sortable), provide a filter using the intValue parameter. The filters parameter can also be used to run more advanced free-text searches that target specific attributes (attributes must be annotated with @amazon.datazone#searchable for free-text search). Create/update timestamp filtering is supported using the special creationTime/lastUpdatedTime attributes. Filter types can be mixed and matched to power complex queries. To find out whether an attribute has been annotated and indexed for a given search type, use the GetFormType API to retrieve the form containing the attribute.
@@ -458,33 +502,6 @@ next_token,
 total_match_count
 FROM aws.datazone.domains
 WHERE domain_identifier = '{{ domain_identifier }}' -- required
-AND region = '{{ region }}' -- required
-;
-```
-</TabItem>
-<TabItem value="get_domain">
-
-Gets an Amazon DataZone domain.
-
-```sql
-SELECT
-id,
-name,
-arn,
-created_at,
-description,
-domain_execution_role,
-domain_version,
-kms_key_identifier,
-last_updated_at,
-portal_url,
-root_domain_unit_id,
-service_role,
-single_sign_on,
-status,
-tags
-FROM aws.datazone.domains
-WHERE identifier = '{{ identifier }}' -- required
 AND region = '{{ region }}' -- required
 ;
 ```
@@ -611,13 +628,40 @@ tags
 ## `UPDATE` examples
 
 <Tabs
-    defaultValue="associate_governed_terms"
+    defaultValue="update_domain"
     values={[
+        { label: 'update_domain', value: 'update_domain' },
         { label: 'associate_governed_terms', value: 'associate_governed_terms' },
-        { label: 'update_root_domain_unit_owner', value: 'update_root_domain_unit_owner' },
-        { label: 'update_domain', value: 'update_domain' }
+        { label: 'update_root_domain_unit_owner', value: 'update_root_domain_unit_owner' }
     ]}
 >
+<TabItem value="update_domain">
+
+Updates a Amazon DataZone domain.
+
+```sql
+UPDATE aws.datazone.domains
+SET 
+description = '{{ description }}',
+singleSignOn = '{{ singleSignOn }}',
+domainExecutionRole = '{{ domainExecutionRole }}',
+serviceRole = '{{ serviceRole }}',
+name = '{{ name }}'
+WHERE 
+identifier = '{{ identifier }}' --required
+AND region = '{{ region }}' --required
+AND clientToken = '{{ clientToken}}'
+RETURNING
+id,
+name,
+description,
+domain_execution_role,
+last_updated_at,
+root_domain_unit_id,
+service_role,
+single_sign_on;
+```
+</TabItem>
 <TabItem value="associate_governed_terms">
 
 Associates governed terms with an asset.
@@ -651,33 +695,6 @@ AND currentOwner = '{{ currentOwner }}' --required
 AND newOwner = '{{ newOwner }}' --required;
 ```
 </TabItem>
-<TabItem value="update_domain">
-
-Updates a Amazon DataZone domain.
-
-```sql
-UPDATE aws.datazone.domains
-SET 
-description = '{{ description }}',
-singleSignOn = '{{ singleSignOn }}',
-domainExecutionRole = '{{ domainExecutionRole }}',
-serviceRole = '{{ serviceRole }}',
-name = '{{ name }}'
-WHERE 
-identifier = '{{ identifier }}' --required
-AND region = '{{ region }}' --required
-AND clientToken = '{{ clientToken}}'
-RETURNING
-id,
-name,
-description,
-domain_execution_role,
-last_updated_at,
-root_domain_unit_id,
-service_role,
-single_sign_on;
-```
-</TabItem>
 </Tabs>
 
 
@@ -699,6 +716,7 @@ WHERE identifier = '{{ identifier }}' --required
 AND region = '{{ region }}' --required
 AND clientToken = '{{ clientToken }}'
 AND skipDeletionCheck = '{{ skipDeletionCheck }}'
+AND cascadeDelete = '{{ cascadeDelete }}'
 ;
 ```
 </TabItem>

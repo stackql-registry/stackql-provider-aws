@@ -17,6 +17,42 @@ servers:
       description: AWS region
   description: Regional endpoint for sesv2
 paths:
+  /v2/email/identity/certificates:
+    post:
+      operationId: AssociateEmailIdentityCertificate
+      description: Associates an S/MIME certificate with an email identity. After the certificate is active, Amazon SES API
+        v2 can add an S/MIME signature to messages that you send from the associated address when signing is enabled on the
+        configuration set used to send the message. The certificate is an X.509 certificate that you manage in Certificate
+        Manager (ACM). You identify it by its Amazon Resource Name (ARN). If the email identity is a domain, you must specify
+        a FromAddress that belongs to that domain or one of its subdomains. The certificate applies to messages sent from
+        that address. If the email identity is an email address, FromAddress is optional. If you specify it, it must exactly
+        match the email identity. When the association is created, the certificate begins provisioning and its status is PROVISIONING.
+        The status changes to ACTIVE when the certificate is ready to use for signing. Each email address can have only one
+        certificate association. If an association already exists for the address, this operation returns an error, unless
+        the existing association is in the DEPROVISIONING state.
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                EmailIdentity:
+                  $ref: '#/components/schemas/Identity'
+                FromAddress:
+                  $ref: '#/components/schemas/EmailAddress'
+                CertificateArn:
+                  $ref: '#/components/schemas/CertificateArn'
+              required:
+              - EmailIdentity
+              - CertificateArn
+      responses:
+        '200':
+          description: Success
+      x-stackql-resource: email_identity_certificates
+      x-stackql-method: associate_email_identity_certificate
+      x-stackql-verb: UPDATE
   /v2/email/metrics/batch:
     post:
       operationId: BatchGetMetricData
@@ -41,7 +77,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchGetMetricDataResponse'
-      x-stackql-resource: metric_datas
+      x-stackql-resource: metric_data
       x-stackql-method: batch_get_metric_data
       x-stackql-verb: SELECT
   /v2/email/export-jobs/{job_id}/cancel:
@@ -58,11 +94,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CancelExportJobResponse'
-      x-stackql-resource: export_job
+      x-stackql-resource: export_jobs
       x-stackql-method: cancel_export_job
       x-stackql-verb: EXEC
   /v2/email/configuration-sets:
@@ -98,15 +130,13 @@ paths:
                   $ref: '#/components/schemas/VdmOptions'
                 ArchivingOptions:
                   $ref: '#/components/schemas/ArchivingOptions'
+                MessageSecurityOptions:
+                  $ref: '#/components/schemas/MessageSecurityOptions'
               required:
               - ConfigurationSetName
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CreateConfigurationSetResponse'
       x-stackql-resource: configuration_sets
       x-stackql-method: create_configuration_set
       x-stackql-verb: INSERT
@@ -178,10 +208,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CreateConfigurationSetEventDestinationResponse'
       x-stackql-resource: configuration_set_event_destinations
       x-stackql-method: create_configuration_set_event_destination
       x-stackql-verb: INSERT
@@ -239,10 +265,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CreateContactResponse'
       x-stackql-resource: contacts
       x-stackql-method: create_contact
       x-stackql-verb: INSERT
@@ -271,10 +293,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CreateContactListResponse'
       x-stackql-resource: contact_lists
       x-stackql-method: create_contact_list
       x-stackql-verb: INSERT
@@ -347,10 +365,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CreateCustomVerificationEmailTemplateResponse'
       x-stackql-resource: custom_verification_email_templates
       x-stackql-method: create_custom_verification_email_template
       x-stackql-verb: INSERT
@@ -411,10 +425,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CreateDedicatedIpPoolResponse'
       x-stackql-resource: dedicated_ip_pools
       x-stackql-method: create_dedicated_ip_pool
       x-stackql-verb: INSERT
@@ -603,10 +613,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CreateEmailIdentityPolicyResponse'
       x-stackql-resource: email_identity_policies
       x-stackql-method: create_email_identity_policy
       x-stackql-verb: INSERT
@@ -634,10 +640,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteEmailIdentityPolicyResponse'
       x-stackql-resource: email_identity_policies
       x-stackql-method: delete_email_identity_policy
       x-stackql-verb: DELETE
@@ -676,10 +678,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateEmailIdentityPolicyResponse'
       x-stackql-resource: email_identity_policies
       x-stackql-method: update_email_identity_policy
       x-stackql-verb: UPDATE
@@ -709,10 +707,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CreateEmailTemplateResponse'
       x-stackql-resource: email_templates
       x-stackql-method: create_email_template
       x-stackql-verb: INSERT
@@ -933,10 +927,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CreateTenantResourceAssociationResponse'
       x-stackql-resource: tenant_resources
       x-stackql-method: create_tenant_resource_association
       x-stackql-verb: INSERT
@@ -957,10 +947,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteConfigurationSetResponse'
       x-stackql-resource: configuration_sets
       x-stackql-method: delete_configuration_set
       x-stackql-verb: DELETE
@@ -1010,10 +996,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteConfigurationSetEventDestinationResponse'
       x-stackql-resource: configuration_set_event_destinations
       x-stackql-method: delete_configuration_set_event_destination
       x-stackql-verb: DELETE
@@ -1050,10 +1032,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateConfigurationSetEventDestinationResponse'
       x-stackql-resource: configuration_set_event_destinations
       x-stackql-method: update_configuration_set_event_destination
       x-stackql-verb: UPDATE
@@ -1077,10 +1055,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteContactResponse'
       x-stackql-resource: contacts
       x-stackql-method: delete_contact
       x-stackql-verb: DELETE
@@ -1143,10 +1117,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateContactResponse'
       x-stackql-resource: contacts
       x-stackql-method: update_contact
       x-stackql-verb: UPDATE
@@ -1164,10 +1134,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteContactListResponse'
       x-stackql-resource: contact_lists
       x-stackql-method: delete_contact_list
       x-stackql-verb: DELETE
@@ -1215,10 +1181,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateContactListResponse'
       x-stackql-resource: contact_lists
       x-stackql-method: update_contact_list
       x-stackql-verb: UPDATE
@@ -1238,10 +1200,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteCustomVerificationEmailTemplateResponse'
       x-stackql-resource: custom_verification_email_templates
       x-stackql-method: delete_custom_verification_email_template
       x-stackql-verb: DELETE
@@ -1305,10 +1263,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateCustomVerificationEmailTemplateResponse'
       x-stackql-resource: custom_verification_email_templates
       x-stackql-method: update_custom_verification_email_template
       x-stackql-verb: UPDATE
@@ -1326,10 +1280,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteDedicatedIpPoolResponse'
       x-stackql-resource: dedicated_ip_pools
       x-stackql-method: delete_dedicated_ip_pool
       x-stackql-verb: DELETE
@@ -1368,10 +1318,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteEmailIdentityResponse'
       x-stackql-resource: email_identities
       x-stackql-method: delete_email_identity
       x-stackql-verb: DELETE
@@ -1410,10 +1356,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteEmailTemplateResponse'
       x-stackql-resource: email_templates
       x-stackql-method: delete_email_template
       x-stackql-verb: DELETE
@@ -1464,10 +1406,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateEmailTemplateResponse'
       x-stackql-resource: email_templates
       x-stackql-method: update_email_template
       x-stackql-verb: UPDATE
@@ -1538,10 +1476,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteSuppressedDestinationResponse'
       x-stackql-resource: suppressed_destinations
       x-stackql-method: delete_suppressed_destination
       x-stackql-verb: DELETE
@@ -1595,10 +1529,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteTenantResponse'
       x-stackql-resource: tenants
       x-stackql-method: delete_tenant
       x-stackql-verb: DELETE
@@ -1626,13 +1556,37 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteTenantResourceAssociationResponse'
       x-stackql-resource: tenant_resources
       x-stackql-method: delete_tenant_resource_association
       x-stackql-verb: DELETE
+  /v2/email/identity/certificates/delete:
+    post:
+      operationId: DisassociateEmailIdentityCertificate
+      description: Removes the association between an S/MIME certificate and an email identity. After the association is removed,
+        Amazon SES API v2 stops adding an S/MIME signature to messages sent from that address. If the email identity is a
+        domain, specify the FromAddress whose certificate association you want to remove. This operation is idempotent. If
+        the specified email identity exists but there's no matching certificate association, the operation succeeds without
+        making any changes. Amazon SES API v2 returns a NotFoundException only when the specified email identity doesn't exist.
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                EmailIdentity:
+                  $ref: '#/components/schemas/Identity'
+                FromAddress:
+                  $ref: '#/components/schemas/EmailAddress'
+              required:
+              - EmailIdentity
+      responses:
+        '200':
+          description: Success
+      x-stackql-resource: email_identity_certificates
+      x-stackql-method: disassociate_email_identity_certificate
+      x-stackql-verb: UPDATE
   /v2/email/account:
     get:
       operationId: GetAccount
@@ -1776,10 +1730,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PutDeliverabilityDashboardOptionResponse'
       x-stackql-resource: deliverability_dashboard_options
       x-stackql-method: put_deliverability_dashboard_option
       x-stackql-verb: REPLACE
@@ -2158,6 +2108,44 @@ paths:
       x-stackql-resource: domain_deliverability_campaigns
       x-stackql-method: list_domain_deliverability_campaigns
       x-stackql-verb: SELECT
+  /v2/email/identity/certificates/list:
+    post:
+      operationId: ListEmailIdentityCertificates
+      description: Lists the S/MIME certificates that are associated with the specified email identity. The results include
+        certificates in all states, such as PROVISIONING, ACTIVE, INACTIVE, DEPROVISIONING, and FAILED. If a certificate has
+        passed its expiration time, it's returned with a status of FAILED. We recommend using pagination to ensure that the
+        operation returns quickly and successfully. When there are more results than fit in a single response, the response
+        includes a NextToken value that you use in a subsequent call to retrieve the next set of results.
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                EmailIdentity:
+                  $ref: '#/components/schemas/Identity'
+                NextToken:
+                  $ref: '#/components/schemas/NextToken'
+                PageSize:
+                  $ref: '#/components/schemas/MaxItems'
+              required:
+              - EmailIdentity
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListEmailIdentityCertificatesResponse'
+      x-stackql-resource: email_identity_certificates
+      x-stackql-method: list_email_identity_certificates
+      x-stackql-verb: SELECT
+      x-stackql-objectKey: $.Certificates
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /v2/email/list-export-jobs:
     post:
       operationId: ListExportJobs
@@ -2401,10 +2389,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PutSuppressedDestinationResponse'
       x-stackql-resource: suppressed_destinations
       x-stackql-method: put_suppressed_destination
       x-stackql-verb: REPLACE
@@ -2457,10 +2441,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -2485,10 +2465,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -2578,10 +2554,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PutAccountDedicatedIpWarmupAttributesResponse'
       x-stackql-resource: accounts
       x-stackql-method: put_account_dedicated_ip_warmup_attributes
       x-stackql-verb: REPLACE
@@ -2615,18 +2587,13 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PutAccountDetailsResponse'
       x-stackql-resource: accounts
       x-stackql-method: put_account_details
       x-stackql-verb: REPLACE
   /v2/email/account/pricing-attributes:
     put:
       operationId: PutAccountPricingAttributes
-      description: Set the pricing plan for your Amazon SES account. Use this operation to choose a billing plan that packages
-        multiple Amazon SES features at a single rate.
+      description: Set the pricing plan for your Amazon SES account.
       parameters: []
       requestBody:
         required: true
@@ -2642,10 +2609,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PutAccountPricingAttributesResponse'
       x-stackql-resource: accounts
       x-stackql-method: put_account_pricing_attributes
       x-stackql-verb: REPLACE
@@ -2666,10 +2629,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PutAccountSendingAttributesResponse'
       x-stackql-resource: accounts
       x-stackql-method: put_account_sending_attributes
       x-stackql-verb: REPLACE
@@ -2692,10 +2651,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PutAccountSuppressionAttributesResponse'
       x-stackql-resource: accounts
       x-stackql-method: put_account_suppression_attributes
       x-stackql-verb: REPLACE
@@ -2718,10 +2673,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PutAccountVdmAttributesResponse'
       x-stackql-resource: accounts
       x-stackql-method: put_account_vdm_attributes
       x-stackql-verb: REPLACE
@@ -2750,10 +2701,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PutConfigurationSetArchivingOptionsResponse'
       x-stackql-resource: configuration_sets
       x-stackql-method: put_configuration_set_archiving_options
       x-stackql-verb: REPLACE
@@ -2785,10 +2732,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PutConfigurationSetDeliveryOptionsResponse'
       x-stackql-resource: configuration_sets
       x-stackql-method: put_configuration_set_delivery_options
       x-stackql-verb: REPLACE
@@ -2816,10 +2759,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PutConfigurationSetReputationOptionsResponse'
       x-stackql-resource: configuration_sets
       x-stackql-method: put_configuration_set_reputation_options
       x-stackql-verb: REPLACE
@@ -2847,10 +2786,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PutConfigurationSetSendingOptionsResponse'
       x-stackql-resource: configuration_sets
       x-stackql-method: put_configuration_set_sending_options
       x-stackql-verb: REPLACE
@@ -2883,10 +2818,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PutConfigurationSetSuppressionOptionsResponse'
       x-stackql-resource: configuration_sets
       x-stackql-method: put_configuration_set_suppression_options
       x-stackql-verb: REPLACE
@@ -2915,10 +2846,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PutConfigurationSetTrackingOptionsResponse'
       x-stackql-resource: configuration_sets
       x-stackql-method: put_configuration_set_tracking_options
       x-stackql-verb: REPLACE
@@ -2946,10 +2873,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PutConfigurationSetVdmOptionsResponse'
       x-stackql-resource: configuration_sets
       x-stackql-method: put_configuration_set_vdm_options
       x-stackql-verb: REPLACE
@@ -2981,10 +2904,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PutDedicatedIpInPoolResponse'
       x-stackql-resource: dedicated_ips
       x-stackql-method: put_dedicated_ip_in_pool
       x-stackql-verb: REPLACE
@@ -3014,10 +2933,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PutDedicatedIpPoolScalingAttributesResponse'
       x-stackql-resource: dedicated_ip_pools
       x-stackql-method: put_dedicated_ip_pool_scaling_attributes
       x-stackql-verb: REPLACE
@@ -3045,10 +2960,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PutDedicatedIpWarmupAttributesResponse'
       x-stackql-resource: dedicated_ips
       x-stackql-method: put_dedicated_ip_warmup_attributes
       x-stackql-verb: REPLACE
@@ -3075,10 +2986,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PutEmailIdentityConfigurationSetAttributesResponse'
       x-stackql-resource: email_identities
       x-stackql-method: put_email_identity_configuration_set_attributes
       x-stackql-verb: REPLACE
@@ -3105,10 +3012,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PutEmailIdentityDkimAttributesResponse'
       x-stackql-resource: email_identities
       x-stackql-method: put_email_identity_dkim_attributes
       x-stackql-verb: REPLACE
@@ -3178,10 +3081,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PutEmailIdentityFeedbackAttributesResponse'
       x-stackql-resource: email_identities
       x-stackql-method: put_email_identity_feedback_attributes
       x-stackql-verb: REPLACE
@@ -3210,10 +3109,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PutEmailIdentityMailFromAttributesResponse'
       x-stackql-resource: email_identities
       x-stackql-method: put_email_identity_mail_from_attributes
       x-stackql-verb: REPLACE
@@ -3243,10 +3138,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PutTenantSuppressionAttributesResponse'
       x-stackql-resource: tenants
       x-stackql-method: put_tenant_suppression_attributes
       x-stackql-verb: REPLACE
@@ -3284,6 +3175,8 @@ paths:
                   $ref: '#/components/schemas/EndpointId'
                 TenantName:
                   $ref: '#/components/schemas/TenantName'
+                ConfigurationOverrides:
+                  $ref: '#/components/schemas/ConfigurationOverrides'
               required:
               - DefaultContent
               - BulkEmailEntries
@@ -3294,7 +3187,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SendBulkEmailResponse'
-      x-stackql-resource: bulk_email
+      x-stackql-resource: bulk_emails
       x-stackql-method: send_bulk_email
       x-stackql-verb: EXEC
   /v2/email/outbound-custom-verification-emails:
@@ -3329,7 +3222,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SendCustomVerificationEmailResponse'
-      x-stackql-resource: custom_verification_email
+      x-stackql-resource: custom_verification_emails
       x-stackql-method: send_custom_verification_email
       x-stackql-verb: EXEC
   /v2/email/outbound-emails:
@@ -3374,6 +3267,8 @@ paths:
                   $ref: '#/components/schemas/TenantName'
                 ListManagementOptions:
                   $ref: '#/components/schemas/ListManagementOptions'
+                ConfigurationOverrides:
+                  $ref: '#/components/schemas/ConfigurationOverrides'
               required:
               - Content
       responses:
@@ -3383,7 +3278,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SendEmailResponse'
-      x-stackql-resource: email
+      x-stackql-resource: emails
       x-stackql-method: send_email
       x-stackql-verb: EXEC
   /v2/email/templates/{template_name}/render:
@@ -3416,9 +3311,34 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TestRenderEmailTemplateResponse'
-      x-stackql-resource: render_email_template
+      x-stackql-resource: email_templates
       x-stackql-method: test_render_email_template
       x-stackql-verb: EXEC
+  /v2/email/update-configuration-sets:
+    post:
+      operationId: UpdateConfigurationSet
+      description: Updates an existing configuration set. This operation performs a partial update. Only the attributes that
+        you include in the request are updated; any omitted attribute is left unchanged.
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                ConfigurationSetName:
+                  $ref: '#/components/schemas/ConfigurationSetName'
+                MessageSecurityOptions:
+                  $ref: '#/components/schemas/MessageSecurityOptions'
+              required:
+              - ConfigurationSetName
+      responses:
+        '200':
+          description: Success
+      x-stackql-resource: configuration_sets
+      x-stackql-method: update_configuration_set
+      x-stackql-verb: UPDATE
   /v2/email/reputation/entities/{reputation_entity_type}/{reputation_entity_reference}/customer-managed-status:
     put:
       operationId: UpdateReputationEntityCustomerManagedStatus
@@ -3458,10 +3378,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateReputationEntityCustomerManagedStatusResponse'
       x-stackql-resource: reputation_entities
       x-stackql-method: update_reputation_entity_customer_managed_status
       x-stackql-verb: UPDATE
@@ -3500,10 +3416,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateReputationEntityPolicyResponse'
       x-stackql-resource: reputation_entities
       x-stackql-method: update_reputation_entity_policy
       x-stackql-verb: UPDATE
@@ -3552,6 +3464,16 @@ components:
       schema:
         type: string
   schemas:
+    Identity:
+      type: string
+      minLength: 1
+    EmailAddress:
+      type: string
+    CertificateArn:
+      type: string
+      minLength: 20
+      maxLength: 2048
+      pattern: arn:[\w+=/,.@-]+:[\w+=/,.@-]+:[\w+=/,.@-]*:[0-9]+:certificate/[\w+=,.@-]+
     BatchGetMetricDataQueries:
       type: array
       items:
@@ -3712,9 +3634,6 @@ components:
       description: A string that represents a job ID.
       type: string
       minLength: 1
-    CancelExportJobResponse:
-      description: An HTTP 200 response if the request succeeds, or an error message if the request fails.
-      type: object
     ConfigurationSetName:
       description: The name of a configuration set. Configuration sets are groups of rules that you can apply to the emails
         you send. You apply a configuration set to an email by including a reference to the configuration set in the headers
@@ -3975,9 +3894,45 @@ components:
       minLength: 20
       maxLength: 1011
       pattern: arn:(aws|aws-[a-z-]+):ses:[a-z]{2,4}-[a-z-]+-[0-9]:[0-9]{1,20}:mailmanager-archive/a-[a-z0-9]{24,62}
-    CreateConfigurationSetResponse:
-      description: An HTTP 200 response if the request succeeds, or an error message if the request fails.
+    MessageSecurityOptions:
+      description: An object that defines the message-level security options that apply to messages that you send using the
+        configuration set. Currently, these options determine whether Amazon SES API v2 adds an S/MIME signature to your messages
+        and, if so, the format of that signature.
       type: object
+      properties:
+        SigningScheme:
+          $ref: '#/components/schemas/SigningScheme'
+          description: The signing scheme that Amazon SES API v2 applies to messages sent with the configuration set.
+    SigningScheme:
+      description: Specifies the signing scheme to apply to messages sent with a configuration set. This is a union type,
+        so you specify exactly one of its members.
+      type: object
+      properties:
+        DefaultScheme:
+          $ref: '#/components/schemas/DefaultSigningScheme'
+          description: Use the default signing behavior. When you select this option, Amazon SES API v2 doesn't add an S/MIME
+            signature to messages sent with the configuration set.
+        SmimeScheme:
+          $ref: '#/components/schemas/SmimeSigningScheme'
+          description: Sign messages sent with the configuration set using S/MIME. For signing to apply, the email identity
+            used to send a message must have an active S/MIME certificate association.
+    DefaultSigningScheme:
+      description: Specifies the default signing scheme, in which Amazon SES API v2 doesn't apply S/MIME signing to messages
+        sent with the configuration set.
+      type: object
+    SmimeSigningScheme:
+      description: Specifies that Amazon SES API v2 signs messages sent with the configuration set using S/MIME.
+      type: object
+      properties:
+        SignatureFormat:
+          $ref: '#/components/schemas/SignatureFormat'
+          description: The format of the S/MIME signature that Amazon SES API v2 applies to messages.
+    SignatureFormat:
+      description: 'The format of the S/MIME signature that''s applied to a message. The following value is supported: DETACHED
+        – The signature is carried in a separate MIME part alongside the signed content.'
+      type: string
+      enum:
+      - DETACHED
     EventDestinationName:
       description: The name of an event destination. Events include message sends, deliveries, opens, clicks, bounces, and
         complaints. Event destinations are places that you can send information about these events to. For example, you can
@@ -4147,12 +4102,7 @@ components:
         ApplicationArn:
           $ref: '#/components/schemas/AmazonResourceName'
           description: The Amazon Resource Name (ARN) of the Amazon Pinpoint project to send email events to.
-    CreateConfigurationSetEventDestinationResponse:
-      description: An HTTP 200 response if the request succeeds, or an error message if the request fails.
-      type: object
     ContactListName:
-      type: string
-    EmailAddress:
       type: string
     TopicPreferenceList:
       type: array
@@ -4182,8 +4132,6 @@ components:
       type: boolean
     AttributesData:
       type: string
-    CreateContactResponse:
-      type: object
     Topics:
       type: array
       items:
@@ -4213,8 +4161,6 @@ components:
       type: string
     Description:
       type: string
-    CreateContactListResponse:
-      type: object
     EmailTemplateName:
       description: The name of the template. You will refer to this name when you send email using the SendEmail or SendBulkEmail
         operations.
@@ -4233,17 +4179,11 @@ components:
       description: The URL that the recipient of the verification email is sent to if his or her address is not successfully
         verified.
       type: string
-    CreateCustomVerificationEmailTemplateResponse:
-      description: If the action is successful, the service sends back an HTTP 200 response with an empty HTTP body.
-      type: object
     ScalingMode:
       type: string
       enum:
       - STANDARD
       - MANAGED
-    CreateDedicatedIpPoolResponse:
-      description: An HTTP 200 response if the request succeeds, or an error message if the request fails.
-      type: object
     ReportName:
       description: A name that helps you identify a report generated by the Deliverability dashboard.
       type: string
@@ -4534,9 +4474,6 @@ components:
       enum:
       - IN_PROGRESS
       - COMPLETED
-    Identity:
-      type: string
-      minLength: 1
     DkimSigningAttributes:
       description: An object that contains configuration for Bring Your Own DKIM (BYODKIM), or, for Easy DKIM
       type: object
@@ -4805,12 +4742,6 @@ components:
         of sending authorization policies, see the Amazon SES Developer Guide.
       type: string
       minLength: 1
-    CreateEmailIdentityPolicyResponse:
-      description: An HTTP 200 response if the request succeeds, or an error message if the request fails.
-      type: object
-    CreateEmailTemplateResponse:
-      description: If the action is successful, the service sends back an HTTP 200 response with an empty HTTP body.
-      type: object
     ExportDataSource:
       description: An object that contains details about the data source of the export job. It can only contain one of MetricsDataSource
         or MessageInsightsDataSource object.
@@ -4884,7 +4815,8 @@ components:
           description: Filters for results to be excluded from the export file.
         MaxResults:
           $ref: '#/components/schemas/MessageInsightsExportMaxResults'
-          description: The maximum number of results.
+          description: The maximum number of results. If you don't specify MaxResults, the export returns a maximum of 1,000
+            results.
       required:
       - StartDate
       - EndDate
@@ -4909,6 +4841,9 @@ components:
         Isp:
           $ref: '#/components/schemas/IspFilterList'
           description: The recipient's ISP (e.g., Gmail, Yahoo, etc.).
+        TenantName:
+          $ref: '#/components/schemas/TenantNameFilterList'
+          description: The name of the tenant used when sending the message.
         LastDeliveryEvent:
           $ref: '#/components/schemas/LastDeliveryEventList'
           description: 'The last delivery-related event for the email, where the ordering is as follows: SEND < BOUNCE < DELIVERY
@@ -4939,6 +4874,15 @@ components:
         $ref: '#/components/schemas/Isp'
     Isp:
       type: string
+    TenantNameFilterList:
+      type: array
+      items:
+        $ref: '#/components/schemas/TenantName'
+    TenantName:
+      description: The name of a tenant. The name can contain up to 64 alphanumeric characters, including letters, numbers,
+        hyphens (-) and underscores (_) only.
+      type: string
+      minLength: 1
     LastDeliveryEventList:
       type: array
       items:
@@ -5135,11 +5079,6 @@ components:
     EndpointId:
       description: The ID of the multi-region endpoint (global-endpoint).
       type: string
-    TenantName:
-      description: The name of a tenant. The name can contain up to 64 alphanumeric characters, including letters, numbers,
-        hyphens (-) and underscores (_) only.
-      type: string
-      minLength: 1
     TenantSuppressionAttributes:
       description: An object that contains the suppression list preferences for a tenant.
       type: object
@@ -5190,34 +5129,6 @@ components:
       - ENABLED
       - REINSTATED
       - DISABLED
-    CreateTenantResourceAssociationResponse:
-      description: If the action is successful, the service sends back an HTTP 200 response with an empty HTTP body.
-      type: object
-    DeleteConfigurationSetResponse:
-      description: An HTTP 200 response if the request succeeds, or an error message if the request fails.
-      type: object
-    DeleteConfigurationSetEventDestinationResponse:
-      description: An HTTP 200 response if the request succeeds, or an error message if the request fails.
-      type: object
-    DeleteContactResponse:
-      type: object
-    DeleteContactListResponse:
-      type: object
-    DeleteCustomVerificationEmailTemplateResponse:
-      description: If the action is successful, the service sends back an HTTP 200 response with an empty HTTP body.
-      type: object
-    DeleteDedicatedIpPoolResponse:
-      description: An HTTP 200 response if the request succeeds, or an error message if the request fails.
-      type: object
-    DeleteEmailIdentityResponse:
-      description: An HTTP 200 response if the request succeeds, or an error message if the request fails.
-      type: object
-    DeleteEmailIdentityPolicyResponse:
-      description: An HTTP 200 response if the request succeeds, or an error message if the request fails.
-      type: object
-    DeleteEmailTemplateResponse:
-      description: If the action is successful, the service sends back an HTTP 200 response with an empty HTTP body.
-      type: object
     DeleteMultiRegionEndpointResponse:
       description: An HTTP 200 response if the request succeeds, or an error message if the request fails.
       type: object
@@ -5227,15 +5138,6 @@ components:
           description: A status of the multi-region endpoint (global-endpoint) right after the delete request. CREATING –
             The resource is being provisioned. READY – The resource is ready to use. FAILED – The resource failed to be provisioned.
             DELETING – The resource is being deleted as requested.
-    DeleteSuppressedDestinationResponse:
-      description: An HTTP 200 response if the request succeeds, or an error message if the request fails.
-      type: object
-    DeleteTenantResponse:
-      description: If the action is successful, the service sends back an HTTP 200 response with an empty HTTP body.
-      type: object
-    DeleteTenantResourceAssociationResponse:
-      description: If the action is successful, the service sends back an HTTP 200 response with an empty HTTP body.
-      type: object
     GetAccountResponse:
       description: A list of details about the email-sending capabilities of your Amazon SES account in the current Amazon
         Web Services Region.
@@ -5445,7 +5347,7 @@ components:
             delivery for your account.'
     PricingAttributes:
       description: The pricing attributes that apply to your Amazon SES account, including the currently active pricing plan
-        and any scheduled change for the next billing cycle.
+        and any scheduled change.
       type: object
       properties:
         CurrentPlan:
@@ -5453,7 +5355,7 @@ components:
           description: The pricing plan that is currently active on your Amazon SES account.
         NextPlan:
           $ref: '#/components/schemas/PricingPlan'
-          description: The pricing plan that will become active at the start of the next billing cycle, if a scheduled change
+          description: The pricing plan that will become active at the start of the next monthly cycle, if a scheduled change
             has been requested. This field is empty when no scheduled change is pending.
     PricingPlan:
       description: Identifies an Amazon SES pricing plan. See PutAccountPricingAttributesRequest$Plan for the list of supported
@@ -5520,6 +5422,10 @@ components:
           $ref: '#/components/schemas/ArchivingOptions'
           description: An object that defines the MailManager archive where sent emails are archived that you send using the
             configuration set.
+        MessageSecurityOptions:
+          $ref: '#/components/schemas/MessageSecurityOptions'
+          description: The message security options that are applied to the configuration set, such as the signing scheme
+            used for messages that you send with the configuration set.
     GetConfigurationSetEventDestinationsResponse:
       description: Information about an event destination for a configuration set.
       type: object
@@ -7048,6 +6954,53 @@ components:
             process completed successfully. FAILED – The verification process failed. TEMPORARY_FAILURE – A temporary issue
             is preventing Amazon SES from determining the verification status of the identity. NOT_STARTED – The verification
             process hasn''t been initiated for the identity.'
+    ListEmailIdentityCertificatesResponse:
+      description: Information about the S/MIME certificates that are associated with an email identity.
+      type: object
+      properties:
+        Certificates:
+          $ref: '#/components/schemas/IdentityCertificateList'
+          description: An array that contains the certificate associations for the email identity. Each entry includes the
+            from address, the certificate's status, its Amazon Resource Name (ARN), and its expiry time.
+        NextToken:
+          $ref: '#/components/schemas/NextToken'
+          description: A token that indicates that there are additional certificates to list. To view additional certificates,
+            issue another request to ListEmailIdentityCertificates, and pass this token in the NextToken parameter.
+    IdentityCertificateList:
+      type: array
+      items:
+        $ref: '#/components/schemas/IdentityCertificate'
+    IdentityCertificate:
+      description: An object that contains information about an S/MIME certificate that's associated with an email identity.
+      type: object
+      properties:
+        FromAddress:
+          $ref: '#/components/schemas/EmailAddress'
+          description: The email address that the certificate applies to.
+        Status:
+          $ref: '#/components/schemas/IdentityCertificateStatus'
+          description: The status of the certificate association. A status of ACTIVE indicates that the certificate is ready
+            to use for signing.
+        CertificateArn:
+          $ref: '#/components/schemas/CertificateArn'
+          description: The Amazon Resource Name (ARN) of the Certificate Manager (ACM) certificate that's associated with
+            the email identity.
+        CertificateExpiryTime:
+          $ref: '#/components/schemas/Timestamp'
+          description: The timestamp after which the certificate is no longer valid.
+    IdentityCertificateStatus:
+      description: 'The status of an S/MIME certificate that''s associated with an email identity. The status can be one of
+        the following values: PROVISIONING – The certificate association was created and the certificate is being prepared
+        for use. ACTIVE – The certificate is ready to use for signing. INACTIVE – The certificate is no longer used for signing.
+        DEPROVISIONING – The certificate association is being cleaned up. FAILED – The certificate couldn''t be prepared for
+        use, or the certificate has expired.'
+      type: string
+      enum:
+      - PROVISIONING
+      - INACTIVE
+      - DEPROVISIONING
+      - ACTIVE
+      - FAILED
     ListEmailTemplatesResponse:
       description: The following elements are returned by the service.
       type: object
@@ -7434,67 +7387,11 @@ components:
         CreatedTimestamp:
           $ref: '#/components/schemas/Timestamp'
           description: The date and time when the tenant was created.
-    PutAccountDedicatedIpWarmupAttributesResponse:
-      description: An HTTP 200 response if the request succeeds, or an error message if the request fails.
-      type: object
     EnabledWrapper:
       type: boolean
-    PutAccountDetailsResponse:
-      description: An HTTP 200 response if the request succeeds, or an error message if the request fails.
-      type: object
-    PutAccountPricingAttributesResponse:
-      description: An HTTP 200 response if the request succeeds, or an error response if the request fails.
-      type: object
-    PutAccountSendingAttributesResponse:
-      description: An HTTP 200 response if the request succeeds, or an error message if the request fails.
-      type: object
-    PutAccountSuppressionAttributesResponse:
-      description: An HTTP 200 response if the request succeeds, or an error message if the request fails.
-      type: object
-    PutAccountVdmAttributesResponse:
-      type: object
-    PutConfigurationSetArchivingOptionsResponse:
-      description: An HTTP 200 response if the request succeeds, or an error message if the request fails.
-      type: object
     SendingPoolName:
       description: The name of the dedicated IP pool to associate with the configuration set.
       type: string
-    PutConfigurationSetDeliveryOptionsResponse:
-      description: An HTTP 200 response if the request succeeds, or an error message if the request fails.
-      type: object
-    PutConfigurationSetReputationOptionsResponse:
-      description: An HTTP 200 response if the request succeeds, or an error message if the request fails.
-      type: object
-    PutConfigurationSetSendingOptionsResponse:
-      description: An HTTP 200 response if the request succeeds, or an error message if the request fails.
-      type: object
-    PutConfigurationSetSuppressionOptionsResponse:
-      description: An HTTP 200 response if the request succeeds, or an error message if the request fails.
-      type: object
-    PutConfigurationSetTrackingOptionsResponse:
-      description: An HTTP 200 response if the request succeeds, or an error message if the request fails.
-      type: object
-    PutConfigurationSetVdmOptionsResponse:
-      description: An HTTP 200 response if the request succeeds, or an error message if the request fails.
-      type: object
-    PutDedicatedIpInPoolResponse:
-      description: An HTTP 200 response if the request succeeds, or an error message if the request fails.
-      type: object
-    PutDedicatedIpPoolScalingAttributesResponse:
-      description: An HTTP 200 response if the request succeeds, or an error message if the request fails.
-      type: object
-    PutDedicatedIpWarmupAttributesResponse:
-      description: An HTTP 200 response if the request succeeds, or an error message if the request fails.
-      type: object
-    PutDeliverabilityDashboardOptionResponse:
-      description: A response that indicates whether the Deliverability dashboard is enabled.
-      type: object
-    PutEmailIdentityConfigurationSetAttributesResponse:
-      description: If the action is successful, the service sends back an HTTP 200 response with an empty HTTP body.
-      type: object
-    PutEmailIdentityDkimAttributesResponse:
-      description: An HTTP 200 response if the request succeeds, or an error message if the request fails.
-      type: object
     PutEmailIdentityDkimSigningAttributesResponse:
       description: If the action is successful, the service sends back an HTTP 200 response. The following data is returned
         in JSON format by the service.
@@ -7529,18 +7426,6 @@ components:
             authentication. When configuring DKIM for your domain, create CNAME records in your DNS that point to the selectors
             in this hosted zone. For example: selector1._domainkey.yourdomain.com CNAME selector1.`<SigningHostedZone>` selector2._domainkey.yourdomain.com
             CNAME selector2.`<SigningHostedZone>` selector3._domainkey.yourdomain.com CNAME selector3.`<SigningHostedZone>`'
-    PutEmailIdentityFeedbackAttributesResponse:
-      description: An HTTP 200 response if the request succeeds, or an error message if the request fails.
-      type: object
-    PutEmailIdentityMailFromAttributesResponse:
-      description: An HTTP 200 response if the request succeeds, or an error message if the request fails.
-      type: object
-    PutSuppressedDestinationResponse:
-      description: An HTTP 200 response if the request succeeds, or an error message if the request fails.
-      type: object
-    PutTenantSuppressionAttributesResponse:
-      description: If the action is successful, the service sends back an HTTP 200 response with an empty HTTP body.
-      type: object
     EmailAddressList:
       type: array
       items:
@@ -7617,6 +7502,47 @@ components:
           $ref: '#/components/schemas/EmailTemplateData'
           description: A list of replacement values to apply to the template. This parameter is a JSON object, typically consisting
             of key-value pairs in which the keys correspond to replacement tags in the email template.
+    ConfigurationOverrides:
+      description: An object that overrides settings for a single email sending request. An override applies only to the message
+        or messages in the request that contains it. It doesn't change your account-level settings, and it doesn't change
+        the configuration set that the request uses. A setting that you don't override keeps the value that would otherwise
+        apply to the message. Depending on the setting, that value comes from the configuration set that the message uses,
+        from your account-level settings, or from the Amazon SES default.
+      type: object
+      properties:
+        Tracking:
+          $ref: '#/components/schemas/TrackingConfigurationOverrides'
+          description: An object that overrides the open and click tracking settings that would otherwise apply to the message.
+    TrackingConfigurationOverrides:
+      description: An object that overrides, for a single email sending request, the engagement tracking settings that would
+        otherwise apply. Use these overrides to turn open tracking or click tracking on or off for an individual message,
+        for example to suppress tracking in a transactional message that you send from an account or a configuration set that
+        has tracking enabled. Without an override, engagement tracking is determined by your account-level EngagementMetrics
+        setting, which you configure using the PutAccountVdmAttributes operation, by the EngagementMetrics setting of the
+        configuration set that the message uses, which you configure using the PutConfigurationSetVdmOptions operation, and
+        by whether that configuration set has an event destination whose MatchingEventTypes include the OPEN or CLICK event
+        types. For more information about tracking open and click events, see the Amazon SES Developer Guide.
+      type: object
+      properties:
+        OpenTrackingEnabled:
+          $ref: '#/components/schemas/FeatureStatus'
+          description: 'Specifies whether Amazon SES tracks when the recipient opens this message. Can be one of the following:
+            ENABLED – Amazon SES tracks opens for this message, even when your account-level and configuration set settings
+            don''t enable open tracking. DISABLED – Amazon SES doesn''t track opens for this message, even when your account-level
+            or configuration set settings enable open tracking. Amazon SES doesn''t add the tracking image to the message.
+            If you don''t specify this value, Amazon SES uses the open tracking setting that would otherwise apply to the
+            message.'
+        ClickTrackingEnabled:
+          $ref: '#/components/schemas/FeatureStatus'
+          description: 'Specifies whether Amazon SES tracks when the recipient clicks a link in this message. Can be one of
+            the following: ENABLED – Amazon SES tracks clicks for this message, even when your account-level and configuration
+            set settings don''t enable click tracking. DISABLED – Amazon SES doesn''t track clicks for this message, even
+            when your account-level or configuration set settings enable click tracking. Amazon SES doesn''t rewrite the links
+            in the message. If you don''t specify this value, Amazon SES uses the click tracking setting that would otherwise
+            apply to the message. Enabling open or click tracking with an override doesn''t create an event destination. Amazon
+            SES records the resulting open and click events in VDM, where you can review them using VDM metrics and Message
+            Insights. To also receive these events at a destination that you own, the configuration set that the message uses
+            must have an event destination that publishes open and click events.'
     SendBulkEmailResponse:
       description: The following data is returned in JSON format by the service.
       type: object
@@ -7706,8 +7632,6 @@ components:
             Amazon SES to accept a message without sending it. For example, this can happen when the message that you're trying
             to send has an attachment that contains a virus, or when you send a templated email that contains invalid personalization
             content.
-    TagResourceResponse:
-      type: object
     TestRenderEmailTemplateResponse:
       description: The following element is returned by the service.
       type: object
@@ -7726,27 +7650,3 @@ components:
       type: array
       items:
         $ref: '#/components/schemas/TagKey'
-    UntagResourceResponse:
-      type: object
-    UpdateConfigurationSetEventDestinationResponse:
-      description: An HTTP 200 response if the request succeeds, or an error message if the request fails.
-      type: object
-    UpdateContactResponse:
-      type: object
-    UpdateContactListResponse:
-      type: object
-    UpdateCustomVerificationEmailTemplateResponse:
-      description: If the action is successful, the service sends back an HTTP 200 response with an empty HTTP body.
-      type: object
-    UpdateEmailIdentityPolicyResponse:
-      description: An HTTP 200 response if the request succeeds, or an error message if the request fails.
-      type: object
-    UpdateEmailTemplateResponse:
-      description: If the action is successful, the service sends back an HTTP 200 response with an empty HTTP body.
-      type: object
-    UpdateReputationEntityCustomerManagedStatusResponse:
-      description: If the action is successful, the service sends back an HTTP 200 response with an empty HTTP body.
-      type: object
-    UpdateReputationEntityPolicyResponse:
-      description: If the action is successful, the service sends back an HTTP 200 response with an empty HTTP body.
-      type: object

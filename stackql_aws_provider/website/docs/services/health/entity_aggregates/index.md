@@ -33,11 +33,31 @@ Creates, updates, deletes, gets or lists an <code>entity_aggregates</code> resou
 The following fields are returned by `SELECT` queries:
 
 <Tabs
-    defaultValue="describe_entity_aggregates"
+    defaultValue="describe_entity_aggregates_for_organization"
     values={[
+        { label: 'describe_entity_aggregates_for_organization', value: 'describe_entity_aggregates_for_organization' },
         { label: 'describe_entity_aggregates', value: 'describe_entity_aggregates' }
     ]}
 >
+<TabItem value="describe_entity_aggregates_for_organization">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="organization_entity_aggregates" /></td>
+    <td><code>array</code></td>
+    <td>The list of entity aggregates for each of the specified accounts that are affected by each of the specified events.</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
 <TabItem value="describe_entity_aggregates">
 
 <table>
@@ -75,6 +95,13 @@ The following methods are available for this resource:
 </thead>
 <tbody>
 <tr>
+    <td><a href="#describe_entity_aggregates_for_organization"><CopyableCode code="describe_entity_aggregates_for_organization" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Returns a list of entity aggregates for your Organizations that are affected by each of the specified events.</td>
+</tr>
+<tr>
     <td><a href="#describe_entity_aggregates"><CopyableCode code="describe_entity_aggregates" /></a></td>
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
@@ -108,11 +135,24 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 ## `SELECT` examples
 
 <Tabs
-    defaultValue="describe_entity_aggregates"
+    defaultValue="describe_entity_aggregates_for_organization"
     values={[
+        { label: 'describe_entity_aggregates_for_organization', value: 'describe_entity_aggregates_for_organization' },
         { label: 'describe_entity_aggregates', value: 'describe_entity_aggregates' }
     ]}
 >
+<TabItem value="describe_entity_aggregates_for_organization">
+
+Returns a list of entity aggregates for your Organizations that are affected by each of the specified events.
+
+```sql
+SELECT
+organization_entity_aggregates
+FROM aws.health.entity_aggregates
+WHERE region = '{{ region }}' -- required
+;
+```
+</TabItem>
 <TabItem value="describe_entity_aggregates">
 
 Returns the number of entities that are affected by each of the specified events.

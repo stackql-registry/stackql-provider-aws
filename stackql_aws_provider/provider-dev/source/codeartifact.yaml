@@ -1554,7 +1554,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListAllowedRepositoriesForGroupOutputDisplay'
-      x-stackql-resource: allowed_repositories_for_groups
+      x-stackql-resource: allowed_repositories
       x-stackql-method: list_allowed_repositories_for_group
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: ListAllowedRepositoriesForGroupOutputDisplay
@@ -2311,7 +2311,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PublishPackageVersionResult'
-      x-stackql-resource: packages
+      x-stackql-resource: package_versions
       x-stackql-method: publish_package_version
       x-stackql-verb: EXEC
   /v1/tag:
@@ -2339,10 +2339,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceResult'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -2371,10 +2367,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceResult'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -3763,14 +3755,10 @@ components:
         policy:
           $ref: '#/components/schemas/ResourcePolicy'
           description: The resource policy that was set after processing the request.
-    TagResourceResult:
-      type: object
     TagKeyList:
       type: array
       items:
         $ref: '#/components/schemas/TagKey'
-    UntagResourceResult:
-      type: object
     UpdatePackageGroupResult:
       type: object
       properties:

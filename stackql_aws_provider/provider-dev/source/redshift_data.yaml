@@ -127,7 +127,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchExecuteStatementOutput'
-      x-stackql-resource: batch_execute_statement
+      x-stackql-resource: statements
       x-stackql-method: batch_execute_statement
       x-stackql-verb: EXEC
   /CancelStatement:
@@ -167,7 +167,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CancelStatementResponse'
-      x-stackql-resource: statement
+      x-stackql-resource: statements
       x-stackql-method: cancel_statement
       x-stackql-verb: EXEC
   /DescribeStatement:
@@ -409,7 +409,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ExecuteStatementOutput'
-      x-stackql-resource: execute_statement
+      x-stackql-resource: statements
       x-stackql-method: execute_statement
       x-stackql-verb: EXEC
   /GetStatementResult:
@@ -524,7 +524,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetStatementResultV2Response'
-      x-stackql-resource: statement_result_v2s
+      x-stackql-resource: statement_results_v2
       x-stackql-method: get_statement_result_v2
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Records

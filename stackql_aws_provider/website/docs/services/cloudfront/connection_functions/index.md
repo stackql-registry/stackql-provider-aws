@@ -176,6 +176,20 @@ The following methods are available for this resource:
     <td><a href="#parameter-Stage"><code>Stage</code></a></td>
     <td>Gets a connection function.</td>
 </tr>
+<tr>
+    <td><a href="#publish_connection_function"><CopyableCode code="publish_connection_function" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-id"><code>id</code></a>, <a href="#parameter-If-Match"><code>If-Match</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Publishes a connection function.</td>
+</tr>
+<tr>
+    <td><a href="#test_connection_function"><CopyableCode code="test_connection_function" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-id"><code>id</code></a>, <a href="#parameter-If-Match"><code>If-Match</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-ConnectionObject"><code>ConnectionObject</code></a></td>
+    <td></td>
+    <td>Tests a connection function.</td>
+</tr>
 </tbody>
 </table>
 
@@ -195,12 +209,12 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-If-Match">
     <td><CopyableCode code="If-Match" /></td>
     <td><code>string</code></td>
-    <td>The current version (ETag value) of the connection function you are deleting.</td>
+    <td>The current version (ETag value) of the connection function.</td>
 </tr>
 <tr id="parameter-id">
     <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
-    <td>The connection function's ID.</td>
+    <td>The connection function ID.</td>
 </tr>
 <tr id="parameter-identifier">
     <td><CopyableCode code="identifier" /></td>
@@ -394,7 +408,9 @@ AND region = '{{ region }}' --required
 <Tabs
     defaultValue="get_connection_function"
     values={[
-        { label: 'get_connection_function', value: 'get_connection_function' }
+        { label: 'get_connection_function', value: 'get_connection_function' },
+        { label: 'publish_connection_function', value: 'publish_connection_function' },
+        { label: 'test_connection_function', value: 'test_connection_function' }
     ]}
 >
 <TabItem value="get_connection_function">
@@ -406,6 +422,35 @@ EXEC aws.cloudfront.connection_functions.get_connection_function
 @identifier='{{ identifier }}' --required, 
 @region='{{ region }}' --required, 
 @Stage='{{ Stage }}'
+;
+```
+</TabItem>
+<TabItem value="publish_connection_function">
+
+Publishes a connection function.
+
+```sql
+EXEC aws.cloudfront.connection_functions.publish_connection_function 
+@id='{{ id }}' --required, 
+@If-Match='{{ If-Match }}' --required, 
+@region='{{ region }}' --required
+;
+```
+</TabItem>
+<TabItem value="test_connection_function">
+
+Tests a connection function.
+
+```sql
+EXEC aws.cloudfront.connection_functions.test_connection_function 
+@id='{{ id }}' --required, 
+@If-Match='{{ If-Match }}' --required, 
+@region='{{ region }}' --required 
+@@json=
+'{
+"Stage": "{{ Stage }}", 
+"ConnectionObject": "{{ ConnectionObject }}"
+}'
 ;
 ```
 </TabItem>

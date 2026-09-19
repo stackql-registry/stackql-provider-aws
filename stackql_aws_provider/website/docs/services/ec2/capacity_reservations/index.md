@@ -204,6 +204,11 @@ The following fields are returned by `SELECT` queries:
     <td><code>string</code></td>
     <td>The ID of the Amazon Web Services account to which billing of the unused capacity of the Capacity Reservation is assigned.</td>
 </tr>
+<tr>
+    <td><CopyableCode code="zero_size_preference" /></td>
+    <td><code>string</code></td>
+    <td>The zero-size preference configured for the interruptible Capacity Reservation. A value of retain keeps the interruptible Capacity Reservation active at zero capacity when you reduce its allocation to zero. A value of default cancels the interruptible Capacity Reservation when you reduce its allocation to zero.</td>
+</tr>
 </tbody>
 </table>
 </TabItem>
@@ -249,7 +254,7 @@ The following methods are available for this resource:
     <td><a href="#create_interruptible_capacity_reservation_allocation"><CopyableCode code="create_interruptible_capacity_reservation_allocation" /></a></td>
     <td><CopyableCode code="insert" /></td>
     <td><a href="#parameter-CapacityReservationId"><code>CapacityReservationId</code></a>, <a href="#parameter-InstanceCount"><code>InstanceCount</code></a>, <a href="#parameter-region"><code>region</code></a></td>
-    <td><a href="#parameter-ClientToken"><code>ClientToken</code></a>, <a href="#parameter-DryRun"><code>DryRun</code></a>, <a href="#parameter-TagSpecification"><code>TagSpecification</code></a></td>
+    <td><a href="#parameter-ClientToken"><code>ClientToken</code></a>, <a href="#parameter-DryRun"><code>DryRun</code></a>, <a href="#parameter-TagSpecification"><code>TagSpecification</code></a>, <a href="#parameter-ZeroSizePreference"><code>ZeroSizePreference</code></a></td>
     <td>Creates an interruptible Capacity Reservation by specifying the number of unused instances you want to allocate from your source reservation. This helps you make unused capacity available for other workloads within your account while maintaining control to reclaim it.</td>
 </tr>
 <tr>
@@ -258,13 +263,6 @@ The following methods are available for this resource:
     <td><a href="#parameter-CapacityReservationId"><code>CapacityReservationId</code></a>, <a href="#parameter-UnusedReservationBillingOwnerId"><code>UnusedReservationBillingOwnerId</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td><a href="#parameter-DryRun"><code>DryRun</code></a></td>
     <td>Initiates a request to assign billing of the unused capacity of a shared Capacity Reservation to a consumer account that is consolidated under the same Amazon Web Services organizations payer account. For more information, see Billing assignment for shared Amazon EC2 Capacity Reservations.</td>
-</tr>
-<tr>
-    <td><a href="#update_interruptible_capacity_reservation_allocation"><CopyableCode code="update_interruptible_capacity_reservation_allocation" /></a></td>
-    <td><CopyableCode code="update" /></td>
-    <td><a href="#parameter-CapacityReservationId"><code>CapacityReservationId</code></a>, <a href="#parameter-TargetInstanceCount"><code>TargetInstanceCount</code></a>, <a href="#parameter-region"><code>region</code></a></td>
-    <td><a href="#parameter-DryRun"><code>DryRun</code></a></td>
-    <td>Modifies the number of instances allocated to an interruptible reservation, allowing you to add more capacity or reclaim capacity to your source Capacity Reservation.</td>
 </tr>
 <tr>
     <td><a href="#modify_capacity_reservation"><CopyableCode code="modify_capacity_reservation" /></a></td>
@@ -301,6 +299,13 @@ The following methods are available for this resource:
     <td><a href="#parameter-DryRun"><code>DryRun</code></a></td>
     <td>Rejects a request to assign billing of the available capacity of a shared Capacity Reservation to your account. For more information, see Billing assignment for shared Amazon EC2 Capacity Reservations.</td>
 </tr>
+<tr>
+    <td><a href="#update_interruptible_capacity_reservation_allocation"><CopyableCode code="update_interruptible_capacity_reservation_allocation" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-CapacityReservationId"><code>CapacityReservationId</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td><a href="#parameter-TargetInstanceCount"><code>TargetInstanceCount</code></a>, <a href="#parameter-DryRun"><code>DryRun</code></a>, <a href="#parameter-ZeroSizePreference"><code>ZeroSizePreference</code></a></td>
+    <td>Modifies the number of instances allocated to an interruptible reservation, allowing you to add more capacity or reclaim capacity to your source Capacity Reservation.</td>
+</tr>
 </tbody>
 </table>
 
@@ -320,7 +325,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-CapacityReservationId">
     <td><CopyableCode code="CapacityReservationId" /></td>
     <td><code>string</code></td>
-    <td>The ID of the Capacity Reservation for which to reject the request.</td>
+    <td>The ID of the source Capacity Reservation containing the interruptible allocation to modify.</td>
 </tr>
 <tr id="parameter-InstanceCount">
     <td><CopyableCode code="InstanceCount" /></td>
@@ -341,11 +346,6 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     <td><CopyableCode code="SourceCapacityReservationId" /></td>
     <td><code>string</code></td>
     <td>The ID of the Capacity Reservation from which you want to split the capacity.</td>
-</tr>
-<tr id="parameter-TargetInstanceCount">
-    <td><CopyableCode code="TargetInstanceCount" /></td>
-    <td><code>integer</code></td>
-    <td>The new number of instances to allocate. Enter a higher number to add more capacity to share, or a lower number to reclaim capacity to your source Capacity Reservation.</td>
 </tr>
 <tr id="parameter-UnusedReservationBillingOwnerId">
     <td><CopyableCode code="UnusedReservationBillingOwnerId" /></td>
@@ -405,7 +405,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-DryRun">
     <td><CopyableCode code="DryRun" /></td>
     <td><code>boolean</code></td>
-    <td>Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is DryRunOperation. Otherwise, it is UnauthorizedOperation.</td>
+    <td>Checks whether you have the required permissions for the action, without actually making the request, and provides an error response.</td>
 </tr>
 <tr id="parameter-EbsOptimized">
     <td><CopyableCode code="EbsOptimized" /></td>
@@ -482,10 +482,20 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     <td><code>array</code></td>
     <td>The tags to apply to the Capacity Reservation during launch.</td>
 </tr>
+<tr id="parameter-TargetInstanceCount">
+    <td><CopyableCode code="TargetInstanceCount" /></td>
+    <td><code>integer</code></td>
+    <td>The new number of instances to allocate. Enter a higher number to add more capacity to share, or a lower number to reclaim capacity to your source Capacity Reservation.</td>
+</tr>
 <tr id="parameter-Tenancy">
     <td><CopyableCode code="Tenancy" /></td>
     <td><code>string</code></td>
     <td>Indicates the tenancy of the Capacity Reservation. A Capacity Reservation can have one of the following tenancy settings: default - The Capacity Reservation is created on hardware that is shared with other Amazon Web Services accounts. dedicated - The Capacity Reservation is created on single-tenant hardware that is dedicated to a single Amazon Web Services account.</td>
+</tr>
+<tr id="parameter-ZeroSizePreference">
+    <td><CopyableCode code="ZeroSizePreference" /></td>
+    <td><code>string</code></td>
+    <td>Specifies the updated behavior for the interruptible Capacity Reservation when you reduce its allocation to zero instances. Specify retain to keep the interruptible Capacity Reservation active at zero capacity so that you can allocate instances to it again later. Specify default to cancel the interruptible Capacity Reservation and return the capacity to your source Capacity Reservation.</td>
 </tr>
 </tbody>
 </table>
@@ -534,7 +544,8 @@ state,
 tags,
 tenancy,
 total_instance_count,
-unused_reservation_billing_owner_id
+unused_reservation_billing_owner_id,
+zero_size_preference
 FROM aws.ec2.capacity_reservations
 WHERE region = '{{ region }}' -- required
 AND CapacityReservationId = '{{ CapacityReservationId }}'
@@ -638,7 +649,8 @@ state,
 tags,
 tenancy,
 total_instance_count,
-unused_reservation_billing_owner_id
+unused_reservation_billing_owner_id,
+zero_size_preference
 ;
 ```
 </TabItem>
@@ -680,7 +692,8 @@ InstanceCount,
 region,
 ClientToken,
 DryRun,
-TagSpecification
+TagSpecification,
+ZeroSizePreference
 )
 SELECT 
 '{{ CapacityReservationId }}',
@@ -688,7 +701,8 @@ SELECT
 '{{ region }}',
 '{{ ClientToken }}',
 '{{ DryRun }}',
-'{{ TagSpecification }}'
+'{{ TagSpecification }}',
+'{{ ZeroSizePreference }}'
 RETURNING
 interruption_type,
 source_capacity_reservation_id,
@@ -788,6 +802,10 @@ target_instance_count
       value: "{{ TagSpecification }}"
       description: The tags to apply to the new Capacity Reservation.
       description: The tags to apply to the new Capacity Reservation.
+    - name: ZeroSizePreference
+      value: "{{ ZeroSizePreference }}"
+      description: Specifies the behavior for the interruptible Capacity Reservation when you reduce its allocation to zero instances. Specify retain to keep the interruptible Capacity Reservation active at zero capacity so that you can allocate instances to it again later. Specify default to cancel the interruptible Capacity Reservation and return the capacity to your source Capacity Reservation. The default value is default.
+      description: Specifies the behavior for the interruptible Capacity Reservation when you reduce its allocation to zero instances. Specify retain to keep the interruptible Capacity Reservation active at zero capacity so that you can allocate instances to it again later. Specify default to cancel the interruptible Capacity Reservation and return the capacity to your source Capacity Reservation. The default value is default.
 `}</CodeBlock>
 
 </TabItem>
@@ -800,7 +818,6 @@ target_instance_count
     defaultValue="associate_capacity_reservation_billing_owner"
     values={[
         { label: 'associate_capacity_reservation_billing_owner', value: 'associate_capacity_reservation_billing_owner' },
-        { label: 'update_interruptible_capacity_reservation_allocation', value: 'update_interruptible_capacity_reservation_allocation' },
         { label: 'modify_capacity_reservation', value: 'modify_capacity_reservation' }
     ]}
 >
@@ -819,28 +836,6 @@ AND region = '{{ region }}' --required
 AND DryRun = {{ DryRun}}
 RETURNING
 return;
-```
-</TabItem>
-<TabItem value="update_interruptible_capacity_reservation_allocation">
-
-Modifies the number of instances allocated to an interruptible reservation, allowing you to add more capacity or reclaim capacity to your source Capacity Reservation.
-
-```sql
-UPDATE aws.ec2.capacity_reservations
-SET 
--- No updatable properties
-WHERE 
-CapacityReservationId = '{{ CapacityReservationId }}' --required
-AND TargetInstanceCount = '{{ TargetInstanceCount }}' --required
-AND region = '{{ region }}' --required
-AND DryRun = {{ DryRun}}
-RETURNING
-instance_count,
-interruptible_capacity_reservation_id,
-interruption_type,
-source_capacity_reservation_id,
-status,
-target_instance_count;
 ```
 </TabItem>
 <TabItem value="modify_capacity_reservation">
@@ -876,7 +871,8 @@ return;
         { label: 'accept_capacity_reservation_billing_ownership', value: 'accept_capacity_reservation_billing_ownership' },
         { label: 'cancel_capacity_reservation', value: 'cancel_capacity_reservation' },
         { label: 'disassociate_capacity_reservation_billing_owner', value: 'disassociate_capacity_reservation_billing_owner' },
-        { label: 'reject_capacity_reservation_billing_ownership', value: 'reject_capacity_reservation_billing_ownership' }
+        { label: 'reject_capacity_reservation_billing_ownership', value: 'reject_capacity_reservation_billing_ownership' },
+        { label: 'update_interruptible_capacity_reservation_allocation', value: 'update_interruptible_capacity_reservation_allocation' }
     ]}
 >
 <TabItem value="accept_capacity_reservation_billing_ownership">
@@ -927,6 +923,20 @@ EXEC aws.ec2.capacity_reservations.reject_capacity_reservation_billing_ownership
 @CapacityReservationId='{{ CapacityReservationId }}' --required, 
 @region='{{ region }}' --required, 
 @DryRun={{ DryRun }}
+;
+```
+</TabItem>
+<TabItem value="update_interruptible_capacity_reservation_allocation">
+
+Modifies the number of instances allocated to an interruptible reservation, allowing you to add more capacity or reclaim capacity to your source Capacity Reservation.
+
+```sql
+EXEC aws.ec2.capacity_reservations.update_interruptible_capacity_reservation_allocation 
+@CapacityReservationId='{{ CapacityReservationId }}' --required, 
+@region='{{ region }}' --required, 
+@TargetInstanceCount='{{ TargetInstanceCount }}', 
+@DryRun={{ DryRun }}, 
+@ZeroSizePreference='{{ ZeroSizePreference }}'
 ;
 ```
 </TabItem>

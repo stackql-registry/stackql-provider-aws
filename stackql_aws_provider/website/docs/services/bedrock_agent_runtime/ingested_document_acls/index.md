@@ -86,6 +86,13 @@ The following methods are available for this resource:
     <td></td>
     <td>Retrieves the ingested access control list (ACL) for a specific document in a knowledge base. Use this operation to inspect the allow and deny lists that were ingested for a document to troubleshoot access control issues. To use this operation, you must have the bedrock:GetIngestedDocumentAcl permission.</td>
 </tr>
+<tr>
+    <td><a href="#check_ingested_document_acl"><CopyableCode code="check_ingested_document_acl" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-data_source_id"><code>data_source_id</code></a>, <a href="#parameter-knowledge_base_id"><code>knowledge_base_id</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-documentId"><code>documentId</code></a>, <a href="#parameter-userContext"><code>userContext</code></a></td>
+    <td></td>
+    <td>Checks whether a user has access to a specific document by verifying against the ingested access control list (ACL) in a knowledge base. Use this operation to validate that document-level access control is working as expected after ingestion. To use this operation, you must have the bedrock:CheckIngestedDocumentAcl permission.</td>
+</tr>
 </tbody>
 </table>
 
@@ -140,6 +147,34 @@ FROM aws.bedrock_agent_runtime.ingested_document_acls
 WHERE data_source_id = '{{ data_source_id }}' -- required
 AND knowledge_base_id = '{{ knowledge_base_id }}' -- required
 AND region = '{{ region }}' -- required
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="check_ingested_document_acl"
+    values={[
+        { label: 'check_ingested_document_acl', value: 'check_ingested_document_acl' }
+    ]}
+>
+<TabItem value="check_ingested_document_acl">
+
+Checks whether a user has access to a specific document by verifying against the ingested access control list (ACL) in a knowledge base. Use this operation to validate that document-level access control is working as expected after ingestion. To use this operation, you must have the bedrock:CheckIngestedDocumentAcl permission.
+
+```sql
+EXEC aws.bedrock_agent_runtime.ingested_document_acls.check_ingested_document_acl 
+@data_source_id='{{ data_source_id }}' --required, 
+@knowledge_base_id='{{ knowledge_base_id }}' --required, 
+@region='{{ region }}' --required 
+@@json=
+'{
+"documentId": "{{ documentId }}", 
+"userContext": "{{ userContext }}"
+}'
 ;
 ```
 </TabItem>

@@ -54,10 +54,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/CancelPolicyGenerationResponse"
     get:
       operationId: GetGeneratedPolicy
       description: Retrieves the policy that was generated using StartPolicyGeneration.
@@ -978,10 +974,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TagResourceResponse"
     delete:
       operationId: UntagResource
       description: Removes a tag from the specified resource.
@@ -1001,10 +993,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UntagResourceResponse"
   /resource/scan:
     post:
       operationId: StartResourceScan
@@ -1128,8 +1116,6 @@ components:
       type: string
     JobId:
       type: string
-    CancelPolicyGenerationResponse:
-      type: object
     AccessCheckPolicyDocument:
       type: string
     CheckAccessNotGrantedRequestAccessList:
@@ -2805,16 +2791,10 @@ components:
           description: The JobId that is returned by the StartPolicyGeneration operation. The JobId can be used with GetGeneratedPolicy to retrieve the generated policies or used with CancelPolicyGeneration to cancel the policy generation request.
       required:
         - jobId
-    TagResourceResponse:
-      description: The response to the request.
-      type: object
     TagKeys:
       type: array
       items:
         $ref: "#/components/schemas/String"
-    UntagResourceResponse:
-      description: The response to the request.
-      type: object
     UpdateAnalyzerResponse:
       type: object
       properties:
@@ -3097,6 +3077,50 @@ components:
           - $ref: "#/components/x-stackQL-resources/analyzers/methods/update_analyzer"
         delete:
           - $ref: "#/components/x-stackQL-resources/analyzers/methods/delete_analyzer"
+    policy_generations:
+      id: aws.accessanalyzer.policy_generations
+      name: policy_generations
+      title: policy_generations
+      methods:
+        cancel_policy_generation:
+          operation:
+            $ref: "#/paths/~1policy~1generation~1{job_id}/put"
+          response:
+            openAPIDocKey: "200"
+        list_policy_generations:
+          operation:
+            $ref: "#/paths/~1policy~1generation/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.policyGenerations
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
+        start_policy_generation:
+          operation:
+            $ref: "#/paths/~1policy~1generation/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/policy_generations/methods/list_policy_generations"
+        insert: []
+        update: []
+        delete: []
     generated_policies:
       id: aws.accessanalyzer.generated_policies
       name: generated_policies
@@ -3113,6 +3137,67 @@ components:
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/generated_policies/methods/get_generated_policy"
+        insert: []
+        update: []
+        delete: []
+    policies:
+      id: aws.accessanalyzer.policies
+      name: policies
+      title: policies
+      methods:
+        check_access_not_granted:
+          operation:
+            $ref: "#/paths/~1policy~1check-access-not-granted/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        check_no_new_access:
+          operation:
+            $ref: "#/paths/~1policy~1check-no-new-access/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        check_no_public_access:
+          operation:
+            $ref: "#/paths/~1policy~1check-no-public-access/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        validate_policy:
+          operation:
+            $ref: "#/paths/~1policy~1validation/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
         insert: []
         update: []
         delete: []
@@ -3386,10 +3471,10 @@ components:
         insert: []
         update: []
         delete: []
-    finding_v2s:
-      id: aws.accessanalyzer.finding_v2s
-      name: finding_v2s
-      title: finding_v2s
+    findings_v2:
+      id: aws.accessanalyzer.findings_v2
+      name: findings_v2
+      title: findings_v2
       methods:
         get_finding_v2:
           operation:
@@ -3408,9 +3493,29 @@ components:
               responseToken:
                 key: $.nextToken
                 location: body
+        list_findings_v2:
+          operation:
+            $ref: "#/paths/~1findingv2/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.findings
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/finding_v2s/methods/get_finding_v2"
+          - $ref: "#/components/x-stackQL-resources/findings_v2/methods/get_finding_v2"
+          - $ref: "#/components/x-stackQL-resources/findings_v2/methods/list_findings_v2"
         insert: []
         update: []
         delete: []
@@ -3436,64 +3541,6 @@ components:
         insert: []
         update: []
         delete: []
-    findings_v2s:
-      id: aws.accessanalyzer.findings_v2s
-      name: findings_v2s
-      title: findings_v2s
-      methods:
-        list_findings_v2:
-          operation:
-            $ref: "#/paths/~1findingv2/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.findings
-          request:
-            nativeCasing: pascal
-          config:
-            pagination:
-              requestToken:
-                key: nextToken
-                location: body
-              responseToken:
-                key: $.nextToken
-                location: body
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/findings_v2s/methods/list_findings_v2"
-        insert: []
-        update: []
-        delete: []
-    policy_generations:
-      id: aws.accessanalyzer.policy_generations
-      name: policy_generations
-      title: policy_generations
-      methods:
-        list_policy_generations:
-          operation:
-            $ref: "#/paths/~1policy~1generation/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.policyGenerations
-          request:
-            nativeCasing: pascal
-          config:
-            pagination:
-              requestToken:
-                key: nextToken
-                location: query
-              responseToken:
-                key: $.nextToken
-                location: body
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/policy_generations/methods/list_policy_generations"
-        insert: []
-        update: []
-        delete: []
     tags:
       id: aws.accessanalyzer.tags
       name: tags
@@ -3510,7 +3557,6 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -3521,7 +3567,6 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
       sqlVerbs:

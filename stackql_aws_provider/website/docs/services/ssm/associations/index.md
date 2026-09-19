@@ -328,18 +328,18 @@ The following methods are available for this resource:
     <td>A State Manager association defines the state that you want to maintain on your managed nodes. For example, an association can specify that anti-virus software must be installed and running on your managed nodes, or that certain ports must be closed. For static targets, the association specifies a schedule for when the configuration is reapplied. For dynamic targets, such as an Amazon Web Services resource group or an Amazon Web Services autoscaling group, State Manager, a tool in Amazon Web Services Systems Manager applies the configuration when new managed nodes are added to the group. The association also specifies actions to take when applying the configuration. For example, an association for anti-virus software might run once a day. If the software isn't installed, then State Manager installs it. If the software is installed, but the service isn't running, then the association might instruct State Manager to start the service.</td>
 </tr>
 <tr>
-    <td><a href="#update_association_status"><CopyableCode code="update_association_status" /></a></td>
-    <td><CopyableCode code="update" /></td>
-    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-InstanceId"><code>InstanceId</code></a>, <a href="#parameter-AssociationStatus"><code>AssociationStatus</code></a></td>
-    <td></td>
-    <td>Updates the status of the Amazon Web Services Systems Manager document (SSM document) associated with the specified managed node. UpdateAssociationStatus is primarily used by the Amazon Web Services Systems Manager Agent (SSM Agent) to report status updates about your associations and is only used for associations created with the InstanceId legacy parameter.</td>
-</tr>
-<tr>
     <td><a href="#update_association"><CopyableCode code="update_association" /></a></td>
     <td><CopyableCode code="update" /></td>
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-AssociationId"><code>AssociationId</code></a></td>
     <td></td>
     <td>Updates an association. You can update the association name and version, the document version, schedule, parameters, and Amazon Simple Storage Service (Amazon S3) output. When you call UpdateAssociation, the system removes all optional parameters from the request and overwrites the association with null values for those parameters. This is by design. You must specify all optional parameters in the call, even if you are not changing the parameters. This includes the Name parameter. Before calling this API action, we recommend that you call the DescribeAssociation API operation and make a note of all optional parameters required for your UpdateAssociation call. In order to call this API operation, a user, group, or role must be granted permission to call the DescribeAssociation API operation. If you don't have permission to call DescribeAssociation, then you receive the following error: An error occurred (AccessDeniedException) when calling the UpdateAssociation operation: User: <code>&lt;user_arn&gt;</code> isn't authorized to perform: ssm:DescribeAssociation on resource: <code>&lt;resource_arn&gt;</code> When you update an association, the association immediately runs against the specified targets. You can add the ApplyOnlyAtCronInterval parameter to run the association during the next schedule run.</td>
+</tr>
+<tr>
+    <td><a href="#update_association_status"><CopyableCode code="update_association_status" /></a></td>
+    <td><CopyableCode code="update" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-InstanceId"><code>InstanceId</code></a>, <a href="#parameter-AssociationStatus"><code>AssociationStatus</code></a></td>
+    <td></td>
+    <td>Updates the status of the Amazon Web Services Systems Manager document (SSM document) associated with the specified managed node. UpdateAssociationStatus is primarily used by the Amazon Web Services Systems Manager Agent (SSM Agent) to report status updates about your associations and is only used for associations created with the InstanceId legacy parameter.</td>
 </tr>
 <tr>
     <td><a href="#delete_association"><CopyableCode code="delete_association" /></a></td>
@@ -709,30 +709,12 @@ association_description
 ## `UPDATE` examples
 
 <Tabs
-    defaultValue="update_association_status"
+    defaultValue="update_association"
     values={[
-        { label: 'update_association_status', value: 'update_association_status' },
-        { label: 'update_association', value: 'update_association' }
+        { label: 'update_association', value: 'update_association' },
+        { label: 'update_association_status', value: 'update_association_status' }
     ]}
 >
-<TabItem value="update_association_status">
-
-Updates the status of the Amazon Web Services Systems Manager document (SSM document) associated with the specified managed node. UpdateAssociationStatus is primarily used by the Amazon Web Services Systems Manager Agent (SSM Agent) to report status updates about your associations and is only used for associations created with the InstanceId legacy parameter.
-
-```sql
-UPDATE aws.ssm.associations
-SET 
-Name = '{{ Name }}',
-InstanceId = '{{ InstanceId }}',
-AssociationStatus = '{{ AssociationStatus }}'
-WHERE 
-region = '{{ region }}' --required
-AND InstanceId = '{{ InstanceId }}' --required
-AND AssociationStatus = '{{ AssociationStatus }}' --required
-RETURNING
-association_description;
-```
-</TabItem>
 <TabItem value="update_association">
 
 Updates an association. You can update the association name and version, the document version, schedule, parameters, and Amazon Simple Storage Service (Amazon S3) output. When you call UpdateAssociation, the system removes all optional parameters from the request and overwrites the association with null values for those parameters. This is by design. You must specify all optional parameters in the call, even if you are not changing the parameters. This includes the Name parameter. Before calling this API action, we recommend that you call the DescribeAssociation API operation and make a note of all optional parameters required for your UpdateAssociation call. In order to call this API operation, a user, group, or role must be granted permission to call the DescribeAssociation API operation. If you don't have permission to call DescribeAssociation, then you receive the following error: An error occurred (AccessDeniedException) when calling the UpdateAssociation operation: User: <code>&lt;user_arn&gt;</code> isn't authorized to perform: ssm:DescribeAssociation on resource: <code>&lt;resource_arn&gt;</code> When you update an association, the association immediately runs against the specified targets. You can add the ApplyOnlyAtCronInterval parameter to run the association during the next schedule run.
@@ -765,6 +747,24 @@ AssociationDispatchAssumeRole = '{{ AssociationDispatchAssumeRole }}'
 WHERE 
 region = '{{ region }}' --required
 AND AssociationId = '{{ AssociationId }}' --required
+RETURNING
+association_description;
+```
+</TabItem>
+<TabItem value="update_association_status">
+
+Updates the status of the Amazon Web Services Systems Manager document (SSM document) associated with the specified managed node. UpdateAssociationStatus is primarily used by the Amazon Web Services Systems Manager Agent (SSM Agent) to report status updates about your associations and is only used for associations created with the InstanceId legacy parameter.
+
+```sql
+UPDATE aws.ssm.associations
+SET 
+Name = '{{ Name }}',
+InstanceId = '{{ InstanceId }}',
+AssociationStatus = '{{ AssociationStatus }}'
+WHERE 
+region = '{{ region }}' --required
+AND InstanceId = '{{ InstanceId }}' --required
+AND AssociationStatus = '{{ AssociationStatus }}' --required
 RETURNING
 association_description;
 ```
